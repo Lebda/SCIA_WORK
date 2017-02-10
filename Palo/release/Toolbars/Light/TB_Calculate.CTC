@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xss xmlns:xss="http://www.scia.cz/xss">
+   <toolbar Version="1" Name="Calculate member end-cuts" Flags="0" IsPart="0" PartsSize="0" Size="3">
+      <Button Version="1" Mode="1" Tooltip="Calculate member end-cuts - method One By Others.
+         Calculate member end-cuts - method One By Others" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{85C40B33-98BC-442C-A012-EC0A160F6EDB}" ButtonID="{85C40B33-98BC-442C-A012-EC0A160F6EDB}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Calculate member end-cuts - method Others By One.
+         Calculate member end-cuts - method Others By One" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{061062FD-C999-43F0-BA03-2266FF772248}" ButtonID="{061062FD-C999-43F0-BA03-2266FF772248}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Calculate member end-cuts - method Splice.
+         Calculate member end-cuts - method Splice" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{7A87702C-AB74-4537-BCCA-9E236EB4DDC1}" ButtonID="{7A87702C-AB74-4537-BCCA-9E236EB4DDC1}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/></toolbar></xss>

@@ -1,0 +1,50 @@
+<Root>
+  <EC NAD="ONORM" Description="ONORM">
+    <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Austrian ÖNORM-EN" Collapsed="True" />
+  </EC>
+  <EC NAD="NBN" Description="NBN">
+    <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Belgian NBN-EN" Collapsed="True" />
+  </EC>
+  <EC NAD="BS" Description="BS">
+    <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="British BS-EN" Collapsed="True" />
+  </EC>
+  <EC NAD="CSN" Description="CSN">
+    <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Czech CSN-EN" Collapsed="True" />
+  </EC>
+  <EC NAD="NEN" Description="NEN">
+    <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Dutch NEN-EN" Collapsed="True" />
+  </EC>
+  <EC NAD="SFS" Description="SFS">
+    <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Finnish SFS-EN" Collapsed="True" />
+  </EC>
+  <EC NAD="NF" Description="NF">
+    <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="French NF-EN" Collapsed="True" />
+  </EC>
+  <EC NAD="DIN" Description="DIN" Default="true">
+    <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="German DIN-EN" Collapsed="True" />
+  </EC>
+  <EC NAD="ELOT" Description="ELOT">
+    <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Greek ELOT-EN" Collapsed="True" />
+  </EC>
+  <EC NAD="IS" Description="IS">
+    <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Irish IS-EN" Collapsed="True" />
+  </EC>
+  <EC NAD="LU" Description="LU">
+    <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Luxembourgian LU-EN" Collapsed="True" />
+  </EC>
+  <EC NAD="PN" Description="PN">
+    <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Polish PN-EN" Collapsed="True" />
+  </EC>
+  <EC NAD="SR" Description="SR">
+    <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Romanian SR-EN" Collapsed="True" />
+  </EC>
+  <EC NAD="STN" Description="STN">
+    <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Slovak STN-EN" Collapsed="True" />
+  </EC>
+  <EC NAD="SIST" Description="SIST">
+    <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Slovenia SIST-EN" Collapsed="True" />
+  </EC>
+  <EC NAD="STD" Description="STD">
+    <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+  </EC>
+</Root>

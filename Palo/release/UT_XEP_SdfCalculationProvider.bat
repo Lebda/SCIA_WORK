@@ -1,0 +1,1 @@
+nunit-console-x86.exe /noshadow /xml:UT_XEP_SdfCalculationProviderResult.xml UT_XEP_SdfCalculationProvider.dll /out:TestResult_UT_XEP_SdfCalculationProvider.txt /err:StdErr_UT_XEP_SdfCalculationProvider.txt

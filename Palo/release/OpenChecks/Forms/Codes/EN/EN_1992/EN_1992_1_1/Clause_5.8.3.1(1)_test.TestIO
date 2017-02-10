@@ -1,0 +1,43 @@
+<Root>
+  <Test Description="STD" Author="Martin-Lenovo\Martin" Active="1" Date="2014. 08. 22">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="B" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="C" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="n" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="NA" Type="String" ESA_ID="Result.00" Value="Standard EN" />
+    <Result Name="λ↓lim←" Type="Numeric" ESA_ID="Result.01" Value="20" />
+  </Test>
+  <Test Description="CSN" Author="Martin-Lenovo\Martin" Active="1" Date="2014. 08. 22">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Czech CSN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="100" />
+    <Input Name="B" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="C" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="n" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="NA" Type="String" ESA_ID="Result.00" Value="Czech CSN-EN" />
+    <Result Name="λ↓lim←" Type="Numeric" ESA_ID="Result.01" Value="75" />
+  </Test>
+  <Test Description="DIN" Author="Martin-Lenovo\Martin" Active="1" Date="2014. 08. 22">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="German DIN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="n" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="NA" Type="String" ESA_ID="Result.00" Value="German DIN-EN" />
+    <Result Name="λ↓lim←" Type="Numeric" ESA_ID="Result.01" Value="25" />
+  </Test>
+  <Test Description="STN" Author="Martin-Lenovo\Martin" Active="1" Date="2014. 08. 22">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Slovak STN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="100" />
+    <Input Name="B" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="C" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="n" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="NA" Type="String" ESA_ID="Result.00" Value="Slovak STN-EN" />
+    <Result Name="λ↓lim←" Type="Numeric" ESA_ID="Result.01" Value="75" />
+  </Test>
+</Root>

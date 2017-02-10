@@ -1,0 +1,178 @@
+<Root Version="1" Type="CustomLibrary" GUID="aa279c8c-1985-46c3-8e5a-ea866fc827e6">
+  <Header>
+    <PropertySet Symbol="E" ESA_ID="E" Unit="ksi" Type="Numeric">
+      <Description TranslateID="E">
+        <ENU>Modulus of Elasticity</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="epsu" ESA_ID="epsu" Unit="in/in" Type="Numeric">
+      <Description TranslateID="epsu">
+        <ENU>Ultimate Strain</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="epsy" ESA_ID="epsy" Unit="in/in" Type="Numeric">
+      <Description TranslateID="epsy">
+        <ENU>Yield strain</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="fy" ESA_ID="fy" Unit="ksi" Type="Numeric">
+      <Description TranslateID="fy">
+        <ENU>Yield Strength</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="G" ESA_ID="G" Unit="ksi" Type="Numeric">
+      <Description TranslateID="G">
+        <ENU>Shear Modulus</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="IndependentG" ESA_ID="IndependentG" Unit="ksi" Type="Numeric">
+      <Description TranslateID="IndependentG">
+        <ENU>Independent Shear Modulus</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="LogDecrement" ESA_ID="LogDecrement" Unit="" Type="Numeric">
+      <Description TranslateID="LogDecrement">
+        <ENU>Log Decrease</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Poisson" ESA_ID="Poisson" Unit="in/in" Type="Numeric">
+      <Description TranslateID="Poisson">
+        <ENU>Poisson's Ratio</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="SpecificHeat" ESA_ID="SpecificHeat" Unit="" Type="Numeric">
+      <Description TranslateID="SpecificHeat">
+        <ENU>Specific Heat</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ThermalConductivity" ESA_ID="ThermalConductivity" Unit="" Type="Numeric">
+      <Description TranslateID="ThermalConductivity">
+        <ENU>Thermal Conductivity</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ThermalExpansion" ESA_ID="ThermalExpansion" Unit="in/in*°F" Type="Numeric">
+      <Description TranslateID="ThermalExpansion">
+        <ENU>Thermal Expansion</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="UnitMass" ESA_ID="UnitMass" Unit="lb/ft↑3←" Type="Numeric">
+      <Description TranslateID="UnitMass">
+        <ENU>Weight</ENU>
+      </Description>
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>Reinfrocement Steel</Property>
+      <Property>R50</Property>
+      <Property>29010</Property>
+      <Property>10e-3</Property>
+      <Property>1.72369e-3</Property>
+      <Property>50.0</Property>
+      <Property>12610</Property>
+      <Property>0</Property>
+      <Property>150e-3</Property>
+      <Property>150e-3</Property>
+      <Property>120</Property>
+      <Property>50</Property>
+      <Property>6.666e-6</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>Reinfrocement Steel</Property>
+      <Property>R60</Property>
+      <Property>29010</Property>
+      <Property>10e-3</Property>
+      <Property>0.2070</Property>
+      <Property>60.0</Property>
+      <Property>12610</Property>
+      <Property>0</Property>
+      <Property>150e-3</Property>
+      <Property>150e-3</Property>
+      <Property>120</Property>
+      <Property>50</Property>
+      <Property>6.666e-6</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>Reinfrocement Steel</Property>
+      <Property>S40</Property>
+      <Property>29010</Property>
+      <Property>10e-3</Property>
+      <Property>0.1380</Property>
+      <Property>40.0</Property>
+      <Property>12610</Property>
+      <Property>0</Property>
+      <Property>150e-3</Property>
+      <Property>150e-3</Property>
+      <Property>120</Property>
+      <Property>50</Property>
+      <Property>6.666e-6</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>Reinfrocement Steel</Property>
+      <Property>S60</Property>
+      <Property>29010</Property>
+      <Property>10e-3</Property>
+      <Property>0.2070</Property>
+      <Property>60</Property>
+      <Property>12610</Property>
+      <Property>0</Property>
+      <Property>150e-3</Property>
+      <Property>150e-3</Property>
+      <Property>120</Property>
+      <Property>50</Property>
+      <Property>6.666e-6</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>Reinfrocement Steel</Property>
+      <Property>S75</Property>
+      <Property>29010</Property>
+      <Property>10e-3</Property>
+      <Property>1.72369e-3</Property>
+      <Property>50.0</Property>
+      <Property>12610</Property>
+      <Property>0</Property>
+      <Property>150e-3</Property>
+      <Property>150e-3</Property>
+      <Property>120</Property>
+      <Property>50</Property>
+      <Property>6.666e-6</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>Reinfrocement Steel</Property>
+      <Property>R40</Property>
+      <Property>29010</Property>
+      <Property>10e-3</Property>
+      <Property>0.1380</Property>
+      <Property>40.0</Property>
+      <Property>12610</Property>
+      <Property>0</Property>
+      <Property>150e-3</Property>
+      <Property>150e-3</Property>
+      <Property>120</Property>
+      <Property>50</Property>
+      <Property>6.666e-6</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>Reinfrocement Steel</Property>
+      <Property>w60</Property>
+      <Property>29010</Property>
+      <Property>10e-3</Property>
+      <Property>0.2070</Property>
+      <Property>60.0</Property>
+      <Property>12610</Property>
+      <Property>0</Property>
+      <Property>150e-3</Property>
+      <Property>150e-3</Property>
+      <Property>120</Property>
+      <Property>50</Property>
+      <Property>6.666e-6</Property>
+      <Property>490</Property>
+    </Item>
+  </Items>
+</Root>

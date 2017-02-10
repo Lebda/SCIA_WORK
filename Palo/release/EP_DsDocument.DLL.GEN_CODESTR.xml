@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="15"><StringCode SourceType="DLLRC:"><StringId>@{ep_dsdocument.2eids_file_from_disk}</StringId>
+		<SourceDll>EP_DsDocument.2eDLL</SourceDll>
+		<ResourceId>4024</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_dsdocument.2eids_contens_default_caption}</StringId>
+		<SourceDll>EP_DsDocument.2eDLL</SourceDll>
+		<ResourceId>4019</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_dsdocument.2eids_external_image_file}</StringId>
+		<SourceDll>EP_DsDocument.2eDLL</SourceDll>
+		<ResourceId>4023</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_dsdocument.2eids_external_text_file}</StringId>
+		<SourceDll>EP_DsDocument.2eDLL</SourceDll>
+		<ResourceId>4031</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_dsdocument.2eids_doc}</StringId>
+		<SourceDll>EP_DsDocument.2eDLL</SourceDll>
+		<ResourceId>4005</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_dsdocument.2eids_contents_description}</StringId>
+		<SourceDll>EP_DsDocument.2eDLL</SourceDll>
+		<ResourceId>4021</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_dsdocument.2eids_insert_page_break_into_document}</StringId>
+		<SourceDll>EP_DsDocument.2eDLL</SourceDll>
+		<ResourceId>4037</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_dsdocument.2eids_database_of_documents}</StringId>
+		<SourceDll>EP_DsDocument.2eDLL</SourceDll>
+		<ResourceId>1210</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_dsdocument.2eids_page_break}</StringId>
+		<SourceDll>EP_DsDocument.2eDLL</SourceDll>
+		<ResourceId>4036</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_dsdocument.2eids_text_line}</StringId>
+		<SourceDll>EP_DsDocument.2eDLL</SourceDll>
+		<ResourceId>4011</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_dsdocument.2eids_chapter}</StringId>
+		<SourceDll>EP_DsDocument.2eDLL</SourceDll>
+		<ResourceId>4046</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_dsdocument.2eids_contents}</StringId>
+		<SourceDll>EP_DsDocument.2eDLL</SourceDll>
+		<ResourceId>4020</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_dsdocument.2eids_documents}</StringId>
+		<SourceDll>EP_DsDocument.2eDLL</SourceDll>
+		<ResourceId>1211</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_dsdocument.2eids_some_file_with_text_from_disk}</StringId>
+		<SourceDll>EP_DsDocument.2eDLL</SourceDll>
+		<ResourceId>4032</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_dsdocument.2eids_any_line_of_text}</StringId>
+		<SourceDll>EP_DsDocument.2eDLL</SourceDll>
+		<ResourceId>4012</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

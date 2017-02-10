@@ -1,0 +1,8 @@
+coeff.dll;        mic, \c\mic\PRW_Coeff\PRW_Coeff.dsp - all
+DocCtrl.dll;				vik, ???
+IdaAtl.dll;
+IdaGridX.ocx;			tra, ???
+ICSni.dll;			vik, \x\vik\IdaComponentSniffer\IC_Sniffer.dsw - all
+iPun.dll;			par, \x\par\componenta\idaPunching.dsw - all
+iBolt.dll;			par,\
+EPW_Graph.dll;			par, bro

@@ -1,0 +1,118 @@
+<Root>
+  <Test Description="STD" Author="Martin-Lenovo\Martin" Active="1" Date="2014. 08. 22" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+    </Dialog>
+    <Result Name="NA" Type="String" ESA_ID="Result.00" Value="Standard EN" />
+    <Result Name="k↓1←" Type="Numeric" ESA_ID="Result.01" Value="440e-3" />
+    <Result Name="k↓2←" Type="Numeric" ESA_ID="Result.02" Value="1.25" />
+    <Result Name="k↓3←" Type="Numeric" ESA_ID="Result.03" Value="540e-3" />
+    <Result Name="k↓4←" Type="Numeric" ESA_ID="Result.04" Value="1.25" />
+    <Result Name="k↓5←" Type="Numeric" ESA_ID="Result.05" Value="700e-3" />
+    <Result Name="k↓6←" Type="Numeric" ESA_ID="Result.06" Value="800e-3" />
+  </Test>
+  <Test Description="DIN_fck50" Author="Martin-Lenovo\Martin" Active="1" Date="2014. 08. 22" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="German DIN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="50e6" />
+    <Result Name="NA" Type="String" ESA_ID="Result.00" Value="German DIN-EN" />
+    <Result Name="k↓1←" Type="Numeric" ESA_ID="Result.01" Value="640e-3" />
+    <Result Name="k↓2←" Type="Numeric" ESA_ID="Result.02" Value="800e-3" />
+    <Result Name="k↓3←" Type="Numeric" ESA_ID="Result.03" Value="720e-3" />
+    <Result Name="k↓4←" Type="Numeric" ESA_ID="Result.04" Value="800e-3" />
+    <Result Name="k↓5←" Type="Numeric" ESA_ID="Result.05" Value="700e-3" />
+    <Result Name="k↓6←" Type="Numeric" ESA_ID="Result.06" Value="850e-3" />
+  </Test>
+  <Test Description="DIN_fck60" Author="Martin-Lenovo\Martin" Active="1" Date="2014. 08. 22" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="German DIN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="60e6" />
+    <Result Name="NA" Type="String" ESA_ID="Result.00" Value="German DIN-EN" />
+    <Result Name="k↓1←" Type="Numeric" ESA_ID="Result.01" Value="640e-3" />
+    <Result Name="k↓2←" Type="Numeric" ESA_ID="Result.02" Value="800e-3" />
+    <Result Name="k↓3←" Type="Numeric" ESA_ID="Result.03" Value="720e-3" />
+    <Result Name="k↓4←" Type="Numeric" ESA_ID="Result.04" Value="800e-3" />
+    <Result Name="k↓5←" Type="Numeric" ESA_ID="Result.05" Value="800e-3" />
+    <Result Name="k↓6←" Type="Numeric" ESA_ID="Result.06" Value="1" />
+  </Test>
+  <Test Description="BS_fyk500" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2014.12.16" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="British BS-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="500000000" />
+    <Result Name="NA" Type="String" ESA_ID="Result.00" Value="British BS-EN" />
+    <Result Name="k↓1←" Type="Numeric" ESA_ID="Result.01" Value="400e-3" />
+    <Result Name="k↓2←" Type="Numeric" ESA_ID="Result.02" Value="1" />
+    <Result Name="k↓3←" Type="Numeric" ESA_ID="Result.03" Value="400e-3" />
+    <Result Name="k↓4←" Type="Numeric" ESA_ID="Result.04" Value="1" />
+    <Result Name="k↓5←" Type="Numeric" ESA_ID="Result.05" Value="700e-3" />
+    <Result Name="k↓6←" Type="Numeric" ESA_ID="Result.06" Value="800e-3" />
+  </Test>
+  <Test Description="BS_fyk600" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2014.12.16" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="British BS-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="600e6" />
+    <Result Name="k↓1←" Type="Numeric" ESA_ID="Result.01" Value="0" />
+    <Result Name="k↓2←" Type="Numeric" ESA_ID="Result.02" Value="0" />
+    <Result Name="k↓3←" Type="Numeric" ESA_ID="Result.03" Value="0" />
+    <Result Name="k↓4←" Type="Numeric" ESA_ID="Result.04" Value="0" />
+    <Result Name="k↓5←" Type="Numeric" ESA_ID="Result.05" Value="0" />
+    <Result Name="k↓6←" Type="Numeric" ESA_ID="Result.06" Value="0" />
+    <Result Name="NA" Type="String" ESA_ID="Result.00" Value="British BS-EN" />
+  </Test>
+  <Test Description="MAL_fyk500" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2014.12.16" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Malaysia MAL-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="500000000" />
+    <Result Name="NA" Type="String" ESA_ID="Result.00" Value="Malaysia MAL-EN" />
+    <Result Name="k↓1←" Type="Numeric" ESA_ID="Result.01" Value="400e-3" />
+    <Result Name="k↓2←" Type="Numeric" ESA_ID="Result.02" Value="1" />
+    <Result Name="k↓3←" Type="Numeric" ESA_ID="Result.03" Value="400e-3" />
+    <Result Name="k↓4←" Type="Numeric" ESA_ID="Result.04" Value="1" />
+    <Result Name="k↓5←" Type="Numeric" ESA_ID="Result.05" Value="700e-3" />
+    <Result Name="k↓6←" Type="Numeric" ESA_ID="Result.06" Value="800e-3" />
+  </Test>
+  <Test Description="MAL_fyk600" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2014.12.16" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Malaysia MAL-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="600e6" />
+    <Result Name="k↓1←" Type="Numeric" ESA_ID="Result.01" Value="0" />
+    <Result Name="k↓2←" Type="Numeric" ESA_ID="Result.02" Value="0" />
+    <Result Name="k↓3←" Type="Numeric" ESA_ID="Result.03" Value="0" />
+    <Result Name="k↓4←" Type="Numeric" ESA_ID="Result.04" Value="0" />
+    <Result Name="k↓5←" Type="Numeric" ESA_ID="Result.05" Value="0" />
+    <Result Name="k↓6←" Type="Numeric" ESA_ID="Result.06" Value="0" />
+    <Result Name="NA" Type="String" ESA_ID="Result.00" Value="Malaysia MAL-EN" />
+  </Test>
+  <Test Description="SIG_fyk500" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2014.12.16" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Singapore SS-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="500000000" />
+    <Result Name="NA" Type="String" ESA_ID="Result.00" Value="Singapore SS-EN" />
+    <Result Name="k↓1←" Type="Numeric" ESA_ID="Result.01" Value="400e-3" />
+    <Result Name="k↓2←" Type="Numeric" ESA_ID="Result.02" Value="1" />
+    <Result Name="k↓3←" Type="Numeric" ESA_ID="Result.03" Value="400e-3" />
+    <Result Name="k↓4←" Type="Numeric" ESA_ID="Result.04" Value="1" />
+    <Result Name="k↓5←" Type="Numeric" ESA_ID="Result.05" Value="700e-3" />
+    <Result Name="k↓6←" Type="Numeric" ESA_ID="Result.06" Value="800e-3" />
+  </Test>
+  <Test Description="SIG_fyk600" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2014.12.16" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Singapore SS-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="600e6" />
+    <Result Name="k↓1←" Type="Numeric" ESA_ID="Result.01" Value="0" />
+    <Result Name="k↓2←" Type="Numeric" ESA_ID="Result.02" Value="0" />
+    <Result Name="k↓3←" Type="Numeric" ESA_ID="Result.03" Value="0" />
+    <Result Name="k↓4←" Type="Numeric" ESA_ID="Result.04" Value="0" />
+    <Result Name="k↓5←" Type="Numeric" ESA_ID="Result.05" Value="0" />
+    <Result Name="k↓6←" Type="Numeric" ESA_ID="Result.06" Value="0" />
+    <Result Name="NA" Type="String" ESA_ID="Result.00" Value="Singapore SS-EN" />
+  </Test>
+</Root>

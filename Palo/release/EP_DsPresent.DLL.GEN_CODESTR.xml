@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="4"><StringCode SourceType="DLLRC:"><StringId>@{ep_dspresent.2eids_101}</StringId>
+		<SourceDll>EP_DsPresent.2eDLL</SourceDll>
+		<ResourceId>101</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_dspresent.2eids_105}</StringId>
+		<SourceDll>EP_DsPresent.2eDLL</SourceDll>
+		<ResourceId>105</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_dspresent.2eids_103}</StringId>
+		<SourceDll>EP_DsPresent.2eDLL</SourceDll>
+		<ResourceId>103</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_dspresent.2eids_102}</StringId>
+		<SourceDll>EP_DsPresent.2eDLL</SourceDll>
+		<ResourceId>102</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

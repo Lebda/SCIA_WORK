@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="5"><StringCode SourceType="DLLRC:"><StringId>@{dampingm.2eids_damping_2d}</StringId>
+		<SourceDll>DampingM.2eDLL</SourceDll>
+		<ResourceId>107</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{dampingm.2eids_damping_1d}</StringId>
+		<SourceDll>DampingM.2eDLL</SourceDll>
+		<ResourceId>106</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{dampingm.2eids_damping_node}</StringId>
+		<SourceDll>DampingM.2eDLL</SourceDll>
+		<ResourceId>108</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{dampingm.2eids_setupdumper}</StringId>
+		<SourceDll>DampingM.2eDLL</SourceDll>
+		<ResourceId>110</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{dampingm.2eids_damping}</StringId>
+		<SourceDll>DampingM.2eDLL</SourceDll>
+		<ResourceId>105</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

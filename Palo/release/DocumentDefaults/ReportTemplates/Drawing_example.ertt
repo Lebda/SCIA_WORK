@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<STRINGTABLE><STRING ID="TEMPLATE_NAME">
+		<ENU>Drawing.20example</ENU>
+		<CSY>Příklad.20výkresu</CSY>
+		<DEU>Beispiel.20Zeichnung</DEU>
+		<ELL>Παράδειγμα.20του.20σχεδίου</ELL>
+		<SPA>Ejemplo.20de.20dibujo</SPA>
+		<FRA>Exemple.20de.20dessin</FRA>
+		<HRV>Opis.20Analiza.20modela</HRV>
+		<ITA>Esempio.20di.20disegnoi</ITA>
+		<NLD>Voorbeeld.20van.20een.20tekening</NLD>
+		<POL>Przykład.20z.20rysunku</POL>
+		<PTB>Exemplo.20de.20desenho</PTB>
+		<ROM>Exemplu.20de.20desen</ROM>
+		<RUS>Пример.20рисования</RUS>
+		<SKY>Príklad.20výkresu</SKY>
+		<SLV>Primer.20risanja</SLV>
+	</STRING>
+	<STRING ID="TEMPLATE_DESCRIPTION">	
+		<ENU></ENU>
+		<CSY></CSY>
+		<DEU></DEU>
+		<ELL></ELL>
+		<SPA></SPA>
+		<FRA></FRA>
+		<HRV></HRV>
+		<ITA></ITA>
+		<NLD></NLD>
+		<POL></POL>
+		<PTB></PTB>
+		<ROM></ROM>
+		<RUS></RUS>
+		<SKY></SKY>
+		<SLV></SLV>	
+	</STRING>
+</STRINGTABLE>

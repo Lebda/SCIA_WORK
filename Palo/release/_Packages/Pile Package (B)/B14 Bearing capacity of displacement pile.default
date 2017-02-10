@@ -1,0 +1,76 @@
+<Root>
+  <ValueSets>
+    <EC NAD="CSN" Description="CZ jazyk, CZ annex" Layout="0" Language="CSY">
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 12/15" Collapsed="True" />
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Výpočet dle Masopusta a Bažanta, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Uživatelský nadpis" />
+      <Variable Identifier="Draw" Value="True" />
+      <Variable Identifier="V↓d←" Value="1.5e6" />
+      <Variable Identifier="L" Value="5" />
+      <Variable Identifier="d" Value="500e-3" />
+      <Variable Identifier="T" Value="0" />
+      <Variable Identifier="Z" Value="0" />
+      <Variable Identifier="η" Value="900e-3" />
+      <Variable Identifier="W↓H←" Value="800" />
+      <Variable Identifier="H" Value="4" />
+      <Variable Identifier="s" Value="20e-3" />
+      <Variable Identifier="γ↓P←" Value="2.5" />
+      <Variable Identifier="TI" Value="1|0,6|0,8║2|0,55|0,75║3|0,85|0,52║4|0,8|0,89║5|0,5|0,5" />
+      <Variable Identifier="Type1" Value="1" />
+      <Variable Identifier="Type2" Value="0" />
+      <Variable Identifier="Type3" Value="1" />
+      <Variable Identifier="Type4" Value="0" />
+      <Variable Identifier="Type5" Value="0" />
+    </EC>
+    <EC NAD="STN" Description="SK jazyk, SK annex" Layout="0" Language="SKY">
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 12/15" Collapsed="True" />
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Výpočet podľa Masopusta a Bažanta, STN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Uživateľský nadpis" />
+      <Variable Identifier="Draw" Value="True" />
+      <Variable Identifier="V↓d←" Value="1.5e6" />
+      <Variable Identifier="L" Value="5" />
+      <Variable Identifier="d" Value="500e-3" />
+      <Variable Identifier="T" Value="0" />
+      <Variable Identifier="Z" Value="0" />
+      <Variable Identifier="η" Value="900e-3" />
+      <Variable Identifier="W↓H←" Value="800" />
+      <Variable Identifier="H" Value="4" />
+      <Variable Identifier="s" Value="20e-3" />
+      <Variable Identifier="γ↓P←" Value="2.5" />
+      <Variable Identifier="TI" Value="1|0,6|0,8║2|0,55|0,75║3|0,85|0,52║4|0,8|0,89║5|0,5|0,5" />
+      <Variable Identifier="Type1" Value="1" />
+      <Variable Identifier="Type2" Value="0" />
+      <Variable Identifier="Type3" Value="1" />
+      <Variable Identifier="Type4" Value="0" />
+      <Variable Identifier="Type5" Value="0" />
+    </EC>
+    <EC NAD="CSN" Description="EN language, CZ annex" Layout="0" Language="ENU">
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 12/15" Collapsed="True" />
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Calculation according to Masopust and Bažant theory, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="Draw" Value="True" />
+      <Variable Identifier="V↓d←" Value="1.5e6" />
+      <Variable Identifier="L" Value="5" />
+      <Variable Identifier="d" Value="500e-3" />
+      <Variable Identifier="T" Value="0" />
+      <Variable Identifier="Z" Value="0" />
+      <Variable Identifier="η" Value="900e-3" />
+      <Variable Identifier="W↓H←" Value="800" />
+      <Variable Identifier="H" Value="4" />
+      <Variable Identifier="s" Value="20e-3" />
+      <Variable Identifier="γ↓P←" Value="2.5" />
+      <Variable Identifier="TI" Value="1|0,6|0,8║2|0,55|0,75║3|0,85|0,52║4|0,8|0,89║5|0,5|0,5" />
+      <Variable Identifier="Type1" Value="1" />
+      <Variable Identifier="Type2" Value="0" />
+      <Variable Identifier="Type3" Value="1" />
+      <Variable Identifier="Type4" Value="0" />
+      <Variable Identifier="Type5" Value="0" />
+    </EC>
+  </ValueSets>
+</Root>

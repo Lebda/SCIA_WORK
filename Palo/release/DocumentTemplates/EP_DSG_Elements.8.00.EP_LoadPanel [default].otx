@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xss xmlns:xss="http://www.scia.cz/xss">
+   <table_template xss:class="TableTemplate" ots_version="13" name="default" clsid="{7B422CC0-6394-403B-8386-1584D5E5E4FD}" type="vertical" auto_styles="0" header_style="5" odd_line_style="3" even_line_style="4" icons_in_header="0" flags2="0" context="0" sorting_flags="0">
+      <table_look can_use_presets="1" what_widths_to_use="0" what_colors_to_use="0" what_padding_to_use="0" cell_padding="10 10 10 10" space_between_sections="20" space_between_strips="50">
+         <line_widths width_0="1" width_1="1" width_2="1" width_3="1" width_4="1" width_5="1" width_6="1" width_7="1" width_8="1" width_9="1"/>
+         <line_colors color_0="0" color_1="0" color_2="0" color_3="0" color_4="0" color_5="0" color_6="0" color_7="0" color_8="0" color_9="0"/>
+         <colors color_0="16777215" color_1="16777215" color_2="16777215" color_3="16777215"/>
+         <stripping_rule rule="1"/></table_look>
+      <column xss:class="Column" id="\EP\$4364BC01-AAB7-11D4-B3D9-00104BC3B531" format="0" format2="4" units="0" alignment="0" digits="0" minimal_width="100" delta_width="20" max_width="350" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$C8983825-6D71-48A4-9463-FFD8E34E7E9D" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="100" delta_width="20" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$82644AB6-D9DD-4636-B771-C6ED05FA9145" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="100" delta_width="20" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$1BAB9B24-06D8-4534-9829-31C33A8414DC" format="0" format2="4" units="0" alignment="0" digits="0" minimal_width="100" delta_width="20" max_width="200" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$3E92C6E0-B199-4132-A489-1308AD7A76F6" caption="All nodes YES/NO" format="0" format2="4" units="0" alignment="0" digits="0" minimal_width="100" delta_width="20" max_width="250" cell_padding="10 10 10 10" max_picture_size="250 250" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$0D503EFB-CE24-4CC5-A802-3722464AA5A1" caption="All edges YES/NO" format="0" format2="12" units="0" alignment="0" digits="0" minimal_width="100" delta_width="20" max_width="250" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/></table_template></xss>

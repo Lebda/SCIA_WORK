@@ -1,0 +1,76 @@
+<Root Version="1" Type="CustomLibrary" GUID="2803e3bd-32e9-498e-b85b-3b483ef96601">
+  <Header>
+    <PropertySet Symbol="Name" ESA_ID="Name" Unit="" Type="String">
+      <Description TranslateID="Name">
+        <ENU>Name</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="fm" ESA_ID="fm" Unit="MPa" Type="Numeric">
+      <Description TranslateID="fm">
+        <ENU>Characteristics compressive strength</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Cement" ESA_ID="Cement" Unit="" Type="Numeric">
+      <Description TranslateID="Cement">
+        <ENU>Cement</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Lime" ESA_ID="Lime" Unit="" Type="Numeric">
+      <Description TranslateID="Lime">
+        <ENU>Lime</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Sand" ESA_ID="Sand" Unit="" Type="Numeric">
+      <Description TranslateID="Sand">
+        <ENU>Sand</ENU>
+      </Description>
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>Mortar</Property>
+      <Property>0</Property>
+      <Property>M2,5 c</Property>
+      <Property>2.5</Property>
+      <Property>1</Property>
+      <Property>0</Property>
+      <Property>4</Property>
+    </Item>
+    <Item>
+      <Property>Mortar</Property>
+      <Property>1</Property>
+      <Property>M2,5 c-v</Property>
+      <Property>2.5</Property>
+      <Property>1</Property>
+      <Property>1</Property>
+      <Property>7</Property>
+    </Item>
+    <Item>
+      <Property>Mortar</Property>
+      <Property>2</Property>
+      <Property>M5 c</Property>
+      <Property>5</Property>
+      <Property>1</Property>
+      <Property>0</Property>
+      <Property>3</Property>
+    </Item>
+    <Item>
+      <Property>Mortar</Property>
+      <Property>3</Property>
+      <Property>M5 c-v</Property>
+      <Property>5</Property>
+      <Property>1</Property>
+      <Property>0.25</Property>
+      <Property>5</Property>
+    </Item>
+    <Item>
+      <Property>Mortar</Property>
+      <Property>4</Property>
+      <Property>M10</Property>
+      <Property>10</Property>
+      <Property>1</Property>
+      <Property>0</Property>
+      <Property>2.5</Property>
+    </Item>
+  </Items>
+</Root>

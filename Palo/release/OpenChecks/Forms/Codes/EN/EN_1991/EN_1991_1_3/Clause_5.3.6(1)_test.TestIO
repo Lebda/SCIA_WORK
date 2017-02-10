@@ -1,0 +1,364 @@
+<Root>
+  <Test Description="STD" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Alpine" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="b↓2←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Console" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Standard EN" />
+    <Result Name="l↓s,max←" Type="Numeric" ESA_ID="Result.04" Value="15" />
+    <Result Name="l↓s,min←" Type="Numeric" ESA_ID="Result.3" Value="5" />
+    <Input Name="s↓k←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="μ↓W,max←" Type="Numeric" ESA_ID="Result.02" Value="4" />
+    <Result Name="μ↓W,min←" Type="Numeric" ESA_ID="Result.01" Value="800e-3" />
+  </Test>
+  <Test Description="SR_Console1" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Romanian SR-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Alpine" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b↓2←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Console" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Romanian SR-EN" />
+    <Result Name="l↓s,max←" Type="Numeric" ESA_ID="Result.04" Value="15" />
+    <Result Name="l↓s,min←" Type="Numeric" ESA_ID="Result.3" Value="5" />
+    <Input Name="s↓k←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="μ↓W,max←" Type="Numeric" ESA_ID="Result.02" Value="6" />
+    <Result Name="μ↓W,min←" Type="Numeric" ESA_ID="Result.01" Value="800e-3" />
+  </Test>
+  <Test Description="SR_Console0" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Romanian SR-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Alpine" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b↓2←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Console" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Romanian SR-EN" />
+    <Result Name="l↓s,max←" Type="Numeric" ESA_ID="Result.04" Value="15" />
+    <Result Name="l↓s,min←" Type="Numeric" ESA_ID="Result.3" Value="5" />
+    <Input Name="s↓k←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="μ↓W,max←" Type="Numeric" ESA_ID="Result.02" Value="6" />
+    <Result Name="μ↓W,min←" Type="Numeric" ESA_ID="Result.01" Value="800e-3" />
+  </Test>
+  <Test Description="IS" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Irish IS-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Alpine" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b↓2←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Console" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Irish IS-EN" />
+    <Input Name="s↓k←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+  </Test>
+  <Test Description="DIN_Alpine1_Sk&gt;=3000_min1_max1" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="German DIN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Alpine" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="b↓2←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Console" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="German DIN-EN" />
+    <Result Name="l↓s,max←" Type="Numeric" ESA_ID="Result.04" Value="15" />
+    <Result Name="l↓s,min←" Type="Numeric" ESA_ID="Result.3" Value="5" />
+    <Input Name="s↓k←" Type="Numeric" ESA_ID="" Value="4000" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="μ↓W,max←" Type="Numeric" ESA_ID="Result.02" Value="1.2" />
+    <Result Name="μ↓W,min←" Type="Numeric" ESA_ID="Result.01" Value="1.2" />
+  </Test>
+  <Test Description="DIN_Alpine1_Sk&gt;=3000_min1_max2" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="German DIN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Alpine" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="b↓2←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Console" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="4" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="German DIN-EN" />
+    <Result Name="l↓s,max←" Type="Numeric" ESA_ID="Result.04" Value="15" />
+    <Result Name="l↓s,min←" Type="Numeric" ESA_ID="Result.3" Value="5" />
+    <Input Name="s↓k←" Type="Numeric" ESA_ID="" Value="4000" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="μ↓W,max←" Type="Numeric" ESA_ID="Result.02" Value="1.5" />
+    <Result Name="μ↓W,min←" Type="Numeric" ESA_ID="Result.01" Value="1.2" />
+  </Test>
+  <Test Description="DIN_Alpine1_Sk&gt;=3000_min2" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="German DIN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Alpine" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="b↓2←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Console" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="6" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="German DIN-EN" />
+    <Result Name="l↓s,max←" Type="Numeric" ESA_ID="Result.04" Value="15" />
+    <Result Name="l↓s,min←" Type="Numeric" ESA_ID="Result.3" Value="5" />
+    <Input Name="s↓k←" Type="Numeric" ESA_ID="" Value="4000" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="μ↓W,max←" Type="Numeric" ESA_ID="Result.02" Value="1.852276" />
+    <Result Name="μ↓W,min←" Type="Numeric" ESA_ID="Result.01" Value="1.2" />
+  </Test>
+  <Test Description="DIN_Alpine0_b2&gt;3_min1_max1" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="German DIN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Alpine" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b↓2←" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="Console" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="German DIN-EN" />
+    <Result Name="l↓s,max←" Type="Numeric" ESA_ID="Result.04" Value="15" />
+    <Result Name="l↓s,min←" Type="Numeric" ESA_ID="Result.3" Value="5" />
+    <Input Name="s↓k←" Type="Numeric" ESA_ID="" Value="4000" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="μ↓W,max←" Type="Numeric" ESA_ID="Result.02" Value="800e-3" />
+    <Result Name="μ↓W,min←" Type="Numeric" ESA_ID="Result.01" Value="800e-3" />
+  </Test>
+  <Test Description="DIN_Alpine0_b2&gt;3_min1_max2" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="German DIN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Alpine" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b↓2←" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="Console" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="4" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="German DIN-EN" />
+    <Result Name="l↓s,max←" Type="Numeric" ESA_ID="Result.04" Value="15" />
+    <Result Name="l↓s,min←" Type="Numeric" ESA_ID="Result.3" Value="5" />
+    <Input Name="s↓k←" Type="Numeric" ESA_ID="" Value="4000" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="μ↓W,max←" Type="Numeric" ESA_ID="Result.02" Value="1.5" />
+    <Result Name="μ↓W,min←" Type="Numeric" ESA_ID="Result.01" Value="800e-3" />
+  </Test>
+  <Test Description="DIN_Alpine0_b2&gt;3_min2" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="German DIN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Alpine" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b↓2←" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="Console" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="10" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="German DIN-EN" />
+    <Result Name="l↓s,max←" Type="Numeric" ESA_ID="Result.04" Value="15" />
+    <Result Name="l↓s,min←" Type="Numeric" ESA_ID="Result.3" Value="5" />
+    <Input Name="s↓k←" Type="Numeric" ESA_ID="" Value="4000" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="μ↓W,max←" Type="Numeric" ESA_ID="Result.02" Value="2.4" />
+    <Result Name="μ↓W,min←" Type="Numeric" ESA_ID="Result.01" Value="800e-3" />
+  </Test>
+  <Test Description="DIN_Alpine0_b2&lt;3_min1_max1" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="German DIN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Alpine" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b↓2←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Console" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="German DIN-EN" />
+    <Result Name="l↓s,max←" Type="Numeric" ESA_ID="Result.04" Value="15" />
+    <Result Name="l↓s,min←" Type="Numeric" ESA_ID="Result.3" Value="5" />
+    <Input Name="s↓k←" Type="Numeric" ESA_ID="" Value="4000" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="μ↓W,max←" Type="Numeric" ESA_ID="Result.02" Value="800e-3" />
+    <Result Name="μ↓W,min←" Type="Numeric" ESA_ID="Result.01" Value="800e-3" />
+  </Test>
+  <Test Description="DIN_Alpine0_b2&lt;3_min1_max2" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="German DIN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Alpine" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b↓2←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Console" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="4" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="German DIN-EN" />
+    <Result Name="l↓s,max←" Type="Numeric" ESA_ID="Result.04" Value="15" />
+    <Result Name="l↓s,min←" Type="Numeric" ESA_ID="Result.3" Value="5" />
+    <Input Name="s↓k←" Type="Numeric" ESA_ID="" Value="4000" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="μ↓W,max←" Type="Numeric" ESA_ID="Result.02" Value="1.5" />
+    <Result Name="μ↓W,min←" Type="Numeric" ESA_ID="Result.01" Value="800e-3" />
+  </Test>
+  <Test Description="DIN_Alpine0_b2&lt;3_min2" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="German DIN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Alpine" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b↓2←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Console" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="10" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="German DIN-EN" />
+    <Result Name="l↓s,max←" Type="Numeric" ESA_ID="Result.04" Value="15" />
+    <Result Name="l↓s,min←" Type="Numeric" ESA_ID="Result.3" Value="5" />
+    <Input Name="s↓k←" Type="Numeric" ESA_ID="" Value="4000" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="μ↓W,max←" Type="Numeric" ESA_ID="Result.02" Value="2" />
+    <Result Name="μ↓W,min←" Type="Numeric" ESA_ID="Result.01" Value="800e-3" />
+  </Test>
+  <Test Description="SFS_A&lt;1" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Finnish SFS-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Alpine" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b↓2←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Console" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Finnish SFS-EN" />
+    <Result Name="l↓s,max←" Type="Numeric" ESA_ID="Result.04" Value="6" />
+    <Result Name="l↓s,min←" Type="Numeric" ESA_ID="Result.3" Value="2" />
+    <Input Name="s↓k←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="μ↓W,max←" Type="Numeric" ESA_ID="Result.02" Value="800e-3" />
+    <Result Name="μ↓W,min←" Type="Numeric" ESA_ID="Result.01" Value="800e-3" />
+  </Test>
+  <Test Description="SFS_A&lt;2" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Finnish SFS-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="Alpine" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b↓2←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Console" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Finnish SFS-EN" />
+    <Result Name="l↓s,max←" Type="Numeric" ESA_ID="Result.04" Value="6" />
+    <Result Name="l↓s,min←" Type="Numeric" ESA_ID="Result.3" Value="2" />
+    <Input Name="s↓k←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="μ↓W,max←" Type="Numeric" ESA_ID="Result.02" Value="1.15" />
+    <Result Name="μ↓W,min←" Type="Numeric" ESA_ID="Result.01" Value="800e-3" />
+  </Test>
+  <Test Description="SFS_A&lt;6" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Finnish SFS-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="Alpine" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b↓2←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Console" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Finnish SFS-EN" />
+    <Result Name="l↓s,max←" Type="Numeric" ESA_ID="Result.04" Value="6" />
+    <Result Name="l↓s,min←" Type="Numeric" ESA_ID="Result.3" Value="2" />
+    <Input Name="s↓k←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="μ↓W,max←" Type="Numeric" ESA_ID="Result.02" Value="2" />
+    <Result Name="μ↓W,min←" Type="Numeric" ESA_ID="Result.01" Value="800e-3" />
+  </Test>
+  <Test Description="SFS_A&gt;6" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Finnish SFS-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="7" />
+    <Input Name="Alpine" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b↓2←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Console" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Finnish SFS-EN" />
+    <Result Name="l↓s,max←" Type="Numeric" ESA_ID="Result.04" Value="6" />
+    <Result Name="l↓s,min←" Type="Numeric" ESA_ID="Result.3" Value="2" />
+    <Input Name="s↓k←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="μ↓W,max←" Type="Numeric" ESA_ID="Result.02" Value="2.5" />
+    <Result Name="μ↓W,min←" Type="Numeric" ESA_ID="Result.01" Value="800e-3" />
+  </Test>
+  <Test Description="CSN_ZoneCSN0-4" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Czech CSN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Alpine" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b↓2←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Console" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Czech CSN-EN" />
+    <Result Name="l↓s,max←" Type="Numeric" ESA_ID="Result.04" Value="15" />
+    <Result Name="l↓s,min←" Type="Numeric" ESA_ID="Result.3" Value="5" />
+    <Input Name="s↓k←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="μ↓W,max←" Type="Numeric" ESA_ID="Result.02" Value="2" />
+    <Result Name="μ↓W,min←" Type="Numeric" ESA_ID="Result.01" Value="800e-3" />
+  </Test>
+  <Test Description="CSN_ZoneCSN4-6" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Czech CSN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Alpine" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b↓2←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Console" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Czech CSN-EN" />
+    <Result Name="l↓s,max←" Type="Numeric" ESA_ID="Result.04" Value="15" />
+    <Result Name="l↓s,min←" Type="Numeric" ESA_ID="Result.3" Value="5" />
+    <Input Name="s↓k←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="5" />
+    <Result Name="μ↓W,max←" Type="Numeric" ESA_ID="Result.02" Value="3" />
+    <Result Name="μ↓W,min←" Type="Numeric" ESA_ID="Result.01" Value="800e-3" />
+  </Test>
+  <Test Description="CSN_ZoneCSN6-7" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Czech CSN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Alpine" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b↓2←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Console" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Czech CSN-EN" />
+    <Result Name="l↓s,max←" Type="Numeric" ESA_ID="Result.04" Value="15" />
+    <Result Name="l↓s,min←" Type="Numeric" ESA_ID="Result.3" Value="5" />
+    <Input Name="s↓k←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="7" />
+    <Result Name="μ↓W,max←" Type="Numeric" ESA_ID="Result.02" Value="4" />
+    <Result Name="μ↓W,min←" Type="Numeric" ESA_ID="Result.01" Value="800e-3" />
+  </Test>
+  <Test Description="BS" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="British BS-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Alpine" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b↓2←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Console" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="British BS-EN" />
+    <Input Name="s↓k←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="7" />
+  </Test>
+  <Test Description="ONORM" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Austrian ÖNORM-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Alpine" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b↓2←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Console" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Austrian ÖNORM-EN" />
+    <Input Name="s↓k←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="7" />
+  </Test>
+</Root>

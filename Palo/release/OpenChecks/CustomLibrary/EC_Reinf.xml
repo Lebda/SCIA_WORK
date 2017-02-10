@@ -1,0 +1,790 @@
+<Root Version="1" Type="CustomLibrary" GUID="0ca65d53-ad97-471c-a221-9bf5488bdc93">
+  <Header>
+    <PropertySet Symbol="f↓yk←" ESA_ID="fyk" Unit="MPa" Type="Numeric">
+      <Description TranslateID="fyk">
+        <NEU>Characteristic yield strength</NEU>
+        <FRB>Limite d'élasticité caractéristique</FRB>
+        <PTG>Resistência característica ao escoamento</PTG>
+        <ELL>Characteristic yield strength</ELL>
+        <ESP>Characteristic yield strength</ESP>
+        <ENU>Characteristic yield strength</ENU>
+        <CSY>Charakteristická mez kluzu</CSY>
+        <DEU>Charakteristische Streckgrenze</DEU>
+        <NLD>Karakteristieke vloeisterkte</NLD>
+        <RUS>Characteristic yield strength</RUS>
+        <ROM>Characteristic yield strength</ROM>
+        <PLK>Characteristic yield strength</PLK>
+        <ITA>Characteristic yield strength</ITA>
+        <SKY>Charakteristická medza klzu výstuže</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="k" ESA_ID="k" Unit="" Type="Numeric">
+      <Description TranslateID="k">
+        <NEU>Coefficient k = ftk/fyk</NEU>
+        <FRB>Coefficient k = ftk/fyk</FRB>
+        <PTG>Coefficient k = ftk/fyk</PTG>
+        <ELL>Coefficient k = ftk/fyk</ELL>
+        <ESP>Coefficient k = ftk/fyk</ESP>
+        <ENU>Coefficient k = ftk/fyk</ENU>
+        <CSY>Součinitel k = ftk/fyk</CSY>
+        <DEU>Coefficient k = ftk/fyk</DEU>
+        <NLD>Coëfficiënt k = ftk/fyk</NLD>
+        <RUS>Coefficient k = ftk/fyk</RUS>
+        <ROM>Coefficient k = ftk/fyk</ROM>
+        <PLK>Coefficient k = ftk/fyk</PLK>
+        <ITA>Coefficient k = ftk/fyk</ITA>
+        <SKY>Súčiniteľ k = ftk/fyk</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="f↓tk←" ESA_ID="ftk" Unit="MPa" Type="Numeric">
+      <Description TranslateID="ftk">
+        <NEU>Characteristic maximum tensile strength</NEU>
+        <FRB>Characteristic maximum tensile strength</FRB>
+        <PTG>Characteristic maximum tensile strength</PTG>
+        <ELL>Characteristic maximum tensile strength</ELL>
+        <ESP>Characteristic maximum tensile strength</ESP>
+        <ENU>Characteristic maximum tensile strength</ENU>
+        <CSY>Charakteristická maximální tahová pevnost</CSY>
+        <DEU>Characteristic maximum tensile strength</DEU>
+        <NLD>Karakteristieke maximum treksterkte</NLD>
+        <RUS>Characteristic maximum tensile strength</RUS>
+        <ROM>Characteristic maximum tensile strength</ROM>
+        <PLK>Characteristic maximum tensile strength</PLK>
+        <ITA>Characteristic maximum tensile strength</ITA>
+        <SKY>Charakteristická maximálna ťahová pevnosť</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="f↓yd←" ESA_ID="fyd" Unit="MPa" Type="Numeric">
+      <Description TranslateID="fyd">
+        <NEU>Design yield strength</NEU>
+        <FRB>Limite nominale d'élasticité</FRB>
+        <PTG>Design yield strength</PTG>
+        <ELL>Design yield strength</ELL>
+        <ESP>Design yield strength</ESP>
+        <ENU>Design yield strength</ENU>
+        <CSY>Výpočtová mez kluzu</CSY>
+        <DEU>Bemessungsstreckgrenze</DEU>
+        <NLD>Ontwerpvloeisterkte</NLD>
+        <RUS>Design yield strength</RUS>
+        <ROM>Design yield strength</ROM>
+        <PLK>Design yield strength</PLK>
+        <ITA>Design yield strength</ITA>
+        <SKY>Návrhová hodnota medze klzu</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ε↓υκ←" ESA_ID="eps_uk" Unit="" Type="Numeric">
+      <Description TranslateID="eps_uk">
+        <NEU>Characteristic strain at maximum force</NEU>
+        <FRB>Characteristic strain at maximum force</FRB>
+        <PTG>Characteristic strain at maximum force</PTG>
+        <ELL>Characteristic strain at maximum force</ELL>
+        <ESP>Characteristic strain at maximum force</ESP>
+        <ENU>Characteristic strain at maximum force</ENU>
+        <CSY>Charakteristické napětí od maximálního zatížení</CSY>
+        <DEU>Characteristic strain at maximum force</DEU>
+        <NLD>Karakteristieke rek bij maximum kracht</NLD>
+        <RUS>Characteristic strain at maximum force</RUS>
+        <ROM>Characteristic strain at maximum force</ROM>
+        <PLK>Characteristic strain at maximum force</PLK>
+        <ITA>Characteristic strain at maximum force</ITA>
+        <SKY>Charakteristické pretvorenie pri maximálnej sile</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ε↓ud←" ESA_ID="eps_ud" Unit="" Type="Numeric">
+      <Description TranslateID="eps_ud">
+        <NEU>Design strain at maximum force</NEU>
+        <FRB>Design strain at maximum force</FRB>
+        <PTG>Design strain at maximum force</PTG>
+        <ELL>Design strain at maximum force</ELL>
+        <ESP>Design strain at maximum force</ESP>
+        <ENU>Design strain at maximum force</ENU>
+        <CSY>Návrhové napětí od maximálního zatížení</CSY>
+        <DEU>Design strain at maximum force</DEU>
+        <NLD>Ontwerprek bij maximum kracht</NLD>
+        <RUS>Design strain at maximum force</RUS>
+        <ROM>Design strain at maximum force</ROM>
+        <PLK>Design strain at maximum force</PLK>
+        <ITA>Design strain at maximum force</ITA>
+        <SKY>Návrhové pretvorenie pri maximálnej sile</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ε↓s1←" ESA_ID="eps_s1" Unit="" Type="Numeric">
+      <Description TranslateID="eps_s1">
+        <NEU>Strain at the peak stress fyd</NEU>
+        <FRB>Strain at the peak stress fyd</FRB>
+        <PTG>Strain at the peak stress fyd</PTG>
+        <ELL>Strain at the peak stress fyd</ELL>
+        <ESP>Strain at the peak stress fyd</ESP>
+        <ENU>Strain at the peak stress fyd</ENU>
+        <CSY>Přetvoření na mezi kluzu</CSY>
+        <DEU>Strain at the peak stress fyd</DEU>
+        <NLD>Rek bij piekspanning fyd</NLD>
+        <RUS>Strain at the peak stress fyd</RUS>
+        <ROM>Strain at the peak stress fyd</ROM>
+        <PLK>Strain at the peak stress fyd</PLK>
+        <ITA>Strain at the peak stress fyd</ITA>
+        <SKY>Pretvorenie pri maximálnom namáhaní fyd</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="E↓s←" ESA_ID="Es" Unit="MPa" Type="Numeric">
+      <Description TranslateID="Es">
+        <NEU>E modulus</NEU>
+        <FRB>E modulus</FRB>
+        <PTG>E modulus</PTG>
+        <ELL>E modulus</ELL>
+        <ESP>E modulus</ESP>
+        <ENU>E modulus</ENU>
+        <CSY>E modul</CSY>
+        <DEU>E modulus</DEU>
+        <NLD>E-modulus</NLD>
+        <RUS>E modulus</RUS>
+        <ROM>E modulus</ROM>
+        <PLK>E modulus</PLK>
+        <ITA>E modulus</ITA>
+        <SKY>E modul pružnosti</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Class" ESA_ID="Class" Unit="" Type="String">
+      <Description TranslateID="Class">
+        <NEU>Class</NEU>
+        <FRB>Class</FRB>
+        <PTG>Class</PTG>
+        <ELL>Class</ELL>
+        <ESP>Class</ESP>
+        <ENU>Class</ENU>
+        <CSY>Třída</CSY>
+        <DEU>Class</DEU>
+        <NLD>Klasse</NLD>
+        <RUS>Class</RUS>
+        <ROM>Class</ROM>
+        <PLK>Class</PLK>
+        <ITA>Class</ITA>
+        <SKY>Trieda</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Inclined" ESA_ID="Inclined" Unit="" Type="Bool">
+      <Description TranslateID="Inclined">
+        <NEU>Inclined plastic branch</NEU>
+        <FRB>Inclined plastic branch</FRB>
+        <PTG>Inclined plastic branch</PTG>
+        <ELL>Inclined plastic branch</ELL>
+        <ESP>Inclined plastic branch</ESP>
+        <ENU>Inclined plastic branch</ENU>
+        <CSY>Skloněná plastická větev</CSY>
+        <DEU>Inclined plastic branch</DEU>
+        <NLD>Hellende plastische tak</NLD>
+        <RUS>Inclined plastic branch</RUS>
+        <ROM>Inclined plastic branch</ROM>
+        <PLK>Inclined plastic branch</PLK>
+        <ITA>Inclined plastic branch</ITA>
+        <SKY>Naklonená plastická vetva</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Point" ESA_ID="Diagram.Point" Unit="" Type="Struct">
+      <StructMembers>
+        <StructMember Symbol="eps" Type="Numeric" Unit="" />
+        <StructMember Symbol="sig" Type="Numeric" Unit="MPa" />
+      </StructMembers>
+      <Description TranslateID="Diagram.Point">
+        <NEU>Material diagram point</NEU>
+        <FRB>Material diagram point</FRB>
+        <PTG>Material diagram point</PTG>
+        <ELL>Material diagram point</ELL>
+        <ESP>Material diagram point</ESP>
+        <ENU>Material diagram point</ENU>
+        <CSY>Bod diagramu materiálu</CSY>
+        <DEU>Material diagram point</DEU>
+        <NLD>Materiaaldiagrammapunt</NLD>
+        <RUS>Material diagram point</RUS>
+        <ROM>Material diagram point</ROM>
+        <PLK>Material diagram point</PLK>
+        <ITA>Material diagram point</ITA>
+        <SKY>Bod pracovného diagramu</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Point" ESA_ID="Diagram.Point" Unit="" Type="Struct">
+      <StructMembers>
+        <StructMember Symbol="eps" Type="Numeric" Unit="" />
+        <StructMember Symbol="sig" Type="Numeric" Unit="MPa" />
+      </StructMembers>
+      <Description TranslateID="Diagram.Point">
+        <NEU>Material diagram point</NEU>
+        <FRB>Material diagram point</FRB>
+        <PTG>Material diagram point</PTG>
+        <ELL>Material diagram point</ELL>
+        <ESP>Material diagram point</ESP>
+        <ENU>Material diagram point</ENU>
+        <CSY>Bod diagramu materiálu</CSY>
+        <DEU>Material diagram point</DEU>
+        <NLD>Materiaaldiagrammapunt</NLD>
+        <RUS>Material diagram point</RUS>
+        <ROM>Material diagram point</ROM>
+        <PLK>Material diagram point</PLK>
+        <ITA>Material diagram point</ITA>
+        <SKY>Bod pracovného diagramu</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Point" ESA_ID="Diagram.Point" Unit="" Type="Struct">
+      <StructMembers>
+        <StructMember Symbol="eps" Type="Numeric" Unit="" />
+        <StructMember Symbol="sig" Type="Numeric" Unit="MPa" />
+      </StructMembers>
+      <Description TranslateID="Diagram.Point">
+        <NEU>Material diagram point</NEU>
+        <FRB>Material diagram point</FRB>
+        <PTG>Material diagram point</PTG>
+        <ELL>Material diagram point</ELL>
+        <ESP>Material diagram point</ESP>
+        <ENU>Material diagram point</ENU>
+        <CSY>Bod diagramu materiálu</CSY>
+        <DEU>Material diagram point</DEU>
+        <NLD>Materiaaldiagrammapunt</NLD>
+        <RUS>Material diagram point</RUS>
+        <ROM>Material diagram point</ROM>
+        <PLK>Material diagram point</PLK>
+        <ITA>Material diagram point</ITA>
+        <SKY>Bod pracovného diagramu</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Point" ESA_ID="Diagram.Point" Unit="" Type="Struct">
+      <StructMembers>
+        <StructMember Symbol="eps" Type="Numeric" Unit="" />
+        <StructMember Symbol="sig" Type="Numeric" Unit="MPa" />
+      </StructMembers>
+      <Description TranslateID="Diagram.Point">
+        <NEU>Material diagram point</NEU>
+        <FRB>Material diagram point</FRB>
+        <PTG>Material diagram point</PTG>
+        <ELL>Material diagram point</ELL>
+        <ESP>Material diagram point</ESP>
+        <ENU>Material diagram point</ENU>
+        <CSY>Bod diagramu materiálu</CSY>
+        <DEU>Material diagram point</DEU>
+        <NLD>Materiaaldiagrammapunt</NLD>
+        <RUS>Material diagram point</RUS>
+        <ROM>Material diagram point</ROM>
+        <PLK>Material diagram point</PLK>
+        <ITA>Material diagram point</ITA>
+        <SKY>Bod pracovného diagramu</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Point" ESA_ID="Diagram.Point" Unit="" Type="Struct">
+      <StructMembers>
+        <StructMember Symbol="eps" Type="Numeric" Unit="" />
+        <StructMember Symbol="sig" Type="Numeric" Unit="MPa" />
+      </StructMembers>
+      <Description TranslateID="Diagram.Point">
+        <NEU>Material diagram point</NEU>
+        <FRB>Material diagram point</FRB>
+        <PTG>Material diagram point</PTG>
+        <ELL>Material diagram point</ELL>
+        <ESP>Material diagram point</ESP>
+        <ENU>Material diagram point</ENU>
+        <CSY>Bod diagramu materiálu</CSY>
+        <DEU>Material diagram point</DEU>
+        <NLD>Materiaaldiagrammapunt</NLD>
+        <RUS>Material diagram point</RUS>
+        <ROM>Material diagram point</ROM>
+        <PLK>Material diagram point</PLK>
+        <ITA>Material diagram point</ITA>
+        <SKY>Bod pracovného diagramu</SKY>
+      </Description>
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>Inclined top branch</Property>
+      <Property>B 400 A</Property>
+      <Property>400</Property>
+      <Property>1.05</Property>
+      <Property>420</Property>
+      <Property>347.83</Property>
+      <Property>0.025</Property>
+      <Property>0.0225</Property>
+      <Property>0.00173913</Property>
+      <Property>200000</Property>
+      <Property>A</Property>
+      <Property>true</Property>
+      <Property>-0.025;-365.68;</Property>
+      <Property>-0.0017;-347.83;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0017;347.83;</Property>
+      <Property>0.025;365.68;</Property>
+    </Item>
+    <Item>
+      <Property>Inclined top branch</Property>
+      <Property>B 450 A UNI</Property>
+      <Property>450</Property>
+      <Property>1.05</Property>
+      <Property>540</Property>
+      <Property>391.30</Property>
+      <Property>0.025</Property>
+      <Property>0.0225</Property>
+      <Property>0.0019565215</Property>
+      <Property>200000</Property>
+      <Property>A</Property>
+      <Property>true</Property>
+      <Property>-0.025;-411.36;</Property>
+      <Property>-0.0020;-391.31;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0020;391.31;</Property>
+      <Property>0.025;411.36;</Property>
+    </Item>
+    <Item>
+      <Property>Inclined top branch</Property>
+      <Property>B 500 A</Property>
+      <Property>500</Property>
+      <Property>1.05</Property>
+      <Property>525</Property>
+      <Property>434.78</Property>
+      <Property>0.025</Property>
+      <Property>0.0225</Property>
+      <Property>0.002173913</Property>
+      <Property>200000</Property>
+      <Property>A</Property>
+      <Property>true</Property>
+      <Property>-0.025;-457.04;</Property>
+      <Property>-0.0022;-434.78;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0022;434.78;</Property>
+      <Property>0.025;457.04;</Property>
+    </Item>
+    <Item>
+      <Property>Inclined top branch</Property>
+      <Property>B 550 A ONORM</Property>
+      <Property>550</Property>
+      <Property>1.05</Property>
+      <Property>578</Property>
+      <Property>478.30</Property>
+      <Property>0.025</Property>
+      <Property>0.0225</Property>
+      <Property>0.002391305</Property>
+      <Property>200000</Property>
+      <Property>A</Property>
+      <Property>true</Property>
+      <Property>-0.025;-502.72;</Property>
+      <Property>-0.0024;-478.26;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0024;478.26;</Property>
+      <Property>0.025;502.72;</Property>
+    </Item>
+    <Item>
+      <Property>Inclined top branch</Property>
+      <Property>B 600 A</Property>
+      <Property>600</Property>
+      <Property>1.05</Property>
+      <Property>630</Property>
+      <Property>521.74</Property>
+      <Property>0.025</Property>
+      <Property>0.0225</Property>
+      <Property>0.002608696</Property>
+      <Property>200000</Property>
+      <Property>A</Property>
+      <Property>true</Property>
+      <Property>-0.025;-548.39;</Property>
+      <Property>-0.0026;-521.74;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0026;521.74;</Property>
+      <Property>0.025;548.39;</Property>
+    </Item>
+    <Item>
+      <Property>Inclined top branch</Property>
+      <Property>B 400 B</Property>
+      <Property>400</Property>
+      <Property>1.08</Property>
+      <Property>432</Property>
+      <Property>347.83</Property>
+      <Property>0.05</Property>
+      <Property>0.045</Property>
+      <Property>0.00173913</Property>
+      <Property>200000</Property>
+      <Property>B</Property>
+      <Property>true</Property>
+      <Property>-0.05;-376.51;</Property>
+      <Property>-0.0017;-347.83;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0017;347.83;</Property>
+      <Property>0.05;376.51;</Property>
+    </Item>
+    <Item>
+      <Property>Inclined top branch</Property>
+      <Property>B 500 B</Property>
+      <Property>500</Property>
+      <Property>1.08</Property>
+      <Property>540</Property>
+      <Property>434.78</Property>
+      <Property>0.05</Property>
+      <Property>0.045</Property>
+      <Property>0.002173913</Property>
+      <Property>200000</Property>
+      <Property>B</Property>
+      <Property>true</Property>
+      <Property>-0.05;-470.60;</Property>
+      <Property>-0.0022;-434.78;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0022;434.78;</Property>
+      <Property>0.05;470.60;</Property>
+    </Item>
+    <Item>
+      <Property>Inclined top branch</Property>
+      <Property>B 550 B ONORM</Property>
+      <Property>550</Property>
+      <Property>1.08</Property>
+      <Property>594</Property>
+      <Property>478.30</Property>
+      <Property>0.05</Property>
+      <Property>0.045</Property>
+      <Property>0.002391305</Property>
+      <Property>200000</Property>
+      <Property>B</Property>
+      <Property>true</Property>
+      <Property>-0.05;-517.64;</Property>
+      <Property>-0.0024;-478.26;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0024;478.26;</Property>
+      <Property>0.05;517.64;</Property>
+    </Item>
+    <Item>
+      <Property>Inclined top branch</Property>
+      <Property>B 600 B</Property>
+      <Property>600</Property>
+      <Property>1.08</Property>
+      <Property>648</Property>
+      <Property>521.74</Property>
+      <Property>0.05</Property>
+      <Property>0.045</Property>
+      <Property>0.002608696</Property>
+      <Property>200000</Property>
+      <Property>B</Property>
+      <Property>true</Property>
+      <Property>-0.05;-564.67;</Property>
+      <Property>-0.0026;-521.74;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0026;521.74;</Property>
+      <Property>0.05;564.67;</Property>
+    </Item>
+    <Item>
+      <Property>Inclined top branch</Property>
+      <Property>B 400 C</Property>
+      <Property>400</Property>
+      <Property>1.15</Property>
+      <Property>460</Property>
+      <Property>347.83</Property>
+      <Property>0.075</Property>
+      <Property>0.0675</Property>
+      <Property>0.00173913</Property>
+      <Property>200000</Property>
+      <Property>C</Property>
+      <Property>true</Property>
+      <Property>-0.075;-401.68;</Property>
+      <Property>-0.0017;-347.83;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0017;347.83;</Property>
+      <Property>0.075;401.68;</Property>
+    </Item>
+    <Item>
+      <Property>Inclined top branch</Property>
+      <Property>B 450 C UNI</Property>
+      <Property>450</Property>
+      <Property>1.15</Property>
+      <Property>540</Property>
+      <Property>391.30</Property>
+      <Property>0.075</Property>
+      <Property>0.0675</Property>
+      <Property>0.0019565215</Property>
+      <Property>200000</Property>
+      <Property>C</Property>
+      <Property>true</Property>
+      <Property>-0.075;-451.87;</Property>
+      <Property>-0.0020;-391.31;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0020;391.31;</Property>
+      <Property>0.075;451.87;</Property>
+    </Item>
+    <Item>
+      <Property>Inclined top branch</Property>
+      <Property>B 500 C</Property>
+      <Property>500</Property>
+      <Property>1.15</Property>
+      <Property>575</Property>
+      <Property>434.78</Property>
+      <Property>0.075</Property>
+      <Property>0.0675</Property>
+      <Property>0.002173913</Property>
+      <Property>200000</Property>
+      <Property>C</Property>
+      <Property>true</Property>
+      <Property>-0.075;-502.06;</Property>
+      <Property>-0.0022;-434.78;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0022;434.78;</Property>
+      <Property>0.075;502.06;</Property>
+    </Item>
+    <Item>
+      <Property>Inclined top branch</Property>
+      <Property>B 600 C</Property>
+      <Property>600</Property>
+      <Property>1.15</Property>
+      <Property>690</Property>
+      <Property>521.74</Property>
+      <Property>0.075</Property>
+      <Property>0.0675</Property>
+      <Property>0.002608696</Property>
+      <Property>200000</Property>
+      <Property>C</Property>
+      <Property>true</Property>
+      <Property>-0.075;-602.41;</Property>
+      <Property>-0.0026;-521.74;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0026;521.74;</Property>
+      <Property>0.075;602.41;</Property>
+    </Item>
+    <Item>
+      <Property>Horizontal top branch</Property>
+      <Property>B 400 A</Property>
+      <Property>400</Property>
+      <Property>1.05</Property>
+      <Property>420</Property>
+      <Property>347.83</Property>
+      <Property>0.025</Property>
+      <Property>0.0225</Property>
+      <Property>0.00173913</Property>
+      <Property>200000</Property>
+      <Property>A</Property>
+      <Property>false</Property>
+      <Property>-0.025;-347.83;</Property>
+      <Property>-0.0017;-347.83;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0017;347.83;</Property>
+      <Property>0.025;347.83;</Property>
+    </Item>
+    <Item>
+      <Property>Horizontal top branch</Property>
+      <Property>B 450 A UNI</Property>
+      <Property>450</Property>
+      <Property>1.05</Property>
+      <Property>540</Property>
+      <Property>391.30</Property>
+      <Property>0.025</Property>
+      <Property>0.0225</Property>
+      <Property>0.0019565215</Property>
+      <Property>200000</Property>
+      <Property>A</Property>
+      <Property>false</Property>
+      <Property>-0.025;-391.31;</Property>
+      <Property>-0.0020;-391.31;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0020;391.31;</Property>
+      <Property>0.025;391.31;</Property>
+    </Item>
+    <Item>
+      <Property>Horizontal top branch</Property>
+      <Property>B 500 A</Property>
+      <Property>500</Property>
+      <Property>1.05</Property>
+      <Property>525</Property>
+      <Property>434.78</Property>
+      <Property>0.025</Property>
+      <Property>0.0225</Property>
+      <Property>0.002173913</Property>
+      <Property>200000</Property>
+      <Property>A</Property>
+      <Property>false</Property>
+      <Property>-0.025;-434.78;</Property>
+      <Property>-0.0022;-434.78;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0022;434.78;</Property>
+      <Property>0.025;434.78;</Property>
+    </Item>
+    <Item>
+      <Property>Horizontal top branch</Property>
+      <Property>B 550 A ONORM</Property>
+      <Property>550</Property>
+      <Property>1.05</Property>
+      <Property>578</Property>
+      <Property>478.30</Property>
+      <Property>0.025</Property>
+      <Property>0.0225</Property>
+      <Property>0.002391</Property>
+      <Property>200000</Property>
+      <Property>A</Property>
+      <Property>false</Property>
+      <Property>-0.025;-478.26;</Property>
+      <Property>-0.0024;-478.26;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0024;478.26;</Property>
+      <Property>0.025;478.26;</Property>
+    </Item>
+    <Item>
+      <Property>Horizontal top branch</Property>
+      <Property>B 600 A</Property>
+      <Property>600</Property>
+      <Property>1.05</Property>
+      <Property>630</Property>
+      <Property>521.74</Property>
+      <Property>0.025</Property>
+      <Property>0.0225</Property>
+      <Property>0.002608696</Property>
+      <Property>200000</Property>
+      <Property>A</Property>
+      <Property>false</Property>
+      <Property>-0.025;-521.74;</Property>
+      <Property>-0.0026;-521.74;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0026;521.74;</Property>
+      <Property>0.025;521.74;</Property>
+    </Item>
+    <Item>
+      <Property>Horizontal top branch</Property>
+      <Property>B 400 B</Property>
+      <Property>400</Property>
+      <Property>1.08</Property>
+      <Property>432</Property>
+      <Property>347.83</Property>
+      <Property>0.05</Property>
+      <Property>0.045</Property>
+      <Property>0.00173913</Property>
+      <Property>200000</Property>
+      <Property>B</Property>
+      <Property>false</Property>
+      <Property>-0.050;-347.83;</Property>
+      <Property>-0.0017;-347.83;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0017;347.83;</Property>
+      <Property>0.050;347.83;</Property>
+    </Item>
+    <Item>
+      <Property>Horizontal top branch</Property>
+      <Property>B 500 B</Property>
+      <Property>500</Property>
+      <Property>1.08</Property>
+      <Property>540</Property>
+      <Property>434.78</Property>
+      <Property>0.05</Property>
+      <Property>0.045</Property>
+      <Property>0.002173913</Property>
+      <Property>200000</Property>
+      <Property>B</Property>
+      <Property>false</Property>
+      <Property>-0.050;-434.78;</Property>
+      <Property>-0.0022;-434.78;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0022;434.78;</Property>
+      <Property>0.050;434.78;</Property>
+    </Item>
+    <Item>
+      <Property>Horizontal top branch</Property>
+      <Property>B 550 B ONORM</Property>
+      <Property>550</Property>
+      <Property>1.08</Property>
+      <Property>594</Property>
+      <Property>478.30</Property>
+      <Property>0.05</Property>
+      <Property>0.045</Property>
+      <Property>0.002173913</Property>
+      <Property>200000</Property>
+      <Property>B</Property>
+      <Property>false</Property>
+      <Property>-0.050;-478.26;</Property>
+      <Property>-0.0024;-478.26;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0024;478.26;</Property>
+      <Property>0.050;478.26;</Property>
+    </Item>
+    <Item>
+      <Property>Horizontal top branch</Property>
+      <Property>B 600 B</Property>
+      <Property>600</Property>
+      <Property>1.08</Property>
+      <Property>648</Property>
+      <Property>521.74</Property>
+      <Property>0.05</Property>
+      <Property>0.045</Property>
+      <Property>0.002608696</Property>
+      <Property>200000</Property>
+      <Property>B</Property>
+      <Property>false</Property>
+      <Property>-0.050;-521.74;</Property>
+      <Property>-0.0026;-521.74;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0026;521.74;</Property>
+      <Property>0.050;521.74;</Property>
+    </Item>
+    <Item>
+      <Property>Horizontal top branch</Property>
+      <Property>B 400 C</Property>
+      <Property>400</Property>
+      <Property>1.15</Property>
+      <Property>460</Property>
+      <Property>347.83</Property>
+      <Property>0.075</Property>
+      <Property>0.0675</Property>
+      <Property>0.00173913</Property>
+      <Property>200000</Property>
+      <Property>C</Property>
+      <Property>false</Property>
+      <Property>-0.075;-347.83;</Property>
+      <Property>-0.0017;-347.83;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0017;347.83;</Property>
+      <Property>0.075;347.83;</Property>
+    </Item>
+    <Item>
+      <Property>Horizontal top branch</Property>
+      <Property>B 450 C UNI</Property>
+      <Property>450</Property>
+      <Property>1.15</Property>
+      <Property>540</Property>
+      <Property>391.30</Property>
+      <Property>0.075</Property>
+      <Property>0.0675</Property>
+      <Property>0.0019565215</Property>
+      <Property>200000</Property>
+      <Property>C</Property>
+      <Property>false</Property>
+      <Property>-0.075;-391.31;</Property>
+      <Property>-0.0020;-391.31;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0020;391.31;</Property>
+      <Property>0.075;391.31;</Property>
+    </Item>
+    <Item>
+      <Property>Horizontal top branch</Property>
+      <Property>B 500 C</Property>
+      <Property>500</Property>
+      <Property>1.15</Property>
+      <Property>575</Property>
+      <Property>434.78</Property>
+      <Property>0.075</Property>
+      <Property>0.0675</Property>
+      <Property>0.002173913</Property>
+      <Property>200000</Property>
+      <Property>C</Property>
+      <Property>false</Property>
+      <Property>-0.075;-434.78;</Property>
+      <Property>-0.0022;-434.78;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0022;434.78;</Property>
+      <Property>0.075;434.78;</Property>
+    </Item>
+    <Item>
+      <Property>Horizontal top branch</Property>
+      <Property>B 600 C</Property>
+      <Property>600</Property>
+      <Property>1.15</Property>
+      <Property>690</Property>
+      <Property>521.74</Property>
+      <Property>0.075</Property>
+      <Property>0.0675</Property>
+      <Property>0.002608696</Property>
+      <Property>200000</Property>
+      <Property>C</Property>
+      <Property>false</Property>
+      <Property>-0.075;-521.74;</Property>
+      <Property>-0.0026;-521.74;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0026;521.74;</Property>
+      <Property>0.075;521.74;</Property>
+    </Item>
+  </Items>
+</Root>

@@ -1,0 +1,1 @@
+nunit-console-x86.exe /noshadow /xml:UT_XEP_EsaModelDataTestResult.xml UT_XEP_EsaModelData.dll /out:TestResult_UT_XEP_EsaModelData.txt /err:StdErr_UT_XEP_EsaModelData.txt

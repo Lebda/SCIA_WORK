@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xss xmlns:xss="http://www.scia.cz/xss">
+   <toolbar Version="1" Name="Stationing" Flags="0" IsPart="0" PartsSize="0" Size="4">
+      <Button Version="1" Mode="1" Tooltip="Dimension Stationing Horizontal.
+                                                                                                                                                                            Dimension Stationing Horizontal -X" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{53567657-E081-48B4-97F5-5169034958B1}" ButtonID="{53567657-E081-48B4-97F5-5169034958B1}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Dimension Stationing-Horizontal-Y.
+                                                                                                                                                                           Dimension Stationing-Horizontal-Y" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{53E0FA4F-4A43-4937-B1D9-7992388053ED}" ButtonID="{53E0FA4F-4A43-4937-B1D9-7992388053ED}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Dimension Stationing Vertical.
+                                                                                                                                                                           Dimension Stationing Vertical" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{A63B3DFC-90F1-431A-826B-93CDF64E5072}" ButtonID="{A63B3DFC-90F1-431A-826B-93CDF64E5072}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Dimension Stationing Aligned. 
+                                                                                                                                                                            Dimension Stationing Aligned" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{5275A432-B561-4A7C-A59B-324F243D82FB}" ButtonID="{5275A432-B561-4A7C-A59B-324F243D82FB}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/></toolbar></xss>

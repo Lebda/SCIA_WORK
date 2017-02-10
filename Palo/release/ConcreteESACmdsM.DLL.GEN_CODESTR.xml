@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="118"><StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_checkcapacitydiagram}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32855</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_nbr_2d_internal_forces_design}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32877</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_string_2d}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32868</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_string_1d}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32869</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_memberdataconcrete_2d}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>110</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_stupenbezpecnosticrack}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>29019</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_reliability_crack}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>29004</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eijp_plastichingescalculation}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30128</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_memberdataconcrete}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>106</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_reinforcement_check}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32863</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_nbr_reinforcement_design}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32876</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_reinforcementuls2d}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32864</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eitm5074}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>5074</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eijp_supportzones}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>11025</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_allowable_stress_tendon}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>29002</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eimps_calcdeformation_nonlinear}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30112</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_concretestiffnesspresentation2d_name}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32821</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_doc_armoregion2d_header}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>132</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_overall_result}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>127</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eimps_calccheckid}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30104</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eimps_calccheck}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30103</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eimps_calccrack}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30102</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_concrete}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>101</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_internal_forces_item_name}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32833</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_user_template_item_name}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32836</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eimps_check_cracks}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30117</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eijp_standardbeamandzone}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>11026</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eimps_calcconcstiff}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>11013</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eimps_calccheckdetailingrules}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32824</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eijp_memberreinfcheck}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>11012</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eijp_allchecksinonestep}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30129</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eijp_memberdesign}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>11009</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_zonesdata}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>111</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_checkcapacityresponse}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32854</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_stifnesses}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32849</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_nbr_2d_reinforcement_design_uls}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32878</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_design_forms}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32832</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eijp_hollowcoreslab}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>11008</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eijp_allprestresschecksinonestep}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30130</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eimps_calcoptimas}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30107</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_design}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>29014</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_stress_limitation}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32857</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_internal_forces}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32845</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_punching_check}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>119</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eimps_crackmacro2d}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30122</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_prestressfireresistance_responce}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>29011</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eijp_calcprestresscheck}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>11006</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_redistributionmomentsdata}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>29023</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_nbr_2d_reinforcement_design_sls}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32879</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_beamstrandpattern}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32781</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eijp_sat_details}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>11024</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_fireresistance_detailingrules}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>29005</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_principalstressesuls}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>29018</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eimps_calcdeformation}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30106</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eijp_presentationofinternalforces}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30126</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_deflection}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32859</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_memberdataconcrete_new}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>133</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eimps_punching}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30124</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eimps_calcdeformation_linear}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30111</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eijp_check_details}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>11027</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_stupenbezpecnosti_stresses}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>29026</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eimps_calcdeformation_nonlinear_creep}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30113</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eijp_calcprestresscheckdiagram}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>11007</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_amrd_design}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>124</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eima_memberbucklingdataconcrete}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>125</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_slenderness_check}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32848</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_slenderness}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32846</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eijp_member_design_2d}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32827</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eijp_internalforces_2d}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32826</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_design_beamobject}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>29008</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_drawing}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>29022</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eijp_presentationofstresses}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30127</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eijp_internalforces}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30135</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eimps_concretesetup_cmdsm}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32813</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eimps_biil_of_reinforcement}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30109</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_detailing_provision}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32865</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_nbr_check_crackwidth}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32873</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_internal_forces_check}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32847</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_ectools_external_check}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32870</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_fireresistance_inputs}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>29013</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_check_shear}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32856</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_ibc_reinforcementuls2d}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32882</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_shear_reinf}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32852</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_reinforcement_design}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32862</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_prestressfireresistance_diagram}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>29012</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_fireresistance_diagram}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>29007</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eijp_crosssectioncharakteristic}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30125</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_slenderness}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>11003</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_section_check_structure_external_check}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32880</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_nbr_check_deflection}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32874</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_crack_width}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32858</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_concrete_new}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32861</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_preten_special}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32784</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_concrete_newfreebar}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>245</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_voidedslab}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>246</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eimps_2d_member}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30110</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_allowable_stress_concrete}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>29003</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eijp_memberprestresscheck}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>11011</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eijp_membercheck}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>11010</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_nbr_check_response}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32872</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_memberdatapunching}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>117</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eijp_member_design_2d_voided_slab}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32829</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_checkcracks}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>29016</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eimps_calccrack_shear}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30123</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eimps_1d_member}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30108</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_codedependenddeflection_resultshell}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32883</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_ibc_internal_forces}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32881</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_nbr_internal_forces_design}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32875</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eijp_member_check}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32828</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_dovolenanamahanibeton_hlavnitah}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>29009</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_fireresistance_responce}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>29006</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_stiffnesses_presentation}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>29025</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_check_deflection}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>29024</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_sirkatrhlin}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>29020</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_allowableprincipalstresses}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>29017</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eimps_calcdesignas}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30101</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_amrd_data}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>123</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_concrete_data}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32871</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

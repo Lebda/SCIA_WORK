@@ -1,0 +1,64 @@
+<Root>
+  <ValueSets>
+    <EC NAD="CSN" Description="CZ jazyk, CZ annex" Layout="0" Language="CSY">
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Výpočet dle Masopusta, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Uživatelský nadpis" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="V↓d←" Value="150000" />
+      <Variable Identifier="L" Value="9" />
+      <Variable Identifier="d" Value="850e-3" />
+      <Variable Identifier="dri" Value="0" />
+      <Variable Identifier="Groundwater" Value="True" />
+      <Variable Identifier="hw" Value="8" />
+      <Variable Identifier="UserScale" Value="450" />
+      <Variable Identifier="DrawGeoStress" Value="True" />
+      <Variable Identifier="DrawGeoProfile" Value="True" />
+      <Variable Identifier="DrawPile" Value="True" />
+      <Variable Identifier="TI" Value="1,5|16|20|30|5║2|19|21,5|25|8║3|18,5|20,5|18|12║2|21|24|24|15║4|20|21|15|10" />
+    </EC>
+    <EC NAD="STN" Description="SK jazyk, SK annex" Layout="0" Language="SKY">
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Výpočet podľa Masopusta, STN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Uživateľský nadpis" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="V↓d←" Value="150000" />
+      <Variable Identifier="L" Value="9" />
+      <Variable Identifier="d" Value="850e-3" />
+      <Variable Identifier="dri" Value="0" />
+      <Variable Identifier="Groundwater" Value="True" />
+      <Variable Identifier="hw" Value="8" />
+      <Variable Identifier="UserScale" Value="450" />
+      <Variable Identifier="DrawGeoStress" Value="True" />
+      <Variable Identifier="DrawGeoProfile" Value="True" />
+      <Variable Identifier="DrawPile" Value="True" />
+      <Variable Identifier="TI" Value="1,5|16|20|30|5║2|19|21,5|25|8║3|18,5|20,5|18|12║2|21|24|24|15║4|20|21|15|10" />
+    </EC>
+    <EC NAD="CSN" Description="EN language, CZ annex" Layout="0" Language="ENU">
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Calculation according to Masopust theory, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="V↓d←" Value="150000" />
+      <Variable Identifier="L" Value="9" />
+      <Variable Identifier="d" Value="850e-3" />
+      <Variable Identifier="dri" Value="0" />
+      <Variable Identifier="Groundwater" Value="True" />
+      <Variable Identifier="hw" Value="8" />
+      <Variable Identifier="UserScale" Value="450" />
+      <Variable Identifier="DrawGeoStress" Value="True" />
+      <Variable Identifier="DrawGeoProfile" Value="True" />
+      <Variable Identifier="DrawPile" Value="True" />
+      <Variable Identifier="TI" Value="1,5|16|20|30|5║2|19|21,5|25|8║3|18,5|20,5|18|12║2|21|24|24|15║4|20|21|15|10" />
+    </EC>
+  </ValueSets>
+</Root>

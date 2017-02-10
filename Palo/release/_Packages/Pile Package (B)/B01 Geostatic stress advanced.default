@@ -1,0 +1,55 @@
+<Root>
+  <ValueSets>
+    <EC NAD="CSN" Description="CZ jazyk, CZ annex" Layout="0" Language="CSY">
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="ČSN EN 1997-1" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Uživatelský nadpis" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="DrawUnit" Value="False" />
+      <Variable Identifier="DrawVariable" Value="False" />
+      <Variable Identifier="DrawStot" Value="True" />
+      <Variable Identifier="DrawSeff" Value="True" />
+      <Variable Identifier="UserScale" Value="250" />
+      <Variable Identifier="UserFont" Value="10" />
+      <Variable Identifier="Groundwater" Value="True" />
+      <Variable Identifier="hw" Value="5" />
+      <Variable Identifier="TI" Value="1,5|16|20║1|18|21║4|17,5|22,5║3|21|22║7|18,5|21,5" />
+    </EC>
+    <EC NAD="STN" Description="SK jazyk, SK annex" Layout="0" Language="SKY">
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="STN EN 1997-1" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Uživateľský nadpis" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="DrawUnit" Value="False" />
+      <Variable Identifier="DrawVariable" Value="False" />
+      <Variable Identifier="DrawStot" Value="True" />
+      <Variable Identifier="DrawSeff" Value="True" />
+      <Variable Identifier="UserScale" Value="250" />
+      <Variable Identifier="UserFont" Value="10" />
+      <Variable Identifier="Groundwater" Value="True" />
+      <Variable Identifier="hw" Value="5" />
+      <Variable Identifier="TI" Value="1,5|16|20║1|18|21║4|17,5|22,5║3|21|22║7|18,5|21,5" />
+    </EC>
+    <EC NAD="CSN" Description="EN language, CZ annex" Layout="0" Language="ENU">
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="ČSN EN 1997-1" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="DrawUnit" Value="False" />
+      <Variable Identifier="DrawVariable" Value="False" />
+      <Variable Identifier="DrawStot" Value="True" />
+      <Variable Identifier="DrawSeff" Value="True" />
+      <Variable Identifier="UserScale" Value="250" />
+      <Variable Identifier="UserFont" Value="10" />
+      <Variable Identifier="Groundwater" Value="True" />
+      <Variable Identifier="hw" Value="5" />
+      <Variable Identifier="TI" Value="1,5|16|20║1|18|21║4|17,5|22,5║3|21|22║7|18,5|21,5" />
+    </EC>
+  </ValueSets>
+</Root>

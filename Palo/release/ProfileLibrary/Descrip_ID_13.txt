@@ -1,0 +1,119 @@
+0	; niet gespecifiëerd
+1	; Europees I profiel
+2	; Europees standaard profiel
+3	; Europees breedflens profiel
+4	; Breedflens kolom
+5	; Breedflens dragend paalprofiel
+6	; U-profiel met evenwijdige flenzen
+7	; Europees standaard U-profiel
+8	; Gelijkbenig L-profiel
+9	; Ongelijkbenig L-profiel
+10	; L-profiel
+11	; Brits universeel profiel
+12	; Brits universeel kolomprofiel
+13	; Brits breedflens dragend paalprofiel
+14 	; Platstaal
+15	; Koudgevormd C-profiel
+16	; Koudgevormd L-profiel 
+17	; Koudgevormd Omega-profiel
+18	; Koudgevormd U-profiel
+19	; Koudgevormd Z-profiel
+20	; Rond buisprofiel
+21	; Koudgevormd rond buisprofiel
+22	; Platstaal
+23	; T-profiel gevormd uit een I-profiel
+24	; Asymetrisch I-profiel
+25	; Rechthoekig kokerprofiel
+26	; Ronde staaf
+27	; Koudgevormd rechthoekig kokerprofiel
+28	; U-profiel
+29	; Brits normaal I-profiel
+30	; Railprofiel
+31	; T-profiel
+32	; Z-profiel
+33	; Amerikaans breedflens profiel - metrische naamgeving
+34	; Amerikaans breedflens profiel - imperiale naamgeving
+35	; Amerikaans gemengd profiel - metrische naamgeving
+36	; Amerikaans gemengd profiel - imperiale naamgeving
+37	; Amerikaans dragend paalprofiel - metrische naamgeving
+38	; Amerikaans dragend paalprofiel - imperiale naamgeving
+39	; Amerikaans standaard profiel - metrische naamgeving
+40	; Amerikaans standaard profiel - imperiale naamgeving
+41	; Amerikaans standaard U-profiel - metrische naamgeving
+42	; Amerikaans standaard U-profiel - imperiale naamgeving
+43	; Amerikaans gemengd U-profiel - metrische naamgeving
+44	; Amerikaans gemengd U-profiel - imperiale naamgeving
+45	; Amerikaans L-profiel - metrische naamgeving
+46	; Amerikaans L-profiel -imperiale naamgeving
+47	; Amerikaans T-profiel gevormd uit een I-profiel - metrische naamgeving
+48	; Amerikaans T-profiel gevromd uit een I-profiel - imperiale naamgeving
+49	; Amerikaans rechthoekig en vierkantig kokerprofiel - metrische naamgeving
+50	; Amerikaans rechthoekig en vierkantig kokerprofiel - imperiale naamgeving
+51	; Amerikaans rond buisprofiel - metrische naamgeving
+52	; Amerikaans rond buisprofiel - imperiale naamgeving
+53	; Amerikaanse stalen pijp - metrische naamgeving
+54	; Amerikaanse stalen pijp - imperiale naamgeving
+55	; Japans H-profiel
+56	; Koudgevormd ZED-profiel
+57	; Koudgevormd Sigma-profiel
+58  ; Koudgevormd profiel - dakrand
+59  ; Geïntegreerde vloerliggers
+60  ; Slanke vloerliggers
+61  ; Hoedliggers
+62  ; Indian Standard Light weight Channels
+63  ; Indian Standard Column Sections
+64  ; Indian Standard Wide flange Beams
+65  ; Indian standard Unequal Leg angles
+66  ; Indian Standard Medium weight Parallel flange Channels
+67  ; Indian Standard Medium weight Channels
+68  ; Indian Standard Medium weight Beams
+69  ; Indian Standard Light weight Beams
+70  ; Indian Standard Junior Channels
+71  ; Indian Standard Junior Beams
+72  ; Indian Standard Heavy Weight Beams
+73  ; Indian Standard Equal Angles
+74	; Koud gevormd rechthoekig en vierkantig kokerprofiel
+75	; Rechthoekig en vierkantig kokerprofiel
+76	; U-profiel met hellende flenzen
+77	; T-profiel met hoog lijf
+78	; T-profiel met brede flens
+79	; Vierkantige staaf
+80	; T-profiel gevormd uit een universeel liggerprofiel
+81	; T-profiel gevormd uit een universeel kolomprofiel
+82	; Jumbo355 Vierkantig kokerprofiel
+83	; Celsius355 Vierkantig kokerprofiel
+84	; Hybox355 Koud gevormd Vierkantig kokerprofiel
+85	; Jumbo355 Rechthoekig kokerprofiel
+86	; Celsius355 Rechthoekig kokerprofiel
+87	; Hybox355 Koud gevormd Rechthoekig kokerprofiel
+88	; Jumbo355 Buisprofiel
+89	; Celsius355 Buisprofiel
+90	; Hybox355 Koud gevormd Buisprofiel
+91	; Chinees H-profiel
+92	; Chinees T-profiel gevormd uit een I-profiel
+93	; Chinees Koud gevormd Vierkantig kokerprofiel
+94	; Chinees Koud gevormd Rechthoekig kokerprofiel
+95	; Chinees Koud gevormd Buisprofiel
+96	; Chinees I-profiel
+97	; Chinees U-profiel
+98	; Chinees Gelijkbenig L-profiel
+99	; Chinees Ongelijkbenig L-profiel
+100	; ICEC Z Gording
+101	; ICEC C Gording
+102	; Braziliaans I en H profiel
+103	; Celsius Groot Buisprofiel
+104 ; Koudgevormd Asymmetrisch Sigma-profiel
+105 ; Koudgevormd I-plus profiel
+106 ; Koudgevormd IS-plus profiel
+107	; SSMA Stud - Koudgevormd C profiel met verstijvers
+108	; SSMA Track - Koudgevormd C profiel zonder verstijvers
+109	; Europees profiel met extra brede flens
+110	; Russisch warm gewalst profiel
+111	; Brits U-profiel met evenwijdige flenzen
+112	; Brits U-profiel met hellende flenzen
+113	; Koudgevormd profiel METfloor
+114	; Koudgevormd U profiel METframe
+115	; Koudgevormd C profiel METframe
+116 ; Virtual Joist
+117 ; Virtual Joist Girder
+118	; Koudgevormd Sigma+ profiel

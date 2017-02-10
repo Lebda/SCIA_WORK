@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xss xmlns:xss="http://www.scia.cz/xss">
+   <toolbar Version="1" Name="Polyline edit" Flags="0" IsPart="0" PartsSize="0" Size="5">
+      <Button Version="1" Mode="1" Tooltip="Inserts node into polyline.
+         Insert node into polyline" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{DE4701DB-7338-44B5-83D1-DD3C9D7CF3DA}" ButtonID="{DE4701DB-7338-44B5-83D1-DD3C9D7CF3DA}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Deletes node on polyline in straight segment.
+         Delete node on polyline" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{481B60CA-F887-49AF-88BB-86EBAC1E6125}" ButtonID="{481B60CA-F887-49AF-88BB-86EBAC1E6125}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Breaks polyline into single curves.
+         Breaks polyline into single curves" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{225789D5-557E-44C9-97D3-5DEBC3D638EF}" ButtonID="{225789D5-557E-44C9-97D3-5DEBC3D638EF}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Joins selected curves into polyline.
+         Join curves into polyline." ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{DE5B2D7E-EE4C-496F-8C9F-8353764D6FA9}" ButtonID="{DE5B2D7E-EE4C-496F-8C9F-8353764D6FA9}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Creates a fillet in an internal node of polyline.
+         Create fillet in polyline" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{C0F15DEC-DF68-4626-B2D1-52F5AC6C6304}" ButtonID="{C0F15DEC-DF68-4626-B2D1-52F5AC6C6304}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/></toolbar></xss>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xss xmlns:xss="http://www.scia.cz/xss">
+   <StyleInfo Version="1" StyleName="Light" StyleOrder="1">
+      <GUINames Size="16">
+         <GUIName LCID="2" LangDescription="Bulgarian" Name="Light"/>
+         <GUIName LCID="10" LangDescription="Spanish" Name="Light"/>
+         <GUIName LCID="14" LangDescription="Hungarian" Name="Light"/>
+         <GUIName LCID="7" LangDescription="German" Name=" Grundvariante"/>
+         <GUIName LCID="12" LangDescription="French" Name="Simplifié"/>
+         <GUIName LCID="9" LangDescription="English" Name="Light"/>
+         <GUIName LCID="5" LangDescription="Czech" Name="Základní"/>
+         <GUIName LCID="22" LangDescription="Portuguese" Name="Simples"/>
+         <GUIName LCID="24" LangDescription="Romanian" Name="Minim"/>
+         <GUIName LCID="26" LangDescription="Croatian" Name="Light"/>
+         <GUIName LCID="25" LangDescription="Russian" Name="Light"/>
+         <GUIName LCID="16" LangDescription="Italian" Name="Light"/>
+         <GUIName LCID="21" LangDescription="Polish" Name="Light"/>
+         <GUIName LCID="27" LangDescription="Slovak" Name="Základný"/>
+         <GUIName LCID="19" LangDescription="Dutch" Name="Light"/>
+         <GUIName LCID="36" LangDescription="Slovenian" Name="Light"/></GUINames></StyleInfo></xss>

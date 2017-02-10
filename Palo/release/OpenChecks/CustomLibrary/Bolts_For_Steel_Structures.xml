@@ -1,0 +1,149 @@
+<Root Version="1" Type="CustomLibrary" GUID="b67565b4-987a-4b07-b257-35f1c15fafa3">
+  <Header>
+    <PropertySet Symbol="d" ESA_ID="d" Unit="mm" Type="Numeric">
+      <Description TranslateID="d">
+        <ENU>Diametr of bolt</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="d↓o←" ESA_ID="d↓o←" Unit="mm" Type="Numeric">
+      <Description TranslateID="d↓o←">
+        <ENU>Diemeter of hole</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="A↓s←" ESA_ID="A↓s←" Unit="mm↑2←" Type="Numeric">
+      <Description TranslateID="A↓s←">
+        <ENU>Tensile stress area of the bolt</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="d↓n1←" ESA_ID="d↓n1←" Unit="mm" Type="Numeric">
+      <Description TranslateID="d↓n1←">
+        <ENU>Circumscribed diameter of the nut (DIN 934)</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="d↓n2←" ESA_ID="d↓n2←" Unit="mm" Type="Numeric">
+      <Description TranslateID="d↓n2←">
+        <ENU>Inscribed diameter of the nut (DIN 934)</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="h↓n←" ESA_ID="h↓n←" Unit="mm" Type="Numeric">
+      <Description TranslateID="h↓n←">
+        <ENU>High of the nut</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="h↓b←" ESA_ID="h↓b←" Unit="mm" Type="Numeric">
+      <Description TranslateID="h↓b←">
+        <ENU>High of the bolthead (DIN 933)</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="d↓w←" ESA_ID="d↓w←" Unit="mm" Type="Numeric">
+      <Description TranslateID="d↓w←">
+        <ENU>Big diameter of the washer DIN 125</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="h↓w←" ESA_ID="h↓w←" Unit="mm" Type="Numeric">
+      <Description TranslateID="h↓w←">
+        <ENU>Hight of the washer DIN 125</ENU>
+      </Description>
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>
+      </Property>
+      <Property>M12</Property>
+      <Property>12</Property>
+      <Property>13</Property>
+      <Property>84.3</Property>
+      <Property>21.1</Property>
+      <Property>19</Property>
+      <Property>10</Property>
+      <Property>7.5</Property>
+      <Property>24</Property>
+      <Property>2.5</Property>
+    </Item>
+    <Item>
+      <Property>
+      </Property>
+      <Property>M16</Property>
+      <Property>16</Property>
+      <Property>18</Property>
+      <Property>157</Property>
+      <Property>26.75</Property>
+      <Property>24</Property>
+      <Property>13</Property>
+      <Property>10</Property>
+      <Property>30</Property>
+      <Property>3</Property>
+    </Item>
+    <Item>
+      <Property>
+      </Property>
+      <Property>M20</Property>
+      <Property>20</Property>
+      <Property>22</Property>
+      <Property>245</Property>
+      <Property>32.95</Property>
+      <Property>30</Property>
+      <Property>16</Property>
+      <Property>12.5</Property>
+      <Property>37</Property>
+      <Property>3</Property>
+    </Item>
+    <Item>
+      <Property>
+      </Property>
+      <Property>M22</Property>
+      <Property>22</Property>
+      <Property>24</Property>
+      <Property>303</Property>
+      <Property>35.03</Property>
+      <Property>32</Property>
+      <Property>18</Property>
+      <Property>14</Property>
+      <Property>39</Property>
+      <Property>3</Property>
+    </Item>
+    <Item>
+      <Property>
+      </Property>
+      <Property>M24</Property>
+      <Property>24</Property>
+      <Property>26</Property>
+      <Property>353</Property>
+      <Property>39.55</Property>
+      <Property>36</Property>
+      <Property>19</Property>
+      <Property>15</Property>
+      <Property>44</Property>
+      <Property>4</Property>
+    </Item>
+    <Item>
+      <Property>
+      </Property>
+      <Property>M27</Property>
+      <Property>27</Property>
+      <Property>30</Property>
+      <Property>459</Property>
+      <Property>45.2</Property>
+      <Property>41</Property>
+      <Property>22</Property>
+      <Property>17</Property>
+      <Property>50</Property>
+      <Property>4</Property>
+    </Item>
+    <Item>
+      <Property>
+      </Property>
+      <Property>M30</Property>
+      <Property>30</Property>
+      <Property>33</Property>
+      <Property>561</Property>
+      <Property>50.85</Property>
+      <Property>46</Property>
+      <Property>24</Property>
+      <Property>18.7</Property>
+      <Property>56</Property>
+      <Property>4</Property>
+    </Item>
+  </Items>
+</Root>

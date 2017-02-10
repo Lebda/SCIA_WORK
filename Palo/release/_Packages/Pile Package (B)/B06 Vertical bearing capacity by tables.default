@@ -1,0 +1,40 @@
+<Root>
+  <ValueSets>
+    <EC NAD="CSN" Description="CZ jazyk, CZ annex" Layout="0" Language="CSY">
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Uživatelský nadpis" />
+      <Variable Identifier="V↓d←" Value="450000" />
+      <Variable Identifier="L" Value="2" />
+      <Variable Identifier="d" Value="900e-3" />
+      <Variable Identifier="T" Value="9" />
+      <Variable Identifier="I↓D←" Value="800e-3" />
+      <Variable Identifier="I↓C←" Value="800e-3" />
+    </EC>
+    <EC NAD="STN" Description="SK jazyk, SK annex" Layout="0" Language="SKY">
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="STN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Uživateľský nadpis" />
+      <Variable Identifier="V↓d←" Value="450000" />
+      <Variable Identifier="L" Value="2" />
+      <Variable Identifier="d" Value="900e-3" />
+      <Variable Identifier="T" Value="9" />
+      <Variable Identifier="I↓D←" Value="800e-3" />
+      <Variable Identifier="I↓C←" Value="800e-3" />
+    </EC>
+    <EC NAD="CSN" Description="EN language, CZ annex" Layout="0" Language="ENU">
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="V↓d←" Value="450000" />
+      <Variable Identifier="L" Value="2" />
+      <Variable Identifier="d" Value="900e-3" />
+      <Variable Identifier="T" Value="9" />
+      <Variable Identifier="I↓D←" Value="800e-3" />
+      <Variable Identifier="I↓C←" Value="800e-3" />
+    </EC>
+  </ValueSets>
+</Root>

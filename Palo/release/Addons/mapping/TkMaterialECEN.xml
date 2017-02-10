@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Database>
+  <DatabaseDetail version="2" id="2">
+    <Name>Material EC-EN Database</Name>
+    <Type dbType="user"/>
+    <Application  majorVersion="12.1" minorVersion="12">Tekla Structures</Application>
+  </DatabaseDetail>
+  <MaterialsMapping>
+    <Material id="1">
+      <EsaMaterial>S 235</EsaMaterial>
+      <EsaCatalogId>1</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="steel"/>
+      <TeklaMaterial>S235J0</TeklaMaterial>
+    </Material>
+    <Material id="2">
+      <EsaMaterial>S 235</EsaMaterial>
+      <EsaCatalogId>1</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="steel"/>
+      <TeklaMaterial>S235JR</TeklaMaterial>
+    </Material>
+    <Material id="3">
+      <EsaMaterial>S 235</EsaMaterial>
+      <EsaCatalogId>1</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="steel"/>
+      <TeklaMaterial>S235J2G3</TeklaMaterial>
+    </Material>
+    <Material id="4">
+      <EsaMaterial>S 235</EsaMaterial>
+      <EsaCatalogId>1</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="steel"/>
+      <TeklaMaterial>S235J2G4</TeklaMaterial>
+    </Material>
+    <Material id="5">
+      <EsaMaterial>S 235</EsaMaterial>
+      <EsaCatalogId>1</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="steel"/>
+      <TeklaMaterial>S235JRG1</TeklaMaterial>
+    </Material>
+    <Material id="6">
+      <EsaMaterial>S 235</EsaMaterial>
+      <EsaCatalogId>1</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="steel"/>
+      <TeklaMaterial>S235JRG2</TeklaMaterial>
+    </Material>
+    <Material id="7">
+      <EsaMaterial>S 275</EsaMaterial>
+      <EsaCatalogId>2</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="steel"/>
+      <TeklaMaterial>S275J0</TeklaMaterial>
+    </Material>
+    <Material id="8">
+      <EsaMaterial>S 275</EsaMaterial>
+      <EsaCatalogId>2</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="steel"/>
+      <TeklaMaterial>S275JR</TeklaMaterial>
+    </Material>
+    <Material id="9">
+      <EsaMaterial>S 275</EsaMaterial>
+      <EsaCatalogId>2</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="steel"/>
+      <TeklaMaterial>S275J2G3</TeklaMaterial>
+    </Material>
+    <Material id="10">
+      <EsaMaterial>S 275</EsaMaterial>
+      <EsaCatalogId>2</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="steel"/>
+      <TeklaMaterial>S275J2G4</TeklaMaterial>
+    </Material>
+    <Material id="11">
+      <EsaMaterial>S 275</EsaMaterial>
+      <EsaCatalogId>2</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="steel"/>
+      <TeklaMaterial>S275JRG1</TeklaMaterial>
+    </Material>
+    <Material id="12">
+      <EsaMaterial>S 275</EsaMaterial>
+      <EsaCatalogId>2</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="steel"/>
+      <TeklaMaterial>S275JRG2</TeklaMaterial>
+    </Material>
+    <Material id="13">
+      <EsaMaterial>S 355</EsaMaterial>
+      <EsaCatalogId>3</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="steel"/>
+      <TeklaMaterial>S355J0</TeklaMaterial>
+    </Material>
+    <Material id="14">
+      <EsaMaterial>S 355</EsaMaterial>
+      <EsaCatalogId>3</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="steel"/>
+      <TeklaMaterial>S355J2G3</TeklaMaterial>
+    </Material>
+    <Material id="15">
+      <EsaMaterial>S 355</EsaMaterial>
+      <EsaCatalogId>3</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="steel"/>
+      <TeklaMaterial>S355J2G4</TeklaMaterial>
+    </Material>
+    <Material id="16">
+      <EsaMaterial>S 355</EsaMaterial>
+      <EsaCatalogId>3</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="steel"/>
+      <TeklaMaterial>S355J2H</TeklaMaterial>
+    </Material>
+    <Material id="17">
+      <EsaMaterial>S 355</EsaMaterial>
+      <EsaCatalogId>3</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="steel"/>
+      <TeklaMaterial>S355JR</TeklaMaterial>
+    </Material>
+    <Material id="18">
+      <EsaMaterial>S 355</EsaMaterial>
+      <EsaCatalogId>3</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="steel"/>
+      <TeklaMaterial>S355K2G3</TeklaMaterial>
+    </Material>
+    <Material id="19">
+      <EsaMaterial>S 355</EsaMaterial>
+      <EsaCatalogId>3</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="steel"/>
+      <TeklaMaterial>S355K2G4</TeklaMaterial>
+    </Material>
+    <Material id="20">
+      <EsaMaterial>C12/15</EsaMaterial>
+      <EsaCatalogId>65</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="concrete"/>
+      <TeklaMaterial>C12/15</TeklaMaterial>
+    </Material>
+    <Material id="21">
+      <EsaMaterial>C16/20</EsaMaterial>
+      <EsaCatalogId>66</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="concrete"/>
+      <TeklaMaterial>C16/20</TeklaMaterial>
+    </Material>
+    <Material id="22">
+      <EsaMaterial>C20/25</EsaMaterial>
+      <EsaCatalogId>67</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="concrete"/>
+      <TeklaMaterial>C20/25</TeklaMaterial>
+    </Material>
+    <Material id="23">
+      <EsaMaterial>C25/30</EsaMaterial>
+      <EsaCatalogId>68</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="concrete"/>
+      <TeklaMaterial>C25/30</TeklaMaterial>
+    </Material>
+    <Material id="24">
+      <EsaMaterial>C30/37</EsaMaterial>
+      <EsaCatalogId>69</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="concrete"/>
+      <TeklaMaterial>C30/37</TeklaMaterial>
+    </Material>
+    <Material id="25">
+      <EsaMaterial>C35/45</EsaMaterial>
+      <EsaCatalogId>70</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="concrete"/>
+      <TeklaMaterial>C35/45</TeklaMaterial>
+    </Material>
+    <Material id="26">
+      <EsaMaterial>C40/50</EsaMaterial>
+      <EsaCatalogId>71</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="concrete"/>
+      <TeklaMaterial>C40/50</TeklaMaterial>
+    </Material>
+    <Material id="27">
+      <EsaMaterial>C45/55</EsaMaterial>
+      <EsaCatalogId>72</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="concrete"/>
+      <TeklaMaterial>C45/55</TeklaMaterial>
+    </Material>
+    <Material id="28">
+      <EsaMaterial>C50/60</EsaMaterial>
+      <EsaCatalogId>73</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="concrete"/>
+      <TeklaMaterial>C50/60</TeklaMaterial>
+    </Material>
+    <Material id="29">
+      <EsaMaterial>C55/67</EsaMaterial>
+      <EsaCatalogId>74</EsaCatalogId>
+      <NationalCode>EC-EN</NationalCode>
+      <MaterialType type="concrete"/>
+      <TeklaMaterial>C55/67</TeklaMaterial>
+    </Material>
+  </MaterialsMapping>
+</Database>
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xss xmlns:xss="http://www.scia.cz/xss">
+   <toolbar Version="1" Name="Activity" Flags="0" IsPart="0" PartsSize="0" Size="7">
+      <Button Version="1" Mode="1" Tooltip="Activity On/Off.
+         Activity On/Off" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{E77CBC6D-EF21-4631-A305-7E0A5FD8E578}" ButtonID="{E77CBC6D-EF21-4631-A305-7E0A5FD8E578}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Activity by layers.
+         Activity by layers" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{1D8A7E75-28C4-46AD-82A1-15F953C71DF9}" ButtonID="{1D8A7E75-28C4-46AD-82A1-15F953C71DF9}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Switching off layers of selected members.
+         Switching off layers of selected members" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{B48E60BD-B4B6-430C-A123-3BAD6139D1F6}" ButtonID="{B48E60BD-B4B6-430C-A123-3BAD6139D1F6}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Activity by selection (Selected members On).
+         Activity by selection (Selected members On)" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{E5421CAB-3A08-41B0-B520-DA5A2D9E52C5}" ButtonID="{E5421CAB-3A08-41B0-B520-DA5A2D9E52C5}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Activity by selection (Selected members Off).
+         Activity by selection (Selected members Off)" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{1A5CBFAE-94C2-4E18-AC4E-4A86BB596EEE}" ButtonID="{1A5CBFAE-94C2-4E18-AC4E-4A86BB596EEE}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Activity by working plane.
+         Activity by working plane" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{8C2FC674-F496-4136-9A34-DB13B1A0871C}" ButtonID="{8C2FC674-F496-4136-9A34-DB13B1A0871C}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Draw inactive members.
+         Draw inactive members" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{A54B120E-3E92-4900-BF7C-D345D9371387}" ButtonID="{A54B120E-3E92-4900-BF7C-D345D9371387}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/></toolbar></xss>

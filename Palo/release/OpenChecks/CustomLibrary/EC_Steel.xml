@@ -1,0 +1,660 @@
+<Root Version="1" Type="CustomLibrary" GUID="aca5e12c-7d85-4f7c-9dcf-8d6bf211c115">
+  <Header>
+    <PropertySet Symbol="f↓y←" ESA_ID="fy" Unit="MPa" Type="Numeric">
+      <Description TranslateID="fy">
+        <NEU>Yield strength</NEU>
+        <FRB>Limite d'élasticité</FRB>
+        <PTG>Limite de escoamento</PTG>
+        <ELL>Αντοχή διαρροής</ELL>
+        <ESP>Yield strength</ESP>
+        <ENU>Yield strength</ENU>
+        <CSY>Mez kluzu</CSY>
+        <DEU>Streckgrenze</DEU>
+        <NLD>Vloeisterkte</NLD>
+        <SKY>Medza klzu</SKY>
+        <RUS>Yield strength</RUS>
+        <ROM>Yield strength</ROM>
+        <PLK>Yield strength</PLK>
+        <ITA>Yield strength</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="f↓u←" ESA_ID="fu" Unit="MPa" Type="Numeric">
+      <Description TranslateID="fu">
+        <NEU>Tensile strength</NEU>
+        <FRB>Résistance à la traction</FRB>
+        <PTG>Resistência à tração</PTG>
+        <ELL>Οριακή αντοχή</ELL>
+        <ESP>Tensile strength</ESP>
+        <ENU>Tensile strength</ENU>
+        <CSY>Mez pevnosti</CSY>
+        <DEU>Zugfestigkeit</DEU>
+        <NLD>Treksterkte</NLD>
+        <SKY>Hranica pevnosti</SKY>
+        <RUS>Tensile strength</RUS>
+        <ROM>Tensile strength</ROM>
+        <PLK>Tensile strength</PLK>
+        <ITA>Tensile strength</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="E" ESA_ID="E" Unit="GPa" Type="Numeric">
+      <Description TranslateID="E">
+        <NEU>Elastic modulus</NEU>
+        <FRB>Module élastique</FRB>
+        <PTG>Módulo de elasticidade</PTG>
+        <ELL>Μέτρο ελαστικότητας</ELL>
+        <ESP>Elastic modulus</ESP>
+        <ENU>Elastic modulus</ENU>
+        <CSY>Modul pružnosti</CSY>
+        <DEU>Elastizitätsmodul</DEU>
+        <NLD>Elasticiteitsmodulus</NLD>
+        <SKY>Modul pružnosti</SKY>
+        <RUS>Elastic modulus</RUS>
+        <ROM>Elastic modulus</ROM>
+        <PLK>Elastic modulus</PLK>
+        <ITA>Elastic modulus</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="G" ESA_ID="G" Unit="GPa" Type="Numeric">
+      <Description TranslateID="G">
+        <NEU>Shear elastic modulus</NEU>
+        <FRB>Module d'élasticité au cisaillement</FRB>
+        <PTG>Módulo de cisalhamento elástico</PTG>
+        <ELL>Μέτρο διάτμησης</ELL>
+        <ESP>Shear elastic modulus</ESP>
+        <ENU>Shear elastic modulus</ENU>
+        <CSY>Modul pružnosti ve smyku</CSY>
+        <DEU>Schubmodul</DEU>
+        <NLD>Dwarskracht elasticiteitsmodulus</NLD>
+        <SKY>Modul pružnosti v šmyku</SKY>
+        <RUS>Shear elastic modulus</RUS>
+        <ROM>Shear elastic modulus</ROM>
+        <PLK>Shear elastic modulus</PLK>
+        <ITA>Shear elastic modulus</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ν" ESA_ID="ν" Unit="" Type="Numeric">
+      <Description TranslateID="ν">
+        <NEU>Poisson's ration</NEU>
+        <FRB>Coefficient de Poisson</FRB>
+        <PTG>Coeficiente de Poisson</PTG>
+        <ELL>Λόγος Poisson σε ελαστικό στάδιο</ELL>
+        <ESP>Poisson's ration</ESP>
+        <ENU>Poisson's ration</ENU>
+        <CSY>Součinitel příčné deformace</CSY>
+        <DEU>Querdehnzahl</DEU>
+        <NLD>Poisson's ratio</NLD>
+        <SKY>Súčiniteľ priečnej deformácie</SKY>
+        <RUS>Poisson's ration</RUS>
+        <ROM>Poisson's ration</ROM>
+        <PLK>Poisson's ration</PLK>
+        <ITA>Poisson's ration</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="γ" ESA_ID="γ" Unit="kg/m↑3←" Type="Numeric">
+      <Description TranslateID="γ">
+        <NEU>Density</NEU>
+        <FRB>Densité</FRB>
+        <PTG>Densidade</PTG>
+        <ELL>Πυκνότητα</ELL>
+        <ESP>Density</ESP>
+        <ENU>Density</ENU>
+        <CSY>Hustota</CSY>
+        <DEU>Dichte</DEU>
+        <NLD>Dichtheid</NLD>
+        <SKY>Objemová hmotnosť</SKY>
+        <RUS>Density</RUS>
+        <ROM>Density</ROM>
+        <PLK>Density</PLK>
+        <ITA>Density</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="α" ESA_ID="α" Unit="10↑-6←" Type="Numeric">
+      <Description TranslateID="α">
+        <NEU>Coefficient of linear thermal expansion</NEU>
+        <FRB>Coefficient de dilatation thermique linéaire</FRB>
+        <PTG>Coeficiente de expansão térmica linear</PTG>
+        <ELL>Συντελεστής γραμμικής θερμικής διαστολής</ELL>
+        <ESP>Coefficient of linear thermal expansion</ESP>
+        <ENU>Coefficient of linear thermal expansion</ENU>
+        <CSY>Součinitel teplotní délkové roztažnosti</CSY>
+        <DEU>Beiwert der linearen thermischen Ausdehnung</DEU>
+        <NLD>Lineaire thermische uitzettingscoëfficiënt</NLD>
+        <SKY>Teplotná dĺžková rozťažnosť</SKY>
+        <RUS>Coefficient of linear thermal expansion</RUS>
+        <ROM>Coefficient of linear thermal expansion</ROM>
+        <PLK>Coefficient of linear thermal expansion</PLK>
+        <ITA>Coefficient of linear thermal expansion</ITA>
+      </Description>
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 235</Property>
+      <Property>235</Property>
+      <Property>360</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>40 mm &lt; t &lt;= 80 mm</Property>
+      <Property>S 235</Property>
+      <Property>215</Property>
+      <Property>360</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 275</Property>
+      <Property>275</Property>
+      <Property>430</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>40 mm &lt; t &lt;= 80 mm</Property>
+      <Property>S 275</Property>
+      <Property>255</Property>
+      <Property>410</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 355</Property>
+      <Property>355</Property>
+      <Property>490</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>40 mm &lt; t &lt;= 80 mm</Property>
+      <Property>S 355</Property>
+      <Property>335</Property>
+      <Property>470</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>40 mm &lt; t &lt;= 80 mm</Property>
+      <Property>S 450</Property>
+      <Property>410</Property>
+      <Property>550</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 450</Property>
+      <Property>440</Property>
+      <Property>550</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 275 N/NL</Property>
+      <Property>275</Property>
+      <Property>390</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>40 mm &lt; t &lt;= 80 mm</Property>
+      <Property>S 275 N/NL</Property>
+      <Property>255</Property>
+      <Property>370</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 355 N/NL</Property>
+      <Property>355</Property>
+      <Property>490</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>40 mm &lt; t &lt;= 80 mm</Property>
+      <Property>S 355 N/NL</Property>
+      <Property>335</Property>
+      <Property>470</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 420 N/NL</Property>
+      <Property>420</Property>
+      <Property>520</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>40 mm &lt; t &lt;= 80 mm</Property>
+      <Property>S 420 N/NL</Property>
+      <Property>390</Property>
+      <Property>520</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 460 N/NL</Property>
+      <Property>460</Property>
+      <Property>540</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>40 mm &lt; t &lt;= 80 mm</Property>
+      <Property>S 460 N/NL</Property>
+      <Property>430</Property>
+      <Property>540</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 275 M/ML</Property>
+      <Property>275</Property>
+      <Property>370</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>40 mm &lt; t &lt;= 80 mm</Property>
+      <Property>S 275 M/ML</Property>
+      <Property>255</Property>
+      <Property>360</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 355 M/ML</Property>
+      <Property>355</Property>
+      <Property>470</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>40 mm &lt; t &lt;= 80 mm</Property>
+      <Property>S 355 M/ML</Property>
+      <Property>335</Property>
+      <Property>450</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 420 M/ML</Property>
+      <Property>420</Property>
+      <Property>520</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>40 mm &lt; t &lt;= 80 mm</Property>
+      <Property>S 420 M/ML</Property>
+      <Property>390</Property>
+      <Property>500</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 460 M/ML</Property>
+      <Property>460</Property>
+      <Property>540</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>40 mm &lt; t &lt;= 80 mm</Property>
+      <Property>S 460 M/ML</Property>
+      <Property>430</Property>
+      <Property>530</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 235 W</Property>
+      <Property>235</Property>
+      <Property>360</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>40 mm &lt; t &lt;= 80 mm</Property>
+      <Property>S 235 W</Property>
+      <Property>215</Property>
+      <Property>340</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 355 W</Property>
+      <Property>355</Property>
+      <Property>490</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>40 mm &lt; t &lt;= 80 mm</Property>
+      <Property>S 355 W</Property>
+      <Property>335</Property>
+      <Property>490</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 460 Q/QL/QL1</Property>
+      <Property>460</Property>
+      <Property>570</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>40 mm &lt; t &lt;= 80 mm</Property>
+      <Property>S 460 Q/QL/QL1</Property>
+      <Property>440</Property>
+      <Property>550</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 235 H</Property>
+      <Property>235</Property>
+      <Property>360</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>40 mm &lt; t &lt;= 80 mm</Property>
+      <Property>S 235 H</Property>
+      <Property>215</Property>
+      <Property>340</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 275 H</Property>
+      <Property>275</Property>
+      <Property>430</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>40 mm &lt; t &lt;= 80 mm</Property>
+      <Property>S 275 H</Property>
+      <Property>255</Property>
+      <Property>410</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 355 H</Property>
+      <Property>355</Property>
+      <Property>510</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>40 mm &lt; t &lt;= 80 mm</Property>
+      <Property>S 355 H</Property>
+      <Property>335</Property>
+      <Property>490</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 275 NH/NLH</Property>
+      <Property>275</Property>
+      <Property>390</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>40 mm &lt; t &lt;= 80 mm</Property>
+      <Property>S 275 NH/NLH</Property>
+      <Property>255</Property>
+      <Property>370</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 355 NH/NLH</Property>
+      <Property>355</Property>
+      <Property>490</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>40 mm &lt; t &lt;= 80 mm</Property>
+      <Property>S 355 NH/NLH</Property>
+      <Property>335</Property>
+      <Property>470</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 420 NH/NLH</Property>
+      <Property>420</Property>
+      <Property>540</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>40 mm &lt; t &lt;= 80 mm</Property>
+      <Property>S 420 NH/NLH</Property>
+      <Property>390</Property>
+      <Property>520</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 460 NH/NLH</Property>
+      <Property>460</Property>
+      <Property>560</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>40 mm &lt; t &lt;= 80 mm</Property>
+      <Property>S 460 NH/NLH</Property>
+      <Property>430</Property>
+      <Property>550</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 275 MH/MLH</Property>
+      <Property>275</Property>
+      <Property>360</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 355 MH/MLH</Property>
+      <Property>355</Property>
+      <Property>470</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 420 MH/MLH</Property>
+      <Property>420</Property>
+      <Property>500</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+    <Item>
+      <Property>t &lt;= 40 mm</Property>
+      <Property>S 460 MH/MLH</Property>
+      <Property>460</Property>
+      <Property>530</Property>
+      <Property>210</Property>
+      <Property>80.77</Property>
+      <Property>0.3</Property>
+      <Property>7850</Property>
+      <Property>12</Property>
+    </Item>
+  </Items>
+</Root>

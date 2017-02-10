@@ -1,0 +1,350 @@
+<Root Version="1" Type="CustomLibrary" GUID="8f65e3dd-e258-4808-a977-eab03521d16e">
+  <Header>
+    <PropertySet Symbol="b↓b←" ESA_ID="b↓b←" Unit="mm" Type="Numeric">
+      <Description TranslateID="b↓b←">
+        <ENU>Width of the bottom of the concrete rib</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="b↓r←" ESA_ID="b↓r←" Unit="mm" Type="Numeric">
+      <Description TranslateID="b↓r←">
+        <ENU>Width of rib of profiled steel sheeting</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="b↓s←" ESA_ID="b↓s←" Unit="mm" Type="Numeric">
+      <Description TranslateID="b↓s←">
+        <ENU>Rib spacing</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="h↓p←" ESA_ID="h↓p←" Unit="mm" Type="Numeric">
+      <Description TranslateID="h↓p←">
+        <ENU>Depth of the profiled steel sheeting</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="t↓p←" ESA_ID="t↓p←" Unit="mm" Type="Numeric">
+      <Description TranslateID="t↓p←">
+        <ENU>Nominal thickness</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="M↓p←" ESA_ID="M↓p←" Unit="kg/m↑2←" Type="Numeric">
+      <Description TranslateID="M↓p←">
+        <ENU>Weight of profile</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="l↓p←" ESA_ID="l↓p←" Unit="m" Type="Numeric">
+      <Description TranslateID="l↓p←">
+        <ENU>Max. length</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="h↓s,min←" ESA_ID="h↓s,min←" Unit="mm" Type="Numeric">
+      <Description TranslateID="h↓s,min←">
+        <ENU>Min value for total slab height</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="h↓s,max←" ESA_ID="h↓s,max←" Unit="mm" Type="Numeric">
+      <Description TranslateID="h↓s,max←">
+        <ENU>Max value for total slab height</ENU>
+      </Description>
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>ArcelorMittal</Property>
+      <Property>Cofraplus 60 0.75</Property>
+      <Property>62</Property>
+      <Property>106</Property>
+      <Property>207</Property>
+      <Property>58</Property>
+      <Property>0.75</Property>
+      <Property>8.77</Property>
+      <Property>15</Property>
+      <Property>100</Property>
+      <Property>280</Property>
+    </Item>
+    <Item>
+      <Property>ArcelorMittal</Property>
+      <Property>Cofraplus 60 0.88</Property>
+      <Property>62</Property>
+      <Property>106</Property>
+      <Property>207</Property>
+      <Property>58</Property>
+      <Property>0.88</Property>
+      <Property>10.29</Property>
+      <Property>15</Property>
+      <Property>100</Property>
+      <Property>280</Property>
+    </Item>
+    <Item>
+      <Property>ArcelorMittal</Property>
+      <Property>Cofraplus 60 1.00</Property>
+      <Property>62</Property>
+      <Property>106</Property>
+      <Property>207</Property>
+      <Property>58</Property>
+      <Property>1.00</Property>
+      <Property>11.70</Property>
+      <Property>15</Property>
+      <Property>100</Property>
+      <Property>280</Property>
+    </Item>
+    <Item>
+      <Property>ArcelorMittal</Property>
+      <Property>Cofraplus 77 0.75</Property>
+      <Property>54</Property>
+      <Property>82</Property>
+      <Property>192</Property>
+      <Property>77</Property>
+      <Property>0.75</Property>
+      <Property>9.54</Property>
+      <Property>15</Property>
+      <Property>120</Property>
+      <Property>250</Property>
+    </Item>
+    <Item>
+      <Property>ArcelorMittal</Property>
+      <Property>Cofraplus 77 0.88</Property>
+      <Property>54</Property>
+      <Property>82</Property>
+      <Property>192</Property>
+      <Property>77</Property>
+      <Property>0.88</Property>
+      <Property>11.20</Property>
+      <Property>15</Property>
+      <Property>120</Property>
+      <Property>250</Property>
+    </Item>
+    <Item>
+      <Property>ArcelorMittal</Property>
+      <Property>Cofraplus 77 1.00</Property>
+      <Property>54</Property>
+      <Property>82</Property>
+      <Property>192</Property>
+      <Property>77</Property>
+      <Property>1.00</Property>
+      <Property>12.73</Property>
+      <Property>15</Property>
+      <Property>120</Property>
+      <Property>250</Property>
+    </Item>
+    <Item>
+      <Property>ArcelorMittal</Property>
+      <Property>Cofrastra 40 0.75</Property>
+      <Property>123.5</Property>
+      <Property>48</Property>
+      <Property>150</Property>
+      <Property>40</Property>
+      <Property>0.75</Property>
+      <Property>9.97</Property>
+      <Property>15</Property>
+      <Property>80</Property>
+      <Property>200</Property>
+    </Item>
+    <Item>
+      <Property>ArcelorMittal</Property>
+      <Property>Cofrastra 40 0.88</Property>
+      <Property>123.5</Property>
+      <Property>48</Property>
+      <Property>150</Property>
+      <Property>40</Property>
+      <Property>0.88</Property>
+      <Property>11.19</Property>
+      <Property>15</Property>
+      <Property>80</Property>
+      <Property>200</Property>
+    </Item>
+    <Item>
+      <Property>ArcelorMittal</Property>
+      <Property>Cofrastra 56 0.75</Property>
+      <Property>137</Property>
+      <Property>40</Property>
+      <Property>150</Property>
+      <Property>56</Property>
+      <Property>0.75</Property>
+      <Property>11.85</Property>
+      <Property>15</Property>
+      <Property>100</Property>
+      <Property>280</Property>
+    </Item>
+    <Item>
+      <Property>ArcelorMittal</Property>
+      <Property>Cofrastra 56 0.88</Property>
+      <Property>137</Property>
+      <Property>40</Property>
+      <Property>150</Property>
+      <Property>56</Property>
+      <Property>0.88</Property>
+      <Property>13.94</Property>
+      <Property>15</Property>
+      <Property>100</Property>
+      <Property>280</Property>
+    </Item>
+    <Item>
+      <Property>ArcelorMittal</Property>
+      <Property>Cofrastra 56 1.00</Property>
+      <Property>137</Property>
+      <Property>40</Property>
+      <Property>150</Property>
+      <Property>56</Property>
+      <Property>1.00</Property>
+      <Property>15.84</Property>
+      <Property>15</Property>
+      <Property>100</Property>
+      <Property>280</Property>
+    </Item>
+    <Item>
+      <Property>ArcelorMittal</Property>
+      <Property>Cofrastra 56 1.25</Property>
+      <Property>137</Property>
+      <Property>40</Property>
+      <Property>150</Property>
+      <Property>56</Property>
+      <Property>1.25</Property>
+      <Property>19.80</Property>
+      <Property>15</Property>
+      <Property>100</Property>
+      <Property>280</Property>
+    </Item>
+    <Item>
+      <Property>ArcelorMittal</Property>
+      <Property>Cofrastra 70 0.75</Property>
+      <Property>87</Property>
+      <Property>70</Property>
+      <Property>183</Property>
+      <Property>70</Property>
+      <Property>0.75</Property>
+      <Property>10.05</Property>
+      <Property>15</Property>
+      <Property>110</Property>
+      <Property>300</Property>
+    </Item>
+    <Item>
+      <Property>ArcelorMittal</Property>
+      <Property>Cofrastra 70 1.00</Property>
+      <Property>87</Property>
+      <Property>70</Property>
+      <Property>183</Property>
+      <Property>70</Property>
+      <Property>1.00</Property>
+      <Property>13.40</Property>
+      <Property>15</Property>
+      <Property>110</Property>
+      <Property>300</Property>
+    </Item>
+    <Item>
+      <Property>Structural metal decks</Property>
+      <Property>R51 0.90</Property>
+      <Property>137</Property>
+      <Property>40</Property>
+      <Property>150</Property>
+      <Property>51</Property>
+      <Property>0.90</Property>
+      <Property>12.98</Property>
+      <Property>NaN</Property>
+      <Property>101</Property>
+      <Property>250</Property>
+    </Item>
+    <Item>
+      <Property>Structural metal decks</Property>
+      <Property>R51 1.00</Property>
+      <Property>137</Property>
+      <Property>40</Property>
+      <Property>150</Property>
+      <Property>51</Property>
+      <Property>1.00</Property>
+      <Property>14.42</Property>
+      <Property>NaN</Property>
+      <Property>101</Property>
+      <Property>250</Property>
+    </Item>
+    <Item>
+      <Property>Structural metal decks</Property>
+      <Property>R51 1.20</Property>
+      <Property>137</Property>
+      <Property>40</Property>
+      <Property>150</Property>
+      <Property>51</Property>
+      <Property>1.20</Property>
+      <Property>17.30</Property>
+      <Property>NaN</Property>
+      <Property>101</Property>
+      <Property>250</Property>
+    </Item>
+    <Item>
+      <Property>Structural metal decks</Property>
+      <Property>TR60+ 0.90</Property>
+      <Property>133</Property>
+      <Property>158</Property>
+      <Property>333</Property>
+      <Property>60</Property>
+      <Property>0.90</Property>
+      <Property>9.99</Property>
+      <Property>NaN</Property>
+      <Property>120</Property>
+      <Property>250</Property>
+    </Item>
+    <Item>
+      <Property>Structural metal decks</Property>
+      <Property>TR60+ 1.00</Property>
+      <Property>133</Property>
+      <Property>158</Property>
+      <Property>333</Property>
+      <Property>60</Property>
+      <Property>1.00</Property>
+      <Property>11.08</Property>
+      <Property>NaN</Property>
+      <Property>120</Property>
+      <Property>250</Property>
+    </Item>
+    <Item>
+      <Property>Structural metal decks</Property>
+      <Property>TR60+ 1.20</Property>
+      <Property>133</Property>
+      <Property>158</Property>
+      <Property>333</Property>
+      <Property>60</Property>
+      <Property>1.20</Property>
+      <Property>13.26</Property>
+      <Property>NaN</Property>
+      <Property>120</Property>
+      <Property>250</Property>
+    </Item>
+    <Item>
+      <Property>Structural metal decks</Property>
+      <Property>TR80+ 0.90</Property>
+      <Property>122</Property>
+      <Property>137</Property>
+      <Property>300</Property>
+      <Property>80</Property>
+      <Property>0.90</Property>
+      <Property>11.37</Property>
+      <Property>NaN</Property>
+      <Property>140</Property>
+      <Property>250</Property>
+    </Item>
+    <Item>
+      <Property>Structural metal decks</Property>
+      <Property>TR80+ 1.00</Property>
+      <Property>122</Property>
+      <Property>137</Property>
+      <Property>300</Property>
+      <Property>80</Property>
+      <Property>1.00</Property>
+      <Property>12.59</Property>
+      <Property>NaN</Property>
+      <Property>140</Property>
+      <Property>250</Property>
+    </Item>
+    <Item>
+      <Property>Structural metal decks</Property>
+      <Property>TR80+ 1.20</Property>
+      <Property>122</Property>
+      <Property>137</Property>
+      <Property>300</Property>
+      <Property>80</Property>
+      <Property>1.20</Property>
+      <Property>15.10</Property>
+      <Property>NaN</Property>
+      <Property>140</Property>
+      <Property>250</Property>
+    </Item>
+  </Items>
+</Root>

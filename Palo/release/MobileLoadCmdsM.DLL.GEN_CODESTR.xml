@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="18"><StringCode SourceType="DLLRC:"><StringId>@{mobileloadcmdsm.2eids_mobile12}</StringId>
+		<SourceDll>MobileLoadCmdsM.2eDLL</SourceDll>
+		<ResourceId>113</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{mobileloadcmdsm.2eids_mobile11}</StringId>
+		<SourceDll>MobileLoadCmdsM.2eDLL</SourceDll>
+		<ResourceId>112</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{mobileloadcmdsm.2eids_mobile10}</StringId>
+		<SourceDll>MobileLoadCmdsM.2eDLL</SourceDll>
+		<ResourceId>111</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{mobileloadcmdsm.2eids_mobile13}</StringId>
+		<SourceDll>MobileLoadCmdsM.2eDLL</SourceDll>
+		<ResourceId>114</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{mobileloadcmdsm.2eids_mobile15}</StringId>
+		<SourceDll>MobileLoadCmdsM.2eDLL</SourceDll>
+		<ResourceId>116</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{mobileloadcmdsm.2eids_mobile16}</StringId>
+		<SourceDll>MobileLoadCmdsM.2eDLL</SourceDll>
+		<ResourceId>117</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{mobileloadcmdsm.2eids_ep_mobileloadtrack_name}</StringId>
+		<SourceDll>MobileLoadCmdsM.2eDLL</SourceDll>
+		<ResourceId>211</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{mobileloadcmdsm.2eids_mobile14}</StringId>
+		<SourceDll>MobileLoadCmdsM.2eDLL</SourceDll>
+		<ResourceId>115</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{mobileloadcmdsm.2eids_mobile6}</StringId>
+		<SourceDll>MobileLoadCmdsM.2eDLL</SourceDll>
+		<ResourceId>107</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{mobileloadcmdsm.2eids_mobile7}</StringId>
+		<SourceDll>MobileLoadCmdsM.2eDLL</SourceDll>
+		<ResourceId>108</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{mobileloadcmdsm.2eids_mobile4}</StringId>
+		<SourceDll>MobileLoadCmdsM.2eDLL</SourceDll>
+		<ResourceId>105</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{mobileloadcmdsm.2eids_mobile5}</StringId>
+		<SourceDll>MobileLoadCmdsM.2eDLL</SourceDll>
+		<ResourceId>106</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{mobileloadcmdsm.2eids_mobile8}</StringId>
+		<SourceDll>MobileLoadCmdsM.2eDLL</SourceDll>
+		<ResourceId>109</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{mobileloadcmdsm.2eids_mobile9}</StringId>
+		<SourceDll>MobileLoadCmdsM.2eDLL</SourceDll>
+		<ResourceId>110</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{mobileloadcmdsm.2eids_setup_generated_load_cases}</StringId>
+		<SourceDll>MobileLoadCmdsM.2eDLL</SourceDll>
+		<ResourceId>119</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{mobileloadcmdsm.2eids_mobile}</StringId>
+		<SourceDll>MobileLoadCmdsM.2eDLL</SourceDll>
+		<ResourceId>102</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{mobileloadcmdsm.2eids_mobile2}</StringId>
+		<SourceDll>MobileLoadCmdsM.2eDLL</SourceDll>
+		<ResourceId>103</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{mobileloadcmdsm.2eids_mobile3}</StringId>
+		<SourceDll>MobileLoadCmdsM.2eDLL</SourceDll>
+		<ResourceId>104</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

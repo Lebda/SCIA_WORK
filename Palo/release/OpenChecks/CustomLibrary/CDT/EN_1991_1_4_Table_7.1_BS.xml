@@ -1,0 +1,98 @@
+<Root Version="1" Type="CustomLibrary" GUID="2aff85b4-18df-4428-abfb-950a86cbb992">
+  <Header>
+    <PropertySet Symbol="A_10" ESA_ID="A_10" Unit="" Type="Numeric">
+      <Description TranslateID="A_10">
+        <ENU>Zone A, cpe,10, suction</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="A_1" ESA_ID="A_1" Unit="" Type="Numeric">
+      <Description TranslateID="A_1">
+        <ENU>Zone A, cpe,1, suction</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="B_10" ESA_ID="B_10" Unit="" Type="Numeric">
+      <Description TranslateID="B_10">
+        <ENU>Zone B, cpe,10, suction</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="B_1" ESA_ID="B_1" Unit="" Type="Numeric">
+      <Description TranslateID="B_1">
+        <ENU>Zone B, cpe,1, suction</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="C_10" ESA_ID="C_10" Unit="" Type="Numeric">
+      <Description TranslateID="C_10">
+        <ENU>Zone C, cpe,10, suction</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="C_1" ESA_ID="C_1" Unit="" Type="Numeric">
+      <Description TranslateID="C_1">
+        <ENU>Zone C, cpe,1, suction</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="D_10" ESA_ID="D_10" Unit="" Type="Numeric">
+      <Description TranslateID="D_10">
+        <ENU>Zone D, cpe,10, suction</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="D_1" ESA_ID="D_1" Unit="" Type="Numeric">
+      <Description TranslateID="D_1">
+        <ENU>Zone D, cpe,1, suction</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="E_10" ESA_ID="E_10" Unit="" Type="Numeric">
+      <Description TranslateID="E_10">
+        <ENU>Zone E, cpe,10, suction</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="E_1" ESA_ID="E_1" Unit="" Type="Numeric">
+      <Description TranslateID="E_1">
+        <ENU>Zone E, cpe,1, suction</ENU>
+      </Description>
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>0</Property>
+      <Property>5</Property>
+      <Property>-1.2</Property>
+      <Property>-1.2</Property>
+      <Property>-0.8</Property>
+      <Property>-0.8</Property>
+      <Property>-0.5</Property>
+      <Property>-0.5</Property>
+      <Property>0.8</Property>
+      <Property>0.8</Property>
+      <Property>-0.7</Property>
+      <Property>-0.7</Property>
+    </Item>
+    <Item>
+      <Property>0</Property>
+      <Property>1</Property>
+      <Property>-1.2</Property>
+      <Property>-1.2</Property>
+      <Property>-0.8</Property>
+      <Property>-0.8</Property>
+      <Property>-0.5</Property>
+      <Property>-0.5</Property>
+      <Property>0.8</Property>
+      <Property>0.8</Property>
+      <Property>-0.5</Property>
+      <Property>-0.5</Property>
+    </Item>
+    <Item>
+      <Property>0</Property>
+      <Property>0.25</Property>
+      <Property>-1.2</Property>
+      <Property>-1.2</Property>
+      <Property>-0.8</Property>
+      <Property>-0.8</Property>
+      <Property>-0.5</Property>
+      <Property>-0.5</Property>
+      <Property>0.7</Property>
+      <Property>0.7</Property>
+      <Property>-0.3</Property>
+      <Property>-0.3</Property>
+    </Item>
+  </Items>
+</Root>

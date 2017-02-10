@@ -1,0 +1,119 @@
+0	; non spécifié
+1	; Poutrelles I européennes
+2	; Poutrelles normales européennes
+3	; Poutrelles européennes à larges ailes
+4	; Poutrelles-poteaux à larges ailes
+5	; Poutrelles-pieux à larges ailes
+6	; Fers U à ailes parallèles
+7	; Fers U normaux européens
+8	; Cornières à ailes égales
+9	; Cornières à ailes inégales
+10	; Cornières 
+11	; Poutrelles universelles britanniques
+12	; Poteaux universels britanniques
+13	; Poutrelles-pieux britanniques à larges ailes
+14 	; Plats larges
+15	; Sections C formées à froid
+16	; Cornières formées à froid 
+17	; Sections Oméga formées à froid
+18	; Sections U formées à froid
+19	; Sections Z formées à froid
+20	; Tubes circulaires
+21	; Tubes circulaires formés à froid
+22	; Plats
+23	; Sections T découpées à partir d'un I
+24	; Sections I assymétriques
+25	; Tubes rectangulaires
+26	; Ronds
+27	; Tubes rectangulaires formés à froid
+28	; Sections U
+29	; Poutrelles britanniques
+30	; Sections de raïl
+31	; Sections T
+32	; Sections Z
+33	; Poutrelles américaines à larges ailes - système métrique
+34	; Poutrelles américaines à larges ailes - système impérial
+35	; Poutrelles américaines diverses - système métrique
+36	; Poutrelles américaines diverses - système impérial
+37	; Poutrelles-pieux américains - système métrique
+38	; Poutrelles-pieux américains - système impérial
+39	; Poutrelles américaines standards- système métrique
+40	; Poutrelles américaines standards- système impérial
+41	; Fers U normaux américains - système métrique
+42	; Fers U normaux américains - système impérial
+43	; Fers U américains - système métrique
+44	; Fers U américains - système impérial
+45	; Cornières américaines à ailes égales - système métrique
+46	; Cornières américaines à ailes égales - système impérial
+47	; Section en T américaines découpées à partir d'un I - système métrique
+48	; Section en T américaines découpées à partir d'un I - système impérial
+49	; Tubes carrés et rectangulaires américaines - système métrique
+50	; Tubes carrés et rectangulaires américaines - système impérial
+51	; Tubes circulaires américains - système métrique
+52	; Tubes circulaires américains - système impérial
+53	; Tuyaux américains en acier - système métrique
+54	; Tuyaux américains en acier - système impérial
+55	; Sections H japonaises
+56	; Sections ZED formées à froid
+57	; Sections Sigma formées à froid
+58  ; Sections formées à froid - corniches
+59  ; Poutrelles IFB - Integrated Floor Beams
+60  ; Poutrelles SFB - Slim Floor Beams
+61  ; Poutrelles THB - Top Hat Beams
+62  ; Indian Standard Light weight Channels
+63  ; Indian Standard Column Sections
+64  ; Indian Standard Wide flange Beams
+65  ; Indian standard Unequal Leg angles
+66  ; Indian Standard Medium weight Parallel flange Channels
+67  ; Indian Standard Medium weight Channels
+68  ; Indian Standard Medium weight Beams
+69  ; Indian Standard Light weight Beams
+70  ; Indian Standard Junior Channels
+71  ; Indian Standard Junior Beams
+72  ; Indian Standard Heavy Weight Beams
+73  ; Indian Standard Equal Angles
+74	; Profils creux carrés et rectangulaires, finis à froid
+75	; Profils creux carrés et rectangulaires
+76	; Profilés U avec ailes inclinées
+77	; Fers T à âme haute
+78	; Fers T à semelle large
+79	; Carrés
+80	; Sections T découpées à partir d'une poutre universel
+81	; Sections T découpées à partir d'un poteau universel
+82	; Jumbo355 Profils creux carrés
+83	; Celsius355 Profils creux carrés
+84	; Hybox355 Profils creux carrés finis à froid
+85	; Jumbo355 Profils creux Rectangulaires
+86	; Celsius355 Profils creux Rectangulaires
+87	; Hybox355 Profils creux Rectangulaires finis à froid
+88	; Jumbo355 Profils creux Circulaires
+89	; Celsius355 Profils creux Circulaires
+90	; Hybox355 Profils creux Circulaires finis à froid
+91	; Poutrelles H Chinoise
+92	; Sections T Chinoise découpées à partir d'un I
+93	; Profils creux Carrés Chinois finis à froid
+94	; Profils creux Rectangulaires Chinois finis à froid
+95	; Profils creux Circulaires Chinois finis à froid
+96	; Poutrelles I Chinoise
+97	; Poutrelles U Chinoise
+98	; Cornières Chinoise à ailes égales
+99	; Cornières Chinoise à ailes inégales
+100	; ICEC Z Panne
+101	; ICEC C Panne
+102	; Profils I et H brésiliens
+103	; Celsius Grandes Profils creux Circulaires
+104 ; Sections Sigma asymétriques formées à froid
+105	; Sections I-plus formées à froid
+106	; Sections IS-plus formées à froid
+107	; SSMA Stud - Sections C formées à froid avec raidisseurs
+108	; SSMA Track - Sections C formées à froid sans raidisseurs
+109	; Poutrelles européennes à très larges ailes
+110	; Poutrelles russes laminées à chaud
+111	; Fers U britanniques à ailes parallèles
+112	; Fers U britanniques à ailes inclinées
+113	; Profils METfloor formées à froid
+114	; Profils U METframe formées à froid
+115	; Profils C METframe formées à froid
+116 ; Virtual Joist
+117 ; Virtual Joist Girder
+118	; Sections Sigma+ formées à froid

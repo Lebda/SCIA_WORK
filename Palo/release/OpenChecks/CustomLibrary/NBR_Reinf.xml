@@ -1,0 +1,238 @@
+<Root Version="1" Type="CustomLibrary" GUID="1b64fd9b-a9fd-4a31-8631-acd1837c46e7">
+  <Header>
+    <PropertySet Symbol="f↓yk←" ESA_ID="fyk" Unit="MPa" Type="Numeric">
+      <Description TranslateID="fyk">
+        <NEU>Characteristic yield strength</NEU>
+        <FRB>Limite d'élasticité caractéristique</FRB>
+        <PTG>Resistência característica ao escoamento</PTG>
+        <ELL>Characteristic yield strength</ELL>
+        <ESP>Characteristic yield strength</ESP>
+        <ENU>Characteristic yield strength</ENU>
+        <CSY>Charakteristická mez kluzu</CSY>
+        <DEU>Charakteristische Streckgrenze</DEU>
+        <NLD>Karakteristieke vloeisterkte</NLD>
+        <RUS>Characteristic yield strength</RUS>
+        <ROM>Characteristic yield strength</ROM>
+        <PLK>Characteristic yield strength</PLK>
+        <ITA>Characteristic yield strength</ITA>
+        <SKY>Charakteristická medza klzu výstuže</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="k" ESA_ID="k" Unit="" Type="Numeric">
+      <Description TranslateID="k">
+        <NEU>Coefficient k = ftk/fyk</NEU>
+        <FRB>Coefficient k = ftk/fyk</FRB>
+        <PTG>Coefficient k = ftk/fyk</PTG>
+        <ELL>Coefficient k = ftk/fyk</ELL>
+        <ESP>Coefficient k = ftk/fyk</ESP>
+        <ENU>Coefficient k = ftk/fyk</ENU>
+        <CSY>Součinitel k = ftk/fyk</CSY>
+        <DEU>Coefficient k = ftk/fyk</DEU>
+        <NLD>Coëfficiënt k = ftk/fyk</NLD>
+        <RUS>Coefficient k = ftk/fyk</RUS>
+        <ROM>Coefficient k = ftk/fyk</ROM>
+        <PLK>Coefficient k = ftk/fyk</PLK>
+        <ITA>Coefficient k = ftk/fyk</ITA>
+        <SKY>Súčiniteľ k = ftk/fyk</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ε↓υκ←" ESA_ID="eps_uk" Unit="" Type="Numeric">
+      <Description TranslateID="eps_uk">
+        <NEU>Characteristic strain at maximum force</NEU>
+        <FRB>Characteristic strain at maximum force</FRB>
+        <PTG>Characteristic strain at maximum force</PTG>
+        <ELL>Characteristic strain at maximum force</ELL>
+        <ESP>Characteristic strain at maximum force</ESP>
+        <ENU>Characteristic strain at maximum force</ENU>
+        <CSY>Charakteristické napětí od maximálního zatížení</CSY>
+        <DEU>Characteristic strain at maximum force</DEU>
+        <NLD>Karakteristieke rek bij maximum kracht</NLD>
+        <RUS>Characteristic strain at maximum force</RUS>
+        <ROM>Characteristic strain at maximum force</ROM>
+        <PLK>Characteristic strain at maximum force</PLK>
+        <ITA>Characteristic strain at maximum force</ITA>
+        <SKY>Charakteristické pretvorenie pri maximálnej sile</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="E" ESA_ID="E" Unit="MPa" Type="Numeric">
+      <Description TranslateID="E">
+        <NEU>E modulus</NEU>
+        <FRB>E modulus</FRB>
+        <PTG>E modulus</PTG>
+        <ELL>E modulus</ELL>
+        <ESP>E modulus</ESP>
+        <ENU>E modulus</ENU>
+        <CSY>E modul</CSY>
+        <DEU>E modulus</DEU>
+        <NLD>E-modulus</NLD>
+        <RUS>E modulus</RUS>
+        <ROM>E modulus</ROM>
+        <PLK>E modulus</PLK>
+        <ITA>E modulus</ITA>
+        <SKY>E modul pružnosti</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Point" ESA_ID="Diagram.Point" Unit="" Type="Struct">
+      <StructMembers>
+        <StructMember Symbol="eps" Type="Numeric" Unit="" />
+        <StructMember Symbol="sig" Type="Numeric" Unit="Pa" />
+      </StructMembers>
+      <Description TranslateID="Diagram.Point">
+        <NEU>Material diagram point</NEU>
+        <FRB>Material diagram point</FRB>
+        <PTG>Material diagram point</PTG>
+        <ELL>Material diagram point</ELL>
+        <ESP>Material diagram point</ESP>
+        <ENU>Material diagram point</ENU>
+        <CSY>Bod diagramu materiálu</CSY>
+        <DEU>Material diagram point</DEU>
+        <NLD>Materiaaldiagrammapunt</NLD>
+        <RUS>Material diagram point</RUS>
+        <ROM>Material diagram point</ROM>
+        <PLK>Material diagram point</PLK>
+        <ITA>Material diagram point</ITA>
+        <SKY>Bod pracovného diagramu</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Point" ESA_ID="Diagram.Point" Unit="" Type="Struct">
+      <StructMembers>
+        <StructMember Symbol="eps" Type="Numeric" Unit="" />
+        <StructMember Symbol="sig" Type="Numeric" Unit="Pa" />
+      </StructMembers>
+      <Description TranslateID="Diagram.Point">
+        <NEU>Material diagram point</NEU>
+        <FRB>Material diagram point</FRB>
+        <PTG>Material diagram point</PTG>
+        <ELL>Material diagram point</ELL>
+        <ESP>Material diagram point</ESP>
+        <ENU>Material diagram point</ENU>
+        <CSY>Bod diagramu materiálu</CSY>
+        <DEU>Material diagram point</DEU>
+        <NLD>Materiaaldiagrammapunt</NLD>
+        <RUS>Material diagram point</RUS>
+        <ROM>Material diagram point</ROM>
+        <PLK>Material diagram point</PLK>
+        <ITA>Material diagram point</ITA>
+        <SKY>Bod pracovného diagramu</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Point" ESA_ID="Diagram.Point" Unit="" Type="Struct">
+      <StructMembers>
+        <StructMember Symbol="eps" Type="Numeric" Unit="" />
+        <StructMember Symbol="sig" Type="Numeric" Unit="Pa" />
+      </StructMembers>
+      <Description TranslateID="Diagram.Point">
+        <NEU>Material diagram point</NEU>
+        <FRB>Material diagram point</FRB>
+        <PTG>Material diagram point</PTG>
+        <ELL>Material diagram point</ELL>
+        <ESP>Material diagram point</ESP>
+        <ENU>Material diagram point</ENU>
+        <CSY>Bod diagramu materiálu</CSY>
+        <DEU>Material diagram point</DEU>
+        <NLD>Materiaaldiagrammapunt</NLD>
+        <RUS>Material diagram point</RUS>
+        <ROM>Material diagram point</ROM>
+        <PLK>Material diagram point</PLK>
+        <ITA>Material diagram point</ITA>
+        <SKY>Bod pracovného diagramu</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Point" ESA_ID="Diagram.Point" Unit="" Type="Struct">
+      <StructMembers>
+        <StructMember Symbol="eps" Type="Numeric" Unit="" />
+        <StructMember Symbol="sig" Type="Numeric" Unit="Pa" />
+      </StructMembers>
+      <Description TranslateID="Diagram.Point">
+        <NEU>Material diagram point</NEU>
+        <FRB>Material diagram point</FRB>
+        <PTG>Material diagram point</PTG>
+        <ELL>Material diagram point</ELL>
+        <ESP>Material diagram point</ESP>
+        <ENU>Material diagram point</ENU>
+        <CSY>Bod diagramu materiálu</CSY>
+        <DEU>Material diagram point</DEU>
+        <NLD>Materiaaldiagrammapunt</NLD>
+        <RUS>Material diagram point</RUS>
+        <ROM>Material diagram point</ROM>
+        <PLK>Material diagram point</PLK>
+        <ITA>Material diagram point</ITA>
+        <SKY>Bod pracovného diagramu</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Point" ESA_ID="Diagram.Point" Unit="" Type="Struct">
+      <StructMembers>
+        <StructMember Symbol="eps" Type="Numeric" Unit="" />
+        <StructMember Symbol="sig" Type="Numeric" Unit="Pa" />
+      </StructMembers>
+      <Description TranslateID="Diagram.Point">
+        <NEU>Material diagram point</NEU>
+        <FRB>Material diagram point</FRB>
+        <PTG>Material diagram point</PTG>
+        <ELL>Material diagram point</ELL>
+        <ESP>Material diagram point</ESP>
+        <ENU>Material diagram point</ENU>
+        <CSY>Bod diagramu materiálu</CSY>
+        <DEU>Material diagram point</DEU>
+        <NLD>Materiaaldiagrammapunt</NLD>
+        <RUS>Material diagram point</RUS>
+        <ROM>Material diagram point</ROM>
+        <PLK>Material diagram point</PLK>
+        <ITA>Material diagram point</ITA>
+        <SKY>Bod pracovného diagramu</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="G" ESA_ID="G" Unit="MPa" Type="Numeric">
+      <Description TranslateID="G">
+        <ENU>G modulus</ENU>
+      </Description>
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>
+      </Property>
+      <Property>CA-25</Property>
+      <Property>250</Property>
+      <Property>0.0</Property>
+      <Property>0.01 </Property>
+      <Property>210000</Property>
+      <Property>-0.01;-2.17391e+008;</Property>
+      <Property>-0.0010352;-2.17391e+008;</Property>
+      <Property>0;0;</Property>
+      <Property>0.0010352;2.17391e+008;</Property>
+      <Property>0.01;2.17391e+008;</Property>
+      <Property>87500</Property>
+    </Item>
+    <Item>
+      <Property>
+      </Property>
+      <Property>CA-50</Property>
+      <Property>500</Property>
+      <Property>0.0</Property>
+      <Property>0.01 </Property>
+      <Property>210000</Property>
+      <Property>-0.01;-4.34783e+008;</Property>
+      <Property>-0.00207039;-4.34783e+008;</Property>
+      <Property>0;0;</Property>
+      <Property>0.00207039;4.34783e+008;</Property>
+      <Property>0.01;4.34783e+008;</Property>
+      <Property>87500</Property>
+    </Item>
+    <Item>
+      <Property>
+      </Property>
+      <Property>CA-60</Property>
+      <Property>600</Property>
+      <Property>0.0</Property>
+      <Property>0.01 </Property>
+      <Property>210000</Property>
+      <Property>-0.01;-5.21739e+008;</Property>
+      <Property>-0.00248447;-5.21739e+008;</Property>
+      <Property>0;0;</Property>
+      <Property>0.00248447;5.21739e+008;</Property>
+      <Property>0.01;5.21739e+008;</Property>
+      <Property>87500</Property>
+    </Item>
+  </Items>
+</Root>

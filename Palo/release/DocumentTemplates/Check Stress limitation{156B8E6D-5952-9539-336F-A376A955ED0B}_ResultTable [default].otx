@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xss xmlns:xss="http://www.scia.cz/xss">
+   <table_template xss:class="TableTemplate" ots_version="13" name="default" clsid="{9CF5D20E-C65C-E8E7-B752-D00039CA03B8}" type="vertical" auto_styles="1" header_style="255" odd_line_style="255" even_line_style="255" icons_in_header="0" flags2="0" context="0" sorting_flags="0">
+      <table_look can_use_presets="1" what_widths_to_use="0" what_colors_to_use="0" what_padding_to_use="0" cell_padding="10 10 10 10" space_between_sections="20" space_between_strips="50">
+         <line_widths width_0="1" width_1="1" width_2="1" width_3="1" width_4="1" width_5="1" width_6="1" width_7="1" width_8="1" width_9="1"/>
+         <line_colors color_0="0" color_1="0" color_2="0" color_3="0" color_4="0" color_5="0" color_6="0" color_7="0" color_8="0" color_9="0"/>
+         <colors color_0="16777215" color_1="16777215" color_2="16777215" color_3="16777215"/>
+         <stripping_rule rule="1"/></table_look>
+      <column xss:class="Column" id="\EP\$4DF510A2-6B80-425B-BF71-787C9E29169D" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="100" delta_width="20" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$47857C69-4741-45B0-A280-C377F40CE362" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="100" delta_width="20" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$5F115E26-6DF0-4307-8F66-29066ECB2974" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="100" delta_width="20" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$8F399410-00BC-13BB-C4C5-886ADB95C143" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="100" delta_width="20" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$7543B471-4825-A515-6DB1-CEBD20B0BA2D" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="100" delta_width="20" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$79723444-A81D-D1AF-4412-C0625A2EF8C2" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="100" delta_width="20" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$D7A56704-C0F0-3D19-85DD-EE51DB5DB193" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="100" delta_width="20" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$5C9AED00-E236-52A8-079F-5A4FE8051F2C" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="100" delta_width="20" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$AB42D170-0AAD-FB52-1DC6-F8933D29CBD2" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="100" delta_width="20" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="BreakColumn"/>
+      <column xss:class="EmptyColumn"/>
+      <column xss:class="EmptyColumn"/>
+      <column xss:class="EmptyColumn"/>
+      <column xss:class="EmptyColumn"/>
+      <column xss:class="Column" id="\EP\$59C5B765-451B-303F-1E76-E485B3F7C4FF" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="100" delta_width="20" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$BA3FA69A-65ED-979E-7270-5920A7E408DF" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="100" delta_width="20" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$16D2F0E3-291F-A40C-D040-3C4A8B12F7AE" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="100" delta_width="20" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$76C23FB4-0349-8427-C369-1D1F9425D868" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="100" delta_width="20" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$AB968026-0AB3-AA4E-291A-D96BCC4708E5" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="100" delta_width="20" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/></table_template></xss>

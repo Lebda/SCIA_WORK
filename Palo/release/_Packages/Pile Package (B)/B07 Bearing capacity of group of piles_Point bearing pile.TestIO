@@ -1,0 +1,44 @@
+<Root>
+  <Test Description="Test 1" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="V↓d←" Value="25e6" />
+      <Variable Identifier="R↓d1←" Value="3.217e6" />
+      <Variable Identifier="s" Value="1.01e-3" />
+      <Variable Identifier="n" Value="9" />
+    </Dialog>
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="n" Type="Numeric" ESA_ID="" Value="9" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust, ČSN 73 1002" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.0" Value="28.953e6" />
+    <Input Name="R↓d1←" Type="Numeric" ESA_ID="" Value="3.217e6" />
+    <Input Name="s" Type="Numeric" ESA_ID="" Value="1.01e-3" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="25e6" />
+  </Test>
+  <Test Description="Test 2" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="V↓d←" Value="18e6" />
+      <Variable Identifier="R↓d1←" Value="1.258e6" />
+      <Variable Identifier="s" Value="950e-6" />
+      <Variable Identifier="n" Value="13" />
+    </Dialog>
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="n" Type="Numeric" ESA_ID="" Value="13" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust, ČSN 73 1002" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.0" Value="16.354e6" />
+    <Input Name="R↓d1←" Type="Numeric" ESA_ID="" Value="1.258e6" />
+    <Input Name="s" Type="Numeric" ESA_ID="" Value="950e-6" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="18e6" />
+  </Test>
+</Root>

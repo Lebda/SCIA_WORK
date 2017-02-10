@@ -1,0 +1,734 @@
+<Root>
+  <Test Description="Test 1" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="V↓d←" Value="150000" />
+      <Variable Identifier="L" Value="9" />
+      <Variable Identifier="d" Value="850e-3" />
+      <Variable Identifier="dri" Value="0" />
+      <Variable Identifier="Groundwater" Value="True" />
+      <Variable Identifier="hw" Value="200e-3" />
+      <Variable Identifier="UserScale" Value="450" />
+      <Variable Identifier="DrawGeoStress" Value="True" />
+      <Variable Identifier="DrawGeoProfile" Value="True" />
+      <Variable Identifier="DrawPile" Value="True" />
+      <Variable Identifier="TI" Value="1,5|16|20|30|5║2|19|21,5|25|8║3|18,5|20,5|18|12║2|21|24|24|15║4|20|21|15|10" />
+    </Dialog>
+    <Input Name="A↓s←" Type="Numeric" ESA_ID="" Value="567.4502e-3" />
+    <Input Name="c↓a←" Type="Numeric" ESA_ID="" Value="5000" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="850e-3" />
+    <Input Name="DrawGeoProfile" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawGeoStress" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawPile" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="dri" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="e" Type="Numeric" ESA_ID="" Value="2.718282" />
+    <Input Name="Groundwater" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="hw" Type="Numeric" ESA_ID="" Value="200e-3" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="k↓1←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="9" />
+    <Result Name="N↓b←" Type="Numeric" ESA_ID="Result.7" Value="465.3377e-3" />
+    <Result Name="N↓c←" Type="Numeric" ESA_ID="Result.6" Value="8.665384" />
+    <Result Name="N↓d←" Type="Numeric" ESA_ID="Result.5" Value="2.639579" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust, ČSN 73 1002" />
+    <Input Name="P1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="P2" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.4" Value="655542.9" />
+    <Result Name="Result0" Type="Numeric" ESA_ID="Result.0" Value="223700" />
+    <Input Name="ScaleX" Type="Numeric" ESA_ID="" Value="45" />
+    <Input Name="ScaleY" Type="Numeric" ESA_ID="" Value="36" />
+    <Result Name="U↓bd←" Type="Numeric" ESA_ID="Result.1" Value="427786.1" />
+    <Result Name="U↓fd←" Type="Numeric" ESA_ID="Result.2" Value="459857.8" />
+    <Result Name="U↓vd←" Type="Numeric" ESA_ID="Result.3" Value="887643.9" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="450" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="150000" />
+    <Input Name="γ↓a←" Type="Numeric" ESA_ID="" Value="21000" />
+    <Input Name="γ↓Mc←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="γ↓Mγ←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓r1←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γa" Type="Numeric" ESA_ID="" Value="21320" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.141593" />
+    <Input Name="σw" Type="Numeric" ESA_ID="" Value="3200" />
+    <Input Name="φ↓a←" Type="Numeric" ESA_ID="" Value="10.71429" />
+  </Test>
+  <Test Description="Test 2" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="V↓d←" Value="150000" />
+      <Variable Identifier="L" Value="9" />
+      <Variable Identifier="d" Value="850e-3" />
+      <Variable Identifier="dri" Value="0" />
+      <Variable Identifier="Groundwater" Value="True" />
+      <Variable Identifier="hw" Value="1" />
+      <Variable Identifier="UserScale" Value="450" />
+      <Variable Identifier="DrawGeoStress" Value="True" />
+      <Variable Identifier="DrawGeoProfile" Value="True" />
+      <Variable Identifier="DrawPile" Value="True" />
+      <Variable Identifier="TI" Value="1,5|16|20|30|5║2|19|21,5|25|8║3|18,5|20,5|18|12║2|21|24|24|15║4|20|21|15|10" />
+    </Dialog>
+    <Input Name="A↓s←" Type="Numeric" ESA_ID="" Value="567.4502e-3" />
+    <Input Name="c↓a←" Type="Numeric" ESA_ID="" Value="5000" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="850e-3" />
+    <Input Name="DrawGeoProfile" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawGeoStress" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawPile" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="dri" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="e" Type="Numeric" ESA_ID="" Value="2.718282" />
+    <Input Name="Groundwater" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="hw" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="k↓1←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="9" />
+    <Result Name="N↓b←" Type="Numeric" ESA_ID="Result.7" Value="465.3377e-3" />
+    <Result Name="N↓c←" Type="Numeric" ESA_ID="Result.6" Value="8.665384" />
+    <Result Name="N↓d←" Type="Numeric" ESA_ID="Result.5" Value="2.639579" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust, ČSN 73 1002" />
+    <Input Name="P1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="P2" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.4" Value="655542.9" />
+    <Result Name="Result0" Type="Numeric" ESA_ID="Result.0" Value="220500" />
+    <Input Name="ScaleX" Type="Numeric" ESA_ID="" Value="45" />
+    <Input Name="ScaleY" Type="Numeric" ESA_ID="" Value="36" />
+    <Result Name="U↓bd←" Type="Numeric" ESA_ID="Result.1" Value="427786.1" />
+    <Result Name="U↓fd←" Type="Numeric" ESA_ID="Result.2" Value="491443.7" />
+    <Result Name="U↓vd←" Type="Numeric" ESA_ID="Result.3" Value="919229.8" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="450" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="150000" />
+    <Input Name="γ↓a←" Type="Numeric" ESA_ID="" Value="21000" />
+    <Input Name="γ↓Mc←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="γ↓Mγ←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓r1←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γa" Type="Numeric" ESA_ID="" Value="21320" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.141593" />
+    <Input Name="σw" Type="Numeric" ESA_ID="" Value="16000" />
+    <Input Name="φ↓a←" Type="Numeric" ESA_ID="" Value="10.71429" />
+  </Test>
+  <Test Description="Test 3" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="V↓d←" Value="150000" />
+      <Variable Identifier="L" Value="9" />
+      <Variable Identifier="d" Value="850e-3" />
+      <Variable Identifier="dri" Value="0" />
+      <Variable Identifier="Groundwater" Value="True" />
+      <Variable Identifier="hw" Value="6" />
+      <Variable Identifier="UserScale" Value="450" />
+      <Variable Identifier="DrawGeoStress" Value="True" />
+      <Variable Identifier="DrawGeoProfile" Value="True" />
+      <Variable Identifier="DrawPile" Value="True" />
+      <Variable Identifier="TI" Value="1,5|16|20|30|5║2|19|21,5|25|8║3|18,5|20,5|18|12║2|21|24|24|15║4|20|21|15|10" />
+    </Dialog>
+    <Input Name="A↓s←" Type="Numeric" ESA_ID="" Value="567.4502e-3" />
+    <Input Name="c↓a←" Type="Numeric" ESA_ID="" Value="5000" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="850e-3" />
+    <Input Name="DrawGeoProfile" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawGeoStress" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawPile" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="dri" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="e" Type="Numeric" ESA_ID="" Value="2.718282" />
+    <Input Name="Groundwater" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="hw" Type="Numeric" ESA_ID="" Value="6" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="k↓1←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="9" />
+    <Result Name="N↓b←" Type="Numeric" ESA_ID="Result.7" Value="465.3377e-3" />
+    <Result Name="N↓c←" Type="Numeric" ESA_ID="Result.6" Value="8.665384" />
+    <Result Name="N↓d←" Type="Numeric" ESA_ID="Result.5" Value="2.639579" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust, ČSN 73 1002" />
+    <Input Name="P1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="P2" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.4" Value="630750.9" />
+    <Result Name="Result0" Type="Numeric" ESA_ID="Result.0" Value="208500" />
+    <Input Name="ScaleX" Type="Numeric" ESA_ID="" Value="45" />
+    <Input Name="ScaleY" Type="Numeric" ESA_ID="" Value="36" />
+    <Result Name="U↓bd←" Type="Numeric" ESA_ID="Result.1" Value="411607.7" />
+    <Result Name="U↓fd←" Type="Numeric" ESA_ID="Result.2" Value="638484.8" />
+    <Result Name="U↓vd←" Type="Numeric" ESA_ID="Result.3" Value="1.050092e6" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="450" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="150000" />
+    <Input Name="γ↓a←" Type="Numeric" ESA_ID="" Value="21000" />
+    <Input Name="γ↓Mc←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="γ↓Mγ←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓r1←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γa" Type="Numeric" ESA_ID="" Value="20440" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.141593" />
+    <Input Name="σw" Type="Numeric" ESA_ID="" Value="108250" />
+    <Input Name="φ↓a←" Type="Numeric" ESA_ID="" Value="10.71429" />
+  </Test>
+  <Test Description="Test 4" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="V↓d←" Value="150000" />
+      <Variable Identifier="L" Value="9" />
+      <Variable Identifier="d" Value="850e-3" />
+      <Variable Identifier="dri" Value="0" />
+      <Variable Identifier="Groundwater" Value="False" />
+      <Variable Identifier="hw" Value="6" />
+      <Variable Identifier="UserScale" Value="450" />
+      <Variable Identifier="DrawGeoStress" Value="True" />
+      <Variable Identifier="DrawGeoProfile" Value="True" />
+      <Variable Identifier="DrawPile" Value="True" />
+      <Variable Identifier="TI" Value="1,5|16|20|30|5║2|19|21,5|25|8║3|18,5|20,5|18|12║2|21|24|24|15║4|20|21|15|10" />
+    </Dialog>
+    <Input Name="A↓s←" Type="Numeric" ESA_ID="" Value="567.4502e-3" />
+    <Input Name="c↓a←" Type="Numeric" ESA_ID="" Value="5000" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="850e-3" />
+    <Input Name="DrawGeoProfile" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawGeoStress" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawPile" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="dri" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="e" Type="Numeric" ESA_ID="" Value="2.718282" />
+    <Input Name="Groundwater" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="hw" Type="Numeric" ESA_ID="" Value="6" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="k↓1←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="9" />
+    <Result Name="N↓b←" Type="Numeric" ESA_ID="Result.7" Value="465.3377e-3" />
+    <Result Name="N↓c←" Type="Numeric" ESA_ID="Result.6" Value="8.665384" />
+    <Result Name="N↓d←" Type="Numeric" ESA_ID="Result.5" Value="2.639579" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust, ČSN 73 1002" />
+    <Input Name="P1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="P2" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.4" Value="630750.9" />
+    <Result Name="Result0" Type="Numeric" ESA_ID="Result.0" Value="199500" />
+    <Input Name="ScaleX" Type="Numeric" ESA_ID="" Value="45" />
+    <Input Name="ScaleY" Type="Numeric" ESA_ID="" Value="36" />
+    <Result Name="U↓bd←" Type="Numeric" ESA_ID="Result.1" Value="411607.7" />
+    <Result Name="U↓fd←" Type="Numeric" ESA_ID="Result.2" Value="667519.7" />
+    <Result Name="U↓vd←" Type="Numeric" ESA_ID="Result.3" Value="1.079127e6" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="450" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="150000" />
+    <Input Name="γ↓a←" Type="Numeric" ESA_ID="" Value="21000" />
+    <Input Name="γ↓Mc←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="γ↓Mγ←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓r1←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γa" Type="Numeric" ESA_ID="" Value="20440" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.141593" />
+    <Input Name="σw" Type="Numeric" ESA_ID="" Value="154000" />
+    <Input Name="φ↓a←" Type="Numeric" ESA_ID="" Value="10.71429" />
+  </Test>
+  <Test Description="Test 5" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="V↓d←" Value="150000" />
+      <Variable Identifier="L" Value="9" />
+      <Variable Identifier="d" Value="850e-3" />
+      <Variable Identifier="dri" Value="4" />
+      <Variable Identifier="Groundwater" Value="True" />
+      <Variable Identifier="hw" Value="6" />
+      <Variable Identifier="UserScale" Value="450" />
+      <Variable Identifier="DrawGeoStress" Value="True" />
+      <Variable Identifier="DrawGeoProfile" Value="True" />
+      <Variable Identifier="DrawPile" Value="True" />
+      <Variable Identifier="TI" Value="1,5|16|20|30|5║2|19|21,5|25|8║3|18,5|20,5|18|12║2|21|24|24|15║4|20|21|15|10" />
+    </Dialog>
+    <Input Name="A↓s←" Type="Numeric" ESA_ID="" Value="567.4502e-3" />
+    <Input Name="c↓a←" Type="Numeric" ESA_ID="" Value="5000" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="850e-3" />
+    <Input Name="DrawGeoProfile" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawGeoStress" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawPile" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="dri" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="e" Type="Numeric" ESA_ID="" Value="2.718282" />
+    <Input Name="Groundwater" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="hw" Type="Numeric" ESA_ID="" Value="6" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="k↓1←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="9" />
+    <Result Name="N↓b←" Type="Numeric" ESA_ID="Result.7" Value="465.3377e-3" />
+    <Result Name="N↓c←" Type="Numeric" ESA_ID="Result.6" Value="8.665384" />
+    <Result Name="N↓d←" Type="Numeric" ESA_ID="Result.5" Value="2.639579" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust, ČSN 73 1002" />
+    <Input Name="P1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="P2" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.4" Value="630750.9" />
+    <Result Name="Result0" Type="Numeric" ESA_ID="Result.0" Value="208500" />
+    <Input Name="ScaleX" Type="Numeric" ESA_ID="" Value="45" />
+    <Input Name="ScaleY" Type="Numeric" ESA_ID="" Value="36" />
+    <Result Name="U↓bd←" Type="Numeric" ESA_ID="Result.1" Value="411607.7" />
+    <Result Name="U↓fd←" Type="Numeric" ESA_ID="Result.2" Value="461429.1" />
+    <Result Name="U↓vd←" Type="Numeric" ESA_ID="Result.3" Value="873036.8" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="450" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="150000" />
+    <Input Name="γ↓a←" Type="Numeric" ESA_ID="" Value="21000" />
+    <Input Name="γ↓Mc←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="γ↓Mγ←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓r1←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γa" Type="Numeric" ESA_ID="" Value="20440" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.141593" />
+    <Input Name="σw" Type="Numeric" ESA_ID="" Value="108250" />
+    <Input Name="φ↓a←" Type="Numeric" ESA_ID="" Value="10.71429" />
+  </Test>
+  <Test Description="Test 6" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="V↓d←" Value="150000" />
+      <Variable Identifier="L" Value="9" />
+      <Variable Identifier="d" Value="850e-3" />
+      <Variable Identifier="dri" Value="1" />
+      <Variable Identifier="Groundwater" Value="True" />
+      <Variable Identifier="hw" Value="6" />
+      <Variable Identifier="UserScale" Value="450" />
+      <Variable Identifier="DrawGeoStress" Value="True" />
+      <Variable Identifier="DrawGeoProfile" Value="True" />
+      <Variable Identifier="DrawPile" Value="True" />
+      <Variable Identifier="TI" Value="1,5|16|20|30|5║2|19|21,5|25|8║3|18,5|20,5|18|12║2|21|24|24|15║4|20|21|15|10" />
+    </Dialog>
+    <Input Name="A↓s←" Type="Numeric" ESA_ID="" Value="567.4502e-3" />
+    <Input Name="c↓a←" Type="Numeric" ESA_ID="" Value="5000" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="850e-3" />
+    <Input Name="DrawGeoProfile" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawGeoStress" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawPile" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="dri" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="e" Type="Numeric" ESA_ID="" Value="2.718282" />
+    <Input Name="Groundwater" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="hw" Type="Numeric" ESA_ID="" Value="6" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="k↓1←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="9" />
+    <Result Name="N↓b←" Type="Numeric" ESA_ID="Result.7" Value="465.3377e-3" />
+    <Result Name="N↓c←" Type="Numeric" ESA_ID="Result.6" Value="8.665384" />
+    <Result Name="N↓d←" Type="Numeric" ESA_ID="Result.5" Value="2.639579" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust, ČSN 73 1002" />
+    <Input Name="P1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="P2" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.4" Value="630750.9" />
+    <Result Name="Result0" Type="Numeric" ESA_ID="Result.0" Value="208500" />
+    <Input Name="ScaleX" Type="Numeric" ESA_ID="" Value="45" />
+    <Input Name="ScaleY" Type="Numeric" ESA_ID="" Value="36" />
+    <Result Name="U↓bd←" Type="Numeric" ESA_ID="Result.1" Value="411607.7" />
+    <Result Name="U↓fd←" Type="Numeric" ESA_ID="Result.2" Value="589423.4" />
+    <Result Name="U↓vd←" Type="Numeric" ESA_ID="Result.3" Value="1.001031e6" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="450" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="150000" />
+    <Input Name="γ↓a←" Type="Numeric" ESA_ID="" Value="21000" />
+    <Input Name="γ↓Mc←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="γ↓Mγ←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓r1←" Type="Numeric" ESA_ID="" Value="1.1" />
+    <Input Name="γa" Type="Numeric" ESA_ID="" Value="20440" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.141593" />
+    <Input Name="σw" Type="Numeric" ESA_ID="" Value="108250" />
+    <Input Name="φ↓a←" Type="Numeric" ESA_ID="" Value="10.71429" />
+  </Test>
+  <Test Description="Test 7" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="V↓d←" Value="680000" />
+      <Variable Identifier="L" Value="11" />
+      <Variable Identifier="d" Value="1.05" />
+      <Variable Identifier="dri" Value="1" />
+      <Variable Identifier="Groundwater" Value="True" />
+      <Variable Identifier="hw" Value="6" />
+      <Variable Identifier="UserScale" Value="450" />
+      <Variable Identifier="DrawGeoStress" Value="True" />
+      <Variable Identifier="DrawGeoProfile" Value="True" />
+      <Variable Identifier="DrawPile" Value="True" />
+      <Variable Identifier="TI" Value="1,5|16|20|30|5║2|19|21,5|25|8║3|18,5|20,5|18|12║2|21|24|24|15║4|20|21|15|10" />
+    </Dialog>
+    <Input Name="A↓s←" Type="Numeric" ESA_ID="" Value="865.9015e-3" />
+    <Input Name="c↓a←" Type="Numeric" ESA_ID="" Value="5000" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="1.05" />
+    <Input Name="DrawGeoProfile" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawGeoStress" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawPile" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="dri" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="e" Type="Numeric" ESA_ID="" Value="2.718282" />
+    <Input Name="Groundwater" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="hw" Type="Numeric" ESA_ID="" Value="6" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="k↓1←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="11" />
+    <Result Name="N↓b←" Type="Numeric" ESA_ID="Result.7" Value="465.3377e-3" />
+    <Result Name="N↓c←" Type="Numeric" ESA_ID="Result.6" Value="8.665384" />
+    <Result Name="N↓d←" Type="Numeric" ESA_ID="Result.5" Value="2.639579" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust, ČSN 73 1002" />
+    <Input Name="P1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="P2" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.4" Value="759401.9" />
+    <Result Name="Result0" Type="Numeric" ESA_ID="Result.0" Value="208500" />
+    <Input Name="ScaleX" Type="Numeric" ESA_ID="" Value="45" />
+    <Input Name="ScaleY" Type="Numeric" ESA_ID="" Value="36" />
+    <Result Name="U↓bd←" Type="Numeric" ESA_ID="Result.1" Value="756202.3" />
+    <Result Name="U↓fd←" Type="Numeric" ESA_ID="Result.2" Value="983289.9" />
+    <Result Name="U↓vd←" Type="Numeric" ESA_ID="Result.3" Value="1.739492e6" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="450" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="680000" />
+    <Input Name="γ↓a←" Type="Numeric" ESA_ID="" Value="21000" />
+    <Input Name="γ↓Mc←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="γ↓Mγ←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓r1←" Type="Numeric" ESA_ID="" Value="1.1" />
+    <Input Name="γa" Type="Numeric" ESA_ID="" Value="20440" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.141593" />
+    <Input Name="σw" Type="Numeric" ESA_ID="" Value="108250" />
+    <Input Name="φ↓a←" Type="Numeric" ESA_ID="" Value="10.71429" />
+  </Test>
+  <Test Description="Test 8" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="V↓d←" Value="680000" />
+      <Variable Identifier="L" Value="9" />
+      <Variable Identifier="d" Value="750e-3" />
+      <Variable Identifier="dri" Value="1" />
+      <Variable Identifier="Groundwater" Value="True" />
+      <Variable Identifier="hw" Value="6" />
+      <Variable Identifier="UserScale" Value="450" />
+      <Variable Identifier="DrawGeoStress" Value="True" />
+      <Variable Identifier="DrawGeoProfile" Value="True" />
+      <Variable Identifier="DrawPile" Value="True" />
+      <Variable Identifier="TI" Value="1,5|16|20|30|5║2|19|21,5|25|8║8|18,5|20,5|18|12" />
+    </Dialog>
+    <Input Name="A↓s←" Type="Numeric" ESA_ID="" Value="441.7865e-3" />
+    <Input Name="c↓a←" Type="Numeric" ESA_ID="" Value="6000" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="750e-3" />
+    <Input Name="DrawGeoProfile" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawGeoStress" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawPile" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="dri" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="e" Type="Numeric" ESA_ID="" Value="2.718282" />
+    <Input Name="Groundwater" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="hw" Type="Numeric" ESA_ID="" Value="6" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="k↓1←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="9" />
+    <Result Name="N↓b←" Type="Numeric" ESA_ID="Result.7" Value="760.3598e-3" />
+    <Result Name="N↓c←" Type="Numeric" ESA_ID="Result.6" Value="9.73041" />
+    <Result Name="N↓d←" Type="Numeric" ESA_ID="Result.5" Value="3.220903" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust, ČSN 73 1002" />
+    <Input Name="P1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="P2" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.4" Value="770595.9" />
+    <Result Name="Result0" Type="Numeric" ESA_ID="Result.0" Value="139000" />
+    <Input Name="ScaleX" Type="Numeric" ESA_ID="" Value="45" />
+    <Input Name="ScaleY" Type="Numeric" ESA_ID="" Value="39.13043" />
+    <Result Name="U↓bd←" Type="Numeric" ESA_ID="Result.1" Value="391504.7" />
+    <Result Name="U↓fd←" Type="Numeric" ESA_ID="Result.2" Value="508125.6" />
+    <Result Name="U↓vd←" Type="Numeric" ESA_ID="Result.3" Value="899630.3" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="450" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="680000" />
+    <Input Name="γ↓a←" Type="Numeric" ESA_ID="" Value="20500" />
+    <Input Name="γ↓Mc←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="γ↓Mγ←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓r1←" Type="Numeric" ESA_ID="" Value="1.1" />
+    <Input Name="γa" Type="Numeric" ESA_ID="" Value="19652.17" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.141593" />
+    <Input Name="σw" Type="Numeric" ESA_ID="" Value="108250" />
+    <Input Name="φ↓a←" Type="Numeric" ESA_ID="" Value="12.85714" />
+  </Test>
+  <Test Description="Test 9" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="V↓d←" Value="680000" />
+      <Variable Identifier="L" Value="9" />
+      <Variable Identifier="d" Value="750e-3" />
+      <Variable Identifier="dri" Value="1" />
+      <Variable Identifier="Groundwater" Value="True" />
+      <Variable Identifier="hw" Value="6" />
+      <Variable Identifier="UserScale" Value="450" />
+      <Variable Identifier="DrawGeoStress" Value="True" />
+      <Variable Identifier="DrawGeoProfile" Value="True" />
+      <Variable Identifier="DrawPile" Value="True" />
+      <Variable Identifier="TI" Value="1,5|16|20|8|5║2|19|21,5|25|8║8|18,5|20,5|18|12" />
+    </Dialog>
+    <Input Name="A↓s←" Type="Numeric" ESA_ID="" Value="441.7865e-3" />
+    <Input Name="c↓a←" Type="Numeric" ESA_ID="" Value="6000" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="750e-3" />
+    <Input Name="DrawGeoProfile" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawGeoStress" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawPile" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="dri" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="e" Type="Numeric" ESA_ID="" Value="2.718282" />
+    <Input Name="Groundwater" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="hw" Type="Numeric" ESA_ID="" Value="6" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="k↓1←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="9" />
+    <Result Name="N↓b←" Type="Numeric" ESA_ID="Result.7" Value="760.3598e-3" />
+    <Result Name="N↓c←" Type="Numeric" ESA_ID="Result.6" Value="9.73041" />
+    <Result Name="N↓d←" Type="Numeric" ESA_ID="Result.5" Value="3.220903" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust, ČSN 73 1002" />
+    <Input Name="P1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="P2" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.4" Value="770595.9" />
+    <Result Name="Result0" Type="Numeric" ESA_ID="Result.0" Value="139000" />
+    <Input Name="ScaleX" Type="Numeric" ESA_ID="" Value="45" />
+    <Input Name="ScaleY" Type="Numeric" ESA_ID="" Value="39.13043" />
+    <Result Name="U↓bd←" Type="Numeric" ESA_ID="Result.1" Value="391504.7" />
+    <Result Name="U↓fd←" Type="Numeric" ESA_ID="Result.2" Value="496720.6" />
+    <Result Name="U↓vd←" Type="Numeric" ESA_ID="Result.3" Value="888225.3" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="450" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="680000" />
+    <Input Name="γ↓a←" Type="Numeric" ESA_ID="" Value="20500" />
+    <Input Name="γ↓Mc←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="γ↓Mγ←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓r1←" Type="Numeric" ESA_ID="" Value="1.1" />
+    <Input Name="γa" Type="Numeric" ESA_ID="" Value="19652.17" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.141593" />
+    <Input Name="σw" Type="Numeric" ESA_ID="" Value="108250" />
+    <Input Name="φ↓a←" Type="Numeric" ESA_ID="" Value="12.85714" />
+  </Test>
+  <Test Description="Test 10" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="V↓d←" Value="680000" />
+      <Variable Identifier="L" Value="9" />
+      <Variable Identifier="d" Value="750e-3" />
+      <Variable Identifier="dri" Value="1" />
+      <Variable Identifier="Groundwater" Value="True" />
+      <Variable Identifier="hw" Value="6" />
+      <Variable Identifier="UserScale" Value="450" />
+      <Variable Identifier="DrawGeoStress" Value="True" />
+      <Variable Identifier="DrawGeoProfile" Value="True" />
+      <Variable Identifier="DrawPile" Value="True" />
+      <Variable Identifier="TI" Value="1,5|16|20|8|5║2|19|21,5|25|8║8|18,5|20,5|0|12" />
+    </Dialog>
+    <Input Name="A↓s←" Type="Numeric" ESA_ID="" Value="441.7865e-3" />
+    <Input Name="c↓a←" Type="Numeric" ESA_ID="" Value="6000" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="750e-3" />
+    <Input Name="DrawGeoProfile" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawGeoStress" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawPile" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="dri" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="e" Type="Numeric" ESA_ID="" Value="2.718282" />
+    <Input Name="Groundwater" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="hw" Type="Numeric" ESA_ID="" Value="6" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="k↓1←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="9" />
+    <Result Name="N↓b←" Type="Numeric" ESA_ID="Result.7" Value="0" />
+    <Result Name="N↓c←" Type="Numeric" ESA_ID="Result.6" Value="5.141593" />
+    <Result Name="N↓d←" Type="Numeric" ESA_ID="Result.5" Value="1000e-3" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust, ČSN 73 1002" />
+    <Input Name="P1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="P2" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.4" Value="213889" />
+    <Result Name="Result0" Type="Numeric" ESA_ID="Result.0" Value="139000" />
+    <Input Name="ScaleX" Type="Numeric" ESA_ID="" Value="45" />
+    <Input Name="ScaleY" Type="Numeric" ESA_ID="" Value="39.13043" />
+    <Result Name="U↓bd←" Type="Numeric" ESA_ID="Result.1" Value="108667.3" />
+    <Result Name="U↓fd←" Type="Numeric" ESA_ID="Result.2" Value="164284.4" />
+    <Result Name="U↓vd←" Type="Numeric" ESA_ID="Result.3" Value="272951.7" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="450" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="680000" />
+    <Input Name="γ↓a←" Type="Numeric" ESA_ID="" Value="20500" />
+    <Input Name="γ↓Mc←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="γ↓Mγ←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓r1←" Type="Numeric" ESA_ID="" Value="1.1" />
+    <Input Name="γa" Type="Numeric" ESA_ID="" Value="19652.17" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.141593" />
+    <Input Name="σw" Type="Numeric" ESA_ID="" Value="108250" />
+    <Input Name="φ↓a←" Type="Numeric" ESA_ID="" Value="0" />
+  </Test>
+  <Test Description="Test 11" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="V↓d←" Value="680000" />
+      <Variable Identifier="L" Value="3.5" />
+      <Variable Identifier="d" Value="750e-3" />
+      <Variable Identifier="dri" Value="1" />
+      <Variable Identifier="Groundwater" Value="True" />
+      <Variable Identifier="hw" Value="6" />
+      <Variable Identifier="UserScale" Value="450" />
+      <Variable Identifier="DrawGeoStress" Value="True" />
+      <Variable Identifier="DrawGeoProfile" Value="True" />
+      <Variable Identifier="DrawPile" Value="True" />
+      <Variable Identifier="TI" Value="1,5|16|20|8|5║2|19|21,5|25|8║8|18,5|20,5|15|12" />
+    </Dialog>
+    <Input Name="A↓s←" Type="Numeric" ESA_ID="" Value="441.7865e-3" />
+    <Input Name="c↓a←" Type="Numeric" ESA_ID="" Value="6000" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="750e-3" />
+    <Input Name="DrawGeoProfile" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawGeoStress" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawPile" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="dri" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="e" Type="Numeric" ESA_ID="" Value="2.718282" />
+    <Input Name="Groundwater" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="hw" Type="Numeric" ESA_ID="" Value="6" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="k↓1←" Type="Numeric" ESA_ID="" Value="1.05" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="3.5" />
+    <Result Name="N↓b←" Type="Numeric" ESA_ID="Result.7" Value="465.3377e-3" />
+    <Result Name="N↓c←" Type="Numeric" ESA_ID="Result.6" Value="8.665384" />
+    <Result Name="N↓d←" Type="Numeric" ESA_ID="Result.5" Value="2.639579" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust, ČSN 73 1002" />
+    <Input Name="P1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="P2" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.4" Value="280205.6" />
+    <Result Name="Result0" Type="Numeric" ESA_ID="Result.0" Value="139000" />
+    <Input Name="ScaleX" Type="Numeric" ESA_ID="" Value="45" />
+    <Input Name="ScaleY" Type="Numeric" ESA_ID="" Value="39.13043" />
+    <Result Name="U↓bd←" Type="Numeric" ESA_ID="Result.1" Value="129980.6" />
+    <Result Name="U↓fd←" Type="Numeric" ESA_ID="Result.2" Value="86529.98" />
+    <Result Name="U↓vd←" Type="Numeric" ESA_ID="Result.3" Value="216510.6" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="450" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="680000" />
+    <Input Name="γ↓a←" Type="Numeric" ESA_ID="" Value="20500" />
+    <Input Name="γ↓Mc←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="γ↓Mγ←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓r1←" Type="Numeric" ESA_ID="" Value="1.1" />
+    <Input Name="γa" Type="Numeric" ESA_ID="" Value="19652.17" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.141593" />
+    <Input Name="σw" Type="Numeric" ESA_ID="" Value="108250" />
+    <Input Name="φ↓a←" Type="Numeric" ESA_ID="" Value="10.71429" />
+  </Test>
+  <Test Description="Test 12" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="V↓d←" Value="680000" />
+      <Variable Identifier="L" Value="3.5" />
+      <Variable Identifier="d" Value="750e-3" />
+      <Variable Identifier="dri" Value="1" />
+      <Variable Identifier="Groundwater" Value="True" />
+      <Variable Identifier="hw" Value="6" />
+      <Variable Identifier="UserScale" Value="450" />
+      <Variable Identifier="DrawGeoStress" Value="True" />
+      <Variable Identifier="DrawGeoProfile" Value="True" />
+      <Variable Identifier="DrawPile" Value="True" />
+      <Variable Identifier="TI" Value="1,5|16|20|8|5║2|19|21,5|25|8║8|18,5|20,5|15|12║6|19|21,5|15|10" />
+    </Dialog>
+    <Input Name="A↓s←" Type="Numeric" ESA_ID="" Value="441.7865e-3" />
+    <Input Name="c↓a←" Type="Numeric" ESA_ID="" Value="6000" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="750e-3" />
+    <Input Name="DrawGeoProfile" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawGeoStress" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawPile" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="dri" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="e" Type="Numeric" ESA_ID="" Value="2.718282" />
+    <Input Name="Groundwater" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="hw" Type="Numeric" ESA_ID="" Value="6" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="k↓1←" Type="Numeric" ESA_ID="" Value="1.05" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="3.5" />
+    <Result Name="N↓b←" Type="Numeric" ESA_ID="Result.7" Value="465.3377e-3" />
+    <Result Name="N↓c←" Type="Numeric" ESA_ID="Result.6" Value="8.665384" />
+    <Result Name="N↓d←" Type="Numeric" ESA_ID="Result.5" Value="2.639579" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust, ČSN 73 1002" />
+    <Input Name="P1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="P2" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.4" Value="287146.7" />
+    <Result Name="Result0" Type="Numeric" ESA_ID="Result.0" Value="285500" />
+    <Input Name="ScaleX" Type="Numeric" ESA_ID="" Value="45" />
+    <Input Name="ScaleY" Type="Numeric" ESA_ID="" Value="25.71429" />
+    <Result Name="U↓bd←" Type="Numeric" ESA_ID="Result.1" Value="133200.4" />
+    <Result Name="U↓fd←" Type="Numeric" ESA_ID="Result.2" Value="86529.98" />
+    <Result Name="U↓vd←" Type="Numeric" ESA_ID="Result.3" Value="219730.4" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="450" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="680000" />
+    <Input Name="γ↓a←" Type="Numeric" ESA_ID="" Value="20500" />
+    <Input Name="γ↓Mc←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="γ↓Mγ←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓r1←" Type="Numeric" ESA_ID="" Value="1.1" />
+    <Input Name="γa" Type="Numeric" ESA_ID="" Value="20285.71" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.141593" />
+    <Input Name="σw" Type="Numeric" ESA_ID="" Value="108250" />
+    <Input Name="φ↓a←" Type="Numeric" ESA_ID="" Value="10.71429" />
+  </Test>
+</Root>

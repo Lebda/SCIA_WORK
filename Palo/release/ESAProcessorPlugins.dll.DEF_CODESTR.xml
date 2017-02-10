@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="15"><StringCode SourceType="DLLRC:"><StringId>@{insertableitemgroup.2edocumenttemplatesuser}</StringId>
+		<SourceDll>ESAProcessorPlugins.2edll</SourceDll>
+		<ResourceId>1008</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{x64documentadaptor.2ebuildheaderfailed}</StringId>
+		<SourceDll>ESAProcessorPlugins.2edll</SourceDll>
+		<ResourceId>117</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2etable.2eselectionempty}</StringId>
+		<SourceDll>ESAProcessorPlugins.2edll</SourceDll>
+		<ResourceId>116</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{insertableitemgroup.2epreviewdocumenttemplatesuser}</StringId>
+		<SourceDll>ESAProcessorPlugins.2edll</SourceDll>
+		<ResourceId>1012</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{cx64documentadaptor.2eoverflow}</StringId>
+		<SourceDll>ESAProcessorPlugins.2edll</SourceDll>
+		<ResourceId>115</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xep_resultpicturegenerator.2enoresultassigned}</StringId>
+		<SourceDll>ESAProcessorPlugins.2edll</SourceDll>
+		<ResourceId>1014</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2epicture.2egalerypicturenotexist}</StringId>
+		<SourceDll>ESAProcessorPlugins.2edll</SourceDll>
+		<ResourceId>1013</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{insertableitemgroup.2epicturesgalery}</StringId>
+		<SourceDll>ESAProcessorPlugins.2edll</SourceDll>
+		<ResourceId>1003</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2etable.2eempty}</StringId>
+		<SourceDll>ESAProcessorPlugins.2edll</SourceDll>
+		<ResourceId>101</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{insertableitemgroup.2edocumenttemplatessystem}</StringId>
+		<SourceDll>ESAProcessorPlugins.2edll</SourceDll>
+		<ResourceId>1007</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2etable.2ebreaked}</StringId>
+		<SourceDll>ESAProcessorPlugins.2edll</SourceDll>
+		<ResourceId>102</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{insertableitemgroup.2edocumenttemplates}</StringId>
+		<SourceDll>ESAProcessorPlugins.2edll</SourceDll>
+		<ResourceId>1006</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2etable.2enotaccesibledselement}</StringId>
+		<SourceDll>ESAProcessorPlugins.2edll</SourceDll>
+		<ResourceId>1010</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{insertableitemgroup.2einbox}</StringId>
+		<SourceDll>ESAProcessorPlugins.2edll</SourceDll>
+		<ResourceId>1004</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{insertableitemgroup.2epreviewdocumenttemplatessystem}</StringId>
+		<SourceDll>ESAProcessorPlugins.2edll</SourceDll>
+		<ResourceId>1011</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

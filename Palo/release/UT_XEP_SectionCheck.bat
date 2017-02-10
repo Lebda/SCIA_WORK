@@ -1,0 +1,1 @@
+nunit-console-x86.exe /noshadow /xml:UT_XEP_SectionCheck.xml UT_XEP_SectionCheck.dll /out:TestResult_UT_XEP_SectionCheck.txt /err:StdErr_UT_XEP_SectionCheck.txt

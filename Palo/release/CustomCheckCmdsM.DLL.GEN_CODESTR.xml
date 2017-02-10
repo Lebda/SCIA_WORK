@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="2"><StringCode SourceType="DLLRC:"><StringId>@{customcheckcmdsm.2eids_customc_check_document_item}</StringId>
+		<SourceDll>CustomCheckCmdsM.2eDLL</SourceDll>
+		<ResourceId>102</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{customcheckcmdsm.2eids_customc_check_document_tree}</StringId>
+		<SourceDll>CustomCheckCmdsM.2eDLL</SourceDll>
+		<ResourceId>101</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

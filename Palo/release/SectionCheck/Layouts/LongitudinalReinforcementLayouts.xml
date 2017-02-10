@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LongitudinalReinforcementLayoutsDataCache Version="1.0.0.0">
+  <Layouts>
+    <!--RECTANGLE-->
+    <Layout Name="LReinf_BeamRECT_BT" LayoutType="eLongitudinal" CrossSectionType="eRectangle" MemberType="eBeam">
+      <Icons>
+        <Icon Path="Rect_layouts\LReinf_BeamRect_BT.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eBottom" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eTop" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+      </Layers>
+    </Layout>
+    <Layout Name="LReinf_BeamRECT_BsT" LayoutType="eLongitudinal" CrossSectionType="eRectangle" MemberType="eBeam">
+      <Icons>
+        <Icon Path="Rect_layouts\LReinf_BeamRect_BsT.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eBottom" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eSide" NumberOfBars="1" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L3" Position="eTop" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+      </Layers>
+    </Layout>
+    <Layout Name="LReinf_BeamRECT_BBt" LayoutType="eLongitudinal" CrossSectionType="eRectangle" MemberType="eBeam">
+      <Icons>
+        <Icon Path="Rect_layouts\LReinf_BeamRect_BBt.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eBottom" NumberOfBars="3" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eBottom" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.055" Detailing="False" Material="B 500B" FirstLayer="False"/>
+        <Layer ID="L3" Position="eTop" NumberOfBars="2" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+      </Layers>
+    </Layout>
+    <Layout Name="LReinf_BeamRECT_bTT" LayoutType="eLongitudinal" CrossSectionType="eRectangle" MemberType="eBeam">
+      <Icons>
+        <Icon Path="Rect_layouts\LReinf_BeamRect_bTT.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eBottom" NumberOfBars="2" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eTop" NumberOfBars="3" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L3" Position="eTop" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.055" Detailing="False" Material="B 500B" FirstLayer="False"/>
+      </Layers>
+    </Layout>
+    <Layout Name="LReinf_BeamRECT_BBst" LayoutType="eLongitudinal" CrossSectionType="eRectangle" MemberType="eBeam">
+      <Icons>
+        <Icon Path="Rect_layouts\LReinf_BeamRect_BBst.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eBottom" NumberOfBars="3" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eBottom" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.055" Detailing="False" Material="B 500B" FirstLayer="False"/>
+        <Layer ID="L3" Position="eSide" NumberOfBars="1" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L4" Position="eTop" NumberOfBars="2" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+      </Layers>
+    </Layout>
+    <Layout Name="LReinf_BeamRECT_bsTT" LayoutType="eLongitudinal" CrossSectionType="eRectangle" MemberType="eBeam">
+      <Icons>
+        <Icon Path="Rect_layouts\LReinf_BeamRect_bsTT.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eBottom" NumberOfBars="2" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eSide" NumberOfBars="1" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L3" Position="eTop" NumberOfBars="3" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L4" Position="eTop" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.055" Detailing="False" Material="B 500B" FirstLayer="False"/>
+      </Layers>
+    </Layout>
+    <Layout Name="LReinf_Bslab_RECT_B" LayoutType="eLongitudinal" CrossSectionType="eRectangle" MemberType="eBeamAsSlab">
+      <Icons>
+        <Icon MemberType="eBeamAsSlab" CssType="eRectangle" Path="Rect_layouts\LReinf_Bslab_RECT_B.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eBottom" NumberOfBars="5" BarDiameter="0.012" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+      </Layers>
+    </Layout>
+    <Layout Name="LReinf_Bslab_RECT_T" LayoutType="eLongitudinal" CrossSectionType="eRectangle" MemberType="eBeamAsSlab">
+      <Icons>
+        <Icon MemberType="eBeamAsSlab" CssType="eRectangle" Path="Rect_layouts\LReinf_Bslab_RECT_T.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eTop" NumberOfBars="5" BarDiameter="0.012" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+      </Layers>
+    </Layout>
+    <Layout Name="LReinf_Bslab_RECT_BT" LayoutType="eLongitudinal" CrossSectionType="eRectangle" MemberType="eBeamAsSlab">
+      <Icons>
+        <Icon MemberType="eBeamAsSlab" CssType="eRectangle" Path="Rect_layouts\LReinf_Bslab_RECT_BT.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eBottom" NumberOfBars="5" BarDiameter="0.012" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eTop" NumberOfBars="5" BarDiameter="0.012" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+      </Layers>
+    </Layout>
+    <Layout Name="LReinf_ColumnRECT_BT" LayoutType="eLongitudinal" CrossSectionType="eRectangle" MemberType="eColumn">
+      <Icons>
+        <Icon MemberType="eColumn" CssType="eRectangle" Path="Rect_layouts\LReinf_ColumnRECT_BT.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eBottom" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eTop" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+      </Layers>
+    </Layout>
+    <Layout Name="LReinf_ColumnRECT_BST" LayoutType="eLongitudinal" CrossSectionType="eRectangle" MemberType="eColumn">
+      <Icons>
+        <Icon MemberType="eColumn" CssType="eRectangle" Path="Rect_layouts\LReinf_ColumnRECT_BST.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eBottom" NumberOfBars="3" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eTop" NumberOfBars="3" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L3" Position="eSide" NumberOfBars="1" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+      </Layers>
+    </Layout>
+    <!--CIRCLE-->
+    <Layout Name="LReinf_ColumnCIRCLE_P" LayoutType="eLongitudinal" CrossSectionType="eCircle" MemberType="eColumn">
+      <Icons>
+        <Icon MemberType="eColumn" CssType="eCircle" Path="Circle_layouts\LReinf_ColumnCIRCLE_P.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eNone" NumberOfBars="6" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+      </Layers>
+    </Layout>
+    <!--T SHAPE -->
+    <Layout Name="LReinf_RibT_BT" LayoutType="eLongitudinal" CrossSectionType="eTShape" MemberType="eRib" CrossSectionInverted="true">
+      <Icons>
+        <Icon MemberType="eRib" CssType="eTShape" Orientation="eBottom" Path="LReinf_RibT_revert_01.png" />
+        <Icon MemberType="eRib" CssType="eTShape" Orientation="eTop" Path="LReinf_RibT_01.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eBottom" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eTop" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+      </Layers>
+    </Layout>
+    <Layout Name="LReinf_RibT_BsT" LayoutType="eLongitudinal" CrossSectionType="eTShape" MemberType="eRib" CrossSectionInverted="true">
+      <Icons>
+        <Icon MemberType="eRib" CssType="eTShape" Orientation="eTop" Path="LReinf_RibT_02.png" />
+        <Icon MemberType="eRib" CssType="eTShape" Orientation="eBottom" Path="LReinf_RibT_revert_02.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eTop" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eSide" NumberOfBars="1" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L3" Position="eBottom" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+      </Layers>
+    </Layout>
+    <Layout Name="LReinf_RibT_BBt" LayoutType="eLongitudinal" CrossSectionType="eTShape" MemberType="eRib" CrossSectionInverted="true">
+      <Icons>
+        <Icon MemberType="eRib" CssType="eTShape" Orientation="eTop" Path="LReinf_RibT_06.png" />
+        <Icon MemberType="eRib" CssType="eTShape" Orientation="eBottom" Path="LReinf_RibT_revert_06.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eBottom" NumberOfBars="3" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eBottom" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.04" Detailing="False" Material="B 500B" FirstLayer="False"/>
+        <Layer ID="L3" Position="eTop" NumberOfBars="2" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+      </Layers>
+    </Layout>
+    <Layout Name="LReinf_RibT_bTT" LayoutType="eLongitudinal" CrossSectionType="eTShape" MemberType="eRib" CrossSectionInverted="true">
+      <Icons>
+        <Icon MemberType="eRib" CssType="eTShape" Orientation="eTop" Path="LReinf_RibT_07.png" />
+        <Icon MemberType="eRib" CssType="eTShape" Orientation="eBottom" Path="LReinf_RibT_revert_07.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eBottom" NumberOfBars="2" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eTop" NumberOfBars="3" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L3" Position="eTop" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.04" Detailing="False" Material="B 500B" FirstLayer="False"/>
+      </Layers>
+    </Layout>
+    <Layout Name="LReinf_RibT_BBst" LayoutType="eLongitudinal" CrossSectionType="eTShape" MemberType="eRib" CrossSectionInverted="true">
+      <Icons>
+        <Icon MemberType="eRib" CssType="eTShape" Orientation="eTop" Path="LReinf_RibT_08.png" />
+        <Icon MemberType="eRib" CssType="eTShape" Orientation="eBottom" Path="LReinf_RibT_revert_08.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eBottom" NumberOfBars="3" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eBottom" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.04" Detailing="False" Material="B 500B" FirstLayer="False"/>
+        <Layer ID="L3" Position="eTop" NumberOfBars="2" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L4" Position="eSide" NumberOfBars="1" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+      </Layers>
+    </Layout>
+    <Layout Name="LReinf_RibT_bsTT" LayoutType="eLongitudinal" CrossSectionType="eTShape" MemberType="eRib" CrossSectionInverted="true">
+      <Icons>
+        <Icon MemberType="eRib" CssType="eTShape" Orientation="eTop" Path="LReinf_RibT_09.png" />
+        <Icon MemberType="eRib" CssType="eTShape" Orientation="eBottom" Path="LReinf_RibT_revert_09.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eBottom" NumberOfBars="2" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eTop" NumberOfBars="3" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L3" Position="eTop" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.04" Detailing="False" Material="B 500B" FirstLayer="False"/>
+        <Layer ID="L4" Position="eSide" NumberOfBars="1" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+      </Layers>
+    </Layout>
+    <!--L SHAPE -->
+    <Layout Name="LReinf_RibL_BT" LayoutType="eLongitudinal" CrossSectionType="eLShape" MemberType="eRib" >
+      <Icons>
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eBottomLeft" Path="L_layouts\LReinf_RibL_bottom_left_01.png" />
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eBottomRight" Path="L_layouts\LReinf_RibL_bottom_right_01.png" />
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eTopLeft" Path="L_layouts\LReinf_RibL_top_left_01.png" />
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eTopRight" Path="L_layouts\LReinf_RibL_top_right_01.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eBottom" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eTop" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+      </Layers>
+    </Layout>
+    <Layout Name="LReinf_RibL_BsT" LayoutType="eLongitudinal" CrossSectionType="eLShape" MemberType="eRib" >
+      <Icons>
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eBottomLeft" Path="L_layouts\LReinf_RibL_bottom_left_02.png" />
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eBottomRight" Path="L_layouts\LReinf_RibL_bottom_right_02.png" />
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eTopLeft" Path="L_layouts\LReinf_RibL_top_left_02.png" />
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eTopRight" Path="L_layouts\LReinf_RibL_top_right_02.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eTop" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eSide" NumberOfBars="1" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L3" Position="eBottom" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+      </Layers>
+    </Layout>
+    <Layout Name="LReinf_RibL_BBt" LayoutType="eLongitudinal" CrossSectionType="eLShape" MemberType="eRib" >
+      <Icons>
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eBottomLeft" Path="L_layouts\LReinf_RibL_bottom_left_06.png" />
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eBottomRight" Path="L_layouts\LReinf_RibL_bottom_right_06.png" />
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eTopLeft" Path="L_layouts\LReinf_RibL_top_left_06.png" />
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eTopRight" Path="L_layouts\LReinf_RibL_top_right_06.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eTop" NumberOfBars="2" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eBottom" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.04" Detailing="False" Material="B 500B" FirstLayer="False"/>
+        <Layer ID="L3" Position="eBottom" NumberOfBars="3" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+      </Layers>
+    </Layout>
+    <Layout Name="LReinf_RibL_bTT" LayoutType="eLongitudinal" CrossSectionType="eLShape" MemberType="eRib" >
+      <Icons>
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eBottomLeft" Path="L_layouts\LReinf_RibL_bottom_left_07.png" />
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eBottomRight" Path="L_layouts\LReinf_RibL_bottom_right_07.png" />
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eTopLeft" Path="L_layouts\LReinf_RibL_top_left_07.png" />
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eTopRight" Path="L_layouts\LReinf_RibL_top_right_07.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eTop" NumberOfBars="3" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eTop" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.04" Detailing="False" Material="B 500B" FirstLayer="False"/>
+        <Layer ID="L3" Position="eBottom" NumberOfBars="2" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+      </Layers>
+    </Layout>
+    <Layout Name="LReinf_RibL_BBst" LayoutType="eLongitudinal" CrossSectionType="eLShape" MemberType="eRib" >
+      <Icons>
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eBottomLeft" Path="L_layouts\LReinf_RibL_bottom_left_08.png" />
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eBottomRight" Path="L_layouts\LReinf_RibL_bottom_right_08.png" />
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eTopLeft" Path="L_layouts\LReinf_RibL_top_left_08.png" />
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eTopRight" Path="L_layouts\LReinf_RibL_top_right_08.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eTop" NumberOfBars="2" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eSide" NumberOfBars="1" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L3" Position="eBottom" NumberOfBars="3" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L4" Position="eBottom" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.04" Detailing="False" Material="B 500B" FirstLayer="False"/>
+      </Layers>
+    </Layout>
+    <Layout Name="LReinf_RibL_bsTT" LayoutType="eLongitudinal" CrossSectionType="eLShape" MemberType="eRib" >
+      <Icons>
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eBottomLeft" Path="L_layouts\LReinf_RibL_bottom_left_09.png" />
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eBottomRight" Path="L_layouts\LReinf_RibL_bottom_right_09.png" />
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eTopLeft" Path="L_layouts\LReinf_RibL_top_left_09.png" />
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eTopRight" Path="L_layouts\LReinf_RibL_top_right_09.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eTop" NumberOfBars="3" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eTop" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.04" Detailing="False" Material="B 500B" FirstLayer="False"/>
+        <Layer ID="L3" Position="eSide" NumberOfBars="1" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L4" Position="eBottom" NumberOfBars="2" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+      </Layers>
+    </Layout>
+    <!--Add new layout here-->
+
+  </Layouts>
+</LongitudinalReinforcementLayoutsDataCache>

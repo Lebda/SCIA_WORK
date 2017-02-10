@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<section>
+		<Id>1</Id>
+		<Name>IPE 100 A</Name>
+		<H>98</H>
+		<B>55</B>
+		<tw>3.6</tw>
+		<tf>4.7</tf>
+		<r>7</r>
+		<SCIAName>IPE100A</SCIAName>
+	</section>
+	<section>
+		<Id>2</Id>
+		<Name>IPE 100</Name>
+		<H>100</H>
+		<B>55</B>
+		<tw>4.1</tw>
+		<tf>5.7</tf>
+		<r>7</r>
+		<SCIAName>IPE100</SCIAName>
+	</section>
+	<section>
+		<Id>3</Id>
+		<Name>IPE 120 A</Name>
+		<H>117.6</H>
+		<B>64</B>
+		<tw>3.8</tw>
+		<tf>5.1</tf>
+		<r>7</r>
+		<SCIAName>IPE120A</SCIAName>
+	</section>
+	<section>
+		<Id>4</Id>
+		<Name>IPE 120</Name>
+		<H>120</H>
+		<B>64</B>
+		<tw>4.4</tw>
+		<tf>6.3</tf>
+		<r>7</r>
+		<SCIAName>IPE120</SCIAName>
+	</section>
+	<section>
+		<Id>5</Id>
+		<Name>IPE 140 A</Name>
+		<H>137.4</H>
+		<B>73</B>
+		<tw>3.8</tw>
+		<tf>5.6</tf>
+		<r>7</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>6</Id>
+		<Name>IPE 140</Name>
+		<H>140</H>
+		<B>73</B>
+		<tw>4.7</tw>
+		<tf>6.9</tf>
+		<r>7</r>
+		<SCIAName>IPE140</SCIAName>
+	</section>
+	<section>
+		<Id>7</Id>
+		<Name>IPE 140 R</Name>
+		<H>142</H>
+		<B>72</B>
+		<tw>5.3</tw>
+		<tf>7.8</tf>
+		<r>7</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>8</Id>
+		<Name>IPE 160 A</Name>
+		<H>157</H>
+		<B>82</B>
+		<tw>4</tw>
+		<tf>5.9</tf>
+		<r>9</r>
+		<SCIAName>IPE160A</SCIAName>
+	</section>
+	<section>
+		<Id>9</Id>
+		<Name>IPE 160</Name>
+		<H>160</H>
+		<B>82</B>
+		<tw>5</tw>
+		<tf>7.4</tf>
+		<r>9</r>
+		<SCIAName>IPE160</SCIAName>
+	</section>
+	<section>
+		<Id>10</Id>
+		<Name>IPE 160 R</Name>
+		<H>162</H>
+		<B>81</B>
+		<tw>5.6</tw>
+		<tf>8.5</tf>
+		<r>9</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>11</Id>
+		<Name>IPE 180 A</Name>
+		<H>177</H>
+		<B>91</B>
+		<tw>4.3</tw>
+		<tf>6.5</tf>
+		<r>9</r>
+		<SCIAName>IPE180A</SCIAName>
+	</section>
+	<section>
+		<Id>12</Id>
+		<Name>IPE 180</Name>
+		<H>180</H>
+		<B>91</B>
+		<tw>5.3</tw>
+		<tf>8</tf>
+		<r>9</r>
+		<SCIAName>IPE180</SCIAName>
+	</section>
+	<section>
+		<Id>13</Id>
+		<Name>IPE 180 O</Name>
+		<H>182</H>
+		<B>92</B>
+		<tw>6</tw>
+		<tf>9</tf>
+		<r>9</r>
+		<SCIAName>IPE180O</SCIAName>
+	</section>
+	<section>
+		<Id>14</Id>
+		<Name>IPE 180 R</Name>
+		<H>183</H>
+		<B>89</B>
+		<tw>6.4</tw>
+		<tf>9.5</tf>
+		<r>9</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>15</Id>
+		<Name>IPE 200 A</Name>
+		<H>197</H>
+		<B>100</B>
+		<tw>4.5</tw>
+		<tf>7</tf>
+		<r>12</r>
+		<SCIAName>IPE200A</SCIAName>
+	</section>
+	<section>
+		<Id>16</Id>
+		<Name>IPE 200</Name>
+		<H>200</H>
+		<B>100</B>
+		<tw>5.6</tw>
+		<tf>8.5</tf>
+		<r>12</r>
+		<SCIAName>IPE200</SCIAName>
+	</section>
+	<section>
+		<Id>17</Id>
+		<Name>IPE 200 O</Name>
+		<H>202</H>
+		<B>102</B>
+		<tw>6.2</tw>
+		<tf>9.5</tf>
+		<r>12</r>
+		<SCIAName>IPE200O</SCIAName>
+	</section>
+	<section>
+		<Id>18</Id>
+		<Name>IPE 200 R</Name>
+		<H>204</H>
+		<B>98</B>
+		<tw>6.6</tw>
+		<tf>10.5</tf>
+		<r>12</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>19</Id>
+		<Name>IPE 220 A</Name>
+		<H>217</H>
+		<B>110</B>
+		<tw>5</tw>
+		<tf>7.7</tf>
+		<r>12</r>
+		<SCIAName>IPE220A</SCIAName>
+	</section>
+	<section>
+		<Id>20</Id>
+		<Name>IPE 220</Name>
+		<H>220</H>
+		<B>110</B>
+		<tw>5.9</tw>
+		<tf>9.2</tf>
+		<r>12</r>
+		<SCIAName>IPE220</SCIAName>
+	</section>
+	<section>
+		<Id>21</Id>
+		<Name>IPE 220 O</Name>
+		<H>222</H>
+		<B>112</B>
+		<tw>6.6</tw>
+		<tf>10.2</tf>
+		<r>12</r>
+		<SCIAName>IPE220O</SCIAName>
+	</section>
+	<section>
+		<Id>22</Id>
+		<Name>IPE 220 R</Name>
+		<H>225</H>
+		<B>108</B>
+		<tw>6.7</tw>
+		<tf>11.8</tf>
+		<r>12</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>23</Id>
+		<Name>IPE 240 A</Name>
+		<H>237</H>
+		<B>120</B>
+		<tw>5.2</tw>
+		<tf>8.3</tf>
+		<r>15</r>
+		<SCIAName>IPE240A</SCIAName>
+	</section>
+	<section>
+		<Id>24</Id>
+		<Name>IPE 240</Name>
+		<H>240</H>
+		<B>120</B>
+		<tw>6.2</tw>
+		<tf>9.8</tf>
+		<r>15</r>
+		<SCIAName>IPE240</SCIAName>
+	</section>
+	<section>
+		<Id>25</Id>
+		<Name>IPE 240 O</Name>
+		<H>242</H>
+		<B>122</B>
+		<tw>7</tw>
+		<tf>10.8</tf>
+		<r>15</r>
+		<SCIAName>IPE240O</SCIAName>
+	</section>
+	<section>
+		<Id>26</Id>
+		<Name>IPE 240 R</Name>
+		<H>245</H>
+		<B>118</B>
+		<tw>7.5</tw>
+		<tf>12.3</tf>
+		<r>15</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>27</Id>
+		<Name>IPE 270 A</Name>
+		<H>267</H>
+		<B>135</B>
+		<tw>5.5</tw>
+		<tf>8.7</tf>
+		<r>15</r>
+		<SCIAName>IPE270A</SCIAName>
+	</section>
+	<section>
+		<Id>28</Id>
+		<Name>IPE 270</Name>
+		<H>270</H>
+		<B>135</B>
+		<tw>6.6</tw>
+		<tf>10.2</tf>
+		<r>15</r>
+		<SCIAName>IPE270</SCIAName>
+	</section>
+	<section>
+		<Id>29</Id>
+		<Name>IPE 270 O</Name>
+		<H>274</H>
+		<B>136</B>
+		<tw>7.5</tw>
+		<tf>12.2</tf>
+		<r>15</r>
+		<SCIAName>IPE270O</SCIAName>
+	</section>
+	<section>
+		<Id>30</Id>
+		<Name>IPE 270 R</Name>
+		<H>276</H>
+		<B>133</B>
+		<tw>7.7</tw>
+		<tf>13.1</tf>
+		<r>15</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>31</Id>
+		<Name>IPE 300 A</Name>
+		<H>297</H>
+		<B>150</B>
+		<tw>6.1</tw>
+		<tf>9.2</tf>
+		<r>15</r>
+		<SCIAName>IPE300A</SCIAName>
+	</section>
+	<section>
+		<Id>32</Id>
+		<Name>IPE 300</Name>
+		<H>300</H>
+		<B>150</B>
+		<tw>7.1</tw>
+		<tf>10.7</tf>
+		<r>15</r>
+		<SCIAName>IPE300</SCIAName>
+	</section>
+	<section>
+		<Id>33</Id>
+		<Name>IPE 300O</Name>
+		<H>304</H>
+		<B>152</B>
+		<tw>8</tw>
+		<tf>12.7</tf>
+		<r>15</r>
+		<SCIAName>IPE300O</SCIAName>
+	</section>
+	<section>
+		<Id>34</Id>
+		<Name>IPE 300 R</Name>
+		<H>306</H>
+		<B>147</B>
+		<tw>8.5</tw>
+		<tf>13.7</tf>
+		<r>15</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>35</Id>
+		<Name>IPE 330 A</Name>
+		<H>327</H>
+		<B>160</B>
+		<tw>6.5</tw>
+		<tf>10</tf>
+		<r>18</r>
+		<SCIAName>IPE330A</SCIAName>
+	</section>
+	<section>
+		<Id>36</Id>
+		<Name>IPE 330</Name>
+		<H>330</H>
+		<B>160</B>
+		<tw>7.5</tw>
+		<tf>11.5</tf>
+		<r>18</r>
+		<SCIAName>IPE330</SCIAName>
+	</section>
+	<section>
+		<Id>37</Id>
+		<Name>IPE 330 O</Name>
+		<H>334</H>
+		<B>162</B>
+		<tw>8.5</tw>
+		<tf>13.5</tf>
+		<r>18</r>
+		<SCIAName>IPE330O</SCIAName>
+	</section>
+	<section>
+		<Id>38</Id>
+		<Name>IPE 330 R</Name>
+		<H>336</H>
+		<B>158</B>
+		<tw>9.2</tw>
+		<tf>14.5</tf>
+		<r>18</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>39</Id>
+		<Name>IPE 360 A</Name>
+		<H>357.6</H>
+		<B>170</B>
+		<tw>6.6</tw>
+		<tf>11.5</tf>
+		<r>18</r>
+		<SCIAName>IPE360A</SCIAName>
+	</section>
+	<section>
+		<Id>40</Id>
+		<Name>IPE 360</Name>
+		<H>360</H>
+		<B>170</B>
+		<tw>8</tw>
+		<tf>12.7</tf>
+		<r>18</r>
+		<SCIAName>IPE360</SCIAName>
+	</section>
+	<section>
+		<Id>41</Id>
+		<Name>IPE 360 O</Name>
+		<H>364</H>
+		<B>172</B>
+		<tw>9.2</tw>
+		<tf>14.7</tf>
+		<r>18</r>
+		<SCIAName>IPE360O</SCIAName>
+	</section>
+	<section>
+		<Id>42</Id>
+		<Name>IPE 360 R</Name>
+		<H>366</H>
+		<B>168</B>
+		<tw>9.9</tw>
+		<tf>16</tf>
+		<r>18</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>43</Id>
+		<Name>IPE 400 A</Name>
+		<H>397</H>
+		<B>180</B>
+		<tw>7</tw>
+		<tf>12</tf>
+		<r>21</r>
+		<SCIAName>IPE400A</SCIAName>
+	</section>
+	<section>
+		<Id>44</Id>
+		<Name>IPE 400</Name>
+		<H>400</H>
+		<B>180</B>
+		<tw>8.6</tw>
+		<tf>13.5</tf>
+		<r>21</r>
+		<SCIAName>IPE400</SCIAName>
+	</section>
+	<section>
+		<Id>45</Id>
+		<Name>IPE 400 O</Name>
+		<H>404</H>
+		<B>182</B>
+		<tw>9.7</tw>
+		<tf>15.5</tf>
+		<r>21</r>
+		<SCIAName>IPE400O</SCIAName>
+	</section>
+	<section>
+		<Id>46</Id>
+		<Name>IPE 400 R</Name>
+		<H>407</H>
+		<B>178</B>
+		<tw>10.6</tw>
+		<tf>17</tf>
+		<r>21</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>47</Id>
+		<Name>IPE 400 V</Name>
+		<H>408</H>
+		<B>182</B>
+		<tw>10.6</tw>
+		<tf>17.5</tf>
+		<r>21</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>48</Id>
+		<Name>IPE 450 A</Name>
+		<H>447</H>
+		<B>190</B>
+		<tw>7.6</tw>
+		<tf>13.1</tf>
+		<r>21</r>
+		<SCIAName>IPE450A</SCIAName>
+	</section>
+	<section>
+		<Id>49</Id>
+		<Name>IPE 450</Name>
+		<H>450</H>
+		<B>190</B>
+		<tw>9.4</tw>
+		<tf>14.6</tf>
+		<r>21</r>
+		<SCIAName>IPE450</SCIAName>
+	</section>
+	<section>
+		<Id>50</Id>
+		<Name>IPE 450 O</Name>
+		<H>456</H>
+		<B>192</B>
+		<tw>11</tw>
+		<tf>17.6</tf>
+		<r>21</r>
+		<SCIAName>IPE450O</SCIAName>
+	</section>
+	<section>
+		<Id>51</Id>
+		<Name>IPE 450 R</Name>
+		<H>458</H>
+		<B>188</B>
+		<tw>11.3</tw>
+		<tf>18.6</tf>
+		<r>21</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>52</Id>
+		<Name>IPE 450 V</Name>
+		<H>460</H>
+		<B>194</B>
+		<tw>12.4</tw>
+		<tf>19.6</tf>
+		<r>21</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>53</Id>
+		<Name>IPE 500 A</Name>
+		<H>497</H>
+		<B>200</B>
+		<tw>8.4</tw>
+		<tf>14.5</tf>
+		<r>21</r>
+		<SCIAName>IPE500A</SCIAName>
+	</section>
+	<section>
+		<Id>54</Id>
+		<Name>IPE 500</Name>
+		<H>500</H>
+		<B>200</B>
+		<tw>10.2</tw>
+		<tf>16</tf>
+		<r>21</r>
+		<SCIAName>IPE500</SCIAName>
+	</section>
+	<section>
+		<Id>55</Id>
+		<Name>IPE 500 O</Name>
+		<H>506</H>
+		<B>202</B>
+		<tw>12</tw>
+		<tf>19</tf>
+		<r>21</r>
+		<SCIAName>IPE500O</SCIAName>
+	</section>
+	<section>
+		<Id>56</Id>
+		<Name>IPE 500 R</Name>
+		<H>508</H>
+		<B>198</B>
+		<tw>12.6</tw>
+		<tf>20</tf>
+		<r>21</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>57</Id>
+		<Name>IPE 500 V</Name>
+		<H>514</H>
+		<B>204</B>
+		<tw>14.2</tw>
+		<tf>23</tf>
+		<r>21</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>58</Id>
+		<Name>IPE 550 A</Name>
+		<H>547</H>
+		<B>210</B>
+		<tw>9</tw>
+		<tf>15.7</tf>
+		<r>24</r>
+		<SCIAName>IPE550A</SCIAName>
+	</section>
+	<section>
+		<Id>59</Id>
+		<Name>IPE 550</Name>
+		<H>550</H>
+		<B>210</B>
+		<tw>11.1</tw>
+		<tf>17.2</tf>
+		<r>24</r>
+		<SCIAName>IPE550</SCIAName>
+	</section>
+	<section>
+		<Id>60</Id>
+		<Name>IPE 550 O</Name>
+		<H>556</H>
+		<B>212</B>
+		<tw>12.7</tw>
+		<tf>20.2</tf>
+		<r>24</r>
+		<SCIAName>IPE550O</SCIAName>
+	</section>
+	<section>
+		<Id>61</Id>
+		<Name>IPE 550 R</Name>
+		<H>560</H>
+		<B>210</B>
+		<tw>14</tw>
+		<tf>22.2</tf>
+		<r>24</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>62</Id>
+		<Name>IPE 550 V</Name>
+		<H>566</H>
+		<B>216</B>
+		<tw>17.1</tw>
+		<tf>25.2</tf>
+		<r>24</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>63</Id>
+		<Name>IPE 600 A</Name>
+		<H>597</H>
+		<B>220</B>
+		<tw>9.8</tw>
+		<tf>17.5</tf>
+		<r>24</r>
+		<SCIAName>IPE600A</SCIAName>
+	</section>
+	<section>
+		<Id>64</Id>
+		<Name>IPE 600</Name>
+		<H>600</H>
+		<B>220</B>
+		<tw>12</tw>
+		<tf>19</tf>
+		<r>24</r>
+		<SCIAName>IPE600</SCIAName>
+	</section>
+	<section>
+		<Id>65</Id>
+		<Name>IPE 600 O</Name>
+		<H>610</H>
+		<B>224</B>
+		<tw>15</tw>
+		<tf>24</tf>
+		<r>24</r>
+		<SCIAName>IPE600O</SCIAName>
+	</section>
+	<section>
+		<Id>66</Id>
+		<Name>IPE 600 R</Name>
+		<H>608</H>
+		<B>218</B>
+		<tw>14</tw>
+		<tf>23</tf>
+		<r>24</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>67</Id>
+		<Name>IPE 600 V</Name>
+		<H>618</H>
+		<B>228</B>
+		<tw>18</tw>
+		<tf>28</tf>
+		<r>24</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>68</Id>
+		<Name>IPE 750 x 137</Name>
+		<H>753</H>
+		<B>263</B>
+		<tw>11.5</tw>
+		<tf>17</tf>
+		<r>17</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>69</Id>
+		<Name>IPE 750 x 147</Name>
+		<H>753</H>
+		<B>265</B>
+		<tw>13.2</tw>
+		<tf>17</tf>
+		<r>17</r>
+		<SCIAName>IPE750x147</SCIAName>
+	</section>
+	<section>
+		<Id>70</Id>
+		<Name>IPE 750 x 161</Name>
+		<H>758</H>
+		<B>266</B>
+		<tw>13.8</tw>
+		<tf>19.3</tf>
+		<r>17</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>71</Id>
+		<Name>IPE 750 x 174</Name>
+		<H>762</H>
+		<B>267</B>
+		<tw>14.4</tw>
+		<tf>21.6</tf>
+		<r>17</r>
+		<SCIAName>IPE750x173</SCIAName>
+	</section>
+	<section>
+		<Id>72</Id>
+		<Name>IPE 750 x 185</Name>
+		<H>766</H>
+		<B>267</B>
+		<tw>14.9</tw>
+		<tf>23.6</tf>
+		<r>17</r>
+		<SCIAName>IPE750x185</SCIAName>
+	</section>
+	<section>
+		<Id>73</Id>
+		<Name>IPE 750 x 197</Name>
+		<H>770</H>
+		<B>268</B>
+		<tw>15.6</tw>
+		<tf>25.4</tf>
+		<r>17</r>
+		<SCIAName>IPE750x196</SCIAName>
+	</section>
+	<section>
+		<Id>74</Id>
+		<Name>IPE 750 x 210</Name>
+		<H>775</H>
+		<B>268</B>
+		<tw>16</tw>
+		<tf>28</tf>
+		<r>17</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>75</Id>
+		<Name>IPE 750 x 223</Name>
+		<H>778</H>
+		<B>269</B>
+		<tw>17</tw>
+		<tf>29.5</tf>
+		<r>17</r>
+		<SCIAName>-</SCIAName>
+	</section>
+</Sections>

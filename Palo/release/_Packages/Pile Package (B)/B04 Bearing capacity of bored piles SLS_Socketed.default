@@ -1,0 +1,79 @@
+<Root>
+  <ValueSets>
+    <EC NAD="CSN" Description="CZ jazyk" Layout="0" Language="CSY">
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 16/20" Collapsed="True" />
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Výpočet podle Masopusta, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="Draw" Value="True" />
+      <Variable Identifier="s↓max←" Value="20e-3" />
+      <Variable Identifier="V↓d←" Value="1e6" />
+      <Variable Identifier="d" Value="1.1" />
+      <Variable Identifier="L" Value="2.8" />
+      <Variable Identifier="m↓1←" Value="0" />
+      <Variable Identifier="m↓2←" Value="0" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="P4" Value="True" />
+      <Variable Identifier="Scale" Value="30" />
+      <Variable Identifier="P3" Value="True" />
+      <Variable Identifier="ScaleCurve" Value="10" />
+      <Variable Identifier="TI" Value="2|0,8|0,2║1,5|0,6|0,9║3|0,25|0,45║5|0,6|0,7║3|0,7|0,45" />
+      <Variable Identifier="Type1" Value="3" />
+      <Variable Identifier="Type2" Value="4" />
+      <Variable Identifier="Type3" Value="2" />
+      <Variable Identifier="Type4" Value="4" />
+      <Variable Identifier="Type5" Value="4" />
+    </EC>
+    <EC NAD="STN" Description="SK jazyk" Layout="0" Language="SKY">
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 16/20" Collapsed="True" />
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Výpočet podle Masopusta, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="Draw" Value="True" />
+      <Variable Identifier="s↓max←" Value="20e-3" />
+      <Variable Identifier="V↓d←" Value="1e6" />
+      <Variable Identifier="d" Value="1.1" />
+      <Variable Identifier="L" Value="2.8" />
+      <Variable Identifier="m↓1←" Value="0" />
+      <Variable Identifier="m↓2←" Value="0" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="P4" Value="True" />
+      <Variable Identifier="Scale" Value="30" />
+      <Variable Identifier="P3" Value="True" />
+      <Variable Identifier="ScaleCurve" Value="10" />
+      <Variable Identifier="TI" Value="2|0,8|0,2║1,5|0,6|0,9║3|0,25|0,45║5|0,6|0,7║3|0,7|0,45" />
+      <Variable Identifier="Type1" Value="3" />
+      <Variable Identifier="Type2" Value="4" />
+      <Variable Identifier="Type3" Value="2" />
+      <Variable Identifier="Type4" Value="4" />
+      <Variable Identifier="Type5" Value="4" />
+    </EC>
+    <EC NAD="CSN" Description="EN language" Layout="0" Language="ENU">
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 16/20" Collapsed="True" />
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Calculation according to the Masopust theory, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="Draw" Value="True" />
+      <Variable Identifier="s↓max←" Value="20e-3" />
+      <Variable Identifier="V↓d←" Value="1e6" />
+      <Variable Identifier="d" Value="1.1" />
+      <Variable Identifier="L" Value="2.8" />
+      <Variable Identifier="m↓1←" Value="0" />
+      <Variable Identifier="m↓2←" Value="0" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="P4" Value="True" />
+      <Variable Identifier="Scale" Value="30" />
+      <Variable Identifier="P3" Value="True" />
+      <Variable Identifier="ScaleCurve" Value="10" />
+      <Variable Identifier="TI" Value="2|0,8|0,2║1,5|0,6|0,9║3|0,25|0,45║5|0,6|0,7║3|0,7|0,45" />
+      <Variable Identifier="Type1" Value="3" />
+      <Variable Identifier="Type2" Value="4" />
+      <Variable Identifier="Type3" Value="2" />
+      <Variable Identifier="Type4" Value="4" />
+      <Variable Identifier="Type5" Value="4" />
+    </EC>
+  </ValueSets>
+</Root>

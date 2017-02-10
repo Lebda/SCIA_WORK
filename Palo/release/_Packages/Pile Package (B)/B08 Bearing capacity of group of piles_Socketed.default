@@ -1,0 +1,64 @@
+<Root>
+  <ValueSets>
+    <EC NAD="CSN" Description="CZ jazyk, CZ annex" Layout="0" Language="CSY">
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Výpočet dle Masopusta, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Uživatelský nadpis" />
+      <Variable Identifier="V↓d←" Value="25e6" />
+      <Variable Identifier="R↓d1←" Value="3.217e6" />
+      <Variable Identifier="d" Value="800e-3" />
+      <Variable Identifier="L" Value="10" />
+      <Variable Identifier="n↓r←" Value="4" />
+      <Variable Identifier="r" Value="1.5" />
+      <Variable Identifier="n↓c←" Value="3" />
+      <Variable Identifier="c" Value="2.5" />
+      <Variable Identifier="c↓us←" Value="5000" />
+      <Variable Identifier="c↓u←" Value="3000" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="ScaleG" Value="38" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="ScaleH" Value="20" />
+    </EC>
+    <EC NAD="STN" Description="SK jazyk, SK annex" Layout="0" Language="SKY">
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Výpočet podľa Masopusta, STN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Uživateľský nadpis" />
+      <Variable Identifier="V↓d←" Value="25e6" />
+      <Variable Identifier="R↓d1←" Value="3.217e6" />
+      <Variable Identifier="d" Value="800e-3" />
+      <Variable Identifier="L" Value="10" />
+      <Variable Identifier="n↓r←" Value="4" />
+      <Variable Identifier="r" Value="1.5" />
+      <Variable Identifier="n↓c←" Value="3" />
+      <Variable Identifier="c" Value="2.5" />
+      <Variable Identifier="c↓us←" Value="5000" />
+      <Variable Identifier="c↓u←" Value="3000" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="ScaleG" Value="38" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="ScaleH" Value="20" />
+    </EC>
+    <EC NAD="CSN" Description="EN language, CZ annex" Layout="0" Language="ENU">
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Calculation according to Masopust theory, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="V↓d←" Value="25e6" />
+      <Variable Identifier="R↓d1←" Value="3.217e6" />
+      <Variable Identifier="d" Value="800e-3" />
+      <Variable Identifier="L" Value="10" />
+      <Variable Identifier="n↓r←" Value="4" />
+      <Variable Identifier="r" Value="1.5" />
+      <Variable Identifier="n↓c←" Value="3" />
+      <Variable Identifier="c" Value="2.5" />
+      <Variable Identifier="c↓us←" Value="5000" />
+      <Variable Identifier="c↓u←" Value="3000" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="ScaleG" Value="38" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="ScaleH" Value="20" />
+    </EC>
+  </ValueSets>
+</Root>

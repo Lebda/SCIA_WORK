@@ -1,0 +1,482 @@
+<Root Version="1" Type="CustomLibrary" GUID="a3ab46b4-8823-4301-b502-b073eb39a4d9">
+  <Header>
+    <PropertySet Symbol="kmod,pa" ESA_ID="Timber_kmod.pa" Unit="" Type="Numeric">
+      <Description TranslateID="Timber_kmod.pa">
+        <NEU>Permanent action</NEU>
+        <FRB>Permanent action</FRB>
+        <PTG>Permanent action</PTG>
+        <ELL>Permanent action</ELL>
+        <ENU>Strength modification factor for permanent action</ENU>
+        <ESP>Permanent action</ESP>
+        <CSY>Stálé zatížení</CSY>
+        <DEU>Permanent action</DEU>
+        <NLD>Permanente aktie</NLD>
+        <SKY>Stále</SKY>
+        <ITA>Permanent action</ITA>
+        <PLK>Permanent action</PLK>
+        <ROM>Permanent action</ROM>
+        <RUS>Permanent action</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="kmod,la" ESA_ID="Timber_kmod.la" Unit="" Type="Numeric">
+      <Description TranslateID="Timber_kmod.la">
+        <NEU>Longterm action</NEU>
+        <FRB>Longterm action</FRB>
+        <PTG>Longterm action</PTG>
+        <ELL>Longterm action</ELL>
+        <ENU>Strength modifiaction factor for long-term action</ENU>
+        <ESP>Longterm action</ESP>
+        <CSY>Dlouhodobé zatížení</CSY>
+        <DEU>Longterm action</DEU>
+        <NLD>Lange termijn aktie</NLD>
+        <SKY>Dlhodobé</SKY>
+        <ITA>Longterm action</ITA>
+        <PLK>Longterm action</PLK>
+        <ROM>Longterm action</ROM>
+        <RUS>Longterm action</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="kmod,ma" ESA_ID="Timber_kmod.ma" Unit="" Type="Numeric">
+      <Description TranslateID="Timber_kmod.ma">
+        <NEU>Mediumterm action</NEU>
+        <FRB>Mediumterm action</FRB>
+        <PTG>Mediumterm action</PTG>
+        <ELL>Mediumterm action</ELL>
+        <ENU>Strength modification factor for medium-term action</ENU>
+        <ESP>Mediumterm action</ESP>
+        <CSY>Střednědobé zatížení</CSY>
+        <DEU>Mediumterm action</DEU>
+        <NLD>Middellange termijn aktie</NLD>
+        <SKY>Strednodobé</SKY>
+        <ITA>Mediumterm action</ITA>
+        <PLK>Mediumterm action</PLK>
+        <ROM>Mediumterm action</ROM>
+        <RUS>Mediumterm action</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="kmod,sa" ESA_ID="Timber_kmod.sa" Unit="" Type="Numeric">
+      <Description TranslateID="Timber_kmod.sa">
+        <NEU>Shortterm action</NEU>
+        <FRB>Shortterm action</FRB>
+        <PTG>Shortterm action</PTG>
+        <ELL>Shortterm action</ELL>
+        <ENU>Strength modification factor for short-term action</ENU>
+        <ESP>Shortterm action</ESP>
+        <CSY>Krátkodobé zatížení</CSY>
+        <DEU>Shortterm action</DEU>
+        <NLD>Korte termijn aktie</NLD>
+        <SKY>Krátkodobé</SKY>
+        <ITA>Shortterm action</ITA>
+        <PLK>Shortterm action</PLK>
+        <ROM>Shortterm action</ROM>
+        <RUS>Shortterm action</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="kmod,ia" ESA_ID="Timber_kmod.ia" Unit="" Type="Numeric">
+      <Description TranslateID="Timber_kmod.ia">
+        <NEU>Instantaneous action</NEU>
+        <FRB>Instantaneous action</FRB>
+        <PTG>Instantaneous action</PTG>
+        <ELL>Instantaneous action</ELL>
+        <ENU>Strength modification factor for instantaneous action</ENU>
+        <ESP>Instantaneous action</ESP>
+        <CSY>Okamžité zatížení</CSY>
+        <DEU>Instantaneous action</DEU>
+        <NLD>Ogenblikkelijke aktie</NLD>
+        <SKY>Okamžité</SKY>
+        <ITA>Instantaneous action</ITA>
+        <PLK>Instantaneous action</PLK>
+        <ROM>Instantaneous action</ROM>
+        <RUS>Instantaneous action</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="kdef" ESA_ID="Timber_kdef" Unit="" Type="Numeric">
+      <Description TranslateID="Timber_kdef">
+        <ENU>Deformation modification factor</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Type" ESA_ID="Type" Unit="" Type="Numeric">
+      <Description TranslateID="Type">
+        <NEU>Type</NEU>
+        <FRB>Type</FRB>
+        <PTG>Tipo</PTG>
+        <ELL>Τύπος</ELL>
+        <ENU>Type</ENU>
+        <ESP>Type</ESP>
+        <CSY>Typ</CSY>
+        <DEU>Art</DEU>
+        <NLD>Type</NLD>
+        <SKY>Typ</SKY>
+        <ITA>Type</ITA>
+        <PLK>Type</PLK>
+        <ROM>Type</ROM>
+        <RUS>Type</RUS>
+      </Description>
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>Service class 1</Property>
+      <Property>Solid timber</Property>
+      <Property>0.6</Property>
+      <Property>0.7</Property>
+      <Property>0.8</Property>
+      <Property>0.9</Property>
+      <Property>1.1</Property>
+      <Property>0.6</Property>
+      <Property>0</Property>
+    </Item>
+    <Item>
+      <Property>Service class 2</Property>
+      <Property>Solid timber</Property>
+      <Property>0.6</Property>
+      <Property>0.7</Property>
+      <Property>0.8</Property>
+      <Property>0.9</Property>
+      <Property>1.1</Property>
+      <Property>0.8</Property>
+      <Property>0</Property>
+    </Item>
+    <Item>
+      <Property>Service class 3</Property>
+      <Property>Solid timber</Property>
+      <Property>0.5</Property>
+      <Property>0.55</Property>
+      <Property>0.65</Property>
+      <Property>0.7</Property>
+      <Property>0.9</Property>
+      <Property>2</Property>
+      <Property>0</Property>
+    </Item>
+    <Item>
+      <Property>Service class 1</Property>
+      <Property>Glued laminated timber</Property>
+      <Property>0.6</Property>
+      <Property>0.7</Property>
+      <Property>0.8</Property>
+      <Property>0.9</Property>
+      <Property>1.1</Property>
+      <Property>0.6</Property>
+      <Property>1</Property>
+    </Item>
+    <Item>
+      <Property>Service class 2</Property>
+      <Property>Glued laminated timber</Property>
+      <Property>0.6</Property>
+      <Property>0.7</Property>
+      <Property>0.8</Property>
+      <Property>0.9</Property>
+      <Property>1.1</Property>
+      <Property>0.8</Property>
+      <Property>1</Property>
+    </Item>
+    <Item>
+      <Property>Service class 3</Property>
+      <Property>Glued laminated timber</Property>
+      <Property>0.5</Property>
+      <Property>0.55</Property>
+      <Property>0.65</Property>
+      <Property>0.7</Property>
+      <Property>0.9</Property>
+      <Property>2.0</Property>
+      <Property>1</Property>
+    </Item>
+    <Item>
+      <Property>Service class 1</Property>
+      <Property>LVL</Property>
+      <Property>0.6</Property>
+      <Property>0.7</Property>
+      <Property>0.8</Property>
+      <Property>0.9</Property>
+      <Property>1.1</Property>
+      <Property>0.6</Property>
+      <Property>2</Property>
+    </Item>
+    <Item>
+      <Property>Service class 2</Property>
+      <Property>LVL</Property>
+      <Property>0.6</Property>
+      <Property>0.7</Property>
+      <Property>0.8</Property>
+      <Property>0.9</Property>
+      <Property>1.1</Property>
+      <Property>0.8</Property>
+      <Property>2</Property>
+    </Item>
+    <Item>
+      <Property>Service class 3</Property>
+      <Property>LVL</Property>
+      <Property>0.5</Property>
+      <Property>0.55</Property>
+      <Property>0.65</Property>
+      <Property>0.7</Property>
+      <Property>0.9</Property>
+      <Property>2.0</Property>
+      <Property>2</Property>
+    </Item>
+    <Item>
+      <Property>Service class 1</Property>
+      <Property>Plywood - type EN 636-1</Property>
+      <Property>0.6</Property>
+      <Property>0.7</Property>
+      <Property>0.8</Property>
+      <Property>0.9</Property>
+      <Property>1.1</Property>
+      <Property>0.8</Property>
+      <Property>2</Property>
+    </Item>
+    <Item>
+      <Property>Service class 1</Property>
+      <Property>Plywood - type EN 636-2</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>0.8</Property>
+      <Property>2</Property>
+    </Item>
+    <Item>
+      <Property>Service class 2</Property>
+      <Property>Plywood - type EN 636-2</Property>
+      <Property>0.6</Property>
+      <Property>0.7</Property>
+      <Property>0.8</Property>
+      <Property>0.9</Property>
+      <Property>1.1</Property>
+      <Property>1.0</Property>
+      <Property>2</Property>
+    </Item>
+    <Item>
+      <Property>Service class 1</Property>
+      <Property>Plywood - type EN 636-3</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>0.8</Property>
+      <Property>2</Property>
+    </Item>
+    <Item>
+      <Property>Service class 2</Property>
+      <Property>Plywood - type EN 636-3</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>1.0</Property>
+      <Property>2</Property>
+    </Item>
+    <Item>
+      <Property>Service class 3</Property>
+      <Property>Plywood - type EN 636-3</Property>
+      <Property>0.5</Property>
+      <Property>0.55</Property>
+      <Property>0.65</Property>
+      <Property>0.7</Property>
+      <Property>0.9</Property>
+      <Property>2.5</Property>
+      <Property>2</Property>
+    </Item>
+    <Item>
+      <Property>Service class 1</Property>
+      <Property>OSB/2</Property>
+      <Property>0.3</Property>
+      <Property>0.45</Property>
+      <Property>0.65</Property>
+      <Property>0.85</Property>
+      <Property>1.1</Property>
+      <Property>2.25</Property>
+      <Property>2</Property>
+    </Item>
+    <Item>
+      <Property>Service class 1</Property>
+      <Property>OSB/3, OSB/4</Property>
+      <Property>0.4</Property>
+      <Property>0.5</Property>
+      <Property>0.7</Property>
+      <Property>0.9</Property>
+      <Property>1.1</Property>
+      <Property>1.5</Property>
+      <Property>2</Property>
+    </Item>
+    <Item>
+      <Property>Service class 2</Property>
+      <Property>OSB/3, OSB/4</Property>
+      <Property>0.3</Property>
+      <Property>0.4</Property>
+      <Property>0.55</Property>
+      <Property>0.7</Property>
+      <Property>0.9</Property>
+      <Property>2.25</Property>
+      <Property>2</Property>
+    </Item>
+    <Item>
+      <Property>Service class 1</Property>
+      <Property>Particleboard - P4</Property>
+      <Property>0.3</Property>
+      <Property>0.45</Property>
+      <Property>0.65</Property>
+      <Property>0.85</Property>
+      <Property>1.1</Property>
+      <Property>2.25</Property>
+      <Property>3</Property>
+    </Item>
+    <Item>
+      <Property>Service class 1</Property>
+      <Property>Particleboard - P5</Property>
+      <Property>0.3</Property>
+      <Property>0.45</Property>
+      <Property>0.65</Property>
+      <Property>0.85</Property>
+      <Property>1.1</Property>
+      <Property>2.25</Property>
+      <Property>3</Property>
+    </Item>
+    <Item>
+      <Property>Service class 2</Property>
+      <Property>Particleboard - P5</Property>
+      <Property>0.2</Property>
+      <Property>0.3</Property>
+      <Property>0.45</Property>
+      <Property>0.6</Property>
+      <Property>0.8</Property>
+      <Property>3</Property>
+      <Property>3</Property>
+    </Item>
+    <Item>
+      <Property>Service class 1</Property>
+      <Property>Particleboard - P6</Property>
+      <Property>0.4</Property>
+      <Property>0.5</Property>
+      <Property>0.7</Property>
+      <Property>0.9</Property>
+      <Property>1.1</Property>
+      <Property>1.5</Property>
+      <Property>3</Property>
+    </Item>
+    <Item>
+      <Property>Service class 1</Property>
+      <Property>Particleboard - P7</Property>
+      <Property>0.4</Property>
+      <Property>0.5</Property>
+      <Property>0.7</Property>
+      <Property>0.9</Property>
+      <Property>1.1</Property>
+      <Property>1.5</Property>
+      <Property>3</Property>
+    </Item>
+    <Item>
+      <Property>Service class 2</Property>
+      <Property>Particleboard - P7</Property>
+      <Property>0.3</Property>
+      <Property>0.4</Property>
+      <Property>0.55</Property>
+      <Property>0.7</Property>
+      <Property>0.9</Property>
+      <Property>2.25</Property>
+      <Property>3</Property>
+    </Item>
+    <Item>
+      <Property>Service class 1</Property>
+      <Property>Fireboard, hard - HB.LA</Property>
+      <Property>0.3</Property>
+      <Property>0.45</Property>
+      <Property>0.65</Property>
+      <Property>0.85</Property>
+      <Property>1.1</Property>
+      <Property>2.25</Property>
+      <Property>4</Property>
+    </Item>
+    <Item>
+      <Property>Service class 1</Property>
+      <Property>Fireboard, hard - HB.HLA 1 or 2</Property>
+      <Property>0.3</Property>
+      <Property>0.45</Property>
+      <Property>0.65</Property>
+      <Property>0.85</Property>
+      <Property>1.1</Property>
+      <Property>2.25</Property>
+      <Property>4</Property>
+    </Item>
+    <Item>
+      <Property>Service class 2</Property>
+      <Property>Fireboard, hard - HB.HLA 1 or 2</Property>
+      <Property>0.2</Property>
+      <Property>0.3</Property>
+      <Property>0.45</Property>
+      <Property>0.6</Property>
+      <Property>0.8</Property>
+      <Property>3.0</Property>
+      <Property>4</Property>
+    </Item>
+    <Item>
+      <Property>Service class 1</Property>
+      <Property>Fireboard, medium - MBH.LA1 or 2</Property>
+      <Property>0.2</Property>
+      <Property>0.4</Property>
+      <Property>0.6</Property>
+      <Property>0.8</Property>
+      <Property>1.1</Property>
+      <Property>3</Property>
+      <Property>5</Property>
+    </Item>
+    <Item>
+      <Property>Service class 1</Property>
+      <Property>Fireboard, medium - MBH.HLS1 or 2</Property>
+      <Property>0.2</Property>
+      <Property>0.4</Property>
+      <Property>0.6</Property>
+      <Property>0.8</Property>
+      <Property>1.1</Property>
+      <Property>3</Property>
+      <Property>5</Property>
+    </Item>
+    <Item>
+      <Property>Service class 2</Property>
+      <Property>Fireboard, medium - MBH.HLS1 or 2</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>0.45</Property>
+      <Property>0.8</Property>
+      <Property>4</Property>
+      <Property>5</Property>
+    </Item>
+    <Item>
+      <Property>Service class 1</Property>
+      <Property>Fireboard, MDF - MDF.LA</Property>
+      <Property>0.2</Property>
+      <Property>0.4</Property>
+      <Property>0.6</Property>
+      <Property>0.8</Property>
+      <Property>1.1</Property>
+      <Property>2.25</Property>
+      <Property>6</Property>
+    </Item>
+    <Item>
+      <Property>Service class 1</Property>
+      <Property>Fireboard, MDF - MDF.HLS</Property>
+      <Property>0.2</Property>
+      <Property>0.4</Property>
+      <Property>0.6</Property>
+      <Property>0.8</Property>
+      <Property>1.1</Property>
+      <Property>2.25</Property>
+      <Property>6</Property>
+    </Item>
+    <Item>
+      <Property>Service class 2</Property>
+      <Property>Fireboard, MDF - MDF.HLS</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>0.45</Property>
+      <Property>0.8</Property>
+      <Property>3</Property>
+      <Property>6</Property>
+    </Item>
+  </Items>
+</Root>

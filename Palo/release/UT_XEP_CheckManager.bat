@@ -1,0 +1,1 @@
+nunit-console-x86.exe /noshadow /xml:UT_XEP_CheckManagerResult.xml UT_XEP_CheckManager.dll /out:TestResult_UT_XEP_CheckManager.txt /err:StdErr_UT_XEP_CheckManager.txt

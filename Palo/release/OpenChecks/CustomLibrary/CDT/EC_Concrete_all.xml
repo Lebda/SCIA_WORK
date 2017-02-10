@@ -1,0 +1,1446 @@
+<Root Version="1" Type="CustomLibrary" GUID="45dec679-448a-49ae-82b5-9b3b248e5021">
+  <Header>
+    <PropertySet Symbol="f↓ck←" ESA_ID="fck" Unit="MPa" Type="Numeric">
+      <Description TranslateID="fck">
+        <NEU>Characteristic compressive cylinder strength</NEU>
+        <FRB>Résistance caractéristique en compression sur cylindre</FRB>
+        <PTG>Resistência característica à compressão do cilindro</PTG>
+        <ELL>Χαρακτηριστική κυλινδρική θλιπτική αντοχή</ELL>
+        <ESP>Characteristic compressive cylinder strength</ESP>
+        <ENU>Characteristic compressive cylinder strength</ENU>
+        <CSY>Charakteristická válcová pevnost v tlaku</CSY>
+        <DEU>Charakteristische Zylinderdruckfestigkeit</DEU>
+        <NLD>Karakteristieke cilinderdruksterkte</NLD>
+        <SKY>Charakteristická valcová pevnosť v tlaku</SKY>
+        <RUS>Characteristic compressive cylinder strength</RUS>
+        <ROM>Characteristic compressive cylinder strength</ROM>
+        <PLK>Characteristic compressive cylinder strength</PLK>
+        <ITA>Characteristic compressive cylinder strength</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="f↓ck,cube←" ESA_ID="fckcube" Unit="MPa" Type="Numeric">
+      <Description TranslateID="fckcube">
+        <NEU>Characteristic compressive cube strength</NEU>
+        <FRB>Résistance caractéristique en compression sur cube</FRB>
+        <PTG>Resistência característica à compressão do cubo</PTG>
+        <ELL>Χαρακτηριστική κυβική θλιπτική αντοχή</ELL>
+        <ESP>Characteristic compressive cube strength</ESP>
+        <ENU>Characteristic compressive cube strength</ENU>
+        <CSY>Charakteristická krychlená pevnost v tlaku</CSY>
+        <DEU>Charakteristische Würfeldruckfestigkeit</DEU>
+        <NLD>Karakteristieke kubusdruksterkte</NLD>
+        <SKY>Charakteristická kocková pevnosť v tlaku</SKY>
+        <RUS>Characteristic compressive cube strength</RUS>
+        <ROM>Characteristic compressive cube strength</ROM>
+        <PLK>Characteristic compressive cube strength</PLK>
+        <ITA>Characteristic compressive cube strength</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="f↓cm←" ESA_ID="fcm" Unit="MPa" Type="Numeric">
+      <Description TranslateID="fcm">
+        <NEU>Average cylinder compressive strength</NEU>
+        <FRB>Résistance moyenne en compression sur cylindre</FRB>
+        <PTG>Resistência média à compressão do cilindro</PTG>
+        <ELL>Μέση θλιπτική κυλινδρική αντοχή</ELL>
+        <ESP>Average cylinder compressive strength</ESP>
+        <ENU>Average cylinder compressive strength</ENU>
+        <CSY>Průměrná hodnota válcové pevnosti v tlaku</CSY>
+        <DEU>Mittelwert Zylinderdruckfestigkeit</DEU>
+        <NLD>Gemiddelde cylinderdruksterkte</NLD>
+        <SKY>Priemerná hodnota valcovej pevnosti v tlaku</SKY>
+        <RUS>Average cylinder compressive strength</RUS>
+        <ROM>Average cylinder compressive strength</ROM>
+        <PLK>Average cylinder compressive strength</PLK>
+        <ITA>Average cylinder compressive strength</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="f↓ctm←" ESA_ID="fctm" Unit="MPa" Type="Numeric">
+      <Description TranslateID="fctm">
+        <NEU>Average axial tensile strength</NEU>
+        <FRB>Résistance moyenne en traction axiale</FRB>
+        <PTG>Resistência média à tração</PTG>
+        <ELL>Μέση αξονική εφελκυστική αντοχή</ELL>
+        <ESP>Average axial tensile strength</ESP>
+        <ENU>Average axial tensile strength</ENU>
+        <CSY>Průměrná hodnota válcové pevnost v dostředném tahu</CSY>
+        <DEU>Mittelwert axiale Zugfestigkeit</DEU>
+        <NLD>Gemiddelde axiale treksterkte</NLD>
+        <SKY>Priemerná hodnota valcovej pevnosti v dostrednom ťahu</SKY>
+        <RUS>Average axial tensile strength</RUS>
+        <ROM>Average axial tensile strength</ROM>
+        <PLK>Average axial tensile strength</PLK>
+        <ITA>Average axial tensile strength</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="f↓ctk, 0.05←" ESA_ID="fctk_05" Unit="MPa" Type="Numeric">
+      <Description TranslateID="fctk_05">
+        <NEU>5% fractile of cylinder tensile strength</NEU>
+        <FRB>5% de fractile de résistance à la traction sur cylindre</FRB>
+        <PTG>fração de 5% da resistência à compressão do cilindro</PTG>
+        <ELL>Χαρακτηριστική εφελκυστική αντοχή σκυροδέματος για ποσοστημόριο αστοχίας 5%\r\n</ELL>
+        <ESP>5% fractile of cylinder tensile strength</ESP>
+        <ENU>5% fractile of cylinder tensile strength</ENU>
+        <CSY>5% kvantil válcové pevnosti v tahu</CSY>
+        <DEU>5%-Quantil der Zylinderzugfestigkeit</DEU>
+        <NLD>5% fractiel van de cylindertreksterkte</NLD>
+        <SKY>5-percentný kvantil valcovej pevnosti v ťahu</SKY>
+        <RUS>5% fractile of cylinder tensile strength</RUS>
+        <ROM>5% fractile of cylinder tensile strength</ROM>
+        <PLK>5% fractile of cylinder tensile strength</PLK>
+        <ITA>5% fractile of cylinder tensile strength</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="f↓ctk, 0.95←" ESA_ID="fctk_95" Unit="MPa" Type="Numeric">
+      <Description TranslateID="fctk_95">
+        <NEU>95% fractile of cylinder tensile strength</NEU>
+        <FRB>95 % de fractile de résistance à la traction sur cylindre</FRB>
+        <PTG>fração de 95% da resistência à compressão do cilindro</PTG>
+        <ELL>Χαρακτηριστική εφελκυστική αντοχή σκυροδέματος για ποσοστημόριο αστοχίας 95%\r\n</ELL>
+        <ESP>95% fractile of cylinder tensile strength</ESP>
+        <ENU>95% fractile of cylinder tensile strength</ENU>
+        <CSY>95% kvantil válcové pevnosti v tahu</CSY>
+        <DEU>95%-Quantil der Zylinderzugfestigkeit</DEU>
+        <NLD>95% fractiel van de cylindertreksterkte</NLD>
+        <SKY>95-percentný kvantil valcovej pevnosti v ťahu</SKY>
+        <RUS>95% fractile of cylinder tensile strength</RUS>
+        <ROM>95% fractile of cylinder tensile strength</ROM>
+        <PLK>95% fractile of cylinder tensile strength</PLK>
+        <ITA>95% fractile of cylinder tensile strength</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="E↓cm←" ESA_ID="Ecm" Unit="GPa" Type="Numeric">
+      <Description TranslateID="Ecm">
+        <NEU>Elastic modulus</NEU>
+        <FRB>Module élastique</FRB>
+        <PTG>Módulo de elasticidade</PTG>
+        <ELL>Μέτρο ελαστικότητας</ELL>
+        <ESP>Elastic modulus</ESP>
+        <ENU>Elastic modulus</ENU>
+        <CSY>Modul pružnosti</CSY>
+        <DEU>Elastizitätsmodul</DEU>
+        <NLD>Elasticiteitsmodulus</NLD>
+        <SKY>Modul pružnosti</SKY>
+        <RUS>Elastic modulus</RUS>
+        <ROM>Elastic modulus</ROM>
+        <PLK>Elastic modulus</PLK>
+        <ITA>Elastic modulus</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ε↓c1←" ESA_ID="eps_c1" Unit="‰" Type="Numeric">
+      <Description TranslateID="eps_c1">
+        <NEU>Concrete strain at characteristic strength</NEU>
+        <FRB>Déformation du béton pour une résistance caractéristique</FRB>
+        <PTG>Deformação do concreto na resistência característica</PTG>
+        <ELL>Καταπόνηση σκυροδέματος στην χαρακτηριστική αντοχή</ELL>
+        <ESP>Concrete strain at characteristic strength</ESP>
+        <ENU>Concrete strain at characteristic strength</ENU>
+        <CSY>Poměrné stlačení betonu při dosažení max. napětí</CSY>
+        <DEU>Betondehnung bei charakteristischer Festigkeit</DEU>
+        <NLD>Betonrek bij karakteristieke sterkte</NLD>
+        <SKY>Pomerné stlačenie betónu pri dosiahnutí max. napätia</SKY>
+        <RUS>Concrete strain at characteristic strength</RUS>
+        <ROM>Concrete strain at characteristic strength</ROM>
+        <PLK>Concrete strain at characteristic strength</PLK>
+        <ITA>Concrete strain at characteristic strength</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ε↓cu1←" ESA_ID="eps_cu1" Unit="‰" Type="Numeric">
+      <Description TranslateID="eps_cu1">
+        <NEU>Concrete strain at ultimate strength</NEU>
+        <FRB>Déformation du béton pour une résistance ultime</FRB>
+        <PTG>Deformação do concreto na resistência última</PTG>
+        <ELL>Ανηγμένη παραμόρφωση σκυροδέματος που αντιστοιχεί στην μέγιστη τάση\r\n</ELL>
+        <ESP>Concrete strain at ultimate strength</ESP>
+        <ENU>Concrete strain at ultimate strength</ENU>
+        <CSY>Mezní stlačení betonu při maximálním napětí</CSY>
+        <DEU>Betondehnung bei Bruchfestigkeit</DEU>
+        <NLD>Betonrek bij uiterste sterkte</NLD>
+        <SKY>Pomerné stlačenie betónu pri dosiahnutí medznej pevnosti</SKY>
+        <RUS>Concrete strain at ultimate strength</RUS>
+        <ROM>Concrete strain at ultimate strength</ROM>
+        <PLK>Concrete strain at ultimate strength</PLK>
+        <ITA>Concrete strain at ultimate strength</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ε↓c2←" ESA_ID="eps_c2" Unit="‰" Type="Numeric">
+      <Description TranslateID="eps_c2">
+        <NEU>Concrete strain at ultimate strength</NEU>
+        <FRB>Déformation du béton pour une résistance ultime</FRB>
+        <PTG>Deformação do concreto na resistência última</PTG>
+        <ELL>Ανηγμένη παραμόρφωση σκυροδέματος που αντιστοιχεί στην μέγιστη τάση\r\n</ELL>
+        <ESP>Concrete strain at ultimate strength</ESP>
+        <ENU>Concrete strain at ultimate strength</ENU>
+        <CSY>Mezní stlačení betonu při maximálním napětí</CSY>
+        <DEU>Betondehnung bei Bruchfestigkeit</DEU>
+        <NLD>Betonrek bij uiterste sterkte</NLD>
+        <SKY>Pomerné stlačenie betónu pri dosiahnutí medznej pevnosti</SKY>
+        <RUS>Concrete strain at ultimate strength</RUS>
+        <ROM>Concrete strain at ultimate strength</ROM>
+        <PLK>Concrete strain at ultimate strength</PLK>
+        <ITA>Concrete strain at ultimate strength</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ε↓cu2←" ESA_ID="eps_cu2" Unit="‰" Type="Numeric">
+      <Description TranslateID="eps_cu2">
+        <NEU>Concrete strain at maximum strength</NEU>
+        <FRB>Déformation du béton pour une résistance maximale</FRB>
+        <PTG>Deformação do concreto na resistência máxima</PTG>
+        <ELL>Ανηγμένη παραμόρφωση αστοχίας σκυροδέματος\r\n</ELL>
+        <ESP>Concrete strain at maximum strength</ESP>
+        <ENU>Concrete strain at maximum strength</ENU>
+        <CSY>Mezní stlačení betonu při dosažení max. pevnosti</CSY>
+        <DEU>Betondehnung bei maximaler Festigkeit</DEU>
+        <NLD>Betonrek bij maximale sterkte</NLD>
+        <SKY>Pomerné stlačenie betónu pri dosiahnutí max. pevnosti</SKY>
+        <RUS>Concrete strain at maximum strength</RUS>
+        <ROM>Concrete strain at maximum strength</ROM>
+        <PLK>Concrete strain at maximum strength</PLK>
+        <ITA>Concrete strain at maximum strength</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ε↓c3←" ESA_ID="eps_c3" Unit="‰" Type="Numeric">
+      <Description TranslateID="eps_c3">
+        <NEU>Concrete strain at characteristic strength (using bilinear diagram)</NEU>
+        <FRB>Déformation du béton pour une résistance caractéristique (à l’aide d’un diagramme bilinéaire)</FRB>
+        <PTG>Deformação do concreto na resistência característica (usando diagrama bilinear)</PTG>
+        <ELL>Ανηγμένη παραμόρφωση σκυροδέματος που αντιστοιχεί στην μέγιστη τάση (διγραμμικό διάγραμμα)\r\n</ELL>
+        <ESP>Concrete strain at characteristic strength (using bilinear diagram)</ESP>
+        <ENU>Concrete strain at characteristic strength (using bilinear diagram)</ENU>
+        <CSY>Poměrné stlačení betonu při dosažení max. pevnosti - dle bilineárního pracovního diagramu</CSY>
+        <DEU>Betondehnung bei charakteristischer Festigkeit (unter Verwendung des bilinearen Diagramms)</DEU>
+        <NLD>Betonrek bij karakteristieke sterkte (met behulp van het bilineaire diagram)</NLD>
+        <SKY>Pomerné stlačenie betónu pri dosiahnutí max. pevnosti - podľa bilineárneho pracovného diagramu</SKY>
+        <RUS>Concrete strain at characteristic strength (using bilinear diagram)</RUS>
+        <ROM>Concrete strain at characteristic strength (using bilinear diagram)</ROM>
+        <PLK>Concrete strain at characteristic strength (using bilinear diagram)</PLK>
+        <ITA>Concrete strain at characteristic strength (using bilinear diagram)</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ε↓cu3←" ESA_ID="eps_cu3" Unit="‰" Type="Numeric">
+      <Description TranslateID="eps_cu3">
+        <NEU>Concrete strain at characteristic strength (using bilinear diagram)</NEU>
+        <FRB>Déformation du béton pour une résistance caractéristique (à l’aide d’un diagramme bilinéaire)</FRB>
+        <PTG>Deformação do concreto na resistência característica (usando diagrama bilinear)</PTG>
+        <ELL>Ανηγμένη παραμόρφωση σκυροδέματος που αντιστοιχεί στην μέγιστη τάση (διγραμμικό διάγραμμα)\r\n</ELL>
+        <ESP>Concrete strain at characteristic strength (using bilinear diagram)</ESP>
+        <ENU>Concrete strain at characteristic strength (using bilinear diagram)</ENU>
+        <CSY>Poměrné stlačení betonu při dosažení max. pevnosti - dle bilineárního pracovního diagramu</CSY>
+        <DEU>Betondehnung bei charakteristischer Festigkeit (unter Verwendung des bilinearen Diagramms)</DEU>
+        <NLD>Betonrek bij karakteristieke sterkte (met behulp van het bilineaire diagram)</NLD>
+        <SKY>Pomerné stlačenie betónu pri dosiahnutí max. pevnosti - podľa bilineárneho pracovného diagramu</SKY>
+        <RUS>Concrete strain at characteristic strength (using bilinear diagram)</RUS>
+        <ROM>Concrete strain at characteristic strength (using bilinear diagram)</ROM>
+        <PLK>Concrete strain at characteristic strength (using bilinear diagram)</PLK>
+        <ITA>Concrete strain at characteristic strength (using bilinear diagram)</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="n" ESA_ID="n" Unit="" Type="Numeric">
+      <Description TranslateID="n">
+        <NEU>Exponent according to Table 3.1 EC2</NEU>
+        <FRB>Exposant selon le Tableau 3.1 EC2</FRB>
+        <PTG>Expoente de acordo com a tabela 3.1 EC2</PTG>
+        <ELL>Εκθέτης σύμφωνα με τον Πίνακα 3.1. του EC2\r\n</ELL>
+        <ESP>Exponent according to Table 3.1 EC2</ESP>
+        <ENU>Exponent according to Table 3.1 EC2</ENU>
+        <CSY>Exponent dle tabulky 3.1 ČSN EN 1992-1-1</CSY>
+        <DEU>Exponent gemäß Tabelle 3.1 EC2</DEU>
+        <NLD>Exponent volgens Tabel 3.1 EC2</NLD>
+        <SKY>Exponent podľa tabuľky 3.1 ČSN EN 1992-1-1</SKY>
+        <RUS>Exponent according to Table 3.1 EC2</RUS>
+        <ROM>Exponent according to Table 3.1 EC2</ROM>
+        <PLK>Exponent according to Table 3.1 EC2</PLK>
+        <ITA>Exponent according to Table 3.1 EC2</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Bilinear" ESA_ID="Bilinear" Unit="" Type="Bool">
+      <Description TranslateID="Bilinear">
+        <NEU>Bilinear mark</NEU>
+        <FRB>Bilinear mark</FRB>
+        <PTG>Bilinear mark</PTG>
+        <ELL>Bilinear mark</ELL>
+        <ESP>Bilinear mark</ESP>
+        <ENU>Bilinear mark</ENU>
+        <CSY>Značka - bilineární</CSY>
+        <DEU>Bilinear mark</DEU>
+        <NLD>Bilinear mark</NLD>
+        <SKY>Bilinear mark</SKY>
+        <RUS>Bilinear mark</RUS>
+        <ROM>Bilinear mark</ROM>
+        <PLK>Bilinear mark</PLK>
+        <ITA>Bilinear mark</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="d↓g←" ESA_ID="dg" Unit="mm" Type="Numeric">
+      <Description TranslateID="dg">
+        <NEU>Stone diameter</NEU>
+        <FRB>Stone diameter</FRB>
+        <PTG>Stone diameter</PTG>
+        <ELL>Stone diameter</ELL>
+        <ESP>Stone diameter</ESP>
+        <ENU>Stone diameter</ENU>
+        <CSY>Stone diameter</CSY>
+        <DEU>Stone diameter</DEU>
+        <NLD>Stone diameter</NLD>
+        <SKY>Stone diameter</SKY>
+        <RUS>Stone diameter</RUS>
+        <ROM>Stone diameter</ROM>
+        <PLK>Stone diameter</PLK>
+        <ITA>Stone diameter</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="μ" ESA_ID="μ" Unit="" Type="Numeric">
+      <Description TranslateID="μ">
+        <NEU>Poisson number</NEU>
+        <FRB>Poisson number</FRB>
+        <PTG>Poisson number</PTG>
+        <ELL>Poisson number</ELL>
+        <ESP>Poisson number</ESP>
+        <ENU>Poisson number</ENU>
+        <CSY>Poisson number</CSY>
+        <DEU>Poisson number</DEU>
+        <NLD>Poisson number</NLD>
+        <SKY>Poisson number</SKY>
+        <RUS>Poisson number</RUS>
+        <ROM>Poisson number</ROM>
+        <PLK>Poisson number</PLK>
+        <ITA>Poisson number</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ρ" ESA_ID="ρ" Unit="kg/m↑3←" Type="Numeric">
+      <Description TranslateID="ρ">
+        <NEU>Unit mass</NEU>
+        <FRB>Unit mass</FRB>
+        <PTG>Unit mass</PTG>
+        <ELL>Unit mass</ELL>
+        <ESP>Unit mass</ESP>
+        <ENU>Unit mass</ENU>
+        <CSY>Unit mass</CSY>
+        <DEU>Unit mass</DEU>
+        <NLD>Unit mass</NLD>
+        <SKY>Unit mass</SKY>
+        <RUS>Unit mass</RUS>
+        <ROM>Unit mass</ROM>
+        <PLK>Unit mass</PLK>
+        <ITA>Unit mass</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="G" ESA_ID="G" Unit="GPa" Type="Numeric">
+      <Description TranslateID="G">
+        <NEU>Shear modulus</NEU>
+        <FRB>Module de cisaillement</FRB>
+        <PTG>Módulo de cisalhamento</PTG>
+        <ELL>Μέτρο διάτμησης</ELL>
+        <ESP>Shear modulus</ESP>
+        <ENU>Shear modulus</ENU>
+        <CSY>Modul pružnosti ve smyku</CSY>
+        <DEU>Schubmodul</DEU>
+        <NLD>Afschuifmodulus</NLD>
+        <SKY>Modul pružnosti v šmyku</SKY>
+        <RUS>Shear modulus</RUS>
+        <ROM>Shear modulus</ROM>
+        <PLK>Shear modulus</PLK>
+        <ITA>Shear modulus</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="υ" ESA_ID="υ" Unit="" Type="Numeric">
+      <Description TranslateID="υ">
+        <NEU>Logaritmic decrement</NEU>
+        <FRB>Logaritmic decrement</FRB>
+        <PTG>Logaritmic decrement</PTG>
+        <ELL>Logaritmic decrement</ELL>
+        <ESP>Logaritmic decrement</ESP>
+        <ENU>Logaritmic decrement</ENU>
+        <CSY>Logaritmic decrement</CSY>
+        <DEU>Logaritmic decrement</DEU>
+        <NLD>Logaritmic decrement</NLD>
+        <SKY>Logaritmic decrement</SKY>
+        <RUS>Logaritmic decrement</RUS>
+        <ROM>Logaritmic decrement</ROM>
+        <PLK>Logaritmic decrement</PLK>
+        <ITA>Logaritmic decrement</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="λ" ESA_ID="λ" Unit="W/m*K" Type="Numeric">
+      <Description TranslateID="λ">
+        <NEU>Thermal conductivity</NEU>
+        <FRB>Thermal conductivity</FRB>
+        <PTG>Thermal conductivity</PTG>
+        <ELL>Thermal conductivity</ELL>
+        <ESP>Thermal conductivity</ESP>
+        <ENU>Thermal conductivity</ENU>
+        <CSY>Thermal conductivity</CSY>
+        <DEU>Thermal conductivity</DEU>
+        <NLD>Thermal conductivity</NLD>
+        <SKY>Thermal conductivity</SKY>
+        <RUS>Thermal conductivity</RUS>
+        <ROM>Thermal conductivity</ROM>
+        <PLK>Thermal conductivity</PLK>
+        <ITA>Thermal conductivity</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="c" ESA_ID="c" Unit="J/kg*K" Type="Numeric">
+      <Description TranslateID="c">
+        <NEU>Specific heat</NEU>
+        <FRB>Specific heat</FRB>
+        <PTG>Specific heat</PTG>
+        <ELL>Specific heat</ELL>
+        <ESP>Specific heat</ESP>
+        <ENU>Specific heat</ENU>
+        <CSY>Specific heat</CSY>
+        <DEU>Specific heat</DEU>
+        <NLD>Specific heat</NLD>
+        <SKY>Specific heat</SKY>
+        <RUS>Specific heat</RUS>
+        <ROM>Specific heat</ROM>
+        <PLK>Specific heat</PLK>
+        <ITA>Specific heat</ITA>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="α" ESA_ID="α" Unit="" Type="Numeric">
+      <Description TranslateID="α">
+        <NEU>Thermal expansion</NEU>
+        <FRB>Thermal expansion</FRB>
+        <PTG>Thermal expansion</PTG>
+        <ELL>Thermal expansion</ELL>
+        <ESP>Thermal expansion</ESP>
+        <ENU>Thermal expansion</ENU>
+        <CSY>Thermal expansion</CSY>
+        <DEU>Thermal expansion</DEU>
+        <NLD>Thermal expansion</NLD>
+        <SKY>Thermal expansion</SKY>
+        <RUS>Thermal expansion</RUS>
+        <ROM>Thermal expansion</ROM>
+        <PLK>Thermal expansion</PLK>
+        <ITA>Thermal expansion</ITA>
+      </Description>
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>Bilinear</Property>
+      <Property>C 8/10</Property>
+      <Property>8</Property>
+      <Property>10</Property>
+      <Property>16</Property>
+      <Property>1.2</Property>
+      <Property>0.8</Property>
+      <Property>1.6</Property>
+      <Property>25</Property>
+      <Property>1.7</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>1.75</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>true</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>10.6</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Bilinear</Property>
+      <Property>C 12/15</Property>
+      <Property>12</Property>
+      <Property>15</Property>
+      <Property>20</Property>
+      <Property>1.6</Property>
+      <Property>1.1</Property>
+      <Property>2</Property>
+      <Property>27</Property>
+      <Property>1.8</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>1.75</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>true</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>11.3</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Bilinear</Property>
+      <Property>C 16/20</Property>
+      <Property>16</Property>
+      <Property>20</Property>
+      <Property>24</Property>
+      <Property>1.9</Property>
+      <Property>1.3</Property>
+      <Property>2.5</Property>
+      <Property>29</Property>
+      <Property>1.9</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>1.75</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>true</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>11.9</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Bilinear</Property>
+      <Property>C 20/25</Property>
+      <Property>20</Property>
+      <Property>25</Property>
+      <Property>28</Property>
+      <Property>2.2</Property>
+      <Property>1.5</Property>
+      <Property>2.9</Property>
+      <Property>30</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>1.75</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>true</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>12.5</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Bilinear</Property>
+      <Property>C 25/30</Property>
+      <Property>25</Property>
+      <Property>30</Property>
+      <Property>33</Property>
+      <Property>2.6</Property>
+      <Property>1.8</Property>
+      <Property>3.3</Property>
+      <Property>31</Property>
+      <Property>2.1</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>1.75</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>true</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>13.1</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Bilinear</Property>
+      <Property>C 28/35</Property>
+      <Property>28</Property>
+      <Property>35</Property>
+      <Property>36</Property>
+      <Property>2.8</Property>
+      <Property>1.9</Property>
+      <Property>3.6</Property>
+      <Property>32.3</Property>
+      <Property>2.1</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>1.75</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>true</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>13.5</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Bilinear</Property>
+      <Property>C 30/37</Property>
+      <Property>30</Property>
+      <Property>37</Property>
+      <Property>38</Property>
+      <Property>2.9</Property>
+      <Property>2</Property>
+      <Property>3.8</Property>
+      <Property>33</Property>
+      <Property>2.2</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>1.75</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>true</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>13.7</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Bilinear</Property>
+      <Property>C 32/40</Property>
+      <Property>32</Property>
+      <Property>40</Property>
+      <Property>40</Property>
+      <Property>3.0</Property>
+      <Property>2.1</Property>
+      <Property>3.9</Property>
+      <Property>33</Property>
+      <Property>2.2</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>1.75</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>true</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>13.9</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Bilinear</Property>
+      <Property>C 35/45</Property>
+      <Property>35</Property>
+      <Property>45</Property>
+      <Property>43</Property>
+      <Property>3.2</Property>
+      <Property>2.2</Property>
+      <Property>4.2</Property>
+      <Property>34</Property>
+      <Property>2.25</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>1.75</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>true</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>14.2</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Bilinear</Property>
+      <Property>C 40/50</Property>
+      <Property>40</Property>
+      <Property>50</Property>
+      <Property>48</Property>
+      <Property>3.5</Property>
+      <Property>2.5</Property>
+      <Property>4.6</Property>
+      <Property>35</Property>
+      <Property>2.3</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>1.75</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>true</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>14.7</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Bilinear</Property>
+      <Property>C 45/55</Property>
+      <Property>45</Property>
+      <Property>55</Property>
+      <Property>53</Property>
+      <Property>3.8</Property>
+      <Property>2.7</Property>
+      <Property>4.9</Property>
+      <Property>36</Property>
+      <Property>2.4</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>1.75</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>true</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>15.1</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Bilinear</Property>
+      <Property>C 50/60</Property>
+      <Property>50</Property>
+      <Property>60</Property>
+      <Property>58</Property>
+      <Property>4.1</Property>
+      <Property>2.9</Property>
+      <Property>5.3</Property>
+      <Property>37</Property>
+      <Property>2.45</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>1.75</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>true</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>15.5</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Bilinear</Property>
+      <Property>C 53/65</Property>
+      <Property>53</Property>
+      <Property>65</Property>
+      <Property>61</Property>
+      <Property>4.2</Property>
+      <Property>3</Property>
+      <Property>5.4</Property>
+      <Property>38</Property>
+      <Property>2.5</Property>
+      <Property>3.3</Property>
+      <Property>2.15</Property>
+      <Property>3.3</Property>
+      <Property>1.8</Property>
+      <Property>3.3</Property>
+      <Property>1.85</Property>
+      <Property>true</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>15.8</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Bilinear</Property>
+      <Property>C 55/67</Property>
+      <Property>55</Property>
+      <Property>67</Property>
+      <Property>63</Property>
+      <Property>4.2</Property>
+      <Property>3</Property>
+      <Property>5.5</Property>
+      <Property>38</Property>
+      <Property>2.5</Property>
+      <Property>3.2</Property>
+      <Property>2.2</Property>
+      <Property>3.1</Property>
+      <Property>1.8</Property>
+      <Property>3.1</Property>
+      <Property>1.75</Property>
+      <Property>true</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>15.9</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Bilinear</Property>
+      <Property>C 60/75</Property>
+      <Property>60</Property>
+      <Property>75</Property>
+      <Property>68</Property>
+      <Property>4.4</Property>
+      <Property>3.1</Property>
+      <Property>5.7</Property>
+      <Property>39</Property>
+      <Property>2.6</Property>
+      <Property>3</Property>
+      <Property>2.3</Property>
+      <Property>2.9</Property>
+      <Property>1.9</Property>
+      <Property>2.9</Property>
+      <Property>1.6</Property>
+      <Property>true</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>16.3</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Bilinear</Property>
+      <Property>C 70/85</Property>
+      <Property>70</Property>
+      <Property>85</Property>
+      <Property>78</Property>
+      <Property>4.6</Property>
+      <Property>3.2</Property>
+      <Property>6</Property>
+      <Property>41</Property>
+      <Property>2.7</Property>
+      <Property>2.8</Property>
+      <Property>2.4</Property>
+      <Property>2.7</Property>
+      <Property>2</Property>
+      <Property>2.7</Property>
+      <Property>1.45</Property>
+      <Property>true</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>17</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Bilinear</Property>
+      <Property>C 80/95</Property>
+      <Property>80</Property>
+      <Property>95</Property>
+      <Property>88</Property>
+      <Property>4.8</Property>
+      <Property>3.4</Property>
+      <Property>6.3</Property>
+      <Property>42</Property>
+      <Property>2.8</Property>
+      <Property>2.8</Property>
+      <Property>2.5</Property>
+      <Property>2.6</Property>
+      <Property>2.2</Property>
+      <Property>2.6</Property>
+      <Property>1.4</Property>
+      <Property>true</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>17.6</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Bilinear</Property>
+      <Property>C 90/105</Property>
+      <Property>90</Property>
+      <Property>105</Property>
+      <Property>98</Property>
+      <Property>5</Property>
+      <Property>3.5</Property>
+      <Property>6.6</Property>
+      <Property>44</Property>
+      <Property>2.8</Property>
+      <Property>2.8</Property>
+      <Property>2.6</Property>
+      <Property>2.6</Property>
+      <Property>2.3</Property>
+      <Property>2.6</Property>
+      <Property>1.4</Property>
+      <Property>true</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>18.2</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Bilinear</Property>
+      <Property>C 100/115</Property>
+      <Property>100</Property>
+      <Property>115</Property>
+      <Property>108</Property>
+      <Property>5.2</Property>
+      <Property>3.7</Property>
+      <Property>6.8</Property>
+      <Property>45</Property>
+      <Property>2.8</Property>
+      <Property>2.8</Property>
+      <Property>2.6</Property>
+      <Property>2.6</Property>
+      <Property>2.4</Property>
+      <Property>2.6</Property>
+      <Property>1.4</Property>
+      <Property>true</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>18.75</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Parabola-rectangular</Property>
+      <Property>C 8/10</Property>
+      <Property>8</Property>
+      <Property>10</Property>
+      <Property>16</Property>
+      <Property>1.2</Property>
+      <Property>0.8</Property>
+      <Property>1.6</Property>
+      <Property>25</Property>
+      <Property>1.7</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>1.75</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>false</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>10.6</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Parabola-rectangular</Property>
+      <Property>C 12/15</Property>
+      <Property>12</Property>
+      <Property>15</Property>
+      <Property>20</Property>
+      <Property>1.6</Property>
+      <Property>1.1</Property>
+      <Property>2</Property>
+      <Property>27</Property>
+      <Property>1.8</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>1.75</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>false</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>11.3</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Parabola-rectangular</Property>
+      <Property>C 16/20</Property>
+      <Property>16</Property>
+      <Property>20</Property>
+      <Property>24</Property>
+      <Property>1.9</Property>
+      <Property>1.3</Property>
+      <Property>2.5</Property>
+      <Property>29</Property>
+      <Property>1.9</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>1.75</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>false</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>11.9</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Parabola-rectangular</Property>
+      <Property>C 20/25</Property>
+      <Property>20</Property>
+      <Property>25</Property>
+      <Property>28</Property>
+      <Property>2.2</Property>
+      <Property>1.5</Property>
+      <Property>2.9</Property>
+      <Property>30</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>1.75</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>false</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>12.5</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Parabola-rectangular</Property>
+      <Property>C 25/30</Property>
+      <Property>25</Property>
+      <Property>30</Property>
+      <Property>33</Property>
+      <Property>2.6</Property>
+      <Property>1.8</Property>
+      <Property>3.3</Property>
+      <Property>31</Property>
+      <Property>2.1</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>1.75</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>false</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>13.1</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Parabola-rectangular</Property>
+      <Property>C 28/35</Property>
+      <Property>28</Property>
+      <Property>35</Property>
+      <Property>36</Property>
+      <Property>2.8</Property>
+      <Property>1.9</Property>
+      <Property>3.6</Property>
+      <Property>32.3</Property>
+      <Property>2.1</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>1.75</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>false</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>13.5</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Parabola-rectangular</Property>
+      <Property>C 30/37</Property>
+      <Property>30</Property>
+      <Property>37</Property>
+      <Property>38</Property>
+      <Property>2.9</Property>
+      <Property>2</Property>
+      <Property>3.8</Property>
+      <Property>33</Property>
+      <Property>2.2</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>1.75</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>false</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>13.7</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Parabola-rectangular</Property>
+      <Property>C 32/40</Property>
+      <Property>32</Property>
+      <Property>40</Property>
+      <Property>40</Property>
+      <Property>3.0</Property>
+      <Property>2.1</Property>
+      <Property>3.9</Property>
+      <Property>33</Property>
+      <Property>2.2</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>1.75</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>false</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>13.9</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Parabola-rectangular</Property>
+      <Property>C 35/45</Property>
+      <Property>35</Property>
+      <Property>45</Property>
+      <Property>43</Property>
+      <Property>3.2</Property>
+      <Property>2.2</Property>
+      <Property>4.2</Property>
+      <Property>34</Property>
+      <Property>2.25</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>1.75</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>false</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>14.2</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Parabola-rectangular</Property>
+      <Property>C 40/50</Property>
+      <Property>40</Property>
+      <Property>50</Property>
+      <Property>48</Property>
+      <Property>3.5</Property>
+      <Property>2.5</Property>
+      <Property>4.6</Property>
+      <Property>35</Property>
+      <Property>2.3</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>1.75</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>false</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>14.7</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Parabola-rectangular</Property>
+      <Property>C 45/55</Property>
+      <Property>45</Property>
+      <Property>55</Property>
+      <Property>53</Property>
+      <Property>3.8</Property>
+      <Property>2.7</Property>
+      <Property>4.9</Property>
+      <Property>36</Property>
+      <Property>2.4</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>1.75</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>false</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>15.1</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Parabola-rectangular</Property>
+      <Property>C 50/60</Property>
+      <Property>50</Property>
+      <Property>60</Property>
+      <Property>58</Property>
+      <Property>4.1</Property>
+      <Property>2.9</Property>
+      <Property>5.3</Property>
+      <Property>37</Property>
+      <Property>2.45</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>3.5</Property>
+      <Property>1.75</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>false</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>15.5</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Parabola-rectangular</Property>
+      <Property>C 53/65</Property>
+      <Property>53</Property>
+      <Property>65</Property>
+      <Property>61</Property>
+      <Property>4.2</Property>
+      <Property>3</Property>
+      <Property>5.4</Property>
+      <Property>38</Property>
+      <Property>2.5</Property>
+      <Property>3.3</Property>
+      <Property>2.15</Property>
+      <Property>3.3</Property>
+      <Property>1.8</Property>
+      <Property>3.3</Property>
+      <Property>1.85</Property>
+      <Property>false</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>15.8</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Parabola-rectangular</Property>
+      <Property>C 55/67</Property>
+      <Property>55</Property>
+      <Property>67</Property>
+      <Property>63</Property>
+      <Property>4.2</Property>
+      <Property>3</Property>
+      <Property>5.5</Property>
+      <Property>38</Property>
+      <Property>2.5</Property>
+      <Property>3.2</Property>
+      <Property>2.2</Property>
+      <Property>3.1</Property>
+      <Property>1.8</Property>
+      <Property>3.1</Property>
+      <Property>1.75</Property>
+      <Property>false</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>15.9</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Parabola-rectangular</Property>
+      <Property>C 60/75</Property>
+      <Property>60</Property>
+      <Property>75</Property>
+      <Property>68</Property>
+      <Property>4.4</Property>
+      <Property>3.1</Property>
+      <Property>5.7</Property>
+      <Property>39</Property>
+      <Property>2.6</Property>
+      <Property>3</Property>
+      <Property>2.3</Property>
+      <Property>2.9</Property>
+      <Property>1.9</Property>
+      <Property>2.9</Property>
+      <Property>1.6</Property>
+      <Property>false</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>16.3</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Parabola-rectangular</Property>
+      <Property>C 70/85</Property>
+      <Property>70</Property>
+      <Property>85</Property>
+      <Property>78</Property>
+      <Property>4.6</Property>
+      <Property>3.2</Property>
+      <Property>6</Property>
+      <Property>41</Property>
+      <Property>2.7</Property>
+      <Property>2.8</Property>
+      <Property>2.4</Property>
+      <Property>2.7</Property>
+      <Property>2</Property>
+      <Property>2.7</Property>
+      <Property>1.45</Property>
+      <Property>false</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>17</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Parabola-rectangular</Property>
+      <Property>C 80/95</Property>
+      <Property>80</Property>
+      <Property>95</Property>
+      <Property>88</Property>
+      <Property>4.8</Property>
+      <Property>3.4</Property>
+      <Property>6.3</Property>
+      <Property>42</Property>
+      <Property>2.8</Property>
+      <Property>2.8</Property>
+      <Property>2.5</Property>
+      <Property>2.6</Property>
+      <Property>2.2</Property>
+      <Property>2.6</Property>
+      <Property>1.4</Property>
+      <Property>false</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>17.6</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Parabola-rectangular</Property>
+      <Property>C 90/105</Property>
+      <Property>90</Property>
+      <Property>105</Property>
+      <Property>98</Property>
+      <Property>5</Property>
+      <Property>3.5</Property>
+      <Property>6.6</Property>
+      <Property>44</Property>
+      <Property>2.8</Property>
+      <Property>2.8</Property>
+      <Property>2.6</Property>
+      <Property>2.6</Property>
+      <Property>2.3</Property>
+      <Property>2.6</Property>
+      <Property>1.4</Property>
+      <Property>false</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>18.2</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+    <Item>
+      <Property>Parabola-rectangular</Property>
+      <Property>C 100/115</Property>
+      <Property>100</Property>
+      <Property>115</Property>
+      <Property>108</Property>
+      <Property>5.2</Property>
+      <Property>3.7</Property>
+      <Property>6.8</Property>
+      <Property>45</Property>
+      <Property>2.8</Property>
+      <Property>2.8</Property>
+      <Property>2.6</Property>
+      <Property>2.6</Property>
+      <Property>2.4</Property>
+      <Property>2.6</Property>
+      <Property>1.4</Property>
+      <Property>false</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>18.75</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+  </Items>
+</Root>

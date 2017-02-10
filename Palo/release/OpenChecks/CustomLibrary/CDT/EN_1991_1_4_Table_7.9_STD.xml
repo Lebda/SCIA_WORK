@@ -1,0 +1,66 @@
+<Root Version="1" Type="CustomLibrary" GUID="507d480d-e4f2-4258-b283-d7cd6e526385">
+  <Header>
+    <PropertySet Symbol="c↓p,net,A←" ESA_ID="A" Unit="" Type="Numeric">
+      <Description TranslateID="A">
+        <ENU>Pressure coefficient - Zone A</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="c↓p,net,B←" ESA_ID="B" Unit="" Type="Numeric">
+      <Description TranslateID="B">
+        <ENU>Pressure coefficient - Zone B</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="c↓p,net,C←" ESA_ID="C" Unit="" Type="Numeric">
+      <Description TranslateID="C">
+        <ENU>Pressure coefficient - Zone C</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="c↓p,net,D←" ESA_ID="D" Unit="" Type="Numeric">
+      <Description TranslateID="D">
+        <ENU>Pressure coefficient - Zone D</ENU>
+      </Description>
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>1</Property>
+      <Property>3</Property>
+      <Property>2.3</Property>
+      <Property>1.4</Property>
+      <Property>1.2</Property>
+      <Property>1.2</Property>
+    </Item>
+    <Item>
+      <Property>1</Property>
+      <Property>5</Property>
+      <Property>2.9</Property>
+      <Property>1.8</Property>
+      <Property>1.4</Property>
+      <Property>1.2</Property>
+    </Item>
+    <Item>
+      <Property>1</Property>
+      <Property>10</Property>
+      <Property>3.4</Property>
+      <Property>2.1</Property>
+      <Property>1.7</Property>
+      <Property>1.2</Property>
+    </Item>
+    <Item>
+      <Property>1</Property>
+      <Property>NaN</Property>
+      <Property>2.1</Property>
+      <Property>1.8</Property>
+      <Property>1.4</Property>
+      <Property>1.2</Property>
+    </Item>
+    <Item>
+      <Property>0.8</Property>
+      <Property>NaN</Property>
+      <Property>1.2</Property>
+      <Property>1.2</Property>
+      <Property>1.2</Property>
+      <Property>1.2</Property>
+    </Item>
+  </Items>
+</Root>

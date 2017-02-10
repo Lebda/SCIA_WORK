@@ -1,0 +1,1103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<section>
+		<Id>1</Id>
+		<Name>HE 100 AA</Name>
+		<H>91</H>
+		<B>100</B>
+		<tw>4.2</tw>
+		<tf>5.5</tf>
+		<r>12</r>
+		<SCIAName>HE100AA</SCIAName>
+	</section>
+	<section>
+		<Id>2</Id>
+		<Name>HE 100 A</Name>
+		<H>96</H>
+		<B>100</B>
+		<tw>5</tw>
+		<tf>8</tf>
+		<r>12</r>
+		<SCIAName>HE100A</SCIAName>
+	</section>
+	<section>
+		<Id>3</Id>
+		<Name>HE 100 B</Name>
+		<H>100</H>
+		<B>100</B>
+		<tw>6</tw>
+		<tf>10</tf>
+		<r>12</r>
+		<SCIAName>HE100B</SCIAName>
+	</section>
+	<section>
+		<Id>4</Id>
+		<Name>HE 120 AA</Name>
+		<H>109</H>
+		<B>120</B>
+		<tw>4.2</tw>
+		<tf>5.5</tf>
+		<r>12</r>
+		<SCIAName>HE120AA</SCIAName>
+	</section>
+	<section>
+		<Id>5</Id>
+		<Name>HE 120 A</Name>
+		<H>114</H>
+		<B>120</B>
+		<tw>5</tw>
+		<tf>8</tf>
+		<r>12</r>
+		<SCIAName>HE120A</SCIAName>
+	</section>
+	<section>
+		<Id>6</Id>
+		<Name>HE 120 B</Name>
+		<H>120</H>
+		<B>120</B>
+		<tw>6.5</tw>
+		<tf>11</tf>
+		<r>12</r>
+		<SCIAName>HE120B</SCIAName>
+	</section>
+	<section>
+		<Id>7</Id>
+		<Name>HE 140 AA</Name>
+		<H>128</H>
+		<B>140</B>
+		<tw>4.3</tw>
+		<tf>6</tf>
+		<r>12</r>
+		<SCIAName>HE140AA</SCIAName>
+	</section>
+	<section>
+		<Id>8</Id>
+		<Name>HE 140 A</Name>
+		<H>133</H>
+		<B>140</B>
+		<tw>5.5</tw>
+		<tf>8.5</tf>
+		<r>12</r>
+		<SCIAName>HE140A</SCIAName>
+	</section>
+	<section>
+		<Id>9</Id>
+		<Name>HE 140 B</Name>
+		<H>140</H>
+		<B>140</B>
+		<tw>7</tw>
+		<tf>12</tf>
+		<r>12</r>
+		<SCIAName>HE140B</SCIAName>
+	</section>
+	<section>
+		<Id>10</Id>
+		<Name>HE 160 AA</Name>
+		<H>148</H>
+		<B>160</B>
+		<tw>4.5</tw>
+		<tf>7</tf>
+		<r>15</r>
+		<SCIAName>HE160AA</SCIAName>
+	</section>
+	<section>
+		<Id>11</Id>
+		<Name>HE 160 A</Name>
+		<H>152</H>
+		<B>160</B>
+		<tw>6</tw>
+		<tf>9</tf>
+		<r>15</r>
+		<SCIAName>HE160A</SCIAName>
+	</section>
+	<section>
+		<Id>12</Id>
+		<Name>HE 160 B</Name>
+		<H>160</H>
+		<B>160</B>
+		<tw>8</tw>
+		<tf>13</tf>
+		<r>15</r>
+		<SCIAName>HE160B</SCIAName>
+	</section>
+	<section>
+		<Id>13</Id>
+		<Name>HE 160 M</Name>
+		<H>180</H>
+		<B>166</B>
+		<tw>14</tw>
+		<tf>23</tf>
+		<r>15</r>
+		<SCIAName>HE160M</SCIAName>
+	</section>
+	<section>
+		<Id>14</Id>
+		<Name>HE 180 AA</Name>
+		<H>167</H>
+		<B>180</B>
+		<tw>5</tw>
+		<tf>7.5</tf>
+		<r>15</r>
+		<SCIAName>HE180AA</SCIAName>
+	</section>
+	<section>
+		<Id>15</Id>
+		<Name>HE 180 A</Name>
+		<H>171</H>
+		<B>180</B>
+		<tw>6</tw>
+		<tf>9.5</tf>
+		<r>15</r>
+		<SCIAName>HE180A</SCIAName>
+	</section>
+	<section>
+		<Id>16</Id>
+		<Name>HE 180 B</Name>
+		<H>180</H>
+		<B>180</B>
+		<tw>8.5</tw>
+		<tf>14</tf>
+		<r>15</r>
+		<SCIAName>HE180B</SCIAName>
+	</section>
+	<section>
+		<Id>17</Id>
+		<Name>HE 180 M</Name>
+		<H>200</H>
+		<B>186</B>
+		<tw>14.5</tw>
+		<tf>24</tf>
+		<r>15</r>
+		<SCIAName>HE180M</SCIAName>
+	</section>
+	<section>
+		<Id>18</Id>
+		<Name>HE 200 AA</Name>
+		<H>186</H>
+		<B>200</B>
+		<tw>5.5</tw>
+		<tf>8</tf>
+		<r>18</r>
+		<SCIAName>HE200AA</SCIAName>
+	</section>
+	<section>
+		<Id>19</Id>
+		<Name>HE 200 A</Name>
+		<H>190</H>
+		<B>200</B>
+		<tw>6.5</tw>
+		<tf>10</tf>
+		<r>18</r>
+		<SCIAName>HE200A</SCIAName>
+	</section>
+	<section>
+		<Id>20</Id>
+		<Name>HE 200 B</Name>
+		<H>200</H>
+		<B>200</B>
+		<tw>9</tw>
+		<tf>15</tf>
+		<r>18</r>
+		<SCIAName>HE200B</SCIAName>
+	</section>
+	<section>
+		<Id>21</Id>
+		<Name>HE 200 M</Name>
+		<H>220</H>
+		<B>206</B>
+		<tw>15</tw>
+		<tf>25</tf>
+		<r>18</r>
+		<SCIAName>HE200M</SCIAName>
+	</section>
+	<section>
+		<Id>22</Id>
+		<Name>HE 220 AA</Name>
+		<H>205</H>
+		<B>220</B>
+		<tw>6</tw>
+		<tf>8.5</tf>
+		<r>18</r>
+		<SCIAName>HE220AA</SCIAName>
+	</section>
+	<section>
+		<Id>23</Id>
+		<Name>HE 220 A</Name>
+		<H>210</H>
+		<B>220</B>
+		<tw>7</tw>
+		<tf>11</tf>
+		<r>18</r>
+		<SCIAName>HE220A</SCIAName>
+	</section>
+	<section>
+		<Id>24</Id>
+		<Name>HE 220 B</Name>
+		<H>220</H>
+		<B>220</B>
+		<tw>9.5</tw>
+		<tf>16</tf>
+		<r>18</r>
+		<SCIAName>HE220B</SCIAName>
+	</section>
+	<section>
+		<Id>25</Id>
+		<Name>HE 220 M</Name>
+		<H>240</H>
+		<B>226</B>
+		<tw>15.5</tw>
+		<tf>26</tf>
+		<r>18</r>
+		<SCIAName>HE220M</SCIAName>
+	</section>
+	<section>
+		<Id>26</Id>
+		<Name>HE 240 AA</Name>
+		<H>224</H>
+		<B>240</B>
+		<tw>6.5</tw>
+		<tf>9</tf>
+		<r>21</r>
+		<SCIAName>HE240AA</SCIAName>
+	</section>
+	<section>
+		<Id>27</Id>
+		<Name>HE 240 A</Name>
+		<H>230</H>
+		<B>240</B>
+		<tw>7.5</tw>
+		<tf>12</tf>
+		<r>21</r>
+		<SCIAName>HE240A</SCIAName>
+	</section>
+	<section>
+		<Id>28</Id>
+		<Name>HE 240 B</Name>
+		<H>240</H>
+		<B>240</B>
+		<tw>10</tw>
+		<tf>17</tf>
+		<r>21</r>
+		<SCIAName>HE240B</SCIAName>
+	</section>
+	<section>
+		<Id>29</Id>
+		<Name>HE 240 M</Name>
+		<H>270</H>
+		<B>248</B>
+		<tw>18</tw>
+		<tf>32</tf>
+		<r>21</r>
+		<SCIAName>HE240M</SCIAName>
+	</section>
+	<section>
+		<Id>30</Id>
+		<Name>HE 260 AA</Name>
+		<H>244</H>
+		<B>260</B>
+		<tw>6.5</tw>
+		<tf>9.5</tf>
+		<r>24</r>
+		<SCIAName>HE260AA</SCIAName>
+	</section>
+	<section>
+		<Id>31</Id>
+		<Name>HE 260 A</Name>
+		<H>250</H>
+		<B>260</B>
+		<tw>7.5</tw>
+		<tf>12.5</tf>
+		<r>24</r>
+		<SCIAName>HE260A</SCIAName>
+	</section>
+	<section>
+		<Id>32</Id>
+		<Name>HE 260 B</Name>
+		<H>260</H>
+		<B>260</B>
+		<tw>10</tw>
+		<tf>17.5</tf>
+		<r>24</r>
+		<SCIAName>HE260B</SCIAName>
+	</section>
+	<section>
+		<Id>33</Id>
+		<Name>HE 260 M</Name>
+		<H>290</H>
+		<B>268</B>
+		<tw>18</tw>
+		<tf>32.5</tf>
+		<r>24</r>
+		<SCIAName>HE260M</SCIAName>
+	</section>
+	<section>
+		<Id>34</Id>
+		<Name>HE 280 AA</Name>
+		<H>264</H>
+		<B>280</B>
+		<tw>7</tw>
+		<tf>10</tf>
+		<r>24</r>
+		<SCIAName>HE280AA</SCIAName>
+	</section>
+	<section>
+		<Id>35</Id>
+		<Name>HE 280 A</Name>
+		<H>270</H>
+		<B>280</B>
+		<tw>8</tw>
+		<tf>13</tf>
+		<r>24</r>
+		<SCIAName>HE280A</SCIAName>
+	</section>
+	<section>
+		<Id>36</Id>
+		<Name>HE 280 B</Name>
+		<H>280</H>
+		<B>280</B>
+		<tw>10.5</tw>
+		<tf>18</tf>
+		<r>24</r>
+		<SCIAName>HE280B</SCIAName>
+	</section>
+	<section>
+		<Id>37</Id>
+		<Name>HE 280 M</Name>
+		<H>310</H>
+		<B>288</B>
+		<tw>18.5</tw>
+		<tf>33</tf>
+		<r>24</r>
+		<SCIAName>HE280M</SCIAName>
+	</section>
+	<section>
+		<Id>38</Id>
+		<Name>HE 300 AA</Name>
+		<H>283</H>
+		<B>300</B>
+		<tw>7.5</tw>
+		<tf>10.5</tf>
+		<r>27</r>
+		<SCIAName>HE300AA</SCIAName>
+	</section>
+	<section>
+		<Id>39</Id>
+		<Name>HE 300 A</Name>
+		<H>290</H>
+		<B>300</B>
+		<tw>8.5</tw>
+		<tf>14</tf>
+		<r>27</r>
+		<SCIAName>HE300A</SCIAName>
+	</section>
+	<section>
+		<Id>40</Id>
+		<Name>HE 300 B</Name>
+		<H>300</H>
+		<B>300</B>
+		<tw>11</tw>
+		<tf>19</tf>
+		<r>27</r>
+		<SCIAName>HE300B</SCIAName>
+	</section>
+	<section>
+		<Id>41</Id>
+		<Name>HE 300 C</Name>
+		<H>320</H>
+		<B>305</B>
+		<tw>16</tw>
+		<tf>29</tf>
+		<r>27</r>
+		<SCIAName>HE300C</SCIAName>
+	</section>
+	<section>
+		<Id>42</Id>
+		<Name>HE 300 M</Name>
+		<H>340</H>
+		<B>310</B>
+		<tw>21</tw>
+		<tf>39</tf>
+		<r>27</r>
+		<SCIAName>HE300M</SCIAName>
+	</section>
+	<section>
+		<Id>43</Id>
+		<Name>HE 320 AA</Name>
+		<H>301</H>
+		<B>300</B>
+		<tw>8</tw>
+		<tf>11</tf>
+		<r>27</r>
+		<SCIAName>HE320AA</SCIAName>
+	</section>
+	<section>
+		<Id>44</Id>
+		<Name>HE 320 A</Name>
+		<H>310</H>
+		<B>300</B>
+		<tw>9</tw>
+		<tf>15.5</tf>
+		<r>27</r>
+		<SCIAName>HE320A</SCIAName>
+	</section>
+	<section>
+		<Id>45</Id>
+		<Name>HE 320 B</Name>
+		<H>320</H>
+		<B>300</B>
+		<tw>11.5</tw>
+		<tf>20.5</tf>
+		<r>27</r>
+		<SCIAName>HE320B</SCIAName>
+	</section>
+	<section>
+		<Id>46</Id>
+		<Name>HE 320 M</Name>
+		<H>359</H>
+		<B>309</B>
+		<tw>21</tw>
+		<tf>40</tf>
+		<r>27</r>
+		<SCIAName>HE320M</SCIAName>
+	</section>
+	<section>
+		<Id>47</Id>
+		<Name>HE 340 AA</Name>
+		<H>320</H>
+		<B>300</B>
+		<tw>8.5</tw>
+		<tf>11.5</tf>
+		<r>27</r>
+		<SCIAName>HE340AA</SCIAName>
+	</section>
+	<section>
+		<Id>48</Id>
+		<Name>HE 340 A</Name>
+		<H>330</H>
+		<B>300</B>
+		<tw>9.5</tw>
+		<tf>16.5</tf>
+		<r>27</r>
+		<SCIAName>HE340A</SCIAName>
+	</section>
+	<section>
+		<Id>49</Id>
+		<Name>HE 340 B</Name>
+		<H>340</H>
+		<B>300</B>
+		<tw>12</tw>
+		<tf>21.5</tf>
+		<r>27</r>
+		<SCIAName>HE340B</SCIAName>
+	</section>
+	<section>
+		<Id>50</Id>
+		<Name>HE 340 M</Name>
+		<H>377</H>
+		<B>309</B>
+		<tw>21</tw>
+		<tf>40</tf>
+		<r>27</r>
+		<SCIAName>HE340M</SCIAName>
+	</section>
+	<section>
+		<Id>51</Id>
+		<Name>HE 360 AA</Name>
+		<H>339</H>
+		<B>300</B>
+		<tw>9</tw>
+		<tf>12</tf>
+		<r>27</r>
+		<SCIAName>HE360AA</SCIAName>
+	</section>
+	<section>
+		<Id>52</Id>
+		<Name>HE 360 A</Name>
+		<H>350</H>
+		<B>300</B>
+		<tw>10</tw>
+		<tf>17.5</tf>
+		<r>27</r>
+		<SCIAName>HE360A</SCIAName>
+	</section>
+	<section>
+		<Id>53</Id>
+		<Name>HE 360 B</Name>
+		<H>360</H>
+		<B>300</B>
+		<tw>12.5</tw>
+		<tf>22.5</tf>
+		<r>27</r>
+		<SCIAName>HE360B</SCIAName>
+	</section>
+	<section>
+		<Id>54</Id>
+		<Name>HE 360 M</Name>
+		<H>395</H>
+		<B>308</B>
+		<tw>21</tw>
+		<tf>40</tf>
+		<r>27</r>
+		<SCIAName>HE360M</SCIAName>
+	</section>
+	<section>
+		<Id>55</Id>
+		<Name>HE 400 AA</Name>
+		<H>378</H>
+		<B>300</B>
+		<tw>9.5</tw>
+		<tf>13</tf>
+		<r>27</r>
+		<SCIAName>HE400AA</SCIAName>
+	</section>
+	<section>
+		<Id>56</Id>
+		<Name>HE 400 x 107</Name>
+		<H>384</H>
+		<B>297</B>
+		<tw>10</tw>
+		<tf>16</tf>
+		<r>27</r>
+		<SCIAName>HE400x107</SCIAName>
+	</section>
+	<section>
+		<Id>57</Id>
+		<Name>HE 400 A</Name>
+		<H>390</H>
+		<B>300</B>
+		<tw>11</tw>
+		<tf>19</tf>
+		<r>27</r>
+		<SCIAName>HE400A</SCIAName>
+	</section>
+	<section>
+		<Id>58</Id>
+		<Name>HE 400 B</Name>
+		<H>400</H>
+		<B>300</B>
+		<tw>13.5</tw>
+		<tf>24</tf>
+		<r>27</r>
+		<SCIAName>HE400B</SCIAName>
+	</section>
+	<section>
+		<Id>59</Id>
+		<Name>HE 400 M</Name>
+		<H>432</H>
+		<B>307</B>
+		<tw>21</tw>
+		<tf>40</tf>
+		<r>27</r>
+		<SCIAName>HE400M</SCIAName>
+	</section>
+	<section>
+		<Id>60</Id>
+		<Name>HE 450 AA</Name>
+		<H>425</H>
+		<B>300</B>
+		<tw>10</tw>
+		<tf>13.5</tf>
+		<r>27</r>
+		<SCIAName>HE450AA</SCIAName>
+	</section>
+	<section>
+		<Id>61</Id>
+		<Name>HE 450 x 124</Name>
+		<H>435</H>
+		<B>300</B>
+		<tw>10.2</tw>
+		<tf>18.5</tf>
+		<r>27</r>
+		<SCIAName>HE450x124</SCIAName>
+	</section>
+	<section>
+		<Id>62</Id>
+		<Name>HE 450 A</Name>
+		<H>440</H>
+		<B>300</B>
+		<tw>11.5</tw>
+		<tf>21</tf>
+		<r>27</r>
+		<SCIAName>HE450A</SCIAName>
+	</section>
+	<section>
+		<Id>63</Id>
+		<Name>HE 450 B</Name>
+		<H>450</H>
+		<B>300</B>
+		<tw>14</tw>
+		<tf>26</tf>
+		<r>27</r>
+		<SCIAName>HE450B</SCIAName>
+	</section>
+	<section>
+		<Id>64</Id>
+		<Name>HE 450 M</Name>
+		<H>478</H>
+		<B>307</B>
+		<tw>21</tw>
+		<tf>40</tf>
+		<r>27</r>
+		<SCIAName>HE450M</SCIAName>
+	</section>
+	<section>
+		<Id>65</Id>
+		<Name>HE 500 AA</Name>
+		<H>472</H>
+		<B>300</B>
+		<tw>10.5</tw>
+		<tf>14</tf>
+		<r>27</r>
+		<SCIAName>HE500AA</SCIAName>
+	</section>
+	<section>
+		<Id>66</Id>
+		<Name>HE 500 A</Name>
+		<H>490</H>
+		<B>300</B>
+		<tw>12</tw>
+		<tf>23</tf>
+		<r>27</r>
+		<SCIAName>HE500A</SCIAName>
+	</section>
+	<section>
+		<Id>67</Id>
+		<Name>HE 500 B</Name>
+		<H>500</H>
+		<B>300</B>
+		<tw>14.5</tw>
+		<tf>28</tf>
+		<r>27</r>
+		<SCIAName>HE500B</SCIAName>
+	</section>
+	<section>
+		<Id>68</Id>
+		<Name>HE 500 M</Name>
+		<H>524</H>
+		<B>306</B>
+		<tw>21</tw>
+		<tf>40</tf>
+		<r>27</r>
+		<SCIAName>HE500M</SCIAName>
+	</section>
+	<section>
+		<Id>69</Id>
+		<Name>HE 550 AA</Name>
+		<H>522</H>
+		<B>300</B>
+		<tw>11.5</tw>
+		<tf>15</tf>
+		<r>27</r>
+		<SCIAName>HE550AA</SCIAName>
+	</section>
+	<section>
+		<Id>70</Id>
+		<Name>HE 550 A</Name>
+		<H>540</H>
+		<B>300</B>
+		<tw>12.5</tw>
+		<tf>24</tf>
+		<r>27</r>
+		<SCIAName>HE550A</SCIAName>
+	</section>
+	<section>
+		<Id>71</Id>
+		<Name>HE 550 B</Name>
+		<H>550</H>
+		<B>300</B>
+		<tw>15</tw>
+		<tf>29</tf>
+		<r>27</r>
+		<SCIAName>HE550B</SCIAName>
+	</section>
+	<section>
+		<Id>72</Id>
+		<Name>HE 550 M</Name>
+		<H>572</H>
+		<B>306</B>
+		<tw>21</tw>
+		<tf>40</tf>
+		<r>27</r>
+		<SCIAName>HE550M</SCIAName>
+	</section>
+	<section>
+		<Id>73</Id>
+		<Name>HE 600 AA</Name>
+		<H>571</H>
+		<B>300</B>
+		<tw>12</tw>
+		<tf>15.5</tf>
+		<r>27</r>
+		<SCIAName>HE600AA</SCIAName>
+	</section>
+	<section>
+		<Id>74</Id>
+		<Name>HE 600 x 137</Name>
+		<H>575</H>
+		<B>300</B>
+		<tw>11.8</tw>
+		<tf>17.5</tf>
+		<r>27</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>75</Id>
+		<Name>HE 600 x 151</Name>
+		<H>582</H>
+		<B>300</B>
+		<tw>11.6</tw>
+		<tf>20.6</tf>
+		<r>27</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>76</Id>
+		<Name>HE 600 x 175</Name>
+		<H>588</H>
+		<B>300</B>
+		<tw>13.6</tw>
+		<tf>23.9</tf>
+		<r>27</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>77</Id>
+		<Name>HE 600 A</Name>
+		<H>590</H>
+		<B>300</B>
+		<tw>13</tw>
+		<tf>25</tf>
+		<r>27</r>
+		<SCIAName>HE600A</SCIAName>
+	</section>
+	<section>
+		<Id>78</Id>
+		<Name>HE 600 B</Name>
+		<H>600</H>
+		<B>300</B>
+		<tw>15.5</tw>
+		<tf>30</tf>
+		<r>27</r>
+		<SCIAName>HE600B</SCIAName>
+	</section>
+	<section>
+		<Id>79</Id>
+		<Name>HE 600 M</Name>
+		<H>620</H>
+		<B>305</B>
+		<tw>21</tw>
+		<tf>40</tf>
+		<r>27</r>
+		<SCIAName>HE600M</SCIAName>
+	</section>
+	<section>
+		<Id>80</Id>
+		<Name>HE 650 AA</Name>
+		<H>620</H>
+		<B>300</B>
+		<tw>12.5</tw>
+		<tf>16</tf>
+		<r>27</r>
+		<SCIAName>HE650AA</SCIAName>
+	</section>
+	<section>
+		<Id>81</Id>
+		<Name>HE 650 A</Name>
+		<H>640</H>
+		<B>300</B>
+		<tw>13.5</tw>
+		<tf>26</tf>
+		<r>27</r>
+		<SCIAName>HE650A</SCIAName>
+	</section>
+	<section>
+		<Id>82</Id>
+		<Name>HE 650 B</Name>
+		<H>650</H>
+		<B>300</B>
+		<tw>16</tw>
+		<tf>31</tf>
+		<r>27</r>
+		<SCIAName>HE650B</SCIAName>
+	</section>
+	<section>
+		<Id>83</Id>
+		<Name>HE 650 M</Name>
+		<H>668</H>
+		<B>305</B>
+		<tw>21</tw>
+		<tf>40</tf>
+		<r>27</r>
+		<SCIAName>HE650M</SCIAName>
+	</section>
+	<section>
+		<Id>84</Id>
+		<Name>HE 650 x 347</Name>
+		<H>680</H>
+		<B>307</B>
+		<tw>26</tw>
+		<tf>46</tf>
+		<r>27</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>85</Id>
+		<Name>HE 650 x 410</Name>
+		<H>696</H>
+		<B>312</B>
+		<tw>30.5</tw>
+		<tf>54</tf>
+		<r>27</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>86</Id>
+		<Name>HE 700 AA</Name>
+		<H>670</H>
+		<B>300</B>
+		<tw>13</tw>
+		<tf>17</tf>
+		<r>27</r>
+		<SCIAName>HE700AA</SCIAName>
+	</section>
+	<section>
+		<Id>87</Id>
+		<Name>HE 700 x 166</Name>
+		<H>678</H>
+		<B>300</B>
+		<tw>12.5</tw>
+		<tf>21</tf>
+		<r>27</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>88</Id>
+		<Name>HE 700 A</Name>
+		<H>690</H>
+		<B>300</B>
+		<tw>14.5</tw>
+		<tf>27</tf>
+		<r>27</r>
+		<SCIAName>HE700A</SCIAName>
+	</section>
+	<section>
+		<Id>89</Id>
+		<Name>HE 700 B</Name>
+		<H>700</H>
+		<B>300</B>
+		<tw>17</tw>
+		<tf>32</tf>
+		<r>27</r>
+		<SCIAName>HE700B</SCIAName>
+	</section>
+	<section>
+		<Id>90</Id>
+		<Name>HE 700 M</Name>
+		<H>716</H>
+		<B>304</B>
+		<tw>21</tw>
+		<tf>40</tf>
+		<r>27</r>
+		<SCIAName>HE700M</SCIAName>
+	</section>
+	<section>
+		<Id>91</Id>
+		<Name>HE 700 x 356</Name>
+		<H>728</H>
+		<B>306</B>
+		<tw>26</tw>
+		<tf>46</tf>
+		<r>27</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>92</Id>
+		<Name>HE 700 x 421</Name>
+		<H>744</H>
+		<B>311</B>
+		<tw>30.5</tw>
+		<tf>54</tf>
+		<r>27</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>93</Id>
+		<Name>HE 800 AA</Name>
+		<H>770</H>
+		<B>300</B>
+		<tw>14</tw>
+		<tf>18</tf>
+		<r>30</r>
+		<SCIAName>HE800AA</SCIAName>
+	</section>
+	<section>
+		<Id>94</Id>
+		<Name>HE 800 A</Name>
+		<H>790</H>
+		<B>300</B>
+		<tw>15</tw>
+		<tf>28</tf>
+		<r>30</r>
+		<SCIAName>HE800A</SCIAName>
+	</section>
+	<section>
+		<Id>95</Id>
+		<Name>HE 800 B</Name>
+		<H>800</H>
+		<B>300</B>
+		<tw>17.5</tw>
+		<tf>33</tf>
+		<r>30</r>
+		<SCIAName>HE800B</SCIAName>
+	</section>
+	<section>
+		<Id>96</Id>
+		<Name>HE 800 M</Name>
+		<H>814</H>
+		<B>303</B>
+		<tw>21</tw>
+		<tf>40</tf>
+		<r>30</r>
+		<SCIAName>HE800M</SCIAName>
+	</section>
+	<section>
+		<Id>97</Id>
+		<Name>HE 800 x 377</Name>
+		<H>826</H>
+		<B>306</B>
+		<tw>26</tw>
+		<tf>46</tf>
+		<r>30</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>98</Id>
+		<Name>HE 800 x 448</Name>
+		<H>842</H>
+		<B>311</B>
+		<tw>31</tw>
+		<tf>54</tf>
+		<r>30</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>99</Id>
+		<Name>HE 900 AA</Name>
+		<H>870</H>
+		<B>300</B>
+		<tw>15</tw>
+		<tf>20</tf>
+		<r>30</r>
+		<SCIAName>HE900AA</SCIAName>
+	</section>
+	<section>
+		<Id>100</Id>
+		<Name>HE 900 A</Name>
+		<H>890</H>
+		<B>300</B>
+		<tw>16</tw>
+		<tf>30</tf>
+		<r>30</r>
+		<SCIAName>HE900A</SCIAName>
+	</section>
+	<section>
+		<Id>101</Id>
+		<Name>HE 900 B</Name>
+		<H>900</H>
+		<B>300</B>
+		<tw>18.5</tw>
+		<tf>35</tf>
+		<r>30</r>
+		<SCIAName>HE900B</SCIAName>
+	</section>
+	<section>
+		<Id>102</Id>
+		<Name>HE 900 M</Name>
+		<H>910</H>
+		<B>302</B>
+		<tw>21</tw>
+		<tf>40</tf>
+		<r>30</r>
+		<SCIAName>HE900M</SCIAName>
+	</section>
+	<section>
+		<Id>103</Id>
+		<Name>HE 900 x 396</Name>
+		<H>922</H>
+		<B>305</B>
+		<tw>26</tw>
+		<tf>46</tf>
+		<r>30</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>104</Id>
+		<Name>HE 900 x 471</Name>
+		<H>938</H>
+		<B>310</B>
+		<tw>31</tw>
+		<tf>54</tf>
+		<r>30</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>105</Id>
+		<Name>HE 1000 AA</Name>
+		<H>970</H>
+		<B>300</B>
+		<tw>16</tw>
+		<tf>21</tf>
+		<r>30</r>
+		<SCIAName>HE1000AA</SCIAName>
+	</section>
+	<section>
+		<Id>106</Id>
+		<Name>HE 1000 A</Name>
+		<H>990</H>
+		<B>300</B>
+		<tw>16.5</tw>
+		<tf>31</tf>
+		<r>30</r>
+		<SCIAName>HE1000A</SCIAName>
+	</section>
+	<section>
+		<Id>107</Id>
+		<Name>HE 1000 B</Name>
+		<H>1000</H>
+		<B>300</B>
+		<tw>19</tw>
+		<tf>36</tf>
+		<r>30</r>
+		<SCIAName>HE1000B</SCIAName>
+	</section>
+	<section>
+		<Id>108</Id>
+		<Name>HE 1000 M</Name>
+		<H>1008</H>
+		<B>302</B>
+		<tw>21</tw>
+		<tf>40</tf>
+		<r>30</r>
+		<SCIAName>HE1000M</SCIAName>
+	</section>
+	<section>
+		<Id>109</Id>
+		<Name>HE 1000 x 415</Name>
+		<H>1020</H>
+		<B>304</B>
+		<tw>26</tw>
+		<tf>46</tf>
+		<r>30</r>
+		<SCIAName>HE1000x415</SCIAName>
+	</section>
+	<section>
+		<Id>110</Id>
+		<Name>HE 1000 x 494</Name>
+		<H>1036</H>
+		<B>309</B>
+		<tw>31</tw>
+		<tf>54</tf>
+		<r>30</r>
+		<SCIAName>HE1000x494</SCIAName>
+	</section>
+</Sections>

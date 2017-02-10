@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="5"><StringCode SourceType="DLLRC:"><StringId>@{absencesesacmdsm.2eids_absences_support}</StringId>
+		<SourceDll>AbsencesESACmdsM.2eDLL</SourceDll>
+		<ResourceId>111</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{absencesesacmdsm.2eids_absences_slab}</StringId>
+		<SourceDll>AbsencesESACmdsM.2eDLL</SourceDll>
+		<ResourceId>113</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{absencesesacmdsm.2eids_absences}</StringId>
+		<SourceDll>AbsencesESACmdsM.2eDLL</SourceDll>
+		<ResourceId>109</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{absencesesacmdsm.2eids_absences_beam}</StringId>
+		<SourceDll>AbsencesESACmdsM.2eDLL</SourceDll>
+		<ResourceId>112</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{absencesesacmdsm.2eids_absentgroup}</StringId>
+		<SourceDll>AbsencesESACmdsM.2eDLL</SourceDll>
+		<ResourceId>110</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

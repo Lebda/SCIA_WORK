@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xss xmlns:xss="http://www.scia.cz/xss">
+   <toolbar Version="1" Name="Scales" Flags="0" IsPart="0" PartsSize="0" Size="4">
+      <Button Version="1" Mode="1" ButtonAsMenu="0" ButtonStyle="5" ControlType="3" ControlBase="10" ControlFlag="0" ControlMinValue="1e-006" ControlMaxValue="1e+006" ControlWidth="-1" RegistrarID="{00000000-0000-0000-0000-000000000000}" ControlValue="1" ButtonID="{49E4E861-31EE-4B83-90C3-9DEAC4E4E602}" ToolBarAsMenuID="{A4D51090-B8E6-4242-ACF8-EB4A732E394B}"/>
+      <Button Version="1" Mode="1" Tooltip="Autofit scales for data" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{CAAC9DC6-F0F9-4C8B-904C-863C3A873088}" ButtonID="{CAAC9DC6-F0F9-4C8B-904C-863C3A873088}" ToolBarAsMenuID="{00000000-0000-0000-0000-000000000000}"/>
+      <Button Version="1" Mode="1" ButtonAsMenu="0" ButtonStyle="5" ControlType="3" ControlBase="10" ControlFlag="0" ControlMinValue="1e-006" ControlMaxValue="1e+006" ControlWidth="-1" RegistrarID="{00000000-0000-0000-0000-000000000000}" ControlValue="1" ButtonID="{C2A88741-A662-4499-AAA0-E02EA5DB7161}" ToolBarAsMenuID="{A4D51090-B8E6-4242-ACF8-EB4A732E394B}"/>
+      <Button Version="1" Mode="1" Tooltip="Autofit scales for results" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{6B4BF01A-366B-4C0B-8885-9C57A0965D1C}" ButtonID="{6B4BF01A-366B-4C0B-8885-9C57A0965D1C}" ToolBarAsMenuID="{00000000-0000-0000-0000-000000000000}"/></toolbar></xss>

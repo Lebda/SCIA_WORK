@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="4"><StringCode SourceType="DLLRC:"><StringId>@{checksteelbeam.2eids_arcelor_design_check}</StringId>
+		<SourceDll>CheckSteelBeam.2edll</SourceDll>
+		<ResourceId>101</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{checksteelbeam.2eids_stabilitycheck}</StringId>
+		<SourceDll>CheckSteelBeam.2edll</SourceDll>
+		<ResourceId>113</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{checksteelbeam.2eids_unitycheck}</StringId>
+		<SourceDll>CheckSteelBeam.2edll</SourceDll>
+		<ResourceId>102</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{checksteelbeam.2eids_sectioncheck}</StringId>
+		<SourceDll>CheckSteelBeam.2edll</SourceDll>
+		<ResourceId>112</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

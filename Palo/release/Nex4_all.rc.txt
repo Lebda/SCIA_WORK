@@ -1,0 +1,4 @@
+NexCheck \X\NEX4\SRC\NexCheck\NexCheck.rc NexCheck.tlb
+NexSolver \X\NEX4\SRC\NexSolver\NexSolver.rc NexSolver.tlb
+NexTo4 \X\NEX4\SRC\NexTo4\NexTo4.rc NexTo4.tlb
+V4ToNex \X\NEX4\SRC\V4ToNex\V4ToNex.rc V4ToNex.tlb

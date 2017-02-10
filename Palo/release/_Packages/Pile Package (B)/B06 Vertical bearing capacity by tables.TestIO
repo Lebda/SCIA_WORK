@@ -1,0 +1,292 @@
+<Root>
+  <Test Description="Test 1" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="V↓d←" Value="850000" />
+      <Variable Identifier="L" Value="1" />
+      <Variable Identifier="d" Value="900e-3" />
+      <Variable Identifier="T" Value="2" />
+      <Variable Identifier="I↓D←" Value="800e-3" />
+      <Variable Identifier="I↓C←" Value="800e-3" />
+    </Dialog>
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="I↓C←" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Input Name="I↓D←" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="ČSN 73 1002" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.0" Value="2.03125e6" />
+    <Input Name="R↓L0,5←" Type="Numeric" ESA_ID="" Value="1.9375e6" />
+    <Input Name="R↓L0←" Type="Numeric" ESA_ID="" Value="1.9375e6" />
+    <Input Name="R↓L1,5,I100←" Type="Numeric" ESA_ID="" Value="857500" />
+    <Input Name="R↓L1,5←" Type="Numeric" ESA_ID="" Value="2.125e6" />
+    <Input Name="R↓L1,5d0,3←" Type="Numeric" ESA_ID="" Value="35000" />
+    <Input Name="R↓L1,5I0,33←" Type="Numeric" ESA_ID="" Value="335000" />
+    <Input Name="R↓L1,5I0,5←" Type="Numeric" ESA_ID="" Value="192500" />
+    <Input Name="R↓L1,5I0,67←" Type="Numeric" ESA_ID="" Value="670000" />
+    <Input Name="R↓L1,5I1,5←" Type="Numeric" ESA_ID="" Value="857500" />
+    <Input Name="R↓L1,5I1←" Type="Numeric" ESA_ID="" Value="1.9375e6" />
+    <Input Name="R↓L1←" Type="Numeric" ESA_ID="" Value="1.169318e6" />
+    <Input Name="R↓L10,I100←" Type="Numeric" ESA_ID="" Value="2.2875e6" />
+    <Input Name="R↓L10←" Type="Numeric" ESA_ID="" Value="2.278788e6" />
+    <Input Name="R↓L100←" Type="Numeric" ESA_ID="" Value="547000" />
+    <Input Name="R↓L10I0,33←" Type="Numeric" ESA_ID="" Value="735000" />
+    <Input Name="R↓L10I0,5←" Type="Numeric" ESA_ID="" Value="607500" />
+    <Input Name="R↓L10I0,67←" Type="Numeric" ESA_ID="" Value="1.485e6" />
+    <Input Name="R↓L10I1,5←" Type="Numeric" ESA_ID="" Value="2.2875e6" />
+    <Input Name="R↓L10I1←" Type="Numeric" ESA_ID="" Value="3.5e6" />
+    <Input Name="R↓L3,I100←" Type="Numeric" ESA_ID="" Value="1.3025e6" />
+    <Input Name="R↓L3←" Type="Numeric" ESA_ID="" Value="1.482954e6" />
+    <Input Name="R↓L3I0,33←" Type="Numeric" ESA_ID="" Value="445000" />
+    <Input Name="R↓L3I0,5←" Type="Numeric" ESA_ID="" Value="320000" />
+    <Input Name="R↓L3I0,67←" Type="Numeric" ESA_ID="" Value="895000" />
+    <Input Name="R↓L3I1,5←" Type="Numeric" ESA_ID="" Value="1.3025e6" />
+    <Input Name="R↓L3I1←" Type="Numeric" ESA_ID="" Value="2.3875e6" />
+    <Input Name="R↓L5,I100←" Type="Numeric" ESA_ID="" Value="1.6125e6" />
+    <Input Name="R↓L5←" Type="Numeric" ESA_ID="" Value="1.757576e6" />
+    <Input Name="R↓L5I0,33←" Type="Numeric" ESA_ID="" Value="542500" />
+    <Input Name="R↓L5I0,5←" Type="Numeric" ESA_ID="" Value="400000" />
+    <Input Name="R↓L5I0,67←" Type="Numeric" ESA_ID="" Value="1.1125e6" />
+    <Input Name="R↓L5I1,5←" Type="Numeric" ESA_ID="" Value="1.6125e6" />
+    <Input Name="R↓L5I1←" Type="Numeric" ESA_ID="" Value="2.75e6" />
+    <Input Name="T" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="850000" />
+  </Test>
+  <Test Description="Test 2" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="V↓d←" Value="850000" />
+      <Variable Identifier="L" Value="6" />
+      <Variable Identifier="d" Value="750e-3" />
+      <Variable Identifier="T" Value="9" />
+      <Variable Identifier="I↓D←" Value="800e-3" />
+      <Variable Identifier="I↓C←" Value="800e-3" />
+    </Dialog>
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="750e-3" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="I↓C←" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Input Name="I↓D←" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="6" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="ČSN 73 1002" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.0" Value="1.414545e6" />
+    <Input Name="R↓L0,5←" Type="Numeric" ESA_ID="" Value="1.9375e6" />
+    <Input Name="R↓L0←" Type="Numeric" ESA_ID="" Value="1.9375e6" />
+    <Input Name="R↓L1,5,I100←" Type="Numeric" ESA_ID="" Value="857500" />
+    <Input Name="R↓L1,5←" Type="Numeric" ESA_ID="" Value="836931.8" />
+    <Input Name="R↓L1,5d0,3←" Type="Numeric" ESA_ID="" Value="35000" />
+    <Input Name="R↓L1,5I0,33←" Type="Numeric" ESA_ID="" Value="237500" />
+    <Input Name="R↓L1,5I0,5←" Type="Numeric" ESA_ID="" Value="192500" />
+    <Input Name="R↓L1,5I0,67←" Type="Numeric" ESA_ID="" Value="475000" />
+    <Input Name="R↓L1,5I1,5←" Type="Numeric" ESA_ID="" Value="857500" />
+    <Input Name="R↓L1,5I1←" Type="Numeric" ESA_ID="" Value="1.39375e6" />
+    <Input Name="R↓L1←" Type="Numeric" ESA_ID="" Value="836931.8" />
+    <Input Name="R↓L10,I100←" Type="Numeric" ESA_ID="" Value="2.2875e6" />
+    <Input Name="R↓L10←" Type="Numeric" ESA_ID="" Value="1.787879e6" />
+    <Input Name="R↓L100←" Type="Numeric" ESA_ID="" Value="547000" />
+    <Input Name="R↓L10I0,33←" Type="Numeric" ESA_ID="" Value="577500" />
+    <Input Name="R↓L10I0,5←" Type="Numeric" ESA_ID="" Value="607500" />
+    <Input Name="R↓L10I0,67←" Type="Numeric" ESA_ID="" Value="1.1625e6" />
+    <Input Name="R↓L10I1,5←" Type="Numeric" ESA_ID="" Value="2.2875e6" />
+    <Input Name="R↓L10I1←" Type="Numeric" ESA_ID="" Value="2.75e6" />
+    <Input Name="R↓L3,I100←" Type="Numeric" ESA_ID="" Value="1.3025e6" />
+    <Input Name="R↓L3←" Type="Numeric" ESA_ID="" Value="1.098295e6" />
+    <Input Name="R↓L3I0,33←" Type="Numeric" ESA_ID="" Value="332500" />
+    <Input Name="R↓L3I0,5←" Type="Numeric" ESA_ID="" Value="320000" />
+    <Input Name="R↓L3I0,67←" Type="Numeric" ESA_ID="" Value="662500" />
+    <Input Name="R↓L3I1,5←" Type="Numeric" ESA_ID="" Value="1.3025e6" />
+    <Input Name="R↓L3I1←" Type="Numeric" ESA_ID="" Value="1.76875e6" />
+    <Input Name="R↓L5,I100←" Type="Numeric" ESA_ID="" Value="1.6125e6" />
+    <Input Name="R↓L5←" Type="Numeric" ESA_ID="" Value="1.321212e6" />
+    <Input Name="R↓L5I0,33←" Type="Numeric" ESA_ID="" Value="411250" />
+    <Input Name="R↓L5I0,5←" Type="Numeric" ESA_ID="" Value="400000" />
+    <Input Name="R↓L5I0,67←" Type="Numeric" ESA_ID="" Value="831250" />
+    <Input Name="R↓L5I1,5←" Type="Numeric" ESA_ID="" Value="1.6125e6" />
+    <Input Name="R↓L5I1←" Type="Numeric" ESA_ID="" Value="2.075e6" />
+    <Input Name="T" Type="Numeric" ESA_ID="" Value="9" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="850000" />
+  </Test>
+  <Test Description="Test 3" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="V↓d←" Value="850000" />
+      <Variable Identifier="L" Value="6" />
+      <Variable Identifier="d" Value="750e-3" />
+      <Variable Identifier="T" Value="15" />
+      <Variable Identifier="I↓D←" Value="800e-3" />
+      <Variable Identifier="I↓C←" Value="800e-3" />
+    </Dialog>
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="750e-3" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="I↓C←" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Input Name="I↓D←" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="6" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="ČSN 73 1002" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.0" Value="1.057803e6" />
+    <Input Name="R↓L0,5←" Type="Numeric" ESA_ID="" Value="1.9375e6" />
+    <Input Name="R↓L0←" Type="Numeric" ESA_ID="" Value="1.9375e6" />
+    <Input Name="R↓L1,5,I100←" Type="Numeric" ESA_ID="" Value="857500" />
+    <Input Name="R↓L1,5←" Type="Numeric" ESA_ID="" Value="626515.1" />
+    <Input Name="R↓L1,5d0,3←" Type="Numeric" ESA_ID="" Value="35000" />
+    <Input Name="R↓L1,5I0,33←" Type="Numeric" ESA_ID="" Value="143125" />
+    <Input Name="R↓L1,5I0,5←" Type="Numeric" ESA_ID="" Value="192500" />
+    <Input Name="R↓L1,5I0,67←" Type="Numeric" ESA_ID="" Value="286250" />
+    <Input Name="R↓L1,5I1,5←" Type="Numeric" ESA_ID="" Value="857500" />
+    <Input Name="R↓L1,5I1←" Type="Numeric" ESA_ID="" Value="1.15e6" />
+    <Input Name="R↓L1←" Type="Numeric" ESA_ID="" Value="626515.1" />
+    <Input Name="R↓L10,I100←" Type="Numeric" ESA_ID="" Value="2.2875e6" />
+    <Input Name="R↓L10←" Type="Numeric" ESA_ID="" Value="1.331439e6" />
+    <Input Name="R↓L100←" Type="Numeric" ESA_ID="" Value="547000" />
+    <Input Name="R↓L10I0,33←" Type="Numeric" ESA_ID="" Value="268750" />
+    <Input Name="R↓L10I0,5←" Type="Numeric" ESA_ID="" Value="607500" />
+    <Input Name="R↓L10I0,67←" Type="Numeric" ESA_ID="" Value="856250" />
+    <Input Name="R↓L10I1,5←" Type="Numeric" ESA_ID="" Value="2.2875e6" />
+    <Input Name="R↓L10I1←" Type="Numeric" ESA_ID="" Value="2.0625e6" />
+    <Input Name="R↓L3,I100←" Type="Numeric" ESA_ID="" Value="1.3025e6" />
+    <Input Name="R↓L3←" Type="Numeric" ESA_ID="" Value="839015.1" />
+    <Input Name="R↓L3I0,33←" Type="Numeric" ESA_ID="" Value="187500" />
+    <Input Name="R↓L3I0,5←" Type="Numeric" ESA_ID="" Value="320000" />
+    <Input Name="R↓L3I0,67←" Type="Numeric" ESA_ID="" Value="450000" />
+    <Input Name="R↓L3I1,5←" Type="Numeric" ESA_ID="" Value="1.3025e6" />
+    <Input Name="R↓L3I1←" Type="Numeric" ESA_ID="" Value="1.4375e6" />
+    <Input Name="R↓L5,I100←" Type="Numeric" ESA_ID="" Value="1.6125e6" />
+    <Input Name="R↓L5←" Type="Numeric" ESA_ID="" Value="989393.9" />
+    <Input Name="R↓L5I0,33←" Type="Numeric" ESA_ID="" Value="215000" />
+    <Input Name="R↓L5I0,5←" Type="Numeric" ESA_ID="" Value="400000" />
+    <Input Name="R↓L5I0,67←" Type="Numeric" ESA_ID="" Value="576250" />
+    <Input Name="R↓L5I1,5←" Type="Numeric" ESA_ID="" Value="1.6125e6" />
+    <Input Name="R↓L5I1←" Type="Numeric" ESA_ID="" Value="1.625e6" />
+    <Input Name="T" Type="Numeric" ESA_ID="" Value="15" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="850000" />
+  </Test>
+  <Test Description="Test 4" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="V↓d←" Value="850000" />
+      <Variable Identifier="L" Value="6" />
+      <Variable Identifier="d" Value="750e-3" />
+      <Variable Identifier="T" Value="20" />
+      <Variable Identifier="I↓D←" Value="800e-3" />
+      <Variable Identifier="I↓C←" Value="800e-3" />
+    </Dialog>
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="750e-3" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="I↓C←" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Input Name="I↓D←" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="6" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="ČSN 73 1002" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.0" Value="576050" />
+    <Input Name="R↓L0,5←" Type="Numeric" ESA_ID="" Value="1.9375e6" />
+    <Input Name="R↓L0←" Type="Numeric" ESA_ID="" Value="1.9375e6" />
+    <Input Name="R↓L1,5,I100←" Type="Numeric" ESA_ID="" Value="643750" />
+    <Input Name="R↓L1,5←" Type="Numeric" ESA_ID="" Value="278750" />
+    <Input Name="R↓L1,5d0,3←" Type="Numeric" ESA_ID="" Value="35000" />
+    <Input Name="R↓L1,5I0,33←" Type="Numeric" ESA_ID="" Value="143125" />
+    <Input Name="R↓L1,5I0,5←" Type="Numeric" ESA_ID="" Value="136250" />
+    <Input Name="R↓L1,5I0,67←" Type="Numeric" ESA_ID="" Value="286250" />
+    <Input Name="R↓L1,5I1,5←" Type="Numeric" ESA_ID="" Value="643750" />
+    <Input Name="R↓L1,5I1←" Type="Numeric" ESA_ID="" Value="373750" />
+    <Input Name="R↓L1←" Type="Numeric" ESA_ID="" Value="278750" />
+    <Input Name="R↓L10,I100←" Type="Numeric" ESA_ID="" Value="1.81875e6" />
+    <Input Name="R↓L10←" Type="Numeric" ESA_ID="" Value="764250" />
+    <Input Name="R↓L100←" Type="Numeric" ESA_ID="" Value="547000" />
+    <Input Name="R↓L10I0,33←" Type="Numeric" ESA_ID="" Value="268750" />
+    <Input Name="R↓L10I0,5←" Type="Numeric" ESA_ID="" Value="468750" />
+    <Input Name="R↓L10I0,67←" Type="Numeric" ESA_ID="" Value="856250" />
+    <Input Name="R↓L10I1,5←" Type="Numeric" ESA_ID="" Value="1.81875e6" />
+    <Input Name="R↓L10I1←" Type="Numeric" ESA_ID="" Value="961250" />
+    <Input Name="R↓L3,I100←" Type="Numeric" ESA_ID="" Value="1.00625e6" />
+    <Input Name="R↓L3←" Type="Numeric" ESA_ID="" Value="422750" />
+    <Input Name="R↓L3I0,33←" Type="Numeric" ESA_ID="" Value="187500" />
+    <Input Name="R↓L3I0,5←" Type="Numeric" ESA_ID="" Value="245000" />
+    <Input Name="R↓L3I0,67←" Type="Numeric" ESA_ID="" Value="450000" />
+    <Input Name="R↓L3I1,5←" Type="Numeric" ESA_ID="" Value="1.00625e6" />
+    <Input Name="R↓L3I1←" Type="Numeric" ESA_ID="" Value="541250" />
+    <Input Name="R↓L5,I100←" Type="Numeric" ESA_ID="" Value="1.25625e6" />
+    <Input Name="R↓L5←" Type="Numeric" ESA_ID="" Value="529000" />
+    <Input Name="R↓L5I0,33←" Type="Numeric" ESA_ID="" Value="215000" />
+    <Input Name="R↓L5I0,5←" Type="Numeric" ESA_ID="" Value="310000" />
+    <Input Name="R↓L5I0,67←" Type="Numeric" ESA_ID="" Value="576250" />
+    <Input Name="R↓L5I1,5←" Type="Numeric" ESA_ID="" Value="1.25625e6" />
+    <Input Name="R↓L5I1←" Type="Numeric" ESA_ID="" Value="675000" />
+    <Input Name="T" Type="Numeric" ESA_ID="" Value="20" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="850000" />
+  </Test>
+  <Test Description="Test 5" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="V↓d←" Value="850000" />
+      <Variable Identifier="L" Value="6" />
+      <Variable Identifier="d" Value="750e-3" />
+      <Variable Identifier="T" Value="11" />
+      <Variable Identifier="I↓D←" Value="800e-3" />
+      <Variable Identifier="I↓C←" Value="800e-3" />
+    </Dialog>
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="750e-3" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="I↓C←" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Input Name="I↓D←" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="6" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="ČSN 73 1002" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.0" Value="576050" />
+    <Input Name="R↓L0,5←" Type="Numeric" ESA_ID="" Value="1.9375e6" />
+    <Input Name="R↓L0←" Type="Numeric" ESA_ID="" Value="1.9375e6" />
+    <Input Name="R↓L1,5,I100←" Type="Numeric" ESA_ID="" Value="643750" />
+    <Input Name="R↓L1,5←" Type="Numeric" ESA_ID="" Value="278750" />
+    <Input Name="R↓L1,5d0,3←" Type="Numeric" ESA_ID="" Value="35000" />
+    <Input Name="R↓L1,5I0,33←" Type="Numeric" ESA_ID="" Value="143125" />
+    <Input Name="R↓L1,5I0,5←" Type="Numeric" ESA_ID="" Value="136250" />
+    <Input Name="R↓L1,5I0,67←" Type="Numeric" ESA_ID="" Value="286250" />
+    <Input Name="R↓L1,5I1,5←" Type="Numeric" ESA_ID="" Value="643750" />
+    <Input Name="R↓L1,5I1←" Type="Numeric" ESA_ID="" Value="373750" />
+    <Input Name="R↓L1←" Type="Numeric" ESA_ID="" Value="278750" />
+    <Input Name="R↓L10,I100←" Type="Numeric" ESA_ID="" Value="1.81875e6" />
+    <Input Name="R↓L10←" Type="Numeric" ESA_ID="" Value="764250" />
+    <Input Name="R↓L100←" Type="Numeric" ESA_ID="" Value="547000" />
+    <Input Name="R↓L10I0,33←" Type="Numeric" ESA_ID="" Value="268750" />
+    <Input Name="R↓L10I0,5←" Type="Numeric" ESA_ID="" Value="468750" />
+    <Input Name="R↓L10I0,67←" Type="Numeric" ESA_ID="" Value="856250" />
+    <Input Name="R↓L10I1,5←" Type="Numeric" ESA_ID="" Value="1.81875e6" />
+    <Input Name="R↓L10I1←" Type="Numeric" ESA_ID="" Value="961250" />
+    <Input Name="R↓L3,I100←" Type="Numeric" ESA_ID="" Value="1.00625e6" />
+    <Input Name="R↓L3←" Type="Numeric" ESA_ID="" Value="422750" />
+    <Input Name="R↓L3I0,33←" Type="Numeric" ESA_ID="" Value="187500" />
+    <Input Name="R↓L3I0,5←" Type="Numeric" ESA_ID="" Value="245000" />
+    <Input Name="R↓L3I0,67←" Type="Numeric" ESA_ID="" Value="450000" />
+    <Input Name="R↓L3I1,5←" Type="Numeric" ESA_ID="" Value="1.00625e6" />
+    <Input Name="R↓L3I1←" Type="Numeric" ESA_ID="" Value="541250" />
+    <Input Name="R↓L5,I100←" Type="Numeric" ESA_ID="" Value="1.25625e6" />
+    <Input Name="R↓L5←" Type="Numeric" ESA_ID="" Value="529000" />
+    <Input Name="R↓L5I0,33←" Type="Numeric" ESA_ID="" Value="215000" />
+    <Input Name="R↓L5I0,5←" Type="Numeric" ESA_ID="" Value="310000" />
+    <Input Name="R↓L5I0,67←" Type="Numeric" ESA_ID="" Value="576250" />
+    <Input Name="R↓L5I1,5←" Type="Numeric" ESA_ID="" Value="1.25625e6" />
+    <Input Name="R↓L5I1←" Type="Numeric" ESA_ID="" Value="675000" />
+    <Input Name="T" Type="Numeric" ESA_ID="" Value="11" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="850000" />
+  </Test>
+</Root>

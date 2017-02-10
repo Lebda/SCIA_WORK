@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="83"><StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eedittlxdatacancel}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1083</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eedithfxdatacancel}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1118</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditdocumentpicturegraphiceditdatacancel}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1114</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eoutdent}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1134</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2ewatermark.2etypename}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1033</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2etitlepage.2etypename}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1032</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eselecteditemscut}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1244</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditdocumentresulttableresultpropertiesdatacancel}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>205</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditpictureviewpointdatacancel}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1111</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditdesignformdatasave}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1251</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditautocadcolorconvertordatacancel}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>136</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2edocumentitemmoveup}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1085</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eselecteditemscreatedataobject}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1364</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2eresultpicturegenerator.2etypename}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1366</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eedittlxdatasave}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1082</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditdocumentresulttableresultpropertiesdataprepare}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>203</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eedithfxdatasave}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1117</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditformattedtextdatasave}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1237</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2epageheaderfooter.2etypename}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1031</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2egetpresentationdata}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1071</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2edocumentitemdelete}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1079</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eproceeddocitemnotifyarray}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1075</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditdocumentresulttableresultpropertiesdatasave}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>204</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditexternalpictureviewpointdatasave}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1237</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditdocumentpictureshowviewparamsdataprepare}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1141</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditdocumentpicturepropertiesdatasave}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1178</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2echapter.2etypename}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1028</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2edocumentitemmovedown}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1086</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2einitializedocumentview}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1076</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2echeckprojectappstate}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1072</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditformattedtextdatacancel}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1238</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditexternalpictureviewpointdatacancel}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1238</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditdesignformdataprepare}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1250</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2econtent.2etypename}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1029</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eindent}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1133</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2edragoperationcreatedataobject}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1365</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eselecteditemscopy}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1243</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2eformattedtext.2etypename}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1045</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2estyle.2etypename}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>133</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2edesignform.2etypename}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1248</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eedittlxdataprepare}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1081</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eedithfxdataprepare}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1116</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditexternalpictureviewpointdataprepare}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1236</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditdocumentpictureshowviewparamsdatasave}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1140</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2epagebreak.2etypename}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1020</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2ereactonchangedprojectds}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1087</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditformattedtextdataprepare}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1236</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2epictureexternal.2etypename}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1021</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2edsidleprocessing}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1170</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2etextectools.2etypename}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1314</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditstyledatasave}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1122</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditpictureviewpointdatasave}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1110</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditdocumentpicturepropertiesdataprepare}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1177</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditautocadcolorconvertordatasave}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>135</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2edocumentprocessorfinalizetask}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1070</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eselecteditemsdelete}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1080</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2edocumentiteminsertnew}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1078</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2esavedocumentastemplate}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1245</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2edocumentexternal.2etypename}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1317</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditdocumentpicturegraphiceditdataprepare}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1112</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2ecancelrequest}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1035</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eregeneratenavigatortree}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1069</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2edropintoitem}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1136</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditstyledatacancel}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1123</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditstyledataprepare}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1121</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eappenddocumentfromtemplate}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1246</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2epdfexternal.2etypename}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1375</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2epageformat.2etypename}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1030</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2efilewatcher}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1068</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2etextexternal.2etypename}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1301</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditpictureviewpointdataprepare}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1109</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditdesignformdatacancel}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1252</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2ereactonchangeddocumentsettings}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1074</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2efinishrequest}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1009</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{insertableitemgroup.2eexternal}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1019</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{insertableitemgroup.2einternal}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1018</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditdocumentpictureshowviewparamsdatacancel}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1139</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditdocumentpicturepropertiesdatacancel}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1179</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditautocadcolorconvertordataprepare}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>134</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2estartrequest}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1148</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2ereactonchangeddocumentds}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1073</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2edocumentitemregenerate}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1084</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditdocumentpicturegraphiceditdatasave}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1113</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

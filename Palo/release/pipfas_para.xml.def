@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<def_project xmlns="http://www.scia.cz">
+   
+   <def_container id="{5C62EA11-86D4-11D4-B3AB-00104BC3B531}" clsid="{5C62EA11-86D4-11D4-B3AB-00104BC3B531}" progid="EP_Parameters.EP_Param.1" library="yes">
+      
+      <def_table id="9DAFD8D4-3EE7-4E7F-996D-62275E657A80" name="XML\default" type="vertical" clsid="{5C62EA11-86D4-11D4-B3AB-00104BC3B531}" progid="EP_Parameters.EP_Param.1" size="11">
+         
+         
+         <def_property x="0" name="Name" type="string" id="{4364BC01-AAB7-11D4-B3D9-00104BC3B531}"/>
+         
+         
+         <def_property x="1" name="Type" type="enum" id="{1E3CE0B1-86F9-11D4-B3AC-00104BC3B531}">
+         <def_enum size="21">
+         <it_enum v="0" t="Nothing"/>
+         <it_enum v="1" t="Integer"/>
+         <it_enum v="2" t="Coefficient"/>
+         <it_enum v="3" t="Length"/>
+         <it_enum v="4" t="Force"/>
+         <it_enum v="5" t="Moment"/>
+         <it_enum v="6" t="Line load"/>
+         <it_enum v="7" t="Surface load"/>
+         <it_enum v="8" t="Mass"/>
+         <it_enum v="9" t="Line mass"/>
+         <it_enum v="10" t="Surface mass"/>
+         <it_enum v="11" t="Css length"/>
+         <it_enum v="12" t="Angle"/>
+         <it_enum v="13" t="Relative"/>
+         <it_enum v="14" t="Boolean"/>
+         <it_enum v="15" t="Time (history)"/>
+         <it_enum v="16" t="Library"/>
+         <it_enum v="17" t="Relative humidity"/>
+         <it_enum v="18" t="Combination Factor"/>
+         <it_enum v="19" t="Stress"/>
+         <it_enum v="20" t="Css rolled"/>
+         </def_enum>
+         </def_property>
+         
+         
+         <def_property x="2" name="Value" type="table" id="{41E24630-2198-4A0D-BD0E-FAD3FCDDFA0A}">
+         <def_subtable size="5" type="vertical">
+         <def_property x="0" name="Real " type="real" id="{41E24640-2198-4A0D-BD0E-FAD3FCDDFA0A}"/>
+         
+         <def_property x="1" name="Boolean" type="bool" id="{41E24641-2198-4A0D-BD0E-FAD3FCDDFA0A}"/>
+         
+         <def_property x="2" name="Integer" type="integer" id="{41E24642-2198-4A0D-BD0E-FAD3FCDDFA0A}"/>
+         
+         <def_property x="3" name="Text" type="string" id="{41E24643-2198-4A0D-BD0E-FAD3FCDDFA0A}"/>
+         
+         <def_property x="4" name="Library" type="string" id="{41E24644-2198-4A0D-BD0E-FAD3FCDDFA0A}"/>
+         
+         </def_subtable>
+         </def_property>
+         
+      </def_table>
+   </def_container>
+</def_project>

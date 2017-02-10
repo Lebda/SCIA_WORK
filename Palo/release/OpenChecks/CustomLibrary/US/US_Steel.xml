@@ -1,0 +1,306 @@
+<Root Version="1" Type="CustomLibrary" GUID="aeb4717d-88ed-4a43-ae39-ee972bbf3b59">
+  <Header>
+    <PropertySet Symbol="F↓y←" ESA_ID="F↓y←" Unit="ksi" Type="Numeric">
+      <Description TranslateID="F↓y←">
+        <ENU>Min. Yield Stress</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="F↓u←" ESA_ID="F↓u←" Unit="ksi" Type="Numeric">
+      <Description TranslateID="F↓u←">
+        <ENU>Tensile Stress</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ν" ESA_ID="ν" Unit="" Type="Numeric">
+      <Description TranslateID="ν">
+        <ENU>Poisson's Ratio</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="E" ESA_ID="E" Unit="ksi" Type="Numeric">
+      <Description TranslateID="E">
+        <ENU>Modulus of Elasticity</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="G" ESA_ID="G" Unit="ksi" Type="Numeric">
+      <Description TranslateID="G">
+        <ENU>Shear Modulus</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ρ" ESA_ID="ρ" Unit="lb/ft↑3←" Type="Numeric">
+      <Description TranslateID="ρ">
+        <ENU>Density</ENU>
+      </Description>
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>Carbon</Property>
+      <Property>A36</Property>
+      <Property>36</Property>
+      <Property>58</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>Carbon</Property>
+      <Property>A53 Gr. B</Property>
+      <Property>35</Property>
+      <Property>60</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>Carbon</Property>
+      <Property>A500 Gr. B (Round HSS)</Property>
+      <Property>42</Property>
+      <Property>58</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>Carbon</Property>
+      <Property>A500 Gr. B (Rect HSS)</Property>
+      <Property>46</Property>
+      <Property>58</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>Carbon</Property>
+      <Property>A500 Gr. C (Round HSS)</Property>
+      <Property>46</Property>
+      <Property>62</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>Carbon</Property>
+      <Property>A500 Gr. C (Rect HSS)</Property>
+      <Property>50</Property>
+      <Property>62</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>Carbon</Property>
+      <Property>A501</Property>
+      <Property>36</Property>
+      <Property>58</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>Carbon</Property>
+      <Property>A529 Gr. 50</Property>
+      <Property>50</Property>
+      <Property>65</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>Carbon</Property>
+      <Property>A529 Gr. 55</Property>
+      <Property>55</Property>
+      <Property>70</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>Carbon</Property>
+      <Property>A1085</Property>
+      <Property>50</Property>
+      <Property>65</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>High Strength Low-Alloy</Property>
+      <Property>A572 Gr. 42</Property>
+      <Property>42</Property>
+      <Property>60</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>High Strength Low-Alloy</Property>
+      <Property>A572 Gr. 50</Property>
+      <Property>50</Property>
+      <Property>65</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>High Strength Low-Alloy</Property>
+      <Property>A572 Gr. 55</Property>
+      <Property>55</Property>
+      <Property>70</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>High Strength Low-Alloy</Property>
+      <Property>A572 Gr. 60</Property>
+      <Property>60</Property>
+      <Property>75</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>High Strength Low-Alloy</Property>
+      <Property>A572 Gr. 65</Property>
+      <Property>65</Property>
+      <Property>80</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>High Strength Low-Alloy</Property>
+      <Property>A618 Gr. I &amp; II</Property>
+      <Property>50</Property>
+      <Property>70</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>High Strength Low-Alloy</Property>
+      <Property>A618 Gr. III</Property>
+      <Property>50</Property>
+      <Property>65</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>High Strength Low-Alloy</Property>
+      <Property>A913 Gr. 50</Property>
+      <Property>50</Property>
+      <Property>60</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>High Strength Low-Alloy</Property>
+      <Property>A913 Gr. 60</Property>
+      <Property>60</Property>
+      <Property>75</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>High Strength Low-Alloy</Property>
+      <Property>A913 Gr. 65</Property>
+      <Property>65</Property>
+      <Property>80</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>High Strength Low-Alloy</Property>
+      <Property>A913 Gr. 70</Property>
+      <Property>70</Property>
+      <Property>90</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>High Strength Low-Alloy</Property>
+      <Property>A992</Property>
+      <Property>50</Property>
+      <Property>65</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>Corrosion Resistant Hight-Strength Low-Alloy</Property>
+      <Property>A242 Gr. 42</Property>
+      <Property>42</Property>
+      <Property>63</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>Corrosion Resistant Hight-Strength Low-Alloy</Property>
+      <Property>A242 Gr. 46</Property>
+      <Property>46</Property>
+      <Property>67</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>Corrosion Resistant Hight-Strength Low-Alloy</Property>
+      <Property>A242 Gr. 50</Property>
+      <Property>50</Property>
+      <Property>70</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>Corrosion Resistant Hight-Strength Low-Alloy</Property>
+      <Property>A588</Property>
+      <Property>50</Property>
+      <Property>70</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+    <Item>
+      <Property>Corrosion Resistant Hight-Strength Low-Alloy</Property>
+      <Property>A847</Property>
+      <Property>50</Property>
+      <Property>70</Property>
+      <Property>0.3</Property>
+      <Property>29000</Property>
+      <Property>11200</Property>
+      <Property>490</Property>
+    </Item>
+  </Items>
+</Root>

@@ -1,0 +1,5842 @@
+.deftable ---ZACATEK TABLE FOL---
+.enddef
+.
+.deftable TablePrestress,3
+.column 1,50,FALSE,R,norm,L,norm
+.column 2,50,FALSE,R,norm,R,norm
+.column 3,50,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.deftable TableCheckForce,19
+.column 1,28,FALSE,C,norm,L,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,15,FALSE,R,norm,R,norm
+.column 4,15,FALSE,R,norm,R,norm
+.column 5,15,FALSE,R,norm,R,norm
+.column 6,15,FALSE,R,norm,R,norm
+.column 7,15,FALSE,R,norm,R,norm
+.column 8,15,FALSE,R,norm,R,norm
+.column 9,15,FALSE,R,norm,R,norm
+.column 10,15,FALSE,R,norm,R,norm
+.column 11,15,FALSE,C,norm,C,norm
+.column 12,15,FALSE,R,norm,R,norm
+.column 13,15,FALSE,C,norm,C,norm
+.column 14,15,FALSE,R,norm,R,norm
+.column 15,15,FALSE,R,norm,R,norm
+.column 16,15,FALSE,R,norm,R,norm
+.column 17,15,FALSE,R,norm,R,norm
+.column 18,15,FALSE,R,norm,R,norm
+.column 19,15,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TCF,35
+.column 1,15,FALSE,C,norm,L,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,15,FALSE,R,norm,R,norm
+.column 4,15,FALSE,R,norm,R,norm
+.column 5,15,FALSE,R,norm,R,norm
+.column 6,15,FALSE,R,norm,R,norm
+.column 7,15,FALSE,R,norm,R,norm
+.column 8,15,FALSE,R,norm,R,norm
+.column 9,15,FALSE,R,norm,R,norm
+.column 10,15,FALSE,R,norm,R,norm
+.column 11,15,FALSE,R,norm,R,norm
+.column 12,15,FALSE,R,norm,R,norm
+.column 13,15,FALSE,R,norm,R,norm
+.column 14,15,FALSE,R,norm,R,norm
+.column 15,15,FALSE,R,norm,R,norm
+.column 16,15,FALSE,R,norm,R,norm
+.column 17,15,FALSE,R,norm,R,norm
+.column 18,15,FALSE,R,norm,R,norm
+.column 19,15,FALSE,R,norm,R,norm
+.column 20,15,FALSE,R,norm,R,norm
+.column 21,15,FALSE,R,norm,R,norm
+.column 22,15,FALSE,R,norm,R,norm
+.column 23,15,FALSE,R,norm,R,norm
+.column 24,15,FALSE,R,norm,R,norm
+.column 25,15,FALSE,R,norm,R,norm
+.column 26,15,FALSE,R,norm,R,norm
+.column 27,15,FALSE,R,norm,R,norm
+.column 28,15,FALSE,R,norm,R,norm
+.column 29,15,FALSE,R,norm,R,norm
+.column 30,15,FALSE,R,norm,R,norm
+.column 31,15,FALSE,R,norm,R,norm
+.column 32,15,FALSE,R,norm,R,norm
+.column 33,15,FALSE,R,norm,R,norm
+.column 34,15,FALSE,R,norm,R,norm
+.column 35,15,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableEccentiricity,17
+.column 1,15,FALSE,C,norm,L,norm
+.column 2,15,FALSE,C,norm,L,norm
+.column 3,15,FALSE,C,norm,L,norm
+.column 4,15,FALSE,C,norm,C,norm
+.column 5,15,FALSE,C,norm,C,norm
+.column 6,15,FALSE,C,norm,C,norm
+.column 7,15,FALSE,C,norm,C,norm
+.column 8,15,FALSE,C,norm,C,norm
+.column 9,15,FALSE,C,norm,C,norm
+.column 10,15,FALSE,C,norm,C,norm
+.column 11,15,FALSE,C,norm,C,norm
+.column 12,15,FALSE,C,norm,C,norm
+.column 13,15,FALSE,C,norm,C,norm
+.column 14,15,FALSE,C,norm,C,norm
+.column 15,15,FALSE,C,norm,C,norm
+.column 16,15,FALSE,C,norm,C,norm
+.column 17,15,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableOfInfoExcentricity,3
+.column 1,30,FALSE,L,norm,L,norm
+.column 2,100,FALSE,L,norm,L,norm
+.column 2,50,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableOfInfoResults,3
+.column 1,30,FALSE,L,norm,L,norm
+.column 2,120,FALSE,L,norm,L,norm
+.column 2,50,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResults,20
+.column 1,15,FALSE,C,norm,L,norm
+.column 2,15,FALSE,C,norm,L,norm
+.column 3,15,FALSE,C,norm,L,norm
+.column 4,20,FALSE,C,norm,C,norm
+.column 5,20,FALSE,C,norm,C,norm
+.column 6,20,FALSE,C,norm,C,norm
+.column 7,20,FALSE,C,norm,C,norm
+.column 8,20,FALSE,C,norm,C,norm
+.column 9,20,FALSE,C,norm,C,norm
+.column 10,20,FALSE,C,norm,C,norm
+.column 11,20,FALSE,C,norm,C,norm
+.column 12,20,FALSE,C,norm,C,norm
+.column 13,20,FALSE,C,norm,C,norm
+.column 14,20,FALSE,C,norm,C,norm
+.column 15,20,FALSE,C,norm,C,norm
+.column 16,20,FALSE,C,norm,C,norm
+.column 17,20,FALSE,C,norm,C,norm
+.column 18,20,FALSE,C,norm,C,norm
+.column 19,20,FALSE,C,norm,C,norm
+.column 20,20,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableGeometryColumn,20
+.column 1,20,FALSE,R,norm,C,norm
+.column 2,20,FALSE,R,norm,C,norm
+.column 3,20,FALSE,R,norm,C,norm
+.column 4,20,FALSE,R,norm,C,norm
+.column 5,20,FALSE,R,norm,C,norm
+.column 6,20,FALSE,R,norm,C,norm
+.column 7,20,FALSE,R,norm,C,norm
+.column 8,20,FALSE,R,norm,C,norm
+.column 9,20,FALSE,R,norm,C,norm
+.column 10,20,FALSE,R,norm,C,norm
+.column 11,20,FALSE,R,norm,C,norm
+.column 12,20,FALSE,R,norm,C,norm
+.column 13,20,FALSE,R,norm,C,norm
+.column 14,20,FALSE,R,norm,C,norm
+.column 15,20,FALSE,R,norm,C,norm
+.column 16,20,FALSE,R,norm,C,norm
+.column 17,20,FALSE,R,norm,C,norm
+.column 18,20,FALSE,R,norm,C,norm
+.column 19,20,FALSE,R,norm,C,norm
+.column 20,20,FALSE,R,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable CRTCHECKTAB,12
+.column 1,20,FALSE,R,norm,C,norm
+.column 2,20,FALSE,R,norm,C,norm
+.column 3,20,FALSE,R,norm,C,norm
+.column 4,20,FALSE,R,norm,C,norm
+.column 5,20,FALSE,R,norm,C,norm
+.column 6,20,FALSE,R,norm,C,norm
+.column 7,20,FALSE,R,norm,C,norm
+.column 8,20,FALSE,R,norm,C,norm
+.column 9,20,FALSE,R,norm,C,norm
+.column 10,20,FALSE,R,norm,C,norm
+.column 11,20,FALSE,R,norm,C,norm
+.column 12,20,FALSE,R,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableInfoReinfBars,2
+.column 1,80,FALSE,L,norm,L,norm
+.column 2,30,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableInfoCheckMetod,3
+.column 1,30,FALSE,L,norm,L,norm
+.column 2,100,FALSE,L,norm,L,norm
+.column 2,50,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableInfoCheckMetodValues,2
+.column 1,130,FALSE,L,norm,L,norm
+.column 2,20,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable InfoCritSectEC,2
+.column 1,25,FALSE,L,norm,L,norm
+.column 2,155,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable InfoBSCrack,2
+.column 1,25,FALSE,L,norm,L,norm
+.column 2,155,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable Table_Line,2
+.column 1,150,FALSE,L,norm,L,norm
+.column 2,1,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableCreep,6
+.column 1,20,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,20,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableInfoCreep,2
+.column 1,50,FALSE,L,norm,L,norm
+.column 2,80,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable InfoTableMoments,2
+.column 1,40,FALSE,L,norm,L,norm
+.column 2,150,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable InfoLoadedArea,2
+.column 1,50,FALSE,L,norm,L,norm
+.column 2,80,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable AddLoadedArea,3
+.column 1,120,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable LoadedArea,8
+.column 1,20,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,20,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,30,FALSE,L,norm,L,norm
+.column 8,30,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableCrackAs,15
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,15,FALSE,L,norm,L,norm
+.column 11,15,FALSE,L,norm,L,norm
+.column 12,15,FALSE,L,norm,L,norm
+.column 13,15,FALSE,L,norm,L,norm
+.column 14,15,FALSE,L,norm,L,norm
+.column 15,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableCrackDistAndProf,14
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,15,FALSE,L,norm,L,norm
+.column 11,15,FALSE,L,norm,L,norm
+.column 12,15,FALSE,L,norm,L,norm
+.column 13,15,FALSE,L,norm,L,norm
+.column 14,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableCrackGBJ,11
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,15,FALSE,L,norm,L,norm
+.column 11,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableErrors,5
+.column 1,20,FALSE,L,norm,L,norm
+.column 2,150,FALSE,L,norm,L,norm
+.column 3,150,FALSE,L,norm,L,norm
+.column 3,150,FALSE,L,norm,L,norm
+.column 3,150,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable CrackDetailed,25
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,13,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,13,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,13,FALSE,L,norm,L,norm
+.column 8,13,FALSE,L,norm,L,norm
+.column 9,13,FALSE,L,norm,L,norm
+.column 10,12,FALSE,L,norm,L,norm
+.column 11,12,FALSE,L,norm,L,norm
+.column 12,15,FALSE,L,norm,L,norm
+.column 13,15,FALSE,L,norm,L,norm
+.column 14,15,FALSE,L,norm,L,norm
+.column 15,15,FALSE,L,norm,L,norm
+.column 16,15,FALSE,L,norm,L,norm
+.column 17,15,FALSE,L,norm,L,norm
+.column 18,15,FALSE,L,norm,L,norm
+.column 19,15,FALSE,L,norm,L,norm
+.column 20,15,FALSE,L,norm,L,norm
+.column 21,15,FALSE,L,norm,L,norm
+.column 22,15,FALSE,L,norm,L,norm
+.column 23,15,FALSE,L,norm,L,norm
+.column 24,15,FALSE,L,norm,L,norm
+.column 25,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableConcrete,3
+.column 1,40,FALSE,L,norm,L,norm
+.column 2,40,FALSE,L,norm,L,norm
+.column 3,80,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableSteel,3
+.column 1,40,FALSE,L,norm,L,norm
+.column 2,40,FALSE,L,norm,L,norm
+.column 3,80,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable ReinforcemetInPlate,9
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,20,FALSE,L,norm,L,norm
+.column 6,20,FALSE,L,norm,L,norm
+.column 7,20,FALSE,L,norm,L,norm
+.column 8,20,FALSE,L,norm,L,norm
+.column 9,20,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable CriticalSection,14
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,18,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,15,FALSE,L,norm,L,norm
+.column 11,15,FALSE,L,norm,L,norm
+.column 12,15,FALSE,L,norm,L,norm
+.column 13,15,FALSE,L,norm,L,norm
+.column 14,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable LoadInCriticalSection,7
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable ResultOfCriticalSection,11
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,18,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,18,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,15,FALSE,L,norm,L,norm
+.column 11,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable CriticalSectionBS,8
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,18,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.deftable LoadInCriticalSectionBS,10
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,18,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable MomentInPlate,12
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,17,FALSE,L,norm,L,norm
+.column 8,17,FALSE,L,norm,L,norm
+.column 9,17,FALSE,L,norm,L,norm
+.column 10,17,FALSE,L,norm,L,norm
+.column 11,15,FALSE,L,norm,L,norm
+.column 12,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable InfoConcrete,2
+.column 1,30,FALSE,L,norm,L,norm
+.column 2,110,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableCoverage,3
+.column 1,60,FALSE,L,norm,L,norm
+.column 2,30,FALSE,L,norm,L,norm
+.column 3,30,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableInfoDef,2
+.column 1,80,FALSE,L,norm,L,norm
+.column 2,30,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableInfoCrack,2
+.column 1,50,FALSE,L,norm,L,norm
+.column 2,70,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableCrackCSN,15
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,12,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,12,FALSE,L,norm,L,norm
+.column 5,12,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,15,FALSE,L,norm,L,norm
+.column 11,15,FALSE,L,norm,L,norm
+.column 12,15,FALSE,L,norm,L,norm
+.column 13,15,FALSE,L,norm,L,norm
+.column 14,15,FALSE,L,norm,L,norm
+.column 15,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableStifnessCSN,15
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,17,FALSE,L,norm,L,norm
+.column 8,17,FALSE,L,norm,L,norm
+.column 9,17,FALSE,L,norm,L,norm
+.column 10,17,FALSE,L,norm,L,norm
+.column 11,17,FALSE,L,norm,L,norm
+.column 12,17,FALSE,L,norm,L,norm
+.column 13,17,FALSE,L,norm,L,norm
+.column 14,17,FALSE,L,norm,L,norm
+.column 15,17,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableMNKappa,20
+.column 1,15,FALSE,C,norm,C,norm
+.column 2,15,FALSE,C,norm,R,norm
+.column 3,15,FALSE,C,norm,R,norm
+.column 4,15,FALSE,C,norm,R,norm
+.column 5,15,FALSE,C,norm,R,norm
+.column 6,15,FALSE,C,norm,R,norm
+.column 7,17,FALSE,C,norm,R,norm
+.column 8,17,FALSE,C,norm,R,norm
+.column 9,17,FALSE,C,norm,R,norm
+.column 10,17,FALSE,C,norm,R,norm
+.column 11,17,FALSE,C,norm,R,norm
+.column 12,17,FALSE,C,norm,R,norm
+.column 13,17,FALSE,C,norm,R,norm
+.column 14,17,FALSE,C,norm,R,norm
+.column 15,17,FALSE,C,norm,R,norm
+.column 16,17,FALSE,C,norm,R,norm
+.column 17,17,FALSE,C,norm,R,norm
+.column 18,17,FALSE,C,norm,R,norm
+.column 19,17,FALSE,C,norm,R,norm
+.column 20,17,FALSE,C,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableDeformationCSN,9
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,20,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableStifnessNON,17
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,20,FALSE,L,norm,L,norm
+.column 10,20,FALSE,L,norm,L,norm
+.column 11,20,FALSE,L,norm,L,norm
+.column 12,20,FALSE,L,norm,L,norm
+.column 13,20,FALSE,L,norm,L,norm
+.column 14,20,FALSE,L,norm,L,norm
+.column 15,20,FALSE,L,norm,L,norm
+.column 16,20,FALSE,L,norm,L,norm
+.column 17,20,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableInfoStifnessCSN,2
+.column 1,30,FALSE,L,norm,L,norm
+.column 2,80,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableInfoCrackCSN,2
+.column 1,30,FALSE,L,norm,L,norm
+.column 2,80,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableInfoDeformationCSN,2
+.column 1,30,FALSE,L,norm,L,norm
+.column 2,90,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNENConcBeamInput,9
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,15,FALSE,R,norm,R,norm
+.column 4,17,FALSE,R,norm,R,norm
+.column 5,17,FALSE,R,norm,R,norm
+.column 6,20,FALSE,R,norm,R,norm
+.column 7,20,FALSE,R,norm,R,norm
+.column 8,18,FALSE,R,norm,R,norm
+.column 9,15,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNENConcMainReinf,9
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,18,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.column 6,15,FALSE,R,norm,R,norm
+.column 7,18,FALSE,R,norm,R,norm
+.column 8,15,FALSE,R,norm,R,norm
+.column 9,15,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNENConcShearReinf,20
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,18,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,15,FALSE,R,norm,R,norm
+.column 6,15,FALSE,R,norm,R,norm
+.column 7,22,FALSE,R,norm,R,norm
+.column 8,15,FALSE,R,norm,R,norm
+.column 9,15,FALSE,R,norm,R,norm
+.column 10,15,FALSE,R,norm,R,norm
+.column 11,15,FALSE,R,norm,R,norm
+.column 12,15,FALSE,R,norm,R,norm
+.column 13,15,FALSE,R,norm,R,norm
+.column 14,15,FALSE,R,norm,R,norm
+.column 15,15,FALSE,R,norm,R,norm
+.column 16,15,FALSE,R,norm,R,norm
+.column 17,15,FALSE,R,norm,R,norm
+.column 18,15,FALSE,R,norm,R,norm
+.column 19,15,FALSE,R,norm,R,norm
+.column 20,15,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNENConcCrack,6
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,15,FALSE,R,norm,R,norm
+.column 4,15,FALSE,R,norm,R,norm
+.column 5,15,FALSE,R,norm,R,norm
+.column 6,15,FALSE,R,norm,R,norm
+.column 7,15,FALSE,R,norm,R,norm
+.column 8,15,FALSE,R,norm,R,norm
+.column 9,15,FALSE,R,norm,R,norm
+.column 10,15,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNENDINExplain,2
+.column 1,40,FALSE,L,norm,L,norm
+.column 2,110,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNENConcColumnInput,5
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,15,FALSE,R,norm,R,norm
+.column 4,18,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNENConcColumnReinf,9
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,15,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.column 6,20,FALSE,R,norm,R,norm
+.column 7,15,FALSE,R,norm,R,norm
+.column 8,20,FALSE,R,norm,R,norm
+.column 9,20,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TAS,19
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,15,FALSE,L,norm,L,norm
+.column 11,15,FALSE,L,norm,L,norm
+.column 12,15,FALSE,L,norm,L,norm
+.column 13,15,FALSE,L,norm,L,norm
+.column 14,15,FALSE,L,norm,L,norm
+.column 15,15,FALSE,L,norm,L,norm
+.column 16,15,FALSE,L,norm,L,norm
+.column 17,15,FALSE,L,norm,L,norm
+.column 18,15,FALSE,L,norm,L,norm
+.column 19,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableShearAs,15
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,15,FALSE,L,norm,L,norm
+.column 11,15,FALSE,L,norm,L,norm
+.column 12,15,FALSE,L,norm,L,norm
+.column 13,15,FALSE,L,norm,L,norm
+.column 14,20,FALSE,L,norm,L,norm
+.column 15,20,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableShearAsBS,12	
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,20,FALSE,L,norm,L,norm
+.column 11,20,FALSE,L,norm,L,norm
+.column 12,20,FALSE,L,norm,L,norm
+.column 13,20,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableCrackON,3
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableEC_First,2
+.column 1,30,FALSE,L,norm,L,norm
+.column 2,80,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableEC_Second,2
+.column 1,20,FALSE,L,norm,L,norm
+.column 2,80,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableConcreteCover,12
+.column 1,12,FALSE,L,norm,L,norm
+.column 2,12,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,15,FALSE,L,norm,L,norm
+.column 11,15,FALSE,L,norm,L,norm
+.column 12,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableInfoAs,9
+.column 1,12,FALSE,L,norm,L,norm
+.column 2,12,FALSE,L,norm,L,norm
+.column 3,20,FALSE,L,norm,L,norm
+.column 4,20,FALSE,L,norm,L,norm
+.column 5,20,FALSE,L,norm,L,norm
+.column 6,20,FALSE,L,norm,L,norm
+.column 7,20,FALSE,L,norm,L,norm
+.column 8,20,FALSE,L,norm,L,norm
+.column 9,25,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable As,25
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,12,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,15,FALSE,L,norm,L,norm
+.column 11,15,FALSE,L,norm,L,norm
+.column 12,15,FALSE,L,norm,L,norm
+.column 13,15,FALSE,L,norm,L,norm
+.column 14,15,FALSE,L,norm,L,norm
+.column 15,15,FALSE,L,norm,L,norm
+.column 16,15,FALSE,L,norm,L,norm
+.column 17,15,FALSE,L,norm,L,norm
+.column 18,15,FALSE,L,norm,L,norm
+.column 19,15,FALSE,L,norm,L,norm
+.column 20,15,FALSE,L,norm,L,norm
+.column 21,15,FALSE,L,norm,L,norm
+.column 22,15,FALSE,L,norm,L,norm
+.column 23,15,FALSE,L,norm,L,norm
+.column 24,15,FALSE,L,norm,L,norm
+.column 25,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableMain,14
+.column 1,12,FALSE,L,norm,L,norm
+.column 2,12,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,15,FALSE,L,norm,L,norm
+.column 11,15,FALSE,L,norm,L,norm
+.column 12,15,FALSE,L,norm,L,norm
+.column 13,15,FALSE,L,norm,L,norm
+.column 14,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableCrack,6
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,20,FALSE,L,norm,L,norm
+.column 6,20,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableCrackControl,9
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,20,FALSE,L,norm,L,norm
+.column 6,20,FALSE,L,norm,L,norm
+.column 7,20,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableInfoColumn,9
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,20,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,18,FALSE,L,norm,L,norm
+.column 7,18,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable ColumnCircle,12
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,17,FALSE,L,norm,L,norm
+.column 5,17,FALSE,L,norm,L,norm
+.column 6,17,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,15,FALSE,L,norm,L,norm
+.column 11,15,FALSE,L,norm,L,norm
+.column 12,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable ColumnRectangle,15
+.column 1,12,FALSE,L,norm,L,norm
+.column 2,12,FALSE,L,norm,L,norm
+.column 3,12,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,25,FALSE,L,norm,L,norm
+.column 9,25,FALSE,L,norm,L,norm
+.column 10,25,FALSE,L,norm,L,norm
+.column 11,18,FALSE,L,norm,L,norm
+.column 12,15,FALSE,L,norm,L,norm
+.column 13,15,FALSE,L,norm,L,norm
+.column 14,15,FALSE,L,norm,L,norm
+.column 15,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable ColumnRectangleDir,11
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,15,FALSE,L,norm,L,norm
+.column 11,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableSetParametrs,3
+.column 1,90,FALSE,L,norm,L,norm
+.column 2,35,FALSE,L,norm,L,norm
+.column 3,30,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable CheckForce,7
+.column 1,30,FALSE,C,norm,L,norm
+.column 2,16,FALSE,C,norm,R,norm
+.column 3,16,FALSE,C,norm,R,norm
+.column 4,16,FALSE,C,norm,R,norm
+.column 5,16,FALSE,C,norm,R,norm
+.column 6,16,FALSE,C,norm,R,norm
+.column 7,16,FALSE,C,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableFyzGeol,12
+.column 1,12,FALSE,C,norm,L,norm
+.column 2,13,FALSE,C,norm,R,norm
+.column 3,11,FALSE,C,norm,R,norm
+.column 4,10,FALSE,C,norm,R,norm
+.column 5,15,FALSE,C,norm,R,norm
+.column 6,13,FALSE,C,norm,R,norm
+.column 7,15,FALSE,C,norm,R,norm
+.column 8,13,FALSE,C,norm,R,norm
+.column 9,13,FALSE,C,norm,R,norm
+.column 10,17,FALSE,C,norm,R,norm
+.column 11,13,FALSE,C,norm,R,norm
+.column 12,15,FALSE,C,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableShear,16
+.column 1,15,FALSE,C,norm,L,norm
+.column 2,15,FALSE,C,norm,R,norm
+.column 3,15,FALSE,C,norm,R,norm
+.column 4,15,FALSE,C,norm,R,norm
+.column 5,15,FALSE,C,norm,R,norm
+.column 6,15,FALSE,C,norm,R,norm
+.column 7,15,FALSE,C,norm,R,norm
+.column 8,15,FALSE,C,norm,R,norm
+.column 9,15,FALSE,C,norm,R,norm
+.column 10,15,FALSE,C,norm,R,norm
+.column 11,15,FALSE,C,norm,R,norm
+.column 12,15,FALSE,C,norm,R,norm
+.column 13,15,FALSE,C,norm,R,norm
+.column 14,15,FALSE,C,norm,R,norm
+.column 15,15,FALSE,C,norm,R,norm
+.column 16,15,FALSE,C,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableCheckDaigram,10
+.column 1,12,FALSE,C,norm,L,norm
+.column 2,13,FALSE,C,norm,R,norm
+.column 3,11,FALSE,C,norm,R,norm
+.column 4,10,FALSE,C,norm,R,norm
+.column 5,13,FALSE,C,norm,R,norm
+.column 6,13,FALSE,C,norm,R,norm
+.column 7,13,FALSE,C,norm,R,norm
+.column 8,13,FALSE,C,norm,R,norm
+.column 9,13,FALSE,C,norm,R,norm
+.column 10,13,FALSE,C,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableInfoFyzGeol,2
+.column 1,70,FALSE,C,norm,L,norm
+.column 2,50,FALSE,C,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableInfoDegree,2
+.column 1,70,FALSE,C,norm,L,norm
+.column 2,50,FALSE,C,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableDegree,10
+.column 1,15,FALSE,C,norm,L,norm
+.column 2,15,FALSE,C,norm,L,norm
+.column 1,15,FALSE,C,norm,L,norm
+.column 2,15,FALSE,C,norm,L,norm
+.column 3,15,FALSE,C,norm,L,norm
+.column 4,15,FALSE,C,norm,L,norm
+.column 5,15,FALSE,C,norm,L,norm
+.column 6,15,FALSE,C,norm,L,norm
+.column 7,15,FALSE,C,norm,L,norm
+.column 8,15,FALSE,C,norm,L,norm
+.column 9,15,FALSE,C,norm,L,norm
+.column 10,15,FALSE,C,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableInfoShear,3
+.column 1,30,FALSE,L,norm,L,norm
+.column 2,100,FALSE,L,norm,L,norm
+.column 2,50,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable ---KONEC TABLE FOL---
+.enddef
+.
+.deftable TableSETUP_TABLES,1
+.column 1,38,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableTL,8
+.column 1,38,FALSE,L,norm,L,norm
+.column 2,5,FALSE,L,norm,L,norm
+.column 3,29,FALSE,R,norm,R,norm
+.column 4,17,FALSE,L,norm,L,norm
+.column 5,38,FALSE,L,norm,L,norm
+.column 6,5,FALSE,L,norm,L,norm
+.column 7,26,FALSE,R,norm,R,norm
+.column 8,10,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable Table01,7
+.column 1,30,TRUE,C,norm,C,norm
+.column 2,25,FALSE,C,norm,C,norm
+.column 3,15,TRUE,C,norm,C,norm
+.column 4,35,FALSE,C,norm,C,norm
+.column 5,25,TRUE,C,norm,C,norm
+.column 6,35,FALSE,C,norm,C,norm
+.column 7,25,TRUE,C,norm,C,norm
+.lmargin 15
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable Table02,5
+.column 1,15,FALSE,L,bold7,L,norm7
+.column 2,15,FALSE,C,norm7,C,norm7
+.column 3,15,FALSE,C,norm7,C,norm7
+.column 4,15,FALSE,C,norm7,C,norm7
+.column 5,25,FALSE,L,norm7,L,norm7
+.lmargin 15
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable Table03,5
+.column 1,15,FALSE,C,norm7,C,norm7
+.column 2,15,FALSE,R,norm7,R,norm7
+.column 3,15,FALSE,C,norm7,C,norm7
+.column 4,15,FALSE,C,norm7,C,norm7
+.column 5,25,FALSE,L,norm7,L,norm7
+.lmargin 15
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable Table04,5
+.column 1,15,TRUE,L,bold7,C,norm7
+.column 2,15,FALSE,C,norm7,R,norm7
+.column 3,15,FALSE,C,norm7,R,norm7
+.column 4,15,FALSE,C,norm7,R,norm7
+.column 5,25,TRUE,L,norm7,L,norm7
+.lmargin 15
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableT01,5
+.column 1,25,FALSE,C,norm,C,norm
+.column 2,30,FALSE,C,norm,C,norm
+.column 3,30,FALSE,C,norm,C,norm
+.column 4,30,FALSE,C,norm,C,norm
+.column 5,30,FALSE,C,norm,C,norm
+.lmargin 10
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNODED,4
+.column 1,17,FALSE,R,norm,R,norm
+.column 2,20,FALSE,R,norm,R,norm
+.column 3,20,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableMEMB,8
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,FALSE,C,norm,C,norm
+.column 3,15,FALSE,C,norm,C,norm
+.column 4,15,FALSE,C,norm,C,norm
+.column 5,25,FALSE,C,norm,C,norm
+.column 6,20,FALSE,C,norm,C,norm
+.column 7,50,FALSE,C,norm,L,norm
+.column 8,50,FALSE,C,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableMEMB_ECC,7
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,25,FALSE,C,norm,L,norm
+.column 3,25,FALSE,C,norm,L,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,30,FALSE,R,norm,R,norm
+.column 6,40,FALSE,R,norm,R,norm
+.column 7,40,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TablePrurez,6
+.column 1,22,FALSE,C,norm,C,norm
+.column 2,22,FALSE,C,norm,C,norm
+.column 3,22,FALSE,C,norm,C,norm
+.column 4,22,FALSE,C,norm,C,norm
+.column 5,22,FALSE,C,norm,C,norm
+.column 6,22,FALSE,C,norm,C,norm
+.lmargin 15
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableE1NO,6
+.column 1,16,TRUE,C,norm,C,norm
+.column 2,34,FALSE,C,norm,C,norm
+.column 3,16,TRUE,C,norm,C,norm
+.column 4,34,FALSE,C,norm,C,norm
+.column 5,16,TRUE,C,norm,C,norm
+.column 6,34,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNLINK,6
+.column 1,16,TRUE,C,norm,C,norm
+.column 2,23,FALSE,C,norm,C,norm
+.column 3,36,FALSE,C,norm,C,norm
+.column 4,16,TRUE,C,norm,C,norm
+.column 5,23,FALSE,C,norm,C,norm
+.column 6,36,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableHINGE,7
+.column 1,17,TRUE,C,norm,C,norm
+.column 2,17,FALSE,C,norm,C,norm
+.column 3,17,FALSE,C,norm,C,norm
+.column 4,35,FALSE,C,norm,C,norm
+.column 5,25,FALSE,C,norm,C,norm
+.column 6,35,FALSE,C,norm,C,norm
+.column 7,27,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableSUPP,8
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,15,TRUE,C,norm,C,norm
+.column 4,35,FALSE,C,norm,C,norm
+.column 5,25,FALSE,C,norm,C,norm
+.column 6,35,FALSE,C,norm,C,norm
+.column 7,25,FALSE,C,norm,C,norm
+.column 8,25,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableLNODE,7
+.column 1,18,TRUE,C,norm,C,norm
+.column 2,22,FALSE,C,norm,C,norm
+.column 3,22,FALSE,C,norm,C,norm
+.column 4,22,FALSE,C,norm,C,norm
+.column 5,22,FALSE,C,norm,C,norm
+.column 6,22,FALSE,C,norm,C,norm
+.column 7,22,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableLCONC,11
+.column 1,11,TRUE,C,norm,C,norm
+.column 2,11,TRUE,C,norm,C,norm
+.column 3,11,FALSE,C,norm,C,norm
+.column 4,18,FALSE,C,norm,C,norm
+.column 5,16,FALSE,C,norm,C,norm
+.column 6,16,FALSE,C,norm,C,norm
+.column 7,8,FALSE,C,norm,C,norm
+.column 8,18,FALSE,C,norm,C,norm
+.column 9,18,FALSE,C,norm,C,norm
+.column 10,18,FALSE,C,norm,C,norm
+.column 11,18,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableLDSD,10
+.column 1,12,TRUE,C,norm,C,norm
+.column 2,12,TRUE,C,norm,C,norm
+.column 3,12,FALSE,C,norm,C,norm
+.column 4,20,FALSE,C,norm,C,norm
+.column 5,20,FALSE,C,norm,C,norm
+.column 6,20,FALSE,C,norm,C,norm
+.column 7,8,FALSE,C,norm,C,norm
+.column 8,20,FALSE,C,norm,C,norm
+.column 9,20,FALSE,C,norm,C,norm
+.column 10,20,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableLDISTR,11
+.column 1,11,TRUE,C,norm,C,norm
+.column 2,11,TRUE,C,norm,C,norm
+.column 3,11,TRUE,C,norm,C,norm
+.column 4,11,FALSE,C,norm,C,norm
+.column 5,20,FALSE,C,norm,C,norm
+.column 6,16,FALSE,C,norm,C,norm
+.column 7,16,FALSE,C,norm,C,norm
+.column 8,8,FALSE,C,norm,C,norm
+.column 9,20,FALSE,C,norm,C,norm
+.column 10,20,FALSE,C,norm,C,norm
+.column 11,20,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableLABS,4
+.column 1,15,FALSE,C,norm,C,norm
+.column 2,15,FALSE,C,norm,C,norm
+.column 3,15,FALSE,C,norm,C,norm
+.column 4,15,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableMASSN,8
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,25,FALSE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.column 4,25,FALSE,C,norm,C,norm
+.column 5,25,FALSE,C,norm,C,norm
+.column 6,25,FALSE,C,norm,C,norm
+.column 7,25,FALSE,C,norm,C,norm
+.column 8,25,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableMASSC,4
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.column 4,25,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableMASSD,4
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.column 4,25,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableSTARTCD,3
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,20,FALSE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableSTARTS,5
+.column 1,20,TRUE,C,norm,C,norm
+.column 2,20,FALSE,C,norm,C,norm
+.column 3,20,FALSE,C,norm,C,norm
+.column 4,25,FALSE,C,norm,C,norm
+.column 5,25,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableCASE,4
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,50,FALSE,C,norm,L,norm
+.column 3,20,FALSE,C,norm,C,norm
+.column 4,60,FALSE,C,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableRESLOADCASE,5
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,50,FALSE,C,norm,L,norm
+.column 3,20,FALSE,C,norm,C,norm
+.column 4,30,FALSE,C,norm,C,norm
+.column 5,60,FALSE,C,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableCASENoCoeff,3
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,70,FALSE,C,norm,L,norm
+.column 3,60,FALSE,C,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableCOMBI,4
+.column 1,20,TRUE,C,norm,C,norm
+.column 2,35,TRUE,C,norm,C,norm
+.column 3,60,FALSE,C,norm,L,norm
+.column 4,25,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableElCa,8
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,22,FALSE,C,norm,C,norm
+.column 4,22,FALSE,C,norm,C,norm
+.column 5,22,FALSE,C,norm,C,norm
+.column 6,22,FALSE,C,norm,C,norm
+.column 7,22,FALSE,C,norm,C,norm
+.column 8,22,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableISEC,5
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,25,FALSE,C,norm,C,norm
+.column 3,35,FALSE,C,norm,C,norm
+.column 4,35,FALSE,C,norm,C,norm
+.column 5,35,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableGSEC,7
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,FALSE,C,norm,C,norm
+.column 3,20,FALSE,C,norm,C,norm
+.column 4,20,FALSE,C,norm,C,norm
+.column 5,20,FALSE,C,norm,C,norm
+.column 6,20,FALSE,C,norm,C,norm
+.column 7,20,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableBUCKL,11
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,15,FALSE,C,norm,C,norm
+.column 4,15,FALSE,C,norm,C,norm
+.column 5,15,FALSE,C,norm,C,norm
+.column 6,15,FALSE,C,norm,C,norm
+.column 7,15,FALSE,C,norm,C,norm
+.column 8,15,FALSE,C,norm,C,norm
+.column 9,15,FALSE,C,norm,C,norm
+.column 10,15,FALSE,C,norm,C,norm
+.column 11,15,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNONLIN,7
+.column 1,25,TRUE,C,norm,C,norm
+.column 2,25,FALSE,C,norm,C,norm
+.column 3,30,FALSE,C,norm,C,norm
+.column 4,30,FALSE,C,norm,C,norm
+.column 5,30,FALSE,C,norm,C,norm
+.column 6,30,FALSE,C,norm,C,norm
+.column 7,30,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableLEFF,5
+.column 1,25,FALSE,C,norm,C,norm
+.column 2,25,FALSE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.column 4,25,FALSE,C,norm,C,norm
+.column 5,25,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableFTI,4
+.column 1,25,FALSE,C,norm,C,norm
+.column 2,25,FALSE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.column 4,25,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableCheckBrief,8
+.column 1,14,TRUE,C,norm,C,norm
+.column 2,14,TRUE,C,norm,C,norm
+.column 3,14,TRUE,C,norm,C,norm
+.column 4,20,FALSE,C,norm,C,norm
+.column 5,14,FALSE,C,norm,C,norm
+.column 6,20,FALSE,C,norm,C,norm
+.column 7,20,FALSE,C,norm,C,norm
+.column 8,20,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable StandardCheckBrief,9
+.column 1,16,TRUE,C,norm,C,norm
+.column 2,16,TRUE,C,norm,C,norm
+.column 3,16,TRUE,C,norm,C,norm
+.column 4,20,FALSE,C,norm,C,norm
+.column 5,16,FALSE,C,norm,C,norm
+.column 6,20,FALSE,R,norm,R,norm
+.column 7,20,FALSE,R,norm,R,norm
+.column 8,20,FALSE,R,norm,R,norm
+.column 9,20,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable StandardCheckBriefBS,6
+.column 1,46,FALSE,L,norm,L,norm
+.column 2,25,FALSE,L,norm,L,norm
+.column 3,25,FALSE,L,norm,L,norm
+.column 4,25,FALSE,L,norm,L,norm
+.column 5,25,FALSE,L,norm,L,norm
+.column 6,30,FALSE,L,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.5
+.enddef
+.
+.deftable StandardProperCheck,6
+.column 1,12,FALSE,C,norm,C,norm
+.column 2,16,FALSE,C,norm,C,norm
+.column 3,16,FALSE,C,norm,C,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.column 6,20,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableMatPlane,3
+.column 1,20,FALSE,C,norm,C,norm
+.column 2,20,FALSE,C,norm,C,norm
+.column 3,50,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableMesh,8
+.column 1,15,FALSE,C,norm,C,norm
+.column 2,15,FALSE,C,norm,C,norm
+.column 3,15,FALSE,C,norm,C,norm
+.column 4,20,FALSE,C,norm,C,norm
+.column 5,20,FALSE,C,norm,C,norm
+.column 6,20,FALSE,C,norm,C,norm
+.column 7,20,FALSE,C,norm,C,norm
+.column 8,20,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableSOIL,3
+.column 1,18,TRUE,C,norm,C,norm
+.column 2,45,FALSE,C,norm,C,norm
+.column 3,45,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableFemMatPl,7
+.column 1,18,TRUE,C,norm,C,norm
+.column 2,18,FALSE,C,norm,C,norm
+.column 3,18,FALSE,C,norm,C,norm
+.column 4,18,FALSE,C,norm,C,norm
+.column 5,18,FALSE,C,norm,C,norm
+.column 6,18,FALSE,C,norm,C,norm
+.column 7,18,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableFemSoilin,11
+.column 1,8,TRUE,C,norm,C,norm
+.column 2,20,FALSE,C,norm,C,norm
+.column 3,20,FALSE,C,norm,C,norm
+.column 4,20,FALSE,C,norm,C,norm
+.column 5,20,FALSE,C,norm,C,norm
+.column 6,20,FALSE,C,norm,C,norm
+.column 7,20,FALSE,C,norm,C,norm
+.column 8,20,FALSE,C,norm,C,norm
+.column 9,20,FALSE,C,norm,C,norm
+.column 10,10,FALSE,C,norm,C,norm
+.column 11,10,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableFree,8
+.column 1,18,TRUE,C,norm,C,norm
+.column 2,18,FALSE,C,norm,C,norm
+.column 3,18,FALSE,C,norm,C,norm
+.column 4,18,FALSE,C,norm,C,norm
+.column 5,18,FALSE,C,norm,C,norm
+.column 6,18,FALSE,C,norm,C,norm
+.column 7,18,FALSE,C,norm,C,norm
+.column 8,18,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TablePolygon,4
+.column 1,18,TRUE,C,norm,C,norm
+.column 2,18,FALSE,C,norm,C,norm
+.column 3,18,FALSE,C,norm,C,norm
+.column 4,18,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TablePLANE,11
+.column 1,20,TRUE,C,norm,C,norm
+.column 2,20,FALSE,C,norm,C,norm
+.column 3,20,FALSE,C,norm,C,norm
+.column 4,20,FALSE,C,norm,C,norm
+.column 5,20,FALSE,C,norm,C,norm
+.column 6,20,FALSE,C,norm,C,norm
+.column 7,20,FALSE,C,norm,C,norm
+.column 8,20,FALSE,C,norm,C,norm
+.column 9,20,FALSE,C,norm,C,norm
+.column 10,20,FALSE,C,norm,C,norm
+.column 11,40,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable MarDef,7
+.column 1,15,TRUE,R,norm,R,norm
+.column 2,25,FALSE,R,norm,R,norm
+.column 3,25,FALSE,R,norm,R,norm
+.column 4,25,FALSE,R,norm,R,norm
+.column 5,25,FALSE,R,norm,R,norm
+.column 6,25,FALSE,R,norm,R,norm
+.column 7,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable MarFreq,2
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable MarDim,8
+.column 1,15,TRUE,R,norm,R,norm
+.column 2,20,FALSE,R,norm,R,norm
+.column 3,20,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.column 6,20,FALSE,R,norm,R,norm
+.column 7,20,FALSE,R,norm,R,norm
+.column 8,20,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable Mar10Vs,11
+.column 1,15,TRUE,R,norm,R,norm
+.column 2,18,FALSE,R,norm,R,norm
+.column 3,18,FALSE,R,norm,R,norm
+.column 4,18,FALSE,R,norm,R,norm
+.column 5,18,FALSE,R,norm,R,norm
+.column 6,18,FALSE,R,norm,R,norm
+.column 7,18,FALSE,R,norm,R,norm
+.column 8,18,FALSE,R,norm,R,norm
+.column 9,18,FALSE,R,norm,R,norm
+.column 10,18,FALSE,R,norm,R,norm
+.column 11,18,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable Mar8Vs,9
+.column 1,15,TRUE,R,norm,R,norm
+.column 2,20,FALSE,R,norm,R,norm
+.column 3,20,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.column 6,20,FALSE,R,norm,R,norm
+.column 7,20,FALSE,R,norm,R,norm
+.column 8,20,FALSE,R,norm,R,norm
+.column 9,20,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable Mar5Vs,6
+.column 1,15,TRUE,R,norm,R,norm
+.column 2,20,FALSE,R,norm,R,norm
+.column 3,20,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.column 6,20,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable Mar3Vs,4
+.column 1,15,TRUE,R,norm,R,norm
+.column 2,20,FALSE,R,norm,R,norm
+.column 3,20,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable Mar4Vs,5
+.column 1,15,TRUE,R,norm,R,norm
+.column 2,20,FALSE,R,norm,R,norm
+.column 3,20,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable Mar2Vs,3
+.column 1,15,TRUE,R,norm,R,norm
+.column 2,20,FALSE,R,norm,R,norm
+.column 3,20,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable MarNap,10
+.column 1,15,TRUE,R,norm,R,norm
+.column 2,18,FALSE,R,norm,R,norm
+.column 3,18,FALSE,R,norm,R,norm
+.column 4,18,FALSE,R,norm,R,norm
+.column 5,18,FALSE,R,norm,R,norm
+.column 6,18,FALSE,R,norm,R,norm
+.column 7,18,FALSE,R,norm,R,norm
+.column 8,18,FALSE,R,norm,R,norm
+.column 9,18,FALSE,R,norm,R,norm
+.column 10,18,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable Mar12Nap,7
+.column 1,15,TRUE,R,norm,R,norm
+.column 2,18,FALSE,R,norm,R,norm
+.column 3,18,FALSE,R,norm,R,norm
+.column 4,18,FALSE,R,norm,R,norm
+.column 5,18,FALSE,R,norm,R,norm
+.column 6,18,FALSE,R,norm,R,norm
+.column 7,18,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable Mar4Kon,5
+.column 1,15,TRUE,R,norm,R,norm
+.column 2,25,FALSE,R,norm,R,norm
+.column 3,25,FALSE,R,norm,R,norm
+.column 4,25,FALSE,R,norm,R,norm
+.column 5,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable Mar3Kon,4
+.column 1,15,TRUE,R,norm,R,norm
+.column 2,25,FALSE,R,norm,R,norm
+.column 3,25,FALSE,R,norm,R,norm
+.column 4,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable MarZobr1,4
+.column 1,15,TRUE,R,norm,R,norm
+.column 2,25,FALSE,R,norm,R,norm
+.column 3,25,FALSE,R,norm,R,norm
+.column 4,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable MarZobr2,3
+.column 1,15,TRUE,R,norm,R,norm
+.column 2,25,FALSE,R,norm,R,norm
+.column 3,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable MarZobr3,6
+.column 1,15,TRUE,R,norm,R,norm
+.column 2,25,FALSE,R,norm,R,norm
+.column 3,25,FALSE,R,norm,R,norm
+.column 4,25,FALSE,R,norm,R,norm
+.column 5,25,FALSE,R,norm,R,norm
+.column 6,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable MarZobr4,7
+.column 1,15,TRUE,R,norm,R,norm
+.column 2,25,FALSE,R,norm,R,norm
+.column 3,25,FALSE,R,norm,R,norm
+.column 4,25,FALSE,R,norm,R,norm
+.column 5,25,FALSE,R,norm,R,norm
+.column 6,25,FALSE,R,norm,R,norm
+.column 7,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable MarZobr6Bod,11
+.column 1,16,TRUE,R,norm,R,norm
+.column 2,18,FALSE,R,norm,R,norm
+.column 3,18,FALSE,R,norm,R,norm
+.column 4,18,FALSE,R,norm,R,norm
+.column 5,18,FALSE,R,norm,R,norm
+.column 6,18,FALSE,R,norm,R,norm
+.column 7,18,FALSE,R,norm,R,norm
+.column 8,16,FALSE,R,norm,R,norm
+.column 9,16,FALSE,R,norm,R,norm
+.column 10,16,FALSE,R,norm,R,norm
+.column 11,16,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable MarZobr6Prit,10
+.column 1,16,TRUE,R,norm,R,norm
+.column 2,18,FALSE,R,norm,R,norm
+.column 3,18,FALSE,R,norm,R,norm
+.column 4,18,FALSE,R,norm,R,norm
+.column 5,18,FALSE,R,norm,R,norm
+.column 6,18,FALSE,R,norm,R,norm
+.column 7,18,FALSE,R,norm,R,norm
+.column 8,18,FALSE,R,norm,R,norm
+.column 9,18,FALSE,R,norm,R,norm
+.column 10,15,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable VlakUmisteni,5
+.column 1,42,TRUE,C,norm,L,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,20,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable VlakDefinice,6
+.column 1,24,TRUE,C,norm,L,norm
+.column 2,20,FALSE,R,norm,R,norm
+.column 3,20,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.column 6,36,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable MarSections,16
+.column 1,15,TRUE,R,norm,R,norm
+.column 2,15,TRUE,R,norm,R,norm
+.column 3,18,FALSE,R,norm,R,norm
+.column 4,18,FALSE,R,norm,R,norm
+.column 5,18,FALSE,R,norm,R,norm
+.column 6,18,FALSE,R,norm,R,norm
+.column 7,18,FALSE,R,norm,R,norm
+.column 8,18,FALSE,R,norm,R,norm
+.column 9,18,FALSE,R,norm,R,norm
+.column 10,18,FALSE,R,norm,R,norm
+.column 11,18,FALSE,R,norm,R,norm
+.column 12,18,FALSE,R,norm,R,norm
+.column 13,18,FALSE,R,norm,R,norm
+.column 14,18,FALSE,R,norm,R,norm
+.column 15,18,FALSE,R,norm,R,norm
+.column 16,18,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableMACRO2D,3
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,20,FALSE,C,norm,C,norm
+.column 3,130,FALSE,C,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TablePROF,2
+.column 1,20,FALSE,C,norm,C,norm
+.column 2,50,FALSE,L,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableVARP,7
+.column 1,15,FALSE,C,norm,C,norm
+.column 2,40,FALSE,L,norm,L,norm
+.column 3,20,FALSE,C,norm,C,norm
+.column 4,15,FALSE,C,norm,C,norm
+.column 5,20,FALSE,C,norm,C,norm
+.column 6,25,FALSE,C,norm,C,norm
+.column 7,40,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableSTATEMENT,6
+.column 1,15,FALSE,C,norm,C,norm
+.column 2,60,FALSE,C,norm,C,norm
+.column 3,40,FALSE,C,norm,C,norm
+.column 4,20,FALSE,C,norm,C,norm
+.column 5,20,FALSE,C,norm,C,norm
+.column 6,20,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableGEOLINE,3
+.column 1,20,FALSE,C,norm,C,norm
+.column 2,20,FALSE,C,norm,C,norm
+.column 3,120,FALSE,L,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable ECTABBRIEF,7
+.column 1,20,TRUE,C,norm,C,norm
+.column 2,20,TRUE,C,norm,C,norm
+.column 3,30,TRUE,C,norm,C,norm
+.column 4,20,TRUE,C,norm,C,norm
+.column 5,20,TRUE,C,norm,C,norm
+.column 6,20,FALSE,C,norm,C,norm
+.column 7,20,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNONCOMBI,7
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,30,FALSE,C,norm,C,norm
+.column 3,15,FALSE,C,norm,C,norm
+.column 4,15,FALSE,C,norm,C,norm
+.column 5,30,FALSE,C,norm,C,norm
+.column 6,45,FALSE,C,norm,C,norm
+.column 7,15,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableMASSP,2
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,25,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableLOADMASS,2
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,25,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableCOM_MASS,4
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,25,FALSE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.column 4,25,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResNode2,4
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,25,FALSE,R,norm,R,norm
+.column 4,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResNode3,5
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,25,FALSE,R,norm,R,norm
+.column 4,25,FALSE,R,norm,R,norm
+.column 5,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResNode6,8
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,21,FALSE,R,norm,R,norm
+.column 4,21,FALSE,R,norm,R,norm
+.column 5,21,FALSE,R,norm,R,norm
+.column 6,21,FALSE,R,norm,R,norm
+.column 7,21,FALSE,R,norm,R,norm
+.column 8,21,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMemb1,5
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,15,TRUE,C,norm,C,norm
+.column 4,15,FALSE,C,norm,C,norm
+.column 5,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMemb3,7
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,15,TRUE,C,norm,C,norm
+.column 4,25,FALSE,C,norm,C,norm
+.column 5,30,FALSE,R,norm,R,norm
+.column 6,30,FALSE,R,norm,R,norm
+.column 7,30,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMemb6,10
+.column 1,13,TRUE,C,norm,C,norm
+.column 2,13,TRUE,C,norm,C,norm
+.column 3,13,TRUE,C,norm,C,norm
+.column 4,13,FALSE,C,norm,C,norm
+.column 5,18,FALSE,R,norm,R,norm
+.column 6,18,FALSE,R,norm,R,norm
+.column 7,18,FALSE,R,norm,R,norm
+.column 8,18,FALSE,R,norm,R,norm
+.column 9,18,FALSE,R,norm,R,norm
+.column 10,18,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMCross1,4
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,15,FALSE,C,norm,C,norm
+.column 4,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMCross3,6
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.column 4,30,FALSE,R,norm,R,norm
+.column 5,30,FALSE,R,norm,R,norm
+.column 6,30,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMCross6,9
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,15,FALSE,C,norm,C,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.column 6,20,FALSE,R,norm,R,norm
+.column 7,20,FALSE,R,norm,R,norm
+.column 8,20,FALSE,R,norm,R,norm
+.column 9,20,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMac1,5
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,15,TRUE,C,norm,C,norm
+.column 4,15,FALSE,C,norm,C,norm
+.column 5,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMac3,7
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,15,TRUE,C,norm,C,norm
+.column 4,30,FALSE,C,norm,C,norm
+.column 5,30,FALSE,R,norm,R,norm
+.column 6,30,FALSE,R,norm,R,norm
+.column 7,30,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMac6,10
+.column 1,12,TRUE,C,norm,C,norm
+.column 2,12,TRUE,C,norm,C,norm
+.column 3,12,TRUE,C,norm,C,norm
+.column 4,12,FALSE,C,norm,C,norm
+.column 5,20,FALSE,R,norm,R,norm
+.column 6,20,FALSE,R,norm,R,norm
+.column 7,20,FALSE,R,norm,R,norm
+.column 8,20,FALSE,R,norm,R,norm
+.column 9,20,FALSE,R,norm,R,norm
+.column 10,20,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMembEx1,5
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,15,TRUE,C,norm,C,norm
+.column 4,15,TRUE,C,norm,C,norm
+.column 5,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMembEx3,7
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,15,TRUE,C,norm,C,norm
+.column 4,25,FALSE,C,norm,C,norm
+.column 5,25,FALSE,R,norm,R,norm
+.column 6,25,FALSE,R,norm,R,norm
+.column 7,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMembEx6,10
+.column 1,12,TRUE,C,norm,C,norm
+.column 2,12,TRUE,C,norm,C,norm
+.column 3,12,TRUE,C,norm,C,norm
+.column 4,12,TRUE,C,norm,C,norm
+.column 5,18,FALSE,R,norm,R,norm
+.column 6,18,FALSE,R,norm,R,norm
+.column 7,18,FALSE,R,norm,R,norm
+.column 8,18,FALSE,R,norm,R,norm
+.column 9,18,FALSE,R,norm,R,norm
+.column 10,18,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMCrossEx1,4
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,15,TRUE,C,norm,C,norm
+.column 4,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMCrossEx3,6
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.column 4,25,FALSE,R,norm,R,norm
+.column 5,25,FALSE,R,norm,R,norm
+.column 6,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMCrossEx6,9
+.column 1,13,TRUE,C,norm,C,norm
+.column 2,13,TRUE,C,norm,C,norm
+.column 3,13,TRUE,C,norm,C,norm
+.column 4,19,FALSE,R,norm,R,norm
+.column 5,19,FALSE,R,norm,R,norm
+.column 6,19,FALSE,R,norm,R,norm
+.column 7,19,FALSE,R,norm,R,norm
+.column 8,19,FALSE,R,norm,R,norm
+.column 9,19,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMacEx1,5
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,15,TRUE,C,norm,C,norm
+.column 4,15,TRUE,C,norm,C,norm
+.column 5,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMacEx3,7 
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,15,TRUE,C,norm,C,norm
+.column 4,25,FALSE,C,norm,C,norm
+.column 5,25,FALSE,R,norm,R,norm
+.column 6,25,FALSE,R,norm,R,norm
+.column 7,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMacEx6,10
+.column 1,12,TRUE,C,norm,C,norm
+.column 2,12,TRUE,C,norm,C,norm
+.column 3,12,TRUE,C,norm,C,norm
+.column 4,12,TRUE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.column 6,20,FALSE,R,norm,R,norm
+.column 7,20,FALSE,R,norm,R,norm
+.column 8,20,FALSE,R,norm,R,norm
+.column 9,20,FALSE,R,norm,R,norm
+.column 10,20,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResSta1,2
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResSta3,4
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,25,FALSE,R,norm,R,norm
+.column 3,25,FALSE,R,norm,R,norm
+.column 4,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResSta6,7
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,21,FALSE,R,norm,R,norm
+.column 3,21,FALSE,R,norm,R,norm
+.column 4,21,FALSE,R,norm,R,norm
+.column 5,21,FALSE,R,norm,R,norm
+.column 6,21,FALSE,R,norm,R,norm
+.column 7,21,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResStaEx6,7
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,20,FALSE,R,norm,R,norm
+.column 3,20,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.column 6,20,FALSE,R,norm,R,norm
+.column 7,20,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResStaEx3,4
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,25,FALSE,R,norm,R,norm
+.column 3,25,FALSE,R,norm,R,norm
+.column 4,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResStaEx1,2
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable BucklingParam,4
+.column 1,50,FALSE,L,norm,L,norm
+.column 2,25,FALSE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.column 4,25,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable Table5,5
+.column 1,50,FALSE,L,norm,L,norm
+.column 2,25,FALSE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.column 4,25,FALSE,C,norm,C,norm
+.column 5,25,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableOutputCheck,3
+.column 1,50,FALSE,L,norm,L,norm
+.column 2,25,FALSE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableRatio,2
+.column 1,50,FALSE,L,norm,L,norm
+.column 2,25,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResDyn1,3
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResDyn3,5
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,25,FALSE,R,norm,R,norm
+.column 4,25,FALSE,R,norm,R,norm
+.column 5,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResDyn6,8
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,21,FALSE,R,norm,R,norm
+.column 4,21,FALSE,R,norm,R,norm
+.column 5,21,FALSE,R,norm,R,norm
+.column 6,21,FALSE,R,norm,R,norm
+.column 7,21,FALSE,R,norm,R,norm
+.column 8,21,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResDynEx6,8
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,20,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.column 6,20,FALSE,R,norm,R,norm
+.column 7,20,FALSE,R,norm,R,norm
+.column 8,20,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResDynEx3,5
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,22,FALSE,R,norm,R,norm
+.column 4,22,FALSE,R,norm,R,norm
+.column 5,22,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResDynEx1,3
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,22,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableDYNLC,4
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,35,FALSE,C,norm,L,norm
+.column 3,15,FALSE,C,norm,C,norm
+.column 4,20,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable ItemTab,6
+.column 1,25,FALSE,L,norm,L,norm
+.column 2,25,FALSE,C,norm,C,norm
+.column 3,25,TRUE,C,norm,C,norm
+.column 4,40,FALSE,C,norm,C,norm
+.column 5,25,FALSE,C,norm,C,norm
+.column 6,25,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable ItemAdapt,7
+.column 1,25,FALSE,L,norm,L,norm
+.column 2,25,FALSE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.column 4,25,FALSE,C,norm,C,norm
+.column 5,25,FALSE,C,norm,C,norm
+.column 6,25,FALSE,C,norm,C,norm
+.column 7,25,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableBASICDATA0,2
+.column 1,55,TRUE,C,norm,L,norm
+.column 2,20,FALSE,C,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableBASICDATA1,3
+.column 1,20,TRUE,C,norm,L,norm
+.column 2,50,FALSE,C,norm,L,norm
+.column 3,50,FALSE,C,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TablePR_1,4
+.column 1,15,TRUE,C,norm,L,norm
+.column 2,60,FALSE,C,norm,L,norm
+.column 3,15,TRUE,C,norm,L,norm
+.column 4,60,FALSE,C,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TablePR_2,2
+.column 1,20,TRUE,C,norm,L,norm
+.column 2,50,FALSE,C,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable PlateConn,6
+.column 1,25,FALSE,L,norm,L,norm
+.column 2,25,FALSE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.column 4,35,FALSE,C,norm,C,norm
+.column 5,30,FALSE,C,norm,C,norm
+.column 6,25,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableMEM_EXC,3
+.column 1,25,FALSE,C,norm,C,norm
+.column 2,25,FALSE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TablePR_3,4
+.column 1,40,FALSE,C,norm,L,norm
+.column 2,30,FALSE,C,norm,L,norm
+.column 3,40,FALSE,C,norm,L,norm
+.column 4,30,FALSE,C,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable ItemDesignList,7
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,C,norm,C,norm
+.column 3,30,FALSE,C,norm,C,norm
+.column 4,30,FALSE,C,norm,C,norm
+.column 5,25,FALSE,C,norm,C,norm
+.column 6,25,FALSE,C,norm,C,norm
+.column 7,25,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable ItemDesignCList,5
+.column 1,20,FALSE,L,norm,L,norm
+.column 2,30,FALSE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.column 4,25,FALSE,C,norm,C,norm
+.column 5,25,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable Tabl6cvl,6
+.column 1,50,FALSE,L,norm,L,norm
+.column 2,25,FALSE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.column 4,25,FALSE,C,norm,C,norm
+.column 5,25,FALSE,C,norm,C,norm
+.column 6,25,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable ASDTABBRIEF,6
+.column 1,20,TRUE,C,norm,C,norm
+.column 2,20,TRUE,C,norm,C,norm
+.column 3,30,TRUE,C,norm,C,norm
+.column 4,20,TRUE,C,norm,C,norm
+.column 5,20,TRUE,C,norm,C,norm
+.column 6,20,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable ASDRATIOTAB,4
+.column 1,50,FALSE,L,norm,L,norm
+.column 2,25,FALSE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.column 4,25,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableSECROT,3
+.column 1,20,FALSE,C,norm,C,norm
+.column 2,50,FALSE,L,norm,L,norm
+.column 3,20,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable CRTCHECKBRIEF,7
+.column 1,30,FALSE,R,norm,C,norm
+.column 2,20,FALSE,R,norm,C,norm
+.column 3,20,FALSE,R,norm,C,norm
+.column 4,20,FALSE,R,norm,C,norm
+.column 5,20,FALSE,R,norm,C,norm
+.column 6,20,FALSE,R,norm,C,norm
+.column 7,20,FALSE,R,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableSTABCOMBI,3
+.column 1,25,TRUE,C,norm,C,norm
+.column 2,45,FALSE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableFrequency,4
+.column 1,15,FALSE,C,norm,C,norm
+.column 2,30,FALSE,C,norm,C,norm
+.column 3,30,FALSE,C,norm,C,norm
+.column 4,30,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable CRTLIST,6
+.column 1,20,FALSE,R,norm,C,norm
+.column 2,20,FALSE,R,norm,C,norm
+.column 3,20,FALSE,R,norm,C,norm
+.column 4,20,FALSE,R,norm,C,norm
+.column 5,20,FALSE,R,norm,C,norm
+.column 6,20,FALSE,R,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable CRTLISTMSH,5
+.column 1,20,FALSE,R,norm,C,norm
+.column 2,20,FALSE,R,norm,C,norm
+.column 3,20,FALSE,R,norm,C,norm
+.column 4,20,FALSE,R,norm,C,norm
+.column 5,20,FALSE,R,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TABCRT2,2
+.column 1,40,FALSE,R,norm,C,norm
+.column 2,20,FALSE,R,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable CON2TAB,2
+.column 1,25,FALSE,L,norm,L,norm
+.column 2,25,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable CON3TAB,3
+.column 1,25,FALSE,L,norm,L,norm
+.column 2,25,FALSE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable CON4TAB,4
+.column 1,25,FALSE,L,norm,L,norm
+.column 2,25,FALSE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.column 4,25,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable CON5TAB,5
+.column 1,25,FALSE,L,norm,L,norm
+.column 2,45,FALSE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.column 4,25,FALSE,C,norm,C,norm
+.column 5,22,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable CON6TAB,6
+.column 1,25,FALSE,L,norm,L,norm
+.column 2,25,FALSE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.column 4,25,FALSE,C,norm,C,norm
+.column 5,22,FALSE,C,norm,C,norm
+.column 6,22,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable CON7TAB,7
+.column 1,25,FALSE,L,norm,L,norm
+.column 2,25,FALSE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.column 4,25,FALSE,C,norm,C,norm
+.column 5,22,FALSE,C,norm,C,norm
+.column 6,22,FALSE,C,norm,C,norm
+.column 7,22,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable CRTLISTCUMUL,3
+.column 1,20,FALSE,R,norm,R,norm
+.column 2,20,FALSE,R,norm,R,norm
+.column 3,20,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable CRTAREAMAIN,3
+.column 1,30,FALSE,R,norm,R,norm
+.column 2,40,FALSE,R,norm,R,norm
+.column 3,40,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable CRTAREASHEAR,2
+.column 1,30,FALSE,R,norm,R,norm
+.column 2,40,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableConrete,9
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,20,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.column 6,20,FALSE,R,norm,R,norm
+.column 7,20,FALSE,R,norm,R,norm
+.column 8,20,FALSE,R,norm,R,norm
+.column 9,20,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNeededAs,10
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,15,FALSE,R,norm,R,norm
+.column 4,15,FALSE,R,norm,R,norm
+.column 5,15,FALSE,R,norm,R,norm
+.column 6,15,FALSE,R,norm,R,norm
+.column 7,15,FALSE,R,norm,R,norm
+.column 8,15,FALSE,R,norm,R,norm
+.column 9,15,FALSE,R,norm,R,norm
+.column 10,15,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNeededNENAs,13
+.column 1,10,FALSE,R,norm,R,norm
+.column 2,13,FALSE,R,norm,R,norm
+.column 3,13,FALSE,R,norm,R,norm
+.column 4,13,FALSE,R,norm,R,norm
+.column 5,15,FALSE,R,norm,R,norm
+.column 6,13,FALSE,R,norm,R,norm
+.column 7,6,FALSE,R,norm,R,norm
+.column 8,15,FALSE,R,norm,R,norm
+.column 9,13,FALSE,R,norm,R,norm
+.column 10,6,FALSE,R,norm,R,norm
+.column 11,13,FALSE,R,norm,R,norm
+.column 12,13,FALSE,R,norm,R,norm
+.column 13,17,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNeededNENAsMac,14
+.column 1,10,FALSE,R,norm,R,norm
+.column 2,10,FALSE,R,norm,R,norm
+.column 3,13,FALSE,R,norm,R,norm
+.column 4,13,FALSE,R,norm,R,norm
+.column 5,13,FALSE,R,norm,R,norm
+.column 6,15,FALSE,R,norm,R,norm
+.column 7,12,FALSE,R,norm,R,norm
+.column 8,6,FALSE,R,norm,R,norm
+.column 9,15,FALSE,R,norm,R,norm
+.column 10,12,FALSE,R,norm,R,norm
+.column 11,6,FALSE,R,norm,R,norm
+.column 12,13,FALSE,R,norm,R,norm
+.column 13,12,FALSE,R,norm,R,norm
+.column 14,17,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNENColumnAs,7
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,15,FALSE,R,norm,R,norm
+.column 4,15,FALSE,R,norm,R,norm
+.column 5,15,FALSE,R,norm,R,norm
+.column 6,15,FALSE,R,norm,R,norm
+.column 7,15,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNENColumnAsMac,8
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,15,FALSE,R,norm,R,norm
+.column 4,15,FALSE,R,norm,R,norm
+.column 5,15,FALSE,R,norm,R,norm
+.column 6,15,FALSE,R,norm,R,norm
+.column 7,15,FALSE,R,norm,R,norm
+.column 8,15,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNENConcColumnInput,5
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,15,FALSE,R,norm,R,norm
+.column 4,18,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNENConcShearReinf,8
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,18,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,15,FALSE,R,norm,R,norm
+.column 6,15,FALSE,R,norm,R,norm
+.column 7,15,FALSE,R,norm,R,norm
+.column 8,20,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableDINConcShearReinf,10
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,18,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,15,FALSE,R,norm,R,norm
+.column 6,15,FALSE,R,norm,R,norm
+.column 7,15,FALSE,R,norm,R,norm
+.column 8,15,FALSE,R,norm,R,norm
+.column 9,15,FALSE,R,norm,R,norm
+.column 10,20,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableDINConcCrack,5
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,15,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNENDINExplain,2
+.column 1,40,FALSE,L,norm,L,norm
+.column 2,110,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableREINFCNC2D,3
+.column 1,20,FALSE,L,norm,L,norm
+.column 2,20,FALSE,L,norm,L,norm
+.column 3,20,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable CRT2DPSTAB,3
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,30,FALSE,L,norm,L,norm
+.column 3,30,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableANGLESREINF,7
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,20,FALSE,R,norm,R,norm
+.column 3,20,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.column 6,20,FALSE,R,norm,R,norm
+.column 7,20,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableLAYERSREINF,9
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,20,FALSE,R,norm,R,norm
+.column 3,22,FALSE,R,norm,R,norm
+.column 4,22,FALSE,R,norm,R,norm
+.column 5,22,FALSE,R,norm,R,norm
+.column 6,20,FALSE,R,norm,R,norm
+.column 7,22,FALSE,R,norm,R,norm
+.column 8,22,FALSE,R,norm,R,norm
+.column 9,22,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResSumaNode2,3
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,25,FALSE,R,norm,R,norm
+.column 3,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResSumaNode3,4
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,25,FALSE,R,norm,R,norm
+.column 3,25,FALSE,R,norm,R,norm
+.column 4,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResSumaNode6,7
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,21,FALSE,R,norm,R,norm
+.column 3,21,FALSE,R,norm,R,norm
+.column 4,21,FALSE,R,norm,R,norm
+.column 5,21,FALSE,R,norm,R,norm
+.column 6,21,FALSE,R,norm,R,norm
+.column 7,21,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableLWESUPP,4
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,21,FALSE,R,norm,R,norm
+.column 3,21,FALSE,R,norm,R,norm
+.column 4,30,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableLWEBEAM,4
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,21,FALSE,R,norm,R,norm
+.column 3,95,FALSE,R,norm,R,norm
+.column 3,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableLWEHINGE,4
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,21,FALSE,R,norm,R,norm
+.column 3,21,FALSE,R,norm,R,norm
+.column 4,21,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableLWELOADS,7
+.column 1,10,TRUE,R,norm,R,norm
+.column 2,21,FALSE,R,norm,R,norm
+.column 3,10,FALSE,R,norm,R,norm
+.column 4,10,FALSE,R,norm,R,norm
+.column 5,45,FALSE,R,norm,R,norm
+.column 6,15,FALSE,R,norm,R,norm
+.column 7,55,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableLWEPROFILE,3
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,21,FALSE,R,norm,R,norm
+.column 3,95,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableLWECOMBI,3
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,21,FALSE,R,norm,R,norm
+.column 3,21,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableCONCCOMBI,4
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,21,FALSE,R,norm,R,norm
+.column 4,21,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableDYNLNODE,8
+.column 1,18,TRUE,C,norm,C,norm
+.column 2,20,FALSE,C,norm,C,norm
+.column 3,20,FALSE,C,norm,C,norm
+.column 4,20,FALSE,C,norm,C,norm
+.column 5,20,FALSE,C,norm,C,norm
+.column 6,20,FALSE,C,norm,C,norm
+.column 7,20,FALSE,C,norm,C,norm
+.column 8,20,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNENConcBeamInput,9
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,15,FALSE,R,norm,R,norm
+.column 4,17,FALSE,R,norm,R,norm
+.column 5,17,FALSE,R,norm,R,norm
+.column 6,20,FALSE,R,norm,R,norm
+.column 7,20,FALSE,R,norm,R,norm
+.column 8,18,FALSE,R,norm,R,norm
+.column 9,15,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNENConcColumnInput,5
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,15,FALSE,R,norm,R,norm
+.column 4,18,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNENConcMainReinf,9
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,18,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.column 6,15,FALSE,R,norm,R,norm
+.column 7,18,FALSE,R,norm,R,norm
+.column 8,15,FALSE,R,norm,R,norm
+.column 9,15,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNENConcShearReinf,8
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,18,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,15,FALSE,R,norm,R,norm
+.column 6,15,FALSE,R,norm,R,norm
+.column 7,15,FALSE,R,norm,R,norm
+.column 8,20,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableDINConcShearReinf,10
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,18,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,15,FALSE,R,norm,R,norm
+.column 6,15,FALSE,R,norm,R,norm
+.column 7,15,FALSE,R,norm,R,norm
+.column 8,15,FALSE,R,norm,R,norm
+.column 9,15,FALSE,R,norm,R,norm
+.column 10,20,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNENConcColumnReinf,9
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,15,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.column 6,20,FALSE,R,norm,R,norm
+.column 7,15,FALSE,R,norm,R,norm
+.column 8,20,FALSE,R,norm,R,norm
+.column 9,20,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNENConcCrack,6
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,15,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.column 6,20,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableDINConcCrack,5
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,15,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNENDINExplain,2
+.column 1,40,FALSE,L,norm,L,norm
+.column 2,110,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableRES_NX6,5
+.column 1,45,FALSE,C,norm,L,norm
+.column 2,30,FALSE,C,norm,L,norm
+.column 3,20,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableSolverProtokol,2
+.column 1,60,FALSE,L,norm,L,norm
+.column 2,60,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableSolverProtokol_B,6
+.column 1,60,TRUE,C,norm,C,norm
+.column 2,60,FALSE,C,norm,C,norm
+.column 3,60,FALSE,C,norm,C,norm
+.column 4,60,FALSE,C,norm,C,norm
+.column 5,60,FALSE,C,norm,C,norm
+.column 6,60,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable R2DInPerc,2
+.column 1,110,FALSE,L,norm,L,norm
+.column 2,40,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.9
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable R2DInDef,3
+.column 1,50,FALSE,L,norm,L,norm
+.column 2,50,FALSE,L,norm,L,norm
+.column 3,50,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.9
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable R2DInCovAng,7
+.column 1,35,FALSE,L,norm,L,norm
+.column 2,20,FALSE,L,norm,L,norm
+.column 3,20,FALSE,L,norm,L,norm
+.column 4,20,FALSE,L,norm,L,norm
+.column 5,20,FALSE,L,norm,L,norm
+.column 6,20,FALSE,L,norm,L,norm
+.column 7,20,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.9
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable DynTabWind1,3
+.column 1,25,FALSE,C,norm,C,norm
+.column 2,25,FALSE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.7
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable DynTabWind2,6
+.column 1,20,FALSE,C,norm,C,norm
+.column 2,20,FALSE,C,norm,C,norm
+.column 3,20,FALSE,C,norm,C,norm
+.column 4,20,FALSE,C,norm,C,norm
+.column 5,20,FALSE,C,norm,C,norm
+.column 6,20,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.7
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable SeismTab,12
+.column 1,10,FALSE,C,norm,C,norm
+.column 2,20,FALSE,C,norm,C,norm
+.column 3,20,FALSE,C,norm,C,norm
+.column 4,20,FALSE,C,norm,C,norm
+.column 5,20,FALSE,C,norm,C,norm
+.column 6,20,FALSE,C,norm,C,norm
+.column 7,20,FALSE,C,norm,C,norm
+.column 8,20,FALSE,C,norm,C,norm
+.column 9,20,FALSE,C,norm,C,norm
+.column 10,20,FALSE,C,norm,C,norm
+.column 11,20,FALSE,C,norm,C,norm
+.column 12,20,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.7
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable HarmTab,5
+.column 1,10,FALSE,C,norm,C,norm
+.column 2,20,FALSE,C,norm,C,norm
+.column 3,20,FALSE,C,norm,C,norm
+.column 4,20,FALSE,C,norm,C,norm
+.column 5,20,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.7
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable GenDynTab,2
+.column 1,10,FALSE,C,norm,C,norm
+.column 2,20,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.7
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableInfluLines,6
+.column 1,10,TRUE,C,norm,C,norm
+.column 2,30,FALSE,C,norm,C,norm
+.column 3,30,FALSE,L,norm,L,norm
+.column 4,30,FALSE,L,norm,L,norm
+.column 5,45,FALSE,L,norm,L,norm
+.column 6,20,FALSE,L,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableTripTrain,7
+.column 1,12,TRUE,C,norm,C,norm
+.column 2,25,FALSE,C,norm,C,norm
+.column 3,35,FALSE,C,norm,C,norm
+.column 4,15,FALSE,C,norm,C,norm
+.column 5,20,FALSE,C,norm,C,norm
+.column 6,20,FALSE,C,norm,C,norm
+.column 7,20,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableImpulseTripTrain,8
+.column 1,12,TRUE,C,norm,C,norm
+.column 2,25,FALSE,C,norm,C,norm
+.column 3,35,FALSE,C,norm,C,norm
+.column 4,15,FALSE,C,norm,C,norm
+.column 5,20,FALSE,C,norm,C,norm
+.column 6,20,FALSE,C,norm,C,norm
+.column 7,20,FALSE,C,norm,C,norm
+.column 8,20,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable Contents,2
+.column 1,120,FALSE,L,norm,L,norm
+.column 2,30,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.7
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable CRT2DLATAB,3
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,60,FALSE,L,norm,L,norm
+.column 3,30,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TablePLATFORMLOADS,5
+.column 1,25,FALSE,R,norm,R,norm
+.column 2,25,FALSE,R,norm,R,norm
+.column 3,45,FALSE,R,norm,R,norm
+.column 4,25,FALSE,R,norm,R,norm
+.column 5,45,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TablePLATFORMDATA,4
+.column 1,30,FALSE,C,norm,L,norm
+.column 2,30,FALSE,R,norm,R,norm
+.column 3,30,FALSE,C,norm,L,norm
+.column 4,30,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TablePLATFORMSOILIN,3
+.column 1,30,FALSE,L,norm,L,norm
+.column 2,30,FALSE,L,norm,L,norm
+.column 3,30,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableMEMBERCROSS,3
+.column 1,50,FALSE,L,norm,L,norm
+.column 2,30,FALSE,L,norm,L,norm
+.column 3,30,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResRibData,8
+.column 1,18,FALSE,L,norm,L,norm
+.column 2,18,FALSE,L,norm,L,norm
+.column 3,18,FALSE,L,norm,L,norm
+.column 4,20,FALSE,L,norm,L,norm
+.column 5,20,FALSE,L,norm,L,norm
+.column 6,20,FALSE,L,norm,L,norm
+.column 7,25,FALSE,L,norm,L,norm
+.column 8,25,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable Tabl9cvl,9
+.column 1,45,FALSE,L,norm,L,norm
+.column 2,5,FALSE,R,norm,R,norm
+.column 3,10,FALSE,R,norm,R,norm
+.column 4,10,FALSE,R,norm,R,norm
+.column 5,5,FALSE,R,norm,R,norm
+.column 6,25,FALSE,R,norm,R,norm
+.column 7,25,FALSE,R,norm,R,norm
+.column 8,25,FALSE,R,norm,R,norm
+.column 9,25,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable Tabl2cvl,2
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,80,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableTruss,2
+.column 1,90,FALSE,L,norm,L,norm
+.column 2,20,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableKARMANVIBATIONS,2
+.column 1,20,FALSE,L,norm,L,norm
+.column 2,40,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResReaNode2,5
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,15,TRUE,C,norm,C,norm
+.column 4,25,FALSE,R,norm,R,norm
+.column 5,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResReaNode3,6
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,15,TRUE,C,norm,C,norm
+.column 4,25,FALSE,R,norm,R,norm
+.column 5,25,FALSE,R,norm,R,norm
+.column 6,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResReaNode6,9
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,15,TRUE,C,norm,C,norm
+.column 4,21,FALSE,R,norm,R,norm
+.column 5,21,FALSE,R,norm,R,norm
+.column 6,21,FALSE,R,norm,R,norm
+.column 7,21,FALSE,R,norm,R,norm
+.column 8,21,FALSE,R,norm,R,norm
+.column 9,21,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableInfExplCoord,5
+.column 1,25,TRUE,C,norm,C,norm
+.column 2,25,FALSE,R,norm,R,norm
+.column 3,25,FALSE,R,norm,R,norm
+.column 4,25,FALSE,R,norm,R,norm
+.column 5,30,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableInfExplArea,2
+.column 1,25,TRUE,C,norm,C,norm
+.column 2,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableInfExplSign,4
+.column 1,25,TRUE,C,norm,C,norm
+.column 2,25,FALSE,R,norm,R,norm
+.column 3,25,FALSE,R,norm,R,norm
+.column 4,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableInfExplMaxMin,4
+.column 1,30,TRUE,C,norm,C,norm
+.column 2,30,FALSE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.column 4,25,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableInfExplMatching,5
+.column 1,35,TRUE,L,norm,L,norm
+.column 2,30,FALSE,R,norm,R,norm
+.column 3,30,FALSE,R,norm,R,norm
+.column 4,30,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable NEM6Table,6
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,25,FALSE,C,norm,C,norm
+.column 3,20,FALSE,C,norm,C,norm
+.column 4,20,FALSE,C,norm,C,norm
+.column 5,20,FALSE,C,norm,C,norm
+.column 6,65,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable NEM5Table,5
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,30,FALSE,C,norm,C,norm
+.column 3,30,FALSE,C,norm,C,norm
+.column 4,15,FALSE,C,norm,C,norm
+.column 5,65,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable NEM4Table,4
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,20,FALSE,C,norm,C,norm
+.column 3,20,FALSE,C,norm,C,norm
+.column 4,65,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable SteelCSN1,10
+.column 1,8,FALSE,L,norm,L,norm
+.column 2,12,FALSE,C,norm,C,norm
+.column 3,12,FALSE,C,norm,C,norm
+.column 4,12,FALSE,C,norm,C,norm
+.column 5,12,FALSE,C,norm,C,norm
+.column 6,12,FALSE,C,norm,C,norm
+.column 7,12,FALSE,C,norm,C,norm
+.column 8,8,FALSE,C,norm,C,norm
+.column 9,12,FALSE,C,norm,C,norm
+.column 10,70,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableLine,1
+.column 1,120,FALSE,L,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable ---ZACATEK TABLE PAR---
+.enddef
+.
+.deftable TableFLPOINTS,12
+.column 1,15,TRUE,L,norm,L,norm
+.column 2,15,FALSE,C,norm,C,norm
+.column 3,15,FALSE,C,norm,C,norm
+.column 4,20,FALSE,C,norm,C,norm
+.column 5,20,FALSE,C,norm,C,norm
+.column 6,20,FALSE,C,norm,C,norm
+.column 7,15,FALSE,C,norm,C,norm
+.column 8,15,FALSE,C,norm,C,norm
+.column 9,25,FALSE,C,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableFLLINREC,10
+.column 1,15,TRUE,L,norm,L,norm
+.column 2,20,FALSE,C,norm,C,norm
+.column 3,15,FALSE,C,norm,C,norm
+.column 4,15,FALSE,C,norm,C,norm
+.column 5,15,FALSE,C,norm,C,norm
+.column 6,15,FALSE,C,norm,C,norm
+.column 7,15,FALSE,C,norm,C,norm
+.column 8,15,FALSE,C,norm,C,norm
+.column 9,15,FALSE,C,norm,C,norm
+.column 10,20,FALSE,C,norm,C,norm
+.column 11,25,FALSE,C,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableFLPOLY,8
+.column 1,15,TRUE,L,norm,L,norm
+.column 2,20,FALSE,C,norm,C,norm
+.column 3,15,FALSE,C,norm,C,norm
+.column 4,15,FALSE,C,norm,C,norm
+.column 5,15,FALSE,C,norm,C,norm
+.column 6,15,FALSE,C,norm,C,norm
+.column 7,15,FALSE,C,norm,C,norm
+.column 8,15,FALSE,C,norm,C,norm
+.column 9,15,FALSE,C,norm,C,norm
+.column 10,20,FALSE,C,norm,C,norm
+.column 11,25,FALSE,C,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TablePHASE,3
+.column 1,50,FALSE,L,norm,L,norm
+.column 2,20,FALSE,L,norm,L,norm
+.column 3,90,FALSE,L,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableMACROHISTORY,3
+.column 1,100,FALSE,L,norm,L,norm
+.column 2,40,FALSE,L,norm,L,norm
+.column 3,40,FALSE,L,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TablePHASESUMARY,9
+.column 1,13,TRUE,L,norm,L,norm
+.column 2,20,FALSE,L,norm,L,norm
+.column 3,26,FALSE,R,norm,R,norm
+.column 4,13,FALSE,R,norm,R,norm
+.column 5,26,FALSE,R,norm,R,norm
+.column 6,13,FALSE,R,norm,R,norm
+.column 7,26,FALSE,R,norm,R,norm
+.column 8,13,FALSE,R,norm,R,norm
+.column 9,26,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableSUMMARYLC,6
+.column 1,50,TRUE,L,norm,L,norm
+.column 2,50,FALSE,L,norm,L,norm
+.column 3,25,FALSE,R,norm,R,norm
+.column 4,25,FALSE,R,norm,R,norm
+.column 5,25,FALSE,R,norm,R,norm
+.column 6,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableTIMEAXIS,3
+.column 1,50,TRUE,R,norm,R,norm
+.column 2,50,FALSE,R,norm,R,norm
+.column 3,50,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableFOUND,8
+.column 1,50,TRUE,L,norm,L,norm
+.column 2,20,FALSE,L,norm,L,norm
+.column 3,20,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.column 6,20,FALSE,R,norm,R,norm
+.column 7,20,FALSE,R,norm,R,norm
+.column 8,20,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableFOUND_DB,11
+.column 1, 35,FALSE,L,norm,L,norm
+.column 2, 35,FALSE,L,norm,L,norm
+.column 3, 15,FALSE,R,norm,R,norm
+.column 4, 15,FALSE,R,norm,R,norm
+.column 5, 15,FALSE,R,norm,R,norm
+.column 6, 15,FALSE,R,norm,R,norm
+.column 7, 15,FALSE,R,norm,R,norm
+.column 8, 15,FALSE,R,norm,R,norm
+.column 9, 15,FALSE,R,norm,R,norm
+.column 10,15,FALSE,R,norm,R,norm
+.column 11,15,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableBOLTCON,2
+.column 1,100,TRUE,L,norm,L,norm
+.column 2,50,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableBRIEFBOLTCON,9
+.column 1,10,FALSE,L,norm,L,norm
+.column 2,25,FALSE,C,norm,C,norm
+.column 3,10,FALSE,C,norm,C,norm
+.column 4,25,FALSE,C,norm,C,norm
+.column 5,25,FALSE,C,norm,C,norm
+.column 6,25,FALSE,C,norm,C,norm
+.column 7,15,FALSE,C,norm,C,norm
+.column 8,40,FALSE,C,norm,C,norm
+.column 9,15,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable ---KONEC TABLE PAR---
+.enddef
+.
+.deftable TableNVM,9
+.column 1,15,TRUE,L,norm,L,norm
+.column 2,15,FALSE,C,norm,C,norm
+.column 3,15,FALSE,C,norm,C,norm
+.column 4,15,FALSE,C,norm,C,norm
+.column 5,15,FALSE,C,norm,C,norm
+.column 6,15,FALSE,C,norm,C,norm
+.column 7,15,FALSE,C,norm,C,norm
+.column 8,15,FALSE,C,norm,C,norm
+.column 9,15,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableNVM_ESA,8
+.column 1,15,FALSE,C,norm,C,norm
+.column 2,15,FALSE,C,norm,C,norm
+.column 3,15,FALSE,C,norm,C,norm
+.column 4,15,FALSE,C,norm,C,norm
+.column 5,15,FALSE,C,norm,C,norm
+.column 6,15,FALSE,C,norm,C,norm
+.column 7,15,FALSE,C,norm,C,norm
+.column 8,15,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable WoodEC5_1,10
+.column 1,8,FALSE,L,norm,L,norm
+.column 2,15,FALSE,C,norm,C,norm
+.column 3,15,FALSE,C,norm,C,norm
+.column 4,15,FALSE,C,norm,C,norm
+.column 5,15,FALSE,C,norm,C,norm
+.column 6,15,FALSE,C,norm,C,norm
+.column 7,15,FALSE,C,norm,C,norm
+.column 8,15,FALSE,C,norm,C,norm
+.column 9,15,FALSE,C,norm,C,norm
+.column 10,15,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableEC5Force,7
+.column 1,25,FALSE,C,norm,L,norm
+.column 2,23,FALSE,R,norm,R,norm
+.column 3,23,FALSE,R,norm,R,norm
+.column 4,23,FALSE,R,norm,R,norm
+.column 5,23,FALSE,R,norm,R,norm
+.column 6,23,FALSE,R,norm,R,norm
+.column 7,23,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMembCrossStress,7
+.column 1,20,FALSE,R,norm,R,norm
+.column 2,20,FALSE,R,norm,R,norm
+.column 3,16,FALSE,R,norm,R,norm
+.column 4,30,FALSE,R,norm,R,norm
+.column 5,30,FALSE,R,norm,R,norm
+.column 6,30,FALSE,R,norm,R,norm
+.column 7,30,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMembStress,7
+.column 1,16,FALSE,R,norm,R,norm
+.column 2,16,FALSE,R,norm,R,norm
+.column 3,16,FALSE,R,norm,R,norm
+.column 4,16,FALSE,R,norm,R,norm
+.column 5,30,FALSE,R,norm,R,norm
+.column 6,30,FALSE,R,norm,R,norm
+.column 7,30,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMacStress,7
+.column 1,16,FALSE,R,norm,R,norm
+.column 2,16,FALSE,R,norm,R,norm
+.column 3,16,FALSE,R,norm,R,norm
+.column 4,16,FALSE,R,norm,R,norm
+.column 5,30,FALSE,R,norm,R,norm
+.column 6,30,FALSE,R,norm,R,norm
+.column 7,30,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableLWENABEH,5
+.column 1,25,FALSE,R,norm,R,norm
+.column 2,21,FALSE,R,norm,R,norm
+.column 3,21,FALSE,R,norm,R,norm
+.column 4,21,FALSE,R,norm,R,norm
+.column 5,21,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMembCrossFatiqueStress,8
+.column 1,18,FALSE,R,norm,R,norm
+.column 2,18,FALSE,R,norm,R,norm
+.column 3,18,FALSE,R,norm,R,norm
+.column 4,27,FALSE,R,norm,R,norm
+.column 5,27,FALSE,R,norm,R,norm
+.column 6,27,FALSE,R,norm,R,norm
+.column 7,27,FALSE,R,norm,R,norm
+.column 8,27,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMembFatiqueStress,9
+.column 1,18,FALSE,R,norm,R,norm
+.column 2,18,FALSE,R,norm,R,norm
+.column 3,18,FALSE,R,norm,R,norm
+.column 4,18,FALSE,R,norm,R,norm
+.column 5,18,FALSE,R,norm,R,norm
+.column 6,27,FALSE,R,norm,R,norm
+.column 7,27,FALSE,R,norm,R,norm
+.column 8,27,FALSE,R,norm,R,norm
+.column 9,27,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMacFatiqueStress,9
+.column 1,18,FALSE,R,norm,R,norm
+.column 2,18,FALSE,R,norm,R,norm
+.column 3,18,FALSE,R,norm,R,norm
+.column 4,18,FALSE,R,norm,R,norm
+.column 5,18,FALSE,R,norm,R,norm
+.column 6,27,FALSE,R,norm,R,norm
+.column 7,27,FALSE,R,norm,R,norm
+.column 8,27,FALSE,R,norm,R,norm
+.column 9,27,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TABLOSS,9
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,C,norm,C,norm
+.column 3,15,FALSE,C,norm,C,norm
+.column 4,22,FALSE,C,norm,C,norm
+.column 5,22,FALSE,C,norm,C,norm
+.column 6,22,FALSE,C,norm,C,norm
+.column 7,22,FALSE,C,norm,C,norm
+.column 8,22,FALSE,C,norm,C,norm
+.column 9,25,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TABLPRE,11
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,C,norm,C,norm
+.column 3,15,FALSE,C,norm,C,norm
+.column 4,20,FALSE,C,norm,C,norm
+.column 5,20,FALSE,C,norm,C,norm
+.column 6,20,FALSE,C,norm,C,norm
+.column 7,22,FALSE,C,norm,C,norm
+.column 8,22,FALSE,C,norm,C,norm
+.column 9,20,FALSE,C,norm,C,norm
+.column 10,20,FALSE,C,norm,C,norm
+.column 11,25,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable NEM7Table,7
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,30,FALSE,C,norm,C,norm
+.column 3,20,FALSE,C,norm,C,norm
+.column 4,25,FALSE,C,norm,C,norm
+.column 5,20,FALSE,C,norm,C,norm
+.column 6,20,FALSE,C,norm,C,norm
+.column 7,65,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable table TableSeismicSpectrum,3
+.column 1,12,FALSE,C,norm,C,norm
+.column 2,30,FALSE,C,norm,L,norm
+.column 3,30,FALSE,C,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable NEM7Table,7
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,30,FALSE,C,norm,C,norm
+.column 3,20,FALSE,C,norm,C,norm
+.column 4,25,FALSE,C,norm,C,norm
+.column 5,20,FALSE,C,norm,C,norm
+.column 6,20,FALSE,C,norm,C,norm
+.column 7,65,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResNMemb1,5
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,15,FALSE,R,norm,R,norm
+.column 4,15,FALSE,R,norm,R,norm
+.column 5,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResNMemb3,7
+.column 1,25,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,25,FALSE,R,norm,R,norm
+.column 4,15,FALSE,R,norm,R,norm
+.column 5,30,FALSE,R,norm,R,norm
+.column 6,30,FALSE,R,norm,R,norm
+.column 7,30,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResNMemb6,10
+.column 1,13,TRUE,C,norm,C,norm
+.column 2,13,TRUE,C,norm,C,norm
+.column 3,13,FALSE,R,norm,R,norm
+.column 4,13,FALSE,R,norm,R,norm
+.column 5,18,FALSE,R,norm,R,norm
+.column 6,18,FALSE,R,norm,R,norm
+.column 7,18,FALSE,R,norm,R,norm
+.column 8,18,FALSE,R,norm,R,norm
+.column 9,18,FALSE,R,norm,R,norm
+.column 10,18,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableCalcTendonGeom,5
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,25,FALSE,R,norm,R,norm
+.column 4,25,FALSE,R,norm,R,norm
+.column 5,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableCalcTendonLoss,6
+.column 1,15,TRUE,C,norm,C,norm
+.column 2,15,TRUE,C,norm,C,norm
+.column 3,15,TRUE,C,norm,C,norm
+.column 4,25,FALSE,R,norm,R,norm
+.column 5,25,FALSE,R,norm,R,norm
+.column 6,25,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableCONCO,2
+.column 1,100,TRUE,L,norm,L,norm
+.column 2,50,FALSE,R,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableCONCO2,3
+.column 1,100,TRUE,L,norm,L,norm
+.column 2,50,FALSE,R,norm,L,norm
+.column 3,50,FALSE,R,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableLOADGROUP,3
+.column 1,30,TRUE,L,norm,L,norm
+.column 2,20,FALSE,R,norm,L,norm
+.column 2,100,FALSE,R,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableTendon,2
+.column 1,100,FALSE,L,norm,L,norm
+.column 2,100,FALSE,L,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableFOUNDBLOCK,4
+.column 1,125,FALSE,L,norm,L,norm
+.column 2,25,FALSE,L,norm,L,norm
+.column 3,25,FALSE,L,norm,L,norm
+.column 4,25,FALSE,L,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableFOUNDBLOCK2,3
+.column 1,100,FALSE,L,norm,L,norm
+.column 2,25,FALSE,L,norm,L,norm
+.column 3,25,FALSE,L,norm,L,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TABMLOSS,4
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,C,norm,C,norm
+.column 3,15,FALSE,C,norm,C,norm
+.column 4,33,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableSumOfMasses,4
+.column 1,80,FALSE,C,norm,L,norm
+.column 2,20,FALSE,C,norm,R,norm
+.column 3,20,FALSE,C,norm,R,norm
+.column 4,20,FALSE,C,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableFactors,10
+.column 1,15,FALSE,C,norm,C,norm
+.column 2,20,FALSE,C,norm,R,norm
+.column 3,20,FALSE,C,norm,R,norm
+.column 4,20,FALSE,C,norm,R,norm
+.column 5,20,FALSE,C,norm,R,norm
+.column 6,20,FALSE,C,norm,R,norm
+.column 7,20,FALSE,C,norm,R,norm
+.column 8,20,FALSE,C,norm,R,norm
+.column 9,20,FALSE,C,norm,R,norm
+.column 10,20,FALSE,C,norm,R,norm
+.column 11,20,FALSE,C,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMembAStress,5
+.column 1,20,FALSE,R,norm,R,norm
+.column 2,20,FALSE,R,norm,R,norm
+.column 3,36,FALSE,R,norm,R,norm
+.column 4,36,FALSE,R,norm,R,norm
+.column 5,36,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableResMembAFatiqueStress,6
+.column 1,20,FALSE,R,norm,R,norm
+.column 2,20,FALSE,R,norm,R,norm
+.column 3,36,FALSE,R,norm,R,norm
+.column 4,36,FALSE,R,norm,R,norm
+.column 5,36,FALSE,R,norm,R,norm
+.column 6,36,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TABLRESTEN,8
+.column 1,25,FALSE,L,norm,L,norm
+.column 2,22,FALSE,C,norm,C,norm
+.column 3,22,FALSE,C,norm,C,norm
+.column 4,22,FALSE,C,norm,C,norm
+.column 5,22,FALSE,C,norm,C,norm
+.column 6,22,FALSE,C,norm,C,norm
+.column 7,22,FALSE,C,norm,C,norm
+.column 8,22,FALSE,C,norm,C,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableLoadsystem_DB,3
+.column 1,120,FALSE,L,norm,L,norm
+.column 2,30,FALSE,L,norm,L,norm
+.column 3,30,FALSE,L,norm,L,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableLoadsystem_DBtab,3
+.column 1,20,FALSE,L,norm,L,norm
+.column 2,30,FALSE,L,norm,L,norm
+.column 3,30,FALSE,L,norm,L,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableTendonGeom,5
+.column 1,20,FALSE,R,norm,R,norm
+.column 2,30,FALSE,R,norm,R,norm
+.column 3,30,FALSE,R,norm,R,norm
+.column 4,60,FALSE,R,norm,R,norm
+.column 5,30,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableSummaryPunchingCSN,6
+.column 1,20,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,25,FALSE,R,norm,R,norm
+.column 4,120,FALSE,R,norm,R,norm
+.column 5,18,FALSE,R,norm,R,norm
+.column 6,18,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableColumnData,10
+.column 1,30,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,30,FALSE,L,norm,L,norm
+.column 4,18,FALSE,L,norm,L,norm
+.column 5,30,FALSE,L,norm,L,norm
+.column 6,30,FALSE,L,norm,L,norm
+.column 7,18,FALSE,L,norm,L,norm
+.column 8,30,FALSE,L,norm,L,norm
+.column 9,18,FALSE,L,norm,L,norm
+.column 10,18,FALSE,L,norm,L,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableDesignPunchingCSN,8
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,20,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable ExplanationSymbolPunching,2
+.column 1,30,FALSE,L,norm,L,norm
+.column 2,120,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable GeometryFoundationBlock,11
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,20,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,15,FALSE,L,norm,L,norm
+.column 11,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable LoadsFoundationBlock,6
+.column 1,25,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,22,FALSE,L,norm,L,norm
+.column 6,22,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable ReinfLongInput,9
+.column 1,20,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable ReinfLongResult,11
+.column 1,20,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,15,FALSE,L,norm,L,norm
+.column 11,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable ReinfPunchInput,9
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable ReinfPunchResult,9
+.column 1,20,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableSummaryReinfLong, 5
+.column 1,20,FALSE,R,norm,R,norm
+.column 2,25,FALSE,R,norm,R,norm
+.column 3,120,FALSE,R,norm,R,norm
+.column 4,18,FALSE,R,norm,R,norm
+.column 5,18,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableSummaryReinfLong, 4
+.column 1,20,FALSE,R,norm,R,norm
+.column 2,25,FALSE,R,norm,R,norm
+.column 3,120,FALSE,R,norm,R,norm
+.column 4,18,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableINFLINES,8
+.column 1,20,FALSE,R,norm,R,norm
+.column 2,20,FALSE,R,norm,R,norm
+.column 3,20,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.column 6,20,FALSE,R,norm,R,norm
+.column 7,20,FALSE,R,norm,R,norm
+.column 8,20,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableINFSTRESSLINES,3
+.column 1,40,FALSE,R,norm,R,norm
+.column 2,40,FALSE,R,norm,R,norm
+.column 3,40,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableMatDiag,2
+.column 1,50,FALSE,R,norm,R,norm
+.column 2,50,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableSummaryReinfLongFoundBlock, 10
+.column 1,20,FALSE,R,norm,R,norm
+.column 2,25,FALSE,R,norm,R,norm
+.column 3,20,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.column 6,20,FALSE,R,norm,R,norm
+.column 7,20,FALSE,R,norm,R,norm
+.column 8,20,FALSE,R,norm,R,norm
+.column 9,20,FALSE,R,norm,R,norm
+.column 10,20,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableSummaryReinfPunchFoundBlock, 6
+.column 1,20,FALSE,R,norm,R,norm
+.column 2,25,FALSE,R,norm,R,norm
+.column 3,20,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.column 6,20,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable ChangeInputValuesFoundBlock, 2
+.column 1,25,FALSE,R,norm,R,norm
+.column 2,125,FALSE,R,norm,R,norm
+.lmargin 5
+.linearound 0.3
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableDYNRESULTS,8
+.column 1,18,TRUE,C,norm,C,norm
+.column 2,18,TRUE,C,norm,C,norm
+.column 3,22,TRUE,C,norm,C,norm
+.column 4,22,TRUE,C,norm,C,norm
+.column 5,22,FALSE,C,norm,C,norm
+.column 6,22,FALSE,C,norm,C,norm
+.column 7,22,FALSE,C,norm,C,norm
+.column 8,22,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableDYNAMICINPUT,6
+.column 1,18,TRUE,C,norm,C,norm
+.column 2,18,TRUE,C,norm,C,norm
+.column 3,22,FALSE,C,norm,C,norm
+.column 4,22,FALSE,C,norm,C,norm
+.column 5,22,FALSE,C,norm,C,norm
+.column 6,22,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableCSpectrum,3
+.column 1,18,TRUE,C,norm,C,norm
+.column 2,25,TRUE,C,norm,C,norm
+.column 3,25,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable CriticalSectionDIN88,11
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,18,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,17,FALSE,L,norm,L,norm
+.column 11,17,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable ResultOfCriticalSectionDIN88,9
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,18,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,30,FALSE,L,norm,L,norm
+.column 8,30,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableDIN88ConcShearReinf,13
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,20,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.column 6,20,FALSE,R,norm,R,norm
+.column 7,20,FALSE,R,norm,R,norm
+.column 8,10,FALSE,R,norm,R,norm
+.column 9,20,FALSE,R,norm,R,norm
+.column 10,20,FALSE,R,norm,R,norm
+.column 11,20,FALSE,R,norm,R,norm
+.column 12,20,FALSE,R,norm,R,norm
+.column 13,20,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableCrackAsDIN88,10
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableCrackDistAndProfDIN88,7
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableStabkennzahl,9
+.column 1,14,TRUE,C,norm,C,norm
+.column 2,14,TRUE,C,norm,C,norm
+.column 3,14,TRUE,C,norm,C,norm
+.column 4,30,FALSE,C,norm,C,norm
+.column 5,20,FALSE,C,norm,C,norm
+.column 6,14,FALSE,C,norm,C,norm
+.column 7,20,FALSE,C,norm,C,norm
+.column 8,20,FALSE,C,norm,C,norm
+.column 9,20,FALSE,C,norm,C,norm
+.lmargin 5
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable LoadsOfCriticalSectionSIA,10
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable ResultOfCriticalSectionSIA,13
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,20,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,20,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,15,FALSE,L,norm,L,norm
+.column 11,15,FALSE,L,norm,L,norm
+.column 12,15,FALSE,L,norm,L,norm
+.column 13,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TABLE_RELAX,2
+.column 1,70,FALSE,L,norm,L,norm
+.column 2,70,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableMeasured,3
+.column 1,60,FALSE,R,norm,R,norm
+.column 2,60,FALSE,R,norm,R,norm
+.column 2,60,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableDIN88ConcShearReinf,13
+.column 1,15,FALSE,R,norm,R,norm
+.column 2,15,FALSE,R,norm,R,norm
+.column 3,20,FALSE,R,norm,R,norm
+.column 4,20,FALSE,R,norm,R,norm
+.column 5,20,FALSE,R,norm,R,norm
+.column 6,20,FALSE,R,norm,R,norm
+.column 7,20,FALSE,R,norm,R,norm
+.column 8,20,FALSE,R,norm,R,norm
+.column 9,10,FALSE,R,norm,R,norm
+.column 10,20,FALSE,R,norm,R,norm
+.column 11,20,FALSE,R,norm,R,norm
+.column 12,20,FALSE,R,norm,R,norm
+.column 13,20,FALSE,R,norm,R,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableCrackAsBAEL,8
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableCrackBAEL,11
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,15,FALSE,L,norm,L,norm
+.column 11,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable AllowStressTendon,20
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,15,FALSE,L,norm,L,norm
+.column 11,15,FALSE,L,norm,L,norm
+.column 12,15,FALSE,L,norm,L,norm
+.column 13,15,FALSE,L,norm,L,norm
+.column 14,15,FALSE,L,norm,L,norm
+.column 15,15,FALSE,L,norm,L,norm
+.column 16,15,FALSE,L,norm,L,norm
+.column 17,15,FALSE,L,norm,L,norm
+.column 18,15,FALSE,L,norm,L,norm
+.column 19,15,FALSE,L,norm,L,norm
+.column 20,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.
+.deftable CalcGroupsData,3
+.column 1,30,FALSE,L,norm,L,norm
+.column 2,25,FALSE,L,norm,L,norm
+.column 3,150,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable EigenFrequencies,5
+.column 1,30,FALSE,L,norm,L,norm
+.column 2,30,FALSE,L,norm,L,norm
+.column 3,30,FALSE,L,norm,L,norm
+.column 4,30,FALSE,L,norm,L,norm
+.column 5,30,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable CriticalLoadCoef,2
+.column 1,50,FALSE,L,norm,L,norm
+.column 2,50,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+. 
+.deftable StandardCheckInputBS,10 
+.column 1, 15,FALSE,R,norm,R,norm 
+.column 2, 15,FALSE,R,norm,R,norm 
+.column 3, 15,FALSE,R,norm,R,norm 
+.column 4, 15,FALSE,R,norm,R,norm 
+.column 5, 15,FALSE,R,norm,R,norm 
+.column 6, 15,FALSE,R,norm,R,norm 
+.column 7, 15,FALSE,R,norm,R,norm 
+.column 8, 15,FALSE,R,norm,R,norm 
+.column 9, 15,FALSE,R,norm,R,norm 
+.column 10,15,FALSE,R,norm,R,norm 
+.lmargin 5 
+.linearound 0.0 
+.lineheader 0.3 
+.linerows 0.3 
+.linecols 0.5 
+.enddef 
+. 
+.deftable ResultOfCriticalSectionSIA262,15
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,20,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,20,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,15,FALSE,L,norm,L,norm
+.column 11,15,FALSE,L,norm,L,norm
+.column 12,15,FALSE,L,norm,L,norm
+.column 13,15,FALSE,L,norm,L,norm
+.column 14,15,FALSE,L,norm,L,norm
+.column 15,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable MaterialConcrete,10
+.column 1,40,FALSE,L,norm,L,norm
+.column 2,50,FALSE,L,norm,L,norm
+.column 3,50,FALSE,L,norm,L,norm
+.column 4,50,FALSE,L,norm,L,norm
+.column 5,50,FALSE,L,norm,L,norm
+.column 6,50,FALSE,L,norm,L,norm
+.column 7,50,FALSE,L,norm,L,norm
+.column 8,50,FALSE,L,norm,L,norm
+.column 9,50,FALSE,L,norm,L,norm
+.column 10,50,FALSE,L,norm,L,norm
+
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableInfoAsShear,9
+.column 1,12,FALSE,L,norm,L,norm
+.column 2,20,FALSE,L,norm,L,norm
+.column 3,20,FALSE,L,norm,L,norm
+.column 4,20,FALSE,L,norm,L,norm
+.column 5,20,FALSE,L,norm,L,norm
+.column 6,20,FALSE,L,norm,L,norm
+.column 7,12,FALSE,L,norm,L,norm
+.column 8,20,FALSE,L,norm,L,norm
+.column 9,25,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableConcreteCoverDIN,12
+.column 1,12,FALSE,L,norm,L,norm
+.column 2,20,FALSE,L,norm,L,norm
+.column 3,20,FALSE,L,norm,L,norm
+.column 4,30,FALSE,L,norm,L,norm
+.column 5,40,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,15,FALSE,L,norm,L,norm
+.column 11,15,FALSE,L,norm,L,norm
+.column 12,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableSetParametrsConSetup,3
+.column 1,110,FALSE,L,norm,L,norm
+.column 2,35,FALSE,L,norm,L,norm
+.column 3,30,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable KGtable,19
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,24,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,15,FALSE,L,norm,L,norm
+.column 11,15,FALSE,L,norm,L,norm
+.column 12,15,FALSE,L,norm,L,norm
+.column 13,15,FALSE,L,norm,L,norm
+.column 14,15,FALSE,L,norm,L,norm
+.column 15,15,FALSE,L,norm,L,norm
+.column 16,15,FALSE,L,norm,L,norm
+.column 17,15,FALSE,L,norm,L,norm
+.column 18,15,FALSE,L,norm,L,norm
+.column 19,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable TableSetParametrsConSetupEsa,2
+.column 1,160,FALSE,L,norm,L,norm
+.column 2,60,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable CriticalSectionEsa,16
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,18,FALSE,L,norm,L,norm
+.column 3,15,FALSE,L,norm,L,norm
+.column 4,15,FALSE,L,norm,L,norm
+.column 5,15,FALSE,L,norm,L,norm
+.column 6,15,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.column 8,15,FALSE,L,norm,L,norm
+.column 9,15,FALSE,L,norm,L,norm
+.column 10,15,FALSE,L,norm,L,norm
+.column 11,15,FALSE,L,norm,L,norm
+.column 12,15,FALSE,L,norm,L,norm
+.column 13,15,FALSE,L,norm,L,norm
+.column 14,15,FALSE,L,norm,L,norm
+.column 15,15,FALSE,L,norm,L,norm
+.column 16,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.
+.deftable ColumnDetailedReinforcement,7
+.column 1,15,FALSE,L,norm,L,norm
+.column 2,15,FALSE,L,norm,L,norm
+.column 3,50,FALSE,L,norm,L,norm
+.column 4,50,FALSE,L,norm,L,norm
+.column 5,50,FALSE,L,norm,L,norm
+.column 6,50,FALSE,L,norm,L,norm
+.column 7,15,FALSE,L,norm,L,norm
+.lmargin 0
+.linearound 0.0
+.lineheader 0.3
+.linerows 0.3
+.linecols 0.3
+.enddef
+.

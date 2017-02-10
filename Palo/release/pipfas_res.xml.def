@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<def_project xmlns="http://www.scia.cz">
+   
+   <def_container id="{5E047655-38D6-11D5-A97E-000000000000}" clsid="{5E047655-38D6-11D5-A97E-000000000000}" progid="BasicResults.EP_ResultsTable.1">
+      
+      <def_table id="F2082AC3-D9C6-4115-AABC-FE1B49FAC829" name="XML\default" type="vertical" clsid="{5657FA02-5CD4-11D6-AB25-0050FC1D5C09}" progid="BasicResults.EP_ResPropertyStress.1" size="1">
+         
+         
+         <def_property x="0" name="Results" type="table" readonly="yes" id="{5657FA02-5CD4-11D6-AB25-0050FC1D5C09}">
+         <def_subtable size="9" type="vertical">
+         <def_property x="0" name="Case" type="string" id="{73926611-6B3A-11D5-A9CE-0050FC1D5C09}"/>
+         
+         <def_property x="1" name="Member" type="string" id="{73926612-6B3A-11D5-A9CE-0050FC1D5C09}"/>
+         
+         <def_property x="2" name="dx" type="real" id="{73926613-6B3A-11D5-A9CE-0050FC1D5C09}"/>
+         
+         <def_property x="3" name="Normal -" type="real" id="{40A2A170-5DC8-11D6-AB26-0050FC1D5C09}"/>
+         
+         <def_property x="4" name="Normal +" type="real" id="{40A2A171-5DC8-11D6-AB26-0050FC1D5C09}"/>
+         
+         <def_property x="5" name="Shear" type="real" id="{40A2A172-5DC8-11D6-AB26-0050FC1D5C09}"/>
+         
+         <def_property x="6" name="von Mises" type="real" id="{40A2A173-5DC8-11D6-AB26-0050FC1D5C09}"/>
+         
+         <def_property x="7" name="Fatigue" type="real" id="{40A2A174-5DC8-11D6-AB26-0050FC1D5C09}"/>
+         
+         <def_property x="8" name="Kappa" type="real" id="{40A2A175-5DC8-11D6-AB26-0050FC1D5C09}"/>
+         
+         </def_subtable>
+         </def_property>
+         
+      </def_table>
+   </def_container>
+</def_project>

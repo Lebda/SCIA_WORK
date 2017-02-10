@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<section>
+		<Id>1</Id>
+		<Name>HL1000  AA</Name>
+		<H>970</H>
+		<B>400</B>
+		<tw>16.5</tw>
+		<tf>21</tf>
+		<r>30</r>
+		<SCIAName>HL1000AA</SCIAName>
+	</section>
+	<section>
+		<Id>2</Id>
+		<Name>HL1000x296  </Name>
+		<H>982</H>
+		<B>400</B>
+		<tw>16.5</tw>
+		<tf>27</tf>
+		<r>30</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>3</Id>
+		<Name>HL1000  A</Name>
+		<H>990</H>
+		<B>400</B>
+		<tw>16.5</tw>
+		<tf>31</tf>
+		<r>30</r>
+		<SCIAName>HL1000A</SCIAName>
+	</section>
+	<section>
+		<Id>4</Id>
+		<Name>HL1000  B</Name>
+		<H>1000</H>
+		<B>400</B>
+		<tw>19</tw>
+		<tf>36</tf>
+		<r>30</r>
+		<SCIAName>HL1000B</SCIAName>
+	</section>
+	<section>
+		<Id>5</Id>
+		<Name>HL1000  M</Name>
+		<H>1008</H>
+		<B>402</B>
+		<tw>21</tw>
+		<tf>40</tf>
+		<r>30</r>
+		<SCIAName>HL1000M</SCIAName>
+	</section>
+	<section>
+		<Id>6</Id>
+		<Name>HL1000x477  </Name>
+		<H>1018</H>
+		<B>404</B>
+		<tw>25.5</tw>
+		<tf>45</tf>
+		<r>30</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>7</Id>
+		<Name>HL1000x554  </Name>
+		<H>1032</H>
+		<B>408</B>
+		<tw>29.5</tw>
+		<tf>52</tf>
+		<r>30</r>
+		<SCIAName>HL1000x554</SCIAName>
+	</section>
+	<section>
+		<Id>8</Id>
+		<H>1048</H>
+		<B>412</B>
+		<tw>34</tw>
+		<tf>60</tf>
+		<r>30</r>
+		<SCIAName>-</SCIAName>
+	</section>
+	<section>
+		<Id>9</Id>
+		<Name>HL1100  A</Name>
+		<H>1090</H>
+		<B>400</B>
+		<tw>18</tw>
+		<tf>31</tf>
+		<r>20</r>
+		<SCIAName>HL1100A</SCIAName>
+	</section>
+	<section>
+		<Id>10</Id>
+		<Name>HL1100  B</Name>
+		<H>1100</H>
+		<B>400</B>
+		<tw>20</tw>
+		<tf>36</tf>
+		<r>20</r>
+		<SCIAName>HL1100B</SCIAName>
+	</section>
+	<section>
+		<Id>11</Id>
+		<Name>HL1100  M</Name>
+		<H>1108</H>
+		<B>402</B>
+		<tw>22</tw>
+		<tf>40</tf>
+		<r>20</r>
+		<SCIAName>HL1100M</SCIAName>
+	</section>
+	<section>
+		<Id>12</Id>
+		<Name>HL1100  R</Name>
+		<H>1118</H>
+		<B>405</B>
+		<tw>26</tw>
+		<tf>45</tf>
+		<r>20</r>
+		<SCIAName>HL1100R</SCIAName>
+	</section>
+</Sections>

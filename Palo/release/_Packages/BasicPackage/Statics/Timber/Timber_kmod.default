@@ -1,0 +1,45 @@
+<Root>
+  <ValueSets />
+  <Layout LP="400" RP="0.25" TP="0.25" BP="0.25" ActiveDocPane="1" ActivePane="1">
+    <Contents>
+      <Content Type="TUserDialog" AutoHidePortion="0.25" Hidden="False" Float="False" LangCode="ENU" />
+      <Content Type="TOutput" AutoHidePortion="0.25" Hidden="False" Float="False" Layout="0" Zoom="1" />
+      <Content Type="TAnnotation" AutoHidePortion="0.25" Hidden="False" Float="False" />
+    </Contents>
+    <Panes>
+      <Pane DockState="DockLeft" ActiveContent="0">
+        <Contents>
+          <Content RefID="0" />
+        </Contents>
+      </Pane>
+      <Pane DockState="Document" ActiveContent="1">
+        <Contents>
+          <Content RefID="1" />
+          <Content RefID="2" />
+        </Contents>
+      </Pane>
+    </Panes>
+    <DockWindows>
+      <DockWindow DockState="Document" ZOrderIndex="1">
+        <NestedPanes>
+          <Pane RefID="1" PrevPane="-1" Alignment="Right" Proportion="0.5" />
+        </NestedPanes>
+      </DockWindow>
+      <DockWindow DockState="DockLeft" ZOrderIndex="3">
+        <NestedPanes>
+          <Pane RefID="0" PrevPane="-1" Alignment="Bottom" Proportion="0.5" />
+        </NestedPanes>
+      </DockWindow>
+      <DockWindow DockState="DockRight" ZOrderIndex="4">
+        <NestedPanes />
+      </DockWindow>
+      <DockWindow DockState="DockTop" ZOrderIndex="5">
+        <NestedPanes />
+      </DockWindow>
+      <DockWindow DockState="DockBottom" ZOrderIndex="6">
+        <NestedPanes />
+      </DockWindow>
+    </DockWindows>
+    <FloatWindows />
+  </Layout>
+</Root>

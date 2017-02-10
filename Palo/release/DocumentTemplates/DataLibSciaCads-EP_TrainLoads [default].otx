@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xss xmlns:xss="http://www.scia.cz/xss">
+   <table_template xss:class="TableTemplate" ots_version="13" name="default" clsid="{0EB4054E-E34D-4A75-B056-B905CEEE0B87}" type="vertical" auto_styles="1" header_style="4294967295" odd_line_style="4294967295" even_line_style="4294967295" icons_in_header="0" flags2="0" context="0" sorting_flags="0">
+      <table_look can_use_presets="1" what_widths_to_use="0" what_colors_to_use="0" what_padding_to_use="0" cell_padding="10 10 10 10" space_between_sections="20" space_between_strips="50">
+         <line_widths width_0="1" width_1="1" width_2="1" width_3="1" width_4="1" width_5="1" width_6="1" width_7="1" width_8="1" width_9="1"/>
+         <line_colors color_0="0" color_1="0" color_2="0" color_3="0" color_4="0" color_5="0" color_6="0" color_7="0" color_8="0" color_9="0"/>
+         <colors color_0="16777215" color_1="16777215" color_2="16777215" color_3="16777215"/>
+         <stripping_rule rule="0"/></table_look>
+      <column xss:class="Column" id="\EP\$4364BC01-AAB7-11D4-B3D9-00104BC3B531" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$392C065E-D44C-475B-A9DB-B7FBBB326E5F" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$FDD1996D-A3BD-4364-8111-B4F856B708B8" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$FC46974A-217D-448E-9A06-2895F9A2D6DF" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$673C13C6-D0D9-4CFA-962C-9A782B84EF93" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$09F806B3-A45B-4484-A09F-2F16ABC57679" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$FFD01211-AF88-4130-9509-D91E03452478" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$386914B9-AD76-4326-A558-FA0D652D4341" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$996C3951-1FF1-46AF-B28E-1842A8A705B3" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$A7A5E8C9-7351-4B9E-A600-0B4EE0E64186" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$1C63CB62-1FB0-4108-9A2E-53293B96086F" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="BreakColumn"/>
+      <column xss:class="EmptyColumn"/>
+      <column xss:class="EmptyColumn"/>
+      <column xss:class="EmptyColumn"/>
+      <column xss:class="EmptyColumn"/>
+      <column xss:class="EmptyColumn"/>
+      <column xss:class="EmptyColumn"/>
+      <column xss:class="EmptyColumn"/>
+      <column xss:class="Column" id="\EP\$83882C3D-AEA7-442C-B8FC-F613D83BA064" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$D6300C07-981F-49DF-9888-D0A1F6FF555D" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$CE4D6150-3793-4315-94F9-86876C417B74" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$F8B7A289-6321-4828-B87B-36B546D09F87" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$EC266EEC-E53E-406C-B0BF-88AD59C78F43" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/></table_template></xss>

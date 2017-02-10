@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<project xmlns="http://www.scia.cz">
+   
+   <def uri="pipfas_para.xml.def"/>
+   
+   <container id="{5C62EA11-86D4-11D4-B3AB-00104BC3B531}" t="EP_Parameters.EP_Param.1">
+      
+      <table id="9DAFD8D4-3EE7-4E7F-996D-62275E657A80" t="EP_Parameters.EP_Param.1">
+         
+         <h>
+            <h0 t="Name"/>
+            <h1 t="Type"/>
+            <h2 t="Value"/></h>
+         <obj id="1" nm="De">
+            <p0 v="De"/>
+            <p1 v="11" t="Css length"/>
+            <p2 t="">
+            <h>
+            <h0 t="Real "/>
+            </h>
+            <row id="0">
+            <p0 v="0,985"/>
+            </row>
+            </p2></obj>
+         
+         <obj id="3" nm="s">
+            <p0 v="s"/>
+            <p1 v="11" t="Css length"/>
+            <p2 t="">
+            <h>
+            <h0 t="Real "/>
+            </h>
+            <row id="0">
+            <p0 v="0,02"/>
+            </row>
+            </p2></obj>
+         
+         <obj id="63" nm="cl">
+            <p0 v="cl"/>
+            <p1 v="2" t="Coefficient"/>
+            <p2 t="">
+            <h>
+            <h0 t="Real "/>
+            </h>
+            <row id="0">
+            <p0 v="1"/>
+            </row>
+            </p2></obj>
+         
+         <obj id="65" nm="alfa">
+            <p0 v="alfa"/>
+            <p1 v="12" t="Angle"/>
+            <p2 t="">
+            <h>
+            <h0 t="Real "/>
+            </h>
+            <row id="0">
+            <p0 v="2,443460953"/>
+            </row>
+            </p2></obj>
+         
+         <obj id="66" nm="beta">
+            <p0 v="beta"/>
+            <p1 v="12" t="Angle"/>
+            <p2 t="">
+            <h>
+            <h0 t="Real "/>
+            </h>
+            <row id="0">
+            <p0 v="1,221730476"/>
+            </row>
+            </p2></obj>
+         
+         <obj id="67" nm="gamma">
+            <p0 v="gamma"/>
+            <p1 v="12" t="Angle"/>
+            <p2 t="">
+            <h>
+            <h0 t="Real "/>
+            </h>
+            <row id="0">
+            <p0 v="2,094395102"/>
+            </row>
+            </p2></obj>
+         
+         <obj id="85" nm="Pr">
+            <p0 v="Pr"/>
+            <p1 v="4" t="Force"/>
+            <p2 t="">
+            <h>
+            <h0 t="Real "/>
+            </h>
+            <row id="0">
+            <p0 v="-50000"/>
+            </row>
+            </p2></obj>
+         
+         <obj id="86" nm="Pl">
+            <p0 v="Pl"/>
+            <p1 v="4" t="Force"/>
+            <p2 t="">
+            <h>
+            <h0 t="Real "/>
+            </h>
+            <row id="0">
+            <p0 v="50000"/>
+            </row>
+            </p2></obj>
+         
+         <obj id="96" nm="Pb">
+            <p0 v="Pb"/>
+            <p1 v="4" t="Force"/>
+            <p2 t="">
+            <h>
+            <h0 t="Real "/>
+            </h>
+            <row id="0">
+            <p0 v="50000"/>
+            </row>
+            </p2></obj>
+         
+         <obj id="100" nm="Pt">
+            <p0 v="Pt"/>
+            <p1 v="4" t="Force"/>
+            <p2 t="">
+            <h>
+            <h0 t="Real "/>
+            </h>
+            <row id="0">
+            <p0 v="-50000"/>
+            </row>
+            </p2></obj>
+      </table>
+   </container>
+</project>

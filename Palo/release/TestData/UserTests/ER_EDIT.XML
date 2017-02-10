@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Root>
+  <Directory>c:\Temp\SDF_AutoTest</Directory>
+  <CLP>c:\Temp\SDF_AutoTest\4aff0ebf-91e0-4fb7-ac43-92b0e8a49564.CLP</CLP>
+  <CLCs>
+    <CLC>c:\Users\Public\Documents\DesignForms_5.2\Forms\Concrete\Calculation of crack width.CLC</CLC>
+  </CLCs>
+  <ReducedGUI>FALSE</ReducedGUI>
+  <GenerateOutput>TRUE</GenerateOutput>
+  <OutputLanguage>CSY</OutputLanguage>
+  <Warnings>
+  </Warnings>
+  <Errors>
+  </Errors>
+  <Output>
+    <Calculation Caption="Untitled">
+      <MF>c:\Temp\SDF_AutoTest\0000_0000.wmf</MF>
+      <MF>c:\Temp\SDF_AutoTest\0000_0001.wmf</MF>
+      <MF>c:\Temp\SDF_AutoTest\0000_0002.wmf</MF>
+      <MF>c:\Temp\SDF_AutoTest\0000_0003.wmf</MF>
+      <MF>c:\Temp\SDF_AutoTest\0000_0004.wmf</MF>
+      <MF>c:\Temp\SDF_AutoTest\0000_0005.wmf</MF>
+    </Calculation>
+    <Calculation Caption="Untitled">
+      <MF>c:\Temp\SDF_AutoTest\0001_0000.wmf</MF>
+      <MF>c:\Temp\SDF_AutoTest\0001_0001.wmf</MF>
+      <MF>c:\Temp\SDF_AutoTest\0001_0002.wmf</MF>
+      <MF>c:\Temp\SDF_AutoTest\0001_0003.wmf</MF>
+      <MF>c:\Temp\SDF_AutoTest\0001_0004.wmf</MF>
+      <MF>c:\Temp\SDF_AutoTest\0001_0005.wmf</MF>
+    </Calculation>
+  </Output>
+</Root>

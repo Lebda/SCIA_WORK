@@ -1,0 +1,286 @@
+<Root Version="1" Type="CustomLibrary" GUID="1270b7d6-2931-41f2-9f3f-62606842b41e">
+  <Header>
+    <PropertySet Symbol="f↓mk←" ESA_ID="fmk" Unit="MPa" Type="Numeric">
+      <Description TranslateID="fmk">
+        <ENU>Bending strength parallel to grain</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="f↓t,0,k←" ESA_ID="ft0k" Unit="MPa" Type="Numeric">
+      <Description TranslateID="ft0k">
+        <ENU>Tension strength parallel to grain</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="f↓t,90,k←" ESA_ID="ft90k" Unit="MPa" Type="Numeric">
+      <Description TranslateID="ft90k">
+        <ENU>Tension strength perpendicular to the grain</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="f↓c,0,k←" ESA_ID="fc0k" Unit="MPa" Type="Numeric">
+      <Description TranslateID="fc0k">
+        <ENU>Compression strength parallel to grain</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="f↓c,90,k←" ESA_ID="fc90k" Unit="MPa" Type="Numeric">
+      <Description TranslateID="fc90k">
+        <ENU>Compression strength perpendicular to the grain</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="f↓v,k←" ESA_ID="fvk" Unit="MPa" Type="Numeric">
+      <Description TranslateID="fvk">
+        <ENU>Shear strength</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="E↓0,mean←" ESA_ID="E0" Unit="GPa" Type="Numeric">
+      <Description TranslateID="E0">
+        <ENU>Youngs modulus parallel to grain</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="E↓0,05←" ESA_ID="E005" Unit="GPa" Type="Numeric">
+      <Description TranslateID="E005">
+        <ENU>5% fractile of Youngs modulus</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="E↓90,mean←" ESA_ID="E90" Unit="GPa" Type="Numeric">
+      <Description TranslateID="E90">
+        <ENU>Youngs modulus perpendicular to the grain</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="G↓mean←" ESA_ID="G" Unit="GPa" Type="Numeric">
+      <Description TranslateID="G">
+        <ENU>Shear modulus</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ρ↓k←" ESA_ID="ρ" Unit="kg/m↑3←" Type="Numeric">
+      <Description TranslateID="ρ">
+        <ENU>Density</ENU>
+      </Description>
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>Timber EC 1995</Property>
+      <Property>C 14 (EN 338)</Property>
+      <Property>14</Property>
+      <Property>8</Property>
+      <Property>0.3</Property>
+      <Property>16</Property>
+      <Property>4.3</Property>
+      <Property>1.7</Property>
+      <Property>7</Property>
+      <Property>4.7</Property>
+      <Property>0.23</Property>
+      <Property>0.44</Property>
+      <Property>290</Property>
+    </Item>
+    <Item>
+      <Property>Timber EC 1995</Property>
+      <Property>C 16 (EN 338)</Property>
+      <Property>16</Property>
+      <Property>10</Property>
+      <Property>0.3</Property>
+      <Property>17</Property>
+      <Property>4.6</Property>
+      <Property>1.8</Property>
+      <Property>8</Property>
+      <Property>5.4</Property>
+      <Property>0.27</Property>
+      <Property>0.5</Property>
+      <Property>310</Property>
+    </Item>
+    <Item>
+      <Property>Timber EC 1995</Property>
+      <Property>C 18 (EN 338)</Property>
+      <Property>18</Property>
+      <Property>11</Property>
+      <Property>0.3</Property>
+      <Property>18</Property>
+      <Property>4.8</Property>
+      <Property>2</Property>
+      <Property>9</Property>
+      <Property>6</Property>
+      <Property>0.3</Property>
+      <Property>0.56</Property>
+      <Property>320</Property>
+    </Item>
+    <Item>
+      <Property>Timber EC 1995</Property>
+      <Property>C 22 (EN 338)</Property>
+      <Property>22</Property>
+      <Property>13</Property>
+      <Property>0.3</Property>
+      <Property>20</Property>
+      <Property>5.1</Property>
+      <Property>2.4</Property>
+      <Property>10</Property>
+      <Property>6.7</Property>
+      <Property>0.33</Property>
+      <Property>0.63</Property>
+      <Property>340</Property>
+    </Item>
+    <Item>
+      <Property>Timber EC 1995</Property>
+      <Property>C 24 (EN 338)</Property>
+      <Property>24</Property>
+      <Property>14</Property>
+      <Property>0.4</Property>
+      <Property>21</Property>
+      <Property>5.3</Property>
+      <Property>2.5</Property>
+      <Property>11</Property>
+      <Property>7.4</Property>
+      <Property>0.37</Property>
+      <Property>0.69</Property>
+      <Property>350</Property>
+    </Item>
+    <Item>
+      <Property>Timber EC 1995</Property>
+      <Property>C 27 (EN 338)</Property>
+      <Property>27</Property>
+      <Property>16</Property>
+      <Property>0.4</Property>
+      <Property>22</Property>
+      <Property>5.6</Property>
+      <Property>2.8</Property>
+      <Property>12</Property>
+      <Property>8</Property>
+      <Property>0.4</Property>
+      <Property>0.75</Property>
+      <Property>370</Property>
+    </Item>
+    <Item>
+      <Property>Timber EC 1995</Property>
+      <Property>C 30 (EN 338)</Property>
+      <Property>30</Property>
+      <Property>18</Property>
+      <Property>0.4</Property>
+      <Property>23</Property>
+      <Property>5.7</Property>
+      <Property>3</Property>
+      <Property>12</Property>
+      <Property>8</Property>
+      <Property>0.4</Property>
+      <Property>0.75</Property>
+      <Property>380</Property>
+    </Item>
+    <Item>
+      <Property>Timber EC 1995</Property>
+      <Property>C 35 (EN 338)</Property>
+      <Property>35</Property>
+      <Property>21</Property>
+      <Property>0.4</Property>
+      <Property>25</Property>
+      <Property>6</Property>
+      <Property>3.4</Property>
+      <Property>13</Property>
+      <Property>8.7</Property>
+      <Property>0.43</Property>
+      <Property>0.81</Property>
+      <Property>400</Property>
+    </Item>
+    <Item>
+      <Property>Timber EC 1995</Property>
+      <Property>C 40 (EN 338)</Property>
+      <Property>40</Property>
+      <Property>24</Property>
+      <Property>0.4</Property>
+      <Property>26</Property>
+      <Property>6.3</Property>
+      <Property>3.8</Property>
+      <Property>14</Property>
+      <Property>9.4</Property>
+      <Property>0.47</Property>
+      <Property>0.88</Property>
+      <Property>420</Property>
+    </Item>
+    <Item>
+      <Property>Timber EC 1995</Property>
+      <Property>D 30 (EN 338)</Property>
+      <Property>30</Property>
+      <Property>18</Property>
+      <Property>0.6</Property>
+      <Property>23</Property>
+      <Property>8</Property>
+      <Property>3</Property>
+      <Property>10</Property>
+      <Property>8</Property>
+      <Property>0.64</Property>
+      <Property>0.6</Property>
+      <Property>530</Property>
+    </Item>
+    <Item>
+      <Property>Timber EC 1995</Property>
+      <Property>D 35 (EN 338)</Property>
+      <Property>35</Property>
+      <Property>21</Property>
+      <Property>0.6</Property>
+      <Property>25</Property>
+      <Property>8.4</Property>
+      <Property>3.4</Property>
+      <Property>10</Property>
+      <Property>8.7</Property>
+      <Property>0.69</Property>
+      <Property>0.65</Property>
+      <Property>560</Property>
+    </Item>
+    <Item>
+      <Property>Timber EC 1995</Property>
+      <Property>D 40 (EN 338)</Property>
+      <Property>40</Property>
+      <Property>24</Property>
+      <Property>0.6</Property>
+      <Property>26</Property>
+      <Property>8.8</Property>
+      <Property>3.8</Property>
+      <Property>11</Property>
+      <Property>9.4</Property>
+      <Property>0.75</Property>
+      <Property>0.7</Property>
+      <Property>590</Property>
+    </Item>
+    <Item>
+      <Property>Timber EC 1995</Property>
+      <Property>D 50 (EN 338)</Property>
+      <Property>50</Property>
+      <Property>30</Property>
+      <Property>0.6</Property>
+      <Property>29</Property>
+      <Property>9.7</Property>
+      <Property>4.6</Property>
+      <Property>14</Property>
+      <Property>11.8</Property>
+      <Property>0.93</Property>
+      <Property>0.88</Property>
+      <Property>650</Property>
+    </Item>
+    <Item>
+      <Property>Timber EC 1995</Property>
+      <Property>D 60 (EN 338)</Property>
+      <Property>60</Property>
+      <Property>36</Property>
+      <Property>0.7</Property>
+      <Property>32</Property>
+      <Property>10.5</Property>
+      <Property>5.3</Property>
+      <Property>17</Property>
+      <Property>14.3</Property>
+      <Property>1.13</Property>
+      <Property>1.06</Property>
+      <Property>700</Property>
+    </Item>
+    <Item>
+      <Property>Timber EC 1995</Property>
+      <Property>D 70 (EN 338)</Property>
+      <Property>70</Property>
+      <Property>42</Property>
+      <Property>0.9</Property>
+      <Property>34</Property>
+      <Property>13.5</Property>
+      <Property>6</Property>
+      <Property>20</Property>
+      <Property>16.8</Property>
+      <Property>1.33</Property>
+      <Property>1.25</Property>
+      <Property>900</Property>
+    </Item>
+  </Items>
+</Root>

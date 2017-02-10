@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="5"><StringCode SourceType="DLLRC:"><StringId>@{ep_myadddatalib.2eids_shortname_stringdb}</StringId>
+		<SourceDll>EP_MyAddDataLib.2eDLL</SourceDll>
+		<ResourceId>212</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_myadddatalib.2eids_description_stringdb}</StringId>
+		<SourceDll>EP_MyAddDataLib.2eDLL</SourceDll>
+		<ResourceId>213</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_myadddatalib.2eids_servicename_stringdb}</StringId>
+		<SourceDll>EP_MyAddDataLib.2eDLL</SourceDll>
+		<ResourceId>211</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_myadddatalib.2eids_typename_stringdb}</StringId>
+		<SourceDll>EP_MyAddDataLib.2eDLL</SourceDll>
+		<ResourceId>162</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_myadddatalib.2eids_name_of_checkdb}</StringId>
+		<SourceDll>EP_MyAddDataLib.2eDLL</SourceDll>
+		<ResourceId>184</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

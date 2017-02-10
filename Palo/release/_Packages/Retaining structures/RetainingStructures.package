@@ -1,0 +1,9 @@
+<Root>
+  <Names TranslateID="PackageName">
+    <ENU>Retaining structures</ENU>
+  </Names>
+  <Tree ImageKey="Dir_RetainingWalls">
+    <CLC FullPath="Retaining structures\Cantilever embedded wall.CLC" ImageKey="Dir_RetainingWalls" Active="1" />
+    <CLC FullPath="Retaining structures\Gravity wall.CLC" ImageKey="Dir_RetainingWalls" Active="1" />
+  </Tree>
+</Root>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xss xmlns:xss="http://www.scia.cz/xss">
+   <toolbar Version="1" Name="Tools" Flags="0" IsPart="0" PartsSize="0" Size="3">
+      <Button Version="1" Mode="1" Tooltip="Setting of UCS for active view.
+         Setting of UCS for active view" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{D272B392-FCB9-11D4-B001-00104B965AF0}" ButtonID="{D272B392-FCB9-11D4-B001-00104B965AF0}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Set Clipping box for active view.
+         Set Clipping box for active view" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{B6EF0DDE-D977-46F1-BAAC-EF7064DDB1CE}" ButtonID="{B6EF0DDE-D977-46F1-BAAC-EF7064DDB1CE}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Info about point coordinates.
+         Info about point coordinates" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{08B439E4-E9A8-4A71-A460-571D687207DC}" ButtonID="{08B439E4-E9A8-4A71-A460-571D687207DC}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/></toolbar></xss>

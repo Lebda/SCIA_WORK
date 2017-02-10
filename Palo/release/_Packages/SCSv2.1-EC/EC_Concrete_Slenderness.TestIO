@@ -1,0 +1,1275 @@
+﻿<Root>
+  <Test Description="Slenderness_SquareCss_UserReinf_N0_Mby0_Mey0_Mbz0_Mez0" Author="Palec-PC\Palec" Active="1" Date="2014.04.11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|Material.EC" Category="Parabola-rectangular" Item="C 20/25" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|Reinf.EC" Category="Inclined top branch" Item="B 600 C" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="1" Units="0">
+        <CS SelReinf="0" H="400e-3" B="400e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="40e-3" D_upper="20e-3" N_upper="2" c_lower="40e-3" D_lower="20e-3" N_lower="2" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="M↓beg,y←" Value="0" />
+      <Variable Identifier="M↓end,y←" Value="0" />
+      <Variable Identifier="M↓beg,z←" Value="0" />
+      <Variable Identifier="M↓end,z←" Value="0" />
+      <Variable Identifier="N↓Ed←" Value="0" />
+      <Variable Identifier="M↓y←" Value="0" />
+      <Variable Identifier="M↓z←" Value="0" />
+      <Variable Identifier="BraceMemberY" Value="False" />
+      <Variable Identifier="BraceMemberZ" Value="False" />
+      <Variable Identifier="L↓y.inp←" Value="3" />
+      <Variable Identifier="L↓z.inp←" Value="3" />
+      <Variable Identifier="β↓yy.inp←" Value="1" />
+      <Variable Identifier="β↓zz.inp←" Value="1" />
+      <Variable Identifier="Design" Value="False" />
+      <Variable Identifier="μ↓s←" Value="40e-3" />
+      <Variable Identifier="α↓cc←" Value="1" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="φ↓ef←" Value="0" />
+    </Dialog>
+    <Result Name="A" Type="Numeric" ESA_ID="Result.13" Value="0" />
+    <Result Name="A↓c←" Type="Numeric" ESA_ID="Result.20" Value="160e-3" />
+    <Result Name="A↓s←" Type="Numeric" ESA_ID="Result.19" Value="1.256637e-3" />
+    <Input Name="AccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Result Name="B" Type="Numeric" ESA_ID="Result.14" Value="0" />
+    <Input Name="BraceMemberY" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="BraceMemberZ" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="C↓y←" Type="Numeric" ESA_ID="Result.15" Value="0" />
+    <Result Name="C↓z←" Type="Numeric" ESA_ID="Result.16" Value="0" />
+    <Input Name="Caption" Type="String" ESA_ID="" Value="Check slenderness according to EN 1992-1-1" />
+    <Input Name="Combikey" Type="String" ESA_ID="" Value="" />
+    <Input Name="CssID" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="DescriptionN" Type="String" ESA_ID="" Value="Limit slenderness is not calculated for tensile or zero normal force" />
+    <Input Name="Design" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="13.33333e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="20e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="521.7391e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="600e6" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="7" />
+    <Result Name="i↓cy←" Type="Numeric" ESA_ID="Result.11" Value="115.4701e-3" />
+    <Result Name="I↓cy←" Type="Numeric" ESA_ID="Result.21" Value="2.133333e-3" />
+    <Result Name="i↓cz←" Type="Numeric" ESA_ID="Result.12" Value="115.4701e-3" />
+    <Result Name="I↓cz←" Type="Numeric" ESA_ID="Result.22" Value="2.133333e-3" />
+    <Input Name="IndexEWN" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="l↓oy←" Type="Numeric" ESA_ID="Result.5" Value="3" />
+    <Result Name="l↓oz←" Type="Numeric" ESA_ID="Result.6" Value="3" />
+    <Input Name="L↓y.inp←" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="L↓y←" Type="Numeric" ESA_ID="Result.1" Value="3" />
+    <Input Name="L↓z.inp←" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="L↓z←" Type="Numeric" ESA_ID="Result.2" Value="3" />
+    <Input Name="M↓01y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓01z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓02y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓02z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓beg,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓beg,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓end,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓end,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="n" Type="Numeric" ESA_ID="Result.17" Value="0" />
+    <Input Name="N↓Ed←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="NameConcrete" Type="String" ESA_ID="" Value="C 20/25" />
+    <Input Name="NameReinf" Type="String" ESA_ID="" Value="B 600 C" />
+    <Input Name="Ncolumns" Type="Numeric" ESA_ID="" Value="8" />
+    <Input Name="Number↓E←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓N←" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="Number↓W←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="r↓my←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="r↓mz←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="SBraceY" Type="String" ESA_ID="" Value="No" />
+    <Input Name="SBraceZ" Type="String" ESA_ID="" Value="No" />
+    <Input Name="SCheckY" Type="String" ESA_ID="" Value="No" />
+    <Input Name="SCheckZ" Type="String" ESA_ID="" Value="No" />
+    <Input Name="sListEWN" Type="String" ESA_ID="" Value="N1/1, N1/2, N1/3, N1/4" />
+    <Input Name="SolutionN" Type="String" ESA_ID="" Value="" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="TypeN" Type="String" ESA_ID="" Value="Note" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="β↓yy.inp←" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="β↓yy←" Type="Numeric" ESA_ID="Result.3" Value="1" />
+    <Input Name="β↓zz.inp←" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="β↓zz←" Type="Numeric" ESA_ID="Result.4" Value="1" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Result Name="λ↓limy←" Type="Numeric" ESA_ID="Result.9" Value="0" />
+    <Result Name="λ↓limz←" Type="Numeric" ESA_ID="Result.10" Value="0" />
+    <Result Name="λ↓y←" Type="Numeric" ESA_ID="Result.7" Value="25.98076" />
+    <Result Name="λ↓z←" Type="Numeric" ESA_ID="Result.8" Value="25.98076" />
+    <Input Name="μ↓s←" Type="Numeric" ESA_ID="" Value="40e-3" />
+    <Input Name="φ↓ef←" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="ω" Type="Numeric" ESA_ID="Result.18" Value="307.3297e-3" />
+  </Test>
+  <Test Description="Slenderness_SquareCss_UserReinf_N1000_Mby0_Mey0_Mbz0_Mez0" Author="Palec-PC\Palec" Active="1" Date="2014.04.11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|Material.EC" Category="Parabola-rectangular" Item="C 20/25" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|Reinf.EC" Category="Inclined top branch" Item="B 600 C" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="1" Units="0">
+        <CS SelReinf="0" H="400e-3" B="400e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="40e-3" D_upper="20e-3" N_upper="2" c_lower="40e-3" D_lower="20e-3" N_lower="2" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="M↓beg,y←" Value="0" />
+      <Variable Identifier="M↓end,y←" Value="0" />
+      <Variable Identifier="M↓beg,z←" Value="0" />
+      <Variable Identifier="M↓end,z←" Value="0" />
+      <Variable Identifier="N↓Ed←" Value="1e6" />
+      <Variable Identifier="M↓y←" Value="0" />
+      <Variable Identifier="M↓z←" Value="0" />
+      <Variable Identifier="BraceMemberY" Value="False" />
+      <Variable Identifier="BraceMemberZ" Value="False" />
+      <Variable Identifier="L↓y.inp←" Value="3" />
+      <Variable Identifier="L↓z.inp←" Value="3" />
+      <Variable Identifier="β↓yy.inp←" Value="1" />
+      <Variable Identifier="β↓zz.inp←" Value="1" />
+      <Variable Identifier="Design" Value="False" />
+      <Variable Identifier="μ↓s←" Value="40e-3" />
+      <Variable Identifier="α↓cc←" Value="1" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="φ↓ef←" Value="0" />
+    </Dialog>
+    <Result Name="A" Type="Numeric" ESA_ID="Result.13" Value="0" />
+    <Result Name="A↓c←" Type="Numeric" ESA_ID="Result.20" Value="160e-3" />
+    <Result Name="A↓s←" Type="Numeric" ESA_ID="Result.19" Value="1.256637e-3" />
+    <Input Name="AccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Result Name="B" Type="Numeric" ESA_ID="Result.14" Value="0" />
+    <Input Name="BraceMemberY" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="BraceMemberZ" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="C↓y←" Type="Numeric" ESA_ID="Result.15" Value="0" />
+    <Result Name="C↓z←" Type="Numeric" ESA_ID="Result.16" Value="0" />
+    <Input Name="Caption" Type="String" ESA_ID="" Value="Check slenderness according to EN 1992-1-1" />
+    <Input Name="Combikey" Type="String" ESA_ID="" Value="" />
+    <Input Name="CssID" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="DescriptionN" Type="String" ESA_ID="" Value="Limit slenderness is not calculated for tensile or zero normal force" />
+    <Input Name="Design" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="13.33333e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="20e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="521.7391e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="600e6" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="7" />
+    <Result Name="i↓cy←" Type="Numeric" ESA_ID="Result.11" Value="115.4701e-3" />
+    <Result Name="I↓cy←" Type="Numeric" ESA_ID="Result.21" Value="2.133333e-3" />
+    <Result Name="i↓cz←" Type="Numeric" ESA_ID="Result.12" Value="115.4701e-3" />
+    <Result Name="I↓cz←" Type="Numeric" ESA_ID="Result.22" Value="2.133333e-3" />
+    <Input Name="IndexEWN" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="l↓oy←" Type="Numeric" ESA_ID="Result.5" Value="3" />
+    <Result Name="l↓oz←" Type="Numeric" ESA_ID="Result.6" Value="3" />
+    <Input Name="L↓y.inp←" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="L↓y←" Type="Numeric" ESA_ID="Result.1" Value="3" />
+    <Input Name="L↓z.inp←" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="L↓z←" Type="Numeric" ESA_ID="Result.2" Value="3" />
+    <Input Name="M↓01y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓01z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓02y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓02z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓beg,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓beg,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓end,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓end,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="n" Type="Numeric" ESA_ID="Result.17" Value="-468.75e-3" />
+    <Input Name="N↓Ed←" Type="Numeric" ESA_ID="" Value="1e6" />
+    <Input Name="NameConcrete" Type="String" ESA_ID="" Value="C 20/25" />
+    <Input Name="NameReinf" Type="String" ESA_ID="" Value="B 600 C" />
+    <Input Name="Ncolumns" Type="Numeric" ESA_ID="" Value="8" />
+    <Input Name="Number↓E←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓N←" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="Number↓W←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="r↓my←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="r↓mz←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="SBraceY" Type="String" ESA_ID="" Value="No" />
+    <Input Name="SBraceZ" Type="String" ESA_ID="" Value="No" />
+    <Input Name="SCheckY" Type="String" ESA_ID="" Value="No" />
+    <Input Name="SCheckZ" Type="String" ESA_ID="" Value="No" />
+    <Input Name="sListEWN" Type="String" ESA_ID="" Value="N1/1, N1/2, N1/3, N1/4" />
+    <Input Name="SolutionN" Type="String" ESA_ID="" Value="" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="TypeN" Type="String" ESA_ID="" Value="Note" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="β↓yy.inp←" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="β↓yy←" Type="Numeric" ESA_ID="Result.3" Value="1" />
+    <Input Name="β↓zz.inp←" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="β↓zz←" Type="Numeric" ESA_ID="Result.4" Value="1" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Result Name="λ↓limy←" Type="Numeric" ESA_ID="Result.9" Value="0" />
+    <Result Name="λ↓limz←" Type="Numeric" ESA_ID="Result.10" Value="0" />
+    <Result Name="λ↓y←" Type="Numeric" ESA_ID="Result.7" Value="25.98076" />
+    <Result Name="λ↓z←" Type="Numeric" ESA_ID="Result.8" Value="25.98076" />
+    <Input Name="μ↓s←" Type="Numeric" ESA_ID="" Value="40e-3" />
+    <Input Name="φ↓ef←" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="ω" Type="Numeric" ESA_ID="Result.18" Value="307.3297e-3" />
+  </Test>
+  <Test Description="Slenderness_SquareCss_UserReinf_N-2000_Mby0_Mey0_Mbz0_Mez0" Author="Palec-PC\Palec" Active="1" Date="2014.04.11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|Material.EC" Category="Parabola-rectangular" Item="C 20/25" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|Reinf.EC" Category="Inclined top branch" Item="B 600 C" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="1" Units="0">
+        <CS SelReinf="0" H="400e-3" B="400e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="40e-3" D_upper="20e-3" N_upper="2" c_lower="40e-3" D_lower="20e-3" N_lower="2" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="M↓beg,y←" Value="0" />
+      <Variable Identifier="M↓end,y←" Value="0" />
+      <Variable Identifier="M↓beg,z←" Value="0" />
+      <Variable Identifier="M↓end,z←" Value="0" />
+      <Variable Identifier="N↓Ed←" Value="-2e6" />
+      <Variable Identifier="M↓y←" Value="0" />
+      <Variable Identifier="M↓z←" Value="0" />
+      <Variable Identifier="BraceMemberY" Value="False" />
+      <Variable Identifier="BraceMemberZ" Value="False" />
+      <Variable Identifier="L↓y.inp←" Value="3" />
+      <Variable Identifier="L↓z.inp←" Value="3" />
+      <Variable Identifier="β↓yy.inp←" Value="1" />
+      <Variable Identifier="β↓zz.inp←" Value="1" />
+      <Variable Identifier="Design" Value="False" />
+      <Variable Identifier="μ↓s←" Value="40e-3" />
+      <Variable Identifier="φ↓ef←" Value="2.5" />
+    </Dialog>
+    <Result Name="A" Type="Numeric" ESA_ID="Result.13" Value="666.6667e-3" />
+    <Result Name="A↓c←" Type="Numeric" ESA_ID="Result.20" Value="160e-3" />
+    <Result Name="A↓s←" Type="Numeric" ESA_ID="Result.19" Value="1.256637e-3" />
+    <Input Name="AccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Result Name="B" Type="Numeric" ESA_ID="Result.14" Value="1.270693" />
+    <Input Name="BraceMemberY" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="BraceMemberZ" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="C↓y←" Type="Numeric" ESA_ID="Result.15" Value="700e-3" />
+    <Result Name="C↓z←" Type="Numeric" ESA_ID="Result.16" Value="700e-3" />
+    <Input Name="Caption" Type="String" ESA_ID="" Value="Check slenderness according to EN 1992-1-1" />
+    <Input Name="Combikey" Type="String" ESA_ID="" Value="" />
+    <Input Name="CssID" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="DescriptionN" Type="String" ESA_ID="" Value="Slenderness around z axis is bigger than limit slenderness, it follows second order effect has to be taken into account" />
+    <Input Name="Design" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="13.33333e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="20e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="521.7391e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="600e6" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="7" />
+    <Result Name="i↓cy←" Type="Numeric" ESA_ID="Result.11" Value="115.4701e-3" />
+    <Result Name="I↓cy←" Type="Numeric" ESA_ID="Result.21" Value="2.133333e-3" />
+    <Result Name="i↓cz←" Type="Numeric" ESA_ID="Result.12" Value="115.4701e-3" />
+    <Result Name="I↓cz←" Type="Numeric" ESA_ID="Result.22" Value="2.133333e-3" />
+    <Input Name="IndexEWN" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="l↓oy←" Type="Numeric" ESA_ID="Result.5" Value="3" />
+    <Result Name="l↓oz←" Type="Numeric" ESA_ID="Result.6" Value="3" />
+    <Input Name="L↓y.inp←" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="L↓y←" Type="Numeric" ESA_ID="Result.1" Value="3" />
+    <Input Name="L↓z.inp←" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="L↓z←" Type="Numeric" ESA_ID="Result.2" Value="3" />
+    <Input Name="M↓01y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓01z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓02y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓02z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓beg,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓beg,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓end,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓end,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="n" Type="Numeric" ESA_ID="Result.17" Value="937.5e-3" />
+    <Input Name="N↓Ed←" Type="Numeric" ESA_ID="" Value="-2e6" />
+    <Input Name="NameConcrete" Type="String" ESA_ID="" Value="C 20/25" />
+    <Input Name="NameReinf" Type="String" ESA_ID="" Value="B 600 C" />
+    <Input Name="Ncolumns" Type="Numeric" ESA_ID="" Value="8" />
+    <Input Name="Number↓E←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓N←" Type="Numeric" ESA_ID="" Value="7" />
+    <Input Name="Number↓W←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="r↓my←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="r↓mz←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="SBraceY" Type="String" ESA_ID="" Value="No" />
+    <Input Name="SBraceZ" Type="String" ESA_ID="" Value="No" />
+    <Input Name="SCheckY" Type="String" ESA_ID="" Value="Yes (λ↓z← &gt; λ↓limz←)" />
+    <Input Name="SCheckZ" Type="String" ESA_ID="" Value="No" />
+    <Input Name="sListEWN" Type="String" ESA_ID="" Value="N1/1, N1/2, N1/3, N1/4, N1/5, N1/6, N1/7" />
+    <Input Name="SolutionN" Type="String" ESA_ID="" Value="" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="TypeN" Type="String" ESA_ID="" Value="Note" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="β↓yy.inp←" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="β↓yy←" Type="Numeric" ESA_ID="Result.3" Value="1" />
+    <Input Name="β↓zz.inp←" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="β↓zz←" Type="Numeric" ESA_ID="Result.4" Value="1" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Result Name="λ↓limy←" Type="Numeric" ESA_ID="Result.9" Value="12.24875" />
+    <Result Name="λ↓limz←" Type="Numeric" ESA_ID="Result.10" Value="12.24875" />
+    <Result Name="λ↓y←" Type="Numeric" ESA_ID="Result.7" Value="25.98076" />
+    <Result Name="λ↓z←" Type="Numeric" ESA_ID="Result.8" Value="25.98076" />
+    <Input Name="μ↓s←" Type="Numeric" ESA_ID="" Value="40e-3" />
+    <Input Name="φ↓ef←" Type="Numeric" ESA_ID="" Value="2.5" />
+    <Result Name="ω" Type="Numeric" ESA_ID="Result.18" Value="307.3297e-3" />
+  </Test>
+  <Test Description="Slenderness_SquareCss_UserReinf_N-2000_Mby100_Mey100_Mbz-100_Mez-100" Author="Palec-PC\Palec" Active="1" Date="2014.04.11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|Material.EC" Category="Parabola-rectangular" Item="C 20/25" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|Reinf.EC" Category="Inclined top branch" Item="B 600 C" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="1" Units="0">
+        <CS SelReinf="0" H="400e-3" B="400e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="40e-3" D_upper="20e-3" N_upper="2" c_lower="40e-3" D_lower="20e-3" N_lower="2" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="M↓beg,y←" Value="100000" />
+      <Variable Identifier="M↓end,y←" Value="100000" />
+      <Variable Identifier="M↓beg,z←" Value="-100000" />
+      <Variable Identifier="M↓end,z←" Value="-100000" />
+      <Variable Identifier="N↓Ed←" Value="-2e6" />
+      <Variable Identifier="M↓y←" Value="0" />
+      <Variable Identifier="M↓z←" Value="0" />
+      <Variable Identifier="BraceMemberY" Value="True" />
+      <Variable Identifier="BraceMemberZ" Value="True" />
+      <Variable Identifier="L↓y.inp←" Value="3" />
+      <Variable Identifier="L↓z.inp←" Value="3" />
+      <Variable Identifier="β↓yy.inp←" Value="1" />
+      <Variable Identifier="β↓zz.inp←" Value="1" />
+      <Variable Identifier="Design" Value="False" />
+      <Variable Identifier="μ↓s←" Value="40e-3" />
+      <Variable Identifier="φ↓ef←" Value="2.5" />
+    </Dialog>
+    <Result Name="A" Type="Numeric" ESA_ID="Result.13" Value="666.6667e-3" />
+    <Result Name="A↓c←" Type="Numeric" ESA_ID="Result.20" Value="160e-3" />
+    <Result Name="A↓s←" Type="Numeric" ESA_ID="Result.19" Value="1.256637e-3" />
+    <Input Name="AccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Result Name="B" Type="Numeric" ESA_ID="Result.14" Value="1.270693" />
+    <Input Name="BraceMemberY" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="BraceMemberZ" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="C↓y←" Type="Numeric" ESA_ID="Result.15" Value="700e-3" />
+    <Result Name="C↓z←" Type="Numeric" ESA_ID="Result.16" Value="700e-3" />
+    <Input Name="Caption" Type="String" ESA_ID="" Value="Check slenderness according to EN 1992-1-1" />
+    <Input Name="Combikey" Type="String" ESA_ID="" Value="" />
+    <Input Name="CssID" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="DescriptionN" Type="String" ESA_ID="" Value="Slenderness around z axis is bigger than limit slenderness, it follows second order effect has to be taken into account" />
+    <Input Name="Design" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="13.33333e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="20e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="521.7391e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="600e6" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="7" />
+    <Result Name="i↓cy←" Type="Numeric" ESA_ID="Result.11" Value="115.4701e-3" />
+    <Result Name="I↓cy←" Type="Numeric" ESA_ID="Result.21" Value="2.133333e-3" />
+    <Result Name="i↓cz←" Type="Numeric" ESA_ID="Result.12" Value="115.4701e-3" />
+    <Result Name="I↓cz←" Type="Numeric" ESA_ID="Result.22" Value="2.133333e-3" />
+    <Input Name="IndexEWN" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="l↓oy←" Type="Numeric" ESA_ID="Result.5" Value="3" />
+    <Result Name="l↓oz←" Type="Numeric" ESA_ID="Result.6" Value="3" />
+    <Input Name="L↓y.inp←" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="L↓y←" Type="Numeric" ESA_ID="Result.1" Value="3" />
+    <Input Name="L↓z.inp←" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="L↓z←" Type="Numeric" ESA_ID="Result.2" Value="3" />
+    <Input Name="M↓01y←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="M↓01z←" Type="Numeric" ESA_ID="" Value="-100000" />
+    <Input Name="M↓02y←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="M↓02z←" Type="Numeric" ESA_ID="" Value="-100000" />
+    <Input Name="M↓beg,y←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="M↓beg,z←" Type="Numeric" ESA_ID="" Value="-100000" />
+    <Input Name="M↓end,y←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="M↓end,z←" Type="Numeric" ESA_ID="" Value="-100000" />
+    <Input Name="M↓y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="n" Type="Numeric" ESA_ID="Result.17" Value="937.5e-3" />
+    <Input Name="N↓Ed←" Type="Numeric" ESA_ID="" Value="-2e6" />
+    <Input Name="NameConcrete" Type="String" ESA_ID="" Value="C 20/25" />
+    <Input Name="NameReinf" Type="String" ESA_ID="" Value="B 600 C" />
+    <Input Name="Ncolumns" Type="Numeric" ESA_ID="" Value="8" />
+    <Input Name="Number↓E←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓N←" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="Number↓W←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="r↓my←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="r↓mz←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="SBraceY" Type="String" ESA_ID="" Value="Yes" />
+    <Input Name="SBraceZ" Type="String" ESA_ID="" Value="Yes" />
+    <Input Name="SCheckY" Type="String" ESA_ID="" Value="Yes (λ↓z← &gt; λ↓limz←)" />
+    <Input Name="SCheckZ" Type="String" ESA_ID="" Value="No (λ↓z← &lt;= λ↓limz←)" />
+    <Input Name="sListEWN" Type="String" ESA_ID="" Value="N1/1, N1/2, N1/3, N1/4, N1/5" />
+    <Input Name="SolutionN" Type="String" ESA_ID="" Value="" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="TypeN" Type="String" ESA_ID="" Value="Note" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="β↓yy.inp←" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="β↓yy←" Type="Numeric" ESA_ID="Result.3" Value="1" />
+    <Input Name="β↓zz.inp←" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="β↓zz←" Type="Numeric" ESA_ID="Result.4" Value="1" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Result Name="λ↓limy←" Type="Numeric" ESA_ID="Result.9" Value="12.24875" />
+    <Result Name="λ↓limz←" Type="Numeric" ESA_ID="Result.10" Value="12.24875" />
+    <Result Name="λ↓y←" Type="Numeric" ESA_ID="Result.7" Value="25.98076" />
+    <Result Name="λ↓z←" Type="Numeric" ESA_ID="Result.8" Value="25.98076" />
+    <Input Name="μ↓s←" Type="Numeric" ESA_ID="" Value="40e-3" />
+    <Input Name="φ↓ef←" Type="Numeric" ESA_ID="" Value="2.5" />
+    <Result Name="ω" Type="Numeric" ESA_ID="Result.18" Value="307.3297e-3" />
+  </Test>
+  <Test Description="Slenderness_SquareCss_UserReinf_N-2000_Mby100_Mey0_Mbz-100_Mez0" Author="Palec-PC\Palec" Active="1" Date="2014.04.11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|Material.EC" Category="Parabola-rectangular" Item="C 20/25" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|Reinf.EC" Category="Inclined top branch" Item="B 600 C" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="1" Units="0">
+        <CS SelReinf="0" H="400e-3" B="400e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="40e-3" D_upper="20e-3" N_upper="2" c_lower="40e-3" D_lower="20e-3" N_lower="2" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="M↓beg,y←" Value="100000" />
+      <Variable Identifier="M↓end,y←" Value="0" />
+      <Variable Identifier="M↓beg,z←" Value="-100000" />
+      <Variable Identifier="M↓end,z←" Value="0" />
+      <Variable Identifier="N↓Ed←" Value="-2e6" />
+      <Variable Identifier="M↓y←" Value="0" />
+      <Variable Identifier="M↓z←" Value="0" />
+      <Variable Identifier="BraceMemberY" Value="True" />
+      <Variable Identifier="BraceMemberZ" Value="True" />
+      <Variable Identifier="L↓y.inp←" Value="3" />
+      <Variable Identifier="L↓z.inp←" Value="3" />
+      <Variable Identifier="β↓yy.inp←" Value="1" />
+      <Variable Identifier="β↓zz.inp←" Value="1" />
+      <Variable Identifier="Design" Value="False" />
+      <Variable Identifier="μ↓s←" Value="40e-3" />
+      <Variable Identifier="φ↓ef←" Value="2.5" />
+    </Dialog>
+    <Result Name="A" Type="Numeric" ESA_ID="Result.13" Value="666.6667e-3" />
+    <Result Name="A↓c←" Type="Numeric" ESA_ID="Result.20" Value="160e-3" />
+    <Result Name="A↓s←" Type="Numeric" ESA_ID="Result.19" Value="1.256637e-3" />
+    <Input Name="AccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Result Name="B" Type="Numeric" ESA_ID="Result.14" Value="1.270693" />
+    <Input Name="BraceMemberY" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="BraceMemberZ" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="C↓y←" Type="Numeric" ESA_ID="Result.15" Value="1.7" />
+    <Result Name="C↓z←" Type="Numeric" ESA_ID="Result.16" Value="1.7" />
+    <Input Name="Caption" Type="String" ESA_ID="" Value="Check slenderness according to EN 1992-1-1" />
+    <Input Name="Combikey" Type="String" ESA_ID="" Value="" />
+    <Input Name="CssID" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="DescriptionN" Type="String" ESA_ID="" Value="Slenderness around z axis is lesser than limit slenderness, it follows second order effect will be ignored" />
+    <Input Name="Design" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="13.33333e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="20e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="521.7391e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="600e6" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="7" />
+    <Result Name="i↓cy←" Type="Numeric" ESA_ID="Result.11" Value="115.4701e-3" />
+    <Result Name="I↓cy←" Type="Numeric" ESA_ID="Result.21" Value="2.133333e-3" />
+    <Result Name="i↓cz←" Type="Numeric" ESA_ID="Result.12" Value="115.4701e-3" />
+    <Result Name="I↓cz←" Type="Numeric" ESA_ID="Result.22" Value="2.133333e-3" />
+    <Input Name="IndexEWN" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="l↓oy←" Type="Numeric" ESA_ID="Result.5" Value="3" />
+    <Result Name="l↓oz←" Type="Numeric" ESA_ID="Result.6" Value="3" />
+    <Input Name="L↓y.inp←" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="L↓y←" Type="Numeric" ESA_ID="Result.1" Value="3" />
+    <Input Name="L↓z.inp←" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="L↓z←" Type="Numeric" ESA_ID="Result.2" Value="3" />
+    <Input Name="M↓01y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓01z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓02y←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="M↓02z←" Type="Numeric" ESA_ID="" Value="-100000" />
+    <Input Name="M↓beg,y←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="M↓beg,z←" Type="Numeric" ESA_ID="" Value="-100000" />
+    <Input Name="M↓end,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓end,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="n" Type="Numeric" ESA_ID="Result.17" Value="937.5e-3" />
+    <Input Name="N↓Ed←" Type="Numeric" ESA_ID="" Value="-2e6" />
+    <Input Name="NameConcrete" Type="String" ESA_ID="" Value="C 20/25" />
+    <Input Name="NameReinf" Type="String" ESA_ID="" Value="B 600 C" />
+    <Input Name="Ncolumns" Type="Numeric" ESA_ID="" Value="8" />
+    <Input Name="Number↓E←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓N←" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="Number↓W←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="r↓my←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="r↓mz←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="SBraceY" Type="String" ESA_ID="" Value="Yes" />
+    <Input Name="SBraceZ" Type="String" ESA_ID="" Value="Yes" />
+    <Input Name="SCheckY" Type="String" ESA_ID="" Value="No (λ↓y← &lt;= λ↓limy←)" />
+    <Input Name="SCheckZ" Type="String" ESA_ID="" Value="No (λ↓z← &lt;= λ↓limz←)" />
+    <Input Name="sListEWN" Type="String" ESA_ID="" Value="N1/1, N1/2, N1/3, N1/4, N1/5" />
+    <Input Name="SolutionN" Type="String" ESA_ID="" Value="" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="TypeN" Type="String" ESA_ID="" Value="Note" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="β↓yy.inp←" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="β↓yy←" Type="Numeric" ESA_ID="Result.3" Value="1" />
+    <Input Name="β↓zz.inp←" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="β↓zz←" Type="Numeric" ESA_ID="Result.4" Value="1" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Result Name="λ↓limy←" Type="Numeric" ESA_ID="Result.9" Value="29.74695" />
+    <Result Name="λ↓limz←" Type="Numeric" ESA_ID="Result.10" Value="29.74695" />
+    <Result Name="λ↓y←" Type="Numeric" ESA_ID="Result.7" Value="25.98076" />
+    <Result Name="λ↓z←" Type="Numeric" ESA_ID="Result.8" Value="25.98076" />
+    <Input Name="μ↓s←" Type="Numeric" ESA_ID="" Value="40e-3" />
+    <Input Name="φ↓ef←" Type="Numeric" ESA_ID="" Value="2.5" />
+    <Result Name="ω" Type="Numeric" ESA_ID="Result.18" Value="307.3297e-3" />
+  </Test>
+  <Test Description="Slenderness_SquareCss_UserReinf_N-2000_Mby100_Mey-50_Mbz-100_Mez50" Author="Palec-PC\Palec" Active="1" Date="2014.04.11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|Material.EC" Category="Parabola-rectangular" Item="C 20/25" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|Reinf.EC" Category="Inclined top branch" Item="B 600 C" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="1" Units="0">
+        <CS SelReinf="0" H="400e-3" B="400e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="40e-3" D_upper="20e-3" N_upper="2" c_lower="40e-3" D_lower="20e-3" N_lower="2" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="M↓beg,y←" Value="100000" />
+      <Variable Identifier="M↓end,y←" Value="-50000" />
+      <Variable Identifier="M↓beg,z←" Value="-100000" />
+      <Variable Identifier="M↓end,z←" Value="50000" />
+      <Variable Identifier="N↓Ed←" Value="-2e6" />
+      <Variable Identifier="M↓y←" Value="0" />
+      <Variable Identifier="M↓z←" Value="0" />
+      <Variable Identifier="BraceMemberY" Value="True" />
+      <Variable Identifier="BraceMemberZ" Value="True" />
+      <Variable Identifier="L↓y.inp←" Value="3" />
+      <Variable Identifier="L↓z.inp←" Value="3" />
+      <Variable Identifier="β↓yy.inp←" Value="1" />
+      <Variable Identifier="β↓zz.inp←" Value="1" />
+      <Variable Identifier="Design" Value="False" />
+      <Variable Identifier="μ↓s←" Value="40e-3" />
+      <Variable Identifier="φ↓ef←" Value="2.5" />
+    </Dialog>
+    <Result Name="A" Type="Numeric" ESA_ID="Result.13" Value="666.6667e-3" />
+    <Result Name="A↓c←" Type="Numeric" ESA_ID="Result.20" Value="160e-3" />
+    <Result Name="A↓s←" Type="Numeric" ESA_ID="Result.19" Value="1.256637e-3" />
+    <Input Name="AccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Result Name="B" Type="Numeric" ESA_ID="Result.14" Value="1.270693" />
+    <Input Name="BraceMemberY" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="BraceMemberZ" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="C↓y←" Type="Numeric" ESA_ID="Result.15" Value="2.2" />
+    <Result Name="C↓z←" Type="Numeric" ESA_ID="Result.16" Value="2.2" />
+    <Input Name="Caption" Type="String" ESA_ID="" Value="Check slenderness according to EN 1992-1-1" />
+    <Input Name="Combikey" Type="String" ESA_ID="" Value="" />
+    <Input Name="CssID" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="DescriptionN" Type="String" ESA_ID="" Value="Slenderness around z axis is lesser than limit slenderness, it follows second order effect will be ignored" />
+    <Input Name="Design" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="13.33333e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="20e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="521.7391e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="600e6" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="7" />
+    <Result Name="i↓cy←" Type="Numeric" ESA_ID="Result.11" Value="115.4701e-3" />
+    <Result Name="I↓cy←" Type="Numeric" ESA_ID="Result.21" Value="2.133333e-3" />
+    <Result Name="i↓cz←" Type="Numeric" ESA_ID="Result.12" Value="115.4701e-3" />
+    <Result Name="I↓cz←" Type="Numeric" ESA_ID="Result.22" Value="2.133333e-3" />
+    <Input Name="IndexEWN" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="l↓oy←" Type="Numeric" ESA_ID="Result.5" Value="3" />
+    <Result Name="l↓oz←" Type="Numeric" ESA_ID="Result.6" Value="3" />
+    <Input Name="L↓y.inp←" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="L↓y←" Type="Numeric" ESA_ID="Result.1" Value="3" />
+    <Input Name="L↓z.inp←" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="L↓z←" Type="Numeric" ESA_ID="Result.2" Value="3" />
+    <Input Name="M↓01y←" Type="Numeric" ESA_ID="" Value="-50000" />
+    <Input Name="M↓01z←" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="M↓02y←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="M↓02z←" Type="Numeric" ESA_ID="" Value="-100000" />
+    <Input Name="M↓beg,y←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="M↓beg,z←" Type="Numeric" ESA_ID="" Value="-100000" />
+    <Input Name="M↓end,y←" Type="Numeric" ESA_ID="" Value="-50000" />
+    <Input Name="M↓end,z←" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="M↓y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="n" Type="Numeric" ESA_ID="Result.17" Value="937.5e-3" />
+    <Input Name="N↓Ed←" Type="Numeric" ESA_ID="" Value="-2e6" />
+    <Input Name="NameConcrete" Type="String" ESA_ID="" Value="C 20/25" />
+    <Input Name="NameReinf" Type="String" ESA_ID="" Value="B 600 C" />
+    <Input Name="Ncolumns" Type="Numeric" ESA_ID="" Value="8" />
+    <Input Name="Number↓E←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓N←" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="Number↓W←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="r↓my←" Type="Numeric" ESA_ID="" Value="-500e-3" />
+    <Input Name="r↓mz←" Type="Numeric" ESA_ID="" Value="-500e-3" />
+    <Input Name="SBraceY" Type="String" ESA_ID="" Value="Yes" />
+    <Input Name="SBraceZ" Type="String" ESA_ID="" Value="Yes" />
+    <Input Name="SCheckY" Type="String" ESA_ID="" Value="No (λ↓y← &lt;= λ↓limy←)" />
+    <Input Name="SCheckZ" Type="String" ESA_ID="" Value="No (λ↓z← &lt;= λ↓limz←)" />
+    <Input Name="sListEWN" Type="String" ESA_ID="" Value="N1/1, N1/2, N1/3, N1/4, N1/5" />
+    <Input Name="SolutionN" Type="String" ESA_ID="" Value="" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="TypeN" Type="String" ESA_ID="" Value="Note" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="β↓yy.inp←" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="β↓yy←" Type="Numeric" ESA_ID="Result.3" Value="1" />
+    <Input Name="β↓zz.inp←" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="β↓zz←" Type="Numeric" ESA_ID="Result.4" Value="1" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Result Name="λ↓limy←" Type="Numeric" ESA_ID="Result.9" Value="38.49606" />
+    <Result Name="λ↓limz←" Type="Numeric" ESA_ID="Result.10" Value="38.49606" />
+    <Result Name="λ↓y←" Type="Numeric" ESA_ID="Result.7" Value="25.98076" />
+    <Result Name="λ↓z←" Type="Numeric" ESA_ID="Result.8" Value="25.98076" />
+    <Input Name="μ↓s←" Type="Numeric" ESA_ID="" Value="40e-3" />
+    <Input Name="φ↓ef←" Type="Numeric" ESA_ID="" Value="2.5" />
+    <Result Name="ω" Type="Numeric" ESA_ID="Result.18" Value="307.3297e-3" />
+  </Test>
+  <Test Description="Slenderness_SquareCss_UserReinf_N-2000_Mby100_Mey-100_Mbz-100_Mez100" Author="Palec-PC\Palec" Active="1" Date="2014.04.11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|Material.EC" Category="Parabola-rectangular" Item="C 20/25" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|Reinf.EC" Category="Inclined top branch" Item="B 600 C" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="1" Units="0">
+        <CS SelReinf="0" H="400e-3" B="400e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="40e-3" D_upper="20e-3" N_upper="2" c_lower="40e-3" D_lower="20e-3" N_lower="2" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="M↓beg,y←" Value="100000" />
+      <Variable Identifier="M↓end,y←" Value="-100000" />
+      <Variable Identifier="M↓beg,z←" Value="-100000" />
+      <Variable Identifier="M↓end,z←" Value="100000" />
+      <Variable Identifier="N↓Ed←" Value="-2e6" />
+      <Variable Identifier="M↓y←" Value="0" />
+      <Variable Identifier="M↓z←" Value="0" />
+      <Variable Identifier="BraceMemberY" Value="True" />
+      <Variable Identifier="BraceMemberZ" Value="True" />
+      <Variable Identifier="L↓y.inp←" Value="3" />
+      <Variable Identifier="L↓z.inp←" Value="3" />
+      <Variable Identifier="β↓yy.inp←" Value="1" />
+      <Variable Identifier="β↓zz.inp←" Value="1" />
+      <Variable Identifier="Design" Value="False" />
+      <Variable Identifier="μ↓s←" Value="40e-3" />
+      <Variable Identifier="φ↓ef←" Value="2.5" />
+    </Dialog>
+    <Result Name="A" Type="Numeric" ESA_ID="Result.13" Value="666.6667e-3" />
+    <Result Name="A↓c←" Type="Numeric" ESA_ID="Result.20" Value="160e-3" />
+    <Result Name="A↓s←" Type="Numeric" ESA_ID="Result.19" Value="1.256637e-3" />
+    <Input Name="AccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Result Name="B" Type="Numeric" ESA_ID="Result.14" Value="1.270693" />
+    <Input Name="BraceMemberY" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="BraceMemberZ" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="C↓y←" Type="Numeric" ESA_ID="Result.15" Value="2.7" />
+    <Result Name="C↓z←" Type="Numeric" ESA_ID="Result.16" Value="2.7" />
+    <Input Name="Caption" Type="String" ESA_ID="" Value="Check slenderness according to EN 1992-1-1" />
+    <Input Name="Combikey" Type="String" ESA_ID="" Value="" />
+    <Input Name="CssID" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="DescriptionN" Type="String" ESA_ID="" Value="Slenderness around z axis is lesser than limit slenderness, it follows second order effect will be ignored" />
+    <Input Name="Design" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="13.33333e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="20e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="521.7391e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="600e6" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="7" />
+    <Result Name="i↓cy←" Type="Numeric" ESA_ID="Result.11" Value="115.4701e-3" />
+    <Result Name="I↓cy←" Type="Numeric" ESA_ID="Result.21" Value="2.133333e-3" />
+    <Result Name="i↓cz←" Type="Numeric" ESA_ID="Result.12" Value="115.4701e-3" />
+    <Result Name="I↓cz←" Type="Numeric" ESA_ID="Result.22" Value="2.133333e-3" />
+    <Input Name="IndexEWN" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="l↓oy←" Type="Numeric" ESA_ID="Result.5" Value="3" />
+    <Result Name="l↓oz←" Type="Numeric" ESA_ID="Result.6" Value="3" />
+    <Input Name="L↓y.inp←" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="L↓y←" Type="Numeric" ESA_ID="Result.1" Value="3" />
+    <Input Name="L↓z.inp←" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="L↓z←" Type="Numeric" ESA_ID="Result.2" Value="3" />
+    <Input Name="M↓01y←" Type="Numeric" ESA_ID="" Value="-100000" />
+    <Input Name="M↓01z←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="M↓02y←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="M↓02z←" Type="Numeric" ESA_ID="" Value="-100000" />
+    <Input Name="M↓beg,y←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="M↓beg,z←" Type="Numeric" ESA_ID="" Value="-100000" />
+    <Input Name="M↓end,y←" Type="Numeric" ESA_ID="" Value="-100000" />
+    <Input Name="M↓end,z←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="M↓y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="n" Type="Numeric" ESA_ID="Result.17" Value="937.5e-3" />
+    <Input Name="N↓Ed←" Type="Numeric" ESA_ID="" Value="-2e6" />
+    <Input Name="NameConcrete" Type="String" ESA_ID="" Value="C 20/25" />
+    <Input Name="NameReinf" Type="String" ESA_ID="" Value="B 600 C" />
+    <Input Name="Ncolumns" Type="Numeric" ESA_ID="" Value="8" />
+    <Input Name="Number↓E←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓N←" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="Number↓W←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="r↓my←" Type="Numeric" ESA_ID="" Value="-1" />
+    <Input Name="r↓mz←" Type="Numeric" ESA_ID="" Value="-1" />
+    <Input Name="SBraceY" Type="String" ESA_ID="" Value="Yes" />
+    <Input Name="SBraceZ" Type="String" ESA_ID="" Value="Yes" />
+    <Input Name="SCheckY" Type="String" ESA_ID="" Value="No (λ↓y← &lt;= λ↓limy←)" />
+    <Input Name="SCheckZ" Type="String" ESA_ID="" Value="No (λ↓z← &lt;= λ↓limz←)" />
+    <Input Name="sListEWN" Type="String" ESA_ID="" Value="N1/1, N1/2, N1/3, N1/4, N1/5" />
+    <Input Name="SolutionN" Type="String" ESA_ID="" Value="" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="TypeN" Type="String" ESA_ID="" Value="Note" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="β↓yy.inp←" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="β↓yy←" Type="Numeric" ESA_ID="Result.3" Value="1" />
+    <Input Name="β↓zz.inp←" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="β↓zz←" Type="Numeric" ESA_ID="Result.4" Value="1" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Result Name="λ↓limy←" Type="Numeric" ESA_ID="Result.9" Value="47.24516" />
+    <Result Name="λ↓limz←" Type="Numeric" ESA_ID="Result.10" Value="47.24516" />
+    <Result Name="λ↓y←" Type="Numeric" ESA_ID="Result.7" Value="25.98076" />
+    <Result Name="λ↓z←" Type="Numeric" ESA_ID="Result.8" Value="25.98076" />
+    <Input Name="μ↓s←" Type="Numeric" ESA_ID="" Value="40e-3" />
+    <Input Name="φ↓ef←" Type="Numeric" ESA_ID="" Value="2.5" />
+    <Result Name="ω" Type="Numeric" ESA_ID="Result.18" Value="307.3297e-3" />
+  </Test>
+  <Test Description="Slenderness_SquareCss_UserReinf_N-2000_Mby60_Mey130_Mbz130_Mez25" Author="Palec-PC\Palec" Active="1" Date="2014.04.11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|Material.EC" Category="Parabola-rectangular" Item="C 20/25" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|Reinf.EC" Category="Inclined top branch" Item="B 600 C" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="1" Units="0">
+        <CS SelReinf="0" H="400e-3" B="400e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="40e-3" D_upper="20e-3" N_upper="2" c_lower="40e-3" D_lower="20e-3" N_lower="2" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="M↓beg,y←" Value="60000" />
+      <Variable Identifier="M↓end,y←" Value="100000" />
+      <Variable Identifier="M↓beg,z←" Value="130000" />
+      <Variable Identifier="M↓end,z←" Value="25000" />
+      <Variable Identifier="N↓Ed←" Value="-2e6" />
+      <Variable Identifier="M↓y←" Value="0" />
+      <Variable Identifier="M↓z←" Value="0" />
+      <Variable Identifier="BraceMemberY" Value="True" />
+      <Variable Identifier="BraceMemberZ" Value="True" />
+      <Variable Identifier="L↓y.inp←" Value="3" />
+      <Variable Identifier="L↓z.inp←" Value="3" />
+      <Variable Identifier="β↓yy.inp←" Value="1" />
+      <Variable Identifier="β↓zz.inp←" Value="1" />
+      <Variable Identifier="Design" Value="False" />
+      <Variable Identifier="μ↓s←" Value="40e-3" />
+      <Variable Identifier="φ↓ef←" Value="2.5" />
+    </Dialog>
+    <Result Name="A" Type="Numeric" ESA_ID="Result.13" Value="666.6667e-3" />
+    <Result Name="A↓c←" Type="Numeric" ESA_ID="Result.20" Value="160e-3" />
+    <Result Name="A↓s←" Type="Numeric" ESA_ID="Result.19" Value="1.256637e-3" />
+    <Input Name="AccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Result Name="B" Type="Numeric" ESA_ID="Result.14" Value="1.270693" />
+    <Input Name="BraceMemberY" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="BraceMemberZ" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="C↓y←" Type="Numeric" ESA_ID="Result.15" Value="1.1" />
+    <Result Name="C↓z←" Type="Numeric" ESA_ID="Result.16" Value="1.507692" />
+    <Input Name="Caption" Type="String" ESA_ID="" Value="Check slenderness according to EN 1992-1-1" />
+    <Input Name="Combikey" Type="String" ESA_ID="" Value="" />
+    <Input Name="CssID" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="DescriptionN" Type="String" ESA_ID="" Value="Slenderness around z axis is lesser than limit slenderness, it follows second order effect will be ignored" />
+    <Input Name="Design" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="13.33333e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="20e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="521.7391e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="600e6" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="7" />
+    <Result Name="i↓cy←" Type="Numeric" ESA_ID="Result.11" Value="115.4701e-3" />
+    <Result Name="I↓cy←" Type="Numeric" ESA_ID="Result.21" Value="2.133333e-3" />
+    <Result Name="i↓cz←" Type="Numeric" ESA_ID="Result.12" Value="115.4701e-3" />
+    <Result Name="I↓cz←" Type="Numeric" ESA_ID="Result.22" Value="2.133333e-3" />
+    <Input Name="IndexEWN" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="l↓oy←" Type="Numeric" ESA_ID="Result.5" Value="3" />
+    <Result Name="l↓oz←" Type="Numeric" ESA_ID="Result.6" Value="3" />
+    <Input Name="L↓y.inp←" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="L↓y←" Type="Numeric" ESA_ID="Result.1" Value="3" />
+    <Input Name="L↓z.inp←" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="L↓z←" Type="Numeric" ESA_ID="Result.2" Value="3" />
+    <Input Name="M↓01y←" Type="Numeric" ESA_ID="" Value="60000" />
+    <Input Name="M↓01z←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓02y←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="M↓02z←" Type="Numeric" ESA_ID="" Value="130000" />
+    <Input Name="M↓beg,y←" Type="Numeric" ESA_ID="" Value="60000" />
+    <Input Name="M↓beg,z←" Type="Numeric" ESA_ID="" Value="130000" />
+    <Input Name="M↓end,y←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="M↓end,z←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="n" Type="Numeric" ESA_ID="Result.17" Value="937.5e-3" />
+    <Input Name="N↓Ed←" Type="Numeric" ESA_ID="" Value="-2e6" />
+    <Input Name="NameConcrete" Type="String" ESA_ID="" Value="C 20/25" />
+    <Input Name="NameReinf" Type="String" ESA_ID="" Value="B 600 C" />
+    <Input Name="Ncolumns" Type="Numeric" ESA_ID="" Value="8" />
+    <Input Name="Number↓E←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓N←" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="Number↓W←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="r↓my←" Type="Numeric" ESA_ID="" Value="600e-3" />
+    <Input Name="r↓mz←" Type="Numeric" ESA_ID="" Value="192.3077e-3" />
+    <Input Name="SBraceY" Type="String" ESA_ID="" Value="Yes" />
+    <Input Name="SBraceZ" Type="String" ESA_ID="" Value="Yes" />
+    <Input Name="SCheckY" Type="String" ESA_ID="" Value="Yes (λ↓y← &gt; λ↓limy←)" />
+    <Input Name="SCheckZ" Type="String" ESA_ID="" Value="No (λ↓z← &lt;= λ↓limz←)" />
+    <Input Name="sListEWN" Type="String" ESA_ID="" Value="N1/1, N1/2, N1/3, N1/4, N1/5" />
+    <Input Name="SolutionN" Type="String" ESA_ID="" Value="" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="TypeN" Type="String" ESA_ID="" Value="Note" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="β↓yy.inp←" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="β↓yy←" Type="Numeric" ESA_ID="Result.3" Value="1" />
+    <Input Name="β↓zz.inp←" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="β↓zz←" Type="Numeric" ESA_ID="Result.4" Value="1" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Result Name="λ↓limy←" Type="Numeric" ESA_ID="Result.9" Value="19.24803" />
+    <Result Name="λ↓limz←" Type="Numeric" ESA_ID="Result.10" Value="26.38191" />
+    <Result Name="λ↓y←" Type="Numeric" ESA_ID="Result.7" Value="25.98076" />
+    <Result Name="λ↓z←" Type="Numeric" ESA_ID="Result.8" Value="25.98076" />
+    <Input Name="μ↓s←" Type="Numeric" ESA_ID="" Value="40e-3" />
+    <Input Name="φ↓ef←" Type="Numeric" ESA_ID="" Value="2.5" />
+    <Result Name="ω" Type="Numeric" ESA_ID="Result.18" Value="307.3297e-3" />
+  </Test>
+  <Test Description="Slenderness_SquareCss_UserReinf_N-2000_Mby60_Mey130_Mbz130_Mez25_unbraced" Author="Palec-PC\Palec" Active="1" Date="2014.04.11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|Material.EC" Category="Parabola-rectangular" Item="C 20/25" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|Reinf.EC" Category="Inclined top branch" Item="B 600 C" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="1" Units="0">
+        <CS SelReinf="0" H="400e-3" B="400e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="40e-3" D_upper="20e-3" N_upper="2" c_lower="40e-3" D_lower="20e-3" N_lower="2" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="M↓beg,y←" Value="60000" />
+      <Variable Identifier="M↓end,y←" Value="100000" />
+      <Variable Identifier="M↓beg,z←" Value="130000" />
+      <Variable Identifier="M↓end,z←" Value="25000" />
+      <Variable Identifier="N↓Ed←" Value="-2e6" />
+      <Variable Identifier="M↓y←" Value="0" />
+      <Variable Identifier="M↓z←" Value="0" />
+      <Variable Identifier="BraceMemberY" Value="False" />
+      <Variable Identifier="BraceMemberZ" Value="False" />
+      <Variable Identifier="L↓y.inp←" Value="3" />
+      <Variable Identifier="L↓z.inp←" Value="3" />
+      <Variable Identifier="β↓yy.inp←" Value="1" />
+      <Variable Identifier="β↓zz.inp←" Value="1" />
+      <Variable Identifier="Design" Value="False" />
+      <Variable Identifier="μ↓s←" Value="40e-3" />
+      <Variable Identifier="φ↓ef←" Value="2.5" />
+    </Dialog>
+    <Result Name="A" Type="Numeric" ESA_ID="Result.13" Value="666.6667e-3" />
+    <Result Name="A↓c←" Type="Numeric" ESA_ID="Result.20" Value="160e-3" />
+    <Result Name="A↓s←" Type="Numeric" ESA_ID="Result.19" Value="1.256637e-3" />
+    <Input Name="AccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Result Name="B" Type="Numeric" ESA_ID="Result.14" Value="1.270693" />
+    <Input Name="BraceMemberY" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="BraceMemberZ" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="C↓y←" Type="Numeric" ESA_ID="Result.15" Value="700e-3" />
+    <Result Name="C↓z←" Type="Numeric" ESA_ID="Result.16" Value="700e-3" />
+    <Input Name="Caption" Type="String" ESA_ID="" Value="Check slenderness according to EN 1992-1-1" />
+    <Input Name="Combikey" Type="String" ESA_ID="" Value="" />
+    <Input Name="CssID" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="DescriptionN" Type="String" ESA_ID="" Value="Slenderness around z axis is bigger than limit slenderness, it follows second order effect has to be taken into account" />
+    <Input Name="Design" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="13.33333e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="20e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="521.7391e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="600e6" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="7" />
+    <Result Name="i↓cy←" Type="Numeric" ESA_ID="Result.11" Value="115.4701e-3" />
+    <Result Name="I↓cy←" Type="Numeric" ESA_ID="Result.21" Value="2.133333e-3" />
+    <Result Name="i↓cz←" Type="Numeric" ESA_ID="Result.12" Value="115.4701e-3" />
+    <Result Name="I↓cz←" Type="Numeric" ESA_ID="Result.22" Value="2.133333e-3" />
+    <Input Name="IndexEWN" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="l↓oy←" Type="Numeric" ESA_ID="Result.5" Value="3" />
+    <Result Name="l↓oz←" Type="Numeric" ESA_ID="Result.6" Value="3" />
+    <Input Name="L↓y.inp←" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="L↓y←" Type="Numeric" ESA_ID="Result.1" Value="3" />
+    <Input Name="L↓z.inp←" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="L↓z←" Type="Numeric" ESA_ID="Result.2" Value="3" />
+    <Input Name="M↓01y←" Type="Numeric" ESA_ID="" Value="60000" />
+    <Input Name="M↓01z←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓02y←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="M↓02z←" Type="Numeric" ESA_ID="" Value="130000" />
+    <Input Name="M↓beg,y←" Type="Numeric" ESA_ID="" Value="60000" />
+    <Input Name="M↓beg,z←" Type="Numeric" ESA_ID="" Value="130000" />
+    <Input Name="M↓end,y←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="M↓end,z←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="n" Type="Numeric" ESA_ID="Result.17" Value="937.5e-3" />
+    <Input Name="N↓Ed←" Type="Numeric" ESA_ID="" Value="-2e6" />
+    <Input Name="NameConcrete" Type="String" ESA_ID="" Value="C 20/25" />
+    <Input Name="NameReinf" Type="String" ESA_ID="" Value="B 600 C" />
+    <Input Name="Ncolumns" Type="Numeric" ESA_ID="" Value="8" />
+    <Input Name="Number↓E←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓N←" Type="Numeric" ESA_ID="" Value="7" />
+    <Input Name="Number↓W←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="r↓my←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="r↓mz←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="SBraceY" Type="String" ESA_ID="" Value="No" />
+    <Input Name="SBraceZ" Type="String" ESA_ID="" Value="No" />
+    <Input Name="SCheckY" Type="String" ESA_ID="" Value="Yes (λ↓z← &gt; λ↓limz←)" />
+    <Input Name="SCheckZ" Type="String" ESA_ID="" Value="No (λ↓z← &lt;= λ↓limz←)" />
+    <Input Name="sListEWN" Type="String" ESA_ID="" Value="N1/1, N1/2, N1/3, N1/4, N1/5, N1/6, N1/7" />
+    <Input Name="SolutionN" Type="String" ESA_ID="" Value="" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="TypeN" Type="String" ESA_ID="" Value="Note" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="β↓yy.inp←" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="β↓yy←" Type="Numeric" ESA_ID="Result.3" Value="1" />
+    <Input Name="β↓zz.inp←" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="β↓zz←" Type="Numeric" ESA_ID="Result.4" Value="1" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Result Name="λ↓limy←" Type="Numeric" ESA_ID="Result.9" Value="12.24875" />
+    <Result Name="λ↓limz←" Type="Numeric" ESA_ID="Result.10" Value="12.24875" />
+    <Result Name="λ↓y←" Type="Numeric" ESA_ID="Result.7" Value="25.98076" />
+    <Result Name="λ↓z←" Type="Numeric" ESA_ID="Result.8" Value="25.98076" />
+    <Input Name="μ↓s←" Type="Numeric" ESA_ID="" Value="40e-3" />
+    <Input Name="φ↓ef←" Type="Numeric" ESA_ID="" Value="2.5" />
+    <Result Name="ω" Type="Numeric" ESA_ID="Result.18" Value="307.3297e-3" />
+  </Test>
+  <Test Description="Slenderness_SquareCss_UserReinf_N-2000_Mby60_Mey130_Mbz130_Mez25_zeroAs" Author="Palec-PC\Palec" Active="1" Date="2014.04.11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|Material.EC" Category="Parabola-rectangular" Item="C 20/25" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|Reinf.EC" Category="Inclined top branch" Item="B 600 C" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="0" Units="0">
+        <CS SelReinf="0">
+          <Outline>
+            <P X="0" Y="0" />
+            <P X="400e-3" Y="0" />
+            <P X="400e-3" Y="400e-3" />
+            <P X="0" Y="400e-3" />
+            <P X="0" Y="0" />
+          </Outline>
+        </CS>
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90">
+          <Bars />
+          <Shapes>
+            <Shape>
+              <P X="36e-3" Y="36e-3" />
+              <P X="364e-3" Y="36e-3" />
+              <P X="364e-3" Y="364e-3" />
+              <P X="36e-3" Y="364e-3" />
+              <P X="36e-3" Y="36e-3" />
+            </Shape>
+          </Shapes>
+        </Reinf>
+      </ConcreteSectionLibrary>
+      <Variable Identifier="M↓beg,y←" Value="60000" />
+      <Variable Identifier="M↓end,y←" Value="100000" />
+      <Variable Identifier="M↓beg,z←" Value="130000" />
+      <Variable Identifier="M↓end,z←" Value="25000" />
+      <Variable Identifier="N↓Ed←" Value="-2e6" />
+      <Variable Identifier="M↓y←" Value="0" />
+      <Variable Identifier="M↓z←" Value="0" />
+      <Variable Identifier="BraceMemberY" Value="False" />
+      <Variable Identifier="BraceMemberZ" Value="False" />
+      <Variable Identifier="L↓y.inp←" Value="3" />
+      <Variable Identifier="L↓z.inp←" Value="3" />
+      <Variable Identifier="β↓yy.inp←" Value="1" />
+      <Variable Identifier="β↓zz.inp←" Value="1" />
+      <Variable Identifier="Design" Value="False" />
+      <Variable Identifier="μ↓s←" Value="40e-3" />
+      <Variable Identifier="φ↓ef←" Value="2.5" />
+    </Dialog>
+    <Result Name="A" Type="Numeric" ESA_ID="Result.13" Value="666.6667e-3" />
+    <Result Name="A↓c←" Type="Numeric" ESA_ID="Result.20" Value="160e-3" />
+    <Result Name="A↓s←" Type="Numeric" ESA_ID="Result.19" Value="0" />
+    <Input Name="AccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Result Name="B" Type="Numeric" ESA_ID="Result.14" Value="1" />
+    <Input Name="BraceMemberY" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="BraceMemberZ" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="C↓y←" Type="Numeric" ESA_ID="Result.15" Value="700e-3" />
+    <Result Name="C↓z←" Type="Numeric" ESA_ID="Result.16" Value="700e-3" />
+    <Input Name="Caption" Type="String" ESA_ID="" Value="Check slenderness according to EN 1992-1-1" />
+    <Input Name="Combikey" Type="String" ESA_ID="" Value="" />
+    <Input Name="CssID" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="DescriptionN" Type="String" ESA_ID="" Value="Slenderness around z axis is bigger than limit slenderness, it follows second order effect has to be taken into account" />
+    <Input Name="Design" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="13.33333e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="20e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="521.7391e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="600e6" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="7" />
+    <Result Name="i↓cy←" Type="Numeric" ESA_ID="Result.11" Value="115.4701e-3" />
+    <Result Name="I↓cy←" Type="Numeric" ESA_ID="Result.21" Value="2.133333e-3" />
+    <Result Name="i↓cz←" Type="Numeric" ESA_ID="Result.12" Value="115.4701e-3" />
+    <Result Name="I↓cz←" Type="Numeric" ESA_ID="Result.22" Value="2.133333e-3" />
+    <Input Name="IndexEWN" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="l↓oy←" Type="Numeric" ESA_ID="Result.5" Value="3" />
+    <Result Name="l↓oz←" Type="Numeric" ESA_ID="Result.6" Value="3" />
+    <Input Name="L↓y.inp←" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="L↓y←" Type="Numeric" ESA_ID="Result.1" Value="3" />
+    <Input Name="L↓z.inp←" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="L↓z←" Type="Numeric" ESA_ID="Result.2" Value="3" />
+    <Input Name="M↓01y←" Type="Numeric" ESA_ID="" Value="60000" />
+    <Input Name="M↓01z←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓02y←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="M↓02z←" Type="Numeric" ESA_ID="" Value="130000" />
+    <Input Name="M↓beg,y←" Type="Numeric" ESA_ID="" Value="60000" />
+    <Input Name="M↓beg,z←" Type="Numeric" ESA_ID="" Value="130000" />
+    <Input Name="M↓end,y←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="M↓end,z←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="n" Type="Numeric" ESA_ID="Result.17" Value="937.5e-3" />
+    <Input Name="N↓Ed←" Type="Numeric" ESA_ID="" Value="-2e6" />
+    <Input Name="NameConcrete" Type="String" ESA_ID="" Value="C 20/25" />
+    <Input Name="NameReinf" Type="String" ESA_ID="" Value="B 600 C" />
+    <Input Name="Ncolumns" Type="Numeric" ESA_ID="" Value="8" />
+    <Input Name="Number↓E←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓N←" Type="Numeric" ESA_ID="" Value="7" />
+    <Input Name="Number↓W←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="r↓my←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="r↓mz←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="SBraceY" Type="String" ESA_ID="" Value="No" />
+    <Input Name="SBraceZ" Type="String" ESA_ID="" Value="No" />
+    <Input Name="SCheckY" Type="String" ESA_ID="" Value="Yes (λ↓z← &gt; λ↓limz←)" />
+    <Input Name="SCheckZ" Type="String" ESA_ID="" Value="No (λ↓z← &lt;= λ↓limz←)" />
+    <Input Name="sListEWN" Type="String" ESA_ID="" Value="N1/1, N1/2, N1/3, N1/4, N1/5, N1/6, N1/7" />
+    <Input Name="SolutionN" Type="String" ESA_ID="" Value="" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="TypeN" Type="String" ESA_ID="" Value="Note" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="β↓yy.inp←" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="β↓yy←" Type="Numeric" ESA_ID="Result.3" Value="1" />
+    <Input Name="β↓zz.inp←" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="β↓zz←" Type="Numeric" ESA_ID="Result.4" Value="1" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Result Name="λ↓limy←" Type="Numeric" ESA_ID="Result.9" Value="9.639425" />
+    <Result Name="λ↓limz←" Type="Numeric" ESA_ID="Result.10" Value="9.639425" />
+    <Result Name="λ↓y←" Type="Numeric" ESA_ID="Result.7" Value="25.98076" />
+    <Result Name="λ↓z←" Type="Numeric" ESA_ID="Result.8" Value="25.98076" />
+    <Input Name="μ↓s←" Type="Numeric" ESA_ID="" Value="40e-3" />
+    <Input Name="φ↓ef←" Type="Numeric" ESA_ID="" Value="2.5" />
+    <Result Name="ω" Type="Numeric" ESA_ID="Result.18" Value="0" />
+  </Test>
+  <Test Description="Slenderness_Tsection_UserReinf_N-2000_Mby60_Mey130_Mbz130_Mez25" Author="Palec-PC\Palec" Active="1" Date="2014.04.11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|Material.EC" Category="Parabola-rectangular" Item="C 20/25" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|Reinf.EC" Category="Inclined top branch" Item="B 600 C" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="3" Units="0">
+        <CS SelReinf="0" H="500e-3" B="500e-3" Hf="200e-3" Bw="200e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="30e-3" D_upper="20e-3" N_upper="2" c_lower="30e-3" D_lower="20e-3" N_lower="2" Dc_upper="30e-3" DD_upper="20e-3" DN_upper="2" Dc_lower="30e-3" DD_lower="20e-3" DN_lower="2" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="M↓beg,y←" Value="60000" />
+      <Variable Identifier="M↓end,y←" Value="100000" />
+      <Variable Identifier="M↓beg,z←" Value="130000" />
+      <Variable Identifier="M↓end,z←" Value="25000" />
+      <Variable Identifier="N↓Ed←" Value="-2e6" />
+      <Variable Identifier="M↓y←" Value="0" />
+      <Variable Identifier="M↓z←" Value="0" />
+      <Variable Identifier="BraceMemberY" Value="True" />
+      <Variable Identifier="BraceMemberZ" Value="True" />
+      <Variable Identifier="L↓y.inp←" Value="3" />
+      <Variable Identifier="L↓z.inp←" Value="3" />
+      <Variable Identifier="β↓yy.inp←" Value="1.5" />
+      <Variable Identifier="β↓zz.inp←" Value="500e-3" />
+      <Variable Identifier="Design" Value="False" />
+      <Variable Identifier="μ↓s←" Value="40e-3" />
+      <Variable Identifier="φ↓ef←" Value="2.5" />
+    </Dialog>
+    <Result Name="A" Type="Numeric" ESA_ID="Result.13" Value="666.6667e-3" />
+    <Result Name="A↓c←" Type="Numeric" ESA_ID="Result.20" Value="160e-3" />
+    <Result Name="A↓s←" Type="Numeric" ESA_ID="Result.19" Value="3.769911e-3" />
+    <Input Name="AccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b" Type="Numeric" ESA_ID="" Value="500e-3" />
+    <Result Name="B" Type="Numeric" ESA_ID="Result.14" Value="1.68641" />
+    <Input Name="BraceMemberY" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="BraceMemberZ" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="C↓y←" Type="Numeric" ESA_ID="Result.15" Value="1.1" />
+    <Result Name="C↓z←" Type="Numeric" ESA_ID="Result.16" Value="1.507692" />
+    <Input Name="Caption" Type="String" ESA_ID="" Value="Check slenderness according to EN 1992-1-1" />
+    <Input Name="Combikey" Type="String" ESA_ID="" Value="" />
+    <Input Name="CssID" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="DescriptionN" Type="String" ESA_ID="" Value="Slenderness around z axis is lesser than limit slenderness, it follows second order effect will be ignored" />
+    <Input Name="Design" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="13.33333e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="20e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="521.7391e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="600e6" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="500e-3" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="7" />
+    <Result Name="i↓cy←" Type="Numeric" ESA_ID="Result.11" Value="119.4606e-3" />
+    <Result Name="I↓cy←" Type="Numeric" ESA_ID="Result.21" Value="3.127083e-3" />
+    <Result Name="i↓cz←" Type="Numeric" ESA_ID="Result.12" Value="139.8008e-3" />
+    <Result Name="I↓cz←" Type="Numeric" ESA_ID="Result.22" Value="2.283333e-3" />
+    <Input Name="IndexEWN" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="l↓oy←" Type="Numeric" ESA_ID="Result.5" Value="4.5" />
+    <Result Name="l↓oz←" Type="Numeric" ESA_ID="Result.6" Value="1.5" />
+    <Input Name="L↓y.inp←" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="L↓y←" Type="Numeric" ESA_ID="Result.1" Value="3" />
+    <Input Name="L↓z.inp←" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="L↓z←" Type="Numeric" ESA_ID="Result.2" Value="3" />
+    <Input Name="M↓01y←" Type="Numeric" ESA_ID="" Value="60000" />
+    <Input Name="M↓01z←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓02y←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="M↓02z←" Type="Numeric" ESA_ID="" Value="130000" />
+    <Input Name="M↓beg,y←" Type="Numeric" ESA_ID="" Value="60000" />
+    <Input Name="M↓beg,z←" Type="Numeric" ESA_ID="" Value="130000" />
+    <Input Name="M↓end,y←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="M↓end,z←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="n" Type="Numeric" ESA_ID="Result.17" Value="937.5e-3" />
+    <Input Name="N↓Ed←" Type="Numeric" ESA_ID="" Value="-2e6" />
+    <Input Name="NameConcrete" Type="String" ESA_ID="" Value="C 20/25" />
+    <Input Name="NameReinf" Type="String" ESA_ID="" Value="B 600 C" />
+    <Input Name="Ncolumns" Type="Numeric" ESA_ID="" Value="8" />
+    <Input Name="Number↓E←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓N←" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="Number↓W←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="r↓my←" Type="Numeric" ESA_ID="" Value="600e-3" />
+    <Input Name="r↓mz←" Type="Numeric" ESA_ID="" Value="192.3077e-3" />
+    <Input Name="SBraceY" Type="String" ESA_ID="" Value="Yes" />
+    <Input Name="SBraceZ" Type="String" ESA_ID="" Value="Yes" />
+    <Input Name="SCheckY" Type="String" ESA_ID="" Value="Yes (λ↓y← &gt; λ↓limy←)" />
+    <Input Name="SCheckZ" Type="String" ESA_ID="" Value="No (λ↓z← &lt;= λ↓limz←)" />
+    <Input Name="sListEWN" Type="String" ESA_ID="" Value="N1/1, N1/2, N1/3, N1/4, N1/5" />
+    <Input Name="SolutionN" Type="String" ESA_ID="" Value="" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="TypeN" Type="String" ESA_ID="" Value="Note" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="β↓yy.inp←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Result Name="β↓yy←" Type="Numeric" ESA_ID="Result.3" Value="1.5" />
+    <Input Name="β↓zz.inp←" Type="Numeric" ESA_ID="" Value="500e-3" />
+    <Result Name="β↓zz←" Type="Numeric" ESA_ID="Result.4" Value="500e-3" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Result Name="λ↓limy←" Type="Numeric" ESA_ID="Result.9" Value="25.54518" />
+    <Result Name="λ↓limz←" Type="Numeric" ESA_ID="Result.10" Value="35.01297" />
+    <Result Name="λ↓y←" Type="Numeric" ESA_ID="Result.7" Value="32.18865" />
+    <Result Name="λ↓z←" Type="Numeric" ESA_ID="Result.8" Value="12.55644" />
+    <Input Name="μ↓s←" Type="Numeric" ESA_ID="" Value="40e-3" />
+    <Input Name="φ↓ef←" Type="Numeric" ESA_ID="" Value="2.5" />
+    <Result Name="ω" Type="Numeric" ESA_ID="Result.18" Value="921.9891e-3" />
+  </Test>
+  <Test Description="Slenderness_Tsection_Ratio_N-2000_Mby60_Mey130_Mbz130_Mez25" Author="Palec-PC\Palec" Active="1" Date="2014.04.11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|Material.EC" Category="Parabola-rectangular" Item="C 20/25" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|Reinf.EC" Category="Inclined top branch" Item="B 600 C" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="3" Units="0">
+        <CS SelReinf="0" H="500e-3" B="500e-3" Hf="200e-3" Bw="200e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="30e-3" D_upper="20e-3" N_upper="2" c_lower="30e-3" D_lower="20e-3" N_lower="2" Dc_upper="30e-3" DD_upper="20e-3" DN_upper="2" Dc_lower="30e-3" DD_lower="20e-3" DN_lower="2" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="M↓beg,y←" Value="60000" />
+      <Variable Identifier="M↓end,y←" Value="100000" />
+      <Variable Identifier="M↓beg,z←" Value="130000" />
+      <Variable Identifier="M↓end,z←" Value="25000" />
+      <Variable Identifier="N↓Ed←" Value="-2e6" />
+      <Variable Identifier="M↓y←" Value="0" />
+      <Variable Identifier="M↓z←" Value="0" />
+      <Variable Identifier="BraceMemberY" Value="True" />
+      <Variable Identifier="BraceMemberZ" Value="True" />
+      <Variable Identifier="L↓y.inp←" Value="3" />
+      <Variable Identifier="L↓z.inp←" Value="3" />
+      <Variable Identifier="β↓yy.inp←" Value="1.5" />
+      <Variable Identifier="β↓zz.inp←" Value="500e-3" />
+      <Variable Identifier="Design" Value="True" />
+      <Variable Identifier="μ↓s←" Value="23.563e-3" />
+      <Variable Identifier="φ↓ef←" Value="2.5" />
+    </Dialog>
+    <Result Name="A" Type="Numeric" ESA_ID="Result.13" Value="666.6667e-3" />
+    <Result Name="A↓c←" Type="Numeric" ESA_ID="Result.20" Value="160e-3" />
+    <Result Name="A↓s←" Type="Numeric" ESA_ID="Result.19" Value="3.77008e-3" />
+    <Input Name="AccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="b" Type="Numeric" ESA_ID="" Value="500e-3" />
+    <Result Name="B" Type="Numeric" ESA_ID="Result.14" Value="1.686434" />
+    <Input Name="BraceMemberY" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="BraceMemberZ" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="C↓y←" Type="Numeric" ESA_ID="Result.15" Value="1.1" />
+    <Result Name="C↓z←" Type="Numeric" ESA_ID="Result.16" Value="1.507692" />
+    <Input Name="Caption" Type="String" ESA_ID="" Value="Check slenderness according to EN 1992-1-1" />
+    <Input Name="Combikey" Type="String" ESA_ID="" Value="" />
+    <Input Name="CssID" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="DescriptionN" Type="String" ESA_ID="" Value="Slenderness around z axis is lesser than limit slenderness, it follows second order effect will be ignored" />
+    <Input Name="Design" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="13.33333e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="20e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="521.7391e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="600e6" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="500e-3" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="7" />
+    <Result Name="i↓cy←" Type="Numeric" ESA_ID="Result.11" Value="119.4606e-3" />
+    <Result Name="I↓cy←" Type="Numeric" ESA_ID="Result.21" Value="3.127083e-3" />
+    <Result Name="i↓cz←" Type="Numeric" ESA_ID="Result.12" Value="139.8008e-3" />
+    <Result Name="I↓cz←" Type="Numeric" ESA_ID="Result.22" Value="2.283333e-3" />
+    <Input Name="IndexEWN" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="l↓oy←" Type="Numeric" ESA_ID="Result.5" Value="4.5" />
+    <Result Name="l↓oz←" Type="Numeric" ESA_ID="Result.6" Value="1.5" />
+    <Input Name="L↓y.inp←" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="L↓y←" Type="Numeric" ESA_ID="Result.1" Value="3" />
+    <Input Name="L↓z.inp←" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="L↓z←" Type="Numeric" ESA_ID="Result.2" Value="3" />
+    <Input Name="M↓01y←" Type="Numeric" ESA_ID="" Value="60000" />
+    <Input Name="M↓01z←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓02y←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="M↓02z←" Type="Numeric" ESA_ID="" Value="130000" />
+    <Input Name="M↓beg,y←" Type="Numeric" ESA_ID="" Value="60000" />
+    <Input Name="M↓beg,z←" Type="Numeric" ESA_ID="" Value="130000" />
+    <Input Name="M↓end,y←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="M↓end,z←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="n" Type="Numeric" ESA_ID="Result.17" Value="937.5e-3" />
+    <Input Name="N↓Ed←" Type="Numeric" ESA_ID="" Value="-2e6" />
+    <Input Name="NameConcrete" Type="String" ESA_ID="" Value="C 20/25" />
+    <Input Name="NameReinf" Type="String" ESA_ID="" Value="B 600 C" />
+    <Input Name="Ncolumns" Type="Numeric" ESA_ID="" Value="8" />
+    <Input Name="Number↓E←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓N←" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="Number↓W←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="r↓my←" Type="Numeric" ESA_ID="" Value="600e-3" />
+    <Input Name="r↓mz←" Type="Numeric" ESA_ID="" Value="192.3077e-3" />
+    <Input Name="SBraceY" Type="String" ESA_ID="" Value="Yes" />
+    <Input Name="SBraceZ" Type="String" ESA_ID="" Value="Yes" />
+    <Input Name="SCheckY" Type="String" ESA_ID="" Value="Yes (λ↓y← &gt; λ↓limy←)" />
+    <Input Name="SCheckZ" Type="String" ESA_ID="" Value="No (λ↓z← &lt;= λ↓limz←)" />
+    <Input Name="sListEWN" Type="String" ESA_ID="" Value="N1/1, N1/2, N1/3, N1/4, N1/5" />
+    <Input Name="SolutionN" Type="String" ESA_ID="" Value="" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="TypeN" Type="String" ESA_ID="" Value="Note" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="β↓yy.inp←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Result Name="β↓yy←" Type="Numeric" ESA_ID="Result.3" Value="1.5" />
+    <Input Name="β↓zz.inp←" Type="Numeric" ESA_ID="" Value="500e-3" />
+    <Result Name="β↓zz←" Type="Numeric" ESA_ID="Result.4" Value="500e-3" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Result Name="λ↓limy←" Type="Numeric" ESA_ID="Result.9" Value="25.54555" />
+    <Result Name="λ↓limz←" Type="Numeric" ESA_ID="Result.10" Value="35.01348" />
+    <Result Name="λ↓y←" Type="Numeric" ESA_ID="Result.7" Value="32.18865" />
+    <Result Name="λ↓z←" Type="Numeric" ESA_ID="Result.8" Value="12.55644" />
+    <Input Name="μ↓s←" Type="Numeric" ESA_ID="" Value="23.563e-3" />
+    <Input Name="φ↓ef←" Type="Numeric" ESA_ID="" Value="2.5" />
+    <Result Name="ω" Type="Numeric" ESA_ID="Result.18" Value="922.0304e-3" />
+  </Test>
+</Root>

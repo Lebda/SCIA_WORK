@@ -1,0 +1,296 @@
+<Root>
+  <Test Description="Test 1" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.18">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="ČSN EN 1997-1" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="DrawUnit" Value="False" />
+      <Variable Identifier="DrawVariable" Value="False" />
+      <Variable Identifier="DrawStot" Value="True" />
+      <Variable Identifier="DrawSeff" Value="True" />
+      <Variable Identifier="UserScale" Value="250" />
+      <Variable Identifier="UserFont" Value="10" />
+      <Variable Identifier="Groundwater" Value="True" />
+      <Variable Identifier="hw" Value="100e-3" />
+      <Variable Identifier="TI" Value="1,5|16|20║1|18|21║4|17,5|22,5║3|21|22║7|18,5|21,5" />
+    </Dialog>
+    <Input Name="NA" Type="String" ESA_ID="" Value="ČSN EN 1997-1" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="P1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="hw" Type="Numeric" ESA_ID="" Value="100e-3" />
+    <Input Name="P2" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="250" />
+    <Input Name="ScaleX" Type="Numeric" ESA_ID="" Value="990.0683e-6" />
+    <Input Name="ScaleY" Type="Numeric" ESA_ID="" Value="30.30303" />
+    <Input Name="DrawSeff" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawStot" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawVariable" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="DrawUnit" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="σw" Type="Numeric" ESA_ID="" Value="1600" />
+    <Input Name="UserFont" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="Groundwater" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Maxσtot" Type="Numeric" ESA_ID="Result.0" Value="357100" />
+    <Result Name="Maxσtotm" Type="Numeric" ESA_ID="Result.1" Value="281850" />
+    <Result Name="Maxσeff" Type="Numeric" ESA_ID="Result.2" Value="193100" />
+    <Result Name="Maxσeffm" Type="Numeric" ESA_ID="Result.3" Value="152850" />
+    <Result Name="PorePress" Type="Numeric" ESA_ID="Result.4" Value="164000" />
+  </Test>
+  <Test Description="Test 2" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.18">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="ČSN EN 1997-1" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="DrawUnit" Value="False" />
+      <Variable Identifier="DrawVariable" Value="False" />
+      <Variable Identifier="DrawStot" Value="True" />
+      <Variable Identifier="DrawSeff" Value="True" />
+      <Variable Identifier="UserScale" Value="250" />
+      <Variable Identifier="UserFont" Value="10" />
+      <Variable Identifier="Groundwater" Value="True" />
+      <Variable Identifier="hw" Value="1" />
+      <Variable Identifier="TI" Value="1,5|16|20║1|18|21║4|17,5|22,5║3|21|22║7|18,5|21,5" />
+    </Dialog>
+    <Input Name="NA" Type="String" ESA_ID="" Value="ČSN EN 1997-1" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="P1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="hw" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="P2" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="250" />
+    <Input Name="ScaleX" Type="Numeric" ESA_ID="" Value="1.000151e-3" />
+    <Input Name="ScaleY" Type="Numeric" ESA_ID="" Value="30.30303" />
+    <Input Name="DrawSeff" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawStot" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawVariable" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="DrawUnit" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="σw" Type="Numeric" ESA_ID="" Value="16000" />
+    <Input Name="UserFont" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="Groundwater" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Maxσtot" Type="Numeric" ESA_ID="Result.0" Value="353500" />
+    <Result Name="Maxσtotm" Type="Numeric" ESA_ID="Result.1" Value="278250" />
+    <Result Name="Maxσeff" Type="Numeric" ESA_ID="Result.2" Value="198500" />
+    <Result Name="Maxσeffm" Type="Numeric" ESA_ID="Result.3" Value="158250" />
+    <Result Name="PorePress" Type="Numeric" ESA_ID="Result.4" Value="155000" />
+  </Test>
+  <Test Description="Test 3" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.18">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="ČSN EN 1997-1" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="DrawUnit" Value="False" />
+      <Variable Identifier="DrawVariable" Value="False" />
+      <Variable Identifier="DrawStot" Value="True" />
+      <Variable Identifier="DrawSeff" Value="True" />
+      <Variable Identifier="UserScale" Value="250" />
+      <Variable Identifier="UserFont" Value="10" />
+      <Variable Identifier="Groundwater" Value="True" />
+      <Variable Identifier="hw" Value="10" />
+      <Variable Identifier="TI" Value="1,5|16|20║1|18|21║4|17,5|22,5║3|21|22║7|18,5|21,5" />
+    </Dialog>
+    <Input Name="NA" Type="String" ESA_ID="" Value="ČSN EN 1997-1" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="P1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="hw" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="P2" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="250" />
+    <Input Name="ScaleX" Type="Numeric" ESA_ID="" Value="1.091214e-3" />
+    <Input Name="ScaleY" Type="Numeric" ESA_ID="" Value="30.30303" />
+    <Input Name="DrawSeff" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawStot" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawVariable" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="DrawUnit" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="σw" Type="Numeric" ESA_ID="" Value="184250" />
+    <Input Name="UserFont" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="Groundwater" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Maxσtot" Type="Numeric" ESA_ID="Result.0" Value="324000" />
+    <Result Name="Maxσtotm" Type="Numeric" ESA_ID="Result.1" Value="248750" />
+    <Result Name="Maxσeff" Type="Numeric" ESA_ID="Result.2" Value="259000" />
+    <Result Name="Maxσeffm" Type="Numeric" ESA_ID="Result.3" Value="218750" />
+    <Result Name="PorePress" Type="Numeric" ESA_ID="Result.4" Value="65000" />
+  </Test>
+  <Test Description="Test 4" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.18">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="ČSN EN 1997-1" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="DrawUnit" Value="False" />
+      <Variable Identifier="DrawVariable" Value="False" />
+      <Variable Identifier="DrawStot" Value="True" />
+      <Variable Identifier="DrawSeff" Value="True" />
+      <Variable Identifier="UserScale" Value="250" />
+      <Variable Identifier="UserFont" Value="10" />
+      <Variable Identifier="Groundwater" Value="False" />
+      <Variable Identifier="hw" Value="100e-3" />
+      <Variable Identifier="TI" Value="1,5|16|20║1|18|21║4|17,5|22,5║3|21|22║7|18,5|21,5" />
+    </Dialog>
+    <Input Name="NA" Type="String" ESA_ID="" Value="ČSN EN 1997-1" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="P1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="hw" Type="Numeric" ESA_ID="" Value="100e-3" />
+    <Input Name="P2" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="250" />
+    <Input Name="ScaleX" Type="Numeric" ESA_ID="" Value="1.161095e-3" />
+    <Input Name="ScaleY" Type="Numeric" ESA_ID="" Value="30.30303" />
+    <Input Name="DrawSeff" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawStot" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawVariable" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="DrawUnit" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="σw" Type="Numeric" ESA_ID="" Value="184250" />
+    <Input Name="UserFont" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="Groundwater" Type="Bool" ESA_ID="" Value="False" />
+    <Result Name="Maxσtot" Type="Numeric" ESA_ID="Result.0" Value="304500" />
+    <Result Name="Maxσtotm" Type="Numeric" ESA_ID="Result.1" Value="239750" />
+    <Result Name="Maxσeff" Type="Numeric" ESA_ID="Result.2" Value="0" />
+    <Result Name="Maxσeffm" Type="Numeric" ESA_ID="Result.3" Value="0" />
+    <Result Name="PorePress" Type="Numeric" ESA_ID="Result.4" Value="0" />
+  </Test>
+  <Test Description="Test 5" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.18">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="ČSN EN 1997-1" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="DrawUnit" Value="False" />
+      <Variable Identifier="DrawVariable" Value="False" />
+      <Variable Identifier="DrawStot" Value="True" />
+      <Variable Identifier="DrawSeff" Value="True" />
+      <Variable Identifier="UserScale" Value="250" />
+      <Variable Identifier="UserFont" Value="10" />
+      <Variable Identifier="Groundwater" Value="False" />
+      <Variable Identifier="hw" Value="1" />
+      <Variable Identifier="TI" Value="1,5|16|20║1|18|21║4|17,5|22,5║3|21|22║7|18,5|21,5" />
+    </Dialog>
+    <Input Name="NA" Type="String" ESA_ID="" Value="ČSN EN 1997-1" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="P1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="hw" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="P2" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="250" />
+    <Input Name="ScaleX" Type="Numeric" ESA_ID="" Value="1.161095e-3" />
+    <Input Name="ScaleY" Type="Numeric" ESA_ID="" Value="30.30303" />
+    <Input Name="DrawSeff" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawStot" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawVariable" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="DrawUnit" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="σw" Type="Numeric" ESA_ID="" Value="184250" />
+    <Input Name="UserFont" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="Groundwater" Type="Bool" ESA_ID="" Value="False" />
+    <Result Name="Maxσtot" Type="Numeric" ESA_ID="Result.0" Value="304500" />
+    <Result Name="Maxσtotm" Type="Numeric" ESA_ID="Result.1" Value="239750" />
+    <Result Name="Maxσeff" Type="Numeric" ESA_ID="Result.2" Value="0" />
+    <Result Name="Maxσeffm" Type="Numeric" ESA_ID="Result.3" Value="0" />
+    <Result Name="PorePress" Type="Numeric" ESA_ID="Result.4" Value="0" />
+  </Test>
+  <Test Description="Test 6" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.18">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="ČSN EN 1997-1" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="DrawUnit" Value="False" />
+      <Variable Identifier="DrawVariable" Value="False" />
+      <Variable Identifier="DrawStot" Value="True" />
+      <Variable Identifier="DrawSeff" Value="True" />
+      <Variable Identifier="UserScale" Value="250" />
+      <Variable Identifier="UserFont" Value="10" />
+      <Variable Identifier="Groundwater" Value="False" />
+      <Variable Identifier="hw" Value="10" />
+      <Variable Identifier="TI" Value="1,5|16|20║1|18|21║4|17,5|22,5║3|21|22║7|18,5|21,5" />
+    </Dialog>
+    <Input Name="NA" Type="String" ESA_ID="" Value="ČSN EN 1997-1" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="P1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="hw" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="P2" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="250" />
+    <Input Name="ScaleX" Type="Numeric" ESA_ID="" Value="1.161095e-3" />
+    <Input Name="ScaleY" Type="Numeric" ESA_ID="" Value="30.30303" />
+    <Input Name="DrawSeff" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawStot" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawVariable" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="DrawUnit" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="σw" Type="Numeric" ESA_ID="" Value="184250" />
+    <Input Name="UserFont" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="Groundwater" Type="Bool" ESA_ID="" Value="False" />
+    <Result Name="Maxσtot" Type="Numeric" ESA_ID="Result.0" Value="304500" />
+    <Result Name="Maxσtotm" Type="Numeric" ESA_ID="Result.1" Value="239750" />
+    <Result Name="Maxσeff" Type="Numeric" ESA_ID="Result.2" Value="0" />
+    <Result Name="Maxσeffm" Type="Numeric" ESA_ID="Result.3" Value="0" />
+    <Result Name="PorePress" Type="Numeric" ESA_ID="Result.4" Value="0" />
+  </Test>
+  <Test Description="Test 7" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.22">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="ČSN EN 1997-1" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="P2" Value="True" />
+      <Variable Identifier="DrawUnit" Value="False" />
+      <Variable Identifier="DrawVariable" Value="False" />
+      <Variable Identifier="DrawStot" Value="True" />
+      <Variable Identifier="DrawSeff" Value="True" />
+      <Variable Identifier="UserScale" Value="250" />
+      <Variable Identifier="UserFont" Value="10" />
+      <Variable Identifier="Groundwater" Value="True" />
+      <Variable Identifier="hw" Value="8.5" />
+      <Variable Identifier="TI" Value="1,5|16|20║1|18|21║4|17,5|22,5║3|21|22║7|18,5|21,5" />
+    </Dialog>
+    <Input Name="NA" Type="String" ESA_ID="" Value="ČSN EN 1997-1" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="P1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="hw" Type="Numeric" ESA_ID="" Value="8.5" />
+    <Input Name="P2" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="250" />
+    <Input Name="ScaleX" Type="Numeric" ESA_ID="" Value="1.082859e-3" />
+    <Input Name="ScaleY" Type="Numeric" ESA_ID="" Value="30.30303" />
+    <Input Name="DrawSeff" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawStot" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawVariable" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="DrawUnit" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="σw" Type="Numeric" ESA_ID="" Value="154000" />
+    <Input Name="UserFont" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="Groundwater" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Maxσtot" Type="Numeric" ESA_ID="Result.0" Value="326500" />
+    <Result Name="Maxσtotm" Type="Numeric" ESA_ID="Result.1" Value="251250" />
+    <Result Name="Maxσeff" Type="Numeric" ESA_ID="Result.2" Value="246500" />
+    <Result Name="Maxσeffm" Type="Numeric" ESA_ID="Result.3" Value="206250" />
+    <Result Name="PorePress" Type="Numeric" ESA_ID="Result.4" Value="80000" />
+  </Test>
+</Root>

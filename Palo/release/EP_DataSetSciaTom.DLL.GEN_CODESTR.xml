@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="1"><StringCode SourceType="DLLRC:"><StringId>@{datasetsciatom.2eima_9000}</StringId>
+		<SourceDll>EP_DataSetSciaTom.2eDLL</SourceDll>
+		<ResourceId>9000</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

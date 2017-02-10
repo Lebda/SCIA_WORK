@@ -1,0 +1,1111 @@
+﻿<Root Version="1" Type="CustomLibrary" GUID="7f10ac90-5215-4b82-b4fd-619c4c7e6fd7">
+  <Header>
+    <PropertySet Symbol="d↓b←" ESA_ID="d↓b←" Unit="in" Type="Numeric">
+      <Description TranslateID="d↓b←">
+        <ENU>Rebar Diameter</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="A↓s←" ESA_ID="A↓s←" Unit="in↑2←" Type="Numeric">
+      <Description TranslateID="A↓s←">
+        <ENU>Nominal Bar Area</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="w↓s←" ESA_ID="w↓s←" Unit="lb/ft" Type="Numeric">
+      <Description TranslateID="w↓s←">
+        <ENU>Weight (per unit length)</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="fy" ESA_ID="fy" Unit="ksi" Type="Numeric">
+      <Description TranslateID="fy">
+        <ENU>Yield Strength</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="E" ESA_ID="E" Unit="ksi" Type="Numeric">
+      <Description TranslateID="E">
+        <ENU>Modulus of Elasticity</ENU>
+      </Description>
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>ASTM A615 Gr. 40</Property>
+      <Property>#3 </Property>
+      <Property>0.375</Property>
+      <Property>0.110</Property>
+      <Property>0.376</Property>
+      <Property>40</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 40</Property>
+      <Property>#4 </Property>
+      <Property>0.500</Property>
+      <Property>0.196</Property>
+      <Property>0.668</Property>
+      <Property>40</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 40</Property>
+      <Property>#5 </Property>
+      <Property>0.625</Property>
+      <Property>0.307</Property>
+      <Property>1.043</Property>
+      <Property>40</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 40</Property>
+      <Property>#6 </Property>
+      <Property>0.750</Property>
+      <Property>0.442</Property>
+      <Property>1.502</Property>
+      <Property>40</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 40</Property>
+      <Property>#7 </Property>
+      <Property>0.875</Property>
+      <Property>0.601</Property>
+      <Property>2.044</Property>
+      <Property>40</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 40</Property>
+      <Property>#8 </Property>
+      <Property>1.000</Property>
+      <Property>0.785</Property>
+      <Property>2.670</Property>
+      <Property>40</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 40</Property>
+      <Property>#9 </Property>
+      <Property>1.280</Property>
+      <Property>1.287</Property>
+      <Property>3.400</Property>
+      <Property>40</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 40</Property>
+      <Property>#10 </Property>
+      <Property>1.270</Property>
+      <Property>1.267</Property>
+      <Property>4.303</Property>
+      <Property>40</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 40</Property>
+      <Property>#11 </Property>
+      <Property>1.410</Property>
+      <Property>1.561</Property>
+      <Property>5.313</Property>
+      <Property>40</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 40</Property>
+      <Property>#12 </Property>
+      <Property>1.500</Property>
+      <Property>1.767</Property>
+      <Property>6.424</Property>
+      <Property>40</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 40</Property>
+      <Property>#14 </Property>
+      <Property>1.693</Property>
+      <Property>2.251</Property>
+      <Property>7.650</Property>
+      <Property>40</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 40</Property>
+      <Property>#18 </Property>
+      <Property>2.257</Property>
+      <Property>4.001</Property>
+      <Property>13.600</Property>
+      <Property>40</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 60</Property>
+      <Property>#3 </Property>
+      <Property>0.375</Property>
+      <Property>0.110</Property>
+      <Property>0.376</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 60</Property>
+      <Property>#4 </Property>
+      <Property>0.500</Property>
+      <Property>0.196</Property>
+      <Property>0.668</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 60</Property>
+      <Property>#5 </Property>
+      <Property>0.625</Property>
+      <Property>0.307</Property>
+      <Property>1.043</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 60</Property>
+      <Property>#6 </Property>
+      <Property>0.750</Property>
+      <Property>0.442</Property>
+      <Property>1.502</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 60</Property>
+      <Property>#7 </Property>
+      <Property>0.875</Property>
+      <Property>0.601</Property>
+      <Property>2.044</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 60</Property>
+      <Property>#8 </Property>
+      <Property>1.000</Property>
+      <Property>0.785</Property>
+      <Property>2.670</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 60</Property>
+      <Property>#9 </Property>
+      <Property>1.280</Property>
+      <Property>1.287</Property>
+      <Property>3.400</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 60</Property>
+      <Property>#10 </Property>
+      <Property>1.270</Property>
+      <Property>1.267</Property>
+      <Property>4.303</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 60</Property>
+      <Property>#11 </Property>
+      <Property>1.410</Property>
+      <Property>1.561</Property>
+      <Property>5.313</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 60</Property>
+      <Property>#12 </Property>
+      <Property>1.500</Property>
+      <Property>1.767</Property>
+      <Property>6.424</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 60</Property>
+      <Property>#14 </Property>
+      <Property>1.693</Property>
+      <Property>2.251</Property>
+      <Property>7.650</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 60</Property>
+      <Property>#18 </Property>
+      <Property>2.257</Property>
+      <Property>4.001</Property>
+      <Property>13.600</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 75</Property>
+      <Property>#3 </Property>
+      <Property>0.375</Property>
+      <Property>0.110</Property>
+      <Property>0.376</Property>
+      <Property>75</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 75</Property>
+      <Property>#4 </Property>
+      <Property>0.500</Property>
+      <Property>0.196</Property>
+      <Property>0.668</Property>
+      <Property>75</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 75</Property>
+      <Property>#5 </Property>
+      <Property>0.625</Property>
+      <Property>0.307</Property>
+      <Property>1.043</Property>
+      <Property>75</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 75</Property>
+      <Property>#6 </Property>
+      <Property>0.750</Property>
+      <Property>0.442</Property>
+      <Property>1.502</Property>
+      <Property>75</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 75</Property>
+      <Property>#7 </Property>
+      <Property>0.875</Property>
+      <Property>0.601</Property>
+      <Property>2.044</Property>
+      <Property>75</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 75</Property>
+      <Property>#8 </Property>
+      <Property>1.000</Property>
+      <Property>0.785</Property>
+      <Property>2.670</Property>
+      <Property>75</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 75</Property>
+      <Property>#9 </Property>
+      <Property>1.280</Property>
+      <Property>1.287</Property>
+      <Property>3.400</Property>
+      <Property>75</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 75</Property>
+      <Property>#10 </Property>
+      <Property>1.270</Property>
+      <Property>1.267</Property>
+      <Property>4.303</Property>
+      <Property>75</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 75</Property>
+      <Property>#11 </Property>
+      <Property>1.410</Property>
+      <Property>1.561</Property>
+      <Property>5.313</Property>
+      <Property>75</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 75</Property>
+      <Property>#12 </Property>
+      <Property>1.500</Property>
+      <Property>1.767</Property>
+      <Property>6.424</Property>
+      <Property>75</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 75</Property>
+      <Property>#14 </Property>
+      <Property>1.693</Property>
+      <Property>2.251</Property>
+      <Property>7.650</Property>
+      <Property>75</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 75</Property>
+      <Property>#18 </Property>
+      <Property>2.257</Property>
+      <Property>4.001</Property>
+      <Property>13.600</Property>
+      <Property>75</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 80</Property>
+      <Property>#3 </Property>
+      <Property>0.375</Property>
+      <Property>0.110</Property>
+      <Property>0.376</Property>
+      <Property>80</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 80</Property>
+      <Property>#4 </Property>
+      <Property>0.500</Property>
+      <Property>0.196</Property>
+      <Property>0.668</Property>
+      <Property>80</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 80</Property>
+      <Property>#5 </Property>
+      <Property>0.625</Property>
+      <Property>0.307</Property>
+      <Property>1.043</Property>
+      <Property>80</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 80</Property>
+      <Property>#6 </Property>
+      <Property>0.750</Property>
+      <Property>0.442</Property>
+      <Property>1.502</Property>
+      <Property>80</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 80</Property>
+      <Property>#7 </Property>
+      <Property>0.875</Property>
+      <Property>0.601</Property>
+      <Property>2.044</Property>
+      <Property>80</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 80</Property>
+      <Property>#8 </Property>
+      <Property>1.000</Property>
+      <Property>0.785</Property>
+      <Property>2.670</Property>
+      <Property>80</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 80</Property>
+      <Property>#9 </Property>
+      <Property>1.280</Property>
+      <Property>1.287</Property>
+      <Property>3.400</Property>
+      <Property>80</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 80</Property>
+      <Property>#10 </Property>
+      <Property>1.270</Property>
+      <Property>1.267</Property>
+      <Property>4.303</Property>
+      <Property>80</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 80</Property>
+      <Property>#11 </Property>
+      <Property>1.410</Property>
+      <Property>1.561</Property>
+      <Property>5.313</Property>
+      <Property>80</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 80</Property>
+      <Property>#12 </Property>
+      <Property>1.500</Property>
+      <Property>1.767</Property>
+      <Property>6.424</Property>
+      <Property>80</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 80</Property>
+      <Property>#14 </Property>
+      <Property>1.693</Property>
+      <Property>2.251</Property>
+      <Property>7.650</Property>
+      <Property>80</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A615 Gr. 80</Property>
+      <Property>#18 </Property>
+      <Property>2.257</Property>
+      <Property>4.001</Property>
+      <Property>13.600</Property>
+      <Property>80</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A706 Gr. 60</Property>
+      <Property>#3 </Property>
+      <Property>0.375</Property>
+      <Property>0.110</Property>
+      <Property>0.376</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A706 Gr. 60</Property>
+      <Property>#4 </Property>
+      <Property>0.500</Property>
+      <Property>0.196</Property>
+      <Property>0.668</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A706 Gr. 60</Property>
+      <Property>#5 </Property>
+      <Property>0.625</Property>
+      <Property>0.307</Property>
+      <Property>1.043</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A706 Gr. 60</Property>
+      <Property>#6 </Property>
+      <Property>0.750</Property>
+      <Property>0.442</Property>
+      <Property>1.502</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A706 Gr. 60</Property>
+      <Property>#7 </Property>
+      <Property>0.875</Property>
+      <Property>0.601</Property>
+      <Property>2.044</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A706 Gr. 60</Property>
+      <Property>#8 </Property>
+      <Property>1.000</Property>
+      <Property>0.785</Property>
+      <Property>2.670</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A706 Gr. 60</Property>
+      <Property>#9 </Property>
+      <Property>1.280</Property>
+      <Property>1.287</Property>
+      <Property>3.400</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A706 Gr. 60</Property>
+      <Property>#10 </Property>
+      <Property>1.270</Property>
+      <Property>1.267</Property>
+      <Property>4.303</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A706 Gr. 60</Property>
+      <Property>#11 </Property>
+      <Property>1.410</Property>
+      <Property>1.561</Property>
+      <Property>5.313</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A706 Gr. 60</Property>
+      <Property>#12 </Property>
+      <Property>1.500</Property>
+      <Property>1.767</Property>
+      <Property>6.424</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A706 Gr. 60</Property>
+      <Property>#14 </Property>
+      <Property>1.693</Property>
+      <Property>2.251</Property>
+      <Property>7.650</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A706 Gr. 60</Property>
+      <Property>#18 </Property>
+      <Property>2.257</Property>
+      <Property>4.001</Property>
+      <Property>13.600</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A706 Gr. 80</Property>
+      <Property>#3 </Property>
+      <Property>0.375</Property>
+      <Property>0.110</Property>
+      <Property>0.376</Property>
+      <Property>80</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A706 Gr. 80</Property>
+      <Property>#4 </Property>
+      <Property>0.500</Property>
+      <Property>0.196</Property>
+      <Property>0.668</Property>
+      <Property>80</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A706 Gr. 80</Property>
+      <Property>#5 </Property>
+      <Property>0.625</Property>
+      <Property>0.307</Property>
+      <Property>1.043</Property>
+      <Property>80</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A706 Gr. 80</Property>
+      <Property>#6 </Property>
+      <Property>0.750</Property>
+      <Property>0.442</Property>
+      <Property>1.502</Property>
+      <Property>80</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A706 Gr. 80</Property>
+      <Property>#7 </Property>
+      <Property>0.875</Property>
+      <Property>0.601</Property>
+      <Property>2.044</Property>
+      <Property>80</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A706 Gr. 80</Property>
+      <Property>#8 </Property>
+      <Property>1.000</Property>
+      <Property>0.785</Property>
+      <Property>2.670</Property>
+      <Property>80</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A706 Gr. 80</Property>
+      <Property>#9 </Property>
+      <Property>1.280</Property>
+      <Property>1.287</Property>
+      <Property>3.400</Property>
+      <Property>80</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A706 Gr. 80</Property>
+      <Property>#10 </Property>
+      <Property>1.270</Property>
+      <Property>1.267</Property>
+      <Property>4.303</Property>
+      <Property>80</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A706 Gr. 80</Property>
+      <Property>#11 </Property>
+      <Property>1.410</Property>
+      <Property>1.561</Property>
+      <Property>5.313</Property>
+      <Property>80</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A706 Gr. 80</Property>
+      <Property>#12 </Property>
+      <Property>1.500</Property>
+      <Property>1.767</Property>
+      <Property>6.424</Property>
+      <Property>80</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A706 Gr. 80</Property>
+      <Property>#14 </Property>
+      <Property>1.693</Property>
+      <Property>2.251</Property>
+      <Property>7.650</Property>
+      <Property>80</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A706 Gr. 80</Property>
+      <Property>#18 </Property>
+      <Property>2.257</Property>
+      <Property>4.001</Property>
+      <Property>13.600</Property>
+      <Property>80</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A955 Gr. 60</Property>
+      <Property>#3 </Property>
+      <Property>0.375</Property>
+      <Property>0.110</Property>
+      <Property>0.376</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A955 Gr. 60</Property>
+      <Property>#4 </Property>
+      <Property>0.500</Property>
+      <Property>0.196</Property>
+      <Property>0.668</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A955 Gr. 60</Property>
+      <Property>#5 </Property>
+      <Property>0.625</Property>
+      <Property>0.307</Property>
+      <Property>1.043</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A955 Gr. 60</Property>
+      <Property>#6 </Property>
+      <Property>0.750</Property>
+      <Property>0.442</Property>
+      <Property>1.502</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A955 Gr. 60</Property>
+      <Property>#7 </Property>
+      <Property>0.875</Property>
+      <Property>0.601</Property>
+      <Property>2.044</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A955 Gr. 60</Property>
+      <Property>#8 </Property>
+      <Property>1.000</Property>
+      <Property>0.785</Property>
+      <Property>2.670</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A955 Gr. 60</Property>
+      <Property>#9 </Property>
+      <Property>1.280</Property>
+      <Property>1.287</Property>
+      <Property>3.400</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A955 Gr. 60</Property>
+      <Property>#10 </Property>
+      <Property>1.270</Property>
+      <Property>1.267</Property>
+      <Property>4.303</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A955 Gr. 60</Property>
+      <Property>#11 </Property>
+      <Property>1.410</Property>
+      <Property>1.561</Property>
+      <Property>5.313</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A955 Gr. 60</Property>
+      <Property>#12 </Property>
+      <Property>1.500</Property>
+      <Property>1.767</Property>
+      <Property>6.424</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A955 Gr. 60</Property>
+      <Property>#14 </Property>
+      <Property>1.693</Property>
+      <Property>2.251</Property>
+      <Property>7.650</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A955 Gr. 60</Property>
+      <Property>#18 </Property>
+      <Property>2.257</Property>
+      <Property>4.001</Property>
+      <Property>13.600</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A955 Gr. 75</Property>
+      <Property>#3 </Property>
+      <Property>0.375</Property>
+      <Property>0.110</Property>
+      <Property>0.376</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A955 Gr. 75</Property>
+      <Property>#4 </Property>
+      <Property>0.500</Property>
+      <Property>0.196</Property>
+      <Property>0.668</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A955 Gr. 75</Property>
+      <Property>#5 </Property>
+      <Property>0.625</Property>
+      <Property>0.307</Property>
+      <Property>1.043</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A955 Gr. 75</Property>
+      <Property>#6 </Property>
+      <Property>0.750</Property>
+      <Property>0.442</Property>
+      <Property>1.502</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A955 Gr. 75</Property>
+      <Property>#7 </Property>
+      <Property>0.875</Property>
+      <Property>0.601</Property>
+      <Property>2.044</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A955 Gr. 75</Property>
+      <Property>#8 </Property>
+      <Property>1.000</Property>
+      <Property>0.785</Property>
+      <Property>2.670</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A955 Gr. 75</Property>
+      <Property>#9 </Property>
+      <Property>1.280</Property>
+      <Property>1.287</Property>
+      <Property>3.400</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A955 Gr. 75</Property>
+      <Property>#10 </Property>
+      <Property>1.270</Property>
+      <Property>1.267</Property>
+      <Property>4.303</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A955 Gr. 75</Property>
+      <Property>#11 </Property>
+      <Property>1.410</Property>
+      <Property>1.561</Property>
+      <Property>5.313</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A955 Gr. 75</Property>
+      <Property>#12 </Property>
+      <Property>1.500</Property>
+      <Property>1.767</Property>
+      <Property>6.424</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A955 Gr. 75</Property>
+      <Property>#14 </Property>
+      <Property>1.693</Property>
+      <Property>2.251</Property>
+      <Property>7.650</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A955 Gr. 75</Property>
+      <Property>#18 </Property>
+      <Property>2.257</Property>
+      <Property>4.001</Property>
+      <Property>13.600</Property>
+      <Property>60</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A1035 Gr. 100</Property>
+      <Property>#3 </Property>
+      <Property>0.375</Property>
+      <Property>0.110</Property>
+      <Property>0.376</Property>
+      <Property>100</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A1035 Gr. 100</Property>
+      <Property>#4 </Property>
+      <Property>0.500</Property>
+      <Property>0.196</Property>
+      <Property>0.668</Property>
+      <Property>100</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A1035 Gr. 100</Property>
+      <Property>#5 </Property>
+      <Property>0.625</Property>
+      <Property>0.307</Property>
+      <Property>1.043</Property>
+      <Property>100</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A1035 Gr. 100</Property>
+      <Property>#6 </Property>
+      <Property>0.750</Property>
+      <Property>0.442</Property>
+      <Property>1.502</Property>
+      <Property>100</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A1035 Gr. 100</Property>
+      <Property>#7 </Property>
+      <Property>0.875</Property>
+      <Property>0.601</Property>
+      <Property>2.044</Property>
+      <Property>100</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A1035 Gr. 100</Property>
+      <Property>#8 </Property>
+      <Property>1.000</Property>
+      <Property>0.785</Property>
+      <Property>2.670</Property>
+      <Property>100</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A1035 Gr. 100</Property>
+      <Property>#9 </Property>
+      <Property>1.280</Property>
+      <Property>1.287</Property>
+      <Property>3.400</Property>
+      <Property>100</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A1035 Gr. 100</Property>
+      <Property>#10 </Property>
+      <Property>1.270</Property>
+      <Property>1.267</Property>
+      <Property>4.303</Property>
+      <Property>100</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A1035 Gr. 100</Property>
+      <Property>#11 </Property>
+      <Property>1.410</Property>
+      <Property>1.561</Property>
+      <Property>5.313</Property>
+      <Property>100</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A1035 Gr. 100</Property>
+      <Property>#12 </Property>
+      <Property>1.500</Property>
+      <Property>1.767</Property>
+      <Property>6.424</Property>
+      <Property>100</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A1035 Gr. 100</Property>
+      <Property>#14 </Property>
+      <Property>1.693</Property>
+      <Property>2.251</Property>
+      <Property>7.650</Property>
+      <Property>100</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A1035 Gr. 100</Property>
+      <Property>#18 </Property>
+      <Property>2.257</Property>
+      <Property>4.001</Property>
+      <Property>13.600</Property>
+      <Property>100</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A1035 Gr. 120</Property>
+      <Property>#3 </Property>
+      <Property>0.375</Property>
+      <Property>0.110</Property>
+      <Property>0.376</Property>
+      <Property>120</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A1035 Gr. 120</Property>
+      <Property>#4 </Property>
+      <Property>0.500</Property>
+      <Property>0.196</Property>
+      <Property>0.668</Property>
+      <Property>120</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A1035 Gr. 120</Property>
+      <Property>#5 </Property>
+      <Property>0.625</Property>
+      <Property>0.307</Property>
+      <Property>1.043</Property>
+      <Property>120</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A1035 Gr. 120</Property>
+      <Property>#6 </Property>
+      <Property>0.750</Property>
+      <Property>0.442</Property>
+      <Property>1.502</Property>
+      <Property>120</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A1035 Gr. 120</Property>
+      <Property>#7 </Property>
+      <Property>0.875</Property>
+      <Property>0.601</Property>
+      <Property>2.044</Property>
+      <Property>120</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A1035 Gr. 120</Property>
+      <Property>#8 </Property>
+      <Property>1.000</Property>
+      <Property>0.785</Property>
+      <Property>2.670</Property>
+      <Property>120</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A1035 Gr. 120</Property>
+      <Property>#9 </Property>
+      <Property>1.280</Property>
+      <Property>1.287</Property>
+      <Property>3.400</Property>
+      <Property>120</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A1035 Gr. 120</Property>
+      <Property>#10 </Property>
+      <Property>1.270</Property>
+      <Property>1.267</Property>
+      <Property>4.303</Property>
+      <Property>120</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A1035 Gr. 120</Property>
+      <Property>#11 </Property>
+      <Property>1.410</Property>
+      <Property>1.561</Property>
+      <Property>5.313</Property>
+      <Property>120</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A1035 Gr. 120</Property>
+      <Property>#12 </Property>
+      <Property>1.500</Property>
+      <Property>1.767</Property>
+      <Property>6.424</Property>
+      <Property>120</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A1035 Gr. 120</Property>
+      <Property>#14 </Property>
+      <Property>1.693</Property>
+      <Property>2.251</Property>
+      <Property>7.650</Property>
+      <Property>120</Property>
+      <Property>29000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A1035 Gr. 120</Property>
+      <Property>#18 </Property>
+      <Property>2.257</Property>
+      <Property>4.001</Property>
+      <Property>13.600</Property>
+      <Property>120</Property>
+      <Property>29000</Property>
+    </Item>
+  </Items>
+</Root>

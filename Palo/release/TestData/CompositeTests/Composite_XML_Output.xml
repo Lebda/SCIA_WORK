@@ -1,0 +1,88 @@
+﻿<Root>
+  <Styles />
+  <Output>
+    <VC Type="TText" Style="" AlH="0" AlV="4" X="0" Y="5" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2">Distance of the neutral axis</VC>
+    <VC Type="TText" Style="" AlH="1" AlV="4" X="10" Y="5" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2">x = 6.666667/300e-3*(603.1858e-6+628.3185e-6)*(-1+Sqrt(1+2*300e-3/6.666667*(603.1858e-6*457e-3+628.3185e-6*45e-3)/Power((603.1858e-6+628.3185e-6), 2))) = </VC>
+    <VC Type="TText" Style="" AlH="1" AlV="4" X="0" Y="5" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2">= 6.666667/300e-3*(603.1858e-6+628.3185e-6)*(-1+Sqrt(1+2*300e-3/6.666667*(603.1858e-6*457e-3+628.3185e-6*45e-3)/Power((603.1858e-6+628.3185e-6), 2))) = 92 mm</VC>
+    <VC Type="TText" Style="" AlH="0" AlV="4" X="0" Y="10" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2">Eff. height of conc. cross section</VC>
+    <VC Type="TAssignment" Style="" AlH="0" AlV="2" X="300" Y="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2">h↓ceff← = min(2.5*(500e-3-457e-3), 500e-3-92.03571e-3/3, 500e-3/2) = 108 mm</VC>
+    <VC Type="TText" Style="" AlH="0" AlV="4" X="0" Y="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2">Effective area of concrete cross section</VC>
+    <VC Type="TAssignment" Style="" AlH="0" AlV="4" X="220" Y="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2">A↓ceff← = 300e-3*107.5e-3 = 32250 mm↑2←</VC>
+    <VC Type="TCollapsibleBlock" Style="" AlH="1" AlV="4" X="0" Y="5" Font1="Tahoma|13|0|2" Font2="Tahoma|13|5|2" Collapsed="0">Cross section parameters</VC>
+    <VC Type="TPageBreak" Style="" AlH="1" AlV="4" X="0" Y="5" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" Active="1">292</VC>
+    <VC Type="TText" Style="" AlH="0" AlV="4" X="0" Y="5" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2">Ration of bond strength</VC>
+    <VC Type="TAssignment" Style="" AlH="0" AlV="2" X="250" Y="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2">ξ↓1← = 0 = 0 </VC>
+    <VC Type="TText" Style="" AlH="0" AlV="4" X="0" Y="10" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2">Coefficient of materials</VC>
+    <VC Type="TText" Style="" AlH="0" AlV="2" X="250" Y="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2">α↓e← = 200e9/30e9 = 200e9/30e9 = 6.666667</VC>
+    <VC Type="TText" Style="" AlH="0" AlV="4" X="0" Y="15" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2">Prestressed reinforcement ration</VC>
+    <VC Type="TAssignment" Style="" AlH="0" AlV="2" X="250" Y="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2">ρ↓peff← = (603.1858e-6+Power(0, 2)*0)/32.25e-3 = 0.0187 </VC>
+    <VC Type="TCollapsibleBlock" Style="" AlH="1" AlV="4" X="0" Y="5" Font1="Tahoma|13|0|2" Font2="Tahoma|13|5|2" Collapsed="0">The ration of reinforcement:</VC>
+    <VC Type="TPageBreak" Style="" AlH="1" AlV="4" X="0" Y="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" Active="1">409</VC>
+    <VC Type="TImage" Style="%Def">Cracks</VC>
+    <VC Type="TPageBreak" Style="" AlH="1" AlV="4" X="0" Y="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" Active="1">576</VC>
+    <VC Type="TText" Style="" AlH="0" AlV="4" X="0" Y="5" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2">Coefficient of load duration</VC>
+    <VC Type="TText" Style="" AlH="0" AlV="4" X="50" Y="0" Font1="Tahoma|13|2|2" Font2="Tahoma|13|2|2">Loading is long-term</VC>
+    <VC Type="TAssignment" Style="" AlH="0" AlV="2" X="250" Y="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2">k↓t← = 0.4 = 0.4 </VC>
+    <VC Type="TText" Style="" AlH="0" AlV="4" X="0" Y="5" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2">Calculation of stress:</VC>
+    <VC Type="TAssignment" Style="" AlH="0" AlV="1" X="180" Y="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2">ε↓1← = 603.1858e-6*200e9*Power((92.03571e-3-457e-3), 2)/92.03571e-3 = 175∙10↑6← </VC>
+    <VC Type="TAssignment" Style="" AlH="0" AlV="4" X="180" Y="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2">ε↓2← = 628.3185e-6*200e9*Power((92.03571e-3-45e-3), 2)/92.03571e-3 = 3.02∙10↑6← </VC>
+    <VC Type="TAssignment" Style="" AlH="0" AlV="4" X="180" Y="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2">ε↓c← = 45000/174.5925e6+3.020709e6+0.5*300e-3*92.03571e-3*30e9*2/3*92.03571e-3 = 0.222 ‰</VC>
+    <VC Type="TAssignment" Style="" AlH="0" AlV="4" X="180" Y="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2">σ↓s1← = 200e9*221.6477e-6*457e-3-92.03571e-3/92.03571e-3 = 176 MPa</VC>
+    <VC Type="TPageBreak" Style="" AlH="1" AlV="4" X="0" Y="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" Active="1">843</VC>
+    <VC Type="TText" Style="" AlH="0" AlV="4" X="0" Y="5" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2">Difference between stress of steel and concrete</VC>
+    <VC Type="TText" Style="" AlH="0" AlV="4" X="50" Y="5" Font1="Tahoma|13|2|2" Font2="Tahoma|13|2|2">remark: σs1 - stress in tension reinf. on section with crack.</VC>
+    <VC Type="TText" Style="" AlH="0" AlV="4" X="50" Y="0" Font1="Tahoma|13|2|2" Font2="Tahoma|13|2|2">It can be substitued for prestressed members by Δσp</VC>
+    <VC Type="TText" Style="" AlH="0" AlV="4" X="50" Y="0" Font1="Tahoma|13|2|2" Font2="Tahoma|13|2|2">in prestressed reinf. from zero status of compressive strain of concrete on the same level.</VC>
+    <VC Type="TAssignment" Style="" AlH="0" AlV="4" X="100" Y="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|4|2">Δε↓sc← = 175.7872e6-400e-3*2.2e6/18.70344e-3*(1+6.666667*18.70344e-3)/200e9 = 614∙10↑-6← </VC>
+    <VC Type="TCollapsibleBlock" Style="" AlH="1" AlV="4" X="0" Y="5" Font1="Tahoma|13|0|2" Font2="Tahoma|13|5|2" Collapsed="0">Stress calculation:</VC>
+    <VC Type="TPageBreak" Style="" AlH="1" AlV="4" X="0" Y="5" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" Active="1">1018</VC>
+    <VC Type="TText" Style="" AlH="0" AlV="4" X="0" Y="5" Font1="Tahoma|13|4|2" Font2="Tahoma|13|0|2">Maximum crack distance</VC>
+    <VC Type="TAssignment" Style="" AlH="0" AlV="2" X="220" Y="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|5|2">s↓rmax← = 3.4*35e-3+1.6*500e-3*425e-3*16e-3/18.70344e-3 = 410 mm</VC>
+    <VC Type="TText" Style="" AlH="0" AlV="4" X="0" Y="5" Font1="Tahoma|13|4|2" Font2="Tahoma|13|0|2">Crack width</VC>
+    <VC Type="TAssignment" Style="" AlH="0" AlV="2" X="220" Y="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|5|2">w↓k← = 409.8557e-3*614.3518e-6 = 0.252 mm</VC>
+    <VC Type="TCollapsibleBlock" Style="" AlH="1" AlV="4" X="0" Y="5" Font1="Tahoma|13|0|2" Font2="Tahoma|13|5|2" Collapsed="0">Calculation crack width:</VC>
+    <VC Type="TPageBreak" Style="" AlH="1" AlV="4" X="0" Y="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" Active="1">1121</VC>
+    <VC Type="TContainer" Style="" AlH="1" AlV="4" X="0" Y="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" ContentType="Table" Font="Arial|13|0|2" Padding="10101010" BorderPen="System.Drawing.Pen" GridPen="System.Drawing.Pen">
+      <Col Width="124" Wrap="0" BackBrush="" Alignment="-1" />
+      <Col Width="155" Wrap="0" BackBrush="" Alignment="-1" />
+      <Col Width="198" Wrap="0" BackBrush="" Alignment="32" />
+      <Col Width="355" Wrap="0" BackBrush="" Alignment="-1" />
+      <Row Font="Arial Black|16|0|2" Padding="" BorderPen="Pen[DarkRed, 3, Solid]" BottomBorderPen="" BackBrush="">
+        <Cell Font="" Padding="" BackBrush="" Alignment="-1">Column one</Cell>
+        <Cell Font="" Padding="" BackBrush="" Alignment="-1">Second column</Cell>
+        <Cell Font="" Padding="" BackBrush="" Alignment="-1">Equations4.InstructionList</Cell>
+        <Cell Font="" Padding="" BackBrush="" Alignment="-1">Image</Cell>
+      </Row>
+      <Row Font="" Padding="" BorderPen="" BottomBorderPen="" BackBrush="">
+        <Cell Font="" Padding="" BackBrush="" Alignment="32">1</Cell>
+        <Cell Font="" Padding="" BackBrush="" Alignment="32">10</Cell>
+        <Cell Font="" Padding="" BackBrush="" Alignment="-1">Equations4.InstructionList</Cell>
+        <Cell Font="" Padding="" BackBrush="" Alignment="-1">Equations4.InstructionList</Cell>
+      </Row>
+      <Row Font="" Padding="" BorderPen="" BottomBorderPen="" BackBrush="">
+        <Cell Font="" Padding="" BackBrush="" Alignment="32">2</Cell>
+        <Cell Font="" Padding="" BackBrush="" Alignment="32">20</Cell>
+        <Cell Font="" Padding="" BackBrush="" Alignment="-1">Equations4.InstructionList</Cell>
+        <Cell Font="" Padding="" BackBrush="" Alignment="-1">Equations4.InstructionList</Cell>
+      </Row>
+      <Row Font="" Padding="" BorderPen="" BottomBorderPen="" BackBrush="">
+        <Cell Font="" Padding="" BackBrush="" Alignment="32">3</Cell>
+        <Cell Font="" Padding="" BackBrush="" Alignment="32">30</Cell>
+        <Cell Font="" Padding="" BackBrush="" Alignment="-1">Equations4.InstructionList</Cell>
+        <Cell Font="" Padding="" BackBrush="" Alignment="-1">Equations4.InstructionList</Cell>
+      </Row>
+      <Row Font="" Padding="" BorderPen="" BottomBorderPen="" BackBrush="">
+        <Cell Font="" Padding="" BackBrush="" Alignment="32">4</Cell>
+        <Cell Font="" Padding="" BackBrush="" Alignment="32">40</Cell>
+        <Cell Font="" Padding="" BackBrush="" Alignment="-1">Equations4.InstructionList</Cell>
+        <Cell Font="" Padding="" BackBrush="" Alignment="-1">Equations4.InstructionList</Cell>
+      </Row>
+      <Row Font="" Padding="" BorderPen="" BottomBorderPen="" BackBrush="">
+        <Cell Font="" Padding="" BackBrush="" Alignment="32">5</Cell>
+        <Cell Font="" Padding="" BackBrush="" Alignment="32">50</Cell>
+        <Cell Font="" Padding="" BackBrush="" Alignment="-1">Equations4.InstructionList</Cell>
+        <Cell Font="" Padding="" BackBrush="" Alignment="-1">Equations4.InstructionList</Cell>
+      </Row>
+    </VC>
+  </Output>
+</Root>

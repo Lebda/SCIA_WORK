@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xss xmlns:xss="http://www.scia.cz/xss">
+   <toolbar Version="1" Name="Snap settings" Flags="0" IsPart="0" PartsSize="0" Size="12">
+      <Button Version="1" Mode="1" Tooltip="On/off Dot grid.
+         On/off Dot grid" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{53A75A9B-8D6F-4282-A501-3107D8A3DF73}" ButtonID="{53A75A9B-8D6F-4282-A501-3107D8A3DF73}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="On/off Ortho
+         On/off Ortho" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{2A7F63BC-C796-4AD0-B30D-7750062430D0}" ButtonID="{2A7F63BC-C796-4AD0-B30D-7750062430D0}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="On/off Tracking
+         On/off Tracking" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{05D919B2-8BCE-46CF-838E-9880D55462B2}" ButtonID="{05D919B2-8BCE-46CF-838E-9880D55462B2}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="On/off End points / Nodes.
+         On/off End points / Nodes" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{D5FD69ED-B18E-4901-86A1-B9736188E903}" ButtonID="{D5FD69ED-B18E-4901-86A1-B9736188E903}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="On/off mid points.
+         On/off mid points" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{5D34E622-BB4F-48D1-A688-475FDC28C04A}" ButtonID="{5D34E622-BB4F-48D1-A688-475FDC28C04A}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="On/off Intersections.
+         On/off Intersections" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{D5915BCA-26CB-4DC4-B849-B1716ACCE18D}" ButtonID="{D5915BCA-26CB-4DC4-B849-B1716ACCE18D}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="On/off Orthogonal points.
+         On/off Orthogonal points" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{B1B23F21-ED84-4675-8375-161053031334}" ButtonID="{B1B23F21-ED84-4675-8375-161053031334}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="On/off Tangential.
+         On/off Tangential" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{599CDEBA-6100-4F15-87CE-F734D46CD482}" ButtonID="{599CDEBA-6100-4F15-87CE-F734D46CD482}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="On/off Arc/Circle centre.
+         On/off Arc/Circle centre" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{BD3D5E49-ACE6-42B0-A52D-9F834ECF61B7}" ButtonID="{BD3D5E49-ACE6-42B0-A52D-9F834ECF61B7}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="On/off Points on line-curve N-ths.
+         On/off Points on line-curve N-ths" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{A27D4F3E-46E9-4FAF-A4F7-E1E3081DF8EC}" ButtonID="{A27D4F3E-46E9-4FAF-A4F7-E1E3081DF8EC}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="On/off Surface edges.
+         On/off Surface edges" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{298B76EA-5F65-4173-B719-D45B4CD932E4}" ButtonID="{298B76EA-5F65-4173-B719-D45B4CD932E4}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="On/off General solids.
+         On/off General solids" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{15E50282-13FC-40D5-91A7-B7F1B3DEFDBE}" ButtonID="{15E50282-13FC-40D5-91A7-B7F1B3DEFDBE}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/></toolbar></xss>

@@ -1,0 +1,158 @@
+<Root Version="1" Type="CustomLibrary" GUID="c6866c00-329e-4a73-b4d7-2fdf87c6cea5">
+  <Header>
+    <PropertySet Symbol="Name" ESA_ID="Name" Unit="" Type="String">
+      <Description TranslateID="Name">
+        <ENU>Name</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Descr" ESA_ID="Descr" Unit="" Type="String">
+      <Description TranslateID="Descr">
+        <ENU>Another description</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="fm" ESA_ID="fm" Unit="MPa" Type="Numeric">
+      <Description TranslateID="fm">
+        <ENU>Characteristics compressive strength</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="fb" ESA_ID="fb" Unit="MPa" Type="Struct">
+      <StructMembers>
+        <StructMember Symbol="min" Type="Numeric" Unit="MPa" />
+        <StructMember Symbol="max" Type="Numeric" Unit="MPa" />
+      </StructMembers>
+      <Description TranslateID="fb">
+        <ENU>Normalized average compressive strength</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Cement" ESA_ID="Cement" Unit="" Type="Numeric">
+      <Description TranslateID="Cement">
+        <ENU>Cement</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Lime_h" ESA_ID="Lime_h" Unit="" Type="Numeric">
+      <Description TranslateID="Lime_h">
+        <ENU>Lime hydrate</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Lime_hyd" ESA_ID="Lime_hyd" Unit="" Type="Numeric">
+      <Description TranslateID="Lime_hyd">
+        <ENU>Hydraulic lime</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Sand" ESA_ID="Sand" Unit="" Type="Numeric">
+      <Description TranslateID="Sand">
+        <ENU>Sand</ENU>
+      </Description>
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>Mortar</Property>
+      <Property>0</Property>
+      <Property>M 20</Property>
+      <Property>C 400</Property>
+      <Property>20</Property>
+      <Property>20;100;</Property>
+      <Property>1</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>3</Property>
+    </Item>
+    <Item>
+      <Property>Mortar</Property>
+      <Property>1</Property>
+      <Property>M 12</Property>
+      <Property>C 300</Property>
+      <Property>12</Property>
+      <Property>12;48;</Property>
+      <Property>1</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>4</Property>
+    </Item>
+    <Item>
+      <Property>Mortar</Property>
+      <Property>2</Property>
+      <Property>M 8</Property>
+      <Property>C 250 CL 50</Property>
+      <Property>8</Property>
+      <Property>8;32;</Property>
+      <Property>2</Property>
+      <Property>1</Property>
+      <Property>0</Property>
+      <Property>9</Property>
+    </Item>
+    <Item>
+      <Property>Mortar</Property>
+      <Property>3</Property>
+      <Property>M 8</Property>
+      <Property>C 200 HL 100</Property>
+      <Property>8</Property>
+      <Property>8;32;</Property>
+      <Property>2</Property>
+      <Property>0</Property>
+      <Property>1</Property>
+      <Property>10</Property>
+    </Item>
+    <Item>
+      <Property>Mortar</Property>
+      <Property>4</Property>
+      <Property>M 5</Property>
+      <Property>C 200 CL 100</Property>
+      <Property>5</Property>
+      <Property>5;20;</Property>
+      <Property>1</Property>
+      <Property>1</Property>
+      <Property>0</Property>
+      <Property>6</Property>
+    </Item>
+    <Item>
+      <Property>Mortar</Property>
+      <Property>5</Property>
+      <Property>M 5</Property>
+      <Property>C 150 HL 150</Property>
+      <Property>5</Property>
+      <Property>5;20;</Property>
+      <Property>1</Property>
+      <Property>0</Property>
+      <Property>1</Property>
+      <Property>7</Property>
+    </Item>
+    <Item>
+      <Property>Mortar</Property>
+      <Property>6</Property>
+      <Property>M 2,5</Property>
+      <Property>C 150 CL 150</Property>
+      <Property>2.5</Property>
+      <Property>2.5;10;</Property>
+      <Property>1</Property>
+      <Property>2.5</Property>
+      <Property>0</Property>
+      <Property>7</Property>
+    </Item>
+    <Item>
+      <Property>Mortar</Property>
+      <Property>7</Property>
+      <Property>M 2,5</Property>
+      <Property>C 100 HL 200</Property>
+      <Property>2.5</Property>
+      <Property>2.5;10;</Property>
+      <Property>1</Property>
+      <Property>0</Property>
+      <Property>2.5</Property>
+      <Property>11</Property>
+    </Item>
+    <Item>
+      <Property>Mortar</Property>
+      <Property>8</Property>
+      <Property>M 2,5</Property>
+      <Property>HL 400</Property>
+      <Property>2.5</Property>
+      <Property>2.5;10;</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>2</Property>
+      <Property>5</Property>
+    </Item>
+  </Items>
+</Root>

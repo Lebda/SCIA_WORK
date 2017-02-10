@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<ModuleList>
+<Module Name="DFORMS.USER"/>
+<Module Name="DEALER.SDF"/>
+<Module Name="SDF.FORMS@10000"/>
+<Module Name="DFORMS.BUILDER"/>
+<Module Name="DFORMS.BUILDER.1YR"/>
+<Module Name="DFORMS.BUILDER.10000"/>
+<Module Name="DFORMS.BUILDER.1YR.10000"/>
+<Module Name="DFORMS.COMPILER"/>
+<Module Name="SCIA.DESIGNFORMS"/>
+<Module Name="SDF.ST.01"/>
+<Module Name="SDF.ST.02"/>
+<Module Name="SDF.ST.03"/>
+<Module Name="SDF.ST.04"/>
+<Module Name="_ESA.TRYOUT"/>
+<Module Name="DEALER"/>
+<Module Name="PARTNER-FULLVERSION"/>
+<Module Name="SDF.TEMPLATES"/>
+<Module Name="SDF.ALLFORMS"/>
+<Module Name="SDF.SCS"/>
+<Module Name="ESA.34"/>
+<Module Name="ESA.35"/>
+</ModuleList>

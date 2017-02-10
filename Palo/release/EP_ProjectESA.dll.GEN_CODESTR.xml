@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="111"><StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_valves}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>220</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_conccombi}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>188</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_masses_group}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>231</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_reinfman}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>291</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_boltdiametertocssrelation}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>196</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_material_onorm}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2022</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_libraries}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>168</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_storeys}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>438</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_settlement}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>215</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_zones}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>436</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_nodes}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>426</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_mesh_setup_group}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>211</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_damping_group}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>191</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_voidformers}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2042</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_non_prereinf}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2039</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_functions}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>111</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_crossection}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>105</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_selectlc}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>164</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_nameditem}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>400</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_concrete_reinforcement}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>134</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_buckling}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>163</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_bendtable}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>431</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_masscombi}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>174</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_tendonsourcegeometry}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>319</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_compositeshearconnectors}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>6609</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_connectiondataforcss}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2035</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_insulation}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>162</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_initialdeformation}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>172</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_wind}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>107</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_material_gbj}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2018</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_material_ec_en}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2017</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_soil}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>203</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_namedselections}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>6602</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_loadpatern}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2029</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_stiffnessfactors2d}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>202</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_stiffnessfactors1d}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>200</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_string203}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>424</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_wind_data}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>204</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_noncombi}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>169</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_boreholeman}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>301</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_material}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>103</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_material_poland}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2023</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_solvermesh}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>427</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_loadgroup}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>158</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_sectionalstrandpatternman}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>317</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_material_din1045}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2015</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_system}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>415</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_loadcase}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>115</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_orthotropy_libman}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2033</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_attributesdefinition}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2041</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_setup}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>423</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_combi}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>137</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_designgroups}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>6608</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_shearconnectors}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>199</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_ilfcurve}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>339</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_soilprofile_cpt}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>6598</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_combi_key}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>187</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_linesettlement}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>351</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_ucs_mng}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>222</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_fblock}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>110</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_param}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>122</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_elements}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>206</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_solver_setup_group}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>214</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_hallconnection}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2036</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_material_bs}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2012</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_layermng}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>210</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_friction}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>212</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_sets}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>232</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_stressingbedsman}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>321</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_hollocore}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2031</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_ep_temperature_time_fire_curve}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>197</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_geologicprofile}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>132</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_material_sia}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2024</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_longreinfman}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>294</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_seismicity}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>108</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_pipelinecrs}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>208</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_pipaswazard}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>219</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_type_of_stressing}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>192</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_loadlibrary}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>138</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_material_sweden}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2025</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_material_korea}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2020</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_generalsetup}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>209</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_projdata}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>101</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_pipeline}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>217</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_prestressing}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>135</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_reinforcementmesh}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2027</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_coef_e_modulus}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>350</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_diaphragm}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>161</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_fitting}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>440</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_material_aiscasd}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2010</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_pilegroup}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>6599</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_setup_manager}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2040</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_pressurecomp}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>434</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_deck_slab_data}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2030</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_cellularbeam}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2026</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_dynamicloadfunctions}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>343</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_material_hungary}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2019</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_stages}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>433</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_stabcombi}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>170</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_hingetype}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>198</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_effectivesection}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>336</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_cssexcludelist}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>337</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_damping}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>305</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_geologicarea}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>443</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_subsoil}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>109</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_material_brazil}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>6604</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_material_nen}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2021</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_material_france}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2016</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_material_din}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2014</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_material_csn}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2013</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectesa.2eids_material_aisclrfd}</StringId>
+		<SourceDll>EP_ProjectESA.2edll</SourceDll>
+		<ResourceId>2011</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

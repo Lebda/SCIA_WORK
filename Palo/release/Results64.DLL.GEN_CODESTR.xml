@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="2"><StringCode SourceType="DLLRC:"><StringId>@{results64.2eresourceid}</StringId>
+		<SourceDll>Results64.2eDLL</SourceDll>
+		<ResourceId>198</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{results64.2eids_rt_fem_deformation_uglob}</StringId>
+		<SourceDll>Results64.2eDLL</SourceDll>
+		<ResourceId>107</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

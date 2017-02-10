@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<STRINGTABLE><STRING ID="TEMPLATE_NAME">
+		<ENU>Load.20definition</ENU>
+		<CSY>Popis.20zatížení</CSY>
+		<DEU>Lastbeschreibung</DEU>
+		<SPA>Descripción.20de.20carga</SPA>
+		<FRA>Description.20de.20charge</FRA>
+		<HRV>Opis.20opterećenje</HRV>
+		<ITA>Descrizione.20carico</ITA>
+		<NLD>Belasting.20omschrijvinge</NLD>
+		<POL>Opis.20obciążenia</POL>
+		<PTB>Descriçao.20de.20cargao</PTB>
+		<ROM>Descrierea.20sarcină</ROM>
+		<SKY>Popis.20zaťaženie</SKY>
+		<SLV>Opis.20obremenitev</SLV>
+	</STRING>
+	<STRING ID="TEMPLATE_DESCRIPTION">
+		<ENU></ENU>
+		<CSY></CSY>
+		<DEU></DEU>
+		<SPA></SPA>
+		<FRA></FRA>
+		<HRV></HRV>
+		<ITA></ITA>
+		<NLD></NLD>
+		<POL></POL>
+		<PTB></PTB>
+		<ROM></ROM>
+		<SKY></SKY>
+		<SLV></SLV>	
+	</STRING>
+</STRINGTABLE>

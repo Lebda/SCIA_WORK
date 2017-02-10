@@ -1,0 +1,34 @@
+<Root>
+  <ValueSets>
+    <EC NAD="CSN" Description="CZ jazyk" Layout="0" Language="CSY">
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Výpočet dle Masopusta" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="V↓d←" Value="500000" />
+      <Variable Identifier="TA" Value="1" />
+      <Variable Identifier="MAT" Value="1" />
+      <Variable Identifier="D" Value="1" />
+    </EC>
+    <EC NAD="STN" Description="SK jazyk" Layout="0" Language="SKY">
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Výpočet podľa Masopusta" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="V↓d←" Value="500000" />
+      <Variable Identifier="TA" Value="1" />
+      <Variable Identifier="MAT" Value="1" />
+      <Variable Identifier="D" Value="1" />
+    </EC>
+    <EC NAD="CSN" Description="EN language" Layout="0" Language="ENU">
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Calculation according to the Masopust theory" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="V↓d←" Value="500000" />
+      <Variable Identifier="TA" Value="1" />
+      <Variable Identifier="MAT" Value="1" />
+      <Variable Identifier="D" Value="1" />
+    </EC>
+  </ValueSets>
+</Root>

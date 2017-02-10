@@ -1,0 +1,220 @@
+.defpar Normal
+.font norm
+.enddef
+.
+.defpar Part1a
+.font GaramondE128Bold
+.align c
+.enddef
+.
+.defpar Part1b
+.font GaramondE36Bold
+.align c
+.enddef
+.
+.defpar Chapter
+.font UniversE20BoldUnderline
+.align l
+.enddef
+.
+.defpar QNormal
+.font norm
+.lmargin 15
+.align l
+.enddef
+.
+.defpar QNormalR
+.font norm
+.rmargin 15
+.align r
+.enddef
+.
+.defpar QNormalHL
+.font norm
+.lmargin 15
+.rmargin 25
+.align l
+.enddef
+.
+.defpar QNormal8R
+.font norm8
+.rmargin 15
+.align r
+.enddef
+.
+.defpar VzorecTab1
+.font norm
+.tabs 46L,72R,79L,107L,142L,158R,165L
+.lmargin 10
+.enddef
+.
+.defpar SourceCode8
+.font cour8
+.lmargin 15
+.enddef
+.
+.defpar CourierTable9
+.font cour9
+.lmargin 15
+.enddef
+.
+.defpar NormL20left
+.font norm
+.lmargin 20
+.align l
+.enddef
+.
+.defpar NormL40left
+.font norm
+.lmargin 40
+.align l
+.enddef
+.
+.defpar NormL20center
+.font norm
+.lmargin 20
+.align c
+.enddef
+.
+.defpar NormL20right
+.font norm
+.lmargin 20
+.align r
+.enddef
+.
+.defpar NormR30right
+.font norm
+.rmargin 30
+.align r
+.enddef
+.
+.defpar NormL40R40right
+.font norm
+.lmargin 40
+.rmargin 40
+.align r
+.enddef
+.
+.defpar Normal001
+.font norm
+.tabs 46L,67R,74L,97L,132L,148R,155L
+.lmargin 10
+.enddef
+.
+.defpar RNormal
+.font norm
+.align r
+.enddef
+.
+.defpar NormalI
+.font normi
+.enddef
+.
+.defpar Poznamka
+.font pozn
+.lmargin 10
+.rmargin 10
+.enddef
+.
+.defpar Nadpis1
+.font nadp1
+.enddef
+.
+.defpar Nadpis2
+.font nadp2
+.align c
+.enddef
+.
+.defpar Nadpis2U
+.font nadp2u
+.lmargin -3
+.enddef
+.
+.defpar BasicData0
+.font norm
+.tabs 30L,60L,65L,95L,140L,145L
+.lmargin 0
+.enddef
+.
+.defpar BasicData1
+.font norm
+.tabs 20L,60L,65L,95L,140L,145L
+.lmargin 0
+.enddef
+.
+.defpar Prurez1
+.font norm
+.tabs 20L,50L,55L,75L,95L,125L
+.lmargin 5
+.enddef
+.
+.defpar Prurez2
+.font norm
+.tabs 20L,40L,60L,80L,100L
+.lmargin 10
+.enddef
+.
+.defpar Prurez3
+.font norm
+.tabs 20L,60L,65L,95L,110L,145L
+.lmargin 10
+.enddef
+.   
+.defpar Connection
+.font norm
+.tabs 20R,40R,60R,80R,100R,120R,140R,160R,180R,200R,220R
+.lmargin 5
+.enddef
+.
+.defpar Check
+.font norm
+.tabs 20R,40R,60R,80R,100R,120R,140R,160R,180R,200R,220R
+.lmargin 5
+.enddef
+.
+.defpar CheckCSNBuck
+.font norm
+.tabs 2L,20R,36R,54R,70R,86R,102R,106R,122R,125L
+.lmargin 0
+.enddef
+.
+.defpar CheckCSNBuck1
+.font norm
+.tabs 30L,55R,80R,105R,130R,155R
+.lmargin 0
+.enddef
+.
+.defpar CheckForce
+.font norm
+.tabs 2L,27L,52L,77L,102L,127L,152L
+.lmargin 0
+.enddef
+.
+.defpar CheckSigma
+.font norm
+.tabs 2L,40L,78L,116L,154L
+.lmargin 0
+.enddef
+.
+.defpar MarParNadpis
+.font norm
+.lmargin 5
+.enddef
+.
+.defpar MarParNadpisB
+.font norm
+.lmargin 5
+.enddef
+.
+.defpar CheckEC5Buck
+.font norm
+.tabs 2L,30R,60R,90R,120R,140R
+.lmargin 0
+.enddef
+.
+.defpar CheckEC5Buck1
+.font norm
+.tabs 2L,50R,70R,100R,130R,160R
+.lmargin 0
+.enddef
+.

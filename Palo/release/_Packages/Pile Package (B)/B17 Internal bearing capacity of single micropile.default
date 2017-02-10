@@ -1,0 +1,73 @@
+<Root>
+  <ValueSets>
+    <EC NAD="CSN" Description="CZ jazyk, CZ annex" Layout="0" Language="CSY">
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 16/20" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|REINFORCEMENT.EC" Category="Horizontal" Item="B 500 A" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Steel.xml|STEEL.EC" Category="Thickness &lt;= 40mm" Item="S355" Collapsed="True" />
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Výpočet dle Masopusta, ČSN 73 1001, EN 1992, EN 1993" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Uživatelský nadpis" />
+      <Variable Identifier="H3" Value="True" />
+      <Variable Identifier="V↓d←" Value="250000" />
+      <Variable Identifier="TL" Value="0" />
+      <Variable Identifier="d" Value="160e-3" />
+      <Variable Identifier="L" Value="8" />
+      <Variable Identifier="TY" Value="0" />
+      <Variable Identifier="t↓T←" Value="10e-3" />
+      <Variable Identifier="d↓T←" Value="89e-3" />
+      <Variable Identifier="d↓W←" Value="20e-3" />
+      <Variable Identifier="t↓W←" Value="50e-3" />
+      <Variable Identifier="n" Value="6" />
+      <Variable Identifier="γ↓c←" Value="1.5" />
+      <Variable Identifier="γ↓y←" Value="1.15" />
+      <Variable Identifier="E↓z←" Value="5e6" />
+    </EC>
+    <EC NAD="STN" Description="SK jazyk, SK annex" Layout="0" Language="SKY">
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 16/20" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|REINFORCEMENT.EC" Category="Horizontal" Item="B 500 A" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Steel.xml|STEEL.EC" Category="Thickness &lt;= 40mm" Item="S355" Collapsed="True" />
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Výpočet podľa Masopusta, STN 73 1001, EN 1992, EN 1993" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Uživateľský nadpis" />
+      <Variable Identifier="H3" Value="True" />
+      <Variable Identifier="V↓d←" Value="250000" />
+      <Variable Identifier="TL" Value="0" />
+      <Variable Identifier="d" Value="160e-3" />
+      <Variable Identifier="L" Value="8" />
+      <Variable Identifier="TY" Value="0" />
+      <Variable Identifier="t↓T←" Value="10e-3" />
+      <Variable Identifier="d↓T←" Value="89e-3" />
+      <Variable Identifier="d↓W←" Value="20e-3" />
+      <Variable Identifier="t↓W←" Value="50e-3" />
+      <Variable Identifier="n" Value="6" />
+      <Variable Identifier="γ↓c←" Value="1.5" />
+      <Variable Identifier="γ↓y←" Value="1.15" />
+      <Variable Identifier="E↓z←" Value="5e6" />
+    </EC>
+    <EC NAD="CSN" Description="EN language, CZ annex" Layout="0" Language="ENU">
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 16/20" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|REINFORCEMENT.EC" Category="Horizontal" Item="B 500 A" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Steel.xml|STEEL.EC" Category="Thickness &lt;= 40mm" Item="S355" Collapsed="True" />
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Calculation according to Masopust theory, ČSN 73 1001, EN 1992, EN 1993" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="H3" Value="True" />
+      <Variable Identifier="V↓d←" Value="250000" />
+      <Variable Identifier="TL" Value="0" />
+      <Variable Identifier="d" Value="160e-3" />
+      <Variable Identifier="L" Value="8" />
+      <Variable Identifier="TY" Value="0" />
+      <Variable Identifier="t↓T←" Value="10e-3" />
+      <Variable Identifier="d↓T←" Value="89e-3" />
+      <Variable Identifier="d↓W←" Value="20e-3" />
+      <Variable Identifier="t↓W←" Value="50e-3" />
+      <Variable Identifier="n" Value="6" />
+      <Variable Identifier="γ↓c←" Value="1.5" />
+      <Variable Identifier="γ↓y←" Value="1.15" />
+      <Variable Identifier="E↓z←" Value="5e6" />
+    </EC>
+  </ValueSets>
+</Root>

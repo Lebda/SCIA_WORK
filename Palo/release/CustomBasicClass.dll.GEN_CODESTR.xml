@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="1"><StringCode SourceType="DLLRC:"><StringId>@{custombasicclass.2eids_custom_check}</StringId>
+		<SourceDll>CustomBasicClass.2edll</SourceDll>
+		<ResourceId>101</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

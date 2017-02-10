@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="4"><StringCode SourceType="DLLRC:"><StringId>@{meshesacmdsm.2eids_linerefin}</StringId>
+		<SourceDll>MeshESACmdsM.2eDLL</SourceDll>
+		<ResourceId>105</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{meshesacmdsm.2eids_surfrefin}</StringId>
+		<SourceDll>MeshESACmdsM.2eDLL</SourceDll>
+		<ResourceId>106</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{meshesacmdsm.2eids_mesh}</StringId>
+		<SourceDll>MeshESACmdsM.2eDLL</SourceDll>
+		<ResourceId>101</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{meshesacmdsm.2eids_noderefin}</StringId>
+		<SourceDll>MeshESACmdsM.2eDLL</SourceDll>
+		<ResourceId>104</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

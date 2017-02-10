@@ -1,0 +1,15 @@
+<Root>
+  <Styles>
+    <Style Key="%Def" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|1|2" />
+    <Style Key="Text 3" X="30" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Tahoma|11|0|2" Font2="Tahoma|11|0|2" />
+    <Style Key="Remark" X="50" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Tahoma|11|0|2" Font2="Tahoma|11|2|2" />
+    <Style Key="None" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Tahoma|11|0|2" Font2="Tahoma|11|0|2" />
+    <Style Key="Subchapter 2" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Tahoma|14|0|2" Font2="Tahoma|14|0|2" />
+    <Style Key="Subchapter 1" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Tahoma|14|0|2" Font2="Tahoma|14|5|2" />
+    <Style Key="Chapter" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="30" Font1="Tahoma|18|0|2" Font2="Tahoma|18|5|2" />
+    <Style Key="Text 2" X="30" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Tahoma|11|0|2" Font2="Tahoma|11|0|2" />
+    <Style Key="Text 1" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Tahoma|11|0|2" Font2="Tahoma|11|0|2" />
+    <Style Key="Formula 1" X="50" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Tahoma|11|0|2" Font2="Tahoma|11|0|2" />
+    <Style Key="Text 4" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Tahoma|11|0|2" Font2="Tahoma|11|0|2" />
+  </Styles>
+</Root>

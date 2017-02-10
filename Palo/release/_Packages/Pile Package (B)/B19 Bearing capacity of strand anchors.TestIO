@@ -1,0 +1,86 @@
+<Root>
+  <Test Description="Type 0, true" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.10">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="V↓d←" Value="700000" />
+      <Variable Identifier="TA" Value="0" />
+      <Variable Identifier="n" Value="6" />
+    </Dialog>
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="700000" />
+    <Input Name="TA" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="n" Type="Numeric" ESA_ID="" Value="6" />
+    <Input Name="F↓a←" Type="Numeric" ESA_ID="" Value="120000" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.0" Value="720000" />
+    <Result Name="OK" Type="String" ESA_ID="Result.1" Value="TRUE" />
+  </Test>
+  <Test Description="Type 1, true" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.10">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="V↓d←" Value="700000" />
+      <Variable Identifier="TA" Value="1" />
+      <Variable Identifier="n" Value="6" />
+    </Dialog>
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="700000" />
+    <Input Name="TA" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="n" Type="Numeric" ESA_ID="" Value="6" />
+    <Input Name="F↓a←" Type="Numeric" ESA_ID="" Value="140000" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.0" Value="840000" />
+    <Result Name="OK" Type="String" ESA_ID="Result.1" Value="TRUE" />
+  </Test>
+  <Test Description="Type 2, true" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.10">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="V↓d←" Value="700000" />
+      <Variable Identifier="TA" Value="2" />
+      <Variable Identifier="n" Value="6" />
+    </Dialog>
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="700000" />
+    <Input Name="TA" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="n" Type="Numeric" ESA_ID="" Value="6" />
+    <Input Name="F↓a←" Type="Numeric" ESA_ID="" Value="142000" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.0" Value="852000" />
+    <Result Name="OK" Type="String" ESA_ID="Result.1" Value="TRUE" />
+  </Test>
+  <Test Description="Type 0, false" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.10">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="V↓d←" Value="800000" />
+      <Variable Identifier="TA" Value="0" />
+      <Variable Identifier="n" Value="6" />
+    </Dialog>
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="800000" />
+    <Input Name="TA" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="n" Type="Numeric" ESA_ID="" Value="6" />
+    <Input Name="F↓a←" Type="Numeric" ESA_ID="" Value="120000" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.0" Value="720000" />
+    <Result Name="OK" Type="String" ESA_ID="Result.1" Value="FALSE" />
+  </Test>
+</Root>

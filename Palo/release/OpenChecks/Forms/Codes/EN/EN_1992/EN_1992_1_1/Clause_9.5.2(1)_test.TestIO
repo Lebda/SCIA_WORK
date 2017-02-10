@@ -1,0 +1,192 @@
+<Root>
+  <Test Description="STD" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 04" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="ConcrType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="IsStandalone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Standard EN" />
+    <Result Name="ϕ↓l,min,col←" Type="Numeric" ESA_ID="Result.01" Value="8e-3" />
+  </Test>
+  <Test Description="SIST" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 04" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Slovenia SIST-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="ConcrType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="IsStandalone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Slovenia SIST-EN" />
+    <Result Name="ϕ↓l,min,col←" Type="Numeric" ESA_ID="Result.01" Value="12e-3" />
+  </Test>
+  <Test Description="STN" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 04" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Slovak STN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="ConcrType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="IsStandalone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Slovak STN-EN" />
+    <Result Name="ϕ↓l,min,col←" Type="Numeric" ESA_ID="Result.01" Value="10e-3" />
+  </Test>
+  <Test Description="SR" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 04" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Romanian SR-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="ConcrType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="IsStandalone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Romanian SR-EN" />
+    <Result Name="ϕ↓l,min,col←" Type="Numeric" ESA_ID="Result.01" Value="12e-3" />
+  </Test>
+  <Test Description="PN" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 04" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Polish PN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="ConcrType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="IsStandalone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Polish PN-EN" />
+    <Result Name="ϕ↓l,min,col←" Type="Numeric" ESA_ID="Result.01" Value="6e-3" />
+  </Test>
+  <Test Description="IS" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 04" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Irish IS-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="ConcrType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="IsStandalone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Irish IS-EN" />
+    <Result Name="ϕ↓l,min,col←" Type="Numeric" ESA_ID="Result.01" Value="12e-3" />
+  </Test>
+  <Test Description="DIN" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 04" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="German DIN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="ConcrType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="IsStandalone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="German DIN-EN" />
+    <Result Name="ϕ↓l,min,col←" Type="Numeric" ESA_ID="Result.01" Value="12e-3" />
+  </Test>
+  <Test Description="BS" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 04" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="British BS-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="ConcrType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="IsStandalone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="British BS-EN" />
+    <Result Name="ϕ↓l,min,col←" Type="Numeric" ESA_ID="Result.01" Value="12e-3" />
+  </Test>
+  <Test Description="LU_ConcrType0" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 04" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Luxembourgian LU-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="ConcrType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="IsStandalone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Luxembourgian LU-EN" />
+    <Result Name="ϕ↓l,min,col←" Type="Numeric" ESA_ID="Result.01" Value="12e-3" />
+  </Test>
+  <Test Description="LU_ConcrType1" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 04" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Luxembourgian LU-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="ConcrType" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="IsStandalone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Luxembourgian LU-EN" />
+    <Result Name="ϕ↓l,min,col←" Type="Numeric" ESA_ID="Result.01" Value="8e-3" />
+  </Test>
+  <Test Description="LU_ConcrType2" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 04" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Luxembourgian LU-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="ConcrType" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="IsStandalone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Luxembourgian LU-EN" />
+    <Result Name="ϕ↓l,min,col←" Type="Numeric" ESA_ID="Result.01" Value="0" />
+  </Test>
+  <Test Description="CSN_h&lt;=0,2" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 04" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Czech CSN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="ConcrType" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="250e-3" />
+    <Input Name="IsStandalone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Czech CSN-EN" />
+    <Result Name="ϕ↓l,min,col←" Type="Numeric" ESA_ID="Result.01" Value="12e-3" />
+  </Test>
+  <Test Description="CSN_h&lt;0,2" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 04" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Czech CSN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="ConcrType" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="150e-3" />
+    <Input Name="IsStandalone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Czech CSN-EN" />
+    <Result Name="ϕ↓l,min,col←" Type="Numeric" ESA_ID="Result.01" Value="10e-3" />
+  </Test>
+  <Test Description="NBN_ConcrType0" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 04" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Belgian NBN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="ConcrType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="150e-3" />
+    <Input Name="IsStandalone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Belgian NBN-EN" />
+    <Result Name="ϕ↓l,min,col←" Type="Numeric" ESA_ID="Result.01" Value="12e-3" />
+  </Test>
+  <Test Description="NBN_ConcrType1" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 04" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Belgian NBN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="ConcrType" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="150e-3" />
+    <Input Name="IsStandalone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Belgian NBN-EN" />
+    <Result Name="ϕ↓l,min,col←" Type="Numeric" ESA_ID="Result.01" Value="8e-3" />
+  </Test>
+  <Test Description="NBN_ConcrType3" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 04" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Belgian NBN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="ConcrType" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="150e-3" />
+    <Input Name="IsStandalone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Belgian NBN-EN" />
+    <Result Name="ϕ↓l,min,col←" Type="Numeric" ESA_ID="Result.01" Value="0" />
+  </Test>
+  <Test Description="ONORM_h&lt;0,12" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 04" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Austrian ÖNORM-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="ConcrType" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="110e-3" />
+    <Input Name="IsStandalone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Austrian ÖNORM-EN" />
+    <Result Name="ϕ↓l,min,col←" Type="Numeric" ESA_ID="Result.01" Value="0" />
+  </Test>
+  <Test Description="ONORM_0,12&lt;h&lt;0,2" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 04" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Austrian ÖNORM-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="ConcrType" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="160e-3" />
+    <Input Name="IsStandalone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Austrian ÖNORM-EN" />
+    <Result Name="ϕ↓l,min,col←" Type="Numeric" ESA_ID="Result.01" Value="10e-3" />
+  </Test>
+  <Test Description="ONORM_0,2&lt;h" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 04" Collisions="0">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Austrian ÖNORM-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="ConcrType" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="210e-3" />
+    <Input Name="IsStandalone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Austrian ÖNORM-EN" />
+    <Result Name="ϕ↓l,min,col←" Type="Numeric" ESA_ID="Result.01" Value="12e-3" />
+  </Test>
+</Root>

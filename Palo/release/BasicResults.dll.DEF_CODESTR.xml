@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="5"><StringCode SourceType="DLLRC:"><StringId>@{soilstressdiagram.2ename}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>210</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2einternal_forces}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>5007</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eids_open_checks_document_root}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>36444</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eitm5004}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>5004</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eitm5077}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>5077</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

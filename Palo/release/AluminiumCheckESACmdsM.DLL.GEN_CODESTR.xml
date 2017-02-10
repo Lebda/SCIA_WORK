@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="16"><StringCode SourceType="DLLRC:"><StringId>@{aluminiumcheckesacmdsm.2eids_aluminium_bgdk}</StringId>
+		<SourceDll>AluminiumCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>110</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{aluminiumcheckesacmdsm.2eids_scaff_con_check}</StringId>
+		<SourceDll>AluminiumCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>255</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{aluminiumcheckesacmdsm.2eids_aluminium_stiffeners}</StringId>
+		<SourceDll>AluminiumCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>107</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{aluminiumcheckesacmdsm.2eids_beambuckling}</StringId>
+		<SourceDll>AluminiumCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>104</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{aluminiumcheckesacmdsm.2eids_pltransverse_welds}</StringId>
+		<SourceDll>AluminiumCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>109</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{aluminiumcheckesacmdsm.2eids_aluminiumesa_check_name}</StringId>
+		<SourceDll>AluminiumCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>227</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{aluminiumcheckesacmdsm.2eids_ep_resultsesa_slenderness_aluminium_name}</StringId>
+		<SourceDll>AluminiumCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>254</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{aluminiumcheckesacmdsm.2eids_buckling_check}</StringId>
+		<SourceDll>AluminiumCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>102</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{aluminiumcheckesacmdsm.2eids_unity_check}</StringId>
+		<SourceDll>AluminiumCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>101</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{aluminiumcheckesacmdsm.2eids_aluminium_check}</StringId>
+		<SourceDll>AluminiumCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>104</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{aluminiumcheckesacmdsm.2eids_aluminium_diaphragm}</StringId>
+		<SourceDll>AluminiumCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>108</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{aluminiumcheckesacmdsm.2eids_aluminium_ltbrestraints}</StringId>
+		<SourceDll>AluminiumCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>106</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{aluminiumcheckesacmdsm.2eids_aluminium}</StringId>
+		<SourceDll>AluminiumCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>101</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{aluminiumcheckesacmdsm.2eids_sec_check}</StringId>
+		<SourceDll>AluminiumCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>103</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{aluminiumcheckesacmdsm.2eids_aluminiumcheckdata}</StringId>
+		<SourceDll>AluminiumCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>103</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{aluminiumcheckesacmdsm.2eids_ep_resultsesa_relativdeforaluminium_name}</StringId>
+		<SourceDll>AluminiumCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>246</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

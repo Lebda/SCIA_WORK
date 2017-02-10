@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xss xmlns:xss="http://www.scia.cz/xss">
+   <toolbar Version="1" Name="Point snap" Flags="0" IsPart="0" PartsSize="0" Size="12">
+      <Button Version="1" Mode="1" Tooltip="Definition of point in endpoint of line/curve.
+         Endpoint" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{83E85F09-6BAD-445F-9B63-1E77DDFC8D4C}" ButtonID="{83E85F09-6BAD-445F-9B63-1E77DDFC8D4C}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Definition of point in the middle of line/curve.
+         Midpoint" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{63B5CEFF-B6D4-4F26-AFDF-70C8850DABD3}" ButtonID="{63B5CEFF-B6D4-4F26-AFDF-70C8850DABD3}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Definition of point in centerpoint of arc.
+         Arc/circle centre" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{A4E10647-6668-4525-98ED-A18BFE422D6B}" ButtonID="{A4E10647-6668-4525-98ED-A18BFE422D6B}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Definition of point in intersection of two lines.
+         Intersection" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{EE4D0BBB-B2F4-4D02-96F2-228F9E890B4D}" ButtonID="{EE4D0BBB-B2F4-4D02-96F2-228F9E890B4D}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" ButtonAsMenu="0" ButtonStyle="1" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{00000000-0000-0000-0000-000000000000}" ButtonID="{777E7804-B061-4D12-9333-895D0C6D2523}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" ButtonAsMenu="0" ButtonStyle="1" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{00000000-0000-0000-0000-000000000000}" ButtonID="{777E7804-B061-4D12-9333-895D0C6D2524}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Definition of point making perpendicular line.
+         Perpendicular" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{10A9D740-BFB5-4F0E-AD49-3BE3CD2C50DB}" ButtonID="{10A9D740-BFB5-4F0E-AD49-3BE3CD2C50DB}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Definition of point making a tangent to arc/curve.
+         Tangent" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{51A09215-7902-4AD5-B9F7-BF2C5A8C7B04}" ButtonID="{51A09215-7902-4AD5-B9F7-BF2C5A8C7B04}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Definition of point moving into current working plane.
+         Move to  working plane" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{00000000-0000-0000-0000-000000000000}" ButtonID="{4746BE15-D5FA-4F54-A5EE-7EE82095E7FA}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Definition of point making a relative offset from current position.
+         Relative" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{D294E469-336A-4501-8838-0C905D532296}" ButtonID="{D294E469-336A-4501-8838-0C905D532296}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" ButtonAsMenu="0" ButtonStyle="1" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{00000000-0000-0000-0000-000000000000}" ButtonID="{777E7804-B061-4D12-9333-895D0C6D2525}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Setting of cursor snap mode (grid, endpoints, etc).
+         Cursor snap setting" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{0E0E2144-4A89-4AF0-B7F3-BC3922BDB9D6}" ButtonID="{0E0E2144-4A89-4AF0-B7F3-BC3922BDB9D6}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/></toolbar></xss>

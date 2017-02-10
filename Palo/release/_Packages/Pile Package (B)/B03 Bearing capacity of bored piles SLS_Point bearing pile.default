@@ -1,0 +1,64 @@
+<Root>
+  <ValueSets>
+    <EC NAD="CSN" Description="CZ jazyk" Layout="0" Language="CSY">
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 16/20" Collapsed="True" />
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Výpočet dle Masopusta ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="Draw" Value="True" />
+      <Variable Identifier="V↓d←" Value="1.5e6" />
+      <Variable Identifier="d" Value="800e-3" />
+      <Variable Identifier="L" Value="10.1" />
+      <Variable Identifier="α↓cc←" Value="1" />
+      <Variable Identifier="γ↓c←" Value="1.5" />
+      <Variable Identifier="Scale" Value="25" />
+      <Variable Identifier="TI" Value="2,5|0,9|1║2|0,7|0,5║3,5|0,9|0,2║1,5|0,7|0,5" />
+      <Variable Identifier="Type1" Value="3" />
+      <Variable Identifier="Type2" Value="0" />
+      <Variable Identifier="Type3" Value="0" />
+      <Variable Identifier="Type4" Value="0" />
+      <Variable Identifier="Type5" Value="0" />
+    </EC>
+    <EC NAD="STN" Description="SK jazyk" Layout="0" Language="SKY">
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 16/20" Collapsed="True" />
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Výpočet podľa Masopusta ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="Draw" Value="True" />
+      <Variable Identifier="V↓d←" Value="1.5e6" />
+      <Variable Identifier="d" Value="800e-3" />
+      <Variable Identifier="L" Value="10.1" />
+      <Variable Identifier="α↓cc←" Value="1" />
+      <Variable Identifier="γ↓c←" Value="1.5" />
+      <Variable Identifier="Scale" Value="25" />
+      <Variable Identifier="TI" Value="2,5|0,9|1║2|0,7|0,5║3,5|0,9|0,2║1,5|0,7|0,5" />
+      <Variable Identifier="Type1" Value="3" />
+      <Variable Identifier="Type2" Value="0" />
+      <Variable Identifier="Type3" Value="0" />
+      <Variable Identifier="Type4" Value="0" />
+      <Variable Identifier="Type5" Value="0" />
+    </EC>
+    <EC NAD="CSN" Description="EN language" Layout="0" Language="ENU">
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 16/20" Collapsed="True" />
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Calculation according to the Masopust theory, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="Draw" Value="True" />
+      <Variable Identifier="V↓d←" Value="1.5e6" />
+      <Variable Identifier="d" Value="800e-3" />
+      <Variable Identifier="L" Value="10.1" />
+      <Variable Identifier="α↓cc←" Value="1" />
+      <Variable Identifier="γ↓c←" Value="1.5" />
+      <Variable Identifier="Scale" Value="25" />
+      <Variable Identifier="TI" Value="2,5|0,9|1║2|0,7|0,5║3,5|0,9|0,2║1,5|0,7|0,5" />
+      <Variable Identifier="Type1" Value="3" />
+      <Variable Identifier="Type2" Value="0" />
+      <Variable Identifier="Type3" Value="0" />
+      <Variable Identifier="Type4" Value="0" />
+      <Variable Identifier="Type5" Value="0" />
+    </EC>
+  </ValueSets>
+</Root>

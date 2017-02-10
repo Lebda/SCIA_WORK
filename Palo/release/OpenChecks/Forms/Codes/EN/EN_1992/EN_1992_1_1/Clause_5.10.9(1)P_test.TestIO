@@ -1,0 +1,26 @@
+﻿<Root>
+  <Test Description="STD" Author="Martin-Lenovo\Martin" Active="1" Date="2014. 08. 26">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+    </Dialog>
+    <Result Name="NA" Type="String" ESA_ID="Result.00" Value="Standard EN" />
+    <Result Name="r↓sup,preten←" Type="Numeric" ESA_ID="Result.01" Value="1.05" />
+    <Result Name="r↓inf,preten←" Type="Numeric" ESA_ID="Result.02" Value="950e-3" />
+    <Result Name="r↓sup,postten←" Type="Numeric" ESA_ID="Result.03" Value="1.1" />
+    <Result Name="r↓inf,postten←" Type="Numeric" ESA_ID="Result.04" Value="900e-3" />
+    <Result Name="r↓sup,precise←" Type="Numeric" ESA_ID="Result.05" Value="1" />
+    <Result Name="r↓inf,precise←" Type="Numeric" ESA_ID="Result.06" Value="1" />
+  </Test>
+  <Test Description="ONORM" Author="Martin-Lenovo\Martin" Active="1" Date="2014. 08. 26">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Austrian ÖNORM-EN" Collapsed="True" />
+    </Dialog>
+    <Result Name="NA" Type="String" ESA_ID="Result.00" Value="Austrian ÖNORM-EN" />
+    <Result Name="r↓sup,preten←" Type="Numeric" ESA_ID="Result.01" Value="1" />
+    <Result Name="r↓inf,preten←" Type="Numeric" ESA_ID="Result.02" Value="1" />
+    <Result Name="r↓sup,postten←" Type="Numeric" ESA_ID="Result.03" Value="1.05" />
+    <Result Name="r↓inf,postten←" Type="Numeric" ESA_ID="Result.04" Value="0.95" />
+    <Result Name="r↓sup,precise←" Type="Numeric" ESA_ID="Result.05" Value="1" />
+    <Result Name="r↓inf,precise←" Type="Numeric" ESA_ID="Result.06" Value="1" />
+  </Test>
+</Root>

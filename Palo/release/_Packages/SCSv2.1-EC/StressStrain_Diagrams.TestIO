@@ -1,0 +1,314 @@
+﻿<Root>
+  <Test Description="Test 1" Author="SCIA-ONLINE\jbroz" Active="1" Date="2014.08.05">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="British BS-EN" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|REINF.EC" Category="Inclined top branch" Item="B 400 B" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Parabola-rectangular" Item="C 30/37" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelIndex="0" Num_H="500" Num_B="300" Num_T_th="150" Num_T_sh="300" Num_CR_Count="3" Num_CR_Diam="20" Num_CR_Cover="50" Num_TR_Count="5" Num_TR_Diam="20" Num_TR_Cover="50" />
+      <Variable Identifier="PrintDiagrams" Value="True" />
+      <Variable Identifier="UserSSConcrete" Value="False" />
+      <Variable Identifier="TableUserSSConcrete" Value="-1|-1║-5|-2║-10|-10" />
+      <Variable Identifier="UserSSReinf" Value="False" />
+      <Variable Identifier="TableUserSSReinf" Value="-400|-30║-400|-10║0|0║450|20║460|30" />
+    </Dialog>
+    <Input Name="AccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Bilinear" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="BilinearSEN" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="bPressBS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPressIS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bSLS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bULS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Coeffε↓Sud←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="ConcreteName" Type="String" ESA_ID="" Value="C 30/37" />
+    <Input Name="E↓c←" Type="Numeric" ESA_ID="" Value="33e9" />
+    <Input Name="E↓s←" Type="Numeric" ESA_ID="" Value="200e9" />
+    <Input Name="epsC" Type="Numeric" ESA_ID="" Value="-10" />
+    <Input Name="epsR" Type="Numeric" ESA_ID="" Value="30" />
+    <Result Name="f↓cd←" Type="Numeric" ESA_ID="Result.0" Value="20e6" />
+    <Input Name="f↓ck,cube←" Type="Numeric" ESA_ID="" Value="37e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="30e6" />
+    <Input Name="f↓td←" Type="Numeric" ESA_ID="" Value="372.8696e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="347.8261e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="400e6" />
+    <Input Name="Char" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="Inclined" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="InclinedSEN" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="k" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="kf↓ck←" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="kf↓yk←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="M↓y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="n" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="N" Type="Numeric" ESA_ID="" Value="-10000" />
+    <Input Name="NoRowsUserSSConcrete" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="NoRowsUserSSReinf" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="Pressure" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="PrintDiagrams" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Reinf" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="ReinfClass" Type="String" ESA_ID="" Value="B" />
+    <Input Name="ReinfName" Type="String" ESA_ID="" Value="B 400 B" />
+    <Result Name="Result1" Type="Numeric" ESA_ID="Result.1" Value="-3.5e-3" />
+    <Result Name="Result2" Type="Numeric" ESA_ID="Result.2" Value="-20e6" />
+    <Result Name="Result3" Type="Numeric" ESA_ID="Result.3" Value="4.545455e-3" />
+    <Result Name="Result4" Type="Numeric" ESA_ID="Result.4" Value="150e6" />
+    <Result Name="Result5" Type="Numeric" ESA_ID="Result.5" Value="45e-3" />
+    <Result Name="Result6" Type="Numeric" ESA_ID="Result.6" Value="372.8696e6" />
+    <Result Name="Result7" Type="Numeric" ESA_ID="Result.7" Value="2e-3" />
+    <Result Name="Result8" Type="Numeric" ESA_ID="Result.8" Value="400e6" />
+    <Input Name="SEN" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="sigmaC" Type="Numeric" ESA_ID="" Value="-10e6" />
+    <Input Name="sigmaR" Type="Numeric" ESA_ID="" Value="460e6" />
+    <Input Name="sTypeOfLoading" Type="String" ESA_ID="" Value="AxialPressureLoading" />
+    <Input Name="Tension" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="UserSSConcrete" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="UserSSReinf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="α↓ct←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="ε↓c2←" Type="Numeric" ESA_ID="" Value="2e-3" />
+    <Input Name="ε↓c3←" Type="Numeric" ESA_ID="" Value="1.75e-3" />
+    <Input Name="ε↓cu2←" Type="Numeric" ESA_ID="" Value="3.5e-3" />
+    <Input Name="ε↓cu3←" Type="Numeric" ESA_ID="" Value="3.5e-3" />
+    <Input Name="ε↓Sud←" Type="Numeric" ESA_ID="" Value="25e-3" />
+    <Input Name="ε↓ud←" Type="Numeric" ESA_ID="" Value="45e-3" />
+    <Input Name="ε↓uk←" Type="Numeric" ESA_ID="" Value="50e-3" />
+    <Input Name="φ" Type="Numeric" ESA_ID="" Value="2.5" />
+  </Test>
+  <Test Description="Test 2" Author="SCIA-ONLINE\jbroz" Active="1" Date="2014.08.05">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="British BS-EN" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|REINF.EC" Category="Inclined top branch" Item="B 500 B" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Parabola-rectangular" Item="C 40/50" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelIndex="0" Num_H="500" Num_B="300" Num_T_th="150" Num_T_sh="300" Num_CR_Count="3" Num_CR_Diam="20" Num_CR_Cover="50" Num_TR_Count="5" Num_TR_Diam="20" Num_TR_Cover="50" />
+      <Variable Identifier="PrintDiagrams" Value="True" />
+      <Variable Identifier="UserSSConcrete" Value="False" />
+      <Variable Identifier="TableUserSSConcrete" Value="-1|-1║-5|-2║-10|-10" />
+      <Variable Identifier="UserSSReinf" Value="False" />
+      <Variable Identifier="TableUserSSReinf" Value="-400|-30║-400|-10║0|0║450|20║460|30" />
+    </Dialog>
+    <Input Name="AccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Bilinear" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="BilinearSEN" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="bPressBS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPressIS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bSLS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bULS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Coeffε↓Sud←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="ConcreteName" Type="String" ESA_ID="" Value="C 40/50" />
+    <Input Name="E↓c←" Type="Numeric" ESA_ID="" Value="35e9" />
+    <Input Name="E↓s←" Type="Numeric" ESA_ID="" Value="200e9" />
+    <Input Name="epsC" Type="Numeric" ESA_ID="" Value="-10" />
+    <Input Name="epsR" Type="Numeric" ESA_ID="" Value="30" />
+    <Result Name="f↓cd←" Type="Numeric" ESA_ID="Result.0" Value="26.66667e6" />
+    <Input Name="f↓ck,cube←" Type="Numeric" ESA_ID="" Value="50e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="40e6" />
+    <Input Name="f↓td←" Type="Numeric" ESA_ID="" Value="466.087e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="434.7826e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="500e6" />
+    <Input Name="Char" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="Inclined" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="InclinedSEN" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="k" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="kf↓ck←" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="kf↓yk←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="M↓y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="n" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="N" Type="Numeric" ESA_ID="" Value="-10000" />
+    <Input Name="NoRowsUserSSConcrete" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="NoRowsUserSSReinf" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="Pressure" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="PrintDiagrams" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Reinf" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="ReinfClass" Type="String" ESA_ID="" Value="B" />
+    <Input Name="ReinfName" Type="String" ESA_ID="" Value="B 500 B" />
+    <Result Name="Result1" Type="Numeric" ESA_ID="Result.1" Value="-3.5e-3" />
+    <Result Name="Result2" Type="Numeric" ESA_ID="Result.2" Value="-26.66667e6" />
+    <Result Name="Result3" Type="Numeric" ESA_ID="Result.3" Value="5.714286e-3" />
+    <Result Name="Result4" Type="Numeric" ESA_ID="Result.4" Value="200e6" />
+    <Result Name="Result5" Type="Numeric" ESA_ID="Result.5" Value="45e-3" />
+    <Result Name="Result6" Type="Numeric" ESA_ID="Result.6" Value="466.087e6" />
+    <Result Name="Result7" Type="Numeric" ESA_ID="Result.7" Value="2.5e-3" />
+    <Result Name="Result8" Type="Numeric" ESA_ID="Result.8" Value="500e6" />
+    <Input Name="SEN" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="sigmaC" Type="Numeric" ESA_ID="" Value="-10e6" />
+    <Input Name="sigmaR" Type="Numeric" ESA_ID="" Value="460e6" />
+    <Input Name="sTypeOfLoading" Type="String" ESA_ID="" Value="AxialPressureLoading" />
+    <Input Name="Tension" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="UserSSConcrete" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="UserSSReinf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="α↓ct←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="ε↓c2←" Type="Numeric" ESA_ID="" Value="2e-3" />
+    <Input Name="ε↓c3←" Type="Numeric" ESA_ID="" Value="1.75e-3" />
+    <Input Name="ε↓cu2←" Type="Numeric" ESA_ID="" Value="3.5e-3" />
+    <Input Name="ε↓cu3←" Type="Numeric" ESA_ID="" Value="3.5e-3" />
+    <Input Name="ε↓Sud←" Type="Numeric" ESA_ID="" Value="25e-3" />
+    <Input Name="ε↓ud←" Type="Numeric" ESA_ID="" Value="45e-3" />
+    <Input Name="ε↓uk←" Type="Numeric" ESA_ID="" Value="50e-3" />
+    <Input Name="φ" Type="Numeric" ESA_ID="" Value="2.5" />
+  </Test>
+  <Test Description="Test 3" Author="SCIA-ONLINE\jbroz" Active="1" Date="2014.08.05">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="British BS-EN" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|REINF.EC" Category="Inclined top branch" Item="B 600 B" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Parabola-rectangular" Item="C 90/105" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelIndex="0" Num_H="500" Num_B="300" Num_T_th="150" Num_T_sh="300" Num_CR_Count="3" Num_CR_Diam="20" Num_CR_Cover="50" Num_TR_Count="5" Num_TR_Diam="20" Num_TR_Cover="50" />
+      <Variable Identifier="PrintDiagrams" Value="True" />
+      <Variable Identifier="UserSSConcrete" Value="False" />
+      <Variable Identifier="TableUserSSConcrete" Value="-1|-1║-5|-2║-10|-10" />
+      <Variable Identifier="UserSSReinf" Value="False" />
+      <Variable Identifier="TableUserSSReinf" Value="-400|-30║-400|-10║0|0║450|20║460|30" />
+    </Dialog>
+    <Input Name="AccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Bilinear" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="BilinearSEN" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="bPressBS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPressIS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bSLS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bULS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Coeffε↓Sud←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="ConcreteName" Type="String" ESA_ID="" Value="C 90/105" />
+    <Input Name="E↓c←" Type="Numeric" ESA_ID="" Value="44e9" />
+    <Input Name="E↓s←" Type="Numeric" ESA_ID="" Value="200e9" />
+    <Input Name="epsC" Type="Numeric" ESA_ID="" Value="-10" />
+    <Input Name="epsR" Type="Numeric" ESA_ID="" Value="30" />
+    <Result Name="f↓cd←" Type="Numeric" ESA_ID="Result.0" Value="60e6" />
+    <Input Name="f↓ck,cube←" Type="Numeric" ESA_ID="" Value="105e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="90e6" />
+    <Input Name="f↓td←" Type="Numeric" ESA_ID="" Value="559.3043e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="521.7391e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="600e6" />
+    <Input Name="Char" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="Inclined" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="InclinedSEN" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="k" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="kf↓ck←" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="kf↓yk←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="M↓y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="n" Type="Numeric" ESA_ID="" Value="1.4" />
+    <Input Name="N" Type="Numeric" ESA_ID="" Value="-10000" />
+    <Input Name="NoRowsUserSSConcrete" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="NoRowsUserSSReinf" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="Pressure" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="PrintDiagrams" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Reinf" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="ReinfClass" Type="String" ESA_ID="" Value="B" />
+    <Input Name="ReinfName" Type="String" ESA_ID="" Value="B 600 B" />
+    <Result Name="Result1" Type="Numeric" ESA_ID="Result.1" Value="-2.6e-3" />
+    <Result Name="Result2" Type="Numeric" ESA_ID="Result.2" Value="-60e6" />
+    <Result Name="Result3" Type="Numeric" ESA_ID="Result.3" Value="10.22727e-3" />
+    <Result Name="Result4" Type="Numeric" ESA_ID="Result.4" Value="450e6" />
+    <Result Name="Result5" Type="Numeric" ESA_ID="Result.5" Value="45e-3" />
+    <Result Name="Result6" Type="Numeric" ESA_ID="Result.6" Value="559.3043e6" />
+    <Result Name="Result7" Type="Numeric" ESA_ID="Result.7" Value="3e-3" />
+    <Result Name="Result8" Type="Numeric" ESA_ID="Result.8" Value="600e6" />
+    <Input Name="SEN" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="sigmaC" Type="Numeric" ESA_ID="" Value="-10e6" />
+    <Input Name="sigmaR" Type="Numeric" ESA_ID="" Value="460e6" />
+    <Input Name="sTypeOfLoading" Type="String" ESA_ID="" Value="AxialPressureLoading" />
+    <Input Name="Tension" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="UserSSConcrete" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="UserSSReinf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="α↓ct←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="ε↓c2←" Type="Numeric" ESA_ID="" Value="2.6e-3" />
+    <Input Name="ε↓c3←" Type="Numeric" ESA_ID="" Value="2.3e-3" />
+    <Input Name="ε↓cu2←" Type="Numeric" ESA_ID="" Value="2.6e-3" />
+    <Input Name="ε↓cu3←" Type="Numeric" ESA_ID="" Value="2.6e-3" />
+    <Input Name="ε↓Sud←" Type="Numeric" ESA_ID="" Value="25e-3" />
+    <Input Name="ε↓ud←" Type="Numeric" ESA_ID="" Value="45e-3" />
+    <Input Name="ε↓uk←" Type="Numeric" ESA_ID="" Value="50e-3" />
+    <Input Name="φ" Type="Numeric" ESA_ID="" Value="2.5" />
+  </Test>
+  <Test Description="Test 4" Author="SCIA-ONLINE\jbroz" Active="1" Date="2014.08.05">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="British BS-EN" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|REINF.EC" Category="Inclined top branch" Item="B 400 C" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Parabola-rectangular" Item="C 12/15" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelIndex="0" Num_H="500" Num_B="300" Num_T_th="150" Num_T_sh="300" Num_CR_Count="3" Num_CR_Diam="20" Num_CR_Cover="50" Num_TR_Count="5" Num_TR_Diam="20" Num_TR_Cover="50" />
+      <Variable Identifier="PrintDiagrams" Value="True" />
+      <Variable Identifier="UserSSConcrete" Value="False" />
+      <Variable Identifier="TableUserSSConcrete" Value="-1|-1║-5|-2║-10|-10" />
+      <Variable Identifier="UserSSReinf" Value="False" />
+      <Variable Identifier="TableUserSSReinf" Value="-400|-30║-400|-10║0|0║450|20║460|30" />
+    </Dialog>
+    <Input Name="AccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Bilinear" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="BilinearSEN" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="bPressBS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPressIS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bSLS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bULS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Coeffε↓Sud←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="ConcreteName" Type="String" ESA_ID="" Value="C 12/15" />
+    <Input Name="E↓c←" Type="Numeric" ESA_ID="" Value="27e9" />
+    <Input Name="E↓s←" Type="Numeric" ESA_ID="" Value="200e9" />
+    <Input Name="epsC" Type="Numeric" ESA_ID="" Value="-10" />
+    <Input Name="epsR" Type="Numeric" ESA_ID="" Value="30" />
+    <Result Name="f↓cd←" Type="Numeric" ESA_ID="Result.0" Value="8e6" />
+    <Input Name="f↓ck,cube←" Type="Numeric" ESA_ID="" Value="15e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="12e6" />
+    <Input Name="f↓td←" Type="Numeric" ESA_ID="" Value="394.7826e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="347.8261e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="400e6" />
+    <Input Name="Char" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="Inclined" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="InclinedSEN" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="k" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="kf↓ck←" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="kf↓yk←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="M↓y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="n" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="N" Type="Numeric" ESA_ID="" Value="-10000" />
+    <Input Name="NoRowsUserSSConcrete" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="NoRowsUserSSReinf" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="Pressure" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="PrintDiagrams" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Reinf" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="ReinfClass" Type="String" ESA_ID="" Value="C" />
+    <Input Name="ReinfName" Type="String" ESA_ID="" Value="B 400 C" />
+    <Result Name="Result1" Type="Numeric" ESA_ID="Result.1" Value="-3.5e-3" />
+    <Result Name="Result2" Type="Numeric" ESA_ID="Result.2" Value="-8e6" />
+    <Result Name="Result3" Type="Numeric" ESA_ID="Result.3" Value="2.222222e-3" />
+    <Result Name="Result4" Type="Numeric" ESA_ID="Result.4" Value="60e6" />
+    <Result Name="Result5" Type="Numeric" ESA_ID="Result.5" Value="67.5e-3" />
+    <Result Name="Result6" Type="Numeric" ESA_ID="Result.6" Value="394.7826e6" />
+    <Result Name="Result7" Type="Numeric" ESA_ID="Result.7" Value="2e-3" />
+    <Result Name="Result8" Type="Numeric" ESA_ID="Result.8" Value="400e6" />
+    <Input Name="SEN" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="sigmaC" Type="Numeric" ESA_ID="" Value="-10e6" />
+    <Input Name="sigmaR" Type="Numeric" ESA_ID="" Value="460e6" />
+    <Input Name="sTypeOfLoading" Type="String" ESA_ID="" Value="AxialPressureLoading" />
+    <Input Name="Tension" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="UserSSConcrete" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="UserSSReinf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="α↓ct←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="ε↓c2←" Type="Numeric" ESA_ID="" Value="2e-3" />
+    <Input Name="ε↓c3←" Type="Numeric" ESA_ID="" Value="1.75e-3" />
+    <Input Name="ε↓cu2←" Type="Numeric" ESA_ID="" Value="3.5e-3" />
+    <Input Name="ε↓cu3←" Type="Numeric" ESA_ID="" Value="3.5e-3" />
+    <Input Name="ε↓Sud←" Type="Numeric" ESA_ID="" Value="25e-3" />
+    <Input Name="ε↓ud←" Type="Numeric" ESA_ID="" Value="67.5e-3" />
+    <Input Name="ε↓uk←" Type="Numeric" ESA_ID="" Value="75e-3" />
+    <Input Name="φ" Type="Numeric" ESA_ID="" Value="2.5" />
+  </Test>
+</Root>

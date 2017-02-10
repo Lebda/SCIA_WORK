@@ -1,0 +1,189 @@
+<Root>
+  <Test Description="STD_A&gt;800" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="900" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Standard EN" />
+    <Result Name="UseForm" Type="Bool" ESA_ID="Result.01" Value="True" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZonePN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneSTN" Type="Numeric" ESA_ID="" Value="0" />
+  </Test>
+  <Test Description="STD_A&lt;800" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="700" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Standard EN" />
+    <Result Name="UseForm" Type="Bool" ESA_ID="Result.01" Value="False" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZonePN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneSTN" Type="Numeric" ESA_ID="" Value="0" />
+  </Test>
+  <Test Description="SIST_A&gt;400" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Slovenia SIST-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="700" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Slovenia SIST-EN" />
+    <Result Name="UseForm" Type="Bool" ESA_ID="Result.01" Value="True" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZonePN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneSTN" Type="Numeric" ESA_ID="" Value="0" />
+  </Test>
+  <Test Description="SIST_A&lt;400" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Slovenia SIST-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="300" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Slovenia SIST-EN" />
+    <Result Name="UseForm" Type="Bool" ESA_ID="Result.01" Value="False" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZonePN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneSTN" Type="Numeric" ESA_ID="" Value="0" />
+  </Test>
+  <Test Description="STN_ZoneSTN&gt;2" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Slovak STN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="300" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Slovak STN-EN" />
+    <Result Name="UseForm" Type="Bool" ESA_ID="Result.01" Value="True" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZonePN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneSTN" Type="Numeric" ESA_ID="" Value="3" />
+  </Test>
+  <Test Description="STN_ZoneSTN&lt;2" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Slovak STN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="300" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Slovak STN-EN" />
+    <Result Name="UseForm" Type="Bool" ESA_ID="Result.01" Value="False" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZonePN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneSTN" Type="Numeric" ESA_ID="" Value="1" />
+  </Test>
+  <Test Description="PN_A&gt;300_ZonePN3" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Polish PN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="400" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Polish PN-EN" />
+    <Result Name="UseForm" Type="Bool" ESA_ID="Result.01" Value="True" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZonePN" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="ZoneSTN" Type="Numeric" ESA_ID="" Value="1" />
+  </Test>
+  <Test Description="PN_A&gt;300_ZonePN2" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Polish PN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="400" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Polish PN-EN" />
+    <Result Name="UseForm" Type="Bool" ESA_ID="Result.01" Value="True" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZonePN" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="ZoneSTN" Type="Numeric" ESA_ID="" Value="1" />
+  </Test>
+  <Test Description="PN_A&lt;300_ZonePN3" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Polish PN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="200" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Polish PN-EN" />
+    <Result Name="UseForm" Type="Bool" ESA_ID="Result.01" Value="False" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZonePN" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="ZoneSTN" Type="Numeric" ESA_ID="" Value="1" />
+  </Test>
+  <Test Description="DIN" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="German DIN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="200" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="German DIN-EN" />
+    <Result Name="UseForm" Type="Bool" ESA_ID="Result.01" Value="True" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZonePN" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="ZoneSTN" Type="Numeric" ESA_ID="" Value="1" />
+  </Test>
+  <Test Description="NF_A&gt;900" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="French NF-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="1000" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="French NF-EN" />
+    <Result Name="UseForm" Type="Bool" ESA_ID="Result.01" Value="True" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZonePN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneSTN" Type="Numeric" ESA_ID="" Value="0" />
+  </Test>
+  <Test Description="NF_A&lt;900" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="French NF-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="800" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="French NF-EN" />
+    <Result Name="UseForm" Type="Bool" ESA_ID="Result.01" Value="False" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZonePN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneSTN" Type="Numeric" ESA_ID="" Value="0" />
+  </Test>
+  <Test Description="SFS" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Finnish SFS-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="900" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Finnish SFS-EN" />
+    <Result Name="UseForm" Type="Bool" ESA_ID="Result.01" Value="False" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZonePN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneSTN" Type="Numeric" ESA_ID="" Value="0" />
+  </Test>
+  <Test Description="NEN" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Dutch NEN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="900" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Dutch NEN-EN" />
+    <Result Name="UseForm" Type="Bool" ESA_ID="Result.01" Value="False" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZonePN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneSTN" Type="Numeric" ESA_ID="" Value="0" />
+  </Test>
+  <Test Description="CSN_ZoneCSN&gt;4" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Czech CSN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="900" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Czech CSN-EN" />
+    <Result Name="UseForm" Type="Bool" ESA_ID="Result.01" Value="True" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="ZonePN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneSTN" Type="Numeric" ESA_ID="" Value="0" />
+  </Test>
+  <Test Description="CSN_ZoneCSN&lt;4" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Czech CSN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="900" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Czech CSN-EN" />
+    <Result Name="UseForm" Type="Bool" ESA_ID="Result.01" Value="False" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="ZonePN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneSTN" Type="Numeric" ESA_ID="" Value="0" />
+  </Test>
+  <Test Description="NBN" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 11">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Belgian NBN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="900" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Belgian NBN-EN" />
+    <Result Name="UseForm" Type="Bool" ESA_ID="Result.01" Value="False" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="ZonePN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneSTN" Type="Numeric" ESA_ID="" Value="0" />
+  </Test>
+</Root>

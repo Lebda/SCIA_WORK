@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="1"><StringCode SourceType="DLLRC:"><StringId>@{greenfrog.2eids_special_items_palette_branch}</StringId>
+		<SourceDll>GreenFrog.2edll</SourceDll>
+		<ResourceId>1008</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

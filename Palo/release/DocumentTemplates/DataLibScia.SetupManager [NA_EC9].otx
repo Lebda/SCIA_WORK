@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xss xmlns:xss="http://www.scia.cz/xss">
+   <table_template xss:class="TableTemplate" ots_version="13" name="NA_EC9" clsid="{EE763584-2F78-410B-868D-1B64458606CC}" type="simple_form" auto_styles="1" header_style="255" odd_line_style="255" even_line_style="255" icons_in_header="0" flags2="0" context="0" sorting_flags="0">
+      <table_look can_use_presets="1" what_widths_to_use="0" what_colors_to_use="0" what_padding_to_use="0" cell_padding="10 10 10 10" space_between_sections="20" space_between_strips="50">
+         <line_widths width_0="1" width_1="1" width_2="1" width_3="1" width_4="1" width_5="1" width_6="1" width_7="1" width_8="1" width_9="1"/>
+         <line_colors color_0="0" color_1="0" color_2="0" color_3="0" color_4="0" color_5="0" color_6="0" color_7="0" color_8="0" color_9="0"/>
+         <colors color_0="16777215" color_1="16777215" color_2="16777215" color_3="16777215"/>
+         <stripping_rule rule="0"/></table_look>
+      <column xss:class="UserText" format="0" format2="5" units="0" alignment="2" digits="0" minimal_width="100" delta_width="20" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0">
+         <text>EN 1999 -</text></column>
+      <column xss:class="JoinColumn"/>
+      <column xss:class="Column" id="\EP\$4364BC01-AAB7-11D4-B3D9-00104BC3B531" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="100" delta_width="20" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\${123D5AB0-D877-4E6C-958F-1A6715E2D152}" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="100" delta_width="20" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/></table_template></xss>

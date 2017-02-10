@@ -1,0 +1,136 @@
+<Root>
+  <Node Type="Group" Text="Pile Package(B)">
+    <Node Type="CalcTest" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B01 Geostatic stress advanced.CLC">
+      <Node Type="TestList" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B01 Geostatic stress advanced.TestIO">
+        <Node Type="TestIO" Text="Test 1" />
+        <Node Type="TestIO" Text="Test 2" />
+        <Node Type="TestIO" Text="Test 3" />
+        <Node Type="TestIO" Text="Test 4" />
+        <Node Type="TestIO" Text="Test 5" />
+        <Node Type="TestIO" Text="Test 6" />
+        <Node Type="TestIO" Text="Test 7" />
+      </Node>
+    </Node>
+    <Node Type="CalcTest" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B02 Bearing capacity of bored piles ULS.CLC">
+      <Node Type="TestList" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B02 Bearing capacity of bored piles ULS.TestIO">
+        <Node Type="TestIO" Text="Test 1" />
+        <Node Type="TestIO" Text="Test 2" />
+        <Node Type="TestIO" Text="Test 3" />
+        <Node Type="TestIO" Text="Test 4" />
+        <Node Type="TestIO" Text="Test 5" />
+        <Node Type="TestIO" Text="Test 6" />
+        <Node Type="TestIO" Text="Test 7" />
+        <Node Type="TestIO" Text="Test 8" />
+        <Node Type="TestIO" Text="Test 9" />
+        <Node Type="TestIO" Text="Test 10" />
+        <Node Type="TestIO" Text="Test 11" />
+        <Node Type="TestIO" Text="Test 12" />
+      </Node>
+    </Node>
+    <Node Type="CalcTest" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B03 Bearing capacity of bored piles SLS_Point bearing pile.CLC">
+      <Node Type="TestList" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B03 Bearing capacity of bored piles SLS_Point bearing pile.TestIO">
+        <Node Type="TestIO" Text="Test 1" />
+        <Node Type="TestIO" Text="Test 2" />
+        <Node Type="TestIO" Text="Test 3" />
+        <Node Type="TestIO" Text="Test 4" />
+        <Node Type="TestIO" Text="Test 5" />
+      </Node>
+    </Node>
+    <Node Type="CalcTest" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B04 Bearing capacity of bored piles SLS_Socketed.CLC">
+      <Node Type="TestList" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B04 Bearing capacity of bored piles SLS_Socketed.TestIO">
+        <Node Type="TestIO" Text="Test 1" />
+        <Node Type="TestIO" Text="Test 2" />
+        <Node Type="TestIO" Text="Test 3" />
+        <Node Type="TestIO" Text="Test 4" />
+        <Node Type="TestIO" Text="Test 5" />
+      </Node>
+    </Node>
+    <Node Type="CalcTest" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B06 Vertical bearing capacity by tables.CLC">
+      <Node Type="TestList" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B06 Vertical bearing capacity by tables.TestIO">
+        <Node Type="TestIO" Text="Test 1" />
+        <Node Type="TestIO" Text="Test 2" />
+        <Node Type="TestIO" Text="Test 3" />
+        <Node Type="TestIO" Text="Test 4" />
+        <Node Type="TestIO" Text="Test 5" />
+      </Node>
+    </Node>
+    <Node Type="CalcTest" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B07 Bearing capacity of group of piles_Point bearing pile.CLC">
+      <Node Type="TestList" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B07 Bearing capacity of group of piles_Point bearing pile.TestIO">
+        <Node Type="TestIO" Text="Test 1" />
+        <Node Type="TestIO" Text="Test 2" />
+      </Node>
+    </Node>
+    <Node Type="CalcTest" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B08 Bearing capacity of group of piles_Socketed.CLC">
+      <Node Type="TestList" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B08 Bearing capacity of group of piles_Socketed.TestIO">
+        <Node Type="TestIO" Text="Test 1" />
+        <Node Type="TestIO" Text="Test 2" />
+        <Node Type="TestIO" Text="Test 3" />
+        <Node Type="TestIO" Text="Test 4" />
+      </Node>
+    </Node>
+    <Node Type="CalcTest" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B11 Design moment of horizontally loaded piles_rigid.CLC">
+      <Node Type="TestList" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B11 Design moment of horizontally loaded piles_rigid.TestIO">
+        <Node Type="TestIO" Text="Test 1" />
+        <Node Type="TestIO" Text="Test 2" />
+        <Node Type="TestIO" Text="Test 3" />
+        <Node Type="TestIO" Text="Test 4" />
+        <Node Type="TestIO" Text="Test 5" />
+        <Node Type="TestIO" Text="Test 6" />
+        <Node Type="TestIO" Text="Test 7" />
+      </Node>
+    </Node>
+    <Node Type="CalcTest" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B13 Horizontally loaded group of piles.CLC">
+      <Node Type="TestList" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B13 Horizontally loaded group of piles.TestIO">
+        <Node Type="TestIO" Text="Test 1" />
+        <Node Type="TestIO" Text="Test 2" />
+        <Node Type="TestIO" Text="Test 3" />
+        <Node Type="TestIO" Text="Test 4" />
+      </Node>
+    </Node>
+    <Node Type="CalcTest" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B14 Bearing capacity of displacement pile.CLC">
+      <Node Type="TestList" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B14 Bearing capacity of displacement pile.TestIO">
+        <Node Type="TestIO" Text="Test 1" />
+        <Node Type="TestIO" Text="Test 2" />
+        <Node Type="TestIO" Text="Test 3" />
+        <Node Type="TestIO" Text="Test 4" />
+      </Node>
+    </Node>
+    <Node Type="CalcTest" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B15 External bearing capacity of single micropile.CLC">
+      <Node Type="TestList" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B15 External bearing capacity of single micropile.TestIO">
+        <Node Type="TestIO" Text="Test 1" />
+        <Node Type="TestIO" Text="Test 2" />
+        <Node Type="TestIO" Text="Test 3" />
+        <Node Type="TestIO" Text="Test 4" />
+      </Node>
+    </Node>
+    <Node Type="CalcTest" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B17 Internal bearing capacity of single micropile.CLC">
+      <Node Type="TestList" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B17 Internal bearing capacity of single micropile.TestIO">
+        <Node Type="TestIO" Text="TL,1" />
+        <Node Type="TestIO" Text="TL,1 false" />
+        <Node Type="TestIO" Text="TL00" />
+        <Node Type="TestIO" Text="Test 1" />
+        <Node Type="TestIO" Text="Test 2" />
+      </Node>
+    </Node>
+    <Node Type="CalcTest" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B18 Bearing capacity of bar anchors.CLC">
+      <Node Type="TestList" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B18 Bearing capacity of bar anchors.TestIO">
+        <Node Type="TestIO" Text="CPS, true" />
+        <Node Type="TestIO" Text="CPS, false" />
+        <Node Type="TestIO" Text="Dyw, MAT0, D0" />
+        <Node Type="TestIO" Text="Dyw, MAT0, D1" />
+        <Node Type="TestIO" Text="Dyw, MAT0, D2" />
+        <Node Type="TestIO" Text="Dyw, MAT1, D0" />
+        <Node Type="TestIO" Text="Dyw, MAT1, D1" />
+        <Node Type="TestIO" Text="Dyw, MAT1, D2" />
+      </Node>
+    </Node>
+    <Node Type="CalcTest" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B19 Bearing capacity of strand anchors.CLC">
+      <Node Type="TestList" Text="C:\SCIA\SVN\_Packages\Pile Package (B)\B19 Bearing capacity of strand anchors.TestIO">
+        <Node Type="TestIO" Text="Type 0, true" />
+        <Node Type="TestIO" Text="Type 1, true" />
+        <Node Type="TestIO" Text="Type 2, true" />
+        <Node Type="TestIO" Text="Type 0, false" />
+      </Node>
+    </Node>
+  </Node>
+</Root>

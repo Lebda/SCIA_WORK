@@ -1,0 +1,34 @@
+<Root>
+  <ValueSets>
+    <EC NAD="CSN" Description="CZ jazyk, CZ annex" Layout="0" Language="CSY">
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Výpočet dle Masopusta, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Uživatelský nadpis" />
+      <Variable Identifier="V↓d←" Value="25e6" />
+      <Variable Identifier="R↓d1←" Value="3.217e6" />
+      <Variable Identifier="s" Value="1.01e-3" />
+      <Variable Identifier="n" Value="9" />
+    </EC>
+    <EC NAD="STN" Description="SK jazyk, SK annex" Layout="0" Language="SKY">
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Výpočet podľa Masopusta, STN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Uživateľský nadpis" />
+      <Variable Identifier="V↓d←" Value="25e6" />
+      <Variable Identifier="R↓d1←" Value="3.217e6" />
+      <Variable Identifier="s" Value="1.01e-3" />
+      <Variable Identifier="n" Value="9" />
+    </EC>
+    <EC NAD="CSN" Description="EN language, CZ annex" Layout="0" Language="ENU">
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Calculation according to Masopust theory, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="V↓d←" Value="25e6" />
+      <Variable Identifier="R↓d1←" Value="3.217e6" />
+      <Variable Identifier="s" Value="1.01e-3" />
+      <Variable Identifier="n" Value="9" />
+    </EC>
+  </ValueSets>
+</Root>

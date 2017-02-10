@@ -1,0 +1,39 @@
+﻿<Root>
+  <Test Description="STD" Author="Martin-Lenovo\Martin" Active="1" Date="2014. 08. 25">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+    </Dialog>
+    <Result Name="NA" Type="String" ESA_ID="Result.00" Value="Standard EN" />
+    <Result Name="k↓3←" Type="Numeric" ESA_ID="Result.01" Value="950e-3" />
+  </Test>
+  <Test Description="ONORM" Author="Martin-Lenovo\Martin" Active="1" Date="2014. 08. 25">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Austrian ÖNORM-EN" Collapsed="True" />
+    </Dialog>
+    <Result Name="NA" Type="String" ESA_ID="Result.00" Value="Austrian ÖNORM-EN" />
+    <Result Name="k↓3←" Type="Numeric" ESA_ID="Result.01" Value="920e-3" />
+  </Test>
+  <Test Description="NEN" Author="Martin-Lenovo\Martin" Active="1" Date="2014. 08. 25">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Dutch NEN-EN" Collapsed="True" />
+    </Dialog>
+    <Result Name="NA" Type="String" ESA_ID="Result.00" Value="Dutch NEN-EN" />
+    <Result Name="k↓3←" Type="Numeric" ESA_ID="Result.01" Value="900e-3" />
+  </Test>
+  <Test Description="DIN_noBridge" Author="Martin-Lenovo\Martin" Active="1" Date="2014. 08. 25">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="German DIN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="Bridge" Type="Bool" ESA_ID="" Value="False" />
+    <Result Name="NA" Type="String" ESA_ID="Result.00" Value="German DIN-EN" />
+    <Result Name="k↓3←" Type="Numeric" ESA_ID="Result.01" Value="950e-3" />
+  </Test>
+  <Test Description="DIN_Bridge" Author="Martin-Lenovo\Martin" Active="1" Date="2014. 08. 25">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="German DIN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="Bridge" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="NA" Type="String" ESA_ID="Result.00" Value="German DIN-EN" />
+    <Result Name="k↓3←" Type="Numeric" ESA_ID="Result.01" Value="900e-3" />
+  </Test>
+</Root>

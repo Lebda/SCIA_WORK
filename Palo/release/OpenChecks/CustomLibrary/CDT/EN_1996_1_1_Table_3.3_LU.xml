@@ -1,0 +1,126 @@
+<Root Version="1" Type="CustomLibrary" GUID="b469a6d6-bc9f-45cf-9442-70a692577c0d">
+  <Header>
+    <PropertySet Symbol="K" ESA_ID="K" Unit="" Type="Numeric">
+      <Description TranslateID="K">
+        <ENU>General purpose mortar - K</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Alpha" ESA_ID="Alpha" Unit="" Type="Numeric">
+      <Description TranslateID="Alpha">
+        <ENU>General purpose mortar - alpha</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Beta" ESA_ID="Beta" Unit="" Type="Numeric">
+      <Description TranslateID="Beta">
+        <ENU>General purpose mortar - beta</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="K" ESA_ID="K" Unit="" Type="Numeric">
+      <Description TranslateID="K">
+        <ENU>Thin layer mortar - K</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Alpha" ESA_ID="Alpha" Unit="" Type="Numeric">
+      <Description TranslateID="Alpha">
+        <ENU>Thin layer mortar - alpha</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Beta" ESA_ID="Beta" Unit="" Type="Numeric">
+      <Description TranslateID="Beta">
+        <ENU>Thin layer mortar - beta</ENU>
+      </Description>
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0.50</Property>
+      <Property>0.65</Property>
+      <Property>0.25</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+    </Item>
+    <Item>
+      <Property>0</Property>
+      <Property>1</Property>
+      <Property>NaN</Property>
+      <Property>0.65</Property>
+      <Property>0.25</Property>
+      <Property>NaN</Property>
+      <Property>0.80</Property>
+      <Property>0</Property>
+    </Item>
+    <Item>
+      <Property>0</Property>
+      <Property>2</Property>
+      <Property>NaN</Property>
+      <Property>0.65</Property>
+      <Property>0.25</Property>
+      <Property>NaN</Property>
+      <Property>0.80</Property>
+      <Property>0</Property>
+    </Item>
+    <Item>
+      <Property>1</Property>
+      <Property>0</Property>
+      <Property>0.60</Property>
+      <Property>0.65</Property>
+      <Property>0.25</Property>
+      <Property>0.80</Property>
+      <Property>0.85</Property>
+      <Property>0</Property>
+    </Item>
+    <Item>
+      <Property>1</Property>
+      <Property>1</Property>
+      <Property>0.50</Property>
+      <Property>0.65</Property>
+      <Property>0.25</Property>
+      <Property>0.55</Property>
+      <Property>0.85</Property>
+      <Property>0</Property>
+    </Item>
+    <Item>
+      <Property>2</Property>
+      <Property>0</Property>
+      <Property>0.60</Property>
+      <Property>0.65</Property>
+      <Property>0.25</Property>
+      <Property>0.80</Property>
+      <Property>0.85</Property>
+      <Property>0</Property>
+    </Item>
+    <Item>
+      <Property>2</Property>
+      <Property>1</Property>
+      <Property>0.50</Property>
+      <Property>0.65</Property>
+      <Property>0.25</Property>
+      <Property>0.65</Property>
+      <Property>0.85</Property>
+      <Property>0</Property>
+    </Item>
+    <Item>
+      <Property>2</Property>
+      <Property>2</Property>
+      <Property>0.45</Property>
+      <Property>0.65</Property>
+      <Property>0.25</Property>
+      <Property>0.50</Property>
+      <Property>0.85</Property>
+      <Property>0</Property>
+    </Item>
+    <Item>
+      <Property>3</Property>
+      <Property>0</Property>
+      <Property>0.60</Property>
+      <Property>0.65</Property>
+      <Property>0.25</Property>
+      <Property>0.80</Property>
+      <Property>0.85</Property>
+      <Property>0</Property>
+    </Item>
+  </Items>
+</Root>

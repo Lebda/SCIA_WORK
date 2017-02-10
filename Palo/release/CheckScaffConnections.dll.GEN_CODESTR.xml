@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="2"><StringCode SourceType="DLLRC:"><StringId>@{checkscaffconnections.2eids_name_check}</StringId>
+		<SourceDll>CheckScaffConnections.2edll</SourceDll>
+		<ResourceId>101</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{checkscaffconnections.2eidtext}</StringId>
+		<SourceDll>CheckScaffConnections.2edll</SourceDll>
+		<ResourceId>103</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

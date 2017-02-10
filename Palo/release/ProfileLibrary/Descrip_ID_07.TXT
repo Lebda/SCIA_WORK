@@ -1,0 +1,119 @@
+0	; nicht spezifiziert
+1	; Europäisches I-Profil
+2	; Europäisches Standardprofil
+3	; Europäisches Breitflanschprofil
+4	; Breitflansch-Stützenprofil
+5	; Breitflansch-Pfahlprofil
+6	; U-Profil mit Parallelflanschen
+7	; Europäisches Standard-U-Profil
+8	; Gleichschenkliges Winkelprofil
+9	; Ungleichschenkliges Winkelprofil
+10	; Winkelprofil
+11	; Britishes Universalprofil
+12	; Britishes Universal-Stützenprofil
+13	; Britishes Breitflansch-Pfahlprofil
+14 	; Breitflachprofil
+15	; Kaltgewalztes C-Profil
+16	; Kaltgewalztes Winkelprofil
+17	; Kaltgewalztes Omega-Profil
+18	; Kaltgewalztes U-Profil
+19	; Kaltgewalztes Z-Profil
+20	; Kreishohlprofil
+21	; Kaltgewalztes Kreishohlprofil
+22	; Flachprofil
+23	; Halb-I-Profil   
+24	; Asymmetrisches I-Profil
+25	; Rechteckhohlprofil
+26	; Rundstabprofil
+27	; Kaltgewalztes Rechteckhohlprofil
+28	; U-Profil
+29	; Britishes Parallelbalken-Profil
+30	; Schienenprofil
+31	; T-Profil
+32	; Z-Profil
+33	; Amerikanisches Breitflanschprofil - metrische Namenskonvention
+34	; Amerikanisches Breitflanschprofil - imperiale Namenskonvention
+35	; Amerikanisches Universalprofil - metrische Namenskonvention
+36	; Amerikanisches Universalprofil - imperiale Namenskonvention
+37	; Amerikanisches Pfahlprofil - metrische Namenskonventio
+38	; Amerikanisches Pfahlprofil - imperiale Namenskonvention
+39	; Amerikanisches Standardprofil - metrische Namenskonventio
+40	; Amerikanisches Standardprofil - imperiale Namenskonvention
+41	; Amerikanisches Standard-U-Profil - metrische Namenskonventio
+42	; Amerikanisches Standard-U-profil - imperiale Namenskonvention
+43	; Amerikanisches Universal-U-Profil - metrische Namenskonventio
+44	; Amerikanisches Universal-U-Profil - imperiale Namenskonventionn
+45	; Amerikanisches Einfachwinkelprfofil - metrische Namenskonventio
+46	; Amerikanisches Einfachwinkelprfofil - imperiale Namenskonvention
+47	; Amerikanisches Halb-I-Profil - metrische Namenskonvention
+48	; Amerikanisches Halb-I-Profil - imperiale Namenskonvention
+49	; Amerikanisches Rechteck- & Quadrathohlprofil - metrische Namenskonvention
+50	; Amerikanisches Rechteck- & Quadrathohlprofil - imperiale Namenskonvention
+51	; Amerikanisches Kreishohlprofil - metrische Namenskonvention
+52	; Amerikanisches Kreishohlprofil - imperiale Namenskonvention
+53	; Amerikanisches Stahlrohrprofil - metrische Namenskonvention
+54	; Amerikanisches Stahlrohrprofil - imperiale Namenskonvention
+55	; Japanisches H-Profil
+56	; Kaltgeformtes ZED-Profil
+57	; Kaltgeformtes Sigma-Profil
+58  ; Kaltgeformtes Dachtraufenprofil
+59  ; Integriertes Deckenbalkenprofil
+60  ; Slim-Deckenbalken-Profil
+61  ; Hutprofil
+62  ; Indian Standard Light weight Channels
+63  ; Indian Standard Column Sections
+64  ; Indian Standard Wide flange Beams
+65  ; Indian standard Unequal Leg angles
+66  ; Indian Standard Medium weight Parallel flange Channels
+67  ; Indian Standard Medium weight Channels
+68  ; Indian Standard Medium weight Beams
+69  ; Indian Standard Light weight Beams
+70  ; Indian Standard Junior Channels
+71  ; Indian Standard Junior Beams
+72  ; Indian Standard Heavy Weight Beams
+73  ; Indian Standard Equal Angles
+74	; Quadratische und rechteckige Hohlprofile - kaltgefertigt
+75	; Quadratische und rechteckige Hohlprofile
+76	; U-Stahl mit geneigten Flanschen
+77	; Hochstegige T-Stähle
+78	; Breitfüssige T-Stähle
+79	; Vierkantstäbe
+80	; Halb-I-Profil von universal Träger
+81	; Halb-I-Profil von universal Stütze
+82	; Jumbo355 Quadratische Hohlprofile
+83	; Celsius355 Quadratische Hohlprofile
+84	; Hybox355 Kaltgeformtes Quadratische Hohlprofile
+85	; Jumbo355 Rechteckige Hohlprofile
+86	; Celsius355 Rechteckige Hohlprofile
+87	; Hybox355 Kaltgeformtes Rechteckige Hohlprofile
+88	; Jumbo355 Kreis Hohlprofile
+89	; Celsius355 Kreis Hohlprofile
+90	; Hybox355 Kaltgeformtes Kreis Hohlprofile
+91	; Chinesisches H-Profil
+92	; Chinesisches Halb-I-Profil
+93	; Chinesische Quadratische Hohlprofile - kaltgefertigt
+94	; Chinesische Rechteckige Hohlprofile - kaltgefertigt
+95	; Chinesische Stahlrohre - kaltgefertigt
+96	; Chinesisches I-Profil
+97	; Chinesisches U-Profil
+98	; Chinesisches Gleichschenkliges Winkelprofil
+99	; Chinesisches Ungleichschenkliges Winkelprofil
+100	; ICEC Z Pfette
+101	; ICEC C Pfette
+102	; Brasilianisch I und H Profil
+103	; Celsius Large Kreis Hohlprofile
+104 ; Kaltgeformtes asymmetrisches Sigma-Profil
+105 ; Kaltgeformtes I-plus Profil
+106 ; Kaltgeformtes IS-plus Profil
+107	; SSMA Stud - Kaltgeformtes C profil mit Stärkung
+108	; SSMA Track - Kaltgeformtes C profil ohne Stärkung
+109	; Europäische Träger mit besonders breiten Flanschen
+110	; Russische Waltzträger
+111	; Britsche U-Profile mit parallelen Flanschen
+112	; Britsche U-Profile mit geneigten inneren Flanschflächen
+113	; Kaltgeformtes Profil METfloor
+114	; Kaltgeformtes U Profil METframe
+115	; Kaltgeformtes C Profil METframe
+116 ; Virtual Joist
+117 ; Virtual Joist Girder
+118	; Kaltgeformtes Sigma+ Profil

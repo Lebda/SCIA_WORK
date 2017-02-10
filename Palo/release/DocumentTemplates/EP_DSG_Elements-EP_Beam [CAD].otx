@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xss xmlns:xss="http://www.scia.cz/xss">
+   <table_template xss:class="TableTemplate" ots_version="13" name="CAD" clsid="{ECB5D684-7357-11D4-9F6C-00104BC3B443}" type="horizontal" auto_styles="1" header_style="4294967295" odd_line_style="4294967295" even_line_style="4294967295" icons_in_header="0" flags2="0" context="0" sorting_flags="0">
+      <table_look can_use_presets="1" what_widths_to_use="0" what_colors_to_use="0" what_padding_to_use="0" cell_padding="10 10 10 10" space_between_sections="20" space_between_strips="50">
+         <line_widths width_0="1" width_1="1" width_2="1" width_3="1" width_4="1" width_5="1" width_6="1" width_7="1" width_8="1" width_9="1"/>
+         <line_colors color_0="0" color_1="0" color_2="0" color_3="0" color_4="0" color_5="0" color_6="0" color_7="0" color_8="0" color_9="0"/>
+         <colors color_0="16777215" color_1="16777215" color_2="16777215" color_3="16777215"/>
+         <stripping_rule rule="0"/></table_look>
+      <column xss:class="Column" id="\EP\$4364BC01-AAB7-11D4-B3D9-00104BC3B531" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$7ACE87D0-E095-11D4-AE45-000000000000" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="JoinColumn"/>
+      <column xss:class="Column" id="\EP\$35E4A750-E358-11D4-AE4C-000000000000" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$BAE6D941-E0C7-11D4-AE46-000000000000" format="477287752" format2="5" units="0" alignment="0" digits="0" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="JoinColumn"/>
+      <column xss:class="Column" id="\EP\$D9DC2908-427F-4E85-8E72-6943CB0E5ACF" format="0" format2="5" units="0" alignment="0" digits="10" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$BAE6D940-E0C7-11D4-AE46-000000000000" format="1" format2="5" units="1" alignment="0" digits="1" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="JoinColumn"/>
+      <column xss:class="JoinColumn"/>
+      <column xss:class="Column" id="\EP\$771CB578-EB31-4374-93CA-632E3A6BF147" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="JoinColumn"/>
+      <column xss:class="Column" id="\EP\$275774D1-1C02-401A-9521-55B87438C694" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$C2AE14E1-776A-4EFA-9ED6-E1299E8BF864" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="JoinColumn"/>
+      <column xss:class="Column" id="\EP\$4BC86268-EB4C-4880-AD61-7247F7B4CBD8" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="JoinColumn"/>
+      <column xss:class="JoinColumn"/>
+      <column xss:class="JoinColumn"/>
+      <column xss:class="JoinColumn"/>
+      <column xss:class="Column" id="\EP\$7ACE87D1-E095-11D4-AE45-000000000000" format="4294967295" format2="5" units="0" alignment="0" digits="86" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="JoinColumn"/>
+      <column xss:class="JoinColumn"/>
+      <column xss:class="Column" id="\EP\$B6C52261-B161-462A-807D-98CEBB7500DB" format="0" format2="5" units="42926080" alignment="0" digits="434180464" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$EA31B9FE-329C-4DE7-9B0E-397A97799B7C" format="0" format2="5" units="0" alignment="0" digits="0" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="JoinColumn"/>
+      <column xss:class="Column" id="\EP\$94CD1733-1B7E-4B1C-9E18-B99B67015401" format="4294901504" format2="5" units="1408" alignment="0" digits="4294901504" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$AFBA387B-81A4-4056-BB88-FDCF8126E0D0" format="92275136" format2="5" units="214961408" alignment="0" digits="4278190080" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="JoinColumn"/>
+      <column xss:class="JoinColumn"/>
+      <column xss:class="Column" id="\EP\$26300198-4767-42BC-B924-63A14428892A" format="4004376064" format2="5" units="2560" alignment="0" digits="214961581" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$394BB92D-1BD8-4380-9E13-70EB7AC12591" format="38656" format2="5" units="0" alignment="0" digits="4352" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="JoinColumn"/>
+      <column xss:class="Column" id="\EP\$03B444AD-BEF4-4F78-851B-E8A21173DE08" format="16777216" format2="5" units="16777216" alignment="0" digits="83886080" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="Column" id="\EP\$394BB92D-1BD8-4380-9E13-70EB7AC12591" format="4278255614" format2="5" units="4278213120" alignment="0" digits="1879113726" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/>
+      <column xss:class="JoinColumn"/>
+      <column xss:class="Column" id="\EP\$03B444AD-BEF4-4F78-851B-E8A21173DE08" format="26" format2="5" units="882984960" alignment="0" digits="834037760" minimal_width="150" delta_width="50" max_width="0" cell_padding="10 10 10 10" max_picture_size="350 350" header_style="5" content_style="2" parametric_values_representation="0"/></table_template></xss>

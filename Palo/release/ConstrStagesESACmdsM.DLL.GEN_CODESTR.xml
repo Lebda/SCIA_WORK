@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="6"><StringCode SourceType="DLLRC:"><StringId>@{constrstagesesacmdsm.2eids_beam_history}</StringId>
+		<SourceDll>ConstrStagesESACmdsM.2eDLL</SourceDll>
+		<ResourceId>116</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{constrstagesesacmdsm.2eids_constr_stages_setup}</StringId>
+		<SourceDll>ConstrStagesESACmdsM.2eDLL</SourceDll>
+		<ResourceId>122</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{constrstagesesacmdsm.2eids_slab_history}</StringId>
+		<SourceDll>ConstrStagesESACmdsM.2eDLL</SourceDll>
+		<ResourceId>124</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{constrstagesesacmdsm.2eids_time_dependent_analysis}</StringId>
+		<SourceDll>ConstrStagesESACmdsM.2eDLL</SourceDll>
+		<ResourceId>121</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{constrstagesesacmdsm.2eids_time_axis}</StringId>
+		<SourceDll>ConstrStagesESACmdsM.2eDLL</SourceDll>
+		<ResourceId>119</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{constrstagesesacmdsm.2eids_constr_stages}</StringId>
+		<SourceDll>ConstrStagesESACmdsM.2eDLL</SourceDll>
+		<ResourceId>109</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

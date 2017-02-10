@@ -1,0 +1,290 @@
+<Root Version="1" Type="CustomLibrary" GUID="caca40ae-990b-45de-88f1-91f92b2f5403">
+  <Header>
+    <PropertySet Symbol="w↓c←" ESA_ID="w↓c←" Unit="lb/ft↑3←" Type="Numeric">
+      <Description TranslateID="w↓c←">
+        <ENU>Unit Weight of Concrete</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="α" ESA_ID="α" Unit="in/in*°F" Type="Numeric">
+      <Description TranslateID="α">
+        <ENU>Coefficient of Thermal Expansion</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ν" ESA_ID="ν" Unit="" Type="Numeric">
+      <Description TranslateID="ν">
+        <ENU>Poisson's Ration</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="E↓c←" ESA_ID="E↓c←" Unit="ksi" Type="Numeric">
+      <Description TranslateID="E↓c←">
+        <ENU>Modulus of Elasticity</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="G" ESA_ID="G" Unit="ksi" Type="Numeric">
+      <Description TranslateID="G">
+        <ENU>Shear Modulus</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="f↓c←" ESA_ID="f↓c←" Unit="psi" Type="Numeric">
+      <Description TranslateID="f↓c←">
+        <ENU>Concrete Compressive Strength</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="f↓r←" ESA_ID="f↓r←" Unit="psi" Type="Numeric">
+      <Description TranslateID="f↓r←">
+        <ENU>Modulus of Rupture</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="β↓1←" ESA_ID="β↓1←" Unit="" Type="Numeric">
+      <Description TranslateID="β↓1←">
+        <ENU>Compressive Stress Coefficient</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="f↓cd←" ESA_ID="f↓cd←" Unit="psi" Type="Numeric">
+      <Description TranslateID="f↓cd←">
+        <ENU>Compressive Stress for Design</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="√f↓c←" ESA_ID="√f↓c←" Unit="psi" Type="Numeric">
+      <Description TranslateID="√f↓c←">
+        <ENU>Square Root of Specified Compressive Stress for Design</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ε↓o←" ESA_ID="ε↓o←" Unit="" Type="Numeric">
+      <Description TranslateID="ε↓o←">
+        <ENU>Strain at Maximum Compressive Strength</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ε↓cu←" ESA_ID="ε↓cu←" Unit="" Type="Numeric">
+      <Description TranslateID="ε↓cu←">
+        <ENU>Maximum Compressive Strain</ENU>
+      </Description>
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>Normal Weight Concrete</Property>
+      <Property>C2500</Property>
+      <Property>155</Property>
+      <Property>5.50E-06</Property>
+      <Property>0.15</Property>
+      <Property>3184.06</Property>
+      <Property>1384.37</Property>
+      <Property>2500</Property>
+      <Property>375.00</Property>
+      <Property>0.85</Property>
+      <Property>2125</Property>
+      <Property>50.00</Property>
+      <Property>0.00133</Property>
+      <Property>0.003</Property>
+    </Item>
+    <Item>
+      <Property>Normal Weight Concrete</Property>
+      <Property>C3000</Property>
+      <Property>155</Property>
+      <Property>5.50E-06</Property>
+      <Property>0.15</Property>
+      <Property>3487.96</Property>
+      <Property>1516.51</Property>
+      <Property>3000</Property>
+      <Property>410.79</Property>
+      <Property>0.85</Property>
+      <Property>2550</Property>
+      <Property>54.77</Property>
+      <Property>0.00146</Property>
+      <Property>0.003</Property>
+    </Item>
+    <Item>
+      <Property>Normal Weight Concrete</Property>
+      <Property>C4000</Property>
+      <Property>155</Property>
+      <Property>5.50E-06</Property>
+      <Property>0.15</Property>
+      <Property>4027.56</Property>
+      <Property>1751.11</Property>
+      <Property>4000</Property>
+      <Property>474.34</Property>
+      <Property>0.85</Property>
+      <Property>3400</Property>
+      <Property>63.25</Property>
+      <Property>0.00169</Property>
+      <Property>0.003</Property>
+    </Item>
+    <Item>
+      <Property>Normal Weight Concrete</Property>
+      <Property>C5000</Property>
+      <Property>155</Property>
+      <Property>5.50E-06</Property>
+      <Property>0.15</Property>
+      <Property>4502.94</Property>
+      <Property>1957.80</Property>
+      <Property>5000</Property>
+      <Property>530.33</Property>
+      <Property>0.80</Property>
+      <Property>4000</Property>
+      <Property>70.71</Property>
+      <Property>0.00178</Property>
+      <Property>0.003</Property>
+    </Item>
+    <Item>
+      <Property>Normal Weight Concrete</Property>
+      <Property>C6000</Property>
+      <Property>155</Property>
+      <Property>5.50E-06</Property>
+      <Property>0.15</Property>
+      <Property>4932.73</Property>
+      <Property>2144.66</Property>
+      <Property>6000</Property>
+      <Property>580.95</Property>
+      <Property>0.75</Property>
+      <Property>4500</Property>
+      <Property>77.46</Property>
+      <Property>0.00182</Property>
+      <Property>0.003</Property>
+    </Item>
+    <Item>
+      <Property>Normal Weight Concrete</Property>
+      <Property>C8000</Property>
+      <Property>155</Property>
+      <Property>5.50E-06</Property>
+      <Property>0.15</Property>
+      <Property>5695.82</Property>
+      <Property>2476.44</Property>
+      <Property>8000</Property>
+      <Property>670.82</Property>
+      <Property>0.65</Property>
+      <Property>5200</Property>
+      <Property>89.44</Property>
+      <Property>0.00183</Property>
+      <Property>0.003</Property>
+    </Item>
+    <Item>
+      <Property>Normal Weight Concrete</Property>
+      <Property>C10000</Property>
+      <Property>155</Property>
+      <Property>5.50E-06</Property>
+      <Property>0.15</Property>
+      <Property>6368.12</Property>
+      <Property>2768.75</Property>
+      <Property>10000</Property>
+      <Property>750.00</Property>
+      <Property>0.65</Property>
+      <Property>6500</Property>
+      <Property>100.00</Property>
+      <Property>0.00204</Property>
+      <Property>0.003</Property>
+    </Item>
+    <Item>
+      <Property>Light Weight Concrete</Property>
+      <Property>C2500</Property>
+      <Property>115</Property>
+      <Property>5.50E-06</Property>
+      <Property>0.15</Property>
+      <Property>2034.84</Property>
+      <Property>884.71</Property>
+      <Property>2500</Property>
+      <Property>318.75</Property>
+      <Property>0.85</Property>
+      <Property>2125</Property>
+      <Property>50.00</Property>
+      <Property>0.00209</Property>
+      <Property>0.003</Property>
+    </Item>
+    <Item>
+      <Property>Light Weight Concrete</Property>
+      <Property>C3000</Property>
+      <Property>115</Property>
+      <Property>5.50E-06</Property>
+      <Property>0.15</Property>
+      <Property>2229.06</Property>
+      <Property>969.16</Property>
+      <Property>3000</Property>
+      <Property>349.17</Property>
+      <Property>0.85</Property>
+      <Property>2550</Property>
+      <Property>54.77</Property>
+      <Property>0.00229</Property>
+      <Property>0.003</Property>
+    </Item>
+    <Item>
+      <Property>Light Weight Concrete</Property>
+      <Property>C4000</Property>
+      <Property>115</Property>
+      <Property>5.50E-06</Property>
+      <Property>0.15</Property>
+      <Property>2573.89</Property>
+      <Property>1119.08</Property>
+      <Property>4000</Property>
+      <Property>403.19</Property>
+      <Property>0.85</Property>
+      <Property>3400</Property>
+      <Property>63.25</Property>
+      <Property>0.00264</Property>
+      <Property>0.003</Property>
+    </Item>
+    <Item>
+      <Property>Light Weight Concrete</Property>
+      <Property>C5000</Property>
+      <Property>115</Property>
+      <Property>5.50E-06</Property>
+      <Property>0.15</Property>
+      <Property>2877.70</Property>
+      <Property>1251.17</Property>
+      <Property>5000</Property>
+      <Property>450.78</Property>
+      <Property>0.80</Property>
+      <Property>4000</Property>
+      <Property>70.71</Property>
+      <Property>0.00278</Property>
+      <Property>0.003</Property>
+    </Item>
+    <Item>
+      <Property>Light Weight Concrete</Property>
+      <Property>C6000</Property>
+      <Property>115</Property>
+      <Property>5.50E-06</Property>
+      <Property>0.15</Property>
+      <Property>3152.36</Property>
+      <Property>1370.59</Property>
+      <Property>6000</Property>
+      <Property>493.81</Property>
+      <Property>0.75</Property>
+      <Property>4500</Property>
+      <Property>77.46</Property>
+      <Property>0.00286</Property>
+      <Property>0.003</Property>
+    </Item>
+    <Item>
+      <Property>Light Weight Concrete</Property>
+      <Property>C8000</Property>
+      <Property>115</Property>
+      <Property>5.50E-06</Property>
+      <Property>0.15</Property>
+      <Property>3640.04</Property>
+      <Property>1582.62</Property>
+      <Property>8000</Property>
+      <Property>570.20</Property>
+      <Property>0.65</Property>
+      <Property>5200</Property>
+      <Property>89.44</Property>
+      <Property>0.00286</Property>
+      <Property>0.003</Property>
+    </Item>
+    <Item>
+      <Property>Light Weight Concrete</Property>
+      <Property>C10000</Property>
+      <Property>115</Property>
+      <Property>5.50E-06</Property>
+      <Property>0.15</Property>
+      <Property>4069.68</Property>
+      <Property>1769.43</Property>
+      <Property>10000</Property>
+      <Property>637.50</Property>
+      <Property>0.65</Property>
+      <Property>6500</Property>
+      <Property>100.00</Property>
+      <Property>0.00319</Property>
+      <Property>0.003</Property>
+    </Item>
+  </Items>
+</Root>

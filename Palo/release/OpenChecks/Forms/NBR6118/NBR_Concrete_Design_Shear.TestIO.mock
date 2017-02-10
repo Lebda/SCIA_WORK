@@ -1,0 +1,262 @@
+<Root>
+  <Test Description="MyTest" Author="SCIA-ONLINE\jbroz" Active="1" Date="2014.10.08">
+    <Dialog>
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.NBR" Category="Bilinear" Item="C 30/37" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|REINF.NBR" Category="Inclined" Item="B 400 A" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="1" Units="0">
+        <CS SelReinf="0" H="500e-3" B="300e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="25e-3" D_upper="18e-3" N_upper="2" c_lower="25e-3" D_lower="18e-3" N_lower="2" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="ComboIsColumn" Value="1" />
+      <Variable Identifier="ReinfClass" Value="25" />
+      <Variable Identifier="designMethod" Value="1" />
+      <Variable Identifier="θ" Value="45" />
+      <Variable Identifier="N" Value="-400000" />
+      <Variable Identifier="V↓sdy←" Value="-33666.7" />
+      <Variable Identifier="V↓sdz←" Value="0" />
+      <Variable Identifier="M↓y←" Value="0" />
+      <Variable Identifier="M↓z←" Value="-15000" />
+      <Variable Identifier="h" Value="500e-3" />
+      <Variable Identifier="b↓w←" Value="300e-3" />
+      <Variable Identifier="f↓ck←" Value="30e6" />
+      <Variable Identifier="f↓ctk,inf←" Value="2e6" />
+      <Variable Identifier="f↓ywk←" Value="500e6" />
+      <Variable Identifier="c" Value="25e-3" />
+      <Variable Identifier="n↓w←" Value="2" />
+      <Variable Identifier="ϕ↓ω←" Value="5e-3" />
+      <Variable Identifier="ϕ↓l←" Value="18e-3" />
+      <Variable Identifier="γ↓c←" Value="1.4" />
+      <Variable Identifier="γ↓s←" Value="1.15" />
+      <Variable Identifier="V↓Rd2←" Value="694216.3" />
+      <Variable Identifier="V↓Rd3←" Value="109552.8" />
+      <Variable Identifier="DrawGraphics" Value="True" />
+      <Variable Identifier="UCSPosition" Value="4" />
+      <Variable Identifier="UserY" Value="0" />
+      <Variable Identifier="UserX" Value="0" />
+      <Variable Identifier="DrawAdditionalDim" Value="True" />
+      <Variable Identifier="DrawAxis" Value="True" />
+      <Variable Identifier="DrawStirrups" Value="True" />
+      <Variable Identifier="UserDimFont" Value="8" />
+      <Variable Identifier="UserScale" Value="15" />
+    </Dialog>
+    <Input Name="A↓c←" Type="Numeric" ESA_ID="" Value="80e-3" />
+    <Input Name="A↓ss.min←" Type="Numeric" ESA_ID="" Value="204.8e-6" />
+    <Result Name="A↓ss←" Type="Numeric" ESA_ID="Result.1" Value="196.3495e-6" />
+    <Input Name="A↓sw←" Type="Numeric" ESA_ID="" Value="39.25e-6" />
+    <Result Name="b↓w←" Type="Numeric" ESA_ID="Result.8" Value="300e-3" />
+    <Input Name="c" Type="Numeric" ESA_ID="MemberData.c" Value="25e-3" />
+    <Input Name="calc" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Combi↓key,out←" Type="String" ESA_ID="" Value="-" />
+    <Input Name="Combi↓key←" Type="String" ESA_ID="Load.CombiKey" Value="1.40*LC1" />
+    <Input Name="ComboIsColumn" Type="Numeric" ESA_ID="MemberData.ComboIsColumn" Value="1" />
+    <Result Name="d" Type="Numeric" ESA_ID="Result.9" Value="454.5e-3" />
+    <Input Name="designMethod" Type="Numeric" ESA_ID="MemberData.designMethod" Value="1" />
+    <Input Name="DrawAdditionalDim" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawAxis" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawGraphics" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawStirrups" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="dx" Type="Numeric" ESA_ID="Section.Dx" Value="0" />
+    <Input Name="Ediagram" Type="Numeric" ESA_ID="" Value="11.5357e9" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="21.42857e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="CONCRETE.NBR.fck" Value="30e6" />
+    <Input Name="f↓ck'←" Type="Numeric" ESA_ID="" Value="30" />
+    <Input Name="f↓ct,m←" Type="Numeric" ESA_ID="CONCRETE.NBR.fctm" Value="2.9e6" />
+    <Input Name="f↓ctd←" Type="Numeric" ESA_ID="" Value="1.428571e6" />
+    <Input Name="f↓ctk,inf←" Type="Numeric" ESA_ID="CONCRETE.NBR.fctk_05" Value="2e6" />
+    <Input Name="f↓ywd←" Type="Numeric" ESA_ID="" Value="434.7826e6" />
+    <Input Name="f↓ywk←" Type="Numeric" ESA_ID="MemberData.fyk" Value="500e6" />
+    <Input Name="ForcesId" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="FormCode" Type="Numeric" ESA_ID="" Value="2003" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="500e-3" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="IdCSS" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Index↓load←" Type="Numeric" ESA_ID="Load.Type" Value="0" />
+    <Input Name="isColumn" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="j" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="M↓y←" Type="Numeric" ESA_ID="InternalForces.My" Value="0" />
+    <Input Name="M↓z←" Type="Numeric" ESA_ID="InternalForces.Mz" Value="-15000" />
+    <Input Name="minDim" Type="Numeric" ESA_ID="" Value="200e-3" />
+    <Input Name="My" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Mz" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="N" Type="Numeric" ESA_ID="InternalForces.N" Value="-400000" />
+    <Result Name="n↓w.out←" Type="Numeric" ESA_ID="Result.11" Value="2" />
+    <Input Name="n↓w←" Type="Numeric" ESA_ID="MemberData.nw" Value="2" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="ReinfClass" Type="Numeric" ESA_ID="MemberData.ReinfClass" Value="25" />
+    <Result Name="s" Type="Numeric" ESA_ID="Result.13" Value="200e-3" />
+    <Input Name="s↓max←" Type="Numeric" ESA_ID="" Value="200e-3" />
+    <Input Name="SecID" Type="Numeric" ESA_ID="Section.ID" Value="0" />
+    <Input Name="ss" Type="Numeric" ESA_ID="" Value="295e-3" />
+    <Input Name="strain" Type="Numeric" ESA_ID="" Value="-53.85039e-6" />
+    <Input Name="stress" Type="Numeric" ESA_ID="" Value="-621201.9" />
+    <Input Name="UCSPosition" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="UserDimFont" Type="Numeric" ESA_ID="" Value="8" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="15" />
+    <Input Name="UserX" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="UserY" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="V↓c←" Type="Numeric" ESA_ID="Result.3" Value="74632.48" />
+    <Result Name="V↓c0←" Type="Numeric" ESA_ID="Result.7" Value="116871.4" />
+    <Input Name="V↓c1←" Type="Numeric" ESA_ID="" Value="116871.4" />
+    <Result Name="V↓Rd2←" Type="Numeric" ESA_ID="Result.5" Value="694216.3" />
+    <Result Name="V↓Rd3←" Type="Numeric" ESA_ID="Result.6" Value="109552.8" />
+    <Result Name="V↓sd←" Type="Numeric" ESA_ID="Result.2" Value="0" />
+    <Input Name="V↓sdy←" Type="Numeric" ESA_ID="InternalForces.Vy" Value="-33666.7" />
+    <Input Name="V↓sdz←" Type="Numeric" ESA_ID="InternalForces.Vz" Value="0" />
+    <Result Name="V↓sw←" Type="Numeric" ESA_ID="Result.4" Value="34920.34" />
+    <Input Name="Wy" Type="Numeric" ESA_ID="" Value="5.33333e-3" />
+    <Input Name="Wz" Type="Numeric" ESA_ID="" Value="NaN" />
+    <Input Name="α" Type="Numeric" ESA_ID="MemberData.α" Value="90" />
+    <Input Name="α↓.inp←" Type="Numeric" ESA_ID="MemberData.Alpha" Value="1" />
+    <Input Name="α↓V←" Type="Numeric" ESA_ID="" Value="-90" />
+    <Input Name="α↓v2←" Type="Numeric" ESA_ID="" Value="880e-3" />
+    <Input Name="γ↓c←" Type="Numeric" ESA_ID="Setup.gamma_c" Value="1.4" />
+    <Input Name="γ↓s←" Type="Numeric" ESA_ID="Setup.gamma_s" Value="1.15" />
+    <Input Name="ε↓max←" Type="Numeric" ESA_ID="" Value="-64.37468e-6" />
+    <Input Name="ε↓min←" Type="Numeric" ESA_ID="" Value="-351.7395e-6" />
+    <Input Name="θ" Type="Numeric" ESA_ID="MemberData.θ" Value="45" />
+    <Input Name="θ↓.inp←" Type="Numeric" ESA_ID="Setup.Theta_min" Value="523.599e-3" />
+    <Result Name="θ↓.out←" Type="Numeric" ESA_ID="Result.10" Value="785.3982e-3" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.14" />
+    <Input Name="ρ↓c←" Type="Numeric" ESA_ID="" Value="1.16e-3" />
+    <Input Name="ρ↓sw←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="σ↓c,max←" Type="Numeric" ESA_ID="" Value="-2.124364e6" />
+    <Input Name="ϕ↓l←" Type="Numeric" ESA_ID="MemberData.diameter1" Value="18e-3" />
+    <Input Name="ϕ↓w←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ϕ↓ω,max←" Type="Numeric" ESA_ID="" Value="30e-3" />
+    <Input Name="ϕ↓ω,min←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="ϕ↓ω,possible←" Type="Numeric" ESA_ID="" Value="5e-3" />
+    <Result Name="ϕ↓ω.out←" Type="Numeric" ESA_ID="Result.12" Value="5e-3" />
+    <Input Name="ϕ↓ω←" Type="Numeric" ESA_ID="MemberData.diameter" Value="5e-3" />
+  </Test>
+  <Test Description="MyTest2" Author="SCIA-ONLINE\jbroz" Active="1" Date="2014.10.08">
+    <Dialog>
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.NBR" Category="Bilinear" Item="C 30/37" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|REINF.NBR" Category="Inclined" Item="B 400 A" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="1" Units="0">
+        <CS SelReinf="0" H="500e-3" B="300e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="25e-3" D_upper="18e-3" N_upper="2" c_lower="25e-3" D_lower="18e-3" N_lower="2" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="ComboIsColumn" Value="1" />
+      <Variable Identifier="ReinfClass" Value="25" />
+      <Variable Identifier="designMethod" Value="1" />
+      <Variable Identifier="θ" Value="45" />
+      <Variable Identifier="N" Value="-400000" />
+      <Variable Identifier="V↓sdy←" Value="-33666.7" />
+      <Variable Identifier="V↓sdz←" Value="0" />
+      <Variable Identifier="M↓y←" Value="0" />
+      <Variable Identifier="M↓z←" Value="-15000" />
+      <Variable Identifier="h" Value="500e-3" />
+      <Variable Identifier="b↓w←" Value="300e-3" />
+      <Variable Identifier="f↓ck←" Value="30e6" />
+      <Variable Identifier="f↓ctk,inf←" Value="2e6" />
+      <Variable Identifier="f↓ywk←" Value="600e6" />
+      <Variable Identifier="c" Value="25e-3" />
+      <Variable Identifier="n↓w←" Value="2" />
+      <Variable Identifier="ϕ↓ω←" Value="5e-3" />
+      <Variable Identifier="ϕ↓l←" Value="18e-3" />
+      <Variable Identifier="γ↓c←" Value="1.4" />
+      <Variable Identifier="γ↓s←" Value="1.15" />
+      <Variable Identifier="V↓Rd2←" Value="694216.3" />
+      <Variable Identifier="V↓Rd3←" Value="116536.9" />
+      <Variable Identifier="DrawGraphics" Value="True" />
+      <Variable Identifier="UCSPosition" Value="4" />
+      <Variable Identifier="UserY" Value="0" />
+      <Variable Identifier="UserX" Value="0" />
+      <Variable Identifier="DrawAdditionalDim" Value="True" />
+      <Variable Identifier="DrawAxis" Value="True" />
+      <Variable Identifier="DrawStirrups" Value="True" />
+      <Variable Identifier="UserDimFont" Value="8" />
+      <Variable Identifier="UserScale" Value="15" />
+    </Dialog>
+    <Input Name="A↓c←" Type="Numeric" ESA_ID="" Value="80e-3" />
+    <Input Name="A↓ss.min←" Type="Numeric" ESA_ID="" Value="204.8e-6" />
+    <Result Name="A↓ss←" Type="Numeric" ESA_ID="Result.1" Value="196.3495e-6" />
+    <Input Name="A↓sw←" Type="Numeric" ESA_ID="" Value="39.25e-6" />
+    <Result Name="b↓w←" Type="Numeric" ESA_ID="Result.8" Value="300e-3" />
+    <Input Name="c" Type="Numeric" ESA_ID="MemberData.c" Value="25e-3" />
+    <Input Name="calc" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Combi↓key,out←" Type="String" ESA_ID="" Value="-" />
+    <Input Name="Combi↓key←" Type="String" ESA_ID="Load.CombiKey" Value="1.40*LC1" />
+    <Input Name="ComboIsColumn" Type="Numeric" ESA_ID="MemberData.ComboIsColumn" Value="1" />
+    <Result Name="d" Type="Numeric" ESA_ID="Result.9" Value="454.5e-3" />
+    <Input Name="designMethod" Type="Numeric" ESA_ID="MemberData.designMethod" Value="1" />
+    <Input Name="DrawAdditionalDim" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawAxis" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawGraphics" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawStirrups" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="dx" Type="Numeric" ESA_ID="Section.Dx" Value="0" />
+    <Input Name="Ediagram" Type="Numeric" ESA_ID="" Value="11.5357e9" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="21.42857e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="CONCRETE.NBR.fck" Value="30e6" />
+    <Input Name="f↓ck'←" Type="Numeric" ESA_ID="" Value="30" />
+    <Input Name="f↓ct,m←" Type="Numeric" ESA_ID="CONCRETE.NBR.fctm" Value="2.9e6" />
+    <Input Name="f↓ctd←" Type="Numeric" ESA_ID="" Value="1.428571e6" />
+    <Input Name="f↓ctk,inf←" Type="Numeric" ESA_ID="CONCRETE.NBR.fctk_05" Value="2e6" />
+    <Input Name="f↓ywd←" Type="Numeric" ESA_ID="" Value="521.7391e6" />
+    <Input Name="f↓ywk←" Type="Numeric" ESA_ID="MemberData.fyk" Value="600e6" />
+    <Input Name="ForcesId" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="FormCode" Type="Numeric" ESA_ID="" Value="2003" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="500e-3" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="IdCSS" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Index↓load←" Type="Numeric" ESA_ID="Load.Type" Value="0" />
+    <Input Name="isColumn" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="j" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="M↓y←" Type="Numeric" ESA_ID="InternalForces.My" Value="0" />
+    <Input Name="M↓z←" Type="Numeric" ESA_ID="InternalForces.Mz" Value="-15000" />
+    <Input Name="minDim" Type="Numeric" ESA_ID="" Value="200e-3" />
+    <Input Name="My" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Mz" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="N" Type="Numeric" ESA_ID="InternalForces.N" Value="-400000" />
+    <Result Name="n↓w.out←" Type="Numeric" ESA_ID="Result.11" Value="2" />
+    <Input Name="n↓w←" Type="Numeric" ESA_ID="MemberData.nw" Value="2" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="ReinfClass" Type="Numeric" ESA_ID="MemberData.ReinfClass" Value="25" />
+    <Result Name="s" Type="Numeric" ESA_ID="Result.13" Value="200e-3" />
+    <Input Name="s↓max←" Type="Numeric" ESA_ID="" Value="200e-3" />
+    <Input Name="SecID" Type="Numeric" ESA_ID="Section.ID" Value="0" />
+    <Input Name="ss" Type="Numeric" ESA_ID="" Value="295e-3" />
+    <Input Name="strain" Type="Numeric" ESA_ID="" Value="-53.85039e-6" />
+    <Input Name="stress" Type="Numeric" ESA_ID="" Value="-621201.9" />
+    <Input Name="UCSPosition" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="UserDimFont" Type="Numeric" ESA_ID="" Value="8" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="15" />
+    <Input Name="UserX" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="UserY" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="V↓c←" Type="Numeric" ESA_ID="Result.3" Value="74632.48" />
+    <Result Name="V↓c0←" Type="Numeric" ESA_ID="Result.7" Value="116871.4" />
+    <Input Name="V↓c1←" Type="Numeric" ESA_ID="" Value="116871.4" />
+    <Result Name="V↓Rd2←" Type="Numeric" ESA_ID="Result.5" Value="694216.3" />
+    <Result Name="V↓Rd3←" Type="Numeric" ESA_ID="Result.6" Value="116536.9" />
+    <Result Name="V↓sd←" Type="Numeric" ESA_ID="Result.2" Value="0" />
+    <Input Name="V↓sdy←" Type="Numeric" ESA_ID="InternalForces.Vy" Value="-33666.7" />
+    <Input Name="V↓sdz←" Type="Numeric" ESA_ID="InternalForces.Vz" Value="0" />
+    <Result Name="V↓sw←" Type="Numeric" ESA_ID="Result.4" Value="41904.41" />
+    <Input Name="Wy" Type="Numeric" ESA_ID="" Value="5.33333e-3" />
+    <Input Name="Wz" Type="Numeric" ESA_ID="" Value="NaN" />
+    <Input Name="α" Type="Numeric" ESA_ID="MemberData.α" Value="90" />
+    <Input Name="α↓.inp←" Type="Numeric" ESA_ID="MemberData.Alpha" Value="1" />
+    <Input Name="α↓V←" Type="Numeric" ESA_ID="" Value="-90" />
+    <Input Name="α↓v2←" Type="Numeric" ESA_ID="" Value="880e-3" />
+    <Input Name="γ↓c←" Type="Numeric" ESA_ID="Setup.gamma_c" Value="1.4" />
+    <Input Name="γ↓s←" Type="Numeric" ESA_ID="Setup.gamma_s" Value="1.15" />
+    <Input Name="ε↓max←" Type="Numeric" ESA_ID="" Value="-64.37468e-6" />
+    <Input Name="ε↓min←" Type="Numeric" ESA_ID="" Value="-351.7395e-6" />
+    <Input Name="θ" Type="Numeric" ESA_ID="MemberData.θ" Value="45" />
+    <Input Name="θ↓.inp←" Type="Numeric" ESA_ID="Setup.Theta_min" Value="523.599e-3" />
+    <Result Name="θ↓.out←" Type="Numeric" ESA_ID="Result.10" Value="785.3982e-3" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.14" />
+    <Input Name="ρ↓c←" Type="Numeric" ESA_ID="" Value="1.16e-3" />
+    <Input Name="ρ↓sw←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="σ↓c,max←" Type="Numeric" ESA_ID="" Value="-2.124364e6" />
+    <Input Name="ϕ↓l←" Type="Numeric" ESA_ID="MemberData.diameter1" Value="18e-3" />
+    <Input Name="ϕ↓w←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ϕ↓ω,max←" Type="Numeric" ESA_ID="" Value="30e-3" />
+    <Input Name="ϕ↓ω,min←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="ϕ↓ω,possible←" Type="Numeric" ESA_ID="" Value="5e-3" />
+    <Result Name="ϕ↓ω.out←" Type="Numeric" ESA_ID="Result.12" Value="5e-3" />
+    <Input Name="ϕ↓ω←" Type="Numeric" ESA_ID="MemberData.diameter" Value="5e-3" />
+  </Test>
+</Root>

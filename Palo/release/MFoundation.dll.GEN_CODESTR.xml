@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="2"><StringCode SourceType="DLLRC:"><StringId>@{mfoundation.2eids_check_piledesign}</StringId>
+		<SourceDll>MFoundation.2edll</SourceDll>
+		<ResourceId>118</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{mfoundation.2eids_check_pileverification}</StringId>
+		<SourceDll>MFoundation.2edll</SourceDll>
+		<ResourceId>130</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="1"><StringCode SourceType="DLLRC:"><StringId>@{datalibscia.2eids_dynamiccheckname}</StringId>
+		<SourceDll>EP_DataLibScia.2eDLL</SourceDll>
+		<ResourceId>36184</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

@@ -1,0 +1,34 @@
+;            PFLIB.SZT
+
+;  Hlavni seznam databanky profilu
+
+
+(                            
+;   Specialni vstupy
+;   ----------------      
+
+;POZOR nemenit ID knihoven
+
+  ( "@2319,Numerical"      1 )        ; numericky zadane prurezy          
+  ( "@2332,External tednon"     5 )        ; external tendons
+  ( "@2320,General assembled"      2 )       ; skladane prurezy
+
+   ( "@2329,Rolled sections"           101     0     "PRUR01")   
+
+;  Ostatni knihovny prurezu        ID > 9
+;  -------------------------
+;  Nazev_knihovny               ID      0     soubor.PUT   
+
+  ( "@2321,Section pairs L, U, I" 102     0     "PRUR02")   
+  ( "@2322,Welded sections A"                103     0     "PRUR03")   
+  ( "@2323,Welded sections B"                104     0     "PRUR03b")  
+  ( "@2324,Sheet welded sections"         105     0     "PRUR04")   
+  ( "@2325,Closed sections"          106     0     "PRUR05")   
+  ( "@2326,Geometric sections"      107     0     "PRUR06")   
+  ( "@2327,Timber sections"           108     0     "PRUR07")   
+  ( "@2328,Haunch sections"           109     0     "PRUR08")   
+  ( "@11000,Mixed sections"           110     0     "PRUR09")   
+  ( "@11017,Bridge sections"           111     0     "PRUR10")   
+  ( "@11045,Precast sections"           112     0     "PRUR11")   
+  ( "Test library MIC"          200     0     "ZK") 
+)

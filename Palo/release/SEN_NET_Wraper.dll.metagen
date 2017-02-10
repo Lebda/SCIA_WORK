@@ -1,0 +1,39 @@
+ImageRuntimeVersion: v4.0.30319
+Assembly SEN_NET_Wraper, Version=0.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Struct Sen3DPoint: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
+  :System.ValueType
+Class ProjectViewWrapper.IProjectViewWrapper: AutoLayout, AnsiClass, Class, Public, Abstract, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    SaveCurrentViewIntoFile(Int32, Int32, String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    GetProjectViewWrapper(): PrivateScope, Public, Static, HideBySig
+Class ProjectViewWrapper.ProjectViewWrapper: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :ProjectViewWrapper.IProjectViewWrapper
+  Methods:
+    SaveCurrentViewIntoFile(Int32, Int32, String): PrivateScope, Public, Virtual, HideBySig
+    GetProjectViewWrapper(): PrivateScope, Public, Static, HideBySig
+Class SelectionWrapper.ISelectionWrapper: AutoLayout, AnsiClass, Class, Public, Abstract, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Events:
+    SelectionWrapper.SelectionChanged OnSelectionChanged: SpecialName
+  Methods:
+    add_OnSelectionChanged(SelectionChanged): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnSelectionChanged(SelectionChanged): PrivateScope, Public, HideBySig, SpecialName
+    SelectObject(ArrayList, Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    GetCurrentSelObject(ArrayList&, String&): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OnSelectChange(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    ExportSelectionToIFC(String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    GetSelectionWraper(): PrivateScope, Public, Static, HideBySig
+Class SelectionWrapper.SelectionWrapper: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :SelectionWrapper.ISelectionWrapper
+  Methods:
+    SelectObject(ArrayList, Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig
+    GetCurrentSelObject(ArrayList&, String&): PrivateScope, Public, Virtual, HideBySig
+    OnSelectChange(): PrivateScope, Public, Virtual, HideBySig
+    ExportSelectionToIFC(String): PrivateScope, Public, Virtual, HideBySig
+    GetSelectionWraper(): PrivateScope, Public, Static, HideBySig

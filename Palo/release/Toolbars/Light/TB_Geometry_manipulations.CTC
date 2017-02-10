@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xss xmlns:xss="http://www.scia.cz/xss">
+   <toolbar Version="1" Name="Geometry manipulations" Flags="0" IsPart="0" PartsSize="0" Size="13">
+      <Button Version="1" Mode="1" Tooltip="Moves selected entities.
+         Move" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{9D117003-4D90-4801-BAD0-1A5F4BF0DA9F}" ButtonID="{9D117003-4D90-4801-BAD0-1A5F4BF0DA9F}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Copy selected entities.
+         Copy" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{1E487579-1E3D-42CA-856F-A64AD99B479E}" ButtonID="{1E487579-1E3D-42CA-856F-A64AD99B479E}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Creates multiple copies.
+         Multiple copy" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{573C48DF-6BD4-41BF-993C-EFE3573FA51A}" ButtonID="{573C48DF-6BD4-41BF-993C-EFE3573FA51A}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Rotates selected entities.
+         Rotate" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{5293B941-EE55-4304-9CA3-0A391E08DAC2}" ButtonID="{5293B941-EE55-4304-9CA3-0A391E08DAC2}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Mirrors selected entities.
+         Mirror" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{AF16A112-F704-4A1D-B8A3-8862ECA1FAD9}" ButtonID="{AF16A112-F704-4A1D-B8A3-8862ECA1FAD9}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Breaks curves in defined points.
+         Break in defined points" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{E7DB656A-9859-4FCE-85B5-C8462EC375A1}" ButtonID="{E7DB656A-9859-4FCE-85B5-C8462EC375A1}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Break beams / lines / curves in their mutual intersections.
+         Break in intersections" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{707571AF-E868-4EFC-BEEC-51138DB39351}" ButtonID="{707571AF-E868-4EFC-BEEC-51138DB39351}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Reverses orientation of beams / lines
+         Reverse orientation" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{768FC148-6D52-464F-B3E5-429208BD673A}" ButtonID="{768FC148-6D52-464F-B3E5-429208BD673A}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" ButtonAsMenu="0" ButtonStyle="1" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{00000000-0000-0000-0000-000000000000}" ButtonID="{777E7804-B061-4D12-9333-895D0C6D2521}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{00000000-0000-0000-0000-000000000000}" ButtonID="{777E7804-B061-4D12-9333-895D0C6D2521}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{00000000-0000-0000-0000-000000000000}" ButtonID="{777E7804-B061-4D12-9333-895D0C6D2521}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Connects selected absolute nodes and edges to members and makes them linked.
+         Connect nodes / edges to members" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{F1426871-EBD0-4434-B23B-D8AC9D0F589E}" ButtonID="{F1426871-EBD0-4434-B23B-D8AC9D0F589E}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Disconnects linked nodes
+         Disconnect linked nodes" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{93FDD77E-8744-400C-BE47-399FB9F108EC}" ButtonID="{93FDD77E-8744-400C-BE47-399FB9F108EC}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/></toolbar></xss>

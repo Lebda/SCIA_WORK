@@ -1,0 +1,164 @@
+<Root
+	Version="1"
+	Type="CustomLibrary"
+	GUID="17f23c3e-dc98-4251-9844-dceeefe797b8">
+	<Header>
+		<PropertySet
+			Symbol="f↓yb←"
+			ESA_ID="f↓yb←"
+			Unit="MPa"
+			Type="Numeric">
+			<Description
+				TranslateID="f↓yb←">
+				<NEU>Yield strength of the bolt material</NEU>
+				<FRB>Yield strength of the bolt material</FRB>
+				<PTG>Yield strength of the bolt material</PTG>
+				<ELL>Yield strength of the bolt material</ELL>
+				<ESP>Yield strength of the bolt material</ESP>
+				<ENU>Yield strength of the bolt material</ENU>
+				<CSY>Yield strength of the bolt material</CSY>
+				<DEU>Yield strength of the bolt material</DEU>
+				<NLD>Yield strength of the bolt material</NLD>
+				<RUS>Yield strength of the bolt material</RUS>
+				<ROM>Yield strength of the bolt material</ROM>
+				<PLK>Yield strength of the bolt material</PLK>
+				<ITA>Yield strength of the bolt material</ITA>
+				<SKY>Yield strength of the bolt material</SKY>
+			</Description>
+		</PropertySet>
+		<PropertySet
+			Symbol="f↓ub←"
+			ESA_ID="f↓ub←"
+			Unit="MPa"
+			Type="Numeric">
+			<Description
+				TranslateID="f↓ub←">
+				<NEU>Ultimite strenght of the bolt material</NEU>
+				<FRB>Ultimite strenght of the bolt material</FRB>
+				<PTG>Ultimite strenght of the bolt material</PTG>
+				<ELL>Ultimite strenght of the bolt material</ELL>
+				<ESP>Ultimite strenght of the bolt material</ESP>
+				<ENU>Ultimite strenght of the bolt material</ENU>
+				<CSY>Ultimite strenght of the bolt material</CSY>
+				<DEU>Ultimite strenght of the bolt material</DEU>
+				<NLD>Ultimite strenght of the bolt material</NLD>
+				<RUS>Ultimite strenght of the bolt material</RUS>
+				<ROM>Ultimite strenght of the bolt material</ROM>
+				<PLK>Ultimite strenght of the bolt material</PLK>
+				<ITA>Ultimite strenght of the bolt material</ITA>
+				<SKY>Ultimite strenght of the bolt material</SKY>
+			</Description>
+		</PropertySet>
+		<PropertySet
+			Symbol="name"
+			ESA_ID="name"
+			Unit=""
+			Type="String">
+			<Description
+				TranslateID="name">
+				<NEU>Name of the material</NEU>
+				<FRB>Name of the material</FRB>
+				<PTG>Name of the material</PTG>
+				<ELL>Name of the material</ELL>
+				<ESP>Name of the material</ESP>
+				<ENU>Name of the material</ENU>
+				<CSY>Name of the material</CSY>
+				<DEU>Name of the material</DEU>
+				<NLD>Name of the material</NLD>
+				<RUS>Name of the material</RUS>
+				<ROM>Name of the material</ROM>
+				<PLK>Name of the material</PLK>
+				<ITA>Name of the material</ITA>
+				<SKY>Name of the material</SKY>
+			</Description>
+		</PropertySet>
+		<PropertySet
+			Symbol="α↓v←"
+			ESA_ID="α↓v←"
+			Unit=""
+			Type="Numeric">
+			<Description
+				TranslateID="α↓v←">
+				<NEU>coefficient acc. to table 3.4. 1993-1-8</NEU>
+				<FRB>coefficient acc. to table 3.4. 1993-1-8</FRB>
+				<PTG>coefficient acc. to table 3.4. 1993-1-8</PTG>
+				<ELL>coefficient acc. to table 3.4. 1993-1-8</ELL>
+				<ESP>coefficient acc. to table 3.4. 1993-1-8</ESP>
+				<ENU>coefficient acc. to table 3.4. 1993-1-8</ENU>
+				<CSY>coefficient acc. to table 3.4. 1993-1-8</CSY>
+				<DEU>coefficient acc. to table 3.4. 1993-1-8</DEU>
+				<NLD>coefficient acc. to table 3.4. 1993-1-8</NLD>
+				<RUS>coefficient acc. to table 3.4. 1993-1-8</RUS>
+				<ROM>coefficient acc. to table 3.4. 1993-1-8</ROM>
+				<PLK>coefficient acc. to table 3.4. 1993-1-8</PLK>
+				<ITA>coefficient acc. to table 3.4. 1993-1-8</ITA>
+				<SKY>coefficient acc. to table 3.4. 1993-1-8</SKY>
+			</Description>
+		</PropertySet>
+	</Header>
+	<Items>
+		<Item>
+			<Property>
+			</Property>
+			<Property>10.9</Property>
+			<Property>900</Property>
+			<Property>1000</Property>
+			<Property>10.9</Property>
+			<Property>0.5</Property>
+		</Item>
+		<Item>
+			<Property>
+			</Property>
+			<Property>4.8</Property>
+			<Property>320</Property>
+			<Property>400</Property>
+			<Property>4.8</Property>
+			<Property>0.5</Property>
+		</Item>
+		<Item>
+			<Property>
+			</Property>
+			<Property>5.8</Property>
+			<Property>400</Property>
+			<Property>500</Property>
+			<Property>5.8</Property>
+			<Property>0.5</Property>
+		</Item>
+		<Item>
+			<Property>
+			</Property>
+			<Property>5.6</Property>
+			<Property>300</Property>
+			<Property>500</Property>
+			<Property>5.6</Property>
+			<Property>0.6</Property>
+		</Item>
+		<Item>
+			<Property>
+			</Property>
+			<Property>8.8</Property>
+			<Property>640</Property>
+			<Property>800</Property>
+			<Property>8.8</Property>
+			<Property>0.6</Property>
+		</Item>
+		<Item>
+			<Property>
+			</Property>
+			<Property>6.8</Property>
+			<Property>480</Property>
+			<Property>600</Property>
+			<Property>6.8</Property>
+			<Property>0.5</Property>
+		</Item>
+		<Item>
+			<Property>
+			</Property>
+			<Property>4.6</Property>
+			<Property>240</Property>
+			<Property>400</Property>
+			<Property>4.6</Property>
+			<Property>0.6</Property>
+		</Item>
+	</Items>
+</Root>

@@ -1,0 +1,26 @@
+Unable to copy: r:\A\Bin\release\DesignForms_CalcEditor.xml
+to: r:\A\Bin\release\install\DesignForms_CalcEditor.xml
+Unable to copy: r:\A\Bin\release\DesignForms_Compiler.exe.config
+to: r:\A\Bin\release\install\DesignForms_Compiler.exe.config
+Unable to copy: r:\A\Bin\release\DesignForms_Equations4.xml
+to: r:\A\Bin\release\install\DesignForms_Equations4.xml
+Unable to copy: r:\A\Bin\release\DesignForms_VersionIncrement.exe.config
+to: r:\A\Bin\release\install\DesignForms_VersionIncrement.exe.config
+Unable to copy: r:\A\Bin\release\DesignForms_WpfControls.dll.config
+to: r:\A\Bin\release\install\DesignForms_WpfControls.dll.config
+Unable to copy: r:\A\Bin\release\ep_regsvr32.exe Esa.exe
+to: r:\A\Bin\release\install\ep_regsvr32.exe Esa.exe
+Unable to copy: r:\A\Bin\release\ModellerR.ico
+to: r:\A\Bin\release\install\ModellerR.ico
+Unable to copy: r:\A\Bin\release\ModellerR.lt
+to: r:\A\Bin\release\install\ModellerR.lt
+Unable to copy: r:\A\Bin\release\NOTICE.txt
+to: r:\A\Bin\release\install\NOTICE.txt
+Unable to copy: r:\A\Bin\release\ep_regsvr32.exe ODA.exe
+to: r:\A\Bin\release\install\ep_regsvr32.exe ODA.exe
+Unable to copy: r:\A\Bin\release\xml\PipFas.def.xsd
+to: r:\A\Bin\release\install\xml\PipFas.def.xsd
+Unable to copy: r:\A\Bin\release\SciaSteelConnectionForTekla.net4.exe
+to: r:\A\Bin\release\install\SciaSteelConnectionForTekla.net4.exe
+Unable to copy: r:\A\Bin\release\XEP_ProjectStorageService.exe -createstorage -nofailwhenexist -silentsuccess
+to: r:\A\Bin\release\install\XEP_ProjectStorageService.exe -createstorage -nofailwhenexist -silentsuccess

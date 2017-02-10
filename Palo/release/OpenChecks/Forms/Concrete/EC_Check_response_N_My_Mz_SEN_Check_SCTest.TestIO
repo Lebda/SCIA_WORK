@@ -1,0 +1,32 @@
+<Root>
+  <Test Description="Circle0" Author="Martin-Lenovo\Martin" Active="1" Date="2014. 10. 13" Collisions="0">
+    <Dialog>
+      <EMD_Loader Identifier="" Active="1" PreDef="0" MemberDirectory="F:\!Code\deve21\A\Src\C#Source\XEP_SectionCheck\EMD_TEST_DATA_BASE\Circle0\Beam.1" MemberID="Beam.1" SectionID="0" CombiID="0" />
+    </Dialog>
+    <Result Name="Result" Type="Numeric" ESA_ID="Result.0" Value="3" />
+  </Test>
+  <Test Description="Circle1" Author="Martin-Lenovo\Martin" Active="1" Date="2014. 10. 13" Collisions="0">
+    <Dialog>
+      <EMD_Loader Identifier="" Active="1" PreDef="0" MemberDirectory="F:\!Code\deve21\A\Src\C#Source\XEP_SectionCheck\EMD_TEST_DATA_BASE\Circle1\Beam.1" MemberID="Beam.1" SectionID="0" CombiID="0" />
+    </Dialog>
+    <Result Name="Result" Type="Numeric" ESA_ID="Result.0" Value="324.3e-3" />
+  </Test>
+  <Test Description="Circle2" Author="Martin-Lenovo\Martin" Active="1" Date="2014. 10. 13" Collisions="0">
+    <Dialog>
+      <EMD_Loader Identifier="" Active="1" PreDef="0" MemberDirectory="F:\!Code\deve21\A\Src\C#Source\XEP_SectionCheck\EMD_TEST_DATA_BASE\Circle2\Beam.1" MemberID="Beam.1" SectionID="0" CombiID="0" />
+    </Dialog>
+    <Result Name="Result" Type="Numeric" ESA_ID="Result.0" Value="262.849e-3" />
+  </Test>
+  <Test Description="Circle3" Author="Martin-Lenovo\Martin" Active="1" Date="2014. 10. 13" Collisions="0">
+    <Dialog>
+      <EMD_Loader Identifier="" Active="1" PreDef="0" MemberDirectory="F:\!Code\deve21\A\Src\C#Source\XEP_SectionCheck\EMD_TEST_DATA_BASE\Circle3\Beam.1" MemberID="Beam.1" SectionID="0" CombiID="0" />
+    </Dialog>
+    <Result Name="Result" Type="Numeric" ESA_ID="Result.0" Value="225.268e-3" />
+  </Test>
+  <Test Description="Circle4" Author="Martin-Lenovo\Martin" Active="1" Date="2014. 10. 13" Collisions="0">
+    <Dialog>
+      <EMD_Loader Identifier="" Active="1" PreDef="0" MemberDirectory="F:\!Code\deve21\A\Src\C#Source\XEP_SectionCheck\EMD_TEST_DATA_BASE\Circle4\Beam.1" MemberID="Beam.1" SectionID="0" CombiID="0" />
+    </Dialog>
+    <Result Name="Result" Type="Numeric" ESA_ID="Result.0" Value="220.414e-3" />
+  </Test>
+</Root>

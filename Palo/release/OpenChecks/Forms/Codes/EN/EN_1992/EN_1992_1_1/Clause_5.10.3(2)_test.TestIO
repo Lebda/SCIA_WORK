@@ -1,0 +1,36 @@
+﻿<Root>
+  <Test Description="STD" Author="Martin-Lenovo\Martin" Active="1" Date="2014. 08. 26">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+    </Dialog>
+    <Result Name="NA" Type="String" ESA_ID="Result.00" Value="Standard EN" />
+    <Result Name="k↓7←" Type="Numeric" ESA_ID="Result.01" Value="750e-3" />
+    <Result Name="k↓8←" Type="Numeric" ESA_ID="Result.02" Value="850e-3" />
+  </Test>
+  <Test Description="ONORM" Author="Martin-Lenovo\Martin" Active="1" Date="2014. 08. 26">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Austrian ÖNORM-EN" Collapsed="True" />
+    </Dialog>
+    <Result Name="NA" Type="String" ESA_ID="Result.00" Value="Austrian ÖNORM-EN" />
+    <Result Name="k↓7←" Type="Numeric" ESA_ID="Result.01" Value="700e-3" />
+    <Result Name="k↓8←" Type="Numeric" ESA_ID="Result.02" Value="800e-3" />
+  </Test>
+  <Test Description="NF_PostTension" Author="Martin-Lenovo\Martin" Active="1" Date="2014. 08. 26">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="French NF-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="PostTension" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="NA" Type="String" ESA_ID="Result.00" Value="French NF-EN" />
+    <Result Name="k↓7←" Type="Numeric" ESA_ID="Result.01" Value="770e-3" />
+    <Result Name="k↓8←" Type="Numeric" ESA_ID="Result.02" Value="870e-3" />
+  </Test>
+  <Test Description="NF_noPostTension" Author="Martin-Lenovo\Martin" Active="1" Date="2014. 08. 26">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="French NF-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="PostTension" Type="Bool" ESA_ID="" Value="False" />
+    <Result Name="NA" Type="String" ESA_ID="Result.00" Value="French NF-EN" />
+    <Result Name="k↓7←" Type="Numeric" ESA_ID="Result.01" Value="800e-3" />
+    <Result Name="k↓8←" Type="Numeric" ESA_ID="Result.02" Value="900e-3" />
+  </Test>
+</Root>

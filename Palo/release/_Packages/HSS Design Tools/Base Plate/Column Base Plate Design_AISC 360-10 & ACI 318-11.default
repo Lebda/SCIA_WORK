@@ -1,0 +1,402 @@
+<Root>
+  <ValueSets>
+    <User Description="Default" Default="true">
+      <Variable Identifier="VisibDim" Value="True" />
+      <Variable Identifier="VisibColDim" Value="False" />
+      <Variable Identifier="VisibLoad" Value="True" />
+      <Variable Identifier="ConcreteType" Value="0" />
+      <Variable Identifier="λ" Value="1" />
+      <Variable Identifier="AssumeCrackinginConcrete" Value="False" />
+      <Variable Identifier="BuiltUpGroutPads" Value="True" />
+      <Variable Identifier="DesignMethod" Value="0" />
+      <Variable Identifier="X↓1←" Value="304.8e-3" />
+      <Variable Identifier="X↓2←" Value="304.8e-3" />
+      <Variable Identifier="Y↓3←" Value="304.8e-3" />
+      <Variable Identifier="Y↓4←" Value="304.8e-3" />
+      <Variable Identifier="h↓a←" Value="508e-3" />
+      <Variable Identifier="ConcMat" Value="7" />
+      <Variable Identifier="Ω↓c←" Value="2.5" />
+      <Variable Identifier="Ω↓b←" Value="1.67" />
+      <Variable Identifier="Ω↓v←" Value="2" />
+      <Variable Identifier="ϕ↓v,p←" Value="700e-3" />
+      <Variable Identifier="ϕ↓t,cB←" Value="700e-3" />
+      <Variable Identifier="ϕ↓v,c←" Value="700e-3" />
+      <Variable Identifier="ϕ↓t,c←" Value="700e-3" />
+      <Variable Identifier="ϕ↓v,s←" Value="650e-3" />
+      <Variable Identifier="ϕ↓t←" Value="750e-3" />
+      <Variable Identifier="ϕ↓c←" Value="650e-3" />
+      <Variable Identifier="ϕ↓b←" Value="900e-3" />
+      <Variable Identifier="ϕ↓v←" Value="750e-3" />
+      <Variable Identifier="AnchorType" Value="0" />
+      <Variable Identifier="AnchorMat" Value="0" />
+      <Variable Identifier="f↓ya←" Value="248.2113e6" />
+      <Variable Identifier="f↓uta←" Value="399.896e6" />
+      <Variable Identifier="A↓brg←" Value="967.74e-6" />
+      <Variable Identifier="h↓ef←" Value="406.4e-3" />
+      <Variable Identifier="S↓bolt,x←" Value="381e-3" />
+      <Variable Identifier="S↓bolt,y←" Value="190.5e-3" />
+      <Variable Identifier="n↓t←" Value="7" />
+      <Variable Identifier="d↓a←" Value="31.75e-3" />
+      <Variable Identifier="N↓bx←" Value="2" />
+      <Variable Identifier="N↓by←" Value="3" />
+      <Variable Identifier="N↓bolt←" Value="6" />
+      <Variable Identifier="N↓bv←" Value="2" />
+      <Variable Identifier="WeldType" Value="0" />
+      <Variable Identifier="F↓EXX←" Value="482.6331e6" />
+      <Variable Identifier="w↓tf←" Value="7.9375e-3" />
+      <Variable Identifier="w↓tw←" Value="7.9375e-3" />
+      <Variable Identifier="B" Value="508e-3" />
+      <Variable Identifier="N" Value="508e-3" />
+      <Variable Identifier="t↓p←" Value="50.8e-3" />
+      <Variable Identifier="PlateMat" Value="0" />
+      <Variable Identifier="F↓y←" Value="248.2113e6" />
+      <Variable Identifier="F↓u←" Value="399.896e6" />
+      <Variable Identifier="ColumnOrientation" Value="1" />
+      <Variable Identifier="ColumnMat" Value="A992" />
+      <SteelSectionLibrary2 Identifier="CS" Collapsed="False" Type="0" SubType="1" P1="W(Imp)12X96" P2="0" P3="3" P4="57" />
+      <Variable Identifier="P↓u←" Value="222411.1" />
+      <Variable Identifier="M↓u←" Value="64966.26" />
+      <Variable Identifier="V↓u←" Value="44482.22" />
+      <Variable Identifier="ShearTransfer" Value="0" />
+      <Variable Identifier="d↓brg←" Value="76.2e-3" />
+      <Variable Identifier="μ" Value="400e-3" />
+      <Variable Identifier="ProjectName" Value="Base Plate Design" />
+      <Variable Identifier="Description" Value="AISC 360-10 &amp; ACI 318-11" />
+      <Variable Identifier="Company" Value="Nemetschek Scia" />
+      <Variable Identifier="Author" Value="BLF" />
+      <Variable Identifier="Date" Value="11/13/14" />
+    </User>
+    <User Description="Small Moment Example">
+      <Variable Identifier="P↓u←" Value="667233.3" />
+      <Variable Identifier="M↓u←" Value="67790.88" />
+      <Variable Identifier="V↓u←" Value="88964.44" />
+      <Variable Identifier="ShearTransfer" Value="0" />
+      <Variable Identifier="d↓brg←" Value="76.2e-3" />
+      <Variable Identifier="μ" Value="400e-3" />
+      <Variable Identifier="ColumnOrientation" Value="1" />
+      <Variable Identifier="ColumnMat" Value="A992" />
+      <SteelSectionLibrary2 Identifier="CS" Collapsed="False" Type="0" SubType="1" P1="W(Imp)12X96" P2="0" P3="3" P4="57" />
+      <Variable Identifier="B" Value="609.6e-3" />
+      <Variable Identifier="N" Value="609.6e-3" />
+      <Variable Identifier="t↓p←" Value="50.8e-3" />
+      <Variable Identifier="PlateMat" Value="0" />
+      <Variable Identifier="F↓y←" Value="248.2113e6" />
+      <Variable Identifier="F↓u←" Value="399.896e6" />
+      <Variable Identifier="WeldType" Value="0" />
+      <Variable Identifier="F↓EXX←" Value="482.6331e6" />
+      <Variable Identifier="w↓tf←" Value="7.9375e-3" />
+      <Variable Identifier="w↓tw←" Value="7.9375e-3" />
+      <Variable Identifier="AnchorType" Value="0" />
+      <Variable Identifier="AnchorMat" Value="0" />
+      <Variable Identifier="f↓ya←" Value="248.2113e6" />
+      <Variable Identifier="f↓uta←" Value="399.896e6" />
+      <Variable Identifier="A↓brg←" Value="967.74e-6" />
+      <Variable Identifier="h↓ef←" Value="203.2e-3" />
+      <Variable Identifier="S↓bolt,x←" Value="457.2e-3" />
+      <Variable Identifier="S↓bolt,y←" Value="457.2e-3" />
+      <Variable Identifier="n↓t←" Value="8" />
+      <Variable Identifier="d↓a←" Value="25.4e-3" />
+      <Variable Identifier="N↓bx←" Value="2" />
+      <Variable Identifier="N↓by←" Value="2" />
+      <Variable Identifier="N↓bolt←" Value="4" />
+      <Variable Identifier="N↓bv←" Value="2" />
+      <Variable Identifier="Ω↓c←" Value="2.5" />
+      <Variable Identifier="Ω↓b←" Value="1.67" />
+      <Variable Identifier="Ω↓v←" Value="2" />
+      <Variable Identifier="ϕ↓v,p←" Value="700e-3" />
+      <Variable Identifier="ϕ↓t,cB←" Value="700e-3" />
+      <Variable Identifier="ϕ↓v,c←" Value="700e-3" />
+      <Variable Identifier="ϕ↓t,c←" Value="700e-3" />
+      <Variable Identifier="ϕ↓v,s←" Value="650e-3" />
+      <Variable Identifier="ϕ↓t←" Value="750e-3" />
+      <Variable Identifier="ϕ↓c←" Value="650e-3" />
+      <Variable Identifier="ϕ↓b←" Value="900e-3" />
+      <Variable Identifier="ϕ↓v←" Value="750e-3" />
+      <Variable Identifier="X↓1←" Value="762e-3" />
+      <Variable Identifier="X↓2←" Value="762e-3" />
+      <Variable Identifier="Y↓3←" Value="762e-3" />
+      <Variable Identifier="Y↓4←" Value="762e-3" />
+      <Variable Identifier="h↓a←" Value="508e-3" />
+      <Variable Identifier="ConcMat" Value="2" />
+      <Variable Identifier="VisibDim" Value="True" />
+      <Variable Identifier="VisibColDim" Value="False" />
+      <Variable Identifier="VisibLoad" Value="True" />
+      <Variable Identifier="ConcreteType" Value="0" />
+      <Variable Identifier="λ" Value="1" />
+      <Variable Identifier="AssumeCrackinginConcrete" Value="False" />
+      <Variable Identifier="BuiltUpGroutPads" Value="True" />
+      <Variable Identifier="DesignMethod" Value="0" />
+      <Variable Identifier="ProjectName" Value="Base Plate Design" />
+      <Variable Identifier="Description" Value="Small Moment Example" />
+      <Variable Identifier="Company" Value="Nemetschek Scia" />
+      <Variable Identifier="Author" Value="-" />
+      <Variable Identifier="Date" Value="-" />
+    </User>
+    <User Description="Large Moment Example">
+      <Variable Identifier="ColumnOrientation" Value="1" />
+      <Variable Identifier="ColumnMat" Value="A992" />
+      <SteelSectionLibrary2 Identifier="CS" Collapsed="False" Type="0" SubType="1" P1="W(Imp)12X96" P2="0" P3="3" P4="57" />
+      <Variable Identifier="VisibDim" Value="True" />
+      <Variable Identifier="VisibColDim" Value="False" />
+      <Variable Identifier="VisibLoad" Value="True" />
+      <Variable Identifier="ConcreteType" Value="0" />
+      <Variable Identifier="λ" Value="1" />
+      <Variable Identifier="AssumeCrackinginConcrete" Value="False" />
+      <Variable Identifier="BuiltUpGroutPads" Value="True" />
+      <Variable Identifier="DesignMethod" Value="0" />
+      <Variable Identifier="ProjectName" Value="Base Plate Design" />
+      <Variable Identifier="Description" Value="Large Moment Example" />
+      <Variable Identifier="Company" Value="Nemetschek Scia" />
+      <Variable Identifier="Author" Value="-" />
+      <Variable Identifier="Date" Value="-" />
+      <Variable Identifier="P↓u←" Value="1.112056e6" />
+      <Variable Identifier="M↓u←" Value="316357.4" />
+      <Variable Identifier="V↓u←" Value="88964.44" />
+      <Variable Identifier="ShearTransfer" Value="0" />
+      <Variable Identifier="d↓brg←" Value="76.2e-3" />
+      <Variable Identifier="μ" Value="400e-3" />
+      <Variable Identifier="Ω↓c←" Value="2.5" />
+      <Variable Identifier="Ω↓b←" Value="1.67" />
+      <Variable Identifier="Ω↓v←" Value="2" />
+      <Variable Identifier="ϕ↓v,p←" Value="700e-3" />
+      <Variable Identifier="ϕ↓t,cB←" Value="700e-3" />
+      <Variable Identifier="ϕ↓v,c←" Value="700e-3" />
+      <Variable Identifier="ϕ↓t,c←" Value="700e-3" />
+      <Variable Identifier="ϕ↓v,s←" Value="650e-3" />
+      <Variable Identifier="ϕ↓t←" Value="750e-3" />
+      <Variable Identifier="ϕ↓c←" Value="650e-3" />
+      <Variable Identifier="ϕ↓b←" Value="900e-3" />
+      <Variable Identifier="ϕ↓v←" Value="750e-3" />
+      <Variable Identifier="B" Value="558.8e-3" />
+      <Variable Identifier="N" Value="558.8e-3" />
+      <Variable Identifier="t↓p←" Value="69.85e-3" />
+      <Variable Identifier="PlateMat" Value="0" />
+      <Variable Identifier="F↓y←" Value="248.2113e6" />
+      <Variable Identifier="F↓u←" Value="399.896e6" />
+      <Variable Identifier="WeldType" Value="0" />
+      <Variable Identifier="F↓EXX←" Value="482.6331e6" />
+      <Variable Identifier="w↓tf←" Value="7.9375e-3" />
+      <Variable Identifier="w↓tw←" Value="6.35e-3" />
+      <Variable Identifier="X↓1←" Value="1.27" />
+      <Variable Identifier="X↓2←" Value="1.27" />
+      <Variable Identifier="Y↓3←" Value="1.27" />
+      <Variable Identifier="Y↓4←" Value="1.27" />
+      <Variable Identifier="h↓a←" Value="508e-3" />
+      <Variable Identifier="ConcMat" Value="4" />
+      <Variable Identifier="AnchorType" Value="0" />
+      <Variable Identifier="AnchorMat" Value="2" />
+      <Variable Identifier="f↓ya←" Value="723.9496e6" />
+      <Variable Identifier="f↓uta←" Value="861.8447e6" />
+      <Variable Identifier="A↓brg←" Value="967.74e-6" />
+      <Variable Identifier="h↓ef←" Value="330.2e-3" />
+      <Variable Identifier="S↓bolt,x←" Value="482.6e-3" />
+      <Variable Identifier="S↓bolt,y←" Value="482.6e-3" />
+      <Variable Identifier="n↓t←" Value="10" />
+      <Variable Identifier="d↓a←" Value="19.05e-3" />
+      <Variable Identifier="N↓bx←" Value="2" />
+      <Variable Identifier="N↓by←" Value="2" />
+      <Variable Identifier="N↓bolt←" Value="4" />
+      <Variable Identifier="N↓bv←" Value="2" />
+    </User>
+    <User Description="Uplift Example">
+      <Variable Identifier="VisibDim" Value="True" />
+      <Variable Identifier="VisibColDim" Value="False" />
+      <Variable Identifier="VisibLoad" Value="True" />
+      <Variable Identifier="ConcreteType" Value="0" />
+      <Variable Identifier="λ" Value="1" />
+      <Variable Identifier="AssumeCrackinginConcrete" Value="True" />
+      <Variable Identifier="BuiltUpGroutPads" Value="True" />
+      <Variable Identifier="DesignMethod" Value="0" />
+      <Variable Identifier="X↓1←" Value="762e-3" />
+      <Variable Identifier="X↓2←" Value="762e-3" />
+      <Variable Identifier="Y↓3←" Value="762e-3" />
+      <Variable Identifier="Y↓4←" Value="762e-3" />
+      <Variable Identifier="h↓a←" Value="508e-3" />
+      <Variable Identifier="ConcMat" Value="2" />
+      <Variable Identifier="Ω↓c←" Value="2.5" />
+      <Variable Identifier="Ω↓b←" Value="1.67" />
+      <Variable Identifier="Ω↓v←" Value="2" />
+      <Variable Identifier="ϕ↓v,p←" Value="700e-3" />
+      <Variable Identifier="ϕ↓t,cB←" Value="700e-3" />
+      <Variable Identifier="ϕ↓v,c←" Value="700e-3" />
+      <Variable Identifier="ϕ↓t,c←" Value="650e-3" />
+      <Variable Identifier="ϕ↓v,s←" Value="650e-3" />
+      <Variable Identifier="ϕ↓t←" Value="750e-3" />
+      <Variable Identifier="ϕ↓c←" Value="650e-3" />
+      <Variable Identifier="ϕ↓b←" Value="900e-3" />
+      <Variable Identifier="ϕ↓v←" Value="750e-3" />
+      <Variable Identifier="AnchorType" Value="0" />
+      <Variable Identifier="AnchorMat" Value="0" />
+      <Variable Identifier="f↓ya←" Value="248.2113e6" />
+      <Variable Identifier="f↓uta←" Value="399.896e6" />
+      <Variable Identifier="A↓brg←" Value="967.74e-6" />
+      <Variable Identifier="h↓ef←" Value="254e-3" />
+      <Variable Identifier="S↓bolt,x←" Value="393.7e-3" />
+      <Variable Identifier="S↓bolt,y←" Value="381e-3" />
+      <Variable Identifier="n↓t←" Value="8" />
+      <Variable Identifier="d↓a←" Value="25.4e-3" />
+      <Variable Identifier="N↓bx←" Value="2" />
+      <Variable Identifier="N↓by←" Value="2" />
+      <Variable Identifier="N↓bolt←" Value="4" />
+      <Variable Identifier="N↓bv←" Value="2" />
+      <Variable Identifier="WeldType" Value="0" />
+      <Variable Identifier="F↓EXX←" Value="482.6331e6" />
+      <Variable Identifier="w↓tf←" Value="7.9375e-3" />
+      <Variable Identifier="w↓tw←" Value="7.9375e-3" />
+      <Variable Identifier="B" Value="482.6e-3" />
+      <Variable Identifier="N" Value="482.6e-3" />
+      <Variable Identifier="t↓p←" Value="50.8e-3" />
+      <Variable Identifier="PlateMat" Value="0" />
+      <Variable Identifier="F↓y←" Value="248.2113e6" />
+      <Variable Identifier="F↓u←" Value="399.896e6" />
+      <Variable Identifier="ColumnOrientation" Value="1" />
+      <Variable Identifier="ColumnMat" Value="A992" />
+      <SteelSectionLibrary2 Identifier="CS" Collapsed="False" Type="0" SubType="1" P1="W(Imp)12X96" P2="0" P3="3" P4="57" />
+      <Variable Identifier="P↓u←" Value="-222411.1" />
+      <Variable Identifier="M↓u←" Value="22596.96" />
+      <Variable Identifier="V↓u←" Value="0" />
+      <Variable Identifier="ShearTransfer" Value="0" />
+      <Variable Identifier="d↓brg←" Value="76.2e-3" />
+      <Variable Identifier="μ" Value="400e-3" />
+      <Variable Identifier="ProjectName" Value="Base Plate Design" />
+      <Variable Identifier="Description" Value="Uplift Example" />
+      <Variable Identifier="Company" Value="Nemetschek Scia" />
+      <Variable Identifier="Author" Value="-" />
+      <Variable Identifier="Date" Value="-" />
+    </User>
+  </ValueSets>
+  <Layout LP="720" RP="0.25" TP="0.25" BP="0.25" ActiveDocPane="4" ActivePane="3">
+    <Contents>
+      <Content Type="TUserDialog" AutoHidePortion="0.25" Hidden="False" Float="False" LangCode="ENU" />
+      <Content Type="TOutput" AutoHidePortion="0.25" Hidden="False" Float="False" Layout="0" Zoom="0.814" />
+      <Content Type="TOutput" AutoHidePortion="0.25" Hidden="False" Float="False" Layout="3" Zoom="1" />
+      <Content Type="TOutput" AutoHidePortion="0.25" Hidden="False" Float="False" Layout="4" Zoom="1" />
+    </Contents>
+    <Panes>
+      <Pane DockState="DockLeft" ActiveContent="0">
+        <Contents>
+          <Content RefID="0" />
+        </Contents>
+      </Pane>
+      <Pane DockState="DockRight" ActiveContent="2">
+        <Contents>
+          <Content RefID="2" />
+        </Contents>
+      </Pane>
+      <Pane DockState="Float" ActiveContent="-1">
+        <Contents>
+          <Content RefID="1" />
+        </Contents>
+      </Pane>
+      <Pane DockState="DockRight" ActiveContent="3">
+        <Contents>
+          <Content RefID="3" />
+        </Contents>
+      </Pane>
+      <Pane DockState="Document" ActiveContent="1">
+        <Contents>
+          <Content RefID="1" />
+        </Contents>
+      </Pane>
+    </Panes>
+    <DockWindows>
+      <DockWindow DockState="Document" ZOrderIndex="1">
+        <NestedPanes>
+          <Pane RefID="4" PrevPane="-1" Alignment="Left" Proportion="0.5" />
+        </NestedPanes>
+      </DockWindow>
+      <DockWindow DockState="DockLeft" ZOrderIndex="4">
+        <NestedPanes>
+          <Pane RefID="0" PrevPane="-1" Alignment="Bottom" Proportion="0.5" />
+        </NestedPanes>
+      </DockWindow>
+      <DockWindow DockState="DockRight" ZOrderIndex="2">
+        <NestedPanes>
+          <Pane RefID="1" PrevPane="-1" Alignment="Bottom" Proportion="0.5" />
+          <Pane RefID="3" PrevPane="1" Alignment="Bottom" Proportion="0.5" />
+        </NestedPanes>
+      </DockWindow>
+      <DockWindow DockState="DockTop" ZOrderIndex="5">
+        <NestedPanes />
+      </DockWindow>
+      <DockWindow DockState="DockBottom" ZOrderIndex="6">
+        <NestedPanes />
+      </DockWindow>
+    </DockWindows>
+    <FloatWindows>
+      <FloatWindow Bounds="830, 355, 500, 500" ZOrderIndex="0">
+        <NestedPanes>
+          <Pane RefID="2" PrevPane="-1" Alignment="Right" Proportion="0.5" />
+        </NestedPanes>
+      </FloatWindow>
+    </FloatWindows>
+  </Layout>
+  <TelerikLayout>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;RadDock SplitterWidth="2" DocumentTabsAlignment="Bottom" IsCleanUpTarget="True" Orientation="Vertical" CausesValidation="False" TabIndex="1" TabStop="False"&gt;
+  &lt;SerializableFloatingWindows&gt;
+    &lt;Telerik.WinControls.UI.Docking.SerializableFloatingWindow BackColor="191, 219, 255" Location="1724, 617" ClientSize="292, 270" ZIndex="1"&gt;
+      &lt;DockContainer Orientation="Vertical" Collapsed="True" Padding="5, 5, 5, 5" Dock="Fill" Location="0, 0" Name="" Size="292, 270" TabIndex="0" TabStop="False"&gt;
+        &lt;SizeInfo SplitterCorrection="0, 0" AutoSizeScale="0, 0" /&gt;
+        &lt;Controls&gt;
+          &lt;Telerik.WinControls.UI.Docking.ToolTabStrip CanUpdateChildIndex="True" Size="292, 270" Location="0, 0" Name="DockTabStrip6" TabIndex="0" TabStop="False"&gt;
+            &lt;SizeInfo SplitterCorrection="0, 0" AutoSizeScale="0, 0" /&gt;
+          &lt;/Telerik.WinControls.UI.Docking.ToolTabStrip&gt;
+        &lt;/Controls&gt;
+      &lt;/DockContainer&gt;
+    &lt;/Telerik.WinControls.UI.Docking.SerializableFloatingWindow&gt;
+    &lt;Telerik.WinControls.UI.Docking.SerializableFloatingWindow BackColor="191, 219, 255" Location="1526, 667" ClientSize="292, 270" ZIndex="2"&gt;
+      &lt;DockContainer Orientation="Vertical" Collapsed="True" Padding="5, 5, 5, 5" Dock="Fill" Location="0, 0" Name="" Size="292, 270" TabIndex="0" TabStop="False"&gt;
+        &lt;SizeInfo SplitterCorrection="0, 0" AutoSizeScale="0, 0" /&gt;
+        &lt;Controls&gt;
+          &lt;Telerik.WinControls.UI.Docking.ToolTabStrip CanUpdateChildIndex="True" Size="292, 270" Location="0, 0" Name="DockTabStrip8" TabIndex="0" TabStop="False"&gt;
+            &lt;SizeInfo SplitterCorrection="0, 0" AutoSizeScale="0, 0" /&gt;
+          &lt;/Telerik.WinControls.UI.Docking.ToolTabStrip&gt;
+        &lt;/Controls&gt;
+      &lt;/DockContainer&gt;
+    &lt;/Telerik.WinControls.UI.Docking.SerializableFloatingWindow&gt;
+  &lt;/SerializableFloatingWindows&gt;
+  &lt;Controls&gt;
+    &lt;Telerik.WinControls.UI.Docking.ToolTabStrip SelectedIndex="0" CanUpdateChildIndex="True" Size="709, 1050" Location="5, 5" CausesValidation="False" Name="DockTabStrip5" TabIndex="1" TabStop="False"&gt;
+      &lt;SizeInfo SplitterCorrection="209, 0" AutoSizeScale="0, 0" AbsoluteSize="709, 200" /&gt;
+      &lt;Controls&gt;
+        &lt;Telerik.WinControls.UI.Docking.HostWindow ToolCaptionButtons="None" PreviousDockState="Docked" Name="TUserDialog1" Size="707, 1026" Location="1, 22" Text="Dialog" /&gt;
+      &lt;/Controls&gt;
+    &lt;/Telerik.WinControls.UI.Docking.ToolTabStrip&gt;
+    &lt;Telerik.WinControls.UI.Docking.DocumentContainer IsMainDocumentContainer="True" SplitterWidth="2" Orientation="Vertical" Name="documentContainer1"&gt;
+      &lt;SizeInfo SplitterCorrection="-437, 0" AutoSizeScale="0, 0" SizeMode="Fill" AbsoluteSize="761, 200" /&gt;
+      &lt;Controls&gt;
+        &lt;Telerik.WinControls.UI.Docking.DocumentTabStrip SelectedIndex="0" TabStripAlignment="Bottom" CanUpdateChildIndex="True" Size="761, 1050" Location="0, 0" Name="DockTabStrip4" TabIndex="0" TabStop="False"&gt;
+          &lt;SizeInfo SplitterCorrection="0, 0" AutoSizeScale="0, 0" /&gt;
+          &lt;Controls&gt;
+            &lt;Telerik.WinControls.UI.Docking.HostWindow ToolCaptionButtons="None" DocumentButtons="None" PreviousDockState="Docked" Name="TOutput1" Size="749, 1016" Location="6, 6" Text="Main output" /&gt;
+          &lt;/Controls&gt;
+        &lt;/Telerik.WinControls.UI.Docking.DocumentTabStrip&gt;
+      &lt;/Controls&gt;
+    &lt;/Telerik.WinControls.UI.Docking.DocumentContainer&gt;
+    &lt;Telerik.WinControls.UI.RadSplitContainer IsCleanUpTarget="True" Orientation="Horizontal" Padding="5, 5, 5, 5" Location="1479, 5" Name="" Size="428, 1050" TabIndex="2" TabStop="False"&gt;
+      &lt;SizeInfo SplitterCorrection="228, 0" AutoSizeScale="0, 0" AbsoluteSize="428, 200" /&gt;
+      &lt;Controls&gt;
+        &lt;Telerik.WinControls.UI.Docking.ToolTabStrip SelectedIndex="0" CanUpdateChildIndex="True" Size="428, 523" Location="0, 0" Name="DockTabStrip7" TabIndex="2" TabStop="False"&gt;
+          &lt;SizeInfo SplitterCorrection="341, 0" AutoSizeScale="0, 0" AbsoluteSize="541, 200" /&gt;
+          &lt;Controls&gt;
+            &lt;Telerik.WinControls.UI.Docking.HostWindow PreviousDockState="Docked" Name="TOutput2" Size="426, 497" Location="1, 24" Text="Output" /&gt;
+          &lt;/Controls&gt;
+        &lt;/Telerik.WinControls.UI.Docking.ToolTabStrip&gt;
+        &lt;Telerik.WinControls.UI.Docking.ToolTabStrip SelectedIndex="0" CanUpdateChildIndex="True" Size="428, 523" Location="0, 527" Name="DockTabStrip9" TabIndex="3" TabStop="False"&gt;
+          &lt;SizeInfo SplitterCorrection="0, 0" AutoSizeScale="0, 0" /&gt;
+          &lt;Controls&gt;
+            &lt;Telerik.WinControls.UI.Docking.HostWindow PreviousDockState="Docked" Name="TOutput3" Size="426, 497" Location="1, 24" Text="Output" /&gt;
+          &lt;/Controls&gt;
+        &lt;/Telerik.WinControls.UI.Docking.ToolTabStrip&gt;
+      &lt;/Controls&gt;
+    &lt;/Telerik.WinControls.UI.RadSplitContainer&gt;
+  &lt;/Controls&gt;
+&lt;/RadDock&gt;</TelerikLayout>
+  <Settings>
+    <Outputs>
+      <Output Layout="0" Zoom="0.85" />
+      <Output Layout="3" Zoom="0.8" />
+      <Output Layout="4" Zoom="0.8" />
+    </Outputs>
+  </Settings>
+</Root>

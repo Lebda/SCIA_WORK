@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xss xmlns:xss="http://www.scia.cz/xss">
+   <toolbar Version="1" Name="Project" Flags="0" IsPart="0" PartsSize="0" Size="11">
+      <Button Version="1" Mode="1" Tooltip="Layers.
+         Layers" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{1C3792D4-2A33-4C79-BE05-A9A9CFCA419A}" ButtonID="{1C3792D4-2A33-4C79-BE05-A9A9CFCA419A}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Cross-sections.
+         Cross-sections" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{A227FFA8-B114-4C1A-A61B-33E6CD3B6296}" ButtonID="{A227FFA8-B114-4C1A-A61B-33E6CD3B6296}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Check structure data.
+         Check structure data" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{9E9B2A36-4E9E-4BC6-8B6F-68D3626D129B}" ButtonID="{9E9B2A36-4E9E-4BC6-8B6F-68D3626D129B}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Mesh generation.
+         Mesh generation" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{F5590706-D252-41B3-BCC3-CDFD2EB87B39}" ButtonID="{F5590706-D252-41B3-BCC3-CDFD2EB87B39}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Calculation.
+         Calculation" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{C7B438D3-8D1F-4304-A312-D400BADDDC84}" ButtonID="{C7B438D3-8D1F-4304-A312-D400BADDDC84}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" ButtonAsMenu="0" ButtonStyle="1" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{00000000-0000-0000-0000-000000000000}" ButtonID="{777E7804-B061-4D12-9333-895D0C6D2521}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Print Data
+         Print Data" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{EB6AE162-39BA-4926-BE60-48FFA2DF1D7A}" ButtonID="{EB6AE162-39BA-4926-BE60-48FFA2DF1D7A}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Print Picture
+         Print Picture" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{367067C0-0D30-4B6E-AFBD-77FBE5C47F14}" ButtonID="{367067C0-0D30-4B6E-AFBD-77FBE5C47F14}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Engineering report" 
+             ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{9C88BD60-CD64-4520-8221-032595277D36}" ButtonID="{9C88BD60-CD64-4520-8221-032595277D36}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/> 
+      <Button Version="1" Mode="1" Tooltip="Picture gallery.
+         Picture gallery" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{23CC9D93-023B-4293-A79E-DFDA2950732B}" ButtonID="{23CC9D93-023B-4293-A79E-DFDA2950732B}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+</toolbar></xss>

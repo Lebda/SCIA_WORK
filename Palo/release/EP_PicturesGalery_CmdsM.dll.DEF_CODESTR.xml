@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="3"><StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2e3dpicture.2eregenerable.2ename}</StringId>
+		<SourceDll>EP_PicturesGalery_CmdsM.2edll</SourceDll>
+		<ResourceId>1000</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2e3dpicturewithoutscale.2eregenerable.2ename}</StringId>
+		<SourceDll>EP_PicturesGalery_CmdsM.2edll</SourceDll>
+		<ResourceId>1002</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2e3dpicture.2esnapshot.2ename}</StringId>
+		<SourceDll>EP_PicturesGalery_CmdsM.2edll</SourceDll>
+		<ResourceId>1001</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

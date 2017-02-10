@@ -1,0 +1,52 @@
+<Root>
+  <ValueSets>
+    <EC NAD="CSN" Description="CZ jazyk, CZ annex" Layout="0" Language="CSY">
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Výpočet dle Masopusta, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Uživatelský nadpis" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="H" Value="100000" />
+      <Variable Identifier="h" Value="1.5" />
+      <Variable Identifier="L" Value="2" />
+      <Variable Identifier="d" Value="800e-3" />
+      <Variable Identifier="T" Value="0" />
+      <Variable Identifier="S" Value="0" />
+      <Variable Identifier="D" Value="1" />
+      <Variable Identifier="c↓u←" Value="45000" />
+      <Variable Identifier="I↓D←" Value="899.9999e-3" />
+    </EC>
+    <EC NAD="STN" Description="SK jazyk, SK annex" Layout="0" Language="SKY">
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Výpočet podľa Masopusta, STN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Uživateľský nadpis" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="H" Value="100000" />
+      <Variable Identifier="h" Value="1.5" />
+      <Variable Identifier="L" Value="2" />
+      <Variable Identifier="d" Value="800e-3" />
+      <Variable Identifier="T" Value="0" />
+      <Variable Identifier="S" Value="0" />
+      <Variable Identifier="D" Value="1" />
+      <Variable Identifier="c↓u←" Value="45000" />
+      <Variable Identifier="I↓D←" Value="899.9999e-3" />
+    </EC>
+    <EC NAD="CSN" Description="EN language, CZ annex" Layout="0" Language="ENU">
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Calculation according to Masopust theory, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="True" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="P1" Value="True" />
+      <Variable Identifier="H" Value="100000" />
+      <Variable Identifier="h" Value="1.5" />
+      <Variable Identifier="L" Value="2" />
+      <Variable Identifier="d" Value="800e-3" />
+      <Variable Identifier="T" Value="0" />
+      <Variable Identifier="S" Value="0" />
+      <Variable Identifier="D" Value="1" />
+      <Variable Identifier="c↓u←" Value="45000" />
+      <Variable Identifier="I↓D←" Value="899.9999e-3" />
+    </EC>
+  </ValueSets>
+</Root>

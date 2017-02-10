@@ -1,0 +1,54 @@
+**********************
+EP_Poirot User Actions
+**********************
+List of special actions which can be used during poirot run.
+For specify user commands for poirot run please use:
+/usrcmd "AnyProgrammerCommand"
+Switch usrcmd can be used multiple in one command line
+etc.
+/usrcmd "Cmd1" /usrcmd "Cmd2" /usrcmd "Cmd3" /usrcmd "Cmd4"
+
+Actions:
+========
+
+PSADM
+Run PlaneSection automatic dimensioning during regenerate PSE picture from PSE picture wizzard
+Responsible: TUM
+
+PSALB
+Run PlaneSection automatic labeling during regenerate PSE picture from PSE picture wizzard
+Responsible: TUM
+
+PSREGENPROJ
+Run PlaneSection regeneration of section scene
+Responsible: TUM
+
+UseXMLDoc
+Export XML document from project only
+Responsible: POP
+
+WithoutGUI
+Export ESA file as without GUI dialogues
+Responsible: LAT
+
+SB_REGDEF
+Structural block - regenerate definition (internal DS)
+Responsible: LAT
+
+SB_UPD_STD
+Structural block - standard update all instances
+Responsible: LAT
+
+SB_UPD_DEEP
+Structural block - deep update all instances
+Responsible: LAT
+
+INBLOPT
+Start CGlobOptInBlockStandartAutodesign
+Responsible: PLE
+
+PRJIMPORT_PARAMUPD
+Import parametric project - update parameters from external XML file %ProjectName%_UPD.xml
+Use this optional switch for EP_TemplateImport command
+RunCmd "{6C744E08-0F48-428f-8A19-CF6F62639B65};StartType=0" RunCmdParam "Template=FullPathToTemplateFile.esa" /usrcmd "PRJIMPORT_PARAMUPD"
+Responsible: LAT

@@ -1,0 +1,119 @@
+0	; nespecifikováno
+1	; evropskı I prùøez
+2	; evropskı standardní prut
+3	; evropskı prut se širokou pøírubou
+4	; sloup se širokou pøírubou
+5	; nosná pilota se širokou pøírubou
+6	; U prùøez s rovnobìnımi pøírubami
+7	; evropskı standardní U prùøez
+8	; rovnoramenné L
+9	; nerovnoramenné L
+10	; L prùøez
+11	; britskı universální prut
+12	; britskı universální sloup
+13	; britská nosná pilota se širokou pøírubou
+14 	; široká pásková ocel
+15	; za studena tvarovanı C prùøez
+16	; za studena tvarovanı L prùøez
+17	; za studena tvarovanı Omega prùøez
+18	; za studena tvarovanı U prùøez
+19	; za studena tvarovanı Z prùøez
+20	; kruhová trubka
+21	; za studena tvarovaná kruhová trubka
+22	; pásková ocel
+23	; konstrukèní T odøíznuté z I prùøezu
+24	; asymetrickı I prùøez
+25	; obdélníková trubka
+26	; kruhová tyè
+27	; za studena tvarovaná obdélníková trubka
+28	; U prùøez
+29	; britskı prut
+30	; kolejnice
+31	; T prùøez
+32	; Z prùøez
+33	; americkı prut se širokou pøírubou - metrická konvence
+34	; americkı prut se širokou pøírubou - americká konvence
+35	; rùzné americké pruty - metrická konvence
+36	; rùzné americké pruty - americká konvence
+37	; americká nosná pilota - metrická konvence
+38	; americká nosná pilota - americká konvence
+39	; americkı standardní  prut - metrická konvence
+40	; americkı standardní  prut - americká konvence
+41	; americkı standardní U prùøez - metrická konvence
+42	; americkı standardní U prùøez - americká konvence
+43	; rùznı americkı U prùøez - metrická konvence
+44	; rùznı americkı U prùøez - americká konvence
+45	; americkı L prùøez - metrická konvence
+46	; americkı L prùøez - americká konvence
+47	; americké konstrukèní T odøíznuté z I prùøezu - metrická konvence
+48	; americké konstrukèní T odøíznuté z I prùøezu - americká konvence
+49	; americká obdélniková a ètvercová konstrukèní trubka - metrická konvence
+50	; americká obdélniková a ètvercová konstrukèní trubka - americká konvence
+51	; americká kruhová konstrukèní trubka - metrická konvence
+52	; americká kruhová konstrukèní trubka - americká konvence
+53	; americká ocelová trubka - metrická konvence
+54	; americká ocelová trubka - americká konvence
+55	; japonskı H prùøez
+56	; za studena tvarovanı ZED prùøez
+57	; za studena tvarovanı Sigma prùøez
+58  ; za studena tvarovanı prùøez - okapovı prut
+59  ; integrovanı stropní prut
+60  ; štíhlı podlahovı prut
+61  ; prut pro horní podlaí
+62  ; Indian Standard Light weight Channels
+63  ; Indian Standard Column Sections
+64  ; Indian Standard Wide flange Beams
+65  ; Indian standard Unequal Leg angles
+66  ; Indian Standard Medium weight Parallel flange Channels
+67  ; Indian Standard Medium weight Channels
+68  ; Indian Standard Medium weight Beams
+69  ; Indian Standard Light weight Beams
+70  ; Indian Standard Junior Channels
+71  ; Indian Standard Junior Beams
+72  ; Indian Standard Heavy Weight Beams
+73  ; Indian Standard Equal Angles
+74	; Za studena tváøená ètvercová a obdélníková trubka
+75	; Ctvercová a obdélníková trubka
+76	; U prùøez se sklonìnımi pásnicemi
+77	; T prùøez s vysokou stojinou
+78	; T prùøez se širokou pásnicí
+79	; Ètvercovı prut
+80	; Konstrukèní T-øez z univerzálního nosníku
+81	; KonstrukèníT-øez z univerzálního sloupu
+82	; Jumbo355 ètvercové trubky
+83	; Celsius355 ètvercové trubky
+84	; Hybox355 za studena tváøené ètvercové trubky
+85	; Jumbo355 obdélníkové trubky
+86	; Celsius355 obdélníkové trubky
+87	; Hybox355 za studena tváøené obdélníkové trubky
+88	; Jumbo355 kruhové trubky
+89	; Celsius355 kruhové trubky
+90	; Hybox355 za studena tváøené kruhové trubky
+91	; Chinese H-shape
+92	; Chinese Cut T-section
+93	; Chinese Cold formed Square pipe
+94	; Chinese Cold formed Rectangular tube
+95	; Chinese Cold formed Round pipe
+96	; Chinese I-beam
+97	; Chinese Channel steel
+98	; Chinese Equal leg angle steel
+99	; Chinese Unequal leg angle steel
+100	; ICEC Z Purlin
+101	; ICEC C Purlin
+102	; Brazilian I and H section
+103	; Celsius Large Circular hollow section
+104 ; za studena tvarovanı asymetrickı Sigma prurez
+105	; za studena tvarovanı I-plus prùøez
+106	; za studena tvarovanı IS-plus prùøez
+107	; SSMA Stud - Cold formed C section with lips
+108	; SSMA Track - Cold formed C section without lips
+109	; evropskı prut s extra širokou pøírubou
+110	; Russian hot rolled beam
+111	; britskı U prùøez s rovnobìnımi pøírubami
+112	; British channel with taper flanges
+113	; za studena tvarovanı prùøez METfloor
+114	; za studena tvarovanı U prùøez METframe
+115	; za studena tvarovanı C prùøez METframe
+116 ; Virtual Joist
+117 ; Virtual Joist Girder
+118	; za studena tvarovanı Sigma+ prùøez

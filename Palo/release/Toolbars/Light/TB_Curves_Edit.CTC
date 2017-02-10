@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xss xmlns:xss="http://www.scia.cz/xss">
+   <toolbar Version="1" Name="Curves edit" Flags="0" IsPart="0" PartsSize="0" Size="9">
+      <Button Version="1" Mode="1" Tooltip="Edits the angle of selected arc.
+         Edit arc angle" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{555C0F78-F03C-438C-84EC-5928D0A1D3A2}" ButtonID="{555C0F78-F03C-438C-84EC-5928D0A1D3A2}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Edit the bulge of selected arc.
+         Edit arc bulge" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{5ABDD789-3726-40CD-B3C4-1AF168FC1417}" ButtonID="{5ABDD789-3726-40CD-B3C4-1AF168FC1417}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Edits the radius of selected arc.
+         Edit arc radius" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{B16441DD-19A8-43DF-B9C3-31B3E22A3411}" ButtonID="{B16441DD-19A8-43DF-B9C3-31B3E22A3411}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Edits weight factors of selected bezier curve.
+         Edit bezier weight factors" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{66CD7765-CB50-4A08-B207-97DDE1AAE303}" ButtonID="{66CD7765-CB50-4A08-B207-97DDE1AAE303}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Converts curve to line.
+         Convert curve to line" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{024FEB44-1919-4EE3-BE66-6C8587C04C76}" ButtonID="{024FEB44-1919-4EE3-BE66-6C8587C04C76}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Converts line to circle arc.
+         Convert line to circle arc" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{A78BA778-A18A-4231-B8BD-3A1760480609}" ButtonID="{A78BA778-A18A-4231-B8BD-3A1760480609}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Converts line to parabolic arc.
+         Convert line to parabolic arc" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{D20ED5F1-35A0-4B36-9693-6A8EA5B41803}" ButtonID="{D20ED5F1-35A0-4B36-9693-6A8EA5B41803}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Converts line to bezier.
+         Convert line to bezier" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{34A868F8-F982-4AF2-898B-CECB035E7C66}" ButtonID="{34A868F8-F982-4AF2-898B-CECB035E7C66}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Converts line to spline.
+         Convert line to spline" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{BEE25533-8AEB-4B93-B213-CE39446CD7C0}" ButtonID="{BEE25533-8AEB-4B93-B213-CE39446CD7C0}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/></toolbar></xss>

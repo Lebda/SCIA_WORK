@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<STRINGTABLE><STRING ID="TEMPLATE_NAME">
+		<ENU>Stability</ENU>
+		<CSY>Stabilita</CSY>
+		<DEU>Stabilität</DEU>
+		<SPA>Estabilidad</SPA>
+		<FRA>Stabilité</FRA>
+		<HRV>Stability</HRV>
+		<ITA>Stabilitá</ITA>
+		<NLD>Stabiliteit</NLD>
+		<POL>Stateczność</POL>
+		<PTB>Stability</PTB>
+		<ROM>Stability</ROM>
+		<RUS>Stability</RUS>
+		<SKY>Stabilita</SKY>
+		<SLV>Stabilnost</SLV>
+	</STRING>
+	<STRING ID="TEMPLATE_DESCRIPTION">
+		<ENU></ENU>
+		<CSY></CSY>
+		<DEU></DEU>
+		<ELL></ELL>
+		<SPA></SPA>
+		<FRA></FRA>
+		<HRV></HRV>
+		<ITA></ITA>
+		<NLD></NLD>
+		<POL></POL>
+		<PTB></PTB>
+		<ROM></ROM>
+		<RUS></RUS>
+		<SKY></SKY>
+		<SLV></SLV>	
+	</STRING>
+</STRINGTABLE>

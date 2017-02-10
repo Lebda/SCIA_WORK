@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="9"><StringCode SourceType="DLLRC:"><StringId>@{steelcheckbscode.2eids_util_combined}</StringId>
+		<SourceDll>SteelCheckBSCode.2edll</SourceDll>
+		<ResourceId>367</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckbscode.2eids_util_lat_flex_defl}</StringId>
+		<SourceDll>SteelCheckBSCode.2edll</SourceDll>
+		<ResourceId>365</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckbscode.2eids_strength_utilisation}</StringId>
+		<SourceDll>SteelCheckBSCode.2edll</SourceDll>
+		<ResourceId>112</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckbscode.2eids_steelcheck_bs_sls}</StringId>
+		<SourceDll>SteelCheckBSCode.2edll</SourceDll>
+		<ResourceId>114</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckbscode.2eids_util_norm_flex_defl}</StringId>
+		<SourceDll>SteelCheckBSCode.2edll</SourceDll>
+		<ResourceId>364</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckbscode.2eids_steelcheck_bs_uls}</StringId>
+		<SourceDll>SteelCheckBSCode.2edll</SourceDll>
+		<ResourceId>110</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckbscode.2eids_resultant_utilisation}</StringId>
+		<SourceDll>SteelCheckBSCode.2edll</SourceDll>
+		<ResourceId>111</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckbscode.2eids_util_twist}</StringId>
+		<SourceDll>SteelCheckBSCode.2edll</SourceDll>
+		<ResourceId>366</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckbscode.2eids_stability_utilisation}</StringId>
+		<SourceDll>SteelCheckBSCode.2edll</SourceDll>
+		<ResourceId>113</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

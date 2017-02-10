@@ -1,0 +1,167 @@
+<?xml version="1.0" ?>
+<x:schema targetNamespace="http://www.scia.cz" elementFormDefault="qualified" xmlns:x="http://www.w3.org/2001/XMLSchema" xmlns:e="http://www.scia.cz">
+
+<x:element name="def_project" type="e:DefProjectData"/>
+
+<x:complexType name="DefProjectData">
+	<x:sequence>
+		<x:element name="def_container" type="e:DefContainerData" minOccurs="0" maxOccurs="unbounded"/>
+		<x:element name="def_user" type="e:DefUserData" minOccurs="0" maxOccurs="1"/>
+	</x:sequence>
+</x:complexType>
+
+<x:complexType name="DefContainerData">
+	<x:sequence>
+		<x:element name="def_table" type="e:DefTableData" minOccurs="0" maxOccurs="unbounded"/>
+		<x:element name="def_actions" type="e:DefActions" minOccurs="0" maxOccurs="unbounded"/>
+	</x:sequence>
+	<x:attribute name="id" type="e:UuidType" use="required"/>
+	<x:attribute name="clsid" type="e:UuidType" use="required"/> 
+	<x:attribute name="progid" type="x:token"/>
+	<x:attribute name="hetero" type="e:YesNoType" default="no"/>	 
+	<x:attribute name="library" type="e:YesNoType" default="no"/>	 
+	<x:attribute name="xmldef" type="e:YesNoType" default="no"/>
+	<x:attribute name="readonly" type="e:YesNoType" default="no"/> 
+</x:complexType>
+
+<x:complexType name="DefUserData">
+	<x:sequence>
+		<x:element name="def_property" type="e:DefProperty" minOccurs="0" maxOccurs="unbounded"/>
+	</x:sequence>
+	<x:attribute name="size" type="x:unsignedShort" use="required"/>
+
+	<x:attribute name="id" type="e:UuidType" />		  <!-- DODO MIC  vytvareni pouze v def souboru -->
+	<x:attribute name="clsid" type="e:UuidType"/> 	  <!-- DODO MIC  vytvareni pouze v def souboru -->
+	<x:attribute name="progid" type="x:token"/>		  <!-- DODO MIC  vytvareni pouze v def souboru -->
+	
+	<x:attribute name="name" type="x:string"/>
+	<x:attribute name="table" type="e:TableType" default="vertical"/>
+	<x:attribute name="type" type="e:UserDefType" default="simple"/>
+</x:complexType>
+
+
+<x:complexType name="DefTableData">
+	<x:sequence>
+		<x:element name="def_property" type="e:DefProperty" minOccurs="0" maxOccurs="unbounded"/>
+	</x:sequence>
+	<x:attribute name="id" type="x:string" use="required"/>
+	<x:attribute name="clsid" type="e:UuidType" use="required"/>
+	<x:attribute name="progid" type="x:token"/>
+	<x:attribute name="name" type="x:string"/>
+	<x:attribute name="size" type="x:unsignedShort" use="required"/>
+	<x:attribute name="type" type="e:TableType" use="required"/>
+</x:complexType>
+
+<x:complexType name="DefActions">
+	<x:sequence>
+		<x:element name="it_action" minOccurs="0" maxOccurs="unbounded">
+			<x:complexType>
+				<x:attribute name="x" type="x:unsignedShort" use="required"/>
+				<x:attribute name="name" type="x:string"/>					 
+				<x:attribute name="type" type="e:ActionType"/> 
+				<x:attribute name="id" type="e:UuidType" use="required"/>		  
+			</x:complexType>
+		</x:element>
+	</x:sequence>
+	<x:attribute name="clsid" type="e:UuidType" use="required"/>
+	<x:attribute name="progid" type="x:token"/>
+	<x:attribute name="size" type="x:unsignedShort" use="required"/>
+</x:complexType>
+
+<x:complexType name="DefProperty">
+	<x:sequence>
+		<x:element name="def_enum" minOccurs="0" maxOccurs="1">
+			<x:complexType>
+				<x:sequence>
+					<x:element name="it_enum" minOccurs="0" maxOccurs="unbounded">
+						<x:complexType>
+							<x:attribute name="v" type="x:long" use="required"/>
+							<x:attribute name="t" type="x:string"/>
+						</x:complexType>
+					</x:element>
+				</x:sequence>
+				<x:attribute name="size" type="x:unsignedShort" use="required"/>
+			</x:complexType>
+		</x:element>
+		<x:element name="def_subtable" minOccurs="0" maxOccurs="1">
+			<x:complexType>
+				<x:sequence>
+					<x:element name="def_property" type="e:DefProperty" minOccurs="0" maxOccurs="unbounded"/>
+				</x:sequence>
+				<x:attribute name="clsid" type="e:UuidType"/>
+				<x:attribute name="progid" type="x:token"/>
+				<x:attribute name="name" type="x:string"/>
+				<x:attribute name="size" type="x:unsignedShort" use="required"/>
+				<x:attribute name="type" type="e:TableType" use="required"/>
+			</x:complexType>
+		</x:element>
+		<x:element name="def_ref" minOccurs="0" maxOccurs="1">
+			<x:complexType>
+				<x:attribute name="id" type="e:UuidType" use="required"/>
+				<x:attribute name="progid" type="x:token"/>
+			</x:complexType>
+		</x:element>
+	</x:sequence>		   												  
+	<x:attribute name="name" type="x:string"/>					 
+	<x:attribute name="id" type="e:UuidType" use="required"/>		  
+	<x:attribute name="type" type="e:PropertyType" use="required"/> 
+	<x:attribute name="x" type="x:unsignedShort" use="required"/>
+	<x:attribute name="readonly" type="e:YesNoType" default="no"/> 
+	<x:attribute name="flag" type="x:integer"/> 
+	<x:attribute name="unit" type="x:string"/> 
+</x:complexType>
+
+<x:simpleType name="PropertyType">
+  <x:restriction base="x:string">
+    <x:enumeration value="string"/>
+    <x:enumeration value="bool"/>
+    <x:enumeration value="enum"/>
+    <x:enumeration value="integer"/>
+    <x:enumeration value="param"/>
+    <x:enumeration value="ref"/>
+    <x:enumeration value="real"/>
+    <x:enumeration value="real2"/>
+    <x:enumeration value="real3"/>
+    <x:enumeration value="table"/>
+  </x:restriction>
+</x:simpleType>
+
+<x:simpleType name="ActionType">
+  <x:restriction base="x:string">
+    <x:enumeration value="string"/>
+    <x:enumeration value="bool"/>
+    <x:enumeration value="integer"/>
+    <x:enumeration value="real"/>
+    <x:enumeration value="real2"/>
+    <x:enumeration value="real3"/>
+  </x:restriction>
+</x:simpleType>
+
+<x:simpleType name="YesNoType">
+  <x:restriction base="x:string">
+    <x:enumeration value="yes"/>
+    <x:enumeration value="no"/>
+  </x:restriction>
+</x:simpleType>
+
+<x:simpleType name="TableType">
+  <x:restriction base="x:string">
+    <x:enumeration value="vertical"/>
+    <x:enumeration value="horizontal"/>
+  </x:restriction>
+</x:simpleType>
+
+<x:simpleType name="UserDefType">
+  <x:restriction base="x:string">
+    <x:enumeration value="simple"/>
+    <x:enumeration value="database"/>
+    <x:enumeration value="add"/>
+  </x:restriction>
+</x:simpleType>
+
+<x:simpleType name="UuidType">
+  <x:restriction base="x:string">
+	<x:pattern value="\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\}"/>
+  </x:restriction>
+</x:simpleType>
+</x:schema>

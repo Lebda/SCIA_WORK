@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<STRINGTABLE><STRING ID="TEMPLATE_NAME">
+		<ENU>Eigen.20frequencies</ENU>
+		<CSY>Vlastní.20frekvence</CSY>
+		<DEU>Eigenfrequenzen</DEU>
+		<SPA>Frecuencia.20propia</SPA>
+		<FRA>Fréquences.20propres</FRA>
+		<HRV>Vlastite.20frekvencije</HRV>
+		<ITA>Frequenze.20proprie</ITA>
+		<NLD>Eigenfrequenties</NLD>
+		<POL>Częstotliwości.20drgań.20własnych</POL>
+		<PTB>Eigen.20frequencies</PTB>
+		<ROM>Frecvente.20proprii</ROM>
+		<SKY>EVlastné.20frekvencie</SKY>
+		<SLV>Eigen.20frequencie</SLV>
+	</STRING>
+	<STRING ID="TEMPLATE_DESCRIPTION">
+		<ENU></ENU>
+		<ENU></ENU>
+		<CSY></CSY>
+		<DEU></DEU>
+		<ELL></ELL>
+		<SPA></SPA>
+		<FRA></FRA>
+		<HRV></HRV>
+		<ITA></ITA>
+		<NLD></NLD>
+		<POL></POL>
+		<PTB></PTB>
+		<ROM></ROM>
+		<RUS></RUS>
+		<SKY></SKY>
+		<SLV></SLV>	
+	</STRING>
+</STRINGTABLE>

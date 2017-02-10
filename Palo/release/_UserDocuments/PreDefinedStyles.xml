@@ -1,0 +1,12 @@
+<Root>
+  <Set Vis="1" X="150" Y="310" Prev="468" Hor="0" Ver="2" SpX="0" SpY="0" DF="0" DS="0" DR="1" Style="0" Wrap="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" Caption="equa150" />
+  <Set Vis="1" X="0" Y="655" Prev="-1" Hor="0" Ver="4" SpX="0" SpY="0" DF="1" DS="1" DR="1" Style="0" Wrap="0" Font1="Arial|13|5|2" Font2="Arial|13|5|2" Caption="H1" />
+  <Set Vis="1" X="0" Y="363" Prev="-1" Hor="0" Ver="4" SpX="0" SpY="5" DF="1" DS="1" DR="1" Style="0" Wrap="0" Font1="Arial|13|5|2" Font2="Arial|13|5|2" Caption="H2" />
+  <Set Vis="1" X="200" Y="295" Prev="-1" Hor="0" Ver="2" SpX="0" SpY="0" DF="1" DS="1" DR="1" Style="2" Wrap="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" Caption="equa200" />
+  <Set Vis="1" X="0" Y="80.4" Prev="-1" Hor="0" Ver="4" SpX="0" SpY="5" DF="1" DS="1" DR="1" Style="0" Wrap="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" Caption="normal_5" />
+  <Set Vis="1" X="0" Y="85.4" Prev="-1" Hor="0" Ver="4" SpX="0" SpY="10" DF="1" DS="1" DR="1" Style="0" Wrap="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" Caption="normal_10" />
+  <Set Vis="1" X="115" Y="60.8" Prev="-1" Hor="4" Ver="2" SpX="20" SpY="0" DF="1" DS="1" DR="1" Style="2" Wrap="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" Caption="follow_onLine" />
+  <Set Vis="1" X="10" Y="60.8" Prev="-1" Hor="0" Ver="4" SpX="0" SpY="5" DF="1" DS="1" DR="1" Style="0" Wrap="0" Font1="Arial|13|0|2" Font2="Arial|13|2|2" Caption="simple_remark" />
+  <Set Vis="1" X="10" Y="80.4" Prev="-1" Hor="0" Ver="4" SpX="0" SpY="5" DF="1" DS="1" DR="1" Style="0" Wrap="0" Font1="Arial|13|0|2" Font2="Arial|13|3|2" Caption="B_remark" />
+  <Set Vis="1" X="119" Y="41.3" Prev="-1" Hor="4" Ver="2" SpX="3" SpY="0" DF="1" DS="1" DR="1" Style="0" Wrap="0" Font1="Arial|13|0|2" Font2="Arial|13|3|2" Caption="follow_remark" />
+</Root>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="5"><StringCode SourceType="DLLRC:"><StringId>@{xepdocumentmfc.2eexception.2edisconnectui}</StringId>
+		<SourceDll>XEP_DocumentFrameworkMFC.2edll</SourceDll>
+		<ResourceId>10174</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentmfc.2eexception.2eviewupdate}</StringId>
+		<SourceDll>XEP_DocumentFrameworkMFC.2edll</SourceDll>
+		<ResourceId>10170</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentmfc.2eexception.2eclosedocument}</StringId>
+		<SourceDll>XEP_DocumentFrameworkMFC.2edll</SourceDll>
+		<ResourceId>10174</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentmfc.2eexception.2enavigator.2eredraw}</StringId>
+		<SourceDll>XEP_DocumentFrameworkMFC.2edll</SourceDll>
+		<ResourceId>10308</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentmfc.2eexception.2eviewpagination}</StringId>
+		<SourceDll>XEP_DocumentFrameworkMFC.2edll</SourceDll>
+		<ResourceId>10169</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

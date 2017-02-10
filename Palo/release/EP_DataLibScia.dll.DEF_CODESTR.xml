@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="6"><StringCode SourceType="DLLRC:"><StringId>@{datalibscia.2eids_steelchecks}</StringId>
+		<SourceDll>EP_DataLibScia.2edll</SourceDll>
+		<ResourceId>191</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{datalibscia.2eids_compositechecks}</StringId>
+		<SourceDll>EP_DataLibScia.2edll</SourceDll>
+		<ResourceId>36195</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{datalibscia.2eids_concretechecks}</StringId>
+		<SourceDll>EP_DataLibScia.2edll</SourceDll>
+		<ResourceId>36188</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{datalibscia.2eids_examplechecks}</StringId>
+		<SourceDll>EP_DataLibScia.2edll</SourceDll>
+		<ResourceId>36322</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{datalibscia.2eids_otherchecks}</StringId>
+		<SourceDll>EP_DataLibScia.2edll</SourceDll>
+		<ResourceId>36197</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{datalibscia.2eids_poirotchecks}</StringId>
+		<SourceDll>EP_DataLibScia.2edll</SourceDll>
+		<ResourceId>36306</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

@@ -1,0 +1,18 @@
+<Root>
+  <Test Description="STD" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 01">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+    </Dialog>
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Standard EN" />
+    <Result Name="k↓1←" Type="Numeric" ESA_ID="Result.01" Value="1" />
+    <Result Name="k↓2←" Type="Numeric" ESA_ID="Result.02" Value="850e-3" />
+  </Test>
+  <Test Description="DIN-EN" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 01">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="German DIN-EN" Collapsed="True" />
+    </Dialog>
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="German DIN-EN" />
+    <Result Name="k↓1←" Type="Numeric" ESA_ID="Result.01" Value="1.1" />
+    <Result Name="k↓2←" Type="Numeric" ESA_ID="Result.02" Value="750e-3" />
+  </Test>
+</Root>

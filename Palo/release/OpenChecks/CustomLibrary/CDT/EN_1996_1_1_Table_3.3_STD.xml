@@ -1,0 +1,130 @@
+<Root Version="1" Type="CustomLibrary" GUID="2fd30586-3821-433a-9f27-9b1b274e8b4e">
+  <Header>
+    <PropertySet Symbol="K" ESA_ID="K" Unit="" Type="Numeric">
+      <Description TranslateID="K">
+        <ENU>General purpose mortal</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="K" ESA_ID="K" Unit="" Type="Numeric">
+      <Description TranslateID="K">
+        <ENU>Thin layed mortar</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="K" ESA_ID="K" Unit="" Type="Numeric">
+      <Description TranslateID="K">
+        <ENU>Lightweight mortar of density &lt; 800 kg/m3</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="K" ESA_ID="K" Unit="" Type="Numeric">
+      <Description TranslateID="K">
+        <ENU>Lightweight mortar of density &lt; 1300 kg/m3</ENU>
+      </Description>
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0.55</Property>
+      <Property>0.75</Property>
+      <Property>0.30</Property>
+      <Property>0.40</Property>
+    </Item>
+    <Item>
+      <Property>0</Property>
+      <Property>1</Property>
+      <Property>0.45</Property>
+      <Property>0.70</Property>
+      <Property>0.25</Property>
+      <Property>0.30</Property>
+    </Item>
+    <Item>
+      <Property>0</Property>
+      <Property>2</Property>
+      <Property>0.35</Property>
+      <Property>0.50</Property>
+      <Property>0.20</Property>
+      <Property>0.25</Property>
+    </Item>
+    <Item>
+      <Property>0</Property>
+      <Property>3</Property>
+      <Property>0.35</Property>
+      <Property>0.35</Property>
+      <Property>0.20</Property>
+      <Property>0.25</Property>
+    </Item>
+    <Item>
+      <Property>1</Property>
+      <Property>0</Property>
+      <Property>0.55</Property>
+      <Property>0.80</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+    </Item>
+    <Item>
+      <Property>1</Property>
+      <Property>1</Property>
+      <Property>0.45</Property>
+      <Property>0.65</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+    </Item>
+    <Item>
+      <Property>2</Property>
+      <Property>0</Property>
+      <Property>0.55</Property>
+      <Property>0.80</Property>
+      <Property>0.45</Property>
+      <Property>0.45</Property>
+    </Item>
+    <Item>
+      <Property>2</Property>
+      <Property>1</Property>
+      <Property>0.45</Property>
+      <Property>0.65</Property>
+      <Property>0.45</Property>
+      <Property>0.45</Property>
+    </Item>
+    <Item>
+      <Property>2</Property>
+      <Property>2</Property>
+      <Property>0.40</Property>
+      <Property>0.50</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+    </Item>
+    <Item>
+      <Property>2</Property>
+      <Property>3</Property>
+      <Property>0.35</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+    </Item>
+    <Item>
+      <Property>3</Property>
+      <Property>0</Property>
+      <Property>0.55</Property>
+      <Property>0.80</Property>
+      <Property>0.45</Property>
+      <Property>0.45</Property>
+    </Item>
+    <Item>
+      <Property>4</Property>
+      <Property>0</Property>
+      <Property>0.45</Property>
+      <Property>0.75</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+    </Item>
+    <Item>
+      <Property>5</Property>
+      <Property>0</Property>
+      <Property>0.45</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+    </Item>
+  </Items>
+</Root>

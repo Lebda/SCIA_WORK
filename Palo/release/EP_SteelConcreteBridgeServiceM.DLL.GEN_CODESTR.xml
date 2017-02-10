@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="27"><StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_sls_welded_size}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>110</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_short_uc_rb}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>1228</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_short_uc_rt}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>1227</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_short_uc_cb}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>1231</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_short_uc_ct}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>1229</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_short_uc_sb}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>1226</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_short_uc_st}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>1225</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_short_rb}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>1221</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_short_rt}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>1220</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_short_cb}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>1223</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_short_ct}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>1222</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_short_sb}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>1219</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_short_st}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>1218</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_name_check_stress}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>128</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_effective_width}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>104</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_sls_shearbuckling}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>109</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_steel_conc_bridge}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>105</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_sls_cn}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>114</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_name_check_comp_css_stresses}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>1150</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_short_shear}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>1224</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_fls_connectors}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>111</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_uls_connectors}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>115</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_composed_css_stresses}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>116</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_reinforcement}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>107</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_stiffener}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>102</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_uls_stress}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>113</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_sls_stress}</StringId>
+		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
+		<ResourceId>106</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

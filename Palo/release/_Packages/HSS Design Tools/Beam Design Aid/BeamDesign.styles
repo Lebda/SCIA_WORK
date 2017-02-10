@@ -1,0 +1,49 @@
+<Root>
+  <Styles>
+    <Style Key="Subchapter 2" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Tahoma|14|0|2" Font2="Tahoma|14|1|2" />
+    <Style Key="Subchapter 1" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Tahoma|15|0|2" Font2="Tahoma|15|5|2" />
+    <Style Key="Chapter" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Tahoma|18|0|2" Font2="Tahoma|18|1|2" />
+    <Style Key="Limit State Body" X="5" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" />
+    <Style Key="Limit State Body - dy 8 " X="5" Y="0" Hor="0" Ver="4" SpX="0" SpY="8" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" />
+    <Style Key="Outcome Text dy 12" X="5" Y="0" Hor="0" Ver="4" SpX="0" SpY="12" Font1="Tahoma|12|0|2" Font2="Tahoma|12|3|2" />
+    <Style Key="Limit State Outcome" X="510" Y="0" Hor="0" Ver="2" SpX="20" SpY="-8" Font1="Tahoma|13|0|2" Font2="Tahoma|13|1|2" />
+    <Style Key="Limit State Body Label" X="510" Y="0" Hor="0" Ver="2" SpX="50" SpY="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|2|2" />
+    <Style Key="Limit State Title" X="5" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Tahoma|13|0|2" Font2="Tahoma|13|1|2" />
+    <Style Key="Title" X="5" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Tahoma|13|0|2" Font2="Tahoma|13|4|2" />
+    <Style Key="Title2" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Tahoma|13|0|2" Font2="Tahoma|13|4|2" />
+    <Style Key="Label Left" X="200" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|2|2" />
+    <Style Key="Label Right" X="550" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|2|2" />
+    <Style Key="=" X="0" Y="0" Hor="1" Ver="2" SpX="33" SpY="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" />
+    <Style Key="Block No Space" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" />
+    <Style Key="___" X="5" Y="0" Hor="1" Ver="4" SpX="0" SpY="-19" Font1="Tahoma|18|0|2" Font2="Tahoma|18|1|2" />
+    <Style Key="Limit State Outcome Dim" X="300" Y="0" Hor="1" Ver="2" SpX="315" SpY="-8" Font1="Tahoma|13|0|2" Font2="Tahoma|13|1|2" />
+    <Style Key="Outcome Text dy 12 R" X="350" Y="0" Hor="0" Ver="4" SpX="0" SpY="12" Font1="Tahoma|12|0|2" Font2="Tahoma|12|3|2" />
+    <Style Key="Code" X="5" Y="0" Hor="1" Ver="4" SpX="5" SpY="5" Font1="Tahoma|13|0|2" Font2="Tahoma|13|4|2" />
+    <Style Key="=Value" X="0" Y="0" Hor="1" Ver="2" SpX="20" SpY="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" />
+    <Style Key="Limit State Body 1" X="350" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" />
+    <Style Key="tab loads" X="45" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" />
+    <Style Key="=equation" X="0" Y="0" Hor="1" Ver="2" SpX="45" SpY="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" />
+    <Style Key="Limit State Body - dy 15" X="5" Y="0" Hor="0" Ver="4" SpX="0" SpY="15" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" />
+    <Style Key="Limit State Body 2" X="350" Y="0" Hor="0" Ver="4" SpX="0" SpY="8" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" />
+    <Style Key="Block 5 Space" X="5" Y="0" Hor="0" Ver="4" SpX="5" SpY="5" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" />
+    <Style Key="=follow10" X="115" Y="0" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" />
+    <Style Key="error" X="5" Y="0" Hor="0" Ver="4" SpX="5" SpY="5" Font1="Tahoma|13|0|2" Font2="Tahoma|13|2|2" />
+    <Style Key="=follow5" X="115" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" />
+    <Style Key="Limit State Body - dy 25" X="5" Y="0" Hor="0" Ver="4" SpX="0" SpY="25" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" />
+    <Style Key="Compactness" X="550" Y="0" Hor="0" Ver="2" SpX="50" SpY="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" />
+    <Style Key="=follow50" X="115" Y="0" Hor="4" Ver="2" SpX="50" SpY="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" />
+    <Style Key="Limit State Body - Wrap dy 25" X="5" Y="0" Hor="0" Ver="4" SpX="0" SpY="25" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" />
+    <Style Key="Code Text" X="5" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Tahoma|13|0|2" Font2="Tahoma|13|2|2" />
+    <Style Key="Limit State Title 1" X="5" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Tahoma|13|0|2" Font2="Tahoma|13|1|2" />
+    <Style Key="Block 10" X="5" Y="0" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" />
+    <Style Key="Text 2" X="50" Y="0" Hor="0" Ver="4" SpX="50" SpY="5" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" />
+    <Style Key="lamda" X="25" Y="0" Hor="0" Ver="4" SpX="0" SpY="30" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" />
+    <Style Key="=alignright2" X="115" Y="0" Hor="3" Ver="2" SpX="115" SpY="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" />
+    <Style Key="=alignright1" X="115" Y="0" Hor="3" Ver="2" SpX="70" SpY="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" />
+    <Style Key="_____2" X="5" Y="0" Hor="1" Ver="4" SpX="0" SpY="-16" Font1="Tahoma|16|0|2" Font2="Tahoma|16|1|2" />
+    <Style Key="=alignrightanswer" X="115" Y="0" Hor="3" Ver="2" SpX="25" SpY="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" />
+    <Style Key="Block Side" X="350" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" />
+    <Style Key="arrow" X="350" Y="0" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Wingdings 3|23|0|2" Font2="Wingdings 3|23|0|2" />
+    <Style Key="Code Text2" X="5" Y="0" Hor="0" Ver="4" SpX="0" SpY="15" Font1="Tahoma|13|0|2" Font2="Tahoma|13|2|2" />
+  </Styles>
+</Root>

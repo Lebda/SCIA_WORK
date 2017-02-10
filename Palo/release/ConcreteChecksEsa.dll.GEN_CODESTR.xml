@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="51"><StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_type_combo_name}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15025</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_stressstrain_result_name}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>41013</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_use_k_approx_method}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15149</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_reinforcement_ratio}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15030</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_use_secondary_effects}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15026</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_group_reinforcement}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15031</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_df_user_result_18}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15143</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_df_user_result_08}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15072</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_df_user_result_19}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15144</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_df_user_result_09}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15073</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_user_5}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15155</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_isolated_column}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15028</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_output_level}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15130</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_output_level3}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15133</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_output_level2}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15132</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_output_level1}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15131</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_user_4}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15154</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_reinforcement_d2}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15033</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_reinforcement_d1}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15032</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_df_user_result_16}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15141</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_df_user_result_06}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15070</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_clc_file}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15146</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_reinforcement_material}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15036</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_df_user_result_17}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15142</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_df_user_result_07}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15071</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_deformed_structure_result_name}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>41030</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_user_6}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15156</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_use_imperfections}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15027</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_cat_user_testing}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15150</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_df_user_result_14}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15139</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_df_user_result_04}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15068</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_user_1}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15151</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_use_equivalent_moment}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15029</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_df_user_result_15}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15140</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_df_user_result_05}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15069</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_reinforcement_sym}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15147</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_df_user_result_12}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15137</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_df_user_result_02}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15066</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_user_3}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15153</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_reinforcement_c}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15034</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_type_combo_item_01}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15023</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_df_user_result_13}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15138</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_df_user_result_03}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15067</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_ep_designform_user_template_name}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15090</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_user_2}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15152</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_type_combo_item_00}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15022</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_df_user_result_20}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15145</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_df_user_result_10}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15074</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_inprop_reinforcement_min}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15148</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_df_user_result_11}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15136</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2eids_df_user_result_01}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>15065</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

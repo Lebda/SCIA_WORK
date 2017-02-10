@@ -1,0 +1,67 @@
+<Root Version="1" Type="CustomLibrary" GUID="f7cdfc14-9172-4abb-a793-9b735f81a352">
+  <Header>
+    <PropertySet Symbol="Name" ESA_ID="Name" Unit="" Type="String">
+      <Description TranslateID="Name">
+        <ENU>Name</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="fm" ESA_ID="fm" Unit="MPa" Type="Numeric">
+      <Description TranslateID="fm">
+        <ENU>Characteristics compressive strength</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Cement" ESA_ID="Cement" Unit="" Type="Numeric">
+      <Description TranslateID="Cement">
+        <ENU>Cement</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Lime" ESA_ID="Lime" Unit="" Type="Numeric">
+      <Description TranslateID="Lime">
+        <ENU>Lime</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Sand" ESA_ID="Sand" Unit="" Type="Numeric">
+      <Description TranslateID="Sand">
+        <ENU>Sand</ENU>
+      </Description>
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>Mortar</Property>
+      <Property>0</Property>
+      <Property>M2,5</Property>
+      <Property>2.5</Property>
+      <Property>1</Property>
+      <Property>3</Property>
+      <Property>9</Property>
+    </Item>
+    <Item>
+      <Property>Mortar</Property>
+      <Property>1</Property>
+      <Property>M5</Property>
+      <Property>5</Property>
+      <Property>1</Property>
+      <Property>2</Property>
+      <Property>6</Property>
+    </Item>
+    <Item>
+      <Property>Mortar</Property>
+      <Property>2</Property>
+      <Property>M10</Property>
+      <Property>10</Property>
+      <Property>1</Property>
+      <Property>0.5</Property>
+      <Property>5</Property>
+    </Item>
+    <Item>
+      <Property>Mortar</Property>
+      <Property>3</Property>
+      <Property>M20</Property>
+      <Property>20</Property>
+      <Property>1</Property>
+      <Property>0</Property>
+      <Property>3</Property>
+    </Item>
+  </Items>
+</Root>

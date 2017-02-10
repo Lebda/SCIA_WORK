@@ -1,0 +1,11 @@
+American ; Amerikanisches
+British ; Britisch
+Chinese ; Chinesisch
+European ; Europäisches
+Finnish ; Finnisch
+German ; Deutsch
+Indian ; Indisch
+Japanese ; Japanisch
+Swiss ; Schweizerisch
+Brazilian ; Brasilianisch
+Russian ; Russisch

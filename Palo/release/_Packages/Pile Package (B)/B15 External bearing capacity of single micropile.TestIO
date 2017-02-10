@@ -1,0 +1,130 @@
+<Root>
+  <Test Description="Test 1" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust, ČSN 73 1001" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="V↓d←" Value="100000" />
+      <Variable Identifier="TL" Value="0" />
+      <Variable Identifier="L" Value="2" />
+      <Variable Identifier="d" Value="95e-3" />
+      <Variable Identifier="T" Value="1" />
+      <Variable Identifier="τ" Value="150000" />
+      <Variable Identifier="R↓dt←" Value="2.5e6" />
+    </Dialog>
+    <Result Name="A↓s←" Type="Numeric" ESA_ID="Result.0" Value="7.088212e-3" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="95e-3" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="m↓z←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust, ČSN 73 1001" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.1" Value="107255.8" />
+    <Input Name="R↓dt←" Type="Numeric" ESA_ID="" Value="2.5e6" />
+    <Input Name="T" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TL" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="U↓mp←" Type="Numeric" ESA_ID="" Value="17720.53" />
+    <Input Name="U↓ms←" Type="Numeric" ESA_ID="" Value="89535.32" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.14159" />
+    <Input Name="τ" Type="Numeric" ESA_ID="" Value="150000" />
+  </Test>
+  <Test Description="Test 2" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust, ČSN 73 1001" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="V↓d←" Value="100000" />
+      <Variable Identifier="TL" Value="0" />
+      <Variable Identifier="L" Value="2" />
+      <Variable Identifier="d" Value="95e-3" />
+      <Variable Identifier="T" Value="3" />
+      <Variable Identifier="τ" Value="150000" />
+      <Variable Identifier="R↓dt←" Value="2.5e6" />
+    </Dialog>
+    <Result Name="A↓s←" Type="Numeric" ESA_ID="Result.0" Value="7.088212e-3" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="95e-3" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="m↓z←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust, ČSN 73 1001" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.1" Value="89535.32" />
+    <Input Name="R↓dt←" Type="Numeric" ESA_ID="" Value="2.5e6" />
+    <Input Name="T" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="TL" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="U↓mp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="U↓ms←" Type="Numeric" ESA_ID="" Value="89535.32" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.14159" />
+    <Input Name="τ" Type="Numeric" ESA_ID="" Value="150000" />
+  </Test>
+  <Test Description="Test 3" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust, ČSN 73 1001" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="V↓d←" Value="100000" />
+      <Variable Identifier="TL" Value="1" />
+      <Variable Identifier="L" Value="2" />
+      <Variable Identifier="d" Value="95e-3" />
+      <Variable Identifier="T" Value="5" />
+      <Variable Identifier="τ" Value="150000" />
+      <Variable Identifier="R↓dt←" Value="2.5e6" />
+    </Dialog>
+    <Result Name="A↓s←" Type="Numeric" ESA_ID="Result.0" Value="7.088212e-3" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="95e-3" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="m↓z←" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust, ČSN 73 1001" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.1" Value="71628.25" />
+    <Input Name="R↓dt←" Type="Numeric" ESA_ID="" Value="2.5e6" />
+    <Input Name="T" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="TL" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="U↓mp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="U↓ms←" Type="Numeric" ESA_ID="" Value="71628.25" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.14159" />
+    <Input Name="τ" Type="Numeric" ESA_ID="" Value="150000" />
+  </Test>
+  <Test Description="Test 4" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust, ČSN 73 1001" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="V↓d←" Value="100000" />
+      <Variable Identifier="TL" Value="0" />
+      <Variable Identifier="L" Value="3" />
+      <Variable Identifier="d" Value="85e-3" />
+      <Variable Identifier="T" Value="7" />
+      <Variable Identifier="τ" Value="100000" />
+      <Variable Identifier="R↓dt←" Value="2.5e6" />
+    </Dialog>
+    <Result Name="A↓s←" Type="Numeric" ESA_ID="Result.0" Value="5.674497e-3" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="85e-3" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="m↓z←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust, ČSN 73 1001" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.1" Value="80110.55" />
+    <Input Name="R↓dt←" Type="Numeric" ESA_ID="" Value="2.5e6" />
+    <Input Name="T" Type="Numeric" ESA_ID="" Value="7" />
+    <Input Name="TL" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="U↓mp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="U↓ms←" Type="Numeric" ESA_ID="" Value="80110.55" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.14159" />
+    <Input Name="τ" Type="Numeric" ESA_ID="" Value="100000" />
+  </Test>
+</Root>

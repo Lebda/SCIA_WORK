@@ -1,0 +1,346 @@
+﻿<Root>
+  <Test Description="Test 1" Author="SCIA-ONLINE\jbroz" Active="1" Date="2013.10.22">
+    <Dialog>
+      <CustomLibrary Identifier="EC_Reinf.xml|REINF.EC" Category="Inclined top branch" Item="B 500 B" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 12/15" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="1" Units="0">
+        <CS SelReinf="0" H="500e-3" B="300e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="30e-3" D_upper="20e-3" N_upper="2" c_lower="30e-3" D_lower="20e-3" N_lower="2" />
+      </ConcreteSectionLibrary>
+    </Dialog>
+    <Result Name="A↓c.eff←" Type="Numeric" ESA_ID="Result.9" Value="28.7736e-3" />
+    <Result Name="A↓s←" Type="Numeric" ESA_ID="Result.16" Value="628.3185e-6" />
+    <Input Name="bPod" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="c" Type="Numeric" ESA_ID="Result.21" Value="30.35399e-3" />
+    <Input Name="Coeff↓d←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="Coeff↓long←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="CreatePartCss" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="CssIDCrack" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="CssIDUncrack" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="d" Type="Numeric" ESA_ID="Result.6" Value="477.7628e-3" />
+    <Input Name="DescriptionN" Type="String" ESA_ID="" Value="The crack is appeared, because maximal tensile stress is greater than effective strength of concrete" />
+    <Result Name="E↓c←" Type="Numeric" ESA_ID="Result.19" Value="30e9" />
+    <Input Name="E↓s←" Type="Numeric" ESA_ID="REINF.EC.Es" Value="200e9" />
+    <Result Name="f↓ct.eff←" Type="Numeric" ESA_ID="Result.28" Value="1.5e6" />
+    <Input Name="FibreID" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="535.2631e-3" />
+    <Result Name="h↓c.ef←" Type="Numeric" ESA_ID="Result.8" Value="114.895e-3" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="IDPartCss" Type="Numeric" ESA_ID="" Value="1000" />
+    <Input Name="IndexBar" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="IndexEWN" Type="Numeric" ESA_ID="" Value="5" />
+    <Result Name="k↓1←" Type="Numeric" ESA_ID="Result.23" Value="800e-3" />
+    <Result Name="k↓2←" Type="Numeric" ESA_ID="Result.12" Value="500e-3" />
+    <Result Name="k↓3←" Type="Numeric" ESA_ID="Result.24" Value="3.4" />
+    <Result Name="k↓4←" Type="Numeric" ESA_ID="Result.25" Value="425e-3" />
+    <Input Name="k↓t.long←" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Input Name="k↓t.short←" Type="Numeric" ESA_ID="" Value="600e-3" />
+    <Result Name="k↓t←" Type="Numeric" ESA_ID="Result.13" Value="600e-3" />
+    <Result Name="M↓cry←" Type="Numeric" ESA_ID="Result.2" Value="17100.78" />
+    <Result Name="M↓crz←" Type="Numeric" ESA_ID="Result.3" Value="5700.261" />
+    <Input Name="M↓y.char←" Type="Numeric" ESA_ID="" Value="150000" />
+    <Input Name="M↓y.qp←" Type="Numeric" ESA_ID="" Value="150000" />
+    <Input Name="M↓z.char←" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="M↓z.qp←" Type="Numeric" ESA_ID="" Value="20000" />
+    <Result Name="N↓cr←" Type="Numeric" ESA_ID="Result.1" Value="0" />
+    <Input Name="N↓char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="N↓qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="NRegionPoints" Type="Numeric" ESA_ID="" Value="6" />
+    <Input Name="NReinf" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="Number↓E←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓N←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Number↓W←" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="s↓lim←" Type="Numeric" ESA_ID="Result.27" Value="201.7699e-3" />
+    <Result Name="s↓max←" Type="Numeric" ESA_ID="Result.22" Value="220e-3" />
+    <Input Name="s↓pom←" Type="Numeric" ESA_ID="" Value="302.6549e-3" />
+    <Result Name="s↓r.max←" Type="Numeric" ESA_ID="Result.26" Value="448.0905e-3" />
+    <Input Name="SetForcesChar" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="SetForcesQp" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="SolutionN" Type="String" ESA_ID="" Value="" />
+    <Input Name="SUM" Type="Numeric" ESA_ID="" Value="40e-3" />
+    <Input Name="sumSQ" Type="Numeric" ESA_ID="" Value="800e-6" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="Type↓E←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeCrack" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeN" Type="String" ESA_ID="" Value="Note" />
+    <Input Name="UC" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="UC_lim" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="w" Type="Numeric" ESA_ID="Result.30" Value="1.372295e-3" />
+    <Result Name="x↓r←" Type="Numeric" ESA_ID="Result.7" Value="190.5781e-3" />
+    <Input Name="y↓fib←" Type="Numeric" ESA_ID="" Value="-150e-3" />
+    <Input Name="z↓fib←" Type="Numeric" ESA_ID="" Value="-250e-3" />
+    <Result Name="α↓E←" Type="Numeric" ESA_ID="Result.17" Value="6.666667" />
+    <Input Name="α↓Μ←" Type="Numeric" ESA_ID="" Value="82.40536" />
+    <Result Name="ε↓1←" Type="Numeric" ESA_ID="Result.10" Value="3.812305e-3" />
+    <Result Name="ε↓2←" Type="Numeric" ESA_ID="Result.11" Value="0" />
+    <Input Name="ε↓max←" Type="Numeric" ESA_ID="" Value="3.812305e-3" />
+    <Input Name="ε↓min←" Type="Numeric" ESA_ID="" Value="-1.892004e-3" />
+    <Result Name="ε↓sm_cm←" Type="Numeric" ESA_ID="Result.29" Value="3.06254e-3" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.141593" />
+    <Result Name="ρ↓p.eff←" Type="Numeric" ESA_ID="Result.20" Value="21.83663e-3" />
+    <Result Name="σ↓cr←" Type="Numeric" ESA_ID="Result.4" Value="0" />
+    <Result Name="σ↓ct←" Type="Numeric" ESA_ID="Result.5" Value="13.15729e6" />
+    <Result Name="σ↓s←" Type="Numeric" ESA_ID="Result.15" Value="659.7231e6" />
+    <Input Name="φ↓ef←" Type="Numeric" ESA_ID="" Value="2.5" />
+    <Result Name="ϕ↓eq←" Type="Numeric" ESA_ID="Result.14" Value="20e-3" />
+  </Test>
+  <Test Description="Test 2" Author="SCIA-ONLINE\jbroz" Active="1" Date="2014.08.05">
+    <Dialog>
+      <CustomLibrary Identifier="EC_Reinf.xml|REINF.EC" Category="Inclined top branch" Item="B 500 B" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 12/15" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="1" Units="0">
+        <CS SelReinf="0" H="500e-3" B="300e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="30e-3" D_upper="20e-3" N_upper="2" c_lower="30e-3" D_lower="20e-3" N_lower="2" />
+      </ConcreteSectionLibrary>
+    </Dialog>
+    <Result Name="A↓c.eff←" Type="Numeric" ESA_ID="Result.9" Value="28.7736e-3" />
+    <Result Name="A↓s←" Type="Numeric" ESA_ID="Result.16" Value="628.3185e-6" />
+    <Input Name="bPod" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="c" Type="Numeric" ESA_ID="Result.21" Value="30.35399e-3" />
+    <Input Name="Coeff↓d←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="Coeff↓long←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="CreatePartCss" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="CssIDCrack" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="CssIDUncrack" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="d" Type="Numeric" ESA_ID="Result.6" Value="477.7628e-3" />
+    <Input Name="DescriptionN" Type="String" ESA_ID="" Value="The crack is appeared, because maximal tensile stress is greater than effective strength of concrete" />
+    <Result Name="E↓c←" Type="Numeric" ESA_ID="Result.19" Value="30e9" />
+    <Input Name="E↓s←" Type="Numeric" ESA_ID="REINF.EC.Es" Value="200e9" />
+    <Result Name="f↓ct.eff←" Type="Numeric" ESA_ID="Result.28" Value="1.5e6" />
+    <Input Name="FibreID" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="535.2631e-3" />
+    <Result Name="h↓c.ef←" Type="Numeric" ESA_ID="Result.8" Value="114.895e-3" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="IDPartCss" Type="Numeric" ESA_ID="" Value="1000" />
+    <Input Name="IndexBar" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="IndexEWN" Type="Numeric" ESA_ID="" Value="5" />
+    <Result Name="k↓1←" Type="Numeric" ESA_ID="Result.23" Value="800e-3" />
+    <Result Name="k↓2←" Type="Numeric" ESA_ID="Result.12" Value="500e-3" />
+    <Result Name="k↓3←" Type="Numeric" ESA_ID="Result.24" Value="3.4" />
+    <Result Name="k↓4←" Type="Numeric" ESA_ID="Result.25" Value="425e-3" />
+    <Input Name="k↓t.long←" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Input Name="k↓t.short←" Type="Numeric" ESA_ID="" Value="600e-3" />
+    <Result Name="k↓t←" Type="Numeric" ESA_ID="Result.13" Value="600e-3" />
+    <Result Name="M↓cry←" Type="Numeric" ESA_ID="Result.2" Value="16095.74" />
+    <Result Name="M↓crz←" Type="Numeric" ESA_ID="Result.3" Value="5365.248" />
+    <Input Name="M↓y.char←" Type="Numeric" ESA_ID="" Value="150000" />
+    <Input Name="M↓y.qp←" Type="Numeric" ESA_ID="" Value="150000" />
+    <Input Name="M↓z.char←" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="M↓z.qp←" Type="Numeric" ESA_ID="" Value="20000" />
+    <Result Name="N↓cr←" Type="Numeric" ESA_ID="Result.1" Value="16095.74" />
+    <Input Name="N↓char←" Type="Numeric" ESA_ID="" Value="150000" />
+    <Input Name="N↓qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="NRegionPoints" Type="Numeric" ESA_ID="" Value="6" />
+    <Input Name="NReinf" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="Number↓E←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓N←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Number↓W←" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="s↓lim←" Type="Numeric" ESA_ID="Result.27" Value="201.7699e-3" />
+    <Result Name="s↓max←" Type="Numeric" ESA_ID="Result.22" Value="220e-3" />
+    <Input Name="s↓pom←" Type="Numeric" ESA_ID="" Value="302.6549e-3" />
+    <Result Name="s↓r.max←" Type="Numeric" ESA_ID="Result.26" Value="448.0905e-3" />
+    <Input Name="SetForcesChar" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="SetForcesQp" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="SolutionN" Type="String" ESA_ID="" Value="" />
+    <Input Name="SUM" Type="Numeric" ESA_ID="" Value="40e-3" />
+    <Input Name="sumSQ" Type="Numeric" ESA_ID="" Value="800e-6" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="Type↓E←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeCrack" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeN" Type="String" ESA_ID="" Value="Note" />
+    <Input Name="UC" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="UC_lim" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="w" Type="Numeric" ESA_ID="Result.30" Value="1.372295e-3" />
+    <Result Name="x↓r←" Type="Numeric" ESA_ID="Result.7" Value="190.5781e-3" />
+    <Input Name="y↓fib←" Type="Numeric" ESA_ID="" Value="-150e-3" />
+    <Input Name="z↓fib←" Type="Numeric" ESA_ID="" Value="-250e-3" />
+    <Result Name="α↓E←" Type="Numeric" ESA_ID="Result.17" Value="6.666667" />
+    <Input Name="α↓Μ←" Type="Numeric" ESA_ID="" Value="82.40536" />
+    <Result Name="ε↓1←" Type="Numeric" ESA_ID="Result.10" Value="3.812305e-3" />
+    <Result Name="ε↓2←" Type="Numeric" ESA_ID="Result.11" Value="0" />
+    <Input Name="ε↓max←" Type="Numeric" ESA_ID="" Value="3.812305e-3" />
+    <Input Name="ε↓min←" Type="Numeric" ESA_ID="" Value="-1.892004e-3" />
+    <Result Name="ε↓sm_cm←" Type="Numeric" ESA_ID="Result.29" Value="3.06254e-3" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.141593" />
+    <Result Name="ρ↓p.eff←" Type="Numeric" ESA_ID="Result.20" Value="21.83663e-3" />
+    <Result Name="σ↓cr←" Type="Numeric" ESA_ID="Result.4" Value="0" />
+    <Result Name="σ↓ct←" Type="Numeric" ESA_ID="Result.5" Value="13.97885e6" />
+    <Result Name="σ↓s←" Type="Numeric" ESA_ID="Result.15" Value="659.7231e6" />
+    <Input Name="φ↓ef←" Type="Numeric" ESA_ID="" Value="2.5" />
+    <Result Name="ϕ↓eq←" Type="Numeric" ESA_ID="Result.14" Value="20e-3" />
+  </Test>
+  <Test Description="Test 3" Author="SCIA-ONLINE\jbroz" Active="1" Date="2013.10.22">
+    <Dialog>
+      <CustomLibrary Identifier="EC_Reinf.xml|REINF.EC" Category="Inclined top branch" Item="B 500 B" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 12/15" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="1" Units="0">
+        <CS SelReinf="0" H="500e-3" B="300e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="30e-3" D_upper="20e-3" N_upper="2" c_lower="30e-3" D_lower="20e-3" N_lower="2" />
+      </ConcreteSectionLibrary>
+    </Dialog>
+    <Result Name="A↓c.eff←" Type="Numeric" ESA_ID="Result.9" Value="25.4211e-3" />
+    <Result Name="A↓s←" Type="Numeric" ESA_ID="Result.16" Value="628.3185e-6" />
+    <Input Name="bPod" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="c" Type="Numeric" ESA_ID="Result.21" Value="31.23106e-3" />
+    <Input Name="Coeff↓d←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="Coeff↓long←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="CreatePartCss" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="CssIDCrack" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="CssIDUncrack" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="d" Type="Numeric" ESA_ID="Result.6" Value="489.4505e-3" />
+    <Input Name="DescriptionN" Type="String" ESA_ID="" Value="The crack is appeared, because maximal tensile stress is greater than effective strength of concrete" />
+    <Result Name="E↓c←" Type="Numeric" ESA_ID="Result.19" Value="30e9" />
+    <Input Name="E↓s←" Type="Numeric" ESA_ID="REINF.EC.Es" Value="200e9" />
+    <Result Name="f↓ct.eff←" Type="Numeric" ESA_ID="Result.28" Value="1.5e6" />
+    <Input Name="FibreID" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="557.8319e-3" />
+    <Result Name="h↓c.ef←" Type="Numeric" ESA_ID="Result.8" Value="118.5873e-3" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="IDPartCss" Type="Numeric" ESA_ID="" Value="1000" />
+    <Input Name="IndexBar" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="IndexEWN" Type="Numeric" ESA_ID="" Value="5" />
+    <Result Name="k↓1←" Type="Numeric" ESA_ID="Result.23" Value="800e-3" />
+    <Result Name="k↓2←" Type="Numeric" ESA_ID="Result.12" Value="500e-3" />
+    <Result Name="k↓3←" Type="Numeric" ESA_ID="Result.24" Value="3.4" />
+    <Result Name="k↓4←" Type="Numeric" ESA_ID="Result.25" Value="425e-3" />
+    <Input Name="k↓t.long←" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Input Name="k↓t.short←" Type="Numeric" ESA_ID="" Value="600e-3" />
+    <Result Name="k↓t←" Type="Numeric" ESA_ID="Result.13" Value="600e-3" />
+    <Result Name="M↓cry←" Type="Numeric" ESA_ID="Result.2" Value="18239.7" />
+    <Result Name="M↓crz←" Type="Numeric" ESA_ID="Result.3" Value="6079.899" />
+    <Input Name="M↓y.char←" Type="Numeric" ESA_ID="" Value="150000" />
+    <Input Name="M↓y.qp←" Type="Numeric" ESA_ID="" Value="80000" />
+    <Input Name="M↓z.char←" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="M↓z.qp←" Type="Numeric" ESA_ID="" Value="20000" />
+    <Result Name="N↓cr←" Type="Numeric" ESA_ID="Result.1" Value="-18239.7" />
+    <Input Name="N↓char←" Type="Numeric" ESA_ID="" Value="-150000" />
+    <Input Name="N↓qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="NRegionPoints" Type="Numeric" ESA_ID="" Value="6" />
+    <Input Name="NReinf" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="Number↓E←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓N←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Number↓W←" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="s↓lim←" Type="Numeric" ESA_ID="Result.27" Value="206.1553e-3" />
+    <Result Name="s↓max←" Type="Numeric" ESA_ID="Result.22" Value="220e-3" />
+    <Input Name="s↓pom←" Type="Numeric" ESA_ID="" Value="291.44e-3" />
+    <Result Name="s↓r.max←" Type="Numeric" ESA_ID="Result.26" Value="462.4903e-3" />
+    <Input Name="SetForcesChar" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="SetForcesQp" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="SolutionN" Type="String" ESA_ID="" Value="" />
+    <Input Name="SUM" Type="Numeric" ESA_ID="" Value="40e-3" />
+    <Input Name="sumSQ" Type="Numeric" ESA_ID="" Value="800e-6" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="Type↓E←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeCrack" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeN" Type="String" ESA_ID="" Value="Note" />
+    <Input Name="UC" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="UC_lim" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="w" Type="Numeric" ESA_ID="Result.30" Value="816.0426e-6" />
+    <Result Name="x↓r←" Type="Numeric" ESA_ID="Result.7" Value="202.0702e-3" />
+    <Input Name="y↓fib←" Type="Numeric" ESA_ID="" Value="-150e-3" />
+    <Input Name="z↓fib←" Type="Numeric" ESA_ID="" Value="-250e-3" />
+    <Result Name="α↓E←" Type="Numeric" ESA_ID="Result.17" Value="6.666667" />
+    <Input Name="α↓Μ←" Type="Numeric" ESA_ID="" Value="75.96376" />
+    <Result Name="ε↓1←" Type="Numeric" ESA_ID="Result.10" Value="2.31965e-3" />
+    <Result Name="ε↓2←" Type="Numeric" ESA_ID="Result.11" Value="0" />
+    <Input Name="ε↓max←" Type="Numeric" ESA_ID="" Value="2.31965e-3" />
+    <Input Name="ε↓min←" Type="Numeric" ESA_ID="" Value="-1.239178e-3" />
+    <Result Name="ε↓sm_cm←" Type="Numeric" ESA_ID="Result.29" Value="1.764453e-3" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.141593" />
+    <Result Name="ρ↓p.eff←" Type="Numeric" ESA_ID="Result.20" Value="24.71642e-3" />
+    <Result Name="σ↓cr←" Type="Numeric" ESA_ID="Result.4" Value="0" />
+    <Result Name="σ↓ct←" Type="Numeric" ESA_ID="Result.5" Value="12.33573e6" />
+    <Result Name="σ↓s←" Type="Numeric" ESA_ID="Result.15" Value="395.3037e6" />
+    <Input Name="φ↓ef←" Type="Numeric" ESA_ID="" Value="2.5" />
+    <Result Name="ϕ↓eq←" Type="Numeric" ESA_ID="Result.14" Value="20e-3" />
+  </Test>
+  <Test Description="Test 4" Author="SCIA-ONLINE\jbroz" Active="1" Date="2014.08.05">
+    <Dialog>
+      <CustomLibrary Identifier="EC_Reinf.xml|REINF.EC" Category="Inclined top branch" Item="B 500 B" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 12/15" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="3" Units="0">
+        <CS SelReinf="0" H="800e-3" B="1" Hf="150e-3" Bw="150e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="30e-3" D_upper="20e-3" N_upper="2" c_lower="30e-3" D_lower="20e-3" N_lower="2" Dc_upper="30e-3" DD_upper="20e-3" DN_upper="2" Dc_lower="30e-3" DD_lower="20e-3" DN_lower="2" />
+      </ConcreteSectionLibrary>
+    </Dialog>
+    <Result Name="A↓c.eff←" Type="Numeric" ESA_ID="Result.9" Value="29.37465e-3" />
+    <Result Name="A↓s←" Type="Numeric" ESA_ID="Result.16" Value="628.3185e-6" />
+    <Input Name="bPod" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="c" Type="Numeric" ESA_ID="Result.21" Value="31.23106e-3" />
+    <Input Name="Coeff↓d←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="Coeff↓long←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="CreatePartCss" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="CssIDCrack" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="CssIDUncrack" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="d" Type="Numeric" ESA_ID="Result.6" Value="832.3021e-3" />
+    <Input Name="DescriptionN" Type="String" ESA_ID="" Value="The crack is appeared, because maximal tensile stress is greater than effective strength of concrete" />
+    <Result Name="E↓c←" Type="Numeric" ESA_ID="Result.19" Value="30e9" />
+    <Input Name="E↓s←" Type="Numeric" ESA_ID="REINF.EC.Es" Value="200e9" />
+    <Result Name="f↓ct.eff←" Type="Numeric" ESA_ID="Result.28" Value="1.5e6" />
+    <Input Name="FibreID" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="h" Type="Numeric" ESA_ID="" Value="915.572e-3" />
+    <Result Name="h↓c.ef←" Type="Numeric" ESA_ID="Result.8" Value="208.1747e-3" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="IDPartCss" Type="Numeric" ESA_ID="" Value="1000" />
+    <Input Name="IndexBar" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="IndexEWN" Type="Numeric" ESA_ID="" Value="5" />
+    <Result Name="k↓1←" Type="Numeric" ESA_ID="Result.23" Value="800e-3" />
+    <Result Name="k↓2←" Type="Numeric" ESA_ID="Result.12" Value="500e-3" />
+    <Result Name="k↓3←" Type="Numeric" ESA_ID="Result.24" Value="3.4" />
+    <Result Name="k↓4←" Type="Numeric" ESA_ID="Result.25" Value="425e-3" />
+    <Input Name="k↓t.long←" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Input Name="k↓t.short←" Type="Numeric" ESA_ID="" Value="600e-3" />
+    <Result Name="k↓t←" Type="Numeric" ESA_ID="Result.13" Value="600e-3" />
+    <Result Name="M↓cry←" Type="Numeric" ESA_ID="Result.2" Value="46159.2" />
+    <Result Name="M↓crz←" Type="Numeric" ESA_ID="Result.3" Value="46159.2" />
+    <Input Name="M↓y.char←" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="M↓y.qp←" Type="Numeric" ESA_ID="" Value="80000" />
+    <Input Name="M↓z.char←" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="M↓z.qp←" Type="Numeric" ESA_ID="" Value="20000" />
+    <Result Name="N↓cr←" Type="Numeric" ESA_ID="Result.1" Value="0" />
+    <Input Name="N↓char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="N↓qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="NRegionPoints" Type="Numeric" ESA_ID="" Value="6" />
+    <Input Name="NReinf" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="Number↓E←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓N←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Number↓W←" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="s↓lim←" Type="Numeric" ESA_ID="Result.27" Value="206.1553e-3" />
+    <Result Name="s↓max←" Type="Numeric" ESA_ID="Result.22" Value="70e-3" />
+    <Input Name="s↓pom←" Type="Numeric" ESA_ID="" Value="154.6165e-3" />
+    <Result Name="s↓r.max←" Type="Numeric" ESA_ID="Result.26" Value="265.1397e-3" />
+    <Input Name="SetForcesChar" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="SetForcesQp" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="SolutionN" Type="String" ESA_ID="" Value="" />
+    <Input Name="SUM" Type="Numeric" ESA_ID="" Value="40e-3" />
+    <Input Name="sumSQ" Type="Numeric" ESA_ID="" Value="800e-6" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="Type↓E←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeCrack" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeN" Type="String" ESA_ID="" Value="Note" />
+    <Input Name="UC" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="UC_lim" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="w" Type="Numeric" ESA_ID="Result.30" Value="172.7453e-6" />
+    <Result Name="x↓r←" Type="Numeric" ESA_ID="Result.7" Value="163.2748e-3" />
+    <Input Name="y↓fib←" Type="Numeric" ESA_ID="" Value="-75e-3" />
+    <Input Name="z↓fib←" Type="Numeric" ESA_ID="" Value="-567.4242e-3" />
+    <Result Name="α↓E←" Type="Numeric" ESA_ID="Result.17" Value="6.666667" />
+    <Input Name="α↓Μ←" Type="Numeric" ESA_ID="" Value="75.96376" />
+    <Result Name="ε↓1←" Type="Numeric" ESA_ID="Result.10" Value="952.3468e-6" />
+    <Result Name="ε↓2←" Type="Numeric" ESA_ID="Result.11" Value="0" />
+    <Input Name="ε↓max←" Type="Numeric" ESA_ID="" Value="952.3468e-6" />
+    <Input Name="ε↓min←" Type="Numeric" ESA_ID="" Value="-225.1059e-6" />
+    <Result Name="ε↓sm_cm←" Type="Numeric" ESA_ID="Result.29" Value="651.5256e-6" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.141593" />
+    <Result Name="ρ↓p.eff←" Type="Numeric" ESA_ID="Result.20" Value="21.38982e-3" />
+    <Result Name="σ↓cr←" Type="Numeric" ESA_ID="Result.4" Value="0" />
+    <Result Name="σ↓ct←" Type="Numeric" ESA_ID="Result.5" Value="1.629703e6" />
+    <Result Name="σ↓s←" Type="Numeric" ESA_ID="Result.15" Value="178.3812e6" />
+    <Input Name="φ↓ef←" Type="Numeric" ESA_ID="" Value="2.5" />
+    <Result Name="ϕ↓eq←" Type="Numeric" ESA_ID="Result.14" Value="20e-3" />
+  </Test>
+</Root>

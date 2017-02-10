@@ -1,0 +1,172 @@
+<Root>
+  <Test Description="CSN" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2014.12.09">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Czech CSN-EN" Collapsed="True" />
+      <Variable Identifier="Headline" Value="True" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="Caption" Value="---" />
+      <Variable Identifier="d" Value="200e-3" />
+      <Variable Identifier="s" Value="1200" />
+      <Variable Identifier="FormCt" Value="False" />
+      <Variable Identifier="t↓i←" Value="5" />
+      <Variable Identifier="ObjectSTN" Value="0" />
+      <Variable Identifier="C↓t,0←" Value="950e-3" />
+      <Variable Identifier="U" Value="1" />
+      <Variable Identifier="TopographyNF" Value="0" />
+      <Variable Identifier="Topography" Value="1" />
+      <Variable Identifier="ZoneSTN" Value="3" />
+      <Variable Identifier="ZoneSR" Value="2" />
+      <Variable Identifier="UseTableA1" Value="True" />
+      <Variable Identifier="ZoneIS" Value="2" />
+      <Variable Identifier="ZoneDIN" Value="4" />
+      <Variable Identifier="ZoneNF" Value="3" />
+      <Variable Identifier="ZonePN" Value="3" />
+      <Variable Identifier="ZoneELOT" Value="0" />
+      <Variable Identifier="ZoneBS" Value="4" />
+      <Variable Identifier="Town1ONORM" Value="0" />
+      <Variable Identifier="Town3ONORM" Value="0" />
+      <Variable Identifier="Town4ONORM" Value="0" />
+      <Variable Identifier="Town6ONORM" Value="0" />
+      <Variable Identifier="Town7ONORM" Value="0" />
+      <Variable Identifier="Town8ONORM" Value="0" />
+      <Variable Identifier="Town5ONORM" Value="0" />
+      <Variable Identifier="Town2ONORM" Value="0" />
+      <Variable Identifier="s↓k,0←" Value="0" />
+      <Variable Identifier="Z" Value="1.6" />
+      <Variable Identifier="Town0ONORM" Value="0" />
+      <Variable Identifier="StateONORM" Value="0" />
+      <Variable Identifier="ZoneSIST" Value="3" />
+      <Variable Identifier="γ" Value="3000" />
+      <Variable Identifier="ZoneCSN" Value="6" />
+      <Variable Identifier="A" Value="900" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="900" />
+    <Input Name="C↓e←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="C↓esl←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="C↓t,0←" Type="Numeric" ESA_ID="" Value="950e-3" />
+    <Input Name="C↓t←" Type="Numeric" ESA_ID="" Value="950e-3" />
+    <Input Name="Caption" Type="String" ESA_ID="" Value="---" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="200e-3" />
+    <Input Name="FormCt" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Headline" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="ObjectSTN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="s" Type="Numeric" ESA_ID="" Value="1200" />
+    <Result Name="s↓e←" Type="Numeric" ESA_ID="Result.0" Value="288" />
+    <Input Name="s↓k,0←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="s↓k←" Type="Numeric" ESA_ID="" Value="4000" />
+    <Input Name="StateONORM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="t↓i←" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="Topography" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TopographyNF" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Town0ONORM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Town1ONORM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Town2ONORM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Town3ONORM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Town4ONORM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Town5ONORM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Town6ONORM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Town7ONORM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Town8ONORM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="U" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="UseForm" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="UseTableA1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Z" Type="Numeric" ESA_ID="" Value="1.6" />
+    <Input Name="ZoneBS" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="6" />
+    <Input Name="ZoneDIN" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="ZoneELOT" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneIS" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="ZoneNF" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="ZonePN" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="ZoneSIST" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="ZoneSR" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="ZoneSTN" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="γ" Type="Numeric" ESA_ID="" Value="3000" />
+  </Test>
+  <Test Description="BS" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2014.04.03">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="British BS-EN" Collapsed="True" />
+      <Variable Identifier="Headline" Value="True" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="Caption" Value="---" />
+      <Variable Identifier="d" Value="200e-3" />
+      <Variable Identifier="s" Value="1200" />
+      <Variable Identifier="FormCt" Value="False" />
+      <Variable Identifier="t↓i←" Value="5" />
+      <Variable Identifier="ObjectSTN" Value="0" />
+      <Variable Identifier="C↓t,0←" Value="950e-3" />
+      <Variable Identifier="U" Value="1" />
+      <Variable Identifier="TopographyNF" Value="0" />
+      <Variable Identifier="Topography" Value="1" />
+      <Variable Identifier="ZoneSTN" Value="3" />
+      <Variable Identifier="ZoneSR" Value="2" />
+      <Variable Identifier="UseTableA1" Value="True" />
+      <Variable Identifier="ZoneIS" Value="2" />
+      <Variable Identifier="ZoneDIN" Value="4" />
+      <Variable Identifier="ZoneNF" Value="3" />
+      <Variable Identifier="ZonePN" Value="3" />
+      <Variable Identifier="ZoneELOT" Value="0" />
+      <Variable Identifier="ZoneBS" Value="4" />
+      <Variable Identifier="ZoneSIST" Value="3" />
+      <Variable Identifier="Z" Value="1.6" />
+      <Variable Identifier="ZoneCSN" Value="6" />
+      <Variable Identifier="StateONORM" Value="0" />
+      <Variable Identifier="Town1ONORM" Value="0" />
+      <Variable Identifier="Town3ONORM" Value="0" />
+      <Variable Identifier="Town4ONORM" Value="0" />
+      <Variable Identifier="Town6ONORM" Value="0" />
+      <Variable Identifier="Town7ONORM" Value="0" />
+      <Variable Identifier="Town8ONORM" Value="0" />
+      <Variable Identifier="Town5ONORM" Value="0" />
+      <Variable Identifier="Town2ONORM" Value="0" />
+      <Variable Identifier="Town0ONORM" Value="0" />
+      <Variable Identifier="γ" Value="3000" />
+      <Variable Identifier="s↓k,0←" Value="0" />
+      <Variable Identifier="A" Value="900" />
+    </Dialog>
+    <Input Name="A" Type="Numeric" ESA_ID="" Value="900" />
+    <Input Name="C↓e←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="C↓esl←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="C↓t,0←" Type="Numeric" ESA_ID="" Value="950e-3" />
+    <Input Name="C↓t←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Caption" Type="String" ESA_ID="" Value="---" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="200e-3" />
+    <Input Name="FormCt" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Headline" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="ObjectSTN" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="s" Type="Numeric" ESA_ID="" Value="1200" />
+    <Result Name="s↓e←" Type="Numeric" ESA_ID="Result.0" Value="288" />
+    <Input Name="s↓k,0←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="s↓k←" Type="Numeric" ESA_ID="" Value="2504.762" />
+    <Input Name="StateONORM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="t↓i←" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="Topography" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TopographyNF" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Town0ONORM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Town1ONORM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Town2ONORM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Town3ONORM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Town4ONORM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Town5ONORM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Town6ONORM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Town7ONORM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Town8ONORM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="U" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="UseForm" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="UseTableA1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Z" Type="Numeric" ESA_ID="" Value="1.6" />
+    <Input Name="ZoneBS" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="ZoneCSN" Type="Numeric" ESA_ID="" Value="6" />
+    <Input Name="ZoneDIN" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="ZoneELOT" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZoneIS" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="ZoneNF" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="ZonePN" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="ZoneSIST" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="ZoneSR" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="ZoneSTN" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="γ" Type="Numeric" ESA_ID="" Value="3000" />
+  </Test>
+</Root>

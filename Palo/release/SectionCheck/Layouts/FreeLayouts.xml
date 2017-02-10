@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FreeLayoutsDataCache Version="1.0.0.0">
+  <FreeLayouts>
+    <FreeLayout Name="LReinf_Rect_Empty" CrossSectionType="eRectangle">
+      <Icons>
+        <Icon MemberType="eBeam" CssType="eRectangle" Path="Rect_layouts\LReinf_btEmpty.png" />
+        <Icon MemberType="eRib" CssType="eRectangle" Path="Rect_layouts\LReinf_btEmpty.png" />
+        <Icon MemberType="eColumn" CssType="eRectangle" Path="Rect_layouts\LReinf_btEmpty.png" />
+        <Icon MemberType="eBeamAsSlab" CssType="eRectangle" Path="Rect_layouts\LReinf_Bslab_RECT_Empty.png" />
+      </Icons>
+    </FreeLayout>
+    <FreeLayout Name="LReinf_Circle_Empty" CrossSectionType="eCircle">
+      <Icons>
+        <Icon MemberType="eBeam" CssType="eCircle" Path="CrossSectionCircle.png" />
+        <Icon MemberType="eRib" CssType="eCircle" Path="CrossSectionCircle.png" />
+        <Icon MemberType="eColumn" CssType="eCircle" Path="CrossSectionCircle.png" />
+        <Icon MemberType="eBeamAsSlab" CssType="eCircle" Path="CrossSectionCircle.png" />
+      </Icons>
+    </FreeLayout>
+    <FreeLayout Name="LReinf_T_Empty" CrossSectionType="eTShape">
+      <Icons>
+        <Icon MemberType="eBeam"  CssType="eTShape" Orientation="eTop" Path="TSEC_CS.png" />
+        <Icon MemberType="eRib" CssType="eTShape" Orientation="eTop" Path="TSEC_CS.png" />
+        <Icon MemberType="eColumn" CssType="eTShape" Orientation="eTop" Path="TSEC_CS.png" />
+        <Icon MemberType="eBeamAsSlab" CssType="eTShape" Orientation="eTop" Path="TSEC_CS" />
+
+        <Icon MemberType="eBeam"  CssType="eTShape" Orientation="eBottom" Path="TSEC_CS_revert.png" />
+        <Icon MemberType="eRib" CssType="eTShape" Orientation="eBottom" Path="TSEC_CS_revert.png" />
+        <Icon MemberType="eColumn" CssType="eTShape" Orientation="eBottom" Path="TSEC_CS_revert.png" />
+        <Icon MemberType="eBeamAsSlab" CssType="eTShape" Orientation="eBottom" Path="TSEC_CS_revert" />
+      </Icons>
+    </FreeLayout>
+    <FreeLayout Name="LReinf_L_Empty" CrossSectionType="eLShape">
+      <Icons>
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eBottomLeft" Path="L_layouts\L_CS_bottom_left.png" />
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eBottomRight" Path="L_layouts\L_CS_bottom_right.png" />
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eTopLeft" Path="L_layouts\L_CS_top_left.png" />
+        <Icon MemberType="eRib" CssType="eLShape" Orientation="eTopRight" Path="L_layouts\L_CS_top_right.png" />
+
+        <Icon MemberType="eBeam" CssType="eLShape" Orientation="eBottomLeft" Path="L_layouts\L_CS_bottom_left.png" />
+        <Icon MemberType="eBeam" CssType="eLShape" Orientation="eBottomRight" Path="L_layouts\L_CS_bottom_right.png" />
+        <Icon MemberType="eBeam" CssType="eLShape" Orientation="eTopLeft" Path="L_layouts\L_CS_top_left.png" />
+        <Icon MemberType="eBeam" CssType="eLShape" Orientation="eTopRight" Path="L_layouts\L_CS_top_right.png" />
+
+        <Icon MemberType="eColumn" CssType="eLShape" Orientation="eBottomLeft" Path="L_layouts\L_CS_bottom_left.png" />
+        <Icon MemberType="eColumn" CssType="eLShape" Orientation="eBottomRight" Path="L_layouts\L_CS_bottom_right.png" />
+        <Icon MemberType="eColumn" CssType="eLShape" Orientation="eTopLeft" Path="L_layouts\L_CS_top_left.png" />
+        <Icon MemberType="eColumn" CssType="eLShape" Orientation="eTopRight" Path="L_layouts\L_CS_top_right.png" />
+
+        <Icon MemberType="eBeamAsSlab" CssType="eLShape" Orientation="eBottomLeft" Path="L_layouts\L_CS_bottom_left.png" />
+        <Icon MemberType="eBeamAsSlab" CssType="eLShape" Orientation="eBottomRight" Path="L_layouts\L_CS_bottom_right.png" />
+        <Icon MemberType="eBeamAsSlab" CssType="eLShape" Orientation="eTopLeft" Path="L_layouts\L_CS_top_left.png" />
+        <Icon MemberType="eBeamAsSlab" CssType="eLShape" Orientation="eTopRight" Path="L_layouts\L_CS_top_right.png" />
+      </Icons>
+    </FreeLayout>
+    <FreeLayout Name="LReinf_Unrecognized_Empty" CrossSectionType="eUnrecognized">
+      <Icons>
+        <Icon MemberType="eBeam" CssType="eUnrecognized" Path="CrossSectionGeneral.png" />
+        <Icon MemberType="eRib" CssType="eUnrecognized" Path="CrossSectionGeneral.png" />
+        <Icon MemberType="eColumn" CssType="eUnrecognized" Path="CrossSectionGeneral.png" />
+        <Icon MemberType="eBeamAsSlab" CssType="eUnrecognized" Path="CrossSectionGeneral.png" />
+      </Icons>
+    </FreeLayout>
+  </FreeLayouts>
+</FreeLayoutsDataCache>

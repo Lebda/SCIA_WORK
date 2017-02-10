@@ -1,0 +1,1838 @@
+<Root Version="1" Type="CustomLibrary" GUID="e902ae9f-9cd8-4135-88ff-919f3f04b49c">
+  <Header>
+    <PropertySet Symbol="F↓y←" ESA_ID="F↓y←" Unit="ksi" Type="Numeric">
+      <Description TranslateID="F↓y←">
+        <NEU>Min. Yield Stress</NEU>
+        <FRB>Min. Yield Stress</FRB>
+        <PTG>Min. Yield Stress</PTG>
+        <ELL>Min. Yield Stress</ELL>
+        <ESP>Min. Yield Stress</ESP>
+        <ENU>Min. Yield Stress</ENU>
+        <CSY>Min. napětí na mezi kluzu</CSY>
+        <DEU>Min. Yield Stress</DEU>
+        <NLD>Min. Vloeispanning</NLD>
+        <RUS>Min. Yield Stress</RUS>
+        <ROM>Min. Yield Stress</ROM>
+        <PLK>Min. Yield Stress</PLK>
+        <ITA>Min. Yield Stress</ITA>
+        <SKY>Min. medza klzu</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="F↓u←" ESA_ID="F↓u←" Unit="ksi" Type="Numeric">
+      <Description TranslateID="F↓u←">
+        <NEU>Tensile Stress</NEU>
+        <FRB>Tensile Stress</FRB>
+        <PTG>Tensile Stress</PTG>
+        <ELL>Tensile Stress</ELL>
+        <ESP>Tensile Stress</ESP>
+        <ENU>Tensile Stress</ENU>
+        <CSY>Tahové napětí</CSY>
+        <DEU>Tensile Stress</DEU>
+        <NLD>Trekspanning</NLD>
+        <RUS>Tensile Stress</RUS>
+        <ROM>Tensile Stress</ROM>
+        <PLK>Tensile Stress</PLK>
+        <ITA>Tensile Stress</ITA>
+        <SKY>Ťahové napätie</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="E%" ESA_ID="Bolt_US.E%" Unit="" Type="Numeric">
+      <Description TranslateID="Bolt_US.E%">
+        <NEU>Bolt Elongation %</NEU>
+        <FRB>Bolt Elongation %</FRB>
+        <PTG>Bolt Elongation %</PTG>
+        <ELL>Bolt Elongation %</ELL>
+        <ESP>Bolt Elongation %</ESP>
+        <ENU>Bolt Elongation %</ENU>
+        <CSY>Prodloužení šroubu %</CSY>
+        <DEU>Bolt Elongation %</DEU>
+        <NLD>Boutverlenging %</NLD>
+        <RUS>Bolt Elongation %</RUS>
+        <ROM>Bolt Elongation %</ROM>
+        <PLK>Bolt Elongation %</PLK>
+        <ITA>Bolt Elongation %</ITA>
+        <SKY>Predĺženie skrutky %</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="F↓nv←" ESA_ID="F↓nv←" Unit="ksi" Type="Numeric">
+      <Description TranslateID="F↓nv←">
+        <NEU>Nominal Shear Stress in Bearing Connections</NEU>
+        <FRB>Nominal Shear Stress in Bearing Connections</FRB>
+        <PTG>Nominal Shear Stress in Bearing Connections</PTG>
+        <ELL>Nominal Shear Stress in Bearing Connections</ELL>
+        <ESP>Nominal Shear Stress in Bearing Connections</ESP>
+        <ENU>Nominal Shear Stress in Bearing Connections</ENU>
+        <CSY>Jmenovité smykové napětí v nosných spojích</CSY>
+        <DEU>Nominal Shear Stress in Bearing Connections</DEU>
+        <NLD>Nominale afschuifspanning in belaste verbindingen</NLD>
+        <RUS>Nominal Shear Stress in Bearing Connections</RUS>
+        <ROM>Nominal Shear Stress in Bearing Connections</ROM>
+        <PLK>Nominal Shear Stress in Bearing Connections</PLK>
+        <ITA>Nominal Shear Stress in Bearing Connections</ITA>
+        <SKY>Menovité šmykové napätie v uložení prípoja</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="F↓nt←" ESA_ID="F↓nt←" Unit="ksi" Type="Numeric">
+      <Description TranslateID="F↓nt←">
+        <NEU>Nominal Tensile Stress</NEU>
+        <FRB>Nominal Tensile Stress</FRB>
+        <PTG>Nominal Tensile Stress</PTG>
+        <ELL>Nominal Tensile Stress</ELL>
+        <ESP>Nominal Tensile Stress</ESP>
+        <ENU>Nominal Tensile Stress</ENU>
+        <CSY>Jmenovité tahové napětí</CSY>
+        <DEU>Nominal Tensile Stress</DEU>
+        <NLD>Nominale trekspanning</NLD>
+        <RUS>Nominal Tensile Stress</RUS>
+        <ROM>Nominal Tensile Stress</ROM>
+        <PLK>Nominal Tensile Stress</PLK>
+        <ITA>Nominal Tensile Stress</ITA>
+        <SKY>Menovité ťahové napätie</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="d↓b←" ESA_ID="d↓b←" Unit="in" Type="Numeric">
+      <Description TranslateID="d↓b←">
+        <NEU>Diameter of Bolt</NEU>
+        <FRB>Diameter of Bolt</FRB>
+        <PTG>Diameter of Bolt</PTG>
+        <ELL>Diameter of Bolt</ELL>
+        <ESP>Diameter of Bolt</ESP>
+        <ENU>Diameter of Bolt</ENU>
+        <CSY>Průměr šroubu</CSY>
+        <DEU>Diameter of Bolt</DEU>
+        <NLD>Boutdiameter</NLD>
+        <RUS>Diameter of Bolt</RUS>
+        <ROM>Diameter of Bolt</ROM>
+        <PLK>Diameter of Bolt</PLK>
+        <ITA>Diameter of Bolt</ITA>
+        <SKY>Priemer skrutky</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="A↓b←" ESA_ID="A↓b←" Unit="in↑2←" Type="Numeric">
+      <Description TranslateID="A↓b←">
+        <NEU>Area of Bolt/Rod</NEU>
+        <FRB>Area of Bolt/Rod</FRB>
+        <PTG>Area of Bolt/Rod</PTG>
+        <ELL>Area of Bolt/Rod</ELL>
+        <ESP>Area of Bolt/Rod</ESP>
+        <ENU>Area of Bolt/Rod</ENU>
+        <CSY>Plocha šroubu/dříku</CSY>
+        <DEU>Area of Bolt/Rod</DEU>
+        <NLD>Doorsnede van de bout/stang</NLD>
+        <RUS>Area of Bolt/Rod</RUS>
+        <ROM>Area of Bolt/Rod</ROM>
+        <PLK>Area of Bolt/Rod</PLK>
+        <ITA>Area of Bolt/Rod</ITA>
+        <SKY>Plocha skrutky/Tyč</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="d↓hs←" ESA_ID="d↓hs←" Unit="in" Type="Numeric">
+      <Description TranslateID="d↓hs←">
+        <NEU>Standard Nominal Bolt Hole Dimension</NEU>
+        <FRB>Standard Nominal Bolt Hole Dimension</FRB>
+        <PTG>Standard Nominal Bolt Hole Dimension</PTG>
+        <ELL>Standard Nominal Bolt Hole Dimension</ELL>
+        <ESP>Standard Nominal Bolt Hole Dimension</ESP>
+        <ENU>Standard Nominal Bolt Hole Dimension</ENU>
+        <CSY>Standardní jmenovitý průměr otvoru pro šroub</CSY>
+        <DEU>Standard Nominal Bolt Hole Dimension</DEU>
+        <NLD>Standaard nominale boutgatafmetingen</NLD>
+        <RUS>Standard Nominal Bolt Hole Dimension</RUS>
+        <ROM>Standard Nominal Bolt Hole Dimension</ROM>
+        <PLK>Standard Nominal Bolt Hole Dimension</PLK>
+        <ITA>Standard Nominal Bolt Hole Dimension</ITA>
+        <SKY>Štandardný menovitý priemer otvoru skrutky</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="d↓ho←" ESA_ID="d↓ho←" Unit="in" Type="Numeric">
+      <Description TranslateID="d↓ho←">
+        <NEU>Oversized Nominal Bolt Hole Dimension</NEU>
+        <FRB>Oversized Nominal Bolt Hole Dimension</FRB>
+        <PTG>Oversized Nominal Bolt Hole Dimension</PTG>
+        <ELL>Oversized Nominal Bolt Hole Dimension</ELL>
+        <ESP>Oversized Nominal Bolt Hole Dimension</ESP>
+        <ENU>Oversized Nominal Bolt Hole Dimension</ENU>
+        <CSY>Nadměrný jmenovitý průměr otvoru pro šroub</CSY>
+        <DEU>Oversized Nominal Bolt Hole Dimension</DEU>
+        <NLD>Overgedimensioneerde nominale boutgatdimensie</NLD>
+        <RUS>Oversized Nominal Bolt Hole Dimension</RUS>
+        <ROM>Oversized Nominal Bolt Hole Dimension</ROM>
+        <PLK>Oversized Nominal Bolt Hole Dimension</PLK>
+        <ITA>Oversized Nominal Bolt Hole Dimension</ITA>
+        <SKY>Nadmerný menovitý priemer otvoru skrutky</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="s↓e←" ESA_ID="s↓e←" Unit="in" Type="Numeric">
+      <Description TranslateID="s↓e←">
+        <NEU>Min. Edge Distance (Bolt Hole Center to Connecting Edge)</NEU>
+        <FRB>Min. Edge Distance (Bolt Hole Center to Connecting Edge)</FRB>
+        <PTG>Min. Edge Distance (Bolt Hole Center to Connecting Edge)</PTG>
+        <ELL>Min. Edge Distance (Bolt Hole Center to Connecting Edge)</ELL>
+        <ESP>Min. Edge Distance (Bolt Hole Center to Connecting Edge)</ESP>
+        <ENU>Min. Edge Distance (Bolt Hole Center to Connecting Edge)</ENU>
+        <CSY>Min. vzdálenost od hrany (od středu otvoru pro šroub po hranu spoje)</CSY>
+        <DEU>Min. Edge Distance (Bolt Hole Center to Connecting Edge)</DEU>
+        <NLD>Min. randafstand (boutgatcenter tot verbonden rand)</NLD>
+        <RUS>Min. Edge Distance (Bolt Hole Center to Connecting Edge)</RUS>
+        <ROM>Min. Edge Distance (Bolt Hole Center to Connecting Edge)</ROM>
+        <PLK>Min. Edge Distance (Bolt Hole Center to Connecting Edge)</PLK>
+        <ITA>Min. Edge Distance (Bolt Hole Center to Connecting Edge)</ITA>
+        <SKY>Min. vzdialenosť od okraja (stred otvoru skrutky ku okraju prípoja)</SKY>
+      </Description>
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>ASTM A307</Property>
+      <Property>1/4"</Property>
+      <Property>0</Property>
+      <Property>60</Property>
+      <Property>18</Property>
+      <Property>24</Property>
+      <Property>45</Property>
+      <Property>0.25</Property>
+      <Property>0.049</Property>
+      <Property>0.3125</Property>
+      <Property>0.3750</Property>
+      <Property>0.5000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A307</Property>
+      <Property>3/8"</Property>
+      <Property>0</Property>
+      <Property>60</Property>
+      <Property>18</Property>
+      <Property>24</Property>
+      <Property>45</Property>
+      <Property>0.375</Property>
+      <Property>0.110</Property>
+      <Property>0.4375</Property>
+      <Property>0.5000</Property>
+      <Property>0.6250</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A307</Property>
+      <Property>1/2"</Property>
+      <Property>0</Property>
+      <Property>60</Property>
+      <Property>18</Property>
+      <Property>24</Property>
+      <Property>45</Property>
+      <Property>0.5</Property>
+      <Property>0.196</Property>
+      <Property>0.5625</Property>
+      <Property>0.6250</Property>
+      <Property>0.7500</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A307</Property>
+      <Property>5/8"</Property>
+      <Property>0</Property>
+      <Property>60</Property>
+      <Property>18</Property>
+      <Property>24</Property>
+      <Property>45</Property>
+      <Property>0.625</Property>
+      <Property>0.307</Property>
+      <Property>0.6875</Property>
+      <Property>0.8125</Property>
+      <Property>0.8750</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A307</Property>
+      <Property>3/4"</Property>
+      <Property>0</Property>
+      <Property>60</Property>
+      <Property>18</Property>
+      <Property>24</Property>
+      <Property>45</Property>
+      <Property>0.75</Property>
+      <Property>0.442</Property>
+      <Property>0.8125</Property>
+      <Property>0.9375</Property>
+      <Property>1.0000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A307</Property>
+      <Property>7/8"</Property>
+      <Property>0</Property>
+      <Property>60</Property>
+      <Property>18</Property>
+      <Property>24</Property>
+      <Property>45</Property>
+      <Property>0.875</Property>
+      <Property>0.601</Property>
+      <Property>0.9375</Property>
+      <Property>1.0625</Property>
+      <Property>1.1250</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A307</Property>
+      <Property>1"</Property>
+      <Property>0</Property>
+      <Property>60</Property>
+      <Property>18</Property>
+      <Property>24</Property>
+      <Property>45</Property>
+      <Property>1</Property>
+      <Property>0.785</Property>
+      <Property>1.0625</Property>
+      <Property>1.2500</Property>
+      <Property>1.2500</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A307</Property>
+      <Property>1 1/8"</Property>
+      <Property>0</Property>
+      <Property>60</Property>
+      <Property>18</Property>
+      <Property>24</Property>
+      <Property>45</Property>
+      <Property>1.125</Property>
+      <Property>0.994</Property>
+      <Property>1.1875</Property>
+      <Property>1.4375</Property>
+      <Property>1.5000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A307</Property>
+      <Property>1 1/4"</Property>
+      <Property>0</Property>
+      <Property>60</Property>
+      <Property>18</Property>
+      <Property>24</Property>
+      <Property>45</Property>
+      <Property>1.25</Property>
+      <Property>1.227</Property>
+      <Property>1.3125</Property>
+      <Property>1.5625</Property>
+      <Property>1.6250</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A307</Property>
+      <Property>1 3/8"</Property>
+      <Property>0</Property>
+      <Property>60</Property>
+      <Property>18</Property>
+      <Property>24</Property>
+      <Property>45</Property>
+      <Property>1.375</Property>
+      <Property>1.485</Property>
+      <Property>1.4375</Property>
+      <Property>1.6875</Property>
+      <Property>1.7188</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A307</Property>
+      <Property>1 1/2"</Property>
+      <Property>0</Property>
+      <Property>60</Property>
+      <Property>18</Property>
+      <Property>24</Property>
+      <Property>45</Property>
+      <Property>1.5</Property>
+      <Property>1.767</Property>
+      <Property>1.5625</Property>
+      <Property>1.8125</Property>
+      <Property>1.8750</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A307</Property>
+      <Property>1 5/8"</Property>
+      <Property>0</Property>
+      <Property>60</Property>
+      <Property>18</Property>
+      <Property>24</Property>
+      <Property>45</Property>
+      <Property>1.625</Property>
+      <Property>2.074</Property>
+      <Property>1.6875</Property>
+      <Property>1.9375</Property>
+      <Property>2.0313</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A307</Property>
+      <Property>1 3/4"</Property>
+      <Property>0</Property>
+      <Property>60</Property>
+      <Property>18</Property>
+      <Property>24</Property>
+      <Property>45</Property>
+      <Property>1.75</Property>
+      <Property>2.405</Property>
+      <Property>1.8125</Property>
+      <Property>2.0625</Property>
+      <Property>2.1875</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A307</Property>
+      <Property>1 7/8"</Property>
+      <Property>0</Property>
+      <Property>60</Property>
+      <Property>18</Property>
+      <Property>24</Property>
+      <Property>45</Property>
+      <Property>1.875</Property>
+      <Property>2.761</Property>
+      <Property>1.9375</Property>
+      <Property>2.1875</Property>
+      <Property>2.3438</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A307</Property>
+      <Property>2"</Property>
+      <Property>0</Property>
+      <Property>60</Property>
+      <Property>18</Property>
+      <Property>24</Property>
+      <Property>45</Property>
+      <Property>2</Property>
+      <Property>3.142</Property>
+      <Property>2.0625</Property>
+      <Property>2.3125</Property>
+      <Property>2.5000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A307</Property>
+      <Property>2 1/4"</Property>
+      <Property>0</Property>
+      <Property>60</Property>
+      <Property>18</Property>
+      <Property>24</Property>
+      <Property>45</Property>
+      <Property>2.25</Property>
+      <Property>3.976</Property>
+      <Property>2.3125</Property>
+      <Property>2.5625</Property>
+      <Property>2.8125</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A307</Property>
+      <Property>2 1/2"</Property>
+      <Property>0</Property>
+      <Property>60</Property>
+      <Property>18</Property>
+      <Property>24</Property>
+      <Property>45</Property>
+      <Property>2.5</Property>
+      <Property>4.909</Property>
+      <Property>2.5625</Property>
+      <Property>2.8125</Property>
+      <Property>3.1250</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A307</Property>
+      <Property>2 3/4"</Property>
+      <Property>0</Property>
+      <Property>60</Property>
+      <Property>18</Property>
+      <Property>24</Property>
+      <Property>45</Property>
+      <Property>2.75</Property>
+      <Property>5.940</Property>
+      <Property>2.8125</Property>
+      <Property>3.0625</Property>
+      <Property>3.4375</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A307</Property>
+      <Property>3"</Property>
+      <Property>0</Property>
+      <Property>60</Property>
+      <Property>18</Property>
+      <Property>24</Property>
+      <Property>45</Property>
+      <Property>3</Property>
+      <Property>7.069</Property>
+      <Property>3.0625</Property>
+      <Property>3.3125</Property>
+      <Property>3.7500</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A307</Property>
+      <Property>3 1/4"</Property>
+      <Property>0</Property>
+      <Property>60</Property>
+      <Property>18</Property>
+      <Property>24</Property>
+      <Property>45</Property>
+      <Property>3.25</Property>
+      <Property>8.296</Property>
+      <Property>3.3125</Property>
+      <Property>3.5625</Property>
+      <Property>4.0625</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A307</Property>
+      <Property>3 1/2"</Property>
+      <Property>0</Property>
+      <Property>60</Property>
+      <Property>18</Property>
+      <Property>24</Property>
+      <Property>45</Property>
+      <Property>3.5</Property>
+      <Property>9.621</Property>
+      <Property>3.5625</Property>
+      <Property>3.8125</Property>
+      <Property>4.3750</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A307</Property>
+      <Property>3 3/4"</Property>
+      <Property>0</Property>
+      <Property>60</Property>
+      <Property>18</Property>
+      <Property>24</Property>
+      <Property>45</Property>
+      <Property>3.75</Property>
+      <Property>11.045</Property>
+      <Property>3.8125</Property>
+      <Property>4.0625</Property>
+      <Property>4.6875</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A307</Property>
+      <Property>4"</Property>
+      <Property>0</Property>
+      <Property>60</Property>
+      <Property>18</Property>
+      <Property>24</Property>
+      <Property>45</Property>
+      <Property>4</Property>
+      <Property>12.566</Property>
+      <Property>4.0625</Property>
+      <Property>4.3125</Property>
+      <Property>5.0000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A325-N</Property>
+      <Property>1/2"</Property>
+      <Property>92</Property>
+      <Property>120</Property>
+      <Property>14</Property>
+      <Property>48</Property>
+      <Property>90</Property>
+      <Property>0.5</Property>
+      <Property>0.196</Property>
+      <Property>0.5625</Property>
+      <Property>0.6250</Property>
+      <Property>0.7500</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A325-N</Property>
+      <Property>5/8"</Property>
+      <Property>92</Property>
+      <Property>120</Property>
+      <Property>14</Property>
+      <Property>48</Property>
+      <Property>90</Property>
+      <Property>0.625</Property>
+      <Property>0.307</Property>
+      <Property>0.6875</Property>
+      <Property>0.8125</Property>
+      <Property>0.8750</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A325-N</Property>
+      <Property>3/4"</Property>
+      <Property>92</Property>
+      <Property>120</Property>
+      <Property>14</Property>
+      <Property>48</Property>
+      <Property>90</Property>
+      <Property>0.75</Property>
+      <Property>0.442</Property>
+      <Property>0.8125</Property>
+      <Property>0.9375</Property>
+      <Property>1.0000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A325-N</Property>
+      <Property>7/8"</Property>
+      <Property>92</Property>
+      <Property>120</Property>
+      <Property>14</Property>
+      <Property>48</Property>
+      <Property>90</Property>
+      <Property>0.875</Property>
+      <Property>0.601</Property>
+      <Property>0.9375</Property>
+      <Property>1.0625</Property>
+      <Property>1.1250</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A325-N</Property>
+      <Property>1"</Property>
+      <Property>92</Property>
+      <Property>120</Property>
+      <Property>14</Property>
+      <Property>48</Property>
+      <Property>90</Property>
+      <Property>1</Property>
+      <Property>0.785</Property>
+      <Property>1.0625</Property>
+      <Property>1.2500</Property>
+      <Property>1.2500</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A325-N</Property>
+      <Property>1 1/8"</Property>
+      <Property>81</Property>
+      <Property>105</Property>
+      <Property>14</Property>
+      <Property>48</Property>
+      <Property>90</Property>
+      <Property>1.125</Property>
+      <Property>0.994</Property>
+      <Property>1.1875</Property>
+      <Property>1.4375</Property>
+      <Property>1.5000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A325-N</Property>
+      <Property>1 1/4"</Property>
+      <Property>81</Property>
+      <Property>105</Property>
+      <Property>14</Property>
+      <Property>48</Property>
+      <Property>90</Property>
+      <Property>1.25</Property>
+      <Property>1.227</Property>
+      <Property>1.3125</Property>
+      <Property>1.5625</Property>
+      <Property>1.6250</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A325-N</Property>
+      <Property>1 3/8"</Property>
+      <Property>81</Property>
+      <Property>105</Property>
+      <Property>14</Property>
+      <Property>48</Property>
+      <Property>90</Property>
+      <Property>1.375</Property>
+      <Property>1.485</Property>
+      <Property>1.4375</Property>
+      <Property>1.6875</Property>
+      <Property>1.7188</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A325-N</Property>
+      <Property>1 1/2"</Property>
+      <Property>81</Property>
+      <Property>105</Property>
+      <Property>14</Property>
+      <Property>48</Property>
+      <Property>90</Property>
+      <Property>1.5</Property>
+      <Property>1.767</Property>
+      <Property>1.5625</Property>
+      <Property>1.8125</Property>
+      <Property>1.8750</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A325-X</Property>
+      <Property>1/2"</Property>
+      <Property>92</Property>
+      <Property>120</Property>
+      <Property>14</Property>
+      <Property>60</Property>
+      <Property>90</Property>
+      <Property>0.5</Property>
+      <Property>0.196</Property>
+      <Property>0.5625</Property>
+      <Property>0.6250</Property>
+      <Property>0.7500</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A325-X</Property>
+      <Property>5/8"</Property>
+      <Property>92</Property>
+      <Property>120</Property>
+      <Property>14</Property>
+      <Property>60</Property>
+      <Property>90</Property>
+      <Property>0.625</Property>
+      <Property>0.307</Property>
+      <Property>0.6875</Property>
+      <Property>0.8125</Property>
+      <Property>0.8750</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A325-X</Property>
+      <Property>3/4"</Property>
+      <Property>92</Property>
+      <Property>120</Property>
+      <Property>14</Property>
+      <Property>60</Property>
+      <Property>90</Property>
+      <Property>0.75</Property>
+      <Property>0.442</Property>
+      <Property>0.8125</Property>
+      <Property>0.9375</Property>
+      <Property>1.0000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A325-X</Property>
+      <Property>7/8"</Property>
+      <Property>92</Property>
+      <Property>120</Property>
+      <Property>14</Property>
+      <Property>60</Property>
+      <Property>90</Property>
+      <Property>0.875</Property>
+      <Property>0.601</Property>
+      <Property>0.9375</Property>
+      <Property>1.0625</Property>
+      <Property>1.1250</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A325-X</Property>
+      <Property>1"</Property>
+      <Property>92</Property>
+      <Property>120</Property>
+      <Property>14</Property>
+      <Property>60</Property>
+      <Property>90</Property>
+      <Property>1</Property>
+      <Property>0.785</Property>
+      <Property>1.0625</Property>
+      <Property>1.2500</Property>
+      <Property>1.2500</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A325-X</Property>
+      <Property>1 1/8"</Property>
+      <Property>81</Property>
+      <Property>105</Property>
+      <Property>14</Property>
+      <Property>60</Property>
+      <Property>90</Property>
+      <Property>1.125</Property>
+      <Property>0.994</Property>
+      <Property>1.1875</Property>
+      <Property>1.4375</Property>
+      <Property>1.5000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A325-X</Property>
+      <Property>1 1/4"</Property>
+      <Property>81</Property>
+      <Property>105</Property>
+      <Property>14</Property>
+      <Property>60</Property>
+      <Property>90</Property>
+      <Property>1.25</Property>
+      <Property>1.227</Property>
+      <Property>1.3125</Property>
+      <Property>1.5625</Property>
+      <Property>1.6250</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A325-X</Property>
+      <Property>1 3/8"</Property>
+      <Property>81</Property>
+      <Property>105</Property>
+      <Property>14</Property>
+      <Property>60</Property>
+      <Property>90</Property>
+      <Property>1.375</Property>
+      <Property>1.485</Property>
+      <Property>1.4375</Property>
+      <Property>1.6875</Property>
+      <Property>1.7188</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A325-X</Property>
+      <Property>1 1/2"</Property>
+      <Property>81</Property>
+      <Property>105</Property>
+      <Property>14</Property>
+      <Property>60</Property>
+      <Property>90</Property>
+      <Property>1.5</Property>
+      <Property>1.767</Property>
+      <Property>1.5625</Property>
+      <Property>1.8125</Property>
+      <Property>1.8750</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A490-N</Property>
+      <Property>1/2"</Property>
+      <Property>130</Property>
+      <Property>150</Property>
+      <Property>14</Property>
+      <Property>60</Property>
+      <Property>113</Property>
+      <Property>0.5</Property>
+      <Property>0.196</Property>
+      <Property>0.5625</Property>
+      <Property>0.6250</Property>
+      <Property>0.7500</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A490-N</Property>
+      <Property>5/8"</Property>
+      <Property>130</Property>
+      <Property>150</Property>
+      <Property>14</Property>
+      <Property>60</Property>
+      <Property>113</Property>
+      <Property>0.625</Property>
+      <Property>0.307</Property>
+      <Property>0.6875</Property>
+      <Property>0.8125</Property>
+      <Property>0.8750</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A490-N</Property>
+      <Property>3/4"</Property>
+      <Property>130</Property>
+      <Property>150</Property>
+      <Property>14</Property>
+      <Property>60</Property>
+      <Property>113</Property>
+      <Property>0.75</Property>
+      <Property>0.442</Property>
+      <Property>0.8125</Property>
+      <Property>0.9375</Property>
+      <Property>1.0000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A490-N</Property>
+      <Property>7/8"</Property>
+      <Property>130</Property>
+      <Property>150</Property>
+      <Property>14</Property>
+      <Property>60</Property>
+      <Property>113</Property>
+      <Property>0.875</Property>
+      <Property>0.601</Property>
+      <Property>0.9375</Property>
+      <Property>1.0625</Property>
+      <Property>1.1250</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A490-N</Property>
+      <Property>1"</Property>
+      <Property>130</Property>
+      <Property>150</Property>
+      <Property>14</Property>
+      <Property>60</Property>
+      <Property>113</Property>
+      <Property>1</Property>
+      <Property>0.785</Property>
+      <Property>1.0625</Property>
+      <Property>1.2500</Property>
+      <Property>1.2500</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A490-N</Property>
+      <Property>1 1/8"</Property>
+      <Property>130</Property>
+      <Property>150</Property>
+      <Property>14</Property>
+      <Property>60</Property>
+      <Property>113</Property>
+      <Property>1.125</Property>
+      <Property>0.994</Property>
+      <Property>1.1875</Property>
+      <Property>1.4375</Property>
+      <Property>1.5000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A490-N</Property>
+      <Property>1 1/4"</Property>
+      <Property>130</Property>
+      <Property>150</Property>
+      <Property>14</Property>
+      <Property>60</Property>
+      <Property>113</Property>
+      <Property>1.25</Property>
+      <Property>1.227</Property>
+      <Property>1.3125</Property>
+      <Property>1.5625</Property>
+      <Property>1.6250</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A490-N</Property>
+      <Property>1 3/8"</Property>
+      <Property>130</Property>
+      <Property>150</Property>
+      <Property>14</Property>
+      <Property>60</Property>
+      <Property>113</Property>
+      <Property>1.375</Property>
+      <Property>1.485</Property>
+      <Property>1.4375</Property>
+      <Property>1.6875</Property>
+      <Property>1.7188</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A490-N</Property>
+      <Property>1 1/2"</Property>
+      <Property>130</Property>
+      <Property>150</Property>
+      <Property>14</Property>
+      <Property>60</Property>
+      <Property>113</Property>
+      <Property>1.5</Property>
+      <Property>1.767</Property>
+      <Property>1.5625</Property>
+      <Property>1.8125</Property>
+      <Property>1.8750</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A490-X</Property>
+      <Property>1/2"</Property>
+      <Property>130</Property>
+      <Property>150</Property>
+      <Property>14</Property>
+      <Property>75</Property>
+      <Property>113</Property>
+      <Property>0.5</Property>
+      <Property>0.196</Property>
+      <Property>0.5625</Property>
+      <Property>0.6250</Property>
+      <Property>0.7500</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A490-X</Property>
+      <Property>5/8"</Property>
+      <Property>130</Property>
+      <Property>150</Property>
+      <Property>14</Property>
+      <Property>75</Property>
+      <Property>113</Property>
+      <Property>0.625</Property>
+      <Property>0.307</Property>
+      <Property>0.6875</Property>
+      <Property>0.8125</Property>
+      <Property>0.8750</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A490-X</Property>
+      <Property>3/4"</Property>
+      <Property>130</Property>
+      <Property>150</Property>
+      <Property>14</Property>
+      <Property>75</Property>
+      <Property>113</Property>
+      <Property>0.75</Property>
+      <Property>0.442</Property>
+      <Property>0.8125</Property>
+      <Property>0.9375</Property>
+      <Property>1.0000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A490-X</Property>
+      <Property>7/8"</Property>
+      <Property>130</Property>
+      <Property>150</Property>
+      <Property>14</Property>
+      <Property>75</Property>
+      <Property>113</Property>
+      <Property>0.875</Property>
+      <Property>0.601</Property>
+      <Property>0.9375</Property>
+      <Property>1.0625</Property>
+      <Property>1.1250</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A490-X</Property>
+      <Property>1"</Property>
+      <Property>130</Property>
+      <Property>150</Property>
+      <Property>14</Property>
+      <Property>75</Property>
+      <Property>113</Property>
+      <Property>1</Property>
+      <Property>0.785</Property>
+      <Property>1.0625</Property>
+      <Property>1.2500</Property>
+      <Property>1.2500</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A490-X</Property>
+      <Property>1 1/8"</Property>
+      <Property>130</Property>
+      <Property>150</Property>
+      <Property>14</Property>
+      <Property>75</Property>
+      <Property>113</Property>
+      <Property>1.125</Property>
+      <Property>0.994</Property>
+      <Property>1.1875</Property>
+      <Property>1.4375</Property>
+      <Property>1.5000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A490-X</Property>
+      <Property>1 1/4"</Property>
+      <Property>130</Property>
+      <Property>150</Property>
+      <Property>14</Property>
+      <Property>75</Property>
+      <Property>113</Property>
+      <Property>1.25</Property>
+      <Property>1.227</Property>
+      <Property>1.3125</Property>
+      <Property>1.5625</Property>
+      <Property>1.6250</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A490-X</Property>
+      <Property>1 3/8"</Property>
+      <Property>130</Property>
+      <Property>150</Property>
+      <Property>14</Property>
+      <Property>75</Property>
+      <Property>113</Property>
+      <Property>1.375</Property>
+      <Property>1.485</Property>
+      <Property>1.4375</Property>
+      <Property>1.6875</Property>
+      <Property>1.7188</Property>
+    </Item>
+    <Item>
+      <Property>ASTM A490-X</Property>
+      <Property>1 1/2"</Property>
+      <Property>130</Property>
+      <Property>150</Property>
+      <Property>14</Property>
+      <Property>75</Property>
+      <Property>113</Property>
+      <Property>1.5</Property>
+      <Property>1.767</Property>
+      <Property>1.5625</Property>
+      <Property>1.8125</Property>
+      <Property>1.8750</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 36</Property>
+      <Property>1/4"</Property>
+      <Property>36</Property>
+      <Property>58</Property>
+      <Property>23</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0.25</Property>
+      <Property>0.049</Property>
+      <Property>0.0000</Property>
+      <Property>0.5000</Property>
+      <Property>0.5000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 36</Property>
+      <Property>3/8"</Property>
+      <Property>36</Property>
+      <Property>58</Property>
+      <Property>23</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0.375</Property>
+      <Property>0.110</Property>
+      <Property>0.0000</Property>
+      <Property>0.6250</Property>
+      <Property>0.6250</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 36</Property>
+      <Property>1/2"</Property>
+      <Property>36</Property>
+      <Property>58</Property>
+      <Property>23</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0.5</Property>
+      <Property>0.196</Property>
+      <Property>0.0000</Property>
+      <Property>0.7500</Property>
+      <Property>0.7500</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 36</Property>
+      <Property>5/8"</Property>
+      <Property>36</Property>
+      <Property>58</Property>
+      <Property>23</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0.625</Property>
+      <Property>0.307</Property>
+      <Property>0.0000</Property>
+      <Property>0.8750</Property>
+      <Property>0.8750</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 36</Property>
+      <Property>3/4"</Property>
+      <Property>36</Property>
+      <Property>58</Property>
+      <Property>23</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0.75</Property>
+      <Property>0.442</Property>
+      <Property>0.0000</Property>
+      <Property>1.0000</Property>
+      <Property>1.0000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 36</Property>
+      <Property>7/8"</Property>
+      <Property>36</Property>
+      <Property>58</Property>
+      <Property>23</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0.875</Property>
+      <Property>0.601</Property>
+      <Property>0.0000</Property>
+      <Property>1.1250</Property>
+      <Property>1.1250</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 36</Property>
+      <Property>1"</Property>
+      <Property>36</Property>
+      <Property>58</Property>
+      <Property>23</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>1</Property>
+      <Property>0.785</Property>
+      <Property>0.0000</Property>
+      <Property>1.2500</Property>
+      <Property>1.2500</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 36</Property>
+      <Property>1 1/8"</Property>
+      <Property>36</Property>
+      <Property>58</Property>
+      <Property>23</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>1.125</Property>
+      <Property>0.994</Property>
+      <Property>0.0000</Property>
+      <Property>1.3750</Property>
+      <Property>1.5000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 36</Property>
+      <Property>1 1/4"</Property>
+      <Property>36</Property>
+      <Property>58</Property>
+      <Property>23</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>1.25</Property>
+      <Property>1.227</Property>
+      <Property>0.0000</Property>
+      <Property>1.5000</Property>
+      <Property>1.6250</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 36</Property>
+      <Property>1 3/8"</Property>
+      <Property>36</Property>
+      <Property>58</Property>
+      <Property>23</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>1.375</Property>
+      <Property>1.485</Property>
+      <Property>0.0000</Property>
+      <Property>1.6250</Property>
+      <Property>1.7188</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 36</Property>
+      <Property>1 1/2"</Property>
+      <Property>36</Property>
+      <Property>58</Property>
+      <Property>23</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>1.5</Property>
+      <Property>1.767</Property>
+      <Property>0.0000</Property>
+      <Property>1.7500</Property>
+      <Property>1.8750</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 36</Property>
+      <Property>1 3/4"</Property>
+      <Property>36</Property>
+      <Property>58</Property>
+      <Property>23</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>1.75</Property>
+      <Property>2.405</Property>
+      <Property>0.0000</Property>
+      <Property>2.0000</Property>
+      <Property>2.1875</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 36</Property>
+      <Property>2"</Property>
+      <Property>36</Property>
+      <Property>58</Property>
+      <Property>23</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>2</Property>
+      <Property>3.142</Property>
+      <Property>0.0000</Property>
+      <Property>2.2500</Property>
+      <Property>2.5000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 36</Property>
+      <Property>2 1/4"</Property>
+      <Property>36</Property>
+      <Property>58</Property>
+      <Property>23</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>2.25</Property>
+      <Property>3.976</Property>
+      <Property>0.0000</Property>
+      <Property>2.5000</Property>
+      <Property>2.8125</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 36</Property>
+      <Property>2 1/2"</Property>
+      <Property>36</Property>
+      <Property>58</Property>
+      <Property>23</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>2.5</Property>
+      <Property>4.909</Property>
+      <Property>0.0000</Property>
+      <Property>2.7500</Property>
+      <Property>3.1250</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 36</Property>
+      <Property>2 3/4"</Property>
+      <Property>36</Property>
+      <Property>58</Property>
+      <Property>23</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>2.75</Property>
+      <Property>5.940</Property>
+      <Property>0.0000</Property>
+      <Property>3.0000</Property>
+      <Property>3.4375</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 36</Property>
+      <Property>3"</Property>
+      <Property>36</Property>
+      <Property>58</Property>
+      <Property>23</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>3</Property>
+      <Property>7.069</Property>
+      <Property>0.0000</Property>
+      <Property>3.2500</Property>
+      <Property>3.7500</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 36</Property>
+      <Property>3 1/4"</Property>
+      <Property>36</Property>
+      <Property>58</Property>
+      <Property>23</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>3.25</Property>
+      <Property>8.296</Property>
+      <Property>0.0000</Property>
+      <Property>3.5000</Property>
+      <Property>4.0625</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 36</Property>
+      <Property>3 1/2"</Property>
+      <Property>36</Property>
+      <Property>58</Property>
+      <Property>23</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>3.5</Property>
+      <Property>9.621</Property>
+      <Property>0.0000</Property>
+      <Property>3.7500</Property>
+      <Property>4.3750</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 36</Property>
+      <Property>3 3/4"</Property>
+      <Property>36</Property>
+      <Property>58</Property>
+      <Property>23</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>3.75</Property>
+      <Property>11.045</Property>
+      <Property>0.0000</Property>
+      <Property>4.0000</Property>
+      <Property>4.6875</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 36</Property>
+      <Property>4"</Property>
+      <Property>36</Property>
+      <Property>58</Property>
+      <Property>23</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>4</Property>
+      <Property>12.566</Property>
+      <Property>0.0000</Property>
+      <Property>4.2500</Property>
+      <Property>5.0000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 55</Property>
+      <Property>1/4"</Property>
+      <Property>55</Property>
+      <Property>75</Property>
+      <Property>21</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0.25</Property>
+      <Property>0.049</Property>
+      <Property>0.0000</Property>
+      <Property>0.5000</Property>
+      <Property>0.5000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 55</Property>
+      <Property>3/8"</Property>
+      <Property>55</Property>
+      <Property>75</Property>
+      <Property>21</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0.375</Property>
+      <Property>0.110</Property>
+      <Property>0.0000</Property>
+      <Property>0.6250</Property>
+      <Property>0.6250</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 55</Property>
+      <Property>1/2"</Property>
+      <Property>55</Property>
+      <Property>75</Property>
+      <Property>21</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0.5</Property>
+      <Property>0.196</Property>
+      <Property>0.0000</Property>
+      <Property>0.7500</Property>
+      <Property>0.7500</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 55</Property>
+      <Property>5/8"</Property>
+      <Property>55</Property>
+      <Property>75</Property>
+      <Property>21</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0.625</Property>
+      <Property>0.307</Property>
+      <Property>0.0000</Property>
+      <Property>0.8750</Property>
+      <Property>0.8750</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 55</Property>
+      <Property>3/4"</Property>
+      <Property>55</Property>
+      <Property>75</Property>
+      <Property>21</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0.75</Property>
+      <Property>0.442</Property>
+      <Property>0.0000</Property>
+      <Property>1.0000</Property>
+      <Property>1.0000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 55</Property>
+      <Property>7/8"</Property>
+      <Property>55</Property>
+      <Property>75</Property>
+      <Property>21</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0.875</Property>
+      <Property>0.601</Property>
+      <Property>0.0000</Property>
+      <Property>1.1250</Property>
+      <Property>1.1250</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 55</Property>
+      <Property>1"</Property>
+      <Property>55</Property>
+      <Property>75</Property>
+      <Property>21</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>1</Property>
+      <Property>0.785</Property>
+      <Property>0.0000</Property>
+      <Property>1.2500</Property>
+      <Property>1.2500</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 55</Property>
+      <Property>1 1/8"</Property>
+      <Property>55</Property>
+      <Property>75</Property>
+      <Property>21</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>1.125</Property>
+      <Property>0.994</Property>
+      <Property>0.0000</Property>
+      <Property>1.3750</Property>
+      <Property>1.5000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 55</Property>
+      <Property>1 1/4"</Property>
+      <Property>55</Property>
+      <Property>75</Property>
+      <Property>21</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>1.25</Property>
+      <Property>1.227</Property>
+      <Property>0.0000</Property>
+      <Property>1.5000</Property>
+      <Property>1.6250</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 55</Property>
+      <Property>1 3/8"</Property>
+      <Property>55</Property>
+      <Property>75</Property>
+      <Property>21</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>1.375</Property>
+      <Property>1.485</Property>
+      <Property>0.0000</Property>
+      <Property>1.6250</Property>
+      <Property>1.7188</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 55</Property>
+      <Property>1 1/2"</Property>
+      <Property>55</Property>
+      <Property>75</Property>
+      <Property>21</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>1.5</Property>
+      <Property>1.767</Property>
+      <Property>0.0000</Property>
+      <Property>1.7500</Property>
+      <Property>1.8750</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 55</Property>
+      <Property>1 3/4"</Property>
+      <Property>55</Property>
+      <Property>75</Property>
+      <Property>21</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>1.75</Property>
+      <Property>2.405</Property>
+      <Property>0.0000</Property>
+      <Property>2.0000</Property>
+      <Property>2.1875</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 55</Property>
+      <Property>2"</Property>
+      <Property>55</Property>
+      <Property>75</Property>
+      <Property>21</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>2</Property>
+      <Property>3.142</Property>
+      <Property>0.0000</Property>
+      <Property>2.2500</Property>
+      <Property>2.5000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 55</Property>
+      <Property>2 1/4"</Property>
+      <Property>55</Property>
+      <Property>75</Property>
+      <Property>21</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>2.25</Property>
+      <Property>3.976</Property>
+      <Property>0.0000</Property>
+      <Property>2.5000</Property>
+      <Property>2.8125</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 55</Property>
+      <Property>2 1/2"</Property>
+      <Property>55</Property>
+      <Property>75</Property>
+      <Property>21</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>2.5</Property>
+      <Property>4.909</Property>
+      <Property>0.0000</Property>
+      <Property>2.7500</Property>
+      <Property>3.1250</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 55</Property>
+      <Property>2 3/4"</Property>
+      <Property>55</Property>
+      <Property>75</Property>
+      <Property>21</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>2.75</Property>
+      <Property>5.940</Property>
+      <Property>0.0000</Property>
+      <Property>3.0000</Property>
+      <Property>3.4375</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 55</Property>
+      <Property>3"</Property>
+      <Property>55</Property>
+      <Property>75</Property>
+      <Property>21</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>3</Property>
+      <Property>7.069</Property>
+      <Property>0.0000</Property>
+      <Property>3.2500</Property>
+      <Property>3.7500</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 55</Property>
+      <Property>3 1/4"</Property>
+      <Property>55</Property>
+      <Property>75</Property>
+      <Property>21</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>3.25</Property>
+      <Property>8.296</Property>
+      <Property>0.0000</Property>
+      <Property>3.5000</Property>
+      <Property>4.0625</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 55</Property>
+      <Property>3 1/2"</Property>
+      <Property>55</Property>
+      <Property>75</Property>
+      <Property>21</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>3.5</Property>
+      <Property>9.621</Property>
+      <Property>0.0000</Property>
+      <Property>3.7500</Property>
+      <Property>4.3750</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 55</Property>
+      <Property>3 3/4"</Property>
+      <Property>55</Property>
+      <Property>75</Property>
+      <Property>21</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>3.75</Property>
+      <Property>11.045</Property>
+      <Property>0.0000</Property>
+      <Property>4.0000</Property>
+      <Property>4.6875</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 55</Property>
+      <Property>4"</Property>
+      <Property>55</Property>
+      <Property>75</Property>
+      <Property>21</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>4</Property>
+      <Property>12.566</Property>
+      <Property>0.0000</Property>
+      <Property>4.2500</Property>
+      <Property>5.0000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 105</Property>
+      <Property>1/4"</Property>
+      <Property>105</Property>
+      <Property>125</Property>
+      <Property>15</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0.25</Property>
+      <Property>0.049</Property>
+      <Property>0.0000</Property>
+      <Property>0.5000</Property>
+      <Property>0.5000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 105</Property>
+      <Property>3/8"</Property>
+      <Property>105</Property>
+      <Property>125</Property>
+      <Property>15</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0.375</Property>
+      <Property>0.110</Property>
+      <Property>0.0000</Property>
+      <Property>0.6250</Property>
+      <Property>0.6250</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 105</Property>
+      <Property>1/2"</Property>
+      <Property>105</Property>
+      <Property>125</Property>
+      <Property>15</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0.5</Property>
+      <Property>0.196</Property>
+      <Property>0.0000</Property>
+      <Property>0.7500</Property>
+      <Property>0.7500</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 105</Property>
+      <Property>5/8"</Property>
+      <Property>105</Property>
+      <Property>125</Property>
+      <Property>15</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0.625</Property>
+      <Property>0.307</Property>
+      <Property>0.0000</Property>
+      <Property>0.8750</Property>
+      <Property>0.8750</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 105</Property>
+      <Property>3/4"</Property>
+      <Property>105</Property>
+      <Property>125</Property>
+      <Property>15</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0.75</Property>
+      <Property>0.442</Property>
+      <Property>0.0000</Property>
+      <Property>1.0000</Property>
+      <Property>1.0000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 105</Property>
+      <Property>7/8"</Property>
+      <Property>105</Property>
+      <Property>125</Property>
+      <Property>15</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0.875</Property>
+      <Property>0.601</Property>
+      <Property>0.0000</Property>
+      <Property>1.1250</Property>
+      <Property>1.1250</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 105</Property>
+      <Property>1"</Property>
+      <Property>105</Property>
+      <Property>125</Property>
+      <Property>15</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>1</Property>
+      <Property>0.785</Property>
+      <Property>0.0000</Property>
+      <Property>1.2500</Property>
+      <Property>1.2500</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 105</Property>
+      <Property>1 1/8"</Property>
+      <Property>105</Property>
+      <Property>125</Property>
+      <Property>15</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>1.125</Property>
+      <Property>0.994</Property>
+      <Property>0.0000</Property>
+      <Property>1.3750</Property>
+      <Property>1.5000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 105</Property>
+      <Property>1 1/4"</Property>
+      <Property>105</Property>
+      <Property>125</Property>
+      <Property>15</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>1.25</Property>
+      <Property>1.227</Property>
+      <Property>0.0000</Property>
+      <Property>1.5000</Property>
+      <Property>1.6250</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 105</Property>
+      <Property>1 3/8"</Property>
+      <Property>105</Property>
+      <Property>125</Property>
+      <Property>15</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>1.375</Property>
+      <Property>1.485</Property>
+      <Property>0.0000</Property>
+      <Property>1.6250</Property>
+      <Property>1.7188</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 105</Property>
+      <Property>1 1/2"</Property>
+      <Property>105</Property>
+      <Property>125</Property>
+      <Property>15</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>1.5</Property>
+      <Property>1.767</Property>
+      <Property>0.0000</Property>
+      <Property>1.7500</Property>
+      <Property>1.8750</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 105</Property>
+      <Property>1 3/4"</Property>
+      <Property>105</Property>
+      <Property>125</Property>
+      <Property>15</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>1.75</Property>
+      <Property>2.405</Property>
+      <Property>0.0000</Property>
+      <Property>2.0000</Property>
+      <Property>2.1875</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 105</Property>
+      <Property>2"</Property>
+      <Property>105</Property>
+      <Property>125</Property>
+      <Property>15</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>2</Property>
+      <Property>3.142</Property>
+      <Property>0.0000</Property>
+      <Property>2.2500</Property>
+      <Property>2.5000</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 105</Property>
+      <Property>2 1/4"</Property>
+      <Property>105</Property>
+      <Property>125</Property>
+      <Property>15</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>2.25</Property>
+      <Property>3.976</Property>
+      <Property>0.0000</Property>
+      <Property>2.5000</Property>
+      <Property>2.8125</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 105</Property>
+      <Property>2 1/2"</Property>
+      <Property>105</Property>
+      <Property>125</Property>
+      <Property>15</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>2.5</Property>
+      <Property>4.909</Property>
+      <Property>0.0000</Property>
+      <Property>2.7500</Property>
+      <Property>3.1250</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 105</Property>
+      <Property>2 3/4"</Property>
+      <Property>105</Property>
+      <Property>125</Property>
+      <Property>15</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>2.75</Property>
+      <Property>5.940</Property>
+      <Property>0.0000</Property>
+      <Property>3.0000</Property>
+      <Property>3.4375</Property>
+    </Item>
+    <Item>
+      <Property>ASTM F1554 Gr. 105</Property>
+      <Property>3"</Property>
+      <Property>105</Property>
+      <Property>125</Property>
+      <Property>15</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>3</Property>
+      <Property>7.069</Property>
+      <Property>0.0000</Property>
+      <Property>3.2500</Property>
+      <Property>3.7500</Property>
+    </Item>
+  </Items>
+</Root>

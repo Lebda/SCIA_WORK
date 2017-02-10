@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<STRINGTABLE><STRING ID="TEMPLATE_NAME">
+		<ENU>Lightweight.20structure</ENU>
+		<DEU>Leichtbau</DEU>
+	</STRING>
+	<STRING ID="TEMPLATE_DESCRIPTION">
+		<ENU></ENU>
+		<DEU></DEU>
+	</STRING>
+</STRINGTABLE>

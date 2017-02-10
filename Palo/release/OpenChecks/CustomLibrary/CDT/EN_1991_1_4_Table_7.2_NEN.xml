@@ -1,0 +1,211 @@
+<Root Version="1" Type="CustomLibrary" GUID="7228dc77-bb58-4ec8-ba41-24704652a91f">
+  <Header>
+    <PropertySet Symbol="Limit" ESA_ID="Limit" Unit="" Type="Numeric">
+      <Description TranslateID="Limit">
+        <ENU>Iteration limit</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="F_10" ESA_ID="F_10" Unit="" Type="Numeric">
+      <Description TranslateID="F_10">
+        <ENU>Zone F, cpe,10</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="F_1" ESA_ID="F_1" Unit="" Type="Numeric">
+      <Description TranslateID="F_1">
+        <ENU>Zone F, cpe,1</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="G_10" ESA_ID="G_10" Unit="" Type="Numeric">
+      <Description TranslateID="G_10">
+        <ENU>Zone G, cpe,10</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="G_1" ESA_ID="G_1" Unit="" Type="Numeric">
+      <Description TranslateID="G_1">
+        <ENU>Zone G, cpe,1</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="H_10" ESA_ID="H_10" Unit="" Type="Numeric">
+      <Description TranslateID="H_10">
+        <ENU>Zone H, cpe,10</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="H_1" ESA_ID="H_1" Unit="" Type="Numeric">
+      <Description TranslateID="H_1">
+        <ENU>Zone H, cpe,1</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="I_10_p" ESA_ID="I_10_p" Unit="" Type="Numeric">
+      <Description TranslateID="I_10_p">
+        <ENU>Zone I, cpe,10, pressure</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="I_1_p" ESA_ID="I_1_p" Unit="" Type="Numeric">
+      <Description TranslateID="I_1_p">
+        <ENU>Zone I, cpe,1, pressure</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="I_10_s" ESA_ID="I_10_s" Unit="" Type="Numeric">
+      <Description TranslateID="I_10_s">
+        <ENU>Zone I, cpe,10, suction</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="I_1_s" ESA_ID="I_1_s" Unit="" Type="Numeric">
+      <Description TranslateID="I_1_s">
+        <ENU>Zone I, cpe,1, suction</ENU>
+      </Description>
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>90</Property>
+      <Property>-1.8</Property>
+      <Property>-2.5</Property>
+      <Property>-1.2</Property>
+      <Property>-2.0</Property>
+      <Property>-0.7</Property>
+      <Property>-1.2</Property>
+      <Property>0.2</Property>
+      <Property>0.2</Property>
+      <Property>-0.2</Property>
+      <Property>-0.5</Property>
+    </Item>
+    <Item>
+      <Property>1</Property>
+      <Property>0</Property>
+      <Property>0.0249999</Property>
+      <Property>-1.6</Property>
+      <Property>-2.2</Property>
+      <Property>-1.1</Property>
+      <Property>-1.8</Property>
+      <Property>-0.7</Property>
+      <Property>-1.2</Property>
+      <Property>0.2</Property>
+      <Property>0.2</Property>
+      <Property>-0.2</Property>
+      <Property>-0.5</Property>
+    </Item>
+    <Item>
+      <Property>1</Property>
+      <Property>1</Property>
+      <Property>0.05</Property>
+      <Property>-1.4</Property>
+      <Property>-2.0</Property>
+      <Property>-0.9</Property>
+      <Property>-1.6</Property>
+      <Property>-0.7</Property>
+      <Property>-1.2</Property>
+      <Property>0.2</Property>
+      <Property>0.2</Property>
+      <Property>-0.2</Property>
+      <Property>-0.5</Property>
+    </Item>
+    <Item>
+      <Property>1</Property>
+      <Property>2</Property>
+      <Property>0.10</Property>
+      <Property>-1.2</Property>
+      <Property>-1.8</Property>
+      <Property>-0.8</Property>
+      <Property>-1.4</Property>
+      <Property>-0.7</Property>
+      <Property>-1.2</Property>
+      <Property>0.2</Property>
+      <Property>0.2</Property>
+      <Property>-0.2</Property>
+      <Property>-0.5</Property>
+    </Item>
+    <Item>
+      <Property>2</Property>
+      <Property>0</Property>
+      <Property>0.0499999</Property>
+      <Property>-1.0</Property>
+      <Property>-1.5</Property>
+      <Property>-1.2</Property>
+      <Property>-1.8</Property>
+      <Property>-0.4</Property>
+      <Property>-1.0</Property>
+      <Property>0.2</Property>
+      <Property>0.2</Property>
+      <Property>-0.2</Property>
+      <Property>-0.5</Property>
+    </Item>
+    <Item>
+      <Property>2</Property>
+      <Property>1</Property>
+      <Property>0.10</Property>
+      <Property>-0.7</Property>
+      <Property>-1.2</Property>
+      <Property>-0.8</Property>
+      <Property>-1.4</Property>
+      <Property>-0.3</Property>
+      <Property>-1.0</Property>
+      <Property>0.2</Property>
+      <Property>0.2</Property>
+      <Property>-0.2</Property>
+      <Property>-0.5</Property>
+    </Item>
+    <Item>
+      <Property>2</Property>
+      <Property>2</Property>
+      <Property>0.20</Property>
+      <Property>-0.5</Property>
+      <Property>-0.8</Property>
+      <Property>-0.5</Property>
+      <Property>-0.8</Property>
+      <Property>-0.3</Property>
+      <Property>-0.8</Property>
+      <Property>0.2</Property>
+      <Property>0.2</Property>
+      <Property>-0.2</Property>
+      <Property>-0.5</Property>
+    </Item>
+    <Item>
+      <Property>3</Property>
+      <Property>0</Property>
+      <Property>29.99999</Property>
+      <Property>-1.0</Property>
+      <Property>-1.5</Property>
+      <Property>-1.0</Property>
+      <Property>-1.5</Property>
+      <Property>-0.3</Property>
+      <Property>-1.0</Property>
+      <Property>0.2</Property>
+      <Property>0.2</Property>
+      <Property>-0.2</Property>
+      <Property>-0.5</Property>
+    </Item>
+    <Item>
+      <Property>3</Property>
+      <Property>1</Property>
+      <Property>45</Property>
+      <Property>-1.2</Property>
+      <Property>-1.8</Property>
+      <Property>-1.3</Property>
+      <Property>-1.9</Property>
+      <Property>-0.4</Property>
+      <Property>-1.2</Property>
+      <Property>0.2</Property>
+      <Property>0.2</Property>
+      <Property>-0.2</Property>
+      <Property>-0.5</Property>
+    </Item>
+    <Item>
+      <Property>3</Property>
+      <Property>2</Property>
+      <Property>60</Property>
+      <Property>-1.3</Property>
+      <Property>-1.9</Property>
+      <Property>-1.3</Property>
+      <Property>-1.9</Property>
+      <Property>-0.5</Property>
+      <Property>-1.2</Property>
+      <Property>0.2</Property>
+      <Property>0.2</Property>
+      <Property>-0.2</Property>
+      <Property>-0.5</Property>
+    </Item>
+  </Items>
+</Root>

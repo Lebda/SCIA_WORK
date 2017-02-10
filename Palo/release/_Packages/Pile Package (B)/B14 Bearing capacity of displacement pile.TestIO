@@ -1,0 +1,238 @@
+<Root>
+  <Test Description="Test 1" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 12/15" Collapsed="True" />
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust, Bažant, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="Draw" Value="True" />
+      <Variable Identifier="V↓d←" Value="1.5e6" />
+      <Variable Identifier="L" Value="5" />
+      <Variable Identifier="d" Value="500e-3" />
+      <Variable Identifier="T" Value="0" />
+      <Variable Identifier="Z" Value="0" />
+      <Variable Identifier="η" Value="900e-3" />
+      <Variable Identifier="W↓H←" Value="800" />
+      <Variable Identifier="H" Value="4" />
+      <Variable Identifier="s" Value="20e-3" />
+      <Variable Identifier="γ↓P←" Value="2.5" />
+      <Variable Identifier="TI" Value="1|0,6|0,8║2|0,55|0,75║3|0,85|0,52║4|0,8|0,89║5|0,5|0,5" />
+      <Variable Identifier="Type1" Value="1" />
+      <Variable Identifier="Type2" Value="0" />
+      <Variable Identifier="Type3" Value="0" />
+      <Variable Identifier="Type4" Value="2" />
+      <Variable Identifier="Type5" Value="0" />
+    </Dialog>
+    <Input Name="A↓s←" Type="Numeric" ESA_ID="" Value="196.3494e-3" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="500e-3" />
+    <Input Name="Draw" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="E↓c←" Type="Numeric" ESA_ID="CONCRETE.EC.Ecm" Value="27e9" />
+    <Input Name="H" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust, Bažant, ČSN 73 1002" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Result Name="Q" Type="Numeric" ESA_ID="Result.2" Value="136071.2" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.3" Value="680154.2" />
+    <Input Name="s" Type="Numeric" ESA_ID="" Value="20e-3" />
+    <Result Name="s↓e←" Type="Numeric" ESA_ID="Result.1" Value="2.330771e-3" />
+    <Input Name="Scale" Type="Numeric" ESA_ID="" Value="30" />
+    <Input Name="T" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Type1" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Type2" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Type3" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Type4" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="Type5" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="U↓vs←" Type="Numeric" ESA_ID="Result.0" Value="54428.49" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="1.5e6" />
+    <Input Name="W↓H←" Type="Numeric" ESA_ID="" Value="800" />
+    <Input Name="Z" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="γ↓f1←" Type="Numeric" ESA_ID="" Value="1.2" />
+    <Input Name="γ↓f2←" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Input Name="γ↓f3←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓f4←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓P←" Type="Numeric" ESA_ID="" Value="2.5" />
+    <Input Name="η" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.14159" />
+  </Test>
+  <Test Description="Test 2" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 12/15" Collapsed="True" />
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust, Bažant, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="Draw" Value="True" />
+      <Variable Identifier="V↓d←" Value="1.5e6" />
+      <Variable Identifier="L" Value="5" />
+      <Variable Identifier="d" Value="500e-3" />
+      <Variable Identifier="T" Value="2" />
+      <Variable Identifier="Z" Value="1" />
+      <Variable Identifier="η" Value="900e-3" />
+      <Variable Identifier="W↓H←" Value="800" />
+      <Variable Identifier="H" Value="4" />
+      <Variable Identifier="s" Value="20e-3" />
+      <Variable Identifier="γ↓P←" Value="2.5" />
+      <Variable Identifier="TI" Value="1|0,6|0,8║2|0,55|0,75║5|0,45|0,25║5|0,5|0,5" />
+      <Variable Identifier="Type1" Value="1" />
+      <Variable Identifier="Type2" Value="0" />
+      <Variable Identifier="Type3" Value="0" />
+      <Variable Identifier="Type4" Value="2" />
+      <Variable Identifier="Type5" Value="0" />
+    </Dialog>
+    <Input Name="A↓s←" Type="Numeric" ESA_ID="" Value="196.3494e-3" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="500e-3" />
+    <Input Name="Draw" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="E↓c←" Type="Numeric" ESA_ID="CONCRETE.EC.Ecm" Value="27e9" />
+    <Input Name="H" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust, Bažant, ČSN 73 1002" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Result Name="Q" Type="Numeric" ESA_ID="Result.2" Value="136071.2" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.3" Value="245044" />
+    <Input Name="s" Type="Numeric" ESA_ID="" Value="20e-3" />
+    <Result Name="s↓e←" Type="Numeric" ESA_ID="Result.1" Value="2.330771e-3" />
+    <Input Name="Scale" Type="Numeric" ESA_ID="" Value="30" />
+    <Input Name="T" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="Type1" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Type2" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Type3" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Type4" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="Type5" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="U↓vs←" Type="Numeric" ESA_ID="Result.0" Value="54428.49" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="1.5e6" />
+    <Input Name="W↓H←" Type="Numeric" ESA_ID="" Value="800" />
+    <Input Name="Z" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓f1←" Type="Numeric" ESA_ID="" Value="1.2" />
+    <Input Name="γ↓f2←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓f3←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓f4←" Type="Numeric" ESA_ID="" Value="700e-3" />
+    <Input Name="γ↓P←" Type="Numeric" ESA_ID="" Value="2.5" />
+    <Input Name="η" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.14159" />
+  </Test>
+  <Test Description="Test 3" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 25/30" Collapsed="True" />
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust, Bažant, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="Draw" Value="True" />
+      <Variable Identifier="V↓d←" Value="1.2e6" />
+      <Variable Identifier="L" Value="7.5" />
+      <Variable Identifier="d" Value="650e-3" />
+      <Variable Identifier="T" Value="3" />
+      <Variable Identifier="Z" Value="0" />
+      <Variable Identifier="η" Value="900e-3" />
+      <Variable Identifier="W↓H←" Value="800" />
+      <Variable Identifier="H" Value="4" />
+      <Variable Identifier="s" Value="20e-3" />
+      <Variable Identifier="γ↓P←" Value="2.5" />
+      <Variable Identifier="TI" Value="1|0,6|0,8║2|0,55|0,75║5|0,45|0,25║5|0,5|0,5" />
+      <Variable Identifier="Type1" Value="1" />
+      <Variable Identifier="Type2" Value="0" />
+      <Variable Identifier="Type3" Value="2" />
+      <Variable Identifier="Type4" Value="1" />
+      <Variable Identifier="Type5" Value="0" />
+    </Dialog>
+    <Input Name="A↓s←" Type="Numeric" ESA_ID="" Value="331.8304e-3" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="650e-3" />
+    <Input Name="Draw" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="E↓c←" Type="Numeric" ESA_ID="CONCRETE.EC.Ecm" Value="31e9" />
+    <Input Name="H" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="7.5" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust, Bažant, ČSN 73 1002" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Result Name="Q" Type="Numeric" ESA_ID="Result.2" Value="136982.1" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.3" Value="2.893561e6" />
+    <Input Name="s" Type="Numeric" ESA_ID="" Value="20e-3" />
+    <Result Name="s↓e←" Type="Numeric" ESA_ID="Result.1" Value="2.049288e-3" />
+    <Input Name="Scale" Type="Numeric" ESA_ID="" Value="30" />
+    <Input Name="T" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="Type1" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Type2" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Type3" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="Type4" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Type5" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="U↓vs←" Type="Numeric" ESA_ID="Result.0" Value="136982.1" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="1.2e6" />
+    <Input Name="W↓H←" Type="Numeric" ESA_ID="" Value="800" />
+    <Input Name="Z" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="γ↓f1←" Type="Numeric" ESA_ID="" Value="1.8" />
+    <Input Name="γ↓f2←" Type="Numeric" ESA_ID="" Value="1.6" />
+    <Input Name="γ↓f3←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓f4←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓P←" Type="Numeric" ESA_ID="" Value="2.5" />
+    <Input Name="η" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.14159" />
+  </Test>
+  <Test Description="Test 4" Author="SCIA-ONLINE\jkrsik" Active="1" Date="2013.10.24">
+    <Dialog>
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 25/30" Collapsed="True" />
+      <Variable Identifier="H1" Value="True" />
+      <Variable Identifier="NA" Value="Masopust, Bažant, ČSN 73 1002" />
+      <Variable Identifier="PrintCaption" Value="False" />
+      <Variable Identifier="H2" Value="Userdefined headline" />
+      <Variable Identifier="Draw" Value="True" />
+      <Variable Identifier="V↓d←" Value="1.2e6" />
+      <Variable Identifier="L" Value="7.5" />
+      <Variable Identifier="d" Value="650e-3" />
+      <Variable Identifier="T" Value="1" />
+      <Variable Identifier="Z" Value="3" />
+      <Variable Identifier="η" Value="900e-3" />
+      <Variable Identifier="W↓H←" Value="800" />
+      <Variable Identifier="H" Value="4" />
+      <Variable Identifier="s" Value="20e-3" />
+      <Variable Identifier="γ↓P←" Value="2.5" />
+      <Variable Identifier="TI" Value="1|0,6|0,8║2|0,55|0,75║5|0,45|0,25║5|0,5|0,5" />
+      <Variable Identifier="Type1" Value="1" />
+      <Variable Identifier="Type2" Value="0" />
+      <Variable Identifier="Type3" Value="2" />
+      <Variable Identifier="Type4" Value="1" />
+      <Variable Identifier="Type5" Value="0" />
+    </Dialog>
+    <Input Name="A↓s←" Type="Numeric" ESA_ID="" Value="331.8304e-3" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="650e-3" />
+    <Input Name="Draw" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="E↓c←" Type="Numeric" ESA_ID="CONCRETE.EC.Ecm" Value="31e9" />
+    <Input Name="H" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="H1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="H2" Type="String" ESA_ID="" Value="Userdefined headline" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="7.5" />
+    <Input Name="NA" Type="String" ESA_ID="" Value="Masopust, Bažant, ČSN 73 1002" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="False" />
+    <Result Name="Q" Type="Numeric" ESA_ID="Result.2" Value="136982.1" />
+    <Result Name="R↓d←" Type="Numeric" ESA_ID="Result.3" Value="891960.2" />
+    <Input Name="s" Type="Numeric" ESA_ID="" Value="20e-3" />
+    <Result Name="s↓e←" Type="Numeric" ESA_ID="Result.1" Value="2.049288e-3" />
+    <Input Name="Scale" Type="Numeric" ESA_ID="" Value="30" />
+    <Input Name="T" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Type1" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Type2" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Type3" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="Type4" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Type5" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="U↓vs←" Type="Numeric" ESA_ID="Result.0" Value="136982.1" />
+    <Input Name="V↓d←" Type="Numeric" ESA_ID="" Value="1.2e6" />
+    <Input Name="W↓H←" Type="Numeric" ESA_ID="" Value="800" />
+    <Input Name="Z" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="γ↓f1←" Type="Numeric" ESA_ID="" Value="1.2" />
+    <Input Name="γ↓f2←" Type="Numeric" ESA_ID="" Value="1.2" />
+    <Input Name="γ↓f3←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="γ↓f4←" Type="Numeric" ESA_ID="" Value="700e-3" />
+    <Input Name="γ↓P←" Type="Numeric" ESA_ID="" Value="2.5" />
+    <Input Name="η" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="π" Type="Numeric" ESA_ID="" Value="3.14159" />
+  </Test>
+</Root>

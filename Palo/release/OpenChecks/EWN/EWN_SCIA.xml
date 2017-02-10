@@ -1,0 +1,26 @@
+<Root Type="CustomLibrary">
+  <Node Code="E_System_01">
+    <Desc TranslateID="E_System_01_Desc">
+      <ENU>Example of system error.</ENU>
+    </Desc>
+    <Sol TranslateID="E_System_01_Sol">
+      <ENU>No solution.</ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_System_01">
+    <Desc TranslateID="W_System_01_Desc">
+      <ENU>Example of system warning.</ENU>
+    </Desc>
+    <Sol TranslateID="W_System_01_Sol">
+      <ENU>No solution.</ENU>
+    </Sol>
+  </Node>
+  <Node Code="N_System_01">
+    <Desc TranslateID="N_System_01_Desc">
+      <ENU>Example of system note.</ENU>
+    </Desc>
+    <Sol TranslateID="N_System_01_Sol">
+      <ENU>No solution.</ENU>
+    </Sol>
+  </Node>
+</Root>

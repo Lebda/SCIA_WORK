@@ -1,0 +1,461 @@
+<Root Type="CustomLibrary">
+  <Node Code="E_cb01">
+    <Desc TranslateID="E_cb01_Desc">
+      <ENU>The structural type of the member is not supported.</ENU>
+    </Desc>
+    <Sol TranslateID="E_cb01_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E_cb02">
+    <Desc TranslateID="E_cb02_Desc">
+      <ENU>Effective width is not allowed to be zero.</ENU>
+    </Desc>
+    <Sol TranslateID="E_cb02_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E_cb03">
+    <Desc TranslateID="E_cb03_Desc">
+      <ENU>The cross-section of the member is not supported.</ENU>
+    </Desc>
+    <Sol TranslateID="E_cb03_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E_cb04">
+    <Desc TranslateID="E_cb04_Desc">
+      <ENU>The angle between the member and ribs of profiled steel sheeting is bigger than 10 degrees.</ENU>
+    </Desc>
+    <Sol TranslateID="E_cb04_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E_cb05">
+    <Desc TranslateID="E_cb05_Desc">
+      <ENU>The analysis model of the slab is not supported!</ENU>
+    </Desc>
+    <Sol TranslateID="E_cb05_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E_cb09">
+    <Desc TranslateID="E_cb09_Desc">
+      <ENU>Extreme shear. Bending moment resistance not designable.</ENU>
+    </Desc>
+    <Sol TranslateID="E_cb09_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E_cb10">
+    <Desc TranslateID="E_cb10_Desc">
+      <ENU>Height of the slab h↓s← is in conflict with depth of the ribs h↓p.←</ENU>
+    </Desc>
+    <Sol TranslateID="E_cb10_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E_cb11">
+    <Desc TranslateID="E_cb11_Desc">
+      <ENU>Height of the slab h↓s← is in conflict with nominal height of the shear connectors h↓sc.←</ENU>
+    </Desc>
+    <Sol TranslateID="E_cb11_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E_cb12">
+    <Desc TranslateID="E_cb12_Desc">
+      <ENU>Wrong input for the calculation of b↓eff.← Calculation did not finish.</ENU>
+    </Desc>
+    <Sol TranslateID="E_cb12_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E_cb15">
+    <Desc TranslateID="E_cb15_Desc">
+      <ENU>The plastic neutral axis is located outside of the steel section.</ENU>
+    </Desc>
+    <Sol TranslateID="E_cb15_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E_cb16">
+    <Desc TranslateID="E_cb16_Desc">
+      <ENU>Type of connection in the slab is not supported.</ENU>
+    </Desc>
+    <Sol TranslateID="E_cb16_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E_cb17">
+    <Desc TranslateID="E_cb17_Desc">
+      <ENU>Composite beam data missing.</ENU>
+    </Desc>
+    <Sol TranslateID="E_cb17_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E_cb18">
+    <Desc TranslateID="E_cb18_Desc">
+      <ENU>Incorrect material of the slab.</ENU>
+    </Desc>
+    <Sol TranslateID="E_cb18_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E_cb19">
+    <Desc TranslateID="E_cb19_Desc">
+      <ENU>Not enough space to place connectors on the beam flange. </ENU>
+    </Desc>
+    <Sol TranslateID="E_cb19_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N_cb01">
+    <Desc TranslateID="N_cb01_Desc">
+      <ENU>The angle between the member and the ribs of profiled steel sheeting is smaller than 10° thus the ribs are considered as parallel to the beam.</ENU>
+    </Desc>
+    <Sol TranslateID="N_cb01_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N_cb02">
+    <Desc TranslateID="N_cb02_Desc">
+      <ENU>The angle between the direction perpendicular to the member and the ribs of profiled steel sheeting is smaller than 10° thus the ribs are considered as transverse to the beam.</ENU>
+    </Desc>
+    <Sol TranslateID="N_cb02_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N_cb03">
+    <Desc TranslateID="N_cb03_Desc">
+      <ENU>The bending moment resistance is reduced due to the influence of the vertical shear.                                 </ENU>
+    </Desc>
+    <Sol TranslateID="N_cb03_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N_cb04">
+    <Desc TranslateID="N_cb04_Desc">
+      <ENU>The effects of incomplete interaction are not taken into account.</ENU>
+    </Desc>
+    <Sol TranslateID="N_cb04_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N_cb05">
+    <Desc TranslateID="N_cb05_Desc">
+      <ENU>A reduced value of compressive force N↓c,f← is used according to the EN 1994-1-1 Art.6.2.1.3 (3)</ENU>
+    </Desc>
+    <Sol TranslateID="N_cb05_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N_cb06">
+    <Desc TranslateID="N_cb06_Desc">
+      <ENU>An alternative method for degree of shear connection according to EN 1994-1-1 6.6.1.2 (3) is used.</ENU>
+    </Desc>
+    <Sol TranslateID="N_cb06_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N_cb07">
+    <Desc TranslateID="N_cb07_Desc">
+      <ENU>The effects of autogenous shrinkag is neglected according to EN 1994-1-1 Art 3.1 (4).</ENU>
+    </Desc>
+    <Sol TranslateID="N_cb07_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N_cb08">
+    <Desc TranslateID="N_cb08_Desc">
+      <ENU>The construction stage check is not performed for propped members.</ENU>
+    </Desc>
+    <Sol TranslateID="N_cb08_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb01">
+    <Desc TranslateID="W_cb01_Desc">
+      <ENU>The shear buckling resistance of the web needs to be verified.</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb01_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb02">
+    <Desc TranslateID="W_cb02_Desc">
+      <ENU>Condition given by EN 1994-1-1 Art. 6.6.5.7 (1) is not fulfilled.</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb02_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb03">
+    <Desc TranslateID="W_cb03_Desc">
+      <ENU>The conditions given by EN 1994-1-1 Art.6.6.4.2 (3) are not fulfilled.</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb03_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb04">
+    <Desc TranslateID="W_cb04_Desc">
+      <ENU>The actual angle of concrete strut is outside the limits.</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb04_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb05">
+    <Desc TranslateID="W_cb05_Desc">
+      <ENU>Concrete material of the slab does not conform to EN 1994-1-1 Art. 3.1 (2).</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb05_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb06">
+    <Desc TranslateID="W_cb06_Desc">
+      <ENU>Steel material of the beam does not conform to EN 1994-1-1 Art. 3.3 (2).</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb06_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb07">
+    <Desc TranslateID="W_cb07_Desc">
+      <ENU>The nominal thickness of steel sheeting is smaller than minimum recommended value given by EN 1994-1-1 Art. 3.5 (2).</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb07_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb08">
+    <Desc TranslateID="W_cb08_Desc">
+      <ENU>The cross-section is not qualified for verification of LTB by the simplified method.</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb08_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb09">
+    <Desc TranslateID="W_cb09_Desc">
+      <ENU>Condition given by EN 1994-1-1 Art. 6.6.5.6 (2) is not fulfilled.</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb09_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb10">
+    <Desc TranslateID="W_cb10_Desc">
+      <ENU>Condition given by EN 1994-1-1 Art. 6.6.5.7 (4) is not fulfilled.</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb10_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb11">
+    <Desc TranslateID="W_cb11_Desc">
+      <ENU>Condition given by EN 1994-1-1 Art. 6.6.5.7 (5) is not fulfilled.</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb11_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb12">
+    <Desc TranslateID="W_cb12_Desc">
+      <ENU>Condition given by EN 1994-1-1 Art. 6.6.5.8 (1) is not fulfilled.</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb12_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb13">
+    <Desc TranslateID="W_cb13_Desc">
+      <ENU>Condition given by EN 1994-1-1 Art. 6.6.5.8 (2) is not fulfilled.</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb13_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb14">
+    <Desc TranslateID="W_cb14_Desc">
+      <ENU>Conditions given by EN 1994-1-1 Art. 6.6.1.2 (1) are not fulfilled.</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb14_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb15">
+    <Desc TranslateID="W_cb15_Desc">
+      <ENU>Conditions given by EN 1994-1-1 Art. 6.6.1.2 (3) are not fulfilled.</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb15_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb16">
+    <Desc TranslateID="W_cb16_Desc">
+      <ENU>Maximum number of studs is exceeded.</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb16_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb17">
+    <Desc TranslateID="W_cb17_Desc">
+      <ENU>Condition given by EN 1994-1-1 Art. 6.6.5.5 (3) is not fulfilled.</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb17_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb18">
+    <Desc TranslateID="W_cb18_Desc">
+      <ENU>Condition given by EN 1994-1-1 Art. 6.6.5.7 (4) is not fulfilled.</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb18_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb19">
+    <Desc TranslateID="W_cb19_Desc">
+      <ENU>Height of a full slab is smaller than 40mm.</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb19_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb20">
+    <Desc TranslateID="W_cb20_Desc">
+      <ENU>Unsuitable Web Class.</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb20_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb21">
+    <Desc TranslateID="W_cb21_Desc">
+      <ENU>Unsuitable Flange Class.</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb21_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb22">
+    <Desc TranslateID="W_cb22_Desc">
+      <ENU>Unsuitable cross-section classification.</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb22_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb23">
+    <Desc TranslateID="W_cb23_Desc">
+      <ENU>The shear connection degree is not adequate.</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb23_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb24">
+    <Desc TranslateID="W_cb24_Desc">
+      <ENU>Full degree of shear connection is required according to EN 1994-1-1, Art. 6.2.1.3 (2).</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb24_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb25">
+    <Desc TranslateID="W_cb25_Desc">
+      <ENU>For a continuous beam, intermediate buckling supports y-y are ignored in both the calculation of the effective width for the analysis model and the check.</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb25_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb26">
+    <Desc TranslateID="W_cb26_Desc">
+      <ENU>Deflection limit is set to zero in composite setup, thus cannot be fulfilled. </ENU>
+    </Desc>
+    <Sol TranslateID="W_cb26_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W_cb27">
+    <Desc TranslateID="W_cb27_Desc">
+      <ENU>Camber is neglected in moment-connected beams.</ENU>
+    </Desc>
+    <Sol TranslateID="W_cb27_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E_cb20">
+    <Desc TranslateID="E_cb20_Desc">
+      <ENU>Height of the slab h↓s← is in conflict with depth of the ribs h↓p← and height of the re-entrant stiffener h↓d←.</ENU>
+    </Desc>
+    <Sol TranslateID="E_cb20_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E_cb21">
+    <Desc TranslateID="E_cb21_Desc">
+      <ENU>Incorrect position of the reinforcement within the slab.</ENU>
+    </Desc>
+    <Sol TranslateID="E_cb21_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+</Root>

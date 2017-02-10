@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<configuration>
+   <blocks description="Blocks are ESA files with prepered parts of constructions.">
+      <filenames description="There are filenames of blocks relative to program location.">
+         <base_project  filename="HallMaker\Base_Template.esa"/>
+         <left_column  filename="HallMaker\Col_Left.esa"/>
+         <left_column_prismatic  filename="HallMaker\Col_Left_SP.esa"/>
+         <left_column_symmetric  filename="HallMaker\Col_Left_sym.esa"/>
+         <left_column_prismatic_ipe  filename="HallMaker\Col_Left_IPE.esa"/>
+         <left_column_prismatic_hea  filename="HallMaker\Col_Left_HEA.esa"/>
+         <left_column_prismatic_heb  filename="HallMaker\Col_Left_HEB.esa"/>
+         <right_column  filename="HallMaker\Col_Right.esa"/>
+         <right_column_prismatic  filename="HallMaker\Col_Right_SP.esa"/>
+         <right_column_symmetric  filename="HallMaker\Col_Right_sym.esa"/>
+         <right_column_prismatic_ipe  filename="HallMaker\Col_Right_IPE.esa"/>
+         <right_column_prismatic_hea  filename="HallMaker\Col_Right_HEA.esa"/>
+         <right_column_prismatic_heb  filename="HallMaker\Col_Right_HEB.esa"/>
+         <middle_column  filename="HallMaker\Col_Mid.esa"/>
+         <middle_column_prismatic  filename="HallMaker\Col_Mid_SP.esa"/>
+         <middle_column_symmetric  filename="HallMaker\Col_Mid_sym.esa"/>
+         <middle_column_prismatic_ipe  filename="HallMaker\Col_Mid_IPE.esa"/>
+         <middle_column_prismatic_hea  filename="HallMaker\Col_Mid_HEA.esa"/>
+         <middle_column_prismatic_heb  filename="HallMaker\Col_Mid_HEB.esa"/>
+         <left_beam  filename="HallMaker\Beam_Left.esa"/>
+         <left_beam_prismatic  filename="HallMaker\Beam_Left_SP.esa"/>
+         <left_beam_symmetric  filename="HallMaker\Beam_Left_sym.esa"/>
+         <right_beam  filename="HallMaker\Beam_Right.esa"/>
+         <right_beam_prismatic  filename="HallMaker\Beam_Right_SP.esa"/>
+         <right_beam_symmetric  filename="HallMaker\Beam_Right_sym.esa"/>
+         <right_beam_mono  filename="HallMaker\Beam_Right_mono.esa"/>
+         <right_beam_mono_prismatic  filename="HallMaker\Beam_Right_mono_SP.esa"/>
+         <right_beam_mono_symmetric  filename="HallMaker\Beam_Right_mono_sym.esa"/>
+         <joint  filename="HallMaker\Rigid_arm.esa"/>
+         <rigid_support  filename="HallMaker\Supp_Fix.esa"/>
+         <free_support  filename="HallMaker\Supp_Hinge.esa"/>
+         <free_support_XFree  filename="HallMaker\Supp_Hinge_XFree.esa"/>
+         <rigid_support_with_displacement  filename="HallMaker\Supp_Fix_Dis.esa"/>
+         <free_support_with_displacement  filename="HallMaker\Supp_Hinge_Dis.esa"/>
+         <free_support_XFree_with_displacement  filename="HallMaker\Supp_Hinge_Dis_XFree.esa"/>
+         <right_corner  filename="HallMaker\Corner_Right.esa"/>
+         <right_corner_mono  filename="HallMaker\Corner_Right_mono.esa"/>
+         <left_corner  filename="HallMaker\Corner_Left.esa"/>
+         <right_corner_HEA  filename="HallMaker\Corner_Right_HEA.esa"/>
+         <right_corner_mono_HEA  filename="HallMaker\Corner_Right_mono_HEA.esa"/>
+         <left_corner_HEA  filename="HallMaker\Corner_Left_HEA.esa"/>
+         <right_corner_HEB  filename="HallMaker\Corner_Right_HEB.esa"/>
+         <right_corner_mono_HEB  filename="HallMaker\Corner_Right_mono_HEB.esa"/>
+         <left_corner_HEB  filename="HallMaker\Corner_Left_HEB.esa"/>
+         <right_corner_IPE  filename="HallMaker\Corner_Right_IPE.esa"/>
+         <right_corner_mono_IPE  filename="HallMaker\Corner_Right_mono_IPE.esa"/>
+         <left_corner_IPE  filename="HallMaker\Corner_Left_IPE.esa"/>
+         <right_bracket  filename="HallMaker\Bracket_Right.esa"/>
+         <left_bracket  filename="HallMaker\Bracket_Left.esa"/>
+         <right_suspension  filename="HallMaker\Suspension_Right.esa"/>
+         <left_suspension  filename="HallMaker\Suspension_Left.esa"/>
+         <right_canopy_ipe  filename="HallMaker\Canopy_Right.esa"/>
+         <left_canopy_ipe  filename="HallMaker\Canopy_Left.esa"/>
+         <right_canopy_hea  filename="HallMaker\Canopy_Right.esa"/>
+         <left_canopy_hea  filename="HallMaker\Canopy_Left.esa"/>
+         <right_canopy_heb  filename="HallMaker\Canopy_Right.esa"/>
+         <left_canopy_heb  filename="HallMaker\Canopy_Left.esa"/></filenames>
+      <parameters description="There are names of block parameters at this section.">
+         <cross_section>
+            <bottom_web_height  name="H1"/>
+            <top_web_height  name="H2"/>
+            <thickness_of_web  name="tw"/>
+            <out_flange_width  name="bfo"/>
+            <in_flange_width  name="bfi"/>
+            <out_flange_thickness  name="tfo"/>
+            <in_flange_thickness  name="tfi"/></cross_section>
+         <support>
+            <point_x  name="N1x"/>
+            <point_y  name="N1y"/>
+            <displacement_X  name="dx"/>
+            <displacement_y  name="dy"/>
+            <displacement_j  name="j"/></support>
+         <canopy>
+            <first_point_x  name="N1x"/>
+            <first_point_y  name="N1y"/>
+            <second_point_x  name="N2x"/>
+            <second_point_y  name="N2y"/></canopy>
+         <crane>
+            <height  name="H"/>
+            <first_point_x  name="N1x"/>
+            <first_point_y  name="N1y"/>
+            <second_point_x  name="N2x"/>
+            <second_point_y  name="N2y"/>
+            <r_max  name="Rmax"/>
+            <r_min  name="Rmin"/>
+            <h_s  name="Hs"/>
+            <h_m  name="Hm"/></crane>
+         <joint>
+            <first_point_x  name="Nax1"/>
+            <first_point_y  name="Nay1"/>
+            <second_point_x  name="Nax2"/>
+            <second_point_y  name="Nay2"/></joint></parameters>
+      <defaults>
+         <column>
+            <self_weight value="0.3"/>
+            <live_load value="0.15"/>
+            <two_roof_base_ratio value="100"/></column>
+         <flange>
+            <min_width value="0.16"/>
+            <max_width value="0.6"/>
+            <min_thickness value="0.005"/>
+            <max_thickness value="0.04"/></flange></defaults>
+      <excel_data description="There are data for excel.">
+         <FrameCorner1_Splice>
+            <file  excel_filename="HallMaker\1 - FrameCorner1_Splice - v1.xls"/>
+            <price  sheet="1 Ausgabe Vorstatik" range="E4"/>
+            <weight  sheet="1 Ausgabe Vorstatik" range="E3"/>
+            <picture  sheet="3 Ausgabe Ausführung+Nachweise" range="a1:o51"/>
+            <bill_of_material  sheet="3 Ausgabe Ausführung+Nachweise" range="B60:p108"/>
+            <check  sheet="3 Ausgabe Ausführung+Nachweise" range="b109:P157"/>
+            <input  sheet="eingabe" range="B18:W50"/></FrameCorner1_Splice>
+         <FrameCorner1_Endplate>
+            <file  excel_filename="HallMaker\2+3 -FrameCorner1_Endplate- v1.xls"/>
+            <price  sheet="1 Ausgabe Vorstatik" range="E4"/>
+            <weight  sheet="1 Ausgabe Vorstatik" range="E3"/>
+            <picture  sheet="3 Ausgabe Ausführung+Nachweise" range="a1:o51"/>
+            <bill_of_material  sheet="3 Ausgabe Ausführung+Nachweise" range="B60:p108"/>
+            <check  sheet="3 Ausgabe Ausführung+Nachweise" range="b109:P157"/>
+            <input  sheet="eingabe" range="B18:W50"/></FrameCorner1_Endplate>
+         <FrameCorner_hinged_Braket>
+            <file  excel_filename="HallMaker\7 - FrameCorner_hinged_Braket - v1.xls"/>
+            <price  sheet="1 Ausgabe Vorstatik" range="E4"/>
+            <weight  sheet="1 Ausgabe Vorstatik" range="E3"/>
+            <picture  sheet="3 Ausgabe Ausführung+Nachweise" range="a1:o51"/>
+            <bill_of_material  sheet="3 Ausgabe Ausführung+Nachweise" range="B60:p108"/>
+            <check  sheet="3 Ausgabe Ausführung+Nachweise" range="b109:P157"/>
+            <input  sheet="eingabe" range="B18:W50"/></FrameCorner_hinged_Braket>
+         <FrameCorner_hinged_Splice>
+            <file  excel_filename="HallMaker\8- FrameCorner_hinged_Splice - v1.xls"/>
+            <price  sheet="1 Ausgabe Vorstatik" range="E4"/>
+            <weight  sheet="1 Ausgabe Vorstatik" range="E3"/>
+            <picture  sheet="3 Ausgabe Ausführung+Nachweise" range="a1:o51"/>
+            <bill_of_material  sheet="3 Ausgabe Ausführung+Nachweise" range="B60:p108"/>
+            <check  sheet="3 Ausgabe Ausführung+Nachweise" range="b109:P157"/>
+            <input  sheet="eingabe" range="B18:W50"/></FrameCorner_hinged_Splice>
+         <ColumnBase_hotrolled>
+            <file  excel_filename="HallMaker\11 - ColumnBase_hotrolled - v1.xls"/>
+            <price  sheet="1 Ausgabe Vorstatik" range="E4"/>
+            <weight  sheet="1 Ausgabe Vorstatik" range="E3"/>
+            <picture  sheet="3 Ausgabe Ausführung+Nachweise" range="a1:o51"/>
+            <bill_of_material  sheet="3 Ausgabe Ausführung+Nachweise" range="B60:p108"/>
+            <check  sheet="3 Ausgabe Ausführung+Nachweise" range="b109:P157"/>
+            <input  sheet="eingabe" range="B18:W50"/></ColumnBase_hotrolled>
+         <InterColumn1_Endplate>
+            <file  excel_filename="HallMaker\15+16 - InterColumn1_Endplate - v1.xls"/>
+            <price  sheet="1 Ausgabe Vorstatik" range="E4"/>
+            <weight  sheet="1 Ausgabe Vorstatik" range="E3"/>
+            <picture  sheet="3 Ausgabe Ausführung+Nachweise" range="a1:o51"/>
+            <bill_of_material  sheet="3 Ausgabe Ausführung+Nachweise" range="B60:p108"/>
+            <check  sheet="3 Ausgabe Ausführung+Nachweise" range="b109:P157"/>
+            <input  sheet="eingabe" range="B18:W50"/></InterColumn1_Endplate>
+         <Beam_Endplate>
+            <file  excel_filename="HallMaker\22-23 - Beam_Endplate - v1.xls"/>
+            <price  sheet="1 Ausgabe Vorstatik" range="E4"/>
+            <weight  sheet="1 Ausgabe Vorstatik" range="E3"/>
+            <picture  sheet="3 Ausgabe Ausführung+Nachweise" range="a1:o51"/>
+            <bill_of_material  sheet="3 Ausgabe Ausführung+Nachweise" range="B60:p108"/>
+            <check  sheet="3 Ausgabe Ausführung+Nachweise" range="b109:P157"/>
+            <input  sheet="eingabe" range="B18:W50"/></Beam_Endplate>
+         <Beam_Splice>
+            <file  excel_filename="HallMaker\24 -Beam_Splice - v1.xls"/>
+            <price  sheet="1 Ausgabe Vorstatik" range="E4"/>
+            <weight  sheet="1 Ausgabe Vorstatik" range="E3"/>
+            <picture  sheet="3 Ausgabe Ausführung+Nachweise" range="a1:o51"/>
+            <bill_of_material  sheet="3 Ausgabe Ausführung+Nachweise" range="B60:p108"/>
+            <check  sheet="3 Ausgabe Ausführung+Nachweise" range="b109:P157"/>
+            <input  sheet="eingabe" range="B18:W50"/></Beam_Splice>
+         <Beam_Welded>
+            <file  excel_filename="HallMaker\25 - Beam_Welded - v1.xls"/>
+            <price  sheet="1 Ausgabe Vorstatik" range="E4"/>
+            <weight  sheet="1 Ausgabe Vorstatik" range="E3"/>
+            <picture  sheet="3 Ausgabe Ausführung+Nachweise" range="a1:o51"/>
+            <bill_of_material  sheet="3 Ausgabe Ausführung+Nachweise" range="B60:p108"/>
+            <check  sheet="3 Ausgabe Ausführung+Nachweise" range="b109:P157"/>
+            <input  sheet="eingabe" range="B18:W50"/></Beam_Welded>
+         <InterColumn2_Endplate>
+            <file  excel_filename="HallMaker\14+18 - InterCol2_Endplate - v1.xls"/>
+            <price  sheet="1 Ausgabe Vorstatik" range="E4"/>
+            <weight  sheet="1 Ausgabe Vorstatik" range="E3"/>
+            <picture  sheet="3 Ausgabe Ausführung+Nachweise" range="a1:o51"/>
+            <bill_of_material  sheet="3 Ausgabe Ausführung+Nachweise" range="B60:p108"/>
+            <check  sheet="3 Ausgabe Ausführung+Nachweise" range="b109:P157"/>
+            <input  sheet="eingabe" range="B18:AA50"/></InterColumn2_Endplate>
+         <ColumnBase_fixed>
+            <file  excel_filename="HallMaker\9 - ColumnBase_fixed - v1.xls"/>
+            <price  sheet="1 Ausgabe Vorstatik" range="E4"/>
+            <weight  sheet="1 Ausgabe Vorstatik" range="E3"/>
+            <picture  sheet="3 Ausgabe Ausführung+Nachweise" range="a1:o51"/>
+            <bill_of_material  sheet="3 Ausgabe Ausführung+Nachweise" range="B60:p108"/>
+            <check  sheet="3 Ausgabe Ausführung+Nachweise" range="b109:P157"/>
+            <input  sheet="eingabe" range="B18:W50"/></ColumnBase_fixed>
+         <ColumnBase_Endplates_fixed>
+            <file  excel_filename="HallMaker\10 - ColumnBase_Endplates_fixed - v1.xls"/>
+            <price  sheet="1 Ausgabe Vorstatik" range="E4"/>
+            <weight  sheet="1 Ausgabe Vorstatik" range="E3"/>
+            <picture  sheet="3 Ausgabe Ausführung+Nachweise" range="a1:o51"/>
+            <bill_of_material  sheet="3 Ausgabe Ausführung+Nachweise" range="B60:p108"/>
+            <check  sheet="3 Ausgabe Ausführung+Nachweise" range="b109:P157"/>
+            <input  sheet="eingabe" range="B18:W50"/></ColumnBase_Endplates_fixed>
+         <Columnbase_Stiffener>
+            <file  excel_filename="HallMaker\12 - Columnbase-Stiffener-v1.xls"/>
+            <price  sheet="1 Ausgabe Vorstatik" range="E4"/>
+            <weight  sheet="1 Ausgabe Vorstatik" range="E3"/>
+            <picture  sheet="3 Ausgabe Ausführung+Nachweise" range="a1:o51"/>
+            <bill_of_material  sheet="3 Ausgabe Ausführung+Nachweise" range="B60:p108"/>
+            <check  sheet="3 Ausgabe Ausführung+Nachweise" range="b109:P157"/>
+            <input  sheet="eingabe" range="B18:W50"/></Columnbase_Stiffener>
+         <ColumnBase_Endplate_hinge>
+            <file  excel_filename="HallMaker\13 - ColumnBase_Endplate_hinge - v1.xls"/>
+            <price  sheet="1 Ausgabe Vorstatik" range="E4"/>
+            <weight  sheet="1 Ausgabe Vorstatik" range="E3"/>
+            <picture  sheet="3 Ausgabe Ausführung+Nachweise" range="a1:o51"/>
+            <bill_of_material  sheet="3 Ausgabe Ausführung+Nachweise" range="B60:p108"/>
+            <check  sheet="3 Ausgabe Ausführung+Nachweise" range="b109:P157"/>
+            <input  sheet="eingabe" range="B18:W50"/></ColumnBase_Endplate_hinge>
+         <InterColumn_Splice>
+            <file  excel_filename="HallMaker\17 - InterColumn_Splice - v1.xls"/>
+            <price  sheet="1 Ausgabe Vorstatik" range="E4"/>
+            <weight  sheet="1 Ausgabe Vorstatik" range="E3"/>
+            <picture  sheet="3 Ausgabe Ausführung+Nachweise" range="a1:o51"/>
+            <bill_of_material  sheet="3 Ausgabe Ausführung+Nachweise" range="B60:p108"/>
+            <check  sheet="3 Ausgabe Ausführung+Nachweise" range="b109:P157"/>
+            <input  sheet="eingabe" range="B18:W50"/></InterColumn_Splice>
+         <FrameCorner2_Splice>
+            <file  excel_filename="HallMaker\n4 - FrameCorner2_Splice - v1.xls"/>
+            <price  sheet="1 Ausgabe Vorstatik" range="E4"/>
+            <weight  sheet="1 Ausgabe Vorstatik" range="E3"/>
+            <picture  sheet="3 Ausgabe Ausführung+Nachweise" range="a1:o51"/>
+            <bill_of_material  sheet="3 Ausgabe Ausführung+Nachweise" range="B60:p108"/>
+            <check  sheet="3 Ausgabe Ausführung+Nachweise" range="b109:P157"/>
+            <input  sheet="eingabe" range="B18:AA53"/></FrameCorner2_Splice>
+         <FrameCorner2_Endplate>
+            <file  excel_filename="HallMaker\n5+6 - FrameCorner2_Endplate - v1.xls"/>
+            <price  sheet="1 Ausgabe Vorstatik" range="E4"/>
+            <weight  sheet="1 Ausgabe Vorstatik" range="E3"/>
+            <picture  sheet="3 Ausgabe Ausführung+Nachweise" range="a1:o51"/>
+            <bill_of_material  sheet="3 Ausgabe Ausführung+Nachweise" range="B60:p108"/>
+            <check  sheet="3 Ausgabe Ausführung+Nachweise" range="b109:P157"/>
+            <input  sheet="eingabe" range="B18:W50"/></FrameCorner2_Endplate>
+         <FrameCorner_welded>
+            <file  excel_filename="HallMaker\4 - FrameCorner_welded - v1.xls"/>
+            <price  sheet="1 Ausgabe Vorstatik" range="E4"/>
+            <weight  sheet="1 Ausgabe Vorstatik" range="E3"/>
+            <picture  sheet="3 Ausgabe Ausführung+Nachweise" range="a1:o51"/>
+            <bill_of_material  sheet="3 Ausgabe Ausführung+Nachweise" range="B60:p108"/>
+            <check  sheet="3 Ausgabe Ausführung+Nachweise" range="b109:P157"/>
+            <input  sheet="eingabe" range="B18:W50"/></FrameCorner_welded>
+         <CraneBraket_twoCol>
+            <file  excel_filename="HallMaker\19 - CraneBraket_twoCol - v1.xls"/>
+            <price  sheet="1 Ausgabe Vorstatik" range="E4"/>
+            <weight  sheet="1 Ausgabe Vorstatik" range="E3"/>
+            <picture  sheet="3 Ausgabe Ausführung+Nachweise" range="a1:o51"/>
+            <bill_of_material  sheet="3 Ausgabe Ausführung+Nachweise" range="B60:p108"/>
+            <check  sheet="3 Ausgabe Ausführung+Nachweise" range="b109:P157"/>
+            <input  sheet="eingabe" range="B18:W50"/></CraneBraket_twoCol>
+         <CraneBracket_hotrolled>
+            <file  excel_filename="HallMaker\20 - CraneBracket_hotrolled - v1-01.xls"/>
+            <price  sheet="1 Ausgabe Vorstatik" range="E4"/>
+            <weight  sheet="1 Ausgabe Vorstatik" range="E3"/>
+            <picture  sheet="3 Ausgabe Ausführung+Nachweise" range="a1:o51"/>
+            <bill_of_material  sheet="3 Ausgabe Ausführung+Nachweise" range="B60:p108"/>
+            <check  sheet="3 Ausgabe Ausführung+Nachweise" range="b109:P157"/>
+            <input  sheet="eingabe" range="B18:W50"/></CraneBracket_hotrolled>
+         <CraneBracket_Stiffener>
+            <file  excel_filename="HallMaker\21 - CraneBracket_Stiffener v1-01.xls"/>
+            <price  sheet="1 Ausgabe Vorstatik" range="E4"/>
+            <weight  sheet="1 Ausgabe Vorstatik" range="E3"/>
+            <picture  sheet="3 Ausgabe Ausführung+Nachweise" range="a1:o51"/>
+            <bill_of_material  sheet="3 Ausgabe Ausführung+Nachweise" range="B60:p108"/>
+            <check  sheet="3 Ausgabe Ausführung+Nachweise" range="b109:P157"/>
+            <input  sheet="eingabe" range="B18:W50"/></CraneBracket_Stiffener></excel_data>
+      <multibay description="Configuration parameters for multibay hall." how_to_join_roof_beam_to_interbay_column="ADD_JOINT"/></blocks></configuration>

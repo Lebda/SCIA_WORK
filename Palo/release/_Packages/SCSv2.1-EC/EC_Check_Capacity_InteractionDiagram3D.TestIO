@@ -1,0 +1,1645 @@
+﻿<Root>
+  <Test Description="Nu" Author="SCIA-ONLINE\jbroz" Active="1" Date="2014.09.25">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <Variable Identifier="PrintImages" Value="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 25/30" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|REINF.EC" Category="Inclined top branch" Item="B 500 A" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="1" Units="0">
+        <CS SelReinf="0" H="500e-3" B="250e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="64e-3" D_upper="14e-3" N_upper="2" c_lower="64e-3" D_lower="12e-3" N_lower="3" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="IDMethodOfCheck" Value="0" />
+      <Variable Identifier="DivisionOfStrain" Value="300" />
+      <Variable Identifier="NoOfPtsInVertCut" Value="180" />
+      <Variable Identifier="DrawPlainConcrete" Value="False" />
+      <Variable Identifier="DrawGrid" Value="True" />
+      <Variable Identifier="PrintEWN" Value="True" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+    </Dialog>
+    <Input Name="a" Type="Numeric" ESA_ID="" Value="-1" />
+    <Input Name="AccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Alpha" Type="Numeric" ESA_ID="" Value="128" />
+    <Input Name="AngleHorForHor" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Bilinear" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideHor3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideHor3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVert" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertGen3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertGen3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVertNMy3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertNMy3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVertNMz3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertNMz3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPrintCalculationSettings" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintInputData" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPrintLoad" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPrintMaterial" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="CalcImp" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="CalSecOrder" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Coeffε↓Sud←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="Combikey" Type="String" ESA_ID="" Value="" />
+    <Input Name="Count↓EWN←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="CssID" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="CssIDPlain" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="CssIDReinf" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="desAddData" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="DivisionOfStrain" Type="Numeric" ESA_ID="" Value="300" />
+    <Input Name="DrawGrid" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawPlainConcrete" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="DrawUltimateBorder" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="E6↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="EquivMoment" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="ErrorValue" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="16.66667e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="25e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="434.7826e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="500e6" />
+    <Input Name="ForcesID" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="GraphScale" Type="Numeric" ESA_ID="" Value="300" />
+    <Result Name="Check" Type="Numeric" ESA_ID="Result.8" Value="1" />
+    <Input Name="checkFirst" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="checkSecond" Type="Numeric" ESA_ID="" Value="-1" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="IDMethodOfCheck" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="IsoCol" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Limit↓check←" Type="Numeric" ESA_ID="Result.9" Value="1" />
+    <Input Name="ListEWN" Type="String" ESA_ID="" Value="" />
+    <Result Name="M↓Edy←" Type="Numeric" ESA_ID="Result.5" Value="0" />
+    <Result Name="M↓Edz←" Type="Numeric" ESA_ID="Result.6" Value="0" />
+    <Input Name="M↓Rd,res,max←" Type="Numeric" ESA_ID="" Value="69811.36" />
+    <Input Name="M↓Rd,res,min←" Type="Numeric" ESA_ID="" Value="-69811.36" />
+    <Input Name="M↓Rd,res,pl,max←" Type="Numeric" ESA_ID="" Value="140613.6" />
+    <Input Name="M↓Rd,res,pl,min←" Type="Numeric" ESA_ID="" Value="-140606.4" />
+    <Input Name="M↓Rdy,hor←" Type="Numeric" ESA_ID="" Value="8.721742e-27" />
+    <Input Name="M↓Rdy,MyMz,max←" Type="Numeric" ESA_ID="" Value="68557.84" />
+    <Input Name="M↓Rdy,MyMz,min←" Type="Numeric" ESA_ID="" Value="-63089.91" />
+    <Input Name="M↓Rdy,NMy,max←" Type="Numeric" ESA_ID="" Value="171924.6" />
+    <Input Name="M↓Rdy,NMy,min←" Type="Numeric" ESA_ID="" Value="-171926.6" />
+    <Input Name="M↓Rdy,NMy,pl,max←" Type="Numeric" ESA_ID="" Value="101828.8" />
+    <Input Name="M↓Rdy,NMy,pl,min←" Type="Numeric" ESA_ID="" Value="-101828.8" />
+    <Input Name="M↓Rdy,NMz,max←" Type="Numeric" ESA_ID="" Value="8.6402e-12" />
+    <Input Name="M↓Rdy,NMz,min←" Type="Numeric" ESA_ID="" Value="-8.526513e-12" />
+    <Input Name="M↓Rdy,NMz,pl,max←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓Rdy,NMz,pl,min←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓Rdy,pl←" Type="Numeric" ESA_ID="" Value="104.4355e-9" />
+    <Input Name="M↓Rdy,ult←" Type="Numeric" ESA_ID="" Value="-63089.91" />
+    <Input Name="M↓Rdy,ultyz←" Type="Numeric" ESA_ID="" Value="-63089.91" />
+    <Result Name="M↓Rdy←" Type="Numeric" ESA_ID="Result.2" Value="0" />
+    <Input Name="M↓Rdy1,hor←" Type="Numeric" ESA_ID="" Value="8.721742e-27" />
+    <Input Name="M↓Rdy1,pl←" Type="Numeric" ESA_ID="" Value="104.4355e-9" />
+    <Input Name="M↓Rdy1←" Type="Numeric" ESA_ID="" Value="8.721742e-27" />
+    <Input Name="M↓Rdy2,hor←" Type="Numeric" ESA_ID="" Value="-1.14216e-27" />
+    <Input Name="M↓Rdy2,pl←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Rdy2←" Type="Numeric" ESA_ID="" Value="-1.14216e-27" />
+    <Input Name="M↓Rdz,hor←" Type="Numeric" ESA_ID="" Value="-142.4369e-12" />
+    <Input Name="M↓Rdz,MyMz,max←" Type="Numeric" ESA_ID="" Value="32153.23" />
+    <Input Name="M↓Rdz,MyMz,min←" Type="Numeric" ESA_ID="" Value="-32153.23" />
+    <Input Name="M↓Rdz,NMy,max←" Type="Numeric" ESA_ID="" Value="10.51603e-12" />
+    <Input Name="M↓Rdz,NMy,min←" Type="Numeric" ESA_ID="" Value="-10.51603e-12" />
+    <Input Name="M↓Rdz,NMy,pl,max←" Type="Numeric" ESA_ID="" Value="12000" />
+    <Input Name="M↓Rdz,NMy,pl,min←" Type="Numeric" ESA_ID="" Value="12000" />
+    <Input Name="M↓Rdz,NMz,max←" Type="Numeric" ESA_ID="" Value="69811.36" />
+    <Input Name="M↓Rdz,NMz,min←" Type="Numeric" ESA_ID="" Value="-69811.36" />
+    <Input Name="M↓Rdz,NMz,pl,max←" Type="Numeric" ESA_ID="" Value="58697.48" />
+    <Input Name="M↓Rdz,NMz,pl,min←" Type="Numeric" ESA_ID="" Value="-58669.98" />
+    <Input Name="M↓Rdz,pl←" Type="Numeric" ESA_ID="" Value="45.88037e-9" />
+    <Input Name="M↓Rdz,ult←" Type="Numeric" ESA_ID="" Value="31923.79" />
+    <Input Name="M↓Rdz,ultyz←" Type="Numeric" ESA_ID="" Value="31923.79" />
+    <Result Name="M↓Rdz←" Type="Numeric" ESA_ID="Result.3" Value="0" />
+    <Input Name="M↓Rdz1,hor←" Type="Numeric" ESA_ID="" Value="-142.4369e-12" />
+    <Input Name="M↓Rdz1,pl←" Type="Numeric" ESA_ID="" Value="45.88037e-9" />
+    <Input Name="M↓Rdz1←" Type="Numeric" ESA_ID="" Value="-142.4369e-12" />
+    <Input Name="M↓Rdz2,hor←" Type="Numeric" ESA_ID="" Value="18.65289e-12" />
+    <Input Name="M↓Rdz2,pl←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Rdz2←" Type="Numeric" ESA_ID="" Value="18.65289e-12" />
+    <Input Name="M↓res,max←" Type="Numeric" ESA_ID="" Value="69811.36" />
+    <Input Name="M↓res,min←" Type="Numeric" ESA_ID="" Value="-69811.36" />
+    <Input Name="M↓res,point,pl←" Type="Numeric" ESA_ID="" Value="-3.637979e-12" />
+    <Input Name="M↓res,point←" Type="Numeric" ESA_ID="" Value="909.4947e-15" />
+    <Input Name="M↓res←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y,ini←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y,max←" Type="Numeric" ESA_ID="" Value="68557.84" />
+    <Input Name="M↓y,min←" Type="Numeric" ESA_ID="" Value="-63089.91" />
+    <Input Name="M↓z,ini←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z,max←" Type="Numeric" ESA_ID="" Value="32153.23" />
+    <Input Name="M↓z,min←" Type="Numeric" ESA_ID="" Value="-32153.23" />
+    <Input Name="maxlenght" Type="Numeric" ESA_ID="" Value="2.157626e6" />
+    <Input Name="minlenght" Type="Numeric" ESA_ID="" Value="226866.6" />
+    <Input Name="MRDY" Type="Numeric" ESA_ID="" Value="219192.4" />
+    <Input Name="MRDZ" Type="Numeric" ESA_ID="" Value="-163.9936e-9" />
+    <Input Name="N" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="N↓Ed←" Type="Numeric" ESA_ID="Result.4" Value="-25000" />
+    <Input Name="N↓ini←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N↓max←" Type="Numeric" ESA_ID="" Value="279624.9" />
+    <Input Name="N↓min←" Type="Numeric" ESA_ID="" Value="-2.351668e6" />
+    <Input Name="N↓pom,max←" Type="Numeric" ESA_ID="" Value="-1.004506e6" />
+    <Input Name="N↓pom,min←" Type="Numeric" ESA_ID="" Value="-1.004506e6" />
+    <Input Name="N↓Rd,hor←" Type="Numeric" ESA_ID="" Value="-2.35117e6" />
+    <Input Name="N↓Rd,max←" Type="Numeric" ESA_ID="" Value="294039.4" />
+    <Input Name="N↓Rd,min←" Type="Numeric" ESA_ID="" Value="-2.365537e6" />
+    <Input Name="N↓Rd,NMy,max←" Type="Numeric" ESA_ID="" Value="294039.4" />
+    <Input Name="N↓Rd,NMy,min←" Type="Numeric" ESA_ID="" Value="-2.365537e6" />
+    <Input Name="N↓Rd,NMy,pl,max←" Type="Numeric" ESA_ID="" Value="-240000" />
+    <Input Name="N↓Rd,NMy,pl,min←" Type="Numeric" ESA_ID="" Value="-2.404587e6" />
+    <Input Name="N↓Rd,NMz,max←" Type="Numeric" ESA_ID="" Value="279624.9" />
+    <Input Name="N↓Rd,NMz,min←" Type="Numeric" ESA_ID="" Value="-2.351668e6" />
+    <Input Name="N↓Rd,NMz,pl,max←" Type="Numeric" ESA_ID="" Value="-300000" />
+    <Input Name="N↓Rd,NMz,pl,min←" Type="Numeric" ESA_ID="" Value="-2.378167e6" />
+    <Input Name="N↓Rd,pl,max←" Type="Numeric" ESA_ID="" Value="-94.58745e-12" />
+    <Input Name="N↓Rd,pl,min←" Type="Numeric" ESA_ID="" Value="-2.378167e6" />
+    <Input Name="N↓Rd,pl←" Type="Numeric" ESA_ID="" Value="-2.170913e-6" />
+    <Input Name="N↓Rd,res,max←" Type="Numeric" ESA_ID="" Value="279624.9" />
+    <Input Name="N↓Rd,res,min←" Type="Numeric" ESA_ID="" Value="-2.351668e6" />
+    <Input Name="N↓Rd,res,pl,max←" Type="Numeric" ESA_ID="" Value="-94.58745e-12" />
+    <Input Name="N↓Rd,res,pl,min←" Type="Numeric" ESA_ID="" Value="-3e6" />
+    <Input Name="N↓Rd,ult←" Type="Numeric" ESA_ID="" Value="-2.35117e6" />
+    <Result Name="N↓Rd←" Type="Numeric" ESA_ID="Result.1" Value="-2.35117e6" />
+    <Input Name="N↓Rd1,hor←" Type="Numeric" ESA_ID="" Value="-2.35117e6" />
+    <Input Name="N↓Rd1,pl←" Type="Numeric" ESA_ID="" Value="-2.170913e-6" />
+    <Input Name="N↓Rd1←" Type="Numeric" ESA_ID="" Value="-2.35117e6" />
+    <Input Name="N↓Rd2,hor←" Type="Numeric" ESA_ID="" Value="279624.9" />
+    <Input Name="N↓Rd2,pl←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="N↓Rd2←" Type="Numeric" ESA_ID="" Value="279624.9" />
+    <Input Name="N2↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="N6↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="N6↓2←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="N6↓3←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="NameConcrete" Type="String" ESA_ID="" Value="C 25/30" />
+    <Input Name="NameReinf" Type="String" ESA_ID="" Value="B 500 A" />
+    <Input Name="NoOfPtsInVertCut" Type="Numeric" ESA_ID="" Value="180" />
+    <Input Name="NRD" Type="Numeric" ESA_ID="" Value="-2.35117e6" />
+    <Input Name="Number↓E←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓N←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓W←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="NumIntersection" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="NumIntersectionForHor" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="NumIntersectionPlain" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Pressure" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="PrintImages" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="sCheck" Type="String" ESA_ID="" Value="OK" />
+    <Input Name="sizeFirst" Type="Numeric" ESA_ID="" Value="2.32617e6" />
+    <Input Name="sizeForceVect" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="sizeResVect" Type="Numeric" ESA_ID="" Value="2.35117e6" />
+    <Input Name="sizeSecond" Type="Numeric" ESA_ID="" Value="304624.9" />
+    <Input Name="sNOTOK" Type="String" ESA_ID="" Value="Not OK" />
+    <Input Name="sOK" Type="String" ESA_ID="" Value="OK" />
+    <Input Name="sOKBUT" Type="String" ESA_ID="" Value="OK*" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Result Name="Unity↓check←" Type="Numeric" ESA_ID="Result.0" Value="10.633e-3" />
+    <Input Name="W6↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="W6↓2←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="W6↓3←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="W6↓4←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="α↓MyMz←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="α↓NM←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="β↓MyMz←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+  </Test>
+  <Test Description="Mu" Author="SCIA-ONLINE\tpail" Active="1" Date="2014.11.07">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <Variable Identifier="PrintImages" Value="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 25/30" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|REINF.EC" Category="Inclined top branch" Item="B 500 A" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="1" Units="0">
+        <CS SelReinf="0" H="500e-3" B="250e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="64e-3" D_upper="14e-3" N_upper="2" c_lower="64e-3" D_lower="12e-3" N_lower="3" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="IDMethodOfCheck" Value="1" />
+      <Variable Identifier="DivisionOfStrain" Value="300" />
+      <Variable Identifier="NoOfPtsInVertCut" Value="180" />
+      <Variable Identifier="DrawPlainConcrete" Value="False" />
+      <Variable Identifier="DrawGrid" Value="True" />
+      <Variable Identifier="PrintEWN" Value="True" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+    </Dialog>
+    <Input Name="a" Type="Numeric" ESA_ID="" Value="-1" />
+    <Input Name="AccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Alpha" Type="Numeric" ESA_ID="" Value="128" />
+    <Input Name="AngleHorForHor" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Bilinear" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideHor3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideHor3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVert" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertGen3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertGen3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVertNMy3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertNMy3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVertNMz3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertNMz3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="CalcImp" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="CalSecOrder" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Coeffε↓Sud←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="Combikey" Type="String" ESA_ID="" Value="" />
+    <Input Name="Count↓EWN←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="CssID" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="CssIDPlain" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="CssIDReinf" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="desAddData" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="DivisionOfStrain" Type="Numeric" ESA_ID="" Value="300" />
+    <Input Name="DrawGrid" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawPlainConcrete" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="DrawUltimateBorder" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="E6↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="EquivMoment" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="ErrorValue" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="16.66667e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="25e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="434.7826e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="500e6" />
+    <Input Name="ForcesID" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="GraphScale" Type="Numeric" ESA_ID="" Value="300" />
+    <Result Name="Check" Type="Numeric" ESA_ID="Result.8" Value="1" />
+    <Input Name="checkFirst" Type="Numeric" ESA_ID="" Value="NaN" />
+    <Input Name="checkSecond" Type="Numeric" ESA_ID="" Value="NaN" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="IDMethodOfCheck" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="IsoCol" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Limit↓check←" Type="Numeric" ESA_ID="Result.9" Value="1" />
+    <Input Name="ListEWN" Type="String" ESA_ID="" Value="" />
+    <Result Name="M↓Edy←" Type="Numeric" ESA_ID="Result.5" Value="0" />
+    <Result Name="M↓Edz←" Type="Numeric" ESA_ID="Result.6" Value="0" />
+    <Input Name="M↓Rd,res,max←" Type="Numeric" ESA_ID="" Value="69811.36" />
+    <Input Name="M↓Rd,res,min←" Type="Numeric" ESA_ID="" Value="-69811.36" />
+    <Input Name="M↓Rd,res,pl,max←" Type="Numeric" ESA_ID="" Value="140613.6" />
+    <Input Name="M↓Rd,res,pl,min←" Type="Numeric" ESA_ID="" Value="-140606.4" />
+    <Input Name="M↓Rdy,hor←" Type="Numeric" ESA_ID="" Value="-1.954768e-12" />
+    <Input Name="M↓Rdy,MyMz,max←" Type="Numeric" ESA_ID="" Value="68557.84" />
+    <Input Name="M↓Rdy,MyMz,min←" Type="Numeric" ESA_ID="" Value="-63089.91" />
+    <Input Name="M↓Rdy,NMy,max←" Type="Numeric" ESA_ID="" Value="171924.6" />
+    <Input Name="M↓Rdy,NMy,min←" Type="Numeric" ESA_ID="" Value="-171926.6" />
+    <Input Name="M↓Rdy,NMy,pl,max←" Type="Numeric" ESA_ID="" Value="101828.8" />
+    <Input Name="M↓Rdy,NMy,pl,min←" Type="Numeric" ESA_ID="" Value="-101828.8" />
+    <Input Name="M↓Rdy,NMz,max←" Type="Numeric" ESA_ID="" Value="8.6402e-12" />
+    <Input Name="M↓Rdy,NMz,min←" Type="Numeric" ESA_ID="" Value="-8.526513e-12" />
+    <Input Name="M↓Rdy,NMz,pl,max←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓Rdy,NMz,pl,min←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓Rdy,pl←" Type="Numeric" ESA_ID="" Value="104.4355e-9" />
+    <Input Name="M↓Rdy,ult←" Type="Numeric" ESA_ID="" Value="-63089.91" />
+    <Input Name="M↓Rdy,ultyz←" Type="Numeric" ESA_ID="" Value="-63089.91" />
+    <Result Name="M↓Rdy←" Type="Numeric" ESA_ID="Result.2" Value="1.954768e-12" />
+    <Input Name="M↓Rdy1,hor←" Type="Numeric" ESA_ID="" Value="-1.954768e-12" />
+    <Input Name="M↓Rdy1,pl←" Type="Numeric" ESA_ID="" Value="104.4355e-9" />
+    <Input Name="M↓Rdy1←" Type="Numeric" ESA_ID="" Value="-1.954768e-12" />
+    <Input Name="M↓Rdy2,hor←" Type="Numeric" ESA_ID="" Value="1.954768e-12" />
+    <Input Name="M↓Rdy2,pl←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Rdy2←" Type="Numeric" ESA_ID="" Value="1.954768e-12" />
+    <Input Name="M↓Rdz,hor←" Type="Numeric" ESA_ID="" Value="31923.79" />
+    <Input Name="M↓Rdz,MyMz,max←" Type="Numeric" ESA_ID="" Value="32153.23" />
+    <Input Name="M↓Rdz,MyMz,min←" Type="Numeric" ESA_ID="" Value="-32153.23" />
+    <Input Name="M↓Rdz,NMy,max←" Type="Numeric" ESA_ID="" Value="10.51603e-12" />
+    <Input Name="M↓Rdz,NMy,min←" Type="Numeric" ESA_ID="" Value="-10.51603e-12" />
+    <Input Name="M↓Rdz,NMy,pl,max←" Type="Numeric" ESA_ID="" Value="12000" />
+    <Input Name="M↓Rdz,NMy,pl,min←" Type="Numeric" ESA_ID="" Value="12000" />
+    <Input Name="M↓Rdz,NMz,max←" Type="Numeric" ESA_ID="" Value="69811.36" />
+    <Input Name="M↓Rdz,NMz,min←" Type="Numeric" ESA_ID="" Value="-69811.36" />
+    <Input Name="M↓Rdz,NMz,pl,max←" Type="Numeric" ESA_ID="" Value="58697.48" />
+    <Input Name="M↓Rdz,NMz,pl,min←" Type="Numeric" ESA_ID="" Value="-58669.98" />
+    <Input Name="M↓Rdz,pl←" Type="Numeric" ESA_ID="" Value="45.88037e-9" />
+    <Input Name="M↓Rdz,ult←" Type="Numeric" ESA_ID="" Value="31923.79" />
+    <Input Name="M↓Rdz,ultyz←" Type="Numeric" ESA_ID="" Value="31923.79" />
+    <Result Name="M↓Rdz←" Type="Numeric" ESA_ID="Result.3" Value="-31923.79" />
+    <Input Name="M↓Rdz1,hor←" Type="Numeric" ESA_ID="" Value="31923.79" />
+    <Input Name="M↓Rdz1,pl←" Type="Numeric" ESA_ID="" Value="45.88037e-9" />
+    <Input Name="M↓Rdz1←" Type="Numeric" ESA_ID="" Value="31923.79" />
+    <Input Name="M↓Rdz2,hor←" Type="Numeric" ESA_ID="" Value="-31923.79" />
+    <Input Name="M↓Rdz2,pl←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Rdz2←" Type="Numeric" ESA_ID="" Value="-31923.79" />
+    <Input Name="M↓res,max←" Type="Numeric" ESA_ID="" Value="97605.8" />
+    <Input Name="M↓res,min←" Type="Numeric" ESA_ID="" Value="-98182.33" />
+    <Input Name="M↓res,point,pl←" Type="Numeric" ESA_ID="" Value="-3.637979e-12" />
+    <Input Name="M↓res,point←" Type="Numeric" ESA_ID="" Value="909.4947e-15" />
+    <Input Name="M↓res←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y,ini←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y,max←" Type="Numeric" ESA_ID="" Value="68557.84" />
+    <Input Name="M↓y,min←" Type="Numeric" ESA_ID="" Value="-63089.91" />
+    <Input Name="M↓z,ini←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z,max←" Type="Numeric" ESA_ID="" Value="32153.23" />
+    <Input Name="M↓z,min←" Type="Numeric" ESA_ID="" Value="-32153.23" />
+    <Input Name="maxlenght" Type="Numeric" ESA_ID="" Value="2.157626e6" />
+    <Input Name="minlenght" Type="Numeric" ESA_ID="" Value="226866.6" />
+    <Input Name="MRDY" Type="Numeric" ESA_ID="" Value="1.954768e-12" />
+    <Input Name="MRDZ" Type="Numeric" ESA_ID="" Value="-31923.79" />
+    <Input Name="N" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="N↓Ed←" Type="Numeric" ESA_ID="Result.4" Value="-25000" />
+    <Input Name="N↓ini←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N↓max←" Type="Numeric" ESA_ID="" Value="279624.9" />
+    <Input Name="N↓min←" Type="Numeric" ESA_ID="" Value="-2.351668e6" />
+    <Input Name="N↓pom,max←" Type="Numeric" ESA_ID="" Value="-1.004506e6" />
+    <Input Name="N↓pom,min←" Type="Numeric" ESA_ID="" Value="-1.004506e6" />
+    <Input Name="N↓Rd,hor←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N↓Rd,max←" Type="Numeric" ESA_ID="" Value="294039.4" />
+    <Input Name="N↓Rd,min←" Type="Numeric" ESA_ID="" Value="-2.365537e6" />
+    <Input Name="N↓Rd,NMy,max←" Type="Numeric" ESA_ID="" Value="294039.4" />
+    <Input Name="N↓Rd,NMy,min←" Type="Numeric" ESA_ID="" Value="-2.365537e6" />
+    <Input Name="N↓Rd,NMy,pl,max←" Type="Numeric" ESA_ID="" Value="-240000" />
+    <Input Name="N↓Rd,NMy,pl,min←" Type="Numeric" ESA_ID="" Value="-2.404587e6" />
+    <Input Name="N↓Rd,NMz,max←" Type="Numeric" ESA_ID="" Value="279624.9" />
+    <Input Name="N↓Rd,NMz,min←" Type="Numeric" ESA_ID="" Value="-2.351668e6" />
+    <Input Name="N↓Rd,NMz,pl,max←" Type="Numeric" ESA_ID="" Value="-300000" />
+    <Input Name="N↓Rd,NMz,pl,min←" Type="Numeric" ESA_ID="" Value="-2.378167e6" />
+    <Input Name="N↓Rd,pl,max←" Type="Numeric" ESA_ID="" Value="-94.58745e-12" />
+    <Input Name="N↓Rd,pl,min←" Type="Numeric" ESA_ID="" Value="-2.378167e6" />
+    <Input Name="N↓Rd,pl←" Type="Numeric" ESA_ID="" Value="-2.170913e-6" />
+    <Input Name="N↓Rd,res,max←" Type="Numeric" ESA_ID="" Value="279624.9" />
+    <Input Name="N↓Rd,res,min←" Type="Numeric" ESA_ID="" Value="-2.351668e6" />
+    <Input Name="N↓Rd,res,pl,max←" Type="Numeric" ESA_ID="" Value="-94.58745e-12" />
+    <Input Name="N↓Rd,res,pl,min←" Type="Numeric" ESA_ID="" Value="-3e6" />
+    <Input Name="N↓Rd,ult←" Type="Numeric" ESA_ID="" Value="-2.35117e6" />
+    <Result Name="N↓Rd←" Type="Numeric" ESA_ID="Result.1" Value="-25000" />
+    <Input Name="N↓Rd1,hor←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N↓Rd1,pl←" Type="Numeric" ESA_ID="" Value="-2.170913e-6" />
+    <Input Name="N↓Rd1←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N↓Rd2,hor←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N↓Rd2,pl←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="N↓Rd2←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N2↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="N6↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="N6↓2←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="N6↓3←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="NameConcrete" Type="String" ESA_ID="" Value="C 25/30" />
+    <Input Name="NameReinf" Type="String" ESA_ID="" Value="B 500 A" />
+    <Input Name="NoOfPtsInVertCut" Type="Numeric" ESA_ID="" Value="180" />
+    <Input Name="NRD" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="Number↓E←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓N←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓W←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="NumIntersection" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="NumIntersectionForHor" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="NumIntersectionPlain" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Pressure" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="PrintImages" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="sCheck" Type="String" ESA_ID="" Value="OK" />
+    <Input Name="sizeFirst" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="sizeForceVect" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="sizeResVect" Type="Numeric" ESA_ID="" Value="31923.79" />
+    <Input Name="sizeSecond" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="sNOTOK" Type="String" ESA_ID="" Value="Not OK" />
+    <Input Name="sOK" Type="String" ESA_ID="" Value="OK" />
+    <Input Name="sOKBUT" Type="String" ESA_ID="" Value="OK*" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="testMy_0" Type="Numeric" ESA_ID="" Value="-69.89688" />
+    <Input Name="testMz_0" Type="Numeric" ESA_ID="" Value="37.27834" />
+    <Result Name="Unity↓check←" Type="Numeric" ESA_ID="Result.0" Value="0" />
+    <Input Name="W6↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="W6↓2←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="W6↓3←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="W6↓4←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="α↓MyMz←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="α↓NM←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="β↓MyMz←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+  </Test>
+  <Test Description="NuMu" Author="SCIA-ONLINE\jbroz" Active="1" Date="2014.09.25">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <Variable Identifier="PrintImages" Value="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 25/30" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|REINF.EC" Category="Inclined top branch" Item="B 500 A" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="1" Units="0">
+        <CS SelReinf="0" H="500e-3" B="250e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="64e-3" D_upper="14e-3" N_upper="2" c_lower="64e-3" D_lower="12e-3" N_lower="3" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="IDMethodOfCheck" Value="2" />
+      <Variable Identifier="DivisionOfStrain" Value="300" />
+      <Variable Identifier="NoOfPtsInVertCut" Value="180" />
+      <Variable Identifier="DrawPlainConcrete" Value="False" />
+      <Variable Identifier="DrawGrid" Value="True" />
+      <Variable Identifier="PrintEWN" Value="True" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+    </Dialog>
+    <Input Name="a" Type="Numeric" ESA_ID="" Value="-1" />
+    <Input Name="AccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Alpha" Type="Numeric" ESA_ID="" Value="128" />
+    <Input Name="AngleHorForHor" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Bilinear" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideHor3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideHor3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVert" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertGen3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertGen3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVertNMy3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertNMy3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVertNMz3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertNMz3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPrintCalculationSettings" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintInputData" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPrintLoad" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPrintMaterial" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="CalcImp" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="CalSecOrder" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Coeffε↓Sud←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="Combikey" Type="String" ESA_ID="" Value="" />
+    <Input Name="Count↓EWN←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="CssID" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="CssIDPlain" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="CssIDReinf" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="desAddData" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="DivisionOfStrain" Type="Numeric" ESA_ID="" Value="300" />
+    <Input Name="DrawGrid" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawPlainConcrete" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="DrawUltimateBorder" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="E6↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="EquivMoment" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="ErrorValue" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="16.66667e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="25e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="434.7826e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="500e6" />
+    <Input Name="ForcesID" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="GraphScale" Type="Numeric" ESA_ID="" Value="300" />
+    <Result Name="Check" Type="Numeric" ESA_ID="Result.8" Value="1" />
+    <Input Name="checkFirst" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="checkSecond" Type="Numeric" ESA_ID="" Value="-1" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="IDMethodOfCheck" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="IsoCol" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Limit↓check←" Type="Numeric" ESA_ID="Result.9" Value="1" />
+    <Input Name="ListEWN" Type="String" ESA_ID="" Value="" />
+    <Result Name="M↓Edy←" Type="Numeric" ESA_ID="Result.5" Value="0" />
+    <Result Name="M↓Edz←" Type="Numeric" ESA_ID="Result.6" Value="0" />
+    <Input Name="M↓Rd,res,max←" Type="Numeric" ESA_ID="" Value="69811.36" />
+    <Input Name="M↓Rd,res,min←" Type="Numeric" ESA_ID="" Value="-69811.36" />
+    <Input Name="M↓Rd,res,pl,max←" Type="Numeric" ESA_ID="" Value="140613.6" />
+    <Input Name="M↓Rd,res,pl,min←" Type="Numeric" ESA_ID="" Value="-140606.4" />
+    <Input Name="M↓Rdy,hor←" Type="Numeric" ESA_ID="" Value="8.721742e-27" />
+    <Input Name="M↓Rdy,MyMz,max←" Type="Numeric" ESA_ID="" Value="68557.84" />
+    <Input Name="M↓Rdy,MyMz,min←" Type="Numeric" ESA_ID="" Value="-63089.91" />
+    <Input Name="M↓Rdy,NMy,max←" Type="Numeric" ESA_ID="" Value="171924.6" />
+    <Input Name="M↓Rdy,NMy,min←" Type="Numeric" ESA_ID="" Value="-171926.6" />
+    <Input Name="M↓Rdy,NMy,pl,max←" Type="Numeric" ESA_ID="" Value="101828.8" />
+    <Input Name="M↓Rdy,NMy,pl,min←" Type="Numeric" ESA_ID="" Value="-101828.8" />
+    <Input Name="M↓Rdy,NMz,max←" Type="Numeric" ESA_ID="" Value="8.6402e-12" />
+    <Input Name="M↓Rdy,NMz,min←" Type="Numeric" ESA_ID="" Value="-8.526513e-12" />
+    <Input Name="M↓Rdy,NMz,pl,max←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓Rdy,NMz,pl,min←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓Rdy,pl←" Type="Numeric" ESA_ID="" Value="104.4355e-9" />
+    <Input Name="M↓Rdy,ult←" Type="Numeric" ESA_ID="" Value="-63089.91" />
+    <Input Name="M↓Rdy,ultyz←" Type="Numeric" ESA_ID="" Value="-63089.91" />
+    <Result Name="M↓Rdy←" Type="Numeric" ESA_ID="Result.2" Value="0" />
+    <Input Name="M↓Rdy1,hor←" Type="Numeric" ESA_ID="" Value="8.721742e-27" />
+    <Input Name="M↓Rdy1,pl←" Type="Numeric" ESA_ID="" Value="104.4355e-9" />
+    <Input Name="M↓Rdy1←" Type="Numeric" ESA_ID="" Value="8.721742e-27" />
+    <Input Name="M↓Rdy2,hor←" Type="Numeric" ESA_ID="" Value="-1.14216e-27" />
+    <Input Name="M↓Rdy2,pl←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Rdy2←" Type="Numeric" ESA_ID="" Value="-1.14216e-27" />
+    <Input Name="M↓Rdz,hor←" Type="Numeric" ESA_ID="" Value="-142.4369e-12" />
+    <Input Name="M↓Rdz,MyMz,max←" Type="Numeric" ESA_ID="" Value="32153.23" />
+    <Input Name="M↓Rdz,MyMz,min←" Type="Numeric" ESA_ID="" Value="-32153.23" />
+    <Input Name="M↓Rdz,NMy,max←" Type="Numeric" ESA_ID="" Value="10.51603e-12" />
+    <Input Name="M↓Rdz,NMy,min←" Type="Numeric" ESA_ID="" Value="-10.51603e-12" />
+    <Input Name="M↓Rdz,NMy,pl,max←" Type="Numeric" ESA_ID="" Value="12000" />
+    <Input Name="M↓Rdz,NMy,pl,min←" Type="Numeric" ESA_ID="" Value="12000" />
+    <Input Name="M↓Rdz,NMz,max←" Type="Numeric" ESA_ID="" Value="69811.36" />
+    <Input Name="M↓Rdz,NMz,min←" Type="Numeric" ESA_ID="" Value="-69811.36" />
+    <Input Name="M↓Rdz,NMz,pl,max←" Type="Numeric" ESA_ID="" Value="58697.48" />
+    <Input Name="M↓Rdz,NMz,pl,min←" Type="Numeric" ESA_ID="" Value="-58669.98" />
+    <Input Name="M↓Rdz,pl←" Type="Numeric" ESA_ID="" Value="45.88037e-9" />
+    <Input Name="M↓Rdz,ult←" Type="Numeric" ESA_ID="" Value="31923.79" />
+    <Input Name="M↓Rdz,ultyz←" Type="Numeric" ESA_ID="" Value="31923.79" />
+    <Result Name="M↓Rdz←" Type="Numeric" ESA_ID="Result.3" Value="0" />
+    <Input Name="M↓Rdz1,hor←" Type="Numeric" ESA_ID="" Value="-142.4369e-12" />
+    <Input Name="M↓Rdz1,pl←" Type="Numeric" ESA_ID="" Value="45.88037e-9" />
+    <Input Name="M↓Rdz1←" Type="Numeric" ESA_ID="" Value="-142.4369e-12" />
+    <Input Name="M↓Rdz2,hor←" Type="Numeric" ESA_ID="" Value="18.65289e-12" />
+    <Input Name="M↓Rdz2,pl←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Rdz2←" Type="Numeric" ESA_ID="" Value="18.65289e-12" />
+    <Input Name="M↓res,max←" Type="Numeric" ESA_ID="" Value="97605.8" />
+    <Input Name="M↓res,min←" Type="Numeric" ESA_ID="" Value="-98182.33" />
+    <Input Name="M↓res,point,pl←" Type="Numeric" ESA_ID="" Value="-3.637979e-12" />
+    <Input Name="M↓res,point←" Type="Numeric" ESA_ID="" Value="909.4947e-15" />
+    <Input Name="M↓res←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y,ini←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y,max←" Type="Numeric" ESA_ID="" Value="68557.84" />
+    <Input Name="M↓y,min←" Type="Numeric" ESA_ID="" Value="-63089.91" />
+    <Input Name="M↓z,ini←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z,max←" Type="Numeric" ESA_ID="" Value="32153.23" />
+    <Input Name="M↓z,min←" Type="Numeric" ESA_ID="" Value="-32153.23" />
+    <Input Name="maxlenght" Type="Numeric" ESA_ID="" Value="2.157626e6" />
+    <Input Name="minlenght" Type="Numeric" ESA_ID="" Value="226866.6" />
+    <Input Name="MRDY" Type="Numeric" ESA_ID="" Value="8.721742e-27" />
+    <Input Name="MRDZ" Type="Numeric" ESA_ID="" Value="-142.4369e-12" />
+    <Input Name="N" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="N↓Ed←" Type="Numeric" ESA_ID="Result.4" Value="-25000" />
+    <Input Name="N↓ini←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N↓max←" Type="Numeric" ESA_ID="" Value="279624.9" />
+    <Input Name="N↓min←" Type="Numeric" ESA_ID="" Value="-2.351668e6" />
+    <Input Name="N↓pom,max←" Type="Numeric" ESA_ID="" Value="-1.004506e6" />
+    <Input Name="N↓pom,min←" Type="Numeric" ESA_ID="" Value="-1.004506e6" />
+    <Input Name="N↓Rd,hor←" Type="Numeric" ESA_ID="" Value="-2.35117e6" />
+    <Input Name="N↓Rd,max←" Type="Numeric" ESA_ID="" Value="294039.4" />
+    <Input Name="N↓Rd,min←" Type="Numeric" ESA_ID="" Value="-2.365537e6" />
+    <Input Name="N↓Rd,NMy,max←" Type="Numeric" ESA_ID="" Value="294039.4" />
+    <Input Name="N↓Rd,NMy,min←" Type="Numeric" ESA_ID="" Value="-2.365537e6" />
+    <Input Name="N↓Rd,NMy,pl,max←" Type="Numeric" ESA_ID="" Value="-240000" />
+    <Input Name="N↓Rd,NMy,pl,min←" Type="Numeric" ESA_ID="" Value="-2.404587e6" />
+    <Input Name="N↓Rd,NMz,max←" Type="Numeric" ESA_ID="" Value="279624.9" />
+    <Input Name="N↓Rd,NMz,min←" Type="Numeric" ESA_ID="" Value="-2.351668e6" />
+    <Input Name="N↓Rd,NMz,pl,max←" Type="Numeric" ESA_ID="" Value="-300000" />
+    <Input Name="N↓Rd,NMz,pl,min←" Type="Numeric" ESA_ID="" Value="-2.378167e6" />
+    <Input Name="N↓Rd,pl,max←" Type="Numeric" ESA_ID="" Value="-94.58745e-12" />
+    <Input Name="N↓Rd,pl,min←" Type="Numeric" ESA_ID="" Value="-2.378167e6" />
+    <Input Name="N↓Rd,pl←" Type="Numeric" ESA_ID="" Value="-2.170913e-6" />
+    <Input Name="N↓Rd,res,max←" Type="Numeric" ESA_ID="" Value="279624.9" />
+    <Input Name="N↓Rd,res,min←" Type="Numeric" ESA_ID="" Value="-2.351668e6" />
+    <Input Name="N↓Rd,res,pl,max←" Type="Numeric" ESA_ID="" Value="-94.58745e-12" />
+    <Input Name="N↓Rd,res,pl,min←" Type="Numeric" ESA_ID="" Value="-3e6" />
+    <Input Name="N↓Rd,ult←" Type="Numeric" ESA_ID="" Value="-2.35117e6" />
+    <Result Name="N↓Rd←" Type="Numeric" ESA_ID="Result.1" Value="-2.35117e6" />
+    <Input Name="N↓Rd1,hor←" Type="Numeric" ESA_ID="" Value="-2.35117e6" />
+    <Input Name="N↓Rd1,pl←" Type="Numeric" ESA_ID="" Value="-2.170913e-6" />
+    <Input Name="N↓Rd1←" Type="Numeric" ESA_ID="" Value="-2.35117e6" />
+    <Input Name="N↓Rd2,hor←" Type="Numeric" ESA_ID="" Value="279624.9" />
+    <Input Name="N↓Rd2,pl←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="N↓Rd2←" Type="Numeric" ESA_ID="" Value="279624.9" />
+    <Input Name="N2↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="N6↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="N6↓2←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="N6↓3←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="NameConcrete" Type="String" ESA_ID="" Value="C 25/30" />
+    <Input Name="NameReinf" Type="String" ESA_ID="" Value="B 500 A" />
+    <Input Name="NoOfPtsInVertCut" Type="Numeric" ESA_ID="" Value="180" />
+    <Input Name="NRD" Type="Numeric" ESA_ID="" Value="-2.35117e6" />
+    <Input Name="Number↓E←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓N←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓W←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="NumIntersection" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="NumIntersectionForHor" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="NumIntersectionPlain" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Pressure" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="PrintImages" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="sCheck" Type="String" ESA_ID="" Value="OK" />
+    <Input Name="sizeFirst" Type="Numeric" ESA_ID="" Value="2.32617e6" />
+    <Input Name="sizeForceVect" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="sizeResVect" Type="Numeric" ESA_ID="" Value="2.35117e6" />
+    <Input Name="sizeSecond" Type="Numeric" ESA_ID="" Value="304624.9" />
+    <Input Name="sNOTOK" Type="String" ESA_ID="" Value="Not OK" />
+    <Input Name="sOK" Type="String" ESA_ID="" Value="OK" />
+    <Input Name="sOKBUT" Type="String" ESA_ID="" Value="OK*" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Result Name="Unity↓check←" Type="Numeric" ESA_ID="Result.0" Value="10.633e-3" />
+    <Input Name="W6↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="W6↓2←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="W6↓3←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="W6↓4←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="α↓MyMz←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="α↓NM←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="β↓MyMz←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+  </Test>
+  <Test Description="Muy" Author="SCIA-ONLINE\jbroz" Active="1" Date="2014.09.25">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <Variable Identifier="PrintImages" Value="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 25/30" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|REINF.EC" Category="Inclined top branch" Item="B 500 A" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="1" Units="0">
+        <CS SelReinf="0" H="500e-3" B="250e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="64e-3" D_upper="14e-3" N_upper="2" c_lower="64e-3" D_lower="12e-3" N_lower="3" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="IDMethodOfCheck" Value="3" />
+      <Variable Identifier="DivisionOfStrain" Value="300" />
+      <Variable Identifier="NoOfPtsInVertCut" Value="180" />
+      <Variable Identifier="DrawPlainConcrete" Value="False" />
+      <Variable Identifier="DrawGrid" Value="True" />
+      <Variable Identifier="PrintEWN" Value="True" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+    </Dialog>
+    <Input Name="a" Type="Numeric" ESA_ID="" Value="-1" />
+    <Input Name="AccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Alpha" Type="Numeric" ESA_ID="" Value="128" />
+    <Input Name="AngleHorForHor" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Bilinear" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideHor3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideHor3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVert" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVertGen3D" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVertGen3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVertNMy3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertNMy3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVertNMz3D" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVertNMz3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPrintCalculationSettings" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintInputData" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPrintLoad" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPrintMaterial" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="CalcImp" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="CalSecOrder" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Coeffε↓Sud←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="Combikey" Type="String" ESA_ID="" Value="" />
+    <Input Name="Count↓EWN←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="CssID" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="CssIDPlain" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="CssIDReinf" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="desAddData" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="DivisionOfStrain" Type="Numeric" ESA_ID="" Value="300" />
+    <Input Name="DrawGrid" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawPlainConcrete" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="DrawUltimateBorder" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="E6↓1←" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="EquivMoment" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="ErrorValue" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="16.66667e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="25e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="434.7826e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="500e6" />
+    <Input Name="ForcesID" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="GraphScale" Type="Numeric" ESA_ID="" Value="300" />
+    <Result Name="Check" Type="Numeric" ESA_ID="Result.8" Value="0" />
+    <Input Name="checkFirst" Type="Numeric" ESA_ID="" Value="NaN" />
+    <Input Name="checkSecond" Type="Numeric" ESA_ID="" Value="NaN" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="IDMethodOfCheck" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="IsoCol" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Limit↓check←" Type="Numeric" ESA_ID="Result.9" Value="1" />
+    <Input Name="ListEWN" Type="String" ESA_ID="" Value="N6/2, E6/1." />
+    <Result Name="M↓Edy←" Type="Numeric" ESA_ID="Result.5" Value="0" />
+    <Result Name="M↓Edz←" Type="Numeric" ESA_ID="Result.6" Value="0" />
+    <Input Name="M↓Rd,res,max←" Type="Numeric" ESA_ID="" Value="10.51603e-12" />
+    <Input Name="M↓Rd,res,min←" Type="Numeric" ESA_ID="" Value="-10.51603e-12" />
+    <Input Name="M↓Rd,res,pl,max←" Type="Numeric" ESA_ID="" Value="140613.6" />
+    <Input Name="M↓Rd,res,pl,min←" Type="Numeric" ESA_ID="" Value="-140606.4" />
+    <Input Name="M↓Rdy,hor←" Type="Numeric" ESA_ID="" Value="-63089.91" />
+    <Input Name="M↓Rdy,MyMz,max←" Type="Numeric" ESA_ID="" Value="68557.84" />
+    <Input Name="M↓Rdy,MyMz,min←" Type="Numeric" ESA_ID="" Value="-63089.91" />
+    <Input Name="M↓Rdy,NMy,max←" Type="Numeric" ESA_ID="" Value="171924.6" />
+    <Input Name="M↓Rdy,NMy,min←" Type="Numeric" ESA_ID="" Value="-171926.6" />
+    <Input Name="M↓Rdy,NMy,pl,max←" Type="Numeric" ESA_ID="" Value="101828.8" />
+    <Input Name="M↓Rdy,NMy,pl,min←" Type="Numeric" ESA_ID="" Value="-101828.8" />
+    <Input Name="M↓Rdy,NMz,max←" Type="Numeric" ESA_ID="" Value="8.6402e-12" />
+    <Input Name="M↓Rdy,NMz,min←" Type="Numeric" ESA_ID="" Value="-8.526513e-12" />
+    <Input Name="M↓Rdy,NMz,pl,max←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓Rdy,NMz,pl,min←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓Rdy,pl←" Type="Numeric" ESA_ID="" Value="104.4355e-9" />
+    <Input Name="M↓Rdy,ult←" Type="Numeric" ESA_ID="" Value="-63089.91" />
+    <Input Name="M↓Rdy,ultyz←" Type="Numeric" ESA_ID="" Value="-63089.91" />
+    <Result Name="M↓Rdy←" Type="Numeric" ESA_ID="Result.2" Value="-63089.91" />
+    <Input Name="M↓Rdy1,hor←" Type="Numeric" ESA_ID="" Value="68557.84" />
+    <Input Name="M↓Rdy1,pl←" Type="Numeric" ESA_ID="" Value="104.4355e-9" />
+    <Input Name="M↓Rdy1←" Type="Numeric" ESA_ID="" Value="68557.84" />
+    <Input Name="M↓Rdy2,hor←" Type="Numeric" ESA_ID="" Value="-63089.91" />
+    <Input Name="M↓Rdy2,pl←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Rdy2←" Type="Numeric" ESA_ID="" Value="-63089.91" />
+    <Input Name="M↓Rdz,hor←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Rdz,MyMz,max←" Type="Numeric" ESA_ID="" Value="32153.23" />
+    <Input Name="M↓Rdz,MyMz,min←" Type="Numeric" ESA_ID="" Value="-32153.23" />
+    <Input Name="M↓Rdz,NMy,max←" Type="Numeric" ESA_ID="" Value="10.51603e-12" />
+    <Input Name="M↓Rdz,NMy,min←" Type="Numeric" ESA_ID="" Value="-10.51603e-12" />
+    <Input Name="M↓Rdz,NMy,pl,max←" Type="Numeric" ESA_ID="" Value="12000" />
+    <Input Name="M↓Rdz,NMy,pl,min←" Type="Numeric" ESA_ID="" Value="12000" />
+    <Input Name="M↓Rdz,NMz,max←" Type="Numeric" ESA_ID="" Value="69811.36" />
+    <Input Name="M↓Rdz,NMz,min←" Type="Numeric" ESA_ID="" Value="-69811.36" />
+    <Input Name="M↓Rdz,NMz,pl,max←" Type="Numeric" ESA_ID="" Value="58697.48" />
+    <Input Name="M↓Rdz,NMz,pl,min←" Type="Numeric" ESA_ID="" Value="-58669.98" />
+    <Input Name="M↓Rdz,pl←" Type="Numeric" ESA_ID="" Value="45.88037e-9" />
+    <Input Name="M↓Rdz,ult←" Type="Numeric" ESA_ID="" Value="31923.79" />
+    <Input Name="M↓Rdz,ultyz←" Type="Numeric" ESA_ID="" Value="31923.79" />
+    <Result Name="M↓Rdz←" Type="Numeric" ESA_ID="Result.3" Value="0" />
+    <Input Name="M↓Rdz1,hor←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Rdz1,pl←" Type="Numeric" ESA_ID="" Value="45.88037e-9" />
+    <Input Name="M↓Rdz1←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Rdz2,hor←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Rdz2,pl←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Rdz2←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓res,max←" Type="Numeric" ESA_ID="" Value="79971.59" />
+    <Input Name="M↓res,min←" Type="Numeric" ESA_ID="" Value="-16744.64" />
+    <Input Name="M↓res,point,pl←" Type="Numeric" ESA_ID="" Value="-3.637979e-12" />
+    <Input Name="M↓res,point←" Type="Numeric" ESA_ID="" Value="-250.3413e-15" />
+    <Input Name="M↓res←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y,ini←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y,max←" Type="Numeric" ESA_ID="" Value="68557.84" />
+    <Input Name="M↓y,min←" Type="Numeric" ESA_ID="" Value="-63089.91" />
+    <Input Name="M↓z,ini←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z,max←" Type="Numeric" ESA_ID="" Value="32153.23" />
+    <Input Name="M↓z,min←" Type="Numeric" ESA_ID="" Value="-32153.23" />
+    <Input Name="maxlenght" Type="Numeric" ESA_ID="" Value="2.157626e6" />
+    <Input Name="minlenght" Type="Numeric" ESA_ID="" Value="226866.6" />
+    <Input Name="MRDY" Type="Numeric" ESA_ID="" Value="-63089.91" />
+    <Input Name="MRDZ" Type="Numeric" ESA_ID="" Value="-59.81455e-9" />
+    <Input Name="N" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="N↓Ed←" Type="Numeric" ESA_ID="Result.4" Value="-25000" />
+    <Input Name="N↓ini←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N↓max←" Type="Numeric" ESA_ID="" Value="294039.4" />
+    <Input Name="N↓min←" Type="Numeric" ESA_ID="" Value="-2.365537e6" />
+    <Input Name="N↓pom,max←" Type="Numeric" ESA_ID="" Value="-807830.1" />
+    <Input Name="N↓pom,min←" Type="Numeric" ESA_ID="" Value="-835169.6" />
+    <Input Name="N↓Rd,hor←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N↓Rd,max←" Type="Numeric" ESA_ID="" Value="294039.4" />
+    <Input Name="N↓Rd,min←" Type="Numeric" ESA_ID="" Value="-2.365537e6" />
+    <Input Name="N↓Rd,NMy,max←" Type="Numeric" ESA_ID="" Value="294039.4" />
+    <Input Name="N↓Rd,NMy,min←" Type="Numeric" ESA_ID="" Value="-2.365537e6" />
+    <Input Name="N↓Rd,NMy,pl,max←" Type="Numeric" ESA_ID="" Value="-240000" />
+    <Input Name="N↓Rd,NMy,pl,min←" Type="Numeric" ESA_ID="" Value="-2.404587e6" />
+    <Input Name="N↓Rd,NMz,max←" Type="Numeric" ESA_ID="" Value="279624.9" />
+    <Input Name="N↓Rd,NMz,min←" Type="Numeric" ESA_ID="" Value="-2.351668e6" />
+    <Input Name="N↓Rd,NMz,pl,max←" Type="Numeric" ESA_ID="" Value="-300000" />
+    <Input Name="N↓Rd,NMz,pl,min←" Type="Numeric" ESA_ID="" Value="-2.378167e6" />
+    <Input Name="N↓Rd,pl,max←" Type="Numeric" ESA_ID="" Value="-94.58745e-12" />
+    <Input Name="N↓Rd,pl,min←" Type="Numeric" ESA_ID="" Value="-2.378167e6" />
+    <Input Name="N↓Rd,pl←" Type="Numeric" ESA_ID="" Value="-2.170913e-6" />
+    <Input Name="N↓Rd,res,max←" Type="Numeric" ESA_ID="" Value="294039.4" />
+    <Input Name="N↓Rd,res,min←" Type="Numeric" ESA_ID="" Value="-2.365537e6" />
+    <Input Name="N↓Rd,res,pl,max←" Type="Numeric" ESA_ID="" Value="-94.58745e-12" />
+    <Input Name="N↓Rd,res,pl,min←" Type="Numeric" ESA_ID="" Value="-3e6" />
+    <Input Name="N↓Rd,ult←" Type="Numeric" ESA_ID="" Value="-2.35117e6" />
+    <Result Name="N↓Rd←" Type="Numeric" ESA_ID="Result.1" Value="-25000" />
+    <Input Name="N↓Rd1,hor←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N↓Rd1,pl←" Type="Numeric" ESA_ID="" Value="-2.170913e-6" />
+    <Input Name="N↓Rd1←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N↓Rd2,hor←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N↓Rd2,pl←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="N↓Rd2←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N2↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="N6↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="N6↓2←" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="N6↓3←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="NameConcrete" Type="String" ESA_ID="" Value="C 25/30" />
+    <Input Name="NameReinf" Type="String" ESA_ID="" Value="B 500 A" />
+    <Input Name="NoOfPtsInVertCut" Type="Numeric" ESA_ID="" Value="180" />
+    <Input Name="NRD" Type="Numeric" ESA_ID="" Value="-1.675612e6" />
+    <Input Name="Number↓E←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Number↓N←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Number↓W←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="NumIntersection" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="NumIntersectionForHor" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="NumIntersectionPlain" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Pressure" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="PrintImages" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="sCheck" Type="String" ESA_ID="" Value="OK" />
+    <Input Name="sizeFirst" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="sizeForceVect" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="sizeResVect" Type="Numeric" ESA_ID="" Value="168862.3" />
+    <Input Name="sizeSecond" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="sNOTOK" Type="String" ESA_ID="" Value="Not OK" />
+    <Input Name="sOK" Type="String" ESA_ID="" Value="OK" />
+    <Input Name="sOKBUT" Type="String" ESA_ID="" Value="OK*" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Result Name="Unity↓check←" Type="Numeric" ESA_ID="Result.0" Value="3" />
+    <Input Name="W6↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="W6↓2←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="W6↓3←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="W6↓4←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="α↓MyMz←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="α↓NM←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="β↓MyMz←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+  </Test>
+  <Test Description="Muz" Author="SCIA-ONLINE\tpail" Active="1" Date="2014.11.10">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <Variable Identifier="PrintImages" Value="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 25/30" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|REINF.EC" Category="Inclined top branch" Item="B 500 A" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="1" Units="0">
+        <CS SelReinf="0" H="500e-3" B="250e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="64e-3" D_upper="14e-3" N_upper="2" c_lower="64e-3" D_lower="12e-3" N_lower="3" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="IDMethodOfCheck" Value="4" />
+      <Variable Identifier="DivisionOfStrain" Value="300" />
+      <Variable Identifier="NoOfPtsInVertCut" Value="180" />
+      <Variable Identifier="DrawPlainConcrete" Value="False" />
+      <Variable Identifier="DrawGrid" Value="True" />
+      <Variable Identifier="PrintEWN" Value="True" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+    </Dialog>
+    <Input Name="a" Type="Numeric" ESA_ID="" Value="-1" />
+    <Input Name="AccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Alpha" Type="Numeric" ESA_ID="" Value="128" />
+    <Input Name="AngleHorForHor" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Bilinear" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideHor3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideHor3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVert" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertGen3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertGen3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVertNMy3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertNMy3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVertNMz3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertNMz3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="CalcImp" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="CalSecOrder" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Coeffε↓Sud←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="Combikey" Type="String" ESA_ID="" Value="" />
+    <Input Name="Count↓EWN←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="CssID" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="CssIDPlain" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="CssIDReinf" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="desAddData" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="DivisionOfStrain" Type="Numeric" ESA_ID="" Value="300" />
+    <Input Name="DrawGrid" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawPlainConcrete" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="DrawUltimateBorder" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="E6↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="EquivMoment" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="ErrorValue" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="16.66667e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="25e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="434.7826e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="500e6" />
+    <Input Name="ForcesID" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="GraphScale" Type="Numeric" ESA_ID="" Value="300" />
+    <Result Name="Check" Type="Numeric" ESA_ID="Result.8" Value="1" />
+    <Input Name="checkFirst" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="checkSecond" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="3" />
+    <Result Name="IDMethodOfCheck" Type="Numeric" ESA_ID="Result.7" Value="4" />
+    <Input Name="IsoCol" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Limit↓check←" Type="Numeric" ESA_ID="Result.9" Value="1" />
+    <Input Name="ListEWN" Type="String" ESA_ID="" Value="N6/3." />
+    <Result Name="M↓Edy←" Type="Numeric" ESA_ID="Result.5" Value="0" />
+    <Result Name="M↓Edz←" Type="Numeric" ESA_ID="Result.6" Value="0" />
+    <Input Name="M↓Rd,res,max←" Type="Numeric" ESA_ID="" Value="69811.36" />
+    <Input Name="M↓Rd,res,min←" Type="Numeric" ESA_ID="" Value="-69811.36" />
+    <Input Name="M↓Rd,res,pl,max←" Type="Numeric" ESA_ID="" Value="140613.6" />
+    <Input Name="M↓Rd,res,pl,min←" Type="Numeric" ESA_ID="" Value="-140606.4" />
+    <Input Name="M↓Rdy,hor←" Type="Numeric" ESA_ID="" Value="-1.954768e-12" />
+    <Input Name="M↓Rdy,MyMz,max←" Type="Numeric" ESA_ID="" Value="68557.84" />
+    <Input Name="M↓Rdy,MyMz,min←" Type="Numeric" ESA_ID="" Value="-63089.91" />
+    <Input Name="M↓Rdy,NMy,max←" Type="Numeric" ESA_ID="" Value="171924.6" />
+    <Input Name="M↓Rdy,NMy,min←" Type="Numeric" ESA_ID="" Value="-171926.6" />
+    <Input Name="M↓Rdy,NMy,pl,max←" Type="Numeric" ESA_ID="" Value="101828.8" />
+    <Input Name="M↓Rdy,NMy,pl,min←" Type="Numeric" ESA_ID="" Value="-101828.8" />
+    <Input Name="M↓Rdy,NMz,max←" Type="Numeric" ESA_ID="" Value="8.6402e-12" />
+    <Input Name="M↓Rdy,NMz,min←" Type="Numeric" ESA_ID="" Value="-8.526513e-12" />
+    <Input Name="M↓Rdy,NMz,pl,max←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓Rdy,NMz,pl,min←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓Rdy,pl←" Type="Numeric" ESA_ID="" Value="104.4355e-9" />
+    <Input Name="M↓Rdy,ult←" Type="Numeric" ESA_ID="" Value="-63089.91" />
+    <Input Name="M↓Rdy,ultyz←" Type="Numeric" ESA_ID="" Value="-63089.91" />
+    <Result Name="M↓Rdy←" Type="Numeric" ESA_ID="Result.2" Value="0" />
+    <Input Name="M↓Rdy1,hor←" Type="Numeric" ESA_ID="" Value="-1.954768e-12" />
+    <Input Name="M↓Rdy1,pl←" Type="Numeric" ESA_ID="" Value="104.4355e-9" />
+    <Input Name="M↓Rdy1←" Type="Numeric" ESA_ID="" Value="-1.954768e-12" />
+    <Input Name="M↓Rdy2,hor←" Type="Numeric" ESA_ID="" Value="1.954768e-12" />
+    <Input Name="M↓Rdy2,pl←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Rdy2←" Type="Numeric" ESA_ID="" Value="1.954768e-12" />
+    <Input Name="M↓Rdz,hor←" Type="Numeric" ESA_ID="" Value="31923.79" />
+    <Input Name="M↓Rdz,MyMz,max←" Type="Numeric" ESA_ID="" Value="32153.23" />
+    <Input Name="M↓Rdz,MyMz,min←" Type="Numeric" ESA_ID="" Value="-32153.23" />
+    <Input Name="M↓Rdz,NMy,max←" Type="Numeric" ESA_ID="" Value="10.51603e-12" />
+    <Input Name="M↓Rdz,NMy,min←" Type="Numeric" ESA_ID="" Value="-10.51603e-12" />
+    <Input Name="M↓Rdz,NMy,pl,max←" Type="Numeric" ESA_ID="" Value="12000" />
+    <Input Name="M↓Rdz,NMy,pl,min←" Type="Numeric" ESA_ID="" Value="12000" />
+    <Input Name="M↓Rdz,NMz,max←" Type="Numeric" ESA_ID="" Value="69811.36" />
+    <Input Name="M↓Rdz,NMz,min←" Type="Numeric" ESA_ID="" Value="-69811.36" />
+    <Input Name="M↓Rdz,NMz,pl,max←" Type="Numeric" ESA_ID="" Value="58697.48" />
+    <Input Name="M↓Rdz,NMz,pl,min←" Type="Numeric" ESA_ID="" Value="-58669.98" />
+    <Input Name="M↓Rdz,pl←" Type="Numeric" ESA_ID="" Value="45.88037e-9" />
+    <Input Name="M↓Rdz,ult←" Type="Numeric" ESA_ID="" Value="31923.79" />
+    <Input Name="M↓Rdz,ultyz←" Type="Numeric" ESA_ID="" Value="31923.79" />
+    <Result Name="M↓Rdz←" Type="Numeric" ESA_ID="Result.3" Value="31923.79" />
+    <Input Name="M↓Rdz1,hor←" Type="Numeric" ESA_ID="" Value="31923.79" />
+    <Input Name="M↓Rdz1,pl←" Type="Numeric" ESA_ID="" Value="45.88037e-9" />
+    <Input Name="M↓Rdz1←" Type="Numeric" ESA_ID="" Value="31923.79" />
+    <Input Name="M↓Rdz2,hor←" Type="Numeric" ESA_ID="" Value="-31923.79" />
+    <Input Name="M↓Rdz2,pl←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Rdz2←" Type="Numeric" ESA_ID="" Value="-31923.79" />
+    <Input Name="M↓res,max←" Type="Numeric" ESA_ID="" Value="79971.59" />
+    <Input Name="M↓res,min←" Type="Numeric" ESA_ID="" Value="-16744.64" />
+    <Input Name="M↓res,point,pl←" Type="Numeric" ESA_ID="" Value="-3.637979e-12" />
+    <Input Name="M↓res,point←" Type="Numeric" ESA_ID="" Value="909.4947e-15" />
+    <Input Name="M↓res←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y,ini←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y,max←" Type="Numeric" ESA_ID="" Value="68557.84" />
+    <Input Name="M↓y,min←" Type="Numeric" ESA_ID="" Value="-63089.91" />
+    <Input Name="M↓z,ini←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z,max←" Type="Numeric" ESA_ID="" Value="32153.23" />
+    <Input Name="M↓z,min←" Type="Numeric" ESA_ID="" Value="-32153.23" />
+    <Input Name="maxlenght" Type="Numeric" ESA_ID="" Value="2.157626e6" />
+    <Input Name="MethodOfCheck" Type="String" ESA_ID="" Value="M↓uz←" />
+    <Input Name="minlenght" Type="Numeric" ESA_ID="" Value="226866.6" />
+    <Input Name="MRDY" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="MRDZ" Type="Numeric" ESA_ID="" Value="31923.79" />
+    <Input Name="N" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="N↓Ed←" Type="Numeric" ESA_ID="Result.4" Value="-25000" />
+    <Input Name="N↓ini←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N↓max←" Type="Numeric" ESA_ID="" Value="279624.9" />
+    <Input Name="N↓min←" Type="Numeric" ESA_ID="" Value="-2.351668e6" />
+    <Input Name="N↓pom,max←" Type="Numeric" ESA_ID="" Value="-1.004506e6" />
+    <Input Name="N↓pom,min←" Type="Numeric" ESA_ID="" Value="-1.004506e6" />
+    <Input Name="N↓Rd,hor←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N↓Rd,max←" Type="Numeric" ESA_ID="" Value="294039.4" />
+    <Input Name="N↓Rd,min←" Type="Numeric" ESA_ID="" Value="-2.365537e6" />
+    <Input Name="N↓Rd,NMy,max←" Type="Numeric" ESA_ID="" Value="294039.4" />
+    <Input Name="N↓Rd,NMy,min←" Type="Numeric" ESA_ID="" Value="-2.365537e6" />
+    <Input Name="N↓Rd,NMy,pl,max←" Type="Numeric" ESA_ID="" Value="-240000" />
+    <Input Name="N↓Rd,NMy,pl,min←" Type="Numeric" ESA_ID="" Value="-2.404587e6" />
+    <Input Name="N↓Rd,NMz,max←" Type="Numeric" ESA_ID="" Value="279624.9" />
+    <Input Name="N↓Rd,NMz,min←" Type="Numeric" ESA_ID="" Value="-2.351668e6" />
+    <Input Name="N↓Rd,NMz,pl,max←" Type="Numeric" ESA_ID="" Value="-300000" />
+    <Input Name="N↓Rd,NMz,pl,min←" Type="Numeric" ESA_ID="" Value="-2.378167e6" />
+    <Input Name="N↓Rd,pl,max←" Type="Numeric" ESA_ID="" Value="-94.58745e-12" />
+    <Input Name="N↓Rd,pl,min←" Type="Numeric" ESA_ID="" Value="-2.378167e6" />
+    <Input Name="N↓Rd,pl←" Type="Numeric" ESA_ID="" Value="-2.170913e-6" />
+    <Input Name="N↓Rd,res,max←" Type="Numeric" ESA_ID="" Value="279624.9" />
+    <Input Name="N↓Rd,res,min←" Type="Numeric" ESA_ID="" Value="-2.351668e6" />
+    <Input Name="N↓Rd,res,pl,max←" Type="Numeric" ESA_ID="" Value="-94.58745e-12" />
+    <Input Name="N↓Rd,res,pl,min←" Type="Numeric" ESA_ID="" Value="-3e6" />
+    <Input Name="N↓Rd,ult←" Type="Numeric" ESA_ID="" Value="-2.35117e6" />
+    <Result Name="N↓Rd←" Type="Numeric" ESA_ID="Result.1" Value="-25000" />
+    <Input Name="N↓Rd1,hor←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N↓Rd1,pl←" Type="Numeric" ESA_ID="" Value="-2.170913e-6" />
+    <Input Name="N↓Rd1←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N↓Rd2,hor←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N↓Rd2,pl←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="N↓Rd2←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N2↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="N6↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="N6↓2←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="N6↓3←" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="NameConcrete" Type="String" ESA_ID="" Value="C 25/30" />
+    <Input Name="NameReinf" Type="String" ESA_ID="" Value="B 500 A" />
+    <Input Name="NoOfPtsInVertCut" Type="Numeric" ESA_ID="" Value="180" />
+    <Input Name="NRD" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="Number↓E←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓N←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Number↓W←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="NumIntersection" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="NumIntersectionForHor" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="NumIntersectionPlain" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Pressure" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="PrintImages" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="sCheck" Type="String" ESA_ID="" Value="OK" />
+    <Input Name="sizeFirst" Type="Numeric" ESA_ID="" Value="31923.79" />
+    <Input Name="sizeForceVect" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="sizeResVect" Type="Numeric" ESA_ID="" Value="168862.3" />
+    <Input Name="sizeSecond" Type="Numeric" ESA_ID="" Value="31923.79" />
+    <Input Name="sNOTOK" Type="String" ESA_ID="" Value="Not OK" />
+    <Input Name="sOK" Type="String" ESA_ID="" Value="OK" />
+    <Input Name="sOKBUT" Type="String" ESA_ID="" Value="OK*" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="testMy_0" Type="Numeric" ESA_ID="" Value="-69.89688" />
+    <Input Name="testMz_0" Type="Numeric" ESA_ID="" Value="37.27834" />
+    <Result Name="Unity↓check←" Type="Numeric" ESA_ID="Result.0" Value="0" />
+    <Input Name="W6↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="W6↓2←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="W6↓3←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="W6↓4←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="α↓MyMz←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="α↓NM←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="β↓MyMz←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+  </Test>
+  <Test Description="SDF_InteractionDiagram_04_Nu" Author="SCIA-ONLINE\jbroz" Active="1" Date="2014.09.25">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <Variable Identifier="PrintImages" Value="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 25/30" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|REINF.EC" Category="Inclined top branch" Item="B 400 A" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="1" Units="0">
+        <CS SelReinf="0" H="500e-3" B="300e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="35e-3" D_upper="20e-3" N_upper="2" c_lower="35e-3" D_lower="20e-3" N_lower="2" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="IDMethodOfCheck" Value="0" />
+      <Variable Identifier="DivisionOfStrain" Value="300" />
+      <Variable Identifier="NoOfPtsInVertCut" Value="180" />
+      <Variable Identifier="DrawPlainConcrete" Value="False" />
+      <Variable Identifier="DrawGrid" Value="True" />
+      <Variable Identifier="PrintEWN" Value="True" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+    </Dialog>
+    <Input Name="a" Type="Numeric" ESA_ID="" Value="-1" />
+    <Input Name="AccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Alpha" Type="Numeric" ESA_ID="" Value="128" />
+    <Input Name="AngleHorForHor" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Bilinear" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideHor3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideHor3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVert" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertGen3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertGen3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVertNMy3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertNMy3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVertNMz3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertNMz3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPrintCalculationSettings" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintInputData" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPrintLoad" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPrintMaterial" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="CalcImp" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="CalSecOrder" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Coeffε↓Sud←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="Combikey" Type="String" ESA_ID="" Value="" />
+    <Input Name="Count↓EWN←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="CssID" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="CssIDPlain" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="CssIDReinf" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="desAddData" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="DivisionOfStrain" Type="Numeric" ESA_ID="" Value="300" />
+    <Input Name="DrawGrid" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawPlainConcrete" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="DrawUltimateBorder" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="E6↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="EquivMoment" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="ErrorValue" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="16.66667e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="25e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="347.8261e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="400e6" />
+    <Input Name="ForcesID" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="GraphScale" Type="Numeric" ESA_ID="" Value="300" />
+    <Result Name="Check" Type="Numeric" ESA_ID="Result.8" Value="1" />
+    <Input Name="checkFirst" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="checkSecond" Type="Numeric" ESA_ID="" Value="-1" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="IDMethodOfCheck" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="IsoCol" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Limit↓check←" Type="Numeric" ESA_ID="Result.9" Value="1" />
+    <Input Name="ListEWN" Type="String" ESA_ID="" Value="" />
+    <Result Name="M↓Edy←" Type="Numeric" ESA_ID="Result.5" Value="0" />
+    <Result Name="M↓Edz←" Type="Numeric" ESA_ID="Result.6" Value="0" />
+    <Input Name="M↓Rd,res,max←" Type="Numeric" ESA_ID="" Value="134796.7" />
+    <Input Name="M↓Rd,res,min←" Type="Numeric" ESA_ID="" Value="-134796.7" />
+    <Input Name="M↓Rd,res,pl,max←" Type="Numeric" ESA_ID="" Value="140613.6" />
+    <Input Name="M↓Rd,res,pl,min←" Type="Numeric" ESA_ID="" Value="-140606.4" />
+    <Input Name="M↓Rdy,hor←" Type="Numeric" ESA_ID="" Value="10.92485e-27" />
+    <Input Name="M↓Rdy,MyMz,max←" Type="Numeric" ESA_ID="" Value="102997.9" />
+    <Input Name="M↓Rdy,MyMz,min←" Type="Numeric" ESA_ID="" Value="-102997.9" />
+    <Input Name="M↓Rdy,NMy,max←" Type="Numeric" ESA_ID="" Value="239616.4" />
+    <Input Name="M↓Rdy,NMy,min←" Type="Numeric" ESA_ID="" Value="-239616.4" />
+    <Input Name="M↓Rdy,NMy,pl,max←" Type="Numeric" ESA_ID="" Value="101828.8" />
+    <Input Name="M↓Rdy,NMy,pl,min←" Type="Numeric" ESA_ID="" Value="-101828.8" />
+    <Input Name="M↓Rdy,NMz,max←" Type="Numeric" ESA_ID="" Value="16.3709e-12" />
+    <Input Name="M↓Rdy,NMz,min←" Type="Numeric" ESA_ID="" Value="-16.3709e-12" />
+    <Input Name="M↓Rdy,NMz,pl,max←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓Rdy,NMz,pl,min←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓Rdy,pl←" Type="Numeric" ESA_ID="" Value="104.4355e-9" />
+    <Input Name="M↓Rdy,ult←" Type="Numeric" ESA_ID="" Value="102997.9" />
+    <Input Name="M↓Rdy,ultyz←" Type="Numeric" ESA_ID="" Value="102997.9" />
+    <Result Name="M↓Rdy←" Type="Numeric" ESA_ID="Result.2" Value="0" />
+    <Input Name="M↓Rdy1,hor←" Type="Numeric" ESA_ID="" Value="10.92485e-27" />
+    <Input Name="M↓Rdy1,pl←" Type="Numeric" ESA_ID="" Value="104.4355e-9" />
+    <Input Name="M↓Rdy1←" Type="Numeric" ESA_ID="" Value="10.92485e-27" />
+    <Input Name="M↓Rdy2,hor←" Type="Numeric" ESA_ID="" Value="-1.806312e-27" />
+    <Input Name="M↓Rdy2,pl←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Rdy2←" Type="Numeric" ESA_ID="" Value="-1.806312e-27" />
+    <Input Name="M↓Rdz,hor←" Type="Numeric" ESA_ID="" Value="-178.4163e-12" />
+    <Input Name="M↓Rdz,MyMz,max←" Type="Numeric" ESA_ID="" Value="57666.36" />
+    <Input Name="M↓Rdz,MyMz,min←" Type="Numeric" ESA_ID="" Value="-57666.36" />
+    <Input Name="M↓Rdz,NMy,max←" Type="Numeric" ESA_ID="" Value="14.67227e-12" />
+    <Input Name="M↓Rdz,NMy,min←" Type="Numeric" ESA_ID="" Value="-14.6656e-12" />
+    <Input Name="M↓Rdz,NMy,pl,max←" Type="Numeric" ESA_ID="" Value="12000" />
+    <Input Name="M↓Rdz,NMy,pl,min←" Type="Numeric" ESA_ID="" Value="12000" />
+    <Input Name="M↓Rdz,NMz,max←" Type="Numeric" ESA_ID="" Value="134796.7" />
+    <Input Name="M↓Rdz,NMz,min←" Type="Numeric" ESA_ID="" Value="-134796.7" />
+    <Input Name="M↓Rdz,NMz,pl,max←" Type="Numeric" ESA_ID="" Value="58697.48" />
+    <Input Name="M↓Rdz,NMz,pl,min←" Type="Numeric" ESA_ID="" Value="-58669.98" />
+    <Input Name="M↓Rdz,pl←" Type="Numeric" ESA_ID="" Value="45.88037e-9" />
+    <Input Name="M↓Rdz,ult←" Type="Numeric" ESA_ID="" Value="-57666.36" />
+    <Input Name="M↓Rdz,ultyz←" Type="Numeric" ESA_ID="" Value="-57666.36" />
+    <Result Name="M↓Rdz←" Type="Numeric" ESA_ID="Result.3" Value="0" />
+    <Input Name="M↓Rdz1,hor←" Type="Numeric" ESA_ID="" Value="-178.4163e-12" />
+    <Input Name="M↓Rdz1,pl←" Type="Numeric" ESA_ID="" Value="45.88037e-9" />
+    <Input Name="M↓Rdz1←" Type="Numeric" ESA_ID="" Value="-178.4163e-12" />
+    <Input Name="M↓Rdz2,hor←" Type="Numeric" ESA_ID="" Value="29.49931e-12" />
+    <Input Name="M↓Rdz2,pl←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Rdz2←" Type="Numeric" ESA_ID="" Value="29.49931e-12" />
+    <Input Name="M↓res,max←" Type="Numeric" ESA_ID="" Value="134796.7" />
+    <Input Name="M↓res,min←" Type="Numeric" ESA_ID="" Value="-134796.7" />
+    <Input Name="M↓res,point,pl←" Type="Numeric" ESA_ID="" Value="-3.637979e-12" />
+    <Input Name="M↓res,point←" Type="Numeric" ESA_ID="" Value="87.31149e-12" />
+    <Input Name="M↓res←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y,ini←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y,max←" Type="Numeric" ESA_ID="" Value="102997.9" />
+    <Input Name="M↓y,min←" Type="Numeric" ESA_ID="" Value="-102997.9" />
+    <Input Name="M↓z,ini←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z,max←" Type="Numeric" ESA_ID="" Value="57666.36" />
+    <Input Name="M↓z,min←" Type="Numeric" ESA_ID="" Value="-57666.36" />
+    <Input Name="maxlenght" Type="Numeric" ESA_ID="" Value="2.157626e6" />
+    <Input Name="minlenght" Type="Numeric" ESA_ID="" Value="226866.6" />
+    <Input Name="MRDY" Type="Numeric" ESA_ID="" Value="168862.3" />
+    <Input Name="MRDZ" Type="Numeric" ESA_ID="" Value="59088.75" />
+    <Input Name="N" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="N↓Ed←" Type="Numeric" ESA_ID="Result.4" Value="-25000" />
+    <Input Name="N↓ini←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N↓max←" Type="Numeric" ESA_ID="" Value="456760.3" />
+    <Input Name="N↓min←" Type="Numeric" ESA_ID="" Value="-2.938759e6" />
+    <Input Name="N↓pom,max←" Type="Numeric" ESA_ID="" Value="-1.048143e6" />
+    <Input Name="N↓pom,min←" Type="Numeric" ESA_ID="" Value="-1.048143e6" />
+    <Input Name="N↓Rd,hor←" Type="Numeric" ESA_ID="" Value="-2.938759e6" />
+    <Input Name="N↓Rd,max←" Type="Numeric" ESA_ID="" Value="456760.3" />
+    <Input Name="N↓Rd,min←" Type="Numeric" ESA_ID="" Value="-2.938759e6" />
+    <Input Name="N↓Rd,NMy,max←" Type="Numeric" ESA_ID="" Value="456760.3" />
+    <Input Name="N↓Rd,NMy,min←" Type="Numeric" ESA_ID="" Value="-2.938759e6" />
+    <Input Name="N↓Rd,NMy,pl,max←" Type="Numeric" ESA_ID="" Value="-240000" />
+    <Input Name="N↓Rd,NMy,pl,min←" Type="Numeric" ESA_ID="" Value="-2.404587e6" />
+    <Input Name="N↓Rd,NMz,max←" Type="Numeric" ESA_ID="" Value="456760.3" />
+    <Input Name="N↓Rd,NMz,min←" Type="Numeric" ESA_ID="" Value="-2.938759e6" />
+    <Input Name="N↓Rd,NMz,pl,max←" Type="Numeric" ESA_ID="" Value="-300000" />
+    <Input Name="N↓Rd,NMz,pl,min←" Type="Numeric" ESA_ID="" Value="-2.378167e6" />
+    <Input Name="N↓Rd,pl,max←" Type="Numeric" ESA_ID="" Value="-94.58745e-12" />
+    <Input Name="N↓Rd,pl,min←" Type="Numeric" ESA_ID="" Value="-2.378167e6" />
+    <Input Name="N↓Rd,pl←" Type="Numeric" ESA_ID="" Value="-2.170913e-6" />
+    <Input Name="N↓Rd,res,max←" Type="Numeric" ESA_ID="" Value="456760.3" />
+    <Input Name="N↓Rd,res,min←" Type="Numeric" ESA_ID="" Value="-2.938759e6" />
+    <Input Name="N↓Rd,res,pl,max←" Type="Numeric" ESA_ID="" Value="-94.58745e-12" />
+    <Input Name="N↓Rd,res,pl,min←" Type="Numeric" ESA_ID="" Value="-3e6" />
+    <Input Name="N↓Rd,ult←" Type="Numeric" ESA_ID="" Value="-2.938759e6" />
+    <Result Name="N↓Rd←" Type="Numeric" ESA_ID="Result.1" Value="-2.938759e6" />
+    <Input Name="N↓Rd1,hor←" Type="Numeric" ESA_ID="" Value="-2.938759e6" />
+    <Input Name="N↓Rd1,pl←" Type="Numeric" ESA_ID="" Value="-2.170913e-6" />
+    <Input Name="N↓Rd1←" Type="Numeric" ESA_ID="" Value="-2.938759e6" />
+    <Input Name="N↓Rd2,hor←" Type="Numeric" ESA_ID="" Value="456760.3" />
+    <Input Name="N↓Rd2,pl←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="N↓Rd2←" Type="Numeric" ESA_ID="" Value="456760.3" />
+    <Input Name="N2↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="N6↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="N6↓2←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="N6↓3←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="NameConcrete" Type="String" ESA_ID="" Value="C 25/30" />
+    <Input Name="NameReinf" Type="String" ESA_ID="" Value="B 400 A" />
+    <Input Name="NoOfPtsInVertCut" Type="Numeric" ESA_ID="" Value="180" />
+    <Input Name="NRD" Type="Numeric" ESA_ID="" Value="-2.938759e6" />
+    <Input Name="Number↓E←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓N←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓W←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="NumIntersection" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="NumIntersectionForHor" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="NumIntersectionPlain" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Pressure" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="PrintImages" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="sCheck" Type="String" ESA_ID="" Value="OK" />
+    <Input Name="sizeFirst" Type="Numeric" ESA_ID="" Value="2.913759e6" />
+    <Input Name="sizeForceVect" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="sizeResVect" Type="Numeric" ESA_ID="" Value="2.938759e6" />
+    <Input Name="sizeSecond" Type="Numeric" ESA_ID="" Value="481760.3" />
+    <Input Name="sNOTOK" Type="String" ESA_ID="" Value="Not OK" />
+    <Input Name="sOK" Type="String" ESA_ID="" Value="OK" />
+    <Input Name="sOKBUT" Type="String" ESA_ID="" Value="OK*" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Result Name="Unity↓check←" Type="Numeric" ESA_ID="Result.0" Value="8.506991e-3" />
+    <Input Name="W6↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="W6↓2←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="W6↓3←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="W6↓4←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="α↓MyMz←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="α↓NM←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="β↓MyMz←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+  </Test>
+  <Test Description="SDF_InteractionDiagram_04_Mu" Author="SCIA-ONLINE\tpail" Active="1" Date="2014.11.10">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <Variable Identifier="PrintImages" Value="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 25/30" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|REINF.EC" Category="Inclined top branch" Item="B 400 A" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="1" Units="0">
+        <CS SelReinf="0" H="500e-3" B="300e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="35e-3" D_upper="20e-3" N_upper="2" c_lower="35e-3" D_lower="20e-3" N_lower="2" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="IDMethodOfCheck" Value="1" />
+      <Variable Identifier="DivisionOfStrain" Value="300" />
+      <Variable Identifier="NoOfPtsInVertCut" Value="180" />
+      <Variable Identifier="DrawPlainConcrete" Value="False" />
+      <Variable Identifier="DrawGrid" Value="True" />
+      <Variable Identifier="PrintEWN" Value="True" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+    </Dialog>
+    <Input Name="a" Type="Numeric" ESA_ID="" Value="-1" />
+    <Input Name="AccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Alpha" Type="Numeric" ESA_ID="" Value="128" />
+    <Input Name="AngleHorForHor" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Bilinear" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideHor3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideHor3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVert" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertGen3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertGen3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVertNMy3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertNMy3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVertNMz3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertNMz3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="CalcImp" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="CalSecOrder" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Coeffε↓Sud←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="Combikey" Type="String" ESA_ID="" Value="" />
+    <Input Name="Count↓EWN←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="CssID" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="CssIDPlain" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="CssIDReinf" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="desAddData" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="DivisionOfStrain" Type="Numeric" ESA_ID="" Value="300" />
+    <Input Name="DrawGrid" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawPlainConcrete" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="DrawUltimateBorder" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="E6↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="EquivMoment" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="ErrorValue" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="16.66667e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="25e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="347.8261e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="400e6" />
+    <Input Name="ForcesID" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="GraphScale" Type="Numeric" ESA_ID="" Value="300" />
+    <Result Name="Check" Type="Numeric" ESA_ID="Result.8" Value="1" />
+    <Input Name="checkFirst" Type="Numeric" ESA_ID="" Value="NaN" />
+    <Input Name="checkSecond" Type="Numeric" ESA_ID="" Value="NaN" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="4" />
+    <Result Name="IDMethodOfCheck" Type="Numeric" ESA_ID="Result.7" Value="1" />
+    <Input Name="IsoCol" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Limit↓check←" Type="Numeric" ESA_ID="Result.9" Value="1" />
+    <Input Name="ListEWN" Type="String" ESA_ID="" Value="" />
+    <Result Name="M↓Edy←" Type="Numeric" ESA_ID="Result.5" Value="0" />
+    <Result Name="M↓Edz←" Type="Numeric" ESA_ID="Result.6" Value="0" />
+    <Input Name="M↓Rd,res,max←" Type="Numeric" ESA_ID="" Value="134796.7" />
+    <Input Name="M↓Rd,res,min←" Type="Numeric" ESA_ID="" Value="-134796.7" />
+    <Input Name="M↓Rd,res,pl,max←" Type="Numeric" ESA_ID="" Value="140613.6" />
+    <Input Name="M↓Rd,res,pl,min←" Type="Numeric" ESA_ID="" Value="-140606.4" />
+    <Input Name="M↓Rdy,hor←" Type="Numeric" ESA_ID="" Value="3.531046e-12" />
+    <Input Name="M↓Rdy,MyMz,max←" Type="Numeric" ESA_ID="" Value="102997.9" />
+    <Input Name="M↓Rdy,MyMz,min←" Type="Numeric" ESA_ID="" Value="-102997.9" />
+    <Input Name="M↓Rdy,NMy,max←" Type="Numeric" ESA_ID="" Value="239616.4" />
+    <Input Name="M↓Rdy,NMy,min←" Type="Numeric" ESA_ID="" Value="-239616.4" />
+    <Input Name="M↓Rdy,NMy,pl,max←" Type="Numeric" ESA_ID="" Value="101828.8" />
+    <Input Name="M↓Rdy,NMy,pl,min←" Type="Numeric" ESA_ID="" Value="-101828.8" />
+    <Input Name="M↓Rdy,NMz,max←" Type="Numeric" ESA_ID="" Value="16.3709e-12" />
+    <Input Name="M↓Rdy,NMz,min←" Type="Numeric" ESA_ID="" Value="-16.3709e-12" />
+    <Input Name="M↓Rdy,NMz,pl,max←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓Rdy,NMz,pl,min←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓Rdy,pl←" Type="Numeric" ESA_ID="" Value="104.4355e-9" />
+    <Input Name="M↓Rdy,ult←" Type="Numeric" ESA_ID="" Value="102997.9" />
+    <Input Name="M↓Rdy,ultyz←" Type="Numeric" ESA_ID="" Value="102997.9" />
+    <Result Name="M↓Rdy←" Type="Numeric" ESA_ID="Result.2" Value="-3.531046e-12" />
+    <Input Name="M↓Rdy1,hor←" Type="Numeric" ESA_ID="" Value="3.531046e-12" />
+    <Input Name="M↓Rdy1,pl←" Type="Numeric" ESA_ID="" Value="104.4355e-9" />
+    <Input Name="M↓Rdy1←" Type="Numeric" ESA_ID="" Value="3.531046e-12" />
+    <Input Name="M↓Rdy2,hor←" Type="Numeric" ESA_ID="" Value="-3.531046e-12" />
+    <Input Name="M↓Rdy2,pl←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Rdy2←" Type="Numeric" ESA_ID="" Value="-3.531046e-12" />
+    <Input Name="M↓Rdz,hor←" Type="Numeric" ESA_ID="" Value="-57666.36" />
+    <Input Name="M↓Rdz,MyMz,max←" Type="Numeric" ESA_ID="" Value="57666.36" />
+    <Input Name="M↓Rdz,MyMz,min←" Type="Numeric" ESA_ID="" Value="-57666.36" />
+    <Input Name="M↓Rdz,NMy,max←" Type="Numeric" ESA_ID="" Value="14.67227e-12" />
+    <Input Name="M↓Rdz,NMy,min←" Type="Numeric" ESA_ID="" Value="-14.6656e-12" />
+    <Input Name="M↓Rdz,NMy,pl,max←" Type="Numeric" ESA_ID="" Value="12000" />
+    <Input Name="M↓Rdz,NMy,pl,min←" Type="Numeric" ESA_ID="" Value="12000" />
+    <Input Name="M↓Rdz,NMz,max←" Type="Numeric" ESA_ID="" Value="134796.7" />
+    <Input Name="M↓Rdz,NMz,min←" Type="Numeric" ESA_ID="" Value="-134796.7" />
+    <Input Name="M↓Rdz,NMz,pl,max←" Type="Numeric" ESA_ID="" Value="58697.48" />
+    <Input Name="M↓Rdz,NMz,pl,min←" Type="Numeric" ESA_ID="" Value="-58669.98" />
+    <Input Name="M↓Rdz,pl←" Type="Numeric" ESA_ID="" Value="45.88037e-9" />
+    <Input Name="M↓Rdz,ult←" Type="Numeric" ESA_ID="" Value="-57666.36" />
+    <Input Name="M↓Rdz,ultyz←" Type="Numeric" ESA_ID="" Value="-57666.36" />
+    <Result Name="M↓Rdz←" Type="Numeric" ESA_ID="Result.3" Value="57666.36" />
+    <Input Name="M↓Rdz1,hor←" Type="Numeric" ESA_ID="" Value="-57666.36" />
+    <Input Name="M↓Rdz1,pl←" Type="Numeric" ESA_ID="" Value="45.88037e-9" />
+    <Input Name="M↓Rdz1←" Type="Numeric" ESA_ID="" Value="-57666.36" />
+    <Input Name="M↓Rdz2,hor←" Type="Numeric" ESA_ID="" Value="57666.36" />
+    <Input Name="M↓Rdz2,pl←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Rdz2←" Type="Numeric" ESA_ID="" Value="57666.36" />
+    <Input Name="M↓res,max←" Type="Numeric" ESA_ID="" Value="79971.59" />
+    <Input Name="M↓res,min←" Type="Numeric" ESA_ID="" Value="-16744.64" />
+    <Input Name="M↓res,point,pl←" Type="Numeric" ESA_ID="" Value="-3.637979e-12" />
+    <Input Name="M↓res,point←" Type="Numeric" ESA_ID="" Value="87.31149e-12" />
+    <Input Name="M↓res←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y,ini←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y,max←" Type="Numeric" ESA_ID="" Value="102997.9" />
+    <Input Name="M↓y,min←" Type="Numeric" ESA_ID="" Value="-102997.9" />
+    <Input Name="M↓z,ini←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z,max←" Type="Numeric" ESA_ID="" Value="57666.36" />
+    <Input Name="M↓z,min←" Type="Numeric" ESA_ID="" Value="-57666.36" />
+    <Input Name="maxlenght" Type="Numeric" ESA_ID="" Value="2.157626e6" />
+    <Input Name="MethodOfCheck" Type="String" ESA_ID="" Value="M↓u←" />
+    <Input Name="minlenght" Type="Numeric" ESA_ID="" Value="226866.6" />
+    <Input Name="MRDY" Type="Numeric" ESA_ID="" Value="-3.531046e-12" />
+    <Input Name="MRDZ" Type="Numeric" ESA_ID="" Value="57666.36" />
+    <Input Name="N" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="N↓Ed←" Type="Numeric" ESA_ID="Result.4" Value="-25000" />
+    <Input Name="N↓ini←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N↓max←" Type="Numeric" ESA_ID="" Value="456760.3" />
+    <Input Name="N↓min←" Type="Numeric" ESA_ID="" Value="-2.938759e6" />
+    <Input Name="N↓pom,max←" Type="Numeric" ESA_ID="" Value="-1.048143e6" />
+    <Input Name="N↓pom,min←" Type="Numeric" ESA_ID="" Value="-1.048143e6" />
+    <Input Name="N↓Rd,hor←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N↓Rd,max←" Type="Numeric" ESA_ID="" Value="456760.3" />
+    <Input Name="N↓Rd,min←" Type="Numeric" ESA_ID="" Value="-2.938759e6" />
+    <Input Name="N↓Rd,NMy,max←" Type="Numeric" ESA_ID="" Value="456760.3" />
+    <Input Name="N↓Rd,NMy,min←" Type="Numeric" ESA_ID="" Value="-2.938759e6" />
+    <Input Name="N↓Rd,NMy,pl,max←" Type="Numeric" ESA_ID="" Value="-240000" />
+    <Input Name="N↓Rd,NMy,pl,min←" Type="Numeric" ESA_ID="" Value="-2.404587e6" />
+    <Input Name="N↓Rd,NMz,max←" Type="Numeric" ESA_ID="" Value="456760.3" />
+    <Input Name="N↓Rd,NMz,min←" Type="Numeric" ESA_ID="" Value="-2.938759e6" />
+    <Input Name="N↓Rd,NMz,pl,max←" Type="Numeric" ESA_ID="" Value="-300000" />
+    <Input Name="N↓Rd,NMz,pl,min←" Type="Numeric" ESA_ID="" Value="-2.378167e6" />
+    <Input Name="N↓Rd,pl,max←" Type="Numeric" ESA_ID="" Value="-94.58745e-12" />
+    <Input Name="N↓Rd,pl,min←" Type="Numeric" ESA_ID="" Value="-2.378167e6" />
+    <Input Name="N↓Rd,pl←" Type="Numeric" ESA_ID="" Value="-2.170913e-6" />
+    <Input Name="N↓Rd,res,max←" Type="Numeric" ESA_ID="" Value="456760.3" />
+    <Input Name="N↓Rd,res,min←" Type="Numeric" ESA_ID="" Value="-2.938759e6" />
+    <Input Name="N↓Rd,res,pl,max←" Type="Numeric" ESA_ID="" Value="-94.58745e-12" />
+    <Input Name="N↓Rd,res,pl,min←" Type="Numeric" ESA_ID="" Value="-3e6" />
+    <Input Name="N↓Rd,ult←" Type="Numeric" ESA_ID="" Value="-2.938759e6" />
+    <Result Name="N↓Rd←" Type="Numeric" ESA_ID="Result.1" Value="-25000" />
+    <Input Name="N↓Rd1,hor←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N↓Rd1,pl←" Type="Numeric" ESA_ID="" Value="-2.170913e-6" />
+    <Input Name="N↓Rd1←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N↓Rd2,hor←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N↓Rd2,pl←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="N↓Rd2←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N2↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="N6↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="N6↓2←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="N6↓3←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="NameConcrete" Type="String" ESA_ID="" Value="C 25/30" />
+    <Input Name="NameReinf" Type="String" ESA_ID="" Value="B 400 A" />
+    <Input Name="NoOfPtsInVertCut" Type="Numeric" ESA_ID="" Value="180" />
+    <Input Name="NRD" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="Number↓E←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓N←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓W←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="NumIntersection" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="NumIntersectionForHor" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="NumIntersectionPlain" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Pressure" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="PrintImages" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="sCheck" Type="String" ESA_ID="" Value="OK" />
+    <Input Name="sizeFirst" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="sizeForceVect" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="sizeResVect" Type="Numeric" ESA_ID="" Value="57666.36" />
+    <Input Name="sizeSecond" Type="Numeric" ESA_ID="" Value="1000e-3" />
+    <Input Name="sNOTOK" Type="String" ESA_ID="" Value="Not OK" />
+    <Input Name="sOK" Type="String" ESA_ID="" Value="OK" />
+    <Input Name="sOKBUT" Type="String" ESA_ID="" Value="OK*" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="testMy_0" Type="Numeric" ESA_ID="" Value="-69.89688" />
+    <Input Name="testMz_0" Type="Numeric" ESA_ID="" Value="37.27834" />
+    <Result Name="Unity↓check←" Type="Numeric" ESA_ID="Result.0" Value="0" />
+    <Input Name="W6↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="W6↓2←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="W6↓3←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="W6↓4←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="α↓MyMz←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="α↓NM←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="β↓MyMz←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+  </Test>
+  <Test Description="SDF_InteractionDiagram_04_NuMu" Author="SCIA-ONLINE\tpail" Active="1" Date="2014.11.10">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <Variable Identifier="PrintImages" Value="True" />
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 25/30" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|REINF.EC" Category="Inclined top branch" Item="B 400 A" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="1" Units="0">
+        <CS SelReinf="0" H="500e-3" B="300e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="35e-3" D_upper="20e-3" N_upper="2" c_lower="35e-3" D_lower="20e-3" N_lower="2" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="IDMethodOfCheck" Value="2" />
+      <Variable Identifier="DivisionOfStrain" Value="400" />
+      <Variable Identifier="NoOfPtsInVertCut" Value="300" />
+      <Variable Identifier="DrawPlainConcrete" Value="False" />
+      <Variable Identifier="DrawGrid" Value="True" />
+      <Variable Identifier="PrintEWN" Value="True" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+      <Variable Identifier="_none_" Value="0" />
+    </Dialog>
+    <Input Name="a" Type="Numeric" ESA_ID="" Value="-1" />
+    <Input Name="AccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Alpha" Type="Numeric" ESA_ID="" Value="128" />
+    <Input Name="AngleHorForHor" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Bilinear" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideHor3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideHor3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVert" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertGen3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertGen3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVertNMy3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertNMy3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bInsideVertNMz3D" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bInsideVertNMz3Dplain" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bStandAlone" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="CalcImp" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="CalSecOrder" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Coeffε↓Sud←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="Combikey" Type="String" ESA_ID="" Value="" />
+    <Input Name="Count↓EWN←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="CssID" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="CssIDPlain" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="CssIDReinf" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="desAddData" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="DivisionOfStrain" Type="Numeric" ESA_ID="" Value="400" />
+    <Input Name="DrawGrid" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawPlainConcrete" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="DrawUltimateBorder" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="E6↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="EquivMoment" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="ErrorValue" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="16.66667e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="25e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="347.8261e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="400e6" />
+    <Input Name="ForcesID" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="GraphScale" Type="Numeric" ESA_ID="" Value="300" />
+    <Result Name="Check" Type="Numeric" ESA_ID="Result.8" Value="1" />
+    <Input Name="checkFirst" Type="Numeric" ESA_ID="" Value="73.46899e9" />
+    <Input Name="checkSecond" Type="Numeric" ESA_ID="" Value="-11.41901e9" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="4" />
+    <Result Name="IDMethodOfCheck" Type="Numeric" ESA_ID="Result.7" Value="2" />
+    <Input Name="IsoCol" Type="Bool" ESA_ID="" Value="True" />
+    <Result Name="Limit↓check←" Type="Numeric" ESA_ID="Result.9" Value="1" />
+    <Input Name="ListEWN" Type="String" ESA_ID="" Value="" />
+    <Result Name="M↓Edy←" Type="Numeric" ESA_ID="Result.5" Value="0" />
+    <Result Name="M↓Edz←" Type="Numeric" ESA_ID="Result.6" Value="0" />
+    <Input Name="M↓Rd,res,max←" Type="Numeric" ESA_ID="" Value="135104.6" />
+    <Input Name="M↓Rd,res,min←" Type="Numeric" ESA_ID="" Value="-135104.6" />
+    <Input Name="M↓Rd,res,pl,max←" Type="Numeric" ESA_ID="" Value="140613.6" />
+    <Input Name="M↓Rd,res,pl,min←" Type="Numeric" ESA_ID="" Value="-140606.4" />
+    <Input Name="M↓Rdy,hor←" Type="Numeric" ESA_ID="" Value="10.92485e-27" />
+    <Input Name="M↓Rdy,MyMz,max←" Type="Numeric" ESA_ID="" Value="102998.7" />
+    <Input Name="M↓Rdy,MyMz,min←" Type="Numeric" ESA_ID="" Value="-102998.7" />
+    <Input Name="M↓Rdy,NMy,max←" Type="Numeric" ESA_ID="" Value="239616.4" />
+    <Input Name="M↓Rdy,NMy,min←" Type="Numeric" ESA_ID="" Value="-239616.4" />
+    <Input Name="M↓Rdy,NMy,pl,max←" Type="Numeric" ESA_ID="" Value="101828.8" />
+    <Input Name="M↓Rdy,NMy,pl,min←" Type="Numeric" ESA_ID="" Value="-101828.8" />
+    <Input Name="M↓Rdy,NMz,max←" Type="Numeric" ESA_ID="" Value="16.3709e-12" />
+    <Input Name="M↓Rdy,NMz,min←" Type="Numeric" ESA_ID="" Value="-16.3709e-12" />
+    <Input Name="M↓Rdy,NMz,pl,max←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓Rdy,NMz,pl,min←" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="M↓Rdy,pl←" Type="Numeric" ESA_ID="" Value="104.4355e-9" />
+    <Input Name="M↓Rdy,ult←" Type="Numeric" ESA_ID="" Value="-102998.7" />
+    <Input Name="M↓Rdy,ultyz←" Type="Numeric" ESA_ID="" Value="-102998.7" />
+    <Result Name="M↓Rdy←" Type="Numeric" ESA_ID="Result.2" Value="10.92485e-27" />
+    <Input Name="M↓Rdy1,hor←" Type="Numeric" ESA_ID="" Value="10.92485e-27" />
+    <Input Name="M↓Rdy1,pl←" Type="Numeric" ESA_ID="" Value="104.4355e-9" />
+    <Input Name="M↓Rdy1←" Type="Numeric" ESA_ID="" Value="10.92485e-27" />
+    <Input Name="M↓Rdy2,hor←" Type="Numeric" ESA_ID="" Value="-1.806312e-27" />
+    <Input Name="M↓Rdy2,pl←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Rdy2←" Type="Numeric" ESA_ID="" Value="-1.806312e-27" />
+    <Input Name="M↓Rdz,hor←" Type="Numeric" ESA_ID="" Value="-178.4163e-12" />
+    <Input Name="M↓Rdz,MyMz,max←" Type="Numeric" ESA_ID="" Value="57666.38" />
+    <Input Name="M↓Rdz,MyMz,min←" Type="Numeric" ESA_ID="" Value="-57666.38" />
+    <Input Name="M↓Rdz,NMy,max←" Type="Numeric" ESA_ID="" Value="14.67227e-12" />
+    <Input Name="M↓Rdz,NMy,min←" Type="Numeric" ESA_ID="" Value="-14.6656e-12" />
+    <Input Name="M↓Rdz,NMy,pl,max←" Type="Numeric" ESA_ID="" Value="12000" />
+    <Input Name="M↓Rdz,NMy,pl,min←" Type="Numeric" ESA_ID="" Value="12000" />
+    <Input Name="M↓Rdz,NMz,max←" Type="Numeric" ESA_ID="" Value="135104.6" />
+    <Input Name="M↓Rdz,NMz,min←" Type="Numeric" ESA_ID="" Value="-135104.6" />
+    <Input Name="M↓Rdz,NMz,pl,max←" Type="Numeric" ESA_ID="" Value="58697.48" />
+    <Input Name="M↓Rdz,NMz,pl,min←" Type="Numeric" ESA_ID="" Value="-58669.98" />
+    <Input Name="M↓Rdz,pl←" Type="Numeric" ESA_ID="" Value="45.88037e-9" />
+    <Input Name="M↓Rdz,ult←" Type="Numeric" ESA_ID="" Value="57666.38" />
+    <Input Name="M↓Rdz,ultyz←" Type="Numeric" ESA_ID="" Value="57666.38" />
+    <Result Name="M↓Rdz←" Type="Numeric" ESA_ID="Result.3" Value="-178.4163e-12" />
+    <Input Name="M↓Rdz1,hor←" Type="Numeric" ESA_ID="" Value="-178.4163e-12" />
+    <Input Name="M↓Rdz1,pl←" Type="Numeric" ESA_ID="" Value="45.88037e-9" />
+    <Input Name="M↓Rdz1←" Type="Numeric" ESA_ID="" Value="-178.4163e-12" />
+    <Input Name="M↓Rdz2,hor←" Type="Numeric" ESA_ID="" Value="29.49931e-12" />
+    <Input Name="M↓Rdz2,pl←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Rdz2←" Type="Numeric" ESA_ID="" Value="29.49931e-12" />
+    <Input Name="M↓res,max←" Type="Numeric" ESA_ID="" Value="79971.59" />
+    <Input Name="M↓res,min←" Type="Numeric" ESA_ID="" Value="-16744.64" />
+    <Input Name="M↓res,point,pl←" Type="Numeric" ESA_ID="" Value="-3.637979e-12" />
+    <Input Name="M↓res,point←" Type="Numeric" ESA_ID="" Value="87.31149e-12" />
+    <Input Name="M↓res←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y,ini←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y,max←" Type="Numeric" ESA_ID="" Value="102998.7" />
+    <Input Name="M↓y,min←" Type="Numeric" ESA_ID="" Value="-102998.7" />
+    <Input Name="M↓z,ini←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z,max←" Type="Numeric" ESA_ID="" Value="57666.38" />
+    <Input Name="M↓z,min←" Type="Numeric" ESA_ID="" Value="-57666.38" />
+    <Input Name="maxlenght" Type="Numeric" ESA_ID="" Value="2.157626e6" />
+    <Input Name="MethodOfCheck" Type="String" ESA_ID="" Value="N↓u←M↓u←" />
+    <Input Name="minlenght" Type="Numeric" ESA_ID="" Value="226866.6" />
+    <Input Name="MRDY" Type="Numeric" ESA_ID="" Value="10.92485e-27" />
+    <Input Name="MRDZ" Type="Numeric" ESA_ID="" Value="-178.4163e-12" />
+    <Input Name="N" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="N↓Ed←" Type="Numeric" ESA_ID="Result.4" Value="-25000" />
+    <Input Name="N↓ini←" Type="Numeric" ESA_ID="" Value="-25000" />
+    <Input Name="N↓max←" Type="Numeric" ESA_ID="" Value="456760.3" />
+    <Input Name="N↓min←" Type="Numeric" ESA_ID="" Value="-2.938759e6" />
+    <Input Name="N↓pom,max←" Type="Numeric" ESA_ID="" Value="-1.064964e6" />
+    <Input Name="N↓pom,min←" Type="Numeric" ESA_ID="" Value="-1.064964e6" />
+    <Input Name="N↓Rd,hor←" Type="Numeric" ESA_ID="" Value="-2.938759e6" />
+    <Input Name="N↓Rd,max←" Type="Numeric" ESA_ID="" Value="456760.3" />
+    <Input Name="N↓Rd,min←" Type="Numeric" ESA_ID="" Value="-2.938759e6" />
+    <Input Name="N↓Rd,NMy,max←" Type="Numeric" ESA_ID="" Value="456760.3" />
+    <Input Name="N↓Rd,NMy,min←" Type="Numeric" ESA_ID="" Value="-2.938752e6" />
+    <Input Name="N↓Rd,NMy,pl,max←" Type="Numeric" ESA_ID="" Value="-240000" />
+    <Input Name="N↓Rd,NMy,pl,min←" Type="Numeric" ESA_ID="" Value="-2.404587e6" />
+    <Input Name="N↓Rd,NMz,max←" Type="Numeric" ESA_ID="" Value="456760.3" />
+    <Input Name="N↓Rd,NMz,min←" Type="Numeric" ESA_ID="" Value="-2.938759e6" />
+    <Input Name="N↓Rd,NMz,pl,max←" Type="Numeric" ESA_ID="" Value="-300000" />
+    <Input Name="N↓Rd,NMz,pl,min←" Type="Numeric" ESA_ID="" Value="-2.378167e6" />
+    <Input Name="N↓Rd,pl,max←" Type="Numeric" ESA_ID="" Value="-94.58745e-12" />
+    <Input Name="N↓Rd,pl,min←" Type="Numeric" ESA_ID="" Value="-2.378167e6" />
+    <Input Name="N↓Rd,pl←" Type="Numeric" ESA_ID="" Value="-2.170913e-6" />
+    <Input Name="N↓Rd,res,max←" Type="Numeric" ESA_ID="" Value="456760.3" />
+    <Input Name="N↓Rd,res,min←" Type="Numeric" ESA_ID="" Value="-2.938759e6" />
+    <Input Name="N↓Rd,res,pl,max←" Type="Numeric" ESA_ID="" Value="-94.58745e-12" />
+    <Input Name="N↓Rd,res,pl,min←" Type="Numeric" ESA_ID="" Value="-3e6" />
+    <Input Name="N↓Rd,ult←" Type="Numeric" ESA_ID="" Value="-2.938759e6" />
+    <Result Name="N↓Rd←" Type="Numeric" ESA_ID="Result.1" Value="-2.938759e6" />
+    <Input Name="N↓Rd1,hor←" Type="Numeric" ESA_ID="" Value="-2.938759e6" />
+    <Input Name="N↓Rd1,pl←" Type="Numeric" ESA_ID="" Value="-2.170913e-6" />
+    <Input Name="N↓Rd1←" Type="Numeric" ESA_ID="" Value="-2.938759e6" />
+    <Input Name="N↓Rd2,hor←" Type="Numeric" ESA_ID="" Value="456760.3" />
+    <Input Name="N↓Rd2,pl←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="N↓Rd2←" Type="Numeric" ESA_ID="" Value="456760.3" />
+    <Input Name="N2↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="N6↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="N6↓2←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="N6↓3←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="NameConcrete" Type="String" ESA_ID="" Value="C 25/30" />
+    <Input Name="NameReinf" Type="String" ESA_ID="" Value="B 400 A" />
+    <Input Name="NoOfPtsInVertCut" Type="Numeric" ESA_ID="" Value="300" />
+    <Input Name="NRD" Type="Numeric" ESA_ID="" Value="-2.938759e6" />
+    <Input Name="Number↓E←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓N←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Number↓W←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="NumIntersection" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="NumIntersectionForHor" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="NumIntersectionPlain" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Pressure" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="PrintImages" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="sCheck" Type="String" ESA_ID="" Value="OK" />
+    <Input Name="sizeFirst" Type="Numeric" ESA_ID="" Value="2.913759e6" />
+    <Input Name="sizeForceVect" Type="Numeric" ESA_ID="" Value="25000" />
+    <Input Name="sizeResVect" Type="Numeric" ESA_ID="" Value="2.938759e6" />
+    <Input Name="sizeSecond" Type="Numeric" ESA_ID="" Value="481760.3" />
+    <Input Name="sNOTOK" Type="String" ESA_ID="" Value="Not OK" />
+    <Input Name="sOK" Type="String" ESA_ID="" Value="OK" />
+    <Input Name="sOKBUT" Type="String" ESA_ID="" Value="OK*" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="testMy_0" Type="Numeric" ESA_ID="" Value="-69.89688" />
+    <Input Name="testMz_0" Type="Numeric" ESA_ID="" Value="37.27834" />
+    <Result Name="Unity↓check←" Type="Numeric" ESA_ID="Result.0" Value="8.506991e-3" />
+    <Input Name="W6↓1←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="W6↓2←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="W6↓3←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="W6↓4←" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="α↓MyMz←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="α↓NM←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="β↓MyMz←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+  </Test>
+</Root>

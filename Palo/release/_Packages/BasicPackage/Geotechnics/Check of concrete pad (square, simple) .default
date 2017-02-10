@@ -1,0 +1,94 @@
+<Root>
+  <ValueSets>
+    <EC NAD="ONORM" Description="ONORM">
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Austrian ÖNORM-EN" Collapsed="True" />
+    </EC>
+    <EC NAD="NBN" Description="NBN">
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Belgian NBN-EN" Collapsed="True" />
+    </EC>
+    <EC NAD="BS" Description="BS">
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="British BS-EN" Collapsed="True" />
+    </EC>
+    <EC NAD="CSN" Description="CSN">
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Czech CSN-EN" Collapsed="True" />
+    </EC>
+    <EC NAD="NEN" Description="NEN">
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Dutch NEN-EN" Collapsed="True" />
+    </EC>
+    <EC NAD="SFS" Description="SFS">
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Finnish SFS-EN" Collapsed="True" />
+    </EC>
+    <EC NAD="NF" Description="NF">
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="French NF-EN" Collapsed="True" />
+    </EC>
+    <EC NAD="DIN" Description="DIN">
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="German DIN-EN" Collapsed="True" />
+    </EC>
+    <EC NAD="ELOT" Description="ELOT">
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Greek ELOT-EN" Collapsed="True" />
+    </EC>
+    <EC NAD="IS" Description="IS">
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Irish IS-EN" Collapsed="True" />
+    </EC>
+    <EC NAD="LU" Description="LU">
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Luxembourgian LU-EN" Collapsed="True" />
+    </EC>
+    <EC NAD="PN" Description="PN">
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Polish PN-EN" Collapsed="True" />
+    </EC>
+    <EC NAD="SR" Description="SR">
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Romanian SR-EN" Collapsed="True" />
+    </EC>
+    <EC NAD="STN" Description="STN">
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Slovak STN-EN" Collapsed="True" />
+    </EC>
+    <EC NAD="SIST" Description="SIST">
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Slovenia SIST-EN" Collapsed="True" />
+    </EC>
+    <EC NAD="STD" Description="STD">
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+    </EC>
+  </ValueSets>
+  <Layout LP="500" RP="0.297110552763819" TP="0.25" BP="0.25" ActiveDocPane="1" ActivePane="0">
+    <Contents>
+      <Content Type="TUserDialog" AutoHidePortion="500" Hidden="False" Float="False" LangCode="ENU" />
+      <Content Type="TOutput" AutoHidePortion="0.25" Hidden="False" Float="False" Layout="0" Zoom="1" />
+      <Content Type="TAnnotation" AutoHidePortion="0.25" Hidden="False" Float="False" />
+    </Contents>
+    <Panes>
+      <Pane DockState="DockLeft" ActiveContent="0">
+        <Contents>
+          <Content RefID="0" />
+        </Contents>
+      </Pane>
+      <Pane DockState="Document" ActiveContent="1">
+        <Contents>
+          <Content RefID="1" />
+          <Content RefID="2" />
+        </Contents>
+      </Pane>
+    </Panes>
+    <DockWindows>
+      <DockWindow DockState="Document" ZOrderIndex="1">
+        <NestedPanes>
+          <Pane RefID="1" PrevPane="-1" Alignment="Right" Proportion="0.5" />
+        </NestedPanes>
+      </DockWindow>
+      <DockWindow DockState="DockLeft" ZOrderIndex="3">
+        <NestedPanes>
+          <Pane RefID="0" PrevPane="-1" Alignment="Bottom" Proportion="0.5" />
+        </NestedPanes>
+      </DockWindow>
+      <DockWindow DockState="DockRight" ZOrderIndex="2">
+        <NestedPanes />
+      </DockWindow>
+      <DockWindow DockState="DockTop" ZOrderIndex="4">
+        <NestedPanes />
+      </DockWindow>
+      <DockWindow DockState="DockBottom" ZOrderIndex="5">
+        <NestedPanes />
+      </DockWindow>
+    </DockWindows>
+    <FloatWindows />
+  </Layout>
+</Root>

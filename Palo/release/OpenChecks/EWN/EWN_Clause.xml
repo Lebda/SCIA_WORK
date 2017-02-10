@@ -1,0 +1,239 @@
+<Root Type="CustomLibrary">
+  <Node Code="E1_KRS_4.4.1.2(3)">
+    <Desc TranslateID="E1_KRS_4.4.1.2(3)_Desc">
+      <ENU>Incorrect type of prestressing reinforcement.</ENU>
+    </Desc>
+    <Sol TranslateID="E1_KRS_4.4.1.2(3)_Sol">
+      <ENU>Type of reinforcement: 0 - post-tensioned, 1 - pre-tensioned</ENU>
+    </Sol>
+  </Node>
+  <Node Code="E2_KRS_4.4.1.2(3)">
+    <Desc TranslateID="E2_KRS_4.4.1.2(3)_Desc">
+      <ENU>Incorrect shape of duct.</ENU>
+    </Desc>
+    <Sol TranslateID="E2_KRS_4.4.1.2(3)_Sol">
+      <ENU>Shape of duct: 0 - circular, 1 - rectangular</ENU>
+    </Sol>
+  </Node>
+  <Node Code="E3_KRS_4.4.1.2(3)">
+    <Desc TranslateID="E3_KRS_4.4.1.2(3)_Desc">
+      <ENU>Incorrect type of wire.</ENU>
+    </Desc>
+    <Sol TranslateID="E3_KRS_4.4.1.2(3)_Sol">
+      <ENU>Type of wire: 0 - strand or plain wire, 1 - indented wire</ENU>
+    </Sol>
+  </Node>
+  <Node Code="E4_KRS_4.4.1.2(3)">
+    <Desc TranslateID="E4_KRS_4.4.1.2(3)_Desc">
+      <ENU>Diameter of circular duct is negative.</ENU>
+    </Desc>
+    <Sol TranslateID="E4_KRS_4.4.1.2(3)_Sol">
+      <ENU>Diameter of circular duct have to be positive!</ENU>
+    </Sol>
+  </Node>
+  <Node Code="E5_KRS_4.4.1.2(3)">
+    <Desc TranslateID="E5_KRS_4.4.1.2(3)_Desc">
+      <ENU>Diameter of wire is negative.</ENU>
+    </Desc>
+    <Sol TranslateID="E5_KRS_4.4.1.2(3)_Sol">
+      <ENU>Diameter of wire have to be positive!</ENU>
+    </Sol>
+  </Node>
+  <Node Code="E6_KRS_4.4.1.2(3)">
+    <Desc TranslateID="E6_KRS_4.4.1.2(3)_Desc">
+      <ENU>Smaller dimension of rectangular duct is negative.</ENU>
+    </Desc>
+    <Sol TranslateID="E6_KRS_4.4.1.2(3)_Sol">
+      <ENU>Smaller dimension of rectangular duct have to be positive!</ENU>
+    </Sol>
+  </Node>
+  <Node Code="E7_KRS_4.4.1.2(3)">
+    <Desc TranslateID="E7_KRS_4.4.1.2(3)_Desc">
+      <ENU>Greated dimension of rectangular duct is negative.</ENU>
+    </Desc>
+    <Sol TranslateID="E7_KRS_4.4.1.2(3)_Sol">
+      <ENU>Greater dimension of rectangular duct have to be positive!</ENU>
+    </Sol>
+  </Node>
+  <Node Code="E8_KRS_4.4.1.2(3)">
+    <Desc TranslateID="E8_KRS_4.4.1.2(3)_Desc">
+      <ENU>Incorrect definition of rectangular duct dimensions. "a" have to be smaller than "b"!</ENU>
+    </Desc>
+    <Sol TranslateID="E8_KRS_4.4.1.2(3)_Sol">
+      <ENU>Define "a" &lt; "b"</ENU>
+    </Sol>
+  </Node>
+  <Node Code="E1_KRS_4.4.1.2(5)">
+    <Desc TranslateID="E1_KRS_4.4.1.2(5)_Desc">
+      <ENU>Design life is negative.</ENU>
+    </Desc>
+    <Sol TranslateID="E1_KRS_4.4.1.2(5)_Sol">
+      <ENU>Design life have to be positive!</ENU>
+    </Sol>
+  </Node>
+  <Node Code="E2_KRS_4.4.1.2(5)">
+    <Desc TranslateID="E2_KRS_4.4.1.2(5)_Desc">
+      <ENU>Cement/combination type have to be integer 0,1,2,...,26,27</ENU>
+    </Desc>
+    <Sol TranslateID="E2_KRS_4.4.1.2(5)_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E3_KRS_4.4.1.2(5)">
+    <Desc TranslateID="E3_KRS_4.4.1.2(5)_Desc">
+      <ENU>XC have to be integer 0,1,2,3,4</ENU>
+    </Desc>
+    <Sol TranslateID="E3_KRS_4.4.1.2(5)_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E4_KRS_4.4.1.2(5)">
+    <Desc TranslateID="E4_KRS_4.4.1.2(5)_Desc">
+      <ENU>XD have to be integer 0,1,2,3</ENU>
+    </Desc>
+    <Sol TranslateID="E4_KRS_4.4.1.2(5)_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E5_KRS_4.4.1.2(5)">
+    <Desc TranslateID="E5_KRS_4.4.1.2(5)_Desc">
+      <ENU>XS have to be integer 0,1,2,3</ENU>
+    </Desc>
+    <Sol TranslateID="E5_KRS_4.4.1.2(5)_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E6_KRS_4.4.1.2(5)">
+    <Desc TranslateID="E6_KRS_4.4.1.2(5)_Desc">
+      <ENU>vtc↓ekv← have to be between 0 and 1</ENU>
+    </Desc>
+    <Sol TranslateID="E6_KRS_4.4.1.2(5)_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E7_KRS_4.4.1.2(5)">
+    <Desc TranslateID="E7_KRS_4.4.1.2(5)_Desc">
+      <ENU>fck is negative!</ENU>
+    </Desc>
+    <Sol TranslateID="E7_KRS_4.4.1.2(5)_Sol">
+      <ENU>fck have to be positive!</ENU>
+    </Sol>
+  </Node>
+  <Node Code="E1_KRS_4.4.1.2(13)">
+    <Desc TranslateID="E1_KRS_4.4.1.2(13)_Desc">
+      <ENU>XM have to be integer 0,1,2,3</ENU>
+    </Desc>
+    <Sol TranslateID="E1_KRS_4.4.1.2(13)_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E1_KRS_4.4.1.3(4)">
+    <Desc TranslateID="E1_KRS_4.4.1.3(4)_Desc">
+      <ENU>c_min_dur is negative!</ENU>
+    </Desc>
+    <Sol TranslateID="E1_KRS_4.4.1.3(4)_Sol">
+      <ENU>c_min_dur have to be positive!</ENU>
+    </Sol>
+  </Node>
+  <Node Code="E2_KRS_4.4.1.3(4)">
+    <Desc TranslateID="E2_KRS_4.4.1.3(4)_Desc">
+      <ENU>c_min is negative!</ENU>
+    </Desc>
+    <Sol TranslateID="E2_KRS_4.4.1.3(4)_Sol">
+      <ENU>c_min have to be positive!</ENU>
+    </Sol>
+  </Node>
+  <Node Code="E3_KRS_4.4.1.3(4)">
+    <Desc TranslateID="E3_KRS_4.4.1.3(4)_Desc">
+      <ENU>k2_user have to be between 20 mm and 40 mm</ENU>
+    </Desc>
+    <Sol TranslateID="E3_KRS_4.4.1.3(4)_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E1_KRS_cover">
+    <Desc TranslateID="E1_KRS_cover_Desc">
+      <ENU>Incorrect type of reinforcement</ENU>
+    </Desc>
+    <Sol TranslateID="E1_KRS_cover_Sol">
+      <ENU>Type of reinforcement: 0 - normal, 1 - prestress</ENU>
+    </Sol>
+  </Node>
+  <Node Code="E2_KRS_cover">
+    <Desc TranslateID="E2_KRS_cover_Desc">
+      <ENU>Incorrect bond arangement</ENU>
+    </Desc>
+    <Sol TranslateID="E2_KRS_cover_Sol">
+      <ENU>Type of arrangement: 0 - separated, 1 - bundled</ENU>
+    </Sol>
+  </Node>
+  <Node Code="E3_KRS_cover">
+    <Desc TranslateID="E3_KRS_cover_Desc">
+      <ENU>Aggregate size is negative!</ENU>
+    </Desc>
+    <Sol TranslateID="E3_KRS_cover_Sol">
+      <ENU>Aggregate size have to be positive!</ENU>
+    </Sol>
+  </Node>
+  <Node Code="E1_KRS_3.1.2(4)">
+    <Desc TranslateID="E1_KRS_3.1.2(4)_Desc">
+      <ENU>Age of concrete is negative!</ENU>
+    </Desc>
+    <Sol TranslateID="E1_KRS_3.1.2(4)_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E2_KRS_3.1.2(4)">
+    <Desc TranslateID="E2_KRS_3.1.2(4)_Desc">
+      <ENU>Value k↓t← have to be between 0 and 1</ENU>
+    </Desc>
+    <Sol TranslateID="E2_KRS_3.1.2(4)_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E1_KRS_3.2.7(2)">
+    <Desc TranslateID="E1_KRS_3.2.7(2)_Desc">
+      <ENU>ε_uk is negative!</ENU>
+    </Desc>
+    <Sol TranslateID="E1_KRS_3.2.7(2)_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E1_KRS_3.3.6(7)">
+    <Desc TranslateID="E1_KRS_3.3.6(7)_Desc">
+      <ENU>ε_p_0 is negative!</ENU>
+    </Desc>
+    <Sol TranslateID="E1_KRS_3.3.6(7)_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E1_KRS_5.2(5)">
+    <Desc TranslateID="E1_KRS_5.2(5)_Desc">
+      <ENU>Length of member is negative!</ENU>
+    </Desc>
+    <Sol TranslateID="E1_KRS_5.2(5)_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E2_KRS_5.2(5)">
+    <Desc TranslateID="E2_KRS_5.2(5)_Desc">
+      <ENU>Reduction factor have to be between 0 and 1</ENU>
+    </Desc>
+    <Sol TranslateID="E2_KRS_5.2(5)_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+</Root>

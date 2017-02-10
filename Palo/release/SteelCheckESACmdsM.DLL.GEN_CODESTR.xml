@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="53"><StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_df_user_template_item_name}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>9004</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_scaff_con_check}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>222</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_check_of_steel_fire}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>5014</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_ep_boltedconnection}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>116</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_ep_beambuckling}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>118</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_doc_output_level_brief}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>45390</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_ep_concheck}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>115</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_con_haunch}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>216</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_con_boltassembly}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>101</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_ep_ecen_1993_steelcheck_uls_resultshell}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>9010</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_steel}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>107</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eitm5013}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>5013</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_con_nut}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>123</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_ep_noncompact}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>110</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_steel_check_bs_uls}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>9001</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_con_flangewidener}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>220</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_purlin_lap_data}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>9003</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_con_pinbolt}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>212</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_webcrippling_data}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>119</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_df_virtual_joist_designation}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>9008</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_con_webdoubler}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>218</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_llmembercheckdata}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>108</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eitm5017}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>5017</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_con_cadhaunch}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>217</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_con_washer}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>122</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_ep_lldiaphragms}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>109</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_ep_plltbrestrains}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>112</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_doc_output_level_summary}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>45393</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_ep_bgdk}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>103</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eitm5016}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>5016</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_localtransforce_data}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>120</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_corrugated_web_beams}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>5019</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eitm5015}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>5015</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eitm5074}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>5074</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_con_pinplate}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>215</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_con_bolts}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>121</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_con_endplate}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>213</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_con_bolt}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>211</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_check_of_steel_lrfd}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>9006</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_ep_frameboltedweldedconnection}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>113</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_ep_ecen_1993_steelcheck_fire_resultshell}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>9011</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_cellular_beam_checks}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>104</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eitm5018}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>5018</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_con_backingplate}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>214</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_ep_llfireresistance}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>111</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_ep_stiffener}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>114</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_df_check_nbr_8800}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>9007</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_steel_check_bs_sls}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>9002</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_doc_output_level_detailed}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>45392</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_check_of_steel_asd}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>9005</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_check_of_steel}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>5022</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_con_sheariron}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>219</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_con_cleat}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>124</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

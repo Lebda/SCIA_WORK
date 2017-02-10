@@ -1,0 +1,423 @@
+<Root Version="1" Type="CustomLibrary" GUID="cf706bee-efef-47dc-954f-489f4530fddb">
+  <Header>
+    <PropertySet Symbol="F_10_up" ESA_ID="F_10_up" Unit="" Type="Numeric">
+      <Description TranslateID="F_10_up">
+        <ENU>Zone F, F_up, cpe,10, suction</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="F_1_up" ESA_ID="F_1_up" Unit="" Type="Numeric">
+      <Description TranslateID="F_1_up">
+        <ENU>Zone F, F_up, cpe,1, suction</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="F_p_up" ESA_ID="F_p_up" Unit="" Type="Numeric">
+      <Description TranslateID="F_p_up">
+        <ENU>Zone F_up, pressure</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="F_10_low" ESA_ID="F_10_low" Unit="" Type="Numeric">
+      <Description TranslateID="F_10_low">
+        <ENU>Zone F_low, cpe,10, suction</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="F_1_low" ESA_ID="F_1_low" Unit="" Type="Numeric">
+      <Description TranslateID="F_1_low">
+        <ENU>Zone F_low, cpe,1, suction</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="F_p_low" ESA_ID="F_p_low" Unit="" Type="Numeric">
+      <Description TranslateID="F_p_low">
+        <ENU>Zone F_low, pressure</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="G_10" ESA_ID="G_10" Unit="" Type="Numeric">
+      <Description TranslateID="G_10">
+        <ENU>Zone G, cpe,10, suction</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="G_1" ESA_ID="G_1" Unit="" Type="Numeric">
+      <Description TranslateID="G_1">
+        <ENU>Zone G, cpe,1, suction</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="G_p" ESA_ID="G_p" Unit="" Type="Numeric">
+      <Description TranslateID="G_p">
+        <ENU>Zone G, pressure</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="H_10" ESA_ID="H_10" Unit="" Type="Numeric">
+      <Description TranslateID="H_10">
+        <ENU>Zone H, cpe,10, suction</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="H_1" ESA_ID="H_1" Unit="" Type="Numeric">
+      <Description TranslateID="H_1">
+        <ENU>Zone H, cpe,1, suction</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="H_p" ESA_ID="H_p" Unit="" Type="Numeric">
+      <Description TranslateID="H_p">
+        <ENU>Zone H, pressure</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="I_10" ESA_ID="I_10" Unit="" Type="Numeric">
+      <Description TranslateID="I_10">
+        <ENU>Zone I, cpe,10, suction</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="I_1" ESA_ID="I_1" Unit="" Type="Numeric">
+      <Description TranslateID="I_1">
+        <ENU>Zone I, cpe,1, suction</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="I_p" ESA_ID="I_p" Unit="" Type="Numeric">
+      <Description TranslateID="I_p">
+        <ENU>Zone I, pressure</ENU>
+      </Description>
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>0</Property>
+      <Property>5</Property>
+      <Property>-1.75</Property>
+      <Property>-2.5</Property>
+      <Property>0.0</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>-1.2</Property>
+      <Property>-2.0</Property>
+      <Property>0.0</Property>
+      <Property>-0.6</Property>
+      <Property>-1.2</Property>
+      <Property>0.0</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+    </Item>
+    <Item>
+      <Property>0</Property>
+      <Property>15</Property>
+      <Property>-1.0</Property>
+      <Property>-2.0</Property>
+      <Property>0.2</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>-0.8</Property>
+      <Property>-1.5</Property>
+      <Property>0.2</Property>
+      <Property>-0.35</Property>
+      <Property>-0.35</Property>
+      <Property>0.2</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+    </Item>
+    <Item>
+      <Property>0</Property>
+      <Property>30</Property>
+      <Property>-0.5</Property>
+      <Property>-1.5</Property>
+      <Property>0.75</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>-0.5</Property>
+      <Property>-1.5</Property>
+      <Property>0.6</Property>
+      <Property>-0.2</Property>
+      <Property>-0.2</Property>
+      <Property>0.4</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+    </Item>
+    <Item>
+      <Property>0</Property>
+      <Property>45</Property>
+      <Property>0.0</Property>
+      <Property>0.0</Property>
+      <Property>0.75</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>0.0</Property>
+      <Property>0.0</Property>
+      <Property>0.65</Property>
+      <Property>0.0</Property>
+      <Property>0.0</Property>
+      <Property>0.65</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+    </Item>
+    <Item>
+      <Property>0</Property>
+      <Property>60</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>0.75</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>0.75</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>0.75</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+    </Item>
+    <Item>
+      <Property>0</Property>
+      <Property>75</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>0.8</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>0.8</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>0.8</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+    </Item>
+    <Item>
+      <Property>1</Property>
+      <Property>5</Property>
+      <Property>-2.2</Property>
+      <Property>-2.6</Property>
+      <Property>NaN</Property>
+      <Property>-2.1</Property>
+      <Property>-2.4</Property>
+      <Property>NaN</Property>
+      <Property>-1.4</Property>
+      <Property>-2.0</Property>
+      <Property>NaN</Property>
+      <Property>-0.65</Property>
+      <Property>-1.2</Property>
+      <Property>NaN</Property>
+      <Property>-0.6</Property>
+      <Property>-0.6</Property>
+      <Property>NaN</Property>
+    </Item>
+    <Item>
+      <Property>1</Property>
+      <Property>15</Property>
+      <Property>-2.5</Property>
+      <Property>-2.9</Property>
+      <Property>NaN</Property>
+      <Property>-1.6</Property>
+      <Property>-2.4</Property>
+      <Property>NaN</Property>
+      <Property>-1.5</Property>
+      <Property>-2.5</Property>
+      <Property>NaN</Property>
+      <Property>-0.8</Property>
+      <Property>-1.2</Property>
+      <Property>NaN</Property>
+      <Property>-0.75</Property>
+      <Property>-1.2</Property>
+      <Property>NaN</Property>
+    </Item>
+    <Item>
+      <Property>1</Property>
+      <Property>30</Property>
+      <Property>-1.9</Property>
+      <Property>-2.9</Property>
+      <Property>0.5</Property>
+      <Property>-1.3</Property>
+      <Property>-2.0</Property>
+      <Property>0.5</Property>
+      <Property>-1.35</Property>
+      <Property>-2.0</Property>
+      <Property>0.4</Property>
+      <Property>-1.0</Property>
+      <Property>-1.3</Property>
+      <Property>0.3</Property>
+      <Property>-0.8</Property>
+      <Property>-1.2</Property>
+      <Property>0.2</Property>
+    </Item>
+    <Item>
+      <Property>1</Property>
+      <Property>45</Property>
+      <Property>-1.5</Property>
+      <Property>-2.4</Property>
+      <Property>0.6</Property>
+      <Property>-1.3</Property>
+      <Property>-2.0</Property>
+      <Property>0.6</Property>
+      <Property>-1.3</Property>
+      <Property>-2.0</Property>
+      <Property>0.5</Property>
+      <Property>-1.0</Property>
+      <Property>-1.3</Property>
+      <Property>0.4</Property>
+      <Property>-0.9</Property>
+      <Property>-1.2</Property>
+      <Property>0.3</Property>
+    </Item>
+    <Item>
+      <Property>1</Property>
+      <Property>60</Property>
+      <Property>-1.2</Property>
+      <Property>-2.0</Property>
+      <Property>0.7</Property>
+      <Property>-1.2</Property>
+      <Property>-2.0</Property>
+      <Property>0.7</Property>
+      <Property>-1.2</Property>
+      <Property>-2.0</Property>
+      <Property>0.7</Property>
+      <Property>-0.7</Property>
+      <Property>-1.3</Property>
+      <Property>0.5</Property>
+      <Property>-0.4</Property>
+      <Property>-1.2</Property>
+      <Property>0.5</Property>
+    </Item>
+    <Item>
+      <Property>1</Property>
+      <Property>75</Property>
+      <Property>-1.2</Property>
+      <Property>-2.0</Property>
+      <Property>0.8</Property>
+      <Property>-1.2</Property>
+      <Property>-2.0</Property>
+      <Property>0.8</Property>
+      <Property>-1.2</Property>
+      <Property>-2.0</Property>
+      <Property>0.8</Property>
+      <Property>-0.7</Property>
+      <Property>-1.3</Property>
+      <Property>0.7</Property>
+      <Property>-0.35</Property>
+      <Property>-0.35</Property>
+      <Property>0.6</Property>
+    </Item>
+    <Item>
+      <Property>2</Property>
+      <Property>5</Property>
+      <Property>-2.35</Property>
+      <Property>-2.5</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>-1.2</Property>
+      <Property>-2.0</Property>
+      <Property>NaN</Property>
+      <Property>-0.8</Property>
+      <Property>-1.2</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+    </Item>
+    <Item>
+      <Property>2</Property>
+      <Property>15</Property>
+      <Property>-2.5</Property>
+      <Property>-2.8</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>-1.2</Property>
+      <Property>-2.0</Property>
+      <Property>NaN</Property>
+      <Property>-0.9</Property>
+      <Property>-1.2</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+    </Item>
+    <Item>
+      <Property>2</Property>
+      <Property>30</Property>
+      <Property>-1.4</Property>
+      <Property>-2.3</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>-0.9</Property>
+      <Property>-1.5</Property>
+      <Property>NaN</Property>
+      <Property>-0.85</Property>
+      <Property>-0.85</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+    </Item>
+    <Item>
+      <Property>2</Property>
+      <Property>45</Property>
+      <Property>-0.75</Property>
+      <Property>-1.3</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>-0.65</Property>
+      <Property>-0.65</Property>
+      <Property>NaN</Property>
+      <Property>-0.8</Property>
+      <Property>-0.8</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+    </Item>
+    <Item>
+      <Property>2</Property>
+      <Property>60</Property>
+      <Property>-0.75</Property>
+      <Property>-1.0</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>-0.6</Property>
+      <Property>-0.6</Property>
+      <Property>NaN</Property>
+      <Property>-0.6</Property>
+      <Property>-0.6</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+    </Item>
+    <Item>
+      <Property>2</Property>
+      <Property>75</Property>
+      <Property>-0.75</Property>
+      <Property>-1.0</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>-0.6</Property>
+      <Property>-0.6</Property>
+      <Property>NaN</Property>
+      <Property>-0.6</Property>
+      <Property>-0.6</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+    </Item>
+  </Items>
+</Root>

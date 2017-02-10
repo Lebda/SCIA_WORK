@@ -1,0 +1,340 @@
+<Root>
+  <Header>
+    <PropertySet Description="Characteristic yield strength" Symbol="f↓k←" ESA_ID="fyk" Unit="MPa" Type="Numeric" />
+    <PropertySet Description="Coefficient k = ftk/fyk" Symbol="k" ESA_ID="k" Unit="" Type="Numeric" />
+    <PropertySet Description="Characteristic strain at maximum force" Symbol="ε↓uk←" ESA_ID="eps_uk" Unit="" Type="Numeric" />
+    <PropertySet Description="Design yield strength" Symbol="f↓d1←" ESA_ID="fyd1" Unit="MPa" Type="Numeric" />
+    <PropertySet Description="Design yield strength" Symbol="f↓d2←" ESA_ID="fyd2" Unit="MPa" Type="Numeric" />
+    <PropertySet Description="Limit strain" Symbol="ε↓lim←" ESA_ID="eps_lim" Unit="" Type="Numeric" />
+    <PropertySet Description="Class" Symbol="Class" ESA_ID="Class" Unit="" Type="String" />
+    <PropertySet Description="Inclined plastic branch" Symbol="Inclined" ESA_ID="Inclined" Unit="" Type="Bool" />
+    <PropertySet Description="Material diagram point" Symbol="Point" ESA_ID="Diagram.Point" Unit="" Type="Struct">
+      <StructMember Symbol="eps" Type="Numeric" Unit="" />
+      <StructMember Symbol="sig" Type="Numeric" Unit="MPa" />
+    </PropertySet>
+    <PropertySet Description="Material diagram point" Symbol="Point" ESA_ID="Diagram.Point" Unit="" Type="Struct">
+      <StructMember Symbol="eps" Type="Numeric" Unit="" />
+      <StructMember Symbol="sig" Type="Numeric" Unit="MPa" />
+    </PropertySet>
+    <PropertySet Description="Material diagram point" Symbol="Point" ESA_ID="Diagram.Point" Unit="" Type="Struct">
+      <StructMember Symbol="eps" Type="Numeric" Unit="" />
+      <StructMember Symbol="sig" Type="Numeric" Unit="MPa" />
+    </PropertySet>
+    <PropertySet Description="Material diagram point" Symbol="Point" ESA_ID="Diagram.Point" Unit="" Type="Struct">
+      <StructMember Symbol="eps" Type="Numeric" Unit="" />
+      <StructMember Symbol="sig" Type="Numeric" Unit="MPa" />
+    </PropertySet>
+    <PropertySet Description="Material diagram point" Symbol="Point" ESA_ID="Diagram.Point" Unit="" Type="Struct">
+      <StructMember Symbol="eps" Type="Numeric" Unit="" />
+      <StructMember Symbol="sig" Type="Numeric" Unit="MPa" />
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>Inclined</Property>
+      <Property>B 400 A</Property>
+      <Property>400</Property>
+      <Property>1.5</Property>
+      <Property>0.025</Property>
+      <Property>347.83</Property>
+      <Property>365.22</Property>
+      <Property>0.02</Property>
+      <Property>A</Property>
+      <Property>True</Property>
+      <Property>-0.0225;-365.22;</Property>
+      <Property>-0.00166;-347.83;</Property>
+      <Property>0;0;</Property>
+      <Property>0.00166;347.83;</Property>
+      <Property>0.0225;365.22;</Property>
+    </Item>
+    <Item>
+      <Property>Inclined</Property>
+      <Property>B 500 A</Property>
+      <Property>500</Property>
+      <Property>1.5</Property>
+      <Property>0.025</Property>
+      <Property>434.78</Property>
+      <Property>456.52</Property>
+      <Property>0.02</Property>
+      <Property>A</Property>
+      <Property>True</Property>
+      <Property>-0.0225;-456.52;</Property>
+      <Property>-0.00207;-434.78;</Property>
+      <Property>0;0;</Property>
+      <Property>0.00207;434.78;</Property>
+      <Property>0.0225;456.52;</Property>
+    </Item>
+    <Item>
+      <Property>Inclined</Property>
+      <Property>B 600 A</Property>
+      <Property>600</Property>
+      <Property>1.5</Property>
+      <Property>0.025</Property>
+      <Property>521.74</Property>
+      <Property>547.83</Property>
+      <Property>0.02</Property>
+      <Property>A</Property>
+      <Property>True</Property>
+      <Property>-0.0225;-547.83;</Property>
+      <Property>-0.00248;-521.74;</Property>
+      <Property>0;0;</Property>
+      <Property>0.00248;521.74;</Property>
+      <Property>0.0225;547.83;</Property>
+    </Item>
+    <Item>
+      <Property>Inclined</Property>
+      <Property>B 400 B</Property>
+      <Property>400</Property>
+      <Property>1.8</Property>
+      <Property>0.05</Property>
+      <Property>347.83</Property>
+      <Property>375.65</Property>
+      <Property>0.05</Property>
+      <Property>B</Property>
+      <Property>True</Property>
+      <Property>-0.045;-375.65;</Property>
+      <Property>-0.00166;-347.83;</Property>
+      <Property>0;0;</Property>
+      <Property>0.00166;347.83;</Property>
+      <Property>0.045;375.65;</Property>
+    </Item>
+    <Item>
+      <Property>Inclined</Property>
+      <Property>B 500 B</Property>
+      <Property>500</Property>
+      <Property>1.8</Property>
+      <Property>0.05</Property>
+      <Property>434.78</Property>
+      <Property>469.57</Property>
+      <Property>0.05</Property>
+      <Property>B</Property>
+      <Property>True</Property>
+      <Property>-0.045;-469.57;</Property>
+      <Property>-0.00207;-434.78;</Property>
+      <Property>0;0;</Property>
+      <Property>0.00207;434.78;</Property>
+      <Property>0.045;469.57;</Property>
+    </Item>
+    <Item>
+      <Property>Inclined</Property>
+      <Property>B 600 B</Property>
+      <Property>600</Property>
+      <Property>1.8</Property>
+      <Property>0.05</Property>
+      <Property>521.74</Property>
+      <Property>563.48</Property>
+      <Property>0.05</Property>
+      <Property>B</Property>
+      <Property>True</Property>
+      <Property>-0.045;-563.48;</Property>
+      <Property>-0.00248;-521.74;</Property>
+      <Property>0;0;</Property>
+      <Property>0.00248;521.74;</Property>
+      <Property>0.045;563.48;</Property>
+    </Item>
+    <Item>
+      <Property>Inclined</Property>
+      <Property>B 400 C</Property>
+      <Property>400</Property>
+      <Property>1.1</Property>
+      <Property>0.075</Property>
+      <Property>347.83</Property>
+      <Property>400</Property>
+      <Property>0.07</Property>
+      <Property>C</Property>
+      <Property>True</Property>
+      <Property>-0.0675;-400;</Property>
+      <Property>-0.00166;-347.83;</Property>
+      <Property>0;0;</Property>
+      <Property>0.00166;347.83;</Property>
+      <Property>0.0675;400;</Property>
+    </Item>
+    <Item>
+      <Property>Inclined</Property>
+      <Property>B 500 C</Property>
+      <Property>500</Property>
+      <Property>1.1</Property>
+      <Property>0.075</Property>
+      <Property>434.78</Property>
+      <Property>500</Property>
+      <Property>0.07</Property>
+      <Property>C</Property>
+      <Property>True</Property>
+      <Property>-0.0675;-500;</Property>
+      <Property>-0.00207;-434.78;</Property>
+      <Property>0;0;</Property>
+      <Property>0.00207;434.78;</Property>
+      <Property>0.0675;500;</Property>
+    </Item>
+    <Item>
+      <Property>Inclined</Property>
+      <Property>B 600 C</Property>
+      <Property>600</Property>
+      <Property>1.1</Property>
+      <Property>0.075</Property>
+      <Property>521.74</Property>
+      <Property>600</Property>
+      <Property>0.07</Property>
+      <Property>C</Property>
+      <Property>True</Property>
+      <Property>-0.0675;-600;</Property>
+      <Property>-0.00248;-521.74;</Property>
+      <Property>0;0;</Property>
+      <Property>0.00248;521.74;</Property>
+      <Property>0.0675;600;</Property>
+    </Item>
+    <Item>
+      <Property>Horizontal</Property>
+      <Property>B 400 A</Property>
+      <Property>400</Property>
+      <Property>1.5</Property>
+      <Property>0.025</Property>
+      <Property>347.83</Property>
+      <Property>365.22</Property>
+      <Property>0.02</Property>
+      <Property>A</Property>
+      <Property>False</Property>
+      <Property>-0.025;-347.83;</Property>
+      <Property>-0.00166;-347.83;</Property>
+      <Property>0;0;</Property>
+      <Property>0.00166;347.83;</Property>
+      <Property>0.025;347.83;</Property>
+    </Item>
+    <Item>
+      <Property>Horizontal</Property>
+      <Property>B 500 A</Property>
+      <Property>500</Property>
+      <Property>1.5</Property>
+      <Property>0.025</Property>
+      <Property>434.78</Property>
+      <Property>456.52</Property>
+      <Property>0.02</Property>
+      <Property>A</Property>
+      <Property>False</Property>
+      <Property>-0.025;-434.78;</Property>
+      <Property>-0.00207;-434.78;</Property>
+      <Property>0;0;</Property>
+      <Property>0.00207;434.78;</Property>
+      <Property>0.025;434.78;</Property>
+    </Item>
+    <Item>
+      <Property>Horizontal</Property>
+      <Property>B 600 A</Property>
+      <Property>600</Property>
+      <Property>1.5</Property>
+      <Property>0.025</Property>
+      <Property>521.74</Property>
+      <Property>547.83</Property>
+      <Property>0.02</Property>
+      <Property>A</Property>
+      <Property>False</Property>
+      <Property>-0.025;-521.74;</Property>
+      <Property>-0.00248;-521.74;</Property>
+      <Property>0;0;</Property>
+      <Property>0.00248;521.74;</Property>
+      <Property>0.025;521.74;</Property>
+    </Item>
+    <Item>
+      <Property>Horizontal</Property>
+      <Property>B 400 B</Property>
+      <Property>400</Property>
+      <Property>1.8</Property>
+      <Property>0.05</Property>
+      <Property>347.83</Property>
+      <Property>375.65</Property>
+      <Property>0.05</Property>
+      <Property>B</Property>
+      <Property>False</Property>
+      <Property>-0.05;-347.83;</Property>
+      <Property>-0.00166;-347.83;</Property>
+      <Property>0;0;</Property>
+      <Property>0.00166;347.83;</Property>
+      <Property>0.05;347.83;</Property>
+    </Item>
+    <Item>
+      <Property>Horizontal</Property>
+      <Property>B 500 B</Property>
+      <Property>500</Property>
+      <Property>1.8</Property>
+      <Property>0.05</Property>
+      <Property>434.78</Property>
+      <Property>469.57</Property>
+      <Property>0.05</Property>
+      <Property>B</Property>
+      <Property>False</Property>
+      <Property>-0.05;-434.78;</Property>
+      <Property>-0.00207;-434.78;</Property>
+      <Property>0;0;</Property>
+      <Property>0.00207;434.78;</Property>
+      <Property>0.05;434.78;</Property>
+    </Item>
+    <Item>
+      <Property>Horizontal</Property>
+      <Property>B 600 B</Property>
+      <Property>600</Property>
+      <Property>1.8</Property>
+      <Property>0.05</Property>
+      <Property>521.74</Property>
+      <Property>563.48</Property>
+      <Property>0.05</Property>
+      <Property>B</Property>
+      <Property>False</Property>
+      <Property>-0.05;-521.74;</Property>
+      <Property>-0.00248;-521.74;</Property>
+      <Property>0;0;</Property>
+      <Property>0.00248;521.74;</Property>
+      <Property>0.05;521.74;</Property>
+    </Item>
+    <Item>
+      <Property>Horizontal</Property>
+      <Property>B 400 C</Property>
+      <Property>400</Property>
+      <Property>1.1</Property>
+      <Property>0.075</Property>
+      <Property>347.83</Property>
+      <Property>400</Property>
+      <Property>0.07</Property>
+      <Property>C</Property>
+      <Property>False</Property>
+      <Property>-0.075;-347.83;</Property>
+      <Property>-0.00166;-347.83;</Property>
+      <Property>0;0;</Property>
+      <Property>0.00166;347.83;</Property>
+      <Property>0.075;347.83;</Property>
+    </Item>
+    <Item>
+      <Property>Horizontal</Property>
+      <Property>B 500 C</Property>
+      <Property>500</Property>
+      <Property>1.1</Property>
+      <Property>0.075</Property>
+      <Property>434.78</Property>
+      <Property>500</Property>
+      <Property>0.07</Property>
+      <Property>C</Property>
+      <Property>False</Property>
+      <Property>-0.075;-434.78;</Property>
+      <Property>-0.00207;-434.78;</Property>
+      <Property>0;0;</Property>
+      <Property>0.00207;434.78;</Property>
+      <Property>0.075;434.78;</Property>
+    </Item>
+    <Item>
+      <Property>Horizontal</Property>
+      <Property>B 600 C</Property>
+      <Property>600</Property>
+      <Property>1.1</Property>
+      <Property>0.075</Property>
+      <Property>521.74</Property>
+      <Property>600</Property>
+      <Property>0.07</Property>
+      <Property>C</Property>
+      <Property>False</Property>
+      <Property>-0.075;-521.74;</Property>
+      <Property>-0.00248;-521.74;</Property>
+      <Property>0;0;</Property>
+      <Property>0.00248;521.74;</Property>
+      <Property>0.075;521.74;</Property>
+    </Item>
+  </Items>
+</Root>

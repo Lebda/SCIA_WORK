@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xss xmlns:xss="http://www.scia.cz/xss">
+   <document_style xss:class="DocumentStyle" template_version="24" contents_place="2" screen_color_depth="0" printer_color_depth="0" trap_exceptions="1" max_page_count="1999" use_reduced_styles="0" reduced_styles_factor="70" max_auto_table_size="200" export_Filename_suggesting_rule="last" template_flags="0">
+      <yes type="pipe/cross"/>
+      <no type="pipe/cross"/>
+      <styles>
+         <style xss:class="Style" padding="0 0 0 0">
+            <font face="Arial" flags="0" color="0" background_color="0" width="0" height="7.5" weight="500" italic="0" underline="0"/></style>
+         <style xss:class="Style" padding="0 0 0 0">
+            <font face="Arial" flags="0" color="4294967295" background_color="0" width="0" height="7.5" weight="700" italic="0" underline="0"/></style>
+         <style xss:class="Style" padding="0 0 0 0">
+            <font face="Arial" flags="0" color="0" background_color="0" width="0" height="7.5" weight="400" italic="0" underline="0"/></style>
+         <style xss:class="Style" padding="0 0 0 0">
+            <font face="Arial" flags="0" color="0" background_color="0" width="0" height="7.5" weight="400" italic="0" underline="0"/></style>
+         <style xss:class="Style" padding="0 0 0 0">
+            <font face="Arial" flags="0" color="0" background_color="0" width="0" height="7.5" weight="400" italic="0" underline="0"/></style>
+         <style xss:class="Style" padding="0 0 0 0">
+            <font face="Arial" flags="0" color="8388608" background_color="0" width="0" height="7" weight="700" italic="0" underline="0"/></style>
+         <style xss:class="Style" padding="0 0 0 0">
+            <font face="Arial" flags="0" color="0" background_color="0" width="0" height="6" weight="400" italic="0" underline="0"/></style>
+         <style xss:class="Style" padding="0 0 0 0">
+            <font face="Arial" flags="0" color="128" background_color="0" width="0" height="7" weight="600" italic="0" underline="0"/></style>
+         <style xss:class="Style" padding="0 0 0 0">
+            <font face="Arial" flags="0" color="0" background_color="0" width="0" height="7" weight="600" italic="0" underline="0"/></style>
+         <style xss:class="Style" padding="0 0 0 0">
+            <font face="Arial" flags="0" color="128" background_color="0" width="0" height="10" weight="700" italic="0" underline="0"/></style>
+         <style xss:class="Style" padding="0 0 0 0">
+            <font face="Arial" flags="0" color="0" background_color="0" width="0" height="12" weight="400" italic="0" underline="0"/></style>
+         <style xss:class="Style" padding="0 0 0 0">
+            <font face="Wingdings" flags="1" color="0" background_color="0" width="0" height="7.5" weight="400" italic="0" underline="0"/></style>
+         <style xss:class="Style" padding="0 0 0 0">
+            <font face="Arial" flags="0" color="8388608" background_color="0" width="0" height="8" weight="700" italic="0" underline="0"/></style>
+         <style xss:class="Style" padding="0 0 0 0">
+            <font face="Arial" flags="0" color="8388608" background_color="0" width="0" height="7" weight="700" italic="0" underline="0"/></style>
+         <style xss:class="Style" padding="0 0 0 0">
+            <font face="Arial" flags="0" color="0" background_color="0" width="0" height="7" weight="500" italic="0" underline="0"/></style>
+         <style xss:class="Style" padding="0 0 0 0">
+            <font face="Arial" flags="0" color="0" background_color="0" width="0" height="8" weight="700" italic="0" underline="0"/></style></styles>
+      <vertical_table can_use_presets="1" what_widths_to_use="2" what_colors_to_use="2" what_padding_to_use="2" cell_padding="10 7 10 1" space_between_sections="20" space_between_strips="50">
+         <line_widths width_0="0" width_1="0" width_2="0" width_3="0" width_4="6" width_5="0" width_6="1" width_7="1" width_8="1" width_9="0"/>
+         <line_colors color_0="0" color_1="0" color_2="0" color_3="-1" color_4="0" color_5="-1" color_6="32768" color_7="0" color_8="0" color_9="0"/>
+         <colors color_0="14811135" color_1="16777185" color_2="16777215" color_3="16777215"/>
+         <stripping_rule rule="3"/></vertical_table>
+      <horizontal_table can_use_presets="1" what_widths_to_use="2" what_colors_to_use="2" what_padding_to_use="2" cell_padding="10 7 10 1" space_between_sections="20" space_between_strips="50">
+         <line_widths width_0="0" width_1="0" width_2="0" width_3="0" width_4="1" width_5="2" width_6="1" width_7="1" width_8="1" width_9="0"/>
+         <line_colors color_0="0" color_1="0" color_2="0" color_3="0" color_4="0" color_5="0" color_6="0" color_7="0" color_8="0" color_9="0"/>
+         <colors color_0="14811135" color_1="16777215" color_2="16777215" color_3="16777215"/>
+         <stripping_rule rule="3"/></horizontal_table>
+      <simple_form can_use_presets="1" what_widths_to_use="1" what_colors_to_use="0" what_padding_to_use="2" cell_padding="10 10 10 10" space_between_sections="20" space_between_strips="50">
+         <line_widths width_0="1" width_1="1" width_2="1" width_3="1" width_4="1" width_5="1" width_6="1" width_7="1" width_8="1" width_9="1"/>
+         <line_colors color_0="0" color_1="0" color_2="0" color_3="0" color_4="0" color_5="0" color_6="0" color_7="0" color_8="0" color_9="0"/>
+         <colors color_0="16777215" color_1="16777215" color_2="16777215" color_3="16777215"/>
+         <stripping_rule rule="1"/></simple_form>
+      <contents can_use_presets="1" what_widths_to_use="2" what_colors_to_use="2" what_padding_to_use="2" cell_padding="10 7 10 1" space_between_sections="20" space_between_strips="50">
+         <line_widths width_0="0" width_1="0" width_2="0" width_3="0" width_4="6" width_5="0" width_6="1" width_7="1" width_8="1" width_9="0"/>
+         <line_colors color_0="0" color_1="0" color_2="0" color_3="0" color_4="0" color_5="0" color_6="0" color_7="0" color_8="0" color_9="0"/>
+         <colors color_0="14811135" color_1="16777185" color_2="16777215" color_3="16777215"/>
+         <stripping_rule rule="3"/></contents>
+      <title_page__boxing padding_color="4294967295" border_color="0" padding="0 0 0 0" border="0 0 0 0" margin="0 0 0 0"/>
+      <body_boxing padding_color="4294967295" border_color="0" padding="0 500 0 500" border="0 0 0 0" margin="0 0 0 0"/>
+      <footer_boxing padding_color="4294967295" border_color="0" padding="0 0 0 0" border="0 0 0 0" margin="0 0 0 0"/>
+      <header_boxing padding_color="4294967295" border_color="0" padding="0 0 0 0" border="0 0 0 0" margin="0 0 0 0"/>
+      <page_boxing padding_color="4294967295" border_color="0" padding="0 0 0 0" border="0 0 0 0" margin="1500 1000 1500 1000"/></document_style></xss>

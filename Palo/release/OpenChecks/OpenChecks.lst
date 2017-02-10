@@ -1,0 +1,17 @@
+DrawCSS.cls
+\Concrete\*.*
+\NBR6118\Concrete_IntForces_ReinfChar_Circle_Design.CLS
+\NBR6118\Concrete_IntForces_ReinfChar_General_Design.CLS
+\NBR6118\Concrete_IntForces_ReinfChar_Rectangle_Design.CLS
+\NBR6118\Design_req_reinf.cls
+\NBR6118\Functions1D.CLS
+\NBR6118\FunctionsDataFromSEN.cls
+\NBR6118\Graphics_1_CSS_with_reinforcement.cls
+\NBR6118\Graphics_3_CSS_with_stress_strain_diagram.cls
+\NBR6118\Graphics_4_CSS_with_designed_reinforcement.CLS
+\NBR6118\NBR_Concrete_Design_Long.cls
+\NBR6118\NBR_Concrete_Design_Shear.CLS
+\NBR6118\NBR_Concrete_IntForces_SecOrderEffect.CLS
+\NBR6118\NBR_Check_response_N_My_Mz.CLS
+\NBR6118\StressStrain_Diagrams.cls
+\Steel_NBR\*.*

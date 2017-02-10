@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+  <Directory>c:\Temp\SDF_AutoTest</Directory>
+  <CLP>d:\DesignForms\Verze P\_bin\TestData\UserTests\60.clp</CLP>
+  <OutputLanguage>CSY</OutputLanguage>
+  <GenerateOutput>TRUE</GenerateOutput>
+</Root>

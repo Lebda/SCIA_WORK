@@ -1,0 +1,1 @@
+nunit-console-x86.exe /noshadow /xml:UT_XEP_SdfViewerResult.xml UT_XEP_SdfViewer.dll /out:TestResult_UT_XEP_SdfViewer.txt /err:StdErr_UT_XEP_SdfViewer.txt

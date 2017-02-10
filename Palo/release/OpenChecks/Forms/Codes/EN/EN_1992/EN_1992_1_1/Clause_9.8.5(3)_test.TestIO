@@ -1,0 +1,92 @@
+<Root>
+  <Test Description="STD_Ac&lt;=0,5" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 05">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A↓c←" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Result Name="A↓s,bpmin←" Type="Numeric" ESA_ID="Result.02" Value="2e-3" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="h↓1←" Type="Numeric" ESA_ID="Result.01" Value="600e-3" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Standard EN" />
+  </Test>
+  <Test Description="STD_0,5&lt;Ac&lt;=1" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 05">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A↓c←" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Result Name="A↓s,bpmin←" Type="Numeric" ESA_ID="Result.02" Value="2.5e-3" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="h↓1←" Type="Numeric" ESA_ID="Result.01" Value="600e-3" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Standard EN" />
+  </Test>
+  <Test Description="STD_1&lt;Ac" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 05">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A↓c←" Type="Numeric" ESA_ID="" Value="2" />
+    <Result Name="A↓s,bpmin←" Type="Numeric" ESA_ID="Result.02" Value="5e-3" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="h↓1←" Type="Numeric" ESA_ID="Result.01" Value="600e-3" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Standard EN" />
+  </Test>
+  <Test Description="STN" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 05">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Slovak STN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A↓c←" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Result Name="A↓s,bpmin←" Type="Numeric" ESA_ID="Result.02" Value="2e-3" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="h↓1←" Type="Numeric" ESA_ID="Result.01" Value="10" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Slovak STN-EN" />
+  </Test>
+  <Test Description="NF" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 05">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="French NF-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A↓c←" Type="Numeric" ESA_ID="" Value="400e-3" />
+    <Result Name="A↓s,bpmin←" Type="Numeric" ESA_ID="Result.02" Value="0" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="h↓1←" Type="Numeric" ESA_ID="Result.01" Value="10" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="French NF-EN" />
+  </Test>
+  <Test Description="NEN" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 05">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Dutch NEN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A↓c←" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="A↓s,bpmin←" Type="Numeric" ESA_ID="Result.02" Value="3e-3" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="h↓1←" Type="Numeric" ESA_ID="Result.01" Value="10" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Dutch NEN-EN" />
+  </Test>
+  <Test Description="NBN_d&lt;=h1" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 05">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Belgian NBN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A↓c←" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="A↓s,bpmin←" Type="Numeric" ESA_ID="Result.02" Value="8e-3" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="h↓1←" Type="Numeric" ESA_ID="Result.01" Value="600e-3" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Belgian NBN-EN" />
+  </Test>
+  <Test Description="NBN_d&gt;h1_max1" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 05">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Belgian NBN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A↓c←" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="A↓s,bpmin←" Type="Numeric" ESA_ID="Result.02" Value="2e-3" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Result Name="h↓1←" Type="Numeric" ESA_ID="Result.01" Value="600e-3" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Belgian NBN-EN" />
+  </Test>
+  <Test Description="NBN_d&gt;h1_max2" Author="ADAM-NB\Adam" Active="1" Date="2014. 09. 05">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Belgian NBN-EN" Collapsed="True" />
+    </Dialog>
+    <Input Name="A↓c←" Type="Numeric" ESA_ID="" Value="0" />
+    <Result Name="A↓s,bpmin←" Type="Numeric" ESA_ID="Result.02" Value="172.4138e-6" />
+    <Input Name="d" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Result Name="h↓1←" Type="Numeric" ESA_ID="Result.01" Value="600e-3" />
+    <Result Name="Item" Type="String" ESA_ID="Result.09" Value="Belgian NBN-EN" />
+  </Test>
+</Root>

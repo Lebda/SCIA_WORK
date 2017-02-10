@@ -1,0 +1,377 @@
+<Root Version="1" Type="CustomLibrary" GUID="479f5eab-7deb-44ae-9a68-d223a056e124">
+  <Header>
+    <PropertySet Symbol="E" ESA_ID="E" Unit="psi" Type="Numeric">
+      <Description TranslateID="E">
+        <ENU>Modulus of Elasticity</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="eps_c2" ESA_ID="eps_c2" Unit="in/in" Type="Numeric">
+      <Description TranslateID="eps_c2">
+        <ENU>Strain0</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="eps_cu2" ESA_ID="eps_cu2" Unit="in/in" Type="Numeric">
+      <Description TranslateID="eps_cu2">
+        <ENU>Ultimate Strain0</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="epscu" ESA_ID="epscu" Unit="in/in" Type="Numeric">
+      <Description TranslateID="epscu">
+        <ENU>Ultimate Strain</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="epso" ESA_ID="epso" Unit="in/in" Type="Numeric">
+      <Description TranslateID="epso">
+        <ENU>strain</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="fc" ESA_ID="fc" Unit="psi" Type="Numeric">
+      <Description TranslateID="fc">
+        <ENU>Concrete Compressive Strength</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="fcd" ESA_ID="fcd" Unit="psi" Type="Numeric">
+      <Description TranslateID="fcd">
+        <ENU>Design Concrete  Strength</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="fck" ESA_ID="fck" Unit="psi" Type="Numeric">
+      <Description TranslateID="fck">
+        <ENU>Concrete Compressive Strength k</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="fck_05" ESA_ID="fck_05" Unit="psi" Type="Numeric">
+      <Description TranslateID="fck_05">
+        <ENU>Square Root of Concrete Strength</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="fctm" ESA_ID="fctm" Unit="psi" Type="Numeric">
+      <Description TranslateID="fctm">
+        <ENU>Concrete Compressive Strength</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="fr" ESA_ID="fr" Unit="psi" Type="Numeric">
+      <Description TranslateID="fr">
+        <ENU>Rupture Strength of Concrete</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="G" ESA_ID="G" Unit="psi" Type="Numeric">
+      <Description TranslateID="G">
+        <ENU>Shear Modulus</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="IndependentG" ESA_ID="IndependentG" Unit="psi" Type="Numeric">
+      <Description TranslateID="IndependentG">
+        <ENU>Independent Shear Modulus</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="LogDecrement" ESA_ID="LogDecrement" Unit="" Type="Numeric">
+      <Description TranslateID="LogDecrement">
+        <ENU>Log. Decrease for Nonuniform damping</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Poisson" ESA_ID="Poisson" Unit="in/in" Type="Numeric">
+      <Description TranslateID="Poisson">
+        <ENU>Poisson's Coefficient</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="SpecificHeat" ESA_ID="SpecificHeat" Unit="J/Kg*°K" Type="Numeric">
+      <Description TranslateID="SpecificHeat">
+        <ENU>Specific Heat</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ThermalConductivity" ESA_ID="ThermalConductivity" Unit="W/m*°K" Type="Numeric">
+      <Description TranslateID="ThermalConductivity">
+        <ENU>Thermal Conductivity</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ThermalExpansion" ESA_ID="ThermalExpansion" Unit="in/in*°F" Type="Numeric">
+      <Description TranslateID="ThermalExpansion">
+        <ENU>Thermal Expansion</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="UnitMass" ESA_ID="UnitMass" Unit="lb/ft↑3←" Type="Numeric">
+      <Description TranslateID="UnitMass">
+        <ENU>Unit Mass of Concrete</ENU>
+      </Description>
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>Normal Weight Concrete</Property>
+      <Property>C3000</Property>
+      <Property>3122e3</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>3e-3</Property>
+      <Property>1.4651e-3</Property>
+      <Property>3000</Property>
+      <Property>2550</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>410</Property>
+      <Property>1.513e6</Property>
+      <Property>0</Property>
+      <Property>150e-3</Property>
+      <Property>150e-3</Property>
+      <Property>0.9</Property>
+      <Property>0.80</Property>
+      <Property>5.5e-6</Property>
+      <Property>141.22</Property>
+    </Item>
+    <Item>
+      <Property>Normal Weight Concrete</Property>
+      <Property>C4000</Property>
+      <Property>3605E3</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>3e-3</Property>
+      <Property>1.68649e-3</Property>
+      <Property>4000</Property>
+      <Property>3400</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>474</Property>
+      <Property>12.087e9</Property>
+      <Property>0</Property>
+      <Property>150e-3</Property>
+      <Property>150e-3</Property>
+      <Property>0.9</Property>
+      <Property>0.8</Property>
+      <Property>5.5e-6</Property>
+      <Property>141.22</Property>
+    </Item>
+    <Item>
+      <Property>Normal Weight Concrete</Property>
+      <Property>C5000</Property>
+      <Property>4030e3</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>3e-3</Property>
+      <Property>1.8905e-3</Property>
+      <Property>5000</Property>
+      <Property>4250</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>530.3</Property>
+      <Property>13.4783e9</Property>
+      <Property>0</Property>
+      <Property>150e-3</Property>
+      <Property>150e-3</Property>
+      <Property>0.9</Property>
+      <Property>0.8</Property>
+      <Property>5.5e-6</Property>
+      <Property>141.22</Property>
+    </Item>
+    <Item>
+      <Property>Normal Weight Concrete</Property>
+      <Property>C6000</Property>
+      <Property>4415e3</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>3e-3</Property>
+      <Property>2.06843e-3</Property>
+      <Property>6000</Property>
+      <Property>5100</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>580.9</Property>
+      <Property>14.7826e9</Property>
+      <Property>0</Property>
+      <Property>150e-3</Property>
+      <Property>150e-3</Property>
+      <Property>0.9</Property>
+      <Property>0.8</Property>
+      <Property>5.5e-6</Property>
+      <Property>141.22</Property>
+    </Item>
+    <Item>
+      <Property>Normal Weight Concrete</Property>
+      <Property>C8000</Property>
+      <Property>5098e3</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>3e-3</Property>
+      <Property>2.38597e-3</Property>
+      <Property>8000</Property>
+      <Property>6800</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>670.8</Property>
+      <Property>12.087e9</Property>
+      <Property>0</Property>
+      <Property>150e-3</Property>
+      <Property>150e-3</Property>
+      <Property>0.9</Property>
+      <Property>0.8</Property>
+      <Property>5.5e-6</Property>
+      <Property>141.22</Property>
+    </Item>
+    <Item>
+      <Property>Normal Weight Concrete</Property>
+      <Property>C10000</Property>
+      <Property>5700e3</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>3e-3</Property>
+      <Property>2.66995e-3</Property>
+      <Property>10000</Property>
+      <Property>8500</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>750</Property>
+      <Property>19.087e9</Property>
+      <Property>0</Property>
+      <Property>150e-3</Property>
+      <Property>150e-3</Property>
+      <Property>0.9</Property>
+      <Property>0.8</Property>
+      <Property>5.5e-6</Property>
+      <Property>141.22</Property>
+    </Item>
+    <Item>
+      <Property>Light Weight Concrete</Property>
+      <Property>C3000</Property>
+      <Property>3122e3</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>3e-3</Property>
+      <Property>1.4651e-3</Property>
+      <Property>3000</Property>
+      <Property>2550</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>349</Property>
+      <Property>1.513e6</Property>
+      <Property>0</Property>
+      <Property>150e-3</Property>
+      <Property>150e-3</Property>
+      <Property>0.9</Property>
+      <Property>0.8</Property>
+      <Property>5.5e-6</Property>
+      <Property>107.88</Property>
+    </Item>
+    <Item>
+      <Property>Light Weight Concrete</Property>
+      <Property>C4000</Property>
+      <Property>3605E3</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>3e-3</Property>
+      <Property>1.68649e-3</Property>
+      <Property>4000</Property>
+      <Property>3400</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>403</Property>
+      <Property>12.087e9</Property>
+      <Property>0</Property>
+      <Property>150e-3</Property>
+      <Property>150e-3</Property>
+      <Property>0.9</Property>
+      <Property>0.8</Property>
+      <Property>5.5e-6</Property>
+      <Property>107.88</Property>
+    </Item>
+    <Item>
+      <Property>Light Weight Concrete</Property>
+      <Property>C5000</Property>
+      <Property>4030e3</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>3e-3</Property>
+      <Property>1.8905e-3</Property>
+      <Property>5000</Property>
+      <Property>4250</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>451</Property>
+      <Property>13.4783e9</Property>
+      <Property>0</Property>
+      <Property>150e-3</Property>
+      <Property>150e-3</Property>
+      <Property>0.9</Property>
+      <Property>0.8</Property>
+      <Property>5.5e-6</Property>
+      <Property>107.88</Property>
+    </Item>
+    <Item>
+      <Property>Light Weight Concrete</Property>
+      <Property>C6000</Property>
+      <Property>4415e3</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>3e-3</Property>
+      <Property>2.06843e-3</Property>
+      <Property>6000</Property>
+      <Property>5100</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>494</Property>
+      <Property>14.7826e9</Property>
+      <Property>0</Property>
+      <Property>150e-3</Property>
+      <Property>150e-3</Property>
+      <Property>0.9</Property>
+      <Property>0.8</Property>
+      <Property>5.5e-6</Property>
+      <Property>107.88</Property>
+    </Item>
+    <Item>
+      <Property>Light Weight Concrete</Property>
+      <Property>C8000</Property>
+      <Property>5098e3</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>3e-3</Property>
+      <Property>2.38597e-3</Property>
+      <Property>8000</Property>
+      <Property>6800</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>570</Property>
+      <Property>12.087e9</Property>
+      <Property>0</Property>
+      <Property>150e-3</Property>
+      <Property>150e-3</Property>
+      <Property>0.9</Property>
+      <Property>0.8</Property>
+      <Property>5.5e-6</Property>
+      <Property>107.88</Property>
+    </Item>
+    <Item>
+      <Property>Light Weight Concrete</Property>
+      <Property>C10000</Property>
+      <Property>5700e3</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>3e-3</Property>
+      <Property>2.66995e-3</Property>
+      <Property>10000</Property>
+      <Property>8500</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>638</Property>
+      <Property>19.087e9</Property>
+      <Property>0</Property>
+      <Property>150e-3</Property>
+      <Property>150e-3</Property>
+      <Property>0.90</Property>
+      <Property>0.8</Property>
+      <Property>5.5e-6</Property>
+      <Property>107.88</Property>
+    </Item>
+  </Items>
+</Root>

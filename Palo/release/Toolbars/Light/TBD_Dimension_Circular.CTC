@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xss xmlns:xss="http://www.scia.cz/xss">
+   <toolbar Version="1" Name="Circular" Flags="0" IsPart="0" PartsSize="0" Size="3">
+      <Button Version="1" Mode="1" Tooltip="Dimension Radius.
+                                                                                                                                                                            Dimension Radius" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{56DB27F6-A938-419D-B6F7-F69C408B18F8}" ButtonID="{56DB27F6-A938-419D-B6F7-F69C408B18F8}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Dimension Diameter.
+                                                                                                                                                                            Dimension Diameter" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{C04FE79A-0D68-4A40-9E6E-467FF2A63C8B}" ButtonID="{C04FE79A-0D68-4A40-9E6E-467FF2A63C8B}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Dimension Arclength.
+                                                                                                                                                                            Dimension Arclength" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{56FC53F1-DA04-4CE5-A993-54B5194BDFA0}" ButtonID="{56FC53F1-DA04-4CE5-A993-54B5194BDFA0}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/></toolbar></xss>

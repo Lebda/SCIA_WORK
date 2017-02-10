@@ -1,0 +1,2804 @@
+﻿<Root>
+  <Test Description="BiaxialBendingRectangle" Author="SCIA-ONLINE\tpail" Active="1" Date="2014.11.18">
+    <Dialog>
+      <Variable Identifier="sUC_Slenderness" Value="Not Calc." />
+      <Variable Identifier="sRecalForces" Value="Not Calc." />
+      <Variable Identifier="bCalculateSlendernessCheck" Value="False" />
+      <Variable Identifier="bRecalIntForces" Value="False" />
+      <Variable Identifier="bCalculateStressLimCheck" Value="True" />
+      <Variable Identifier="bCalculateCrackCheck" Value="True" />
+      <Variable Identifier="bCalculateDeflectionCheck" Value="True" />
+      <Variable Identifier="sUC_Slenderness" Value="Not Calc." />
+      <Variable Identifier="sUC_Slenderness" Value="Not Calc." />
+      <Variable Identifier="sRecalForces" Value="Not Calc." />
+      <Variable Identifier="sUC_StressLim" Value="2,30" />
+      <Variable Identifier="sUC_CWLim" Value="1,32" />
+      <Variable Identifier="sUC_Deflection" Value="0,00" />
+      <Variable Identifier="bCalculateSlendernessCheck" Value="False" />
+      <Variable Identifier="bRecalIntForces" Value="False" />
+      <Variable Identifier="bCalculateIntDiagCheck" Value="True" />
+      <Variable Identifier="bCalculateResponceCheck" Value="True" />
+      <Variable Identifier="bCalculateShearCheck" Value="True" />
+      <Variable Identifier="bCalculateTorsionCheck" Value="True" />
+      <Variable Identifier="bCalculateInteractionVTMCheck" Value="True" />
+      <Variable Identifier="sUC_CapNMyMz_Int" Value="0,96" />
+      <Variable Identifier="sUC_CapNMyMz_Resp" Value="1,00" />
+      <Variable Identifier="sUC_CapVyVzT_Int" Value="0,11" />
+      <Variable Identifier="sUC_CapT_Int" Value="0,24" />
+      <Variable Identifier="sUC_InteractionVTM_Int" Value="1,00" />
+      <Variable Identifier="ReinfType" Value="0" />
+      <Variable Identifier="DesignLife" Value="50" />
+      <Variable Identifier="DesignLife" Value="50" />
+      <Variable Identifier="DesignLife" Value="50" />
+      <Variable Identifier="BondArrangement" Value="1" />
+      <Variable Identifier="ϕ↓w←" Value="12e-3" />
+      <Variable Identifier="ϕ↓duct←" Value="26e-3" />
+      <Variable Identifier="a" Value="35e-3" />
+      <Variable Identifier="b" Value="55e-3" />
+      <Variable Identifier="DuctShape" Value="1" />
+      <Variable Identifier="n↓b0←" Value="4" />
+      <Variable Identifier="n↓b1←" Value="3" />
+      <Variable Identifier="BundledType" Value="1" />
+      <Variable Identifier="Deviation" Value="0" />
+      <Variable Identifier="XM" Value="0" />
+      <Variable Identifier="SpecialQuality" Value="False" />
+      <Variable Identifier="TensionType" Value="0" />
+      <Variable Identifier="ConstructionClass1" Value="True" />
+      <Variable Identifier="d↓g←" Value="True" />
+      <Variable Identifier="UnevenSurf" Value="False" />
+      <Variable Identifier="Prestress" Value="False" />
+      <Variable Identifier="Quality" Value="True" />
+      <Variable Identifier="k↓2,user←" Value="30e-3" />
+      <Variable Identifier="Unevenness" Value="0" />
+      <Variable Identifier="PrefabricatedSpecialQuality" Value="True" />
+      <Variable Identifier="XC" Value="0" />
+      <Variable Identifier="XS" Value="0" />
+      <Variable Identifier="XA" Value="0" />
+      <Variable Identifier="XF" Value="0" />
+      <Variable Identifier="XD" Value="0" />
+      <Variable Identifier="bAutoMethod" Value="True" />
+      <Variable Identifier="bSymReinf" Value="False" />
+      <Variable Identifier="TypeDes" Value="1" />
+      <Variable Identifier="ρ↓lim,M←" Value="100e-3" />
+      <Variable Identifier="Method" Value="2" />
+      <Variable Identifier="offset" Value="30e-3" />
+      <Variable Identifier="MaxNlayers" Value="3" />
+      <Variable Identifier="biaxcoef" Value="1.4" />
+      <Variable Identifier="s↓min←" Value="20e-3" />
+      <Variable Identifier="n↓s,design←" Value="2" />
+      <Variable Identifier="α↓s,design←" Value="90" />
+      <Variable Identifier="c" Value="34.24871e-3" />
+      <Variable Identifier="ϕ" Value="14e-3" />
+      <Variable Identifier="ϕ↓w,design←" Value="8e-3" />
+      <Variable Identifier="bCalcImpULS" Value="True" />
+      <Variable Identifier="bCalSecOrder" Value="True" />
+      <Variable Identifier="μ↓s←" Value="10e-3" />
+      <Variable Identifier="bCharReinfCalcRatio" Value="True" />
+      <Variable Identifier="bCalcImpSLS" Value="True" />
+      <Variable Identifier="μ↓s←" Value="10e-3" />
+      <Variable Identifier="LimAdd" Value="500" />
+      <Variable Identifier="LimTot" Value="250" />
+      <Variable Identifier="PercLTLoad" Value="600e-3" />
+      <Variable Identifier="bAuto_w↓max←" Value="True" />
+      <Variable Identifier="w↓max,user←" Value="500e-6" />
+      <Variable Identifier="Type↓fct,eff←" Value="1" />
+      <Variable Identifier="Type↓E←" Value="1" />
+      <Variable Identifier="bAutoCalcCreep" Value="False" />
+      <Variable Identifier="RH" Value="800e-3" />
+      <Variable Identifier="sCementClass" Value="R" />
+      <Variable Identifier="t↓s←" Value="259200" />
+      <Variable Identifier="t↓0,input←" Value="2.4192e6" />
+      <Variable Identifier="t" Value="8.64e6" />
+      <Variable Identifier="φ" Value="2.48" />
+      <Variable Identifier="bAuto↓θ←" Value="True" />
+      <Variable Identifier="θ↓inp←" Value="25" />
+      <Variable Identifier="IDMethodOfCheck" Value="2" />
+      <Variable Identifier="GS_ID" Value="300" />
+      <Variable Identifier="UserScale" Value="20" />
+      <Variable Identifier="UCSPosition" Value="4" />
+      <Variable Identifier="UCSY" Value="0" />
+      <Variable Identifier="UCSZ" Value="0" />
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <Variable Identifier="Coeff↓d←" Value="900e-3" />
+      <Variable Identifier="bAccidentalULS" Value="False" />
+      <Variable Identifier="InternalForces" Value="100|10|10|10|50|50║0|0|0|0|45|45║0|0|0|0|40|40" />
+      <Variable Identifier="MemberInternalForces" Value="0|0|0|0║0|0|0|0║0|0|0|0" />
+      <Variable Identifier="ElasticDeformations" Value="0|0|0║0|0|0" />
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 20/25" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|REINF.EC" Category="Horizontal top branch" Item="B 500 A" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|ShearREINF.EC" Category="Horizontal top branch" Item="B 600 B" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="1" Units="2">
+        <CS SelReinf="0" H="500e-3" B="300e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="30e-3" D_upper="20e-3" N_upper="2" c_lower="30e-3" D_lower="20e-3" N_lower="2" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="sCaption" Value="    " />
+      <Variable Identifier="cTypeOfCalculation" Value="0" />
+      <Variable Identifier="cTypeOfMember" Value="0" />
+      <Variable Identifier="L" Value="5" />
+      <Variable Identifier="bEquivMoment" Value="True" />
+      <Variable Identifier="bIsoCol" Value="True" />
+      <Variable Identifier="bBracedMemberY" Value="True" />
+      <Variable Identifier="β↓yy←" Value="1" />
+      <Variable Identifier="my" Value="1" />
+      <Variable Identifier="bBracedMemberZ" Value="True" />
+      <Variable Identifier="β↓zz←" Value="1" />
+      <Variable Identifier="mz" Value="1" />
+      <Variable Identifier="Hbuilding" Value="10" />
+      <Variable Identifier="Lz" Value="5" />
+      <Variable Identifier="Ly" Value="5" />
+      <Variable Identifier="Lx" Value="5" />
+    </Dialog>
+    <Input Name="a" Type="Numeric" ESA_ID="" Value="35e-3" />
+    <Input Name="A↓k.inp←" Type="Numeric" ESA_ID="" Value="2.5e-3" />
+    <Input Name="Alpha" Type="Numeric" ESA_ID="" Value="128" />
+    <Input Name="b" Type="Numeric" ESA_ID="" Value="55e-3" />
+    <Input Name="bAccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bAdvanceInputData" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAuto_w↓max←" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAuto↓θ←" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAutoCalcCreep" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bAutoCalNStirCut" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAutoMethod" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAutoTypeTorsion" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bBracedMemberY" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bBracedMemberZ" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bBridges" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCalcImpSLS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalcImpULS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateCrackCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedCrackCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedDeflectionCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateDeflectionCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedIntDiagCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedInteractionVTMCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedResponceCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedShearCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedStressLimCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedTorsionCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateIntDiagCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateInteractionVTMCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateResponceCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateShearCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateSlendernessCheck" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCalculateStressLimCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateTorsionCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalSecOrder" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bDesignULS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bDesingLongReinf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bDesingShearReinf" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bDrawPlainConcrete" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bDrawUltimateBorder" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bEquivMoment" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bHeating" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCharReinfCalcRatio" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="biaxcoef" Type="Numeric" ESA_ID="" Value="1.4" />
+    <Input Name="bIndirectLoad" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bIsoCol" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bMaxSpacingShear" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="BondArrangement" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="bPrintCapT_Img" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPrintCapVyVzT_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintConcreteCover" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintCrackWidth_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintCreepCoeffCalc" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintCSS_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintDeflection_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintDurability" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintIntD_Img" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPrintLongDesign_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintLongDesign_Txt" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintResponse_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintShearDesign_Txt" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bRecalIntForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bSilicaFume" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bSymReinf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bTestEqulibrium" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="BundledType" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="bUseUserReinf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bUseUserStirrup" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bZeroLongDeflection" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bZeroShortDeflection" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="c" Type="Numeric" ESA_ID="" Value="34.24871e-3" />
+    <Input Name="c↓lo←" Type="Numeric" ESA_ID="" Value="38e-3" />
+    <Input Name="c↓min,b←" Type="Numeric" ESA_ID="" Value="24.24871e-3" />
+    <Input Name="c↓min,dur←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="c↓min←" Type="Numeric" ESA_ID="" Value="24.24871e-3" />
+    <Input Name="c↓nom←" Type="Numeric" ESA_ID="" Value="34.24871e-3" />
+    <Input Name="c↓side←" Type="Numeric" ESA_ID="" Value="38e-3" />
+    <Input Name="c↓up←" Type="Numeric" ESA_ID="" Value="38e-3" />
+    <Input Name="CapNMyMz_RespStatus" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="cmin" Type="Numeric" ESA_ID="" Value="30e-3" />
+    <Input Name="Coeff↓Area←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Coeff↓As←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="Coeff↓d←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="Coeffε↓Sud←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="ConcreteType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ConstructionClass1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="creepCoeff" Type="Numeric" ESA_ID="" Value="2.48" />
+    <Input Name="creepCoeffRh" Type="Numeric" ESA_ID="" Value="1.363424" />
+    <Input Name="creepCoeffZero" Type="Numeric" ESA_ID="" Value="1.947614" />
+    <Input Name="CssIDPlainLinear" Type="Numeric" ESA_ID="" Value="21" />
+    <Input Name="CssIDPlainLinearLong" Type="Numeric" ESA_ID="" Value="22" />
+    <Input Name="CssIDSLS" Type="Numeric" ESA_ID="" Value="12" />
+    <Input Name="CssIDSLSEffective" Type="Numeric" ESA_ID="" Value="14" />
+    <Input Name="CssIDSLSEffectiveNoTension" Type="Numeric" ESA_ID="" Value="15" />
+    <Input Name="CssIDSLSNoTension" Type="Numeric" ESA_ID="" Value="13" />
+    <Input Name="CssIDSLSWCrack" Type="Numeric" ESA_ID="" Value="1003" />
+    <Input Name="CssIDSLSWUncrack" Type="Numeric" ESA_ID="" Value="1002" />
+    <Input Name="CssIDULSPlain" Type="Numeric" ESA_ID="" Value="11" />
+    <Input Name="CssIDULSReinf" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="CssSLSSLID" Type="Numeric" ESA_ID="" Value="1000" />
+    <Input Name="CssTotalID" Type="Numeric" ESA_ID="" Value="100" />
+    <Input Name="cTypeOfCalculation" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="cTypeOfMember" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="d↓g←" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DescriptionN" Type="String" ESA_ID="" Value="SLS Internal forces are not taken to the design." />
+    <Input Name="DesignLife" Type="Numeric" ESA_ID="" Value="50" />
+    <Input Name="Deviation" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="diam" Type="Numeric" ESA_ID="" Value="20e-3" />
+    <Input Name="DivisionOfStrain" Type="Numeric" ESA_ID="" Value="300" />
+    <Input Name="DrawAxis" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawStirrups" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DuctShape" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="eps_c23" Type="Numeric" ESA_ID="" Value="1.75e-3" />
+    <Input Name="eps_cu23" Type="Numeric" ESA_ID="" Value="3.5e-3" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="13.33333e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="20e6" />
+    <Input Name="f↓ctd←" Type="Numeric" ESA_ID="" Value="1e6" />
+    <Input Name="f↓ctk005←" Type="Numeric" ESA_ID="" Value="1.5e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="434.7826e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="500e6" />
+    <Input Name="f↓ywd←" Type="Numeric" ESA_ID="" Value="521.7391e6" />
+    <Input Name="f↓ywk←" Type="Numeric" ESA_ID="" Value="600e6" />
+    <Input Name="ForcesID" Type="Numeric" ESA_ID="" Value="100" />
+    <Input Name="ForcesIDZero" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ForcesSLSCh" Type="Numeric" ESA_ID="" Value="11" />
+    <Input Name="ForcesSLSQ" Type="Numeric" ESA_ID="" Value="12" />
+    <Input Name="ForcesULS" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="ForcesULSWOT" Type="Numeric" ESA_ID="" Value="13" />
+    <Input Name="ForcesULSWT" Type="Numeric" ESA_ID="" Value="14" />
+    <Input Name="FormCode" Type="Numeric" ESA_ID="" Value="2003" />
+    <Input Name="GraphScale" Type="Numeric" ESA_ID="" Value="200" />
+    <Input Name="GS_ID" Type="Numeric" ESA_ID="" Value="300" />
+    <Input Name="Hbuilding" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="IDMethodOfCheck" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="j" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="k↓1←" Type="Numeric" ESA_ID="" Value="600e-3" />
+    <Input Name="k↓2,user←" Type="Numeric" ESA_ID="" Value="30e-3" />
+    <Input Name="k↓3←" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Input Name="kf↓ck←" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="kf↓yk←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="LimAdd" Type="Numeric" ESA_ID="" Value="500" />
+    <Input Name="LimTot" Type="Numeric" ESA_ID="" Value="250" />
+    <Input Name="Lx" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="Ly" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="Lz" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="M↓Edy,char,recal←" Type="Numeric" ESA_ID="" Value="45000" />
+    <Input Name="M↓Edy,char←" Type="Numeric" ESA_ID="" Value="45000" />
+    <Input Name="M↓Edy,qp,recal←" Type="Numeric" ESA_ID="" Value="40000" />
+    <Input Name="M↓Edy,qp←" Type="Numeric" ESA_ID="" Value="40000" />
+    <Input Name="M↓Edy,recal←" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="M↓Edy←" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="M↓Edz,char,recal←" Type="Numeric" ESA_ID="" Value="45000" />
+    <Input Name="M↓Edz,char←" Type="Numeric" ESA_ID="" Value="45000" />
+    <Input Name="M↓Edz,qp,recal←" Type="Numeric" ESA_ID="" Value="40000" />
+    <Input Name="M↓Edz,qp←" Type="Numeric" ESA_ID="" Value="40000" />
+    <Input Name="M↓Edz,recal←" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="M↓Edz←" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="M↓SLS-CH,beg,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-CH,beg,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-CH,end,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-CH,end,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-QP,beg,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-QP,beg,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-QP,end,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-QP,end,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓ULS,beg,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓ULS,beg,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓ULS,end,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓ULS,end,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="MaxNlayers" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="maxSLSCheck" Type="String" ESA_ID="" Value="Check of stress limitation" />
+    <Input Name="maxSLSUC" Type="Numeric" ESA_ID="" Value="2.301716" />
+    <Input Name="maxULSCheck" Type="String" ESA_ID="" Value="Check responce" />
+    <Input Name="maxULSUC" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Method" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="MinNbarsEdge" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="my" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="mz" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="n↓b0←" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="n↓b1←" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="N↓Ed,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="N↓Ed,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="N↓Ed←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="n↓s,design←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="n↓s.inp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="n↓s.req←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="NIteration" Type="Numeric" ESA_ID="" Value="20" />
+    <Input Name="NoOfVertCut" Type="Numeric" ESA_ID="" Value="180" />
+    <Input Name="oExtCalc_LongDesignTableWidth" Type="Numeric" ESA_ID="" Value="570" />
+    <Input Name="offset" Type="Numeric" ESA_ID="" Value="30e-3" />
+    <Input Name="PercLTLoad" Type="Numeric" ESA_ID="" Value="600e-3" />
+    <Input Name="PrefabricatedSpecialQuality" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Prestress" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Quality" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="RatioLong" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="RatioShort" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="ReinfType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="RH" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Input Name="row" Type="Numeric" ESA_ID="" Value="9" />
+    <Input Name="s↓min←" Type="Numeric" ESA_ID="" Value="20e-3" />
+    <Input Name="sCaption" Type="String" ESA_ID="" Value="    " />
+    <Input Name="sCementClass" Type="String" ESA_ID="" Value="R" />
+    <Input Name="sCracksApp" Type="String" ESA_ID="" Value="Cracks appear" />
+    <Input Name="sCracksNoApp" Type="String" ESA_ID="" Value="No cracks appear" />
+    <Input Name="SlabGeometry" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="sNotCalc" Type="String" ESA_ID="" Value="Not Calc." />
+    <Input Name="sNOTOK" Type="String" ESA_ID="" Value="Not OK" />
+    <Input Name="sOK" Type="String" ESA_ID="" Value="OK" />
+    <Input Name="sOKBUT" Type="String" ESA_ID="" Value="OK,*" />
+    <Input Name="SolutionN" Type="String" ESA_ID="" Value="" />
+    <Input Name="SpecialQuality" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="sRecalForces" Type="String" ESA_ID="" Value="Not Calc." />
+    <Input Name="StainlessSteel" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Status_CapNMyMz_Int" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Status_CapT_Int" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="Status_CapVyVzT_Int" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="Status_CWLim" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Status_InteractionVTM" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="StatusDeflection" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="StatusStressLimitation" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="stressLimChecklong" Type="Numeric" ESA_ID="" Value="1.140944" />
+    <Input Name="stressLimCheckshort" Type="Numeric" ESA_ID="" Value="2.301716" />
+    <Input Name="stressLimStatusLong" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="stressLimStatusShort" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="sUC_CapNMyMz_Int" Type="String" ESA_ID="" Value="0,96" />
+    <Input Name="sUC_CapNMyMz_Resp" Type="String" ESA_ID="" Value="1,00" />
+    <Input Name="sUC_CapT_Int" Type="String" ESA_ID="" Value="0,24" />
+    <Input Name="sUC_CapVyVzT_Int" Type="String" ESA_ID="" Value="0,11" />
+    <Input Name="sUC_CWLim" Type="String" ESA_ID="" Value="1,32" />
+    <Input Name="sUC_Deflection" Type="String" ESA_ID="" Value="0,00" />
+    <Input Name="sUC_InteractionVTM_Int" Type="String" ESA_ID="" Value="1,00" />
+    <Input Name="sUC_Slenderness" Type="String" ESA_ID="" Value="Not Calc." />
+    <Input Name="sUC_StressLim" Type="String" ESA_ID="" Value="2,30" />
+    <Input Name="t" Type="Numeric" ESA_ID="" Value="8.64e6" />
+    <Input Name="t↓0,input←" Type="Numeric" ESA_ID="" Value="2.4192e6" />
+    <Input Name="T↓Ed,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="T↓Ed,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="T↓Ed←" Type="Numeric" ESA_ID="" Value="10000" />
+    <Input Name="t↓ef.inp←" Type="Numeric" ESA_ID="" Value="200e-3" />
+    <Input Name="T↓Rd←" Type="Numeric" ESA_ID="" Value="41256.78" />
+    <Input Name="t↓s←" Type="Numeric" ESA_ID="" Value="259200" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="TensionType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="thetaCalc" Type="Numeric" ESA_ID="" Value="21.80001" />
+    <Input Name="Type↓E←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Type↓fct,eff←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Type↓σcr←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeArea" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeCoverDiam" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="TypeDes" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeN" Type="String" ESA_ID="" Value="Note" />
+    <Input Name="TypeTorCssInput" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="u↓k.inp←" Type="Numeric" ESA_ID="" Value="50e-3" />
+    <Result Name="UC" Type="Numeric" ESA_ID="Result.0" Value="2.301716" />
+    <Result Name="UC_CapNMyMz_Int" Type="Numeric" ESA_ID="Result.4" Value="963.8035e-3" />
+    <Result Name="UC_CapNMyMz_Resp" Type="Numeric" ESA_ID="Result.3" Value="1" />
+    <Input Name="UC_CapT_Int" Type="Numeric" ESA_ID="" Value="242.3844e-3" />
+    <Result Name="UC_CapVyVzT_Int" Type="Numeric" ESA_ID="Result.5" Value="111.8547e-3" />
+    <Result Name="UC_CWLim" Type="Numeric" ESA_ID="Result.7" Value="1.322724" />
+    <Result Name="UC_Deflection" Type="Numeric" ESA_ID="Result.8" Value="0" />
+    <Input Name="UC_InteractionVTM_Int" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="UC_SLS" Type="Numeric" ESA_ID="Result.2" Value="2.301716" />
+    <Result Name="UC_StressLim" Type="Numeric" ESA_ID="Result.6" Value="2.301716" />
+    <Result Name="UC_ULS" Type="Numeric" ESA_ID="Result.1" Value="1" />
+    <Input Name="UCSPosition" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="UCSY" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="UCSZ" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Unevenness" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="UnevenSurf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Unity↓check←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="20" />
+    <Input Name="uxl" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uxs" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uyl" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uys" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uzl" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uzs" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edy,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edy,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edy←" Type="Numeric" ESA_ID="" Value="10000" />
+    <Input Name="V↓Edz,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edz,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edz←" Type="Numeric" ESA_ID="" Value="10000" />
+    <Input Name="V↓Rd←" Type="Numeric" ESA_ID="" Value="126433.1" />
+    <Input Name="w↓max,user←" Type="Numeric" ESA_ID="" Value="500e-6" />
+    <Input Name="w↓max←" Type="Numeric" ESA_ID="" Value="300e-6" />
+    <Input Name="WireType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XA" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XC" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XD" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XF" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XS" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZeroSLSCHForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="ZeroSLSQForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="zeroUC" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZeroULSForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="ZeroULSShearForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="ZeroULSTorsion" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="α↓ct←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="α↓s,design←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="α↓s←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="β↓yy←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="β↓zz←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓c←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓s←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="Δc↓dev←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="Δc↓dur,add←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Δc↓dur,st←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Δc↓dur,γ←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ε↓cc,min←" Type="Numeric" ESA_ID="" Value="-2.833252e-3" />
+    <Input Name="ε↓ct,max←" Type="Numeric" ESA_ID="" Value="3.113334e-3" />
+    <Input Name="ε↓sc,min←" Type="Numeric" ESA_ID="" Value="-1.790885e-3" />
+    <Input Name="θ↓inp←" Type="Numeric" ESA_ID="" Value="25" />
+    <Input Name="μ↓s←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="ρ↓lim,M←" Type="Numeric" ESA_ID="" Value="100e-3" />
+    <Input Name="σ↓cc,min←" Type="Numeric" ESA_ID="" Value="-13.33333e6" />
+    <Input Name="σ↓sc,min←" Type="Numeric" ESA_ID="" Value="-358.1769e6" />
+    <Input Name="σ↓st,max←" Type="Numeric" ESA_ID="" Value="508.7175e6" />
+    <Input Name="φ" Type="Numeric" ESA_ID="" Value="2.48" />
+    <Input Name="ϕ" Type="Numeric" ESA_ID="" Value="14e-3" />
+    <Input Name="ϕ↓duct←" Type="Numeric" ESA_ID="" Value="26e-3" />
+    <Input Name="φ↓eff←" Type="Numeric" ESA_ID="" Value="2.48" />
+    <Input Name="ϕ↓lo←" Type="Numeric" ESA_ID="" Value="16e-3" />
+    <Input Name="ϕ↓max←" Type="Numeric" ESA_ID="" Value="16e-3" />
+    <Input Name="ϕ↓up←" Type="Numeric" ESA_ID="" Value="16e-3" />
+    <Input Name="ϕ↓w,design←" Type="Numeric" ESA_ID="" Value="8e-3" />
+    <Input Name="ϕ↓w←" Type="Numeric" ESA_ID="" Value="12e-3" />
+  </Test>
+  <Test Description="BiaxialBendingCircle" Author="SCIA-ONLINE\tpail" Active="1" Date="2014.11.18">
+    <Dialog>
+      <Variable Identifier="sUC_Slenderness" Value="Not Calc." />
+      <Variable Identifier="sRecalForces" Value="Not Calc." />
+      <Variable Identifier="bCalculateSlendernessCheck" Value="False" />
+      <Variable Identifier="bRecalIntForces" Value="False" />
+      <Variable Identifier="bCalculateStressLimCheck" Value="True" />
+      <Variable Identifier="bCalculateCrackCheck" Value="True" />
+      <Variable Identifier="bCalculateDeflectionCheck" Value="True" />
+      <Variable Identifier="sUC_Slenderness" Value="Not Calc." />
+      <Variable Identifier="sUC_Slenderness" Value="Not Calc." />
+      <Variable Identifier="sRecalForces" Value="Not Calc." />
+      <Variable Identifier="sUC_StressLim" Value="1,95" />
+      <Variable Identifier="sUC_CWLim" Value="0,82" />
+      <Variable Identifier="sUC_Deflection" Value="0,00" />
+      <Variable Identifier="bCalculateSlendernessCheck" Value="False" />
+      <Variable Identifier="bRecalIntForces" Value="False" />
+      <Variable Identifier="bCalculateIntDiagCheck" Value="True" />
+      <Variable Identifier="bCalculateResponceCheck" Value="True" />
+      <Variable Identifier="bCalculateShearCheck" Value="True" />
+      <Variable Identifier="bCalculateTorsionCheck" Value="True" />
+      <Variable Identifier="bCalculateInteractionVTMCheck" Value="True" />
+      <Variable Identifier="sUC_CapNMyMz_Int" Value="0,75" />
+      <Variable Identifier="sUC_CapNMyMz_Resp" Value="1,00" />
+      <Variable Identifier="sUC_CapVyVzT_Int" Value="0,07" />
+      <Variable Identifier="sUC_CapT_Int" Value="0,27" />
+      <Variable Identifier="sUC_InteractionVTM_Int" Value="1,00" />
+      <Variable Identifier="ReinfType" Value="0" />
+      <Variable Identifier="DesignLife" Value="50" />
+      <Variable Identifier="DesignLife" Value="50" />
+      <Variable Identifier="DesignLife" Value="50" />
+      <Variable Identifier="BondArrangement" Value="1" />
+      <Variable Identifier="ϕ↓w←" Value="12e-3" />
+      <Variable Identifier="ϕ↓duct←" Value="26e-3" />
+      <Variable Identifier="a" Value="35e-3" />
+      <Variable Identifier="b" Value="55e-3" />
+      <Variable Identifier="DuctShape" Value="1" />
+      <Variable Identifier="n↓b0←" Value="4" />
+      <Variable Identifier="n↓b1←" Value="3" />
+      <Variable Identifier="BundledType" Value="1" />
+      <Variable Identifier="Deviation" Value="0" />
+      <Variable Identifier="XM" Value="0" />
+      <Variable Identifier="SpecialQuality" Value="False" />
+      <Variable Identifier="TensionType" Value="0" />
+      <Variable Identifier="ConstructionClass1" Value="True" />
+      <Variable Identifier="d↓g←" Value="True" />
+      <Variable Identifier="UnevenSurf" Value="False" />
+      <Variable Identifier="Prestress" Value="False" />
+      <Variable Identifier="Quality" Value="True" />
+      <Variable Identifier="k↓2,user←" Value="30e-3" />
+      <Variable Identifier="Unevenness" Value="0" />
+      <Variable Identifier="PrefabricatedSpecialQuality" Value="True" />
+      <Variable Identifier="XC" Value="0" />
+      <Variable Identifier="XS" Value="0" />
+      <Variable Identifier="XA" Value="0" />
+      <Variable Identifier="XF" Value="0" />
+      <Variable Identifier="XD" Value="0" />
+      <Variable Identifier="bAutoMethod" Value="True" />
+      <Variable Identifier="bSymReinf" Value="False" />
+      <Variable Identifier="TypeDes" Value="1" />
+      <Variable Identifier="ρ↓lim,M←" Value="100e-3" />
+      <Variable Identifier="Method" Value="2" />
+      <Variable Identifier="offset" Value="30e-3" />
+      <Variable Identifier="MaxNlayers" Value="3" />
+      <Variable Identifier="biaxcoef" Value="1.4" />
+      <Variable Identifier="s↓min←" Value="20e-3" />
+      <Variable Identifier="n↓s,design←" Value="2" />
+      <Variable Identifier="α↓s,design←" Value="90" />
+      <Variable Identifier="c" Value="34.24871e-3" />
+      <Variable Identifier="ϕ" Value="14e-3" />
+      <Variable Identifier="ϕ↓w,design←" Value="8e-3" />
+      <Variable Identifier="bCalcImpULS" Value="True" />
+      <Variable Identifier="bCalSecOrder" Value="True" />
+      <Variable Identifier="μ↓s←" Value="10e-3" />
+      <Variable Identifier="bCharReinfCalcRatio" Value="True" />
+      <Variable Identifier="bCalcImpSLS" Value="True" />
+      <Variable Identifier="μ↓s←" Value="10e-3" />
+      <Variable Identifier="LimAdd" Value="500" />
+      <Variable Identifier="LimTot" Value="250" />
+      <Variable Identifier="PercLTLoad" Value="600e-3" />
+      <Variable Identifier="bAuto_w↓max←" Value="True" />
+      <Variable Identifier="w↓max,user←" Value="500e-6" />
+      <Variable Identifier="Type↓fct,eff←" Value="1" />
+      <Variable Identifier="Type↓E←" Value="1" />
+      <Variable Identifier="bAutoCalcCreep" Value="False" />
+      <Variable Identifier="RH" Value="800e-3" />
+      <Variable Identifier="sCementClass" Value="R" />
+      <Variable Identifier="t↓s←" Value="259200" />
+      <Variable Identifier="t↓0,input←" Value="2.4192e6" />
+      <Variable Identifier="t" Value="8.64e6" />
+      <Variable Identifier="φ" Value="2.48" />
+      <Variable Identifier="bAuto↓θ←" Value="True" />
+      <Variable Identifier="θ↓inp←" Value="25" />
+      <Variable Identifier="IDMethodOfCheck" Value="2" />
+      <Variable Identifier="GS_ID" Value="300" />
+      <Variable Identifier="UserScale" Value="20" />
+      <Variable Identifier="UCSPosition" Value="4" />
+      <Variable Identifier="UCSY" Value="0" />
+      <Variable Identifier="UCSZ" Value="0" />
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <Variable Identifier="Coeff↓d←" Value="900e-3" />
+      <Variable Identifier="bAccidentalULS" Value="False" />
+      <Variable Identifier="InternalForces" Value="100|10|10|10|50|50║0|0|0|0|45|45║0|0|0|0|40|40" />
+      <Variable Identifier="MemberInternalForces" Value="0|0|0|0║0|0|0|0║0|0|0|0" />
+      <Variable Identifier="ElasticDeformations" Value="0|0|0║0|0|0" />
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 20/25" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|REINF.EC" Category="Horizontal top branch" Item="B 500 A" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|ShearREINF.EC" Category="Horizontal top branch" Item="B 600 B" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="2" Units="2">
+        <CS SelReinf="0" D="400e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c="30e-3" D="20e-3" N="6" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="sCaption" Value="    " />
+      <Variable Identifier="cTypeOfCalculation" Value="0" />
+      <Variable Identifier="cTypeOfMember" Value="0" />
+      <Variable Identifier="L" Value="5" />
+      <Variable Identifier="bEquivMoment" Value="True" />
+      <Variable Identifier="bIsoCol" Value="True" />
+      <Variable Identifier="bBracedMemberY" Value="True" />
+      <Variable Identifier="β↓yy←" Value="1" />
+      <Variable Identifier="my" Value="1" />
+      <Variable Identifier="bBracedMemberZ" Value="True" />
+      <Variable Identifier="β↓zz←" Value="1" />
+      <Variable Identifier="mz" Value="1" />
+      <Variable Identifier="Hbuilding" Value="10" />
+      <Variable Identifier="Lz" Value="5" />
+      <Variable Identifier="Ly" Value="5" />
+      <Variable Identifier="Lx" Value="5" />
+    </Dialog>
+    <Input Name="a" Type="Numeric" ESA_ID="" Value="35e-3" />
+    <Input Name="A↓k.inp←" Type="Numeric" ESA_ID="" Value="2.5e-3" />
+    <Input Name="Alpha" Type="Numeric" ESA_ID="" Value="128" />
+    <Input Name="b" Type="Numeric" ESA_ID="" Value="55e-3" />
+    <Input Name="bAccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bAdvanceInputData" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAuto_w↓max←" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAuto↓θ←" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAutoCalcCreep" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bAutoCalNStirCut" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAutoMethod" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAutoTypeTorsion" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bBracedMemberY" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bBracedMemberZ" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bBridges" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCalcImpSLS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalcImpULS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateCrackCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedCrackCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedDeflectionCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateDeflectionCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedIntDiagCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedInteractionVTMCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedResponceCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedShearCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedStressLimCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedTorsionCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateIntDiagCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateInteractionVTMCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateResponceCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateShearCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateSlendernessCheck" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCalculateStressLimCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateTorsionCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalSecOrder" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bDesignULS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bDesingLongReinf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bDesingShearReinf" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bDrawPlainConcrete" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bDrawUltimateBorder" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bEquivMoment" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bHeating" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCharReinfCalcRatio" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="biaxcoef" Type="Numeric" ESA_ID="" Value="1.4" />
+    <Input Name="bIndirectLoad" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bIsoCol" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bMaxSpacingShear" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="BondArrangement" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="bPrintCapT_Img" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPrintCapVyVzT_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintConcreteCover" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintCrackWidth_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintCreepCoeffCalc" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintCSS_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintDeflection_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintDurability" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintIntD_Img" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPrintLongDesign_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintLongDesign_Txt" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintResponse_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintShearDesign_Txt" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bRecalIntForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bSilicaFume" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bSymReinf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bTestEqulibrium" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="BundledType" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="bUseUserReinf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bUseUserStirrup" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bZeroLongDeflection" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bZeroShortDeflection" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="c" Type="Numeric" ESA_ID="" Value="34.24871e-3" />
+    <Input Name="c↓lo←" Type="Numeric" ESA_ID="" Value="38e-3" />
+    <Input Name="c↓min,b←" Type="Numeric" ESA_ID="" Value="24.24871e-3" />
+    <Input Name="c↓min,dur←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="c↓min←" Type="Numeric" ESA_ID="" Value="24.24871e-3" />
+    <Input Name="c↓nom←" Type="Numeric" ESA_ID="" Value="34.24871e-3" />
+    <Input Name="c↓side←" Type="Numeric" ESA_ID="" Value="38e-3" />
+    <Input Name="c↓up←" Type="Numeric" ESA_ID="" Value="38e-3" />
+    <Input Name="CapNMyMz_RespStatus" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="cmin" Type="Numeric" ESA_ID="" Value="30e-3" />
+    <Input Name="Coeff↓Area←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Coeff↓As←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="Coeff↓d←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="Coeffε↓Sud←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="ConcreteType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ConstructionClass1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="creepCoeff" Type="Numeric" ESA_ID="" Value="2.48" />
+    <Input Name="creepCoeffRh" Type="Numeric" ESA_ID="" Value="1.363424" />
+    <Input Name="creepCoeffZero" Type="Numeric" ESA_ID="" Value="1.947614" />
+    <Input Name="CssIDPlainLinear" Type="Numeric" ESA_ID="" Value="21" />
+    <Input Name="CssIDPlainLinearLong" Type="Numeric" ESA_ID="" Value="22" />
+    <Input Name="CssIDSLS" Type="Numeric" ESA_ID="" Value="12" />
+    <Input Name="CssIDSLSEffective" Type="Numeric" ESA_ID="" Value="14" />
+    <Input Name="CssIDSLSEffectiveNoTension" Type="Numeric" ESA_ID="" Value="15" />
+    <Input Name="CssIDSLSNoTension" Type="Numeric" ESA_ID="" Value="13" />
+    <Input Name="CssIDSLSWCrack" Type="Numeric" ESA_ID="" Value="1003" />
+    <Input Name="CssIDSLSWUncrack" Type="Numeric" ESA_ID="" Value="1002" />
+    <Input Name="CssIDULSPlain" Type="Numeric" ESA_ID="" Value="11" />
+    <Input Name="CssIDULSReinf" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="CssSLSSLID" Type="Numeric" ESA_ID="" Value="1000" />
+    <Input Name="CssTotalID" Type="Numeric" ESA_ID="" Value="100" />
+    <Input Name="cTypeOfCalculation" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="cTypeOfMember" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="d↓g←" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DescriptionN" Type="String" ESA_ID="" Value="SLS Internal forces are not taken to the design." />
+    <Input Name="DesignLife" Type="Numeric" ESA_ID="" Value="50" />
+    <Input Name="Deviation" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="diam" Type="Numeric" ESA_ID="" Value="20e-3" />
+    <Input Name="DivisionOfStrain" Type="Numeric" ESA_ID="" Value="300" />
+    <Input Name="DrawAxis" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawStirrups" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DuctShape" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="eps_c23" Type="Numeric" ESA_ID="" Value="1.75e-3" />
+    <Input Name="eps_cu23" Type="Numeric" ESA_ID="" Value="3.5e-3" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="13.33333e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="20e6" />
+    <Input Name="f↓ctd←" Type="Numeric" ESA_ID="" Value="1e6" />
+    <Input Name="f↓ctk005←" Type="Numeric" ESA_ID="" Value="1.5e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="434.7826e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="500e6" />
+    <Input Name="f↓ywd←" Type="Numeric" ESA_ID="" Value="521.7391e6" />
+    <Input Name="f↓ywk←" Type="Numeric" ESA_ID="" Value="600e6" />
+    <Input Name="ForcesID" Type="Numeric" ESA_ID="" Value="100" />
+    <Input Name="ForcesIDZero" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ForcesSLSCh" Type="Numeric" ESA_ID="" Value="11" />
+    <Input Name="ForcesSLSQ" Type="Numeric" ESA_ID="" Value="12" />
+    <Input Name="ForcesULS" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="ForcesULSWOT" Type="Numeric" ESA_ID="" Value="13" />
+    <Input Name="ForcesULSWT" Type="Numeric" ESA_ID="" Value="14" />
+    <Input Name="FormCode" Type="Numeric" ESA_ID="" Value="2002" />
+    <Input Name="GraphScale" Type="Numeric" ESA_ID="" Value="200" />
+    <Input Name="GS_ID" Type="Numeric" ESA_ID="" Value="300" />
+    <Input Name="Hbuilding" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="IDMethodOfCheck" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="j" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="k↓1←" Type="Numeric" ESA_ID="" Value="600e-3" />
+    <Input Name="k↓2,user←" Type="Numeric" ESA_ID="" Value="30e-3" />
+    <Input Name="k↓3←" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Input Name="kf↓ck←" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="kf↓yk←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="LimAdd" Type="Numeric" ESA_ID="" Value="500" />
+    <Input Name="LimTot" Type="Numeric" ESA_ID="" Value="250" />
+    <Input Name="Lx" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="Ly" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="Lz" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="M↓Edy,char,recal←" Type="Numeric" ESA_ID="" Value="45000" />
+    <Input Name="M↓Edy,char←" Type="Numeric" ESA_ID="" Value="45000" />
+    <Input Name="M↓Edy,qp,recal←" Type="Numeric" ESA_ID="" Value="40000" />
+    <Input Name="M↓Edy,qp←" Type="Numeric" ESA_ID="" Value="40000" />
+    <Input Name="M↓Edy,recal←" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="M↓Edy←" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="M↓Edz,char,recal←" Type="Numeric" ESA_ID="" Value="45000" />
+    <Input Name="M↓Edz,char←" Type="Numeric" ESA_ID="" Value="45000" />
+    <Input Name="M↓Edz,qp,recal←" Type="Numeric" ESA_ID="" Value="40000" />
+    <Input Name="M↓Edz,qp←" Type="Numeric" ESA_ID="" Value="40000" />
+    <Input Name="M↓Edz,recal←" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="M↓Edz←" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="M↓SLS-CH,beg,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-CH,beg,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-CH,end,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-CH,end,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-QP,beg,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-QP,beg,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-QP,end,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-QP,end,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓ULS,beg,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓ULS,beg,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓ULS,end,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓ULS,end,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="MaxNlayers" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="maxSLSCheck" Type="String" ESA_ID="" Value="Check of stress limitation" />
+    <Input Name="maxSLSUC" Type="Numeric" ESA_ID="" Value="1.95115" />
+    <Input Name="maxULSCheck" Type="String" ESA_ID="" Value="Check responce" />
+    <Input Name="maxULSUC" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Method" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="MinNbarsEdge" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="my" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="mz" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="n↓b0←" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="n↓b1←" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="N↓Ed,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="N↓Ed,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="N↓Ed←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="n↓s,design←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="n↓s.inp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="n↓s.req←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="NIteration" Type="Numeric" ESA_ID="" Value="20" />
+    <Input Name="NoOfVertCut" Type="Numeric" ESA_ID="" Value="180" />
+    <Input Name="oExtCalc_LongDesignTableWidth" Type="Numeric" ESA_ID="" Value="570" />
+    <Input Name="offset" Type="Numeric" ESA_ID="" Value="30e-3" />
+    <Input Name="PercLTLoad" Type="Numeric" ESA_ID="" Value="600e-3" />
+    <Input Name="PrefabricatedSpecialQuality" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Prestress" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Quality" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="RatioLong" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="RatioShort" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="ReinfType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="RH" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Input Name="row" Type="Numeric" ESA_ID="" Value="9" />
+    <Input Name="s↓min←" Type="Numeric" ESA_ID="" Value="20e-3" />
+    <Input Name="sCaption" Type="String" ESA_ID="" Value="    " />
+    <Input Name="sCementClass" Type="String" ESA_ID="" Value="R" />
+    <Input Name="sCracksApp" Type="String" ESA_ID="" Value="Cracks appear" />
+    <Input Name="sCracksNoApp" Type="String" ESA_ID="" Value="No cracks appear" />
+    <Input Name="SlabGeometry" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="sNotCalc" Type="String" ESA_ID="" Value="Not Calc." />
+    <Input Name="sNOTOK" Type="String" ESA_ID="" Value="Not OK" />
+    <Input Name="sOK" Type="String" ESA_ID="" Value="OK" />
+    <Input Name="sOKBUT" Type="String" ESA_ID="" Value="OK,*" />
+    <Input Name="SolutionN" Type="String" ESA_ID="" Value="" />
+    <Input Name="SpecialQuality" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="sRecalForces" Type="String" ESA_ID="" Value="Not Calc." />
+    <Input Name="StainlessSteel" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Status_CapNMyMz_Int" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Status_CapT_Int" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="Status_CapVyVzT_Int" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Status_CWLim" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Status_InteractionVTM" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="StatusDeflection" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="StatusStressLimitation" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="stressLimChecklong" Type="Numeric" ESA_ID="" Value="1.004587" />
+    <Input Name="stressLimCheckshort" Type="Numeric" ESA_ID="" Value="1.95115" />
+    <Input Name="stressLimStatusLong" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="stressLimStatusShort" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="sUC_CapNMyMz_Int" Type="String" ESA_ID="" Value="0,75" />
+    <Input Name="sUC_CapNMyMz_Resp" Type="String" ESA_ID="" Value="1,00" />
+    <Input Name="sUC_CapT_Int" Type="String" ESA_ID="" Value="0,27" />
+    <Input Name="sUC_CapVyVzT_Int" Type="String" ESA_ID="" Value="0,07" />
+    <Input Name="sUC_CWLim" Type="String" ESA_ID="" Value="0,82" />
+    <Input Name="sUC_Deflection" Type="String" ESA_ID="" Value="0,00" />
+    <Input Name="sUC_InteractionVTM_Int" Type="String" ESA_ID="" Value="1,00" />
+    <Input Name="sUC_Slenderness" Type="String" ESA_ID="" Value="Not Calc." />
+    <Input Name="sUC_StressLim" Type="String" ESA_ID="" Value="1,95" />
+    <Input Name="t" Type="Numeric" ESA_ID="" Value="8.64e6" />
+    <Input Name="t↓0,input←" Type="Numeric" ESA_ID="" Value="2.4192e6" />
+    <Input Name="T↓Ed,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="T↓Ed,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="T↓Ed←" Type="Numeric" ESA_ID="" Value="10000" />
+    <Input Name="t↓ef.inp←" Type="Numeric" ESA_ID="" Value="200e-3" />
+    <Input Name="T↓Rd←" Type="Numeric" ESA_ID="" Value="36796.64" />
+    <Input Name="t↓s←" Type="Numeric" ESA_ID="" Value="259200" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="TensionType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="thetaCalc" Type="Numeric" ESA_ID="" Value="21.80001" />
+    <Input Name="Type↓E←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Type↓fct,eff←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Type↓σcr←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeArea" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeCoverDiam" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="TypeDes" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeN" Type="String" ESA_ID="" Value="Note" />
+    <Input Name="TypeTorCssInput" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="u↓k.inp←" Type="Numeric" ESA_ID="" Value="50e-3" />
+    <Result Name="UC" Type="Numeric" ESA_ID="Result.0" Value="1.95115" />
+    <Result Name="UC_CapNMyMz_Int" Type="Numeric" ESA_ID="Result.4" Value="746.6943e-3" />
+    <Result Name="UC_CapNMyMz_Resp" Type="Numeric" ESA_ID="Result.3" Value="1" />
+    <Input Name="UC_CapT_Int" Type="Numeric" ESA_ID="" Value="271.764e-3" />
+    <Result Name="UC_CapVyVzT_Int" Type="Numeric" ESA_ID="Result.5" Value="73.32479e-3" />
+    <Result Name="UC_CWLim" Type="Numeric" ESA_ID="Result.7" Value="821.6873e-3" />
+    <Result Name="UC_Deflection" Type="Numeric" ESA_ID="Result.8" Value="0" />
+    <Input Name="UC_InteractionVTM_Int" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="UC_SLS" Type="Numeric" ESA_ID="Result.2" Value="1.95115" />
+    <Result Name="UC_StressLim" Type="Numeric" ESA_ID="Result.6" Value="1.95115" />
+    <Result Name="UC_ULS" Type="Numeric" ESA_ID="Result.1" Value="1" />
+    <Input Name="UCSPosition" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="UCSY" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="UCSZ" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Unevenness" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="UnevenSurf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Unity↓check←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="20" />
+    <Input Name="uxl" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uxs" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uyl" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uys" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uzl" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uzs" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edy,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edy,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edy←" Type="Numeric" ESA_ID="" Value="10000" />
+    <Input Name="V↓Edz,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edz,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edz←" Type="Numeric" ESA_ID="" Value="10000" />
+    <Input Name="V↓Rd←" Type="Numeric" ESA_ID="" Value="192869.8" />
+    <Input Name="w↓max,user←" Type="Numeric" ESA_ID="" Value="500e-6" />
+    <Input Name="w↓max←" Type="Numeric" ESA_ID="" Value="300e-6" />
+    <Input Name="WireType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XA" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XC" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XD" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XF" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XS" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZeroSLSCHForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="ZeroSLSQForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="zeroUC" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZeroULSForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="ZeroULSShearForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="ZeroULSTorsion" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="α↓ct←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="α↓s,design←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="α↓s←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="β↓yy←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="β↓zz←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓c←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓s←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="Δc↓dev←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="Δc↓dur,add←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Δc↓dur,st←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Δc↓dur,γ←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ε↓cc,min←" Type="Numeric" ESA_ID="" Value="-2.833252e-3" />
+    <Input Name="ε↓ct,max←" Type="Numeric" ESA_ID="" Value="3.113334e-3" />
+    <Input Name="ε↓sc,min←" Type="Numeric" ESA_ID="" Value="-1.790885e-3" />
+    <Input Name="θ↓inp←" Type="Numeric" ESA_ID="" Value="25" />
+    <Input Name="μ↓s←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="ρ↓lim,M←" Type="Numeric" ESA_ID="" Value="100e-3" />
+    <Input Name="σ↓cc,min←" Type="Numeric" ESA_ID="" Value="-13.33333e6" />
+    <Input Name="σ↓sc,min←" Type="Numeric" ESA_ID="" Value="-358.1769e6" />
+    <Input Name="σ↓st,max←" Type="Numeric" ESA_ID="" Value="508.7175e6" />
+    <Input Name="φ" Type="Numeric" ESA_ID="" Value="2.48" />
+    <Input Name="ϕ" Type="Numeric" ESA_ID="" Value="14e-3" />
+    <Input Name="ϕ↓duct←" Type="Numeric" ESA_ID="" Value="26e-3" />
+    <Input Name="φ↓eff←" Type="Numeric" ESA_ID="" Value="2.48" />
+    <Input Name="ϕ↓lo←" Type="Numeric" ESA_ID="" Value="16e-3" />
+    <Input Name="ϕ↓max←" Type="Numeric" ESA_ID="" Value="16e-3" />
+    <Input Name="ϕ↓up←" Type="Numeric" ESA_ID="" Value="16e-3" />
+    <Input Name="ϕ↓w,design←" Type="Numeric" ESA_ID="" Value="8e-3" />
+    <Input Name="ϕ↓w←" Type="Numeric" ESA_ID="" Value="12e-3" />
+  </Test>
+  <Test Description="BiaxialBendingTsection" Author="SCIA-ONLINE\tpail" Active="1" Date="2014.11.18">
+    <Dialog>
+      <Variable Identifier="sUC_Slenderness" Value="Not Calc." />
+      <Variable Identifier="sRecalForces" Value="Not Calc." />
+      <Variable Identifier="bCalculateSlendernessCheck" Value="False" />
+      <Variable Identifier="bRecalIntForces" Value="False" />
+      <Variable Identifier="bCalculateStressLimCheck" Value="True" />
+      <Variable Identifier="bCalculateCrackCheck" Value="True" />
+      <Variable Identifier="bCalculateDeflectionCheck" Value="True" />
+      <Variable Identifier="sUC_Slenderness" Value="Not Calc." />
+      <Variable Identifier="sUC_Slenderness" Value="Not Calc." />
+      <Variable Identifier="sRecalForces" Value="Not Calc." />
+      <Variable Identifier="sUC_StressLim" Value="0,64" />
+      <Variable Identifier="sUC_CWLim" Value="0,34" />
+      <Variable Identifier="sUC_Deflection" Value="0,00" />
+      <Variable Identifier="bCalculateSlendernessCheck" Value="False" />
+      <Variable Identifier="bRecalIntForces" Value="False" />
+      <Variable Identifier="bCalculateIntDiagCheck" Value="True" />
+      <Variable Identifier="bCalculateResponceCheck" Value="True" />
+      <Variable Identifier="bCalculateShearCheck" Value="True" />
+      <Variable Identifier="bCalculateTorsionCheck" Value="True" />
+      <Variable Identifier="bCalculateInteractionVTMCheck" Value="True" />
+      <Variable Identifier="sUC_CapNMyMz_Int" Value="0,37" />
+      <Variable Identifier="sUC_CapNMyMz_Resp" Value="0,51" />
+      <Variable Identifier="sUC_CapVyVzT_Int" Value="0,05" />
+      <Variable Identifier="sUC_CapT_Int" Value="0,27" />
+      <Variable Identifier="sUC_InteractionVTM_Int" Value="0,79" />
+      <Variable Identifier="ReinfType" Value="0" />
+      <Variable Identifier="DesignLife" Value="50" />
+      <Variable Identifier="DesignLife" Value="50" />
+      <Variable Identifier="DesignLife" Value="50" />
+      <Variable Identifier="BondArrangement" Value="1" />
+      <Variable Identifier="ϕ↓w←" Value="12e-3" />
+      <Variable Identifier="ϕ↓duct←" Value="26e-3" />
+      <Variable Identifier="a" Value="35e-3" />
+      <Variable Identifier="b" Value="55e-3" />
+      <Variable Identifier="DuctShape" Value="1" />
+      <Variable Identifier="n↓b0←" Value="4" />
+      <Variable Identifier="n↓b1←" Value="3" />
+      <Variable Identifier="BundledType" Value="1" />
+      <Variable Identifier="Deviation" Value="0" />
+      <Variable Identifier="XM" Value="0" />
+      <Variable Identifier="SpecialQuality" Value="False" />
+      <Variable Identifier="TensionType" Value="0" />
+      <Variable Identifier="ConstructionClass1" Value="True" />
+      <Variable Identifier="d↓g←" Value="True" />
+      <Variable Identifier="UnevenSurf" Value="False" />
+      <Variable Identifier="Prestress" Value="False" />
+      <Variable Identifier="Quality" Value="True" />
+      <Variable Identifier="k↓2,user←" Value="30e-3" />
+      <Variable Identifier="Unevenness" Value="0" />
+      <Variable Identifier="PrefabricatedSpecialQuality" Value="True" />
+      <Variable Identifier="XC" Value="0" />
+      <Variable Identifier="XS" Value="0" />
+      <Variable Identifier="XA" Value="0" />
+      <Variable Identifier="XF" Value="0" />
+      <Variable Identifier="XD" Value="0" />
+      <Variable Identifier="bAutoMethod" Value="True" />
+      <Variable Identifier="bSymReinf" Value="False" />
+      <Variable Identifier="TypeDes" Value="1" />
+      <Variable Identifier="ρ↓lim,M←" Value="100e-3" />
+      <Variable Identifier="Method" Value="2" />
+      <Variable Identifier="offset" Value="30e-3" />
+      <Variable Identifier="MaxNlayers" Value="3" />
+      <Variable Identifier="biaxcoef" Value="1.4" />
+      <Variable Identifier="s↓min←" Value="20e-3" />
+      <Variable Identifier="n↓s,design←" Value="2" />
+      <Variable Identifier="α↓s,design←" Value="90" />
+      <Variable Identifier="c" Value="38e-3" />
+      <Variable Identifier="ϕ" Value="14e-3" />
+      <Variable Identifier="ϕ↓w,design←" Value="8e-3" />
+      <Variable Identifier="bCalcImpULS" Value="True" />
+      <Variable Identifier="bCalSecOrder" Value="True" />
+      <Variable Identifier="μ↓s←" Value="10e-3" />
+      <Variable Identifier="bCharReinfCalcRatio" Value="True" />
+      <Variable Identifier="bCalcImpSLS" Value="True" />
+      <Variable Identifier="μ↓s←" Value="10e-3" />
+      <Variable Identifier="LimAdd" Value="500" />
+      <Variable Identifier="LimTot" Value="250" />
+      <Variable Identifier="PercLTLoad" Value="600e-3" />
+      <Variable Identifier="bAuto_w↓max←" Value="True" />
+      <Variable Identifier="w↓max,user←" Value="500e-6" />
+      <Variable Identifier="Type↓fct,eff←" Value="1" />
+      <Variable Identifier="Type↓E←" Value="1" />
+      <Variable Identifier="bAutoCalcCreep" Value="False" />
+      <Variable Identifier="RH" Value="800e-3" />
+      <Variable Identifier="sCementClass" Value="R" />
+      <Variable Identifier="t↓s←" Value="259200" />
+      <Variable Identifier="t↓0,input←" Value="2.4192e6" />
+      <Variable Identifier="t" Value="8.64e6" />
+      <Variable Identifier="φ" Value="2.48" />
+      <Variable Identifier="bAuto↓θ←" Value="True" />
+      <Variable Identifier="θ↓inp←" Value="25" />
+      <Variable Identifier="IDMethodOfCheck" Value="2" />
+      <Variable Identifier="GS_ID" Value="300" />
+      <Variable Identifier="UserScale" Value="20" />
+      <Variable Identifier="UCSPosition" Value="4" />
+      <Variable Identifier="UCSY" Value="0" />
+      <Variable Identifier="UCSZ" Value="0" />
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <Variable Identifier="Coeff↓d←" Value="900e-3" />
+      <Variable Identifier="bAccidentalULS" Value="False" />
+      <Variable Identifier="InternalForces" Value="100|10|10|10|50|50║0|0|0|0|45|45║0|0|0|0|40|40" />
+      <Variable Identifier="MemberInternalForces" Value="0|0|0|0║0|0|0|0║0|0|0|0" />
+      <Variable Identifier="ElasticDeformations" Value="0|0|0║0|0|0" />
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 20/25" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|REINF.EC" Category="Horizontal top branch" Item="B 500 A" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|ShearREINF.EC" Category="Horizontal top branch" Item="B 600 B" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="3" Units="2">
+        <CS SelReinf="0" H="500e-3" B="1" Hf="150e-3" Bw="150e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="30e-3" D_upper="20e-3" N_upper="2" c_lower="30e-3" D_lower="20e-3" N_lower="2" Dc_upper="30e-3" DD_upper="20e-3" DN_upper="2" Dc_lower="30e-3" DD_lower="20e-3" DN_lower="2" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="sCaption" Value="    " />
+      <Variable Identifier="cTypeOfCalculation" Value="0" />
+      <Variable Identifier="cTypeOfMember" Value="0" />
+      <Variable Identifier="L" Value="5" />
+      <Variable Identifier="bEquivMoment" Value="True" />
+      <Variable Identifier="bIsoCol" Value="True" />
+      <Variable Identifier="bBracedMemberY" Value="True" />
+      <Variable Identifier="β↓yy←" Value="1" />
+      <Variable Identifier="my" Value="1" />
+      <Variable Identifier="bBracedMemberZ" Value="True" />
+      <Variable Identifier="β↓zz←" Value="1" />
+      <Variable Identifier="mz" Value="1" />
+      <Variable Identifier="Hbuilding" Value="10" />
+      <Variable Identifier="Lz" Value="5" />
+      <Variable Identifier="Ly" Value="5" />
+      <Variable Identifier="Lx" Value="5" />
+    </Dialog>
+    <Input Name="a" Type="Numeric" ESA_ID="" Value="35e-3" />
+    <Input Name="A↓k.inp←" Type="Numeric" ESA_ID="" Value="2.5e-3" />
+    <Input Name="Alpha" Type="Numeric" ESA_ID="" Value="128" />
+    <Input Name="b" Type="Numeric" ESA_ID="" Value="55e-3" />
+    <Input Name="bAccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bAdvanceInputData" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAuto_w↓max←" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAuto↓θ←" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAutoCalcCreep" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bAutoCalNStirCut" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAutoMethod" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAutoTypeTorsion" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bBracedMemberY" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bBracedMemberZ" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bBridges" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCalcImpSLS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalcImpULS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateCrackCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedCrackCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedDeflectionCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateDeflectionCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedIntDiagCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedInteractionVTMCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedResponceCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedShearCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedStressLimCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedTorsionCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateIntDiagCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateInteractionVTMCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateResponceCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateShearCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateSlendernessCheck" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCalculateStressLimCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateTorsionCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalSecOrder" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bDesignULS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bDesingLongReinf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bDesingShearReinf" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bDrawPlainConcrete" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bDrawUltimateBorder" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bEquivMoment" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bHeating" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCharReinfCalcRatio" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="biaxcoef" Type="Numeric" ESA_ID="" Value="1.4" />
+    <Input Name="bIndirectLoad" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bIsoCol" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bMaxSpacingShear" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="BondArrangement" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="bPrintCapT_Img" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPrintCapVyVzT_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintConcreteCover" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintCrackWidth_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintCreepCoeffCalc" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintCSS_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintDeflection_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintDurability" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintIntD_Img" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPrintLongDesign_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintLongDesign_Txt" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintResponse_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintShearDesign_Txt" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bRecalIntForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bSilicaFume" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bSymReinf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bTestEqulibrium" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="BundledType" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="bUseUserReinf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bUseUserStirrup" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bZeroLongDeflection" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bZeroShortDeflection" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="c" Type="Numeric" ESA_ID="" Value="38e-3" />
+    <Input Name="c↓lo←" Type="Numeric" ESA_ID="" Value="38e-3" />
+    <Input Name="c↓min,b←" Type="Numeric" ESA_ID="" Value="24.24871e-3" />
+    <Input Name="c↓min,dur←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="c↓min←" Type="Numeric" ESA_ID="" Value="24.24871e-3" />
+    <Input Name="c↓nom←" Type="Numeric" ESA_ID="" Value="34.24871e-3" />
+    <Input Name="c↓side←" Type="Numeric" ESA_ID="" Value="38e-3" />
+    <Input Name="c↓up←" Type="Numeric" ESA_ID="" Value="38e-3" />
+    <Input Name="CapNMyMz_RespStatus" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="cmin" Type="Numeric" ESA_ID="" Value="30e-3" />
+    <Input Name="Coeff↓Area←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Coeff↓As←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="Coeff↓d←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="Coeffε↓Sud←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="ConcreteType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ConstructionClass1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="creepCoeff" Type="Numeric" ESA_ID="" Value="2.48" />
+    <Input Name="creepCoeffRh" Type="Numeric" ESA_ID="" Value="1.363424" />
+    <Input Name="creepCoeffZero" Type="Numeric" ESA_ID="" Value="1.947614" />
+    <Input Name="CssIDPlainLinear" Type="Numeric" ESA_ID="" Value="21" />
+    <Input Name="CssIDPlainLinearLong" Type="Numeric" ESA_ID="" Value="22" />
+    <Input Name="CssIDSLS" Type="Numeric" ESA_ID="" Value="12" />
+    <Input Name="CssIDSLSEffective" Type="Numeric" ESA_ID="" Value="14" />
+    <Input Name="CssIDSLSEffectiveNoTension" Type="Numeric" ESA_ID="" Value="15" />
+    <Input Name="CssIDSLSNoTension" Type="Numeric" ESA_ID="" Value="13" />
+    <Input Name="CssIDSLSWCrack" Type="Numeric" ESA_ID="" Value="1003" />
+    <Input Name="CssIDSLSWUncrack" Type="Numeric" ESA_ID="" Value="1002" />
+    <Input Name="CssIDULSPlain" Type="Numeric" ESA_ID="" Value="11" />
+    <Input Name="CssIDULSReinf" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="CssSLSSLID" Type="Numeric" ESA_ID="" Value="1000" />
+    <Input Name="CssTotalID" Type="Numeric" ESA_ID="" Value="100" />
+    <Input Name="cTypeOfCalculation" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="cTypeOfMember" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="d↓g←" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DescriptionN" Type="String" ESA_ID="" Value="SLS Internal forces are not taken to the design." />
+    <Input Name="DesignLife" Type="Numeric" ESA_ID="" Value="50" />
+    <Input Name="Deviation" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="diam" Type="Numeric" ESA_ID="" Value="20e-3" />
+    <Input Name="DivisionOfStrain" Type="Numeric" ESA_ID="" Value="300" />
+    <Input Name="DrawAxis" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawStirrups" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DuctShape" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="eps_c23" Type="Numeric" ESA_ID="" Value="1.75e-3" />
+    <Input Name="eps_cu23" Type="Numeric" ESA_ID="" Value="3.5e-3" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="13.33333e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="20e6" />
+    <Input Name="f↓ctd←" Type="Numeric" ESA_ID="" Value="1e6" />
+    <Input Name="f↓ctk005←" Type="Numeric" ESA_ID="" Value="1.5e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="434.7826e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="500e6" />
+    <Input Name="f↓ywd←" Type="Numeric" ESA_ID="" Value="521.7391e6" />
+    <Input Name="f↓ywk←" Type="Numeric" ESA_ID="" Value="600e6" />
+    <Input Name="ForcesID" Type="Numeric" ESA_ID="" Value="100" />
+    <Input Name="ForcesIDZero" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ForcesSLSCh" Type="Numeric" ESA_ID="" Value="11" />
+    <Input Name="ForcesSLSQ" Type="Numeric" ESA_ID="" Value="12" />
+    <Input Name="ForcesULS" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="ForcesULSWOT" Type="Numeric" ESA_ID="" Value="13" />
+    <Input Name="ForcesULSWT" Type="Numeric" ESA_ID="" Value="14" />
+    <Input Name="FormCode" Type="Numeric" ESA_ID="" Value="2009" />
+    <Input Name="GraphScale" Type="Numeric" ESA_ID="" Value="200" />
+    <Input Name="GS_ID" Type="Numeric" ESA_ID="" Value="300" />
+    <Input Name="Hbuilding" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="IDMethodOfCheck" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="j" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="k↓1←" Type="Numeric" ESA_ID="" Value="600e-3" />
+    <Input Name="k↓2,user←" Type="Numeric" ESA_ID="" Value="30e-3" />
+    <Input Name="k↓3←" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Input Name="kf↓ck←" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="kf↓yk←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="LimAdd" Type="Numeric" ESA_ID="" Value="500" />
+    <Input Name="LimTot" Type="Numeric" ESA_ID="" Value="250" />
+    <Input Name="Lx" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="Ly" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="Lz" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="M↓Edy,char,recal←" Type="Numeric" ESA_ID="" Value="45000" />
+    <Input Name="M↓Edy,char←" Type="Numeric" ESA_ID="" Value="45000" />
+    <Input Name="M↓Edy,qp,recal←" Type="Numeric" ESA_ID="" Value="40000" />
+    <Input Name="M↓Edy,qp←" Type="Numeric" ESA_ID="" Value="40000" />
+    <Input Name="M↓Edy,recal←" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="M↓Edy←" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="M↓Edz,char,recal←" Type="Numeric" ESA_ID="" Value="45000" />
+    <Input Name="M↓Edz,char←" Type="Numeric" ESA_ID="" Value="45000" />
+    <Input Name="M↓Edz,qp,recal←" Type="Numeric" ESA_ID="" Value="40000" />
+    <Input Name="M↓Edz,qp←" Type="Numeric" ESA_ID="" Value="40000" />
+    <Input Name="M↓Edz,recal←" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="M↓Edz←" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="M↓SLS-CH,beg,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-CH,beg,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-CH,end,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-CH,end,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-QP,beg,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-QP,beg,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-QP,end,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-QP,end,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓ULS,beg,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓ULS,beg,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓ULS,end,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓ULS,end,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="MaxNlayers" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="maxSLSCheck" Type="String" ESA_ID="" Value="Check of stress limitation" />
+    <Input Name="maxSLSUC" Type="Numeric" ESA_ID="" Value="635.2244e-3" />
+    <Input Name="maxULSCheck" Type="String" ESA_ID="" Value="Check of interaction V+T+M" />
+    <Input Name="maxULSUC" Type="Numeric" ESA_ID="" Value="790.1148e-3" />
+    <Input Name="Method" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="MinNbarsEdge" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="my" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="mz" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="n↓b0←" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="n↓b1←" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="N↓Ed,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="N↓Ed,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="N↓Ed←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="n↓s,design←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="n↓s.inp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="n↓s.req←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="NIteration" Type="Numeric" ESA_ID="" Value="20" />
+    <Input Name="NoOfVertCut" Type="Numeric" ESA_ID="" Value="180" />
+    <Input Name="oExtCalc_LongDesignTableWidth" Type="Numeric" ESA_ID="" Value="570" />
+    <Input Name="offset" Type="Numeric" ESA_ID="" Value="30e-3" />
+    <Input Name="PercLTLoad" Type="Numeric" ESA_ID="" Value="600e-3" />
+    <Input Name="PrefabricatedSpecialQuality" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Prestress" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Quality" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="RatioLong" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="RatioShort" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="ReinfType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="RH" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Input Name="row" Type="Numeric" ESA_ID="" Value="9" />
+    <Input Name="s↓min←" Type="Numeric" ESA_ID="" Value="20e-3" />
+    <Input Name="sCaption" Type="String" ESA_ID="" Value="    " />
+    <Input Name="sCementClass" Type="String" ESA_ID="" Value="R" />
+    <Input Name="sCracksApp" Type="String" ESA_ID="" Value="Cracks appear" />
+    <Input Name="sCracksNoApp" Type="String" ESA_ID="" Value="No cracks appear" />
+    <Input Name="SlabGeometry" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="sNotCalc" Type="String" ESA_ID="" Value="Not Calc." />
+    <Input Name="sNOTOK" Type="String" ESA_ID="" Value="Not OK" />
+    <Input Name="sOK" Type="String" ESA_ID="" Value="OK" />
+    <Input Name="sOKBUT" Type="String" ESA_ID="" Value="OK,*" />
+    <Input Name="SolutionN" Type="String" ESA_ID="" Value="" />
+    <Input Name="SpecialQuality" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="sRecalForces" Type="String" ESA_ID="" Value="Not Calc." />
+    <Input Name="StainlessSteel" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Status_CapNMyMz_Int" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Status_CapT_Int" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="Status_CapVyVzT_Int" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="Status_CWLim" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Status_InteractionVTM" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="StatusDeflection" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="StatusStressLimitation" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="stressLimChecklong" Type="Numeric" ESA_ID="" Value="422.4442e-3" />
+    <Input Name="stressLimCheckshort" Type="Numeric" ESA_ID="" Value="635.2244e-3" />
+    <Input Name="stressLimStatusLong" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="stressLimStatusShort" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="sUC_CapNMyMz_Int" Type="String" ESA_ID="" Value="0,37" />
+    <Input Name="sUC_CapNMyMz_Resp" Type="String" ESA_ID="" Value="0,51" />
+    <Input Name="sUC_CapT_Int" Type="String" ESA_ID="" Value="0,27" />
+    <Input Name="sUC_CapVyVzT_Int" Type="String" ESA_ID="" Value="0,05" />
+    <Input Name="sUC_CWLim" Type="String" ESA_ID="" Value="0,34" />
+    <Input Name="sUC_Deflection" Type="String" ESA_ID="" Value="0,00" />
+    <Input Name="sUC_InteractionVTM_Int" Type="String" ESA_ID="" Value="0,79" />
+    <Input Name="sUC_Slenderness" Type="String" ESA_ID="" Value="Not Calc." />
+    <Input Name="sUC_StressLim" Type="String" ESA_ID="" Value="0,64" />
+    <Input Name="t" Type="Numeric" ESA_ID="" Value="8.64e6" />
+    <Input Name="t↓0,input←" Type="Numeric" ESA_ID="" Value="2.4192e6" />
+    <Input Name="T↓Ed,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="T↓Ed,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="T↓Ed←" Type="Numeric" ESA_ID="" Value="10000" />
+    <Input Name="t↓ef.inp←" Type="Numeric" ESA_ID="" Value="200e-3" />
+    <Input Name="T↓Rd←" Type="Numeric" ESA_ID="" Value="37353.25" />
+    <Input Name="t↓s←" Type="Numeric" ESA_ID="" Value="259200" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="TensionType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="thetaCalc" Type="Numeric" ESA_ID="" Value="21.80001" />
+    <Input Name="Type↓E←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Type↓fct,eff←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Type↓σcr←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeArea" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeCoverDiam" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="TypeDes" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeN" Type="String" ESA_ID="" Value="Note" />
+    <Input Name="TypeTorCssInput" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="u↓k.inp←" Type="Numeric" ESA_ID="" Value="50e-3" />
+    <Result Name="UC" Type="Numeric" ESA_ID="Result.0" Value="635.2244e-3" />
+    <Result Name="UC_CapNMyMz_Int" Type="Numeric" ESA_ID="Result.4" Value="373.7017e-3" />
+    <Result Name="UC_CapNMyMz_Resp" Type="Numeric" ESA_ID="Result.3" Value="505.8637e-3" />
+    <Input Name="UC_CapT_Int" Type="Numeric" ESA_ID="" Value="267.7143e-3" />
+    <Result Name="UC_CapVyVzT_Int" Type="Numeric" ESA_ID="Result.5" Value="46.77711e-3" />
+    <Result Name="UC_CWLim" Type="Numeric" ESA_ID="Result.7" Value="343.4819e-3" />
+    <Result Name="UC_Deflection" Type="Numeric" ESA_ID="Result.8" Value="0" />
+    <Input Name="UC_InteractionVTM_Int" Type="Numeric" ESA_ID="" Value="790.1148e-3" />
+    <Result Name="UC_SLS" Type="Numeric" ESA_ID="Result.2" Value="635.2244e-3" />
+    <Result Name="UC_StressLim" Type="Numeric" ESA_ID="Result.6" Value="635.2244e-3" />
+    <Result Name="UC_ULS" Type="Numeric" ESA_ID="Result.1" Value="505.8637e-3" />
+    <Input Name="UCSPosition" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="UCSY" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="UCSZ" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Unevenness" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="UnevenSurf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Unity↓check←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="20" />
+    <Input Name="uxl" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uxs" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uyl" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uys" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uzl" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uzs" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edy,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edy,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edy←" Type="Numeric" ESA_ID="" Value="10000" />
+    <Input Name="V↓Edz,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edz,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edz←" Type="Numeric" ESA_ID="" Value="10000" />
+    <Input Name="V↓Rd←" Type="Numeric" ESA_ID="" Value="302330.3" />
+    <Input Name="w↓max,user←" Type="Numeric" ESA_ID="" Value="500e-6" />
+    <Input Name="w↓max←" Type="Numeric" ESA_ID="" Value="300e-6" />
+    <Input Name="WireType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XA" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XC" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XD" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XF" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XS" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZeroSLSCHForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="ZeroSLSQForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="zeroUC" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZeroULSForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="ZeroULSShearForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="ZeroULSTorsion" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="α↓ct←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="α↓s,design←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="α↓s←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="β↓yy←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="β↓zz←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓c←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓s←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="Δc↓dev←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="Δc↓dur,add←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Δc↓dur,st←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Δc↓dur,γ←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ε↓cc,min←" Type="Numeric" ESA_ID="" Value="-2.833252e-3" />
+    <Input Name="ε↓ct,max←" Type="Numeric" ESA_ID="" Value="3.113334e-3" />
+    <Input Name="ε↓sc,min←" Type="Numeric" ESA_ID="" Value="-1.790885e-3" />
+    <Input Name="θ↓inp←" Type="Numeric" ESA_ID="" Value="25" />
+    <Input Name="μ↓s←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="ρ↓lim,M←" Type="Numeric" ESA_ID="" Value="100e-3" />
+    <Input Name="σ↓cc,min←" Type="Numeric" ESA_ID="" Value="-13.33333e6" />
+    <Input Name="σ↓sc,min←" Type="Numeric" ESA_ID="" Value="-358.1769e6" />
+    <Input Name="σ↓st,max←" Type="Numeric" ESA_ID="" Value="508.7175e6" />
+    <Input Name="φ" Type="Numeric" ESA_ID="" Value="2.48" />
+    <Input Name="ϕ" Type="Numeric" ESA_ID="" Value="14e-3" />
+    <Input Name="ϕ↓duct←" Type="Numeric" ESA_ID="" Value="26e-3" />
+    <Input Name="φ↓eff←" Type="Numeric" ESA_ID="" Value="2.48" />
+    <Input Name="ϕ↓lo←" Type="Numeric" ESA_ID="" Value="16e-3" />
+    <Input Name="ϕ↓max←" Type="Numeric" ESA_ID="" Value="16e-3" />
+    <Input Name="ϕ↓up←" Type="Numeric" ESA_ID="" Value="16e-3" />
+    <Input Name="ϕ↓w,design←" Type="Numeric" ESA_ID="" Value="8e-3" />
+    <Input Name="ϕ↓w←" Type="Numeric" ESA_ID="" Value="12e-3" />
+  </Test>
+  <Test Description="UniaxialBendingTsection" Author="SCIA-ONLINE\tpail" Active="1" Date="2014.11.18">
+    <Dialog>
+      <Variable Identifier="sUC_Slenderness" Value="Not Calc." />
+      <Variable Identifier="sRecalForces" Value="Not Calc." />
+      <Variable Identifier="bCalculateSlendernessCheck" Value="False" />
+      <Variable Identifier="bRecalIntForces" Value="False" />
+      <Variable Identifier="bCalculateStressLimCheck" Value="True" />
+      <Variable Identifier="bCalculateCrackCheck" Value="True" />
+      <Variable Identifier="bCalculateDeflectionCheck" Value="True" />
+      <Variable Identifier="sUC_Slenderness" Value="Not Calc." />
+      <Variable Identifier="sUC_Slenderness" Value="Not Calc." />
+      <Variable Identifier="sRecalForces" Value="Not Calc." />
+      <Variable Identifier="sUC_StressLim" Value="0,41" />
+      <Variable Identifier="sUC_CWLim" Value="0,23" />
+      <Variable Identifier="sUC_Deflection" Value="0,00" />
+      <Variable Identifier="bCalculateSlendernessCheck" Value="False" />
+      <Variable Identifier="bRecalIntForces" Value="False" />
+      <Variable Identifier="bCalculateIntDiagCheck" Value="True" />
+      <Variable Identifier="bCalculateResponceCheck" Value="True" />
+      <Variable Identifier="bCalculateShearCheck" Value="True" />
+      <Variable Identifier="bCalculateTorsionCheck" Value="True" />
+      <Variable Identifier="bCalculateInteractionVTMCheck" Value="True" />
+      <Variable Identifier="sUC_CapNMyMz_Int" Value="0,37" />
+      <Variable Identifier="sUC_CapNMyMz_Resp" Value="0,50" />
+      <Variable Identifier="sUC_CapVyVzT_Int" Value="0,09" />
+      <Variable Identifier="sUC_CapT_Int" Value="0,27" />
+      <Variable Identifier="sUC_InteractionVTM_Int" Value="0,78" />
+      <Variable Identifier="ReinfType" Value="0" />
+      <Variable Identifier="DesignLife" Value="50" />
+      <Variable Identifier="DesignLife" Value="50" />
+      <Variable Identifier="DesignLife" Value="50" />
+      <Variable Identifier="BondArrangement" Value="1" />
+      <Variable Identifier="ϕ↓w←" Value="12e-3" />
+      <Variable Identifier="ϕ↓duct←" Value="26e-3" />
+      <Variable Identifier="a" Value="35e-3" />
+      <Variable Identifier="b" Value="55e-3" />
+      <Variable Identifier="DuctShape" Value="1" />
+      <Variable Identifier="n↓b0←" Value="4" />
+      <Variable Identifier="n↓b1←" Value="3" />
+      <Variable Identifier="BundledType" Value="1" />
+      <Variable Identifier="Deviation" Value="0" />
+      <Variable Identifier="XM" Value="0" />
+      <Variable Identifier="SpecialQuality" Value="False" />
+      <Variable Identifier="TensionType" Value="0" />
+      <Variable Identifier="ConstructionClass1" Value="True" />
+      <Variable Identifier="d↓g←" Value="True" />
+      <Variable Identifier="UnevenSurf" Value="False" />
+      <Variable Identifier="Prestress" Value="False" />
+      <Variable Identifier="Quality" Value="True" />
+      <Variable Identifier="k↓2,user←" Value="30e-3" />
+      <Variable Identifier="Unevenness" Value="0" />
+      <Variable Identifier="PrefabricatedSpecialQuality" Value="True" />
+      <Variable Identifier="XC" Value="0" />
+      <Variable Identifier="XS" Value="0" />
+      <Variable Identifier="XA" Value="0" />
+      <Variable Identifier="XF" Value="0" />
+      <Variable Identifier="XD" Value="0" />
+      <Variable Identifier="bAutoMethod" Value="True" />
+      <Variable Identifier="bSymReinf" Value="False" />
+      <Variable Identifier="TypeDes" Value="1" />
+      <Variable Identifier="ρ↓lim,M←" Value="100e-3" />
+      <Variable Identifier="Method" Value="2" />
+      <Variable Identifier="offset" Value="30e-3" />
+      <Variable Identifier="MaxNlayers" Value="3" />
+      <Variable Identifier="biaxcoef" Value="1.4" />
+      <Variable Identifier="s↓min←" Value="20e-3" />
+      <Variable Identifier="n↓s,design←" Value="2" />
+      <Variable Identifier="α↓s,design←" Value="90" />
+      <Variable Identifier="c" Value="38e-3" />
+      <Variable Identifier="ϕ" Value="14e-3" />
+      <Variable Identifier="ϕ↓w,design←" Value="8e-3" />
+      <Variable Identifier="bCalcImpULS" Value="True" />
+      <Variable Identifier="bCalSecOrder" Value="True" />
+      <Variable Identifier="μ↓s←" Value="10e-3" />
+      <Variable Identifier="bCharReinfCalcRatio" Value="True" />
+      <Variable Identifier="bCalcImpSLS" Value="True" />
+      <Variable Identifier="μ↓s←" Value="10e-3" />
+      <Variable Identifier="LimAdd" Value="500" />
+      <Variable Identifier="LimTot" Value="250" />
+      <Variable Identifier="PercLTLoad" Value="600e-3" />
+      <Variable Identifier="bAuto_w↓max←" Value="True" />
+      <Variable Identifier="w↓max,user←" Value="500e-6" />
+      <Variable Identifier="Type↓fct,eff←" Value="1" />
+      <Variable Identifier="Type↓E←" Value="1" />
+      <Variable Identifier="bAutoCalcCreep" Value="False" />
+      <Variable Identifier="RH" Value="800e-3" />
+      <Variable Identifier="sCementClass" Value="R" />
+      <Variable Identifier="t↓s←" Value="259200" />
+      <Variable Identifier="t↓0,input←" Value="2.4192e6" />
+      <Variable Identifier="t" Value="8.64e6" />
+      <Variable Identifier="φ" Value="2.48" />
+      <Variable Identifier="bAuto↓θ←" Value="True" />
+      <Variable Identifier="θ↓inp←" Value="25" />
+      <Variable Identifier="IDMethodOfCheck" Value="2" />
+      <Variable Identifier="GS_ID" Value="300" />
+      <Variable Identifier="UserScale" Value="20" />
+      <Variable Identifier="UCSPosition" Value="4" />
+      <Variable Identifier="UCSY" Value="0" />
+      <Variable Identifier="UCSZ" Value="0" />
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <Variable Identifier="Coeff↓d←" Value="900e-3" />
+      <Variable Identifier="bAccidentalULS" Value="False" />
+      <Variable Identifier="InternalForces" Value="100|10|10|10|50|0║0|0|0|0|45|0║0|0|0|0|40|0" />
+      <Variable Identifier="MemberInternalForces" Value="0|0|0|0║0|0|0|0║0|0|0|0" />
+      <Variable Identifier="ElasticDeformations" Value="0|0|0║0|0|0" />
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 20/25" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|REINF.EC" Category="Horizontal top branch" Item="B 500 A" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|ShearREINF.EC" Category="Horizontal top branch" Item="B 600 B" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="3" Units="2">
+        <CS SelReinf="0" H="500e-3" B="1" Hf="150e-3" Bw="150e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="30e-3" D_upper="20e-3" N_upper="2" c_lower="30e-3" D_lower="20e-3" N_lower="2" Dc_upper="30e-3" DD_upper="20e-3" DN_upper="2" Dc_lower="30e-3" DD_lower="20e-3" DN_lower="2" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="sCaption" Value="    " />
+      <Variable Identifier="cTypeOfCalculation" Value="0" />
+      <Variable Identifier="cTypeOfMember" Value="0" />
+      <Variable Identifier="L" Value="5" />
+      <Variable Identifier="bEquivMoment" Value="True" />
+      <Variable Identifier="bIsoCol" Value="True" />
+      <Variable Identifier="bBracedMemberY" Value="True" />
+      <Variable Identifier="β↓yy←" Value="1" />
+      <Variable Identifier="my" Value="1" />
+      <Variable Identifier="bBracedMemberZ" Value="True" />
+      <Variable Identifier="β↓zz←" Value="1" />
+      <Variable Identifier="mz" Value="1" />
+      <Variable Identifier="Hbuilding" Value="10" />
+      <Variable Identifier="Lz" Value="5" />
+      <Variable Identifier="Ly" Value="5" />
+      <Variable Identifier="Lx" Value="5" />
+    </Dialog>
+    <Input Name="a" Type="Numeric" ESA_ID="" Value="35e-3" />
+    <Input Name="A↓k.inp←" Type="Numeric" ESA_ID="" Value="2.5e-3" />
+    <Input Name="Alpha" Type="Numeric" ESA_ID="" Value="128" />
+    <Input Name="b" Type="Numeric" ESA_ID="" Value="55e-3" />
+    <Input Name="bAccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bAdvanceInputData" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAuto_w↓max←" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAuto↓θ←" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAutoCalcCreep" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bAutoCalNStirCut" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAutoMethod" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAutoTypeTorsion" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bBracedMemberY" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bBracedMemberZ" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bBridges" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCalcImpSLS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalcImpULS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateCrackCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedCrackCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedDeflectionCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateDeflectionCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedIntDiagCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedInteractionVTMCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedResponceCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedShearCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedStressLimCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedTorsionCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateIntDiagCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateInteractionVTMCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateResponceCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateShearCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateSlendernessCheck" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCalculateStressLimCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateTorsionCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalSecOrder" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bDesignULS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bDesingLongReinf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bDesingShearReinf" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bDrawPlainConcrete" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bDrawUltimateBorder" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bEquivMoment" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bHeating" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCharReinfCalcRatio" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="biaxcoef" Type="Numeric" ESA_ID="" Value="1.4" />
+    <Input Name="bIndirectLoad" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bIsoCol" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bMaxSpacingShear" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="BondArrangement" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="bPrintCapT_Img" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPrintCapVyVzT_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintConcreteCover" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintCrackWidth_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintCreepCoeffCalc" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintCSS_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintDeflection_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintDurability" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintIntD_Img" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPrintLongDesign_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintLongDesign_Txt" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintResponse_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintShearDesign_Txt" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bRecalIntForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bSilicaFume" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bSymReinf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bTestEqulibrium" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="BundledType" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="bUseUserReinf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bUseUserStirrup" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bZeroLongDeflection" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bZeroShortDeflection" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="c" Type="Numeric" ESA_ID="" Value="38e-3" />
+    <Input Name="c↓lo←" Type="Numeric" ESA_ID="" Value="38e-3" />
+    <Input Name="c↓min,b←" Type="Numeric" ESA_ID="" Value="24.24871e-3" />
+    <Input Name="c↓min,dur←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="c↓min←" Type="Numeric" ESA_ID="" Value="24.24871e-3" />
+    <Input Name="c↓nom←" Type="Numeric" ESA_ID="" Value="34.24871e-3" />
+    <Input Name="c↓side←" Type="Numeric" ESA_ID="" Value="38e-3" />
+    <Input Name="c↓up←" Type="Numeric" ESA_ID="" Value="38e-3" />
+    <Input Name="CapNMyMz_RespStatus" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="cmin" Type="Numeric" ESA_ID="" Value="30e-3" />
+    <Input Name="Coeff↓Area←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Coeff↓As←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="Coeff↓d←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="Coeffε↓Sud←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="ConcreteType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ConstructionClass1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="creepCoeff" Type="Numeric" ESA_ID="" Value="2.48" />
+    <Input Name="creepCoeffRh" Type="Numeric" ESA_ID="" Value="1.363424" />
+    <Input Name="creepCoeffZero" Type="Numeric" ESA_ID="" Value="1.947614" />
+    <Input Name="CssIDPlainLinear" Type="Numeric" ESA_ID="" Value="21" />
+    <Input Name="CssIDPlainLinearLong" Type="Numeric" ESA_ID="" Value="22" />
+    <Input Name="CssIDSLS" Type="Numeric" ESA_ID="" Value="12" />
+    <Input Name="CssIDSLSEffective" Type="Numeric" ESA_ID="" Value="14" />
+    <Input Name="CssIDSLSEffectiveNoTension" Type="Numeric" ESA_ID="" Value="15" />
+    <Input Name="CssIDSLSNoTension" Type="Numeric" ESA_ID="" Value="13" />
+    <Input Name="CssIDSLSWCrack" Type="Numeric" ESA_ID="" Value="1003" />
+    <Input Name="CssIDSLSWUncrack" Type="Numeric" ESA_ID="" Value="1002" />
+    <Input Name="CssIDULSPlain" Type="Numeric" ESA_ID="" Value="11" />
+    <Input Name="CssIDULSReinf" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="CssSLSSLID" Type="Numeric" ESA_ID="" Value="1000" />
+    <Input Name="CssTotalID" Type="Numeric" ESA_ID="" Value="100" />
+    <Input Name="cTypeOfCalculation" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="cTypeOfMember" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="d↓g←" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DescriptionN" Type="String" ESA_ID="" Value="SLS Internal forces are not taken to the design." />
+    <Input Name="DesignLife" Type="Numeric" ESA_ID="" Value="50" />
+    <Input Name="Deviation" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="diam" Type="Numeric" ESA_ID="" Value="20e-3" />
+    <Input Name="DivisionOfStrain" Type="Numeric" ESA_ID="" Value="300" />
+    <Input Name="DrawAxis" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawStirrups" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DuctShape" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="eps_c23" Type="Numeric" ESA_ID="" Value="1.75e-3" />
+    <Input Name="eps_cu23" Type="Numeric" ESA_ID="" Value="3.5e-3" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="13.33333e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="20e6" />
+    <Input Name="f↓ctd←" Type="Numeric" ESA_ID="" Value="1e6" />
+    <Input Name="f↓ctk005←" Type="Numeric" ESA_ID="" Value="1.5e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="434.7826e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="500e6" />
+    <Input Name="f↓ywd←" Type="Numeric" ESA_ID="" Value="521.7391e6" />
+    <Input Name="f↓ywk←" Type="Numeric" ESA_ID="" Value="600e6" />
+    <Input Name="ForcesID" Type="Numeric" ESA_ID="" Value="100" />
+    <Input Name="ForcesIDZero" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ForcesSLSCh" Type="Numeric" ESA_ID="" Value="11" />
+    <Input Name="ForcesSLSQ" Type="Numeric" ESA_ID="" Value="12" />
+    <Input Name="ForcesULS" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="ForcesULSWOT" Type="Numeric" ESA_ID="" Value="13" />
+    <Input Name="ForcesULSWT" Type="Numeric" ESA_ID="" Value="14" />
+    <Input Name="FormCode" Type="Numeric" ESA_ID="" Value="2009" />
+    <Input Name="GraphScale" Type="Numeric" ESA_ID="" Value="200" />
+    <Input Name="GS_ID" Type="Numeric" ESA_ID="" Value="300" />
+    <Input Name="Hbuilding" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="IDMethodOfCheck" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="j" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="k↓1←" Type="Numeric" ESA_ID="" Value="600e-3" />
+    <Input Name="k↓2,user←" Type="Numeric" ESA_ID="" Value="30e-3" />
+    <Input Name="k↓3←" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Input Name="kf↓ck←" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="kf↓yk←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="LimAdd" Type="Numeric" ESA_ID="" Value="500" />
+    <Input Name="LimTot" Type="Numeric" ESA_ID="" Value="250" />
+    <Input Name="Lx" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="Ly" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="Lz" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="M↓Edy,char,recal←" Type="Numeric" ESA_ID="" Value="45000" />
+    <Input Name="M↓Edy,char←" Type="Numeric" ESA_ID="" Value="45000" />
+    <Input Name="M↓Edy,qp,recal←" Type="Numeric" ESA_ID="" Value="40000" />
+    <Input Name="M↓Edy,qp←" Type="Numeric" ESA_ID="" Value="40000" />
+    <Input Name="M↓Edy,recal←" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="M↓Edy←" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="M↓Edz,char,recal←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Edz,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Edz,qp,recal←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Edz,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Edz,recal←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Edz←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-CH,beg,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-CH,beg,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-CH,end,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-CH,end,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-QP,beg,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-QP,beg,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-QP,end,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-QP,end,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓ULS,beg,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓ULS,beg,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓ULS,end,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓ULS,end,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="MaxNlayers" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="maxSLSCheck" Type="String" ESA_ID="" Value="Check of stress limitation" />
+    <Input Name="maxSLSUC" Type="Numeric" ESA_ID="" Value="410.9617e-3" />
+    <Input Name="maxULSCheck" Type="String" ESA_ID="" Value="Check of interaction V+T+M" />
+    <Input Name="maxULSUC" Type="Numeric" ESA_ID="" Value="780.857e-3" />
+    <Input Name="Method" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="MinNbarsEdge" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="my" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="mz" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="n↓b0←" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="n↓b1←" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="N↓Ed,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="N↓Ed,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="N↓Ed←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="n↓s,design←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="n↓s.inp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="n↓s.req←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="NIteration" Type="Numeric" ESA_ID="" Value="20" />
+    <Input Name="NoOfVertCut" Type="Numeric" ESA_ID="" Value="180" />
+    <Input Name="oExtCalc_LongDesignTableWidth" Type="Numeric" ESA_ID="" Value="570" />
+    <Input Name="offset" Type="Numeric" ESA_ID="" Value="30e-3" />
+    <Input Name="PercLTLoad" Type="Numeric" ESA_ID="" Value="600e-3" />
+    <Input Name="PrefabricatedSpecialQuality" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Prestress" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Quality" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="RatioLong" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="RatioShort" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="ReinfType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="RH" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Input Name="row" Type="Numeric" ESA_ID="" Value="9" />
+    <Input Name="s↓min←" Type="Numeric" ESA_ID="" Value="20e-3" />
+    <Input Name="sCaption" Type="String" ESA_ID="" Value="    " />
+    <Input Name="sCementClass" Type="String" ESA_ID="" Value="R" />
+    <Input Name="sCracksApp" Type="String" ESA_ID="" Value="Cracks appear" />
+    <Input Name="sCracksNoApp" Type="String" ESA_ID="" Value="No cracks appear" />
+    <Input Name="SlabGeometry" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="sNotCalc" Type="String" ESA_ID="" Value="Not Calc." />
+    <Input Name="sNOTOK" Type="String" ESA_ID="" Value="Not OK" />
+    <Input Name="sOK" Type="String" ESA_ID="" Value="OK" />
+    <Input Name="sOKBUT" Type="String" ESA_ID="" Value="OK,*" />
+    <Input Name="SolutionN" Type="String" ESA_ID="" Value="" />
+    <Input Name="SpecialQuality" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="sRecalForces" Type="String" ESA_ID="" Value="Not Calc." />
+    <Input Name="StainlessSteel" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Status_CapNMyMz_Int" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Status_CapT_Int" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="Status_CapVyVzT_Int" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="Status_CWLim" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Status_InteractionVTM" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="StatusDeflection" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="StatusStressLimitation" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="stressLimChecklong" Type="Numeric" ESA_ID="" Value="410.9617e-3" />
+    <Input Name="stressLimCheckshort" Type="Numeric" ESA_ID="" Value="390.0368e-3" />
+    <Input Name="stressLimStatusLong" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="stressLimStatusShort" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="sUC_CapNMyMz_Int" Type="String" ESA_ID="" Value="0,37" />
+    <Input Name="sUC_CapNMyMz_Resp" Type="String" ESA_ID="" Value="0,50" />
+    <Input Name="sUC_CapT_Int" Type="String" ESA_ID="" Value="0,27" />
+    <Input Name="sUC_CapVyVzT_Int" Type="String" ESA_ID="" Value="0,09" />
+    <Input Name="sUC_CWLim" Type="String" ESA_ID="" Value="0,23" />
+    <Input Name="sUC_Deflection" Type="String" ESA_ID="" Value="0,00" />
+    <Input Name="sUC_InteractionVTM_Int" Type="String" ESA_ID="" Value="0,78" />
+    <Input Name="sUC_Slenderness" Type="String" ESA_ID="" Value="Not Calc." />
+    <Input Name="sUC_StressLim" Type="String" ESA_ID="" Value="0,41" />
+    <Input Name="t" Type="Numeric" ESA_ID="" Value="8.64e6" />
+    <Input Name="t↓0,input←" Type="Numeric" ESA_ID="" Value="2.4192e6" />
+    <Input Name="T↓Ed,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="T↓Ed,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="T↓Ed←" Type="Numeric" ESA_ID="" Value="10000" />
+    <Input Name="t↓ef.inp←" Type="Numeric" ESA_ID="" Value="200e-3" />
+    <Input Name="T↓Rd←" Type="Numeric" ESA_ID="" Value="37353.25" />
+    <Input Name="t↓s←" Type="Numeric" ESA_ID="" Value="259200" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="TensionType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="thetaCalc" Type="Numeric" ESA_ID="" Value="21.80001" />
+    <Input Name="Type↓E←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Type↓fct,eff←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Type↓σcr←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeArea" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeCoverDiam" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="TypeDes" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeN" Type="String" ESA_ID="" Value="Note" />
+    <Input Name="TypeTorCssInput" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="u↓k.inp←" Type="Numeric" ESA_ID="" Value="50e-3" />
+    <Result Name="UC" Type="Numeric" ESA_ID="Result.0" Value="496.6059e-3" />
+    <Result Name="UC_CapNMyMz_Int" Type="Numeric" ESA_ID="Result.4" Value="369.5267e-3" />
+    <Result Name="UC_CapNMyMz_Resp" Type="Numeric" ESA_ID="Result.3" Value="496.6059e-3" />
+    <Input Name="UC_CapT_Int" Type="Numeric" ESA_ID="" Value="267.7143e-3" />
+    <Result Name="UC_CapVyVzT_Int" Type="Numeric" ESA_ID="Result.5" Value="93.42046e-3" />
+    <Result Name="UC_CWLim" Type="Numeric" ESA_ID="Result.7" Value="233.7868e-3" />
+    <Result Name="UC_Deflection" Type="Numeric" ESA_ID="Result.8" Value="0" />
+    <Input Name="UC_InteractionVTM_Int" Type="Numeric" ESA_ID="" Value="780.857e-3" />
+    <Result Name="UC_SLS" Type="Numeric" ESA_ID="Result.2" Value="410.9617e-3" />
+    <Result Name="UC_StressLim" Type="Numeric" ESA_ID="Result.6" Value="410.9617e-3" />
+    <Result Name="UC_ULS" Type="Numeric" ESA_ID="Result.1" Value="496.6059e-3" />
+    <Input Name="UCSPosition" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="UCSY" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="UCSZ" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Unevenness" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="UnevenSurf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Unity↓check←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="20" />
+    <Input Name="uxl" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uxs" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uyl" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uys" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uzl" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uzs" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edy,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edy,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edy←" Type="Numeric" ESA_ID="" Value="10000" />
+    <Input Name="V↓Edz,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edz,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edz←" Type="Numeric" ESA_ID="" Value="10000" />
+    <Input Name="V↓Rd←" Type="Numeric" ESA_ID="" Value="151381.6" />
+    <Input Name="w↓max,user←" Type="Numeric" ESA_ID="" Value="500e-6" />
+    <Input Name="w↓max←" Type="Numeric" ESA_ID="" Value="300e-6" />
+    <Input Name="WireType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XA" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XC" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XD" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XF" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XS" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZeroSLSCHForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="ZeroSLSQForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="zeroUC" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZeroULSForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="ZeroULSShearForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="ZeroULSTorsion" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="α↓ct←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="α↓s,design←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="α↓s←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="β↓yy←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="β↓zz←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓c←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓s←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="Δc↓dev←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="Δc↓dur,add←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Δc↓dur,st←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Δc↓dur,γ←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ε↓cc,min←" Type="Numeric" ESA_ID="" Value="-2.833252e-3" />
+    <Input Name="ε↓ct,max←" Type="Numeric" ESA_ID="" Value="3.113334e-3" />
+    <Input Name="ε↓sc,min←" Type="Numeric" ESA_ID="" Value="-1.790885e-3" />
+    <Input Name="θ↓inp←" Type="Numeric" ESA_ID="" Value="25" />
+    <Input Name="μ↓s←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="ρ↓lim,M←" Type="Numeric" ESA_ID="" Value="100e-3" />
+    <Input Name="σ↓cc,min←" Type="Numeric" ESA_ID="" Value="-13.33333e6" />
+    <Input Name="σ↓sc,min←" Type="Numeric" ESA_ID="" Value="-358.1769e6" />
+    <Input Name="σ↓st,max←" Type="Numeric" ESA_ID="" Value="508.7175e6" />
+    <Input Name="φ" Type="Numeric" ESA_ID="" Value="2.48" />
+    <Input Name="ϕ" Type="Numeric" ESA_ID="" Value="14e-3" />
+    <Input Name="ϕ↓duct←" Type="Numeric" ESA_ID="" Value="26e-3" />
+    <Input Name="φ↓eff←" Type="Numeric" ESA_ID="" Value="2.48" />
+    <Input Name="ϕ↓lo←" Type="Numeric" ESA_ID="" Value="16e-3" />
+    <Input Name="ϕ↓max←" Type="Numeric" ESA_ID="" Value="16e-3" />
+    <Input Name="ϕ↓up←" Type="Numeric" ESA_ID="" Value="16e-3" />
+    <Input Name="ϕ↓w,design←" Type="Numeric" ESA_ID="" Value="8e-3" />
+    <Input Name="ϕ↓w←" Type="Numeric" ESA_ID="" Value="12e-3" />
+  </Test>
+  <Test Description="UniaxialBendingRectangular" Author="SCIA-ONLINE\tpail" Active="1" Date="2014.11.18">
+    <Dialog>
+      <Variable Identifier="sUC_Slenderness" Value="Not Calc." />
+      <Variable Identifier="sRecalForces" Value="Not Calc." />
+      <Variable Identifier="bCalculateSlendernessCheck" Value="False" />
+      <Variable Identifier="bRecalIntForces" Value="False" />
+      <Variable Identifier="bCalculateStressLimCheck" Value="True" />
+      <Variable Identifier="bCalculateCrackCheck" Value="True" />
+      <Variable Identifier="bCalculateDeflectionCheck" Value="True" />
+      <Variable Identifier="sUC_Slenderness" Value="Not Calc." />
+      <Variable Identifier="sUC_Slenderness" Value="Not Calc." />
+      <Variable Identifier="sRecalForces" Value="Not Calc." />
+      <Variable Identifier="sUC_StressLim" Value="0,63" />
+      <Variable Identifier="sUC_CWLim" Value="0,53" />
+      <Variable Identifier="sUC_Deflection" Value="0,00" />
+      <Variable Identifier="bCalculateSlendernessCheck" Value="False" />
+      <Variable Identifier="bRecalIntForces" Value="False" />
+      <Variable Identifier="bCalculateIntDiagCheck" Value="True" />
+      <Variable Identifier="bCalculateResponceCheck" Value="True" />
+      <Variable Identifier="bCalculateShearCheck" Value="True" />
+      <Variable Identifier="bCalculateTorsionCheck" Value="True" />
+      <Variable Identifier="bCalculateInteractionVTMCheck" Value="True" />
+      <Variable Identifier="sUC_CapNMyMz_Int" Value="0,61" />
+      <Variable Identifier="sUC_CapNMyMz_Resp" Value="0,62" />
+      <Variable Identifier="sUC_CapVyVzT_Int" Value="0,07" />
+      <Variable Identifier="sUC_CapT_Int" Value="0,24" />
+      <Variable Identifier="sUC_InteractionVTM_Int" Value="1,00" />
+      <Variable Identifier="ReinfType" Value="0" />
+      <Variable Identifier="DesignLife" Value="50" />
+      <Variable Identifier="DesignLife" Value="50" />
+      <Variable Identifier="DesignLife" Value="50" />
+      <Variable Identifier="BondArrangement" Value="1" />
+      <Variable Identifier="ϕ↓w←" Value="12e-3" />
+      <Variable Identifier="ϕ↓duct←" Value="26e-3" />
+      <Variable Identifier="a" Value="35e-3" />
+      <Variable Identifier="b" Value="55e-3" />
+      <Variable Identifier="DuctShape" Value="1" />
+      <Variable Identifier="n↓b0←" Value="4" />
+      <Variable Identifier="n↓b1←" Value="3" />
+      <Variable Identifier="BundledType" Value="1" />
+      <Variable Identifier="Deviation" Value="0" />
+      <Variable Identifier="XM" Value="0" />
+      <Variable Identifier="SpecialQuality" Value="False" />
+      <Variable Identifier="TensionType" Value="0" />
+      <Variable Identifier="ConstructionClass1" Value="True" />
+      <Variable Identifier="d↓g←" Value="True" />
+      <Variable Identifier="UnevenSurf" Value="False" />
+      <Variable Identifier="Prestress" Value="False" />
+      <Variable Identifier="Quality" Value="True" />
+      <Variable Identifier="k↓2,user←" Value="30e-3" />
+      <Variable Identifier="Unevenness" Value="0" />
+      <Variable Identifier="PrefabricatedSpecialQuality" Value="True" />
+      <Variable Identifier="XC" Value="0" />
+      <Variable Identifier="XS" Value="0" />
+      <Variable Identifier="XA" Value="0" />
+      <Variable Identifier="XF" Value="0" />
+      <Variable Identifier="XD" Value="0" />
+      <Variable Identifier="bAutoMethod" Value="True" />
+      <Variable Identifier="bSymReinf" Value="False" />
+      <Variable Identifier="TypeDes" Value="1" />
+      <Variable Identifier="ρ↓lim,M←" Value="100e-3" />
+      <Variable Identifier="Method" Value="2" />
+      <Variable Identifier="offset" Value="30e-3" />
+      <Variable Identifier="MaxNlayers" Value="3" />
+      <Variable Identifier="biaxcoef" Value="1.4" />
+      <Variable Identifier="s↓min←" Value="20e-3" />
+      <Variable Identifier="n↓s,design←" Value="2" />
+      <Variable Identifier="α↓s,design←" Value="90" />
+      <Variable Identifier="c" Value="38e-3" />
+      <Variable Identifier="ϕ" Value="14e-3" />
+      <Variable Identifier="ϕ↓w,design←" Value="8e-3" />
+      <Variable Identifier="bCalcImpULS" Value="True" />
+      <Variable Identifier="bCalSecOrder" Value="True" />
+      <Variable Identifier="μ↓s←" Value="10e-3" />
+      <Variable Identifier="bCharReinfCalcRatio" Value="True" />
+      <Variable Identifier="bCalcImpSLS" Value="True" />
+      <Variable Identifier="μ↓s←" Value="10e-3" />
+      <Variable Identifier="LimAdd" Value="500" />
+      <Variable Identifier="LimTot" Value="250" />
+      <Variable Identifier="PercLTLoad" Value="600e-3" />
+      <Variable Identifier="bAuto_w↓max←" Value="True" />
+      <Variable Identifier="w↓max,user←" Value="500e-6" />
+      <Variable Identifier="Type↓fct,eff←" Value="1" />
+      <Variable Identifier="Type↓E←" Value="1" />
+      <Variable Identifier="bAutoCalcCreep" Value="False" />
+      <Variable Identifier="RH" Value="800e-3" />
+      <Variable Identifier="sCementClass" Value="R" />
+      <Variable Identifier="t↓s←" Value="259200" />
+      <Variable Identifier="t↓0,input←" Value="2.4192e6" />
+      <Variable Identifier="t" Value="8.64e6" />
+      <Variable Identifier="φ" Value="2.48" />
+      <Variable Identifier="bAuto↓θ←" Value="True" />
+      <Variable Identifier="θ↓inp←" Value="25" />
+      <Variable Identifier="IDMethodOfCheck" Value="2" />
+      <Variable Identifier="GS_ID" Value="300" />
+      <Variable Identifier="UserScale" Value="20" />
+      <Variable Identifier="UCSPosition" Value="4" />
+      <Variable Identifier="UCSY" Value="0" />
+      <Variable Identifier="UCSZ" Value="0" />
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <Variable Identifier="Coeff↓d←" Value="900e-3" />
+      <Variable Identifier="bAccidentalULS" Value="False" />
+      <Variable Identifier="InternalForces" Value="100|10|10|10|50|0║0|0|0|0|45|0║0|0|0|0|40|0" />
+      <Variable Identifier="MemberInternalForces" Value="0|0|0|0║0|0|0|0║0|0|0|0" />
+      <Variable Identifier="ElasticDeformations" Value="0|0|0║0|0|0" />
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 20/25" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|REINF.EC" Category="Horizontal top branch" Item="B 500 A" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|ShearREINF.EC" Category="Horizontal top branch" Item="B 600 B" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="1" Units="2">
+        <CS SelReinf="0" H="500e-3" B="300e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="30e-3" D_upper="20e-3" N_upper="2" c_lower="30e-3" D_lower="20e-3" N_lower="2" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="sCaption" Value="    " />
+      <Variable Identifier="cTypeOfCalculation" Value="0" />
+      <Variable Identifier="cTypeOfMember" Value="0" />
+      <Variable Identifier="L" Value="5" />
+      <Variable Identifier="bEquivMoment" Value="True" />
+      <Variable Identifier="bIsoCol" Value="True" />
+      <Variable Identifier="bBracedMemberY" Value="True" />
+      <Variable Identifier="β↓yy←" Value="1" />
+      <Variable Identifier="my" Value="1" />
+      <Variable Identifier="bBracedMemberZ" Value="True" />
+      <Variable Identifier="β↓zz←" Value="1" />
+      <Variable Identifier="mz" Value="1" />
+      <Variable Identifier="Hbuilding" Value="10" />
+      <Variable Identifier="Lz" Value="5" />
+      <Variable Identifier="Ly" Value="5" />
+      <Variable Identifier="Lx" Value="5" />
+    </Dialog>
+    <Input Name="a" Type="Numeric" ESA_ID="" Value="35e-3" />
+    <Input Name="A↓k.inp←" Type="Numeric" ESA_ID="" Value="2.5e-3" />
+    <Input Name="Alpha" Type="Numeric" ESA_ID="" Value="128" />
+    <Input Name="b" Type="Numeric" ESA_ID="" Value="55e-3" />
+    <Input Name="bAccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bAdvanceInputData" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAuto_w↓max←" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAuto↓θ←" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAutoCalcCreep" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bAutoCalNStirCut" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAutoMethod" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAutoTypeTorsion" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bBracedMemberY" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bBracedMemberZ" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bBridges" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCalcImpSLS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalcImpULS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateCrackCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedCrackCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedDeflectionCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateDeflectionCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedIntDiagCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedInteractionVTMCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedResponceCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedShearCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedStressLimCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedTorsionCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateIntDiagCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateInteractionVTMCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateResponceCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateShearCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateSlendernessCheck" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCalculateStressLimCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateTorsionCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalSecOrder" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bDesignULS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bDesingLongReinf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bDesingShearReinf" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bDrawPlainConcrete" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bDrawUltimateBorder" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bEquivMoment" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bHeating" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCharReinfCalcRatio" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="biaxcoef" Type="Numeric" ESA_ID="" Value="1.4" />
+    <Input Name="bIndirectLoad" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bIsoCol" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bMaxSpacingShear" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="BondArrangement" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="bPrintCapT_Img" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPrintCapVyVzT_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintConcreteCover" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintCrackWidth_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintCreepCoeffCalc" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintCSS_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintDeflection_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintDurability" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintIntD_Img" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPrintLongDesign_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintLongDesign_Txt" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintResponse_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintShearDesign_Txt" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bRecalIntForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bSilicaFume" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bSymReinf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bTestEqulibrium" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="BundledType" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="bUseUserReinf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bUseUserStirrup" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bZeroLongDeflection" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bZeroShortDeflection" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="c" Type="Numeric" ESA_ID="" Value="38e-3" />
+    <Input Name="c↓lo←" Type="Numeric" ESA_ID="" Value="38e-3" />
+    <Input Name="c↓min,b←" Type="Numeric" ESA_ID="" Value="24.24871e-3" />
+    <Input Name="c↓min,dur←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="c↓min←" Type="Numeric" ESA_ID="" Value="24.24871e-3" />
+    <Input Name="c↓nom←" Type="Numeric" ESA_ID="" Value="34.24871e-3" />
+    <Input Name="c↓side←" Type="Numeric" ESA_ID="" Value="38e-3" />
+    <Input Name="c↓up←" Type="Numeric" ESA_ID="" Value="38e-3" />
+    <Input Name="CapNMyMz_RespStatus" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="cmin" Type="Numeric" ESA_ID="" Value="30e-3" />
+    <Input Name="Coeff↓Area←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Coeff↓As←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="Coeff↓d←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="Coeffε↓Sud←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="ConcreteType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ConstructionClass1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="creepCoeff" Type="Numeric" ESA_ID="" Value="2.48" />
+    <Input Name="creepCoeffRh" Type="Numeric" ESA_ID="" Value="1.363424" />
+    <Input Name="creepCoeffZero" Type="Numeric" ESA_ID="" Value="1.947614" />
+    <Input Name="CssIDPlainLinear" Type="Numeric" ESA_ID="" Value="21" />
+    <Input Name="CssIDPlainLinearLong" Type="Numeric" ESA_ID="" Value="22" />
+    <Input Name="CssIDSLS" Type="Numeric" ESA_ID="" Value="12" />
+    <Input Name="CssIDSLSEffective" Type="Numeric" ESA_ID="" Value="14" />
+    <Input Name="CssIDSLSEffectiveNoTension" Type="Numeric" ESA_ID="" Value="15" />
+    <Input Name="CssIDSLSNoTension" Type="Numeric" ESA_ID="" Value="13" />
+    <Input Name="CssIDSLSWCrack" Type="Numeric" ESA_ID="" Value="1003" />
+    <Input Name="CssIDSLSWUncrack" Type="Numeric" ESA_ID="" Value="1002" />
+    <Input Name="CssIDULSPlain" Type="Numeric" ESA_ID="" Value="11" />
+    <Input Name="CssIDULSReinf" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="CssSLSSLID" Type="Numeric" ESA_ID="" Value="1000" />
+    <Input Name="CssTotalID" Type="Numeric" ESA_ID="" Value="100" />
+    <Input Name="cTypeOfCalculation" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="cTypeOfMember" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="d↓g←" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DescriptionN" Type="String" ESA_ID="" Value="SLS Internal forces are not taken to the design." />
+    <Input Name="DesignLife" Type="Numeric" ESA_ID="" Value="50" />
+    <Input Name="Deviation" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="diam" Type="Numeric" ESA_ID="" Value="20e-3" />
+    <Input Name="DivisionOfStrain" Type="Numeric" ESA_ID="" Value="300" />
+    <Input Name="DrawAxis" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawStirrups" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DuctShape" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="eps_c23" Type="Numeric" ESA_ID="" Value="1.75e-3" />
+    <Input Name="eps_cu23" Type="Numeric" ESA_ID="" Value="3.5e-3" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="13.33333e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="20e6" />
+    <Input Name="f↓ctd←" Type="Numeric" ESA_ID="" Value="1e6" />
+    <Input Name="f↓ctk005←" Type="Numeric" ESA_ID="" Value="1.5e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="434.7826e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="500e6" />
+    <Input Name="f↓ywd←" Type="Numeric" ESA_ID="" Value="521.7391e6" />
+    <Input Name="f↓ywk←" Type="Numeric" ESA_ID="" Value="600e6" />
+    <Input Name="ForcesID" Type="Numeric" ESA_ID="" Value="100" />
+    <Input Name="ForcesIDZero" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ForcesSLSCh" Type="Numeric" ESA_ID="" Value="11" />
+    <Input Name="ForcesSLSQ" Type="Numeric" ESA_ID="" Value="12" />
+    <Input Name="ForcesULS" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="ForcesULSWOT" Type="Numeric" ESA_ID="" Value="13" />
+    <Input Name="ForcesULSWT" Type="Numeric" ESA_ID="" Value="14" />
+    <Input Name="FormCode" Type="Numeric" ESA_ID="" Value="2003" />
+    <Input Name="GraphScale" Type="Numeric" ESA_ID="" Value="200" />
+    <Input Name="GS_ID" Type="Numeric" ESA_ID="" Value="300" />
+    <Input Name="Hbuilding" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="IDMethodOfCheck" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="j" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="k↓1←" Type="Numeric" ESA_ID="" Value="600e-3" />
+    <Input Name="k↓2,user←" Type="Numeric" ESA_ID="" Value="30e-3" />
+    <Input Name="k↓3←" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Input Name="kf↓ck←" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="kf↓yk←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="LimAdd" Type="Numeric" ESA_ID="" Value="500" />
+    <Input Name="LimTot" Type="Numeric" ESA_ID="" Value="250" />
+    <Input Name="Lx" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="Ly" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="Lz" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="M↓Edy,char,recal←" Type="Numeric" ESA_ID="" Value="45000" />
+    <Input Name="M↓Edy,char←" Type="Numeric" ESA_ID="" Value="45000" />
+    <Input Name="M↓Edy,qp,recal←" Type="Numeric" ESA_ID="" Value="40000" />
+    <Input Name="M↓Edy,qp←" Type="Numeric" ESA_ID="" Value="40000" />
+    <Input Name="M↓Edy,recal←" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="M↓Edy←" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="M↓Edz,char,recal←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Edz,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Edz,qp,recal←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Edz,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Edz,recal←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Edz←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-CH,beg,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-CH,beg,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-CH,end,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-CH,end,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-QP,beg,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-QP,beg,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-QP,end,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-QP,end,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓ULS,beg,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓ULS,beg,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓ULS,end,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓ULS,end,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="MaxNlayers" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="maxSLSCheck" Type="String" ESA_ID="" Value="Check of stress limitation" />
+    <Input Name="maxSLSUC" Type="Numeric" ESA_ID="" Value="633.0596e-3" />
+    <Input Name="maxULSCheck" Type="String" ESA_ID="" Value="Check of interaction V+T+M" />
+    <Input Name="maxULSUC" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Method" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="MinNbarsEdge" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="my" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="mz" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="n↓b0←" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="n↓b1←" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="N↓Ed,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="N↓Ed,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="N↓Ed←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="n↓s,design←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="n↓s.inp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="n↓s.req←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="NIteration" Type="Numeric" ESA_ID="" Value="20" />
+    <Input Name="NoOfVertCut" Type="Numeric" ESA_ID="" Value="180" />
+    <Input Name="oExtCalc_LongDesignTableWidth" Type="Numeric" ESA_ID="" Value="570" />
+    <Input Name="offset" Type="Numeric" ESA_ID="" Value="30e-3" />
+    <Input Name="PercLTLoad" Type="Numeric" ESA_ID="" Value="600e-3" />
+    <Input Name="PrefabricatedSpecialQuality" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Prestress" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Quality" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="RatioLong" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="RatioShort" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="ReinfType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="RH" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Input Name="row" Type="Numeric" ESA_ID="" Value="9" />
+    <Input Name="s↓min←" Type="Numeric" ESA_ID="" Value="20e-3" />
+    <Input Name="sCaption" Type="String" ESA_ID="" Value="    " />
+    <Input Name="sCementClass" Type="String" ESA_ID="" Value="R" />
+    <Input Name="sCracksApp" Type="String" ESA_ID="" Value="Cracks appear" />
+    <Input Name="sCracksNoApp" Type="String" ESA_ID="" Value="No cracks appear" />
+    <Input Name="SlabGeometry" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="sNotCalc" Type="String" ESA_ID="" Value="Not Calc." />
+    <Input Name="sNOTOK" Type="String" ESA_ID="" Value="Not OK" />
+    <Input Name="sOK" Type="String" ESA_ID="" Value="OK" />
+    <Input Name="sOKBUT" Type="String" ESA_ID="" Value="OK,*" />
+    <Input Name="SolutionN" Type="String" ESA_ID="" Value="" />
+    <Input Name="SpecialQuality" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="sRecalForces" Type="String" ESA_ID="" Value="Not Calc." />
+    <Input Name="StainlessSteel" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Status_CapNMyMz_Int" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Status_CapT_Int" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="Status_CapVyVzT_Int" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="Status_CWLim" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Status_InteractionVTM" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="StatusDeflection" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="StatusStressLimitation" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="stressLimChecklong" Type="Numeric" ESA_ID="" Value="431.7703e-3" />
+    <Input Name="stressLimCheckshort" Type="Numeric" ESA_ID="" Value="633.0596e-3" />
+    <Input Name="stressLimStatusLong" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="stressLimStatusShort" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="sUC_CapNMyMz_Int" Type="String" ESA_ID="" Value="0,61" />
+    <Input Name="sUC_CapNMyMz_Resp" Type="String" ESA_ID="" Value="0,62" />
+    <Input Name="sUC_CapT_Int" Type="String" ESA_ID="" Value="0,24" />
+    <Input Name="sUC_CapVyVzT_Int" Type="String" ESA_ID="" Value="0,07" />
+    <Input Name="sUC_CWLim" Type="String" ESA_ID="" Value="0,53" />
+    <Input Name="sUC_Deflection" Type="String" ESA_ID="" Value="0,00" />
+    <Input Name="sUC_InteractionVTM_Int" Type="String" ESA_ID="" Value="1,00" />
+    <Input Name="sUC_Slenderness" Type="String" ESA_ID="" Value="Not Calc." />
+    <Input Name="sUC_StressLim" Type="String" ESA_ID="" Value="0,63" />
+    <Input Name="t" Type="Numeric" ESA_ID="" Value="8.64e6" />
+    <Input Name="t↓0,input←" Type="Numeric" ESA_ID="" Value="2.4192e6" />
+    <Input Name="T↓Ed,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="T↓Ed,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="T↓Ed←" Type="Numeric" ESA_ID="" Value="10000" />
+    <Input Name="t↓ef.inp←" Type="Numeric" ESA_ID="" Value="200e-3" />
+    <Input Name="T↓Rd←" Type="Numeric" ESA_ID="" Value="41256.78" />
+    <Input Name="t↓s←" Type="Numeric" ESA_ID="" Value="259200" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="TensionType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="thetaCalc" Type="Numeric" ESA_ID="" Value="21.80001" />
+    <Input Name="Type↓E←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Type↓fct,eff←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Type↓σcr←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeArea" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeCoverDiam" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="TypeDes" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeN" Type="String" ESA_ID="" Value="Note" />
+    <Input Name="TypeTorCssInput" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="u↓k.inp←" Type="Numeric" ESA_ID="" Value="50e-3" />
+    <Result Name="UC" Type="Numeric" ESA_ID="Result.0" Value="633.0596e-3" />
+    <Result Name="UC_CapNMyMz_Int" Type="Numeric" ESA_ID="Result.4" Value="605.7098e-3" />
+    <Result Name="UC_CapNMyMz_Resp" Type="Numeric" ESA_ID="Result.3" Value="616.2426e-3" />
+    <Input Name="UC_CapT_Int" Type="Numeric" ESA_ID="" Value="242.3844e-3" />
+    <Result Name="UC_CapVyVzT_Int" Type="Numeric" ESA_ID="Result.5" Value="66.75927e-3" />
+    <Result Name="UC_CWLim" Type="Numeric" ESA_ID="Result.7" Value="533.2769e-3" />
+    <Result Name="UC_Deflection" Type="Numeric" ESA_ID="Result.8" Value="0" />
+    <Input Name="UC_InteractionVTM_Int" Type="Numeric" ESA_ID="" Value="1" />
+    <Result Name="UC_SLS" Type="Numeric" ESA_ID="Result.2" Value="633.0596e-3" />
+    <Result Name="UC_StressLim" Type="Numeric" ESA_ID="Result.6" Value="633.0596e-3" />
+    <Result Name="UC_ULS" Type="Numeric" ESA_ID="Result.1" Value="616.2426e-3" />
+    <Input Name="UCSPosition" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="UCSY" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="UCSZ" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Unevenness" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="UnevenSurf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Unity↓check←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="20" />
+    <Input Name="uxl" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uxs" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uyl" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uys" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uzl" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uzs" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edy,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edy,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edy←" Type="Numeric" ESA_ID="" Value="10000" />
+    <Input Name="V↓Edz,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edz,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edz←" Type="Numeric" ESA_ID="" Value="10000" />
+    <Input Name="V↓Rd←" Type="Numeric" ESA_ID="" Value="211837.8" />
+    <Input Name="w↓max,user←" Type="Numeric" ESA_ID="" Value="500e-6" />
+    <Input Name="w↓max←" Type="Numeric" ESA_ID="" Value="300e-6" />
+    <Input Name="WireType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XA" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XC" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XD" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XF" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XS" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZeroSLSCHForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="ZeroSLSQForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="zeroUC" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZeroULSForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="ZeroULSShearForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="ZeroULSTorsion" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="α↓ct←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="α↓s,design←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="α↓s←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="β↓yy←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="β↓zz←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓c←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓s←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="Δc↓dev←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="Δc↓dur,add←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Δc↓dur,st←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Δc↓dur,γ←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ε↓cc,min←" Type="Numeric" ESA_ID="" Value="-2.833252e-3" />
+    <Input Name="ε↓ct,max←" Type="Numeric" ESA_ID="" Value="3.113334e-3" />
+    <Input Name="ε↓sc,min←" Type="Numeric" ESA_ID="" Value="-1.790885e-3" />
+    <Input Name="θ↓inp←" Type="Numeric" ESA_ID="" Value="25" />
+    <Input Name="μ↓s←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="ρ↓lim,M←" Type="Numeric" ESA_ID="" Value="100e-3" />
+    <Input Name="σ↓cc,min←" Type="Numeric" ESA_ID="" Value="-13.33333e6" />
+    <Input Name="σ↓sc,min←" Type="Numeric" ESA_ID="" Value="-358.1769e6" />
+    <Input Name="σ↓st,max←" Type="Numeric" ESA_ID="" Value="508.7175e6" />
+    <Input Name="φ" Type="Numeric" ESA_ID="" Value="2.48" />
+    <Input Name="ϕ" Type="Numeric" ESA_ID="" Value="14e-3" />
+    <Input Name="ϕ↓duct←" Type="Numeric" ESA_ID="" Value="26e-3" />
+    <Input Name="φ↓eff←" Type="Numeric" ESA_ID="" Value="2.48" />
+    <Input Name="ϕ↓lo←" Type="Numeric" ESA_ID="" Value="16e-3" />
+    <Input Name="ϕ↓max←" Type="Numeric" ESA_ID="" Value="16e-3" />
+    <Input Name="ϕ↓up←" Type="Numeric" ESA_ID="" Value="16e-3" />
+    <Input Name="ϕ↓w,design←" Type="Numeric" ESA_ID="" Value="8e-3" />
+    <Input Name="ϕ↓w←" Type="Numeric" ESA_ID="" Value="12e-3" />
+  </Test>
+  <Test Description="DesignRectangle" Author="SCIA-ONLINE\tpail" Active="1" Date="2014.11.18">
+    <Dialog>
+      <Variable Identifier="sUC_Slenderness" Value="Not Calc." />
+      <Variable Identifier="sRecalForces" Value="Not Calc." />
+      <Variable Identifier="bCalculateSlendernessCheck" Value="False" />
+      <Variable Identifier="bRecalIntForces" Value="False" />
+      <Variable Identifier="bCalculateStressLimCheck" Value="True" />
+      <Variable Identifier="bCalculateCrackCheck" Value="True" />
+      <Variable Identifier="bCalculateDeflectionCheck" Value="True" />
+      <Variable Identifier="sUC_Slenderness" Value="Not Calc." />
+      <Variable Identifier="sUC_Slenderness" Value="Not Calc." />
+      <Variable Identifier="sRecalForces" Value="Not Calc." />
+      <Variable Identifier="sUC_StressLim" Value="0,00" />
+      <Variable Identifier="sUC_CWLim" Value="0,00" />
+      <Variable Identifier="sUC_Deflection" Value="0,00" />
+      <Variable Identifier="bCalculateSlendernessCheck" Value="False" />
+      <Variable Identifier="bRecalIntForces" Value="False" />
+      <Variable Identifier="bCalculateIntDiagCheck" Value="True" />
+      <Variable Identifier="bCalculateResponceCheck" Value="True" />
+      <Variable Identifier="bCalculateShearCheck" Value="True" />
+      <Variable Identifier="bCalculateTorsionCheck" Value="True" />
+      <Variable Identifier="bCalculateInteractionVTMCheck" Value="True" />
+      <Variable Identifier="sUC_CapNMyMz_Int" Value="0,00" />
+      <Variable Identifier="sUC_CapNMyMz_Resp" Value="0,00" />
+      <Variable Identifier="sUC_CapVyVzT_Int" Value="0,00" />
+      <Variable Identifier="sUC_CapT_Int" Value="0,00" />
+      <Variable Identifier="sUC_InteractionVTM_Int" Value="0,00" />
+      <Variable Identifier="ReinfType" Value="0" />
+      <Variable Identifier="DesignLife" Value="50" />
+      <Variable Identifier="DesignLife" Value="50" />
+      <Variable Identifier="DesignLife" Value="50" />
+      <Variable Identifier="BondArrangement" Value="1" />
+      <Variable Identifier="ϕ↓w←" Value="12e-3" />
+      <Variable Identifier="ϕ↓duct←" Value="26e-3" />
+      <Variable Identifier="a" Value="35e-3" />
+      <Variable Identifier="b" Value="55e-3" />
+      <Variable Identifier="DuctShape" Value="1" />
+      <Variable Identifier="n↓b0←" Value="4" />
+      <Variable Identifier="n↓b1←" Value="3" />
+      <Variable Identifier="BundledType" Value="1" />
+      <Variable Identifier="Deviation" Value="0" />
+      <Variable Identifier="XM" Value="0" />
+      <Variable Identifier="SpecialQuality" Value="False" />
+      <Variable Identifier="TensionType" Value="0" />
+      <Variable Identifier="ConstructionClass1" Value="True" />
+      <Variable Identifier="d↓g←" Value="True" />
+      <Variable Identifier="UnevenSurf" Value="False" />
+      <Variable Identifier="Prestress" Value="False" />
+      <Variable Identifier="Quality" Value="True" />
+      <Variable Identifier="k↓2,user←" Value="30e-3" />
+      <Variable Identifier="Unevenness" Value="0" />
+      <Variable Identifier="PrefabricatedSpecialQuality" Value="True" />
+      <Variable Identifier="XC" Value="0" />
+      <Variable Identifier="XS" Value="0" />
+      <Variable Identifier="XA" Value="0" />
+      <Variable Identifier="XF" Value="0" />
+      <Variable Identifier="XD" Value="0" />
+      <Variable Identifier="bAutoMethod" Value="True" />
+      <Variable Identifier="bSymReinf" Value="False" />
+      <Variable Identifier="TypeDes" Value="1" />
+      <Variable Identifier="ρ↓lim,M←" Value="100e-3" />
+      <Variable Identifier="Method" Value="2" />
+      <Variable Identifier="offset" Value="30e-3" />
+      <Variable Identifier="MaxNlayers" Value="3" />
+      <Variable Identifier="biaxcoef" Value="1.4" />
+      <Variable Identifier="s↓min←" Value="20e-3" />
+      <Variable Identifier="n↓s,design←" Value="2" />
+      <Variable Identifier="α↓s,design←" Value="90" />
+      <Variable Identifier="c" Value="38e-3" />
+      <Variable Identifier="ϕ" Value="14e-3" />
+      <Variable Identifier="ϕ↓w,design←" Value="8e-3" />
+      <Variable Identifier="bCalcImpULS" Value="True" />
+      <Variable Identifier="bCalSecOrder" Value="True" />
+      <Variable Identifier="μ↓s←" Value="10e-3" />
+      <Variable Identifier="bCharReinfCalcRatio" Value="True" />
+      <Variable Identifier="bCalcImpSLS" Value="True" />
+      <Variable Identifier="μ↓s←" Value="10e-3" />
+      <Variable Identifier="LimAdd" Value="500" />
+      <Variable Identifier="LimTot" Value="250" />
+      <Variable Identifier="PercLTLoad" Value="600e-3" />
+      <Variable Identifier="bAuto_w↓max←" Value="True" />
+      <Variable Identifier="w↓max,user←" Value="500e-6" />
+      <Variable Identifier="Type↓fct,eff←" Value="1" />
+      <Variable Identifier="Type↓E←" Value="1" />
+      <Variable Identifier="bAutoCalcCreep" Value="False" />
+      <Variable Identifier="RH" Value="800e-3" />
+      <Variable Identifier="sCementClass" Value="R" />
+      <Variable Identifier="t↓s←" Value="259200" />
+      <Variable Identifier="t↓0,input←" Value="2.4192e6" />
+      <Variable Identifier="t" Value="8.64e6" />
+      <Variable Identifier="φ" Value="2.48" />
+      <Variable Identifier="bAuto↓θ←" Value="True" />
+      <Variable Identifier="θ↓inp←" Value="25" />
+      <Variable Identifier="IDMethodOfCheck" Value="2" />
+      <Variable Identifier="GS_ID" Value="300" />
+      <Variable Identifier="UserScale" Value="20" />
+      <Variable Identifier="UCSPosition" Value="4" />
+      <Variable Identifier="UCSY" Value="0" />
+      <Variable Identifier="UCSZ" Value="0" />
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+      <Variable Identifier="Coeff↓d←" Value="900e-3" />
+      <Variable Identifier="bAccidentalULS" Value="False" />
+      <Variable Identifier="InternalForces" Value="100|10|10|10|50|0║0|0|0|0|45|0║0|0|0|0|40|0" />
+      <Variable Identifier="MemberInternalForces" Value="0|0|0|0║0|0|0|0║0|0|0|0" />
+      <Variable Identifier="ElasticDeformations" Value="0|0|0║0|0|0" />
+      <CustomLibrary Identifier="EC_Concrete.xml|CONCRETE.EC" Category="Bilinear" Item="C 20/25" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|REINF.EC" Category="Horizontal top branch" Item="B 500 A" Collapsed="True" />
+      <CustomLibrary Identifier="EC_Reinf.xml|ShearREINF.EC" Category="Horizontal top branch" Item="B 600 B" Collapsed="True" />
+      <ConcreteSectionLibrary Identifier="" SelectedCS="1" Units="2">
+        <CS SelReinf="0" H="500e-3" B="300e-3" />
+        <Reinf Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="30e-3" D_upper="20e-3" N_upper="2" c_lower="30e-3" D_lower="20e-3" N_lower="2" />
+      </ConcreteSectionLibrary>
+      <Variable Identifier="sCaption" Value="    " />
+      <Variable Identifier="cTypeOfCalculation" Value="1" />
+      <Variable Identifier="cTypeOfMember" Value="0" />
+      <Variable Identifier="L" Value="5" />
+      <Variable Identifier="bEquivMoment" Value="True" />
+      <Variable Identifier="bIsoCol" Value="True" />
+      <Variable Identifier="bBracedMemberY" Value="True" />
+      <Variable Identifier="β↓yy←" Value="1" />
+      <Variable Identifier="my" Value="1" />
+      <Variable Identifier="bBracedMemberZ" Value="True" />
+      <Variable Identifier="β↓zz←" Value="1" />
+      <Variable Identifier="mz" Value="1" />
+      <Variable Identifier="Hbuilding" Value="10" />
+      <Variable Identifier="Lz" Value="5" />
+      <Variable Identifier="Ly" Value="5" />
+      <Variable Identifier="Lx" Value="5" />
+    </Dialog>
+    <Input Name="a" Type="Numeric" ESA_ID="" Value="35e-3" />
+    <Input Name="A↓k.inp←" Type="Numeric" ESA_ID="" Value="2.5e-3" />
+    <Input Name="Alpha" Type="Numeric" ESA_ID="" Value="128" />
+    <Input Name="b" Type="Numeric" ESA_ID="" Value="55e-3" />
+    <Input Name="bAccidentalULS" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bAdvanceInputData" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAuto_w↓max←" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAuto↓θ←" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAutoCalcCreep" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bAutoCalNStirCut" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAutoMethod" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bAutoTypeTorsion" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bBracedMemberY" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bBracedMemberZ" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bBridges" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCalcImpSLS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalcImpULS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateCrackCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedCrackCheck" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCalculatedDeflectionCheck" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCalculateDeflectionCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculatedIntDiagCheck" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCalculatedInteractionVTMCheck" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCalculatedResponceCheck" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCalculatedShearCheck" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCalculatedStressLimCheck" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCalculatedTorsionCheck" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCalculateIntDiagCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateInteractionVTMCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateResponceCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateShearCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateSlendernessCheck" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCalculateStressLimCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalculateTorsionCheck" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bCalSecOrder" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bDesignULS" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bDesingLongReinf" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bDesingShearReinf" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bDrawPlainConcrete" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bDrawUltimateBorder" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bEquivMoment" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bHeating" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bCharReinfCalcRatio" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="biaxcoef" Type="Numeric" ESA_ID="" Value="1.4" />
+    <Input Name="bIndirectLoad" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bIsoCol" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bMaxSpacingShear" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="BondArrangement" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="bPrintCapT_Img" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPrintCapVyVzT_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintConcreteCover" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintCrackWidth_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintCreepCoeffCalc" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintCSS_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintDeflection_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintDurability" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintEWN" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintIntD_Img" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bPrintLongDesign_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintLongDesign_Txt" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintResponse_Img" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bPrintShearDesign_Txt" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bRecalIntForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bSilicaFume" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bSymReinf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bTestEqulibrium" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="BundledType" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="bUseUserReinf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bUseUserStirrup" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="bZeroLongDeflection" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="bZeroShortDeflection" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="c" Type="Numeric" ESA_ID="" Value="38e-3" />
+    <Input Name="c↓lo←" Type="Numeric" ESA_ID="" Value="38e-3" />
+    <Input Name="c↓min,b←" Type="Numeric" ESA_ID="" Value="24.24871e-3" />
+    <Input Name="c↓min,dur←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="c↓min←" Type="Numeric" ESA_ID="" Value="24.24871e-3" />
+    <Input Name="c↓nom←" Type="Numeric" ESA_ID="" Value="34.24871e-3" />
+    <Input Name="c↓side←" Type="Numeric" ESA_ID="" Value="38e-3" />
+    <Input Name="c↓up←" Type="Numeric" ESA_ID="" Value="38e-3" />
+    <Input Name="CapNMyMz_RespStatus" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="cmin" Type="Numeric" ESA_ID="" Value="30e-3" />
+    <Input Name="Coeff↓Area←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Coeff↓As←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="Coeff↓d←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="Coeffε↓Sud←" Type="Numeric" ESA_ID="" Value="900e-3" />
+    <Input Name="ConcreteType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ConstructionClass1" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="creepCoeff" Type="Numeric" ESA_ID="" Value="2.48" />
+    <Input Name="creepCoeffRh" Type="Numeric" ESA_ID="" Value="1.363424" />
+    <Input Name="creepCoeffZero" Type="Numeric" ESA_ID="" Value="1.947614" />
+    <Input Name="CssIDPlainLinear" Type="Numeric" ESA_ID="" Value="21" />
+    <Input Name="CssIDPlainLinearLong" Type="Numeric" ESA_ID="" Value="22" />
+    <Input Name="CssIDSLS" Type="Numeric" ESA_ID="" Value="12" />
+    <Input Name="CssIDSLSEffective" Type="Numeric" ESA_ID="" Value="14" />
+    <Input Name="CssIDSLSEffectiveNoTension" Type="Numeric" ESA_ID="" Value="15" />
+    <Input Name="CssIDSLSNoTension" Type="Numeric" ESA_ID="" Value="13" />
+    <Input Name="CssIDSLSWCrack" Type="Numeric" ESA_ID="" Value="1003" />
+    <Input Name="CssIDSLSWUncrack" Type="Numeric" ESA_ID="" Value="1002" />
+    <Input Name="CssIDULSPlain" Type="Numeric" ESA_ID="" Value="11" />
+    <Input Name="CssIDULSReinf" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="CssSLSSLID" Type="Numeric" ESA_ID="" Value="1000" />
+    <Input Name="CssTotalID" Type="Numeric" ESA_ID="" Value="100" />
+    <Input Name="cTypeOfCalculation" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="cTypeOfMember" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="d↓g←" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DescriptionN" Type="String" ESA_ID="" Value="SLS Internal forces are not taken to the design." />
+    <Input Name="DesignLife" Type="Numeric" ESA_ID="" Value="50" />
+    <Input Name="Deviation" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="diam" Type="Numeric" ESA_ID="" Value="20e-3" />
+    <Input Name="DivisionOfStrain" Type="Numeric" ESA_ID="" Value="300" />
+    <Input Name="DrawAxis" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DrawStirrups" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="DuctShape" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="eps_c23" Type="Numeric" ESA_ID="" Value="1.75e-3" />
+    <Input Name="eps_cu23" Type="Numeric" ESA_ID="" Value="3.5e-3" />
+    <Input Name="f↓cd←" Type="Numeric" ESA_ID="" Value="13.33333e6" />
+    <Input Name="f↓ck←" Type="Numeric" ESA_ID="" Value="20e6" />
+    <Input Name="f↓ctd←" Type="Numeric" ESA_ID="" Value="1e6" />
+    <Input Name="f↓ctk005←" Type="Numeric" ESA_ID="" Value="1.5e6" />
+    <Input Name="f↓yd←" Type="Numeric" ESA_ID="" Value="434.7826e6" />
+    <Input Name="f↓yk←" Type="Numeric" ESA_ID="" Value="500e6" />
+    <Input Name="f↓ywd←" Type="Numeric" ESA_ID="" Value="521.7391e6" />
+    <Input Name="f↓ywk←" Type="Numeric" ESA_ID="" Value="600e6" />
+    <Input Name="ForcesID" Type="Numeric" ESA_ID="" Value="100" />
+    <Input Name="ForcesIDZero" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ForcesSLSCh" Type="Numeric" ESA_ID="" Value="11" />
+    <Input Name="ForcesSLSQ" Type="Numeric" ESA_ID="" Value="12" />
+    <Input Name="ForcesULS" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="ForcesULSWOT" Type="Numeric" ESA_ID="" Value="13" />
+    <Input Name="ForcesULSWT" Type="Numeric" ESA_ID="" Value="14" />
+    <Input Name="FormCode" Type="Numeric" ESA_ID="" Value="2003" />
+    <Input Name="GraphScale" Type="Numeric" ESA_ID="" Value="200" />
+    <Input Name="GS_ID" Type="Numeric" ESA_ID="" Value="300" />
+    <Input Name="Hbuilding" Type="Numeric" ESA_ID="" Value="10" />
+    <Input Name="i" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="IDMethodOfCheck" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="j" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="k↓1←" Type="Numeric" ESA_ID="" Value="600e-3" />
+    <Input Name="k↓2,user←" Type="Numeric" ESA_ID="" Value="30e-3" />
+    <Input Name="k↓3←" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Input Name="kf↓ck←" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="kf↓yk←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="L" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="LimAdd" Type="Numeric" ESA_ID="" Value="500" />
+    <Input Name="LimTot" Type="Numeric" ESA_ID="" Value="250" />
+    <Input Name="Lx" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="Ly" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="Lz" Type="Numeric" ESA_ID="" Value="5" />
+    <Input Name="M↓Edy,char,recal←" Type="Numeric" ESA_ID="" Value="45000" />
+    <Input Name="M↓Edy,char←" Type="Numeric" ESA_ID="" Value="45000" />
+    <Input Name="M↓Edy,qp,recal←" Type="Numeric" ESA_ID="" Value="40000" />
+    <Input Name="M↓Edy,qp←" Type="Numeric" ESA_ID="" Value="40000" />
+    <Input Name="M↓Edy,recal←" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="M↓Edy←" Type="Numeric" ESA_ID="" Value="50000" />
+    <Input Name="M↓Edz,char,recal←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Edz,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Edz,qp,recal←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Edz,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Edz,recal←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓Edz←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-CH,beg,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-CH,beg,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-CH,end,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-CH,end,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-QP,beg,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-QP,beg,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-QP,end,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓SLS-QP,end,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓ULS,beg,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓ULS,beg,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓ULS,end,y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓ULS,end,z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓y←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="M↓z←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="MaxNlayers" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="maxSLSCheck" Type="String" ESA_ID="" Value="None" />
+    <Input Name="maxSLSUC" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="maxULSCheck" Type="String" ESA_ID="" Value="None" />
+    <Input Name="maxULSUC" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Method" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="MinNbarsEdge" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="my" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="mz" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="n↓b0←" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="n↓b1←" Type="Numeric" ESA_ID="" Value="3" />
+    <Input Name="N↓Ed,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="N↓Ed,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="N↓Ed←" Type="Numeric" ESA_ID="" Value="100000" />
+    <Input Name="n↓s,design←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="n↓s.inp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="n↓s.req←" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="NIteration" Type="Numeric" ESA_ID="" Value="20" />
+    <Input Name="NoOfVertCut" Type="Numeric" ESA_ID="" Value="180" />
+    <Input Name="oExtCalc_LongDesignTableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="offset" Type="Numeric" ESA_ID="" Value="30e-3" />
+    <Input Name="PercLTLoad" Type="Numeric" ESA_ID="" Value="600e-3" />
+    <Input Name="PrefabricatedSpecialQuality" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Prestress" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="PrintCaption" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="Quality" Type="Bool" ESA_ID="" Value="True" />
+    <Input Name="RatioLong" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="RatioShort" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="ReinfType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="RH" Type="Numeric" ESA_ID="" Value="800e-3" />
+    <Input Name="row" Type="Numeric" ESA_ID="" Value="8" />
+    <Input Name="s↓min←" Type="Numeric" ESA_ID="" Value="20e-3" />
+    <Input Name="sCaption" Type="String" ESA_ID="" Value="    " />
+    <Input Name="sCementClass" Type="String" ESA_ID="" Value="R" />
+    <Input Name="sCracksApp" Type="String" ESA_ID="" Value="Cracks appear" />
+    <Input Name="sCracksNoApp" Type="String" ESA_ID="" Value="No cracks appear" />
+    <Input Name="SlabGeometry" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="sNotCalc" Type="String" ESA_ID="" Value="Not Calc." />
+    <Input Name="sNOTOK" Type="String" ESA_ID="" Value="Not OK" />
+    <Input Name="sOK" Type="String" ESA_ID="" Value="OK" />
+    <Input Name="sOKBUT" Type="String" ESA_ID="" Value="OK,*" />
+    <Input Name="SolutionN" Type="String" ESA_ID="" Value="" />
+    <Input Name="SpecialQuality" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="sRecalForces" Type="String" ESA_ID="" Value="Not Calc." />
+    <Input Name="StainlessSteel" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Status_CapNMyMz_Int" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Status_CapT_Int" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Status_CapVyVzT_Int" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Status_CWLim" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Status_InteractionVTM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="StatusDeflection" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="StatusStressLimitation" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="stressLimChecklong" Type="Numeric" ESA_ID="" Value="431.7703e-3" />
+    <Input Name="stressLimCheckshort" Type="Numeric" ESA_ID="" Value="633.0596e-3" />
+    <Input Name="stressLimStatusLong" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="stressLimStatusShort" Type="Numeric" ESA_ID="" Value="2" />
+    <Input Name="sUC_CapNMyMz_Int" Type="String" ESA_ID="" Value="0,00" />
+    <Input Name="sUC_CapNMyMz_Resp" Type="String" ESA_ID="" Value="0,00" />
+    <Input Name="sUC_CapT_Int" Type="String" ESA_ID="" Value="0,00" />
+    <Input Name="sUC_CapVyVzT_Int" Type="String" ESA_ID="" Value="0,00" />
+    <Input Name="sUC_CWLim" Type="String" ESA_ID="" Value="0,00" />
+    <Input Name="sUC_Deflection" Type="String" ESA_ID="" Value="0,00" />
+    <Input Name="sUC_InteractionVTM_Int" Type="String" ESA_ID="" Value="0,00" />
+    <Input Name="sUC_Slenderness" Type="String" ESA_ID="" Value="Not Calc." />
+    <Input Name="sUC_StressLim" Type="String" ESA_ID="" Value="0,00" />
+    <Input Name="t" Type="Numeric" ESA_ID="" Value="8.64e6" />
+    <Input Name="t↓0,input←" Type="Numeric" ESA_ID="" Value="2.4192e6" />
+    <Input Name="T↓Ed,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="T↓Ed,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="T↓Ed←" Type="Numeric" ESA_ID="" Value="10000" />
+    <Input Name="t↓ef.inp←" Type="Numeric" ESA_ID="" Value="200e-3" />
+    <Input Name="T↓Rd←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="t↓s←" Type="Numeric" ESA_ID="" Value="259200" />
+    <Input Name="TableWidth" Type="Numeric" ESA_ID="" Value="585" />
+    <Input Name="TensionType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="thetaCalc" Type="Numeric" ESA_ID="" Value="21.80001" />
+    <Input Name="Type↓E←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Type↓fct,eff←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="Type↓σcr←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeArea" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeCoverDiam" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="TypeDes" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="TypeN" Type="String" ESA_ID="" Value="Note" />
+    <Input Name="TypeTorCssInput" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="u↓k.inp←" Type="Numeric" ESA_ID="" Value="50e-3" />
+    <Result Name="UC" Type="Numeric" ESA_ID="Result.0" Value="633.0596e-3" />
+    <Result Name="UC_CapNMyMz_Int" Type="Numeric" ESA_ID="Result.4" Value="605.7098e-3" />
+    <Result Name="UC_CapNMyMz_Resp" Type="Numeric" ESA_ID="Result.3" Value="616.2426e-3" />
+    <Input Name="UC_CapT_Int" Type="Numeric" ESA_ID="" Value="242.3844e-3" />
+    <Result Name="UC_CapVyVzT_Int" Type="Numeric" ESA_ID="Result.5" Value="66.75927e-3" />
+    <Result Name="UC_CWLim" Type="Numeric" ESA_ID="Result.7" Value="533.2769e-3" />
+    <Result Name="UC_Deflection" Type="Numeric" ESA_ID="Result.8" Value="0" />
+    <Input Name="UC_InteractionVTM_Int" Type="Numeric" ESA_ID="" Value="589.7374e-3" />
+    <Result Name="UC_SLS" Type="Numeric" ESA_ID="Result.2" Value="633.0596e-3" />
+    <Result Name="UC_StressLim" Type="Numeric" ESA_ID="Result.6" Value="633.0596e-3" />
+    <Result Name="UC_ULS" Type="Numeric" ESA_ID="Result.1" Value="616.2426e-3" />
+    <Input Name="UCSPosition" Type="Numeric" ESA_ID="" Value="4" />
+    <Input Name="UCSY" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="UCSZ" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Unevenness" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="UnevenSurf" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="Unity↓check←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="UserScale" Type="Numeric" ESA_ID="" Value="20" />
+    <Input Name="uxl" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uxs" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uyl" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uys" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uzl" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="uzs" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edy,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edy,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edy←" Type="Numeric" ESA_ID="" Value="10000" />
+    <Input Name="V↓Edz,char←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edz,qp←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="V↓Edz←" Type="Numeric" ESA_ID="" Value="10000" />
+    <Input Name="V↓Rd←" Type="Numeric" ESA_ID="" Value="211837.8" />
+    <Input Name="w↓max,user←" Type="Numeric" ESA_ID="" Value="500e-6" />
+    <Input Name="w↓max←" Type="Numeric" ESA_ID="" Value="300e-6" />
+    <Input Name="WireType" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XA" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XC" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XD" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XF" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XM" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="XS" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZeroSLSCHForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="ZeroSLSQForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="zeroUC" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ZeroULSForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="ZeroULSShearForces" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="ZeroULSTorsion" Type="Bool" ESA_ID="" Value="False" />
+    <Input Name="α↓cc←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="α↓ct←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="α↓s,design←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="α↓s←" Type="Numeric" ESA_ID="" Value="90" />
+    <Input Name="β↓yy←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="β↓zz←" Type="Numeric" ESA_ID="" Value="1" />
+    <Input Name="γ↓c←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓C←" Type="Numeric" ESA_ID="" Value="1.5" />
+    <Input Name="γ↓s←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="γ↓S←" Type="Numeric" ESA_ID="" Value="1.15" />
+    <Input Name="Δc↓dev←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="Δc↓dur,add←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Δc↓dur,st←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="Δc↓dur,γ←" Type="Numeric" ESA_ID="" Value="0" />
+    <Input Name="ε↓cc,min←" Type="Numeric" ESA_ID="" Value="-2.833252e-3" />
+    <Input Name="ε↓ct,max←" Type="Numeric" ESA_ID="" Value="3.113334e-3" />
+    <Input Name="ε↓sc,min←" Type="Numeric" ESA_ID="" Value="-1.790885e-3" />
+    <Input Name="θ↓inp←" Type="Numeric" ESA_ID="" Value="25" />
+    <Input Name="μ↓s←" Type="Numeric" ESA_ID="" Value="10e-3" />
+    <Input Name="ρ↓lim,M←" Type="Numeric" ESA_ID="" Value="100e-3" />
+    <Input Name="σ↓cc,min←" Type="Numeric" ESA_ID="" Value="-13.33333e6" />
+    <Input Name="σ↓sc,min←" Type="Numeric" ESA_ID="" Value="-358.1769e6" />
+    <Input Name="σ↓st,max←" Type="Numeric" ESA_ID="" Value="508.7175e6" />
+    <Input Name="φ" Type="Numeric" ESA_ID="" Value="2.48" />
+    <Input Name="ϕ" Type="Numeric" ESA_ID="" Value="14e-3" />
+    <Input Name="ϕ↓duct←" Type="Numeric" ESA_ID="" Value="26e-3" />
+    <Input Name="φ↓eff←" Type="Numeric" ESA_ID="" Value="2.48" />
+    <Input Name="ϕ↓lo←" Type="Numeric" ESA_ID="" Value="16e-3" />
+    <Input Name="ϕ↓max←" Type="Numeric" ESA_ID="" Value="16e-3" />
+    <Input Name="ϕ↓up←" Type="Numeric" ESA_ID="" Value="16e-3" />
+    <Input Name="ϕ↓w,design←" Type="Numeric" ESA_ID="" Value="8e-3" />
+    <Input Name="ϕ↓w←" Type="Numeric" ESA_ID="" Value="12e-3" />
+  </Test>
+</Root>

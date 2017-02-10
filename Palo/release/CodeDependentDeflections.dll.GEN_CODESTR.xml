@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="1"><StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2eids_codedependenddeflection_resultshell_name}</StringId>
+		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
+		<ResourceId>1001</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

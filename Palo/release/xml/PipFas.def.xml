@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<def_project xmlns="http://www.scia.cz">
+   <def_container id="{2127A9B3-36BD-11D4-B337-00104BC3B531}" clsid="{2127A9B3-36BD-11D4-B337-00104BC3B531}" progid="CrossSection.EP_CrossSection.1">
+      <def_table id="96940C69-EA89-443E-82E3-6F83B78CB38E" name="XML\tube" type="vertical" clsid="{CA5EE7E6-8EC1-44ED-A0F6-B8A83F5D5540}" progid="CrossSection.EP_CssGeometry.1" size="4">
+         
+         <def_property x="0" name="Name" type="string" id="{4364BC01-AAB7-11D4-B3D9-00104BC3B531}"/>
+         
+         <def_property x="1" name="Catalog ID" type="string" id="{AABC561A-C776-41DC-83FE-26DAF0F4A948}"/>
+         
+         <def_property x="2" name="Catalog item" type="integer" id="{AABC561B-C776-41DC-83FE-26DAF0F4A948}"/>
+         
+         <def_property x="3" name="Parameters" type="table" id="{8FB50711-37F9-4FCA-8135-E5EE1D5CCA8F}"><def_subtable size="5" type="vertical"><def_property x="0" name="Name" type="string" id="{AABC5619-C776-41DC-83FE-26DAF0F4A948}"/>
+         <def_property x="1" name="Material" type="ref" id="{B231C204-6CB8-4165-A9F2-ECFC727F1A8A}"/>
+         <def_property x="2" name="Long" type="integer" id="{997A99EA-61DB-455E-A415-13483EA42D1C}"/>
+         <def_property x="3" name="Length" type="param" id="{948BDEE1-AF48-4B0F-892D-89A701325C9B}"/>
+         <def_property x="4" name="Rolled section" type="string" id="{4C40D82E-B88B-4C86-93D1-51D93D836361}"/>
+         </def_subtable></def_property>
+         
+      </def_table>
+   </def_container>
+   <def_container id="{39A7F468-A0D4-4DFF-8E5C-5843E1807D13}" clsid="{39A7F468-A0D4-4DFF-8E5C-5843E1807D13}" progid="EP_DSG_Elements.EP_StructNode.1">
+      <def_table id="B5E8BA85-0CFD-407A-BD58-B704FADBF19D" name="XML\default" type="vertical" clsid="{39A7F468-A0D4-4DFF-8E5C-5843E1807D13}" progid="EP_DSG_Elements.EP_StructNode.1" size="4">
+         
+         <def_property x="0" name="Name" type="string" id="{4364BC01-AAB7-11D4-B3D9-00104BC3B531}"/>
+         
+         <def_property x="1" name="Coord X" type="param" flag="65536" id="{C1DD759A-4291-481B-B819-92E3AA9E04B7}"/>
+         
+         <def_property x="2" name="Coord Y" type="param" flag="65536" id="{A84A15AC-FEC2-4C27-84B4-CFA676615934}"/>
+         
+         <def_property x="3" name="Coord Z" type="param" flag="65536" id="{1017EA1E-F76B-4D4B-8A4C-7E58FDED1B02}"/>
+         
+      </def_table>
+   </def_container>
+   <def_container id="{ECB5D684-7357-11D4-9F6C-00104BC3B443}" clsid="{ECB5D684-7357-11D4-9F6C-00104BC3B443}" progid="EP_DSG_Elements.EP_Beam.1">
+      <def_table id="AE8669C3-586E-4892-B0EA-26FDE6DBBF50" name="XML\default" type="vertical" clsid="{ECB5D684-7357-11D4-9F6C-00104BC3B443}" progid="EP_DSG_Elements.EP_Beam.1" size="9">
+         
+         <def_property x="0" name="Name" type="string" id="{4364BC01-AAB7-11D4-B3D9-00104BC3B531}"/>
+         
+         <def_property x="1" name="CrossSection" type="ref" flag="131072" id="{BAE6D941-E0C7-11D4-AE46-000000000000}"/>
+         
+         <def_property x="2" name="Beg. node" type="ref" flag="131072" id="{771CB578-EB31-4374-93CA-632E3A6BF147}"/>
+         
+         <def_property x="3" name="End node" type="ref" flag="131072" id="{275774D1-1C02-401A-9521-55B87438C694}"/>
+         
+         <def_property x="4" name="Member system-line at
+         IP" type="enum" id="{BAE6D940-E0C7-11D4-AE46-000000000000}"><def_enum size="9"><it_enum v="0" t="center"/><it_enum v="1" t="top"/><it_enum v="2" t="bottom"/><it_enum v="3" t="left"/><it_enum v="4" t="right"/><it_enum v="5" t="top left"/><it_enum v="6" t="top right"/><it_enum v="7" t="bottom left"/><it_enum v="8" t="bottom right"/></def_enum></def_property>
+         
+         <def_property x="5" name="LCS Rotation" type="real" id="{53958BB1-3582-4467-8007-B06C5A047327}"/>
+         
+         <def_property x="6" name="ey" type="real" id="{C2AE14E1-776A-4EFA-9ED6-E1299E8BF864}"/>
+         
+         <def_property x="7" name="ez" type="real" id="{4BC86268-EB4C-4880-AD61-7247F7B4CBD8}"/>
+         
+         <def_property x="8" name="FEM type" type="enum" id="{7ACE87D1-E095-11D4-AE45-000000000000}"><def_enum size="2"><it_enum v="0" t="standard"/><it_enum v="1" t="axial force only"/></def_enum></def_property>
+         
+      </def_table>
+   </def_container>
+   <def_container id="{AFA13464-9AD1-4691-880A-9AF1F41351F1}" clsid="{AFA13464-9AD1-4691-880A-9AF1F41351F1}" progid="EP_DataAddStructure.EP_BasicHaunchOnBeam.1">
+      <def_table id="682C2038-34D5-4C56-9F13-2F1DCBB36D4B" name="XML\default" type="vertical" clsid="{AFA13464-9AD1-4691-880A-9AF1F41351F1}" progid="EP_DataAddStructure.EP_BasicHaunchOnBeam.1" size="15">
+         
+         <def_property x="0" name="Name" type="string" id="{4364BC01-AAB7-11D4-B3D9-00104BC3B531}"/>
+         
+         <def_property x="1" name="Member" type="ref" flag="131072" id="{00000000-7357-11D4-9F6C-00104BC3B443}"/>
+         
+         <def_property x="2" name="System" type="enum" id="{ACC6FEC0-B7FC-11D4-ADD9-000000000000}"><def_enum size="2"><it_enum v="0" t="GCS"/><it_enum v="1" t="LCS"/></def_enum></def_property>
+         
+         <def_property x="3" name="User UCS" type="ref" flag="131072" id="{6B1F1DFE-160F-4AA9-847B-E5FB652606AD}"/>
+         
+         <def_property x="4" name="Location
+         Loc" type="enum" id="{F68C16F1-8E6D-11D4-A419-000000000000}"><def_enum size="2"><it_enum v="0" t="Length"/><it_enum v="1" t="Projection"/></def_enum></def_property>
+         
+         <def_property x="5" name="Length x
+         Length x" type="param" flag="65536" id="{EDA4B5AE-8A80-11D4-A414-000000000000}"/>
+         
+         <def_property x="6" name="Position x2
+         Pos x2" type="param" flag="65536" id="{F68C16F0-8E6D-11D4-A419-000000000000}"/>
+         
+         <def_property x="7" name="Coord. definition
+         Coor" type="enum" id="{EDA4B5AB-8A80-11D4-A414-000000000000}"><def_enum size="2"><it_enum v="0" t="Abso"/><it_enum v="1" t="Rela"/></def_enum></def_property>
+         
+         <def_property x="8" name="Origin
+         Orig" type="enum" id="{EDA4B5AA-8A80-11D4-A414-000000000000}"><def_enum size="2"><it_enum v="0" t="From start"/><it_enum v="1" t="From end"/></def_enum></def_property>
+         
+         <def_property x="9" name="Eccentricity ey
+         Ecc ey" type="real" id="{F68C16E3-8E6D-11D4-A419-000000000000}"/>
+         
+         <def_property x="10" name="Eccentricity ez
+         Ecc ez" type="real" id="{F68C16E4-8E6D-11D4-A419-000000000000}"/>
+         
+         <def_property x="11" name="Position" type="enum" id="{64C58A80-786F-44D4-AF8E-E72B7F1ACF7F}"><def_enum size="6"><it_enum v="0" t="Begin"/><it_enum v="1" t="End"/><it_enum v="2" t="Both"/><it_enum v="3" t="Begin - total length"/><it_enum v="4" t="End - total length"/><it_enum v="5" t="Both - half length"/></def_enum></def_property>
+         
+         <def_property x="12" name="Alignment" type="enum" id="{BEFDF51A-C4F6-479F-BCF4-CD13230DA5A9}"><def_enum size="6"><it_enum v="0" t="default"/><it_enum v="1" t="center line"/><it_enum v="2" t="top surface"/><it_enum v="3" t="bottom surface"/><it_enum v="4" t="left surface"/><it_enum v="5" t="right surface"/></def_enum></def_property>
+         
+         <def_property x="13" name="Cross-section" type="ref" flag="131072" id="{07CA475A-E8C9-48D6-83CA-4320D1CB7B2A}"/>
+         
+         <def_property x="14" name="D" type="real" id="{09B721F3-D7C0-4B80-0000-000000000000}"/>
+         
+      </def_table>
+   </def_container>
+   <def_container id="{2C78B173-A1D3-11D4-A433-000000000000}" clsid="{2C78B173-A1D3-11D4-A433-000000000000}" progid="DataLibScia.EP_NonLinearFunction.1">
+      <def_table id="5D909C6C-3591-4504-BCF6-D8BAF54F1450" name="XML\default" type="vertical" clsid="{2C78B173-A1D3-11D4-A433-000000000000}" progid="DataLibScia.EP_NonLinearFunction.1" size="5">
+         
+         <def_property x="0" name="Name" type="string" id="{4364BC01-AAB7-11D4-B3D9-00104BC3B531}"/>
+         
+         <def_property x="1" name="Type" type="enum" id="{002E80F4-A296-11D4-A434-000000000000}"><def_enum size="2"><it_enum v="0" t="Translation"/><it_enum v="1" t="Rotation"/></def_enum></def_property>
+         
+         <def_property x="2" name="Positive end" type="enum" id="{002E80F5-A296-11D4-A434-000000000000}"><def_enum size="3"><it_enum v="0" t="Rigid"/><it_enum v="1" t="Free"/><it_enum v="2" t="Flexible"/></def_enum></def_property>
+         
+         <def_property x="3" name="Negative end" type="enum" id="{002E80F6-A296-11D4-A434-000000000000}"><def_enum size="3"><it_enum v="0" t="Rigid"/><it_enum v="1" t="Free"/><it_enum v="2" t="Flexible"/></def_enum></def_property>
+         
+         <def_property x="4" name="u / F" type="real2" id="{002E80F3-A296-11D4-A434-000000000000}"/>
+         
+      </def_table>
+   </def_container>
+   <def_container id="{1CBCA4DE-355B-40F7-A91D-8EFD26A6404D}" clsid="{1CBCA4DE-355B-40F7-A91D-8EFD26A6404D}" progid="DataAddSupport.EP_PointSupportPoint.1">
+      <def_table id="A2A58771-E051-4477-AF3F-5DD73CCD10B0" name="XML\default" type="vertical" clsid="{1CBCA4DE-355B-40F7-A91D-8EFD26A6404D}" progid="DataAddSupport.EP_PointSupportPoint.1" size="24">
+         
+         <def_property x="0" name="Name" type="string" id="{4364BC01-AAB7-11D4-B3D9-00104BC3B531}"/>
+         
+         <def_property x="1" name="Node" type="ref" flag="131072" id="{00000000-A0D4-4DFF-8E5C-5843E1807D13}"/>
+         
+         <def_property x="2" name="Type" type="enum" flag="262144" id="{7C7589CA-C90C-11D4-A46A-00C06C542707}"><def_enum size="2"><it_enum v="0" t="Standard"/><it_enum v="1" t="Column"/></def_enum></def_property>
+         
+         <def_property x="3" name="System" type="enum" id="{ACC6FEC0-B7FC-11D4-ADD9-000000000000}"><def_enum size="2"><it_enum v="0" t="GCS"/><it_enum v="1" t="LCS of node"/></def_enum></def_property>
+         
+         <def_property x="4" name="X" type="enum" flag="262144" id="{49F8018F-A4E5-11D4-A43A-000000000000}"><def_enum size="6"><it_enum v="0" t="Free"/><it_enum v="1" t="Rigid"/><it_enum v="2" t="Flexible"/><it_enum v="3" t="Rigid press only"/><it_enum v="4" t="Flexible press only"/><it_enum v="5" t="Nonlinear"/></def_enum></def_property>
+         
+         <def_property x="5" name="Fun - X" type="ref" flag="131072" id="{49F80191-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="6" name="Stiff - X" type="real" id="{49F80190-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="7" name="Y" type="enum" flag="262144" id="{49F80192-A4E5-11D4-A43A-000000000000}"><def_enum size="6"><it_enum v="0" t="Free"/><it_enum v="1" t="Rigid"/><it_enum v="2" t="Flexible"/><it_enum v="3" t="Rigid press only"/><it_enum v="4" t="Flexible press only"/><it_enum v="5" t="Nonlinear"/></def_enum></def_property>
+         
+         <def_property x="8" name="Fun - Y" type="ref" flag="131072" id="{49F80194-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="9" name="Stiff - Y" type="real" id="{49F80193-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="10" name="Z" type="enum" flag="262144" id="{49F80195-A4E5-11D4-A43A-000000000000}"><def_enum size="6"><it_enum v="0" t="Free"/><it_enum v="1" t="Rigid"/><it_enum v="2" t="Flexible"/><it_enum v="3" t="Rigid press only"/><it_enum v="4" t="Flexible press only"/><it_enum v="5" t="Nonlinear"/></def_enum></def_property>
+         
+         <def_property x="11" name="Fun - Z" type="ref" flag="131072" id="{49F80197-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="12" name="Stiff - Z" type="real" id="{49F80196-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="13" name="Rx" type="enum" flag="262144" id="{49F80198-A4E5-11D4-A43A-000000000000}"><def_enum size="4"><it_enum v="0" t="Free"/><it_enum v="1" t="Rigid"/><it_enum v="2" t="Flexible"/><it_enum v="3" t="Nonlinear"/></def_enum></def_property>
+         
+         <def_property x="14" name="Fun - Rx" type="ref" flag="131072" id="{49F8019A-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="15" name="Stiff - Rx" type="real" id="{49F80199-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="16" name="Ry" type="enum" flag="262144" id="{49F8019B-A4E5-11D4-A43A-000000000000}"><def_enum size="4"><it_enum v="0" t="Free"/><it_enum v="1" t="Rigid"/><it_enum v="2" t="Flexible"/><it_enum v="3" t="Nonlinear"/></def_enum></def_property>
+         
+         <def_property x="17" name="Fun - Ry" type="ref" flag="131072" id="{49F8019D-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="18" name="Stiff - Ry" type="real" id="{49F8019C-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="19" name="Rz" type="enum" flag="262144" id="{49F8019E-A4E5-11D4-A43A-000000000000}"><def_enum size="4"><it_enum v="0" t="Free"/><it_enum v="1" t="Rigid"/><it_enum v="2" t="Flexible"/><it_enum v="3" t="Nonlinear"/></def_enum></def_property>
+         
+         <def_property x="20" name="Fun - Rz" type="ref" flag="131072" id="{49F801A0-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="21" name="Stiff - Rz" type="real" id="{49F8019F-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="22" name="User UCS" type="ref" flag="131072" id="{6B1F1DFE-160F-4AA9-847B-E5FB652606AD}"/>
+         
+         <def_property x="23" name="Angle [deg]" type="string" id="{7C7589CE-C90C-11D4-A46A-00C06C542707}"/>
+         
+      </def_table>
+   </def_container>
+   <def_container id="{61FC64DE-5B75-4074-BF61-DA1AAA0A194C}" clsid="{61FC64DE-5B75-4074-BF61-DA1AAA0A194C}" progid="DataAddSupport.EP_LineSupportLine.1">
+      <def_table id="A4CD5FF5-AE08-4A8E-99EB-73163B265050" name="XML\default" type="vertical" clsid="{61FC64DE-5B75-4074-BF61-DA1AAA0A194C}" progid="DataAddSupport.EP_LineSupportLine.1" size="28">
+         
+         <def_property x="0" name="Name" type="string" id="{4364BC01-AAB7-11D4-B3D9-00104BC3B531}"/>
+         
+         <def_property x="1" name="Member" type="ref" flag="131072" id="{00000000-7357-11D4-9F6C-00104BC3B443}"/>
+         
+         <def_property x="2" name="Type" type="enum" flag="262144" id="{7C7589CA-C90C-11D4-A46A-00C06C542707}"><def_enum size="1"><it_enum v="0" t="Standard"/></def_enum></def_property>
+         
+         <def_property x="3" name="System" type="enum" id="{ACC6FEC0-B7FC-11D4-ADD9-000000000000}"><def_enum size="2"><it_enum v="0" t="GCS"/><it_enum v="1" t="LCS"/></def_enum></def_property>
+         
+         <def_property x="4" name="User UCS" type="ref" flag="131072" id="{6B1F1DFE-160F-4AA9-847B-E5FB652606AD}"/>
+         
+         <def_property x="5" name="Location
+         Loc" type="enum" id="{F68C16F1-8E6D-11D4-A419-000000000000}"><def_enum size="2"><it_enum v="0" t="Length"/><it_enum v="1" t="Projection"/></def_enum></def_property>
+         
+         <def_property x="6" name="Position x1
+         Pos x1" type="param" flag="65536" id="{EDA4B5AE-8A80-11D4-A414-000000000000}"/>
+         
+         <def_property x="7" name="Position x2
+         Pos x2" type="param" flag="65536" id="{F68C16F0-8E6D-11D4-A419-000000000000}"/>
+         
+         <def_property x="8" name="Coord. definition
+         Coor" type="enum" id="{EDA4B5AB-8A80-11D4-A414-000000000000}"><def_enum size="2"><it_enum v="0" t="Abso"/><it_enum v="1" t="Rela"/></def_enum></def_property>
+         
+         <def_property x="9" name="Origin
+         Orig" type="enum" id="{EDA4B5AA-8A80-11D4-A414-000000000000}"><def_enum size="2"><it_enum v="0" t="From start"/><it_enum v="1" t="From end"/></def_enum></def_property>
+         
+         <def_property x="10" name="X" type="enum" flag="262144" id="{49F8018F-A4E5-11D4-A43A-000000000000}"><def_enum size="6"><it_enum v="0" t="Free"/><it_enum v="1" t="Rigid"/><it_enum v="2" t="Flexible"/><it_enum v="3" t="Rigid press only"/><it_enum v="4" t="Flexible press only"/><it_enum v="5" t="Nonlinear"/></def_enum></def_property>
+         
+         <def_property x="11" name="Fun - X" type="ref" flag="131072" id="{49F80191-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="12" name="Stiff - X" type="real" id="{49F80190-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="13" name="Y" type="enum" flag="262144" id="{49F80192-A4E5-11D4-A43A-000000000000}"><def_enum size="6"><it_enum v="0" t="Free"/><it_enum v="1" t="Rigid"/><it_enum v="2" t="Flexible"/><it_enum v="3" t="Rigid press only"/><it_enum v="4" t="Flexible press only"/><it_enum v="5" t="Nonlinear"/></def_enum></def_property>
+         
+         <def_property x="14" name="Fun - Y" type="ref" flag="131072" id="{49F80194-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="15" name="Stiff - Y" type="real" id="{49F80193-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="16" name="Z" type="enum" flag="262144" id="{49F80195-A4E5-11D4-A43A-000000000000}"><def_enum size="6"><it_enum v="0" t="Free"/><it_enum v="1" t="Rigid"/><it_enum v="2" t="Flexible"/><it_enum v="3" t="Rigid press only"/><it_enum v="4" t="Flexible press only"/><it_enum v="5" t="Nonlinear"/></def_enum></def_property>
+         
+         <def_property x="17" name="Fun - Z" type="ref" flag="131072" id="{49F80197-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="18" name="Stiff - Z" type="real" id="{49F80196-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="19" name="Rx" type="enum" flag="262144" id="{49F80198-A4E5-11D4-A43A-000000000000}"><def_enum size="4"><it_enum v="0" t="Free"/><it_enum v="1" t="Rigid"/><it_enum v="2" t="Flexible"/><it_enum v="3" t="Nonlinear"/></def_enum></def_property>
+         
+         <def_property x="20" name="Fun - Rx" type="ref" flag="131072" id="{49F8019A-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="21" name="Stiff - Rx" type="real" id="{49F80199-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="22" name="Ry" type="enum" flag="262144" id="{49F8019B-A4E5-11D4-A43A-000000000000}"><def_enum size="4"><it_enum v="0" t="Free"/><it_enum v="1" t="Rigid"/><it_enum v="2" t="Flexible"/><it_enum v="3" t="Nonlinear"/></def_enum></def_property>
+         
+         <def_property x="23" name="Fun - Ry" type="ref" flag="131072" id="{49F8019D-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="24" name="Stiff - Ry" type="real" id="{49F8019C-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="25" name="Rz" type="enum" flag="262144" id="{49F8019E-A4E5-11D4-A43A-000000000000}"><def_enum size="4"><it_enum v="0" t="Free"/><it_enum v="1" t="Rigid"/><it_enum v="2" t="Flexible"/><it_enum v="3" t="Nonlinear"/></def_enum></def_property>
+         
+         <def_property x="26" name="Fun - Rz" type="ref" flag="131072" id="{49F801A0-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="27" name="Stiff - Rz" type="real" id="{49F8019F-A4E5-11D4-A43A-000000000000}"/>
+         
+      </def_table>
+   </def_container>
+   <def_container id="{0908D21F-481F-11D4-AB84-00C06C452330}" clsid="{0908D21F-481F-11D4-AB84-00C06C452330}" progid="DataSetScia.EP_LoadCase.1">
+      <def_table id="255A93A5-2573-47AD-88E3-14EBD2F73A9E" name="XML\List" type="vertical" clsid="{0908D21F-481F-11D4-AB84-00C06C452330}" progid="DataSetScia.EP_LoadCase.1" size="15">
+         
+         <def_property x="0" name="Name" type="string" id="{4364BC01-AAB7-11D4-B3D9-00104BC3B531}"/>
+         
+         <def_property x="1" name="Action type" type="enum" flag="262144" id="{11D48DC0-E0F4-11D4-A482-00C06C542707}"><def_enum size="2"><it_enum v="0" t="Permanent"/><it_enum v="1" t="Variable"/></def_enum></def_property>
+         
+         <def_property x="2" name="LoadGroup" type="ref" flag="131072" id="{AA694EDC-83EA-11D4-B37D-000000000000}"/>
+         
+         <def_property x="3" name="Load type" type="enum" flag="262144" id="{11D48DC1-E0F4-11D4-A482-00C06C542707}"><def_enum size="2"><it_enum v="0" t="Self weight"/><it_enum v="1" t="Standard"/></def_enum></def_property>
+         
+         <def_property x="4" name="Start - end time" type="real2" id="{AA694ED7-83EA-11D4-B37D-000000000000}"/>
+         
+         <def_property x="5" name="Specification" type="enum" flag="262144" id="{11D48DC2-E0F4-11D4-A482-00C06C542707}"><def_enum size="0"/></def_property>
+         
+         <def_property x="6" name="Duration" type="enum" flag="262144" id="{AA694ED6-83EA-11D4-B37D-000000000000}"><def_enum size="0"/></def_property>
+         
+         <def_property x="7" name="Direction" type="enum" flag="262144" id="{11D48DC3-E0F4-11D4-A482-00C06C542707}"><def_enum size="6"><it_enum v="0" t="-Z"/><it_enum v="1" t="+Z"/><it_enum v="2" t="-Y"/><it_enum v="3" t="+Y"/><it_enum v="4" t="-X"/><it_enum v="5" t="+X"/></def_enum></def_property>
+         
+         <def_property x="8" name="X" type="ref" flag="131072" id="{AA694ED9-83EA-11D4-B37D-000000000000}"/>
+         
+         <def_property x="9" name="Y" type="ref" flag="131072" id="{AA694EDA-83EA-11D4-B37D-000000000000}"/>
+         
+         <def_property x="10" name="Z" type="ref" flag="131072" id="{AA694EDB-83EA-11D4-B37D-000000000000}"/>
+         
+         <def_property x="11" name="Coeff." type="real" id="{11D48DC4-E0F4-11D4-A482-00C06C542707}"/>
+         
+         <def_property x="12" name="Master load case" type="enum" flag="262144" id="{11D48DC5-E0F4-11D4-A482-00C06C542707}"><def_enum size="0"/></def_property>
+         
+         <def_property x="13" name="Absences" type="ref" flag="131072" id="{11D48DC7-E0F4-11D4-A482-00C06C542707}"/>
+         
+         <def_property x="14" name="Description" type="string" id="{11D48DC8-E0F4-11D4-A482-00C06C542707}"/>
+         
+      </def_table>
+   </def_container>
+   <def_container id="{F9D4AA72-49D5-11D4-A3CF-000000000000}" clsid="{F9D4AA72-49D5-11D4-A3CF-000000000000}" progid="DataSetScia.EP_LoadGroup.1">
+      <def_table id="85D16F74-312B-45D5-BA09-53EED989CF10" name="XML\default" type="vertical" clsid="{F9D4AA72-49D5-11D4-A3CF-000000000000}" progid="DataSetScia.EP_LoadGroup.1" size="7">
+         
+         <def_property x="0" name="Name" type="string" id="{4364BC01-AAB7-11D4-B3D9-00104BC3B531}"/>
+         
+         <def_property x="1" name="Relation" type="enum" flag="262144" id="{49F9F891-83EC-11D4-B37D-000000000000}"><def_enum size="0"/></def_property>
+         
+         <def_property x="2" name="Load" type="enum" id="{49F9F892-83EC-11D4-B37D-000000000000}"><def_enum size="3"><it_enum v="0" t="Permanent"/><it_enum v="1" t="Variable"/><it_enum v="2" t="Accidental"/></def_enum></def_property>
+         
+         <def_property x="3" name="Max Negative" type="real" id="{49F9F893-83EC-11D4-B37D-000000000000}"/>
+         
+         <def_property x="4" name="Favorable" type="real" id="{49F9F894-83EC-11D4-B37D-000000000000}"/>
+         
+         <def_property x="5" name="Coeff." type="real" id="{49F9F895-83EC-11D4-B37D-000000000000}"/>
+         
+         <def_property x="6" name="Coeff 2 " type="enum" flag="262144" id="{49F9F896-83EC-11D4-B37D-000000000000}"><def_enum size="0"/></def_property>
+         
+      </def_table>
+   </def_container>
+   <def_container id="{BC16B3C2-F464-11D4-94D3-000000000000}" clsid="{BC16B3C2-F464-11D4-94D3-000000000000}" progid="DataAddLoad.EP_PointForceLine.1">
+      <def_table id="C8E39366-FA31-4158-BDCD-737B45ECDDF4" name="XML\default" type="vertical" clsid="{BC16B3C2-F464-11D4-94D3-000000000000}" progid="DataAddLoad.EP_PointForceLine.1" size="23">
+         
+         <def_property x="0" name="Name" type="string" id="{4364BC01-AAB7-11D4-B3D9-00104BC3B531}"/>
+         
+         <def_property x="1" name="Member" type="ref" flag="131072" id="{00000000-7357-11D4-9F6C-00104BC3B443}"/>
+         
+         <def_property x="2" name="Load case" type="ref" flag="131072" id="{00000000-481F-11D4-AB84-00C06C452330}"/>
+         
+         <def_property x="3" name="System" type="enum" id="{ACC6FEC0-B7FC-11D4-ADD9-000000000000}"><def_enum size="2"><it_enum v="0" t="GCS"/><it_enum v="1" t="LCS"/></def_enum></def_property>
+         
+         <def_property x="4" name="User UCS" type="ref" flag="131072" id="{6B1F1DFE-160F-4AA9-847B-E5FB652606AD}"/>
+         
+         <def_property x="5" name="Position x
+         Pos x" type="param" flag="65536" id="{EDA4B5AE-8A80-11D4-A414-000000000000}"/>
+         
+         <def_property x="6" name="Coord. definition
+         Coor" type="enum" id="{EDA4B5AB-8A80-11D4-A414-000000000000}"><def_enum size="2"><it_enum v="0" t="Abso"/><it_enum v="1" t="Rela"/></def_enum></def_property>
+         
+         <def_property x="7" name="Origin
+         Orig" type="enum" id="{EDA4B5AA-8A80-11D4-A414-000000000000}"><def_enum size="2"><it_enum v="0" t="From start"/><it_enum v="1" t="From end"/></def_enum></def_property>
+         
+         <def_property x="8" name="Repeat (n)
+         Rep (n)" type="integer" id="{EDA4B5AF-8A80-11D4-A414-000000000000}"/>
+         
+         <def_property x="9" name="Regularly" type="bool" id="{BA4DDF3A-53D5-480B-88C8-E5A712129C7E}"/>
+         
+         <def_property x="10" name="Delta x
+         dx" type="param" flag="65536" id="{EDA4B5B0-8A80-11D4-A414-000000000000}"/>
+         
+         <def_property x="11" name="On begin" type="bool" id="{3D5AB19B-2C38-4ED7-8A66-D36F893825CE}"/>
+         
+         <def_property x="12" name="On end" type="bool" id="{26802837-7EB4-47BA-8145-61E434C5D78C}"/>
+         
+         <def_property x="13" name="System" type="enum" id="{ACC6FEC1-B7FC-11D4-ADD9-000000000000}"><def_enum size="2"><it_enum v="0" t="GCS"/><it_enum v="1" t="LCS"/></def_enum></def_property>
+         
+         <def_property x="14" name="Eccentricity ex
+         Ecc ex" type="real" id="{F68C16E2-8E6D-11D4-A419-000000000000}"/>
+         
+         <def_property x="15" name="Eccentricity ey
+         Ecc ey" type="real" id="{F68C16E3-8E6D-11D4-A419-000000000000}"/>
+         
+         <def_property x="16" name="Eccentricity ez
+         Ecc ez" type="real" id="{F68C16E4-8E6D-11D4-A419-000000000000}"/>
+         
+         <def_property x="17" name="Direction
+         Dir" type="enum" flag="262144" id="{49F8017D-A4E5-11D4-A43A-000000000000}"><def_enum size="3"><it_enum v="0" t="X"/><it_enum v="1" t="Y"/><it_enum v="2" t="Z"/></def_enum></def_property>
+         
+         <def_property x="18" name="Type" type="enum" flag="262144" id="{49F8017C-A4E5-11D4-A43A-000000000000}"><def_enum size="1"><it_enum v="0" t="Force"/></def_enum></def_property>
+         
+         <def_property x="19" name="Angle [deg]" type="string" id="{49F8017F-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="20" name="Value - F" type="param" flag="65536" id="{49F80183-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="21" name="Predefined load" type="ref" flag="131072" id="{49F8018D-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="22" name="Acting area" type="real" id="{4215B362-68F8-4461-A2B8-DF7736F3A0D1}"/>
+         
+      </def_table>
+   </def_container>
+   <def_container id="{BC16B3C6-F464-11D4-94D3-000000000000}" clsid="{BC16B3C6-F464-11D4-94D3-000000000000}" progid="DataAddLoad.EP_LineForceLine.1">
+      <def_table id="81B5EF64-B49C-49BE-9124-901081122F37" name="XML\default" type="vertical" clsid="{BC16B3C6-F464-11D4-94D3-000000000000}" progid="DataAddLoad.EP_LineForceLine.1" size="23">
+         
+         <def_property x="0" name="Name" type="string" id="{4364BC01-AAB7-11D4-B3D9-00104BC3B531}"/>
+         
+         <def_property x="1" name="Member" type="ref" flag="131072" id="{00000000-7357-11D4-9F6C-00104BC3B443}"/>
+         
+         <def_property x="2" name="Load case" type="ref" flag="131072" id="{00000000-481F-11D4-AB84-00C06C452330}"/>
+         
+         <def_property x="3" name="System" type="enum" id="{ACC6FEC0-B7FC-11D4-ADD9-000000000000}"><def_enum size="2"><it_enum v="0" t="GCS"/><it_enum v="1" t="LCS"/></def_enum></def_property>
+         
+         <def_property x="4" name="User UCS" type="ref" flag="131072" id="{6B1F1DFE-160F-4AA9-847B-E5FB652606AD}"/>
+         
+         <def_property x="5" name="Location
+         Loc" type="enum" id="{F68C16F1-8E6D-11D4-A419-000000000000}"><def_enum size="2"><it_enum v="0" t="Length"/><it_enum v="1" t="Projection"/></def_enum></def_property>
+         
+         <def_property x="6" name="Extent" type="enum" id="{E360E1BB-587D-46A8-B387-A039F5497011}"><def_enum size="2"><it_enum v="0" t="full"/><it_enum v="1" t="span"/></def_enum></def_property>
+         
+         <def_property x="7" name="Position x1
+         Pos x1" type="param" flag="65536" id="{EDA4B5AE-8A80-11D4-A414-000000000000}"/>
+         
+         <def_property x="8" name="Position x2
+         Pos x2" type="param" flag="65536" id="{F68C16F0-8E6D-11D4-A419-000000000000}"/>
+         
+         <def_property x="9" name="Coord. definition
+         Coor" type="enum" id="{EDA4B5AB-8A80-11D4-A414-000000000000}"><def_enum size="2"><it_enum v="0" t="Abso"/><it_enum v="1" t="Rela"/></def_enum></def_property>
+         
+         <def_property x="10" name="Origin
+         Orig" type="enum" id="{EDA4B5AA-8A80-11D4-A414-000000000000}"><def_enum size="2"><it_enum v="0" t="From start"/><it_enum v="1" t="From end"/></def_enum></def_property>
+         
+         <def_property x="11" name="Eccentricity ey
+         Ecc ey" type="real" id="{F68C16E3-8E6D-11D4-A419-000000000000}"/>
+         
+         <def_property x="12" name="Eccentricity ez
+         Ecc ez" type="real" id="{F68C16E4-8E6D-11D4-A419-000000000000}"/>
+         
+         <def_property x="13" name="Direction
+         Dir" type="enum" flag="262144" id="{49F8017D-A4E5-11D4-A43A-000000000000}"><def_enum size="3"><it_enum v="0" t="X"/><it_enum v="1" t="Y"/><it_enum v="2" t="Z"/></def_enum></def_property>
+         
+         <def_property x="14" name="Type" type="enum" flag="262144" id="{49F8017C-A4E5-11D4-A43A-000000000000}"><def_enum size="2"><it_enum v="0" t="Force"/><it_enum v="1" t="Selfweight"/></def_enum></def_property>
+         
+         <def_property x="15" name="Distribution" type="enum" id="{49F80185-A4E5-11D4-A43A-000000000000}"><def_enum size="2"><it_enum v="0" t="Uniform"/><it_enum v="1" t="Trapez"/></def_enum></def_property>
+         
+         <def_property x="16" name="Angle [deg]" type="string" id="{49F8017F-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="17" name="Value - P1" type="param" flag="65536" id="{49F80183-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="18" name="Value - P2" type="param" flag="65536" id="{49F80184-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="19" name="Predefined load" type="ref" flag="131072" id="{49F8018D-A4E5-11D4-A43A-000000000000}"/>
+         
+         <def_property x="20" name="Gravity coef." type="real" id="{BE3ACF8C-DCD3-46CE-867B-934EDFA69721}"/>
+         
+         <def_property x="21" name="Beg act. width - W1
+         W1" type="real" id="{4215B360-68F8-4461-A2B8-DF7736F3A0D1}"/>
+         
+         <def_property x="22" name="End act. width - W2
+         W2" type="real" id="{4215B361-68F8-4461-A2B8-DF7736F3A0D1}"/>
+         
+      </def_table>
+   </def_container>
+</def_project>

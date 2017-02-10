@@ -1,0 +1,1 @@
+nunit-console-x86.exe /noshadow /xml:UT_XEP_ConcreteSectionLibraryTestResult.xml UT_XEP_ConcreteSectionLibrary.dll /out:TestResult_UT_XEP_ConcreteSectionLibrary.txt /err:StdErr_UT_XEP_ConcreteSectionLibrary.txt

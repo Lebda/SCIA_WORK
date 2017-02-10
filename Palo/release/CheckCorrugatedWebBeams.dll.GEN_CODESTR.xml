@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="13"><StringCode SourceType="DLLRC:"><StringId>@{checkcorrugatedwebbeams.2eids_local_buckling}</StringId>
+		<SourceDll>CheckCorrugatedWebBeams.2edll</SourceDll>
+		<ResourceId>136</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{checkcorrugatedwebbeams.2eids_ned_pressure}</StringId>
+		<SourceDll>CheckCorrugatedWebBeams.2edll</SourceDll>
+		<ResourceId>149</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{checkcorrugatedwebbeams.2eids_yield}</StringId>
+		<SourceDll>CheckCorrugatedWebBeams.2edll</SourceDll>
+		<ResourceId>138</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{checkcorrugatedwebbeams.2eids_n_critical}</StringId>
+		<SourceDll>CheckCorrugatedWebBeams.2edll</SourceDll>
+		<ResourceId>153</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{checkcorrugatedwebbeams.2eids_n_local}</StringId>
+		<SourceDll>CheckCorrugatedWebBeams.2edll</SourceDll>
+		<ResourceId>152</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{checkcorrugatedwebbeams.2eids_ned_tension}</StringId>
+		<SourceDll>CheckCorrugatedWebBeams.2edll</SourceDll>
+		<ResourceId>148</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{checkcorrugatedwebbeams.2eids_corrugated_web_beam_check}</StringId>
+		<SourceDll>CheckCorrugatedWebBeams.2edll</SourceDll>
+		<ResourceId>106</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{checkcorrugatedwebbeams.2eids_global_buckling}</StringId>
+		<SourceDll>CheckCorrugatedWebBeams.2edll</SourceDll>
+		<ResourceId>137</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{checkcorrugatedwebbeams.2eids_unity_check_web}</StringId>
+		<SourceDll>CheckCorrugatedWebBeams.2edll</SourceDll>
+		<ResourceId>173</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{checkcorrugatedwebbeams.2eids_unity_check_lower_flange}</StringId>
+		<SourceDll>CheckCorrugatedWebBeams.2edll</SourceDll>
+		<ResourceId>172</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{checkcorrugatedwebbeams.2eids_n_yield}</StringId>
+		<SourceDll>CheckCorrugatedWebBeams.2edll</SourceDll>
+		<ResourceId>150</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{checkcorrugatedwebbeams.2eids_unity_check_upper_flange}</StringId>
+		<SourceDll>CheckCorrugatedWebBeams.2edll</SourceDll>
+		<ResourceId>171</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{checkcorrugatedwebbeams.2eids_n_global}</StringId>
+		<SourceDll>CheckCorrugatedWebBeams.2edll</SourceDll>
+		<ResourceId>151</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

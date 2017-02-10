@@ -1,0 +1,10 @@
+﻿<Root>
+  <Test Description="STD" Author="Martin-Lenovo\Martin" Active="1" Date="2014. 08. 21">
+    <Dialog>
+      <CustomLibrary Identifier="EC_NA.xml|SetupNA" Category="Eurocode NA" Item="Standard EN" Collapsed="True" />
+    </Dialog>
+    <Result Name="NA" Type="String" ESA_ID="" Value="Standard EN" />
+    <Result Name="k↓1←" Type="Numeric" ESA_ID="Result.01" Value="800e-3" />
+    <Result Name="k↓2←" Type="Numeric" ESA_ID="Result.02" Value="900e-3" />
+  </Test>
+</Root>

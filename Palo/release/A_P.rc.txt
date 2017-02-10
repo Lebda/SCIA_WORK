@@ -1,0 +1,421 @@
+Condition \A\Src\Tra\BCGCBPro\BCGCBPro.rc 
+EP_Archive \A\Src\Mic\Base\ARCHIVE\Archive.rc EP_Archive.tlb
+EP_BasicTypes \A\Src\Lat\BasicTypes\BasicTypes.rc EP_BasicTypes.tlb
+XEP_AppGUIFramework \A\Src\Kernel\Base\XEP_AppGUIFramework\XEP_AppGUIFramework.rc XEP_AppGUIFramework.tlb
+Undoredo \A\Src\Bro\Undo\Undoredo\Undoredo.rc Undoredo.tlb
+EP_DsBase \A\Src\Mic\Ds\DSERVER\DServer.rc EP_DsBase.tlb
+ProtMan \A\Src\RMA\ProtectionUtil\ProtMan\ProtMan.rc ProtMan.tlb
+EP_ComponentCmdsLibBase \A\Src\Lat\ComponentCmds\EP_ComponentCmdsLibBase\EP_ComponentCmdsLibBase.rc EP_ComponentCmdsLibBase.tlb
+XEP_AppGUIFrameworkMFC \A\Src\Kernel\Base\XEP_AppGUIFrameworkMFC\XEP_AppGUIFrameworkMFC.rc XEP_AppGUIFrameworkMFC.tlb
+SciaImages \A\Src\Tra\SciaImages\SciaImages.rc 
+Utils_PLE \A\Src\ple\Utils_PLE\Utils_PLE.rc Utils_PLE.tlb
+EP_Catid \A\Src\Mic\Base\EP_Catid\EP_Catid.rc EP_Catid.tlb
+XEP_ProjectRepository \A\Src\Kernel\ProjectStorage\XEP_ProjectRepository\XEP_ProjectRepositoryDll.rc XEP_ProjectRepository.tlb
+XEP_ProjectStorageDll \A\Src\Kernel\ProjectStorage\XEP_ProjectStorageDll\XEP_ProjectStorageDll.rc XEP_ProjectStorageDll.tlb
+XEP_ProjectRepositoryManager \A\Src\Kernel\ProjectStorage\XEP_ProjectRepositoryManager\XEP_ProjectRepositoryManager.rc 
+XEP_ProjectStorageService \A\Src\Kernel\ProjectStorage\XEP_ProjectStorageService\XEP_ProjectStorageService.rc 
+ESAEnvMainApp \A\Src\Lat\ESAAtl80\ESAEnvMainApp\ESAEnvMainApp.rc ESAEnvMainApp.tlb
+GridBase \A\Src\Tra\GridBase\GridBase.rc GridBase.tlb
+Unit \A\Src\Tra\UNIT\Unit.rc Unit.tlb
+EasyProp \A\Src\Tra\EasyProp\EasyProp.rc EasyProp.tlb
+EP_Graphic \A\Src\LOK\GRAPHIC\EP_Graphic\EP_Graphic.rc EP_Graphic.tlb
+EP_DsPresent \A\Src\Mic\Ds\DsDbPresent\DsPrezent.rc EP_DsPresent.tlb
+EP_U3D \A\Src\LOK\GRAPHIC\EP_U3D\EP_U3D.rc EP_U3D.tlb
+EP_PDF \A\Src\LOK\GRAPHIC\EP_PDF\EP_PDF.rc EP_PDF.tlb
+EP_Wheel \A\Src\LOK\GRAPHIC\EP_Wheel\EP_Wheel.rc EP_Wheel.tlb
+EP_ScrollBar \A\Src\LOK\GRAPHIC\EP_ScrollBar\EP_ScrollBar.rc EP_ScrollBar.tlb
+EP_GraphicTools \A\Src\LOK\GRAPHIC\EP_GraphicTools\EP_GraphicTools.rc EP_GraphicTools.tlb
+EP_2D \A\Src\LOK\GRAPHIC\EP_2D\EP_2D.rc EP_2D.tlb
+EP_3D \A\Src\LOK\GRAPHIC\EP_3D\EP_3D.rc EP_3D.tlb
+EP_3DInPlane \A\Src\LOK\GRAPHIC\EP_3DInPlane\EP_3DInPlane.rc EP_3DInPlane.tlb
+EP_GraphicOutputTools \A\Src\LOK\GRAPHIC\EP_GraphicOutputTools\EP_GraphicOutputTools.rc EP_GraphicOutputTools.tlb
+EP_GraphicOutput \A\Src\LOK\GRAPHIC\EP_GraphicOutput\EP_GraphicOutput.rc EP_GraphicOutput.tlb
+EP_SDKGraphicEditor \A\Src\LOK\GRAPHIC\EP_SDKGraphicEditor\EP_SDKGraphicEditor.rc EP_SDKGraphicEditor.tlb
+EP_Select \A\Src\Lat\SelMan\EPSelect\EPSelect.rc EP_Select.tlb
+EP_Recorder \A\Src\Tra\Recorder\Recorder.rc EP_Recorder.tlb
+Prompt \A\Src\Tra\Prompt\Prompt.rc Prompt.tlb
+Status \A\Src\Tra\STATUS\Status.rc Status.tlb
+EP_DsUnit \A\Src\Tra\DsUnit\DsUnit.rc EP_DsUnit.tlb
+EP_PropMan \A\Src\Tra\PropMan\PropMan.rc EP_PropMan.tlb
+StatusLineCmd \A\Src\Tra\STATUS\StatusLineCmd\StatusLineCmd.rc StatusLineCmd.tlb
+StatusLineCmdM \A\Src\Tra\STATUS\StatusLineCmdM\StatusLineCmdM.rc StatusLineCmdM.tlb
+ESA_Processor \A\Src\ESA_Processor\ESA_Processor\ESA_Processor.rc ESA_Processor.tlb
+EP_ZenTree \A\Src\VIK\ZenTree\ZenTree.rc EP_ZenTree.tlb
+EP_ZenDoc \A\Src\VIK\ZenDoc\ZenDoc.rc EP_ZenDoc.tlb
+EP_DsReflection \A\Src\Tra\DsReflection\DsReflection.rc EP_DsReflection.tlb
+EP_RoundTripDsElem \A\Src\Lat\EP_RoundTripDsElem\EP_RoundTripDsElem.rc EP_RoundTripDsElem.tlb
+EP_PictureView \A\Src\Tra\PictureView\PictureView.rc EP_PictureView.tlb
+EP_GraphicControls_Cmds \A\Src\Lat\DrwMan\EP_GraphicControls_Cmds\EP_GraphicControls_Cmds.rc EP_GraphicControls_Cmds.tlb
+EP_DsDb \A\Src\Mic\Ds\DSDB\DsDb.rc EP_DsDb.tlb
+XEP_DSx64ObjectsBase \A\Src\Kernel\DataServer\XEP_DSx64ObjectsBase\XEP_DSx64ObjectsBase.rc XEP_DSx64ObjectsBase.tlb
+X64DocumentRendering \A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentRendering.rc X64DocumentRendering.tlb
+X64DocumentPreview \A\Src\LOK\X64Document\X64DocumentPreview\X64DocumentPreview.rc X64DocumentPreview.tlb
+XEP_DocumentData \A\Src\LOK\X64Document\XEP_DocumentData\XEP_DocumentData.rc EP_GraphicTools.tlb
+XEP_DocumentFramework \A\Src\LOK\X64Document\XEP_DocumentFramework\XEP_DocumentFramework.rc XEP_DocumentFramework.tlb
+EP_ExpUtility \A\Src\Bro\EP_ExpUtility\EP_ExpUtility.rc EP_ExpUtility.tlb
+EPW4DrawManager \A\Src\Lat\DrwMan\DrawManager\EPW4DrawManager.rc EP_DrawManager.tlb
+EP_DrawSupport \A\Src\Lat\DrwMan\EP_DrawSupport\EP_DrawSupport.rc EP_DrawSupport.tlb
+EP_Windows \A\Src\Lat\DrwMan\EP_Windows\EP_Windows.rc EP_Windows.tlb
+EP_SelectManager \A\Src\Lat\SelMan\EPSelectManager\EPSelectManager.rc EP_SelectManager.tlb
+EP_CmdBase \A\Src\Lat\Commands\EPCmdBase\EPCmdBase.rc EP_CmdBase.tlb
+EP_MODELESetup \A\Src\SEI\Service\EP_MODELESetup\EP_MODELESetup\EP_MODELESetup.rc EP_MODELESetup.tlb
+EP_GraphicDsObjects \A\Src\Lat\SimpleGraphic\EP_GraphicDsObjects\EP_GraphicDsObjects.rc EP_GraphicDsObjects.tlb
+EP_DsAddData \A\Src\CHA\GeomData\DsAddData\DsAddData.rc EP_DsAddData.tlb
+EP_GeometryPresent \A\Src\Lat\GeomData\EP_GeometryPresent\EP_GeometryPresent.rc EP_GeometryPresent.tlb
+EPSelectManagerToolbarsCmds \A\Src\Lat\SelMan\EPSelectManagerToolbarsCmds\EPSelectManagerToolbarsCmds.rc EPSelectManagerToolbarsCmds.tlb
+EPGSEditorToolbarCmds \A\Src\Lat\SelMan\EPGSEditorToolbarCmds\EPGSEditorToolbarCmds\EPGSEditorToolbarCmds.rc EPGSEditorToolbarCmds.tlb
+EP_SelectManagerCmd \A\Src\Lat\SelMan\EPSelectManagerCmd\EPSelectManagerCmd.rc EP_SelectManagerCmd.tlb
+EP_GSEditorCmd \A\Src\VON\GeomSpace\EP_GSEditorCmd\EPGSEditorCmd.rc EP_GSEditorCmd.tlb
+EP_GSEditorPlaneCmd \A\Src\Lat\GeomData\EP_GSEditorPlaneCmd\EP_GSEditorPlaneCmd.rc EP_GSEditorPlaneCmd.tlb
+EPSelectManagerToolbarsCmdsM \A\Src\Lat\SelMan\EPSelectManagerToolbarsCmdsM\EPSelectManagerToolbarsCmdsM.rc 
+EPGSEditorToolbarCmdsM \A\Src\Lat\SelMan\EPGSEditorToolbarCmds\EPGSEditorToolbarCmdsM\EPGSEditorToolbarCmdsM.rc 
+EP_Windows_Cmds \A\Src\Lat\DrwMan\EP_Windows_Cmds\EP_Windows_Cmds.rc EP_Windows_Cmds.tlb
+EP_CompoFrameBase \A\Src\LAT\CompoFrame\CompoFrameBase\CompoFrameBase.rc EP_CompoFrameBase.tlb
+EP_Parameters \A\Src\Mic\Ds\Parameters\Parameters.rc EP_Parameters.tlb
+ParameterSet \A\Src\Bro\Parameter\ParameterSet\ParameterSet.rc ParameterSet.tlb
+EP_DsDocument \A\Src\VIK\EP_DsDocument\EP_DsDocument.rc EP_DsDocument.tlb
+GreenFrog \A\Src\VIK\GreenFrog\GreenFrog.rc GreenFrog.tlb
+EP_GraphicCAD \A\Src\Lat\GraphicCAD\EP_GraphicCAD\EP_GraphicCAD.rc EP_GraphicCAD.tlb
+EP_PicturesGalery \A\Src\Lat\PicturesGalery\EP_PicturesGalery\EP_PicturesGalery.rc EP_PicturesGalery.tlb
+DocumentPicture \A\Src\VIK\DocumentPicture\DocumentPicture.rc DocumentPicture.tlb
+EP_PicturesGalery_Cmds \A\Src\Lat\PicturesGalery\EP_PicturesGalery_Cmds\EP_PicturesGalery_Cmds.rc EP_PicturesGalery_Cmds.tlb
+EP_PicturesGalery_CmdsM \A\Src\Lat\PicturesGalery\EP_PicturesGalery_CmdsM\EP_PicturesGalery_CmdsM.rc 
+EP_GraphicControls_CmdsM \A\Src\Lat\DrwMan\EP_GraphicControls_CmdsM\EP_GraphicControls_CmdsM.rc 
+EP_GraphicPlaneOutputGalery \A\Src\Lat\GraphicPlaneOutput\EP_GraphicPlaneOutputGalery\EP_GraphicPlaneOutputGalery.rc EP_GraphicPlaneOutputGalery.tlb
+EP_GraphicPlaneOutput_Cmds \A\Src\Lat\GraphicPlaneOutput\EP_GraphicPlaneOutput_Cmds\EP_GraphicPlaneOutput_Cmds.rc EP_GraphicPlaneOutput_Cmds.tlb
+EP_GraphicPlaneOutput_CmdsM \A\Src\Lat\GraphicPlaneOutput\EP_GraphicPlaneOutput_CmdsM\EP_GraphicPlaneOutput_CmdsM.rc 
+XEP_DocumentFrameworkMFC \A\Src\LOK\X64Document\XEP_DocumentFrameworkMFC\XEP_DocumentFrameworkMFC.rc XEP_DocumentFrameworkMFC.tlb
+EsaEngineeringReport \A\Src\LOK\X64Document\XEP_DocumentMFC\XEP_DocumentMFC.rc 
+Project \A\Src\Tra\PROJECT\Project.rc Project.tlb
+EP_ProjectExt \A\Src\Lat\EP_ProjectExt\EP_ProjectExt.rc EP_ProjectExt.tlb
+EP_Windows_CmdsM \A\Src\Lat\DrwMan\EP_Windows_CmdsM\EP_Windows_CmdsM.rc 
+EP_DocumentCmd \A\Src\Tra\DocSMN\EP_DocumentCmd\EP_DocumentCmd.rc EP_DocumentCmd.tlb
+EP_DocumentCmdM \A\Src\Tra\DocSMN\EP_DocumentCmdM\EP_DocumentCmdM.rc EP_DocumentCmdM.tlb
+EP_XmlExchange \A\Src\Mic\Ds\EP_XmlExchange\EP_XmlExchange.rc EP_XmlExchange.tlb
+EP_MultiQuickSelect \A\Src\Tra\MultiQuickSelect\MultiQuickSelect.rc EP_MultiQuickSelect.tlb
+PEBServerConnect \A\Src\Sam\PEBServerConnect\PEBServerConnect.rc PEBServerConnect.tlb
+GS \A\Src\von\GS\GS.rc GS.tlb
+CSE \A\Src\von\CSE\CSE.rc CSE.tlb
+EP_Graph2D \A\Src\Bro\EP_Graph2D\EP_Graph2D.rc EP_Graph2D.tlb
+EP_Graph \A\Src\Bro\EP_Graph\EP_Graph.rc EP_Graph.tlb
+EP_Material \A\Src\Dra\EP_Material\EP_Material.rc EP_Material.tlb
+EP_BasicResultSupport \A\Src\Lat\Results\EP_BasicResultSupport\EP_BasicResultSupport.rc EP_BasicResultSupport.tlb
+EP_CodeFirst \A\Src\Mic\Code\CodeFirst\CodeFirst.rc EP_CodeFirst.tlb
+EP_CodeManager \A\Src\Mic\Code\CodeManager\CodeManager.rc EP_CodeManager.tlb
+EP_CodeBaseLoad \A\Src\Tom\EP_CodeBaseLoad\EP_CodeBaseLoad.rc EP_CodeBaseLoad.tlb
+EP_ProjectData \A\Src\Tom\ProjectData\ProjectData.rc EP_ProjectData.tlb
+EasySettingObjects \A\Src\CHA\GeomData\EasySettingObjects\EasySettingObjects.rc EasySettingObjects.tlb
+EP_DSGeometry \A\Src\CHA\GEOMDATA\EP_DSGeometry\EP_DSGeometry.rc EP_DSGeometry.tlb
+EP_LibraryCatalog \A\Src\Bro\EP_LibraryCatalog\EP_LibraryCatalog.rc EP_LibraryCatalog.tlb
+CSS_Catalog \A\Src\Bro\CSS_Catalog\CSS_Catalog.rc CSS_Catalog.tlb
+EP_EsaProfile \A\Src\Bro\EP_EsaProfile\EP_EsaProfile.rc EP_EsaProfile.tlb
+EP_CrossSection \A\Src\MIC\Css\CrossSection\CrossSection.rc EP_CrossSection.tlb
+EP_CssLib \A\Src\Bro\EP_CssLib\EP_CssLib.rc EP_CssLib.tlb
+EP_DS_GCS_Elements \A\Src\BRO\GCS\EP_DS_GCS_Elements\EP_DS_GCS_Elements.rc EP_DS_GCS_Elements.tlb
+Results64 \A\Src\Results64\Results64API\Results64.rc Results64.tlb
+EP_BlockCatalog \A\Src\BRO\BlockGroup\BlockCatalog\BlockCatalog.rc EP_BlockCatalog.tlb
+EP_BlockSection \A\Src\BRO\BlockGroup\BlockSection\BlockSection.rc EP_BlockSection.tlb
+EP_DSG_Elements \A\Src\CHA\GeomData\EP_DSG_Elements\EP_DSG_Elements.rc EP_DSG_Elements.tlb
+EP_DSG_Elements_VFCmds \A\Src\Lat\GeomData\EP_DSG_Elements_VFCmds\EP_DSG_Elements_VFCmds\EP_DSG_Elements_VFCmds.rc EP_DSG_Elements_VFCmds.tlb
+EP_DSG_Elements_VFCmdsM \A\Src\Lat\GeomData\EP_DSG_Elements_VFCmds\EP_DSG_Elements_VFCmdsM\EP_DSG_Elements_VFCmdsM.rc 
+EP_BasicDataAdd \A\Src\CHA\GeomData\BasicDataAdd\BasicDataAdd.rc EP_BasicDataAdd.tlb
+EP_DSG_Elements_ExtCmds \A\Src\Lat\GeomData\EP_DSG_Elements_ExtCmds\EP_DSG_Elements_ExtCmds\EP_DSG_Elements_ExtCmds.rc EP_DSG_Elements_ExtCmds.tlb
+EP_DSG_Elements_ExtCmdsM \A\Src\Lat\GeomData\EP_DSG_Elements_ExtCmds\EP_DSG_Elements_ExtCmdsM\EP_DSG_Elements_ExtCmdsM.rc 
+EP_PlaneSectionCmds \A\Src\Lat\EP_PlaneSectionCmds\EP_PlaneSectionCmds\EP_PlaneSectionCmds.rc EP_PlaneSectionCmds.tlb
+EP_PlaneSectionCmdsM \A\Src\Lat\EP_PlaneSectionCmds\EP_PlaneSectionCmdsM\EP_PlaneSectionCmdsM.rc 
+EP_MyAddDataLib \A\Src\Lat\EP_MyAddData\EP_MyAddDataLib\EP_MyAddDataLib.rc EP_MyAddDataLib.tlb
+EP_DataLibScia \A\Src\Mar\DataLibScia\DataLibScia.rc EP_DataLibScia.tlb
+EP_DataAddStructure \A\Src\CHA\GeomData\EP_DataAddStructure\EP_DataAddStructure.rc EP_DataAddStructure.tlb
+EP_DataSetScia \A\Src\Mar\DataSetScia\DataSetScia.rc EP_DataSetScia.tlb
+EP_StructureTools \A\Src\CHA\GeomData\EP_StructureTools\EP_StructureTools.rc EP_StructureTools.tlb
+DataLibSciaTra \A\Src\Tra\DataLibSciaTra\DataLibSciaTra.rc DataLibSciaTra.tlb
+EP_DataSetSciaTra \A\Src\Tra\DataSetSciaTra\DataSetSciaTra.rc EP_DataSetSciaTra.tlb
+EP_DataSetSciaTom \A\Src\Tom\DataSetSciaTom\DataSetSciaTom.rc EP_DataSetSciaTom.tlb
+DataLibSciaCads \A\Src\Cads\DataLibSciaCads\DataLibSciaCads.rc DataLibSciaCads.tlb
+EP_ObjectsSpecialType \A\Src\Cads\ObjectsSpecialType\EP_ObjectsSpecialType\EP_ObjectsSpecialType.rc EP_ObjectsSpecialType.tlb
+DataLibPipfasCads \A\Src\Cads\DataLibPipfasCads\DataLibPipfasCads.rc DataLibPipfasCads.tlb
+EP_DataAddSupport \A\Src\Mar\DataAddSupport\DataAddSupport.rc EP_DataAddSupport.tlb
+ConstrStagesLib \A\Src\Cih\ConstrStagesLib\ConstrStagesLib.rc ConstrStagesLib.tlb
+EsaAdaptor \A\Src\Fol\EsaAdaptor\EsaAdaptor.rc 
+ReinforcementManager \A\Src\Par\ReinforcementManager\ReinforcementManager.rc ReinforcementManager.tlb
+DataAddConcrete \A\Src\Par\DataAddConcrete\DataAddConcrete.rc DataAddConcrete.tlb
+EP_Results \A\Src\Tom\EP_Results\EP_Results.rc EP_Results.tlb
+EP_CodeBaseConcrete \A\Src\Fol\EP_CodeBaseConcrete\EP_CodeBaseConcrete.rc EP_CodeBaseConcrete.tlb
+HeatAddData \A\Src\Pos\HeatAddData\HeatAddData.rc HeatAddData.tlb
+EP_HeatTransfer \A\Src\Hro\HeatTransfer\EP_HeatTransfer\EP_HeatTransfer.rc EP_HeatTransfer.tlb
+HeatAddDataDlg \A\Src\Pos\HeatAddDataDlg\HeatAddDataDlg.rc HeatAddDataDlg.tlb
+EP_CodeBaseSteel \A\Src\Dra\Code\EP_CodeBaseSteel\EP_CodeBaseSteel.rc EP_CodeBaseSteel.tlb
+DataAddSteelConcreteBridge \A\Src\Cads\DataAddSteelConcreteBridge\DataAddSteelConcreteBridge.rc DataAddSteelConcreteBridge.tlb
+Prestressing \A\Src\Cih\Prestressing\Prestressing.rc Prestressing.tlb
+PretensioningSpecial \A\Src\Cih\PretensioningSpecial\PretensioningSpecial.rc PretensioningSpecial.tlb
+SoilinData \A\Src\Hery\soilin\SoilinData\SoilinData.rc SoilinData.tlb
+SteelOptimizer \A\Src\PLE\SteelOptimizer\SteelOptimizer.rc SteelOptimizer.tlb
+EP_ConcreteToolbox \A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_ConcreteToolbox.rc EP_ConcreteToolbox.tlb
+BasicResults \A\Src\Tom\BasicResults\BasicResults.rc BasicResults.tlb
+BasicCheckSteel \A\Src\Tom\BasicCheckSteel\BasicCheckSteel.rc BasicCheckSteel.tlb
+SteelConnection \A\Src\DRA\SteelConnection\SteelConnection.rc SteelConnection.tlb
+ExcelCheck \A\Src\PLE\ExcelCheck\ExcelCheck.rc ExcelCheck.tlb
+EP_Model \A\Src\SEI\MODEL\EP_MODEL\EP_Model.rc EP_Model.tlb
+EP_DataAddLoad \A\Src\Mar\DataAddLoad\DataAddLoad.rc EP_DataAddLoad.tlb
+EP_DataAddScia \A\Src\Mar\DataAddScia\DataAddScia.rc EP_DataAddScia.tlb
+DataAddMWELL \A\Src\Tra\ProjectMWELL\DataAddMWELL\DataAddMWELL.rc DataAddMWELL.tlb
+DataAddCads \A\Src\Cads\DataAddCads\DataAddCads.rc DataAddCads.tlb
+EP_CheckDataProvider \A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.rc EP_CheckDataProvider.tlb
+ConcreteChecksEsa \A\Src\Checks\ConcreteChecks\ConcreteChecksEsa\ConcreteChecksEsa.rc ConcreteChecksEsa.tlb
+EP_DataAddDamping \A\Src\Tra\DataAddDamping\DataAddDamping.rc EP_DataAddDamping.tlb
+EP_CalcManager \A\Src\Tom\CalcManager\CalcManager.rc EP_CalcManager.tlb
+EP_NationalAnnices \A\Src\Tra\Anices\NationalAnnices.rc EP_NationalAnnices.tlb
+EP_ProjectDataDialog \A\Src\Tom\ProjectDataDialog\ProjectDataDialog.rc EP_ProjectDataDialog.tlb
+TableInput \A\Src\MIK\TableInput\TableInput.rc TableInput.tlb
+TableResults \A\Src\MIK\TableResults\TableResults.rc TableResults.tlb
+EP_DsPrima \A\Src\Mic\Ds\DSPRIMA\DsPrima.rc EP_DsPrima.tlb
+EP_Export \A\Src\Mic\EP_Export\EP_Export.rc EP_Export.tlb
+EP_PicturesGalery_AddIns_ESA \A\Src\Lat\PicturesGalery\EP_PicturesGalery_AddIns_ESA\EP_PicturesGalery_AddIns_ESA.rc EP_PicturesGalery_AddIns_ESA.tlb
+EP_PlaneSectionStrategy \A\Src\Lat\EP_PlaneSectionStrategy\EP_PlaneSectionStrategy.rc EP_PlaneSectionStrategy.tlb
+ScaleAdministrator \A\Src\CHA\GeomData\ScaleAdministrator\ScaleAdministrator.rc ScaleAdministrator.tlb
+EP_ScaleAdministrator_Cmds \A\Src\CHA\Services\ScaleAdministrator\EP_ScaleAdministrator_Cmds\EP_ScaleAdministrator_Cmds\EP_ScaleAdministrator_Cmds.rc EP_ScaleAdministrator_Cmds.tlb
+EP_ScaleAdministrator_CmdsM \A\Src\CHA\Services\ScaleAdministrator\EP_ScaleAdministrator_Cmds\EP_ScaleAdministrator_CmdsM\EP_ScaleAdministrator_CmdsM.rc 
+EP_PictureNameGenerator \A\Src\PEN\EP_PictureNameGenerator\EP_PictureNameGenerator.rc EP_PictureNameGenerator.tlb
+ESAProcessorPlugins \A\Src\ESA_Processor\ESAProcessorPlugins\ESAProcessorPlugins.rc ESAProcessorPlugins.tlb
+Esa \A\Src\Tra\PRIMA\Prima.rc 
+EP_HServices \A\Src\Lat\CompoFrame\EP_HServices\EP_HServices.rc EP_HServices.tlb
+ResultsESACmds \A\Src\Tom\Services\ResultsESACmds\ResultsESACmds.rc ResultsESACmds.tlb
+SteelCheckESACmds \A\Src\Mar\Services\SteelCheck\SteelCheckESACmds\SteelCheckESACmds.rc SteelCheckESACmds.tlb
+OpenConnectionCmds \A\Src\VON\Services\OpenConnection\OpenConnectionCmds\OpenConnectionCmds\OpenConnectionCmds.rc OpenConnectionCmds.tlb
+OpenConnectionCmdsM \A\Src\VON\Services\OpenConnection\OpenConnectionCmds\OpenConnectionCmdsM\OpenConnectionCmdsM.rc 
+PWB_Export \A\Src\PLE\PWB_Export\PWB_Export.rc PWB_Export.tlb
+ResultsESACmdsM \A\Src\Tom\Services\ResultsESACmdsM\ResultsESACmdsM.rc 
+EP_CheckHinge \A\Src\Cads\Services\EP_CheckHinge\EP_CheckHinge.rc EP_CheckHinge.tlb
+EP_CheckHingeM \A\Src\Cads\Services\EP_CheckHingeM\EP_CheckHingeM.rc 
+SteelInput_Cmds \A\Src\Dra\Services\EP_SteelInput_Cmds\SteelInput_Cmds\SteelInput_Cmds.rc SteelInput_Cmds.tlb
+EP_SteelConnections_Cmds \A\Src\Dra\Services\EP_SteelConnections_Cmds\EP_SteelConnections_Cmds\EP_SteelConnections_Cmds.rc EP_SteelConnections_Cmds.tlb
+SteelCheckESACmdsM \A\Src\Mar\Services\SteelCheck\SteelCheckESACmdsM\SteelCheckESACmdsM.rc 
+SteelInput_CmdsM \A\Src\Dra\Services\EP_SteelInput_Cmds\SteelInput_CmdsM\SteelInput_CmdsM.rc 
+EP_DrawingTools_Cmds \A\Src\RMA\DrawingTools\EP_DrawingTools_Cmds\EP_DrawingTools_Cmds.rc EP_DrawingTools_Cmds.tlb
+EP_DrawingTools_CmdsM \A\Src\RMA\DrawingTools\EP_DrawingTools_CmdsM\EP_DrawingTools_CmdsM.rc 
+EP_DimensionLine2DService \A\Src\CHA\Services\DimensionLine2DService\EP_DimensionLine2DService\EP_DimensionLine2DService.rc EP_DimensionLine2DService.tlb
+EP_DimensionLine2DServiceM \A\Src\CHA\Services\DimensionLine2DService\EP_DimensionLine2DServiceM\EP_DimensionLine2DServiceM.rc 
+ReportViewer \A\Src\Lat\ReportViewer\ReportViewer.rc ReportViewer.tlb
+StructuralBlocks \A\Src\Lat\StructuralBlocks\StructuralBlocks.rc StructuralBlocks.tlb
+StructuralBlocksCatalogue \A\Src\Tra\StructuralBlocksCatalogue\StructuralBlocksCatalogue.rc StructuralBlocksCatalogue.tlb
+StructuralBlocksCmds \A\Src\Mar\Services\StructuralBlocks\StructuralBlocksCmds\StructuralBlocksCmds.rc StructuralBlocksCmds.tlb
+StructuralBlocksCmdsM \A\Src\Mar\Services\StructuralBlocks\StructuralBlocksCmdsM\StructuralBlocksCmdsM.rc 
+SB_HollowCoreBeam \A\Src\cads\SB_HollowCoreBeam\SB_HollowCoreBeam.rc SB_HollowCoreBeam.tlb
+EP_Commands_DSDB \A\Src\RMA\Services\EP_Commands_DSDB\EP_Commands_DSDB\EP_Commands_DSDB.rc EP_Commands_DSDB.tlb
+EP_DsAttributesCmds \A\Src\Lat\EP_DsAttributesCmds\EP_DsAttributesCmds\EP_DsAttributesCmds.rc EP_DsAttributesCmds.tlb
+EP_DsAttributesCmdsM \A\Src\Lat\EP_DsAttributesCmds\EP_DsAttributesCmdsM\EP_DsAttributesCmdsM.rc 
+EP_LineGridService \A\Src\CHA\Services\LineGridService\EP_LineGridService\EP_LineGridService.rc EP_LineGridService.tlb
+EP_LineGridServiceM \A\Src\CHA\Services\LineGridService\EP_LineGridServiceM\EP_LineGridServiceM.rc 
+EP_BlockLib \A\Src\BRO\BlockGroup\EP_BlockLib\EP_BlockLib.rc EP_BlockLib.tlb
+EP_BlockFrames \A\Src\BRO\BlockGroup\EP_BlockFrames\EP_BlockFrames.rc EP_BlockFrames.tlb
+EP_Beams_Cmds \A\Src\CHA\Services\Structure\EP_Beams_Cmds\EP_Beams_Cmds.rc EP_Beams_Cmds.tlb
+EP_Beams_CmdsM \A\Src\CHA\Services\Structure\EP_Beams_CmdsM\EP_Beams_CmdsM.rc 
+SupportESACmds \A\Src\Mar\Services\Support\SupportESACmds\SupportESACmds.rc SupportESACmds.tlb
+SupportESACmdsM \A\Src\Mar\Services\Support\SupportESACmdsM\SupportESACmdsM.rc 
+EP_StructureESA \A\Src\CHA\Services\Structure\EP_StructureESA\EP_StructureESA.rc EP_StructureESA.tlb
+EP_StructureESAM \A\Src\CHA\Services\Structure\EP_StructureESAM\EP_StructureESAM.rc 
+BIMToolBoxServices \A\Src\Bog\Services\BIMToolBoxServices\BIMToolBoxServices\BIMToolBoxServices.rc BIMToolBoxServices.tlb
+BIMToolBoxServicesM \A\Src\Bog\Services\BIMToolBoxServices\BIMToolBoxServicesM\BIMToolBoxServicesM.rc 
+AbsencesESACmds \A\Src\Mar\Services\Absences\AbsencesESACmds\AbsencesESACmds.rc AbsencesESACmds.tlb
+AbsencesESACmdsM \A\Src\Mar\Services\Absences\AbsencesESACmdsM\AbsencesESACmdsM.rc 
+LoadESACmds \A\Src\Mar\Services\Load\LoadESACmds\LoadESACmds.rc LoadESACmds.tlb
+LoadESACmdsM \A\Src\Mar\Services\Load\LoadESACmdsM\LoadESACmdsM.rc 
+MobileLoadCmds \A\Src\Mar\Services\MobileLoad\MobileLoadCmds\MobileLoadCmds.rc MobileLoadCmds.tlb
+MobileLoadCmdsM \A\Src\Mar\Services\MobileLoad\MobileLoadCmdsM\MobileLoadCmdsM.rc 
+EP_SteelConnections_CmdsM \A\Src\Dra\Services\EP_SteelConnections_Cmds\EP_SteelConnections_CmdsM\EP_SteelConnections_CmdsM.rc 
+CheckCorrugatedWebBeams \A\Src\Cads\CheckCorrugatedWebBeams\CheckCorrugatedWebBeams.rc CheckCorrugatedWebBeams.tlb
+EP_CorrugatedWebBeams \A\Src\Cads\Services\EP_CorrugatedWebBeams\EP_CorrugatedWebBeams.rc EP_CorrugatedWebBeams.tlb
+EP_CorrugatedWebBeamsM \A\Src\Cads\Services\EP_CorrugatedWebBeamsM\EP_CorrugatedWebBeamsM.rc 
+TubeCheckESACmds \A\Src\Tom\Services\TubeCheck\TubeCheckESACmds\TubeCheckESACmds.rc TubeCheckESACmds.tlb
+TubeCheckESACmdsM \A\Src\Tom\Services\TubeCheck\TubeCheckESACmdsM\TubeCheckESACmdsM.rc 
+ConstrStagesESACmds \A\Src\Cih\Services\ConstrStages\ConstrStagesESACmds\ConstrStagesESACmds.rc ConstrStagesESACmds.tlb
+ConstrStagesESACmdsM \A\Src\Cih\Services\ConstrStages\ConstrStagesESACmdsM\ConstrStagesESACmdsM.rc 
+MassESACmds \A\Src\Mar\Services\Mass\MassESACmds\MassESACmds.rc MassESACmds.tlb
+MassESACmdsM \A\Src\Mar\Services\Mass\MassESACmdsM\MassESACmdsM.rc 
+MeshESACmds \A\Src\Mar\Services\Mesh\MeshESACmds\MeshESACmds.rc MeshESACmds.tlb
+MeshESACmdsM \A\Src\Mar\Services\Mesh\MeshESACmdsM\MeshESACmdsM.rc 
+EP_MODELESACmds \A\Src\SEI\Service\EP_MODELESACmds\EP_MODELESACmds.rc EP_MODELESACmds.tlb
+EP_MODELESA \A\Src\SEI\Service\EP_MODELESA\EP_MODELESA.rc EP_MODELESA.tlb
+EP_MODELESACmdsM \A\Src\SEI\Service\EP_MODELESACmdsM\EP_MODELESACmdsM.rc EP_MODELESACmdsM.tlb
+EP_MODELESetupM \A\Src\SEI\Service\EP_MODELESetup\EP_MODELESetupM\EP_MODELESetupM.rc EP_MODELESetupM.tlb
+Damping \A\Src\Tra\Services\Damping\Damping\Damping.rc Damping.tlb
+DampingM \A\Src\Tra\Services\Damping\DampingM\DampingM.rc 
+CodeDependentDeflections \A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CodeDependentDeflections.rc CodeDependentDeflections.tlb
+CodeDependentDeflections_UT \A\Src\Checks\ConcreteChecks\CodeDependentDeflections_UT\CodeDependentDeflections_UT.rc CodeDependentDeflections_UT.tlb
+TestCodeDependentDeflection \A\Src\Checks\ConcreteChecks\UnitTestsConcrete\TestCodeDependentDeflection\TestCodeDependentDeflection.rc TestCodeDependentDeflection.tlb
+ConcreteESACmds \A\Src\Par\Services\ConcreteESACmds\ConcreteESACmds.rc ConcreteESACmds.tlb
+ConcreteESACmdsM \A\Src\Par\Services\ConcreteESACmdsM\ConcreteESACmdsM.rc 
+HeatTransferESACmd \A\Src\Pos\Services\HeatTransferESACmd\HeatTransferESACmd.rc HeatTransferESACmd.tlb
+HeatTransferESACmdM \A\Src\Pos\Services\HeatTransferESACmdM\HeatTransferESACmdM.rc 
+EP_ExternalCmds \A\Src\Pos\Services\EP_ExternalCmds\EP_ExternalCmds.rc EP_ExternalCmds.tlb
+EP_ExternalCmdsM \A\Src\Pos\Services\EP_ExternalCmdsM\EP_ExternalCmdsM.rc 
+EP_HServicesM \A\Src\Lat\CompoFrame\EP_HServicesM\EP_HServicesM.rc EP_HServicesM.tlb
+DataViewerCmds \A\Src\Tom\Services\DataViewer\DataViewerCmds\DataViewerCmds.rc DataViewerCmds.tlb
+DataViewerCmdsM \A\Src\Tom\Services\DataViewer\DataViewerCmdsM\DataViewerCmdsM.rc 
+EP_DocSMN \A\Src\Tra\DocSMN\DocSMN.rc EP_DocSMN.tlb
+EP_EsaModel \A\Src\Cads\EP_EsaModel\EP_EsaModel.rc EP_EsaModel.tlb
+EsaSwccLink \A\Src\Cads\EsaSwccLink\EsaSwccLink.rc EsaSwccLink.tlb
+EsaRcLink \A\Src\Cads\EsaRcLink\EsaRcLink.rc EsaRcLink.tlb
+EsaCCDLink \A\Src\Cads\EsaCCDLink\EsaCCDLink.rc EsaCCDLink.tlb
+CheckMixedBeam \A\Src\Cads\CheckMixedBeam\CheckMixedBeam.rc CheckMixedBeam.tlb
+EP_SteelConcreteBridgeService \A\Src\Cads\Services\EP_SteelConcreteBridgeService\EP_SteelConcreteBridgeService.rc EP_SteelConcreteBridgeService.tlb
+EP_SteelConcreteBridgeServiceM \A\Src\Cads\Services\EP_SteelConcreteBridgeServiceM\EP_SteelConcreteBridgeServiceM.rc 
+MFoundation \A\Src\cads\MFoundation\MFoundation.rc MFoundation.tlb
+SteelCheckBSCode \A\Src\Cads\SteelCheckBSCode\SteelCheckBSCode.rc SteelCheckBSCode.tlb
+CheckSteelBeam \A\Src\Cads\CheckSteelBeam\CheckSteelBeam.rc CheckSteelBeam.tlb
+CheckRCDesigner \A\Src\Cads\CheckRCDesigner\CheckRCDesigner.rc CheckRCDesigner.tlb
+EP_CadsCommonServices \A\Src\Cads\Services\EP_CadsCommonServices\EP_CadsCommonServices.rc EP_CadsCommonServices.tlb
+EP_CadsCommonServicesM \A\Src\Cads\Services\EP_CadsCommonServicesM\EP_CadsCommonServicesM.rc 
+CustomCheckCmds \A\Src\Tom\Services\CustomCheck\CustomCheckCmds\CustomCheckCmds.rc CustomCheckCmds.tlb
+AluminiumCheck \A\Src\Mar\AluminiumCheck\AluminiumCheck.rc AluminiumCheck.tlb
+AluminiumCheckESACmds \A\Src\mar\Services\AluminiumCheckESA\AluminiumCheckESACmds\AluminiumCheckESACmds.rc AluminiumCheckESACmds.tlb
+AluminiumCheckESACmdsM \A\Src\mar\Services\AluminiumCheckESA\AluminiumCheckESACmdsM\AluminiumCheckESACmdsM.rc 
+TimberCheckEsa \A\Src\Mar\TimberCheckEsa\TimberCheckEsa.rc TimberCheckEsa.tlb
+TimberCheckCmds \A\Src\Tom\Services\TimberCheck\TimberCheckCmds\TimberCheckCmds.rc TimberCheckCmds.tlb
+TimberCheckCmdsM \A\Src\Tom\Services\TimberCheck\TimberCheckCmdsM\TimberCheckCmdsM.rc 
+SteelCheckEsa \A\Src\Checks\SteelChecks\SteelCheckEsa\SteelCheckEsa.rc SteelCheckEsa.tlb
+EP_Commands_DSDBM \A\Src\RMA\Services\EP_Commands_DSDB\EP_Commands_DSDBM\EP_Commands_DSDBM.rc 
+PluginsCommand \A\Src\Bog\Services\PluginsCommand\PluginsCommand\PluginsCommand.rc PluginsCommand.tlb
+PluginsCommandM \A\Src\Bog\Services\PluginsCommand\PluginsCommandM\PluginsCommandM.rc 
+EP_ProjectESA \A\Src\Tra\ProjectESA\ProjectESA.rc EP_ProjectESA.tlb
+EP_XmlProject \A\Src\Mic\Ds\EP_XmlProject\EP_XmlProject.rc EP_XmlProject.tlb
+CheckDemo \A\Src\Tom\CheckDemo\CheckDemo.rc CheckDemo.tlb
+ResultsPipelineTangentialModel \A\Src\Bro\ResultsPipelineTangentialModel\ResultsPipelineTangentialModel.rc ResultsPipelineTangentialModel.tlb
+CheckScaffConnections \A\Src\Cads\CheckScaffConnections\CheckScaffConnections.rc CheckScaffConnections.tlb
+CustomBasicClass \A\Src\Tom\CustomBasicClass\CustomBasicClass.rc CustomBasicClass.tlb
+CustomCheckCmdsM \A\Src\Tom\Services\CustomCheck\CustomCheckCmdsM\CustomCheckCmdsM.rc 
+DesignFormsLink \A\Src\Checks\DesignForms\DesignFormsLink\DesignFormsLink.rc DesignFormsLink.tlb
+EP_GcsEditor \A\Src\BRO\GCS\EP_GcsEditor\EP_GcsEditor.rc EP_GcsEditor.tlb
+EP_CssLibGeneral \A\Src\BRO\GCS\EP_CssLibGeneral\EP_CssLibGeneral.rc EP_CssLibGeneral.tlb
+EP_ProSteel_io \A\Src\PET\EP_ProSteel_io\EP_ProSteel_io.rc EP_ProSteel_io.tlb
+EP_BlockBeams \A\Src\BRO\BlockGroup\EP_BlockBeams\EP_BlockBeams.rc EP_BlockBeams.tlb
+EP_GeardTower \A\Src\BRO\BlockGroup\EP_GeardTower\EP_GeardTower.rc EP_GeardTower.tlb
+EP_GepardCurve \A\Src\BRO\BlockGroup\EP_GepardCurve\EP_GepardCurve.rc EP_GepardCurve.tlb
+EP_GepardGrid \A\Src\BRO\BlockGroup\EP_GepardGrid\EP_GepardGrid.rc EP_GepardGrid.tlb
+EP_GepardTower2D \A\Src\BRO\BlockGroup\EP_GepardTower2D\EP_GepardTower2D.rc EP_GepardTower2D.tlb
+EP_GepardTruss \A\Src\BRO\BlockGroup\EP_GepardTruss\EP_GepardTruss.rc EP_GepardTruss.tlb
+EP_GepardTruss3 \A\Src\BRO\BlockGroup\EP_GepardTruss3\EP_GepardTruss3.rc EP_GepardTruss3.tlb
+EP_GepardTruss3C \A\Src\BRO\BlockGroup\EP_GepardTruss3C\EP_GepardTruss3C.rc EP_GepardTruss3C.tlb
+EP_GepardTrussC \A\Src\BRO\BlockGroup\EP_GepardTrussC\EP_GepardTrussC.rc EP_GepardTrussC.tlb
+CodeAISCASD \A\Src\Tom\Code\CodeAISCASD\CodeAISCASD.rc CodeAISCASD.tlb
+EP_MaterialAISCASD \A\Src\DRA\EP_MaterialAISCASD\EP_MaterialAISCASD.rc EP_MaterialAISCASD.tlb
+EP_CodeAISCASDConcrete \A\Src\Fol\ConcreteCode\EP_CodeAISCASDConcrete\EP_CodeAISCASDConcrete.rc EP_CodeAISCASDConcrete.tlb
+EP_CodeAISCASDSteel \A\Src\DRA\Code\EP_CodeAISCASDSteel\EP_CodeAISCASDSteel.rc EP_CodeAISCASDSteel.tlb
+EP_CodeAISCASDLoad \A\Src\Tom\EP_CodeAISCASDLoad\EP_CodeAISCASDLoad.rc EP_CodeAISCASDLoad.tlb
+CodeAISCLRFD \A\Src\Tom\Code\CodeAISCLRFD\CodeAISCLRFD.rc CodeAISCLRFD.tlb
+EP_MaterialAISCLRFD \A\Src\DRA\EP_MaterialAISCLRFD\EP_MaterialAISCLRFD.rc EP_MaterialAISCLRFD.tlb
+EP_CodeAISCLRFDConcrete \A\Src\Fol\ConcreteCode\EP_CodeAISCLRFDConcrete\EP_CodeAISCLRFDConcrete.rc EP_CodeAISCLRFDConcrete.tlb
+EP_CodeAISCLRFDSteel \A\Src\DRA\Code\EP_CodeAISCLRFDSteel\EP_CodeAISCLRFDSteel.rc EP_CodeAISCLRFDSteel.tlb
+EP_CodeAISCLRFDLoad \A\Src\Tom\EP_CodeAISCLRFDLoad\EP_CodeAISCLRFDLoad.rc EP_CodeAISCLRFDLoad.tlb
+CodeBS \A\Src\Tom\Code\CodeBS\CodeBS.rc CodeBS.tlb
+EP_MaterialBS \A\Src\DRA\EP_MaterialBS\EP_MaterialBS.rc EP_MaterialBS.tlb
+EP_CodeBSConcrete \A\Src\Fol\ConcreteCode\EP_CodeBSConcrete\EP_CodeBSConcrete.rc EP_CodeBSConcrete.tlb
+EP_CodeBSSteel \A\Src\DRA\Code\EP_CodeBSSteel\EP_CodeBSSteel.rc EP_CodeBSSteel.tlb
+EP_CodeBSLoad \A\Src\Tom\EP_CodeBSLoad\EP_CodeBSLoad.rc EP_CodeBSLoad.tlb
+CodeBS2000 \A\Src\Tom\Code\CodeBS2000\CodeBS2000.rc CodeBS2000.tlb
+EP_CodeBS2000Steel \A\Src\DRA\Code\EP_CodeBS2000Steel\EP_CodeBS2000Steel.rc EP_CodeBS2000Steel.tlb
+EP_CodeCSN \A\Src\DRA\Code\EP_CodeCSN\EP_CodeCSN.rc EP_CodeCSN.tlb
+EP_MaterialCSN \A\Src\DRA\EP_MaterialCSN\EP_MaterialCSN.rc EP_MaterialCSN.tlb
+EP_CodeCSNConcrete \A\Src\Par\EP_CodeCSNConcrete\EP_CodeCSNConcrete.rc EP_CodeCSNConcrete.tlb
+EP_CodeCSNSteel \A\Src\DRA\Code\EP_CodeCSNSteel\EP_CodeCSNSteel.rc EP_CodeCSNSteel.tlb
+EP_CodeCSNLoad \A\Src\Tom\EP_CodeCSNLoad\EP_CodeCSNLoad.rc EP_CodeCSNLoad.tlb
+EP_CodeDINLoad \A\Src\Tom\EP_CodeDINLoad\EP_CodeDINLoad.rc EP_CodeDINLoad.tlb
+EP_MaterialDIN \A\Src\DRA\EP_MaterialDIN\EP_MaterialDIN.rc EP_MaterialDIN.tlb
+CodeDIN \A\Src\Tom\Code\CodeDIN\CodeDIN.rc CodeDIN.tlb
+EP_CheckDIN \A\Src\CVL\DIN\EP_CheckDIN\EP_CheckDIN.rc EP_CheckDIN.tlb
+EP_CodeDINConcrete \A\Src\Fol\ConcreteCode\EP_CodeDINConcrete\EP_CodeDINConcrete.rc EP_CodeDINConcrete.tlb
+CodeDIN1045 \A\Src\Tom\Code\CodeDIN1045\CodeDIN1045.rc CodeDIN1045.tlb
+EP_MaterialDIN1045 \A\Src\DRA\EP_MaterialDIN1045\EP_MaterialDIN1045.rc EP_MaterialDIN1045.tlb
+EP_CodeDIN1045Load \A\Src\Tom\EP_CodeDIN1045Load\EP_CodeDIN1045Load.rc EP_CodeDIN1045Load.tlb
+EP_CodeDIN88Concrete \A\Src\Fol\ConcreteCode\EP_CodeDIN88Concrete\EP_CodeDIN88Concrete.rc EP_CodeDIN88Concrete.tlb
+EP_MaterialEC \A\Src\DRA\EP_MaterialEC\EP_MaterialEC.rc EP_MaterialEC.tlb
+EP_CodeECSteel \A\Src\DRA\Code\EP_CodeECSteel\EP_CodeECSteel.rc EP_CodeECSteel.tlb
+EP_CodeECConcrete \A\Src\Fol\ConcreteCode\EP_CodeECConcrete\EP_CodeECConcrete.rc EP_CodeECConcrete.tlb
+EP_CodeECLoad \A\Src\Tom\EP_CodeECLoad\EP_CodeECLoad.rc EP_CodeECLoad.tlb
+CodeEC \A\Src\Tom\Code\CodeEC\CodeEC.rc CodeEC.tlb
+CodeECNew \A\Src\mar\Code\CodeECNew\CodeECNew.rc CodeECNew.tlb
+CodeFrance \A\Src\Tom\Code\CodeFrance\CodeFrance.rc CodeFrance.tlb
+EP_MaterialFrance \A\Src\DRA\EP_MaterialFrance\EP_MaterialFrance.rc EP_MaterialFrance.tlb
+EP_CodeBAELConcrete \A\Src\Fol\ConcreteCode\EP_CodeBAELConcrete\EP_CodeBAELConcrete.rc EP_CodeBAELConcrete.tlb
+EP_CodeFranceSteel \A\Src\DRA\Code\EP_CodeFranceSteel\EP_CodeFranceSteel.rc EP_CodeFranceSteel.tlb
+EP_CodeFranceLoad \A\Src\Tom\EP_CodeFranceLoad\EP_CodeFranceLoad.rc EP_CodeFranceLoad.tlb
+CodeGBJ \A\Src\Tom\Code\CodeGBJ\CodeGBJ.rc CodeGBJ.tlb
+EP_CodeGBJLoad \A\Src\Tom\EP_CodeGBJLoad\EP_CodeGBJLoad.rc EP_CodeGBJLoad.tlb
+EP_MaterialGBJ \A\Src\DRA\EP_MaterialGBJ\EP_MaterialGBJ.rc EP_MaterialGBJ.tlb
+EP_CodeGBJSteel \A\Src\DRA\Code\EP_CodeGBJSteel\EP_CodeGBJSteel.rc EP_CodeGBJSteel.tlb
+CodeHungary \A\Src\Tom\Code\CodeHungary\CodeHungary.rc CodeHungary.tlb
+EP_MaterialHungary \A\Src\DRA\EP_MaterialHungary\EP_MaterialHungary.rc EP_MaterialHungary.tlb
+EP_CodeHungaryConcrete \A\Src\Fol\ConcreteCode\EP_CodeHungaryConcrete\EP_CodeHungaryConcrete.rc EP_CodeHungaryConcrete.tlb
+EP_CodeHungarySteel \A\Src\DRA\Code\EP_CodeHungarySteel\EP_CodeHungarySteel.rc EP_CodeHungarySteel.tlb
+EP_CodeHungaryLoad \A\Src\Tom\EP_CodeHungaryLoad\EP_CodeHungaryLoad.rc EP_CodeHungaryLoad.tlb
+CodeKorea \A\Src\Tom\Code\CodeKorea\CodeKorea.rc CodeKorea.tlb
+EP_MaterialKorea \A\Src\DRA\EP_MaterialKorea\EP_MaterialKorea.rc EP_MaterialKorea.tlb
+EP_CodeKoreaConcrete \A\Src\Fol\ConcreteCode\EP_CodeKoreaConcrete\EP_CodeKoreaConcrete.rc EP_CodeKoreaConcrete.tlb
+EP_CodeKoreaSteel \A\Src\DRA\Code\EP_CodeKoreaSteel\EP_CodeKoreaSteel.rc EP_CodeKoreaSteel.tlb
+EP_CodeKoreaLoad \A\Src\Tom\EP_CodeKoreaLoad\EP_CodeKoreaLoad.rc EP_CodeKoreaLoad.tlb
+EP_MaterialNEN \A\Src\DRA\EP_MaterialNEN\EP_MaterialNEN.rc EP_MaterialNEN.tlb
+EP_CheckNEN \A\Src\CVL\EP_CheckNEN\EP_CheckNEN.rc EP_CheckNEN.tlb
+EP_CodeNENConcrete \A\Src\Fol\ConcreteCode\EP_CodeNENConcrete\EP_CodeNENConcrete.rc EP_CodeNENConcrete.tlb
+EP_CodeNENLoad \A\Src\Tom\EP_CodeNENLoad\EP_CodeNENLoad.rc EP_CodeNENLoad.tlb
+CodeNEN \A\Src\Tom\Code\CodeNEN\CodeNEN.rc CodeNEN.tlb
+CodeONORM \A\Src\Tom\Code\CodeONORM\CodeONORM.rc CodeONORM.tlb
+EP_MaterialONORM \A\Src\DRA\EP_MaterialONORM\EP_MaterialONORM.rc EP_MaterialONORM.tlb
+EP_CodeONORMConcrete \A\Src\Fol\ConcreteCode\EP_CodeONORMConcrete\EP_CodeONORMConcrete.rc EP_CodeONORMConcrete.tlb
+EP_CodeONORMSteel \A\Src\DRA\Code\EP_CodeONORMSteel\EP_CodeONORMSteel.rc EP_CodeONORMSteel.tlb
+EP_CodeONORMLoad \A\Src\Tom\EP_CodeONORMLoad\EP_CodeONORMLoad.rc EP_CodeONORMLoad.tlb
+CodePoland \A\Src\Tom\Code\CodePoland\CodePoland.rc CodePoland.tlb
+EP_MaterialPoland \A\Src\DRA\EP_MaterialPoland\EP_MaterialPoland.rc EP_MaterialPoland.tlb
+EP_CodePolandConcrete \A\Src\Fol\ConcreteCode\EP_CodePolandConcrete\EP_CodePolandConcrete.rc EP_CodePolandConcrete.tlb
+EP_CodePolandSteel \A\Src\DRA\Code\EP_CodePolandSteel\EP_CodePolandSteel.rc EP_CodePolandSteel.tlb
+EP_CodePolandLoad \A\Src\Tom\EP_CodePolandLoad\EP_CodePolandLoad.rc EP_CodePolandLoad.tlb
+CodeSIA \A\Src\Tom\Code\CodeSIA\CodeSIA.rc CodeSIA.tlb
+EP_MaterialSIA \A\Src\DRA\EP_MaterialSIA\EP_MaterialSIA.rc EP_MaterialSIA.tlb
+EP_CodeSIAConcrete \A\Src\Fol\ConcreteCode\EP_CodeSIAConcrete\EP_CodeSIAConcrete.rc EP_CodeSIAConcrete.tlb
+EP_CodeSIASteel \A\Src\DRA\Code\EP_CodeSIASteel\EP_CodeSIASteel.rc EP_CodeSIASteel.tlb
+EP_CodeSIALoad \A\Src\Tom\EP_CodeSIALoad\EP_CodeSIALoad.rc EP_CodeSIALoad.tlb
+CodeSK \A\Src\Tom\Code\CodeSK\CodeSK.rc CodeSK.tlb
+EP_CodeSKLoad \A\Src\Tom\EP_CodeSKLoad\EP_CodeSKLoad.rc EP_CodeSKLoad.tlb
+EP_CodeSTKConcrete \A\Src\Fol\ConcreteCode\EP_CodeSTKConcrete\EP_CodeSTKConcrete.rc EP_CodeSTKConcrete.tlb
+CodeSweden \A\Src\Tom\Code\CodeSweden\CodeSweden.rc CodeSweden.tlb
+EP_MaterialSweden \A\Src\DRA\EP_MaterialSweden\EP_MaterialSweden.rc EP_MaterialSweden.tlb
+EP_CodeSwedenConcrete \A\Src\Fol\ConcreteCode\EP_CodeSwedenConcrete\EP_CodeSwedenConcrete.rc EP_CodeSwedenConcrete.tlb
+EP_CodeSwedenSteel \A\Src\DRA\Code\EP_CodeSwedenSteel\EP_CodeSwedenSteel.rc EP_CodeSwedenSteel.tlb
+EP_CodeSwedenLoad \A\Src\Tom\EP_CodeSwedenLoad\EP_CodeSwedenLoad.rc EP_CodeSwedenLoad.tlb
+CodeIndia \A\Src\mar\code\CodeIndia\CodeIndia.rc CodeIndia.tlb
+SpanishCode \A\Src\Hery\code\SpanishCode\SpanishCode.rc SpanishCode.tlb
+CodeIBC \A\Src\mar\Code\CodeIBC\CodeIBC.rc CodeIBC.tlb
+CodeBrazil \A\Src\Mar\Code\CodeBrazil\CodeBrazil.rc CodeBrazil.tlb
+LTACommand \A\Src\SEI\LTA\LTACommand\LTACommand.rc LTACommand.tlb
+EP_ProjectLTA \A\Src\Tra\ProjectLTA\ProjectLTA.rc ProjectLTA.tlb
+EP_ProjectModeller \A\Src\Tra\ProjectModeller\ProjectModeller.rc EP_ProjectModeller.tlb
+ExportCEA \A\Src\Dra\ExportCEA\ExportCEA.rc ExportCEA.tlb
+EP_RoundTrip \A\Src\Lat\EP_RoundTrip\EP_RoundTrip.rc EP_RoundTrip.tlb
+EP_IO_IFC \A\Src\PET\EP_IO_IFC\EP_IO_IFC.rc EP_IO_IFC.tlb
+EP_PWB_Elements \A\Src\CHA\GeomData\EP_PWB_Elements\EP_PWB_Elements.rc EP_PWB_Elements.tlb
+EP_PWBLibrary_Test \A\Src\CHA\GeomData\EP_PWBLibrary_Test\EP_PWBLibrary_Test.rc EP_PWBLibrary_Test.tlb
+EP_PipFas \A\Src\Mic\EP_PipFas\EP_PipFas.rc EP_PipFas.tlb
+WLELink \A\Src\HEK\WLELink\WLELink.rc WLELink.tlb
+EP_DataServerBrowser \A\Src\PEN\EP_DataServerBrowser\EP_DataServerBrowser.rc EP_DataServerBrowser.tlb
+LockMan \A\Src\RMA\ProtectionUtil\LockMan\LockMan.rc 
+ActivationUtility \A\Src\RMA\ProtectionUtil\ActivationUtility\ActivationUtility.rc 
+AutodesignStarter \A\Src\Tom\Services\AutodesignStarter\AutodesignStarter\AutodesignStarter.rc AutodesignStarter.tlb
+AutodesignStarterM \A\Src\Tom\Services\AutodesignStarter\AutodesignStarterM\AutodesignStarterM.rc 
+EP_DirectDWG \A\Src\LOK\GRAPHIC\EP_DirectDWG\EP_DirectDWG.rc EP_DirectDWG.tlb
+EP_VRML \A\Src\LOK\GRAPHIC\EP_VRML\EP_VRML.rc EP_VRML.tlb
+ODA \A\Src\Tra\ODA\ODA.rc 
+EP_ProjectCAD \A\Src\Tra\ProjectCAD\ProjectCAD.rc EP_ProjectCAD.tlb
+EP_CADView \A\Src\Tra\CADView\CADView.rc EP_CADView.tlb
+EP_DOCView \A\Src\Tra\DocView\DOCView.rc EP_DOCView.tlb
+EP_SrvView \A\Src\Tra\SrvView\SrvView.rc EP_SrvView.tlb
+pContinousBeam \A\Src\Tra\pContinousBeam\pContinousBeam.rc pContinousBeam.tlb
+pContinousBeamMan \A\Src\Tra\pContinousBeamMan\pContinousBeamMan.rc pContinousBeamMan.tlb
+pMixedBeam \A\Src\Tra\pMixedBeam\pMixedBeam.rc pMixedBeam.tlb
+pODAMan \A\Src\Tra\pODAMan\pODAMan.rc pODAMan.tlb
+RemoteEsa \A\Src\PLE\RemoteEsa\RemoteEsa.rc 
+pBatchOptimizer \A\Src\Tra\pBatchOptimizer\pBatchOptimizer.rc pBatchOptimizer.tlb
+pTemplateBlocks \A\Src\Tra\pTemplateBlocks\pTemplateBlocks.rc pTemplateBlocks.tlb
+OdaPoirotTest \A\Src\Sam\OdaPoirotTest\OdaPoirotTest\OdaPoirotTest.rc OdaPoirotTest.tlb
+OdaPoirotTestM \A\Src\Sam\OdaPoirotTest\OdaPoirotTestM\OdaPoirotTestM.rc 
+EasyDsObjects \A\Src\Nam\EasyDsObjects\EasyDsObjects.rc EasyDsObjects.tlb
+Example_ESACOM_Multithread \A\Src\Lat\ESAAtl80\Examples\Example_ESACOM_Multithread\Example_ESACOM_Multithread.rc Example_ESACOM_Multithread.tlb
+EP_ComponentCmdsGUI \A\Src\Lat\ComponentCmds\EP_ComponentCmdsGUI\EP_ComponentCmdsGUI.rc EP_ComponentCmdsGUI.tlb

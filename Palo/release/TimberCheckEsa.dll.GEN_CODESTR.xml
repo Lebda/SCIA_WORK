@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="19"><StringCode SourceType="DLLRC:"><StringId>@{timbercheckesa.2eids_timber_uls_check}</StringId>
+		<SourceDll>TimberCheckEsa.2edll</SourceDll>
+		<ResourceId>35007</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckesa.2eids_timber_check}</StringId>
+		<SourceDll>TimberCheckEsa.2edll</SourceDll>
+		<ResourceId>104</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckesa.2eids_slscheck_desc9}</StringId>
+		<SourceDll>TimberCheckEsa.2edll</SourceDll>
+		<ResourceId>120</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckesa.2eids_slscheck_desc8}</StringId>
+		<SourceDll>TimberCheckEsa.2edll</SourceDll>
+		<ResourceId>119</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckesa.2eids_slscheck_desc7}</StringId>
+		<SourceDll>TimberCheckEsa.2edll</SourceDll>
+		<ResourceId>118</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckesa.2eids_slscheck_desc6}</StringId>
+		<SourceDll>TimberCheckEsa.2edll</SourceDll>
+		<ResourceId>117</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckesa.2eids_slscheck_desc5}</StringId>
+		<SourceDll>TimberCheckEsa.2edll</SourceDll>
+		<ResourceId>116</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckesa.2eids_slscheck_desc4}</StringId>
+		<SourceDll>TimberCheckEsa.2edll</SourceDll>
+		<ResourceId>115</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckesa.2eids_slscheck_desc3}</StringId>
+		<SourceDll>TimberCheckEsa.2edll</SourceDll>
+		<ResourceId>114</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckesa.2eids_slscheck_desc2}</StringId>
+		<SourceDll>TimberCheckEsa.2edll</SourceDll>
+		<ResourceId>113</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckesa.2eids_slscheck_desc1}</StringId>
+		<SourceDll>TimberCheckEsa.2edll</SourceDll>
+		<ResourceId>112</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckesa.2eids_slscheck_desc0}</StringId>
+		<SourceDll>TimberCheckEsa.2edll</SourceDll>
+		<ResourceId>111</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckesa.2eids_stability_check}</StringId>
+		<SourceDll>TimberCheckEsa.2edll</SourceDll>
+		<ResourceId>35005</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckesa.2eids_slscheck_desc13}</StringId>
+		<SourceDll>TimberCheckEsa.2edll</SourceDll>
+		<ResourceId>124</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckesa.2eids_slscheck_desc11}</StringId>
+		<SourceDll>TimberCheckEsa.2edll</SourceDll>
+		<ResourceId>122</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckesa.2eids_slscheck_desc10}</StringId>
+		<SourceDll>TimberCheckEsa.2edll</SourceDll>
+		<ResourceId>121</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckesa.2eids_slscheck_desc12}</StringId>
+		<SourceDll>TimberCheckEsa.2edll</SourceDll>
+		<ResourceId>123</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckesa.2eids_unity_check}</StringId>
+		<SourceDll>TimberCheckEsa.2edll</SourceDll>
+		<ResourceId>35003</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckesa.2eids_section_check}</StringId>
+		<SourceDll>TimberCheckEsa.2edll</SourceDll>
+		<ResourceId>35004</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

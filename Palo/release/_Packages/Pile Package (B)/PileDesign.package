@@ -1,0 +1,21 @@
+<Root>
+  <Names TranslateID="PackageName">
+    <ENU>Pile Design</ENU>
+  </Names>
+  <Tree ImageKey="Dir_Piles">
+    <CLC FullPath="Pile Design\B01 Geostatic stress advanced.CLC" ImageKey="Dir_Piles" Active="1" />
+    <CLC FullPath="Pile Design\B02 Bearing capacity of bored piles ULS.CLC" ImageKey="Dir_Piles" Active="1" />
+    <CLC FullPath="Pile Design\B03 Bearing capacity of bored piles SLS_Point bearing pile.CLC" ImageKey="Dir_Piles" Active="1" />
+    <CLC FullPath="Pile Design\B04 Bearing capacity of bored piles SLS_Socketed.CLC" ImageKey="Dir_Piles" Active="1" />
+    <CLC FullPath="Pile Design\B06 Vertical bearing capacity by tables.CLC" ImageKey="Dir_Piles" Active="1" />
+    <CLC FullPath="Pile Design\B07 Bearing capacity of group of piles_Point bearing pile.CLC" ImageKey="Dir_Piles" Active="1" />
+    <CLC FullPath="Pile Design\B08 Bearing capacity of group of piles_Socketed.CLC" ImageKey="Dir_Piles" Active="1" />
+    <CLC FullPath="Pile Design\B11 Design moment of horizontally loaded piles_rigid.CLC" ImageKey="Dir_Piles" Active="1" />
+    <CLC FullPath="Pile Design\B13 Horizontally loaded group of piles.CLC" ImageKey="Dir_Piles" Active="1" />
+    <CLC FullPath="Pile Design\B14 Bearing capacity of displacement pile.CLC" ImageKey="Dir_Piles" Active="1" />
+    <CLC FullPath="Pile Design\B15 External bearing capacity of single micropile.CLC" ImageKey="Dir_Piles" Active="1" />
+    <CLC FullPath="Pile Design\B17 Internal bearing capacity of single micropile.CLC" ImageKey="Dir_Piles" Active="1" />
+    <CLC FullPath="Pile Design\B18 Bearing capacity of bar anchors.CLC" ImageKey="Dir_Piles" Active="1" />
+    <CLC FullPath="Pile Design\B19 Bearing capacity of strand anchors.CLC" ImageKey="Dir_Piles" Active="1" />
+  </Tree>
+</Root>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="7"><StringCode SourceType="DLLRC:"><StringId>@{tubecheckesacmdsm.2eids_string105}</StringId>
+		<SourceDll>TubeCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>105</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{tubecheckesacmdsm.2eids_string104}</StringId>
+		<SourceDll>TubeCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>104</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{tubecheckesacmdsm.2eitm_101}</StringId>
+		<SourceDll>TubeCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>101</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{tubecheckesacmdsm.2eids_string103}</StringId>
+		<SourceDll>TubeCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>103</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{tubecheckesacmdsm.2eids_string102}</StringId>
+		<SourceDll>TubeCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>102</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{tubecheckesacmdsm.2eids_string101}</StringId>
+		<SourceDll>TubeCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>101</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{tubecheckesacmdsm.2eids_ep_pipelinetangentialmodel_name}</StringId>
+		<SourceDll>TubeCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>106</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

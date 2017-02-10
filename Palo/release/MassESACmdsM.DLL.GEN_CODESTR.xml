@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="7"><StringCode SourceType="DLLRC:"><StringId>@{massesacmdsm.2eids_mass_point_surface}</StringId>
+		<SourceDll>MassESACmdsM.2eDLL</SourceDll>
+		<ResourceId>110</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{massesacmdsm.2eids_mass_surface}</StringId>
+		<SourceDll>MassESACmdsM.2eDLL</SourceDll>
+		<ResourceId>108</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{massesacmdsm.2eids_mass_line}</StringId>
+		<SourceDll>MassESACmdsM.2eDLL</SourceDll>
+		<ResourceId>106</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{massesacmdsm.2eids_mass_nodal}</StringId>
+		<SourceDll>MassESACmdsM.2eDLL</SourceDll>
+		<ResourceId>104</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{massesacmdsm.2eids_mass_line_surface}</StringId>
+		<SourceDll>MassESACmdsM.2eDLL</SourceDll>
+		<ResourceId>109</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{massesacmdsm.2eids_mass_beam}</StringId>
+		<SourceDll>MassESACmdsM.2eDLL</SourceDll>
+		<ResourceId>105</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{massesacmdsm.2eids_mass}</StringId>
+		<SourceDll>MassESACmdsM.2eDLL</SourceDll>
+		<ResourceId>107</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

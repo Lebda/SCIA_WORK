@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="10"><StringCode SourceType="DLLRC:"><StringId>@{timbercheckcmdsm.2eitm5016}</StringId>
+		<SourceDll>TimberCheckCmdsM.2eDLL</SourceDll>
+		<ResourceId>5016</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckcmdsm.2eids_timber2}</StringId>
+		<SourceDll>TimberCheckCmdsM.2eDLL</SourceDll>
+		<ResourceId>9001</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckcmdsm.2eids_timber3}</StringId>
+		<SourceDll>TimberCheckCmdsM.2eDLL</SourceDll>
+		<ResourceId>9002</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckcmdsm.2eids_timber5}</StringId>
+		<SourceDll>TimberCheckCmdsM.2eDLL</SourceDll>
+		<ResourceId>105</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckcmdsm.2eids_timber4}</StringId>
+		<SourceDll>TimberCheckCmdsM.2eDLL</SourceDll>
+		<ResourceId>104</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckcmdsm.2eids_timber}</StringId>
+		<SourceDll>TimberCheckCmdsM.2eDLL</SourceDll>
+		<ResourceId>9000</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckcmdsm.2eids_ulscheck}</StringId>
+		<SourceDll>TimberCheckCmdsM.2eDLL</SourceDll>
+		<ResourceId>103</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckcmdsm.2eids_slscheck}</StringId>
+		<SourceDll>TimberCheckCmdsM.2eDLL</SourceDll>
+		<ResourceId>101</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckcmdsm.2eids_compressionperpdata}</StringId>
+		<SourceDll>TimberCheckCmdsM.2eDLL</SourceDll>
+		<ResourceId>107</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckcmdsm.2eids_memberbuckling}</StringId>
+		<SourceDll>TimberCheckCmdsM.2eDLL</SourceDll>
+		<ResourceId>106</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

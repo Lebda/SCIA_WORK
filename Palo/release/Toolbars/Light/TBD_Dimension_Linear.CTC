@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xss xmlns:xss="http://www.scia.cz/xss">
+   <toolbar Version="1" Name="Linear" Flags="0" IsPart="0" PartsSize="0" Size="4">
+      <Button Version="1" Mode="1" Tooltip="Dimension Horizontal-X .
+                                                                                                                                                                            Dimension Horizontal-X" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{7DAA03B9-DC3B-46A8-A670-9DED02BA54FE}" ButtonID="{7DAA03B9-DC3B-46A8-A670-9DED02BA54FE}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Dimension Horizontal-Y .
+                                                                                                                                                                            Dimension Horizontal-Y" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{10548A7E-8CBF-4034-A184-E894FA2044E0}" ButtonID="{10548A7E-8CBF-4034-A184-E894FA2044E0}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Dimension Vertical.
+                                                                                                                                                                            Dimension Vertical" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{641151BB-3620-4933-A95D-77A413EC7618}" ButtonID="{641151BB-3620-4933-A95D-77A413EC7618}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/>
+      <Button Version="1" Mode="1" Tooltip="Dimension Aligned.
+                                                                                                                                                                            Dimension Aligned" ButtonAsMenu="0" ButtonStyle="0" ControlType="0" ControlBase="10" ControlFlag="0" ControlMinValue="0" ControlMaxValue="0" ControlWidth="45" RegistrarID="{E43F79B1-7B2E-4154-9899-2F9E12B7E877}" ButtonID="{E43F79B1-7B2E-4154-9899-2F9E12B7E877}" ToolBarAsMenuID="{85191AAF-EDC3-4BDE-B4E5-83BA4458D495}"/></toolbar></xss>
