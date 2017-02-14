@@ -24938,6 +24938,7 @@ r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_ConcreteToolbox.def
 r:\A\inc\Macro\MacroHelp.h
 r:\A\inc\Xml\XmlHelp.h
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\CseFactoryXml.h
+r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\DataEFk.h
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\DiagramChangeData.h
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EnumToString.h
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\StdAfx.h
@@ -25304,8 +25305,8 @@ r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\ReinfDesignerUniaxialGenAxis.h
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_CssGeometric.h
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\NotDesignCorrector.h
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\CseFactoryXml.cpp
+r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\DataEFk2.cpp
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\DiagramChangeData.cpp
-r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EnumToString.cpp
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\StdAfx.cpp
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_ResultsStirrupAroundSection.cpp
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_ResultsStirrupAroundSectionOveral.cpp
@@ -28615,11 +28616,13 @@ r:\A\Src\Cads\DataAddCads\EP_MixBeamData.rgs
 r:\A\Src\Cads\DataAddCads\EP_WebCripplingData.rgs
 r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.14.00.vcxproj
 r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.14.00.vcxproj.filters
+r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.14.00.sln
 r:\A\Src\Checks\EP_CheckDataProvider\__AutoGenerTLH.cpp
 r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.idl
 r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.rc
 r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.def
 r:\A\Src\Checks\EP_CheckDataProvider\CombiFromCombiHash.h
+r:\A\Src\Checks\EP_CheckDataProvider\DesignReinforcementParser.h
 r:\A\Src\Checks\EP_CheckDataProvider\StdAfx.h
 r:\A\inc\EP_ConCheckDefinition.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteChecksEsa\EP_SmartQuantity.h
@@ -28738,6 +28741,7 @@ r:\A\Src\Checks\EP_CheckDataProvider\SetupValues.h
 r:\A\Src\Checks\EP_CheckDataProvider\SMinMaxForces2D.h
 r:\A\Src\Checks\EP_CheckDataProvider\WholeCheckCommonData.h
 r:\A\Src\Checks\EP_CheckDataProvider\CombiFromCombiHash.cpp
+r:\A\Src\Checks\EP_CheckDataProvider\DesignReinforcementParser.cpp
 r:\A\Src\Checks\EP_CheckDataProvider\StdAfx.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteChecksEsa\EP_SmartQuantity.cpp
 r:\A\Src\Checks\EP_CheckDataProvider\CombinatorHelper.cpp
@@ -34622,12 +34626,14 @@ r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CodeDependentDeflections
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\__AutoGenerTLH.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CodeDependentDeflections.idl
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CodeDependentDeflections.rc
+r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CodeDependentDeflections.tsme
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CodeDependentDeflections.def
 r:\A\inc\Assert\AssertHelp.h
 r:\A\inc\Ioc\IocContainer.h
 r:\A\inc\Serialization\SerializationHelp.h
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\AverageStiffnessCalculator.h
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\BetaHelpCalculator.h
+r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CddDebugXml.h
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CDDewnCodes.h
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CddEwnHelper.h
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\ConcreteStrengthInfluenceCalculator.h
@@ -34638,6 +34644,9 @@ r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\Deflection4RAPI.h
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\DeflectionUnityCheckCalc.h
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CDDewnStringCodes.h
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\EWNTools.h
+r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\DesignReinforcementLoader2D.h
+r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\RealReinfLoader.h
+r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\ReinfLoaderInterface.h
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\Humidity4NotionalCreepCoeffCalculatorPhiRH.h
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\LimitDeflectionCalc.h
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\LimitUnityDeflection4RAPI.h
@@ -34648,7 +34657,9 @@ r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CreepCoeffInOut.h
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CreepCoefficient.h
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CreepCombinationsCreator.h
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CreepDevelopmentCoeffBetaCCalculator.h
-r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\SteinerCalculator.h
+r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\RectForceRecalculator.h
+r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\Stiff1D2DWriterMock.h
+r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\SelectionTools.h
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\Value4FormulaPreparator.h
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\DataForOneMember.h
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CDDcalculationEngine.h
@@ -34724,8 +34735,11 @@ r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\Resource.h
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\StiffnessCalculator.h
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\UncrackedStressCalculator.h
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\XmlHandler.h
+r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\Z4CalcSelector.h
+r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\AddData4FactorySet.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\AverageStiffnessCalculator.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\BetaHelpCalculator.cpp
+r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CddDebugXml.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CddEwnHelper.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\ConcreteStrengthInfluenceCalculator.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CDDCombination.cpp
@@ -34743,6 +34757,7 @@ r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CddCseHelper.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\DeflectionCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\Deflection4RAPI.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\DeflectionUnityCheckCalc.cpp
+r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\DesignReinforcementLoader2D.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\Humidity4NotionalCreepCoeffCalculatorPhiRH.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\LimitDeflectionCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\LimitUnityDeflection4RAPI.cpp
@@ -34755,7 +34770,10 @@ r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CreepCombinationsCreator
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CreepDevelopmentCoeffBetaCCalculator.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CDDewnStringCodes.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\EWNTools.cpp
-r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\SteinerCalculator.cpp
+r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\RectForceRecalculator.cpp
+r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\RealReinfLoader.cpp
+r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\Stiff1D2DWriterMock.cpp
+r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\SelectionTools.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\Value4FormulaPreparator.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\DataForOneMember.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\DataServerStorageHandler.cpp
@@ -34766,7 +34784,6 @@ r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\DeflectionBase.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\DepthOfCompressionZoneCalculator.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\DesignReinforcementLoader.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\DistributionCoefficientCalculator.cpp
-r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\EnumToString.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\EP_CddDsStorage.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\ImmediateCombinationsCreator.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\InpuCdd2D.cpp
@@ -34817,6 +34834,8 @@ r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CodeDependentDeflections
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\StiffnessCalculator.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\UncrackedStressCalculator.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\XmlHandler.cpp
+r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\Z4CalcSelector.cpp
+r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\AddData4FactorySet.h
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CddCalculation.cd
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CodeDependendDeflection_ResultShell.rgs
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\EP_CddDsStorage.rgs
@@ -34860,7 +34879,7 @@ r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections_UT\TestDeflectionUnityCh
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections_UT\TestLimitDeflectionCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections_UT\TestRectInOut2DXml.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections_UT\TestRectInOutXml.cpp
-r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections_UT\TestSteinerCalculator.cpp
+r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections_UT\TestRectForceRecalculator.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections_UT\TestStiffnessElement.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections_UT\TestSolverLinkStiffnesCalculator2D.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections_UT\TestDataServerStorageHandler.cpp
@@ -34897,6 +34916,7 @@ r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections_UT\TestStiffnessCalculat
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections_UT\TestStiffnessWriter.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections_UT\TestStiffnessWriterStorage.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections_UT\TestStructurePreparator.cpp
+r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections_UT\TestZ4CalcSelector.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections_UT\ToolboxHelp.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections_UT\TestToolBoxXml.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections_UT\TestTransCharCalculator.cpp

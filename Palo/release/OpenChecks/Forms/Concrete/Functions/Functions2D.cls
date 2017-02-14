@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="db3dcfeb-e317-4e84-99ac-e432df546f3f">
   <CodeEditor>
-    <SourceCode Collapsed="4|16|30|42|97|138|184|202|211|221|230|248|267|274|285|299|328|335|351|370|388|413|425|452|469|484|497|531|561|574|588|602|613|623|648|653|696|708|716|733|789|798|833|857" BreakPoints="">
+    <SourceCode Collapsed="4|16|30|42|97|186|204|213|223|232|250|269|276|287|301|330|337|353|372|390|415|427|454|471|486|499|533|563|576|590|604|615|625|650|655|698|710|718|735|791|800|835|859" BreakPoints="">
 
 //@Returns object with substitute section shape of 2D member
 //@b,h - width and height of rectangular shape
@@ -158,7 +158,9 @@ public object CreateDefaultDesignReinfData(object DesignDefaults, double h) {
         "Type", DesignDefaults.ReinfLong.Layers[i].Type, 
         "MainVert", DesignDefaults.ReinfLong.Layers[i].MainVert, 
         "α", DesignDefaults.ReinfLong.Layers[i].α, 
-        "ds", ds, 
+        "ds", ds, //Diameter of required reinforcement
+        "dsb", ds, //Diameter of basic reinforcement
+        "dsa", ds, //Diameter of additional reinforcement
         "c", c, 
         "d", d, 
         "As_stat", 0, 
@@ -868,8 +870,12 @@ public string ReinfToString(double h, object DesignReinf) {
         } ELSE { 
             ReinfString →KRS027_000022= ReinfString &amp; "z:" &amp; (h/2-Reinf.c-0.5*Reinf.ds).ToString("0.000") &amp; ";"; //offset z
         } 
-        ReinfString →KRS027_000017= ReinfString &amp; "As:" &amp; Reinf.As_req.ToString("0.000000") &amp; ";"; //area of reinforcement
-        ReinfString →KRS027_000018= ReinfString &amp; "D:" &amp; Reinf.ds.ToString("0.000") &amp; ";"; //diameter of reinforcement
+        ReinfString →KRS027_000017= ReinfString &amp; "Asr:" &amp; Reinf.As_req.ToString("0.000000") &amp; ";"; //area of required reinforcement
+        ReinfString →KRS027_000025= ReinfString &amp; "Asb:" &amp; Reinf.As_bas.ToString("0.000000") &amp; ";"; //area of basic reinforcement
+        ReinfString →KRS027_000026= ReinfString &amp; "Asa:" &amp; Reinf.As_add.ToString("0.000000") &amp; ";"; //area of additional reinforcement
+        ReinfString →KRS027_000018= ReinfString &amp; "Dr:" &amp; Reinf.ds.ToString("0.000") &amp; ";"; //diameter of required reinforcement
+        ReinfString →KRS027_000027= ReinfString &amp; "Db:" &amp; Reinf.dsb.ToString("0.000") &amp; ";"; //diameter of basic reinforcement
+        ReinfString →KRS027_000028= ReinfString &amp; "Da:" &amp; Reinf.dsa.ToString("0.000") &amp; ";"; //diameter of additional reinforcement
         ReinfString →KRS027_000019= ReinfString &amp; "a:" &amp; (Reinf.α*Math.PI/180).ToString("0.00000") &amp; ";"; //angle in rad
         ReinfString →KRS027_000020= ReinfString &amp; "O:" &amp; 0 &amp; ";"; //offset y = 0 now
         ReinfString →KRS027_000021= ReinfString &amp; "s:" &amp; 0 &amp; ";"; //change 0 -&gt; Reinf.dist.ToString("0.000") when .dist will be in DesignReinf
@@ -3648,6 +3654,38 @@ public string ReinfToString(double h, object DesignReinf) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS027_000024">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS027_000025">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS027_000026">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS027_000027">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS027_000028">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

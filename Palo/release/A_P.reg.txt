@@ -586,4 +586,10 @@ SEN_NET_Wraper.dll
 Macrobot.dll
 Example_ESACOM_Multithread.dll
 EP_ComponentCmdsGUI.dll
+DocCtrl.dll
+EP_ConSectionCheck.dll
 FLBTiiCls.dll
+iBolt.dll
+idaATL.dll
+iPun.dll
+Nessie.dll

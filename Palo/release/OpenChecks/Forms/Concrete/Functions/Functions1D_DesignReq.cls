@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="237c0f37-8e1a-41a6-aadf-a3b8bf862bcf">
   <CodeEditor>
-    <SourceCode Collapsed="1|57|62|90|95|125|130|155|210|334|361|396|457|515|550|588|601|628|649|700|747|756|778|792|835|868|887|932|1029|1050|1078|1140|1273|1296|1310|1321|1337|1348|1364|1372|1383|1425|1476|1500|1528|1574|1602|1631|1710|1792|1812|1836|1851|1866|1879|1896|1919|1936|1974|1975|2042|2072|2087|2097|2114|2177|2208|2229|2253|2271|2290|2331|2347|2358|2375|2396|2417|2477|2512|2536|2564|2585|2610|2628|2647|2687|2688|2704|2717|2736|2756|2778|2836|2886|2961|2986|3066|3079|3102|3120|3133|3148|3163|3177|3188|3281|3375|3384|3395|3411|3467|3473|3524" BreakPoints="">→INI400_013605BLOCK("Function for preparation ReqReinfMat and ReqReinfDiagram") { 
+    <SourceCode Collapsed="1|57|62|90|95|125|130|155|210|334|361|396|457|515|550|588|601|628|649|700|747|756|778|792|835|868|887|932|1029|1050|1078|1140|1273|1296|1310|1321|1337|1348|1364|1372|1383|1425|1464|1515|1539|1567|1613|1641|1670|1749|1781|1831|1851|1875|1890|1905|1918|1935|1958|1975|2013|2014|2081|2111|2126|2136|2153|2216|2247|2268|2292|2310|2329|2370|2386|2397|2414|2435|2456|2516|2551|2575|2603|2624|2649|2667|2686|2727|2743|2756|2775|2795|2817|2875|2925|3000|3025|3105|3118|3141|3159|3172|3187|3202|3216|3227|3320|3414|3423|3434|3450|3506|3512|3563" BreakPoints="">→INI400_013605BLOCK("Function for preparation ReqReinfMat and ReqReinfDiagram") { 
     object GetReqReinfMat() { 
         object ReqReinfMat →INI400_013912= null; 
         
@@ -3564,14 +3564,18 @@
 →KRS027_000001BLOCK("Function for preparation reinforcement as string") { 
     //this string will be in format R:y:0;z:0;As:822;D:16;
     //Parsed in SEN to get reinforcements in a nice way
-    public string ReinfToString(object ReqReinfFinal) { 
+    public string ReinfToString(object ReqReinfFinal, object ReqReinfFinalReduce, object BasicProvReinfArray, object AdditionaProvReinfArraySelected) { 
         string ReinfString →KRS027_000002= ""; 
-        FOREACH(object ReqReinf in ReqReinfFinal) { 
+        FOR(i, 0, ReqReinfFinal.Count-1) { 
             ReinfString →KRS027_000003= ReinfString &amp; "R:"; 
-            ReinfString →KRS027_000004= ReinfString &amp; "y:" &amp; ReqReinf.y.ToString("0.000") &amp; ";"; 
-            ReinfString →KRS027_000005= ReinfString &amp; "z:" &amp; ReqReinf.z.ToString("0.000") &amp; ";"; 
-            ReinfString →KRS027_000006= ReinfString &amp; "As:" &amp; ReqReinf.As.ToString("0.000000") &amp; ";"; 
-            ReinfString →KRS027_000007= ReinfString &amp; "D:" &amp; ReqReinf.diam.ToString("0.000") &amp; ";"; 
+            ReinfString →KRS027_000004= ReinfString &amp; "y:" &amp; ReqReinfFinal[i].y.ToString("0.000") &amp; ";"; 
+            ReinfString →KRS027_000005= ReinfString &amp; "z:" &amp; ReqReinfFinal[i].z.ToString("0.000") &amp; ";"; 
+            ReinfString →KRS027_000006= ReinfString &amp; "Asr:" &amp; ReqReinfFinal[i].As.ToString("0.000000") &amp; ";"; //area of required reinforcement 
+            ReinfString →KRS027_000013= ReinfString &amp; "Asb:" &amp; BasicProvReinfArray[i].As.ToString("0.000000") &amp; ";"; //area of basic reinforcement
+            ReinfString →KRS027_000014= ReinfString &amp; "Asa:" &amp; AdditionaProvReinfArraySelected[i].As.ToString("0.000000") &amp; ";"; //area of additional reinforcement
+            ReinfString →KRS027_000007= ReinfString &amp; "Dr:" &amp; ReqReinfFinal[i].diam.ToString("0.000") &amp; ";"; //diameter of required reinforcement
+            ReinfString →KRS027_000015= ReinfString &amp; "Db:" &amp; BasicProvReinfArray[i].Diam.ToString("0.000") &amp; ";"; //diameter of basic reinforcement
+            ReinfString →KRS027_000016= ReinfString &amp; "Da:" &amp; AdditionaProvReinfArraySelected[i].Diam.ToString("0.000") &amp; ";"; //diameter of additional reinforcement
         } 
         ReinfString →KRS027_000012= ReinfString.Replace(",", "."); 
         return ReinfString; 
@@ -10581,6 +10585,38 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS027_000013">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS027_000014">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS027_000015">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS027_000016">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS106_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -10876,22 +10912,6 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS116_000008">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS116_000009">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
       <VC ID="KRS116_000010">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
