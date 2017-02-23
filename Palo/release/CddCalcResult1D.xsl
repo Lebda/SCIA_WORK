@@ -275,31 +275,44 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                             <h4>Rect average stiffness results</h4>
                             <h6>Forces for calculation [N]</h6>
                             <span class="label label-warning">
-                              N =  <xsl:value-of select="floor(RectAverageStiffness/@N)"/>
+                              N =  <xsl:value-of select="floor(RectAverageStiffness/Force4Avg/@N)"/>
                             </span>
                             <span class="label label-warning">
-                              My =  <xsl:value-of select="floor(RectAverageStiffness/@My)"/>
+                              My =  <xsl:value-of select="floor(RectAverageStiffness/Force4Avg/@My)"/>
                             </span>
                             <span class="label label-warning">
-                              Mz =  <xsl:value-of select="floor(RectAverageStiffness/@Mz)"/>
+                              Mz =  <xsl:value-of select="floor(RectAverageStiffness/Force4Avg/@Mz)"/>
                             </span>
-                            <span class="label label-warning">
-                              Nrecalc =  <xsl:value-of select="floor(RectAverageStiffness/@Nrecalc)"/>
+                            <h6>Uncracked stress</h6>
+                            <span class="label label-info">
+                              MaxSigmaTen =  <xsl:value-of select="floor(RectAverageStiffness/UncrackedStress/@SigmaTension)"/>
                             </span>
-                            <span class="label label-warning">
-                              Myrecalc =  <xsl:value-of select="floor(RectAverageStiffness/@Myrecalc)"/>
+                            <span class="label label-info">
+                              Nrecalc =  <xsl:value-of select="floor(RectAverageStiffness/UncrackedStress/@N_forceRecalc)"/>
                             </span>
-                            <span class="label label-warning">
-                              Mzrecalc =  <xsl:value-of select="floor(RectAverageStiffness/@Mzrecalc)"/>
+                            <span class="label label-info">
+                              Mrecalc =  <xsl:value-of select="floor(RectAverageStiffness/UncrackedStress/@My_forceRecalc)"/>
+                            </span>
+                            <span class="label label-info">
+                              ti =  <xsl:value-of select="RectAverageStiffness/UncrackedStress/@Zcalc"/>
+                            </span>
+                            <span class="label label-info">
+                              H =  <xsl:value-of select="RectAverageStiffness/UncrackedStress/@H"/>
+                            </span>
+                            <span class="label label-info">
+                              Ai =  <xsl:value-of select="RectAverageStiffness/UncrackedStress/@Ai"/>
+                            </span>
+                            <span class="label label-info">
+                              Ii =  <xsl:value-of select="RectAverageStiffness/UncrackedStress/@Ii"/>
+                            </span>
+                            <span class="label label-info">
+                              eSurfaceTypeCdd =  <xsl:value-of select="RectAverageStiffness/UncrackedStress/@eSurfaceTypeCdd"/>
                             </span>
                             <h6>General</h6>
                             <span class="label label-warning">
-                              MaxSigmaTen =  <xsl:value-of select="floor(RectAverageStiffness/@MaxSigmaTen)"/>
-                            </span>
-                            <span class="label label-warning">
                               SigmaCr =  <xsl:value-of select="floor(RectAverageStiffness/@SigmaCr)"/>
                             </span>
-                            <span class="label label-info">
+                            <span class="label label-warning">
                               Cracked stiffness calculated =  <xsl:value-of select="RectAverageStiffness/@CrackedStiffnessCalculated"/>
                             </span>
                             <xsl:for-each select="RectAverageStiffness/RectStiffness">
@@ -324,81 +337,81 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                               </span>
                               <h6>CalcPosition</h6>
                               <span class="label label-info">
-                                eCalcPosCdd =  <xsl:value-of select="Characteristics_/@eCalcPosCdd"/>
+                                eCalcPosCdd =  <xsl:value-of select="@eCalcPosCdd"/>
                               </span>
                               <span class="label label-info">
-                                Y4Calc =  <xsl:value-of select="Characteristics_/@Y4Calc"/>
+                                Y4Calc =  <xsl:value-of select="@Y4Calc"/>
                               </span>
                               <span class="label label-info">
-                                Z4Calc =  <xsl:value-of select="Characteristics_/@Z4Calc"/>
+                                Z4Calc =  <xsl:value-of select="@Z4Calc"/>
                               </span>
                               <span class="label label-info">
-                                Cgcz =  <xsl:value-of select="Characteristics_/@Cgcz"/>
+                                Cgcz =  <xsl:value-of select="@Cgcz"/>
                               </span>
                               <span class="label label-info">
-                                Cgsz =  <xsl:value-of select="Characteristics_/@Cgsz"/>
+                                Cgsz =  <xsl:value-of select="@Cgsz"/>
                               </span>
                               <span class="label label-info">
-                                Cgz =  <xsl:value-of select="Characteristics_/@Cgz"/>
+                                Cgz =  <xsl:value-of select="@Cgz"/>
                               </span>
                               <h6>Areas</h6>
                               <span class="label label-warning">
-                                X (depth of compression zone) =  <xsl:value-of select="Characteristics_/@X"/>
+                                X (depth of compression zone) =  <xsl:value-of select="@X"/>
                               </span>
                               <span class="label label-info">
-                                SigmaTension (in X calc) =  <xsl:value-of select="Characteristics_/@SigmaTension"/>
+                                SigmaTension (in X calc) =  <xsl:value-of select="@SigmaTension"/>
                               </span>
                               <span class="label label-info">
-                                SigmaCompression (in X calc) =  <xsl:value-of select="Characteristics_/@SigmaCompression"/>
+                                SigmaCompression (in X calc) =  <xsl:value-of select="@SigmaCompression"/>
                               </span>
                               <br/>
                               <br/>
                               <span class="label label-warning">
-                                Aic =  <xsl:value-of select="Characteristics_/@Aic"/>
+                                Aic =  <xsl:value-of select="@Aic"/>
                               </span>
                               <span class="label label-warning">
-                                Ais =  <xsl:value-of select="Characteristics_/@Ais"/>
+                                Ais =  <xsl:value-of select="@Ais"/>
                               </span>
                               <span class="label label-warning">
-                                Ai =  <xsl:value-of select="Characteristics_/@Ai"/>
+                                Ai =  <xsl:value-of select="@Ai"/>
                               </span>
                               <h6>First moment of interia</h6>
                               <span class="label label-warning">
-                                Sicy =  <xsl:value-of select="Characteristics_/CHARS_2Input/@Sicy"/>
+                                Sicy =  <xsl:value-of select="CHARS_2Input/@Sicy"/>
                               </span>
                               <span class="label label-warning">
-                                Sicz =  <xsl:value-of select="Characteristics_/CHARS_2Input/@Sicz"/>
+                                Sicz =  <xsl:value-of select="CHARS_2Input/@Sicz"/>
                               </span>
                               <span class="label label-warning">
-                                Sisy =  <xsl:value-of select="Characteristics_/CHARS_2Input/@Sisy"/>
+                                Sisy =  <xsl:value-of select="CHARS_2Input/@Sisy"/>
                               </span>
                               <span class="label label-warning">
-                                Sisz =  <xsl:value-of select="Characteristics_/CHARS_2Input/@Sisz"/>
+                                Sisz =  <xsl:value-of select="CHARS_2Input/@Sisz"/>
                               </span>
                               <span class="label label-warning">
-                                Siy =  <xsl:value-of select="Characteristics_/CHARS_2Input/@Siy"/>
+                                Siy =  <xsl:value-of select="CHARS_2Input/@Siy"/>
                               </span>
                               <span class="label label-warning">
-                                Siz =  <xsl:value-of select="Characteristics_/CHARS_2Input/@Siz"/>
+                                Siz =  <xsl:value-of select="CHARS_2Input/@Siz"/>
                               </span>
                               <h6>Second moment of interia</h6>
                               <span class="label label-warning">
-                                Iicy =  <xsl:value-of select="Characteristics_/CHARS_2Input/@Iicy"/>
+                                Iicy =  <xsl:value-of select="CHARS_2Input/@Iicy"/>
                               </span>
                               <span class="label label-warning">
-                                Iicz =  <xsl:value-of select="Characteristics_/CHARS_2Input/@Iicz"/>
+                                Iicz =  <xsl:value-of select="CHARS_2Input/@Iicz"/>
                               </span>
                               <span class="label label-warning">
-                                Iisy =  <xsl:value-of select="Characteristics_/CHARS_2Input/@Iisy"/>
+                                Iisy =  <xsl:value-of select="CHARS_2Input/@Iisy"/>
                               </span>
                               <span class="label label-warning">
-                                Iisz =  <xsl:value-of select="Characteristics_/CHARS_2Input/@Iisz"/>
+                                Iisz =  <xsl:value-of select="CHARS_2Input/@Iisz"/>
                               </span>
                               <span class="label label-warning">
-                                Iiy =  <xsl:value-of select="Characteristics_/CHARS_2Input/@Iiy"/>
+                                Iiy =  <xsl:value-of select="CHARS_2Input/@Iiy"/>
                               </span>
                               <span class="label label-warning">
-                                Iiz =  <xsl:value-of select="Characteristics_/CHARS_2Input/@Iiz"/>
+                                Iiz =  <xsl:value-of select="CHARS_2Input/@Iiz"/>
                               </span>
                             </xsl:for-each>
 
@@ -419,23 +432,43 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                               </span>
                               <h6>Force input</h6>
                               <span class="label label-warning">
-                                Nrecalc =  <xsl:value-of select="RectAverageStiffness/DistributionCoefficient/Forces_ForceInputed/@Nrecalc"/>
+                                N =  <xsl:value-of select="RectAverageStiffness/DistributionCoefficient/Forces_ForceInputed/@N"/>
                               </span>
                               <span class="label label-warning">
-                                Myrecalc =  <xsl:value-of select="RectAverageStiffness/DistributionCoefficient/Forces_ForceInputed/@Myrecalc"/>
+                                My =  <xsl:value-of select="RectAverageStiffness/DistributionCoefficient/Forces_ForceInputed/@My"/>
                               </span>
                               <span class="label label-warning">
-                                Mzrecalc =  <xsl:value-of select="RectAverageStiffness/DistributionCoefficient/Forces_ForceInputed/@Mzrecalc"/>
+                                Mz =  <xsl:value-of select="RectAverageStiffness/DistributionCoefficient/Forces_ForceInputed/@Mz"/>
                               </span>
-                              <h6>Force crack</h6>
+                              <h6>Force input recalc</h6>
+                              <span class="label label-info">
+                                N =  <xsl:value-of select="RectAverageStiffness/DistributionCoefficient/Forces_ForceInputed/@Nrecalc"/>
+                              </span>
+                              <span class="label label-info">
+                                My =  <xsl:value-of select="RectAverageStiffness/DistributionCoefficient/Forces_ForceInputed/@Myrecalc"/>
+                              </span>
+                              <span class="label label-info">
+                                Mz =  <xsl:value-of select="RectAverageStiffness/DistributionCoefficient/Forces_ForceInputed/@Mzrecalc"/>
+                              </span>
+                              <h6>Cracking force</h6>
                               <span class="label label-warning">
-                                Nrecalc =  <xsl:value-of select="RectAverageStiffness/DistributionCoefficient/Forces_ForceCrack/@Nrecalc"/>
+                                N =  <xsl:value-of select="RectAverageStiffness/DistributionCoefficient/Forces_ForceCrack/@N"/>
                               </span>
                               <span class="label label-warning">
-                                Myrecalc =  <xsl:value-of select="RectAverageStiffness/DistributionCoefficient/Forces_ForceCrack/@Myrecalc"/>
+                                My =  <xsl:value-of select="RectAverageStiffness/DistributionCoefficient/Forces_ForceCrack/@My"/>
                               </span>
                               <span class="label label-warning">
-                                Mzrecalc =  <xsl:value-of select="RectAverageStiffness/DistributionCoefficient/Forces_ForceCrack/@Mzrecalc"/>
+                                Mz =  <xsl:value-of select="RectAverageStiffness/DistributionCoefficient/Forces_ForceCrack/@Mz"/>
+                              </span>
+                              <h6>Cracking force recalculated</h6>
+                              <span class="label label-warning">
+                                N =  <xsl:value-of select="RectAverageStiffness/DistributionCoefficient/Forces_ForceCrack/@Nrecalc"/>
+                              </span>
+                              <span class="label label-warning">
+                                My =  <xsl:value-of select="RectAverageStiffness/DistributionCoefficient/Forces_ForceCrack/@Myrecalc"/>
+                              </span>
+                              <span class="label label-warning">
+                                Mz =  <xsl:value-of select="RectAverageStiffness/DistributionCoefficient/Forces_ForceCrack/@Mzrecalc"/>
                               </span>
 
 

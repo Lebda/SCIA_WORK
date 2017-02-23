@@ -74,6 +74,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                             H =  <xsl:value-of select="StiffnessInput2D/InputRect2D/@H"/>
                           </span>
                           <h5>Add data</h5>
+                          <span class="label label-danger">
+                            eCalcPosCdd =  <xsl:value-of select="StiffnessInput2D/InputRect2D/@eCalcPosCdd"/>
+                          </span>
                           <span class="label label-warning">
                             SigmaCr =  <xsl:value-of select="StiffnessInput2D/@SigmaCr"/>
                           </span>
