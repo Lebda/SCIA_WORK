@@ -753,6 +753,17 @@ Each system check is defined using a block as follows:
     <category>poirot</category>
   </openCheck>
   <openCheck>
+    <clc>Poirot_MaterialSelection2D.CLC</clc>
+    <protection>514</protection>
+    <autodesign>0</autodesign>
+    <singlecheck>0</singlecheck>
+    <multidesign>0</multidesign>
+    <allcombiForDetailed>0</allcombiForDetailed>
+    <ribplatebeam>0</ribplatebeam>
+    <combiforclass>0</combiforclass>
+    <category>poirot</category>
+  </openCheck>
+  <openCheck>
     <clc>Poirot_2D_Groups.CLC</clc>
     <protection>514</protection>
     <autodesign>0</autodesign>

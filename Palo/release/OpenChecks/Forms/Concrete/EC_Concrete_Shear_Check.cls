@@ -380,7 +380,7 @@ IF(bBiaxialMethod) {
         object ShearReinfShape →INI400_013942= ShearReinf.Branch; 
     } 
     object ConMat →INI400_012795= CrossSection.GetMaterialForComponent(0); 
-    object ReinfMat →INI400_012799= CrossSection.GetMaterialForBar(0); 
+    object ReinfMat →INI400_012799= CrossSection.GetAvgMaterialOfAllBars(); 
     object ShapeCss →INI400_013943= CrossSection.GetOrigShape(); 
     
     IF(IO.IsStandalone &amp;&amp; IO.IsExternCLC) { 

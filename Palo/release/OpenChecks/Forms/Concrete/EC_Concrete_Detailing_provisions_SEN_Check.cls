@@ -163,27 +163,27 @@ IF(CssConditions.ConditionsForCss) {
     IF(IO.SetupNA.EC_NA.Code == "NEN" &amp;&amp; MemberType == 1) { 
         //covers and diameters
         //string Member →DLO316_000101= "Beam"; 
-        IF(IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverLower == 0 || IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverUpper == 0)
+        IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.TypeOfCover == 0 || IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.TypeOfCover == 0)
         { 
             object cover →INI400_007021= LoadExternCLC("EC_Concrete_cover_SEN_Design.CLC"); 
             →INI400_007022cover.Calculate(False); 
         } 
-        IF(IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverLower == 0) { 
+        IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.TypeOfCover == 0) { 
             c↓lo,des← →INI400_006703= cover.c↓nom,l←; 
         } ELSE { 
-            c↓lo,des← →INI400_005915= IO.MemberData.Concrete.Defaults.Beam.Cover.CoverLower; 
+            c↓lo,des← →INI400_005915= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.Cover; 
         } 
         c↓lo,des← →INI400_006702= c↓lo,des←+IO.MemberData.Concrete.Defaults.Beam.Stirrups.Diameter; 
-        IF(IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverUpper == 0) { 
+        IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.TypeOfCover == 0) { 
             c↓up,des← →INI400_006705= cover.c↓nom,u←; 
         } ELSE { 
-            c↓up,des← →INI400_006706= IO.MemberData.Concrete.Defaults.Beam.Cover.CoverUpper; 
+            c↓up,des← →INI400_006706= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.Cover; 
         } 
         c↓up,des← →INI400_006708= c↓up,des←+IO.MemberData.Concrete.Defaults.Beam.Stirrups.Diameter; 
-        SWITCH(IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverSide) { 
+        SWITCH(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Side.TypeOfCover) { 
             CASE 0 :  { c↓side,des← →INI400_006710= c↓up,des←; } 
             CASE 1 :  { c↓side,des← →INI400_007037= c↓lo,des←; } 
-            CASE 2 :  { c↓side,des← →INI400_007038= IO.MemberData.Concrete.Defaults.Beam.Cover.CoverSide+IO.MemberData.Concrete.Defaults.Beam.Stirrups.Diameter; } 
+            CASE 2 :  { c↓side,des← →INI400_007038= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Side.Cover+IO.MemberData.Concrete.Defaults.Beam.Stirrups.Diameter; } 
         } 
         ϕ↓lo,des← →INI400_006806= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.Diameter; 
         ϕ↓up,des← →INI400_006807= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.Diameter; 
@@ -562,6 +562,19 @@ ELSE {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
+      <Variable Modifier="Public" Name="Check" ESA_ID="Result.59" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="3" Numeric="UC" SenModif="False" LabOri="0" />
+      </Variable>
+      <Variable Modifier="Public" Name="CheckDetailing" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="Coeff_ϕ_m" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -647,19 +660,6 @@ ELSE {
       </Variable>
       <Variable Modifier="Public" Name="HEADER" ESA_ID="" Type="Object">
         <Description TranslateID="VARIABLE_HEADER">
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="Check" ESA_ID="Result.59" Type="String">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="3" Numeric="UC" SenModif="False" LabOri="0" />
-      </Variable>
-      <Variable Modifier="Public" Name="CheckDetailing" ESA_ID="" Type="Object">
-        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -3857,7 +3857,7 @@ ELSE {
   </Calculation>
   <Dialog>
     <Main Width="500">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.84|0|3" Active="1" PreDef="0" MemberDirectory="C:\Users\jkrsik\ESA16.1\Temp\Esa_Model_Data\Beam.3" MemberID="Beam.3" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.84|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.3" SectionID="-1" CombiID="-1" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />

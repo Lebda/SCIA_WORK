@@ -8,8 +8,8 @@ object DesignResults →INI400_008025= Linq.ToList(Linq.Select(IO.Beam.Section, 
 object A↓sz,req+← →INI400_008026= Linq.ToList(Linq.Select(DesignResults, object DR=&gt;DR.SummaryAreaFin.Req.As_zpos)); 
 object A↓sz,req-← →INI400_008027= Linq.ToList(Linq.Select(DesignResults, object DR=&gt;DR.SummaryAreaFin.Req.As_zneg)); 
 
-double Diam↓+← →INI400_008066= IO.Setup.Concrete.Defaults.Beam.Longitudinal.Upper.Diameter; 
-double Diam↓-← →INI400_008067= IO.Setup.Concrete.Defaults.Beam.Longitudinal.Lower.Diameter; 
+double Diam↓+← →INI400_008066= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.Diameter; 
+double Diam↓-← →INI400_008067= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.Diameter; 
 double SingleBar↓+← →INI400_008031= Math.PI*Diam↓+←↑2←/4; 
 double SingleBar↓-← →INI400_008065= Math.PI*Diam↓-←↑2←/4; 
 
@@ -93,12 +93,6 @@ IF(IO.IsDrawing) {
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="A↓sz,req-←" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="aaa" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -433,14 +427,6 @@ IF(IO.IsDrawing) {
       </VC>
       <VC ID="INI400_008075">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_008076">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

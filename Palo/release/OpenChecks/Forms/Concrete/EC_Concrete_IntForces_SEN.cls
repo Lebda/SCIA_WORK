@@ -546,12 +546,12 @@ IF(MemberType != 2) {
             SWITCH(MemberType) { 
                 CASE 2 :  { 
                     
-                    IF(IO.MemberData.Concrete.Defaults.Column.Cover.TypeOfCover == 0) { 
+                    IF(IO.MemberData.Concrete.Defaults.Column.Longitudinal.Main.TypeOfCover == 0) { 
                         object cover →INI400_007052= LoadExternCLC("EC_Concrete_cover_SEN_Design.CLC"); 
                         →INI400_007053cover.Calculate(False); 
                         c →INI400_007054= cover.c↓nom,m←; 
                     } ELSE { 
-                        c →INI400_007055= IO.MemberData.Concrete.Defaults.Column.Cover.Cover; 
+                        c →INI400_007055= IO.MemberData.Concrete.Defaults.Column.Longitudinal.Main.Cover; 
                     } 
                     c →INI400_006815= c+IO.MemberData.Concrete.Defaults.Column.Stirrups.Diameter; 
                     double ϕ →INI400_005935= IO.MemberData.Concrete.Defaults.Column.Longitudinal.Main.Diameter; 
@@ -3749,7 +3749,7 @@ IF(IndexModification == 0) {
           </ENU>
         </Texts>
       </TPanel>
-      <TEMDLoader Name="TEMDLoader" ID="106" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="F:\_BUGFIX\_EMD\_ACTUAL\Beam.1" MemberID="Beam.1" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="TEMDLoader" ID="106" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.1" SectionID="-1" CombiID="-1" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />

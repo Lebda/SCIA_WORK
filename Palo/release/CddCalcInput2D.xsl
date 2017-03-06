@@ -156,6 +156,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                               DistSs =  <xsl:value-of select="@DistSs"/>
                             </span>
                             <span class="label label-warning">
+                              IncreaseCoeff =  <xsl:value-of select="@IncreaseCoeff"/>
+                            </span>
+                            <span class="label label-warning">
                               Emodulus =  <xsl:value-of select="@E"/>
                             </span>
                             <span class="label label-warning">

@@ -139,10 +139,6 @@
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>230</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{x64documentrendering.2ecxep_exportpropspdf.2emultipleexport}</StringId>
-		<SourceDll>X64DocumentRendering.2edll</SourceDll>
-		<ResourceId>243</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{x64documentrendering.2ecxep_exportpropspdf.2etopage}</StringId>
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>239</ResourceId>
@@ -158,6 +154,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{x64documentrendering.2ecxep_exportpropspdf.2emultipleexportnumberofpages}</StringId>
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>244</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{x64documentrendering.2ecxep_exportpropspdf.2emultipleexport}</StringId>
+		<SourceDll>X64DocumentRendering.2edll</SourceDll>
+		<ResourceId>243</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{x64documentrendering.2ecxep_exportpropsrtf.2eenablepagelayout}</StringId>
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
@@ -183,10 +183,6 @@
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>120</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2ehtmltitle}</StringId>
-		<SourceDll>X64DocumentRendering.2edll</SourceDll>
-		<ResourceId>211</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{x64documentrendering.2ecxep_exportpropspdf.2efrompage}</StringId>
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>238</ResourceId>
@@ -202,6 +198,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2etxttitle}</StringId>
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>217</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2ehtmltitle}</StringId>
+		<SourceDll>X64DocumentRendering.2edll</SourceDll>
+		<ResourceId>211</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2ertftitle}</StringId>
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>

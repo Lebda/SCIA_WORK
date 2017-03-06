@@ -421,11 +421,11 @@ IF((E0↓1←)) {
                 →INI400_002815TEXT("σ↓ct← &gt; f↓ct,eff←  i.e.  " &amp; σ↓ct,char← &amp; " &gt; " &amp; f↓ct,eff,char←); 
                 Crack↓char← →INI400_001993= true; 
                 →INI400_001994TEXT(" =&gt; Cracks appear."); 
-                bool W5↓1← →INI400_003690= true; 
-                double Number↓W← →INI400_003691= Number↓W←+1; 
-                →INI400_003692StructEWN.Add(new Structure("Index", "W5/1", "Type", TR("Warning"), "Description", TR("The maximal effective concrete strength is exceeded; cracks appear under the characteristic combination of " &amp; StateText &amp; " loads. Furthermore, the concrete stress-strain diagram without tension branch is used."), "Solution", TR("Change amount of reinforcement, dimensions of the cross-section and/or quality of the used materials."))); 
+                bool N5↓1← →INI400_003690= true; 
+                double Number↓N← →INI400_003691= Number↓N←+1; 
+                →INI400_003692StructEWN.Add(new Structure("Index", "N5/1", "Type", TR("Note"), "Description", TR("The maximal effective concrete strength is exceeded; cracks appear under the characteristic combination of " &amp; StateText &amp; " loads. Furthermore, the concrete stress-strain diagram without tension branch is used."), "Solution", TR("Change amount of reinforcement, dimensions of the cross-section and/or quality of the used materials."))); 
             } ELSE { 
-                bool W5↓1← →INI400_003693= false; 
+                bool N5↓1← →INI400_003693= false; 
                 →INI400_002814TEXT("σ↓ct← &lt; f↓ct,eff←  i.e. " &amp; σ↓ct,char← &amp; " &lt; " &amp; f↓ct,eff,char←); 
                 Crack↓char← →INI400_001995= false; 
                 →INI400_001996TEXT(" =&gt; No cracks appear."); 
@@ -435,9 +435,9 @@ IF((E0↓1←)) {
         →INI400_003906PAGEBREAK(); 
         →INI400_003765BLOCK { 
             IF((XD == 0 &amp;&amp; XF == 0 &amp;&amp; XS == 0) &amp;&amp; IO.SetupNA.EC_NA.Code != "NBN") { 
-                bool N5↓1← →INI400_003762= true; 
+                bool N5↓2← →INI400_003762= true; 
                 double Number↓N← →INI400_003763= Number↓N←+1; 
-                →INI400_003764StructEWN.Add(new Structure("Index", "N5/1", "Type", TR("Note"), "Description", TR("Check of stress limitation is not required for the selected exposure class."), "Solution", TR("Change the exposure class to XD, XS or XF."))); 
+                →INI400_003764StructEWN.Add(new Structure("Index", "N5/2", "Type", TR("Note"), "Description", TR("Check of stress limitation is not required for the selected exposure class."), "Solution", TR("Change the exposure class to XD, XS or XF."))); 
             } 
         } 
         
@@ -820,13 +820,13 @@ string sCheck →DLO316_000001= Functions1D_General.CheckStatusText(Check);
         TSummaryCheck[0][0].Value →INI400_003861= TR("Load") &amp; "&lt;BR&gt;"; 
         TSummaryCheck[0][1].Value →INI400_003863= "E&lt;BR&gt;" &amp; TR("type"); 
         TSummaryCheck[0][2].Value →INI400_003865= "E↓c←&lt;BR&gt;[MPa]"; 
-        TSummaryCheck[0][3].Value →INI400_003867= TR("U.C.") &amp; "&lt;BR&gt;§7.2(2)&lt;BR&gt;[-]"; 
+        TSummaryCheck[0][3].Value →INI400_003867= TR("UC") &amp; "&lt;BR&gt;§7.2(2)&lt;BR&gt;[-]"; 
         TSummaryCheck[0][4].Value →INI400_003869= TR("Status") &amp; "&lt;BR&gt;§7.2(2)&lt;BR&gt;" &amp; TR("Char."); 
-        TSummaryCheck[0][5].Value →INI400_003870= TR("U.C.") &amp; "&lt;BR&gt;§7.2(3)&lt;BR&gt;[-]"; 
+        TSummaryCheck[0][5].Value →INI400_003870= TR("UC") &amp; "&lt;BR&gt;§7.2(3)&lt;BR&gt;[-]"; 
         TSummaryCheck[0][6].Value →INI400_003871= TR("Status") &amp; "&lt;BR&gt;§7.2(3)&lt;BR&gt;" &amp; TR("Q.-P."); 
-        TSummaryCheck[0][7].Value →INI400_003872= TR("U.C.") &amp; "&lt;BR&gt;§7.2(5)&lt;BR&gt;[-]"; 
+        TSummaryCheck[0][7].Value →INI400_003872= TR("UC") &amp; "&lt;BR&gt;§7.2(5)&lt;BR&gt;[-]"; 
         TSummaryCheck[0][8].Value →INI400_003874= TR("Status") &amp; "&lt;BR&gt;§7.2(5)&lt;BR&gt;" &amp; TR("Char."); 
-        TSummaryCheck[0][9].Value →INI400_003876= TR(" U.C. ") &amp; "&lt;BR&gt; [-]"; 
+        TSummaryCheck[0][9].Value →INI400_003876= TR("UC") &amp; "&lt;BR&gt; [-]"; 
         TSummaryCheck[0][10].Value →INI400_004575= TR("Limit") &amp; "&lt;BR&gt;[-]"; 
         TSummaryCheck[0][11].Value →INI400_003878= TR("Status") &amp; "&lt;BR&gt;"; 
         //next row
@@ -2125,6 +2125,12 @@ IF(PrintEWN &amp;&amp; Count↓EWN← &gt; 0 &amp;&amp; IO.IsDrawing &amp;&amp; 
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="N5↓1←" ESA_ID="" Type="Boolean">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="N5↓2←" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
@@ -11418,9 +11424,6 @@ IF(PrintEWN &amp;&amp; Count↓EWN← &gt; 0 &amp;&amp; IO.IsDrawing &amp;&amp; 
     <Item TranslateID="STRING_455B2586">
       <ENU>"The selected combination is not serviceability - characteristic"</ENU>
     </Item>
-    <Item TranslateID="STRING_479E9D18">
-      <ENU>"U.C."</ENU>
-    </Item>
     <Item TranslateID="STRING_4C85DA82">
       <ENU>"Check type"</ENU>
     </Item>
@@ -11435,9 +11438,6 @@ IF(PrintEWN &amp;&amp; Count↓EWN← &gt; 0 &amp;&amp; IO.IsDrawing &amp;&amp; 
     </Item>
     <Item TranslateID="STRING_56BB26D7">
       <ENU>"Type of&lt;BR&gt;module"</ENU>
-    </Item>
-    <Item TranslateID="STRING_5D032CF4">
-      <ENU>" U.C. "</ENU>
     </Item>
     <Item TranslateID="STRING_72B16A89">
       <ENU>"Stress-strain distribution without concrete tensile strength"</ENU>
@@ -11486,6 +11486,9 @@ IF(PrintEWN &amp;&amp; Count↓EWN← &gt; 0 &amp;&amp; IO.IsDrawing &amp;&amp; 
     </Item>
     <Item TranslateID="STRING_C2EAB742">
       <ENU>"Note"</ENU>
+    </Item>
+    <Item TranslateID="STRING_CD4B95C1">
+      <ENU>"UC"</ENU>
     </Item>
     <Item TranslateID="STRING_D2ED0F6A">
       <ENU>"Upper"</ENU>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="34aa2e8d-eb69-4161-bf38-ccd582fbae04">
   <CodeEditor>
-    <SourceCode Collapsed="123" BreakPoints="">
+    <SourceCode Collapsed="" BreakPoints="">
 bool ValidateInput(object Input) { //Validate inputs from master to this form
     DrawHeader →INI400_011157= Input.Get("DrawHeader"); //True - Draw calculation header
 
@@ -140,30 +140,30 @@ IF(!IO.IsStandalone) {
             double XC →INI400_006415= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Carbonation; 
             double XD →INI400_006416= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Chlorides; 
             double XS →INI400_006417= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.ChloridesSea; 
-            double CoverType →INI400_011120= IO.MemberData.Concrete.Defaults.Column.Cover.TypeOfCover; 
-            double c↓used← →INI400_011126= IO.MemberData.Concrete.Defaults.Column.Cover.Cover; 
+            double CoverType →INI400_011120= IO.MemberData.Concrete.Defaults.Column.Longitudinal.Main.TypeOfCover; 
+            double c↓used← →INI400_011126= IO.MemberData.Concrete.Defaults.Column.Longitudinal.Main.Cover; 
         } ELSE { 
             IF(Upper) { 
                 double XC →INI400_006409= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Carbonation; 
                 double XD →INI400_006410= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Chlorides; 
                 double XS →INI400_006411= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.ChloridesSea; 
                 IF(MemberType == 1) { 
-                    double CoverType →INI400_011118= IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverUpper; 
-                    double c↓used← →INI400_011128= IO.MemberData.Concrete.Defaults.Beam.Cover.CoverUpper; 
+                    double CoverType →INI400_011118= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.TypeOfCover; 
+                    double c↓used← →INI400_011128= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.Cover; 
                 } ELSE { 
-                    double CoverType →INI400_011121= IO.MemberData.Concrete.Defaults.BeamSlab.Cover.TypeOfCoverUpper; 
-                    double c↓used← →INI400_011129= IO.MemberData.Concrete.Defaults.BeamSlab.Cover.CoverUpper; 
+                    double CoverType →INI400_011121= IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Upper.TypeOfCover; 
+                    double c↓used← →INI400_011129= IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Upper.Cover; 
                 } 
             } ELSE { 
                 double XC →INI400_006412= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Carbonation; 
                 double XD →INI400_006413= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Chlorides; 
                 double XS →INI400_006414= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.ChloridesSea; 
                 IF(MemberType == 1) { 
-                    double CoverType →INI400_011119= IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverLower; 
-                    double c↓used← →INI400_011130= IO.MemberData.Concrete.Defaults.Beam.Cover.CoverLower; 
+                    double CoverType →INI400_011119= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.TypeOfCover; 
+                    double c↓used← →INI400_011130= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.Cover; 
                 } ELSE { 
-                    double CoverType →INI400_011122= IO.MemberData.Concrete.Defaults.BeamSlab.Cover.TypeOfCoverLower; 
-                    double c↓used← →INI400_011131= IO.MemberData.Concrete.Defaults.BeamSlab.Cover.CoverLower; 
+                    double CoverType →INI400_011122= IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Lower.TypeOfCover; 
+                    double c↓used← →INI400_011131= IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Lower.Cover; 
                 } 
             } 
         } 
@@ -573,7 +573,7 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 1) {
         T_Sum[1][3].Value →INI400_003885= Val(w*1000, 2); 
         T_Sum[0][4].Value →INI400_003886= "w↓lim←&lt;BR&gt;[mm]"; 
         T_Sum[1][4].Value →INI400_003887= Val(w↓max←*1000, 2); 
-        T_Sum[0][5].Value →INI400_003888= TR("Unity check [-]"); 
+        T_Sum[0][5].Value →INI400_003888= TR("UC [-]"); 
         T_Sum[1][5].Value →INI400_003889= Val(UC, 2).ToString("0.00"); 
         T_Sum[0][6].Value →INI400_003890= TR("Limit check [-]"); 
         T_Sum[1][6].Value →INI400_003891= Val(Limit, 2); 
@@ -5807,14 +5807,14 @@ IF((bPod) &amp;&amp; (!ZeroForces) &amp;&amp; w &gt; 0) {
     <Item TranslateID="STRING_B2C2AF34">
       <ENU>"NO"</ENU>
     </Item>
-    <Item TranslateID="STRING_C192985C">
-      <ENU>"Unity check [-]"</ENU>
-    </Item>
     <Item TranslateID="STRING_C2EAB742">
       <ENU>"Note"</ENU>
     </Item>
     <Item TranslateID="STRING_C48BF32B">
       <ENU>"Css cracked"</ENU>
+    </Item>
+    <Item TranslateID="STRING_D05FCCCC">
+      <ENU>"UC [-]"</ENU>
     </Item>
     <Item TranslateID="STRING_D5DBECED">
       <ENU>"Status"</ENU>

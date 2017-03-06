@@ -621,11 +621,11 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
         TCheckDeflections[0][1].Value →INI400_004232= "L&lt;BR&gt;[m]"; 
         TCheckDeflections[0][2].Value →INI400_004233= "δ↓add←&lt;BR&gt;[mm]"; 
         TCheckDeflections[0][3].Value →INI400_004234= "δ↓add,lim←&lt;BR&gt;[mm]"; 
-        TCheckDeflections[0][4].Value →INI400_004235= TR("U.C.↓add←") &amp; "&lt;BR&gt;[-]"; 
+        TCheckDeflections[0][4].Value →INI400_004235= TR("UC↓add←") &amp; "&lt;BR&gt;[-]"; 
         TCheckDeflections[0][5].Value →INI400_004236= "δ↓tot←&lt;BR&gt;[mm]"; 
         TCheckDeflections[0][6].Value →INI400_004237= "δ↓tot,lim←&lt;BR&gt;[mm]"; 
-        TCheckDeflections[0][7].Value →INI400_004238= TR("U.C.↓tot←") &amp; "&lt;BR&gt;[-]"; 
-        TCheckDeflections[0][8].Value →INI400_004239= TR(" U.C. ") &amp; "&lt;BR&gt; [-]"; 
+        TCheckDeflections[0][7].Value →INI400_004238= TR("UC↓tot←") &amp; "&lt;BR&gt;[-]"; 
+        TCheckDeflections[0][8].Value →INI400_004239= TR("UC [-]"); 
         TCheckDeflections[0][9].Value →INI400_004240= TR("Limit") &amp; "&lt;BR&gt;[-]"; 
         TCheckDeflections[0][10].Value →INI400_004304= TR("Status") &amp; "&lt;BR&gt; "; 
         //next row
@@ -5887,17 +5887,20 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
     <Item TranslateID="STRING_2C8CF56F">
       <ENU>"The limit total deflection in (y) direction is exceeded."</ENU>
     </Item>
+    <Item TranslateID="STRING_31142631">
+      <ENU>"UC↓add←"</ENU>
+    </Item>
     <Item TranslateID="STRING_32238707">
       <ENU>"short-term"</ENU>
     </Item>
     <Item TranslateID="STRING_3422FBFC">
       <ENU>"Error"</ENU>
     </Item>
+    <Item TranslateID="STRING_48B6145E">
+      <ENU>"UC↓tot←"</ENU>
+    </Item>
     <Item TranslateID="STRING_550B5D54">
       <ENU>"Ratio&lt;BR&gt;short [-]"</ENU>
-    </Item>
-    <Item TranslateID="STRING_5D032CF4">
-      <ENU>" U.C. "</ENU>
     </Item>
     <Item TranslateID="STRING_62042395">
       <ENU>"List of errors/warnings/notes: "</ENU>
@@ -5937,6 +5940,9 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
     </Item>
     <Item TranslateID="STRING_D05F049C">
       <ENU>"The limit additional deflection in (z) direction is exceeded."</ENU>
+    </Item>
+    <Item TranslateID="STRING_D05FCCCC">
+      <ENU>"UC [-]"</ENU>
     </Item>
     <Item TranslateID="STRING_D5DBECED">
       <ENU>"Status"</ENU>

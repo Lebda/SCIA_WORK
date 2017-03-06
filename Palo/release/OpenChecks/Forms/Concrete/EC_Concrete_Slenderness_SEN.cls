@@ -46,7 +46,7 @@ object FUNCT_HEADER →PAI121_000022= LoadExternCLC(Tools.Dir_Forms &amp; "Concr
 
 IF(CssConditions.ConditionsForCss) { 
     object DataFromSEN →INI400_006916= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FunctionsDataFromSEN.CLC"); 
-    
+    object IO_HELPER →INI400_015065= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
     // determination type of creep coefficient
     IF(IO.MemberData.Concrete.Solver.General.Creep.Typeφ == 0) { 
         object CreepCalc →INI400_007024= LoadExternCLC("EC_Creep_coeff_SEN_Check.CLC"); 
@@ -111,8 +111,8 @@ IF(CssConditions.ConditionsForCss) {
     //buckling
     →INI400_013715InputSlenderness.Set("BraceMemberY", IO.Section.BucklingData.yy.Span.braced); 
     →INI400_013716InputSlenderness.Set("BraceMemberZ", IO.Section.BucklingData.zz.Span.braced); 
-    →INI400_013721InputSlenderness.Set("bTransverseY", False); 
-    →INI400_013722InputSlenderness.Set("bTransverseZ", False); 
+    →INI400_013721InputSlenderness.Set("bTransverseY", IO_HELPER.IsTransverseLoadY()); 
+    →INI400_013722InputSlenderness.Set("bTransverseZ", IO_HELPER.IsTransverseLoadZ()); 
     →INI400_013717InputSlenderness.Set("β_yy_inp", IO.Section.BucklingData.yy.Span.beta); 
     →INI400_013718InputSlenderness.Set("β_zz_inp", IO.Section.BucklingData.zz.Span.beta); 
     →INI400_013719InputSlenderness.Set("L_y_inp", IO.Section.BucklingData.yy.Span.L); 
@@ -377,6 +377,12 @@ ELSE {
       </Variable>
       <Variable Modifier="Public" Name="InputSlenderness" ESA_ID="" Type="Object">
         <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="IO_HELPER" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_IO_HELPER">
           <ENU>
           </ENU>
         </Description>
@@ -1792,6 +1798,14 @@ ELSE {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="INI400_015065">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
       <VC ID="PAI121_000022">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1818,7 +1832,7 @@ ELSE {
           <ENU>
           </ENU>
         </Texts>
-        <TEMDLoader Name="TEMDLoader" ID="69" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="F:\_BUGFIX\_EMD\_COLUMN\Beam.3" MemberID="Beam.3" SectionID="0" CombiID="0" />
+        <TEMDLoader Name="TEMDLoader" ID="69" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="C:\Users\Palo\ESA16.1\Temp\Esa_Model_Data\Beam.58" MemberID="Beam.58" SectionID="0" CombiID="0" />
       </TPanel>
     </Main>
     <MemberData Width="500" />

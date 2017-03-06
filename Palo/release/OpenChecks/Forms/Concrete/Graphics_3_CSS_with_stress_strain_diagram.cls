@@ -166,19 +166,7 @@ IF(ABS(CompressedConcrete-TensionConcrete) != MAX(CompressedConcrete, TensionCon
             →INI400_005703G.DrawCircle(0, 0, IO.CS.Geometry.D, PenOutline); 
         } 
         DEFAULT :  { 
-            //DLO 31/3/2015
-            IF(!IO.IsStandalone) { 
-                IF(bCssMoreComp) { 
-                    FOR(i, 0, IO.CS.Component.Count-1) { 
-                        →INI400_010057G.DrawPolyLine(IO.CS.Component[i].Shape.Point, PenOutline); //CSS Outline 
-                    } 
-                    //DLO 31/3/2015 - originally there was only else branch
-                } ELSE { 
-                    →INI400_005702G.DrawPolyLine(Outline, PenOutline); //CSS Outline 
-                } 
-            } ELSE { 
-                →INI400_011038G.DrawPolyLine(Outline, PenOutline); //CSS Outline 
-            } 
+            →INI400_012733GrfFunct.DrawCssWithOpening(G, PenOutline, Outline, false); //Method for drawing Css
         } 
     } 
 } ELSE { 
@@ -187,8 +175,9 @@ IF(ABS(CompressedConcrete-TensionConcrete) != MAX(CompressedConcrete, TensionCon
     } ELSE { 
         →INI400_003911G.FillPolygon(Outline, Color.FromArgb(128, Color.Silver)); //Background CSS color
     } 
-    →INI400_003907G.DrawPolyLine(Outline, PenOutline); //CSS outline
+    →KRS106_000031GrfFunct.DrawCssWithOpening(G, PenOutline, Outline, false); //Method for drawing Css
 } 
+
 
 IF(IO.Contains("REINF")) { 
     →INI400_012734GrfFunct.DrawReinf(G, Reinf, True); //Method for drawing longitudinal reinforcement bars
@@ -1938,14 +1927,6 @@ IF(DrawStrain) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_003907">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="234" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="234" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="234" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="234" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="234" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="234" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-      </VC>
       <VC ID="INI400_003911">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -2626,14 +2607,6 @@ IF(DrawStrain) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="422" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="422" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005702">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-      </VC>
       <VC ID="INI400_005703">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2658,14 +2631,6 @@ IF(DrawStrain) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010057">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-      </VC>
       <VC ID="INI400_010060">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2681,14 +2646,6 @@ IF(DrawStrain) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_011038">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
       <VC ID="INI400_011039">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3154,6 +3111,14 @@ IF(DrawStrain) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="INI400_012733">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="INI400_012734">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3203,6 +3168,14 @@ IF(DrawStrain) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS106_000030">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000031">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

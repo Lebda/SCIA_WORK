@@ -35,7 +35,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         } ELSE { 
             xC↓Rdc← →KRS106_000011= IO.SetupNA.EC_1992_1_1.C_6_2_2_1.C_Rd_c; 
             IF(Beam) { 
-                C↓Rdc← →KRS106_000009= xC↓Rdc← @REF("(NBN §6.2.2(1))"); 
+                C↓Rdc← →KRS106_000009= xC↓Rdc←/γ↓c← @REF("(NBN §6.2.2(1))"); 
             } ELSE { 
                 C↓Rdc← →KRS106_000010= 1.25*xC↓Rdc←/γ↓c← @REF("(NBN §6.2.2(1))"); 
             } 

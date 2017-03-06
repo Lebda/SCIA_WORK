@@ -508,14 +508,6 @@ IF(CssConditions.ConditionsForCss) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓y,char←" ESA_ID="Result.7" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="3" ESAUnit="13" Reference="" Extrem="3" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1000" DrawLimitMin="0" />
-        <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
-      </Variable>
       <Variable Modifier="Public" Name="M↓y,cr←" ESA_ID="Result.4" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -524,7 +516,15 @@ IF(CssConditions.ConditionsForCss) {
         <ResultProperties ESAColor="1" ESAStyle="3" ESAUnit="13" Reference="" Extrem="3" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1000" DrawLimitMin="0" />
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓z,char←" ESA_ID="Result.8" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="M↓y,char←" ESA_ID="Result.7" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="3" ESAUnit="13" Reference="" Extrem="3" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1000" DrawLimitMin="0" />
+        <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
+      </Variable>
+      <Variable Modifier="Public" Name="M↓z,cr←" ESA_ID="Result.5" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -532,7 +532,7 @@ IF(CssConditions.ConditionsForCss) {
         <ResultProperties ESAColor="1" ESAStyle="3" ESAUnit="13" Reference="" Extrem="3" HideZeros="True" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1000" DrawLimitMin="0" />
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓z,cr←" ESA_ID="Result.5" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="M↓z,char←" ESA_ID="Result.8" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -554,7 +554,7 @@ IF(CssConditions.ConditionsForCss) {
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓char←" ESA_ID="Result.6" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="N↓cr←" ESA_ID="Result.3" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -562,7 +562,7 @@ IF(CssConditions.ConditionsForCss) {
         <ResultProperties ESAColor="1" ESAStyle="3" ESAUnit="12" Reference="" Extrem="3" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1000" DrawLimitMin="0" />
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓cr←" ESA_ID="Result.3" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="N↓char←" ESA_ID="Result.6" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -623,12 +623,6 @@ IF(CssConditions.ConditionsForCss) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="sCheck" ESA_ID="" Type="String">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
       <Variable Modifier="Public" Name="SetForcesCharID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -642,6 +636,12 @@ IF(CssConditions.ConditionsForCss) {
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="sCheck" ESA_ID="" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
       </Variable>
       <Variable Modifier="Public" Name="sListEWN" ESA_ID="" Type="String">
         <Description>
@@ -1519,8 +1519,8 @@ IF(CssConditions.ConditionsForCss) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_006843">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />

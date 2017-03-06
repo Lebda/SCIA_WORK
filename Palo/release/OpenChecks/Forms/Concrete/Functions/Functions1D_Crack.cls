@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="71a433a2-5028-4f92-a040-7d98d93c4075">
   <CodeEditor>
-    <SourceCode Collapsed="2|100|110|122|132|143|155|168|179|189|226|254|267|276" BreakPoints="">//Functions for Crack width check and SLS design
+    <SourceCode Collapsed="2|100|110|122|132|143|155|168|179|189|226|254|267|276|357|370|407|420|459|504|527|540|550|582|635|673|748|759|779|790|807|829|838|856|869|878" BreakPoints="">//Functions for Crack width check and SLS design
 
 public double Calculate_wk_max(double CssIDCrack, double SetForcesQp, bool QuasiComb, bool CorossionSensitive) { 
     IF(IO.MemberData.Concrete.Solver.CrackWidth.TypeCrackWidth == 0) { 
@@ -18,30 +18,30 @@ public double Calculate_wk_max(double CssIDCrack, double SetForcesQp, bool Quasi
             double XC →DLO134_006415= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Carbonation; 
             double XD →DLO134_006416= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Chlorides; 
             double XS →DLO134_006417= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.ChloridesSea; 
-            double CoverType →DLO134_011120= IO.MemberData.Concrete.Defaults.Column.Cover.TypeOfCover; 
-            double c↓used← →DLO134_011126= IO.MemberData.Concrete.Defaults.Column.Cover.Cover; 
+            double CoverType →DLO134_011120= IO.MemberData.Concrete.Defaults.Column.Longitudinal.Main.TypeOfCover; 
+            double c↓used← →DLO134_011126= IO.MemberData.Concrete.Defaults.Column.Longitudinal.Main.Cover; 
         } ELSE { 
             IF(Upper) { 
                 double XC →DLO134_006409= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Carbonation; 
                 double XD →DLO134_006410= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Chlorides; 
                 double XS →DLO134_006411= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.ChloridesSea; 
                 IF(MemberType == 1) { 
-                    double CoverType →DLO134_011118= IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverUpper; 
-                    double c↓used← →DLO134_011128= IO.MemberData.Concrete.Defaults.Beam.Cover.CoverUpper; 
+                    double CoverType →DLO134_011118= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.TypeOfCover; 
+                    double c↓used← →DLO134_011128= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.Cover; 
                 } ELSE { 
-                    double CoverType →DLO134_011121= IO.MemberData.Concrete.Defaults.BeamSlab.Cover.TypeOfCoverUpper; 
-                    double c↓used← →DLO134_011129= IO.MemberData.Concrete.Defaults.BeamSlab.Cover.CoverUpper; 
+                    double CoverType →DLO134_011121= IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Upper.TypeOfCover; 
+                    double c↓used← →DLO134_011129= IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Upper.Cover; 
                 } 
             } ELSE { 
                 double XC →DLO134_006412= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Carbonation; 
                 double XD →DLO134_006413= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Chlorides; 
                 double XS →DLO134_006414= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.ChloridesSea; 
                 IF(MemberType == 1) { 
-                    double CoverType →DLO134_011119= IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverLower; 
-                    double c↓used← →DLO134_011130= IO.MemberData.Concrete.Defaults.Beam.Cover.CoverLower; 
+                    double CoverType →DLO134_011119= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.TypeOfCover; 
+                    double c↓used← →DLO134_011130= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.Cover; 
                 } ELSE { 
-                    double CoverType →DLO134_011122= IO.MemberData.Concrete.Defaults.BeamSlab.Cover.TypeOfCoverLower; 
-                    double c↓used← →DLO134_011131= IO.MemberData.Concrete.Defaults.BeamSlab.Cover.CoverLower; 
+                    double CoverType →DLO134_011122= IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Lower.TypeOfCover; 
+                    double c↓used← →DLO134_011131= IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Lower.Cover; 
                 } 
             } 
         } 
@@ -1263,14 +1263,6 @@ class CalcCrackRectCss {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO006_000002">
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-      </VC>
       <VC ID="DLO134_000008">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1478,22 +1470,6 @@ class CalcCrackRectCss {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="151" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="15" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1483" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="822" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="6" />
-      </VC>
-      <VC ID="DLO134_001742">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="822" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="822" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
-      </VC>
-      <VC ID="DLO134_001743">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="1622" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="444" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1622" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="1581" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
       </VC>
       <VC ID="DLO134_001748">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="1664" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -2807,158 +2783,6 @@ class CalcCrackRectCss {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_013917">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_013919">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_013920">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_013921">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_013922">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_013923">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_013924">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_013925">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_013926">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_013927">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_013928">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_013929">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_013930">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_013931">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_013932">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_013933">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_013934">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_013935">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_013936">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="DLO134_015887">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3255,62 +3079,6 @@ class CalcCrackRectCss {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_042956">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_042957">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_042958">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_042959">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_042960">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_042961">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_042962">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="DLO134_042963">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3344,14 +3112,6 @@ class CalcCrackRectCss {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="DLO134_042971">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_042973">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -6015,22 +5775,6 @@ class CalcCrackRectCss {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_048505">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_048507">
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-      </VC>
       <VC ID="DLO134_048508">
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="31" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="31" />
@@ -6078,342 +5822,6 @@ class CalcCrackRectCss {
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_048514">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_048515">
-        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="21" />
-        <Set Vis="1" Prev="" Style="1" StyleName="None" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="20" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="150" Y="108" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="228" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_048516">
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="None" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_048517">
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_048518">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_048519">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_048520">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_048521">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_048522">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_048523">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_048524">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_005989">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_005990">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_005991">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_005992">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_005993">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_005994">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_005995">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_005996">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_005997">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_005998">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_005999">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006000">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006001">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006003">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006004">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006005">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006006">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006007">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006008">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006009">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006010">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006011">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006012">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006013">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006015">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006016">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006017">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006018">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006019">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006022">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006023">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
       </VC>
       <VC ID="KRS134_000009">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -6555,9 +5963,6 @@ class CalcCrackRectCss {
   <Texts>
     <Item TranslateID="BLOCK_DLO134_001605">
       <ENU>"Calculation of cracking forces (uncracked section)"</ENU>
-    </Item>
-    <Item TranslateID="STRING_0DE66945">
-      <ENU>"Check crack width does not satisfy, because the crack width is bigger than limit value. "</ENU>
     </Item>
     <Item TranslateID="STRING_10116E4C">
       <ENU>"Type"</ENU>

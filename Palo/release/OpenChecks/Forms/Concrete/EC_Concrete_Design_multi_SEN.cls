@@ -73,17 +73,17 @@ IF(Results.Contains("DesignResults")) {
     
     ShearReinf →DLO316_000005= →DLO316_000004DesignResults.ShearReinf; 
     ReinfReq →DLO316_000006= →DLO316_000007DesignResults.ReinfReq; 
-    ReinfReq_zpos →DLO316_000071= →DLO316_000072DesignResults.sReinfAszpos; 
-    ReinfReq_zneg →DLO316_000073= →DLO316_000074DesignResults.sReinfAszneg; 
-    ReinfReq_ypos →DLO316_000075= →DLO316_000076DesignResults.sReinfAsypos; 
-    ReinfReq_yneg →DLO316_000077= →DLO316_000078DesignResults.sReinfAsyneg; 
+    Reinf↓z.req+← →DLO316_000071= →DLO316_000072DesignResults.sReinfAszpos; 
+    Reinf↓z.req-← →DLO316_000073= →DLO316_000074DesignResults.sReinfAszneg; 
+    Reinf↓y.req+← →DLO316_000075= →DLO316_000076DesignResults.sReinfAsypos; 
+    Reinf↓y.req-← →DLO316_000077= →DLO316_000078DesignResults.sReinfAsyneg; 
     double dString →DLO006_000001= 0; 
     
-    DesignUCzpos →KRS135_000001= DesignResults.DesignUCzpos; 
-    DesignUCzneg →KRS135_000002= DesignResults.DesignUCzneg; 
-    DesignUCypos →KRS135_000003= DesignResults.DesignUCypos; 
-    DesignUCyneg →KRS135_000004= DesignResults.DesignUCyneg; 
-    DesignUCShear →KRS135_000005= DesignResults.DesignUCShear; 
+    UC↓z.req+← →KRS135_000001= DesignResults.DesignUCzpos; 
+    UC↓z.req-← →KRS135_000002= DesignResults.DesignUCzneg; 
+    UC↓y.req+← →KRS135_000003= DesignResults.DesignUCypos; 
+    UC↓y.req-← →KRS135_000004= DesignResults.DesignUCyneg; 
+    UC↓Shear.req← →KRS135_000005= DesignResults.DesignUCShear; 
     
     AsForString_Aszpos →KRS127_000234= DesignResults.AsForString_Aszpos; 
     AsForString_Aszneg →KRS127_000235= DesignResults.AsForString_Aszneg; 
@@ -100,10 +100,10 @@ IF(Results.Contains("DesignResults")) {
     ReinfAdditional_ypos →KRS127_000152= →KRS127_000153DesignResults.sReinfAdditional_ypos; 
     ReinfAdditional_yneg →KRS127_000154= →KRS127_000155DesignResults.sReinfAdditional_yneg; 
     
-    ReinfProv_zpos →KRS127_000156= →KRS127_000157DesignResults.sReinfProv_zpos; 
-    ReinfProv_zneg →KRS127_000158= →KRS127_000159DesignResults.sReinfProv_zneg; 
-    ReinfProv_ypos →KRS127_000160= →KRS127_000161DesignResults.sReinfProv_ypos; 
-    ReinfProv_yneg →KRS127_000162= →KRS127_000163DesignResults.sReinfProv_yneg; 
+    Reinf↓z.prov+← →KRS127_000156= →KRS127_000157DesignResults.sReinfProv_zpos; 
+    Reinf↓z.prov-← →KRS127_000158= →KRS127_000159DesignResults.sReinfProv_zneg; 
+    Reinf↓y.prov+← →KRS127_000160= →KRS127_000161DesignResults.sReinfProv_ypos; 
+    Reinf↓y.prov-← →KRS127_000162= →KRS127_000163DesignResults.sReinfProv_yneg; 
     
     AsForString_AszposProv →KRS127_000246= DesignResults.AsForString_AszposProv; 
     AsForString_AsznegProv →KRS127_000247= DesignResults.AsForString_AsznegProv; 
@@ -112,20 +112,20 @@ IF(Results.Contains("DesignResults")) {
     
     ReinfProv →KRS127_000166= →KRS127_000167DesignResults.ReinfProv; 
     
-    UC_ReqProv_zpos →KRS127_000181= →KRS127_000185DesignResults.UC_ReqProv_zpos; 
-    UC_ReqProv_zneg →KRS127_000182= →KRS127_000186DesignResults.UC_ReqProv_zneg; 
-    UC_ReqProv_ypos →KRS127_000183= →KRS127_000187DesignResults.UC_ReqProv_ypos; 
-    UC_ReqProv_yneg →KRS127_000184= →KRS127_000188DesignResults.UC_ReqProv_yneg; 
+    UC↓z.req.prov+← →KRS127_000181= →KRS127_000185DesignResults.UC_ReqProv_zpos; 
+    UC↓z.req.prov-← →KRS127_000182= →KRS127_000186DesignResults.UC_ReqProv_zneg; 
+    UC↓y.req.prov+← →KRS127_000183= →KRS127_000187DesignResults.UC_ReqProv_ypos; 
+    UC↓y.req.prov-← →KRS127_000184= →KRS127_000188DesignResults.UC_ReqProv_yneg; 
     
-    UC_Prov_zpos →KRS127_000214= →KRS127_000218DesignResults.UC_Prov_zpos; 
-    UC_Prov_zneg →KRS127_000215= →KRS127_000219DesignResults.UC_Prov_zneg; 
-    UC_Prov_ypos →KRS127_000216= →KRS127_000220DesignResults.UC_Prov_ypos; 
-    UC_Prov_yneg →KRS127_000217= →KRS127_000221DesignResults.UC_Prov_yneg; 
+    UC↓z.prov+← →KRS127_000214= →KRS127_000218DesignResults.UC_Prov_zpos; 
+    UC↓z.prov-← →KRS127_000215= →KRS127_000219DesignResults.UC_Prov_zneg; 
+    UC↓y.prov+← →KRS127_000216= →KRS127_000220DesignResults.UC_Prov_ypos; 
+    UC↓y.prov-← →KRS127_000217= →KRS127_000221DesignResults.UC_Prov_yneg; 
     
-    ReinfAddReq_zpos →KRS127_000198= →KRS127_000202DesignResults.ReinfAddReq_zpos; 
-    ReinfAddReq_zneg →KRS127_000199= →KRS127_000203DesignResults.ReinfAddReq_zneg; 
-    ReinfAddReq_ypos →KRS127_000200= →KRS127_000204DesignResults.ReinfAddReq_ypos; 
-    ReinfAddReq_yneg →KRS127_000201= →KRS127_000205DesignResults.ReinfAddReq_yneg; 
+    Reinf↓z.add.req+← →KRS127_000198= →KRS127_000202DesignResults.ReinfAddReq_zpos; 
+    Reinf↓z.add.req-← →KRS127_000199= →KRS127_000203DesignResults.ReinfAddReq_zneg; 
+    Reinf↓y.add.req+← →KRS127_000200= →KRS127_000204DesignResults.ReinfAddReq_ypos; 
+    Reinf↓y.add.req-← →KRS127_000201= →KRS127_000205DesignResults.ReinfAddReq_yneg; 
     
     ReinfString →KRS027_000002= →KRS027_000001DesignResults.ReinfString; 
     
@@ -151,6 +151,7 @@ object[] obEWN →INI400_005579= CssConditions.obEWN;
 
 IF(CssConditions.ConditionsForCss) { 
     object DataFromSEN →INI400_008180= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FunctionsDataFromSEN.CLC"); 
+    object Functions1D_DesignReq →INI400_010939= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_DesignReq.clc"); 
     
     // LOADING
     // loading of forces
@@ -228,37 +229,37 @@ IF(CssConditions.ConditionsForCss) {
         SWITCH(MemberType) { 
             CASE 1 :  { 
                 //materials
-                object ReqReinfMat →INI400_007955= IO.MemberData.Concrete.Defaults.Beam.Materials.Longitudinal.Material; 
+                object ReqReinfMat →INI400_007955= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Material; 
                 string Member →DLO316_000101= TR("Beam"); 
-                IF(IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverLower == 0 || IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverUpper == 0)
+                IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.TypeOfCover == 0 || IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.TypeOfCover == 0)
                 { 
                     object cover →INI400_007021= LoadExternCLC("EC_Concrete_cover_SEN_Design.CLC"); 
                     →INI400_007022cover.Calculate(False); 
                 } 
-                IF(IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverLower == 0) { 
+                IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.TypeOfCover == 0) { 
                     c↓lo← →INI400_006703= cover.c↓nom,l←; 
                 } ELSE { 
-                    c↓lo← →INI400_005915= IO.MemberData.Concrete.Defaults.Beam.Cover.CoverLower; 
+                    c↓lo← →INI400_005915= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.Cover; 
                 } 
                 c↓lo← →INI400_006702= c↓lo←+IO.MemberData.Concrete.Defaults.Beam.Stirrups.Diameter; 
-                IF(IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverUpper == 0) { 
+                IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.TypeOfCover == 0) { 
                     c↓up← →INI400_006705= cover.c↓nom,u←; 
                 } ELSE { 
-                    c↓up← →INI400_006706= IO.MemberData.Concrete.Defaults.Beam.Cover.CoverUpper; 
+                    c↓up← →INI400_006706= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.Cover; 
                 } 
                 c↓up← →INI400_006708= c↓up←+IO.MemberData.Concrete.Defaults.Beam.Stirrups.Diameter; 
-                IF(IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverSide == 0) { 
+                IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Side.TypeOfCover == 0) { 
                     c↓side← →INI400_006710= c↓up←; } 
-                IF(IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverSide == 1) { 
+                IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Side.TypeOfCover == 1) { 
                     c↓side← →INI400_007037= c↓lo←; } 
-                IF(IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverSide == 2) { 
-                    c↓side← →INI400_007038= IO.MemberData.Concrete.Defaults.Beam.Cover.CoverSide+IO.MemberData.Concrete.Defaults.Beam.Stirrups.Diameter; } 
+                IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Side.TypeOfCover == 2) { 
+                    c↓side← →INI400_007038= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Side.Cover+IO.MemberData.Concrete.Defaults.Beam.Stirrups.Diameter; } 
                 
                 IF(bShearDesign) { 
-                    object obReqShearReinfMat →INI400_006630= IO.MemberData.Concrete.Defaults.Beam.Materials.Stirrups.Material; 
+                    object obReqShearReinfMat →INI400_006630= IO.MemberData.Concrete.Defaults.Beam.Stirrups.Material; 
                     object ReqShearReinfMat →INI400_007964= obReqShearReinfMat.EC; 
                     string ReqNameShearReinf →INI400_006631= obReqShearReinfMat.Name; 
-                    f↓ywk.req← →INI400_005619= IO.MemberData.Concrete.Defaults.Beam.Materials.Stirrups.Material.EC.fyk; 
+                    f↓ywk.req← →INI400_005619= IO.MemberData.Concrete.Defaults.Beam.Stirrups.Material.EC.fyk; 
                     ϕ↓s.req← →INI400_006632= IO.MemberData.Concrete.Defaults.Beam.Stirrups.Diameter; 
                     n↓s.req← →INI400_006634= IO.MemberData.Concrete.Defaults.Beam.Stirrups.NumberOfCuts; 
                     α↓s.req← →INI400_007943= IO.MemberData.Concrete.Defaults.Beam.Stirrups.Angle*180/Math.PI; 
@@ -268,22 +269,22 @@ IF(CssConditions.ConditionsForCss) {
             CASE 2 :  { 
                 double TypeMember →INI400_008452= 1; 
                 string Member →DLO316_000102= TR("Column"); 
-                object ReqReinfMat →INI400_007958= IO.MemberData.Concrete.Defaults.Column.Materials.Longitudinal.Material; 
-                IF(IO.MemberData.Concrete.Defaults.Column.Cover.TypeOfCover == 0)
+                object ReqReinfMat →INI400_007958= IO.MemberData.Concrete.Defaults.Column.Longitudinal.Material; 
+                IF(IO.MemberData.Concrete.Defaults.Column.Longitudinal.Main.TypeOfCover == 0)
                 { 
                     object cover →INI400_007025= LoadExternCLC("EC_Concrete_cover_SEN_Design.CLC"); 
                     →INI400_007026cover.Calculate(False); 
                     c →INI400_007027= cover.c↓nom,m←; 
                 } 
                 ELSE { 
-                    c →INI400_007034= IO.MemberData.Concrete.Defaults.Column.Cover.Cover; 
+                    c →INI400_007034= IO.MemberData.Concrete.Defaults.Column.Longitudinal.Main.Cover; 
                 } 
                 c →INI400_006815= c+IO.MemberData.Concrete.Defaults.Column.Stirrups.Diameter; 
                 IF(bShearDesign) { 
-                    object obReqShearReinfMat →INI400_007965= IO.MemberData.Concrete.Defaults.Beam.Materials.Stirrups.Material; 
+                    object obReqShearReinfMat →INI400_007965= IO.MemberData.Concrete.Defaults.Column.Stirrups.Material; 
                     object ReqShearReinfMat →INI400_007966= obReqShearReinfMat.EC; 
                     string ReqNameShearReinf →INI400_007967= obReqShearReinfMat.Name; 
-                    f↓ywk.req← →INI400_006637= IO.MemberData.Concrete.Defaults.Column.Materials.Stirrups.Material.EC.fyk; 
+                    f↓ywk.req← →INI400_006637= IO.MemberData.Concrete.Defaults.Column.Stirrups.Material.EC.fyk; 
                     ϕ↓s.req← →INI400_006639= IO.MemberData.Concrete.Defaults.Column.Stirrups.Diameter; 
                     n↓s.req← →INI400_006641= IO.MemberData.Concrete.Defaults.Column.Stirrups.NumberOfCuts; 
                     α↓s.req← →INI400_007975= 90.; 
@@ -293,36 +294,36 @@ IF(CssConditions.ConditionsForCss) {
             } 
             CASE 4 :  { 
                 //materials
-                object ReqReinfMat →INI400_009842= IO.MemberData.Concrete.Defaults.Beam.Materials.Longitudinal.Material; 
+                object ReqReinfMat →INI400_009842= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Material; 
                 string Member →DLO316_000103= TR("Rib"); 
-                IF(IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverLower == 0 || IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverUpper == 0)
+                IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.TypeOfCover == 0 || IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.TypeOfCover == 0)
                 { 
                     object cover →INI400_009844= LoadExternCLC("EC_Concrete_cover_SEN_Design.CLC"); 
                     →INI400_009845cover.Calculate(False); 
                 } 
-                IF(IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverLower == 0) { 
+                IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.TypeOfCover == 0) { 
                     c↓lo← →INI400_009846= cover.c↓nom,l←; 
                 } ELSE { 
-                    c↓lo← →INI400_009847= IO.MemberData.Concrete.Defaults.Beam.Cover.CoverLower; 
+                    c↓lo← →INI400_009847= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.Cover; 
                 } 
                 c↓lo← →INI400_009849= c↓lo←+IO.MemberData.Concrete.Defaults.Beam.Stirrups.Diameter; 
-                IF(IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverUpper == 0) { 
+                IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.TypeOfCover == 0) { 
                     c↓up← →INI400_009851= cover.c↓nom,u←; 
                 } ELSE { 
-                    c↓up← →INI400_009852= IO.MemberData.Concrete.Defaults.Beam.Cover.CoverUpper; 
+                    c↓up← →INI400_009852= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.Cover; 
                 } 
                 c↓up← →INI400_009854= c↓up←+IO.MemberData.Concrete.Defaults.Beam.Stirrups.Diameter; 
-                IF(IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverSide == 0) { 
+                IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Side.TypeOfCover == 0) { 
                     c↓side← →INI400_009856= c↓up←; } 
-                IF(IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverSide == 1) { 
+                IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Side.TypeOfCover == 1) { 
                     c↓side← →INI400_009857= c↓lo←; } 
-                IF(IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverSide == 2) { 
-                    c↓side← →INI400_009858= IO.MemberData.Concrete.Defaults.Beam.Cover.CoverSide+IO.MemberData.Concrete.Defaults.Beam.Stirrups.Diameter; } 
+                IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Side.TypeOfCover == 2) { 
+                    c↓side← →INI400_009858= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Side.Cover+IO.MemberData.Concrete.Defaults.Beam.Stirrups.Diameter; } 
                 IF(bShearDesign) { 
-                    object obReqShearReinfMat →INI400_009863= IO.MemberData.Concrete.Defaults.Beam.Materials.Stirrups.Material; 
+                    object obReqShearReinfMat →INI400_009863= IO.MemberData.Concrete.Defaults.Beam.Stirrups.Material; 
                     object ReqShearReinfMat →INI400_009864= obReqShearReinfMat.EC; 
                     string ReqNameShearReinf →INI400_009865= obReqShearReinfMat.Name; 
-                    f↓ywk.req← →INI400_009866= IO.MemberData.Concrete.Defaults.Beam.Materials.Stirrups.Material.EC.fyk; 
+                    f↓ywk.req← →INI400_009866= IO.MemberData.Concrete.Defaults.Beam.Stirrups.Material.EC.fyk; 
                     ϕ↓s.req← →INI400_009868= IO.MemberData.Concrete.Defaults.Beam.Stirrups.Diameter; 
                     n↓s.req← →INI400_009870= IO.MemberData.Concrete.Defaults.Beam.Stirrups.NumberOfCuts; 
                     α↓s.req← →INI400_009871= IO.MemberData.Concrete.Defaults.Beam.Stirrups.Angle*180/Math.PI; 
@@ -332,21 +333,21 @@ IF(CssConditions.ConditionsForCss) {
             CASE 128 :  { 
                 TypeMember →INI400_008455= 2; 
                 string Member →DLO316_000104= TR("Beam slab"); 
-                object ReqReinfMat →INI400_007962= IO.MemberData.Concrete.Defaults.BeamSlab.Materials.Longitudinal.Material; 
-                IF(IO.MemberData.Concrete.Defaults.BeamSlab.Cover.TypeOfCoverLower == 0 || IO.MemberData.Concrete.Defaults.BeamSlab.Cover.TypeOfCoverUpper == 0)
+                object ReqReinfMat →INI400_007962= IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Material; 
+                IF(IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Lower.TypeOfCover == 0 || IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Upper.TypeOfCover == 0)
                 { 
                     object cover →INI400_007028= LoadExternCLC("EC_Concrete_cover_SEN_Design.CLC"); 
                     →INI400_007029cover.Calculate(False); 
                 } 
-                IF(IO.MemberData.Concrete.Defaults.BeamSlab.Cover.TypeOfCoverLower == 0) { 
+                IF(IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Lower.TypeOfCover == 0) { 
                     c↓lo← →INI400_006821= cover.c↓nom,l←; 
                 } ELSE { 
-                    c↓lo← →INI400_006822= IO.MemberData.Concrete.Defaults.BeamSlab.Cover.CoverLower; 
+                    c↓lo← →INI400_006822= IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Lower.Cover; 
                 } 
-                IF(IO.MemberData.Concrete.Defaults.BeamSlab.Cover.TypeOfCoverUpper == 0) { 
+                IF(IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Upper.TypeOfCover == 0) { 
                     c↓up← →INI400_006826= cover.c↓nom,u←; 
                 } ELSE { 
-                    c↓up← →INI400_006827= IO.MemberData.Concrete.Defaults.BeamSlab.Cover.CoverUpper; 
+                    c↓up← →INI400_006827= IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Upper.Cover; 
                 } 
                 c↓side← →INI400_007040= MAX(c↓lo←, c↓up←); 
                 
@@ -361,64 +362,81 @@ IF(CssConditions.ConditionsForCss) {
     //basic reinforcement
     SWITCH(TypeMember) { 
         CASE 0 :  { //beam
-            SWITCH(IO.CS.Geometry.FormCode) { 
-                CASE 2003 :  { //rectengular section
-                    object BasicReinf →VAL127_000086= IO.MemberData.Concrete.Defaults.Beam.Reinforcement.Rectangular.BasicReinf; 
+            IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.UseBasicReinf == 1) { 
+                SWITCH(IO.CS.Geometry.FormCode) { 
+                    CASE 2003 :  { //rectengular section
+                        object BasicReinf →VAL127_000086= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Rectangular.BasicReinf; 
+                    } 
+                    CASE 2009 :  { //T section
+                        object BasicReinf →VAL127_000090= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Tsection.BasicReinf; 
+                    } 
+                    CASE 2006 :  { //I section
+                        object BasicReinf →VAL127_000091= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Isection.BasicReinf; 
+                    } 
+                    CASE 2010 :  { //L section
+                        object BasicReinf →VAL127_000092= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lsection.BasicReinf; 
+                    } 
+                    CASE 2014 :  { //L section reverse
+                        object BasicReinf →VAL127_000093= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lsection.BasicReinf; 
+                    } 
+                    DEFAULT :  { 
+                        object BasicReinf →VAL127_000087= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.OtherAndGeneral.BasicReinf; 
+                    } 
                 } 
-                CASE 2009 :  { //T section
-                    object BasicReinf →VAL127_000090= IO.MemberData.Concrete.Defaults.Beam.Reinforcement.Tsection.BasicReinf; 
-                } 
-                CASE 2006 :  { //I section
-                    object BasicReinf →VAL127_000091= IO.MemberData.Concrete.Defaults.Beam.Reinforcement.Isection.BasicReinf; 
-                } 
-                CASE 2010 :  { //L section
-                    object BasicReinf →VAL127_000092= IO.MemberData.Concrete.Defaults.Beam.Reinforcement.Lsection.BasicReinf; 
-                } 
-                CASE 2014 :  { //L section reverse
-                    object BasicReinf →VAL127_000093= IO.MemberData.Concrete.Defaults.Beam.Reinforcement.Lsection.BasicReinf; 
-                } 
-                DEFAULT :  { 
-                    object BasicReinf →VAL127_000087= IO.MemberData.Concrete.Defaults.Beam.Reinforcement.OtherAndGeneral.BasicReinf; 
-                } 
+                ϕ↓lo← →VAL127_000095= DataFromSEN.LoadLongDiamater(BasicReinf.Edge[2].Additional); 
+                ϕ↓up← →VAL127_000094= DataFromSEN.LoadLongDiamater(BasicReinf.Edge[0].Additional); 
+                ϕ →INI400_006807= DataFromSEN.LoadLongDiamater(BasicReinf.Edge[1].Additional); 
+            } ELSE { 
+                object BasicReinf →KRS116_000011= Functions1D_DesignReq.EmptyBasicReinf(); 
+                ϕ↓lo← →KRS116_000005= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.Diameter; 
+                ϕ↓up← →KRS116_000006= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.Diameter; 
+                ϕ →KRS116_000007= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.Diameter; //Side reinf can not be defined without library
             } 
-            ϕ↓lo← →VAL127_000095= DataFromSEN.LoadLongDiamater(BasicReinf.Edge[2].Additional); 
-            ϕ↓up← →VAL127_000094= DataFromSEN.LoadLongDiamater(BasicReinf.Edge[0].Additional); 
-            ϕ →INI400_006807= DataFromSEN.LoadLongDiamater(BasicReinf.Edge[1].Additional); 
             double ϕ↓max← →INI400_007041= MAX(ϕ↓lo←, ϕ↓up←); 
             IncreasingStatReinf →VAL127_000122= new Structure("CoeffUpper", IO.MemberData.Concrete.Solver.DesignAs.BeamColumnRibBeamSlab.CoeffStatUp, "CoeffLower", IO.MemberData.Concrete.Solver.DesignAs.BeamColumnRibBeamSlab.CoeffStatLo); 
         } 
         CASE 1 :  { //column
-            SWITCH(IO.CS.Geometry.FormCode) { 
-                CASE 2003 :  { //rectengular section
-                    object BasicReinf →VAL127_000106= IO.MemberData.Concrete.Defaults.Column.Reinforcement.Rectangular.BasicReinf; 
+            IF(IO.MemberData.Concrete.Defaults.Column.Longitudinal.UseBasicReinf == 1) { 
+                SWITCH(IO.CS.Geometry.FormCode) { 
+                    CASE 2003 :  { //rectengular section
+                        object BasicReinf →VAL127_000106= IO.MemberData.Concrete.Defaults.Column.Longitudinal.Rectangular.BasicReinf; 
+                    } 
+                    CASE 2002 :  { //circular section
+                        object BasicReinf →VAL127_000108= IO.MemberData.Concrete.Defaults.Column.Longitudinal.Circular.BasicReinf; 
+                    } 
+                    CASE 2008 :  { //oval section
+                        object BasicReinf →VAL127_000109= IO.MemberData.Concrete.Defaults.Column.Longitudinal.Oval.BasicReinf; 
+                    } 
+                    DEFAULT :  { 
+                        object BasicReinf →VAL127_000107= IO.MemberData.Concrete.Defaults.Column.Longitudinal.OtherAndGeneral.BasicReinf; 
+                    } 
                 } 
-                CASE 2002 :  { //circular section
-                    object BasicReinf →VAL127_000108= IO.MemberData.Concrete.Defaults.Column.Reinforcement.Circular.BasicReinf; 
-                } 
-                CASE 2008 :  { //oval section
-                    object BasicReinf →VAL127_000109= IO.MemberData.Concrete.Defaults.Column.Reinforcement.Oval.BasicReinf; 
-                } 
-                
-                DEFAULT :  { 
-                    object BasicReinf →VAL127_000107= IO.MemberData.Concrete.Defaults.Column.Reinforcement.OtherAndGeneral.BasicReinf; 
-                } 
+                ϕ →VAL127_000110= DataFromSEN.LoadLongDiamater(BasicReinf.Edge[0].Additional); 
+            } ELSE { 
+                object BasicReinf →KRS116_000012= Functions1D_DesignReq.EmptyBasicReinf(); 
+                ϕ →KRS116_000008= IO.MemberData.Concrete.Defaults.Column.Longitudinal.Main.Diameter; 
             } 
-            ϕ →VAL127_000110= DataFromSEN.LoadLongDiamater(BasicReinf.Edge[0].Additional); 
             double ϕ↓max← →VAL127_000111= ϕ; 
             IncreasingStatReinf →VAL127_000117= new Structure("CoeffUpper", IO.MemberData.Concrete.Solver.DesignAs.BeamColumnRibBeamSlab.CoeffStat, "CoeffLower", IO.MemberData.Concrete.Solver.DesignAs.BeamColumnRibBeamSlab.CoeffStat); 
         } 
         
         CASE 2 :  { //beam slab
-            SWITCH(IO.CS.Geometry.FormCode) { 
-                CASE 2003 :  { //rectengular section
-                    object BasicReinf →VAL127_000099= IO.MemberData.Concrete.Defaults.BeamSlab.Reinforcement.Rectangular.BasicReinf; 
+            IF(IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.UseBasicReinf == 1) { 
+                SWITCH(IO.CS.Geometry.FormCode) { 
+                    CASE 2003 :  { //rectengular section
+                        object BasicReinf →VAL127_000099= IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Rectangular.BasicReinf; 
+                    } 
+                    DEFAULT :  { 
+                        object BasicReinf →VAL127_000105= null; 
+                    } 
                 } 
-                DEFAULT :  { 
-                    object BasicReinf →VAL127_000105= null; 
-                } 
+                ϕ↓lo← →VAL127_000114= DataFromSEN.LoadLongDiamater(BasicReinf.Edge[1].Additional); 
+                ϕ↓up← →VAL127_000115= DataFromSEN.LoadLongDiamater(BasicReinf.Edge[0].Additional); 
+            } ELSE { 
+                object BasicReinf →KRS116_000013= Functions1D_DesignReq.EmptyBasicReinf(); 
+                ϕ↓lo← →KRS116_000009= IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Lower.Diameter; 
+                ϕ↓up← →KRS116_000010= IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Upper.Diameter; 
             } 
-            ϕ↓lo← →VAL127_000114= DataFromSEN.LoadLongDiamater(BasicReinf.Edge[1].Additional); 
-            ϕ↓up← →VAL127_000115= DataFromSEN.LoadLongDiamater(BasicReinf.Edge[0].Additional); 
             double ϕ↓max← →VAL127_000116= MAX(ϕ↓lo←, ϕ↓up←); 
             IncreasingStatReinf →VAL127_000121= new Structure("CoeffUpper", IO.MemberData.Concrete.Solver.DesignAs.BeamColumnRibBeamSlab.CoeffStatUp, "CoeffLower", IO.MemberData.Concrete.Solver.DesignAs.BeamColumnRibBeamSlab.CoeffStatLo); 
         } 
@@ -512,8 +530,7 @@ IF(CssConditions.ConditionsForCss) {
     
     //header
     IF(PrintMemberInfo &amp;&amp; IO.IsDrawing) { 
-        object Functions1D →INI400_010939= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_DesignReq.clc"); 
-        →INI400_013909Functions1D.PrintCheckHeader(); 
+        →KRS116_000014Functions1D_DesignReq.PrintCheckHeader(); 
         →INI400_009086PAGEBREAK(); 
     } 
     
@@ -534,7 +551,7 @@ IF(CssConditions.ConditionsForCss) {
     →INI400_009935InputMultiDesign.Add("DesignULS", DesignULS); 
     →INI400_009936InputMultiDesign.Add("AutoMethod", true); 
     →INI400_009937InputMultiDesign.Add("ExplodedToBars", ExplodedToBars); 
-    →INI400_009938InputMultiDesign.Add("PrintResultPerCombi", True); 
+    →INI400_009938InputMultiDesign.Add("PrintResultPerCombi", false); 
     →INI400_009939InputMultiDesign.Add("bExtremeCombPerDirection", True); 
     →INI400_009940InputMultiDesign.Add("Coeff_Area", 1); 
     
@@ -694,7 +711,7 @@ IF(CssConditions.ConditionsForCss) {
     double A↓swm.req← →INI400_008181= 0; 
     double A↓swm.prov← →INI400_008193= 0; 
     string ShearReinf →DLO316_000001= OutputMultiDesign.sAsw; 
-    double DesignUCShear →KRS135_000008= OutputMultiDesign.DesignUCShear; 
+    double UC↓Shear.req← →KRS135_000008= OutputMultiDesign.DesignUCShear; 
     IF(SumShearArea != null) { 
         A↓swm.req← →INI400_013918= SumShearArea.Aswm_req; 
         A↓swm.prov← →INI400_013919= SumShearArea.Aswm_pract; 
@@ -740,15 +757,15 @@ IF(CssConditions.ConditionsForCss) {
     
     string ReinfReq →DLO316_000009= OutputMultiDesign.sReinfReq; 
     
-    string ReinfReq_zpos →DLO316_000055= OutputMultiDesign.sReinfAszpos; 
-    string ReinfReq_zneg →DLO316_000056= OutputMultiDesign.sReinfAszneg; 
-    string ReinfReq_ypos →DLO316_000057= OutputMultiDesign.sReinfAsypos; 
-    string ReinfReq_yneg →DLO316_000058= OutputMultiDesign.sReinfAsyneg; 
+    string Reinf↓z.req+← →DLO316_000055= OutputMultiDesign.sReinfAszpos; 
+    string Reinf↓z.req-← →DLO316_000056= OutputMultiDesign.sReinfAszneg; 
+    string Reinf↓y.req+← →DLO316_000057= OutputMultiDesign.sReinfAsypos; 
+    string Reinf↓y.req-← →DLO316_000058= OutputMultiDesign.sReinfAsyneg; 
     
-    double DesignUCzpos →KRS135_000009= OutputMultiDesign.DesignUCzpos; 
-    double DesignUCzneg →KRS135_000010= OutputMultiDesign.DesignUCzneg; 
-    double DesignUCypos →KRS135_000011= OutputMultiDesign.DesignUCypos; 
-    double DesignUCyneg →KRS135_000012= OutputMultiDesign.DesignUCyneg; 
+    double UC↓z.req+← →KRS135_000009= OutputMultiDesign.DesignUCzpos; 
+    double UC↓z.req-← →KRS135_000010= OutputMultiDesign.DesignUCzneg; 
+    double UC↓y.req+← →KRS135_000011= OutputMultiDesign.DesignUCypos; 
+    double UC↓y.req-← →KRS135_000012= OutputMultiDesign.DesignUCyneg; 
     
     double AsForString_Aszpos →KRS127_000226= OutputMultiDesign.AsForString_Aszpos; 
     double AsForString_Aszneg →KRS127_000227= OutputMultiDesign.AsForString_Aszneg; 
@@ -768,53 +785,53 @@ IF(CssConditions.ConditionsForCss) {
     string ReinfAdditional_yneg →KRS127_000121= sBarsAdditionalSurfaces.sReinf_yneg; 
     
     object sBarsProvidedSurfaces →KRS127_000113= OutputMultiDesign.sBarsProvidedSurfaces; 
-    string ReinfProv_zpos →KRS127_000122= sBarsProvidedSurfaces.sReinf_zpos; 
-    string ReinfProv_zneg →KRS127_000123= sBarsProvidedSurfaces.sReinf_zneg; 
-    string ReinfProv_ypos →KRS127_000124= sBarsProvidedSurfaces.sReinf_ypos; 
-    string ReinfProv_yneg →KRS127_000125= sBarsProvidedSurfaces.sReinf_yneg; 
+    string Reinf↓z.prov+← →KRS127_000122= sBarsProvidedSurfaces.sReinf_zpos; 
+    string Reinf↓z.prov-← →KRS127_000123= sBarsProvidedSurfaces.sReinf_zneg; 
+    string Reinf↓y.prov+← →KRS127_000124= sBarsProvidedSurfaces.sReinf_ypos; 
+    string Reinf↓y.prov-← →KRS127_000125= sBarsProvidedSurfaces.sReinf_yneg; 
     
     IF(sBarsProvidedSurfaces.ReinfProv_zpos.Count &gt; 0) { 
-        double UC_Prov_zpos →KRS127_000206= sBarsProvidedSurfaces.ReinfProv_zpos[0].DesignUC; 
+        double UC↓z.prov+← →KRS127_000206= sBarsProvidedSurfaces.ReinfProv_zpos[0].DesignUC; 
         double AsForString_AszposProv →KRS127_000238= sBarsProvidedSurfaces.ReinfProv_zpos[0].As; 
     } ELSE { 
-        UC_Prov_zpos →KRS127_000222= 0; 
+        UC↓z.prov+← →KRS127_000222= 0; 
         AsForString_AszposProv →KRS127_000250= 0; 
     } 
     IF(sBarsProvidedSurfaces.ReinfProv_zneg.Count &gt; 0) { 
-        double UC_Prov_zneg →KRS127_000207= sBarsProvidedSurfaces.ReinfProv_zneg[0].DesignUC; 
+        double UC↓z.prov-← →KRS127_000207= sBarsProvidedSurfaces.ReinfProv_zneg[0].DesignUC; 
         double AsForString_AsznegProv →KRS127_000239= sBarsProvidedSurfaces.ReinfProv_zneg[0].As; 
     } ELSE { 
-        UC_Prov_zneg →KRS127_000223= 0; 
+        UC↓z.prov-← →KRS127_000223= 0; 
         AsForString_AsznegProv →KRS127_000251= 0; 
     } 
     IF(sBarsProvidedSurfaces.ReinfProv_ypos.Count &gt; 0) { 
-        double UC_Prov_ypos →KRS127_000208= sBarsProvidedSurfaces.ReinfProv_ypos[0].DesignUC; 
+        double UC↓y.prov+← →KRS127_000208= sBarsProvidedSurfaces.ReinfProv_ypos[0].DesignUC; 
         double AsForString_AsyposProv →KRS127_000240= sBarsProvidedSurfaces.ReinfProv_ypos[0].As; 
     } ELSE { 
-        UC_Prov_ypos →KRS127_000224= 0; 
+        UC↓y.prov+← →KRS127_000224= 0; 
         AsForString_AsyposProv →KRS127_000252= 0; 
     } 
     IF(sBarsProvidedSurfaces.ReinfProv_yneg.Count &gt; 0) { 
-        double UC_Prov_yneg →KRS127_000209= sBarsProvidedSurfaces.ReinfProv_yneg[0].DesignUC; 
+        double UC↓y.prov-← →KRS127_000209= sBarsProvidedSurfaces.ReinfProv_yneg[0].DesignUC; 
         double AsForString_AsynegProv →KRS127_000241= sBarsProvidedSurfaces.ReinfProv_yneg[0].As; 
     } ELSE { 
-        UC_Prov_yneg →KRS127_000225= 0; 
+        UC↓y.prov-← →KRS127_000225= 0; 
         AsForString_AsynegProv →KRS127_000253= 0; 
     } 
     
     string ReinfProv →KRS127_000164= OutputMultiDesign.sReinfProv; 
     
     object UC_ReqProv →KRS127_000168= OutputMultiDesign.UC_ReqProv; 
-    double UC_ReqProv_zpos →KRS127_000169= UC_ReqProv.UC_ReqProv_zpos; 
-    double UC_ReqProv_zneg →KRS127_000170= UC_ReqProv.UC_ReqProv_zneg; 
-    double UC_ReqProv_ypos →KRS127_000171= UC_ReqProv.UC_ReqProv_ypos; 
-    double UC_ReqProv_yneg →KRS127_000172= UC_ReqProv.UC_ReqProv_yneg; 
+    double UC↓z.req.prov+← →KRS127_000169= UC_ReqProv.UC_ReqProv_zpos; 
+    double UC↓z.req.prov-← →KRS127_000170= UC_ReqProv.UC_ReqProv_zneg; 
+    double UC↓y.req.prov+← →KRS127_000171= UC_ReqProv.UC_ReqProv_ypos; 
+    double UC↓y.req.prov-← →KRS127_000172= UC_ReqProv.UC_ReqProv_yneg; 
     
     object sBarsAdditionalRequiredSurfaces →KRS127_000189= OutputMultiDesign.sBarsAdditionalRequiredSurfaces; 
-    string ReinfAddReq_zpos →KRS127_000190= sBarsAdditionalRequiredSurfaces.sReinf_zpos; 
-    string ReinfAddReq_zneg →KRS127_000191= sBarsAdditionalRequiredSurfaces.sReinf_zneg; 
-    string ReinfAddReq_ypos →KRS127_000192= sBarsAdditionalRequiredSurfaces.sReinf_ypos; 
-    string ReinfAddReq_yneg →KRS127_000193= sBarsAdditionalRequiredSurfaces.sReinf_yneg; 
+    string Reinf↓z.add.req+← →KRS127_000190= sBarsAdditionalRequiredSurfaces.sReinf_zpos; 
+    string Reinf↓z.add.req-← →KRS127_000191= sBarsAdditionalRequiredSurfaces.sReinf_zneg; 
+    string Reinf↓y.add.req+← →KRS127_000192= sBarsAdditionalRequiredSurfaces.sReinf_ypos; 
+    string Reinf↓y.add.req-← →KRS127_000193= sBarsAdditionalRequiredSurfaces.sReinf_yneg; 
     
     ReinfString →KRS027_000003= OutputMultiDesign.ReinfString; 
     
@@ -874,16 +891,16 @@ IF(CssConditions.ConditionsForCss) {
     
     ShearReinf →DLO316_000095= ""; 
     ReinfReq →DLO316_000096= ""; 
-    ReinfReq_zpos →DLO316_000097= ""; 
-    ReinfReq_zneg →DLO316_000098= ""; 
-    ReinfReq_ypos →DLO316_000099= ""; 
-    ReinfReq_yneg →DLO316_000100= ""; 
+    Reinf↓z.req+← →DLO316_000097= ""; 
+    Reinf↓z.req-← →DLO316_000098= ""; 
+    Reinf↓y.req+← →DLO316_000099= ""; 
+    Reinf↓y.req-← →DLO316_000100= ""; 
     
-    DesignUCzpos →KRS135_000013= 0; 
-    DesignUCzneg →KRS135_000014= 0; 
-    DesignUCypos →KRS135_000015= 0; 
-    DesignUCyneg →KRS135_000016= 0; 
-    DesignUCShear →KRS135_000017= 0; 
+    UC↓z.req+← →KRS135_000013= 0; 
+    UC↓z.req-← →KRS135_000014= 0; 
+    UC↓y.req+← →KRS135_000015= 0; 
+    UC↓y.req-← →KRS135_000016= 0; 
+    UC↓Shear.req← →KRS135_000017= 0; 
     
     AsForString_Aszpos →KRS127_000230= 0; 
     AsForString_Aszneg →KRS127_000231= 0; 
@@ -900,10 +917,10 @@ IF(CssConditions.ConditionsForCss) {
     ReinfAdditional_ypos →KRS127_000133= ""; 
     ReinfAdditional_yneg →KRS127_000134= ""; 
     
-    ReinfProv_zpos →KRS127_000136= ""; 
-    ReinfProv_zneg →KRS127_000137= ""; 
-    ReinfProv_ypos →KRS127_000138= ""; 
-    ReinfProv_yneg →KRS127_000139= ""; 
+    Reinf↓z.prov+← →KRS127_000136= ""; 
+    Reinf↓z.prov-← →KRS127_000137= ""; 
+    Reinf↓y.prov+← →KRS127_000138= ""; 
+    Reinf↓y.prov-← →KRS127_000139= ""; 
     
     AsForString_AszposProv →KRS127_000242= 0; 
     AsForString_AsznegProv →KRS127_000243= 0; 
@@ -912,20 +929,20 @@ IF(CssConditions.ConditionsForCss) {
     
     ReinfProv →KRS127_000165= ""; 
     
-    UC_Prov_zpos →KRS127_000210= 0; 
-    UC_Prov_zneg →KRS127_000211= 0; 
-    UC_Prov_ypos →KRS127_000212= 0; 
-    UC_Prov_yneg →KRS127_000213= 0; 
+    UC↓z.prov+← →KRS127_000210= 0; 
+    UC↓z.prov-← →KRS127_000211= 0; 
+    UC↓y.prov+← →KRS127_000212= 0; 
+    UC↓y.prov-← →KRS127_000213= 0; 
     
-    UC_ReqProv_zpos →KRS127_000173= 0; 
-    UC_ReqProv_zneg →KRS127_000174= 0; 
-    UC_ReqProv_ypos →KRS127_000175= 0; 
-    UC_ReqProv_yneg →KRS127_000176= 0; 
+    UC↓z.req.prov+← →KRS127_000173= 0; 
+    UC↓z.req.prov-← →KRS127_000174= 0; 
+    UC↓y.req.prov+← →KRS127_000175= 0; 
+    UC↓y.req.prov-← →KRS127_000176= 0; 
     
-    ReinfAddReq_zpos →KRS127_000194= ""; 
-    ReinfAddReq_zneg →KRS127_000195= ""; 
-    ReinfAddReq_ypos →KRS127_000196= ""; 
-    ReinfAddReq_yneg →KRS127_000197= ""; 
+    Reinf↓z.add.req+← →KRS127_000194= ""; 
+    Reinf↓z.add.req-← →KRS127_000195= ""; 
+    Reinf↓y.add.req+← →KRS127_000196= ""; 
+    Reinf↓y.add.req-← →KRS127_000197= ""; 
     
     ReinfString →KRS027_000005= ""; 
     
@@ -983,15 +1000,15 @@ object DesignResults →INI400_013922= new Structure(
 "As_add_req", A↓s.add.req←, 
 "ShearReinf", ShearReinf, 
 "ReinfReq", ReinfReq, 
-"sReinfAszpos", ReinfReq_zpos, 
-"sReinfAszneg", ReinfReq_zneg, 
-"sReinfAsypos", ReinfReq_ypos, 
-"sReinfAsyneg", ReinfReq_yneg, 
-"DesignUCzpos", DesignUCzpos, 
-"DesignUCzneg", DesignUCzneg, 
-"DesignUCypos", DesignUCypos, 
-"DesignUCyneg", DesignUCyneg, 
-"DesignUCShear", DesignUCShear, 
+"sReinfAszpos", Reinf↓z.req+←, 
+"sReinfAszneg", Reinf↓z.req-←, 
+"sReinfAsypos", Reinf↓y.req+←, 
+"sReinfAsyneg", Reinf↓y.req-←, 
+"DesignUCzpos", UC↓z.req+←, 
+"DesignUCzneg", UC↓z.req-←, 
+"DesignUCypos", UC↓y.req+←, 
+"DesignUCyneg", UC↓y.req-←, 
+"DesignUCShear", UC↓Shear.req←, 
 "AsForString_Aszpos", AsForString_Aszpos, 
 "AsForString_Aszneg", AsForString_Aszneg, 
 "AsForString_Asypos", AsForString_Asypos, 
@@ -1004,27 +1021,27 @@ object DesignResults →INI400_013922= new Structure(
 "sReinfAdditional_zneg", ReinfAdditional_zneg, 
 "sReinfAdditional_ypos", ReinfAdditional_ypos, 
 "sReinfAdditional_yneg", ReinfAdditional_yneg, 
-"sReinfProv_zpos", ReinfProv_zpos, 
-"sReinfProv_zneg", ReinfProv_zneg, 
-"sReinfProv_ypos", ReinfProv_ypos, 
-"sReinfProv_yneg", ReinfProv_yneg, 
+"sReinfProv_zpos", Reinf↓z.prov+←, 
+"sReinfProv_zneg", Reinf↓z.prov-←, 
+"sReinfProv_ypos", Reinf↓y.prov+←, 
+"sReinfProv_yneg", Reinf↓y.prov-←, 
 "AsForString_AszposProv", AsForString_AszposProv, 
 "AsForString_AsznegProv", AsForString_AsznegProv, 
 "AsForString_AsyposProv", AsForString_AsyposProv, 
 "AsForString_AsynegProv", AsForString_AsynegProv, 
-"ReinfAddReq_zpos", ReinfAddReq_zpos, 
-"ReinfAddReq_zneg", ReinfAddReq_zneg, 
-"ReinfAddReq_ypos", ReinfAddReq_ypos, 
-"ReinfAddReq_yneg", ReinfAddReq_yneg, 
+"ReinfAddReq_zpos", Reinf↓z.add.req+←, 
+"ReinfAddReq_zneg", Reinf↓z.add.req-←, 
+"ReinfAddReq_ypos", Reinf↓y.add.req+←, 
+"ReinfAddReq_yneg", Reinf↓y.add.req-←, 
 "ReinfProv", ReinfProv, 
-"UC_ReqProv_zpos", UC_ReqProv_zpos, 
-"UC_ReqProv_zneg", UC_ReqProv_zneg, 
-"UC_ReqProv_ypos", UC_ReqProv_ypos, 
-"UC_ReqProv_yneg", UC_ReqProv_yneg, 
-"UC_Prov_zpos", UC_Prov_zpos, 
-"UC_Prov_zneg", UC_Prov_zneg, 
-"UC_Prov_ypos", UC_Prov_ypos, 
-"UC_Prov_yneg", UC_Prov_yneg, 
+"UC_ReqProv_zpos", UC↓z.req.prov+←, 
+"UC_ReqProv_zneg", UC↓z.req.prov-←, 
+"UC_ReqProv_ypos", UC↓y.req.prov+←, 
+"UC_ReqProv_yneg", UC↓y.req.prov-←, 
+"UC_Prov_zpos", UC↓z.prov+←, 
+"UC_Prov_zneg", UC↓z.prov-←, 
+"UC_Prov_ypos", UC↓y.prov+←, 
+"UC_Prov_yneg", UC↓y.prov-←, 
 "ReinfString", ReinfString
 ); 
 
@@ -1686,46 +1703,6 @@ object DesignResults →INI400_013922= new Structure(
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="DesignUCShear" ESA_ID="Result.28" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="66" Reference="" Extrem="2" HideZeros="True" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="0" />
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="DesignUCyneg" ESA_ID="Result.27" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="66" Reference="" Extrem="0" HideZeros="False" ReverseAxis="True" DrawDirection="1" DrawLimitMax="1" DrawLimitMin="0" />
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="DesignUCypos" ESA_ID="Result.26" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="66" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="1" DrawLimitMax="1" DrawLimitMin="0" />
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="DesignUCzneg" ESA_ID="Result.25" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="66" Reference="" Extrem="0" HideZeros="False" ReverseAxis="True" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="0" />
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="DesignUCzpos" ESA_ID="Result.24" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="66" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="0" />
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="DesignULS" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
@@ -1739,7 +1716,7 @@ object DesignResults →INI400_013922= new Structure(
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="dString" ESA_ID="Result.29" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_dString">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -1794,6 +1771,12 @@ object DesignResults →INI400_013922= new Structure(
       </Variable>
       <Variable Modifier="Public" Name="Functions1D_Crack" ESA_ID="" Type="Object">
         <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="Functions1D_DesignReq" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_Functions1D_DesignReq">
           <ENU>
           </ENU>
         </Description>
@@ -1936,6 +1919,90 @@ object DesignResults →INI400_013922= new Structure(
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="Reinf↓y.add.req+←" ESA_ID="Result.78" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" Numeric="A↓sy.add.req+←" SenModif="False" LabOri="0" />
+      </Variable>
+      <Variable Modifier="Public" Name="Reinf↓y.add.req-←" ESA_ID="Result.79" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" Numeric="A↓sy.add.req-←" SenModif="False" LabOri="0" />
+      </Variable>
+      <Variable Modifier="Public" Name="Reinf↓y.prov+←" ESA_ID="Result.69" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" Numeric="AsForString_AsyposProv" SenModif="False" LabOri="0" />
+      </Variable>
+      <Variable Modifier="Public" Name="Reinf↓y.prov-←" ESA_ID="Result.70" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" Numeric="AsForString_AsynegProv" SenModif="False" LabOri="0" />
+      </Variable>
+      <Variable Modifier="Public" Name="Reinf↓y.req+←" ESA_ID="Result.19" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" Numeric="AsForString_Asypos" SenModif="False" LabOri="0" />
+      </Variable>
+      <Variable Modifier="Public" Name="Reinf↓y.req-←" ESA_ID="Result.20" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" Numeric="AsForString_Asyneg" SenModif="False" LabOri="0" />
+      </Variable>
+      <Variable Modifier="Public" Name="Reinf↓z.add.req+←" ESA_ID="Result.76" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" Numeric="A↓sz.add.req+←" SenModif="False" LabOri="0" />
+      </Variable>
+      <Variable Modifier="Public" Name="Reinf↓z.add.req-←" ESA_ID="Result.77" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" Numeric="A↓sz.add.req-←" SenModif="False" LabOri="0" />
+      </Variable>
+      <Variable Modifier="Public" Name="Reinf↓z.prov+←" ESA_ID="Result.67" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" Numeric="AsForString_AszposProv" SenModif="False" LabOri="0" />
+      </Variable>
+      <Variable Modifier="Public" Name="Reinf↓z.prov-←" ESA_ID="Result.68" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" Numeric="AsForString_AsznegProv" SenModif="False" LabOri="0" />
+      </Variable>
+      <Variable Modifier="Public" Name="Reinf↓z.req+←" ESA_ID="Result.17" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" Numeric="AsForString_Aszpos" SenModif="False" LabOri="0" />
+      </Variable>
+      <Variable Modifier="Public" Name="Reinf↓z.req-←" ESA_ID="Result.18" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" Numeric="AsForString_Aszneg" SenModif="False" LabOri="0" />
+      </Variable>
       <Variable Modifier="Public" Name="ReinfAdditional_yneg" ESA_ID="" Type="String">
         <Description>
           <ENU>
@@ -1959,34 +2026,6 @@ object DesignResults →INI400_013922= new Structure(
           <ENU>
           </ENU>
         </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="ReinfAddReq_yneg" ESA_ID="Result.79" Type="String">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" Numeric="A↓sy.add.req-←" SenModif="False" LabOri="0" />
-      </Variable>
-      <Variable Modifier="Public" Name="ReinfAddReq_ypos" ESA_ID="Result.78" Type="String">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" Numeric="A↓sy.add.req+←" SenModif="False" LabOri="0" />
-      </Variable>
-      <Variable Modifier="Public" Name="ReinfAddReq_zneg" ESA_ID="Result.77" Type="String">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" Numeric="A↓sz.add.req-←" SenModif="False" LabOri="0" />
-      </Variable>
-      <Variable Modifier="Public" Name="ReinfAddReq_zpos" ESA_ID="Result.76" Type="String">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" Numeric="A↓sz.add.req+←" SenModif="False" LabOri="0" />
       </Variable>
       <Variable Modifier="Public" Name="ReinfBasic_yneg" ESA_ID="" Type="String">
         <Description>
@@ -2019,68 +2058,12 @@ object DesignResults →INI400_013922= new Structure(
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="A↓s.prov←" SenModif="False" LabOri="0" />
       </Variable>
-      <Variable Modifier="Public" Name="ReinfProv_yneg" ESA_ID="Result.70" Type="String">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" Numeric="AsForString_AsynegProv" SenModif="False" LabOri="0" />
-      </Variable>
-      <Variable Modifier="Public" Name="ReinfProv_ypos" ESA_ID="Result.69" Type="String">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" Numeric="AsForString_AsyposProv" SenModif="False" LabOri="0" />
-      </Variable>
-      <Variable Modifier="Public" Name="ReinfProv_zneg" ESA_ID="Result.68" Type="String">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" Numeric="AsForString_AsznegProv" SenModif="False" LabOri="0" />
-      </Variable>
-      <Variable Modifier="Public" Name="ReinfProv_zpos" ESA_ID="Result.67" Type="String">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" Numeric="AsForString_AszposProv" SenModif="False" LabOri="0" />
-      </Variable>
       <Variable Modifier="Public" Name="ReinfReq" ESA_ID="Result.22" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="A↓s.prov←" SenModif="False" LabOri="0" />
-      </Variable>
-      <Variable Modifier="Public" Name="ReinfReq_yneg" ESA_ID="Result.20" Type="String">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" Numeric="AsForString_Asyneg" SenModif="False" LabOri="0" />
-      </Variable>
-      <Variable Modifier="Public" Name="ReinfReq_ypos" ESA_ID="Result.19" Type="String">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" Numeric="AsForString_Asypos" SenModif="False" LabOri="0" />
-      </Variable>
-      <Variable Modifier="Public" Name="ReinfReq_zneg" ESA_ID="Result.18" Type="String">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" Numeric="AsForString_Aszneg" SenModif="False" LabOri="0" />
-      </Variable>
-      <Variable Modifier="Public" Name="ReinfReq_zpos" ESA_ID="Result.17" Type="String">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" Numeric="AsForString_Aszpos" SenModif="False" LabOri="0" />
       </Variable>
       <Variable Modifier="Public" Name="ReinfString" ESA_ID="Result.92" Type="String">
         <Description TranslateID="VARIABLE_ReinfString">
@@ -2269,53 +2252,21 @@ object DesignResults →INI400_013922= new Structure(
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC_Prov_yneg" ESA_ID="Result.83" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="66" Reference="" Extrem="0" HideZeros="False" ReverseAxis="True" DrawDirection="1" DrawLimitMax="1" DrawLimitMin="0" />
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="UC_Prov_ypos" ESA_ID="Result.82" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="66" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="1" DrawLimitMax="1" DrawLimitMin="0" />
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="UC_Prov_zneg" ESA_ID="Result.81" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="66" Reference="" Extrem="0" HideZeros="False" ReverseAxis="True" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="0" />
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="UC_Prov_zpos" ESA_ID="Result.80" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="66" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="0" />
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="UC_ReqProv" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="UC_ReqProv_yneg" ESA_ID="Result.75" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="UC↓Shear.req←" ESA_ID="Result.28" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="66" Reference="" Extrem="0" HideZeros="False" ReverseAxis="True" DrawDirection="1" DrawLimitMax="1" DrawLimitMin="0" />
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="66" Reference="" Extrem="2" HideZeros="True" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="0" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC_ReqProv_ypos" ESA_ID="Result.74" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="UC↓y.prov+←" ESA_ID="Result.82" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2323,7 +2274,55 @@ object DesignResults →INI400_013922= new Structure(
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="66" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="1" DrawLimitMax="1" DrawLimitMin="0" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC_ReqProv_zneg" ESA_ID="Result.73" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="UC↓y.prov-←" ESA_ID="Result.83" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="66" Reference="" Extrem="0" HideZeros="False" ReverseAxis="True" DrawDirection="1" DrawLimitMax="1" DrawLimitMin="0" />
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="UC↓y.req.prov+←" ESA_ID="Result.74" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="66" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="1" DrawLimitMax="1" DrawLimitMin="0" />
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="UC↓y.req.prov-←" ESA_ID="Result.75" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="66" Reference="" Extrem="0" HideZeros="False" ReverseAxis="True" DrawDirection="1" DrawLimitMax="1" DrawLimitMin="0" />
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="UC↓y.req+←" ESA_ID="Result.26" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="66" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="1" DrawLimitMax="1" DrawLimitMin="0" />
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="UC↓y.req-←" ESA_ID="Result.27" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="66" Reference="" Extrem="0" HideZeros="False" ReverseAxis="True" DrawDirection="1" DrawLimitMax="1" DrawLimitMin="0" />
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="UC↓z.prov+←" ESA_ID="Result.80" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="66" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="0" />
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="UC↓z.prov-←" ESA_ID="Result.81" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2331,12 +2330,36 @@ object DesignResults →INI400_013922= new Structure(
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="66" Reference="" Extrem="0" HideZeros="False" ReverseAxis="True" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="0" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC_ReqProv_zpos" ESA_ID="Result.72" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="UC↓z.req.prov+←" ESA_ID="Result.72" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="66" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="0" />
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="UC↓z.req.prov-←" ESA_ID="Result.73" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="66" Reference="" Extrem="0" HideZeros="False" ReverseAxis="True" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="0" />
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="UC↓z.req+←" ESA_ID="Result.24" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="66" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="0" />
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="UC↓z.req-←" ESA_ID="Result.25" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="66" Reference="" Extrem="0" HideZeros="False" ReverseAxis="True" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="0" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UserReinf" ESA_ID="" Type="Object">
@@ -2408,12 +2431,12 @@ object DesignResults →INI400_013922= new Structure(
           <ENU>As,req</ENU>
         </Names>
       </ResultTable>
-      <ResultTable Visible="1" Vars="ReinfReq_zpos|1|1;ReinfReq_zneg|2|1;ReinfReq_ypos|3|1;ReinfReq_yneg|4|1">
+      <ResultTable Visible="1" Vars="Reinf↓z.req+←|1|1;Reinf↓z.req-←|2|1;Reinf↓y.req+←|3|1;Reinf↓y.req-←|4|1">
         <Names TranslateID="ResultGroup_As,req (ϕ)">
           <ENU>As,req (ϕ)</ENU>
         </Names>
       </ResultTable>
-      <ResultTable Visible="1" Vars="DesignUCzpos|1|1;DesignUCzneg|2|1;DesignUCypos|3|1;DesignUCyneg|4|1">
+      <ResultTable Visible="1" Vars="UC↓z.req+←|1|1;UC↓z.req-←|2|1;UC↓y.req+←|3|1;UC↓y.req-←|4|1">
         <Names TranslateID="ResultGroup_UC (As,max)">
           <ENU>UC (As,max)</ENU>
         </Names>
@@ -2428,7 +2451,7 @@ object DesignResults →INI400_013922= new Structure(
           <ENU>Aswm,req (ϕ/s)</ENU>
         </Names>
       </ResultTable>
-      <ResultTable Visible="1" Vars="DesignUCShear|0|1">
+      <ResultTable Visible="1" Vars="UC↓Shear.req←|0|1">
         <Names TranslateID="ResultGroup_UC (Aswm,max)">
           <ENU>UC (Aswm,max)</ENU>
         </Names>
@@ -2438,12 +2461,12 @@ object DesignResults →INI400_013922= new Structure(
           <ENU>As,prov</ENU>
         </Names>
       </ResultTable>
-      <ResultTable Visible="1" Vars="ReinfProv_zpos|0|1;ReinfProv_zneg|0|1;ReinfProv_ypos|0|1;ReinfProv_yneg|0|1">
+      <ResultTable Visible="1" Vars="Reinf↓z.prov+←|0|1;Reinf↓z.prov-←|0|1;Reinf↓y.prov+←|0|1;Reinf↓y.prov-←|0|1">
         <Names TranslateID="ResultGroup_As,prov (ϕ)">
           <ENU>As,prov (ϕ)</ENU>
         </Names>
       </ResultTable>
-      <ResultTable Visible="1" Vars="UC_ReqProv_zpos|0|1;UC_ReqProv_zneg|0|1;UC_ReqProv_ypos|0|1;UC_ReqProv_yneg|0|1">
+      <ResultTable Visible="1" Vars="UC↓z.req.prov+←|0|1;UC↓z.req.prov-←|0|1;UC↓y.req.prov+←|0|1;UC↓y.req.prov-←|0|1">
         <Names TranslateID="ResultGroup_UC (As,req)">
           <ENU>UC (As,req)</ENU>
         </Names>
@@ -2458,12 +2481,12 @@ object DesignResults →INI400_013922= new Structure(
           <ENU>As,add,req</ENU>
         </Names>
       </ResultTable>
-      <ResultTable Visible="1" Vars="ReinfAddReq_yneg|0|1;ReinfAddReq_ypos|0|1;ReinfAddReq_zneg|0|1;ReinfAddReq_zpos|0|1">
+      <ResultTable Visible="1" Vars="Reinf↓y.add.req-←|0|1;Reinf↓y.add.req+←|0|1;Reinf↓z.add.req-←|0|1;Reinf↓z.add.req+←|0|1">
         <Names TranslateID="ResultGroup_As,add,req (ϕ)">
           <ENU>As,add,req (ϕ)</ENU>
         </Names>
       </ResultTable>
-      <ResultTable Visible="1" Vars="UC_Prov_zpos|0|1;UC_Prov_zneg|0|1;UC_Prov_ypos|0|1;UC_Prov_yneg|0|1">
+      <ResultTable Visible="1" Vars="UC↓z.prov+←|0|1;UC↓z.prov-←|0|1;UC↓y.prov+←|0|1;UC↓y.prov-←|0|1">
         <Names TranslateID="ResultGroup_UC (As,max)">
           <ENU>UC (As,max)</ENU>
         </Names>
@@ -2490,24 +2513,24 @@ object DesignResults →INI400_013922= new Structure(
           <ENU>Required ∩ Provided</ENU>
         </Names>
       </ResultTable>
-      <ResultTable Visible="0" Vars="ReinfReq_zpos|1|1;ReinfReq_zneg|2|1;ReinfReq_ypos|3|1;ReinfReq_yneg|4|1;DesignUCzpos|1|1;DesignUCzneg|2|1;DesignUCypos|3|1;DesignUCyneg|4|1;DesignUCShear|5|1;Member|0|1">
+      <ResultTable Visible="0" Vars="Reinf↓z.req+←|1|1;Reinf↓z.req-←|2|1;Reinf↓y.req+←|3|1;Reinf↓y.req-←|4|1;UC↓z.req+←|1|1;UC↓z.req-←|2|1;UC↓y.req+←|3|1;UC↓y.req-←|4|1;UC↓Shear.req←|5|1;Member|0|1">
         <Names TranslateID="ResultGroup_Required - 3D values">
           <ENU>Required - 3D values</ENU>
         </Names>
       </ResultTable>
-      <ResultTable Visible="0" Vars="ReinfProv_zpos|1|1;ReinfProv_zneg|2|1;ReinfProv_ypos|3|1;ReinfProv_yneg|4|1;UC_ReqProv_zpos|1|1;UC_ReqProv_zneg|2|1;UC_ReqProv_ypos|3|1;UC_ReqProv_yneg|4|1;A↓sz.add.req+←|1|1;A↓sz.add.req-←|2|1;A↓sy.add.req+←|3|1;A↓sy.add.req-←|4|1;ReinfAddReq_zpos|1|1;ReinfAddReq_zneg|2|1;ReinfAddReq_ypos|3|1;ReinfAddReq_yneg|4|1;UC_Prov_zpos|1|1;UC_Prov_zneg|2|1;UC_Prov_ypos|3|1;UC_Prov_yneg|4|1;Member|0|1">
+      <ResultTable Visible="0" Vars="Reinf↓z.prov+←|1|1;Reinf↓z.prov-←|2|1;Reinf↓y.prov+←|3|1;Reinf↓y.prov-←|4|1;UC↓z.req.prov+←|1|1;UC↓z.req.prov-←|2|1;UC↓y.req.prov+←|3|1;UC↓y.req.prov-←|4|1;A↓sz.add.req+←|1|1;A↓sz.add.req-←|2|1;A↓sy.add.req+←|3|1;A↓sy.add.req-←|4|1;Reinf↓z.add.req+←|1|1;Reinf↓z.add.req-←|2|1;Reinf↓y.add.req+←|3|1;Reinf↓y.add.req-←|4|1;UC↓z.prov+←|1|1;UC↓z.prov-←|2|1;UC↓y.prov+←|3|1;UC↓y.prov-←|4|1;Member|0|1">
         <Names TranslateID="ResultGroup_Provided - 3D values">
           <ENU>Provided - 3D values</ENU>
         </Names>
       </ResultTable>
     </ResultTables>
     <ResultGroups>
-      <ResultTable Visible="1" Vars="A↓sz.req+←|1|1;A↓sz.req-←|2|1;A↓sy.req+←|3|1;A↓sy.req-←|4|1;ReinfReq_zpos|5|1;ReinfReq_zneg|6|1;ReinfReq_ypos|7|1;ReinfReq_yneg|8|1;DesignUCzpos|9|1;DesignUCzneg|10|1;DesignUCypos|11|1;DesignUCyneg|12|1;A↓swm.req←|13|1;ShearReinf|14|1;DesignUCShear|15|1" Tables="0|1|4">
+      <ResultTable Visible="1" Vars="A↓sz.req+←|1|1;A↓sz.req-←|2|1;A↓sy.req+←|3|1;A↓sy.req-←|4|1;Reinf↓z.req+←|5|1;Reinf↓z.req-←|6|1;Reinf↓y.req+←|7|1;Reinf↓y.req-←|8|1;UC↓z.req+←|9|1;UC↓z.req-←|10|1;UC↓y.req+←|11|1;UC↓y.req-←|12|1;A↓swm.req←|13|1;ShearReinf|14|1;UC↓Shear.req←|15|1" Tables="0|1|4">
         <Names TranslateID="ResultGroup_Required">
           <ENU>Required</ENU>
         </Names>
       </ResultTable>
-      <ResultTable Visible="1" Vars="A↓sz.prov+←|0|1;A↓sz.prov-←|0|1;A↓sy.prov+←|0|1;A↓sy.prov-←|0|1;ReinfProv_zpos|0|1;ReinfProv_zneg|0|1;ReinfProv_ypos|0|1;ReinfProv_yneg|0|1;UC_ReqProv_zpos|0|1;UC_ReqProv_zneg|0|1;UC_ReqProv_ypos|0|1;UC_ReqProv_yneg|0|1;A↓sz.add.req+←|0|1;A↓sz.add.req-←|0|1;A↓sy.add.req+←|0|1;A↓sy.add.req-←|0|1;ReinfAddReq_zpos|0|1;ReinfAddReq_zneg|0|1;ReinfAddReq_ypos|0|1;ReinfAddReq_yneg|0|1;UC_Prov_zpos|0|1;UC_Prov_zneg|0|1;UC_Prov_ypos|0|1;UC_Prov_yneg|0|1" Tables="2|5">
+      <ResultTable Visible="1" Vars="A↓sz.prov+←|0|1;A↓sz.prov-←|0|1;A↓sy.prov+←|0|1;A↓sy.prov-←|0|1;Reinf↓z.prov+←|0|1;Reinf↓z.prov-←|0|1;Reinf↓y.prov+←|0|1;Reinf↓y.prov-←|0|1;UC↓z.req.prov+←|0|1;UC↓z.req.prov-←|0|1;UC↓y.req.prov+←|0|1;UC↓y.req.prov-←|0|1;A↓sz.add.req+←|0|1;A↓sz.add.req-←|0|1;A↓sy.add.req+←|0|1;A↓sy.add.req-←|0|1;Reinf↓z.add.req+←|0|1;Reinf↓z.add.req-←|0|1;Reinf↓y.add.req+←|0|1;Reinf↓y.add.req-←|0|1;UC↓z.prov+←|0|1;UC↓z.prov-←|0|1;UC↓y.prov+←|0|1;UC↓y.prov-←|0|1" Tables="2|5">
         <Names TranslateID="ResultGroup_Provided">
           <ENU>Provided</ENU>
         </Names>
@@ -5047,14 +5070,6 @@ object DesignResults →INI400_013922= new Structure(
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013909">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_013917">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -5574,6 +5589,86 @@ object DesignResults →INI400_013922= new Structure(
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000005">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000006">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000007">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000008">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000009">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000010">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000011">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000012">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000013">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000014">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
       <VC ID="KRS127_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -7553,8 +7648,8 @@ object DesignResults →INI400_013922= new Structure(
           <ENU>
           </ENU>
         </Texts>
-        <TEMDLoader Name="TEMDLoader" ID="69" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="G:\_PROJECTS\17.0\improvements\EMD_HeaderImprovements\Beam.1" MemberID="Beam.1" SectionID="0" CombiID="0" />
       </TPanel>
+      <TEMDLoader Name="TEMDLoader" ID="69" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="D:\_VERSIONS\DEVE_16\TEMP\Esa_Model_Data\Beam.1" MemberID="Beam.1" SectionID="0" CombiID="0" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />

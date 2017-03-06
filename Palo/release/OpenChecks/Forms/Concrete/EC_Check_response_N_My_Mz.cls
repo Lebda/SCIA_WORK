@@ -753,10 +753,10 @@ IF(!N2↓1←) { //KRS: Unification of checkStatus with all other check 25.6.201
         TSummaryCheck[0][3].Value →INI400_002804= "σ↓extr←&lt;BR&gt;[MPa]"; 
         TSummaryCheck[0][4].Value →INI400_002805= TR("Check") &amp; "&lt;BR&gt;strain [-]"; 
         TSummaryCheck[0][5].Value →INI400_002806= TR("Check") &amp; "&lt;BR&gt;stress [-]"; 
-        TSummaryCheck[0][6].Value →INI400_002807= TR("U.C.") &amp; "&lt;BR&gt;[-]"; 
+        TSummaryCheck[0][6].Value →INI400_002807= TR("UC [-]"); 
         IF(Functions1D_general.IsXulimCalculatedReturnBool(CrossSectionLin, MemberType, ForcesID, AccidentalCombi)) { 
-            TSummaryCheck[0][6].Value →INI400_013802= TR("U.C.x↓u←") &amp; "&lt;BR&gt;[-]"; 
-            TSummaryCheck[0][7].Value →INI400_013782= TR("U.C") &amp; "&lt;BR&gt;[-]"; 
+            TSummaryCheck[0][6].Value →INI400_013802= TR("UCx↓u←") &amp; "&lt;BR&gt;[-]"; 
+            TSummaryCheck[0][7].Value →INI400_013782= TR("UC [-]"); 
             TSummaryCheck[0][8].Value →INI400_003334= TR("Limit") &amp; "&lt;BR&gt;[-]"; 
             TSummaryCheck[0][9].Value →INI400_002808= TR("Status") &amp; "&lt;BR&gt;"; 
         } ELSE { 
@@ -912,7 +912,7 @@ IF(!E0↓1← &amp;&amp; IO.IsDrawing &amp;&amp; !N2↓1← &amp;&amp; IO.Layout
         TExtremes[0][3].Value →INI400_002844= "ε↓lim←&lt;BR&gt;[‰]"; 
         TExtremes[0][4].Value →INI400_002845= "σ&lt;BR&gt;[MPa]"; 
         TExtremes[0][5].Value →INI400_002846= "σ↓lim←&lt;BR&gt;[MPa]"; 
-        TExtremes[0][6].Value →INI400_002847= TR(" U.C. ") &amp; "&lt;BR&gt; [-]"; 
+        TExtremes[0][6].Value →INI400_002847= TR("UC [-]"); 
         TExtremes[0][7].Value →INI400_002848= TR("Status") &amp; "&lt;BR&gt; "; 
         
         //the second row-compressive concrete
@@ -12296,9 +12296,6 @@ IF(CrossSection.GetMaterialForComponent(0).fck &gt;= 90*10↑6←) { //Check for
     <Item TranslateID="STRING_05132F7B">
       <ENU>"Concrete - tension"</ENU>
     </Item>
-    <Item TranslateID="STRING_08D7EFA9">
-      <ENU>"U.C.x↓u←"</ENU>
-    </Item>
     <Item TranslateID="STRING_0A1663ED">
       <ENU>"Material"</ENU>
     </Item>
@@ -12335,14 +12332,8 @@ IF(CrossSection.GetMaterialForComponent(0).fck &gt;= 90*10↑6←) { //Check for
     <Item TranslateID="STRING_3422FBFC">
       <ENU>"Error"</ENU>
     </Item>
-    <Item TranslateID="STRING_479E9D18">
-      <ENU>"U.C."</ENU>
-    </Item>
     <Item TranslateID="STRING_545D2DA7">
       <ENU>"Solution"</ENU>
-    </Item>
-    <Item TranslateID="STRING_5D032CF4">
-      <ENU>" U.C. "</ENU>
     </Item>
     <Item TranslateID="STRING_61B89E7C">
       <ENU>"All in compression"</ENU>
@@ -12395,9 +12386,6 @@ IF(CrossSection.GetMaterialForComponent(0).fck &gt;= 90*10↑6←) { //Check for
     <Item TranslateID="STRING_9D7F0771">
       <ENU>"Bar"</ENU>
     </Item>
-    <Item TranslateID="STRING_AC60B68B">
-      <ENU>"U.C"</ENU>
-    </Item>
     <Item TranslateID="STRING_B6805E9C">
       <ENU>"The inner lever arm of the cross-section is calculated from the user input value z = Coeff_z*d, because it's not possible to calculate it from the plane of equilibrium (tensile reinforcement, compressive concrete fibre of plane of equilibrium is not found)."</ENU>
     </Item>
@@ -12425,6 +12413,9 @@ IF(CrossSection.GetMaterialForComponent(0).fck &gt;= 90*10↑6←) { //Check for
     <Item TranslateID="STRING_CF655C74">
       <ENU>"Fibre"</ENU>
     </Item>
+    <Item TranslateID="STRING_D05FCCCC">
+      <ENU>"UC [-]"</ENU>
+    </Item>
     <Item TranslateID="STRING_D5DBECED">
       <ENU>"Status"</ENU>
     </Item>
@@ -12439,6 +12430,9 @@ IF(CrossSection.GetMaterialForComponent(0).fck &gt;= 90*10↑6←) { //Check for
     </Item>
     <Item TranslateID="STRING_EE239BF0">
       <ENU>"Fibre / Bar"</ENU>
+    </Item>
+    <Item TranslateID="STRING_FAC0B298">
+      <ENU>"UCx↓u←"</ENU>
     </Item>
     <Item ID="TEXT_INI400_001117">
       <ENU>"N = " &amp; Val(IniForces.N/1000, 2) &amp; " kN"</ENU>

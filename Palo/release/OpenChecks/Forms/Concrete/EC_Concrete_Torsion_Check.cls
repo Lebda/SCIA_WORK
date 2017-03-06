@@ -90,7 +90,7 @@ object Functions1D_General →INI400_013937= LoadExternCLC(Tools.Dir_Forms &amp;
         object ShearReinfShape →INI400_013942= ShearReinf.Branch; 
     } 
     object ConMat →INI400_012795= CrossSection.GetMaterialForComponent(0); 
-    object ReinfMat →INI400_012799= CrossSection.GetMaterialForBar(0); 
+    object ReinfMat →INI400_012799= CrossSection.GetAvgMaterialOfAllBars(); 
     object ShapeCss →INI400_013943= CrossSection.GetOrigShape(); 
     
     N↓Ed← →INI400_013807= Forces.N; //Applied axial force 
@@ -5191,7 +5191,7 @@ IF(IO.IsDrawing) {
             </Shapes>
           </Reinf>
         </TConcreteSectionLibrary>
-        <TGroupBox Name="" ID="51" Translate="0" Left="184" Top="-3933" Width="475" AutoWidth="False" AutoHeight="True" TabIndex="55" Dock="0" Anchor="5" Padding="5|13|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" BorderColor="-5192482">
+        <TGroupBox Name="" ID="51" Translate="0" Left="193" Top="-3924" Width="475" AutoWidth="False" AutoHeight="True" TabIndex="55" Dock="0" Anchor="5" Padding="5|13|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" BorderColor="-5192482">
           <Texts>
             <ENU>General setting</ENU>
           </Texts>

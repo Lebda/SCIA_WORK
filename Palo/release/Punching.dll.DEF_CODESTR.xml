@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="1"><StringCode SourceType="DLLRC:"><StringId>@{punching.2epunching_check}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>103</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

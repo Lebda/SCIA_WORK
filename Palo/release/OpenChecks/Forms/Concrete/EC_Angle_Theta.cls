@@ -133,7 +133,7 @@ IF(!IO.IsExternCLC) {
     object CrossSection →INI400_012786= ExternCreateCS.CreateCS_ULS(CssID, Forces, AccidentalCombi); 
     object ConMat →INI400_012795= CrossSection.GetMaterialForComponent(0); 
     object ShearReinf →INI400_013817= CrossSection.GetShearReinf(ForcesID); 
-    object ReinfMat →INI400_012799= CrossSection.GetMaterialForBar(0); 
+    object ReinfMat →INI400_012799= CrossSection.GetAvgMaterialOfAllBars(); 
     
     T↓Ed← →INI400_013808= Forces.Mx; //Applied torsional moment
     V↓Ed← →INI400_013819= SQRT(Forces.Vy↑2←+Forces.Vz↑2←); //Applied shear force

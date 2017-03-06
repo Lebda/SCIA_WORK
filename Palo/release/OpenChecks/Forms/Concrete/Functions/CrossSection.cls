@@ -218,7 +218,7 @@
                 double NBars →INI400_011754= Reinf.Bars.Count; 
                 IF(NBars &gt; 0) { 
                     FOR(i, 0, NBars-1) { 
-                        IF(Reinf.Bars[i].Contains("IsDetailing") &amp;&amp; Reinf.Bars[i].IsDetailing == 0) { 
+                        IF(Reinf.Bars[i].IsDetailing == 0) { 
                             →INI400_011755UserReinfMat.Add(Reinf.Materials[i]); 
                         } 
                     } 
@@ -523,14 +523,14 @@
     } 
     
     object GetAvgMaterialOfAllBars(object ReinfArray) { 
-        IF(ReinfArray.Bars == null) { 
+        IF(ReinfArray.Bars == null || ReinfArray.Bars.Count == 0) { 
             return null; 
         } 
         object firstMaterial →LUN001_000045= null; 
         →LUN001_000061string firstID; 
         bool materialsAreSame →LUN001_000012= true; 
         FOR(i, 0, ReinfArray.Bars.Count-1) { 
-            IF(ReinfArray.Bars[i].IsDetailing) { 
+            IF(!IO.IsStandalone &amp;&amp; ReinfArray.Bars[i].IsDetailing) { 
                 Continue(); 
             } 
             IF(firstMaterial == null) { 
@@ -4188,6 +4188,14 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="VAL316_000007">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

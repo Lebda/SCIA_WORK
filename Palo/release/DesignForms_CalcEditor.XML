@@ -1,0 +1,1391 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DesignForms_CalcEditor</name>
+    </assembly>
+    <members>
+        <member name="F:CalcEditor.TTestMerging.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TTestMerging.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TTestMerging.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TBitmapComparer.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TBitmapComparer.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TBitmapComparer.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TCodeEditor.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TCodeEditor.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TExceptionInfo.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TExceptionInfo.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TExceptionInfo.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TCodeAnalysis.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TCodeAnalysis.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TCodeAnalysis.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TTraceViewer.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TTraceViewer.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TTraceViewer.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TCLCTree.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TCLCTree.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TCLCTree.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TFlowChart.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TFlowChart.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TFlowChart.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TEWNEditor.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TEWNEditor.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TEWNEditor.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TUsedESAIDsViewer.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TUsedESAIDsViewer.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TUsedESAIDsViewer.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TIOViewer.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TIOViewer.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TIOViewer.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TSyntaxInfo.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TSyntaxInfo.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TSyntaxInfo.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TIntellisense.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TIntellisense.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TIntellisense.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:CalcEditor.TVariableGrid_WPF">
+            <summary>
+            TVariableGrid_WPF
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TVariableGrid_WPF.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="F:CalcEditor.DockComponents.VariableGrid.TVariableWatch.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.DockComponents.VariableGrid.TVariableWatch.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.DockComponents.VariableGrid.TVariableWatch.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.ExcelImport.Parser.State.#ctor(System.Int32[],System.Int32[])">
+            <summary>
+            State transition data for this state. Pairs of elements of the 
+            goto array associate symbol ordinals with next state indices.
+            The actions array is passed to another constructor. 
+            </summary>
+            <param name="actions">The action list</param>c
+            <param name="goToList">Next state data</param>
+        </member>
+        <member name="M:CalcEditor.ExcelImport.Parser.State.#ctor(System.Int32[])">
+            <summary>
+            Action data for this state. Pairs of elements of the 
+            action array associate action ordinals with each of
+            those symbols that have actions in the current state.
+            </summary>
+            <param name="actions">The action array</param>
+        </member>
+        <member name="M:CalcEditor.ExcelImport.Parser.State.#ctor(System.Int32)">
+            <summary>
+            Set the default action for this state.
+            </summary>
+            <param name="defaultAction">Ordinal of the default action</param>
+        </member>
+        <member name="M:CalcEditor.ExcelImport.Parser.State.#ctor(System.Int32,System.Int32[])">
+            <summary>
+            Set the default action and the state transition table.
+            </summary>
+            <param name="defaultAction">The default action</param>
+            <param name="goToList">Transitions from this state</param>
+        </member>
+        <member name="M:CalcEditor.ExcelImport.Parser.Rule.#ctor(System.Int32,System.Int32[])">
+            <summary>
+            Rule constructor.  This holds the ordinal of
+            the left hand side symbol, and the list of
+            right hand side symbols, in lexical order.
+            </summary>
+            <param name="left">The LHS non-terminal</param>
+            <param name="right">The RHS symbols, in lexical order</param>
+        </member>
+        <member name="P:CalcEditor.ExcelImport.Parser.PushdownPrefixState`1.Item(System.Int32)">
+            <summary>
+            Indexer for values of the stack below the top.
+            </summary>
+            <param name="index">index of the element, starting from the bottom</param>
+            <returns>the selected element</returns>
+        </member>
+        <member name="F:CalcEditor.TExcelImportWizard.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TExcelImportWizard.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TExcelImportWizard.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TGridSelectorForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TGridSelectorForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TGridSelectorForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TInputTable.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TInputTable.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TInputTable.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TObjectInspector.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TObjectInspector.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TObjectInspector.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TVarGrid.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TVarGrid.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TVarGrid.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.LayoutSelectForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.LayoutSelectForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.LayoutSelectForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.LayoutsForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.LayoutsForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.LayoutsForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:CalcEditor.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.AddTable">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.AlignTableCellMiddleLeftJust">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Apply">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.BringToFrontHS">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.CheckBoxHS">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.CheckBoxHS_Unchecked">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Comment">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Compile">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Control_ViewBox">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Control_ViewBox1">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.CopyFormat">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.CopyHH">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.CopyHS">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.CutHS">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.DataCacheViewer">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Delete">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.DeleteFormating">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Down">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.EditLayout">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Error">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Export">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Find">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Flame">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Graphics">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Greek">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Greek_Selected">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.hyperlink">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Import">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.InsertPicture">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Left">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.ListVariables">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.LowerIndex">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.LowerIndex_Selected">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.NewDocumentHS">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.NotCalculated">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Numeric">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.OK">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Open">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.OpenPH">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Outlining">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.PasteHS">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Play">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Print">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.PushpinHS">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Refresh">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Refresh1">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.RenameFolderHS">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Right">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Rotating">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Save">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.SDF_icon_red_L">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.SDF_icon_red_S">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.SelectCells">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.SendToBackHS">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Snippet">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.SymbolHS">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.TwoScreens">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.UnComment">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.UnselectCells">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Up">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.UpperIndex">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.UpperIndex_Selected">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Watch">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Properties.Resources.Zoom_32x32">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="T:CalcEditor.Strings.Messages">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.AutoTest_CalculationNotOK">
+            <summary>
+              Looks up a localized string similar to There is one or more error(s) in source code. Test input can not be saved. Please fix all errors and try again..
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.AutoTest_Delete">
+            <summary>
+              Looks up a localized string similar to Do you really want to delete selected tests?.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.AutoTest_Description">
+            <summary>
+              Looks up a localized string similar to Auto-test setup description.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.AutoTest_Error">
+             <summary>
+               Looks up a localized string similar to An error occured while generation input/results for auto test. Error description:
+            .
+             </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.CalcEditor_CalculationOpenError">
+            <summary>
+              Looks up a localized string similar to An error occured while opening the file.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.CalcEditor_CalculationSaveError">
+            <summary>
+              Looks up a localized string similar to An error occured while saving the file.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.CalcEditor_ErrorDescription">
+            <summary>
+              Looks up a localized string similar to Error message.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.CalcEditor_FileNameExtensionError">
+            <summary>
+              Looks up a localized string similar to Extension of file has to be *.CLS!.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.CalcEditor_SaveCalculationCaption">
+            <summary>
+              Looks up a localized string similar to Save calculation.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.CalcEditor_SaveCalculationPrompt">
+            <summary>
+              Looks up a localized string similar to Do you want to save calculation.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.CalcEditor_SaveError">
+             <summary>
+               Looks up a localized string similar to An error occured in source code. Please fix all errors before saving to file.
+            
+            Calculation CAN NOT BE SAVED NOW!.
+             </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.CLSNotFound">
+             <summary>
+               Looks up a localized string similar to Calculation source file not found:
+            .
+             </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.CUnitNotStringLiteral">
+            <summary>
+              Looks up a localized string similar to Units must be inputted as a string literal!.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.DeleteImages">
+            <summary>
+              Looks up a localized string similar to Do you really want to delete selected images?.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.DeleteLanguageCaption">
+            <summary>
+              Looks up a localized string similar to Delete language.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.DeleteLanguagePrompt">
+            <summary>
+              Looks up a localized string similar to Do you really want to delete language .
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.DetectCollisionsText">
+             <summary>
+               Looks up a localized string similar to Collisions found: {0}
+            Total area of all collisions: {1}px2.
+             </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.DialogBuilder_ESAIDError">
+             <summary>
+               Looks up a localized string similar to MemberData dialog and/or Setup dialog contains components (inputs or libraries) with incorrect ESA_IDs. All issues must be fixed before leaving this page.
+            List of encountered issues:.
+             </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.DialogBuilder_LeaveAnyway">
+            <summary>
+              Looks up a localized string similar to Do you want to leave anyway?.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.DialogBuilder_LibraryESAID">
+            <summary>
+              Looks up a localized string similar to Target IO node of library {0} doesn&apos;t start with {1}!.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.DialogBuilder_VariableESAID">
+            <summary>
+              Looks up a localized string similar to ESA_ID of variable {0} doesn&apos;t start with {1}!.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.DialogBuilderMemberDataWarning">
+            <summary>
+              Looks up a localized string similar to There is a difference between IO.MemberData defined in main dialog (for standalone run) and MemberDialog (for SCIA Engineer)!.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.DialogBuilderSetupWarning">
+            <summary>
+              Looks up a localized string similar to There is a difference between IO.Setup defined in main dialog (for standalone run) and SetupDialog (for SCIA Engineer)!.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.DialogRowType_Boolean">
+            <summary>
+              Looks up a localized string similar to Boolean.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.DialogRowType_ComboBox">
+            <summary>
+              Looks up a localized string similar to List input.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.DialogRowType_Double">
+            <summary>
+              Looks up a localized string similar to Numeric input.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.DialogRowType_None">
+            <summary>
+              Looks up a localized string similar to None.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.DialogRowType_Separator">
+            <summary>
+              Looks up a localized string similar to Separator.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.DialogRowType_String">
+            <summary>
+              Looks up a localized string similar to Text input.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.DialogRowType_Text">
+            <summary>
+              Looks up a localized string similar to Dialog text.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.DockLayoutLoadError">
+             <summary>
+               Looks up a localized string similar to An error occured while loading dock layout.
+            Errro description: .
+             </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.DockLayoutSaveError">
+            <summary>
+              Looks up a localized string similar to An error occured while saving dock layout:.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.EmptyImageName">
+            <summary>
+              Looks up a localized string similar to Empty image name is not allowed!.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.EndOfScriptReached">
+            <summary>
+              Looks up a localized string similar to Reached end of the script..
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.Error">
+            <summary>
+              Looks up a localized string similar to Error.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.ErrorInSourceCode">
+            <summary>
+              Looks up a localized string similar to Syntax error in source code! All errors should be fixed before changing default language!.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.EWN_Clear">
+            <summary>
+              Looks up a localized string similar to Do you really want to clear entire table?.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.EWN_CodeError">
+             <summary>
+               Looks up a localized string similar to EWN code must begin with one of these letters:
+             - &apos;E&apos; for Errors
+             - &apos;W&apos; for Warnings
+             - &apos;N&apos; for Notes
+             - &apos;S&apos; for inline strings
+            EWN code must not contain &apos;+&apos;.
+            
+            Please input correct EWN code..
+             </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.EWN_CodeErrorCaption">
+            <summary>
+              Looks up a localized string similar to Incorrect EWN code.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.EWN_LoadError">
+             <summary>
+               Looks up a localized string similar to An error occured while loading file.
+            .
+             </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.EWN_OpenDialogFilter">
+            <summary>
+              Looks up a localized string similar to Error, warning, note source files|*.xml.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.EWN_SaveError">
+             <summary>
+               Looks up a localized string similar to An error occured while saving file.
+            .
+             </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.EWN_TargetDir">
+            <summary>
+              Looks up a localized string similar to EWN source files must be saved in directory &apos;{0}&apos;..
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.HigherVersionWarning">
+             <summary>
+               Looks up a localized string similar to Calculation was saved in higher version of DesignForms Builder.
+            File will be loaded now, but without guarantee that all data will be loaded properly!.
+             </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.IncorrectESAID">
+             <summary>
+               Looks up a localized string similar to ESA_ID = &apos;{0}&apos; is not correct.
+            ESA_ID must start with a letter.
+            ESA_ID must NOT contain any special character like &apos;+&apos;, &apos;-&apos;, &apos;/&apos;, &apos;*&apos;, &apos;(&apos;, &apos;)&apos;, ....
+             </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.LineColumn">
+            <summary>
+              Looks up a localized string similar to Line = {0}, Col = {1}.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.ManyEMDLoaders">
+             <summary>
+               Looks up a localized string similar to There is more than one instance of EMD Loader in Main dialogue.
+            EMD Loader is typically used just once.\n\nDo you want to proceed?.
+             </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.NewGUID">
+            <summary>
+              Looks up a localized string similar to Do you really want to change calculation GUID ?.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.NewLanguageCaption">
+            <summary>
+              Looks up a localized string similar to New language.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.NewLanguagePrompt">
+            <summary>
+              Looks up a localized string similar to Input new language name.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.NoLicence">
+            <summary>
+              Looks up a localized string similar to You don&apos;t have the required licence for Design Forms Builder!.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.PurgeCalculationMessage">
+             <summary>
+               Looks up a localized string similar to Deleted:
+            {0} unused visual components
+            {1} unused variables
+            {2} translation rows..
+             </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.PurgeCalculationQuery">
+             <summary>
+               Looks up a localized string similar to This action is irreversible!
+            Do you really want to purge calculation source code?.
+             </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.RenameLanguageCaption">
+            <summary>
+              Looks up a localized string similar to Rename language.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.RenameLanguagePrompt">
+            <summary>
+              Looks up a localized string similar to Input new language name.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.RenameVariable">
+            <summary>
+              Looks up a localized string similar to Insert variable name.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.SaveChanges">
+            <summary>
+              Looks up a localized string similar to Do you want to save changes?.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.SaveCLC_ExternsNotCompiled">
+             <summary>
+               Looks up a localized string similar to Some dependent extern CLCs are not compiled to C#.
+            Switch off compilation to C# in Main menu -&gt; Tools -&gt; Settings or recompile extern CLCs..
+             </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.SaveCLC_MissingCLCs">
+            <summary>
+              Looks up a localized string similar to Missing CLCs:.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.SaveCLC_UncompiledCLCs">
+            <summary>
+              Looks up a localized string similar to CLCs not compiled to C#:.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.SaveCLCError">
+             <summary>
+               Looks up a localized string similar to An error occured in source code. Please fix all the errors in calculation before saving to file.
+            
+            Calculation CAN NOT BE SAVED NOW!.
+             </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.StyleCaption">
+            <summary>
+              Looks up a localized string similar to Input style name.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.StyleNameCaption">
+            <summary>
+              Looks up a localized string similar to Style name.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.StyleNamePrompt">
+            <summary>
+              Looks up a localized string similar to Enter style name.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.Text_CLCTree">
+            <summary>
+              Looks up a localized string similar to CLC tree.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.Text_CodeAnalysis">
+            <summary>
+              Looks up a localized string similar to Script analysis.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.Text_CodeEditor">
+            <summary>
+              Looks up a localized string similar to Script editor.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.Text_CompiledCodeEditor">
+            <summary>
+              Looks up a localized string similar to C# code.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.Text_ErrorList">
+            <summary>
+              Looks up a localized string similar to Errors.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.Text_EWNEditor">
+            <summary>
+              Looks up a localized string similar to EWN Editor.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.Text_ExternEditor">
+            <summary>
+              Looks up a localized string similar to Extern CLC.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.Text_IOViewer">
+            <summary>
+              Looks up a localized string similar to IO viewer.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.Text_Preview">
+            <summary>
+              Looks up a localized string similar to Layout editor.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.Text_ScriptFlowChart">
+            <summary>
+              Looks up a localized string similar to Script flowchart.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.Text_StyleManager">
+            <summary>
+              Looks up a localized string similar to Style manager.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.Text_TraceViewer">
+            <summary>
+              Looks up a localized string similar to Trace viewer.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.Text_UsedESAIDsViewer">
+            <summary>
+              Looks up a localized string similar to Used ESA_IDs.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.Text_VariableGrid">
+            <summary>
+              Looks up a localized string similar to Table of variables.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.TextTranslationError">
+            <summary>
+              Looks up a localized string similar to Error in translation of.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.TraceComparatorNotDefined">
+             <summary>
+               Looks up a localized string similar to No tool for comparing trace files is defined.
+            Go to Main menu - Tools - Settings and input path to the comparation tool..
+             </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.TraceComparatorNotFound">
+            <summary>
+              Looks up a localized string similar to Comparing tool was not found at the path &apos;{0}&apos; ..
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.UnitError">
+            <summary>
+              Looks up a localized string similar to An error occured while parsing unit &apos;{0}&apos;..
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.UnknownLanguage">
+             <summary>
+               Looks up a localized string similar to An error occured during importing translation from Excel.
+            Unable to parse language code at column #&lt;COLNUMBER&gt;.
+            Please select appropriate language from the list..
+             </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.VarGrid_Numeric">
+            <summary>
+              Looks up a localized string similar to Numeric.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.VariableAlreadyExists">
+            <summary>
+              Looks up a localized string similar to Variable with the same name already exists! Do you want to overwrite it?.
+            </summary>
+        </member>
+        <member name="P:CalcEditor.Strings.Messages.Warning">
+            <summary>
+              Looks up a localized string similar to Warning.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TAutoTestManager.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TAutoTestManager.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TAutoTestManager.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TCalcEditor.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TCalcEditor.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TDialogBuilder.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TDialogBuilder.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TDialogBuilder.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TErrorList.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TErrorList.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TErrorList.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TImageLibrary.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TImageLibrary.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TImageLibrary.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TLanguageGrid.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TLanguageGrid.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TLanguageGrid.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TNewLanguage.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TNewLanguage.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TNewLanguage.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TPreview.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TPreview.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TPreview.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TStyleManager.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TStyleManager.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TStyleManager.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:CalcEditor.TVariableGrid.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CalcEditor.TVariableGrid.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CalcEditor.TVariableGrid.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>

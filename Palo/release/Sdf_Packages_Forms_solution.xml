@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SdfSolution xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <GlobalSettings>
-    <Languages Languages="ENU,CSY,DEU,FRB,NLD,PTG,SKY,ROM,ELL,SLV" />
+    <Languages Languages="ENU,CSY,DEU,FRB,NLD,PTG,SKY,ROM,ELL" />
     <PredefinedLanguages>
       <Language Code="ENU" Description="English" />
       <Language Code="CSY" Description="Czech" />
@@ -12,7 +12,6 @@
       <Language Code="ELL" Description="Greek" />
       <Language Code="PTG" Description="Portuguese" />
       <Language Code="ROM" Description="Romanian" />
-      <Language Code="SLV" Description="Slovenian" />
       <Language Code="PLK" Description="Polish" />
       <Language Code="HRV" Description="Croatian" />
       <Language Code="ITA" Description="Italian" />
@@ -226,14 +225,14 @@
       <Guid>31c85cf7-0bd8-421c-a632-f8eaedf1b1ef</Guid>
       <CheckSum>dacc8e5964a52551aae1d61f57bbb706</CheckSum>
       <RelativePath>OpenChecks\Forms\Codes\EN\EN_1991\EN_1991_1_4</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,FRB,NLD,PTG,SKY,ROM,ELL,SLV" />
+      <Settings Languages="ENU,CSY,DEU,FRB,NLD,PTG,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>B_Dynamics_Structural_factor</Name>
       <Guid>5e823cd4-0954-4c26-b90f-21d7ed8e3142</Guid>
       <CheckSum>ddee71fefd405e94e53f48d9ea20bb66</CheckSum>
       <RelativePath>OpenChecks\Forms\Codes\EN\EN_1991\EN_1991_1_4</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,FRB,NLD,PTG,SKY,ROM,ELL,SLV" />
+      <Settings Languages="ENU,CSY,DEU,FRB,NLD,PTG,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
       <Name>Clause_4.1(1)</Name>
@@ -2444,84 +2443,84 @@
       <Guid>1289cdfc-c4d4-436b-a71f-e17d63001e86</Guid>
       <CheckSum>08eb8ba4e4b9050f98c6630ced7417a0</CheckSum>
       <RelativePath>_Packages\BasicPackage\Concrete</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Calculation of the anchor length</Name>
       <Guid>a0e205b3-d3c0-49eb-ad83-825757070394</Guid>
       <CheckSum>046e9164c1152848f6be54bf7ebfa121</CheckSum>
       <RelativePath>_Packages\BasicPackage\Concrete</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Check maximum reinforcement area</Name>
       <Guid>897cb8e6-1b4f-4534-a68e-e55f46128bd2</Guid>
       <CheckSum>960e9d211af3d391ddd096c3365c9d72</CheckSum>
       <RelativePath>_Packages\BasicPackage\Concrete</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Check minimum reinforcement area</Name>
       <Guid>52b470ce-21aa-4704-8c80-7f3dc359c9bc</Guid>
       <CheckSum>d6ed1a973ca4f08734a007b8c7bf5e4c</CheckSum>
       <RelativePath>_Packages\BasicPackage\Concrete</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Check of deflection - CSS rectangle</Name>
       <Guid>55c8adc7-b638-417f-b14b-6f286f6df12f</Guid>
       <CheckSum>804baaf138fa1eb05224221fc11a4c51</CheckSum>
       <RelativePath>_Packages\BasicPackage\Concrete</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Check of shear reinforcement</Name>
       <Guid>777a3114-19af-425a-9805-99d001b49634</Guid>
       <CheckSum>c9a70b28280cf08f258e2605ca6eb30d</CheckSum>
       <RelativePath>_Packages\BasicPackage\Concrete</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Check of torsion, no reinforcement on torsion - CSS rectangle</Name>
       <Guid>552f72e9-e290-4ef6-ad30-c9c1ef60be62</Guid>
       <CheckSum>88aaff27ea499301283dbae03d920bd6</CheckSum>
       <RelativePath>_Packages\BasicPackage\Concrete</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Concrete cover</Name>
       <Guid>56a8423d-62a4-4391-a7f5-9673e9b7fa85</Guid>
       <CheckSum>1f86ae3306c0ac0ad2cf2740227d8ccc</CheckSum>
       <RelativePath>_Packages\BasicPackage\Concrete</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Concrete material characteristics</Name>
       <Guid>52264803-6f61-44cc-9f5b-aa168657db02</Guid>
       <CheckSum>94721d1b9e17a6cd502af6e6d9d49944</CheckSum>
       <RelativePath>_Packages\BasicPackage\Concrete</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Design - long. reinf., both side, NMy , CSS rectangle (var 3) </Name>
       <Guid>9fd0d2e4-e424-407e-80fa-977d32d123f8</Guid>
       <CheckSum>e487e7b2d9d46e51bf97d9229c05b740</CheckSum>
       <RelativePath>_Packages\BasicPackage\Concrete</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Design and check of reinf. - T- section</Name>
       <Guid>8dc91cc5-8e30-4fed-b4a6-f2b585083c9c</Guid>
       <CheckSum>74cbafb4825501cf9348cc6738bacd45</CheckSum>
       <RelativePath>_Packages\BasicPackage\Concrete</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Design and check of the longitudinal reinf.</Name>
       <Guid>001f68cc-d04b-47d9-85d2-8e2a4cc09261</Guid>
       <CheckSum>21c1952ec3361cfadbf7f3781a158dec</CheckSum>
       <RelativePath>_Packages\BasicPackage\Concrete</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
       <Name>Design long reinforcement, Rectangle - Master</Name>
@@ -2558,427 +2557,427 @@
       <Guid>63076e2a-c4cc-4291-9181-9fddaa2c422b</Guid>
       <CheckSum>2f728fc20d633e091541e5c1dcc92482</CheckSum>
       <RelativePath>_Packages\BasicPackage\Concrete</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Bearing capacity of plate foundation EN 1997-1_D</Name>
       <Guid>d6b1c3c3-fd35-4118-9ad6-45679b3ac0ec</Guid>
       <CheckSum>3b71f39ad8b1d25ccbe81e7aadc811a4</CheckSum>
       <RelativePath>_Packages\BasicPackage\Geotechnics</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Check of concrete pad (square, simple) </Name>
       <Guid>08419193-feb5-45c7-8cea-48e21a334c08</Guid>
       <CheckSum>5a5c78dfe284dc308df586be6af78420</CheckSum>
       <RelativePath>_Packages\BasicPackage\Geotechnics</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Geostatic stress</Name>
       <Guid>eb23a2fa-95a4-407b-b8f0-e505f2900d0f</Guid>
       <CheckSum>30dc18d2a8aafebb8a938fb0b49c40f1</CheckSum>
       <RelativePath>_Packages\BasicPackage\Geotechnics</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Characteristic load</Name>
       <Guid>329d67ee-de67-46b4-a75c-9417663c8afc</Guid>
       <CheckSum>b9e9892c2305cf3f104611195a420b06</CheckSum>
       <RelativePath>_Packages\BasicPackage\Load</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Coefficients for the snow load</Name>
       <Guid>e155e337-8a9c-4666-a218-f2bcadd91e35</Guid>
       <CheckSum>9cf3c74e557733956b67aeebab385861</CheckSum>
       <RelativePath>_Packages\BasicPackage\Load\Snow</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Snow - Cylindrical roof</Name>
       <Guid>1b0f0784-64c8-4c2a-8b1d-ebe9e5f6c69b</Guid>
       <CheckSum>efc1e514ccf38b36198cdcd02b682173</CheckSum>
       <RelativePath>_Packages\BasicPackage\Load\Snow</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Snow - Drifting at projections and obstructions</Name>
       <Guid>c8de0ac4-2993-441e-9614-b88e3dd59c8c</Guid>
       <CheckSum>d3c174e2aafa16900afc495c4071a154</CheckSum>
       <RelativePath>_Packages\BasicPackage\Load\Snow</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Snow - Duopitch roof</Name>
       <Guid>30c14383-9494-4299-b5aa-4059e0f7c9b2</Guid>
       <CheckSum>34c398b8ad3f1c14fe15d062743252e4</CheckSum>
       <RelativePath>_Packages\BasicPackage\Load\Snow</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Snow - Loads on snowguards and other obstacles</Name>
       <Guid>933a0843-df50-4377-93b2-4e6bad483689</Guid>
       <CheckSum>138e8267145e1b70a61a623f19559e0f</CheckSum>
       <RelativePath>_Packages\BasicPackage\Load\Snow</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Snow - Monopitch roof</Name>
       <Guid>b6a3bd85-e013-4991-821d-8f471e83be48</Guid>
       <CheckSum>8038618601eea494ea32e0e69d61ea68</CheckSum>
       <RelativePath>_Packages\BasicPackage\Load\Snow</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Snow - Multi-span roof</Name>
       <Guid>23ab3b08-7f12-478a-b912-0f7e3edc8e0f</Guid>
       <CheckSum>ec76ae6b32941c7f8d7460d70421f098</CheckSum>
       <RelativePath>_Packages\BasicPackage\Load\Snow</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Snow - Overhanging the edge of a roof</Name>
       <Guid>cc891fdf-cc12-4552-a605-4092468fcfbc</Guid>
       <CheckSum>c160e3ec266eab41d329e6b2838afee7</CheckSum>
       <RelativePath>_Packages\BasicPackage\Load\Snow</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Snow - Roof abutting and close to taller constructions</Name>
       <Guid>0c268412-a1c6-49e9-831b-06085d5f4566</Guid>
       <CheckSum>a31a119e83a6866f6b8bd5ec5fd4bdfc</CheckSum>
       <RelativePath>_Packages\BasicPackage\Load\Snow</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Structural factor</Name>
       <Guid>a94acd5b-242c-4293-9190-dd890a103b54</Guid>
       <CheckSum>b4d640fd25bf4670125566f08777851e</CheckSum>
       <RelativePath>_Packages\BasicPackage\Load\Wind</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Wind - Canopies</Name>
       <Guid>a31bcccf-760c-4a06-9872-79cfde48ba3a</Guid>
       <CheckSum>56571cb7856b57936b5e7ca3c8ad8d96</CheckSum>
       <RelativePath>_Packages\BasicPackage\Load\Wind</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Wind - Duopitch roofs</Name>
       <Guid>a1985266-a0fe-48b6-8f9f-99959ad3c581</Guid>
       <CheckSum>b1808b4ddbe560e0ab15e58f252e7742</CheckSum>
       <RelativePath>_Packages\BasicPackage\Load\Wind</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Wind - Flat roofs</Name>
       <Guid>a6ab3128-2c14-49a1-8a19-3fce31304d7c</Guid>
       <CheckSum>b8b9d7af9ee78f16fc36258910d850c4</CheckSum>
       <RelativePath>_Packages\BasicPackage\Load\Wind</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Wind - Free-standing walls</Name>
       <Guid>faeb7d37-77a1-4bd9-9e56-e67315cd9e08</Guid>
       <CheckSum>eb7acecece7770bb35800990e77fd094</CheckSum>
       <RelativePath>_Packages\BasicPackage\Load\Wind</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Wind - Monopitch roofs</Name>
       <Guid>2855a9d3-5631-4e03-8b31-de4965d272a7</Guid>
       <CheckSum>eeeca20da0bcb2ab6cbd177f17e6626c</CheckSum>
       <RelativePath>_Packages\BasicPackage\Load\Wind</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Wind - Multispan roofs</Name>
       <Guid>8c69ecf2-b2ca-4e9f-8e3d-4454bfe05528</Guid>
       <CheckSum>72ad98f96fa89da94cf710529322fa90</CheckSum>
       <RelativePath>_Packages\BasicPackage\Load\Wind</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Wind - Signboards</Name>
       <Guid>d43f7a7c-f2a3-4078-a821-274cb6fc3532</Guid>
       <CheckSum>31ca2eb4eabc8a46233f6ff69d08aa9a</CheckSum>
       <RelativePath>_Packages\BasicPackage\Load\Wind</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Wind load</Name>
       <Guid>96399570-1d05-4a4f-92a5-4f201f57c38f</Guid>
       <CheckSum>9b6ee69e4277d5a580b2b27d3c60f5d9</CheckSum>
       <RelativePath>_Packages\BasicPackage\Load\Wind</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Check of masonry in compression</Name>
       <Guid>ef68a855-7e4e-4fbf-97fb-93578372535f</Guid>
       <CheckSum>600ae829e74d491ef302bf7e6365355e</CheckSum>
       <RelativePath>_Packages\BasicPackage\Masonry</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Check of masonry in concentrated compression</Name>
       <Guid>ad56ccf2-4587-4522-b294-4f8b3b6321ec</Guid>
       <CheckSum>375474f8d4c9a8bac3ae6554e7843696</CheckSum>
       <RelativePath>_Packages\BasicPackage\Masonry</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Masonry material characteristics</Name>
       <Guid>5f9471b2-ffd7-4220-a404-a81b3c7e8460</Guid>
       <CheckSum>df7e26c62ca5240489cc5d648d1346a7</CheckSum>
       <RelativePath>_Packages\BasicPackage\Masonry</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Simplified check of concentrated load</Name>
       <Guid>91305ca2-7bd9-4306-ab6a-6f2a3efd4d21</Guid>
       <CheckSum>647844e5706382fcbb22c37a5a9fd48e</CheckSum>
       <RelativePath>_Packages\BasicPackage\Masonry</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Simplified check of masonry in compression</Name>
       <Guid>bceeddcc-d853-45b6-9dad-5a0d898a2c39</Guid>
       <CheckSum>565afe3ca39398afda36a6144c6374ec</CheckSum>
       <RelativePath>_Packages\BasicPackage\Masonry</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Simplified check of shear in wall plane</Name>
       <Guid>c33de512-d1a5-46e0-8168-aa1740997fc4</Guid>
       <CheckSum>ae702f46b6d0cd4d5bdbedef8ed516d0</CheckSum>
       <RelativePath>_Packages\BasicPackage\Masonry</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Simplified check of shear perpendicular to the wall plane</Name>
       <Guid>90a98829-1c0d-4986-ae25-e8baa8c7d3a9</Guid>
       <CheckSum>4cc5c9557dd3737a112fe608c5ebb77c</CheckSum>
       <RelativePath>_Packages\BasicPackage\Masonry</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Cranked beam - continuous load</Name>
       <Guid>6d32b1dd-82a0-49af-b266-f1f40d599032</Guid>
       <CheckSum>517f431ab305beef679242b6271a9878</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Redistributed bending moment</Name>
       <Guid>b4e90d10-ecbb-40f7-bfc4-dc3576e7b419</Guid>
       <CheckSum>07a7561e82e8769b08e5c80d19c1adaa</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Concrete</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Bracket - steel F</Name>
       <Guid>70793a7b-2599-400c-8349-c68847d3981b</Guid>
       <CheckSum>9a927b0db3bc899611f2bacf23e0d7ed</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Bracket - steel M</Name>
       <Guid>6d8f08c3-2c68-4de7-96ab-cc47109851da</Guid>
       <CheckSum>c7213c5b51fa40f616944dea38aa54f4</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Bracket - steel q1</Name>
       <Guid>cef6694e-bf91-49af-8ae3-4d3bca03ee18</Guid>
       <CheckSum>1769d28646c0b2922a4f21dfd4f93e8c</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Bracket - steel q2</Name>
       <Guid>cfa3ae81-c1a0-4c8b-a00d-e11e5ee499b4</Guid>
       <CheckSum>64b5ab314e2b6980c4f2e1d9de602ab3</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Bracket - steel q3</Name>
       <Guid>2d75800d-3a96-489d-8d0f-6709e84e1aea</Guid>
       <CheckSum>5bfcdb7e9dc62bee04f0579f5eab4b06</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Bracket - steel q4</Name>
       <Guid>f92a7ce9-7f0b-4b56-8e8e-e09b3d79132d</Guid>
       <CheckSum>0321392862f096b627e19da0ae4670e6</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Simple member - steel - 2F</Name>
       <Guid>d79dc296-3eb1-4c79-ba2f-bdeb12ef5dbc</Guid>
       <CheckSum>156f91a26142b4499447fe846dd1b4a3</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Simple member - steel - 2Fsym</Name>
       <Guid>4830ed2a-4398-4014-8b15-52617c415ee1</Guid>
       <CheckSum>ec4f35eed41316610d294b9ea9a8d628</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Simple member - steel - 3F</Name>
       <Guid>112eeda1-20c0-4970-9102-76a5d4b9a74c</Guid>
       <CheckSum>37c0cbae837849a7e966adaedecdc517</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Simple member - steel - 4F</Name>
       <Guid>9c57745f-ff2c-48d6-b6e3-97f1512bd6e4</Guid>
       <CheckSum>217528c2b4905e76afa2712263dfb0f5</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Simple member - steel - 5F</Name>
       <Guid>c83754da-5353-4131-8972-77182e583e2e</Guid>
       <CheckSum>c30cd0d8e3cc16032f92b841eb38db63</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Simple member - steel - F</Name>
       <Guid>704de088-6655-4bf1-aac8-891e3f65f86f</Guid>
       <CheckSum>b0c05f3f8300def910923c96ca9f2e73</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Simple member - steel - q</Name>
       <Guid>70255ec7-3225-4cde-a9c7-208bd1e8bd28</Guid>
       <CheckSum>54b4cf080220b31c802c6c392a55f9a5</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Simple member - steel - q2</Name>
       <Guid>574ba9fe-1690-4b43-b18a-7e7b3d7a70db</Guid>
       <CheckSum>0188d96ecb448b3a42d09be1d7c36f1f</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Bracket - timber F</Name>
       <Guid>d676c8b5-4c65-4362-9827-c078538ca1ce</Guid>
       <CheckSum>a8a434bf84f97c353a4837531fb5b84d</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Bracket - timber M</Name>
       <Guid>de78b7d8-d9a5-4c77-bdfa-fdd77ff8d96a</Guid>
       <CheckSum>4149225261b67faed67be329d43969cc</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Bracket - timber q1</Name>
       <Guid>aaeaedd2-6ad3-47dc-a5f5-15522c3f56d2</Guid>
       <CheckSum>344b2d7af89d40dd4bddb0cca4e481a4</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Bracket - timber q2</Name>
       <Guid>8250a22f-afa7-4b2c-83b5-cfbf4a8789bc</Guid>
       <CheckSum>a4aea941c55cd396a849d5b3dabd7f21</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Bracket - timber q3</Name>
       <Guid>69ab2f6c-bd59-44e1-adc9-e98d508667ab</Guid>
       <CheckSum>0ecf98e05402f26833abb20f753c0b7b</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Bracket - timber q4</Name>
       <Guid>bb7fcd68-3e2b-4593-8278-b7d7e42be2b2</Guid>
       <CheckSum>fa3f7d64850986a8b73f137e6ce79d52</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Simple member - timber - 2F</Name>
       <Guid>289cda33-0819-4422-8605-b6228eade5d7</Guid>
       <CheckSum>c60b5614fe9b40deee81c09e9be8892b</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Simple member - timber - 2Fsym</Name>
       <Guid>a1f76b06-76ab-4a2b-857d-8f66fab6120a</Guid>
       <CheckSum>dc75c280031dca56dabcb6e159d68666</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Simple member - timber - 3F</Name>
       <Guid>65d3876a-12e1-4c31-a579-118437aa876a</Guid>
       <CheckSum>e96231cf7b5e004007ebbc4ebac2cee2</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Simple member - timber - 4F</Name>
       <Guid>18e3a097-8c6d-4ddb-9174-5c1450e46b4c</Guid>
       <CheckSum>70b9f4872f1b33f5ca72dffade47019d</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Simple member - timber - 5F</Name>
       <Guid>193321f8-806f-4cfb-ac7b-f8f9ec776b1b</Guid>
       <CheckSum>32b61ea5e5b925bf27987bd9b1b80424</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Simple member - timber - F</Name>
       <Guid>aaaef821-db34-4f82-87bc-c27e069c8916</Guid>
       <CheckSum>a33c6a49c9d56fabfbe36b1f96c42a8d</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Simple member - timber - q</Name>
       <Guid>cab23b4e-e09a-4806-a866-c1f493daadc1</Guid>
       <CheckSum>0223f77a33bf7cf48879ae8a1d4b00af</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Simple member - timber - q2</Name>
       <Guid>fd082978-39da-4153-95c3-4f17b33aef49</Guid>
       <CheckSum>a3eee397fff3c825526f7b441cba4199</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Timber_kmod</Name>
       <Guid>1072f0a4-07aa-4332-bbfa-07c2d4ec542e</Guid>
       <CheckSum>ef52c64716bbe1e564eb62405390de02</CheckSum>
       <RelativePath>_Packages\BasicPackage\Statics\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
       <Name>Check N+My+Mz - Master</Name>
@@ -2991,77 +2990,77 @@
       <Guid>96e422e5-d4d7-4c22-94b1-2c6f84cf61fa</Guid>
       <CheckSum>72123d0fc889624877e6540b233c8a89</CheckSum>
       <RelativePath>_Packages\BasicPackage\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Check of bending with LTB</Name>
       <Guid>20bc606d-1536-4146-bb8d-7e6b5c8c146b</Guid>
       <CheckSum>5e1ce646141b9f3ce7c8698a2269c55a</CheckSum>
       <RelativePath>_Packages\BasicPackage\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Check of bolt connection category A - shear and deformation</Name>
       <Guid>c5b8842f-3d3f-4c01-af40-790321b33522</Guid>
       <CheckSum>2de9c97a3ef52f92ec3e7fd61ebe2e03</CheckSum>
       <RelativePath>_Packages\BasicPackage\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Check of circle rivet</Name>
       <Guid>b876c496-7086-42ee-a8e8-cd1cbffa6cd6</Guid>
       <CheckSum>ae045fbadd713a2a8ed09c8edba82d5d</CheckSum>
       <RelativePath>_Packages\BasicPackage\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Check of high strength bolts</Name>
       <Guid>947079ab-13f6-4195-b522-8e551944344f</Guid>
       <CheckSum>fed45e6e8df051aaa90fa47803f1e752</CheckSum>
       <RelativePath>_Packages\BasicPackage\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Check of member buckling</Name>
       <Guid>ef8ba2f5-57fc-481c-871f-5398e0ea3343</Guid>
       <CheckSum>43204cbab975007197292a69dcde200f</CheckSum>
       <RelativePath>_Packages\BasicPackage\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Check of shear bending</Name>
       <Guid>cbfeeae2-89d9-4f29-82d7-c638e223b9c5</Guid>
       <CheckSum>a4cf21fce888295643b3e2123ea7d82c</CheckSum>
       <RelativePath>_Packages\BasicPackage\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Check of shear</Name>
       <Guid>e113c95f-da4c-4a0a-82f7-b83a00d3e397</Guid>
       <CheckSum>bb8da8408e83883cf0a6eaa912dfc4c0</CheckSum>
       <RelativePath>_Packages\BasicPackage\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Check of simple bending</Name>
       <Guid>7c86344e-8601-4ac0-8cef-4330dd2d3a92</Guid>
       <CheckSum>aa6c9907f1deb2ad1702f3d6ec7ec3c7</CheckSum>
       <RelativePath>_Packages\BasicPackage\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Check of simple compression</Name>
       <Guid>86e45d03-ba73-4446-9a62-64c83fd46aab</Guid>
       <CheckSum>f296b3522ff78ce90bd9a86ab227f250</CheckSum>
       <RelativePath>_Packages\BasicPackage\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Check of tension</Name>
       <Guid>7dbe26f4-a1cd-4e55-9230-dfe10414bcac</Guid>
       <CheckSum>82b16604fc071c746c70f5af10b5fe95</CheckSum>
       <RelativePath>_Packages\BasicPackage\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
       <Name>EC_Steel_CrossSection</Name>
@@ -3080,91 +3079,91 @@
       <Guid>e3fae6a6-46e9-4829-87e0-7b14cce63307</Guid>
       <CheckSum>75fed5b22ceb24831f66c099fccff816</CheckSum>
       <RelativePath>_Packages\BasicPackage\Steel</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Check of rectangle on buckling</Name>
       <Guid>5a799d5c-3c8f-48e3-8c4d-cad788214df1</Guid>
       <CheckSum>3f8551fc592240b72283a861abed094a</CheckSum>
       <RelativePath>_Packages\BasicPackage\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Check of rectangle on My+Mz</Name>
       <Guid>0edb709c-bb5d-4965-ab97-11395f6c2cf9</Guid>
       <CheckSum>478efea80babd31dc49d677741487c04</CheckSum>
       <RelativePath>_Packages\BasicPackage\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Check of rectangle on N+My+Mz</Name>
       <Guid>a4128008-bd0c-46cc-8f05-e3ce52752a58</Guid>
       <CheckSum>0de183450ae84847eaf97b149c8a1be0</CheckSum>
       <RelativePath>_Packages\BasicPackage\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Check of shear</Name>
       <Guid>3e89e268-4a55-41e1-b0b3-1742be318333</Guid>
       <CheckSum>e2f6ffb6bc29b65cd353561ea727069d</CheckSum>
       <RelativePath>_Packages\BasicPackage\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Check of steel connection</Name>
       <Guid>0a216af6-ecc4-4a3b-9eb4-8fa317f9e490</Guid>
       <CheckSum>7ca66db77e429b17fdd24c6f9a605727</CheckSum>
       <RelativePath>_Packages\BasicPackage\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Check of tension</Name>
       <Guid>b6ff11ec-6f54-4c16-accd-90defd9f7452</Guid>
       <CheckSum>6136b94e6f0033e684935f74e4e1b0e0</CheckSum>
       <RelativePath>_Packages\BasicPackage\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Connection timber-steel</Name>
       <Guid>10dc9993-9008-48e8-b38d-87b852523170</Guid>
       <CheckSum>784128bf64a3992e665f7c8b6dad4467</CheckSum>
       <RelativePath>_Packages\BasicPackage\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Connection timber-timber</Name>
       <Guid>42b674d4-fa8d-406c-b283-0822dba1fc77</Guid>
       <CheckSum>2711999805e84dd48035185c45b31c29</CheckSum>
       <RelativePath>_Packages\BasicPackage\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Design resistances</Name>
       <Guid>3997a77f-b88a-47e4-87b0-92b6b4f6724e</Guid>
       <CheckSum>00ef4b39b75de367f922dc796d807b91</CheckSum>
       <RelativePath>_Packages\BasicPackage\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Modification factor kmod for timber</Name>
       <Guid>034cd0db-9eba-45d0-b4a5-d90482fad72c</Guid>
       <CheckSum>64a805c2fdf7eca1af465b8ceffbc50a</CheckSum>
       <RelativePath>_Packages\BasicPackage\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Modification factor kmod1 for timber</Name>
       <Guid>99f60d9b-2de8-4f25-af0d-4e2001d85a87</Guid>
       <CheckSum>763121aaf3ab6f080d056c7ecc029c19</CheckSum>
       <RelativePath>_Packages\BasicPackage\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Modification factor kmod2 for timber</Name>
       <Guid>724e8961-7ab2-49ac-a10e-2fe89a554a05</Guid>
       <CheckSum>3ee957d204965b3476d7e58470109cba</CheckSum>
       <RelativePath>_Packages\BasicPackage\Timber</RelativePath>
-      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,SLV,ELL" />
+      <Settings Languages="ENU,CSY,DEU,NLD,FRB,SKY,ROM,ELL" />
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="60004" TranslationType="LocalSettings">
       <Name>Anchor Shear</Name>

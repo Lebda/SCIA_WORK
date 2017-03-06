@@ -19,16 +19,16 @@
             IF(IO.MemberData.Concrete.Contains("MemberType")) { // 1D
                 SWITCH(IO.MemberData.Concrete.MemberType) { //Beam
                     CASE 1 :  { 
-                        ReqReinfMat →INI400_013915= IO.MemberData.Concrete.Defaults.Beam.Materials.Longitudinal.Material; 
+                        ReqReinfMat →INI400_013915= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Material; 
                     } 
                     CASE 2 :  { //Column
-                        ReqReinfMat →INI400_013916= IO.MemberData.Concrete.Defaults.Column.Materials.Longitudinal.Material; 
+                        ReqReinfMat →INI400_013916= IO.MemberData.Concrete.Defaults.Column.Longitudinal.Material; 
                     } 
                     CASE 4 :  { // rib
-                        ReqReinfMat →INI400_013918= IO.MemberData.Concrete.Defaults.Beam.Materials.Longitudinal.Material; 
+                        ReqReinfMat →INI400_013918= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Material; 
                     } 
                     CASE 128 :  { // BeamSlab
-                        ReqReinfMat →INI400_013920= IO.MemberData.Concrete.Defaults.BeamSlab.Materials.Longitudinal.Material; 
+                        ReqReinfMat →INI400_013920= IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Material; 
                     } 
                 } 
             } ELSE { 
@@ -71,16 +71,16 @@
             IF(IO.MemberData.Concrete.Contains("MemberType")) { // 1D
                 SWITCH(IO.MemberData.Concrete.MemberType) { 
                     CASE 1 :  { //Beam
-                        ReqReinfMat →INI400_013985= IO.MemberData.Concrete.Defaults.Beam.Materials.Stirrups.Material; 
+                        ReqReinfMat →INI400_013985= IO.MemberData.Concrete.Defaults.Beam.Stirrups.Material; 
                     } 
                     CASE 2 :  { //Column
-                        ReqReinfMat →INI400_013987= IO.MemberData.Concrete.Defaults.Column.Materials.Stirrups.Material; 
+                        ReqReinfMat →INI400_013987= IO.MemberData.Concrete.Defaults.Column.Stirrups.Material; 
                     } 
                     CASE 4 :  { // rib
-                        ReqReinfMat →INI400_013989= IO.MemberData.Concrete.Defaults.Beam.Materials.Stirrups.Material; 
+                        ReqReinfMat →INI400_013989= IO.MemberData.Concrete.Defaults.Beam.Stirrups.Material; 
                     } 
                     CASE 128 :  { // BeamSlab
-                        ReqReinfMat →INI400_013991= IO.MemberData.Concrete.Defaults.Beam.Materials.Stirrups.Material; 
+                        ReqReinfMat →INI400_013991= IO.MemberData.Concrete.Defaults.Beam.Stirrups.Material; 
                     } 
                 } 
             } 
@@ -3579,6 +3579,19 @@
         } 
         ReinfString →KRS027_000012= ReinfString.Replace(",", "."); 
         return ReinfString; 
+    } 
+} 
+
+→KRS116_000044BLOCK("Function for preparation of Empty basic reinf object") { 
+    public object EmptyBasicReinf() { 
+        object BasicEdge →KRS116_000033= new Structure("Area", 0, "Diam", 0, "Number", 0); 
+        object AdditionalEdge →KRS116_000034= new Structure("Area", 0, "Diam", 0, "Number", 0); 
+        object EdgeForBasic →KRS116_000035= new object[]; 
+        →KRS116_000036EdgeForBasic[0] →KRS116_000037= new Structure("Additional", AdditionalEdge, "Basic", BasicEdge, "CornerState", 0); 
+        →KRS116_000038EdgeForBasic[1] →KRS116_000039= new Structure("Additional", AdditionalEdge, "Basic", BasicEdge, "CornerState", 0); 
+        →KRS116_000040EdgeForBasic[2] →KRS116_000041= new Structure("Additional", AdditionalEdge, "Basic", BasicEdge, "CornerState", 0); 
+        object BasicReinf →KRS116_000042= new Structure("CssType", 0, "Edge", →KRS116_000043EdgeForBasic, "ID", "BasicReinf_Empty", "Layout", 0, "MemberType", 0, "Mode", 0, "Name", "Empty"); 
+        return BasicReinf; 
     } 
 } 
 </SourceCode>
@@ -11097,6 +11110,70 @@
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
+      <VC ID="KRS116_000033">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000034">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000035">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000037">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000039">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000041">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000042">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000044">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS127_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="300" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="300" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
@@ -17381,6 +17458,9 @@
     </Item>
     <Item ID="BLOCK_KRS106_000009">
       <ENU>"Functions for determination of bt"</ENU>
+    </Item>
+    <Item ID="BLOCK_KRS116_000044">
+      <ENU>"Function for preparation of Empty basic reinf object"</ENU>
     </Item>
     <Item ID="BLOCK_KRS127_000065">
       <ENU>"Function for draw table of basic reinforcement"</ENU>

@@ -31,12 +31,12 @@
         A↓sy1← →INI400_006282= 0; 
         b →INI400_006266= IO.CS.Geometry.B; 
         h →INI400_006267= IO.CS.Geometry.H; 
-        c →INI400_006268= IO.Beam.MemberData.Concrete.Defaults.Beam.Cover.CoverLower; 
+        c →INI400_006268= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.Cover; 
         M↓Ed← →INI400_006277= IO.InternalForces.My; 
-        ϕ →INI400_006278= IO.Beam.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.Diameter; 
-        f↓yk← →INI400_006287= IO.Beam.MemberData.Concrete.Defaults.Beam.Materials.Longitudinal.Material.EC.fyk; 
+        ϕ →INI400_006278= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.Diameter; 
+        f↓yk← →INI400_006287= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Material.EC.fyk; 
         f↓yd← →INI400_006288= f↓yk←/γ↓S←; 
-        ε↓yd← →INI400_006289= f↓yd←/IO.Beam.MemberData.Concrete.Defaults.Beam.Materials.Longitudinal.Material.EC.Es; 
+        ε↓yd← →INI400_006289= f↓yd←/IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Material.EC.Es; 
     } 
 } 
 double π →INI400_000127= Math.PI; 
@@ -80,7 +80,7 @@ IF(mat) {
     →INI400_006302PAGEBREAK(); 
     →INI400_006296BLOCK("Reinforcement parameters") { 
         →INI400_006358TEXT("Reinforcement"); 
-        →INI400_006359TEXT(IO.Beam.MemberData.Concrete.Defaults.Beam.Materials.Longitudinal.Material.Name); 
+        →INI400_006359TEXT(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Material.Name); 
         →INI400_006297TEXT(Description("f↓yk←")); 
         →INI400_006298TEXT("f↓yk← = " &amp; f↓yk←); 
         →INI400_006299TEXT(Description("f↓yd←")); 

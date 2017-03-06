@@ -2788,7 +2788,7 @@ Unity_check →INI400_007153= 999;
                                                 "Nacf", N↓at,f←, 
                                                 "Nacw", 1); 
                                             } 
-                                            →INI400_006626Extern_DrawStresses.Draw(false, 0); 
+                                            →INI400_006626Extern_DrawStresses.Draw(ED_Input, ED_Output, 0); 
                                         } 
                                         M↓pl,Rd← →INI400_007067= F↓s←*h↓l←+N↓at,f←*x/2+N↓a,c←*h↓cs←; 
                                     } 

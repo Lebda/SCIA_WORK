@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="1ffbeb94-2818-4851-a9ba-747539240783">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">
@@ -330,63 +330,63 @@ IF(True) {
         
         SWITCH(MemberType) { 
             CASE 1 :  { 
-                IF(IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverLower == 0 || IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverUpper == 0)
+                IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.TypeOfCover == 0 || IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.TypeOfCover == 0)
                 { 
                     object cover →INI400_007021= LoadExternCLC("EC_Concrete_cover_SEN_Design.CLC"); 
                     →INI400_007022cover.Calculate(False); 
                 } 
-                IF(IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverLower == 0) { 
+                IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.TypeOfCover == 0) { 
                     c↓lo← →INI400_006703= cover.c↓nom,l←; 
                 } ELSE { 
-                    c↓lo← →INI400_005915= IO.MemberData.Concrete.Defaults.Beam.Cover.CoverLower; 
+                    c↓lo← →INI400_005915= IO.MemberData.Concrete.Defaults.Longitudinal.Lower.Cover.Cover; 
                 } 
                 c↓lo← →INI400_006702= c↓lo←+IO.MemberData.Concrete.Defaults.Beam.Stirrups.Diameter; 
-                IF(IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverUpper == 0) { 
+                IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.TypeOfCover == 0) { 
                     c↓up← →INI400_006705= cover.c↓nom,u←; 
                 } ELSE { 
-                    c↓up← →INI400_006706= IO.MemberData.Concrete.Defaults.Beam.Cover.CoverUpper; 
+                    c↓up← →INI400_006706= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.Cover; 
                 } 
                 c↓up← →INI400_006708= c↓up←+IO.MemberData.Concrete.Defaults.Beam.Stirrups.Diameter; 
-                IF(IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverSide == 0) { 
+                IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Side.TypeOfCover == 0) { 
                     c↓side← →INI400_006710= c↓up←; } 
-                IF(IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverSide == 1) { 
+                IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Side.TypeOfCover == 1) { 
                     c↓side← →INI400_007037= c↓lo←; } 
-                IF(IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverSide == 2) { 
-                    c↓side← →INI400_007038= IO.MemberData.Concrete.Defaults.Beam.Cover.CoverSide+IO.MemberData.Concrete.Defaults.Beam.Stirrups.Diameter; } 
+                IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Side.TypeOfCover == 2) { 
+                    c↓side← →INI400_007038= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Side.Cover+IO.MemberData.Concrete.Defaults.Beam.Stirrups.Diameter; } 
                 ϕ↓lo← →INI400_006806= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.Diameter; 
                 ϕ↓up← →INI400_006807= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.Diameter; 
                 double ϕ↓max← →INI400_007041= MAX(ϕ↓lo←, ϕ↓up←); 
-                //                Object[] ReinfDiagram →INI400_006318= →INI400_006316IO.MemberData.Concrete.Defaults.Beam.Materials.Longitudinal.Material.EC.Diagram.Point; 
+                //                Object[] ReinfDiagram →INI400_006318= →INI400_006316IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Material.EC.Diagram.Point; 
             } 
             CASE 2 :  { 
-                IF(IO.MemberData.Concrete.Defaults.Column.Cover.TypeOfCover == 0)
+                IF(IO.MemberData.Concrete.Defaults.Column.Longitudinal.Main.TypeOfCover == 0)
                 { 
                     object cover →INI400_007025= LoadExternCLC("EC_Concrete_cover_SEN_Design.CLC"); 
                     →INI400_007026cover.Calculate(False); 
                     c →INI400_007027= cover.c↓nom,m←; 
                 } 
                 ELSE { 
-                    c →INI400_007034= IO.MemberData.Concrete.Defaults.Column.Cover.Cover; 
+                    c →INI400_007034= IO.MemberData.Concrete.Defaults.Column.Longitudinal.Main.Cover; 
                 } 
                 c →INI400_006815= c+IO.MemberData.Concrete.Defaults.Column.Stirrups.Diameter; 
                 ϕ →INI400_006845= IO.MemberData.Concrete.Defaults.Column.Longitudinal.Main.Diameter; 
                 double ϕ↓max← →INI400_007042= ϕ; 
             } 
             CASE 128 :  { 
-                IF(IO.MemberData.Concrete.Defaults.BeamSlab.Cover.TypeOfCoverLower == 0 || IO.MemberData.Concrete.Defaults.BeamSlab.Cover.TypeOfCoverUpper == 0)
+                IF(IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Lower.TypeOfCover == 0 || IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Upper.TypeOfCover == 0)
                 { 
                     object cover →INI400_007028= LoadExternCLC("EC_Concrete_cover_SEN_Design.CLC"); 
                     →INI400_007029cover.Calculate(False); 
                 } 
-                IF(IO.MemberData.Concrete.Defaults.BeamSlab.Cover.TypeOfCoverLower == 0) { 
+                IF(IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Lower.TypeOfCover == 0) { 
                     c↓lo← →INI400_006821= cover.c↓nom,l←; 
                 } ELSE { 
-                    c↓lo← →INI400_006822= IO.MemberData.Concrete.Defaults.BeamSlab.Cover.CoverLower; 
+                    c↓lo← →INI400_006822= IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Lower.Cover; 
                 } 
-                IF(IO.MemberData.Concrete.Defaults.BeamSlab.Cover.TypeOfCoverUpper == 0) { 
+                IF(IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Upper.TypeOfCover == 0) { 
                     c↓up← →INI400_006826= cover.c↓nom,u←; 
                 } ELSE { 
-                    c↓up← →INI400_006827= IO.MemberData.Concrete.Defaults.BeamSlab.Cover.CoverUpper; 
+                    c↓up← →INI400_006827= IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Upper.Cover; 
                 } 
                 c↓side← →INI400_007040= MAX(c↓lo←, c↓up←); 
                 ϕ↓lo← →INI400_006836= IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Lower.Diameter; 

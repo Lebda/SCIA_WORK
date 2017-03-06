@@ -2233,7 +2233,7 @@ IF(bStirrups || ReinfMat != null) {
                 TBeamLongDetProv[0][2].Value →INI400_007662= TR("Unit"); 
                 TBeamLongDetProv[0][3].Value →INI400_007598= TR("Calc.&lt;BR&gt;value"); 
                 TBeamLongDetProv[0][4].Value →INI400_007599= TR("Req.&lt;BR&gt;value"); 
-                TBeamLongDetProv[0][5].Value →INI400_007600= TR("Unity check") &amp; "&lt;BR&gt;[-]"; 
+                TBeamLongDetProv[0][5].Value →INI400_007600= TR("UC [-]"); 
                 TBeamLongDetProv[0][6].Value →INI400_007601= TR("Check"); 
                 
                 //the 2-nd row
@@ -2350,7 +2350,7 @@ IF(bStirrups || ReinfMat != null) {
                 TBeamStirrupsDetProv[0][2].Value →INI400_007773= TR("Unit"); 
                 TBeamStirrupsDetProv[0][3].Value →INI400_007774= TR("Calc.&lt;BR&gt;value"); 
                 TBeamStirrupsDetProv[0][4].Value →INI400_007775= TR("Req.&lt;BR&gt;value"); 
-                TBeamStirrupsDetProv[0][5].Value →INI400_007776= TR("Unity check") &amp; "&lt;BR&gt;[-]"; 
+                TBeamStirrupsDetProv[0][5].Value →INI400_007776= TR("UC [-]"); 
                 TBeamStirrupsDetProv[0][6].Value →INI400_007777= TR("Check"); 
                 
                 //the 2-nd row
@@ -20875,6 +20875,9 @@ IF(bStirrups || ReinfMat != null) {
     </Item>
     <Item TranslateID="STRING_CFC7A576">
       <ENU>"Maximal bar distance"</ENU>
+    </Item>
+    <Item TranslateID="STRING_D05FCCCC">
+      <ENU>"UC [-]"</ENU>
     </Item>
     <Item TranslateID="STRING_D0E2B8CA">
       <ENU>"Minimal clear bar distance"</ENU>

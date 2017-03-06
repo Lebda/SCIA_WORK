@@ -40,11 +40,11 @@ SectionID →INI400_006066= IO.Section.ID;
 double L →INI400_006055= IO.Beam.Member.Length; 
 //calculation distance of two section behing and in front of current section
 double DistSecL →INI400_006067= 1; 
-IF(dx &gt; 0) { 
+IF(COMPARE(dx, 0, 3) == 1) { 
     DistSecL →INI400_006068= ABS(dx-IO.Beam.Section[SectionID-1].Dx); 
 } 
 double DistSecP →INI400_006069= 1; 
-IF(dx &lt; L) { 
+IF(COMPARE(dx, L, 3) == -1) { 
     DistSecP →INI400_006070= ABS(dx-IO.Beam.Section[SectionID+1].Dx); 
 } 
 
@@ -68,10 +68,10 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         
         →INI400_006056TEXT(dx-ΔL); 
         →INI400_006057TEXT(Zone.ZoneEnd); 
-        IF(Zone.Position == "Before" &amp;&amp; dx-ΔL &lt; Zone.ZoneEnd) { StirrupZoneBefore →INI400_006051= True; } 
+        IF(Zone.Position == "Before" &amp;&amp; COMPARE(dx-ΔL, Zone.ZoneEnd, 3) == -1) { StirrupZoneBefore →INI400_006051= True; } 
         →INI400_006058TEXT(dx+ΔP); 
         →INI400_006059TEXT(Zone.ZoneBeg); 
-        IF(Zone.Position == "After" &amp;&amp; dx+ΔP &gt; Zone.ZoneBeg) { StirrupZoneAfter →INI400_006053= True; } 
+        IF(Zone.Position == "After" &amp;&amp; COMPARE(dx+ΔP, Zone.ZoneBeg, 3) == 1) { StirrupZoneAfter →INI400_006053= True; } 
         
         //name of material
         IF(NShearZones &gt; 1 &amp;&amp; i &lt;= NShearZones-1) { 
@@ -85,14 +85,15 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         } 
         
         bool ZoneInSection →INI400_006072= False; 
-        IF(dx &gt;= Zone.ZoneBeg &amp;&amp; dx &lt;= Zone.ZoneEnd &amp;&amp; Zone.Position == "Current") { 
+        IF(COMPARE(dx, Zone.ZoneBeg, 3) != -1 &amp;&amp; COMPARE(dx, Zone.ZoneEnd, 3) != 1 &amp;&amp; Zone.Position == "Current") { 
             bool ZoneInSection →INI400_006063= True; 
         } 
-        →INI400_006074TEXT(dx); 
-        →INI400_006075TEXT(Zone.ZoneBeg); 
-        →INI400_006076TEXT(Zone.ZoneEnd); 
-        // check if two yones are not in the same section
-        IF((DistSecL == 0 &amp;&amp; dx == Zone.ZoneEnd) || (DistSecP == 0 &amp;&amp; dx == Zone.ZoneBeg)) { 
+        →INI400_006074TEXT(dx.ToString("0.000000")); 
+        →INI400_006075TEXT((Zone.ZoneBeg).ToString("0.000000")); 
+        →INI400_006076TEXT((Zone.ZoneEnd).ToString("0.000000")); 
+        →KRS106_000003TEXT(Zone.Position); 
+        // check if two zones are not in the same section
+        IF((COMPARE(DistSecL, 0, 3) == 0 &amp;&amp; COMPARE(dx, Zone.ZoneEnd, 3) == 0) || (COMPARE(DistSecP, 0, 3) == 0 &amp;&amp; COMPARE(dx, Zone.ZoneBeg, 3) == 0)) { 
             ZoneInSection →INI400_006073= False; 
         } 
         //Debugging code
@@ -178,26 +179,26 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
     double ΔPpom →INI400_006100= ΔP; 
     //increase the projection of shear crack at the first and end section
     double TypeCalc →VAL316_048288= 2; 
-    IF(IO.Beam.Member.IsBeamBeforeBeg == 0 &amp;&amp; dx == 0) { 
+    IF(IO.Beam.Member.IsBeamBeforeBeg == 0 &amp;&amp; COMPARE(dx, 0, 3) == 0) { 
         ΔLpom →INI400_006098= 0; 
         ΔPpom →INI400_006099= MIN(2*ΔL, L); 
         TypeCalc →VAL316_048284= 0; 
     } 
-    IF(IO.Beam.Member.IsBeamAfterEnd == 0 &amp;&amp; dx == L) { 
+    IF(IO.Beam.Member.IsBeamAfterEnd == 0 &amp;&amp; COMPARE(dx, L, 3) == 0) { 
         ΔLpom →INI400_006100= MIN(2*ΔP, L); 
         ΔPpom →INI400_006101= 0; 
         TypeCalc →VAL316_048285= 1; 
     } 
     
     //correction the projection of shear crack near the support of stirrup yone is missing
-    IF(dx != 0 &amp;&amp; (IO.Beam.Member.IsBeamBeforeBeg == 0 || !StirrupZoneBefore)) { 
-        IF(dx-ΔL &lt; 0) { 
+    IF(COMPARE(dx, 0, 3) != 0 &amp;&amp; (IO.Beam.Member.IsBeamBeforeBeg == 0 || !StirrupZoneBefore)) { 
+        IF(COMPARE(dx-ΔL, 0, 3) == -1) { 
             ΔLpom →KRS135_000005= dx; 
             ΔPpom →KRS135_000006= MIN(ΔPpom+(ΔL-ΔLpom), L-ΔLpom); 
         } 
     } 
-    IF(dx != L &amp;&amp; (IO.Beam.Member.IsBeamAfterEnd == 0 || !StirrupZoneAfter)) { 
-        IF(dx+ΔP &gt; L) { 
+    IF(COMPARE(dx, L, 3) != 0 &amp;&amp; (IO.Beam.Member.IsBeamAfterEnd == 0 || !StirrupZoneAfter)) { 
+        IF(COMPARE(dx+ΔP, L, 3) == 1) { 
             ΔPpom →KRS135_000007= L-dx; 
             ΔLpom →KRS135_000008= MIN(ΔLpom+(ΔP-ΔPpom), L-ΔPpom); 
         } 
@@ -239,7 +240,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
             ΔLpom →VAL316_006127= 0; 
         } ELSE { 
             double ZoneBegMin →VAL316_006129= IO.REINF.StirrupZone[ZoneIDLeft-1].ZoneBeg; 
-            IF(dx-ZoneBegMin &lt; ΔL) { 
+            IF(COMPARE(dx-ZoneBegMin, ΔL, 3) == -1) { 
                 ΔLpom →VAL316_006103= MAX(0, dx-ZoneBegMin); 
             } 
         } 
@@ -247,7 +248,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
             ΔPpom →VAL316_006130= 0; 
         } ELSE { 
             double ZoneBegMax →VAL316_006131= IO.REINF.StirrupZone[ZoneIDRight-1].ZoneEnd; 
-            IF(ZoneBegMax-dx &lt; ΔP) { 
+            IF(COMPARE(ZoneBegMax-dx, ΔP, 3) == -1) { 
                 ΔPpom →VAL316_006133= MAX(0, ZoneBegMax-dx); 
             } 
         } 
@@ -423,7 +424,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="IOHelper" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_IOHelper">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -1448,6 +1449,14 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS106_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS116_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1730,6 +1739,15 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
   <Texts>
     <Item TranslateID="STRING_5C604367">
       <ENU>"Not defined"</ENU>
+    </Item>
+    <Item ID="TEXT_INI400_006074">
+      <ENU>dx.ToString("0.000000")</ENU>
+    </Item>
+    <Item ID="TEXT_INI400_006075">
+      <ENU>(Zone.ZoneBeg).ToString("0.000000")</ENU>
+    </Item>
+    <Item ID="TEXT_INI400_006076">
+      <ENU>(Zone.ZoneEnd).ToString("0.000000")</ENU>
     </Item>
   </Texts>
 </Root>

@@ -185,7 +185,7 @@ IF(!IO.IsExternCLC) {
     StirrupIDTor →INI400_013929= TorsionShearReinf.StirrupIDTor; 
     
     object ConMat →INI400_012795= CrossSection.GetMaterialForComponent(0); 
-    object ReinfMat →INI400_012799= CrossSection.GetMaterialForBar(0); 
+    object ReinfMat →INI400_012799= CrossSection.GetAvgMaterialOfAllBars(); 
     object ShapeCss →INI400_013813= CrossSection.GetOrigShape(); 
     
     N↓Ed← →INI400_013807= Forces.N; //Applied axial force 

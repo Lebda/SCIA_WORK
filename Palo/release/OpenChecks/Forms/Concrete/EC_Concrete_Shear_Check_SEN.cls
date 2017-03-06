@@ -48,11 +48,7 @@ object[] obEWN →INI400_005579= CssConditions.obEWN;
 IF(PrintMemberInfo) { 
     →INI400_005634TEXT("Member " &amp; IO.Beam.Member.Name &amp; ", section no. " &amp; IO.Section.ID &amp; ", dx = " &amp; Val(IO.Section.Dx, 2) &amp; " m"); 
 } 
-//→INI400_000634TEXT("Number (ID) of  section (no) = " &amp; VAL(SecID+1, 0)); 
-//→INI400_000635TEXT("Position of section on member X = " &amp; dx &amp; "m"); 
 
-
-//→INI400_006317IO.MemberData.Concrete.Defaults.Beam.
 //calculation fywd
 IF(IO.SetupNA.EC_NA.Code == "DIN") { 
     bool bReductionFywd →INI400_007747= False; 
@@ -453,13 +449,6 @@ ELSE {
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
-      <Variable Modifier="Public" Name="A↓c.eff←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓c.eff←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="A↓sl←" ESA_ID="Result.19" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -496,12 +485,6 @@ ELSE {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="AutoCalcTheta" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
       <Variable Modifier="Public" Name="b↓w←" ESA_ID="Result.13" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -525,7 +508,7 @@ ELSE {
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="bReductionFywd" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_bReductionFywd">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -536,21 +519,8 @@ ELSE {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="c" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_c">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="CalcTheta" ESA_ID="" Type="Object">
         <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="Clause_3_3_6_7" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Clause_3_3_6_7">
           <ENU>
           </ENU>
         </Description>
@@ -593,25 +563,11 @@ ELSE {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Coeffε↓Sud←" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="Combikey" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="CombiType" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ConDiagram" ESA_ID="" Type="Object">
         <Description>
@@ -677,22 +633,8 @@ ELSE {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="E↓c←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_E↓c←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="f↓cd←" ESA_ID="" Type="Double" Precision="2">
         <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="f↓ct.eff←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_f↓ct.eff←">
           <ENU>
           </ENU>
         </Description>
@@ -737,20 +679,6 @@ ELSE {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="h↓c.ef←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_h↓c.ef←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="Inclined" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
@@ -764,47 +692,12 @@ ELSE {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="k↓2←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_k↓2←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="k↓t←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_k↓t←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="LimitCheck" ESA_ID="Result.26" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" ESAUnit="103" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="LoadType" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="M↓cry←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_M↓cry←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="M↓crz←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_M↓crz←">
-          <ENU>
-          </ENU>
-        </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="M↓x←" ESA_ID="" Type="Double" Precision="2">
@@ -835,15 +728,8 @@ ELSE {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓cr←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_N↓cr←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="N↓Ed←" ESA_ID="Result.30" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_N↓Ed←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -875,13 +761,6 @@ ELSE {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="NBars" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="Number↓E←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -910,12 +789,6 @@ ELSE {
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="obEWN" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="POD" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -952,20 +825,6 @@ ELSE {
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" ESAUnit="33" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
-      </Variable>
-      <Variable Modifier="Public" Name="s↓max←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_s↓max←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="s↓r.max←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_s↓r.max←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="s↓s←" ESA_ID="" Type="Double" Precision="2">
         <Description>
@@ -1060,7 +919,7 @@ ELSE {
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="V↓Ed←" ESA_ID="Result.29" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_V↓Ed←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -1076,7 +935,7 @@ ELSE {
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="V↓Edy←" ESA_ID="Result.27" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_V↓Edy←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -1084,7 +943,7 @@ ELSE {
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="V↓Edz←" ESA_ID="Result.28" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_V↓Edz←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -1145,27 +1004,6 @@ ELSE {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="w" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_w">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="w↓max←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_w↓max←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="x↓r←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_x↓r←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="y↓bw←" ESA_ID="Result.22" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -1215,13 +1053,6 @@ ELSE {
       </Variable>
       <Variable Modifier="Public" Name="α↓ct←" ESA_ID="" Type="Double" Precision="2">
         <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="α↓E←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_α↓E←">
           <ENU>
           </ENU>
         </Description>
@@ -1278,29 +1109,8 @@ ELSE {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ε↓1←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_ε↓1←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="ε↓2←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_ε↓2←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="ε↓sm_cm←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_ε↓sm_cm←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="ε↓ud←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_ε↓ud←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -1328,20 +1138,6 @@ ELSE {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="σ↓cr←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_σ↓cr←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="σ↓ct←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_σ↓ct←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="σ↓ctmax←" ESA_ID="Result.15" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -1350,13 +1146,6 @@ ELSE {
         <ResultProperties ESAColor="1" ESAStyle="3" ESAUnit="79" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="σ↓s←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_σ↓s←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="σ↓swd←" ESA_ID="Result.16" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -1364,13 +1153,6 @@ ELSE {
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" ESAUnit="99" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
-      </Variable>
-      <Variable Modifier="Public" Name="ϕ↓eq←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_ϕ↓eq←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ϕ↓s←" ESA_ID="" Type="Double" Precision="2">
         <Description>
@@ -1496,14 +1278,6 @@ ELSE {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001776">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="184" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="184" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="1000" Y="274" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-      </VC>
       <VC ID="INI400_001783">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="198" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="198" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -1566,38 +1340,6 @@ ELSE {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="144" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="172" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="172" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_005221">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="65" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="111" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="111" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="186" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="186" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_005222">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="77.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="124" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="124" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="198" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="198" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_005224">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="111" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="144" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="144" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="219" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="219" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_005225">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="211" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="211" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_005301">
@@ -2352,14 +2094,6 @@ ELSE {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006546">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
       <VC ID="INI400_006547">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -3008,222 +2742,6 @@ ELSE {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007032">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007033">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007034">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007035">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007036">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007037">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007038">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007039">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007040">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007041">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007042">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007043">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007044">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007045">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007046">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007047">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007048">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007049">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007050">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007051">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007052">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007053">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007054">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007055">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007181">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007184">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007185">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
       <VC ID="INI400_007333">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -3351,14 +2869,6 @@ ELSE {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="69.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="259" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007472">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="65" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="111" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="111" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="139" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="139" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_007586">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="263" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -3728,22 +3238,6 @@ ELSE {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="219" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007665">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007682">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="211" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="211" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
       <VC ID="INI400_007683">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -3976,22 +3470,6 @@ ELSE {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007712">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007713">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="94.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="278" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="259" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="69.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="259" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="7" />
-      </VC>
       <VC ID="INI400_007714">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="189" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="174" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -4114,35 +3592,14 @@ ELSE {
     <Command Width="500" />
   </Dialog>
   <Texts>
-    <Item TranslateID="STRING_0802BAD6">
+    <Item ID="STRING_8A1A8A08">
       <ENU>""</ENU>
-    </Item>
-    <Item TranslateID="STRING_8A1A8A08">
-      <ENU>""</ENU>
-    </Item>
-    <Item TranslateID="STRING_A5D0C00A">
-      <ENU>"NO"</ENU>
     </Item>
     <Item TranslateID="STRING_B2C2AF34">
       <ENU>"NO"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000615">
-      <ENU>"Loading:"</ENU>
-    </Item>
     <Item TranslateID="TEXT_INI400_005634">
       <ENU>"Member " &amp; IO.Beam.Member.Name &amp; ", section no. " &amp; IO.Section.ID &amp; ", dx = " &amp; Val(IO.Section.Dx, 2) &amp; " m"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_005662">
-      <ENU>→005661CssConditions.Final</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_006810">
-      <ENU>POD.X</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_006811">
-      <ENU>POD.Y</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_006812">
-      <ENU>POD.Z</ENU>
     </Item>
   </Texts>
 </Root>

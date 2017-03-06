@@ -245,13 +245,6 @@ IF(CssConditions.ConditionsForCss) { →INI400_005944TEXT("Stress limitation che
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Check" ESA_ID="Result.11" Type="String">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="3" Numeric="dString" SenModif="False" LabOri="0" />
-      </Variable>
       <Variable Modifier="Public" Name="CreepCalc" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -309,6 +302,13 @@ IF(CssConditions.ConditionsForCss) { →INI400_005944TEXT("Stress limitation che
           <ENU>
           </ENU>
         </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="Check" ESA_ID="Result.11" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="3" Numeric="dString" SenModif="False" LabOri="0" />
       </Variable>
       <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
         <Description>

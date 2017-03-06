@@ -855,8 +855,11 @@ IF(PrintResultPerCombi &amp;&amp; NForces &gt; 1 &amp;&amp; IO.IsDrawing) {
     FOR(j, 0, numEdges) { 
         double sumAS →INI400_007943= 0; 
         FOR(i, 0, NCalcForces-1) { 
-            SumEdge[j] →INI400_007944= SumEdge[j]+ArrayAreaPerCombi[i][j]; 
-            
+            IF(j == 0) { //first edge sum
+                SumEdge[j] →KRS106_000017= ArrayAreaPerCombi[i][j]; 
+            } ELSE { //all others edges sum
+                SumEdge[j] →INI400_007944= SumEdge[j-1]+ArrayAreaPerCombi[i][j]; 
+            } 
         } 
     } 
     ///// code for debugging
@@ -880,9 +883,13 @@ IF(PrintResultPerCombi &amp;&amp; NForces &gt; 1 &amp;&amp; IO.IsDrawing) {
             T_AreaPerCombi[i+1][0].Value →INI400_007920= i+1; 
         } 
         FOR(i, 0, NCalcForces-1) { 
+            double SumForForce →KRS106_000019= 0; 
             FOR(j, 0, numEdges) { 
                 T_AreaPerCombi[j+1][i+1].Value →INI400_007921= Val(ArrayAreaPerCombi[i][j]*1000000, 2); 
-                
+                SumForForce →KRS106_000020= SumForForce+ArrayAreaPerCombi[i][j]; 
+                IF(j == numEdges) { 
+                    T_AreaPerCombi[j+1][i+1].Value →KRS106_000018= Val(SumForForce*1000000, 2); 
+                } 
             } 
         } 
         T_AreaPerCombi[0][Ncolumns-1].Value →INI400_007946= TR("Sum"); 
@@ -2434,6 +2441,13 @@ object DesignType →INI400_007953= generalInfo.DesType;
           <ENU>
           </ENU>
         </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="SumForForce" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="SummaryArea" ESA_ID="" Type="Object">
         <Description>
@@ -4523,9 +4537,9 @@ object DesignType →INI400_007953= generalInfo.DesType;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="926" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="926" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="926" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="577" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="769" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="577" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="926" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="926" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="926" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
       <VC ID="INI400_007924">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="74.2" Y="73" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
@@ -6552,6 +6566,38 @@ object DesignType →INI400_007953= generalInfo.DesType;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS106_000015">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000017">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000018">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="926" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="926" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="926" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="926" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="926" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="926" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000019">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000020">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

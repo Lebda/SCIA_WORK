@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="713cf479-5f76-4901-83f4-63e92a150d2d">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">
@@ -347,40 +347,15 @@ double γ↓c← →RFM227_014757= IO.Setup.ConcreteNBR.Solver.General.GammaC;
 object TableNBRReinf →RFM227_007161= new CustomDataTable("NBR_Reinf.xml"); 
 // ReinfClass →RFM227_011822= 50; // Default reinforcement class from setup 
 double ClassOfReinf →RFM227_017969= Convert.ToDouble(IO.MemberData.ConcreteNBR.Solver.ULS.ClassOfReinf.Material.ID.Substring(9)); 
-SWITCH(ClassOfReinf) { 
-    CASE 16 :  { 
-        ReinfClass →RFM227_017970= 25; 
-    } 
-    CASE 17 :  { 
-        ReinfClass →RFM227_017971= 50; 
-    } 
-    CASE 18 :  { 
-        ReinfClass →RFM227_017972= 60; 
-    } 
-} 
-→RFM227_018072TEXT("Reinforcement steel"); 
-SWITCH(ReinfClass) { 
-    CASE 25 :  { 
-        string Sel →RFM227_009021= "".Format("Item = '{0}'", "CA-25"); 
-        →RFM227_018073TEXT("CA-25"); 
-        f↓yk← →RFM227_018074= 250000000; 
-    } 
-    CASE 50 :  { 
-        string Sel →RFM227_009022= "".Format("Item = '{0}'", "CA-50"); 
-        →RFM227_018075TEXT("CA-50"); 
-        f↓yk← →RFM227_018076= 500000000; 
-    } 
-    CASE 60 :  { 
-        string Sel →RFM227_009023= "".Format("Item = '{0}'", "CA-60"); 
-        →RFM227_018077TEXT("CA-60"); 
-        f↓yk← →RFM227_018078= 600000000; 
-    } 
-} 
+
+double f↓yk← →RFM106_000001= IO.MemberData.ConcreteNBR.Solver.ULS.ClassOfReinf.Material.NBR.fyk; 
 object MyReinfMat →RFM227_017566= TableNBRReinf.Select(Sel); 
-object ReqReinfMat →RFM227_017567= TableNBRReinf.GetStructure(MyReinfMat[0]); 
-string NameReqReinf →RFM227_009024= ReqReinfMat.Item; 
+object ReqReinfMat →RFM227_017567= IO.MemberData.ConcreteNBR.Solver.ULS.ClassOfReinf.Material.NBR; 
+string NameReqReinf →RFM227_009024= IO.MemberData.ConcreteNBR.Solver.ULS.ClassOfReinf.Material.Name; 
 double γ↓s← →RFM227_017360= IO.Setup.ConcreteNBR.Solver.General.GammaS; 
 
+→RFM106_000002TEXT("Reinforcement steel"); 
+→RFM106_000003TEXT(NameReqReinf); 
 →RFM227_005903BLOCK { 
     →RFM227_009045BLOCK { 
         →RFM227_009055TEXT(Description("f↓yk←")); 
@@ -395,9 +370,9 @@ double γ↓s← →RFM227_017360= IO.Setup.ConcreteNBR.Solver.General.GammaS;
         →RFM227_015092TEXT(Description("f↓yd←")); 
         f↓yd← →RFM227_011592= f↓yk←/γ↓s← @REF("( 12.4.1 )"); 
         →RFM227_009591TEXT(Description("E↓s←")); 
-        E↓s← →RFM227_011593= 210000000000 @REF("( 8.3.5 )"); 
+        E↓s← →RFM227_011593= IO.MemberData.ConcreteNBR.Solver.ULS.ClassOfReinf.Material.NBR.E @REF("( 8.3.5 )"); 
         double ε↓sy← →RFM227_015153= f↓yd←/E↓s←; 
-        double ε↓su← →RFM227_015154= 0.01; 
+        double ε↓su← →RFM227_015154= IO.MemberData.ConcreteNBR.Solver.ULS.ClassOfReinf.Material.NBR.eps_uk; 
         
         // NBR - Reinforcement Diagram
         object ReqReinfDiagram →RFM227_014876= new MaterialDiagram(-ε↓su←, -f↓yd←, -ε↓sy←, -f↓yd←, 0, 0, ε↓sy←, f↓yd←, ε↓su←, f↓yd←); 
@@ -1932,31 +1907,31 @@ IF(MemberType == 16) {
     bool TestEqulibrium →RFM227_017786= false; 
     bool bDrawPictures →RFM227_017787= true; 
     
-    // based on combo ReinfClass from member data
+    // based on combo ReinfClass from member data - Old code for standalone
     object TableNBRReinf →RFM227_012016= new CustomDataTable("NBR_Reinf.xml"); 
     // ReinfClass →RFM227_012017= 50; // Default reinforcement class from setup 
-    IF(Convert.ToDouble(IO.MemberData.ConcreteNBR.Solver.ULS.ClassOfReinf.Material.ID.Substring(9)) == 16) { 
-        double ReinfClass →RFM227_012018= 25; 
-    } 
-    IF(Convert.ToDouble(IO.MemberData.ConcreteNBR.Solver.ULS.ClassOfReinf.Material.ID.Substring(9)) == 17) { 
-        double ReinfClass →RFM227_012019= 50; 
-    } 
-    IF(Convert.ToDouble(IO.MemberData.ConcreteNBR.Solver.ULS.ClassOfReinf.Material.ID.Substring(9)) == 18) { 
-        double ReinfClass →RFM227_012020= 60; 
-    } 
-    SWITCH(ReinfClass) { 
-        CASE 25 :  { 
-            string Sel →RFM227_012021= "".Format("Item = '{0}'", "CA-25"); 
-        } 
-        CASE 50 :  { 
-            string Sel →RFM227_012022= "".Format("Item = '{0}'", "CA-50"); 
-        } 
-        CASE 60 :  { 
-            string Sel →RFM227_012023= "".Format("Item = '{0}'", "CA-60"); 
-        } 
-    } 
+    //    IF(Convert.ToDouble(IO.MemberData.ConcreteNBR.Solver.ULS.ClassOfReinf.Material.ID.Substring(9)) == 16) { 
+    //        double ReinfClass →RFM227_012018= 25; 
+    //    } 
+    //    IF(Convert.ToDouble(IO.MemberData.ConcreteNBR.Solver.ULS.ClassOfReinf.Material.ID.Substring(9)) == 17) { 
+    //        double ReinfClass →RFM227_012019= 50; 
+    //    } 
+    //    IF(Convert.ToDouble(IO.MemberData.ConcreteNBR.Solver.ULS.ClassOfReinf.Material.ID.Substring(9)) == 18) { 
+    //        double ReinfClass →RFM227_012020= 60; 
+    //    } 
+    //    SWITCH(ReinfClass) { 
+    //        CASE 25 :  { 
+    //            string Sel →RFM227_012021= "".Format("Item = '{0}'", "CA-25"); 
+    //        } 
+    //        CASE 50 :  { 
+    //            string Sel →RFM227_012022= "".Format("Item = '{0}'", "CA-50"); 
+    //        } 
+    //        CASE 60 :  { 
+    //            string Sel →RFM227_012023= "".Format("Item = '{0}'", "CA-60"); 
+    //        } 
+    //    } 
     object MyReinfMat →RFM227_012024= TableNBRReinf.Select(Sel); 
-    object ReqReinfMat →RFM227_012025= TableNBRReinf.GetStructure(MyReinfMat[0]); 
+    object ReqReinfMat →RFM227_012025= IO.MemberData.ConcreteNBR.Solver.ULS.ClassOfReinf.Material.NBR; 
     
     //deteremination material of user reinforcement
     bool SameUserReq →RFM227_007006= True; 
@@ -2506,63 +2481,63 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
-      <Variable Modifier="Public" Name="A↓s.req.1+←" ESA_ID="Result.3" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="A↓s.req.1+←" ESA_ID="Result.3" Type="Double" Value="NaN" Precision="2">
         <Description TranslateID="VARIABLE_A↓s.req.1+←">
           <ENU>First direction required reinforcement at upper surface</ENU>
         </Description>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="140" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="100e-6" Dim="cm↑2←/m" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓s.req.1-←" ESA_ID="Result.1" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="A↓s.req.1-←" ESA_ID="Result.1" Type="Double" Value="NaN" Precision="2">
         <Description TranslateID="VARIABLE_A↓s.req.1-←">
           <ENU>First direction required reinforcement at lower surface</ENU>
         </Description>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="140" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="100e-6" Dim="cm↑2←/m" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓s.req.2+←" ESA_ID="Result.4" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="A↓s.req.2+←" ESA_ID="Result.4" Type="Double" Value="NaN" Precision="2">
         <Description TranslateID="VARIABLE_A↓s.req.2+←">
           <ENU>Second direction required reinforcement at upper surface</ENU>
         </Description>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="140" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="100e-6" Dim="cm↑2←/m" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓s.req.2-←" ESA_ID="Result.2" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="A↓s.req.2-←" ESA_ID="Result.2" Type="Double" Value="NaN" Precision="2">
         <Description TranslateID="VARIABLE_A↓s.req.2-←">
           <ENU>Second direction required reinforcement at lower surface</ENU>
         </Description>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="140" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="100e-6" Dim="cm↑2←/m" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓s.req+←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="A↓s.req+←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓s.req←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="A↓s.req←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓s.req-←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="A↓s.req-←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓sc.req←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="A↓sc.req←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓st.req←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="A↓st.req←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2626,7 +2601,7 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="bPODNotOK" ESA_ID="" Type="Boolean" Value="0">
+      <Variable Modifier="Public" Name="bPODNotOK" ESA_ID="" Type="Boolean" Value="1">
         <Description>
           <ENU>
           </ENU>
@@ -2771,7 +2746,7 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="d↓od←" ESA_ID="" Type="Double" Value="2" Precision="2">
+      <Variable Modifier="Public" Name="d↓od←" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2870,7 +2845,7 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="E↓s←" ESA_ID="" Type="Double" Value="210e9" Precision="2">
+      <Variable Modifier="Public" Name="E↓s←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description TranslateID="VARIABLE_E↓s←">
           <ENU>Deformation module</ENU>
         </Description>
@@ -2942,7 +2917,7 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="f↓yk←" ESA_ID="" Type="Double" Value="250e6" Precision="2">
+      <Variable Modifier="Public" Name="f↓yk←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description TranslateID="VARIABLE_f↓yk←">
           <ENU>Characteristic yield strength</ENU>
         </Description>
@@ -3479,7 +3454,7 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="NameReqReinf" ESA_ID="" Type="String" Value="CA-25">
+      <Variable Modifier="Public" Name="NameReqReinf" ESA_ID="" Type="String" Value="">
         <Description>
           <ENU>
           </ENU>
@@ -3518,7 +3493,7 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="numEdges" ESA_ID="" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="numEdges" ESA_ID="" Type="Double" Value="4" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3625,12 +3600,6 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="ReinfClass" ESA_ID="" Type="Double" Value="25" Precision="2">
-        <Description TranslateID="VARIABLE_ReinfClass">
-          <ENU>Class of longitudal reinforcement</ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="ReqReinf" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -3649,7 +3618,7 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="s↓shear←" ESA_ID="" Type="Double" Value="352.5626e-3" Precision="2">
+      <Variable Modifier="Public" Name="s↓shear←" ESA_ID="" Type="Double" Value="6.467003e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3888,7 +3857,7 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="x↓c←" ESA_ID="" Type="Double" Value="29.56576e-3" Precision="2">
+      <Variable Modifier="Public" Name="x↓c←" ESA_ID="" Type="Double" Value="54.636e-3" Precision="2">
         <Description TranslateID="VARIABLE_x↓c←">
           <ENU>Height of compression zone</ENU>
         </Description>
@@ -4126,7 +4095,7 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="%" />
       </Variable>
-      <Variable Modifier="Public" Name="ε↓su←" ESA_ID="" Type="Double" Value="10e-3" Precision="2">
+      <Variable Modifier="Public" Name="ε↓su←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4154,14 +4123,14 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="μ↓0←" ESA_ID="" Type="Double" Value="82.01774e-6" Precision="2">
+      <Variable Modifier="Public" Name="μ↓0←" ESA_ID="" Type="Double" Value="10.88062e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="μ↓1←" ESA_ID="" Type="Double" Value="88.91291e-3" Precision="2">
+      <Variable Modifier="Public" Name="μ↓1←" ESA_ID="" Type="Double" Value="202.7512e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4175,7 +4144,7 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="μ↓2←" ESA_ID="" Type="Double" Value="101.6943e-3" Precision="2">
+      <Variable Modifier="Public" Name="μ↓2←" ESA_ID="" Type="Double" Value="222.5064e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4189,14 +4158,14 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="μ↓sd←" ESA_ID="" Type="Double" Value="64.32592e-3" Precision="2">
+      <Variable Modifier="Public" Name="μ↓sd←" ESA_ID="" Type="Double" Value="870.7998e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ν↓1←" ESA_ID="" Type="Double" Value="93.78723e-3" Precision="2">
+      <Variable Modifier="Public" Name="ν↓1←" ESA_ID="" Type="Double" Value="612.1954e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4210,14 +4179,14 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ν↓2←" ESA_ID="" Type="Double" Value="99.64893e-3" Precision="2">
+      <Variable Modifier="Public" Name="ν↓2←" ESA_ID="" Type="Double" Value="634.6809e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ξ" ESA_ID="" Type="Double" Value="83.1746e-3" Precision="2">
+      <Variable Modifier="Public" Name="ξ" ESA_ID="" Type="Double" Value="628e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4385,7 +4354,7 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="τ↓d←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="τ↓d←" ESA_ID="" Type="Double" Value="2.410116e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4455,28 +4424,28 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="ω↓1+←" ESA_ID="" Type="Double" Value="145.4146e-3" Precision="2">
+      <Variable Modifier="Public" Name="ω↓1+←" ESA_ID="" Type="Double" Value="550.2558e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ω↓1-←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="ω↓1-←" ESA_ID="" Type="Double" Value="61.93955e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ω↓2+←" ESA_ID="" Type="Double" Value="166.1886e-3" Precision="2">
+      <Variable Modifier="Public" Name="ω↓2+←" ESA_ID="" Type="Double" Value="605.1861e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ω↓2-←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="ω↓2-←" ESA_ID="" Type="Double" Value="29.49481e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4605,6 +4574,30 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
@@ -6480,30 +6473,6 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM227_009021">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_009022">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_009023">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="RFM227_009024">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -7561,54 +7530,6 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="RFM227_012016">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_012018">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_012019">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_012020">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_012021">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_012022">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_012023">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -12537,7 +12458,7 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="RFM227_016380">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -15888,30 +15809,6 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM227_017970">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_017971">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_017972">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="RFM227_017979">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -16656,62 +16553,6 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM227_018072">
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_018073">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_018074">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_018075">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_018076">
-        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_018077">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_018078">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="RFM227_018079">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
@@ -16805,7 +16646,7 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
   </Calculation>
   <Dialog>
     <Main Width="500">
-      <TEMDLoader Name="" ID="30" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="3" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="C:\Users\Raphael Mendonça\ESA15.2\Temp\Esa_Model_Data\Member2D.1" MemberID="" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="" ID="30" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="3" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="" SectionID="-1" CombiID="-1" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />
@@ -16847,6 +16688,9 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
     </Item>
     <Item TranslateID="STRING_DB3E8F36">
       <ENU>"The direction of principal moments is taken into account."</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RFM106_000002">
+      <ENU>"Reinforcement steel"</ENU>
     </Item>
     <Item TranslateID="TEXT_RFM227_000143">
       <ENU>"DESIGN 2D MEMBERS - NBR-6118:2014"</ENU>
@@ -18106,18 +17950,6 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
     </Item>
     <Item ID="TEXT_RFM227_018069">
       <ENU>Description("A↓s.req.2+←")</ENU>
-    </Item>
-    <Item TranslateID="TEXT_RFM227_018072">
-      <ENU>"Reinforcement steel"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_RFM227_018073">
-      <ENU>"CA-25"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_RFM227_018075">
-      <ENU>"CA-50"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_RFM227_018077">
-      <ENU>"CA-60"</ENU>
     </Item>
     <Item TranslateID="TEXT_RFM227_018079">
       <ENU>"Shell"</ENU>

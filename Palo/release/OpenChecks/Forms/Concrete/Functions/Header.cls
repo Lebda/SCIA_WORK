@@ -434,12 +434,17 @@ public void DrawHeaderForStandalone(object CrossSection, object HeaderDrawInput)
     LeftSubTable.GridPen →KRS116_000091= FontsAndColors.WhitePen(); 
     LeftSubTable.BorderPen →KRS116_000092= FontsAndColors.WhitePen(); 
     
+    object IOhelper →KRS116_000241= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
+    object Reinf →KRS116_000242= IOhelper.GetActReinf(); 
+    
     //Right side contains materials and covers
     object RightSubTable →KRS116_000097= new Table(1); 
     RightSubTable[0][0].Value →KRS116_000098=  { →KRS116_000109PrintConcreteMaterial(); } 
-    RightSubTable[1][0].Value →KRS116_000099=  { →KRS116_000136PrintLongReinfMaterial(HeaderDrawInput.CssID, HeaderDrawInput.ForcesID); } 
-    RightSubTable[2][0].Value →KRS116_000111=  { →KRS116_000172PrintShearReinfMaterial(HeaderDrawInput.CssID, HeaderDrawInput.ForcesID, CrossSection.ShearReinfStandard); } 
-    RightSubTable[3][0].Value →KRS116_000112=  { →KRS116_000191PrintCover(CrossSection.GetOrigShape(), CrossSection.ShearReinfStandard, HeaderDrawInput.FormCode); } 
+    IF(Reinf != null &amp;&amp; Reinf.Keys.Count &gt; 0) { 
+        RightSubTable[1][0].Value →KRS116_000099=  { →KRS116_000136PrintLongReinfMaterial(HeaderDrawInput.CssID, HeaderDrawInput.ForcesID); } 
+        RightSubTable[2][0].Value →KRS116_000111=  { →KRS116_000172PrintShearReinfMaterial(HeaderDrawInput.CssID, HeaderDrawInput.ForcesID, CrossSection.ShearReinfStandard); } 
+        RightSubTable[3][0].Value →KRS116_000112=  { →KRS116_000191PrintCover(CrossSection.GetOrigShape(), CrossSection.ShearReinfStandard, HeaderDrawInput.FormCode); } 
+    } 
     RightSubTable.Padding.All →KRS116_000101= 0; 
     RightSubTable.Columns[0].Width →KRS116_000103= 290; 
     RightSubTable.GridPen →KRS116_000107= FontsAndColors.WhitePen(); 
@@ -2193,6 +2198,22 @@ T[0][0].Padding.Left →KRS116_000211= 10;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS116_000241">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000242">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS316_000017">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2390,7 +2411,7 @@ T[0][0].Padding.Left →KRS116_000211= 10;
   </Calculation>
   <Dialog>
     <Main Width="400">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="G:\_PROJECTS\17.0\improvements\EMD_HeaderImprovements\Beam.2" MemberID="Beam.2" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.2" SectionID="-1" CombiID="-1" />
     </Main>
     <MemberData Width="400" />
     <Setup Width="400" />

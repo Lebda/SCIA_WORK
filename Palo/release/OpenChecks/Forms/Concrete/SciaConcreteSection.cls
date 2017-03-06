@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="302a30c5-024d-4e62-a63e-b120cb03b8c3">
   <CodeEditor>
-    <SourceCode Collapsed="1|545|560|694|786|845|875|883|933|991|1053|1114|1180|1267|1436|1471|1502|1524|1536|1549|1612|1678|1757|1930|2003|2114|2243|2414|2909|2949|2974|2985|3127|3139|3163" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure
+    <SourceCode Collapsed="1|265|372|399|559|574|646|708|800|859|889|897|947|1005|1067|1128|1194|1281|1450|1485|1516|1538|1550|1563|1626|1692|1771|1944|2017|2128|2257|2428|2923|2963|2988|2999|3141|3153|3177" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure
     bool ValidateInput(object Input) { //Validate inputs from master to this form
         //Fonts, colors, pens...
         object FontRegular →INI400_012845= Input.Get("FontRegular"); //Standard font for tables
@@ -453,6 +453,20 @@ IF(!IO.IsExternCLC) {
                 object DummyForces →INI400_014375= new Structure("uys", 0, "uzs", 0, "uyl", 0, "uzl", 0); 
                 object TableElasticDeformations →INI400_014376= new object[]; 
                 →INI400_014379TableElasticDeformations.Add(DummyForces); 
+            } 
+            FOR(i, 0, TableElasticDeformations.Count-1) { 
+                IF(IsNaN(TableElasticDeformations[i].uyl)) { 
+                    TableElasticDeformations[i].uyl →KRS106_000007= 0; 
+                } 
+                IF(IsNaN(TableElasticDeformations[i].uys)) { 
+                    TableElasticDeformations[i].uys →KRS106_000008= 0; 
+                } 
+                IF(IsNaN(TableElasticDeformations[i].uzl)) { 
+                    TableElasticDeformations[i].uzl →KRS106_000009= 0; 
+                } 
+                IF(IsNaN(TableElasticDeformations[i].uzs)) { 
+                    TableElasticDeformations[i].uzs →KRS106_000010= 0; 
+                } 
             } 
             θ →INI400_011362= -1; 
             sTheta →INI400_011382= ""; 
@@ -22201,6 +22215,38 @@ SWITCH(cTypeOfCalculation) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000007">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000008">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000009">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000010">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS116_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

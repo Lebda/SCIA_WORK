@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="81a76008-631d-4593-9e06-af3dad5626f3">
   <CodeEditor>
-    <SourceCode Collapsed="5|56|76|735" BreakPoints="">
+    <SourceCode Collapsed="76|737" BreakPoints="">
 
 //------------------------------------------------------------
 //@FUNCTIONS
@@ -86,7 +86,7 @@ object Functions1D_EWN →INI400_013602= LoadExternCLC(Tools.Dir_Forms &amp; "Co
 object Functions1D_General →INI400_013604= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_General.clc"); 
 object Functions1D_Geometrics →INI400_013607= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_Geometrics.clc"); 
 object DataFromSEN →INI400_006916= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FunctionsDataFromSEN.CLC"); 
-
+object IO_HELPER →INI400_015065= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
 IF(!IO.IsExternCLC) { 
     bool AccidentalULS →INI400_013598= False; 
     double ForcesID →INI400_013606= 0; 
@@ -422,7 +422,7 @@ IF(N↓Ed← &gt;= N↓com←) {
     CompressMember →INI400_004071= false; 
     →INI400_000325TEXT("N↓Ed← ≥ N↓com← = " &amp; N↓Ed← &amp; " ≥ " &amp; N↓com← &amp; " ... "); 
     →INI400_006825TEXT("not compression member"); 
-    string DescriptionN →INI400_006566= TR("Type of member is determined automatically as member not in compression (beam), because N↓Ed← ≥ N↓com← (imperfections will not be taken into account.)"); 
+    string DescriptionN →INI400_006566= TR("First and second order eccentricity will not be taken into account, because the member is not considered as a compression member (normal force is relatively small or zero)."); 
     string SolutionN →INI400_006567= TR(""); 
     string TypeN →INI400_006568= TR("Note"); 
     →INI400_006569Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
@@ -432,7 +432,7 @@ IF(N↓Ed← &gt;= N↓com←) {
     CompressMember →INI400_004072= true; 
     →INI400_000331TEXT("N↓Ed← &lt; N↓com ←= " &amp; N↓Ed← &amp; " &lt; " &amp; N↓com← &amp; " ... "); 
     →INI400_006826TEXT("compression member"); 
-    string DescriptionN →INI400_006572= TR("Type of member is determined automatically as member in compression (column), because N↓Ed← &lt; N↓com← (imperfections will be taken into account)."); 
+    string DescriptionN →INI400_006572= TR("First and second order eccentricity shall be taken into account, because the member is considered as a compression member (significant normal force is presented)."); 
     string SolutionN →INI400_006573= TR(""); 
     string TypeN →INI400_006574= TR("Note"); 
     →INI400_006575Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
@@ -495,8 +495,8 @@ IF(CompressMember) {
     //buckling
     →INI400_011588InputSlenderness.Add("BraceMemberY", BraceMemberY); 
     →INI400_011589InputSlenderness.Add("BraceMemberZ", BraceMemberZ); 
-    →INI400_013721InputSlenderness.Set("bTransverseY", False); 
-    →INI400_013722InputSlenderness.Set("bTransverseZ", False); 
+    →VAL106_000003InputSlenderness.Set("bTransverseY", IO_HELPER.IsTransverseLoadY()); 
+    →VAL106_000004InputSlenderness.Set("bTransverseZ", IO_HELPER.IsTransverseLoadZ()); 
     →INI400_011590InputSlenderness.Add("β_yy_inp", β↓yy←); 
     →INI400_011591InputSlenderness.Add("β_zz_inp", β↓zz←); 
     →INI400_011592InputSlenderness.Add("L_y_inp", L↓y←); 
@@ -560,6 +560,8 @@ IF(CompressMember) {
         →PAI127_000026TEXT("Equivalent first order moment and eccentricity:"); 
         M↓0ey← →INI400_000687= sign↓z←*MAX(ABS(0.6*M↓02y←+0.4*M↓01y←), ABS(0.4*M↓02y←)) @REF("(5.32)"); 
         M↓0ez← →INI400_000688= sign↓y←*MAX(ABS(0.6*M↓02z←+0.4*M↓01z←), ABS(0.4*M↓02z←)) @REF("(5.32)"); 
+        M↓y← →VAL106_000001= M↓0ey←; 
+        M↓z← →VAL106_000002= M↓0ez←; 
         e↓0z← →INI400_000081= ABS(M↓0ey←/N↓Ed←)*sign↓z←; 
         e↓0y← →INI400_000080= ABS(M↓0ez←/N↓Ed←)*sign↓y←; 
         e↓0ez← →PAI127_000052= e↓0z←; 
@@ -1796,6 +1798,12 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
       </Variable>
       <Variable Modifier="Public" Name="InputSlenderness" ESA_ID="" Type="Object">
         <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="IO_HELPER" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_IO_HELPER">
           <ENU>
           </ENU>
         </Description>
@@ -8334,6 +8342,14 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="INI400_015065">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
       <VC ID="KRS116_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -9157,6 +9173,38 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|11.7|0|2" Font2="Arial|11.7|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|11.7|0|2" Font2="Arial|11.7|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="VAL106_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
     </VisualComponents>
     <Images />
@@ -10162,6 +10210,9 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
     <Item TranslateID="STRING_018D39E8">
       <ENU>"Conditions cannot be calculated (biaxial bending is taken as default). Imperfections should be taken into account in both directions."</ENU>
     </Item>
+    <Item TranslateID="STRING_0926C736">
+      <ENU>"First and second order eccentricity shall be taken into account, because member is in compression."</ENU>
+    </Item>
     <Item TranslateID="STRING_199CE32B">
       <ENU>"The first order moment M↓y ←is constant (M↓01y←=M↓y←=M↓02y←) or equivalent first bending moment M↓0ey← is used."</ENU>
     </Item>
@@ -10171,6 +10222,9 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
     <Item TranslateID="STRING_3035448F">
       <ENU>"Minimum eccentricity is not taken into account for SLS combination, see §5.2(3)."</ENU>
     </Item>
+    <Item TranslateID="STRING_31F02114">
+      <ENU>"First and second order eccentricity shall be taken into account, because the member is considered as a compression member."</ENU>
+    </Item>
     <Item TranslateID="STRING_3422FBFC">
       <ENU>"Error"</ENU>
     </Item>
@@ -10179,9 +10233,6 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
     </Item>
     <Item TranslateID="STRING_3C457AB8">
       <ENU>"It is necessary to increase amount of reinforcement or to increase dimensions of cross-section or to increase quality of the used materials or used different method for calculation second order eccentricity"</ENU>
-    </Item>
-    <Item TranslateID="STRING_406A20E3">
-      <ENU>"Type of member is determined automatically as member in compression (column), because N↓Ed← &lt; N↓com← (imperfections will be taken into account)."</ENU>
     </Item>
     <Item TranslateID="STRING_42434A4E">
       <ENU>"Curvature will be estimated based on assumption of symmetrical cross-section and reinforcement."</ENU>
@@ -10209,6 +10260,9 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
     </Item>
     <Item TranslateID="STRING_5C604367">
       <ENU>"Not defined"</ENU>
+    </Item>
+    <Item TranslateID="STRING_61DFFFA7">
+      <ENU>"First and second order eccentricity shall be taken into account, because the member is considered as a compression member (significant normal force is presented)."</ENU>
     </Item>
     <Item TranslateID="STRING_62042395">
       <ENU>"List of errors/warnings/notes: "</ENU>
@@ -10261,8 +10315,8 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
     <Item TranslateID="STRING_B89FE70A">
       <ENU>"The calculation of imperfection is switched off by the user (e↓i← = 0)."</ENU>
     </Item>
-    <Item TranslateID="STRING_BA9D78AD">
-      <ENU>"Type of member is determined automatically as member not in compression (beam), because N↓Ed← ≥ N↓com← (imperfections will not be taken into account.)"</ENU>
+    <Item TranslateID="STRING_BD42C622">
+      <ENU>"First and second order eccentricity will not be taken into account, because the member is not considered as a compression member."</ENU>
     </Item>
     <Item TranslateID="STRING_BEB983D7">
       <ENU>"Second order effect is not calculated for SLS combination."</ENU>
@@ -10272,6 +10326,9 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
     </Item>
     <Item TranslateID="STRING_C392D377">
       <ENU>"Curvature will be estimated based on assumption of non-symmetrical cross-section and reinforcement."</ENU>
+    </Item>
+    <Item TranslateID="STRING_CAEEE245">
+      <ENU>"First and second order eccentricity shall not be taken into account, because member is not in compression."</ENU>
     </Item>
     <Item TranslateID="STRING_CC9DF75C">
       <ENU>"The reinforcement characteristics are calculated for rectangle cross-section and for inputted ratio of reinforcement"</ENU>
@@ -10287,6 +10344,9 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
     </Item>
     <Item TranslateID="STRING_DC380D01">
       <ENU>"The reinforcement characteristics are calculated for general cross-section and for inputted ratio of reinforcement"</ENU>
+    </Item>
+    <Item TranslateID="STRING_DD6334B7">
+      <ENU>"First and second order eccentricity will not be taken into account, because the member is not considered as a compression member (normal force is relatively small or zero)."</ENU>
     </Item>
     <Item TranslateID="STRING_DF7D8A96">
       <ENU>"Reinforcement is distributed also parallel to the plane of bending z-z┴."</ENU>

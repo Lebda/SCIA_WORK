@@ -83,17 +83,17 @@ IF(CssConditions.ConditionsForCss) {
             
             //upper 
             double d_blu →INI400_006693= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.Diameter; 
-            double TypeCover_blu →INI400_006694= IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverUpper; 
-            double c_blu →INI400_006695= IO.MemberData.Concrete.Defaults.Beam.Cover.CoverUpper; 
+            double TypeCover_blu →INI400_006694= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.TypeOfCover; 
+            double c_blu →INI400_006695= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.Cover; 
             
             //lower
             double d_bll →INI400_006696= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.Diameter; 
-            double TypeCover_bll →INI400_006697= IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverLower; 
-            double c_bll →INI400_006698= IO.MemberData.Concrete.Defaults.Beam.Cover.CoverLower; 
+            double TypeCover_bll →INI400_006697= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.TypeOfCover; 
+            double c_bll →INI400_006698= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.Cover; 
             
             //side
-            double TypeCover_bls →INI400_006700= IO.MemberData.Concrete.Defaults.Beam.Cover.TypeOfCoverSide; 
-            double c_bls →INI400_006701= IO.MemberData.Concrete.Defaults.Beam.Cover.CoverSide; 
+            double TypeCover_bls →INI400_006700= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Side.TypeOfCover; 
+            double c_bls →INI400_006701= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Side.Cover; 
             
             //stirrups
             double d_bs →INI400_006702= IO.MemberData.Concrete.Defaults.Beam.Stirrups.Diameter; 
@@ -103,8 +103,8 @@ IF(CssConditions.ConditionsForCss) {
             //Column
             //Longitudinal   
             double d_cm →INI400_006716= IO.MemberData.Concrete.Defaults.Column.Longitudinal.Main.Diameter; 
-            double TypeCover_cm →INI400_006717= IO.MemberData.Concrete.Defaults.Column.Cover.TypeOfCover; 
-            double c_cm →INI400_006718= IO.MemberData.Concrete.Defaults.Column.Cover.Cover; 
+            double TypeCover_cm →INI400_006717= IO.MemberData.Concrete.Defaults.Column.Longitudinal.Main.TypeOfCover; 
+            double c_cm →INI400_006718= IO.MemberData.Concrete.Defaults.Column.Longitudinal.Main.Cover; 
             
             //stirrups
             double d_cs →INI400_006719= IO.MemberData.Concrete.Defaults.Column.Stirrups.Diameter; 
@@ -116,13 +116,13 @@ IF(CssConditions.ConditionsForCss) {
             //Longitudinal   
             //upper 
             double d_bslu →INI400_006704= IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Upper.Diameter; 
-            double TypeCover_bslu →INI400_006705= IO.MemberData.Concrete.Defaults.BeamSlab.Cover.TypeOfCoverUpper; 
-            double c_bslu →INI400_006706= IO.MemberData.Concrete.Defaults.BeamSlab.Cover.CoverUpper; 
+            double TypeCover_bslu →INI400_006705= IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Upper.TypeOfCover; 
+            double c_bslu →INI400_006706= IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Upper.Cover; 
             
             //lower
             double d_bsll →INI400_006707= IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Lower.Diameter; 
-            double TypeCover_bsll →INI400_006708= IO.MemberData.Concrete.Defaults.BeamSlab.Cover.TypeOfCoverLower; 
-            double c_bsll →INI400_006709= IO.MemberData.Concrete.Defaults.BeamSlab.Cover.CoverLower; 
+            double TypeCover_bsll →INI400_006708= IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Lower.TypeOfCover; 
+            double c_bsll →INI400_006709= IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Lower.Cover; 
             
         } 
     } 
@@ -3671,7 +3671,7 @@ IF(CssConditions.ConditionsForCss) {
   </Calculation>
   <Dialog>
     <Main Width="500">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.84|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.1" SectionID="-1" CombiID="-1" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.84|0|3" Active="1" PreDef="0" MemberDirectory="D:\_PROJECTS\17.0\improvements\EMD_po\Beam.1" MemberID="Beam.1" SectionID="0" CombiID="0" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />

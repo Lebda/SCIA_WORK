@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="58"><StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_free_flange_buckling}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="58"><StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_bending_and_reaction}</StringId>
+		<SourceDll>SteelCheckEsa.2edll</SourceDll>
+		<ResourceId>45388</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_free_flange_buckling}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45385</ResourceId>
 	</StringCode>
@@ -7,9 +11,9 @@
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45365</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_bending_and_reaction}</StringId>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_section_class}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
-		<ResourceId>45388</ResourceId>
+		<ResourceId>45386</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_torsion}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
@@ -43,10 +47,6 @@
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45362</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_section_class}</StringId>
-		<SourceDll>SteelCheckEsa.2edll</SourceDll>
-		<ResourceId>45386</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_bending_y}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45364</ResourceId>
@@ -54,6 +54,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_torsional_flexural_buckling}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45373</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_tension_bending}</StringId>
+		<SourceDll>SteelCheckEsa.2edll</SourceDll>
+		<ResourceId>45376</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_slenderness}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
@@ -63,10 +67,6 @@
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45371</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_tension_bending}</StringId>
-		<SourceDll>SteelCheckEsa.2edll</SourceDll>
-		<ResourceId>45376</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_compression}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45363</ResourceId>
@@ -75,10 +75,6 @@
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45376</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_critical_temperature}</StringId>
-		<SourceDll>SteelCheckEsa.2edll</SourceDll>
-		<ResourceId>45401</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_shear_torsion_z}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45370</ResourceId>
@@ -86,6 +82,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_shear_torsion_y}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45369</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_critical_temperature}</StringId>
+		<SourceDll>SteelCheckEsa.2edll</SourceDll>
+		<ResourceId>45401</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_shear_torsion_z}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
@@ -139,13 +139,13 @@
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45400</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_slenderness}</StringId>
-		<SourceDll>SteelCheckEsa.2edll</SourceDll>
-		<ResourceId>45384</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_steelcheck_uls_overall_table_name}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45356</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_slenderness}</StringId>
+		<SourceDll>SteelCheckEsa.2edll</SourceDll>
+		<ResourceId>45384</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_flexural_buckling}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
@@ -167,13 +167,13 @@
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45377</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_flexural_buckling}</StringId>
-		<SourceDll>SteelCheckEsa.2edll</SourceDll>
-		<ResourceId>45372</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_web_crippling}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45382</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_flexural_buckling}</StringId>
+		<SourceDll>SteelCheckEsa.2edll</SourceDll>
+		<ResourceId>45372</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_chord_as_beam}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
@@ -211,13 +211,13 @@
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45359</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_steelcheck_fire_stabilitycheck_name}</StringId>
-		<SourceDll>SteelCheckEsa.2edll</SourceDll>
-		<ResourceId>45358</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_steelcheck_fire_overall_name}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45356</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_steelcheck_fire_stabilitycheck_name}</StringId>
+		<SourceDll>SteelCheckEsa.2edll</SourceDll>
+		<ResourceId>45358</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_steelcheck_uls_stabilitycheck_table_name}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>

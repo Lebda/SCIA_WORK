@@ -8,10 +8,16 @@ double Number↓W← →INI400_001773= 0;
 double Number↓N← →INI400_001774= 0; 
 object[] obEWN →INI400_001776= new object[]; 
 object[] Number↓EWN← →INI400_001783= new object[]; 
-
 bool ConditionsForCss →INI400_005882= True; 
 bool SameReinfMaterial →KRS116_000001= True; //KRS: Variable initialized due removing variable values from table of variables
 bool bTestSameReinfMaterial →KRS116_000005= true; //KRS: variable initialised and set on true;
+
+IF(obCheckConditions != null) { 
+    ConditionsForCss →VAL106_000001= obCheckConditions.ConditionsForCss; 
+    SameReinfMaterial →VAL106_000002= obCheckConditions.SameReinfMaterial; 
+    bTestSameReinfMaterial →VAL106_000003= obCheckConditions.bTestSameReinfMaterial; 
+} 
+obCheckConditions →VAL106_000005= null; 
 /// Testing if cross-section is numerical
 bool NumericalCss →INI400_006958= False; 
 IF(IO.CS.Geometry.FormCode == 300) { 
@@ -265,6 +271,12 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="NumericalCss" ESA_ID="" Type="Boolean">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="obCheckConditions" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -868,6 +880,38 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="474" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="151" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="333" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="VAL106_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000005">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
     </VisualComponents>
     <Images />

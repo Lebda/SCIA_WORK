@@ -667,7 +667,7 @@ IF(DesignULS) {
     // Design for ULS
     →INI400_014329TEXT("Design statically required reinforcement"); 
     //table of forces with stresses
-    →INI400_014324TableInputForce(ArrayForcesULS, TR("Table of all loads used for ULS design"), CombikeyULS, PrintResultPerCombi); 
+    →INI400_014324TableInputForce(ArrayForcesULS, TR("Table of all loads used for ULS design"), CombikeyULS, bExtremeCombPerDirection); 
     
     →INI400_002958BLOCK { 
         IF(bDetailingProv) { 
@@ -844,7 +844,7 @@ IF(bShearDesign) {
     object[] TotalArrayReinfShear →INI400_008174= new object[]; 
     FOR(i, 0, TotalArrayReinf.Count-1) { 
         IF(TotalArrayReinf[i].Area &gt; 0) { 
-            →INI400_014226TotalArrayReinfShear.Add(new Structure("X", TotalArrayReinf[i].X, "Y", TotalArrayReinf[i].Y, "D", TotalArrayReinf[i].D, "Area", TotalArrayReinf[i].Area)); 
+            →INI400_014226TotalArrayReinfShear.Add(new Structure("X", TotalArrayReinf[i].X, "Y", TotalArrayReinf[i].Y, "D", TotalArrayReinf[i].D, "Area", TotalArrayReinf[i].Area, "IsDetailing", False)); 
         } 
     } 
     //code for debugging
@@ -1454,13 +1454,7 @@ IF(bDetailingProv) {
 //BASIC REINFORCEMENT
 //IF(!IO.IsStandalone) { // runs only when called from SEN
 IF(!IO.IsExternCLC) { // runs only for local runs - testIO
-    object BasicEdge →KRS127_000078= new Structure("Area", 0, "Diam", 0, "Number", 0); 
-    object AdditionalEdge →KRS127_000083= new Structure("Area", 0, "Diam", 0, "Number", 0); 
-    object EdgeForBasic →KRS127_000074= new object[]; 
-    →KRS127_000075EdgeForBasic[0] →KRS127_000080= new Structure("Additional", AdditionalEdge, "Basic", BasicEdge, "CornerState", 0); 
-    →KRS127_000076EdgeForBasic[1] →KRS127_000081= new Structure("Additional", AdditionalEdge, "Basic", BasicEdge, "CornerState", 0); 
-    →KRS127_000077EdgeForBasic[2] →KRS127_000082= new Structure("Additional", AdditionalEdge, "Basic", BasicEdge, "CornerState", 0); 
-    object BasicReinf →KRS127_000073= new Structure("CssType", 0, "Edge", →KRS127_000079EdgeForBasic, "ID", "BasicReinf_Empty", "Layout", 0, "MemberType", 0, "Mode", 0, "Name", "Empty"); 
+    object BasicReinf →KRS127_000073= Functions1D_DesignReq.EmptyBasicReinf(); 
 } 
 //setting of calculation
 bool bRecalToCorner →VAL127_000003= True; //the reinforcement is calculated that each corner basr is diveded to all edges
@@ -1869,7 +1863,7 @@ IF(!IO.IsStandalone) {
     
     string sReinfProv →KRS127_000196= →KRS127_000195Functions1D_DesignReq.CreateStringOfProvidedReinfSummary(bCircular, TypeMember, sBarsProvidedSurfaces); 
     
-    IF(IO.IsDrawing &amp;&amp; !IO.IsStandalone) { //KRS: add some test if basic &amp; Additional reinf is empty, than do not display this table. or fill it with all reinf as As,add,req
+    IF(IO.IsDrawing &amp;&amp; !IO.IsStandalone &amp;&amp; BasicReinf.Name != "Empty") { 
         →KRS127_000341TEXT("Provided"); 
         IF(bCircular) { 
             →KRS127_000065Functions1D_DesignReq.DrawTableOfBasicReinf(ReqReinfFinalReduce, ProvReinfArray, BasicProvReinfArray, AdditionaProvReinfArraySelected, AdditionalReinfArray, AdditionalReqReinfArray, ErrorValue, sBarsEdges); 
@@ -2036,7 +2030,7 @@ object UC_ReqProv →KRS127_000197= new Structure("UC_ReqProv_zpos", GetUC_ReqPr
     } 
     
     →KRS127_000256BLOCK { //Drawing of Basic + additional reinf bars
-        IF(!IO.IsStandalone) { 
+        IF(!IO.IsStandalone &amp;&amp; BasicReinf.Name != "Empty") { 
             object SingleBarsProvided →KRS127_000337= new object[]; 
             SingleBarsProvided →KRS127_000338= Functions1D_DesignToBars.ExplotationProvidedReinfToBars(BasicProvReinfArray, AdditionaProvReinfArraySelected, ReqReinfFinal); 
             
@@ -2324,12 +2318,6 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="AdditionalEdge" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
       <Variable Modifier="Public" Name="AdditionalReinfArray" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -2540,12 +2528,6 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="bAllReinfAtEdges" ESA_ID="" Type="Boolean">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="BasicEdge" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -3175,11 +3157,11 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="DummyResult" ESA_ID="Result.2" Type="Double" Precision="2">
-        <Description>
+        <Description TranslateID="VARIABLE_DummyResult">
           <ENU>
           </ENU>
         </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="3" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
+        <ResultProperties ESAColor="1" ESAStyle="3" ESAUnit="-1" Reference="" Extrem="3" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="E↓c←" ESA_ID="" Type="Double" Precision="2">
@@ -3204,12 +3186,6 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="EdgeCorner" ESA_ID="" Type="String">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="EdgeForBasic" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -4150,7 +4126,7 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
           <ENU>
           </ENU>
         </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" Numeric="DummyResult" SenModif="False" LabOri="0" />
+        <ResultProperties ESAColor="1" ESAStyle="3" Numeric="DummyResult" SenModif="False" LabOri="0" />
       </Variable>
       <Variable Modifier="Public" Name="ReqNameShearReinf" ESA_ID="" Type="String">
         <Description TranslateID="VARIABLE_ReqNameShearReinf">
@@ -13341,54 +13317,6 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS127_000074">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS127_000078">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS127_000080">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS127_000081">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS127_000082">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS127_000083">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="KRS127_000084">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -14891,7 +14819,7 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
               <ENU>Auto|Uniaxial y|Uniaxial z|Biaxial|General|Corner</ENU>
             </Texts>
           </TComboBox>
-          <TComboBox Name="DTypeMember" ID="67" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="32" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeMember" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1|2" Index="0">
+          <TComboBox Name="DTypeMember" ID="67" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="32" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeMember" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1|2" Index="1">
             <Texts>
               <ENU>Beam|Column|Slab</ENU>
             </Texts>
@@ -14901,12 +14829,12 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
           <TDoubleInput Name="" ID="56" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="23" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="LimitRatioM" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
           <TDoubleInput Name="" ID="16" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="12" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="MaxNlayers" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
           <TDoubleInput Name="" ID="26" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="3" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Coeff↓Area←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-          <TComboBox Name="DTypeCoverDiam" ID="55" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="22" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeCoverDiam" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1" Index="1">
+          <TComboBox Name="DTypeCoverDiam" ID="55" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="22" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeCoverDiam" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1" Index="0">
             <Texts>
               <ENU>Same values (column)|Upper, lower (beam)</ENU>
             </Texts>
           </TComboBox>
-          <TComboBox Name="TypeAreaCombo" ID="31" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="16" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeArea" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="1|0" Index="1">
+          <TComboBox Name="TypeAreaCombo" ID="31" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="16" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeArea" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="1|0" Index="0">
             <Texts>
               <ENU>Area of real bars|Delta area</ENU>
             </Texts>
@@ -14960,7 +14888,7 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
           <Texts>
             <ENU>Internal forces - Load</ENU>
           </Texts>
-          <TTableInput Name="" ID="70" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="TableForces" Value="1|0|150|20|0|120|50|yyyyy" CellBG="-1" HeaderBG="-986896" FixedRows="-1">
+          <TTableInput Name="" ID="70" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="TableForces" Value="1|0|400|500|0|500|30|yyyyy" CellBG="-1" HeaderBG="-986896" FixedRows="-1">
             <Texts>
               <ENU>Index|N|My|Mz|Vy|Vz|Mx|Combikey</ENU>
             </Texts>
@@ -14990,9 +14918,9 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
             </Columns>
           </TTableInput>
         </TGroupBox>
-        <TConcreteSectionLibrary Name="" ID="41" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="22" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="1" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="" SelectedCS="3" Units="2" ReinfTabsVis="True" TabBG="-2894893" SelTab="-1">
-          <CS SelReinf="0" H="500e-3" B="1" Hf="150e-3" Bw="150e-3" />
-          <Reinf Ver="1" Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="30e-3" D_upper="20e-3" N_upper="2" c_lower="30e-3" D_lower="20e-3" N_lower="2" Dc_upper="30e-3" DD_upper="12e-3" DN_upper="2" Dc_lower="30e-3" DD_lower="12e-3" DN_lower="2" />
+        <TConcreteSectionLibrary Name="" ID="41" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="22" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="1" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="" SelectedCS="2" Units="2" ReinfTabsVis="True" TabBG="-2894893" SelTab="-1">
+          <CS SelReinf="0" D="400e-3" />
+          <Reinf Ver="1" Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c="30e-3" D="20e-3" N="6" />
         </TConcreteSectionLibrary>
         <TCustomLibrary Name="" ID="29" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="20" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="CONCRETE.EC" DataFile="EC_Concrete.xml" Collapsed="True" UseCombo="False" Category="Bilinear" Item="C 35/45">
           <Data>

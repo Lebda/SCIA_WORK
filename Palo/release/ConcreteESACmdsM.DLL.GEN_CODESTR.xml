@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="118"><StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_checkcapacitydiagram}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="119"><StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_checkcapacitydiagram}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
 		<ResourceId>32855</ResourceId>
 	</StringCode>
@@ -222,6 +222,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_deflection}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
 		<ResourceId>32859</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_punching_resultshell}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32884</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_memberdataconcrete_new}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>

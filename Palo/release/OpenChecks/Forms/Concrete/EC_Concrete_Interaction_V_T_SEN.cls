@@ -51,8 +51,10 @@ double Number↓W← →INI400_001773= 0;
 double Number↓N← →INI400_001774= 0; 
 object[] Number↓EWN← →INI400_001783= new object[]; 
 IndexEWN →INI400_004063= 4; 
+object obCheckCssConditions →VAL106_000001= new Structure("ConditionsForCss", True, "SameReinfMaterial", True, "bTestSameReinfMaterial", False); 
 object CssConditions →INI400_005574= LoadExternCLC("ConditionsForCss.clc"); 
 CssConditions.InfoAboutTypeCalc →INI400_005660= TR("The check interaction shear and torsion"); 
+CssConditions.obCheckConditions →VAL106_000002= obCheckCssConditions; 
 CssConditions.IndexEWN →INI400_006491= IndexEWN; 
 →INI400_005576CssConditions.Calculate(False); 
 
@@ -519,6 +521,18 @@ IF(CssConditions.ConditionsForCss) {
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="obCheckConditions" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_obCheckConditions">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="obCheckCssConditions" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_obCheckCssConditions">
+          <ENU>
+          </ENU>
+        </Description>
       </Variable>
       <Variable Modifier="Public" Name="oEWN" ESA_ID="" Type="Object">
         <Description>
@@ -2136,6 +2150,22 @@ IF(CssConditions.ConditionsForCss) {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="VAL316_014444">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

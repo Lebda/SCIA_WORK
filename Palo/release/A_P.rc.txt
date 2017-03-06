@@ -1,4 +1,4 @@
-Condition \A\Src\Tra\BCGCBPro\BCGCBPro.rc 
+BCGCBPRO2440u140 \A\Src\Tra\BCGCBPro\BCGCBPro.rc 
 EP_Archive \A\Src\Mic\Base\ARCHIVE\Archive.rc EP_Archive.tlb
 EP_BasicTypes \A\Src\Lat\BasicTypes\BasicTypes.rc EP_BasicTypes.tlb
 XEP_AppGUIFramework \A\Src\Kernel\Base\XEP_AppGUIFramework\XEP_AppGUIFramework.rc XEP_AppGUIFramework.tlb
@@ -243,6 +243,8 @@ DampingM \A\Src\Tra\Services\Damping\DampingM\DampingM.rc
 CodeDependentDeflections \A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CodeDependentDeflections.rc CodeDependentDeflections.tlb
 CodeDependentDeflections_UT \A\Src\Checks\ConcreteChecks\CodeDependentDeflections_UT\CodeDependentDeflections_UT.rc CodeDependentDeflections_UT.tlb
 TestCodeDependentDeflection \A\Src\Checks\ConcreteChecks\UnitTestsConcrete\TestCodeDependentDeflection\TestCodeDependentDeflection.rc TestCodeDependentDeflection.tlb
+Punching \A\Src\Checks\ConcreteChecks\Punching\Punching.rc Punching.tlb
+Punching_MSUT \A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_MSUT.rc Punching_MSUT.tlb
 ConcreteESACmds \A\Src\Par\Services\ConcreteESACmds\ConcreteESACmds.rc ConcreteESACmds.tlb
 ConcreteESACmdsM \A\Src\Par\Services\ConcreteESACmdsM\ConcreteESACmdsM.rc 
 HeatTransferESACmd \A\Src\Pos\Services\HeatTransferESACmd\HeatTransferESACmd.rc HeatTransferESACmd.tlb
@@ -417,5 +419,6 @@ pTemplateBlocks \A\Src\Tra\pTemplateBlocks\pTemplateBlocks.rc pTemplateBlocks.tl
 OdaPoirotTest \A\Src\Sam\OdaPoirotTest\OdaPoirotTest\OdaPoirotTest.rc OdaPoirotTest.tlb
 OdaPoirotTestM \A\Src\Sam\OdaPoirotTest\OdaPoirotTestM\OdaPoirotTestM.rc 
 EasyDsObjects \A\Src\Nam\EasyDsObjects\EasyDsObjects.rc EasyDsObjects.tlb
+IntegerCast_MSUT \A\Src\DUR\IntegerCast_MSUT\IntegerCast_MSUT.rc 
 Example_ESACOM_Multithread \A\Src\Lat\ESAAtl80\Examples\Example_ESACOM_Multithread\Example_ESACOM_Multithread.rc Example_ESACOM_Multithread.tlb
 EP_ComponentCmdsGUI \A\Src\Lat\ComponentCmds\EP_ComponentCmdsGUI\EP_ComponentCmdsGUI.rc EP_ComponentCmdsGUI.tlb

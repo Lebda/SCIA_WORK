@@ -92,10 +92,6 @@ DesignForms_Equations4.dll.config
 DesignForms_Equations4.dll
 DesignForms_Equations4.xml
 DesignForms_ILS.dll
-DesignForms_LicenceServer.exe.config
-DesignForms_LicenceServer.exe
-DesignForms_LicenceServerManager.exe.config
-DesignForms_LicenceServerManager.exe
 DesignForms_TraceViewer.exe.config
 DesignForms_TraceViewer.exe
 DesignForms_User.exe.config
@@ -119,7 +115,6 @@ DL70BIBUtils.dll
 DL70CoolType.dll
 DL70JP2KLib.dll
 DL70PDFL.dll
-DocCtrl.dll
 DocGenSettings.txt
 DocumentFormat.OpenXml.dll
 doxygen.exe
@@ -146,7 +141,6 @@ EP_ComponentCmdsRegSvr.exe
 db\EP_CompositeShearConnectors.db4
 set\EP_Connection.set
 set\EP_ConnectionDIN.set
-EP_ConSectionCheck.dll
 set\EP_DefaultSettingsDirectories.set
 set\EP_DefaultSettingsEnviroment.set
 set\EP_DefaultSettingsOverviewDrawings.set
@@ -233,7 +227,6 @@ Esac_1B.dat
 ep_regsvr32.exe Esa.exe
 set\ESA_AdvancedGraphicSetup.set
 set\ESA_ConnectStructureSetup.set
-ESA.chm
 set\ESA_Upgrade2Dto1DSetup.set
 xml\esa_xml_def.xsd
 etabs.tdx
@@ -258,11 +251,8 @@ GepInstall.exe
 GepNexVC.dll
 ProfileLibrary\German.FIL
 set\IBC.set
-iBolt.dll
 iconv.dll
-idaATL.dll
 IFC_2X3_Schema.exp
-iform.dll.CODESTRREG
 IFXCore.dll
 Plugins\IFXExporting.dll
 Plugins\IFXImporting.dll
@@ -279,7 +269,6 @@ Interop.EP_MEMARCHIVELib.dll
 Interop.EP_XMLEXCHANGELib.dll
 Interop.GRIDBASELib.dll
 Interop.UNITLib.dll
-iPun.dll
 ProfileLibrary\Japanese.FIL
 libclang.dll
 license.txt
@@ -308,7 +297,6 @@ ModellerR.lt
 Moq.dll
 MWellCalc.dll
 set\NEN.set
-Nessie.dll
 BimPlus\Newtonsoft.Json.dll
 NOTICE.txt
 nunit-agent-x86.exe.config
@@ -503,6 +491,7 @@ UT_XEP_SectionCheckEsaCommunication.bat
 UT_XEP_SectionCheckInput.bat
 vraniml.dll
 vrutils.dll
+ProfileLibrary\Westok.FIL
 CadsLinkSciaWestok\WestokHDSections.xml
 CadsLinkSciaWestok\WestokHESections.xml
 CadsLinkSciaWestok\WestokHLSections.xml
@@ -2607,6 +2596,7 @@ OpenChecks\Forms\NBR6118\StressStrain_Diagrams.cls
 OpenChecks\Forms\Pad_Foundation_Poirot.cls
 OpenChecks\Forms\Poirot_2D_Groups.cls
 OpenChecks\Forms\Poirot_DrawingGroups.cls
+OpenChecks\Forms\Poirot_MaterialSelection2D.cls
 OpenChecks\Forms\Poirot_StringResults.cls
 OpenChecks\Forms\Poirot_Subcombinations.cls
 OpenChecks\Forms\Prof_Array_Part_1.cls
@@ -3263,8 +3253,8 @@ EP_RootAppBase.dll
 EP_HelpSystem.dll
 EP_RootApp.dll
 EP_StopWatches.dll
-Condition.dll
-BCGPStyle2007Obsidian200.dll
+BCGCBPRO2440u140.dll
+BCGPStyle2007Obsidian2440.dll
 BCGPStyle2007Aqua2440.dll
 BCGPStyle2007Luna2440.dll
 BCGPStyle2007Silver2440.dll
@@ -3603,6 +3593,8 @@ DampingM.dll
 CodeDependentDeflections.dll
 CodeDependentDeflections_UT.dll
 TestCodeDependentDeflection.exe
+Punching.dll
+Punching_MSUT.dll
 ConcreteESACmds.dll
 ConcreteESACmdsM.dll
 HeatTransferESACmd.dll
@@ -3655,8 +3647,6 @@ DesignForms_CalculationTester.exe
 DesignForms_AutoTests.dll
 DesignForms_CalcExe.exe
 DesignForms_VersionIncrement.exe
-DesignForms_LicenceServer.exe
-DesignForms_LicenceServerManager.exe
 DesignForms_WpfControls.dll
 DesignForms_Parser.dll
 DesignForms_Renderer.exe
@@ -3837,13 +3827,6 @@ XEP_DocumentData_UT.dll
 UTCHA_PlateWithBeams.dll
 UTCHA_DataAddStructure.dll
 EP_StructureToolsTest_UT.dll
-ChitraTest_UT.dll
-UnitTest_RAM.dll
-UnitTest_Gopal.dll
-PoornimaTest_UT.dll
-SAN_LineGridProjection_UT.dll
-Riyas_UT.dll
-UnitTest_SANG.dll
 UTKOP_LoadGenerator.dll
 UTKOP_Scales.dll
 UTRMA_Dataserver.dll
@@ -3878,6 +3861,13 @@ UTHRO_SeismicSpectrum.dll
 UTMHU_SteelCheck.dll
 UTMHU_ConcreteCover.dll
 UTMHU_NewTimberCheck.dll
+ChitraTest_UT.dll
+UnitTest_RAM.dll
+UnitTest_Gopal.dll
+PoornimaTest_UT.dll
+SAN_LineGridProjection_UT.dll
+Riyas_UT.dll
+UnitTest_SANG.dll
 UnitTestMar.dll
 UT_DataLibScia.dll
 UTMIK_CheckCrosslinkCoupler.dll
@@ -3918,6 +3908,7 @@ XEP_ProjectRepository_UT.dll
 UT_TRE_CMQuestion.dll
 UT_ECTools.dll
 UTFIL_Units2XML.dll
+IntegerCast_MSUT.dll
 SCIABimPlus.dll
 SEN_NET_Wraper.dll
 XEP_SectionCheck.exe
@@ -3983,7 +3974,7 @@ XEP_StringCodeGenerator.exe
 XEP_DocumentDefaults
 EP_OpenCheckDbBuilder.exe
 _GO_Build_ALL
-Condition_09.dll
+BCGCBPRO2440u140_09.dll
 EP_Archive_09.dll
 EP_BasicTypes_09.dll
 XEP_AppGUIFramework_09.dll
@@ -4228,6 +4219,8 @@ DampingM_09.dll
 CodeDependentDeflections_09.dll
 CodeDependentDeflections_UT_09.dll
 TestCodeDependentDeflection_09.dll
+Punching_09.dll
+Punching_MSUT_09.dll
 ConcreteESACmds_09.dll
 ConcreteESACmdsM_09.dll
 HeatTransferESACmd_09.dll
@@ -4402,6 +4395,7 @@ pTemplateBlocks_09.dll
 OdaPoirotTest_09.dll
 OdaPoirotTestM_09.dll
 EasyDsObjects_09.dll
+IntegerCast_MSUT_09.dll
 Example_ESACOM_Multithread_09.dll
 EP_ComponentCmdsGUI_09.dll
 A_P.reg.txt
