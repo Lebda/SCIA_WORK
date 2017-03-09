@@ -63,10 +63,6 @@
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>15006</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils433}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>6433</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils583}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>6583</ResourceId>
@@ -74,6 +70,10 @@
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils653}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>6653</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils433}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>6433</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s064}</StringId>
 		<SourceDll>iform.2edll</SourceDll>

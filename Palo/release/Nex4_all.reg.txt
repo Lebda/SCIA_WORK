@@ -6,6 +6,5 @@ DocCtrl.dll
 EP_ConSectionCheck.dll
 FLBTiiCls.dll
 iBolt.dll
-idaATL.dll
 iPun.dll
 Nessie.dll

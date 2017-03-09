@@ -1,5 +1,3 @@
-Unable to copy: r:\A\Bin\release\OpenChecks\CheckManagerSystemLib.db4
-to: r:\A\Bin\release\install\OpenChecks\CheckManagerSystemLib.db4
 Unable to copy: r:\A\Bin\release\DesignForms_Compiler.exe.config
 to: r:\A\Bin\release\install\DesignForms_Compiler.exe.config
 Unable to copy: r:\A\Bin\release\DesignForms_VersionIncrement.exe.config
@@ -22,8 +20,6 @@ Unable to copy: r:\A\Bin\release\SciaSteelConnectionForTekla.net4.exe
 to: r:\A\Bin\release\install\SciaSteelConnectionForTekla.net4.exe
 Unable to copy: r:\A\Bin\release\XEP_ProjectStorageService.exe -createstorage -nofailwhenexist -silentsuccess
 to: r:\A\Bin\release\install\XEP_ProjectStorageService.exe -createstorage -nofailwhenexist -silentsuccess
-Unable to copy: r:\A\Bin\release\XEP_StringCodeDatabase.xml
-to: r:\A\Bin\release\install\XEP_StringCodeDatabase.xml
 Unable to copy: r:\A\Bin\release\BinUtil
 to: r:\A\Bin\release\install\BinUtil
 Unable to copy: r:\A\Bin\release\PDFCreatorPilot_Integration

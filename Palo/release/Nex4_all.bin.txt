@@ -92,10 +92,6 @@ DesignForms_Equations4.dll.config
 DesignForms_Equations4.dll
 DesignForms_Equations4.xml
 DesignForms_ILS.dll
-DesignForms_LicenceServer.exe.config
-DesignForms_LicenceServer.exe
-DesignForms_LicenceServerManager.exe.config
-DesignForms_LicenceServerManager.exe
 DesignForms_TraceViewer.exe.config
 DesignForms_TraceViewer.exe
 DesignForms_User.exe.config
@@ -260,7 +256,6 @@ ProfileLibrary\German.FIL
 set\IBC.set
 iBolt.dll
 iconv.dll
-idaATL.dll
 IFC_2X3_Schema.exp
 iform.dll.CODESTRREG
 IFXCore.dll
@@ -503,6 +498,7 @@ UT_XEP_SectionCheckEsaCommunication.bat
 UT_XEP_SectionCheckInput.bat
 vraniml.dll
 vrutils.dll
+ProfileLibrary\Westok.FIL
 CadsLinkSciaWestok\WestokHDSections.xml
 CadsLinkSciaWestok\WestokHESections.xml
 CadsLinkSciaWestok\WestokHLSections.xml
@@ -2607,6 +2603,7 @@ OpenChecks\Forms\NBR6118\StressStrain_Diagrams.cls
 OpenChecks\Forms\Pad_Foundation_Poirot.cls
 OpenChecks\Forms\Poirot_2D_Groups.cls
 OpenChecks\Forms\Poirot_DrawingGroups.cls
+OpenChecks\Forms\Poirot_MaterialSelection2D.cls
 OpenChecks\Forms\Poirot_StringResults.cls
 OpenChecks\Forms\Poirot_Subcombinations.cls
 OpenChecks\Forms\Prof_Array_Part_1.cls

@@ -5,10 +5,9 @@
 		<DESCRIP>
 		</DESCRIP>
 		<ENU>Message about Error No. # not found!</ENU>
-		<SVK>
-		</SVK>
+		<SVK></SVK>
 		<SKY>Message about Error No. # not found!</SKY>
-		<CSY>Message about Error No. # not found!</CSY>
+    <CSY>Upozornění k chybě č. # nebylo nalezeno!</CSY>
 		<NLD>Waarschuwing over foutno. # is niet gevonden!</NLD>
 		<FRB>Message about Error No. # not found!</FRB>
 		<DEU>Message about Error No. # not found!</DEU>
@@ -26,8 +25,7 @@
 		<DESCRIP>
 		</DESCRIP>
 		<ENU>First parameter undefined!</ENU>
-		<SVK>
-		</SVK>
+		<SVK></SVK>
 		<SKY>Prvý parameter nebol definovaný!</SKY>
 		<CSY>Není definován první parametr!</CSY>
 		<NLD>First parameter undefined!</NLD>
@@ -718,19 +716,19 @@
 			PART="General">Warning</TYPE>
 		<DESCRIP>
 		</DESCRIP>
-		<ENU>Area of element No. #03 is zero!\nThe distance between two nodes is probably very small.</ENU>
+    <ENU>Area of element No. #03 is zero!\nThe distance between two nodes is probably very small.\nThe problem can possibly be resolved by using the function "Regenerate Model".</ENU>
 		<SVK>
 		</SVK>
-		<SKY>Area of element No. #03 is zero!\nThe distance between two nodes is probably very small.</SKY>
-		<CSY>Area of element No. #03 is zero!\nThe distance between two nodes is probably very small.</CSY>
-		<NLD>Area of element No. #03 is zero!\nThe distance between two nodes is probably very small.</NLD>
-		<FRB>Area of element No. #03 is zero!\nThe distance between two nodes is probably very small.</FRB>
-		<DEU>Area of element No. #03 is zero!\nThe distance between two nodes is probably very small.</DEU>
-		<ITA>Area of element No. #03 is zero!\nThe distance between two nodes is probably very small.</ITA>
-		<PLK>Area of element No. #03 is zero!\nThe distance between two nodes is probably very small.</PLK>
-		<PTG>Area of element No. #03 is zero!\nThe distance between two nodes is probably very small.</PTG>
-		<RUS>Area of element No. #03 is zero!\nThe distance between two nodes is probably very small.</RUS>
-		<ROM>Area of element No. #03 is zero!\nThe distance between two nodes is probably very small.</ROM>
+		<SKY></SKY>
+    <CSY>Plocha prvku č. #03 je nulová!\nVzdálenost mezi dvěma body je pravděpodobně velmi malá.\nEventuálně je problém možné vyřešit pomocí funkce "Regenerovat model".</CSY>
+		<NLD></NLD>
+		<FRB></FRB>
+		<DEU></DEU>
+		<ITA></ITA>
+		<PLK></PLK>
+		<PTG></PTG>
+		<RUS></RUS>
+		<ROM></ROM>
 	</STRING>
 	<STRING
 		ID="BSOLV_IDS_E_35">
@@ -1531,16 +1529,16 @@
 		<ENU>Insufficient loading, decrease a number of the increments, and (or) ensure a compression.</ENU>
 		<SVK>
 		</SVK>
-		<SKY>Insufficient loading, decrease a number of the increments, and (or) ensure a compression.</SKY>
-		<CSY>Insufficient loading, decrease a number of the increments, and (or) ensure a compression.</CSY>
-		<NLD>Insufficient loading, decrease a number of the increments, and (or) ensure a compression.</NLD>
-		<FRB>Insufficient loading, decrease a number of the increments, and (or) ensure a compression.</FRB>
-		<DEU>Insufficient loading, decrease a number of the increments, and (or) ensure a compression.</DEU>
-		<ITA>Insufficient loading, decrease a number of the increments, and (or) ensure a compression.</ITA>
-		<PLK>Insufficient loading, decrease a number of the increments, and (or) ensure a compression.</PLK>
-		<PTG>Insufficient loading, decrease a number of the increments, and (or) ensure a compression.</PTG>
-		<RUS>Insufficient loading, decrease a number of the increments, and (or) ensure a compression.</RUS>
-		<ROM>Insufficient loading, decrease a number of the increments, and (or) ensure a compression.</ROM>
+		<SKY></SKY>
+		<CSY>Nedostatečné zatížení, zmenšete počet přírůstků, a (nebo) zabezpečte tlak.</CSY>
+		<NLD></NLD>
+		<FRB></FRB>
+		<DEU></DEU>
+		<ITA></ITA>
+		<PLK></PLK>
+		<PTG></PTG>
+		<RUS></RUS>
+		<ROM></ROM>
 	</STRING>
 	<STRING
 		ID="BSOLV_IDS_E_74">
@@ -1552,16 +1550,16 @@
 		<ENU>The lowest calculated positive eigevalue # is #. in the total order.</ENU>
 		<SVK>
 		</SVK>
-		<SKY>The lowest calculated positive eigevalue # is #. in the total order.</SKY>
-		<CSY>The lowest calculated positive eigevalue # is #. in the total order.</CSY>
-		<NLD>The lowest calculated positive eigevalue # is #. in the total order.</NLD>
-		<FRB>The lowest calculated positive eigevalue # is #. in the total order.</FRB>
-		<DEU>The lowest calculated positive eigevalue # is #. in the total order.</DEU>
-		<ITA>The lowest calculated positive eigevalue # is #. in the total order.</ITA>
-		<PLK>The lowest calculated positive eigevalue # is #. in the total order.</PLK>
-		<PTG>The lowest calculated positive eigevalue # is #. in the total order.</PTG>
-		<RUS>The lowest calculated positive eigevalue # is #. in the total order.</RUS>
-		<ROM>The lowest calculated positive eigevalue # is #. in the total order.</ROM>
+		<SKY></SKY>
+		<CSY>Nejnižší vypočítané kladné vlastní číslo # je #. v celkovém pořadí.</CSY>
+		<NLD></NLD>
+		<FRB></FRB>
+		<DEU></DEU>
+		<ITA></ITA>
+		<PLK></PLK>
+		<PTG></PTG>
+		<RUS></RUS>
+		<ROM></ROM>
 	</STRING>
 	<STRING
 		ID="BSOLV_IDS_E_75">
@@ -1573,16 +1571,16 @@
 		<ENU>Direct solver has no sufficient memory, please try iterative solver.</ENU>
 		<SVK>
 		</SVK>
-		<SKY>Direct solver has no sufficient memory, please try iterative solver.</SKY>
-		<CSY>Direct solver has no sufficient memory, please try iterative solver.</CSY>
-		<NLD>Direct solver has no sufficient memory, please try iterative solver.</NLD>
-		<FRB>Direct solver has no sufficient memory, please try iterative solver.</FRB>
-		<DEU>Direct solver has no sufficient memory, please try iterative solver.</DEU>
-		<ITA>Direct solver has no sufficient memory, please try iterative solver.</ITA>
-		<PLK>Direct solver has no sufficient memory, please try iterative solver.</PLK>
-		<PTG>Direct solver has no sufficient memory, please try iterative solver.</PTG>
-		<RUS>Direct solver has no sufficient memory, please try iterative solver.</RUS>
-		<ROM>Direct solver has no sufficient memory, please try iterative solver.</ROM>
+		<SKY></SKY>
+		<CSY>Pro přímé řešení chybí dostatečná paměť, zkuste prosím iterační řešení.</CSY>
+		<NLD></NLD>
+		<FRB></FRB>
+		<DEU></DEU>
+		<ITA></ITA>
+		<PLK></PLK>
+		<PTG></PTG>
+		<RUS></RUS>
+		<ROM></ROM>
 	</STRING>
   <STRING
   ID="BSOLV_IDS_E_76">
@@ -2054,7 +2052,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Dimenzovanie prebehlo úspešne!</SKY>
-		<CSY>Dimensioning was carried out successfully!</CSY>
+		<CSY>Dimenzování proběhlo úspěšně!</CSY>
 		<NLD>Dimensioning was carried out successfully!</NLD>
 		<FRB>Le dimensionnement s&apos;est réalisé avec succès !</FRB>
 		<DEU>Bemessung wurde erfolgreich durchgeführt!</DEU>
@@ -2363,7 +2361,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Definícia osi pre premenné zaťaženie po obvode nie je správna pre 2D makro č. #.</SKY>
-		<CSY>The axis definition for varying load along perimeter isn&apos;t right for 2D macro No.#.</CSY>
+		<CSY>Zadání osy pro proměnné zatížení podél obvodu není správné pro plochu č.#.</CSY>
 		<NLD>The axis definition for varying load along perimeter isn&apos;t right for 2D macro No.#.</NLD>
 		<FRB>The axis definition for varying load along perimeter isn&apos;t right for 2D macro No.#.</FRB>
 		<DEU>The axis definition for varying load along perimeter isn&apos;t right for 2D macro No.#.</DEU>
@@ -2448,10 +2446,10 @@
     ID="BSOLV_IDS_E_125">
     <DESCRIP>
     </DESCRIP>
-    <ENU>10125@The required accuracy has not been achieved during the calculation! The results are probably unusable. To obtain more precise results, try to increase the number of incremental steps, or change the calculation method.</ENU>
+    <ENU>The required accuracy during calculation iterations has not been achieved! The results are probably unusable. To achieve a more precise solution try to increase the number of incremental steps, or change the calculation method.</ENU>
     <SVK></SVK>
     <SKY></SKY>
-    <CSY>10125@V průběhu výpočtu nebylo dosaženo požadované přesnosti! Výsledky pravděpodobně nebude možné použít. Pro dosažení přesnějších výsledků zvyšte počet přírůstků zatížení nebo změňte metodu výpočtu.</CSY>
+    <CSY>V průběhu výpočtu nebylo dosaženo požadované přesnosti! Výsledky pravděpodobně nebude možné použít. Pro dosažení přesnějších výsledků zvyšte počet přírůstků zatížení nebo změňte metodu výpočtu.</CSY>
     <NLD></NLD>
     <FRB></FRB>
     <DEU></DEU>
@@ -2529,7 +2527,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Allocation problem !\nTry to increase virual memory\nor decrease number of sections on average member\nor decrese number of load cases/nonlinear combinations.</SKY>
-		<CSY>Allocation problem !\nTry to increase virual memory\nor decrease number of sections on average member\nor decrese number of load cases/nonlinear combinations.</CSY>
+    <CSY>Chyba v alokaci!\nZkuste zvýšit virtuální paměť\nnebo snižte počet průřezů na prutu\nnebo snižte počet zatěžovacích stavů/nelineárních kombinací.</CSY>
 		<NLD>Allocatie probleem !\nProbeer het virtueel geheugen te verhogen\nof verlaag het aantal doorsnedes op de gemiddelde staaf\nof verlaag het aantal belasting gevallen/niet-lineaire combinaties.</NLD>
 		<FRB>Problčme d&apos;allocation !\nEssayez d&apos;augmenter la mémoire virtuelle\nou de réduire le nombre de sections par élément\nou de réduire le nombre de cas de charges/combinaisons non-linéaires.</FRB>
 		<DEU>Allocation problem !\nTry to increase virual memory\nor decrease number of sections on average member\nor decrese number of load cases/nonlinear combinations.</DEU>
@@ -2759,7 +2757,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Although the global iteration conditions are fulfilled, some non-linearities did not converged locally.</SKY>
-		<CSY>Although the global iteration conditions are fulfilled, some non-linearities did not converged locally.</CSY>
+    <CSY>Přestože globální iterační podmínky byly splněny, některé nelinearity lokálně nezkonvergovaly.</CSY>
 		<NLD>Although the global iteration conditions are fulfilled, some non-linearities did not converged locally.</NLD>
 		<FRB>Although the global iteration conditions are fulfilled, some non-linearities did not converged locally.</FRB>
 		<DEU>Although the global iteration conditions are fulfilled, some non-linearities did not converged locally.</DEU>
@@ -2777,7 +2775,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Length of tendon element No. #02 is zero!\nThe distance between two nodes is probably very small.</SKY>
-		<CSY>Length of tendon element No. #02 is zero!\nThe distance between two nodes is probably very small.</CSY>
+    <CSY>Délka předpjaté výztuže č. #02 je nulová!\nVzdálenost mezi dvěma uzly je pravděpodobně velmi malá.\nProblém může být vyřešen použitím funkce ""Regenerovat model"".</CSY>
 		<NLD>Length of tendon element No. #02 is zero!\nThe distance between two nodes is probably very small.</NLD>
 		<FRB>Length of tendon element No. #02 is zero!\nThe distance between two nodes is probably very small.</FRB>
 		<DEU>Length of tendon element No. #02 is zero!\nThe distance between two nodes is probably very small.</DEU>
@@ -2922,7 +2920,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Prekročenie maximálnej vnútornej iterácie v materiálovo nelineárnom prúte pre stanovenie šmyku</SKY>
-		<CSY>Overload of maximum intenal iteration in material nonlinear beam for shear determinate</CSY>
+		<CSY>Překročení maximální vnitřní iterace v materiálově nelineárním prutu pro stanovení smyku</CSY>
 		<NLD>Overload of maximum intenal iteration in material nonlinear beam for shear determinate</NLD>
 		<FRB>Overload of maximum intenal iteration in material nonlinear beam for shear determinate</FRB>
 		<DEU>Overload of maximum intenal iteration in material nonlinear beam for shear determinate</DEU>
@@ -2941,7 +2939,7 @@
 		<SVK>
 		</SVK>
 		<SKY>IRS modal reduction: Detect of nonassociated r-node.</SKY>
-		<CSY>IRS modal reduction: Detect of nonassociated r-node.</CSY>
+		<CSY>IRS snížení modální: Rozpoznat z nonassociated r-uzlu.</CSY>
 		<NLD>IRS modal reduction: Detect of nonassociated r-node.</NLD>
 		<FRB>IRS modal reduction: Detect of nonassociated r-node.</FRB>
 		<DEU>IRS modal reduction: Detect of nonassociated r-node.</DEU>
@@ -2960,7 +2958,7 @@
 		<SVK>
 		</SVK>
 		<SKY>IRS modal reduction: Incorect input data.</SKY>
-		<CSY>IRS modal reduction: Incorect input data.</CSY>
+		<CSY>Snížení modální IRS:: nesprávná vstupní data.</CSY>
 		<NLD>IRS modal reduction: Incorect input data.</NLD>
 		<FRB>IRS modal reduction: Incorect input data.</FRB>
 		<DEU>IRS modal reduction: Incorect input data.</DEU>
@@ -2979,7 +2977,7 @@
 		<SVK>
 		</SVK>
 		<SKY>IRS modal reduction: More then computed eigen values are demand.</SKY>
-		<CSY>IRS modal reduction: More then computed eigen values are demand.</CSY>
+		<CSY>Snížení modální IRS:: Více vypočtených vlastních čísel neź je poźadováno.</CSY>
 		<NLD>IRS modal reduction: More then computed eigen values are demand.</NLD>
 		<FRB>IRS modal reduction: More then computed eigen values are demand.</FRB>
 		<DEU>IRS modal reduction: More then computed eigen values are demand.</DEU>
@@ -3015,7 +3013,7 @@
 		<SVK>
 		</SVK>
 		<SKY>free</SKY>
-		<CSY>free</CSY>
+		<CSY>volné</CSY>
 		<NLD>vrij</NLD>
 		<FRB>libre</FRB>
 		<DEU>free</DEU>
@@ -3234,7 +3232,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Zadaný počet geologických oblastí (#) prekračuje povolené maximum</SKY>
-		<CSY>Zadaný pocet geologických oblastí (#) prekracuje povolené maximum</CSY>
+		<CSY>Zadaný počet geologických oblastí (#) prekracuje povolené maximum</CSY>
 		<NLD>Given number of geological regions (#) exceeds allowed maximum</NLD>
 		<FRB>Le nombre défini de zones géologiques (#) dépasse le maximum autorisé</FRB>
 		<DEU>Given number of geological regions (#) exceeds allowed maximum</DEU>
@@ -3252,7 +3250,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Zadaný počet geologických vrstiev (#) prekračuje povolené maximum</SKY>
-		<CSY>Zadaný pocet geologických vrstev (#) prekracuje povolené maximum</CSY>
+		<CSY>Zadaný počet geologických vrstev (#) prekracuje povolené maximum</CSY>
 		<NLD>Given number of geological layers (#) exceeds allowed maximum</NLD>
 		<FRB>Le nombre défini de couches géologiques (#) dépasse le maximum autorisé</FRB>
 		<DEU>Given number of geological layers (#) exceeds allowed maximum</DEU>
@@ -3270,7 +3268,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Zadaný počet štvoruholníkových výkopov (#) prekračuje povolené maximum</SKY>
-		<CSY>Zadaný pocet ctyrúhelníkových výkopu (#) prekracuje povolené maximum</CSY>
+		<CSY>Zadaný počet ctyrúhelníkových výkopu (#) prekracuje povolené maximum</CSY>
 		<NLD>Given number of quadrilateral excavations (#) exceeds allowed maximum</NLD>
 		<FRB>Le nombre défini d&apos;excavations quadrangulaires (#) dépasse le maximum autorisé</FRB>
 		<DEU>Given number of quadrilateral excavations (#) exceeds allowed maximum</DEU>
@@ -3288,7 +3286,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Zadaný počet kruhových výkopov (#) prekračuje povolené maximum</SKY>
-		<CSY>Zadaný pocet kruhových výkopu (#) prekracuje povolené maximum</CSY>
+		<CSY>Zadaný počet kruhových výkopu (#) prekracuje povolené maximum</CSY>
 		<NLD>Given number of circular excavations (#) exceeds allowed maximum</NLD>
 		<FRB>Le nombre défini d&apos;excavations circulaires (#) dépasse le maximum autorisé</FRB>
 		<DEU>Given number of circular excavations (#) exceeds allowed maximum</DEU>
@@ -3306,7 +3304,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Zadaný počet sietí bodu (#) prekračuje povolené maximum</SKY>
-		<CSY>Zadaný pocet sítí bodu (#) prekracuje povolené maximum</CSY>
+		<CSY>Zadaný počet sítí bodu (#) prekracuje povolené maximum</CSY>
 		<NLD>Given number of point nets (#) exceeds allowed maximum</NLD>
 		<FRB>Le nombre défini de maillages de points (#) dépasse le maximum autorisé</FRB>
 		<DEU>Given number of point nets (#) exceeds allowed maximum</DEU>
@@ -3324,7 +3322,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Zadaný počet bodov pre výpočet sadania (#) prekračuje povolené maximum</SKY>
-		<CSY>Zadaný pocet bodu pro výpocet sedání (#) prekracuje povolené maximum</CSY>
+		<CSY>Zadaný počet bodu pro výpocet sedání (#) prekracuje povolené maximum</CSY>
 		<NLD>Given number of points where settlemenent is requested (#) exceeds allowed maximum</NLD>
 		<FRB>Le nombre défini de points pour le calcul de tassement (#) dépasse le maximum autorisé</FRB>
 		<DEU>Given number of points where settlemenent is requested (#) exceeds allowed maximum</DEU>
@@ -3342,7 +3340,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Bod číslo # leží mimo geologickej oblasti</SKY>
-		<CSY>The point no. # is out of all geological regions</CSY>
+		<CSY>Bod číslo # leží mimo geologickou oblast</CSY>
 		<NLD>Punt nr. # ligt buiten alle geologische gebieden</NLD>
 		<FRB>The point no. # is out of all geological regions</FRB>
 		<DEU>Punkt Nr. # liegt außerhalb aller geologischen Regionen</DEU>
@@ -3360,7 +3358,7 @@
 		<SVK>
 		</SVK>
 		<SKY>V bode # je úroveň základovej škáry nižšie, než je spodná hrana geologického profilu</SKY>
-		<CSY>V bode # je úroven základové spáry níž, než je spodní hrana geologického profilu</CSY>
+		<CSY>V bodě # je úroven základové spáry níž, než je spodní hrana geologického profilu</CSY>
 		<NLD>Foundation level in the point no. # is below the whole geological cross section</NLD>
 		<FRB>Au point # le niveau de l&apos;assise de fondation est plus bas que le bord inférieur du profilé géologique</FRB>
 		<DEU>Foundation level in the point no. # is below the whole geological cross section</DEU>
@@ -3396,7 +3394,7 @@
 		<SVK>
 		</SVK>
 		<SKY>V bode # je záporné priťaženie</SKY>
-		<CSY>In the point no. # the overload is negative</CSY>
+		<CSY>V bodě # je záporné priťížení</CSY>
 		<NLD>In punt nr. # is de overlast negatief</NLD>
 		<FRB>In the point no. # the overload is negative</FRB>
 		<DEU>Die Auflast im Punkt Nr. # ist negativ</DEU>
@@ -3414,7 +3412,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Zadaný počet obdĺžnikov (#) prekračuje povolené maximum</SKY>
-		<CSY>Zadaný pocet obdélníku (#) prekracuje povolené maximum</CSY>
+		<CSY>Zadaný počet obdélníku (#) prekračuje povolené maximum</CSY>
 		<NLD>Given number of rectangles (#) exceeds allowed maximum</NLD>
 		<FRB>Le nombre défini de rectangles (#) dépasse le maximum autorisé</FRB>
 		<DEU>Given number of rectangles (#) exceeds allowed maximum</DEU>
@@ -3432,7 +3430,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Zadaný počet kruhov (#) prekračuje povolené maximum</SKY>
-		<CSY>Zadaný pocet kruhu (#) prekracuje povolené maximum</CSY>
+		<CSY>Zadaný počet kruhu (#) prekračuje povolené maximum</CSY>
 		<NLD>Given number of circles (#) exceeds allowed maximum</NLD>
 		<FRB>Le nombre défini de cercles (#) dépasse le maximum autorisé</FRB>
 		<DEU>Given number of circles (#) exceeds allowed maximum</DEU>
@@ -3450,7 +3448,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Bod 2 je zvolený na nesprávnej polovici kružnice</SKY>
-		<CSY>The point 2 is input on the wrong circle half</CSY>
+		<CSY>Bod 2 je zvolený na nesprávné polovici kružnice</CSY>
 		<NLD>Punt 2 is ingegeven op de verkeerde cirkelhelft</NLD>
 		<FRB>The point 2 is input on the wrong circle half</FRB>
 		<DEU>Punkt 2 ist auf der falschen Kreishälfte eingegeben</DEU>
@@ -3468,7 +3466,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Je nutné zadať aspoň jeden obdĺžnik alebo kruh</SKY>
-		<CSY>At least one rectangle or circle must be given</CSY>
+		<CSY>Je nutné zadat aspoň jeden obdélník a nebo kruh</CSY>
 		<NLD>Ten minste één rechthoek of cirkel moet opgegeven worden</NLD>
 		<FRB>At least one rectangle or circle must be given</FRB>
 		<DEU>Mindestens ein Rechteck oder einen Kreis angeben!</DEU>
@@ -3486,7 +3484,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Zadaný počet druhov zeminy (#) prekračuje povolené maximum</SKY>
-		<CSY>Zadaný pocet druhu zeminy (#) prekracuje povolené maximum</CSY>
+		<CSY>Zadaný počet druhů zeminy (#) překračuje povolené maximum</CSY>
 		<NLD>Given number of soil sorts (#) exceeds allowed maximum</NLD>
 		<FRB>Le nombre défini de types de sol (#) dépasse le maximum autorisé</FRB>
 		<DEU>Given number of soil sorts (#) exceeds allowed maximum</DEU>
@@ -3504,7 +3502,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Zadaný počet bodov grafu sigmaz - epsz (#) prekračuje povolené maximum</SKY>
-		<CSY>Zadaný pocet bodu grafu sigmaz - epsz (#) prekracuje povolené maximum</CSY>
+		<CSY>Zadaný počet bodů grafu sigmaz - epsz (#) prekračuje povolené maximum</CSY>
 		<NLD>Given number of graf points sigmaz - epsz (#) exceeds allowed maximum</NLD>
 		<FRB>Le nombre défini de points de graphe sigmaz - epsz (#) dépasse le maximum autorisé</FRB>
 		<DEU>Given number of graf points sigmaz - epsz (#) exceeds allowed maximum</DEU>
@@ -3540,7 +3538,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Nezrovnalosť v súboroch popisujúcich sieť prvkov</SKY>
-		<CSY>Files describing the FEM element mesh are incompatible or wrong</CSY>
+		<CSY>Nesrovnalost v souborech popisujících síť prvků</CSY>
 		<NLD>De bestanden die het FEM net beschrijven zijn verkeerd.</NLD>
 		<FRB>Files describing the FEM element mesh are incompatible or wrong</FRB>
 		<DEU>Dateien, die das FEM-Elementnetz beschreiben, sind unkompatibel oder falsch!</DEU>
@@ -3558,7 +3556,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Nenašli sa súbory popisujúce sieť prvkov</SKY>
-		<CSY>Files describing the FEM element mesh are not found</CSY>
+		<CSY>Nebyly nalezeny soubory popisující síť prvků</CSY>
 		<NLD>De bestanden die het FEM net beschrijven zijn onvindbaar.</NLD>
 		<FRB>Files describing the FEM element mesh are not found</FRB>
 		<DEU>Dateien, die das FEM-Elementnetz beschreiben, sind nicht vorhanden!</DEU>
@@ -3576,7 +3574,7 @@
 		<SVK>
 		</SVK>
 		<SKY>The needed file (#) was not found, \nprobably no FEM analysis has been performed</SKY>
-		<CSY>The needed file (#) was not found, \nprobably no FEM analysis has been performed</CSY>
+    <CSY>Nenalezen potřebný soubor (#), pravděpodobně nebyl proveden výpočet</CSY>
 		<NLD>Het benodigde bestand (#) werd niet gevonden, \nwaarschijnlijk werd er geen berekening gedaan</NLD>
 		<FRB>The needed file (#) was not found, \nprobably no FEM analysis has been performed</FRB>
 		<DEU>Datei (#) nicht vorhanden!\nwahrscheinlich ist keine FEM-Berechnung erfolgt?!</DEU>
@@ -3594,7 +3592,7 @@
 		<SVK>
 		</SVK>
 		<SKY>During FEM analysis the contact stress has not been requested</SKY>
-		<CSY>During FEM analysis the contact stress has not been requested</CSY>
+    <CSY>Při spouštění výpočtu nebyl požadován výpočet kontaktních napětí</CSY>
 		<NLD>Bij de berekening werd geen contactspanning gevraagd</NLD>
 		<FRB>During FEM analysis the contact stress has not been requested</FRB>
 		<DEU>Die FEM-Analyse der Kontaktspannungen wurde nicht angefordert</DEU>
@@ -3612,7 +3610,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Celková výslednica všetkých priťažení je príliš malá (#)</SKY>
-		<CSY>Total resultant of all overloads is too small (#)</CSY>
+    <CSY>Celková výslednice všech přitížení je malá (#)</CSY>
 		<NLD>De resultante van alle lasten is te klein (#)</NLD>
 		<FRB>Total resultant of all overloads is too small (#)</FRB>
 		<DEU>Resultierende aller Auflasten ist zu klein (#)</DEU>
@@ -3630,7 +3628,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Napätie je mimo rozsah grafu</SKY>
-		<CSY>Stress is out of graph interval</CSY>
+		<CSY>Napětí je mimo rozsah grafu</CSY>
 		<NLD>De spanning ligt buiten de grafiek</NLD>
 		<FRB>Stress is out of graph interval</FRB>
 		<DEU>Spannung verlässt den Darstellungsbereich</DEU>
@@ -3648,7 +3646,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Siete pre priťaženie # sa prekrývajú</SKY>
-		<CSY>The nets of loads # are overlapping</CSY>
+		<CSY>Sítě pro přitížení # se překrývají</CSY>
 		<NLD>De lasten-netten # overlappen</NLD>
 		<FRB>The nets of loads # are overlapping</FRB>
 		<DEU>Die Belastungsnetze # überlappen sich</DEU>
@@ -3666,7 +3664,7 @@
 		<SVK>
 		</SVK>
 		<SKY>The number of FEM analysis - SOILIN iteration was not found</SKY>
-		<CSY>The number of FEM analysis - SOILIN iteration was not found</CSY>
+    <CSY>Není uvedeno aktuální číslo iterace RF-SOILIN </CSY>
 		<NLD>Het aantal berekening-SOILIN iteraties werd niet gevonden</NLD>
 		<FRB>The number of FEM analysis - SOILIN iteration was not found</FRB>
 		<DEU>Folge-Nr. der Iteration FEM-SOILIN ist nicht bekannt</DEU>
@@ -3684,7 +3682,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Nenašla sa výsledná lineárna kombinácia (#), ktorá odpovedá príslušnej iterácii</SKY>
-		<CSY>The linear combination (#) for its iteration was not found</CSY>
+    <CSY>Nenalezena výsledná lineární kombinace (#), která odpovídá príslušné iteraci</CSY>
 		<NLD>De lineaire combinatie (#) was niet gevonden om te itereren</NLD>
 		<FRB>The linear combination (#) for its iteration was not found</FRB>
 		<DEU>Die lineare Kombination (#) für die Iteration ist nicht vorhanden!</DEU>
@@ -3702,7 +3700,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Zadaný počet priťažovacích sietí (#) prekračuje povolené maximum</SKY>
-		<CSY>Zadaný pocet pritežovacích sítí (#)prekracuje povolené maximum</CSY>
+		<CSY>Zadaný počet přitěžovacích sítí (#) překračuje povolené maximum</CSY>
 		<NLD>Given number of overload nets (#) exceeds allowed maximum</NLD>
 		<FRB>Le nombre défini de maillages de ballast (#) dépasse le maximum autorisé</FRB>
 		<DEU>Given number of overload nets (#) exceeds allowed maximum</DEU>
@@ -3720,7 +3718,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Maximálny počet iterácií (#) bol vyčerpaný. \nPosúďte správnosť riešenia.</SKY>
-		<CSY>Maximum number of iteration (#) was exhausted. \nVerify correctness of the solution.</CSY>
+		<CSY>Maximální počet iterací (#) byl vyčerpán,\nvýsledky nejsou k dispozici.</CSY>
 		<NLD>Max. aantal iteraties (#) is gebruikt. \nVerifieer de oplossing.</NLD>
 		<FRB>Maximum number of iteration (#) was exhausted. \nVerify correctness of the solution.</FRB>
 		<DEU>Höchstanzahl Iterationsschritte (#) wurde erreicht \nÜberprüfen Sie die Richtigkeit der Lösung!</DEU>
@@ -3738,7 +3736,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Iterative processing  FEM analysis - SOILIN finished \nwith iteration no. #</SKY>
-		<CSY>Iterative processing  FEM analysis - SOILIN finished \nwith iteration no. #</CSY>
+    <CSY>Iterační výpočet RF-SOILIN byl ukončen.\nPočet iterací: # </CSY>
 		<NLD>Iteratief proces berekening-SOILIN beëindigd \nbij iteratie nr. #</NLD>
 		<FRB>Iterative processing  FEM analysis - SOILIN finished \nwith iteration no. #</FRB>
 		<DEU>Iterative Berechnung FEM-SOILIN wurde beendet\nmit Iterationsschritt Nr. #</DEU>
@@ -3756,7 +3754,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Vo vstupných údajoch chýba určenie národnej normy.</SKY>
-		<CSY>National standard mising in the input data.</CSY>
+    <CSY>Ve vstupních datech chybí urcení národní normy.</CSY>
 		<NLD>Nationale standaard niet gespecificeerd.</NLD>
 		<FRB>National standard mising in the input data.</FRB>
 		<DEU>Spezifikation der Staatsnorm fehlt</DEU>
@@ -3774,7 +3772,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Calculation of SOILIN is done.\nO.K.</SKY>
-		<CSY>Calculation of SOILIN is done.\nO.K.</CSY>
+    <CSY>Výpočet RF-SOILIN byl řádně ukončen.</CSY>
 		<NLD>Berekening SOILIN is beëindigd.\nO.K.</NLD>
 		<FRB>Calculation of SOILIN is done.\nO.K.</FRB>
 		<DEU>SOILIN-Berechnung erfolgreich beendet\nOK</DEU>
@@ -3792,7 +3790,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Auto iteration FEM analysis - SOILIN is runnig, but nets for copying of overload were not given</SKY>
-		<CSY>Auto iteration FEM analysis - SOILIN is runnig, but nets for copying of overload were not given</CSY>
+    <CSY>Probíhá automatická iterace RF-SOILIN, ale nebyly zadány sítě pro přenos přitížení.</CSY>
 		<NLD>Auto iteratie FEM-analyse - SOILIN is bezig, maar netten om overlast te kopiëren zijn niet gegeven.</NLD>
 		<FRB>Auto iteration FEM analysis - SOILIN is runnig, but nets for copying of overload were not given</FRB>
 		<DEU>FEM-Analyse-Iteration - SOILIN wird ausgeführt. Es wurde jedoch keine Vernetzung zum Kopieren der Auflast angegeben!</DEU>
@@ -3810,7 +3808,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Auto iteration FEM analysis - SOILIN is runnig, but calculation of parameters C in centres of structure elements was not requested</SKY>
-		<CSY>Auto iteration FEM analysis - SOILIN is runnig, but calculation of parameters C in centres of structure elements was not requested</CSY>
+    <CSY>Probíhá automatická iterace RF-SOILIN, ale pro těžiště prvku nebyl požadován výpočet parametru C.</CSY>
 		<NLD>Auto iteratie FEM-analyse - SOILIN is bezig, maar berekening van C parameters in midden van structuur elementen was niet gevraagd.</NLD>
 		<FRB>Auto iteration FEM analysis - SOILIN is runnig, but calculation of parameters C in centres of structure elements was not requested</FRB>
 		<DEU>Iterative FEM-Analyse - SOILIN wird ausgeführt. Die Ermittlung der C-Parameter in den Mittelpunkten der Elemente wurde jedoch nicht angefordert!</DEU>
@@ -3831,7 +3829,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Error calling FEMBASE (#)</SKY>
-		<CSY>Error calling FEMBASE (#)</CSY>
+    <CSY>Chyba při volání FEMBASE (#)</CSY>
 		<NLD>Error calling FEMBASE (#)</NLD>
 		<FRB>Error calling FEMBASE (#)</FRB>
 		<DEU>Aufruffehler der FEMBASE (#)</DEU>
@@ -3852,7 +3850,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Error reading input file</SKY>
-		<CSY>Error reading input file</CSY>
+    <CSY>Chyba při čtení vstupního souboru</CSY>
 		<NLD>Fout bij inlezen invoerbestand</NLD>
 		<FRB>Error reading input file</FRB>
 		<DEU>Lesefehler in Eingabedatei</DEU>
@@ -3870,7 +3868,7 @@
 		<SVK>
 		</SVK>
 		<SKY>The construction is above the terrain  #</SKY>
-		<CSY>The construction is above the terrain  #</CSY>
+    <CSY>Konstrukce se nachází nad terénem #</CSY>
 		<NLD>De constructie is boven het terrein</NLD>
 		<FRB>The construction is above the terrain  #</FRB>
 		<DEU>The construction is above the terrain  #</DEU>
@@ -3888,7 +3886,7 @@
 		<SVK>
 		</SVK>
 		<SKY>The inputed point is above the terrain  #</SKY>
-		<CSY>The inputed point is above the terrain  #</CSY>
+    <CSY>Zadaný pod se nachází nad terénem #</CSY>
 		<NLD>Het ingevoerde punt is boven het terrein</NLD>
 		<FRB>The inputed point is above the terrain  #</FRB>
 		<DEU>Der Eingabepunkt liegt oberhalb OK Gelände  #</DEU>
@@ -3963,7 +3961,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Dimenzovanie: interná chyba #. \nZašlite dáta k prevereniu</SKY>
-		<CSY>Reinforcement design: Internal error no. #. \nSend data to be checked</CSY>
+    <CSY>Interní chyba č. #!\nInformujte prosím výrobce software\na připojte data příslušného modelu.</CSY>
 		<NLD>Wapeningsberekening: interne fout nr. #. \nZend het project ter controle.</NLD>
 		<FRB>Reinforcement design: Internal error no. #. \nSend data to be checked</FRB>
 		<DEU>Stahlbetonbemessung: Fehler Nr. #\nBitte Projekt zur Kontrolle senden</DEU>
@@ -4005,7 +4003,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Nenašiel sa súbor #</SKY>
-		<CSY>File # not found</CSY>
+    <CSY>Modul # nebyl nalezen.</CSY>
 		<NLD>File # niet gevonden</NLD>
 		<FRB>File # not found</FRB>
 		<DEU>Datei # nicht vorhanden!</DEU>
@@ -4254,7 +4252,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Režim Isav=4 &apos;Výpis databanky&apos; nebol doteraz implementovaný</SKY>
-		<CSY>Režim Isav=4 &apos;Výpis databáze&apos; není dosud implementován</CSY>
+		<CSY>Režim Isav=4 'Výpis databáze' není dosud implementován.</CSY>
 		<NLD>Mode Isav=4 &apos;Database output&apos; werd nog niet geďmplementeerd</NLD>
 		<FRB>Mode Isav=4 &apos;Database output&apos; was not implemented yet</FRB>
 		<DEU>Mode ISAV=4 &apos;Database output&apos; wurde noch nicht implementiert</DEU>
@@ -4518,7 +4516,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Disaccord between cross-section geometry and reinforcement geometry -\n# \nProbably third layer cover is missing</SKY>
-		<CSY>Disaccord between cross-section geometry and reinforcement geometry -\n# \nProbably third layer cover is missing</CSY>
+    <CSY>Nekompatibilita definice tloušťky vrstvy výztuže!\nPravděpodobně chybí třetí vrstva výztuže!</CSY>
 		<NLD>Verschil tussen geometrie doorsnede en geometrie wapening -\n# \nWaarschijnlijk ontbreekt de dekking van de derde laag</NLD>
 		<FRB>Disaccord between cross-section geometry and reinforcement geometry -\n# \nProbably third layer cover is missing</FRB>
 		<DEU>Differenz zwischen Querschnitts- und Bewehrungsgeometrie \n# \nWahrscheinlich fehlt die Deckung der dritten Lage</DEU>
@@ -4797,7 +4795,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Warning:</SKY>
-		<CSY>Warning:</CSY>
+    <CSY>Upozornění:</CSY>
 		<NLD>Waarschuwing:</NLD>
 		<FRB>Warning:</FRB>
 		<DEU>Warning:</DEU>
@@ -5427,7 +5425,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Jednostranná spojka</SKY>
-		<CSY>Single sided coupling</CSY>
+    <CSY>Jednostranná vazba</CSY>
 		<NLD>Single sided coupling</NLD>
 		<FRB>Couplage unifaciale</FRB>
 		<DEU>Einseitige Kopplungen</DEU>
@@ -5553,7 +5551,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Vplyvové plochy</SKY>
-		<CSY>Influence areas</CSY>
+		<CSY>Příčinkové plochy</CSY>
 		<NLD>Influence areas</NLD>
 		<FRB>Zones d&apos;influence</FRB>
 		<DEU>Einflussflächen</DEU>
@@ -5589,7 +5587,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Sturm Sequence Test...</SKY>
-		<CSY>Sturm Sequence Test...</CSY>
+		<CSY>Sturmova kontrola...</CSY>
 		<NLD>Sturm Sequentie Test...</NLD>
 		<FRB>Sturm Sequence Test...</FRB>
 		<DEU>Sturm Sequence Test...</DEU>
@@ -5679,7 +5677,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Concrete design</SKY>
-		<CSY>Concrete design</CSY>
+		<CSY>Dimenzování betonu</CSY>
 		<NLD>Betonontwerp</NLD>
 		<FRB>Concrete design</FRB>
 		<DEU>Stahlbetonbemessung</DEU>
@@ -5697,7 +5695,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Betón 2.MS - pretvorenie</SKY>
-		<CSY>Concrete SLS - strain</CSY>
+		<CSY>Beton 2.MS - přetvoření</CSY>
 		<NLD>Beton BGT - rek</NLD>
 		<FRB>Concrete SLS - strain</FRB>
 		<DEU>Beton 2.GZ - Verformung</DEU>
@@ -5715,7 +5713,7 @@
 		<SVK>
 		</SVK>
 		<SKY>NEWMARK - Dopočet vnútorných síl</SKY>
-		<CSY>NEWMARK - calculation of internal forces</CSY>
+	  <CSY>NEWMARK - Dopočet vnitřních sil</CSY>
 		<NLD>NEWMARK - berekening van interne krachten</NLD>
 		<FRB>NEWMARK - calculation of internal forces</FRB>
 		<DEU>NEWMARK - Schnittgrößenermittlung</DEU>
@@ -5772,7 +5770,7 @@
 		<SVK>
 		</SVK>
 		<SKY>neznámy</SKY>
-		<CSY>unknown</CSY>
+		<CSY>neznámý</CSY>
 		<NLD>onbekend</NLD>
 		<FRB>unknown</FRB>
 		<DEU>unknown</DEU>
@@ -5966,14 +5964,12 @@
 		ID="BSOLV_IDS_B_0060">
 		<DESCRIP>
 		</DESCRIP>
-		<ENU>
-		</ENU>
+		<ENU>Largest displacement</ENU>
 		<SVK>
 		</SVK>
 		<SKY>
 		</SKY>
-		<CSY>
-		</CSY>
+		<CSY>Největší posun</CSY>
 		<NLD>
 		</NLD>
 		<FRB>
@@ -5999,7 +5995,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Výpočet</SKY>
-		<CSY>Calculation</CSY>
+		<CSY>Výpočet</CSY>
 		<NLD>Berekening</NLD>
 		<FRB>Calcul</FRB>
 		<DEU>Berechnung</DEU>
@@ -6071,7 +6067,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Stop after this nonlinear stability comb. no. #.</SKY>
-		<CSY>Stop after this nonlinear stability comb. no. #.</CSY>
+		<CSY>Ukončení  po této nelinární stabilitní kombinaci číslo #.</CSY>
 		<NLD>Stop berekening na deze niet-lineaire stabiliteitsconmbinatie: #.</NLD>
 		<FRB>Arręter aprčs cette combinaison de stabilité NL no. #.</FRB>
 		<DEU>Abbruch nach dieser nichtlinearen LF-Kombination Nr. #</DEU>
@@ -6197,7 +6193,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Sturm Sequence Test...</SKY>
-		<CSY>Sturm Sequence Test...</CSY>
+		<CSY>Sturmova kontrola...</CSY>
 		<NLD>Sturm Sequentie Test...</NLD>
 		<FRB>Sturm Sequence Test...</FRB>
 		<DEU>Sturm Sequence Test...</DEU>
@@ -6709,7 +6705,7 @@
 		<SVK>
 		</SVK>
 		<SKY>neznámy</SKY>
-		<CSY>unknown</CSY>
+		<CSY>neznámý</CSY>
 		<NLD>onbekend</NLD>
 		<FRB>unknown</FRB>
 		<DEU>unknown</DEU>
@@ -6781,7 +6777,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Výpočet</SKY>
-		<CSY>Calculation</CSY>
+		<CSY>Výpoćet</CSY>
 		<NLD>Berekening</NLD>
 		<FRB>Calcul</FRB>
 		<DEU>Berechnung</DEU>
@@ -6817,7 +6813,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Stop after this nonlinear stability comb. no. #.</SKY>
-		<CSY>Stop after this nonlinear stability comb. no. #.</CSY>
+    <CSY>Přerušit po této nelineární stab. kombinaci č. #.</CSY>
 		<NLD>Stop berekening na deze niet-lineaire stabiliteitsconmbinatie: #.</NLD>
 		<FRB>Arręter aprčs cette combinaison de stabilité NL no. #.</FRB>
 		<DEU>Abbruch nach dieser nichtlinearen LF-Kombination Nr. #</DEU>
@@ -7306,7 +7302,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Zrušiť</SKY>
-		<CSY>Cancel</CSY>
+		<CSY>Storno</CSY>
 		<NLD>Annuleren</NLD>
 		<FRB>Annuler</FRB>
 		<DEU>Cancel</DEU>
@@ -7342,7 +7338,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Send</SKY>
-		<CSY>Send</CSY>
+		<CSY>Odeslat</CSY>
 		<NLD>Verzend</NLD>
 		<FRB>Envoyer</FRB>
 		<DEU>Senden</DEU>
@@ -7360,7 +7356,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Zoznam odovzdaných parametrov:</SKY>
-		<CSY>List of passed parameters:</CSY>
+		<CSY>Seznam předaných parametrů:</CSY>
 		<NLD>List of passed parameters:</NLD>
 		<FRB>List of passed parameters:</FRB>
 		<DEU>List of passed parameters:</DEU>
@@ -7378,7 +7374,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Zoznam odovzdaných parametrov:</SKY>
-		<CSY>List of passed parameters:</CSY>
+		<CSY>Seznam předaných parametrů:</CSY>
 		<NLD>List of passed parameters:</NLD>
 		<FRB>List of passed parameters:</FRB>
 		<DEU>List of passed parameters:</DEU>
@@ -7396,7 +7392,7 @@
 		<SVK>
 		</SVK>
 		<SKY>Neočakávané ukončenie programu SOLVER.</SKY>
-		<CSY>Neocekavane ukonceni programu SOLVER.</CSY>
+		<CSY>Neočekávané ukončení programu Solver.</CSY>
 		<NLD>SOLVER program to close unexpectedly.</NLD>
 		<FRB>SOLVER program to close unexpectedly.</FRB>
 		<DEU>SOLVER program to close unexpectedly.</DEU>
@@ -7426,13 +7422,13 @@ On the basis of the report we can detect the relevant problem in the program cod
 
 T
 		</SKY>
-		<CSY>
-SOLVER was closed unexpectedly. You can help us to avoid or resolve possible problems in future versions by sending us the created report and the corresponding model file.
+    <CSY>
+Program SOLVER byl neočekávaně ukončen. Pro vyřešení možných problémů v budoucích verzích nám můžete pomoci odesláním vytvořené zprávy společně se souborem příslušné úlohy.
 
-On the basis of the report we can detect the relevant problem in the program code in order to localize the cause.
+Na základě obdržené zprávy můžeme identifikovat příslušný problém v programu a odstranit jeho příčinu.
 
-T
-		</CSY>
+Děkujeme Vám za Vaši pomoc.
+    </CSY>
 		<NLD>
 SOLVER was closed unexpectedly. You can help us to avoid or resolve possible problems in future versions by sending us the created report and the corresponding model file.
 
@@ -7506,11 +7502,11 @@ You can help us to avoid or resolve possible problems in future versions by send
 
 T
 		</SKY>
-		<CSY>
-You can help us to avoid or resolve possible problems in future versions by sending us the created report and the corresponding model file.
+    <CSY>
+Pro vyřešení možných problémů v budoucích verzích nám můžete pomoci odesláním vytvořené zprávy společně se souborem příslušné úlohy.
 
-T
-		</CSY>
+Děkujeme Vám za Vaši pomoc.  
+</CSY>
 		<NLD>
 You can help us to avoid or resolve possible problems in future versions by sending us the created report and the corresponding model file.
 

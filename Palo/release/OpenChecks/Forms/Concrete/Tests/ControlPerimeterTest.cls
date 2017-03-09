@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="41d77db5-80a1-4025-af5f-5620a788b0e5">
   <CodeEditor>
-    <SourceCode Collapsed="37|41|50|80|112|127|149|155|160|165|174|180" BreakPoints="">// creating inputs - unit test
+    <SourceCode Collapsed="37|41|50|80|112|152|158" BreakPoints="">// creating inputs - unit test
 object CreateCssPointsUTTest1() { 
     object[] cssShape →UNK001_013043= new object[]; 
     →UNK001_013044cssShape.Add(CreatePoint2D(4, 0)); 
@@ -133,7 +133,10 @@ void PrintPerimeterProps(object perim) {
     →UNK001_013038TEXT("|--------------&gt; Type: " &amp; perimType); 
     →UNK001_013039TEXT("|--------------&gt; Area: " &amp; perim.Area &amp; "   m^2"); 
     →UNK001_013040TEXT("|--------------&gt; Length: " &amp; perim.Length &amp; "   m"); 
-    →UNK001_013041TEXT("|--------------&gt; CssModul: " &amp; perim.CssModul); 
+    →UNK001_013041TEXT("|--------------&gt; Wx: " &amp; perim.Wx); 
+    →LEB001_000001TEXT("|--------------&gt; Wy: " &amp; perim.Wy); 
+    →LEB001_000002TEXT("|--------------&gt; Ex: " &amp; perim.Ex); 
+    →LEB001_000003TEXT("|--------------&gt; Ey: " &amp; perim.Ey); 
     →UNK001_013042TEXT("|--------------&gt; CurveCentroid:  | X: " &amp; perim.CurveCentroid.X &amp; " | Y: " &amp; perim.CurveCentroid.Y); 
 } 
 
@@ -144,7 +147,7 @@ void PrintPerimList(object result) {
     FOREACH(object p in res1.GetAllPerimeters())
     { 
         object perimType →UNK001_013054= p.Type; 
-        →UNK001_013055TEXT("" &amp; perimInx &amp; " : " &amp; perimType &amp; "  | " &amp; p.Length &amp; " m" &amp; "  | " &amp; p.Area &amp; " m^2 |" &amp; p.CssModul); 
+        →UNK001_013055TEXT("" &amp; perimInx &amp; " : " &amp; perimType &amp; "  | " &amp; p.Length &amp; " m" &amp; "  | " &amp; p.Area &amp; " m^2 |" &amp; "Wx " &amp; p.Wx &amp; "Wy " &amp; p.Wy &amp; "Ex " &amp; p.Ex &amp; "Ey " &amp; p.Ey); 
         perimInx →UNK001_013124= perimInx+1; 
         →UNK001_013056PAGEBREAK(); 
     } 
@@ -246,7 +249,10 @@ object curve1 →UNK001_012905= res1.GetMinimalPerimeter().Curves[0];
 object area →UNK001_012902= res1.GetMinimalPerimeter().Area; 
 double centroidX →UNK001_012894= res1.GetMinimalPerimeter().CurveCentroid.X; 
 double centroidY →BAR001_000011= res1.GetMinimalPerimeter().CurveCentroid.Y; 
-double cssModul →UNK001_012903= res1.GetMinimalPerimeter().CssModul; 
+double Wx →UNK001_012903= res1.GetMinimalPerimeter().Wx; 
+double Wy →LEB001_000004= res1.GetMinimalPerimeter().Wy; 
+double Ex →LEB001_000005= res1.GetMinimalPerimeter().Ex; 
+double Ey →LEB001_000006= res1.GetMinimalPerimeter().Ey; 
 
 double areaMinCorner →UNK001_013153= res1.GetMinimalPerimeter(res1.GetMinimalPerimeter().Type.ePerimCorner).Area; 
 object allPerimeters →UNK001_013165= →UNK001_013164res1.GetAllPerimeters(); 
@@ -288,7 +294,7 @@ FOR(li, 0, allPerimeters.Count-1) {
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
-      <Variable Modifier="Public" Name="ai" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="ai" ESA_ID="" Type="Double" Value="19" Precision="2">
         <Description TranslateID="VARIABLE_ai">
           <ENU>
           </ENU>
@@ -325,7 +331,7 @@ FOR(li, 0, allPerimeters.Count-1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="areaMinCorner" ESA_ID="Result.100" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="areaMinCorner" ESA_ID="Result.100" Type="Double" Value="29.44244" Precision="2">
         <Description TranslateID="VARIABLE_areaMinCorner">
           <ENU>
           </ENU>
@@ -333,7 +339,7 @@ FOR(li, 0, allPerimeters.Count-1) {
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="centroidX" ESA_ID="Result.103" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="centroidX" ESA_ID="Result.103" Type="Double" Value="16.73971e-6" Precision="2">
         <Description TranslateID="VARIABLE_centroidX">
           <ENU>
           </ENU>
@@ -341,7 +347,7 @@ FOR(li, 0, allPerimeters.Count-1) {
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="centroidY" ESA_ID="Result.102" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="centroidY" ESA_ID="Result.102" Type="Double" Value="64.68505e-3" Precision="2">
         <Description TranslateID="VARIABLE_centroidY">
           <ENU>
           </ENU>
@@ -349,7 +355,7 @@ FOR(li, 0, allPerimeters.Count-1) {
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="cssModul" ESA_ID="Result.101" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="cssModul" ESA_ID="Result.101" Type="Double" Value="NaN" Precision="2">
         <Description TranslateID="VARIABLE_cssModul">
           <ENU>
           </ENU>
@@ -375,8 +381,22 @@ FOR(li, 0, allPerimeters.Count-1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="curvesCount" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="curvesCount" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description TranslateID="VARIABLE_curvesCount">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="Ex" ESA_ID="" Type="Double" Value="16.73971e-6" Precision="2">
+        <Description TranslateID="VARIABLE_Ex">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="Ey" ESA_ID="" Type="Double" Value="64.68505e-3" Precision="2">
+        <Description TranslateID="VARIABLE_Ey">
           <ENU>
           </ENU>
         </Description>
@@ -394,21 +414,21 @@ FOR(li, 0, allPerimeters.Count-1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="j" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="j" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description TranslateID="VARIABLE_j">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="lengthMin" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="lengthMin" ESA_ID="" Type="Double" Value="11.11161" Precision="2">
         <Description TranslateID="VARIABLE_lengthMin">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="li" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="li" ESA_ID="" Type="Double" Value="19" Precision="2">
         <Description TranslateID="VARIABLE_li">
           <ENU>
           </ENU>
@@ -427,7 +447,7 @@ FOR(li, 0, allPerimeters.Count-1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="offset" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="offset" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description TranslateID="VARIABLE_offset">
           <ENU>
           </ENU>
@@ -440,7 +460,7 @@ FOR(li, 0, allPerimeters.Count-1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="perimCount" ESA_ID="Result.104" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="perimCount" ESA_ID="Result.104" Type="Double" Value="19" Precision="2">
         <Description TranslateID="VARIABLE_perimCount">
           <ENU>
           </ENU>
@@ -448,7 +468,7 @@ FOR(li, 0, allPerimeters.Count-1) {
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="perimInx" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="perimInx" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description TranslateID="VARIABLE_perimInx">
           <ENU>
           </ENU>
@@ -473,7 +493,7 @@ FOR(li, 0, allPerimeters.Count-1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="pointsCount" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="pointsCount" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description TranslateID="VARIABLE_pointsCount">
           <ENU>
           </ENU>
@@ -492,7 +512,7 @@ FOR(li, 0, allPerimeters.Count-1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="sAreaID" ESA_ID="" Type="String">
+      <Variable Modifier="Public" Name="sAreaID" ESA_ID="" Type="String" Value="Area18">
         <Description TranslateID="VARIABLE_sAreaID">
           <ENU>
           </ENU>
@@ -504,27 +524,41 @@ FOR(li, 0, allPerimeters.Count-1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="sLengthID" ESA_ID="" Type="String">
+      <Variable Modifier="Public" Name="sLengthID" ESA_ID="" Type="String" Value="Length18">
         <Description TranslateID="VARIABLE_sLengthID">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="testID" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="testID" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description TranslateID="VARIABLE_testID">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="X" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="Wx" ESA_ID="" Type="Double" Value="12.12111" Precision="2">
+        <Description TranslateID="VARIABLE_Wx">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="Wy" ESA_ID="" Type="Double" Value="10.92875" Precision="2">
+        <Description TranslateID="VARIABLE_Wy">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="X" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description TranslateID="VARIABLE_X">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Y" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="Y" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description TranslateID="VARIABLE_Y">
           <ENU>
           </ENU>
@@ -722,6 +756,54 @@ FOR(li, 0, allPerimeters.Count-1) {
       </VC>
       <VC ID="BAR001_000024">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="LEB001_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="LEB001_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="LEB001_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="LEB001_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="LEB001_000005">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="LEB001_000006">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1576,6 +1658,15 @@ FOR(li, 0, allPerimeters.Count-1) {
     <Item TranslateID="TEXT_BAR001_000019">
       <ENU>"Test case 2"</ENU>
     </Item>
+    <Item TranslateID="TEXT_LEB001_000001">
+      <ENU>"|--------------&gt; Wy: " &amp; perim.Wy</ENU>
+    </Item>
+    <Item TranslateID="TEXT_LEB001_000002">
+      <ENU>"|--------------&gt; Ex: " &amp; perim.Ex</ENU>
+    </Item>
+    <Item TranslateID="TEXT_LEB001_000003">
+      <ENU>"|--------------&gt; Ey: " &amp; perim.Ey</ENU>
+    </Item>
     <Item TranslateID="TEXT_UNK001_000001">
       <ENU>"*************************************************"</ENU>
     </Item>
@@ -1622,7 +1713,7 @@ FOR(li, 0, allPerimeters.Count-1) {
       <ENU>"|--------------&gt; Length: " &amp; perim.Length &amp; "   m"</ENU>
     </Item>
     <Item TranslateID="TEXT_UNK001_013041">
-      <ENU>"|--------------&gt; CssModul: " &amp; perim.CssModul</ENU>
+      <ENU>"|--------------&gt; Wx: " &amp; perim.Wx</ENU>
     </Item>
     <Item TranslateID="TEXT_UNK001_013042">
       <ENU>"|--------------&gt; CurveCentroid:  | X: " &amp; perim.CurveCentroid.X &amp; " | Y: " &amp; perim.CurveCentroid.Y</ENU>
@@ -1634,7 +1725,7 @@ FOR(li, 0, allPerimeters.Count-1) {
       <ENU>"List of all perimeters:"</ENU>
     </Item>
     <Item TranslateID="TEXT_UNK001_013055">
-      <ENU>"" &amp; perimInx &amp; " : " &amp; perimType &amp; "  | " &amp; p.Length &amp; " m" &amp; "  | " &amp; p.Area &amp; " m^2 |" &amp; p.CssModul</ENU>
+      <ENU>"" &amp; perimInx &amp; " : " &amp; perimType &amp; "  | " &amp; p.Length &amp; " m" &amp; "  | " &amp; p.Area &amp; " m^2 |" &amp; "Wx " &amp; p.Wx &amp; "Wy " &amp; p.Wy &amp; "Ex " &amp; p.Ex &amp; "Ey " &amp; p.Ey</ENU>
     </Item>
     <Item TranslateID="TEXT_UNK001_013057">
       <ENU>"--------------------------"</ENU>

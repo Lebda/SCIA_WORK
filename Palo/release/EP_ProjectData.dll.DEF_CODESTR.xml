@@ -15,13 +15,13 @@
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>124</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2enumberofbeams}</StringId>
-		<SourceDll>EP_ProjectData.2edll</SourceDll>
-		<ResourceId>9015</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2enumberofslabs}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>9016</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2enumberofbeams}</StringId>
+		<SourceDll>EP_ProjectData.2edll</SourceDll>
+		<ResourceId>9015</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2eauthor}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>

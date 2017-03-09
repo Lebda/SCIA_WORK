@@ -3561,13 +3561,6 @@
             Area is specified with the loop consiting of the perimeter curves and slab edges, which contains the cross section.
             </summary>
         </member>
-        <member name="P:Equations4.BuiltInObjects.ConcreteDLL.ControlPerimeter.Abstract.IXEP_CPerimeter.CssModul">
-            <summary>
-            Perimeter Cross section module, which is calculated:
-            
-            (distance of CurveCentroid and CssCetroid ) * (Length of the perimeter curve)
-            </summary>
-        </member>
         <member name="P:Equations4.BuiltInObjects.ConcreteDLL.ControlPerimeter.Abstract.IXEP_CPerimeter.CurveCentroid">
             <summary>
             Centroid of the curve
