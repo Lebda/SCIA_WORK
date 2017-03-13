@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="2"><StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2estresses1d_basic}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>41039</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2estresses1d_principal}</StringId>
+		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
+		<ResourceId>41040</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

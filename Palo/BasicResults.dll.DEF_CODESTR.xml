@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="10"><StringCode SourceType="DLLRC:"><StringId>@{soilstressdiagram.2ename}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>210</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2einternal_forces}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>5007</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eids_open_checks_document_root}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>36444</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2elinear_reactions}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>6311</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eitm5004}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>5004</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eitm5077}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>5077</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2enodal_reactions}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>6310</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2enodedisplacement}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>5110</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2edeformations1d}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>5008</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2ereactions}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>36621</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

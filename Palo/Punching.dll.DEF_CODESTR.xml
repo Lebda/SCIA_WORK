@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="5"><StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_3.2edescription}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>117</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_2.2edescription}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>116</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_1.2edescription}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>115</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_1.2esolution}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>118</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{punching.2epunching_check}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>103</ResourceId>
+	</StringCode>
+</StringCodeDatabase>
