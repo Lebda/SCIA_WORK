@@ -83,6 +83,7 @@
     →INI400_015961double Test1; 
     
     →KRS027_000001string ReinfString; 
+    →PAI021_000010string PunchString; 
     
     →INI400_015961double Test1; //DEBUG
     →KRS027_000004double DummyResult; //Dummy numeric result for ReinfString;
@@ -171,6 +172,7 @@ void SetResultsAsDefault() {
     Reinf↓2-← →DLO116_000190= ""; 
     Errors →PAI316_000002= 0; 
     ReinfString →KRS027_000002= ""; 
+    PunchString →PAI021_000011= ""; 
     DummyResult →KRS027_000005= 0; 
 } 
 
@@ -230,6 +232,7 @@ void SetResults(object DesignResults) {
     } 
     
     ReinfString →KRS027_000003= DesignResults.ReinfString; 
+    PunchString →PAI021_000012= DesignResults.PunchString; 
 } 
 
 void ReadSetupFromIO() { 
@@ -385,7 +388,7 @@ IF(IO.IsDrawing) {
     </NormRef>
     <Variables>
       <Variable Modifier="Public" Name="A↓s,add,req,1+←" ESA_ID="Result.13" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓s,add,req,1+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -393,7 +396,7 @@ IF(IO.IsDrawing) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,add,req,1-←" ESA_ID="Result.15" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓s,add,req,1-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -401,7 +404,7 @@ IF(IO.IsDrawing) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,add,req,2+←" ESA_ID="Result.14" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓s,add,req,2+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -409,7 +412,7 @@ IF(IO.IsDrawing) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,add,req,2-←" ESA_ID="Result.16" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓s,add,req,2-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -417,7 +420,7 @@ IF(IO.IsDrawing) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,prov,1+←" ESA_ID="Result.9" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓s,prov,1+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -425,7 +428,7 @@ IF(IO.IsDrawing) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,prov,1-←" ESA_ID="Result.11" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓s,prov,1-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -433,7 +436,7 @@ IF(IO.IsDrawing) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,prov,2+←" ESA_ID="Result.10" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓s,prov,2+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -441,7 +444,7 @@ IF(IO.IsDrawing) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,prov,2-←" ESA_ID="Result.12" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓s,prov,2-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -481,7 +484,7 @@ IF(IO.IsDrawing) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,req,bar,1+←" ESA_ID="Result.57" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓s,req,bar,1+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -489,7 +492,7 @@ IF(IO.IsDrawing) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,req,bar,1-←" ESA_ID="Result.58" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓s,req,bar,1-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -497,7 +500,7 @@ IF(IO.IsDrawing) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,req,bar,2+←" ESA_ID="Result.59" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓s,req,bar,2+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -505,7 +508,7 @@ IF(IO.IsDrawing) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,req,bar,2-←" ESA_ID="Result.60" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓s,req,bar,2-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -513,7 +516,7 @@ IF(IO.IsDrawing) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,stat,1+←" ESA_ID="Result.5" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓s,stat,1+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -521,7 +524,7 @@ IF(IO.IsDrawing) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,stat,1-←" ESA_ID="Result.7" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓s,stat,1-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -529,7 +532,7 @@ IF(IO.IsDrawing) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,stat,2+←" ESA_ID="Result.6" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓s,stat,2+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -537,7 +540,7 @@ IF(IO.IsDrawing) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,stat,2-←" ESA_ID="Result.8" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓s,stat,2-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -553,7 +556,7 @@ IF(IO.IsDrawing) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
       <Variable Modifier="Public" Name="A↓sw,stat←" ESA_ID="Result.17" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓sw,stat←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -584,6 +587,20 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="d↓+←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
+      </Variable>
+      <Variable Modifier="Public" Name="d↓-←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="DATA_FROM_SEN" ESA_ID="" Type="Object">
         <Description>
@@ -680,13 +697,6 @@ IF(IO.IsDrawing) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="index" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="j" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -707,6 +717,13 @@ IF(IO.IsDrawing) {
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="PunchString" ESA_ID="Result.100" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="3" Numeric="DummyResult" SenModif="False" LabOri="0" />
+      </Variable>
       <Variable Modifier="Public" Name="RECALC_FORCES_2D" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -726,91 +743,91 @@ IF(IO.IsDrawing) {
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="Reinf↓1+←" ESA_ID="Result.45" Type="String">
-        <Description TranslateID="VARIABLE_Reinf↓1+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="DummyResult" SenModif="False" LabOri="0" />
       </Variable>
       <Variable Modifier="Public" Name="Reinf↓1-←" ESA_ID="Result.47" Type="String">
-        <Description TranslateID="VARIABLE_Reinf↓1-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="DummyResult" SenModif="False" LabOri="0" />
       </Variable>
       <Variable Modifier="Public" Name="Reinf↓2+←" ESA_ID="Result.46" Type="String">
-        <Description TranslateID="VARIABLE_Reinf↓2+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="DummyResult" SenModif="False" LabOri="0" />
       </Variable>
       <Variable Modifier="Public" Name="Reinf↓2-←" ESA_ID="Result.48" Type="String">
-        <Description TranslateID="VARIABLE_Reinf↓2-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="DummyResult" SenModif="False" LabOri="0" />
       </Variable>
       <Variable Modifier="Public" Name="Reinf↓Asw←" ESA_ID="Result.44" Type="String">
-        <Description TranslateID="VARIABLE_Reinf↓Asw←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="DummyResult" SenModif="False" LabOri="0" />
       </Variable>
       <Variable Modifier="Public" Name="Reinf↓Prov,1+←" ESA_ID="Result.40" Type="String">
-        <Description TranslateID="VARIABLE_Reinf↓Prov,1+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="DummyResult" SenModif="False" LabOri="0" />
       </Variable>
       <Variable Modifier="Public" Name="Reinf↓Prov,1-←" ESA_ID="Result.42" Type="String">
-        <Description TranslateID="VARIABLE_Reinf↓Prov,1-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="DummyResult" SenModif="False" LabOri="0" />
       </Variable>
       <Variable Modifier="Public" Name="Reinf↓Prov,2+←" ESA_ID="Result.41" Type="String">
-        <Description TranslateID="VARIABLE_Reinf↓Prov,2+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="DummyResult" SenModif="False" LabOri="0" />
       </Variable>
       <Variable Modifier="Public" Name="Reinf↓Prov,2-←" ESA_ID="Result.43" Type="String">
-        <Description TranslateID="VARIABLE_Reinf↓Prov,2-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="DummyResult" SenModif="False" LabOri="0" />
       </Variable>
       <Variable Modifier="Public" Name="Reinf↓Req,1+←" ESA_ID="Result.36" Type="String">
-        <Description TranslateID="VARIABLE_Reinf↓Req,1+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="DummyResult" SenModif="False" LabOri="0" />
       </Variable>
       <Variable Modifier="Public" Name="Reinf↓Req,1-←" ESA_ID="Result.38" Type="String">
-        <Description TranslateID="VARIABLE_Reinf↓Req,1-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="DummyResult" SenModif="False" LabOri="0" />
       </Variable>
       <Variable Modifier="Public" Name="Reinf↓Req,2+←" ESA_ID="Result.37" Type="String">
-        <Description TranslateID="VARIABLE_Reinf↓Req,2+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="DummyResult" SenModif="False" LabOri="0" />
       </Variable>
       <Variable Modifier="Public" Name="Reinf↓Req,2-←" ESA_ID="Result.39" Type="String">
-        <Description TranslateID="VARIABLE_Reinf↓Req,2-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -837,7 +854,7 @@ IF(IO.IsDrawing) {
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="v↓Ed←" ESA_ID="Result.20" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_v↓Ed←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -845,7 +862,7 @@ IF(IO.IsDrawing) {
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
       <Variable Modifier="Public" Name="v↓Rd,c←" ESA_ID="Result.21" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_v↓Rd,c←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -853,7 +870,7 @@ IF(IO.IsDrawing) {
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
       <Variable Modifier="Public" Name="v↓Rd,max←" ESA_ID="Result.22" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_v↓Rd,max←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -861,7 +878,7 @@ IF(IO.IsDrawing) {
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
       <Variable Modifier="Public" Name="ρ↓prov,1+←" ESA_ID="Result.61" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_ρ↓prov,1+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -869,7 +886,7 @@ IF(IO.IsDrawing) {
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ρ↓prov,1-←" ESA_ID="Result.62" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_ρ↓prov,1-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -877,7 +894,7 @@ IF(IO.IsDrawing) {
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ρ↓prov,2+←" ESA_ID="Result.63" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_ρ↓prov,2+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -885,7 +902,7 @@ IF(IO.IsDrawing) {
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ρ↓prov,2-←" ESA_ID="Result.64" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_ρ↓prov,2-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -893,7 +910,7 @@ IF(IO.IsDrawing) {
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ρ↓req,1+←" ESA_ID="Result.65" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_ρ↓req,1+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -901,7 +918,7 @@ IF(IO.IsDrawing) {
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="%" />
       </Variable>
       <Variable Modifier="Public" Name="ρ↓req,1-←" ESA_ID="Result.66" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_ρ↓req,1-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -909,7 +926,7 @@ IF(IO.IsDrawing) {
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="%" />
       </Variable>
       <Variable Modifier="Public" Name="ρ↓req,2+←" ESA_ID="Result.67" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_ρ↓req,2+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -917,7 +934,7 @@ IF(IO.IsDrawing) {
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="%" />
       </Variable>
       <Variable Modifier="Public" Name="ρ↓req,2-←" ESA_ID="Result.68" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_ρ↓req,2-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -2291,6 +2308,62 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="PAI021_000006">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI021_000007">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI021_000008">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI021_000009">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI021_000010">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI021_000011">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI021_000012">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="PAI116_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2432,7 +2505,7 @@ IF(IO.IsDrawing) {
   </Calculation>
   <Dialog>
     <Main Width="630">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="C:\Users\jkrsik\ESA17.0\Temp\Esa_Model_Data\Member2D.1" MemberID="" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="F:\_PROJECT\PP17-054_Concrete Punching\emd\bench_01\Member2D.61" MemberID="Member2D.61" SectionID="0" CombiID="0" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />

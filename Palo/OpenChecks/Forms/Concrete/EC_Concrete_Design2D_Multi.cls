@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="f3034ee6-dc5e-41c0-ac7d-1d7c12bfa2ef">
   <CodeEditor>
-    <SourceCode Collapsed="6|16|73|94|98|108|150|172|225|290" BreakPoints="">//@EC_Concrete_Design2D_Multi
+    <SourceCode Collapsed="6" BreakPoints="">//@EC_Concrete_Design2D_Multi
 
 
 //=================================================================
@@ -70,6 +70,8 @@
     →PAI116_000106double A↓s,add,req,2+←; 
     
     →KRS027_000002string ReinfString; 
+    →PAI021_000002string PunchString; 
+    
     →KRS027_000003double DummyResult; 
 } 
 
@@ -103,7 +105,8 @@ object GetOutput() {
     "DesignShear", DesignShear, 
     "CheckStrut", CheckStrut, 
     "CheckStrutValues", CheckStrutValues, 
-    "ReinfString", ReinfString,
+    "ReinfString", ReinfString, 
+    "PunchString", PunchString, 
     "obEWN", obEWN); 
 } 
 
@@ -422,6 +425,7 @@ IF(IO.LayoutIndex == 1) {
 } 
 
 ReinfString →KRS027_000001= FUNCT_2D.ReinfToString(h, DesignReinf); 
+PunchString →PAI021_000001= FUNCT_2D.ReinfForPunchToString(DesignReinf); 
 
 //------------------------------------------------------------
 //@TEST
@@ -835,6 +839,12 @@ IF(!IO.IsExternCLC) {
       </Variable>
       <Variable Modifier="Public" Name="obEWN" ESA_ID="" Type="Object">
         <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="PunchString" ESA_ID="" Type="String">
+        <Description TranslateID="VARIABLE_PunchString">
           <ENU>
           </ENU>
         </Description>
@@ -2285,6 +2295,22 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="PAI021_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI021_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="PAI116_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3517,7 +3543,7 @@ IF(!IO.IsExternCLC) {
               <P>EC EN 1991-2</P>
               <P>EC EN 1991-3</P>
               <P>EC EN 1991-4</P>
-              <P>EC EN 1992-1-1</P>
+              <P>EC EN 1992-1-1:2004/AC:2008</P>
               <P>1</P>
               <P>1</P>
               <P>1.3</P>
