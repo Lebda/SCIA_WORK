@@ -355,6 +355,7 @@ IF(IO.IsDrawing) {
 
 IF(IsZeroLoad()) { 
     DesignReinf →INI400_015071= FUNCT_2D.CreateDefaultDesignReinfData(DesignDefaults, h); 
+    PunchString →PAI001_000001= FUNCT_2D.ReinfForPunchToString(DesignReinf); 
     DesignShear →INI400_016506= FUNCT_2D.CreateDefaultDesignShearData(); 
     Exit(); 
 } 
@@ -2288,6 +2289,14 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS027_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI001_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
