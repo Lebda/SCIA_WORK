@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="f172aae0-a7ac-40b8-876c-ed0db8424130">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">
+    <SourceCode Collapsed="1|80|90|188|631|653" BreakPoints="">
 →GMP011_019685BLOCK { // Checks for composite, wide-flange section, and new member
 
     // Middle Section
@@ -9,8 +9,7 @@
     
     // Check for composite member
     IF(!IO.Beam.Contains("Composite")) { 
-        string Segmented_Result →GMP011_000076= "XXX RMT"; 
-        string Uniform_Result →GMP011_000077= "XXX RMT"; 
+        string Designation →GMP011_000076= "XXX RMT"; 
         double midSection →GMP011_000003= 0; 
         double MaxUC →GMP011_000004= 999; 
         string ModificationCmds →GMP011_000005= ""; 
@@ -22,12 +21,13 @@
     
     // Check for wide flange section
     IF(!IO.Beam.CrossSection.Description.Contains("W")) { 
-        string Segmented_Result →GMP011_000074= "XXX RMT"; 
-        string Uniform_Result →GMP011_000075= "XXX RMT"; 
+        string Designation →GMP011_000074= "XXX RMT"; 
         double midSection →GMP011_000010= 0; 
         double MaxUC →GMP011_000011= 999; 
         string ModificationCmds →GMP011_000012= ""; 
         →GMP011_000013double ModificationCmdsRatio →GMP011_000014= 0; 
+        string stud_string →GMP001_000002= "Unsupported Cross-Section"; 
+        string camber_string →GMP001_000001= "Unsupported Cross-Section"; 
         →GMP011_000015TEXT("Warning: Review Member Type"); 
         →GMP011_019717TEXT("Composite design supports wide flange (W) shapes only "); 
         Exit(); 
@@ -38,13 +38,11 @@
         
         object myResults →UNK131_019399= ReadResults(ResultType.Member, "CompUS"); 
         IF(IO.Section.ID == middle) { 
-            string Segmented_Result →UNK000_019065= myResults.Segmented_Result; 
-            string Uniform_Result →UNK000_019066= myResults.Uniform_Result; 
+            string Designation →UNK000_019065= myResults.Designation; 
             double MaxUC →UNK000_019393= myResults.MaxUC+0.001; 
             double midSection →UNK131_019402= 1; 
         } ELSE { 
-            string Segmented_Result →UNK131_019400= ""; 
-            string Uniform_Result →UNK131_019401= ""; 
+            string Designation →UNK131_019400= ""; 
             double midSection →UNK131_019403= 0; 
             double MaxUC →UNK131_019406= myResults.MaxUC; 
         } 
@@ -70,8 +68,7 @@
             bool ribsParal →GMP011_019754= False; 
         } ELSE { 
             // Ribs are not parallel or perpendicular, stop and give error message (RMO = Review Member Orientation)
-            string Segmented_Result →GMP011_019708= "XXX RMO"; 
-            string Uniform_Result →GMP011_019709= "XXX RMO"; 
+            string Designation →GMP011_019708= "XXX RMO"; 
             double midSection →GMP011_019710= 0; 
             double MaxUC →GMP011_019711= 999; 
             string ModificationCmds →GMP011_019712= ""; 
@@ -238,8 +235,7 @@
         →INI400_018383TEXT(" 3 - SLS Combination containing only Constuction Stage Loads"); 
         →INI400_018384TEXT(" 4 - SLS Combination containing at least one Final Stage Load "); 
         
-        string Segmented_Result →GMP000_019505= "XXX RLC"; 
-        string Uniform_Result →GMP000_019506= "XXX RLC"; 
+        string Designation →GMP000_019505= "XXX RLC"; 
         double MaxUC →GMP000_019507= 999; 
         →GMP000_019512SaveResults(ResultType.Member, "CompUS"); 
         Exit(); 
@@ -255,8 +251,7 @@
         →INI400_018355TEXT(" 2 - ULS Combination containing at least one Final Stage Load"); 
         →INI400_018356TEXT(" 3 - SLS Combination containing only Constuction Stage Loads"); 
         →INI400_018357TEXT(" 4 - SLS Combination containing at least one Final Stage Load "); 
-        string Segmented_Result →GMP000_019508= "XXX RLC"; 
-        string Uniform_Result →GMP000_019509= "XXX RLC"; 
+        string Designation →GMP000_019508= "XXX RLC"; 
         double MaxUC →GMP000_019510= 999; 
         →GMP000_019513SaveResults(ResultType.Member, "CompUS"); 
         Exit(); 
@@ -314,8 +309,7 @@
             →INI400_018373TEXT(" - SLS Combination containing at least one Final Stage Load"); 
         } 
         →INI400_018374TEXT("Please add these combinations to procede"); 
-        string Segmented_Result →GMP000_000003= "XXX RLC"; 
-        string Uniform_Result →GMP000_000004= "XXX RLC"; 
+        string Designation →GMP000_000003= "XXX RLC"; 
         double MaxUC →GMP000_000007= 999; 
         →GMP000_019503SaveResults(ResultType.Member, "CompUS"); 
         Exit(); 
@@ -328,8 +322,7 @@
                 IF(Loads[i].CombiType != Loads[i-1].CombiType) { 
                     →INI400_018377TEXT("Warning: Load combinations use inconsistent design methods."); 
                     →INI400_018378TEXT("Be sure all combinations use either 1) ASD or 2) LRFD"); 
-                    string Segmented_Result →GMP000_000005= "XXX RLC"; 
-                    string Uniform_Result →GMP000_000006= "XXX RLC"; 
+                    string Designation →GMP000_000005= "XXX RLC"; 
                     double MaxUC →GMP000_000008= 999; 
                     →GMP000_019504SaveResults(ResultType.Member, "CompUS"); 
                     Exit(); 
@@ -352,8 +345,7 @@
         } ELSE { 
             →INI400_018328TEXT("Warning: Load combinations use inconsistent design methods."); 
             →INI400_018376TEXT("Be sure all combinations use either 1) ASD or 2) LRFD"); 
-            string Segmented_Result →GMP000_000009= "XXX RLC"; 
-            string Uniform_Result →GMP000_000010= "XXX RLC"; 
+            string Designation →GMP000_000009= "XXX RLC"; 
             double MaxUC →GMP000_000011= 999; 
             →GMP000_019511SaveResults(ResultType.Member, "CompUS"); 
             Exit(); 
@@ -521,6 +513,23 @@
         M↓yoe,ULS,Con← →GMP011_019682= (ABS(d2d↓oel←)/(ABS(d2d↓oel←)+ABS(d2d↓oer←)+0.00001))*(ConMys[i_d2d↓oer←]-ConMys[i_d2d↓oel←])+ConMys[i_d2d↓oel←]; 
         
         
+    } 
+    
+    // Beginning and End Moments and Shears (Final ULS)
+    double V↓z0,ULS,Fin← →GMP009_019503= 0; 
+    double V↓z1,ULS,Fin← →GMP009_019506= 0; 
+    double M↓y0,ULS,Fin← →GMP009_019509= 0; 
+    double M↓y1,ULS,Fin← →GMP009_019510= 0; 
+    
+    FOREACH(object Load in ULS_Fin_Loads) { 
+        double FV↓z0,ULS,Fin← →GMP009_019504= IO.Beam.Section[0].InternalForces[Load.ID].Vz; 
+        IF(ABS(FV↓z0,ULS,Fin←) &gt; ABS(V↓z0,ULS,Fin←)) { V↓z0,ULS,Fin← →GMP009_019505= FV↓z0,ULS,Fin←; } 
+        double FV↓z1,ULS,Fin← →GMP009_019507= IO.Beam.Section[IO.Beam.Section.Count-1].InternalForces[Load.ID].Vz; 
+        IF(ABS(FV↓z1,ULS,Fin←) &gt; ABS(V↓z1,ULS,Fin←)) { V↓z1,ULS,Fin← →GMP009_019508= FV↓z1,ULS,Fin←; } 
+        double FM↓y0,ULS,Fin← →GMP009_019511= FinMys[0]; 
+        IF(ABS(FM↓y0,ULS,Fin←) &gt; ABS(M↓y0,ULS,Fin←)) { M↓y0,ULS,Fin← →GMP009_019512= FM↓y0,ULS,Fin←; } 
+        double FM↓y1,ULS,Fin← →GMP009_019513= FinMys[IO.Beam.Section.Count-1]; 
+        IF(ABS(FM↓y1,ULS,Fin←) &gt; ABS(M↓y1,ULS,Fin←)) { M↓y1,ULS,Fin← →GMP009_019514= FM↓y1,ULS,Fin←; } 
     } 
     
     
@@ -1493,8 +1502,34 @@
     →INI400_018544SenModificator.ChangeCrossSection(FinalCrossSection); 
     ModificationCmds →INI400_000006= SenModificator.GetCommands(); 
     
+    
+    IF(ribsParal) { 
+        string Designation →GMP098_000003= Segmented_Result; 
+        string stud_string →GMP098_000005= SegStudPattern.Substring(1, Convert.ToInt32(SegStudPattern.Length-2)); 
+    } ELSE { 
+        string Designation →GMP098_000004= Uniform_Result; 
+        string stud_string →GMP098_000006= UniNumStuds.Substring(1, Convert.ToInt32(UniNumStuds.Length-2)); 
+    } 
+    
+    string camber_string →GMP098_000001= CUnit(Camber, "in").ToString() &amp; " in"; 
+    
+    
+    string DesignInfo_Camber →GMP098_000002= camber_string; 
+    string DesignInfo_Studs →GMP098_000007= stud_string; 
+    string DesignInfo_MomentBegin →GMP009_019515= ROUND(CUnit(M↓y0,ULS,Fin←, "kip*ft").ToString(), 2) &amp; " k-ft"; 
+    string DesignInfo_MomentEnd →GMP009_019516= ROUND(CUnit(M↓y1,ULS,Fin←, "kip*ft").ToString(), 2) &amp; " k-ft"; 
+    string DesignInfo_ShearBegin →GMP009_019517= ROUND(CUnit(V↓z0,ULS,Fin←, "kip").ToString(), 2) &amp; " k"; 
+    string DesignInfo_ShearEnd →GMP009_019518= ROUND(CUnit(V↓z1,ULS,Fin←, "kip").ToString(), 2) &amp; " k"; 
+    IF(ULS_Fin_Loads.Count &gt; 1) { 
+        string DesignInfo_Case →GMP009_019520= "Final Stage ULS"; 
+    } ELSE { 
+        string DesignInfo_Case →GMP009_019521= ULS_Fin_Loads[0].LoadName; 
+    } 
+    
+    
     →UNK131_019398SaveResults(ResultType.Member, "CompUS"); 
     // Clear results for section[0] ; we will return this in the midsection only
+    Designation →GMP098_000008= ""; 
     Segmented_Result →UNK131_019404= ""; 
     Uniform_Result →UNK131_019405= ""; 
     
@@ -1550,7 +1585,7 @@
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="actualCA" ESA_ID="" Type="Double" Value="184.6033e-3" Precision="2">
+      <Variable Modifier="Public" Name="actualCA" ESA_ID="" Type="Double" Value="502.7071e-3" Precision="2">
         <Description TranslateID="VARIABLE_actualCA">
           <ENU>
           </ENU>
@@ -1563,56 +1598,62 @@
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="BeamDepthRestriction" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="BeamDepthRestriction" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description TranslateID="VARIABLE_BeamDepthRestriction">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="CA" ESA_ID="" Type="Double" Value="250.0002e-3" Precision="2">
+      <Variable Modifier="Public" Name="CA" ESA_ID="" Type="Double" Value="250.0007e-3" Precision="2">
         <Description TranslateID="VARIABLE_CA">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Calc_u↓z,SLS,ConSelf←" ESA_ID="" Type="Double" Value="-3.711695e-3" Precision="2">
+      <Variable Modifier="Public" Name="Calc_u↓z,SLS,ConSelf←" ESA_ID="" Type="Double" Value="-1.589638e-3" Precision="2">
         <Description TranslateID="VARIABLE_Calc_u↓z,SLS,ConSelf←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Calc_u↓z,SLS,FinLive←" ESA_ID="" Type="Double" Value="-25.40189e-3" Precision="2">
+      <Variable Modifier="Public" Name="Calc_u↓z,SLS,FinLive←" ESA_ID="" Type="Double" Value="-1.853626e-3" Precision="2">
         <Description TranslateID="VARIABLE_Calc_u↓z,SLS,FinLive←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Calc_u↓z,SLS,FinTotal←" ESA_ID="" Type="Double" Value="-43.71778e-3" Precision="2">
+      <Variable Modifier="Public" Name="Calc_u↓z,SLS,FinTotal←" ESA_ID="" Type="Double" Value="-54.69884e-3" Precision="2">
         <Description TranslateID="VARIABLE_Calc_u↓z,SLS,FinTotal←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="CalcApproach" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="CalcApproach" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description TranslateID="VARIABLE_CalcApproach">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Camber" ESA_ID="" Type="Double" Value="50.8e-3" Precision="2">
+      <Variable Modifier="Public" Name="Camber" ESA_ID="" Type="Double" Value="107.95e-3" Precision="2">
         <Description TranslateID="VARIABLE_Camber">
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="CamberAbs" ESA_ID="" Type="Double" Value="50.8e-3" Precision="2">
+      <Variable Modifier="Public" Name="camber_string" ESA_ID="" Type="String" Value="4.25 in">
+        <Description TranslateID="VARIABLE_camber_string">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="CamberAbs" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description TranslateID="VARIABLE_CamberAbs">
           <ENU>
           </ENU>
@@ -1633,7 +1674,7 @@
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="CamberType" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="CamberType" ESA_ID="" Type="Double" Value="4" Precision="2">
         <Description TranslateID="VARIABLE_CamberType">
           <ENU>
           </ENU>
@@ -1789,7 +1830,7 @@
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="DACA" ESA_ID="" Type="Double" Value="480e-3" Precision="2">
+      <Variable Modifier="Public" Name="DACA" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description TranslateID="VARIABLE_DACA">
           <ENU>
           </ENU>
@@ -1802,33 +1843,89 @@
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Def_Constant↓SLS,ConSelf←" ESA_ID="" Type="Double" Value="-3.244341e-6" Precision="2">
+      <Variable Modifier="Public" Name="Def_Constant↓SLS,ConSelf←" ESA_ID="" Type="Double" Value="-557.7771e-9" Precision="2">
         <Description TranslateID="VARIABLE_Def_Constant↓SLS,ConSelf←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Def_Constant↓SLS,FinLive←" ESA_ID="" Type="Double" Value="-39.85586e-6" Precision="2">
+      <Variable Modifier="Public" Name="Def_Constant↓SLS,FinLive←" ESA_ID="" Type="Double" Value="-2.032222e-6" Precision="2">
         <Description TranslateID="VARIABLE_Def_Constant↓SLS,FinLive←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Def_Constant↓SLS,FinTotal←" ESA_ID="" Type="Double" Value="-68.5937e-6" Precision="2">
+      <Variable Modifier="Public" Name="Def_Constant↓SLS,FinTotal←" ESA_ID="" Type="Double" Value="-59.96904e-6" Precision="2">
         <Description TranslateID="VARIABLE_Def_Constant↓SLS,FinTotal←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="DesignApproach" ESA_ID="" Type="Double" Value="2" Precision="2">
+      <Variable Modifier="Public" Name="DesignApproach" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description TranslateID="VARIABLE_DesignApproach">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="Designation" ESA_ID="Result.1" Type="String" Value="XXX RMO">
+        <Description TranslateID="VARIABLE_Designation">
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="1" Numeric="midSection" SenModif="False" LabOri="1" />
+      </Variable>
+      <Variable Modifier="Public" Name="DesignInfo_Camber" ESA_ID="Result.8" Type="String" Value="4.25 in">
+        <Description TranslateID="VARIABLE_DesignInfo_Camber">
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="3" Numeric="midSection" SenModif="False" LabOri="1" />
+      </Variable>
+      <Variable Modifier="Public" Name="DesignInfo_Case" ESA_ID="Result.10" Type="String" Value="Comp-FS-ULS">
+        <Description TranslateID="VARIABLE_DesignInfo_Case">
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="3" Numeric="midSection" SenModif="False" LabOri="1" />
+      </Variable>
+      <Variable Modifier="Public" Name="DesignInfo_MomentBegin" ESA_ID="Result.11" Type="String" Value="0 k-ft">
+        <Description TranslateID="VARIABLE_DesignInfo_MomentBegin">
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="3" Numeric="midSection" SenModif="False" LabOri="1" />
+      </Variable>
+      <Variable Modifier="Public" Name="DesignInfo_MomentEnd" ESA_ID="Result.12" Type="String" Value="0 k-ft">
+        <Description TranslateID="VARIABLE_DesignInfo_MomentEnd">
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="3" Numeric="midSection" SenModif="False" LabOri="1" />
+      </Variable>
+      <Variable Modifier="Public" Name="DesignInfo_ShearBegin" ESA_ID="Result.13" Type="String" Value="32.9 k">
+        <Description TranslateID="VARIABLE_DesignInfo_ShearBegin">
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="3" Numeric="midSection" SenModif="False" LabOri="1" />
+      </Variable>
+      <Variable Modifier="Public" Name="DesignInfo_ShearEnd" ESA_ID="Result.14" Type="String" Value="-32.9 k">
+        <Description TranslateID="VARIABLE_DesignInfo_ShearEnd">
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="3" Numeric="midSection" SenModif="False" LabOri="1" />
+      </Variable>
+      <Variable Modifier="Public" Name="DesignInfo_Studs" ESA_ID="Result.9" Type="String" Value="22">
+        <Description TranslateID="VARIABLE_DesignInfo_Studs">
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="3" Numeric="midSection" SenModif="False" LabOri="1" />
       </Variable>
       <Variable Modifier="Public" Name="DesignMethod" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description TranslateID="VARIABLE_DesignMethod">
@@ -1836,7 +1933,7 @@
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="DetailChecksPass" ESA_ID="" Type="Boolean" Value="1">
+      <Variable Modifier="Public" Name="DetailChecksPass" ESA_ID="" Type="Boolean" Value="0">
         <Description TranslateID="VARIABLE_DetailChecksPass">
           <ENU>
           </ENU>
@@ -1878,14 +1975,14 @@
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="FinalCA" ESA_ID="" Type="Double" Value="185e-3" Precision="2">
+      <Variable Modifier="Public" Name="FinalCA" ESA_ID="" Type="Double" Value="251e-3" Precision="2">
         <Description TranslateID="VARIABLE_FinalCA">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="FinalCrossSection" ESA_ID="" Type="String" Value="W(Imp)24X76">
+      <Variable Modifier="Public" Name="FinalCrossSection" ESA_ID="" Type="String" Value="W(Imp)21X44">
         <Description TranslateID="VARIABLE_FinalCrossSection">
           <ENU>
           </ENU>
@@ -1908,6 +2005,20 @@
           <ENU>
           </ENU>
         </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="FM↓y0,ULS,Fin←" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description TranslateID="VARIABLE_FM↓y0,ULS,Fin←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1355.818" Dim="kip∙ft" />
+      </Variable>
+      <Variable Modifier="Public" Name="FM↓y1,ULS,Fin←" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description TranslateID="VARIABLE_FM↓y1,ULS,Fin←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1355.818" Dim="kip∙ft" />
       </Variable>
       <Variable Modifier="Public" Name="FontsAndColors" ESA_ID="" Type="Object">
         <Description TranslateID="VARIABLE_FontsAndColors">
@@ -1942,6 +2053,20 @@
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
+      <Variable Modifier="Public" Name="FV↓z0,ULS,Fin←" ESA_ID="" Type="Double" Value="146109" Precision="2">
+        <Description TranslateID="VARIABLE_FV↓z0,ULS,Fin←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
+      </Variable>
+      <Variable Modifier="Public" Name="FV↓z1,ULS,Fin←" ESA_ID="" Type="Double" Value="-146109" Precision="2">
+        <Description TranslateID="VARIABLE_FV↓z1,ULS,Fin←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
+      </Variable>
       <Variable Modifier="Public" Name="gInput" ESA_ID="" Type="Object">
         <Description TranslateID="VARIABLE_gInput">
           <ENU>
@@ -1954,7 +2079,7 @@
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="gSectionIndex" ESA_ID="" Type="Double" Value="90" Precision="2">
+      <Variable Modifier="Public" Name="gSectionIndex" ESA_ID="" Type="Double" Value="39" Precision="2">
         <Description TranslateID="VARIABLE_gSectionIndex">
           <ENU>
           </ENU>
@@ -1985,7 +2110,7 @@
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="High" ESA_ID="" Type="Double" Value="250.0004e-3" Precision="2">
+      <Variable Modifier="Public" Name="High" ESA_ID="" Type="Double" Value="250.0014e-3" Precision="2">
         <Description TranslateID="VARIABLE_High">
           <ENU>
           </ENU>
@@ -2041,28 +2166,28 @@
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="I↓LB←" ESA_ID="" Type="Double" Value="1.569011e-3" Precision="2">
+      <Variable Modifier="Public" Name="I↓LB←" ESA_ID="" Type="Double" Value="324.6538e-6" Precision="2">
         <Description TranslateID="VARIABLE_I↓LB←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="416.2314e-9" Dim="in↑4←" />
       </Variable>
-      <Variable Modifier="Public" Name="I↓x←" ESA_ID="" Type="Double" Value="874.086e-6" Precision="2">
+      <Variable Modifier="Public" Name="I↓x←" ESA_ID="" Type="Double" Value="52.8614e-6" Precision="2">
         <Description TranslateID="VARIABLE_I↓x←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="416.2314e-9" Dim="in↑4←" />
       </Variable>
-      <Variable Modifier="Public" Name="InitialCA" ESA_ID="" Type="Double" Value="260e-3" Precision="2">
+      <Variable Modifier="Public" Name="InitialCA" ESA_ID="" Type="Double" Value="500e-3" Precision="2">
         <Description TranslateID="VARIABLE_InitialCA">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="InitialCS" ESA_ID="" Type="String" Value="W24X76">
+      <Variable Modifier="Public" Name="InitialCS" ESA_ID="" Type="String" Value="W8X35">
         <Description TranslateID="VARIABLE_InitialCS">
           <ENU>
           </ENU>
@@ -2091,14 +2216,14 @@
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="L↓b←" ESA_ID="" Type="Double" Value="13.716" Precision="2">
+      <Variable Modifier="Public" Name="L↓b←" ESA_ID="" Type="Double" Value="10" Precision="2">
         <Description TranslateID="VARIABLE_L↓b←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="304.8e-3" Dim="ft" />
       </Variable>
-      <Variable Modifier="Public" Name="L↓b-bot←" ESA_ID="" Type="Double" Value="13.716" Precision="2">
+      <Variable Modifier="Public" Name="L↓b-bot←" ESA_ID="" Type="Double" Value="10" Precision="2">
         <Description TranslateID="VARIABLE_L↓b-bot←">
           <ENU>
           </ENU>
@@ -2118,21 +2243,21 @@
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓n,c←" ESA_ID="" Type="Double" Value="1.31225e6" Precision="2">
+      <Variable Modifier="Public" Name="M↓n,c←" ESA_ID="" Type="Double" Value="296448.1" Precision="2">
         <Description TranslateID="VARIABLE_M↓n,c←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓n,s←" ESA_ID="" Type="Double" Value="1.016863e6" Precision="2">
+      <Variable Modifier="Public" Name="M↓n,s←" ESA_ID="" Type="Double" Value="349232.1" Precision="2">
         <Description TranslateID="VARIABLE_M↓n,s←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1355.818" Dim="kip∙ft" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓n←" ESA_ID="" Type="Double" Value="1.129848e6" Precision="2">
+      <Variable Modifier="Public" Name="M↓n←" ESA_ID="" Type="Double" Value="388035.7" Precision="2">
         <Description TranslateID="VARIABLE_M↓n←">
           <ENU>
           </ENU>
@@ -2153,15 +2278,29 @@
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1355.818" Dim="kip∙ft" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓y+,ULS,Con←" ESA_ID="" Type="Double" Value="149759" Precision="2">
+      <Variable Modifier="Public" Name="M↓y+,ULS,Con←" ESA_ID="" Type="Double" Value="328466.2" Precision="2">
         <Description TranslateID="VARIABLE_M↓y+,ULS,Con←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1355.818" Dim="kip∙ft" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓y+,ULS,Fin←" ESA_ID="" Type="Double" Value="929096" Precision="2">
+      <Variable Modifier="Public" Name="M↓y+,ULS,Fin←" ESA_ID="" Type="Double" Value="376127.5" Precision="2">
         <Description TranslateID="VARIABLE_M↓y+,ULS,Fin←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1355.818" Dim="kip∙ft" />
+      </Variable>
+      <Variable Modifier="Public" Name="M↓y0,ULS,Fin←" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description TranslateID="VARIABLE_M↓y0,ULS,Fin←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1355.818" Dim="kip∙ft" />
+      </Variable>
+      <Variable Modifier="Public" Name="M↓y1,ULS,Fin←" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description TranslateID="VARIABLE_M↓y1,ULS,Fin←">
           <ENU>
           </ENU>
         </Description>
@@ -2216,21 +2355,21 @@
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="MaxCA" ESA_ID="" Type="Double" Value="350e-3" Precision="2">
+      <Variable Modifier="Public" Name="MaxCA" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description TranslateID="VARIABLE_MaxCA">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="MaxCamber" ESA_ID="" Type="Double" Value="50.8e-3" Precision="2">
+      <Variable Modifier="Public" Name="MaxCamber" ESA_ID="" Type="Double" Value="101.6e-3" Precision="2">
         <Description TranslateID="VARIABLE_MaxCamber">
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="MaxSpacing" ESA_ID="" Type="Double" Value="571.5e-3" Precision="2">
+      <Variable Modifier="Public" Name="MaxSpacing" ESA_ID="" Type="Double" Value="454.5455e-3" Precision="2">
         <Description TranslateID="VARIABLE_MaxSpacing">
           <ENU>
           </ENU>
@@ -2245,7 +2384,7 @@
         <ResultProperties ESAColor="1" ESAStyle="1" ESAUnit="66" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="MCR" ESA_ID="" Type="Double" Value="1.388626" Precision="2">
+      <Variable Modifier="Public" Name="MCR" ESA_ID="" Type="Double" Value="4.34959" Precision="2">
         <Description TranslateID="VARIABLE_MCR">
           <ENU>
           </ENU>
@@ -2267,14 +2406,14 @@
         <ResultProperties ESAColor="2" ESAStyle="3" ESAUnit="7" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="MinCA" ESA_ID="" Type="Double" Value="123.0688e-3" Precision="2">
+      <Variable Modifier="Public" Name="MinCA" ESA_ID="" Type="Double" Value="274.2039e-3" Precision="2">
         <Description TranslateID="VARIABLE_MinCA">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="MinSpacing" ESA_ID="" Type="Double" Value="571.5e-3" Precision="2">
+      <Variable Modifier="Public" Name="MinSpacing" ESA_ID="" Type="Double" Value="454.5455e-3" Precision="2">
         <Description TranslateID="VARIABLE_MinSpacing">
           <ENU>
           </ENU>
@@ -2328,7 +2467,7 @@
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="NumberStuds" ESA_ID="" Type="Double" Value="12" Precision="2">
+      <Variable Modifier="Public" Name="NumberStuds" ESA_ID="" Type="Double" Value="10" Precision="2">
         <Description TranslateID="VARIABLE_NumberStuds">
           <ENU>
           </ENU>
@@ -2341,7 +2480,7 @@
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Q↓n←" ESA_ID="" Type="Double" Value="76641.36" Precision="2">
+      <Variable Modifier="Public" Name="Q↓n←" ESA_ID="" Type="Double" Value="75378.62" Precision="2">
         <Description TranslateID="VARIABLE_Q↓n←">
           <ENU>
           </ENU>
@@ -2389,14 +2528,13 @@
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Segmented_Result" ESA_ID="Result.1" Type="String" Value="XXX RMO">
+      <Variable Modifier="Public" Name="Segmented_Result" ESA_ID="" Type="String" Value="">
         <Description TranslateID="VARIABLE_Segmented_Result">
           <ENU>
           </ENU>
         </Description>
-        <ResultProperties ESAColor="1" ESAStyle="1" Numeric="midSection" SenModif="False" LabOri="1" />
       </Variable>
-      <Variable Modifier="Public" Name="SegStudPattern" ESA_ID="" Type="String" Value="[24]">
+      <Variable Modifier="Public" Name="SegStudPattern" ESA_ID="" Type="String" Value="[22]">
         <Description TranslateID="VARIABLE_SegStudPattern">
           <ENU>
           </ENU>
@@ -2457,6 +2595,12 @@
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="stud_string" ESA_ID="" Type="String" Value="22">
+        <Description TranslateID="VARIABLE_stud_string">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="StudRows" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description TranslateID="VARIABLE_StudRows">
           <ENU>
@@ -2489,90 +2633,90 @@
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="tmp" ESA_ID="" Type="String" Value="W(Imp)36X135">
+      <Variable Modifier="Public" Name="tmp" ESA_ID="" Type="String" Value="W(Imp)21X44">
         <Description TranslateID="VARIABLE_tmp">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="u↓z,SLS,ConSelf,Beg←" ESA_ID="" Type="Double" Value="-2.34177e-3" Precision="2">
+      <Variable Modifier="Public" Name="u↓z,SLS,ConSelf,Beg←" ESA_ID="" Type="Double" Value="-1.84231e-3" Precision="2">
         <Description TranslateID="VARIABLE_u↓z,SLS,ConSelf,Beg←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="u↓z,SLS,ConSelf,End←" ESA_ID="" Type="Double" Value="-2.34178e-3" Precision="2">
+      <Variable Modifier="Public" Name="u↓z,SLS,ConSelf,End←" ESA_ID="" Type="Double" Value="-1.84231e-3" Precision="2">
         <Description TranslateID="VARIABLE_u↓z,SLS,ConSelf,End←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="u↓z,SLS,ConSelf,Max←" ESA_ID="" Type="Double" Value="-6.05347e-3" Precision="2">
+      <Variable Modifier="Public" Name="u↓z,SLS,ConSelf,Max←" ESA_ID="" Type="Double" Value="-12.394e-3" Precision="2">
         <Description TranslateID="VARIABLE_u↓z,SLS,ConSelf,Max←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="u↓z,SLS,ConSelf←" ESA_ID="" Type="Double" Value="-3.711695e-3" Precision="2">
+      <Variable Modifier="Public" Name="u↓z,SLS,ConSelf←" ESA_ID="" Type="Double" Value="-10.55169e-3" Precision="2">
         <Description TranslateID="VARIABLE_u↓z,SLS,ConSelf←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="u↓z,SLS,FinLive,Beg←" ESA_ID="" Type="Double" Value="-14.83e-3" Precision="2">
+      <Variable Modifier="Public" Name="u↓z,SLS,FinLive,Beg←" ESA_ID="" Type="Double" Value="-1.57866e-3" Precision="2">
         <Description TranslateID="VARIABLE_u↓z,SLS,FinLive,Beg←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="u↓z,SLS,FinLive,End←" ESA_ID="" Type="Double" Value="-14.8304e-3" Precision="2">
+      <Variable Modifier="Public" Name="u↓z,SLS,FinLive,End←" ESA_ID="" Type="Double" Value="-1.57866e-3" Precision="2">
         <Description TranslateID="VARIABLE_u↓z,SLS,FinLive,End←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="u↓z,SLS,FinLive,Max←" ESA_ID="" Type="Double" Value="-40.2321e-3" Precision="2">
+      <Variable Modifier="Public" Name="u↓z,SLS,FinLive,Max←" ESA_ID="" Type="Double" Value="-7.83832e-3" Precision="2">
         <Description TranslateID="VARIABLE_u↓z,SLS,FinLive,Max←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="u↓z,SLS,FinLive←" ESA_ID="" Type="Double" Value="-25.40189e-3" Precision="2">
+      <Variable Modifier="Public" Name="u↓z,SLS,FinLive←" ESA_ID="" Type="Double" Value="-6.25966e-3" Precision="2">
         <Description TranslateID="VARIABLE_u↓z,SLS,FinLive←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="u↓z,SLS,FinTotal,Beg←" ESA_ID="" Type="Double" Value="-25.5155e-3" Precision="2">
+      <Variable Modifier="Public" Name="u↓z,SLS,FinTotal,Beg←" ESA_ID="" Type="Double" Value="-27.9511e-3" Precision="2">
         <Description TranslateID="VARIABLE_u↓z,SLS,FinTotal,Beg←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="u↓z,SLS,FinTotal,End←" ESA_ID="" Type="Double" Value="-25.5163e-3" Precision="2">
+      <Variable Modifier="Public" Name="u↓z,SLS,FinTotal,End←" ESA_ID="" Type="Double" Value="-27.9511e-3" Precision="2">
         <Description TranslateID="VARIABLE_u↓z,SLS,FinTotal,End←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="u↓z,SLS,FinTotal,Max←" ESA_ID="" Type="Double" Value="-69.2337e-3" Precision="2">
+      <Variable Modifier="Public" Name="u↓z,SLS,FinTotal,Max←" ESA_ID="" Type="Double" Value="-212.668e-3" Precision="2">
         <Description TranslateID="VARIABLE_u↓z,SLS,FinTotal,Max←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="u↓z,SLS,FinTotal←" ESA_ID="" Type="Double" Value="-43.71778e-3" Precision="2">
+      <Variable Modifier="Public" Name="u↓z,SLS,FinTotal←" ESA_ID="" Type="Double" Value="-184.7169e-3" Precision="2">
         <Description TranslateID="VARIABLE_u↓z,SLS,FinTotal←">
           <ENU>
           </ENU>
@@ -2593,7 +2737,7 @@
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC↓Camber,Fin←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="UC↓Camber,Fin←" ESA_ID="" Type="Double" Value="-948.4797e-3" Precision="2">
         <Description TranslateID="VARIABLE_UC↓Camber,Fin←">
           <ENU>
           </ENU>
@@ -2607,14 +2751,14 @@
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC↓d,FinLive←" ESA_ID="" Type="Double" Value="666.7158e-3" Precision="2">
+      <Variable Modifier="Public" Name="UC↓d,FinLive←" ESA_ID="" Type="Double" Value="66.7305e-3" Precision="2">
         <Description TranslateID="VARIABLE_UC↓d,FinLive←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC↓d,FinTotal←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="UC↓d,FinTotal←" ESA_ID="" Type="Double" Value="1.842404" Precision="2">
         <Description TranslateID="VARIABLE_UC↓d,FinTotal←">
           <ENU>
           </ENU>
@@ -2628,56 +2772,56 @@
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC↓SLS-Fin,Live←" ESA_ID="" Type="Double" Value="666.7158e-3" Precision="2">
+      <Variable Modifier="Public" Name="UC↓SLS-Fin,Live←" ESA_ID="" Type="Double" Value="225.3476e-3" Precision="2">
         <Description TranslateID="VARIABLE_UC↓SLS-Fin,Live←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC↓SLS-Fin,Total←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="UC↓SLS-Fin,Total←" ESA_ID="" Type="Double" Value="1.842404" Precision="2">
         <Description TranslateID="VARIABLE_UC↓SLS-Fin,Total←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC↓Spac,Req←" ESA_ID="" Type="Double" Value="533.3333e-3" Precision="2">
+      <Variable Modifier="Public" Name="UC↓Spac,Req←" ESA_ID="" Type="Double" Value="495e-3" Precision="2">
         <Description TranslateID="VARIABLE_UC↓Spac,Req←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC↓Spacing←" ESA_ID="" Type="Double" Value="533.3333e-3" Precision="2">
+      <Variable Modifier="Public" Name="UC↓Spacing←" ESA_ID="" Type="Double" Value="315e-3" Precision="2">
         <Description TranslateID="VARIABLE_UC↓Spacing←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC↓ULS,Con←" ESA_ID="" Type="Double" Value="147.2755e-3" Precision="2">
+      <Variable Modifier="Public" Name="UC↓ULS,Con←" ESA_ID="" Type="Double" Value="940.5382e-3" Precision="2">
         <Description TranslateID="VARIABLE_UC↓ULS,Con←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC↓ULS,Fin←" ESA_ID="" Type="Double" Value="708.0174e-3" Precision="2">
+      <Variable Modifier="Public" Name="UC↓ULS,Fin←" ESA_ID="" Type="Double" Value="710.7131e-3" Precision="2">
         <Description TranslateID="VARIABLE_UC↓ULS,Fin←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC↓ULS-Con←" ESA_ID="" Type="Double" Value="147.2755e-3" Precision="2">
+      <Variable Modifier="Public" Name="UC↓ULS-Con←" ESA_ID="" Type="Double" Value="2.58581" Precision="2">
         <Description TranslateID="VARIABLE_UC↓ULS-Con←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC↓ULS-Fin←" ESA_ID="" Type="Double" Value="708.0174e-3" Precision="2">
+      <Variable Modifier="Public" Name="UC↓ULS-Fin←" ESA_ID="" Type="Double" Value="1.26878" Precision="2">
         <Description TranslateID="VARIABLE_UC↓ULS-Fin←">
           <ENU>
           </ENU>
@@ -2709,26 +2853,25 @@
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Uniform_Result" ESA_ID="Result.2" Type="String" Value="XXX RMO">
+      <Variable Modifier="Public" Name="Uniform_Result" ESA_ID="" Type="String" Value="">
         <Description TranslateID="VARIABLE_Uniform_Result">
           <ENU>
           </ENU>
         </Description>
-        <ResultProperties ESAColor="1" ESAStyle="1" Numeric="midSection" SenModif="False" LabOri="1" />
       </Variable>
-      <Variable Modifier="Public" Name="UniNumStuds" ESA_ID="" Type="String" Value="[24]">
+      <Variable Modifier="Public" Name="UniNumStuds" ESA_ID="" Type="String" Value="[22]">
         <Description TranslateID="VARIABLE_UniNumStuds">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="V↓u,ULS,Con←" ESA_ID="" Type="Double" Value="42765.8" Precision="2">
+      <Variable Modifier="Public" Name="V↓u,ULS,Con←" ESA_ID="" Type="Double" Value="130982" Precision="2">
         <Description TranslateID="VARIABLE_V↓u,ULS,Con←">
           <ENU>Shear (ULS Construction)</ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
-      <Variable Modifier="Public" Name="V↓u,ULS,Fin←" ESA_ID="" Type="Double" Value="250432" Precision="2">
+      <Variable Modifier="Public" Name="V↓u,ULS,Fin←" ESA_ID="" Type="Double" Value="146109" Precision="2">
         <Description TranslateID="VARIABLE_V↓u,ULS,Fin←">
           <ENU>
           </ENU>
@@ -2777,6 +2920,20 @@
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
+      <Variable Modifier="Public" Name="V↓z0,ULS,Fin←" ESA_ID="" Type="Double" Value="146109" Precision="2">
+        <Description TranslateID="VARIABLE_V↓z0,ULS,Fin←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
+      </Variable>
+      <Variable Modifier="Public" Name="V↓z1,ULS,Fin←" ESA_ID="" Type="Double" Value="-146109" Precision="2">
+        <Description TranslateID="VARIABLE_V↓z1,ULS,Fin←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
+      </Variable>
       <Variable Modifier="Public" Name="WO" ESA_ID="MemberData.WO" Type="Boolean" Value="0">
         <Description TranslateID="VARIABLE_WO">
           <ENU>Include Web Opening</ENU>
@@ -2791,7 +2948,7 @@
     </Variables>
     <DrawingGroups />
     <ResultTables>
-      <ResultTable Visible="1" Vars="MaxUC|2|1;Segmented_Result|1|1;Uniform_Result|0|1">
+      <ResultTable Visible="1" Vars="MaxUC|2|1;Designation|0|1">
         <Names TranslateID="ResultGroup_Composite Beam Design Results">
           <ENU>Composite Beam Design Results</ENU>
         </Names>
@@ -2847,23 +3004,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="GMP000_000004">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="GMP000_000005">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP000_000006">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2888,14 +3029,6 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="GMP000_000009">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP000_000010">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2935,14 +3068,6 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="GMP000_019506">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="GMP000_019507">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2952,14 +3077,6 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="GMP000_019508">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP000_019509">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3003,6 +3120,166 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP001_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP001_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP009_019503">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP009_019504">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP009_019505">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP009_019506">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP009_019507">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP009_019508">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP009_019509">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP009_019510">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP009_019511">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP009_019512">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP009_019513">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP009_019514">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP009_019515">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP009_019516">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP009_019517">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP009_019518">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP009_019520">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP009_019521">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3431,23 +3708,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="GMP011_000075">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="GMP011_000076">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP011_000077">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4079,14 +4340,6 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="GMP011_019709">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="GMP011_019710">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4191,10 +4444,66 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="GMP011_019756">
+      <VC ID="GMP098_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP098_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP098_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP098_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP098_000005">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP098_000006">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP098_000007">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP098_000008">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -8863,14 +9172,6 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK000_019066">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="UNK000_019243">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -9023,14 +9324,6 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK131_019401">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="UNK131_019402">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -9105,7 +9398,7 @@
   </Calculation>
   <Dialog>
     <Main Width="400">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="0" PreDef="0" MemberDirectory="" MemberID="Beam.85" SectionID="-1" CombiID="-1" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="0" PreDef="0" MemberDirectory="" MemberID="Beam.1" SectionID="-1" CombiID="-1" />
     </Main>
     <MemberData Width="630">
       <TGroupBox Name="RWO_Box" ID="27" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="4" Dock="1" Anchor="5" Padding="5|5|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-2894893" BorderStyle="0" Font="Segoe UI|9.75|1|3" BorderColor="-5192482">

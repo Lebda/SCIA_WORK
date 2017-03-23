@@ -1,3 +1,5 @@
+ESAAtl80 \A\Src\Lat\ESAAtl80\ESAAtl80.rc 
+ESAAtl80MBCS \A\Src\Lat\ESAAtl80\ESAAtl80MBCS.rc 
 BCGCBPRO2440u140 \A\Src\Tra\BCGCBPro\BCGCBPro.rc 
 EP_Archive \A\Src\Mic\Base\ARCHIVE\Archive.rc EP_Archive.tlb
 EP_BasicTypes \A\Src\Lat\BasicTypes\BasicTypes.rc EP_BasicTypes.tlb
@@ -168,6 +170,7 @@ EP_NationalAnnices \A\Src\Tra\Anices\NationalAnnices.rc EP_NationalAnnices.tlb
 EP_ProjectDataDialog \A\Src\Tom\ProjectDataDialog\ProjectDataDialog.rc EP_ProjectDataDialog.tlb
 TableInput \A\Src\MIK\TableInput\TableInput.rc TableInput.tlb
 TableResults \A\Src\MIK\TableResults\TableResults.rc TableResults.tlb
+EP_DrawingTools_Cmds \A\Src\RMA\DrawingTools\EP_DrawingTools_Cmds\EP_DrawingTools_Cmds.rc EP_DrawingTools_Cmds.tlb
 EP_DsPrima \A\Src\Mic\Ds\DSPRIMA\DsPrima.rc EP_DsPrima.tlb
 EP_Export \A\Src\Mic\EP_Export\EP_Export.rc EP_Export.tlb
 EP_PicturesGalery_AddIns_ESA \A\Src\Lat\PicturesGalery\EP_PicturesGalery_AddIns_ESA\EP_PicturesGalery_AddIns_ESA.rc EP_PicturesGalery_AddIns_ESA.tlb
@@ -191,7 +194,6 @@ SteelInput_Cmds \A\Src\Dra\Services\EP_SteelInput_Cmds\SteelInput_Cmds\SteelInpu
 EP_SteelConnections_Cmds \A\Src\Dra\Services\EP_SteelConnections_Cmds\EP_SteelConnections_Cmds\EP_SteelConnections_Cmds.rc EP_SteelConnections_Cmds.tlb
 SteelCheckESACmdsM \A\Src\Mar\Services\SteelCheck\SteelCheckESACmdsM\SteelCheckESACmdsM.rc 
 SteelInput_CmdsM \A\Src\Dra\Services\EP_SteelInput_Cmds\SteelInput_CmdsM\SteelInput_CmdsM.rc 
-EP_DrawingTools_Cmds \A\Src\RMA\DrawingTools\EP_DrawingTools_Cmds\EP_DrawingTools_Cmds.rc EP_DrawingTools_Cmds.tlb
 EP_DrawingTools_CmdsM \A\Src\RMA\DrawingTools\EP_DrawingTools_CmdsM\EP_DrawingTools_CmdsM.rc 
 EP_DimensionLine2DService \A\Src\CHA\Services\DimensionLine2DService\EP_DimensionLine2DService\EP_DimensionLine2DService.rc EP_DimensionLine2DService.tlb
 EP_DimensionLine2DServiceM \A\Src\CHA\Services\DimensionLine2DService\EP_DimensionLine2DServiceM\EP_DimensionLine2DServiceM.rc 
@@ -418,7 +420,8 @@ pBatchOptimizer \A\Src\Tra\pBatchOptimizer\pBatchOptimizer.rc pBatchOptimizer.tl
 pTemplateBlocks \A\Src\Tra\pTemplateBlocks\pTemplateBlocks.rc pTemplateBlocks.tlb
 OdaPoirotTest \A\Src\Sam\OdaPoirotTest\OdaPoirotTest\OdaPoirotTest.rc OdaPoirotTest.tlb
 OdaPoirotTestM \A\Src\Sam\OdaPoirotTest\OdaPoirotTestM\OdaPoirotTestM.rc 
+EP_BasicTypesTests \A\Src\Kernel\Base\EP_BasicTypes\EP_BasicTypesTests\EP_BasicTypesTests.rc 
 EasyDsObjects \A\Src\Nam\EasyDsObjects\EasyDsObjects.rc EasyDsObjects.tlb
-IntegerCast_MSUT \A\Src\DUR\IntegerCast_MSUT\IntegerCast_MSUT.rc 
 Example_ESACOM_Multithread \A\Src\Lat\ESAAtl80\Examples\Example_ESACOM_Multithread\Example_ESACOM_Multithread.rc Example_ESACOM_Multithread.tlb
 EP_ComponentCmdsGUI \A\Src\Lat\ComponentCmds\EP_ComponentCmdsGUI\EP_ComponentCmdsGUI.rc EP_ComponentCmdsGUI.tlb
+XEP_NexisMock \A\Src\Nexis\XEP_NexisMock\XEP_NexisMock.rc XEP_NexisMock.tlb

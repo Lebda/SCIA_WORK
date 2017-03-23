@@ -217,7 +217,7 @@ void SetResults(object DesignResults) {
     } 
     IF(DesignResults.DesignShear != null) { 
         A↓sw,req← →INI400_015055= DesignResults.DesignShear.Aswm_req; 
-        A↓sw,stat← →DLO116_000413= A↓sw,req←; 
+        A↓sw,stat← →DLO116_000413= DesignResults.DesignShear.Aswm_stat; 
         v↓Ed← →PAI116_000019= DesignResults.DesignShear.vEd; 
         v↓Rd,c← →PAI116_000020= DesignResults.DesignShear.vRd_c; 
         v↓Rd,max← →PAI116_000021= DesignResults.DesignShear.vRd_max; 
@@ -2505,7 +2505,7 @@ IF(IO.IsDrawing) {
   </Calculation>
   <Dialog>
     <Main Width="630">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="F:\_PROJECT\PP17-054_Concrete Punching\emd\bench_01\Member2D.61" MemberID="Member2D.61" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="D:\_VERSIONS\DEVE_16\TEMP\Esa_Model_Data\Member2D.1" MemberID="Member2D.1" SectionID="0" CombiID="0" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />

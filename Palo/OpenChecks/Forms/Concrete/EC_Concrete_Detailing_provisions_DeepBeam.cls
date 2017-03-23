@@ -1,70 +1,75 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="bc8b45aa-75c5-4d80-8068-872273109d1e">
   <CodeEditor>
-    <SourceCode Collapsed="6|15|26|36|45|67|131|163|208|244|270|281|292|303|315" BreakPoints="">//@EC_Concrete_Detailing_provisions_DeepBeam
+    <SourceCode Collapsed="0|9|16|25|50|60|72|119|124|130|137|145|159|175|188|205|221" BreakPoints="">public bool ValidateInput(object Input) { 
+    h →KRS116_000002= Input.Get("h"); 
+    DesignDefaults →KRS116_000003= Input.Get("DesignDefaults"); 
+    DesignReinf →KRS116_000004= Input.Get("DesignReinfData"); 
+    ConMat →KRS116_000005= Input.Get("ConcreteData"); 
+    obEWN →PAI316_000002= Input.Get("obEWN"); 
+    return true; 
+} 
 
+public object GetOutput() { 
+    return new Structure("DesignReinfData", DesignReinf); 
+} 
 
 //------------------------------------------------------------
 //@VARIABLE
 
 →INI400_015110BLOCK("@EXTERNS") { 
+    →KRS116_000006object FUNCT_EWN; 
     →INI400_016177object FUNCT_2D; 
     →INI400_016019object FUNCT_2D_DEFAULTS; 
     →INI400_016137object FONTS_COLORS; 
-    ////    →INI400_016162object CL_9_2_1_1_1; 
-    ////    →INI400_016204object CL_9_3_1_1_3; 
-    ////    →INI400_016276object CL_8_2_2; 
+    →INI400_016276object CL_8_2_2; 
+    →KRS116_000012object CL_9_7_1; 
 } 
 
 →INI400_015111BLOCK("@VARIABLES") { 
     →INI400_016236double h; 
     →INI400_015113object DesignDefaults; 
-    →INI400_015114object DesignReinfData; 
-    →INI400_016168object ConcreteData; 
+    →INI400_015114object DesignReinf; 
+    →INI400_016168object ConMat; 
+    →KRS116_000007object obEWN; 
+    
+    →INI400_016292object _dialog_DesignReinf; 
+    →INI400_016296bool _bDeepBeamCheckMinPercentage; 
+    →INI400_016297bool _bDeepBeamCheckMaxSpacing; 
+    →INI400_016298bool _bDeepBeamCheckMinBarDistance; 
+    
+    //results
+    →INI400_016309double A↓s,min,1-←; 
+    →INI400_016310double A↓s,min,2-←; 
+    →INI400_016311double A↓s,min,1+←; 
+    →INI400_016312double A↓s,min,2+←; 
+    →INI400_016313double A↓s,max,1-←; 
+    →INI400_016314double A↓s,max,2-←; 
+    →INI400_016315double A↓s,max,1+←; 
+    →INI400_016316double A↓s,max,2+←; 
 } 
 
-//------------------------------------------------------------
-//@FUNCTIONS
 
 //@Loads included SDF forms
 private void LoadExterns() { 
-    FUNCT_2D →INI400_016005= LoadExternCLC("Concrete\Functions\Functions2D.clc"); 
+    FUNCT_EWN →INI400_016007= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_EWN.clc"); 
+    FUNCT_2D →INI400_016005= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions2D.clc"); 
     FUNCT_2D_DEFAULTS →INI400_016009= LoadExternCLC(Tools.Dir_Forms &amp; "\Concrete\Functions\Functions2D_DesignDefaults.clc"); 
     FONTS_COLORS →INI400_016003= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.CLC"); 
-    //    CL_9_2_1_1_1 →INI400_006783= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_9.2.1.1(1).CLC", true); 
-    //    CL_9_3_1_1_3 →INI400_016217= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_9.3.1.1(3).CLC", true); 
-    //    CL_8_2_2 →INI400_016277= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_8.2(2).CLC", true); 
-} 
-
-//@Validates input structure
-public bool ValidateInput(object Input) { 
-    h →INI400_016237= Input.Get("h"); 
-    DesignDefaults →INI400_014800= Input.Get("DesignDefaults"); 
-    DesignReinfData →INI400_015112= Input.Get("DesignReinfData"); 
-    ConcreteData →INI400_016169= Input.Get("ConcreteData"); 
-    return true; 
-} 
-
-//@Returns output structure
-public object GetOutput() { 
-    return new Structure("DesignReinfData", DesignReinfData); 
+    CL_8_2_2 →INI400_016277= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_8.2(2).CLC", true); 
+    CL_9_7_1 →KRS116_000008= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_9.7(1).CLC"); 
 } 
 
 //@Loads default inputs
 private void LoadDefaultInputs() { 
-    IF(!IO.IsExternCLC) { 
-        
-        object DesignDefaults →INI400_016023= FUNCT_2D_DEFAULTS.GetDesignDefaults(512); 
-        object DesignReinfData →INI400_016178= FUNCT_2D.CreateDefaultDesignReinfData(DesignDefaults, 0.2); 
-        object ConcreteData →INI400_016171= IO.CONCRETE.EC; 
-        
-        →INI400_016282ValidateInput(new Structure(
-        "h", 0.6, 
-        "DesignDefaults", DesignDefaults, 
-        "DesignReinfData", DesignReinfData, 
-        "ConcreteData", ConcreteData
-        )); 
-    } 
+    DesignDefaults →INI400_016023= FUNCT_2D_DEFAULTS.GetDesignDefaults(512); 
+    DesignReinfData →INI400_016178= FUNCT_2D.CreateDefaultDesignReinfData(DesignDefaults, 0.2); 
+    ConMat →INI400_016171= IO.CONCRETE.EC; 
+    DesignReinf →KRS116_000001= _dialog_DesignReinf; 
+    DesignDefaults.Detailing.bDeepBeamCheckMinPercentage →INI400_016286= _bDeepBeamCheckMinPercentage; 
+    DesignDefaults.Detailing.bDeepBeamCheckMaxSpacing →INI400_016304= _bDeepBeamCheckMaxSpacing; 
+    DesignDefaults.Detailing.bDeepBeamCheckMinBarDistance →INI400_016305= _bDeepBeamCheckMinBarDistance; 
+    
 } 
 
 //@Returns table with detailing setup 
@@ -113,225 +118,140 @@ private object GetDetailingSetupTable() {
 } 
 
 //------------------------------------------------------------
+//@FUNCTIONS
+
+private bool IsMaximumReinfToBeChecked(object ReinfLayer) { 
+    IF(DesignDefaults.Detailing.bDeepBeamCheckMinBarDistance &amp;&amp; (ReinfLayer.As_req &gt; 0 || ReinfLayer.As_det_min &gt; 0)) { return true; } 
+    return false; 
+} 
+
+private bool IsMinimumReinfToBeChecked(object ReinfLayer) { 
+    IF(DesignDefaults.Detailing.bDeepBeamCheckMaxSpacing) { return true; } 
+    IF(DesignDefaults.Detailing.bDeepBeamCheckMinPercentage &amp;&amp; ReinfLayer.As_req &gt; 0) { return true; } 
+    return false; 
+} 
+
+private bool IsMinimumReinfToBeChecked() { 
+    FOREACH(object ReinfLayer in DesignReinf) { 
+        IF(IsMinimumReinfToBeChecked(ReinfLayer)) { return true; } 
+    } 
+    return false; 
+} 
+
+private bool IsMaximumReinfToBeChecked() { 
+    FOREACH(object ReinfLayer in DesignReinf) { 
+        IF(IsMaximumReinfToBeChecked(ReinfLayer)) { return true; } 
+    } 
+    return false; 
+} 
+
+//@Checks minimum area of reinforcement from minimal percentage 
+private void CheckReinfFromMinPercentage(object ReinfLayer) { 
+    IF(DesignDefaults.Detailing.bDeepBeamCheckMinPercentage) { 
+        double&lt;mm,0&gt; b →KRS116_000016= 1.0; 
+        double&lt;mm↑2←,0&gt; A↓c← →INI400_016183= b*h; //b*h 
+        →INI400_016189double&lt;mm↑2←/m,1&gt; As_min; 
+        →INI400_016190TEXT("Minium area from reinforcement ratio"); 
+        object Input →KRS116_000010= new Structure("A_c", A↓c←); 
+        object Output →KRS116_000011= new Structure(); 
+        →KRS116_000013CL_9_7_1.Draw(Input, Output, 2); 
+        ReinfLayer.As_det_min →INI400_016192= MAX(ReinfLayer.As_det_min, Output.A_s_dbmin); 
+    } 
+} 
+
+//@Checks minimum area of reinforcement from maximal spacing of bars
+private void CheckReinfFromMaxBarDist(object ReinfLayer) { 
+    IF(DesignDefaults.Detailing.bDeepBeamCheckMaxSpacing) { 
+        double&lt;mm,0&gt; b →INI400_016219= 1.0; 
+        double&lt;mm,0&gt; ϕ →INI400_016220= ReinfLayer.ds; 
+        double π →INI400_016221= Math.PI; 
+        double Coeff →KRS116_000021= DesignDefaults.Detailing.coeff_s↓max,db←; 
+        double s↓max← →KRS116_000022= DesignDefaults.Detailing.s↓max,db←; 
+        
+        →INI400_016222TEXT("Minimum area from maximum spacing of reinforcement bars"); 
+        double&lt;mm,0&gt; s↓l,dbmax← →KRS116_000020= MIN(Coeff*h, s↓max←) @REF("(§9.7(2))"); 
+        double&lt;mm↑2←/m,0&gt; A↓s,min← →INI400_010437= (b/s↓l,dbmax←)*0.25*π*ϕ↑2←; 
+        ReinfLayer.As_det_min →KRS116_000070= MAX(ReinfLayer.As_det_min, A↓s,min←); 
+    } 
+} 
+
+//@Checks maximum area of reinforcement from minimal spacing of bars
+private void CheckReinfFromMinBarDist(object ReinfLayer) { 
+    IF(DesignDefaults.Detailing.bDeepBeamCheckMinBarDistance) { 
+        →INI400_016261TEXT("Maximum area from minimum clear spacing of reinforcement bars"); 
+        double&lt;mm,0&gt; s↓min,lim← →INI400_016265= 0; 
+        double&lt;mm,0&gt; ϕ →KRS116_000052= ReinfLayer.ds; 
+        →INI400_016278CL_8_2_2.CalcMinimumSpacing(ϕ, ConMat.dg, DesignDefaults.Detailing.s↓ldb,min←, false, out s↓min,lim←); 
+        double&lt;mm,0&gt; b →INI400_016274= 1.0; 
+        double π →INI400_016275= Math.PI; 
+        double&lt;mm↑2←/m,0&gt; A↓s,max← →INI400_016263= (b/(ϕ+s↓min,lim←))*0.25*π*ϕ↑2←; 
+        ReinfLayer.As_det_max →KRS116_000079= MAX(ReinfLayer.As_det_max, A↓s,max←); 
+    } 
+} 
+
+private void CheckMinimumReinf() { 
+    IF(IsMinimumReinfToBeChecked()) { 
+        →INI400_015193TEXT("Minimum reinforcement area"); 
+        FOREACH(object ReinfLayer in DesignReinf) { 
+            IF(IsMinimumReinfToBeChecked(ReinfLayer)) { 
+                →INI400_016186TEXT(ReinfLayer.Type); 
+                →INI400_016188TEXT(ReinfLayer.Descript); 
+                string Stress →INI400_016226= ReinfLayer.Tensile &gt; 0 ? TR("tension") : TR("compression"); 
+                →INI400_016225TEXT("(" &amp; Stress &amp; ")"); 
+                →KRS116_000025CheckReinfFromMinPercentage(ReinfLayer); 
+                →KRS116_000026CheckReinfFromMaxBarDist(ReinfLayer); 
+                →KRS116_000063PAGEBREAK(); 
+            } 
+        } 
+    } 
+} 
+
+private void CheckMaximumReinf() { 
+    IF(IsMaximumReinfToBeChecked()) { 
+        →INI400_016258TEXT("Maximum reinforcement area"); 
+        FOREACH(object ReinfLayer in DesignReinf) { 
+            IF(IsMinimumReinfToBeChecked(ReinfLayer)) { 
+                →KRS116_000071TEXT(ReinfLayer.Type); 
+                →KRS116_000072TEXT(ReinfLayer.Descript); 
+                string Stress →KRS116_000073= ReinfLayer.Tensile &gt; 0 ? TR("tension") : TR("compression"); 
+                →KRS116_000074TEXT("(" &amp; Stress &amp; ")"); 
+                →KRS116_000078CheckReinfFromMinBarDist(ReinfLayer); 
+                →KRS116_000077PAGEBREAK(); 
+            } 
+        } 
+    } 
+} 
+
+private void SetResultsForUT() { 
+    A↓s,min,1-← →INI400_016472= DesignReinf[0].As_det_min; 
+    A↓s,min,2-← →INI400_016473= DesignReinf[1].As_det_min; 
+    A↓s,min,1+← →INI400_016474= DesignReinf[2].As_det_min; 
+    A↓s,min,2+← →INI400_016475= DesignReinf[3].As_det_min; 
+    A↓s,max,1-← →INI400_016476= DesignReinf[0].As_det_max; 
+    A↓s,max,2-← →INI400_016477= DesignReinf[1].As_det_max; 
+    A↓s,max,1+← →INI400_016478= DesignReinf[2].As_det_max; 
+    A↓s,max,2+← →INI400_016479= DesignReinf[3].As_det_max; 
+} 
+
+//------------------------------------------------------------
 //@SCRIPT
 
 →INI400_016030LoadExterns(); 
-→INI400_016283LoadDefaultInputs(); 
+IF(!IO.IsExternCLC) { →INI400_016283LoadDefaultInputs(); } 
 
-IF(IO.LayoutIndex == 2 &amp;&amp; IO.IsDrawing) { 
-    →INI400_016142TEXT("Table of detailing checks from conrete settings"); 
-    →INI400_016141GetDetailingSetupTable().Draw(); 
-    →INI400_016257PAGEBREAK(); 
+→INI400_016194CheckMinimumReinf(); 
+→INI400_016259CheckMaximumReinf(); 
+
+
+//------------------------------------------------------------
+//@TEST IO
+IF(!IO.IsExternCLC) { 
+    →INI400_016463SetResultsForUT(); 
 } 
 
 
 
-
-
-
-//---OBSTACLE----
-//
-////Validates input of the form
-//bool ValidateInput(object Input) { 
-//    DetProvInputs →INI400_010811= new Structure(); 
-//    →INI400_010812DetProvInputs.Set("EWNBasicIndex", Input.Get("EWNBasicIndex")); 
-//    →INI400_010813DetProvInputs.Set("EWNAddDescription", Input.Get("EWNAddDescription")); 
-//    →INI400_010814DetProvInputs.Set("ReqReinfArea", Input.Get("ReqReinfArea")); 
-//    //
-//    →INI400_010815DetProvInputs.Set("N↓Ed←", Input.Get("N↓Ed←")); 
-//    →INI400_010816DetProvInputs.Set("f↓cd←", Input.Get("f↓cd←")); 
-//    →INI400_010817DetProvInputs.Set("f↓yd←", Input.Get("f↓yd←")); 
-//    →INI400_010818DetProvInputs.Set("t", Input.Get("t")); 
-//    →INI400_010821DetProvInputs.Set("A↓c←", Input.Get("A↓c←")); 
-//    →INI400_010823DetProvInputs.Set("ϕ", Input.Get("ϕ")); // reinf
-//    →INI400_010825DetProvInputs.Set("u_tot", Input.Get("u_tot")); 
-//    →INI400_010826DetProvInputs.Set("bThinWall", Input.Get("bThinWall")); 
-//    →INI400_010827DetProvInputs.Set("d_g", Input.Get("d_g")); 
-//    →INI400_010828DetProvInputs.Set("s_ldb_min", Input.Get("s_ldb_min")); 
-//    →INI400_010829DetProvInputs.Set("bLayer", Input.Get("bLayer")); 
-//    →INI400_010451DetProvInputs.Set("bDetProvNoLimit", Input.Get("bDetProvNoLimit")); 
-//    //    //
-//    →INI400_010831DetProvInputs.Set("bDeepBeamCheckMinPercentage", Input.Get("bDeepBeamCheckMinPercentage")); 
-//    →INI400_010832DetProvInputs.Set("bDeepBeamCheckMaxPercentage", Input.Get("bDeepBeamCheckMaxPercentage")); 
-//    →INI400_010833DetProvInputs.Set("bDeepBeamCheckMaxSpacing", Input.Get("bDeepBeamCheckMaxSpacing")); 
-//    →INI400_010834DetProvInputs.Set("bDeepBeamCheckMinBarDistance", Input.Get("bDeepBeamCheckMinBarDistance")); 
-//    return true; 
-//} 
-//
-////Returns output of the form 
-//object GetOutput() { 
-//    return DetProvResults; 
-//} 
-//
-////Calculates the form
-//void Calculate() { 
-//    IF(!IO.IsExternCLC) { 
-//        →INI400_010837PrepareUnitTest(); 
-//    } 
-//    //
-//    object DetProvFunct →INI400_010838= LoadExternCLC("EC_Concrete_Detailing_Functions.clc"); 
-//    object DetailingFunct →INI400_010839= LoadExternCLC("Detailing.clc"); 
-//    DetProvFunct.FunctionDetailing →INI400_010840= DetailingFunct; 
-//    
-//    DetProvResults →INI400_010841= new Structure(); 
-//    →INI400_010842DetProvFunct.PreprocessEWN(DetProvInputs, DetProvResults); 
-//    →INI400_010843DetProvFunct.PreprocessDeepBeam2DLongitReinfResults(DetProvInputs, DetProvResults); 
-//    
-//    IF(→INI400_010844DetProvInputs.bDeepBeamCheckMinPercentage) { 
-//        →INI400_010845DetProvFunct.CalcDeepBeam2DReinfFromMinPercent(DetProvInputs, DetProvResults); 
-//    } 
-//    
-//    IF(→INI400_010846DetProvInputs.bDeepBeamCheckMaxPercentage) { 
-//        →INI400_010847DetProvFunct.CalcDeepBeam2DReinfFromMaxPercent(DetProvInputs, DetProvResults); 
-//    } 
-//    
-//    IF(→INI400_010848DetProvInputs.bDeepBeamCheckMaxSpacing) { 
-//        →INI400_010849DetProvFunct.CalcDeepBeam2DReinfFromMaxSpacing(DetProvInputs, DetProvResults); 
-//    } 
-//    
-//    IF(→INI400_010850DetProvInputs.bDeepBeamCheckMinBarDistance) { 
-//        →INI400_010851DetProvFunct.CalcDeepBeamLongitReinfFromMinBarDist(DetProvInputs, DetProvResults); 
-//    } 
-//    
-//    →INI400_010232DetProvFunct.RecalcDeepBeam2DReinfFromMinRatioToEdges(DetProvInputs, DetProvResults); 
-//    →INI400_010597DetProvFunct.RecalcDeepBeam2DReinfMaxAreaToEdges(DetProvInputs, DetProvResults); 
-//    →INI400_010854DetProvFunct.ListDetailingDeepBeam2DReinf(DetProvResults); 
-//    
-//    IF(!IO.IsExternCLC) { 
-//        →INI400_010855RunUnitTest(); 
-//    } 
-//} 
-//
-//→INI400_010856Calculate(); 
-//
-////KRS: ToDo - Comparation and recalculation of req reinf with DetProv reinf
-//
-////----------------------------TESTING------------------------------//
-//
-////Prepares unit test data
-//void PrepareUnitTest() { 
-//    UnitTestData →INI400_010857= new Structure(); 
-//    //
-//    →INI400_010858UnitTestData.Set("EWNAddDescription", "DetProv.:"); 
-//    →INI400_010859UnitTestData.Set("EWNBasicIndex", 3); 
-//    →INI400_010860UnitTestData.Set("f↓cd←", 20000000); 
-//    →INI400_010861UnitTestData.Set("f↓yd←", 350000000); 
-//    →INI400_010862UnitTestData.Set("t", 0.18); 
-//    →INI400_010865UnitTestData.Set("N↓Ed←", 200000); 
-//    →INI400_010866UnitTestData.Set("A↓c←", 0.2); 
-//    →INI400_010868UnitTestData.Set("ϕ", 0.012); 
-//    →INI400_010870UnitTestData.Set("u_tot", 2.36); 
-//    →INI400_010871UnitTestData.Set("d_g", 0.032); 
-//    →INI400_010872UnitTestData.Set("s_ldb_min", 0.020); 
-//    →INI400_010873UnitTestData.Set("bLayer", False); 
-//    //    
-//    →INI400_010874UnitTestData.Set("bThinWall", false); 
-//    →INI400_010402UnitTestData.Set(→INI400_010403"bDetProvNoLimit", true); 
-//    //    //
-//    →INI400_010877UnitTestData.Set("bDeepBeamCheckMinPercentage", false); 
-//    →INI400_010878UnitTestData.Set("bDeepBeamCheckMaxPercentage", false); 
-//    →INI400_010879UnitTestData.Set("bDeepBeamCheckMaxSpacing", false); 
-//    →INI400_010880UnitTestData.Set("bDeepBeamCheckMinBarDistance", false); 
-//    //
-//    SWITCH(UnitTestID) { //prepare specific data for each UT 
-//        CASE 0 :  { →INI400_011017UT_MinReinfAreaFromMinRatio(); } 
-//        CASE 1 :  { →INI400_011018UT_MaxReinfAreaFromMaxRatio(); } 
-//        CASE 2 :  { →INI400_011020UT_MinReinfAreaFromMaxSpacing(); } 
-//        CASE 3 :  { →INI400_011022UT_MaxReinfAreaFromMinSpacing(); } 
-//        //        CASE 4 :  { →INI400_010887UT_MinBarDistance(); } 
-//        CASE 5 :  { →INI400_010888UT_DetProvAll(); } 
-//    } 
-//    //
-//    →INI400_010889ValidateInput(UnitTestData); 
-//} 
-//
-//void RunUnitTest() { 
-//    IF(!IO.IsExternCLC) { 
-//        object ReqReinfArea →INI400_010890= DetProvInputs.ReqReinfArea; 
-//        object SumReinfArea →INI400_010891= DetProvResults.SumReinfArea; 
-//        object MinReinfArea →INI400_010892= DetProvResults.MinReinfArea; 
-//        object MaxReinfArea →INI400_010893= DetProvResults.MaxReinfArea; 
-//        
-//        R01_ReqReinfArea →INI400_010894= "A↓s,req←[" &amp; round(ReqReinfArea[0].As, 6); 
-//        R02_SumReinfArea →INI400_010895= "A↓s,sum←[" &amp; round(SumReinfArea[0].As, 6); 
-//        R03_MinReinfArea →INI400_010896= "A↓s,det,min←[" &amp; round(MinReinfArea[0].As, 6); 
-//        R04_MaxReinfArea →INI400_010897= "A↓s,det,max←[" &amp; round(MaxReinfArea[0].As, 6); 
-//        
-//        FOR(i, 1, ReqReinfArea.Count-1) { 
-//            R01_ReqReinfArea →INI400_010898= R01_ReqReinfArea &amp; ", " &amp; round(ReqReinfArea[i].As, 6); 
-//            R02_SumReinfArea →INI400_010899= R02_SumReinfArea &amp; ", " &amp; round(SumReinfArea[i].As, 6); 
-//            R03_MinReinfArea →INI400_010900= R03_MinReinfArea &amp; ", " &amp; round(MinReinfArea[i].As, 6); 
-//            R04_MaxReinfArea →INI400_010901= R04_MaxReinfArea &amp; ", " &amp; round(MaxReinfArea[i].As, 6); 
-//        } 
-//        
-//        R01_ReqReinfArea →INI400_010902= R01_ReqReinfArea &amp; "]"; 
-//        R02_SumReinfArea →INI400_010903= R02_SumReinfArea &amp; "]"; 
-//        R03_MinReinfArea →INI400_010904= R03_MinReinfArea &amp; "]"; 
-//        R04_MaxReinfArea →INI400_010905= R04_MaxReinfArea &amp; "]"; 
-//    } 
-//} 
-//
-//void UT_MinReinfAreaFromMinRatio() { 
-//    object[] →INI400_010906ReqReinfArea →INI400_010907= new object[]; 
-//    →INI400_010908ReqReinfArea[0] →INI400_010909= new Structure("As", 0.0, "ds", 0.01, "IndexLo", 3, "IndexUp", 1, "MainVert", True, "Tensile", 2); 
-//    →INI400_010910ReqReinfArea[1] →INI400_010911= new Structure("As", 0.000400, "ds", 0.01, "IndexLo", 3, "IndexUp", 1, "MainVert", True, "Tensile", 1); 
-//    →INI400_010912ReqReinfArea[2] →INI400_010913= new Structure("As", 0.00017931, "ds", 0.01, "IndexLo", 3, "IndexUp", 1, "MainVert", True, "Tensile", 1); 
-//    →INI400_010914ReqReinfArea[3] →INI400_010915= new Structure("As", 0.0, "ds", 0.01, "IndexLo", 3, "IndexUp", 1, "MainVert", True, "Tensile", 0); 
-//    //
-//    →INI400_011011UnitTestData.Set(→INI400_011012"bDetProvNoLimit", true); 
-//    →INI400_011013UnitTestData.Set(→INI400_011014"ReqReinfArea", →INI400_011015ReqReinfArea); 
-//    →INI400_011016UnitTestData.Set("bDeepBeamCheckMinPercentage", true); 
-//} 
-//void UT_MaxReinfAreaFromMaxRatio() { 
-//    object[] →INI400_010923ReqReinfArea →INI400_010924= new object[]; 
-//    →INI400_010925ReqReinfArea[0] →INI400_010926= new Structure("As", 0.0, "ds", 0.01, "IndexLo", 3, "IndexUp", 1, "MainVert", True, "Tensile", 2); 
-//    →INI400_010927ReqReinfArea[1] →INI400_010928= new Structure("As", 0.003500, "ds", 0.01, "IndexLo", 3, "IndexUp", 1, "MainVert", True, "Tensile", 1); 
-//    →INI400_010929ReqReinfArea[2] →INI400_010930= new Structure("As", 0.005500, "ds", 0.01, "IndexLo", 3, "IndexUp", 1, "MainVert", True, "Tensile", 1); 
-//    →INI400_010931ReqReinfArea[3] →INI400_010932= new Structure("As", 0.0, "ds", 0.01, "IndexLo", 3, "IndexUp", 1, "MainVert", True, "Tensile", 0); 
-//    //
-//    →INI400_010933UnitTestData.Set(→INI400_010934"ReqReinfArea", →INI400_010935ReqReinfArea); 
-//    →INI400_010936UnitTestData.Set(→INI400_010937"bDetProvNoLimit", True); 
-//    →INI400_010938UnitTestData.Set("bDeepBeamCheckMaxPercentage", true); 
-//} 
-//void UT_MinReinfAreaFromMaxSpacing() { 
-//    object[] →INI400_010939ReqReinfArea →INI400_010940= new object[]; 
-//    →INI400_010941ReqReinfArea[0] →INI400_010942= new Structure("As", 0.0, "ds", 0.01, "IndexLo", 3, "IndexUp", 1, "MainVert", True, "Tensile", 2); 
-//    →INI400_010943ReqReinfArea[1] →INI400_010944= new Structure("As", 0.000400, "ds", 0.01, "IndexLo", 3, "IndexUp", 1, "MainVert", True, "Tensile", 1); 
-//    →INI400_010945ReqReinfArea[2] →INI400_010946= new Structure("As", 0.00017931, "ds", 0.01, "IndexLo", 3, "IndexUp", 1, "MainVert", True, "Tensile", 1); 
-//    →INI400_010947ReqReinfArea[3] →INI400_010948= new Structure("As", 0.0, "ds", 0.01, "IndexLo", 3, "IndexUp", 1, "MainVert", True, "Tensile", 0); 
-//    //
-//    →INI400_010949UnitTestData.Set(→INI400_010950"ReqReinfArea", →INI400_010951ReqReinfArea); 
-//    →INI400_010952UnitTestData.Set(→INI400_010953"bDetProvNoLimit", True); 
-//    →INI400_010954UnitTestData.Set("bDeepBeamCheckMaxSpacing", true); 
-//} 
-//void UT_MaxReinfAreaFromMinSpacing() { 
-//    object[] →INI400_010955ReqReinfArea →INI400_010956= new object[]; 
-//    →INI400_010957ReqReinfArea[0] →INI400_010958= new Structure("As", 0.0, "ds", 0.01, "IndexLo", 3, "IndexUp", 1, "MainVert", True, "Tensile", 2); 
-//    →INI400_010959ReqReinfArea[1] →INI400_010960= new Structure("As", 0.002500, "ds", 0.01, "IndexLo", 3, "IndexUp", 1, "MainVert", True, "Tensile", 1); 
-//    →INI400_010961ReqReinfArea[2] →INI400_010962= new Structure("As", 0.004000, "ds", 0.01, "IndexLo", 3, "IndexUp", 1, "MainVert", True, "Tensile", 1); 
-//    →INI400_010963ReqReinfArea[3] →INI400_010964= new Structure("As", 0.0, "ds", 0.01, "IndexLo", 3, "IndexUp", 1, "MainVert", True, "Tensile", 0); 
-//    //
-//    →INI400_010965UnitTestData.Set(→INI400_010966"ReqReinfArea", →INI400_010967ReqReinfArea); 
-//    →INI400_010968UnitTestData.Set(→INI400_010969"bDetProvNoLimit", True); 
-//    →INI400_010970UnitTestData.Set("bDeepBeamCheckMinBarDistance", true); 
-//} 
-//
-//void UT_DetProvAll() { 
-//    object[] →INI400_010987ReqReinfArea →INI400_010988= new object[]; 
-//    →INI400_010989ReqReinfArea[0] →INI400_010990= new Structure("As", 0.0, "ds", 0.01, "IndexLo", 3, "IndexUp", 1, "MainVert", True, "Tensile", 2); 
-//    →INI400_010991ReqReinfArea[1] →INI400_010992= new Structure("As", 0.000400, "ds", 0.01, "IndexLo", 3, "IndexUp", 1, "MainVert", True, "Tensile", 1); 
-//    →INI400_010993ReqReinfArea[2] →INI400_010994= new Structure("As", 0.00017931, "ds", 0.01, "IndexLo", 3, "IndexUp", 1, "MainVert", True, "Tensile", 1); 
-//    →INI400_010995ReqReinfArea[3] →INI400_010996= new Structure("As", 0.0, "ds", 0.01, "IndexLo", 3, "IndexUp", 1, "MainVert", True, "Tensile", 0); 
-//    //
-//    →INI400_011008UnitTestData.Set(→INI400_011009"bDetProvNoLimit", true); 
-//    →INI400_010997UnitTestData.Set(→INI400_010998"ReqReinfArea", →INI400_010999ReqReinfArea); 
-//    →INI400_011002UnitTestData.Set("bDeepBeamCheckMinPercentage", true); 
-//    →INI400_011003UnitTestData.Set("bDeepBeamCheckMaxPercentage", true); 
-//    →INI400_011004UnitTestData.Set("bDeepBeamCheckMaxSpacing", true); 
-//    →INI400_011005UnitTestData.Set("bDeepBeamCheckMinBarDistance", true); 
-//} 
-//
-//</SourceCode>
+</SourceCode>
   </CodeEditor>
   <Calculation>
     <Header NormCode="0" Member="1000" Material="0" CSType="-1" LimitState="0" IFFilter="0" LicenceID="10200" Autor="" Autor2="" Version="1" EWNSource="" Icon="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">
@@ -362,19 +282,122 @@ IF(IO.LayoutIndex == 2 &amp;&amp; IO.IsDrawing) {
     <NormRef>
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-      <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
-      <Variable Modifier="Public" Name="ConcreteData" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="_bDeepBeamCheckMaxSpacing" ESA_ID="" Type="Boolean">
+        <Description>
+          <ENU>_bDeepBeamCheckMaxSpacing</ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="_bDeepBeamCheckMinBarDistance" ESA_ID="" Type="Boolean">
+        <Description>
+          <ENU>_bDeepBeamCheckMinBarDistance</ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="_bDeepBeamCheckMinPercentage" ESA_ID="" Type="Boolean">
+        <Description>
+          <ENU>_bDeepBeamCheckMinPercentage</ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="_dialog_DesignReinf" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="A↓s,max,1+←" ESA_ID="Result.7" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
+        <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
+      </Variable>
+      <Variable Modifier="Public" Name="A↓s,max,1-←" ESA_ID="Result.5" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
+        <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
+      </Variable>
+      <Variable Modifier="Public" Name="A↓s,max,2+←" ESA_ID="Result.8" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
+        <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
+      </Variable>
+      <Variable Modifier="Public" Name="A↓s,max,2-←" ESA_ID="Result.6" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
+        <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
+      </Variable>
+      <Variable Modifier="Public" Name="A↓s,min,1+←" ESA_ID="Result.3" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
+        <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
+      </Variable>
+      <Variable Modifier="Public" Name="A↓s,min,1-←" ESA_ID="Result.1" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
+        <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
+      </Variable>
+      <Variable Modifier="Public" Name="A↓s,min,2+←" ESA_ID="Result.4" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
+        <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
+      </Variable>
+      <Variable Modifier="Public" Name="A↓s,min,2-←" ESA_ID="Result.2" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
+        <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
+      </Variable>
+      <Variable Modifier="Public" Name="CL_8_2_2" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="CL_9_7_1" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="ConMat" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="DesignDefaults" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="DesignReinf" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -404,12 +427,24 @@ IF(IO.LayoutIndex == 2 &amp;&amp; IO.IsDrawing) {
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="FUNCT_EWN" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+        <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
+      </Variable>
+      <Variable Modifier="Public" Name="obEWN" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
       </Variable>
     </Variables>
     <DrawingGroups />
@@ -449,14 +484,6 @@ IF(IO.LayoutIndex == 2 &amp;&amp; IO.IsDrawing) {
     </Layouts>
     <VisualComponents>
       <VC ID="">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_000000">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -560,15 +587,15 @@ IF(IO.LayoutIndex == 2 &amp;&amp; IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013597">
+      <VC ID="INI400_010437">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014800">
+      <VC ID="INI400_013597">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -592,13 +619,13 @@ IF(IO.LayoutIndex == 2 &amp;&amp; IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015112">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      <VC ID="INI400_015193">
+        <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_015991">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -623,6 +650,14 @@ IF(IO.LayoutIndex == 2 &amp;&amp; IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="231" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="231" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="231" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016007">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_016009">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -660,22 +695,6 @@ IF(IO.LayoutIndex == 2 &amp;&amp; IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_016141">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_016142">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -760,14 +779,6 @@ IF(IO.LayoutIndex == 2 &amp;&amp; IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016169">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_016171">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -784,15 +795,47 @@ IF(IO.LayoutIndex == 2 &amp;&amp; IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016237">
+      <VC ID="INI400_016183">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016186">
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="3" Font1="Segoe UI|12|0|2" Font2="Segoe UI|12|4|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016188">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016257">
+      <VC ID="INI400_016190">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016192">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016194">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -800,10 +843,122 @@ IF(IO.LayoutIndex == 2 &amp;&amp; IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016282">
+      <VC ID="INI400_016219">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016220">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016221">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016222">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016225">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016226">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016258">
+        <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016259">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016261">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016263">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016265">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016274">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016275">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016277">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="INI400_016278">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -824,11 +979,379 @@ IF(IO.LayoutIndex == 2 &amp;&amp; IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="INI400_016286">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016304">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016305">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016463">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016472">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016473">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016474">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016475">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016476">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016477">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016478">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016479">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000005">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000008">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7388" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7388" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7388" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="61.2" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000010">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000011">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000013">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000016">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000020">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="7403" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="7403" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="53.1" Y="50.6" Hor="4" Ver="2" SpX="15" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="930" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000021">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000022">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000025">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000026">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000052">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000063">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000070">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000071">
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="3" Font1="Segoe UI|12|0|2" Font2="Segoe UI|12|4|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000072">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000073">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000074">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000077">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000078">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000079">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI316_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
   <Dialog>
-    <Main Width="400">
+    <Main Width="730">
+      <TTabControl Name="" ID="151" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="32" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" Index="0" TabBG="-657931" SelTab="-1842205" Alignment="0">
+        <Texts>
+          <ENU>LONGITUDINAL|DETAILING</ENU>
+        </Texts>
+        <Tabs>
+          <Tab Text="LONGITUDINAL">
+            <TTableInput Name="" ID="152" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="29" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_DesignReinf" Value="[1-]|0|300|0|0|Vertical|True|1|180|10|0║[2-]|90|400|0|0|Horizontal|False|0|170|10|0║[1+]|0|500|0|0|Vertical|True|1|180|10|2║[2+]|90|600|0|0|Horizontal|False|0|170|10|2" CellBG="-1" HeaderBG="-986896" FixedRows="4">
+              <Texts>
+                <ENU>Layer|Alpha [°]|As,req [mm2/m]|As,det,min [mm2/m]|As,det,max [mm2/m]|Type|MainVert|Tensile|d [mm]|ds [mm]|Edge</ENU>
+              </Texts>
+              <Columns>
+                <Column Sort="False" Name="Descript" Description="Layer" Type="String" />
+                <Column Sort="False" Name="α" Description="Alpha [°]" Type="Numeric">
+                  <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
+                </Column>
+                <Column Sort="False" Name="As_req" Description="As,req [mm2/m]" Type="Numeric">
+                  <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
+                </Column>
+                <Column Sort="False" Name="As_det_min" Description="As,det,min [mm2/m]" Type="Numeric">
+                  <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
+                </Column>
+                <Column Sort="False" Name="As_det_max" Description="As,det,max [mm2/m]" Type="Numeric">
+                  <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
+                </Column>
+                <Column Sort="False" Name="Type" Description="Type" Type="String" />
+                <Column Sort="False" Name="MainVert" Description="MainVert" Type="Bool" />
+                <Column Sort="False" Name="Tensile" Description="Tensile" Type="Numeric">
+                  <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+                </Column>
+                <Column Sort="False" Name="d" Description="d [mm]" Type="Numeric">
+                  <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
+                </Column>
+                <Column Sort="False" Name="ds" Description="ds [mm]" Type="Numeric">
+                  <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
+                </Column>
+                <Column Sort="True" Name="Edge" Description="Edge" Type="Numeric">
+                  <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+                </Column>
+              </Columns>
+            </TTableInput>
+          </Tab>
+          <Tab Text="DETAILING">
+            <TCheckBox Name="" ID="156" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="34" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="150|23" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="_bDeepBeamCheckMinPercentage" BookMarkID="" ForeColor="-16711423" ChbRight="False">
+              <Texts TranslateID="DIALOG_000156">
+                <ENU>
+                </ENU>
+              </Texts>
+            </TCheckBox>
+            <TCheckBox Name="" ID="157" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="34" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="150|23" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="_bDeepBeamCheckMinBarDistance" BookMarkID="" ForeColor="-16711423" ChbRight="False">
+              <Texts TranslateID="DIALOG_000157">
+                <ENU>
+                </ENU>
+              </Texts>
+            </TCheckBox>
+            <TCheckBox Name="" ID="158" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="34" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="150|23" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="_bDeepBeamCheckMaxSpacing" BookMarkID="" ForeColor="-16711423" ChbRight="False">
+              <Texts TranslateID="DIALOG_000158">
+                <ENU>
+                </ENU>
+              </Texts>
+            </TCheckBox>
+          </Tab>
+        </Tabs>
+      </TTabControl>
+      <TDoubleInput Name="" ID="140" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="33" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="" VarNameVisible="True" UnitsVisible="True" InputColor="-1" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
       <TCustomLibrary Name="" ID="68" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="6" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" TargetNodeURL="REINF.EC" DataFile="EC_Reinf.xml" Collapsed="True" UseCombo="False" Category="Inclined top branch" Item="B 400 B">
         <Data>
           <Header>
@@ -1546,7 +2069,7 @@ IF(IO.LayoutIndex == 2 &amp;&amp; IO.IsDrawing) {
               <P>EC EN 1991-2</P>
               <P>EC EN 1991-3</P>
               <P>EC EN 1991-4</P>
-              <P>EC EN 1992-1-1</P>
+              <P>EC EN 1992-1-1:2004/AC:2008</P>
               <P>1</P>
               <P>1</P>
               <P>1.3</P>
@@ -1726,20 +2249,17 @@ IF(IO.LayoutIndex == 2 &amp;&amp; IO.IsDrawing) {
     <Item ID="BLOCK_INI400_015111">
       <ENU>"@VARIABLES"</ENU>
     </Item>
-    <Item TranslateID="STRING_1276E1F1">
-      <ENU>"Check maximum spacing of reinforcement"</ENU>
-    </Item>
     <Item TranslateID="STRING_1FFE0D07">
       <ENU>"Yes"</ENU>
+    </Item>
+    <Item TranslateID="STRING_3FE0138D">
+      <ENU>"tension"</ENU>
     </Item>
     <Item TranslateID="STRING_42B7DF84">
       <ENU>"Check maximum ratio of reinforcement"</ENU>
     </Item>
     <Item TranslateID="STRING_4622AF34">
       <ENU>"No"</ENU>
-    </Item>
-    <Item TranslateID="STRING_477F93E5">
-      <ENU>"Yes"</ENU>
     </Item>
     <Item TranslateID="STRING_6A50A91D">
       <ENU>"Check minimum clear bar distance"</ENU>
@@ -1750,32 +2270,35 @@ IF(IO.LayoutIndex == 2 &amp;&amp; IO.IsDrawing) {
     <Item TranslateID="STRING_7C415C83">
       <ENU>"Detailing checks / Deep beam"</ENU>
     </Item>
-    <Item TranslateID="STRING_86C4809E">
-      <ENU>"Check minimum ratio of reinforcement"</ENU>
-    </Item>
-    <Item TranslateID="STRING_9CAD2329">
-      <ENU>"Check maximum ratio of reinforcement"</ENU>
-    </Item>
-    <Item TranslateID="STRING_A5B0C00A">
-      <ENU>"No"</ENU>
-    </Item>
     <Item TranslateID="STRING_A64E5FD1">
       <ENU>"Check minimum ratio of reinforcement"</ENU>
-    </Item>
-    <Item TranslateID="STRING_B88EC6D0">
-      <ENU>"Detailing checks / Deep beam"</ENU>
     </Item>
     <Item TranslateID="STRING_BC2A2AA2">
       <ENU>"Check maximum spacing of reinforcement"</ENU>
     </Item>
-    <Item TranslateID="STRING_BD463DF1">
-      <ENU>"Check minimum clear bar distance"</ENU>
+    <Item TranslateID="STRING_E7E637A3">
+      <ENU>"compression"</ENU>
     </Item>
-    <Item TranslateID="STRING_F6CB9F74">
-      <ENU>"Value"</ENU>
+    <Item TranslateID="TEXT_INI400_015193">
+      <ENU>"Minimum reinforcement area"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_016142">
-      <ENU>"Table of detailing checks from conrete settings"</ENU>
+    <Item TranslateID="TEXT_INI400_016190">
+      <ENU>"Minium area from reinforcement ratio"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_INI400_016222">
+      <ENU>"Minimum area from maximum spacing of reinforcement bars"</ENU>
+    </Item>
+    <Item ID="TEXT_INI400_016225">
+      <ENU>"(" &amp; Stress &amp; ")"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_INI400_016258">
+      <ENU>"Maximum reinforcement area"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_INI400_016261">
+      <ENU>"Maximum area from minimum clear spacing of reinforcement bars"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS116_000074">
+      <ENU>"(" &amp; Stress &amp; ")"</ENU>
     </Item>
   </Texts>
 </Root>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="63"><StringCode SourceType="DLLRC:"><StringId>@{resultsesacmdsm.2eitm5046}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="65"><StringCode SourceType="DLLRC:"><StringId>@{resultsesacmdsm.2eitm5046}</StringId>
 		<SourceDll>ResultsESACmdsM.2eDLL</SourceDll>
 		<ResourceId>5046</ResourceId>
 	</StringCode>
@@ -18,6 +18,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{resultsesacmdsm.2eitm5005}</StringId>
 		<SourceDll>ResultsESACmdsM.2eDLL</SourceDll>
 		<ResourceId>5005</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{resultsesacmdsm.2eids_composite_beam_design_info}</StringId>
+		<SourceDll>ResultsESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30001</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{resultsesacmdsm.2eitm5044}</StringId>
 		<SourceDll>ResultsESACmdsM.2eDLL</SourceDll>
@@ -38,6 +42,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{resultsesacmdsm.2eitm5004}</StringId>
 		<SourceDll>ResultsESACmdsM.2eDLL</SourceDll>
 		<ResourceId>5004</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{resultsesacmdsm.2eids_virtual_joist_design_info}</StringId>
+		<SourceDll>ResultsESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30002</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{resultsesacmdsm.2eitm5043}</StringId>
 		<SourceDll>ResultsESACmdsM.2eDLL</SourceDll>

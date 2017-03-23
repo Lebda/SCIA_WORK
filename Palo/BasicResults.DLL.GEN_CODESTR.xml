@@ -715,10 +715,6 @@
 		<SourceDll>BasicResults.2eDLL</SourceDll>
 		<ResourceId>36319</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eids_external_section_check}</StringId>
-		<SourceDll>BasicResults.2eDLL</SourceDll>
-		<ResourceId>9151</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eids_se_design_as_crack}</StringId>
 		<SourceDll>BasicResults.2eDLL</SourceDll>
 		<ResourceId>30068</ResourceId>
@@ -742,6 +738,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eids_def_total_val}</StringId>
 		<SourceDll>BasicResults.2eDLL</SourceDll>
 		<ResourceId>29330</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eids_external_section_check}</StringId>
+		<SourceDll>BasicResults.2eDLL</SourceDll>
+		<ResourceId>9151</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eima9018}</StringId>
 		<SourceDll>BasicResults.2eDLL</SourceDll>

@@ -1,7 +1,5 @@
 HookDll.dll
 CICMemoryTracker.dll
-ESAAtl80.dll
-ESAAtl80MBCS.dll
 logger.dll
 ZenSupp.dll
 CIC_ComDebugger.dll
@@ -222,6 +220,7 @@ EP_NationalAnnices.dll
 EP_ProjectDataDialog.dll
 TableInput.dll
 TableResults.dll
+EP_DrawingTools_Cmds.dll
 EP_DsPrima.dll
 TemplTrn.dll
 EP_Export.dll
@@ -247,7 +246,6 @@ SteelInput_Cmds.dll
 EP_SteelConnections_Cmds.dll
 SteelCheckESACmdsM.dll
 SteelInput_CmdsM.dll
-EP_DrawingTools_Cmds.dll
 EP_DrawingTools_CmdsM.dll
 EP_DimensionLine2DService.dll
 EP_DimensionLine2DServiceM.dll
@@ -574,7 +572,6 @@ UT_SolverLinkSlabTests.dll
 UT_SolverLinkLoadTests.dll
 UTBAR_ExportToMaxFrank.dll
 UTBAR_DesignGroups.dll
-GallowTree.dll
 ESA_Processor_UT.dll
 UT_BasicForceDeformation.dll
 UT_ImportIFCProperties.dll
@@ -583,13 +580,10 @@ XEP_ProjectRepository_UT.dll
 UT_TRE_CMQuestion.dll
 UT_ECTools.dll
 UTFIL_Units2XML.dll
+BimPlusToSEN.dll
 SEN_NET_Wraper.dll
 Macrobot.dll
 Example_ESACOM_Multithread.dll
 EP_ComponentCmdsGUI.dll
-DocCtrl.dll
-EP_ConSectionCheck.dll
+XEP_NexisMock.dll
 FLBTiiCls.dll
-iBolt.dll
-iPun.dll
-Nessie.dll

@@ -114,7 +114,6 @@ DL70BIBUtils.dll
 DL70CoolType.dll
 DL70JP2KLib.dll
 DL70PDFL.dll
-DocCtrl.dll
 DocGenSettings.txt
 DocumentFormat.OpenXml.dll
 doxygen.exe
@@ -134,14 +133,12 @@ bimplus.sdk.api.dll
 bimplus.sdk.data.dll
 bimplus.sdk.ifcdata.dll
 bimplus.sdk.utilities.dll
-bimplustosen.dll
 db\EP_BoltAssembly.db4
 set\EP_CalcSetup.set
 EP_ComponentCmdsRegSvr.exe
 db\EP_CompositeShearConnectors.db4
 set\EP_Connection.set
 set\EP_ConnectionDIN.set
-EP_ConSectionCheck.dll
 set\EP_DefaultSettingsDirectories.set
 set\EP_DefaultSettingsEnviroment.set
 set\EP_DefaultSettingsOverviewDrawings.set
@@ -200,10 +197,8 @@ ppattribpicturetype3.dll
 ppattribpicturetype7.dll
 protobuf-net.dll
 EP_regsvr32.exe
-EP_Regsvr32_71.exe
 db\EP_ReinfoMeshType.db4
 rgiesecke.dllexport.metadata.dll
-sciabimplus.dll
 db\EP_ShearConnectors.db4
 slimdx.dll
 db\EP_Soil.db4
@@ -227,7 +222,6 @@ Esac_1B.dat
 ep_regsvr32.exe Esa.exe
 set\ESA_AdvancedGraphicSetup.set
 set\ESA_ConnectStructureSetup.set
-ESA.chm
 set\ESA_Upgrade2Dto1DSetup.set
 xml\esa_xml_def.xsd
 etabs.tdx
@@ -252,10 +246,8 @@ GepInstall.exe
 GepNexVC.dll
 ProfileLibrary\German.FIL
 set\IBC.set
-iBolt.dll
 iconv.dll
 IFC_2X3_Schema.exp
-iform.dll.CODESTRREG
 IFXCore.dll
 Plugins\IFXExporting.dll
 Plugins\IFXImporting.dll
@@ -272,7 +264,6 @@ Interop.EP_MEMARCHIVELib.dll
 Interop.EP_XMLEXCHANGELib.dll
 Interop.GRIDBASELib.dll
 Interop.UNITLib.dll
-iPun.dll
 ProfileLibrary\Japanese.FIL
 libclang.dll
 license.txt
@@ -301,7 +292,6 @@ ModellerR.lt
 Moq.dll
 MWellCalc.dll
 set\NEN.set
-Nessie.dll
 BimPlus\Newtonsoft.Json.dll
 NOTICE.txt
 nunit-agent-x86.exe.config
@@ -1407,6 +1397,7 @@ DocumentDefaults\SteelConnection.EP_PinBolts [Default].TLX
 DocumentDefaults\SteelConnection.EP_PinPlate [Default].TLX
 DocumentDefaults\SteelConnection.EP_ShearIron [Default].TLX
 DocumentDefaults\SteelConnection.EP_Stiffener [Default].TLX
+DocumentDefaults\SteelConnection.EP_TrussConnection_ResultShell-(ResultMain) [Default].TLX
 DocumentDefaults\SteelConnection.EP_Webdoubler [Default].TLX
 DocumentDefaults\TimberCheckEsa.10.00.TimberULSCheckResData [Default].TLX
 DocumentDefaults\TimberCheckEsa.10.00.TimberULSCheckResultsPresent-(IPFile) [Default].TLX
@@ -1586,6 +1577,7 @@ DocumentDefaults\{6C0ED32A-FCEB-4688-8E23-D164644F4DF3} [Default].TLX
 DocumentDefaults\{6CB61D8E-5815-EE33-58CA-246248ABBC65}-(ResultMain) [Default].TLX
 DocumentDefaults\{6CDFD750-1E0C-44EC-B572-17B3DE950AB6} [Default].TLX
 DocumentDefaults\{6D531C87-9E17-446B-9FA9-AA860AF297FC} [Default].TLX
+DocumentDefaults\{6D863BEB-D98C-4D5E-8320-9FD0F66A493C}-(IPFile) [Default].TLX
 DocumentDefaults\{6DD35FBB-2A9C-26C9-B29A-BE269B059924} [Default].TLX
 DocumentDefaults\{6DD41EAB-1BDC-30E4-ACF3-E3AED4E94E62} [Default].TLX
 DocumentDefaults\{6E1B6CE5-58F2-4C38-BB57-462435552173}-(IPFile) [Default].TLX
@@ -1725,6 +1717,7 @@ DocumentDefaults\{C5FB866D-33DE-460E-97D1-09D91F9B2688} [Default].TLX
 DocumentDefaults\{C619365D-EB30-BD01-9A9E-DB11DBE7DA25} [Default].TLX
 DocumentDefaults\{C64E6250-B469-11D6-AB9F-0050FC1D5C09} [Default].TLX
 DocumentDefaults\{C848D417-5328-6DE9-517D-12E0534A4AA6}-(ResultMain) [Default].TLX
+DocumentDefaults\{C896C984-063C-4632-AB66-A52636C4D8FF} [Default].TLX
 DocumentDefaults\{C8C4BDBB-5171-422A-A105-1A0D4899B727} [Default].TLX
 DocumentDefaults\{C9A26F98-C2DF-3835-3841-6F93DCA72F41}-(ResultMain) [Default].TLX
 DocumentDefaults\{C9D51781-0853-776F-AB83-8EBDE2BEC927}-(IPFile) [Default].TLX
@@ -2414,13 +2407,16 @@ OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_Column.CLS
 OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_Column_Shear.CLS
 OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_Column_Shear.TestIO
 OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_DeepBeam.cls
+OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_DeepBeam.TestIO
 OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_Plate.cls
 OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_Plate.TestIO
 OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_Plate_Shear.cls
+OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_Plate_Shear.TestIO
 OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_SEN_Check.cls
 OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_Wall.cls
 OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_Wall.TestIO
 OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_Wall_Shear.cls
+OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_Wall_Shear.TestIO
 OpenChecks\Forms\Concrete\EC_Concrete_Forces2D.cls
 OpenChecks\Forms\Concrete\EC_Concrete_Forces2D_SEN.cls
 OpenChecks\Forms\Concrete\EC_Concrete_Forces_2D.cls
@@ -3284,7 +3280,6 @@ SafetyFrame.dll
 UnitTestFramework.dll
 TCPTools.dll
 RPC.dll
-PDFCreatorPilot_Integration
 UTF.exe
 UnitTestBase.dll
 ESAAutomation.dll
@@ -3523,6 +3518,7 @@ EP_NationalAnnices.dll
 EP_ProjectDataDialog.dll
 TableInput.dll
 TableResults.dll
+EP_DrawingTools_Cmds.dll
 EP_DsPrima.dll
 TemplTrn.dll
 EP_Export.dll
@@ -3549,7 +3545,6 @@ SteelInput_Cmds.dll
 EP_SteelConnections_Cmds.dll
 SteelCheckESACmdsM.dll
 SteelInput_CmdsM.dll
-EP_DrawingTools_Cmds.dll
 EP_DrawingTools_CmdsM.dll
 EP_DimensionLine2DService.dll
 EP_DimensionLine2DServiceM.dll
@@ -3806,6 +3801,7 @@ OdaPoirotTest.dll
 OdaPoirotTestM.dll
 UTLAT_BaseSupport.dll
 UTLAT_IntegrationTests.dll
+EP_BasicTypesTests.dll
 UT_GeometryHelper.dll
 DraTest.dll
 UTMaterial.dll
@@ -3910,7 +3906,6 @@ UT_SolverLinkSlabTests.dll
 UT_SolverLinkLoadTests.dll
 UTBAR_ExportToMaxFrank.dll
 UTBAR_DesignGroups.dll
-GallowTree.dll
 ESA_Processor_UT.dll
 UT_BasicForceDeformation.dll
 UT_ImportIFCProperties.dll
@@ -3919,8 +3914,8 @@ XEP_ProjectRepository_UT.dll
 UT_TRE_CMQuestion.dll
 UT_ECTools.dll
 UTFIL_Units2XML.dll
-IntegerCast_MSUT.dll
 SCIABimPlus.dll
+BimPlusToSEN.dll
 SEN_NET_Wraper.dll
 XEP_SectionCheck.exe
 XEP_LanguageResources.dll
@@ -3984,7 +3979,10 @@ EP_GUISniffer.exe
 XEP_StringCodeGenerator.exe
 XEP_DocumentDefaults
 EP_OpenCheckDbBuilder.exe
+XEP_NexisMock.dll
 _GO_Build_ALL
+ESAAtl80_09.dll
+ESAAtl80MBCS_09.dll
 BCGCBPRO2440u140_09.dll
 EP_Archive_09.dll
 EP_BasicTypes_09.dll
@@ -4155,6 +4153,7 @@ EP_NationalAnnices_09.dll
 EP_ProjectDataDialog_09.dll
 TableInput_09.dll
 TableResults_09.dll
+EP_DrawingTools_Cmds_09.dll
 EP_DsPrima_09.dll
 EP_Export_09.dll
 EP_PicturesGalery_AddIns_ESA_09.dll
@@ -4178,7 +4177,6 @@ SteelInput_Cmds_09.dll
 EP_SteelConnections_Cmds_09.dll
 SteelCheckESACmdsM_09.dll
 SteelInput_CmdsM_09.dll
-EP_DrawingTools_Cmds_09.dll
 EP_DrawingTools_CmdsM_09.dll
 EP_DimensionLine2DService_09.dll
 EP_DimensionLine2DServiceM_09.dll
@@ -4405,10 +4403,11 @@ pBatchOptimizer_09.dll
 pTemplateBlocks_09.dll
 OdaPoirotTest_09.dll
 OdaPoirotTestM_09.dll
+EP_BasicTypesTests_09.dll
 EasyDsObjects_09.dll
-IntegerCast_MSUT_09.dll
 Example_ESACOM_Multithread_09.dll
 EP_ComponentCmdsGUI_09.dll
+XEP_NexisMock_09.dll
 A_P.reg.txt
 A_P.reg.bat
 A_P.reg.builder.bat

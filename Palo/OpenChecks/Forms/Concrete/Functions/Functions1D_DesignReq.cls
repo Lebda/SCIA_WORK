@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="237c0f37-8e1a-41a6-aadf-a3b8bf862bcf">
   <CodeEditor>
-    <SourceCode Collapsed="1|57|62|90|95|125|130|155|210|334|361|396|457|515|550|588|601|628|649|700|747|756|778|792|835|868|887|932|1029|1050|1078|1140|1273|1296|1310|1321|1337|1348|1364|1372|1383|1425|1464|1515|1539|1567|1613|1641|1670|1749|1781|1831|1851|1875|1890|1905|1918|1935|1958|1975|2013|2014|2081|2111|2125|2126|2136|2153|2216|2247|2268|2292|2310|2329|2370|2386|2397|2414|2435|2456|2516|2551|2575|2603|2624|2649|2667|2686|2726|2727|2743|2756|2775|2795|2817|2875|2925|3000|3025|3105|3118|3141|3159|3172|3187|3202|3216|3227|3320|3414|3423|3434|3450|3506|3512|3563|3578" BreakPoints="">→INI400_013605BLOCK("Function for preparation ReqReinfMat and ReqReinfDiagram") { 
+    <SourceCode Collapsed="1|57|62|90|95|125|130|155|210|334|361|396|457|515|550|588|601|628|649|700|747|756|778|792|835|868|887|891|969|973|1123|1144|1172|1234|1367|1390|1404|1415|1431|1442|1458|1466|1477|1519|1558|1609|1633|1661|1707|1735|1764|1843|1875|1925|1945|1969|1984|1999|2012|2029|2052|2069|2107|2108|2175|2205|2220|2230|2247|2310|2341|2362|2386|2404|2423|2464|2480|2491|2508|2529|2549|2550|2614|2649|2673|2701|2722|2747|2765|2784|2824|2825|2841|2854|2873|2893|2911|2973|3023|3098|3123|3203|3216|3240|3258|3271|3286|3301|3315|3326|3419|3512|3513|3522|3532|3533|3548|3549|3604|3605|3611|3662|3681|3694" BreakPoints="">→INI400_013605BLOCK("Function for preparation ReqReinfMat and ReqReinfDiagram") { 
     object GetReqReinfMat() { 
         object ReqReinfMat →INI400_013912= null; 
         
@@ -889,144 +889,238 @@
 
 →INI400_008991BLOCK("Function write summary area of reinforcement") { 
     void WriteSummaryReinArea(object SummaryArea, object SumProvReinf) { 
+        →KRS116_000147WriteSummaryReinArea(SummaryArea, SumProvReinf, true); 
+    } 
+    
+    void WriteSummaryReinArea(object SummaryArea, object SumProvReinf, bool UseProvReinf) { 
         →INI400_008992TEXT("Summary of reinforcement"); 
-        SWITCH(IO.CS.Geometry.FormCode) { 
-            CASE 2002 :  { 
-                →INI400_009985TEXT("Total :"); 
-                →INI400_009986TEXT("A↓s.req← = " &amp; Val(SummaryArea.Req.As*1000000, 3) &amp; " mm↑2←"); 
-                →KRS127_000071TEXT("A↓s.prov← = " &amp; Val(SumProvReinf.As*1000000, 3) &amp; " mm↑2←"); 
+        IF(UseProvReinf) { 
+            SWITCH(IO.CS.Geometry.FormCode) { 
+                CASE 2002 :  { 
+                    →INI400_009985TEXT("Total :"); 
+                    →INI400_009986TEXT("A↓s.req← = " &amp; Val(SummaryArea.Req.As*1000000, 3) &amp; " mm↑2←"); 
+                    →KRS127_000071TEXT("A↓s.prov← = " &amp; Val(SumProvReinf.As*1000000, 3) &amp; " mm↑2←"); 
+                } 
+                CASE 2008 :  { 
+                    →INI400_009987TEXT("Total vertical :"); 
+                    →INI400_010091TEXT("A↓sz.req← = " &amp; Val(SummaryArea.Req.As_z*1000000, 3) &amp; " mm↑2←"); 
+                    →KRS127_000068TEXT("A↓sz.prov← = " &amp; Val(SumProvReinf.As_z*1000000, 3) &amp; " mm↑2←"); 
+                    →INI400_010092TEXT("Total horizontal :"); 
+                    →INI400_010093TEXT("A↓sy.req← = " &amp; Val(SummaryArea.Req.As_y*1000000, 3) &amp; " mm↑2←"); 
+                    →KRS127_000069TEXT("A↓sy.prov← = " &amp; Val(SumProvReinf.As_y*1000000, 3) &amp; " mm↑2←"); 
+                    →INI400_010094TEXT("Total :"); 
+                    →INI400_010095TEXT("A↓s.req← = " &amp; Val(SummaryArea.Req.As*1000000, 3) &amp; " mm↑2←"); 
+                    →KRS127_000070TEXT("A↓s.prov← = " &amp; Val(SumProvReinf.As*1000000, 3) &amp; " mm↑2←"); 
+                } 
+                DEFAULT :  { 
+                    →INI400_009979TEXT("Top :"); 
+                    →INI400_010096TEXT("A↓sz.req+← = " &amp; Val(SummaryArea.Req.As_zpos*1000000, 3) &amp; " mm↑2←"); 
+                    →KRS127_000001TEXT("A↓sz.prov+← = " &amp; Val(SumProvReinf.As_zpos*1000000, 3) &amp; " mm↑2←"); 
+                    →INI400_009980TEXT("Bottom :"); 
+                    →INI400_010097TEXT("A↓sz.req-← = " &amp; Val(SummaryArea.Req.As_zneg*1000000, 3) &amp; " mm↑2←"); 
+                    →KRS127_000002TEXT("A↓sz.prov-← = " &amp; Val(SumProvReinf.As_zneg*1000000, 3) &amp; " mm↑2←"); 
+                    →INI400_009981TEXT("Right :"); 
+                    →INI400_010098TEXT("A↓sy.req+← = " &amp; Val(SummaryArea.Req.As_ypos*1000000, 3) &amp; " mm↑2←"); 
+                    →KRS127_000003TEXT("A↓sy.prov+← = " &amp; Val(SumProvReinf.As_ypos*1000000, 3) &amp; " mm↑2←"); 
+                    →INI400_010099TEXT("Left :"); 
+                    →INI400_010100TEXT("A↓sy.req-← = " &amp; Val(SummaryArea.Req.As_yneg*1000000, 3) &amp; " mm↑2←"); 
+                    →KRS127_000004TEXT("A↓sy.prov-← = " &amp; Val(SumProvReinf.As_yneg*1000000, 3) &amp; " mm↑2←"); 
+                    →INI400_009983TEXT("Total vertical :"); 
+                    →INI400_010101TEXT("A↓sz.req← = " &amp; Val(SummaryArea.Req.As_z*1000000, 3) &amp; " mm↑2←"); 
+                    →KRS127_000005TEXT("A↓sz.prov← = " &amp; Val(SumProvReinf.As_z*1000000, 3) &amp; " mm↑2←"); 
+                    →INI400_009984TEXT("Total horizontal :"); 
+                    →INI400_010102TEXT("A↓sy.req← = " &amp; Val(SummaryArea.Req.As_y*1000000, 3) &amp; " mm↑2←"); 
+                    →KRS127_000006TEXT("A↓sy.prov← = " &amp; Val(SumProvReinf.As_y*1000000, 3) &amp; " mm↑2←"); 
+                    →INI400_010103TEXT("Total :"); 
+                    →INI400_010104TEXT("A↓s.req← = " &amp; Val(SummaryArea.Req.As*1000000, 3) &amp; " mm↑2←"); 
+                    →KRS127_000007TEXT("A↓s.prov← = " &amp; Val(SumProvReinf.As*1000000, 3) &amp; " mm↑2←"); 
+                } 
             } 
-            CASE 2008 :  { 
-                →INI400_009987TEXT("Total vertical :"); 
-                →INI400_010091TEXT("A↓sz.req← = " &amp; Val(SummaryArea.Req.As_z*1000000, 3) &amp; " mm↑2←"); 
-                →KRS127_000068TEXT("A↓sz.prov← = " &amp; Val(SumProvReinf.As_z*1000000, 3) &amp; " mm↑2←"); 
-                →INI400_010092TEXT("Total horizontal :"); 
-                →INI400_010093TEXT("A↓sy.req← = " &amp; Val(SummaryArea.Req.As_y*1000000, 3) &amp; " mm↑2←"); 
-                →KRS127_000069TEXT("A↓sy.prov← = " &amp; Val(SumProvReinf.As_y*1000000, 3) &amp; " mm↑2←"); 
-                →INI400_010094TEXT("Total :"); 
-                →INI400_010095TEXT("A↓s.req← = " &amp; Val(SummaryArea.Req.As*1000000, 3) &amp; " mm↑2←"); 
-                →KRS127_000070TEXT("A↓s.prov← = " &amp; Val(SumProvReinf.As*1000000, 3) &amp; " mm↑2←"); 
-            } 
-            DEFAULT :  { 
-                →INI400_009979TEXT("Top :"); 
-                →INI400_010096TEXT("A↓sz.req+← = " &amp; Val(SummaryArea.Req.As_zpos*1000000, 3) &amp; " mm↑2←"); 
-                →KRS127_000001TEXT("A↓sz.prov+← = " &amp; Val(SumProvReinf.As_zpos*1000000, 3) &amp; " mm↑2←"); 
-                →INI400_009980TEXT("Bottom :"); 
-                →INI400_010097TEXT("A↓sz.req-← = " &amp; Val(SummaryArea.Req.As_zneg*1000000, 3) &amp; " mm↑2←"); 
-                →KRS127_000002TEXT("A↓sz.prov-← = " &amp; Val(SumProvReinf.As_zneg*1000000, 3) &amp; " mm↑2←"); 
-                →INI400_009981TEXT("Right :"); 
-                →INI400_010098TEXT("A↓sy.req+← = " &amp; Val(SummaryArea.Req.As_ypos*1000000, 3) &amp; " mm↑2←"); 
-                →KRS127_000003TEXT("A↓sy.prov+← = " &amp; Val(SumProvReinf.As_ypos*1000000, 3) &amp; " mm↑2←"); 
-                →INI400_010099TEXT("Left :"); 
-                →INI400_010100TEXT("A↓sy.req-← = " &amp; Val(SummaryArea.Req.As_yneg*1000000, 3) &amp; " mm↑2←"); 
-                →KRS127_000004TEXT("A↓sy.prov-← = " &amp; Val(SumProvReinf.As_yneg*1000000, 3) &amp; " mm↑2←"); 
-                →INI400_009983TEXT("Total vertical :"); 
-                →INI400_010101TEXT("A↓sz.req← = " &amp; Val(SummaryArea.Req.As_z*1000000, 3) &amp; " mm↑2←"); 
-                →KRS127_000005TEXT("A↓sz.prov← = " &amp; Val(SumProvReinf.As_z*1000000, 3) &amp; " mm↑2←"); 
-                →INI400_009984TEXT("Total horizontal :"); 
-                →INI400_010102TEXT("A↓sy.req← = " &amp; Val(SummaryArea.Req.As_y*1000000, 3) &amp; " mm↑2←"); 
-                →KRS127_000006TEXT("A↓sy.prov← = " &amp; Val(SumProvReinf.As_y*1000000, 3) &amp; " mm↑2←"); 
-                →INI400_010103TEXT("Total :"); 
-                →INI400_010104TEXT("A↓s.req← = " &amp; Val(SummaryArea.Req.As*1000000, 3) &amp; " mm↑2←"); 
-                →KRS127_000007TEXT("A↓s.prov← = " &amp; Val(SumProvReinf.As*1000000, 3) &amp; " mm↑2←"); 
+        } ELSE { 
+            SWITCH(IO.CS.Geometry.FormCode) { 
+                CASE 2002 :  { 
+                    →KRS116_000045TEXT("Total :"); 
+                    →KRS116_000046TEXT("A↓s.req← = " &amp; Val(SummaryArea.Req.As*1000000, 3) &amp; " mm↑2←"); 
+                } 
+                CASE 2008 :  { 
+                    →KRS116_000048TEXT("Total vertical :"); 
+                    →KRS116_000049TEXT("A↓sz.req← = " &amp; Val(SummaryArea.Req.As_z*1000000, 3) &amp; " mm↑2←"); 
+                    →KRS116_000051TEXT("Total horizontal :"); 
+                    →KRS116_000052TEXT("A↓sy.req← = " &amp; Val(SummaryArea.Req.As_y*1000000, 3) &amp; " mm↑2←"); 
+                    →KRS116_000054TEXT("Total :"); 
+                    →KRS116_000055TEXT("A↓s.req← = " &amp; Val(SummaryArea.Req.As*1000000, 3) &amp; " mm↑2←"); 
+                } 
+                DEFAULT :  { 
+                    →KRS116_000057TEXT("Top :"); 
+                    →KRS116_000058TEXT("A↓sz.req+← = " &amp; Val(SummaryArea.Req.As_zpos*1000000, 3) &amp; " mm↑2←"); 
+                    →KRS116_000060TEXT("Bottom :"); 
+                    →KRS116_000061TEXT("A↓sz.req-← = " &amp; Val(SummaryArea.Req.As_zneg*1000000, 3) &amp; " mm↑2←"); 
+                    →KRS116_000063TEXT("Right :"); 
+                    →KRS116_000064TEXT("A↓sy.req+← = " &amp; Val(SummaryArea.Req.As_ypos*1000000, 3) &amp; " mm↑2←"); 
+                    →KRS116_000066TEXT("Left :"); 
+                    →KRS116_000067TEXT("A↓sy.req-← = " &amp; Val(SummaryArea.Req.As_yneg*1000000, 3) &amp; " mm↑2←"); 
+                    →KRS116_000069TEXT("Total vertical :"); 
+                    →KRS116_000070TEXT("A↓sz.req← = " &amp; Val(SummaryArea.Req.As_z*1000000, 3) &amp; " mm↑2←"); 
+                    →KRS116_000072TEXT("Total horizontal :"); 
+                    →KRS116_000073TEXT("A↓sy.req← = " &amp; Val(SummaryArea.Req.As_y*1000000, 3) &amp; " mm↑2←"); 
+                    →KRS116_000075TEXT("Total :"); 
+                    →KRS116_000076TEXT("A↓s.req← = " &amp; Val(SummaryArea.Req.As*1000000, 3) &amp; " mm↑2←"); 
+                } 
             } 
         } 
     } 
     
     void WriteSummaryReinAreaFull(object SummaryAreaFin, object SummaryAreaPract, object SumBasicProvReinf, object SumAdditionalProvReinf, object SumAdditionalReinf, object SumProvReinf) { 
+        →KRS116_000148WriteSummaryReinAreaFull(SummaryAreaFin, SummaryAreaPract, SumBasicProvReinf, SumAdditionalProvReinf, SumAdditionalReinf, SumProvReinf, true); 
+    } 
+    
+    void WriteSummaryReinAreaFull(object SummaryAreaFin, object SummaryAreaPract, object SumBasicProvReinf, object SumAdditionalProvReinf, object SumAdditionalReinf, object SumProvReinf, bool UseProvReinf) { 
         object FontsColors →KRS127_000072= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.CLC"); 
         object FontsAndColors →KRS127_000073= FontsColors.GetFontsAndColors(); 
         →KRS127_000148TEXT("Summary of reinforcement"); 
-        object T →KRS127_000074= new Table(7); 
-        //column header
-        T[0][1].Value →KRS127_000076= "A↓s.req←&lt;BR&gt;[mm↑2←]"; 
-        T[0][2].Value →KRS127_000077= "A↓s.req.bar←&lt;BR&gt;[mm↑2←]"; 
-        T[0][3].Value →KRS127_000079= "A↓s.bas.prov←&lt;BR&gt;[mm↑2←]"; 
-        T[0][4].Value →KRS127_000078= "A↓s.add.prov←&lt;BR&gt;[mm↑2←]"; 
-        T[0][5].Value →KRS127_000080= "A↓s.add.req←&lt;BR&gt;[mm↑2←]"; 
-        T[0][6].Value →KRS127_000081= "A↓s.prov←&lt;BR&gt;[mm↑2←]"; 
-        
-        //row header
-        T[1][0].Value →KRS127_000082= TR("Top"); 
-        T[2][0].Value →KRS127_000083= TR("Bottom"); 
-        T[3][0].Value →KRS127_000084= TR("Right"); 
-        T[4][0].Value →KRS127_000085= TR("Left"); 
-        T[5][0].Value →KRS127_000086= TR("Total vertical"); 
-        T[6][0].Value →KRS127_000087= TR("Total horizontal"); 
-        T[7][0].Value →KRS127_000088= TR("Total"); 
-        
-        //A↓s.req←
-        T[1][1].Value →KRS127_000106= SummaryAreaFin.Req.As_zpos*1000000; 
-        T[2][1].Value →KRS127_000107= SummaryAreaFin.Req.As_zneg*1000000; 
-        T[3][1].Value →KRS127_000108= SummaryAreaFin.Req.As_ypos*1000000; 
-        T[4][1].Value →KRS127_000109= SummaryAreaFin.Req.As_yneg*1000000; 
-        T[5][1].Value →KRS127_000110= SummaryAreaFin.Req.As_z*1000000; 
-        T[6][1].Value →KRS127_000111= SummaryAreaFin.Req.As_y*1000000; 
-        T[7][1].Value →KRS127_000112= SummaryAreaFin.Req.As*1000000; 
-        
-        //A↓s.req.bar←
-        T[1][2].Value →KRS127_000113= SummaryAreaPract.Req.As_zpos*1000000; 
-        T[2][2].Value →KRS127_000114= SummaryAreaPract.Req.As_zneg*1000000; 
-        T[3][2].Value →KRS127_000115= SummaryAreaPract.Req.As_ypos*1000000; 
-        T[4][2].Value →KRS127_000116= SummaryAreaPract.Req.As_yneg*1000000; 
-        T[5][2].Value →KRS127_000117= SummaryAreaPract.Req.As_z*1000000; 
-        T[6][2].Value →KRS127_000118= SummaryAreaPract.Req.As_y*1000000; 
-        T[7][2].Value →KRS127_000119= SummaryAreaPract.Req.As*1000000; 
-        
-        //A↓s.bas.prov←
-        T[1][3].Value →KRS127_000120= SumBasicProvReinf.As_zpos*1000000; 
-        T[2][3].Value →KRS127_000121= SumBasicProvReinf.As_zneg*1000000; 
-        T[3][3].Value →KRS127_000122= SumBasicProvReinf.As_ypos*1000000; 
-        T[4][3].Value →KRS127_000123= SumBasicProvReinf.As_yneg*1000000; 
-        T[5][3].Value →KRS127_000124= SumBasicProvReinf.As_z*1000000; 
-        T[6][3].Value →KRS127_000125= SumBasicProvReinf.As_y*1000000; 
-        T[7][3].Value →KRS127_000126= SumBasicProvReinf.As*1000000; 
-        
-        //A↓s.add.prov←
-        T[1][4].Value →KRS127_000127= SumAdditionalProvReinf.As_zpos*1000000; 
-        T[2][4].Value →KRS127_000128= SumAdditionalProvReinf.As_zneg*1000000; 
-        T[3][4].Value →KRS127_000129= SumAdditionalProvReinf.As_ypos*1000000; 
-        T[4][4].Value →KRS127_000130= SumAdditionalProvReinf.As_yneg*1000000; 
-        T[5][4].Value →KRS127_000131= SumAdditionalProvReinf.As_z*1000000; 
-        T[6][4].Value →KRS127_000132= SumAdditionalProvReinf.As_y*1000000; 
-        T[7][4].Value →KRS127_000133= SumAdditionalProvReinf.As*1000000; 
-        
-        //A↓s.add.req←
-        T[1][5].Value →KRS127_000134= SumAdditionalReinf.As_zpos*1000000; 
-        T[2][5].Value →KRS127_000135= SumAdditionalReinf.As_zneg*1000000; 
-        T[3][5].Value →KRS127_000136= SumAdditionalReinf.As_ypos*1000000; 
-        T[4][5].Value →KRS127_000137= SumAdditionalReinf.As_yneg*1000000; 
-        T[5][5].Value →KRS127_000138= SumAdditionalReinf.As_z*1000000; 
-        T[6][5].Value →KRS127_000139= SumAdditionalReinf.As_y*1000000; 
-        T[7][5].Value →KRS127_000140= SumAdditionalReinf.As*1000000; 
-        
-        //A↓s.prov←
-        T[1][6].Value →KRS127_000141= SumProvReinf.As_zpos*1000000; 
-        T[2][6].Value →KRS127_000142= SumProvReinf.As_zneg*1000000; 
-        T[3][6].Value →KRS127_000143= SumProvReinf.As_ypos*1000000; 
-        T[4][6].Value →KRS127_000144= SumProvReinf.As_yneg*1000000; 
-        T[5][6].Value →KRS127_000145= SumProvReinf.As_z*1000000; 
-        T[6][6].Value →KRS127_000146= SumProvReinf.As_y*1000000; 
-        T[7][6].Value →KRS127_000147= SumProvReinf.As*1000000; 
-        
-        T.Padding.All →KRS127_000089= 5; 
-        T.Padding.Top →KRS127_000090= Convert.ToSingle(FontsAndColors.PaddingTableOverall()); 
-        T.Padding.Bottom →KRS127_000091= Convert.ToSingle(FontsAndColors.PaddingTableOverall()); 
-        T.Font →KRS127_000092= FontsAndColors.TableCellsFont(); 
-        T[0].Font →KRS127_000093= FontsAndColors.TableHeaderFont(); 
-        T.BorderPen →KRS127_000094= FontsAndColors.TableBorderPen(); 
-        T.GridPen →KRS127_000095= FontsAndColors.TableGridPen(); 
-        T[0].BorderPen →KRS127_000096= FontsAndColors.TableBorderPen(); 
-        T.Rows[0].BackColor →KRS127_000097= FontsAndColors.ColorTableHeader(); 
-        T.Columns[0].Width →KRS127_000105= 150; 
-        FOR(i, 1, 6) { 
-            T.Columns[i].Width →KRS127_000098= Convert.ToSingle((FontsAndColors.TableWidth()-150)/(6)); 
-            T.Columns[i].Wrap →KRS127_000104= true; 
+        IF(UseProvReinf) { 
+            object T →KRS127_000074= new Table(7); 
+            //column header
+            T[0][1].Value →KRS127_000076= "A↓s.req←&lt;BR&gt;[mm↑2←]"; 
+            T[0][2].Value →KRS127_000077= "A↓s.req.bar←&lt;BR&gt;[mm↑2←]"; 
+            T[0][3].Value →KRS127_000079= "A↓s.bas.prov←&lt;BR&gt;[mm↑2←]"; 
+            T[0][4].Value →KRS127_000078= "A↓s.add.prov←&lt;BR&gt;[mm↑2←]"; 
+            T[0][5].Value →KRS127_000080= "A↓s.add.req←&lt;BR&gt;[mm↑2←]"; 
+            T[0][6].Value →KRS127_000081= "A↓s.prov←&lt;BR&gt;[mm↑2←]"; 
+            
+            //row header
+            T[1][0].Value →KRS127_000082= TR("Top"); 
+            T[2][0].Value →KRS127_000083= TR("Bottom"); 
+            T[3][0].Value →KRS127_000084= TR("Right"); 
+            T[4][0].Value →KRS127_000085= TR("Left"); 
+            T[5][0].Value →KRS127_000086= TR("Total vertical"); 
+            T[6][0].Value →KRS127_000087= TR("Total horizontal"); 
+            T[7][0].Value →KRS127_000088= TR("Total"); 
+            
+            //A↓s.req←
+            T[1][1].Value →KRS127_000106= SummaryAreaFin.Req.As_zpos*1000000; 
+            T[2][1].Value →KRS127_000107= SummaryAreaFin.Req.As_zneg*1000000; 
+            T[3][1].Value →KRS127_000108= SummaryAreaFin.Req.As_ypos*1000000; 
+            T[4][1].Value →KRS127_000109= SummaryAreaFin.Req.As_yneg*1000000; 
+            T[5][1].Value →KRS127_000110= SummaryAreaFin.Req.As_z*1000000; 
+            T[6][1].Value →KRS127_000111= SummaryAreaFin.Req.As_y*1000000; 
+            T[7][1].Value →KRS127_000112= SummaryAreaFin.Req.As*1000000; 
+            
+            //A↓s.req.bar←
+            T[1][2].Value →KRS127_000113= SummaryAreaPract.Req.As_zpos*1000000; 
+            T[2][2].Value →KRS127_000114= SummaryAreaPract.Req.As_zneg*1000000; 
+            T[3][2].Value →KRS127_000115= SummaryAreaPract.Req.As_ypos*1000000; 
+            T[4][2].Value →KRS127_000116= SummaryAreaPract.Req.As_yneg*1000000; 
+            T[5][2].Value →KRS127_000117= SummaryAreaPract.Req.As_z*1000000; 
+            T[6][2].Value →KRS127_000118= SummaryAreaPract.Req.As_y*1000000; 
+            T[7][2].Value →KRS127_000119= SummaryAreaPract.Req.As*1000000; 
+            
+            //A↓s.bas.prov←
+            T[1][3].Value →KRS127_000120= SumBasicProvReinf.As_zpos*1000000; 
+            T[2][3].Value →KRS127_000121= SumBasicProvReinf.As_zneg*1000000; 
+            T[3][3].Value →KRS127_000122= SumBasicProvReinf.As_ypos*1000000; 
+            T[4][3].Value →KRS127_000123= SumBasicProvReinf.As_yneg*1000000; 
+            T[5][3].Value →KRS127_000124= SumBasicProvReinf.As_z*1000000; 
+            T[6][3].Value →KRS127_000125= SumBasicProvReinf.As_y*1000000; 
+            T[7][3].Value →KRS127_000126= SumBasicProvReinf.As*1000000; 
+            
+            //A↓s.add.prov←
+            T[1][4].Value →KRS127_000127= SumAdditionalProvReinf.As_zpos*1000000; 
+            T[2][4].Value →KRS127_000128= SumAdditionalProvReinf.As_zneg*1000000; 
+            T[3][4].Value →KRS127_000129= SumAdditionalProvReinf.As_ypos*1000000; 
+            T[4][4].Value →KRS127_000130= SumAdditionalProvReinf.As_yneg*1000000; 
+            T[5][4].Value →KRS127_000131= SumAdditionalProvReinf.As_z*1000000; 
+            T[6][4].Value →KRS127_000132= SumAdditionalProvReinf.As_y*1000000; 
+            T[7][4].Value →KRS127_000133= SumAdditionalProvReinf.As*1000000; 
+            
+            //A↓s.add.req←
+            T[1][5].Value →KRS127_000134= SumAdditionalReinf.As_zpos*1000000; 
+            T[2][5].Value →KRS127_000135= SumAdditionalReinf.As_zneg*1000000; 
+            T[3][5].Value →KRS127_000136= SumAdditionalReinf.As_ypos*1000000; 
+            T[4][5].Value →KRS127_000137= SumAdditionalReinf.As_yneg*1000000; 
+            T[5][5].Value →KRS127_000138= SumAdditionalReinf.As_z*1000000; 
+            T[6][5].Value →KRS127_000139= SumAdditionalReinf.As_y*1000000; 
+            T[7][5].Value →KRS127_000140= SumAdditionalReinf.As*1000000; 
+            
+            //A↓s.prov←
+            T[1][6].Value →KRS127_000141= SumProvReinf.As_zpos*1000000; 
+            T[2][6].Value →KRS127_000142= SumProvReinf.As_zneg*1000000; 
+            T[3][6].Value →KRS127_000143= SumProvReinf.As_ypos*1000000; 
+            T[4][6].Value →KRS127_000144= SumProvReinf.As_yneg*1000000; 
+            T[5][6].Value →KRS127_000145= SumProvReinf.As_z*1000000; 
+            T[6][6].Value →KRS127_000146= SumProvReinf.As_y*1000000; 
+            T[7][6].Value →KRS127_000147= SumProvReinf.As*1000000; 
+            
+            T.Padding.All →KRS127_000089= 5; 
+            T.Padding.Top →KRS127_000090= Convert.ToSingle(FontsAndColors.PaddingTableOverall()); 
+            T.Padding.Bottom →KRS127_000091= Convert.ToSingle(FontsAndColors.PaddingTableOverall()); 
+            T.Font →KRS127_000092= FontsAndColors.TableCellsFont(); 
+            T[0].Font →KRS127_000093= FontsAndColors.TableHeaderFont(); 
+            T.BorderPen →KRS127_000094= FontsAndColors.TableBorderPen(); 
+            T.GridPen →KRS127_000095= FontsAndColors.TableGridPen(); 
+            T[0].BorderPen →KRS127_000096= FontsAndColors.TableBorderPen(); 
+            T.Rows[0].BackColor →KRS127_000097= FontsAndColors.ColorTableHeader(); 
+            T.Columns[0].Width →KRS127_000105= 150; 
+            FOR(i, 1, 6) { 
+                T.Columns[i].Width →KRS127_000098= Convert.ToSingle((FontsAndColors.TableWidth()-150)/(6)); 
+                T.Columns[i].Wrap →KRS127_000104= true; 
+            } 
+            FOR(j, 1, 7) { 
+                T[j][0].BackColor →INI400_014234= FontsAndColors.ColorTableRow(); 
+            } 
+            →KRS127_000075T.Draw(); 
+        } ELSE { 
+            object T →KRS116_000077= new Table(3); 
+            //column header
+            T[0][1].Value →KRS116_000078= "A↓s.req←&lt;BR&gt;[mm↑2←]"; 
+            T[0][2].Value →KRS116_000079= "A↓s.req.bar←&lt;BR&gt;[mm↑2←]"; 
+            
+            //row header
+            T[1][0].Value →KRS116_000084= TR("Top"); 
+            T[2][0].Value →KRS116_000085= TR("Bottom"); 
+            T[3][0].Value →KRS116_000086= TR("Right"); 
+            T[4][0].Value →KRS116_000087= TR("Left"); 
+            T[5][0].Value →KRS116_000088= TR("Total vertical"); 
+            T[6][0].Value →KRS116_000089= TR("Total horizontal"); 
+            T[7][0].Value →KRS116_000090= TR("Total"); 
+            
+            //A↓s.req←
+            T[1][1].Value →KRS116_000091= SummaryAreaFin.Req.As_zpos*1000000; 
+            T[2][1].Value →KRS116_000092= SummaryAreaFin.Req.As_zneg*1000000; 
+            T[3][1].Value →KRS116_000093= SummaryAreaFin.Req.As_ypos*1000000; 
+            T[4][1].Value →KRS116_000094= SummaryAreaFin.Req.As_yneg*1000000; 
+            T[5][1].Value →KRS116_000095= SummaryAreaFin.Req.As_z*1000000; 
+            T[6][1].Value →KRS116_000096= SummaryAreaFin.Req.As_y*1000000; 
+            T[7][1].Value →KRS116_000097= SummaryAreaFin.Req.As*1000000; 
+            
+            //A↓s.req.bar←
+            T[1][2].Value →KRS116_000098= SummaryAreaPract.Req.As_zpos*1000000; 
+            T[2][2].Value →KRS116_000099= SummaryAreaPract.Req.As_zneg*1000000; 
+            T[3][2].Value →KRS116_000100= SummaryAreaPract.Req.As_ypos*1000000; 
+            T[4][2].Value →KRS116_000101= SummaryAreaPract.Req.As_yneg*1000000; 
+            T[5][2].Value →KRS116_000102= SummaryAreaPract.Req.As_z*1000000; 
+            T[6][2].Value →KRS116_000103= SummaryAreaPract.Req.As_y*1000000; 
+            T[7][2].Value →KRS116_000104= SummaryAreaPract.Req.As*1000000; 
+            
+            T.Padding.All →KRS116_000133= 5; 
+            T.Padding.Top →KRS116_000134= Convert.ToSingle(FontsAndColors.PaddingTableOverall()); 
+            T.Padding.Bottom →KRS116_000135= Convert.ToSingle(FontsAndColors.PaddingTableOverall()); 
+            T.Font →KRS116_000136= FontsAndColors.TableCellsFont(); 
+            T[0].Font →KRS116_000137= FontsAndColors.TableHeaderFont(); 
+            T.BorderPen →KRS116_000138= FontsAndColors.TableBorderPen(); 
+            T.GridPen →KRS116_000139= FontsAndColors.TableGridPen(); 
+            T[0].BorderPen →KRS116_000140= FontsAndColors.TableBorderPen(); 
+            T.Rows[0].BackColor →KRS116_000141= FontsAndColors.ColorTableHeader(); 
+            T.Columns[0].Width →KRS116_000142= 150; 
+            FOR(i, 1, 2) { 
+                T.Columns[i].Width →KRS116_000143= Convert.ToSingle((FontsAndColors.TableWidth()-150)/(6)); 
+                T.Columns[i].Wrap →KRS116_000144= true; 
+            } 
+            FOR(j, 1, 7) { 
+                T[j][0].BackColor →KRS116_000145= FontsAndColors.ColorTableRow(); 
+            } 
+            →KRS116_000146T.Draw(); 
         } 
-        FOR(j, 1, 7) { 
-            T[j][0].BackColor →INI400_014234= FontsAndColors.ColorTableRow(); 
-        } 
-        →KRS127_000075T.Draw(); 
     } 
 } 
 
@@ -1418,7 +1512,7 @@
         MemberInfoTable[0][2].Font →INI400_009209= FontsAndColors.TableMediumHeaderFont(); 
         MemberInfoTable.BorderPen →INI400_009129= FontsAndColors.WhitePen(); //Pen for grid inside of the table
         MemberInfoTable.GridPen →INI400_009130= FontsAndColors.WhitePen(); //Pen for grid inside of the table
-        
+
         MemberInfoTable.Columns[0].Width →INI400_009131= 150; 
         MemberInfoTable.Columns[1].Width →INI400_009132= 150; 
         MemberInfoTable.Columns[2].Width →INI400_009133= 100; 
@@ -2130,7 +2224,7 @@
     object EmptyBasicAdditionalArray(double NumEdges) { 
         object[] ArrayBasicAdditionalReinf →VAL127_000057= new object[]; 
         FOR(i, 0, NumEdges-1) { 
-            →VAL127_000069ArrayBasicAdditionalReinf.Add(new Structure("Edge", i, "Diam", 0, "Number", 0, "As", 0, "IndexAsmax", 0)); 
+            →VAL127_000069ArrayBasicAdditionalReinf.Add(new Structure("Edge", i, "Diam", 0, "Number", 0, "As", 0, "IndexAsmax", 0, "CornerState", 0)); 
         } 
         return ArrayBasicAdditionalReinf; 
     } 
@@ -2459,59 +2553,63 @@
 →VAL127_000072BLOCK("Function for recalculation basic reinforcement to edges ") { 
     object RecalBasicReinf(double FormCode, double MemberType, double NumEdges, object BasicReinf, object[] ReinfArrayType, bool RecalToCorner, bool NonzeroArea) { 
         →VAL127_000083double NumEdges; 
-        SWITCH(MemberType) { 
-            CASE 0 :  { //beam
-                SWITCH(FormCode) { 
-                    CASE 2003 :  { //rectengulars section
-                        return RecalBasicReinfBeamRect(BasicReinf, ReinfArrayType, RecalToCorner, NonzeroArea); 
-                    } 
-                    CASE 2009 :  { //T section
-                        return RecalBasicReinfBeamT(BasicReinf, ReinfArrayType, RecalToCorner, NonzeroArea); 
-                    } 
-                    CASE 2006 :  { // I section
-                        return RecalBasicReinfBeamI(BasicReinf, ReinfArrayType, RecalToCorner, NonzeroArea); 
-                    } 
-                    CASE 2010 :  { // L section
-                        return RecalBasicReinfBeamL(BasicReinf, ReinfArrayType, RecalToCorner, NonzeroArea); 
-                    } 
-                    CASE 2014 :  { // L section reverse
-                        return RecalBasicReinfBeamLrev(BasicReinf, ReinfArrayType, RecalToCorner, NonzeroArea); 
-                    } 
-                    DEFAULT :  { 
-                        return RecalBasicReinfBeamGeneral(BasicReinf, ReinfArrayType, RecalToCorner, NonzeroArea); 
-                    } 
-                } 
-            } 
-            CASE 1 :  { //column
-                SWITCH(FormCode) { 
-                    CASE 2003 :  { //rectengular section
-                        return RecalBasicReinfColumnRect(BasicReinf, ReinfArrayType, RecalToCorner, NonzeroArea); 
-                    } 
-                    CASE 2002 :  { //circular section
-                        return RecalBasicReinfColumnCircular(BasicReinf, ReinfArrayType, RecalToCorner, NonzeroArea); 
-                    } 
-                    CASE 2008 :  { //oval section
-                        return RecalBasicReinfColumnOval(BasicReinf, ReinfArrayType, RecalToCorner, NonzeroArea); 
-                    } 
-                    DEFAULT :  { 
-                        return RecalBasicReinfColumnGeneral(BasicReinf, ReinfArrayType, RecalToCorner, NonzeroArea); 
+        IF(IsCSSCorrectNumEdges(FormCode, NumEdges)) { 
+            SWITCH(MemberType) { 
+                CASE 0 :  { //beam
+                    SWITCH(FormCode) { 
+                        CASE 2003 :  { //rectengulars section
+                            return RecalBasicReinfBeamRect(BasicReinf, ReinfArrayType, RecalToCorner, NonzeroArea); 
+                        } 
+                        CASE 2009 :  { //T section
+                            return RecalBasicReinfBeamT(BasicReinf, ReinfArrayType, RecalToCorner, NonzeroArea); 
+                        } 
+                        CASE 2006 :  { // I section
+                            return RecalBasicReinfBeamI(BasicReinf, ReinfArrayType, RecalToCorner, NonzeroArea); 
+                        } 
+                        CASE 2010 :  { // L section
+                            return RecalBasicReinfBeamL(BasicReinf, ReinfArrayType, RecalToCorner, NonzeroArea); 
+                        } 
+                        CASE 2014 :  { // L section reverse
+                            return RecalBasicReinfBeamLrev(BasicReinf, ReinfArrayType, RecalToCorner, NonzeroArea); 
+                        } 
+                        DEFAULT :  { 
+                            return RecalBasicReinfBeamGeneral(BasicReinf, ReinfArrayType, RecalToCorner, NonzeroArea); 
+                        } 
                     } 
                 } 
-            } 
-            
-            CASE 2 :  { //beam slab
-                SWITCH(FormCode) { 
-                    CASE 2003 :  { //rectengulars section
-                        return RecalBasicReinfBeamSlabRect(BasicReinf, ReinfArrayType, RecalToCorner, NonzeroArea); 
-                    } 
-                    DEFAULT :  { 
-                        return →VAL127_000464EmptyBasicAdditionalArray(NumEdges); 
+                CASE 1 :  { //column
+                    SWITCH(FormCode) { 
+                        CASE 2003 :  { //rectengular section
+                            return RecalBasicReinfColumnRect(BasicReinf, ReinfArrayType, RecalToCorner, NonzeroArea); 
+                        } 
+                        CASE 2002 :  { //circular section
+                            return RecalBasicReinfColumnCircular(BasicReinf, ReinfArrayType, RecalToCorner, NonzeroArea); 
+                        } 
+                        CASE 2008 :  { //oval section
+                            return RecalBasicReinfColumnOval(BasicReinf, ReinfArrayType, RecalToCorner, NonzeroArea); 
+                        } 
+                        DEFAULT :  { 
+                            return RecalBasicReinfColumnGeneral(BasicReinf, ReinfArrayType, RecalToCorner, NonzeroArea); 
+                        } 
                     } 
                 } 
+                
+                CASE 2 :  { //beam slab
+                    SWITCH(FormCode) { 
+                        CASE 2003 :  { //rectengulars section
+                            return RecalBasicReinfBeamSlabRect(BasicReinf, ReinfArrayType, RecalToCorner, NonzeroArea); 
+                        } 
+                        DEFAULT :  { 
+                            return →VAL127_000464EmptyBasicAdditionalArray(NumEdges); 
+                        } 
+                    } 
+                } 
+                DEFAULT :  { 
+                    return →VAL127_000082EmptyBasicAdditionalArray(NumEdges); 
+                } 
             } 
-            DEFAULT :  { 
-                return →VAL127_000082EmptyBasicAdditionalArray(NumEdges); 
-            } 
+        } ELSE { 
+            return →KRS116_000150EmptyBasicAdditionalArray(NumEdges); 
         } 
     } 
 } 
@@ -2813,64 +2911,64 @@
     } 
 } 
 
-
-
-
-
 →VAL127_000085BLOCK("Function for recalculation additional reinforcement to edges ") { 
     object RecalAdditionalReinf(double FormCode, double MemberType, double NumEdges, object BasicReinf, object[] ReinfArrayType, bool RecalToCorner) { 
-        SWITCH(MemberType) { 
-            CASE 0 :  { 
-                SWITCH(FormCode) { 
-                    CASE 2003 :  { //rectengular css
-                        return RecalAdditionalReinfBeamRect(BasicReinf, ReinfArrayType, RecalToCorner); 
-                    } 
-                    CASE 2009 :  { //T section
-                        return RecalAdditionalReinfBeamT(BasicReinf, ReinfArrayType, RecalToCorner); 
-                    } 
-                    CASE 2006 :  { //I section
-                        return RecalAdditionalReinfBeamI(BasicReinf, ReinfArrayType, RecalToCorner); 
-                    } 
-                    CASE 2010 :  { //L section
-                        return RecalAdditionalReinfBeamL(BasicReinf, ReinfArrayType, RecalToCorner); 
-                    } 
-                    CASE 2014 :  { //L section reverse
-                        return RecalAdditionalReinfBeamLrev(BasicReinf, ReinfArrayType, RecalToCorner); 
-                    } 
-                    DEFAULT :  { //other cross-sections
-                        return RecalAdditionalReinfBeamGeneral(BasicReinf, ReinfArrayType, RecalToCorner); 
-                    } 
-                } 
-            } 
-            CASE 1 :  { //column
-                SWITCH(FormCode) { 
-                    CASE 2003 :  { //rectengulars section
-                        return RecalAdditionalReinfColumnRect(BasicReinf, ReinfArrayType, RecalToCorner); 
-                    } 
-                    CASE 2002 :  { //circular section
-                        return RecalAdditionalReinfColumnCircular(BasicReinf, ReinfArrayType, RecalToCorner); 
-                    } 
-                    CASE 2008 :  { //oval section
-                        return RecalAdditionalReinfColumnOval(BasicReinf, ReinfArrayType, RecalToCorner); 
-                    } 
-                    DEFAULT :  { 
-                        return RecalAdditionalReinfColumnGeneral(BasicReinf, ReinfArrayType, RecalToCorner); 
+        IF(IsCSSCorrectNumEdges(FormCode, NumEdges)) { 
+            SWITCH(MemberType) { 
+                CASE 0 :  { 
+                    SWITCH(FormCode) { 
+                        CASE 2003 :  { //rectengular css
+                            return RecalAdditionalReinfBeamRect(BasicReinf, ReinfArrayType, RecalToCorner); 
+                        } 
+                        CASE 2009 :  { //T section
+                            return RecalAdditionalReinfBeamT(BasicReinf, ReinfArrayType, RecalToCorner); 
+                        } 
+                        CASE 2006 :  { //I section
+                            return RecalAdditionalReinfBeamI(BasicReinf, ReinfArrayType, RecalToCorner); 
+                        } 
+                        CASE 2010 :  { //L section
+                            return RecalAdditionalReinfBeamL(BasicReinf, ReinfArrayType, RecalToCorner); 
+                        } 
+                        CASE 2014 :  { //L section reverse
+                            return RecalAdditionalReinfBeamLrev(BasicReinf, ReinfArrayType, RecalToCorner); 
+                        } 
+                        DEFAULT :  { //other cross-sections
+                            return RecalAdditionalReinfBeamGeneral(BasicReinf, ReinfArrayType, RecalToCorner); 
+                        } 
                     } 
                 } 
-            } 
-            CASE 2 :  { //beam slab
-                SWITCH(FormCode) { 
-                    CASE 2003 :  { //rectengulars section
-                        return RecalAdditionalReinfBeamSlabRect(BasicReinf, ReinfArrayType, RecalToCorner); 
-                    } 
-                    DEFAULT :  { 
-                        return →VAL127_000465EmptyBasicAdditionalArray(NumEdges); 
+                CASE 1 :  { //column
+                    SWITCH(FormCode) { 
+                        CASE 2003 :  { //rectengulars section
+                            return RecalAdditionalReinfColumnRect(BasicReinf, ReinfArrayType, RecalToCorner); 
+                        } 
+                        CASE 2002 :  { //circular section
+                            return RecalAdditionalReinfColumnCircular(BasicReinf, ReinfArrayType, RecalToCorner); 
+                        } 
+                        CASE 2008 :  { //oval section
+                            return RecalAdditionalReinfColumnOval(BasicReinf, ReinfArrayType, RecalToCorner); 
+                        } 
+                        DEFAULT :  { 
+                            return RecalAdditionalReinfColumnGeneral(BasicReinf, ReinfArrayType, RecalToCorner); 
+                        } 
                     } 
                 } 
+                CASE 2 :  { //beam slab
+                    SWITCH(FormCode) { 
+                        CASE 2003 :  { //rectengulars section
+                            return RecalAdditionalReinfBeamSlabRect(BasicReinf, ReinfArrayType, RecalToCorner); 
+                        } 
+                        DEFAULT :  { 
+                            return →VAL127_000465EmptyBasicAdditionalArray(NumEdges); 
+                        } 
+                    } 
+                } 
+                DEFAULT :  { 
+                    return →VAL127_000088EmptyBasicAdditionalArray(NumEdges); 
+                } 
             } 
-            DEFAULT :  { 
-                return →VAL127_000088EmptyBasicAdditionalArray(NumEdges); 
-            } 
+        } ELSE { 
+            return →KRS116_000151EmptyBasicAdditionalArray(NumEdges); 
         } 
     } 
 } 
@@ -3565,14 +3663,18 @@
 →KRS027_000001BLOCK("Function for preparation reinforcement as string") { 
     //this string will be in format R:y:0;z:0;As:822;D:16;
     //Parsed in SEN to get reinforcements in a nice way
-    public string ReinfToString(object ReqReinfFinal) { 
+    public string ReinfToString(object ReqReinfFinal, object ReqReinfFinalReduce, object BasicProvReinfArray, object AdditionaProvReinfArraySelected) { 
         string ReinfString →KRS027_000002= ""; 
-        FOREACH(object ReqReinf in ReqReinfFinal) { 
+        FOR(i, 0, ReqReinfFinal.Count-1) { 
             ReinfString →KRS027_000003= ReinfString &amp; "R:"; 
-            ReinfString →KRS027_000004= ReinfString &amp; "y:" &amp; ReqReinf.y.ToString("0.000") &amp; ";"; 
-            ReinfString →KRS027_000005= ReinfString &amp; "z:" &amp; ReqReinf.z.ToString("0.000") &amp; ";"; 
-            ReinfString →KRS027_000006= ReinfString &amp; "As:" &amp; ReqReinf.As.ToString("0.000000") &amp; ";"; 
-            ReinfString →KRS027_000007= ReinfString &amp; "D:" &amp; ReqReinf.diam.ToString("0.000") &amp; ";"; 
+            ReinfString →KRS027_000004= ReinfString &amp; "y:" &amp; ReqReinfFinal[i].y.ToString("0.000") &amp; ";"; 
+            ReinfString →KRS027_000005= ReinfString &amp; "z:" &amp; ReqReinfFinal[i].z.ToString("0.000") &amp; ";"; 
+            ReinfString →KRS027_000006= ReinfString &amp; "Asr:" &amp; ReqReinfFinal[i].As.ToString("0.000000") &amp; ";"; //area of required reinforcement 
+            ReinfString →KRS027_000013= ReinfString &amp; "Asb:" &amp; BasicProvReinfArray[i].As.ToString("0.000000") &amp; ";"; //area of basic reinforcement
+            ReinfString →KRS027_000014= ReinfString &amp; "Asa:" &amp; AdditionaProvReinfArraySelected[i].As.ToString("0.000000") &amp; ";"; //area of additional reinforcement
+            ReinfString →KRS027_000007= ReinfString &amp; "Dr:" &amp; ReqReinfFinal[i].diam.ToString("0.000") &amp; ";"; //diameter of required reinforcement
+            ReinfString →KRS027_000015= ReinfString &amp; "Db:" &amp; BasicProvReinfArray[i].Diam.ToString("0.000") &amp; ";"; //diameter of basic reinforcement
+            ReinfString →KRS027_000016= ReinfString &amp; "Da:" &amp; AdditionaProvReinfArraySelected[i].Diam.ToString("0.000") &amp; ";"; //diameter of additional reinforcement
         } 
         ReinfString →KRS027_000012= ReinfString.Replace(",", "."); 
         return ReinfString; 
@@ -3589,6 +3691,19 @@
         →KRS116_000040EdgeForBasic[2] →KRS116_000041= new Structure("Additional", AdditionalEdge, "Basic", BasicEdge, "CornerState", 0); 
         object BasicReinf →KRS116_000042= new Structure("CssType", 0, "Edge", →KRS116_000043EdgeForBasic, "ID", "BasicReinf_Empty", "Layout", 0, "MemberType", 0, "Mode", 0, "Name", "Empty"); 
         return BasicReinf; 
+    } 
+} 
+
+→KRS116_000149BLOCK("Function for test if number of edges correspond to FormCode") { 
+    public bool IsCSSCorrectNumEdges(double FormCode, double NumEdges) { 
+        SWITCH(FormCode) { 
+            CASE 2003 :  { return NumEdges == 4 ? true : false; } //rectangle
+            CASE 2005 :  { return NumEdges == 12 ? true : false; } //I shape
+            CASE 2009 :  { return NumEdges == 8 ? true : false; } //T shape
+            CASE 2010 :  { return NumEdges == 6 ? true : false; } //L shape
+            CASE 2014 :  { return NumEdges == 6 ? true : false; } //L rev shape
+            DEFAULT :  { return true; } 
+        } 
     } 
 } 
 </SourceCode>
@@ -10595,6 +10710,38 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS027_000013">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS027_000014">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS027_000015">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS027_000016">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS106_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -11148,6 +11295,518 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS116_000044">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000045">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000046">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000048">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000049">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000051">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000052">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000054">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000055">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000057">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000058">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000060">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000061">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000063">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000064">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000066">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000067">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000069">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000070">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000072">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000073">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000075">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000076">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="180" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000077">
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000078">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000079">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000084">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000085">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000086">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000087">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000088">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000089">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000090">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000091">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000092">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000093">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000094">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000095">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000096">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000097">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000098">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000099">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000100">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000101">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000102">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000103">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000104">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000133">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="9.31" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="9.31" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="9.31" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="9.31" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="9.31" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="9.31" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000134">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="9.31" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="9.31" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="651" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="90" Y="11116" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="9.31" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="651" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000135">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="27.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="27.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="651" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="90" Y="11130" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="27.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="651" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000136">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="81.7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="81.7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="81.7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="81.7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="81.7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="81.7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000137">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="96.3" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="96.3" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="96.3" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="96.3" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="96.3" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="96.3" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000138">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="114" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="114" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="114" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="114" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="114" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="114" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000139">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="134" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="134" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="134" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="134" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="134" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="134" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000140">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="152" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="152" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="152" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="152" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="152" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="152" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000141">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000142">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1168" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1168" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1168" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1168" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1168" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1168" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000143">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1168" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1168" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1168" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1168" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1168" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1168" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000144">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000145">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000146">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000147">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000148">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000149">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000151">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -17435,6 +18094,9 @@
     <Item ID="BLOCK_KRS116_000044">
       <ENU>"Function for preparation of Empty basic reinf object"</ENU>
     </Item>
+    <Item ID="BLOCK_KRS116_000149">
+      <ENU>"Function for test if number of edges correspond to FormCode"</ENU>
+    </Item>
     <Item ID="BLOCK_KRS127_000065">
       <ENU>"Function for draw table of basic reinforcement"</ENU>
     </Item>
@@ -17723,6 +18385,9 @@
     <Item TranslateID="STRING_FBF31099">
       <ENU>"Buckling length y"</ENU>
     </Item>
+    <Item TranslateID="TEXT_">
+      <ENU>"A↓s.prov← = " &amp; Val(SumProvReinf.As*1000000, 3) &amp; " mm↑2←"</ENU>
+    </Item>
     <Item ID="TEXT_INI400_001117">
       <ENU>"γ↓C← = " &amp; γ↓C←</ENU>
     </Item>
@@ -17902,6 +18567,72 @@
     </Item>
     <Item ID="TEXT_INI400_014021">
       <ENU>"γ↓S← = " &amp; γ↓S←</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000045">
+      <ENU>"Total :"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS116_000046">
+      <ENU>"A↓s.req← = " &amp; Val(SummaryArea.Req.As*1000000, 3) &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000048">
+      <ENU>"Total vertical :"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS116_000049">
+      <ENU>"A↓sz.req← = " &amp; Val(SummaryArea.Req.As_z*1000000, 3) &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000051">
+      <ENU>"Total horizontal :"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS116_000052">
+      <ENU>"A↓sy.req← = " &amp; Val(SummaryArea.Req.As_y*1000000, 3) &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000054">
+      <ENU>"Total :"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS116_000055">
+      <ENU>"A↓s.req← = " &amp; Val(SummaryArea.Req.As*1000000, 3) &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000057">
+      <ENU>"Top :"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS116_000058">
+      <ENU>"A↓sz.req+← = " &amp; Val(SummaryArea.Req.As_zpos*1000000, 3) &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000060">
+      <ENU>"Bottom :"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS116_000061">
+      <ENU>"A↓sz.req-← = " &amp; Val(SummaryArea.Req.As_zneg*1000000, 3) &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000063">
+      <ENU>"Right :"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS116_000064">
+      <ENU>"A↓sy.req+← = " &amp; Val(SummaryArea.Req.As_ypos*1000000, 3) &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000066">
+      <ENU>"Left :"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS116_000067">
+      <ENU>"A↓sy.req-← = " &amp; Val(SummaryArea.Req.As_yneg*1000000, 3) &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000069">
+      <ENU>"Total vertical :"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS116_000070">
+      <ENU>"A↓sz.req← = " &amp; Val(SummaryArea.Req.As_z*1000000, 3) &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000072">
+      <ENU>"Total horizontal :"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS116_000073">
+      <ENU>"A↓sy.req← = " &amp; Val(SummaryArea.Req.As_y*1000000, 3) &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000075">
+      <ENU>"Total :"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS116_000076">
+      <ENU>"A↓s.req← = " &amp; Val(SummaryArea.Req.As*1000000, 3) &amp; " mm↑2←"</ENU>
     </Item>
     <Item ID="TEXT_KRS127_000001">
       <ENU>"A↓sz.prov+← = " &amp; Val(SumProvReinf.As_zpos*1000000, 3) &amp; " mm↑2←"</ENU>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="8489d14c-2e61-4aa0-b166-b755ba178cf2">
   <CodeEditor>
-    <SourceCode Collapsed="22|37|164|178|196|216|236|354|368|388|408|416|433|444|455|466|481|493|525|559|569|579|587|595|618|646|654|669|702|706|719|729|756|760|775|785|797|807" BreakPoints="">→INI400_015411BLOCK("@RESOURCES") { 
+    <SourceCode Collapsed="1|22|38|54|165|179|201|215|235|255|262|373|387|407|420|440|448|464|475|486|497|508|523|535|567|601|611|621|629|637|660|688|696|711|744|748|765|775|785|812|816|831|839|849|861|871" BreakPoints="">→INI400_015411BLOCK("@RESOURCES") { 
     private void InitStrings() { 
         sPrincipal →INI400_015324= TR("principal"); 
         sSecondary →INI400_015325= TR("secondary"); 
@@ -30,6 +30,7 @@ public object GetDesignDefaults(double MemberType) {
     "ReinfShear", GetShearReinfDesignDefaults(MemberType), 
     "MinCover", GetMinCoverDefaults(MemberType), 
     "Detailing", GetDetalingDefaults(MemberType), 
+    "DetailingShear", GetDetalingShearDefaults(MemberType), 
     "Solver", GetSolverDefaults(MemberType)
     ); 
 } 
@@ -183,6 +184,10 @@ private object GetPlateDetailingDefaults() {
     IF(IO.ContainsPath("Setup.Concrete.Solver.DetProv.PlateShellPlate.Longitudinal")) { 
         return new Structure(
         "bPlateCheckMinPercentage", (IO.Setup.Concrete.Solver.DetProv.PlateShellPlate.Longitudinal.CheckMinRatioPrincipalReinf == 1), 
+        "bUseAutoMinPerctentageLower", IO.Setup.Concrete.Solver.DetProv.PlateShellPlate.Longitudinal.TypeMinTensPrincReinfLower == 1, 
+        "minRatioLower", IO.Setup.Concrete.Solver.DetProv.PlateShellPlate.Longitudinal.MinTensPrincReinfLower, 
+        "bUseAutoMinPerctentageUpper", IO.Setup.Concrete.Solver.DetProv.PlateShellPlate.Longitudinal.TypeMinTensPrincReinfUpper == 1, 
+        "minRatioUpper", IO.Setup.Concrete.Solver.DetProv.PlateShellPlate.Longitudinal.MinTensPrincReinfUpper, 
         "bPlateCheckMaxPercentage", (IO.Setup.Concrete.Solver.DetProv.PlateShellPlate.Longitudinal.CheckMaxRatioPrincipalReinf == 1), 
         "bPlateCheckTranversePercentage", (IO.Setup.Concrete.Solver.DetProv.PlateShellPlate.Longitudinal.CheckMintransverseRatioSecondaryReinf == 1), 
         "ρ↓l,min,sec←", IO.Setup.Concrete.Solver.DetProv.PlateShellPlate.Longitudinal.MinTransverseRatioSecondaryReinf, 
@@ -194,6 +199,20 @@ private object GetPlateDetailingDefaults() {
     } 
     ELSE { 
         return GetPlateDetailingDefaultsForUT(); 
+    } 
+} 
+
+private object GetPlateDetailingShearDefaults() { 
+    IF(IO.ContainsPath("Setup.Concrete.Solver.DetProv.PlateShellPlate.Shear")) { 
+        return new Structure(
+        "bPlateCheckMaxSpacing", (IO.Setup.Concrete.Solver.DetProv.PlateShellPlate.Shear.CheckMaxSpacingShearLinks == 1), 
+        "bPlateCheckMinPercentage", (IO.Setup.Concrete.Solver.DetProv.PlateShellPlate.Shear.CheckMinRatioShearReinf == 1), 
+        "bPlateCheckMinThickness", (IO.Setup.Concrete.Solver.DetProv.PlateShellPlate.Shear.CheckMinThicknessShearReinf == 1), 
+        "s↓max,long←", IO.Setup.Concrete.Solver.DetProv.PlateShellPlate.Shear.MaxSpacingShearLinks, 
+        "h↓min←", IO.Setup.Concrete.Solver.DetProv.PlateShellPlate.Shear.MinThicknessShearReinf
+        ); 
+    } ELSE { 
+        return GetPlateDetailingShearDefaultsForUT(); 
     } 
 } 
 
@@ -389,6 +408,19 @@ private object GetWallDetailingDefaults() {
     } 
 } 
 
+private object GetWallDetailingShearDefaults() { 
+    IF(IO.ContainsPath("Setup.Concrete.Solver.DetProv.WallShellWall.Transverse")) { 
+        return new Structure(
+        "bWallCheckMaxSpacingShearLinks", (IO.Setup.Concrete.Solver.DetProv.WallShellWall.Transverse.CheckMaxSpacingShearLinks == 1), 
+        "bWallCheckMinNumberShearLinks", (IO.Setup.Concrete.Solver.DetProv.WallShellWall.Transverse.CheckMinNumberShearLinks == 1), 
+        "n↓links,w←", IO.Setup.Concrete.Solver.DetProv.WallShellWall.Transverse.MinNumberShearLinks
+        ); 
+    } 
+    ELSE { 
+        return GetWallDetailingShearDefaultsForUT(); 
+    } 
+} 
+
 private object GetWallCoverDataForMain() { 
     IF(IO.ContainsPath("MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack")) { 
         return new Structure(
@@ -421,7 +453,6 @@ private object GetDeepBeamDetailingDefaults() {
     IF(IO.ContainsPath("Setup.Concrete.Solver.DetProv.DeepBeam.Longitudinal")) { 
         return new Structure(
         "bDeepBeamCheckMinPercentage", (IO.Setup.Concrete.Solver.DetProv.DeepBeam.Longitudinal.CheckMinRatioReinf == 1), 
-        "bDeepBeamCheckMaxPercentage", (IO.Setup.Concrete.Solver.DetProv.DeepBeam.Longitudinal.CheckMaxRatioReinf == 1), 
         "bDeepBeamCheckMaxSpacing", (IO.Setup.Concrete.Solver.DetProv.DeepBeam.Longitudinal.CheckMaxSpacingReinf == 1), 
         "s↓max,db←", IO.Setup.Concrete.Solver.DetProv.DeepBeam.Longitudinal.MaxSpacingReinfDist, 
         "coeff_s↓max,db←", IO.Setup.Concrete.Solver.DetProv.DeepBeam.Longitudinal.MaxSpacingReinfHCoeff, 
@@ -462,8 +493,19 @@ private object GetDetalingDefaults(double MemberType) {
         CASE 32 :  { return GetWallDetailingDefaults(); } //wall
         CASE 64 :  { return GetPlateDetailingDefaults(); } //shell (plate)
         CASE 256 :  { return GetWallDetailingDefaults(); } //shell (wall)
-        //CASE 512 :  { return GetDeepBeamDetailingDefaults(); } //deepbeam
+        CASE 512 :  { return GetDeepBeamDetailingDefaults(); } //deepbeam
         DEFAULT :  { return GetPlateDetailingDefaults(); } 
+    } 
+} 
+
+private object GetDetalingShearDefaults(double MemberType) { 
+    SWITCH(MemberType) { 
+        CASE 16 :  { return GetPlateDetailingShearDefaults(); } //plate
+        CASE 32 :  { return GetWallDetailingShearDefaults(); } //wall
+        CASE 64 :  { return GetPlateDetailingShearDefaults(); } //shell (plate)
+        CASE 256 :  { return GetWallDetailingShearDefaults(); } //shell (wall)
+        CASE 512 :  { return new Structure(); } //deepbeam - no shear reinforcement
+        DEFAULT :  { return GetPlateDetailingShearDefaults(); } 
     } 
 } 
 
@@ -710,6 +752,10 @@ private object GetPlateShearReinfDesignDefaultsForUT() {
 private object GetPlateDetailingDefaultsForUT() { 
     return new Structure(
     "bPlateCheckMinPercentage", True, 
+    "bUseAutoMinPerctentageLower", false, 
+    "minRatioLower", 0.2, 
+    "bUseAutoMinPerctentageUpper", false, 
+    "minRatioUpper", 0.2, 
     "bPlateCheckMaxPercentage", True, 
     "bPlateCheckTranversePercentage", False, 
     "ρ↓l,min,sec←", 0.2, 
@@ -717,6 +763,16 @@ private object GetPlateDetailingDefaultsForUT() {
     "bPlateCheckMaxDistanceSecondary", True, 
     "bPlateCheckMinDistance", True, 
     "s↓lb,min←", 0.02
+    ); 
+} 
+
+private object GetPlateDetailingShearDefaultsForUT() { 
+    return new Structure(
+    "bPlateCheckMaxSpacing", true, 
+    "bPlateCheckMinPercentage", true, 
+    "bPlateCheckMinThickness", true, 
+    "s↓max,long←", 0.75, 
+    "h↓min←", 0.2
     ); 
 } 
 
@@ -773,6 +829,14 @@ private object GetWallDetailingDefaultsForUT() {
     "s↓max,h←", 0.4, 
     "bWallCheckMinBarDistance", True, 
     "s↓lw,min←", 0.02
+    ); 
+} 
+
+private object GetWallDetailingShearDefaultsForUT() { 
+    return new Structure(
+    "bWallCheckMaxSpacingShearLinks", true, 
+    "bWallCheckMinNumberShearLinks", true, 
+    "n↓links,w←", 4
     ); 
 } 
 
@@ -877,13 +941,13 @@ object DesignDefaults →PAI116_000002= →PAI116_000001GetDesignDefaults(32);
     </NormRef>
     <Variables>
       <Variable Modifier="Public" Name="DesignDefaults" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_DesignDefaults">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="FinExp" ESA_ID="" Type="String">
-        <Description TranslateID="VARIABLE_FinExp">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -2557,7 +2621,7 @@ object DesignDefaults →PAI116_000002= →PAI116_000001GetDesignDefaults(32);
           </Items>
         </Data>
       </TCustomLibrary>
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="4|4|4|4" MinSize="465|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.8|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Member2D.2" SectionID="-1" CombiID="-1" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="4|4|4|4" MinSize="465|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.8|0|3" Active="1" PreDef="0" MemberDirectory="D:\_VERSIONS\DEVE_16\TEMP\Esa_Model_Data\Member2D.1" MemberID="Member2D.1" SectionID="0" CombiID="0" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />

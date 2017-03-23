@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="02380864-b7e6-4125-b53e-5b8aae182588">
   <CodeEditor>
-    <SourceCode Collapsed="23|69|84|176|389|409|448|456|495|510|525|535|545|557|574|634|647|657|668|684|755|772|803|856" BreakPoints="">//@EC_Concrete_Design2D_LongReinf
+    <SourceCode Collapsed="6|23|69|84|93|192|294|406|426|465|473|512|527|542|552|562|574|591|651|664|674|685|701|779|796|827|880|887" BreakPoints="">//@EC_Concrete_Design2D_LongReinf
 
 
 //------------------------------------------------------------
@@ -95,91 +95,107 @@ object GetOutput() {
 } 
 
 public void PrintDesignReinfView() { 
-    
-    →INI400_004053BLOCK { 
-        →INI400_007220BLOCK { //Element drawing
-            →INI400_016053GRAPHICS_2D_ELEM.Draw(new Structure("h", h, "DesignReinfData", DesignReinf, "DrawingType", 0, "UseBasicReinf", DesignDefaults.ReinfLong.UseBasicReinf), null); 
+    IF(IO.LayoutIndex == 1) { 
+        →INI400_004053BLOCK { 
+            →INI400_007220BLOCK { //Element drawing
+                →INI400_016053GRAPHICS_2D_ELEM.Draw(new Structure("h", h, "DesignReinfData", DesignReinf, "DrawingType", 0, "UseBasicReinf", DesignDefaults.ReinfLong.UseBasicReinf), null); 
+            } 
+            →PAI316_000030BLOCK { 
+                →PAI116_000179BLOCK { 
+                    →INI400_014737TEXT("Concrete:"); 
+                    →INI400_014824TEXT(" " &amp; ConMat.Name); 
+                } 
+                →PAI116_000181TEXT(FUNCT_DIAGRAMS.GetConMatDiagramTypeName(ConMat)); 
+                →KRS116_000002BLOCK { 
+                    →PAI116_000180TEXT("Exposure class:"); 
+                    IF(DesignDefaults.MinCover.DifferentSurfaces == 0) { 
+                        →KRS116_000001TEXT(FUNCT_2D_DEFAULTS.GetExposureClassesAsString(DesignDefaults.MinCover.Lower)); 
+                    } ELSE { 
+                        →KRS116_000007BLOCK { 
+                            →KRS116_000005TEXT("Upper:"); 
+                            →KRS116_000003TEXT(FUNCT_2D_DEFAULTS.GetExposureClassesAsString(DesignDefaults.MinCover.Upper)); 
+                        } 
+                        →KRS116_000006TEXT("Lower:"); 
+                        →KRS116_000004TEXT(FUNCT_2D_DEFAULTS.GetExposureClassesAsString(DesignDefaults.MinCover.Lower)); 
+                    } 
+                } 
+                →PAI116_000182BLOCK { 
+                    →PAI116_000184TEXT("Reinforcement:"); 
+                    →INI400_014827TEXT(" " &amp; ReqReinfMat.Name); 
+                } 
+                →PAI116_000183TEXT(FUNCT_DIAGRAMS.GetReinfMatDiagramTypeName(ReqReinfMat)); 
+                →KRS116_000044PrintReinfInfo(); 
+                
+                →PAI116_000185BLOCK { 
+                    →PAI316_000033TEXT("Cover:"); 
+                    string sUpCov →PAI316_000028= TR("Upper surface"); 
+                    IF(DesignDefaults.ReinfLong.TypeCover↓up← == 1) { 
+                        →INI400_015511TEXT(sUpCov &amp; ":  " &amp; Val(DesignDefaults.ReinfLong.Layers[2].c*1000, 0) &amp; " mm"); 
+                    } 
+                    ELSE { 
+                        →INI400_015593TEXT(sUpCov &amp; ":  " &amp; Val(DesignCover.Upper.c_nom*1000, 0) &amp; " mm"); 
+                    } 
+                    string sLowCov →PAI316_000029= TR("Lower surface"); 
+                    IF(DesignDefaults.ReinfLong.TypeCover↓lo← == 1) { 
+                        →INI400_015513TEXT(sLowCov &amp; ":  " &amp; Val(DesignDefaults.ReinfLong.Layers[0].c*1000, 0) &amp; " mm"); 
+                    } 
+                    ELSE { 
+                        →INI400_015592TEXT(sLowCov &amp; ":  " &amp; Val(DesignCover.Lower.c_nom*1000, 0) &amp; " mm"); 
+                    } 
+                } 
+            } 
         } 
-        →PAI316_000030BLOCK { 
-            →PAI116_000179BLOCK { 
-                →INI400_014737TEXT("Concrete:"); 
-                →INI400_014824TEXT(" " &amp; ConMat.Name); 
+        
+        →PAI116_000186BLOCK { 
+            →INI400_014723TEXT("Design forces"); 
+            FOREACH(object ReinfLayer in DesignReinf) { 
+                IF(ReinfLayer.Combi_ID != -1 &amp;&amp; ReinfLayer.As_req &gt; 0) { 
+                    object ExtForces →INI400_016089= RecalcForces[ReinfLayer.Forces_ID][ReinfLayer.Combi_ID]; 
+                    IF(ExtForces == null) { 
+                        ExtForces →INI400_016520= RecalcForces[GetOppositeReinfLayer(ReinfLayer).Forces_ID][ReinfLayer.Combi_ID]; 
+                    } 
+                    →INI400_010391TEXT(ReinfLayer.Descript &amp; " :"); 
+                    →INI400_010312TEXT("n↓Ed ←= " &amp; (ExtForces.nEd/1000).ToString("0.0") &amp; " kN/m"); 
+                    →INI400_010315TEXT("m↓Ed ←= " &amp; (ExtForces.mEd/1000).ToString("0.0") &amp; " kNm/m"); 
+                    →INI400_014829TEXT("[" &amp; ExtForces.CombiID &amp; "]"); 
+                } 
             } 
-            →PAI116_000181TEXT(FUNCT_DIAGRAMS.GetConMatDiagramTypeName(ConMat)); 
-            //→PAI116_000180TEXT("Exposure class:"); 
-            →PAI116_000182BLOCK { 
-                →PAI116_000184TEXT("Reinforcement:"); 
-                →INI400_014827TEXT(" " &amp; ReqReinfMat.Name); 
-            } 
-            →PAI116_000183TEXT(FUNCT_DIAGRAMS.GetReinfMatDiagramTypeName(ReqReinfMat)); 
             
-            →PAI116_000185BLOCK { 
-                →PAI316_000033TEXT("Cover:"); 
-                string sUpCov →PAI316_000028= TR("Upper"); 
-                IF(DesignDefaults.ReinfLong.TypeCover↓up← == 1) { 
-                    →INI400_015511TEXT(sUpCov &amp; ":  " &amp; Val(DesignDefaults.ReinfLong.Layers[2].c*1000, 0) &amp; " mm"); 
-                } 
-                ELSE { 
-                    →INI400_015593TEXT(sUpCov &amp; ":  " &amp; Val(DesignCover.Upper.c_nom*1000, 0) &amp; " mm"); 
-                } 
-                string sLowCov →PAI316_000029= TR("Lower"); 
-                IF(DesignDefaults.ReinfLong.TypeCover↓lo← == 1) { 
-                    →INI400_015513TEXT(sLowCov &amp; ":  " &amp; Val(DesignDefaults.ReinfLong.Layers[0].c*1000, 0) &amp; " mm"); 
-                } 
-                ELSE { 
-                    →INI400_015592TEXT(sLowCov &amp; ":  " &amp; Val(DesignCover.Lower.c_nom*1000, 0) &amp; " mm"); 
-                } 
-            } 
-        } 
-    } 
-    
-    →PAI116_000186BLOCK { 
-        →INI400_014723TEXT("Design forces"); 
-        FOREACH(object ReinfLayer in DesignReinf) { 
-            IF(ReinfLayer.Combi_ID != -1 &amp;&amp; ReinfLayer.As_req &gt; 0) { 
-                object ExtForces →INI400_016089= RecalcForces[ReinfLayer.Forces_ID][ReinfLayer.Combi_ID]; 
-                IF(ExtForces == null) { 
-                    ExtForces →INI400_016520= RecalcForces[GetOppositeReinfLayer(ReinfLayer).Forces_ID][ReinfLayer.Combi_ID]; 
-                } 
-                →INI400_010391TEXT(ReinfLayer.Descript &amp; " :"); 
-                →INI400_010312TEXT("n↓Ed ←= " &amp; (ExtForces.nEd/1000).ToString("0.0") &amp; " kN/m"); 
-                →INI400_010315TEXT("m↓Ed ←= " &amp; (ExtForces.mEd/1000).ToString("0.0") &amp; " kNm/m"); 
-                →INI400_014829TEXT("[" &amp; ExtForces.CombiID &amp; "]"); 
-            } 
-        } 
-        
-        
-        object CombiIDs →INI400_014856= new object[]; 
-        FOREACH(object ReinfLayer in DesignReinf) { 
-            IF(ReinfLayer.As_req &gt; 0) { 
-                IF(ReinfLayer.Combi_ID != -1) { 
-                    bool newCombiID →INI400_014863= true; 
-                    FOREACH(object Combi in CombiIDs) { 
-                        IF(Combi == ReinfLayer.Combi_ID) { 
-                            newCombiID →INI400_014864= false; 
-                            Break(); 
+            
+            object CombiIDs →INI400_014856= new object[]; 
+            FOREACH(object ReinfLayer in DesignReinf) { 
+                IF(ReinfLayer.As_req &gt; 0) { 
+                    IF(ReinfLayer.Combi_ID != -1) { 
+                        bool newCombiID →INI400_014863= true; 
+                        FOREACH(object Combi in CombiIDs) { 
+                            IF(Combi == ReinfLayer.Combi_ID) { 
+                                newCombiID →INI400_014864= false; 
+                                Break(); 
+                            } 
                         } 
-                    } 
-                    IF(newCombiID) { 
-                        object ExtForces →INI400_016487= RecalcForces[ReinfLayer.Forces_ID][ReinfLayer.Combi_ID]; 
-                        IF(ExtForces == null) { 
-                            ExtForces →INI400_016521= RecalcForces[GetOppositeReinfLayer(ReinfLayer).Forces_ID][ReinfLayer.Combi_ID]; 
+                        IF(newCombiID) { 
+                            object ExtForces →INI400_016487= RecalcForces[ReinfLayer.Forces_ID][ReinfLayer.Combi_ID]; 
+                            IF(ExtForces == null) { 
+                                ExtForces →INI400_016521= RecalcForces[GetOppositeReinfLayer(ReinfLayer).Forces_ID][ReinfLayer.Combi_ID]; 
+                            } 
+                            →INI400_014842TEXT("[" &amp; ExtForces.CombiID &amp; "] :"); 
+                            →INI400_014843TEXT(FONTS_COLORS.GetLimitString(ExtForces.CombiKey, 100)); 
+                            CombiIDs[CombiIDs.Count] →INI400_014859= ReinfLayer.Combi_ID; 
                         } 
-                        →INI400_014842TEXT("[" &amp; ExtForces.CombiID &amp; "] :"); 
-                        →INI400_014843TEXT(FONTS_COLORS.GetLimitString(ExtForces.CombiKey, 100)); 
-                        CombiIDs[CombiIDs.Count] →INI400_014859= ReinfLayer.Combi_ID; 
                     } 
                 } 
             } 
         } 
     } 
-    
-    
+    IF(IO.LayoutIndex == 2) { 
+        →KRS116_000046GRAPHICS_2D_ELEM.Draw(new Structure("h", h, "DesignReinfData", DesignReinf, "DrawingType", 0, "UseBasicReinf", DesignDefaults.ReinfLong.UseBasicReinf), null); 
+        →KRS116_000047PrintReinfInfo(); 
+    } 
 } 
 
 public void PrintDesignReinfTable() { 
     
-    double Ncolumns →INI400_016312= 8; 
+    double Ncolumns →INI400_016312= 9; 
     double Nrows →INI400_016313= 1+Linq.ToList(→PAI316_000015Linq.Where(DesignReinf, object Layer=&gt;Layer.As_prov &gt; 0)).Count; 
     object T_Area →INI400_016314= new Table(Ncolumns); 
     
@@ -192,7 +208,7 @@ public void PrintDesignReinfTable() {
     T_Area[0][5].Value →INI400_016319= "A↓s,min ←&lt;BR&gt;[mm↑2←/m]"; 
     T_Area[0][6].Value →INI400_016320= "A↓s,max ←&lt;BR&gt;[mm↑2←/m]"; 
     T_Area[0][7].Value →INI400_016323= "A↓s,req,bar ←&lt;BR&gt;[mm↑2←/m]"; 
-    
+    T_Area[0][8].Value →KRS116_000059= TR("Status"); 
     //values
     double rowCount →PAI316_000017= 1; 
     FOR(i, 0, 3) { 
@@ -218,26 +234,27 @@ public void PrintDesignReinfTable() {
             T_Area[rowCount][4].Value →INI400_016328= As_req; 
             T_Area[rowCount][5].Value →INI400_016329= (ReinfLayer.As_det_min*1000000).ToString("0"); 
             T_Area[rowCount][6].Value →INI400_016330= ReinfLayer.As_det_max &gt; 0 ? (ReinfLayer.As_det_max*1000000).ToString("0") : "-"; 
-            T_Area[rowCount][7].Value →INI400_016333= ReinfLayer.Reinf_req &amp; " (" &amp; (ReinfLayer.As_req_bar*1000000).ToString("0") &amp; ")"; 
+            T_Area[rowCount][7].Value →INI400_016333= ReinfLayer.As_req_bar != 9.99*10↑20← ? ReinfLayer.Reinf_req &amp; " (" &amp; (ReinfLayer.As_req_bar*1000000).ToString("0") &amp; ")" : ReinfLayer.Reinf_req; 
+            T_Area[rowCount][8].Value →KRS116_000058= ReinfLayer.Status; 
             rowCount →PAI316_000018= rowCount+1; 
         } 
     } 
     
     //format 
     T_Area.Columns[0].Width →INI400_016335= 70; 
-    T_Area.Columns[1].Width →INI400_016336= 90; 
-    T_Area.Columns[2].Width →INI400_016337= 90; 
-    T_Area.Columns[Ncolumns-1].Width →INI400_016338= 100; 
-    FOR(i, 3, Ncolumns-2) { 
-        T_Area.Columns[i].Width →INI400_016339= Convert.ToSingle((FontsAndColors.TableWidth()-350)/(Ncolumns-4)); 
+    T_Area.Columns[1].Width →INI400_016336= 80; 
+    T_Area.Columns[2].Width →INI400_016337= 80; 
+    T_Area.Columns[3].Width →KRS116_000061= 45; 
+    T_Area.Columns[Ncolumns-2].Width →INI400_016338= 90; 
+    FOR(i, 4, Ncolumns-3) { 
+        T_Area.Columns[i].Width →KRS116_000060= Convert.ToSingle((FontsAndColors.TableWidth()-300)/(Ncolumns-4)); 
     } 
+    T_Area.Columns[Ncolumns-1].Width →KRS116_000063= 50; 
     FOR(i, 1, rowCount-1) { 
         T_Area[i][0].BackColor →INI400_016340= FontsAndColors.ColorTableRow(); 
         T_Area[i][1].BackColor →INI400_016341= FontsAndColors.ColorTableRow(); 
         T_Area[i][2].BackColor →INI400_016342= FontsAndColors.ColorTableRow(); 
-        //        IF(T_Area[i][0]) { //TODO: DesignDefaults.ReinfLong.IsProvReinf
-        //            T_Area[i][Ncolumns-1].BackColor →INI400_016343= FontsAndColors.ColorTableRow(); 
-        //        } 
+        T_Area[i][Ncolumns-1].Font →KRS116_000062= FontsAndColors.TableHeaderFont(); 
     } 
     T_Area.Padding.All →INI400_016345= 5; 
     T_Area.Padding.Top →INI400_016346= Convert.ToSingle(FontsAndColors.PaddingTableOverall()); 
@@ -260,7 +277,8 @@ public void PrintDesignReinfTable() {
     T_reqExplanationString →INI400_016367= "A↓s.req← - " &amp; TR("required reinforcement including detailing provisions (statically required)") &amp; 
     ", A↓s,min← - " &amp; TR("minimal reinforcement from detailing provisions") &amp; 
     ", A↓s,max← - " &amp; TR("maximal reinforcement from detailing provisions") &amp; 
-    ", A↓s,req,bar← - " &amp; TR("required reinforcement as real bars/distances"); 
+    ", A↓s,req,bar← - " &amp; TR("required reinforcement as real bars/distances") &amp; 
+    ", " &amp; TR("Status") &amp; " - " &amp; TR("check if A↓s,req,bar← &lt; A↓s,max←"); 
     T_reqExplanation[0][0].Value →INI400_016368= T_reqExplanationString; 
     
     IF(IO.LayoutIndex &lt; 2) { 
@@ -269,20 +287,11 @@ public void PrintDesignReinfTable() {
             →PAI116_000187T_Area.Draw(); 
             →PAI116_000188T_reqExplanation.Draw(); 
         } 
-        
-    } 
-    ELSE { 
-        →INI400_016358TEXT("Design summary"); 
+    } ELSE { 
+        →KRS116_000048TEXT("Required:"); 
         →INI400_016360T_Area.Draw(); 
         →INI400_016369T_reqExplanation.Draw(); 
     } 
-    
-    
-    
-    
-    
-    
-    
     →INI400_016370PAGEBREAK(); 
 } 
 
@@ -303,7 +312,7 @@ public void PrintProvidedReinfTable() {
         T_Area[0][5].Value →PAI116_000010= "A↓s,prov ←&lt;BR&gt;[mm↑2←/m]"; 
         T_Area[0][6].Value →PAI116_000011= "A↓s,min ←&lt;BR&gt;[mm↑2←/m]"; 
         T_Area[0][7].Value →PAI116_000012= "A↓s,max ←&lt;BR&gt;[mm↑2←/m]"; //TR("Check") &amp; "&lt;BR&gt; A↓s,prov← &gt; A↓s,req←"; 
-        T_Area[0][8].Value →PAI116_000193= "Status"; //TR("Check") &amp; "&lt;BR&gt; A↓s,prov← &gt; A↓s,req←"; 
+        T_Area[0][8].Value →PAI116_000193= TR("Status"); //TR("Check") &amp; "&lt;BR&gt; A↓s,prov← &gt; A↓s,req←"; 
         
         //values
         double rowCount →PAI116_000013= 1; 
@@ -322,7 +331,14 @@ public void PrintProvidedReinfTable() {
                 T_Area[rowCount][1].Value →PAI116_000019= ReinfLayer.Reinf_bas &amp; " (" &amp; (ReinfLayer.As_bas*1000000).ToString("0") &amp; ")"; 
                 T_Area[rowCount][2].Value →PAI116_000020= ReinfLayer.Reinf_add &amp; " (" &amp; (ReinfLayer.As_add*1000000).ToString("0") &amp; ")"; 
                 T_Area[rowCount][3].Value →PAI116_000088= (ReinfLayer.Combi_ID &gt; -1) ? Forces[ReinfLayer.Combi_ID].CombiID : "-"; 
-                T_Area[rowCount][4].Value →PAI116_000023= (ReinfLayer.As_req*1000000).ToString("0"); 
+                
+                IF(ReinfLayer.As_req &gt; 0) { 
+                    string As_req →KRS116_000050= ReinfLayer.As_stat &gt; ReinfLayer.As_det_min ? (ReinfLayer.As_stat*1000000).ToString("0") : 
+                    →KRS116_000051(ReinfLayer.As_det_min*1000000).ToString("0") &amp; " (" &amp; (ReinfLayer.As_stat*1000000).ToString("0") &amp; ")"; 
+                } ELSE { 
+                    string As_req →KRS116_000052= "0"; 
+                } 
+                T_Area[rowCount][4].Value →PAI116_000023= As_req; 
                 T_Area[rowCount][5].Value →PAI116_000024= (ReinfLayer.As_prov*1000000).ToString("0"); 
                 T_Area[rowCount][6].Value →PAI116_000025= (ReinfLayer.As_det_min*1000000).ToString("0"); 
                 T_Area[rowCount][7].Value →PAI116_000192= (ReinfLayer.As_det_max*1000000).ToString("0"); 
@@ -368,8 +384,9 @@ public void PrintProvidedReinfTable() {
         
         T_reqExplanationString →PAI116_000055= "A↓s.req← - " &amp; TR("required reinforcement including detailing provisions") &amp; 
         ", A↓s,prov← - " &amp; TR("provided longitudinal reinforcement by user (basic + additional)") &amp; 
-        ", A↓s,add,req← - " &amp; TR("required additional reinforcement") &amp; 
-        ", UC↓req/prov← - " &amp; TR("unity check as ratio of required and provided reinforcement"); 
+        ", A↓s,min← - " &amp; TR("minimal reinforcement from detailing provisions") &amp; 
+        ", A↓s,max← - " &amp; TR("maximal reinforcement from detailing provisions") &amp; 
+        ", " &amp; TR("Status") &amp; " - " &amp; TR("check if A↓s,req← &lt; A↓s,prov← and A↓s,prov← &lt; A↓s,max←"); 
         T_reqExplanation[0][0].Value →PAI116_000056= T_reqExplanationString; 
         
         
@@ -380,7 +397,7 @@ public void PrintProvidedReinfTable() {
             →PAI116_000191PAGEBREAK(); 
         } 
         ELSE { 
-            →PAI116_000047TEXT("Design summary"); 
+            →KRS116_000049TEXT("Provided:"); 
             →PAI116_000048T_Area.Draw(); 
             →PAI116_000057T_reqExplanation.Draw(); 
             →PAI116_000058PAGEBREAK(); 
@@ -698,12 +715,17 @@ private void SetProvReinf(object DesignReinf, object DesignDefaults) {
             double s →PAI116_000109= SpacingIncr*ROUNDDOWN(b/n/SpacingIncr); 
             double As_req_bar →PAI116_000108= 0.25*Math.PI*ds*ds*b/s; 
             
-            →PAI116_000111DesignReinf[i].Set("As_req_bar", As_req_bar); 
-            
-            →PAI116_000112DesignReinf[i].Set("Reinf_req", 
-            "ϕ" &amp; (ds*1000).ToString("0") &amp; 
-            "/" &amp; (s*1000).ToString("0")); 
-            
+            IF(COMPARE(s, 0, 6) != 0) { 
+                →PAI116_000111DesignReinf[i].Set("As_req_bar", As_req_bar); 
+                →PAI116_000112DesignReinf[i].Set("Reinf_req", 
+                "ϕ" &amp; (ds*1000).ToString("0") &amp; 
+                "/" &amp; (s*1000).ToString("0")); 
+                
+            } ELSE { 
+                →DLO116_000051DesignReinf[i].Set("As_req_bar", 9.99*10↑20←); 
+                →DLO116_000050DesignReinf[i].Set("Reinf_req", "n/a"); 
+                
+            } 
             double ρ_req →DLO116_000047= DesignReinf[i].As_req/(b*h); 
             →DLO116_000048DesignReinf[i].Set("ρ_req", ρ_req); 
         } 
@@ -712,6 +734,7 @@ private void SetProvReinf(object DesignReinf, object DesignDefaults) {
         double As_bas →PAI116_000105= 0; 
         IF(BasReinfArr != null) { 
             As_bas →PAI116_000115= BasReinfArr.As; 
+            →KRS027_000001DesignReinf[i].Set("dsb", BasReinfArr.ds); 
             IF(As_bas &gt; 0) { 
                 →PAI116_000114DesignReinf[i].Set("As_bas", As_bas); 
                 →DLO116_000044DesignReinf[i].Set("Reinf_bas", 
@@ -734,6 +757,7 @@ private void SetProvReinf(object DesignReinf, object DesignDefaults) {
                     →PAI116_000109Break(); 
                 } 
             } 
+            →KRS027_000002DesignReinf[i].Set("dsa", AddReinfArr[0].ds); 
             →PAI116_000119DesignReinf[i].Set("As_add", addReinf.As); 
             IF(addReinf.As &gt; 0) { 
                 →DLO116_000045DesignReinf[i].Set("Reinf_add", 
@@ -864,6 +888,35 @@ private void SetResultsForUT() {
     A↓s,req,2+← →INI400_016503= DesignReinf[3].As_stat; 
 } 
 
+private void PrintReinfInfo() { 
+    double rowCount →KRS116_000033= 1; 
+    FOR(i, 0, 3) { 
+        double RowID →KRS116_000034= (i &lt; 2) ? i+2 : i-2; 
+        object ReinfLayer →KRS116_000035= DesignReinf[RowID]; 
+        IF(DesignDefaults.ReinfLong.UseBasicReinf) { 
+            IF(ReinfLayer.As_prov &gt; 0) { 
+                string sreinf →KRS116_000036= ReinfLayer.Descript; 
+                IF(ReinfLayer.As_bas &gt; 0) { 
+                    sreinf →KRS116_000037= sreinf &amp; " " &amp; ReinfLayer.Reinf_bas; 
+                } 
+                IF(ReinfLayer.As_bas &gt; 0 &amp;&amp; ReinfLayer.As_add &gt; 0) { 
+                    sreinf →KRS116_000038= sreinf &amp; " + "; 
+                } 
+                IF(ReinfLayer.As_add &gt; 0) { 
+                    sreinf →KRS116_000039= sreinf &amp; " " &amp; ReinfLayer.Reinf_add; 
+                } 
+                sreinf →KRS116_000040= sreinf &amp; " (A↓s← = " &amp; (ReinfLayer.As_prov*1000000).ToString("0") &amp; " mm↑2←)"; 
+                →KRS116_000041TEXT(sreinf); 
+            } 
+        } ELSE { 
+            IF(ReinfLayer.As_req &gt; 0) { 
+                string sreinf →KRS116_000042= ReinfLayer.As_req_bar != 9.99*10↑20← ? ReinfLayer.Descript &amp; " " &amp; ReinfLayer.Reinf_req &amp; " (A↓s← = " &amp; (ReinfLayer.As_req_bar*1000000).ToString("0") &amp; " mm↑2←)" : ReinfLayer.Descript &amp; " " &amp; ReinfLayer.Reinf_req; 
+                →KRS116_000043TEXT(sreinf); 
+            } 
+        } 
+    } 
+} 
+
 //------------------------------------------------------------
 //@SCRIPT
 
@@ -933,7 +986,7 @@ SWITCH(MemberType) {
     CASE 64 :  { CHECK_DETAILING →INI400_010622= LoadExternCLC("EC_Concrete_Detailing_provisions_Plate.clc"); } 
     CASE 32 :  { CHECK_DETAILING →INI400_010625= LoadExternCLC("EC_Concrete_Detailing_provisions_Wall.clc"); } 
     CASE 256 :  { CHECK_DETAILING →INI400_010626= LoadExternCLC("EC_Concrete_Detailing_provisions_Wall.clc"); } 
-    CASE 528 :  { CHECK_DETAILING →INI400_010631= LoadExternCLC("EC_Concrete_Detailing_provisions_DeepBeam.clc"); } 
+    CASE 512 :  { CHECK_DETAILING →INI400_010631= LoadExternCLC("EC_Concrete_Detailing_provisions_DeepBeam.clc"); } 
     DEFAULT :  { CHECK_DETAILING →INI400_010632= LoadExternCLC("EC_Concrete_Detailing_provisions_Plate.clc"); } 
 } 
 object CheckDetailingInput →INI400_010437= new Structure(
@@ -941,6 +994,7 @@ object CheckDetailingInput →INI400_010437= new Structure(
 "DesignDefaults", DesignDefaults, 
 "DesignReinfData", DesignReinf, 
 "ConcreteData", ConMat, 
+"RecalcForces", RecalcForces, 
 "obEWN", obEWN
 ); 
 object CheckDetailingOutput →INI400_010436= new Structure(); 
@@ -979,9 +1033,14 @@ FOREACH(object ReinfLayer in DesignReinf) {
             →PAI116_000205FUNCT_EWN.AddWarningToEWN(obEWN, "3", DescriptionN, SolutionN, false); 
             Status →PAI116_000207= TR("NOT OK"); 
         } 
-    } 
-    ELSE { 
-        
+    } ELSE { 
+        IF(ReinfLayer.As_req_bar &gt; ReinfLayer.As_det_max &amp;&amp; ReinfLayer.As_det_max &gt; 0) { 
+            string DescriptionN →KRS116_000053= TR("The required reinforcement A↓s,req,bar← exceeds A↓s,max← for the layer"); 
+            DescriptionN →KRS116_000054= DescriptionN &amp; " " &amp; ReinfLayer.Descript &amp; "."; 
+            string SolutionN →KRS116_000055= TR("To increase depth of member or quality of used materials."); 
+            →KRS116_000056FUNCT_EWN.AddWarningToEWN(obEWN, "3", DescriptionN, SolutionN, false); 
+            Status →KRS116_000057= TR("NOT OK"); 
+        } 
     } 
     →PAI116_000209ReinfLayer.Set("Status", Status); 
 } 
@@ -1171,6 +1230,60 @@ IF(!IO.IsExternCLC) {
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="CHECK_DETAILING" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="CHECK_STRUT" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="CheckDetailingInput" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="CheckDetailingOutput" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="CheckedValues" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="CheckStrut" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="CheckStrutInput" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="CheckStrutOutput" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="CheckStrutValues" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="ConMat" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -1344,60 +1457,6 @@ IF(!IO.IsExternCLC) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="CHECK_DETAILING" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="CHECK_STRUT" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="CheckDetailingInput" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="CheckDetailingOutput" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="CheckedValues" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="CheckStrut" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="CheckStrutInput" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="CheckStrutOutput" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="CheckStrutValues" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
       <Variable Modifier="Public" Name="MemberType" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -1448,7 +1507,7 @@ IF(!IO.IsExternCLC) {
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="Status" ESA_ID="" Type="String">
-        <Description TranslateID="VARIABLE_Status">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -1563,6 +1622,22 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="DLO116_000049">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="DLO116_000050">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="DLO116_000051">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1818,14 +1893,6 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014700">
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_014723">
         <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
@@ -1836,14 +1903,6 @@ IF(!IO.IsExternCLC) {
       </VC>
       <VC ID="INI400_014737">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|12|0|2" Font2="Segoe UI|12|1|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_014738">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="34" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|12|0|2" Font2="Segoe UI|12|1|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
@@ -1882,30 +1941,6 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014753">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_014758">
-        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_014759">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="0" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="0" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-      </VC>
       <VC ID="INI400_014800">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1922,14 +1957,6 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014823">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-      </VC>
       <VC ID="INI400_014824">
         <Set Vis="0" Prev="" Style="2" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|12|0|2" Font2="Segoe UI|12|1|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="" X="50" Y="0" Hor="4" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|12|0|2" Font2="Segoe UI|12|1|2" EqStyle="23" />
@@ -1937,14 +1964,6 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="2" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_014826">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
       </VC>
       <VC ID="INI400_014827">
         <Set Vis="0" Prev="" Style="2" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|12|0|2" Font2="Segoe UI|12|1|2" EqStyle="23" />
@@ -1961,14 +1980,6 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_014839">
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
       <VC ID="INI400_014842">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2017,14 +2028,6 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_014865">
-        <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
       </VC>
       <VC ID="INI400_014924">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2174,14 +2177,6 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_015338">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2449,14 +2444,6 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_016057">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_016089">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2954,14 +2941,6 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016339">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_016340">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3062,14 +3041,6 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_016358">
-        <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Chapter" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
@@ -3378,7 +3349,15 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016698">
+      <VC ID="KRS027_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS027_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3386,7 +3365,71 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016699">
+      <VC ID="KRS116_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000005">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000006">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000007">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="0" Hor="4" Ver="1" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000033">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="0" Hor="4" Ver="1" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000034">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3394,7 +3437,159 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016701">
+      <VC ID="KRS116_000035">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000036">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000037">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000038">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000039">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000040">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000041">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="-3" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="-3" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="-3" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="-3" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="-3" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="-3" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000042">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000043">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="-3" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="-3" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="-3" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="-3" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="-3" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="-3" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000044">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000046">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="50" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000047">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="330" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="330" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="330" Y="0" Hor="0" Ver="1" SpX="5" SpY="20" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="330" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="330" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="330" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000048">
+        <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000049">
+        <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000050">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000052">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000053">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000054">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000055">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000056">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3402,13 +3597,61 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI103_000001">
+      <VC ID="KRS116_000057">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000058">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000059">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000060">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000061">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000062">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000063">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="PAI116_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3586,14 +3829,6 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI116_000026">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="PAI116_000027">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3742,14 +3977,6 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-      </VC>
-      <VC ID="PAI116_000047">
-        <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Chapter" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
@@ -3970,14 +4197,6 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI116_000089">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="PAI116_000093">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4162,14 +4381,6 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI116_000122">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="PAI116_000174">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4196,7 +4407,7 @@ IF(!IO.IsExternCLC) {
       </VC>
       <VC ID="PAI116_000180">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4306,14 +4517,6 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI116_000194">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="PAI116_000195">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4347,12 +4550,12 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="PAI116_000200">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="PAI116_000201">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4371,12 +4574,12 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="PAI116_000203">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="PAI116_000204">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4426,29 +4629,21 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI116_000210">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="PAI116_000211">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="PAI116_000212">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="PAI121_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4618,54 +4813,6 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI316_000020">
-        <Set Vis="0" Prev="" Style="2" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 3" EqStyle="23" />
-      </VC>
-      <VC ID="PAI316_000021">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="PAI316_000022">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="PAI316_000024">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="PAI316_000025">
-        <Set Vis="0" Prev="" Style="2" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 3" EqStyle="23" />
-      </VC>
-      <VC ID="PAI316_000027">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="PAI316_000028">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4714,14 +4861,6 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
       </VC>
-      <VC ID="PAI316_000034">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-      </VC>
       <VC ID="PAI316_000042">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4737,14 +4876,6 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="PAI316_000044">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="VAL121_001765">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="812" Hor="4" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -4975,7 +5106,7 @@ IF(!IO.IsExternCLC) {
   </Calculation>
   <Dialog>
     <Main Width="630">
-      <TTabControl Name="" ID="83" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="27" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|500" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.8|0|3" Index="2" TabBG="-657931" SelTab="-1842205" Alignment="0">
+      <TTabControl Name="" ID="83" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="27" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|500" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.8|0|3" Index="0" TabBG="-657931" SelTab="-1842205" Alignment="0">
         <Texts>
           <ENU>RECALC_LOWER|RECALC_UPPER|RECALC_POD</ENU>
         </Texts>
@@ -5031,7 +5162,7 @@ IF(!IO.IsExternCLC) {
                 </ENU>
               </Texts>
             </TCheckBox>
-            <TTableInput Name="" ID="57" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="20" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_RecalcForces_ID_0" Value="CO1/1|LC1|0|10|0|0║CO1/2|LC2|0|0|0|0" CellBG="-1" HeaderBG="-986896" FixedRows="2">
+            <TTableInput Name="" ID="57" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="20" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_RecalcForces_ID_0" Value="CO1/1|LC1|0|-407.9|0|0║CO1/2|LC2|0|0|0|0" CellBG="-1" HeaderBG="-986896" FixedRows="2">
               <Texts>
                 <ENU>CombiID|CombiKey|nEd [kN/m]|mEd [kNm/m]|nEds [kN/m]|alpha [°]</ENU>
               </Texts>
@@ -5108,7 +5239,7 @@ IF(!IO.IsExternCLC) {
                 </ENU>
               </Texts>
             </TCheckBox>
-            <TTableInput Name="" ID="87" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="20" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_RecalcForces_ID_3" Value="CO1/1|LC1|0|10|0|0║CO1/2|LC2|0|0|0|0" CellBG="-1" HeaderBG="-986896" FixedRows="2">
+            <TTableInput Name="" ID="87" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="20" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_RecalcForces_ID_3" Value="CO1/1|LC1|0|-83.5|0|0║CO1/2|LC2|0|0|0|0" CellBG="-1" HeaderBG="-986896" FixedRows="2">
               <Texts>
                 <ENU>CombiID|CombiKey|nEd [kN/m]|mEd [kNm/m]|nEds [kN/m]|alpha [°]</ENU>
               </Texts>
@@ -5173,7 +5304,7 @@ IF(!IO.IsExternCLC) {
           <ENU>INTERNAL_FORCES</ENU>
         </Texts>
       </TLabel>
-      <TTabControl Name="" ID="96" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="26" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" Index="1" TabBG="-657931" SelTab="-1842205" Alignment="0">
+      <TTabControl Name="" ID="96" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="26" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" Index="0" TabBG="-657931" SelTab="-1842205" Alignment="0">
         <Texts>
           <ENU>BASIC|ADDITIONAL</ENU>
         </Texts>
@@ -5195,7 +5326,7 @@ IF(!IO.IsExternCLC) {
             </TTableInput>
           </Tab>
           <Tab Text="ADDITIONAL">
-            <TTableInput Name="" ID="99" Translate="0" Width="500" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="3" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_AddReinf" Value="Additional [1-]|10|0|0║Additonal [2-]|10|0|0║Additomal [1+]|10|0|0║Additional [2+]|10|0|0" CellBG="-1" HeaderBG="-986896" FixedRows="4">
+            <TTableInput Name="" ID="99" Translate="0" Width="500" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="3" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_AddReinf" Value="Additional [1-]|6|0|0║Additonal [2-]|6|0|0║Additomal [1+]|6|0|0║Additional [2+]|6|0|0" CellBG="-1" HeaderBG="-986896" FixedRows="4">
               <Texts>
                 <ENU>Layer|Diameter [mm]|Dist#1 [mm]|Dist#2 [mm]</ENU>
               </Texts>
@@ -5220,18 +5351,18 @@ IF(!IO.IsExternCLC) {
           <ENU>REINFORCEMENT</ENU>
         </Texts>
       </TLabel>
-      <TComboBox Name="" ID="93" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="28" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="_dialog_DesignReqReinfMethod" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1" Index="1">
+      <TComboBox Name="" ID="93" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="28" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="_dialog_DesignReqReinfMethod" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1" Index="0">
         <Texts>
           <ENU>Toolbox|Formula</ENU>
         </Texts>
       </TComboBox>
       <TDoubleInput Name="" ID="9" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="h" VarNameVisible="True" UnitsVisible="True" InputColor="-1" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-      <TComboBox Name="" ID="64" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="15" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="MemberType" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="16|32|64|256|528" Index="0">
+      <TComboBox Name="" ID="64" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="15" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="MemberType" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="16|32|64|256|528" Index="-1">
         <Texts>
           <ENU>Plate|Wall|Shell(Plate)|Shell(Wall)|Deep beam</ENU>
         </Texts>
       </TComboBox>
-      <TCustomLibrary Name="" ID="23" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="CONCRETE.EC" DataFile="EC_Concrete.xml" Collapsed="True" UseCombo="False" Category="Parabola-rectangular" Item="C 30/37">
+      <TCustomLibrary Name="" ID="23" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="CONCRETE.EC" DataFile="EC_Concrete.xml" Collapsed="True" UseCombo="False" Category="Parabola-rectangular" Item="C 20/25">
         <Data>
           <Header>
             <PropertySet Symbol="f↓ck←" ESA_ID="fck" Unit="MPa" Type="Numeric" />
@@ -5279,15 +5410,15 @@ IF(!IO.IsExternCLC) {
           <Items>
             <Item>
               <P>Parabola-rectangular</P>
-              <P>C 30/37</P>
-              <P>30</P>
-              <P>37</P>
-              <P>38</P>
-              <P>2.9</P>
-              <P>2</P>
-              <P>3.8</P>
-              <P>33</P>
+              <P>C 20/25</P>
+              <P>20</P>
+              <P>25</P>
+              <P>28</P>
               <P>2.2</P>
+              <P>1.5</P>
+              <P>2.9</P>
+              <P>30</P>
+              <P>2</P>
               <P>3.5</P>
               <P>2</P>
               <P>3.5</P>
@@ -5295,13 +5426,13 @@ IF(!IO.IsExternCLC) {
               <P>3.5</P>
               <P>2</P>
               <P>0;0;</P>
-              <P>-0.002;-20000000;</P>
-              <P>-0.0035;-20000000;</P>
+              <P>-0.002;-13333330;</P>
+              <P>-0.0035;-13333330;</P>
               <P>false</P>
               <P>32</P>
               <P>0.2</P>
               <P>2500</P>
-              <P>13.7</P>
+              <P>12.5</P>
               <P>0.2</P>
               <P>4500</P>
               <P>0.0006</P>
@@ -5948,7 +6079,7 @@ IF(!IO.IsExternCLC) {
               <P>EC EN 1991-2</P>
               <P>EC EN 1991-3</P>
               <P>EC EN 1991-4</P>
-              <P>EC EN 1992-1-1</P>
+              <P>EC EN 1992-1-1:2004/AC:2008</P>
               <P>1</P>
               <P>1</P>
               <P>1.3</P>
@@ -6134,17 +6265,14 @@ IF(!IO.IsExternCLC) {
     <Item TranslateID="STRING_05F134D9">
       <ENU>"no reinf."</ENU>
     </Item>
-    <Item TranslateID="STRING_0B39C6D5">
-      <ENU>"Increase depth of member or quality of used materials."</ENU>
+    <Item TranslateID="STRING_0DB87285">
+      <ENU>"check if A↓s,req,bar← &lt; A↓s,max←"</ENU>
     </Item>
     <Item TranslateID="STRING_10116E4C">
       <ENU>"Type"</ENU>
     </Item>
     <Item TranslateID="STRING_10116E4C">
       <ENU>"Type"</ENU>
-    </Item>
-    <Item TranslateID="STRING_12C38EA9">
-      <ENU>"The provided reinforcement A↓s,prov← is not sufficient to cover required reinforcement A↓s,req←"</ENU>
     </Item>
     <Item TranslateID="STRING_153D490F">
       <ENU>"provided longitudinal reinforcement by user (basic + additional)"</ENU>
@@ -6157,9 +6285,6 @@ IF(!IO.IsExternCLC) {
     </Item>
     <Item TranslateID="STRING_1BD0E80A">
       <ENU>"upper"</ENU>
-    </Item>
-    <Item TranslateID="STRING_26E6BAD7">
-      <ENU>"Increase basic or additional reinforcement for this layer."</ENU>
     </Item>
     <Item TranslateID="STRING_305937AA">
       <ENU>"compressive"</ENU>
@@ -6175,6 +6300,9 @@ IF(!IO.IsExternCLC) {
     </Item>
     <Item TranslateID="STRING_485F5F54">
       <ENU>"Upper surface"</ENU>
+    </Item>
+    <Item TranslateID="STRING_54FE60DA">
+      <ENU>"The required reinforcement A↓s,req,bar← exceeds A↓s,max← for the layer"</ENU>
     </Item>
     <Item TranslateID="STRING_571248D6">
       <ENU>"surface"</ENU>
@@ -6197,17 +6325,14 @@ IF(!IO.IsExternCLC) {
     <Item TranslateID="STRING_7F3CB668">
       <ENU>"required reinforcement as real bars/distances"</ENU>
     </Item>
-    <Item TranslateID="STRING_82C9AB80">
-      <ENU>"unity check as ratio of required and provided reinforcement"</ENU>
-    </Item>
     <Item TranslateID="STRING_82FE23CF">
       <ENU>"OK"</ENU>
     </Item>
+    <Item TranslateID="STRING_A46C9397">
+      <ENU>"check if A↓s,req← &lt; A↓s,prov← and A↓s,prov← &lt; A↓s,max←"</ENU>
+    </Item>
     <Item TranslateID="STRING_B2B193BD">
       <ENU>"The provided reinforcement A↓s,prov← is not sufficient for the layer"</ENU>
-    </Item>
-    <Item TranslateID="STRING_B9996D96">
-      <ENU>"Lower"</ENU>
     </Item>
     <Item TranslateID="STRING_C13E7A01">
       <ENU>"To increase basic or additional reinforcement for this layer."</ENU>
@@ -6215,26 +6340,14 @@ IF(!IO.IsExternCLC) {
     <Item TranslateID="STRING_C1771CEF">
       <ENU>"NOT OK"</ENU>
     </Item>
-    <Item TranslateID="STRING_C3118A69">
-      <ENU>"The provided reinforcement A↓s,prov← is not sufficient to cover required reinforcement A↓s,req← for the layer"</ENU>
-    </Item>
     <Item TranslateID="STRING_C5BD5543">
       <ENU>"Basic"</ENU>
     </Item>
-    <Item TranslateID="STRING_CF8EE397">
-      <ENU>"The cross-sectional area of provided longitudinal reinforcement exceeded A↓s,max←. "</ENU>
-    </Item>
-    <Item TranslateID="STRING_D2ED0F6A">
-      <ENU>"Upper"</ENU>
+    <Item TranslateID="STRING_D5DBECED">
+      <ENU>"Status"</ENU>
     </Item>
     <Item TranslateID="STRING_DBB29AE6">
       <ENU>"Direction"</ENU>
-    </Item>
-    <Item TranslateID="STRING_E1856CB5">
-      <ENU>"Increase basic or additional reinforcement."</ENU>
-    </Item>
-    <Item TranslateID="STRING_E92D38E3">
-      <ENU>"required additional reinforcement"</ENU>
     </Item>
     <Item TranslateID="STRING_F7236EA0">
       <ENU>"Layer"</ENU>
@@ -6244,9 +6357,6 @@ IF(!IO.IsExternCLC) {
     </Item>
     <Item TranslateID="STRING_FEF1B86E">
       <ENU>"Case"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_">
-      <ENU>"Provided:"</ENU>
     </Item>
     <Item ID="TEXT_INI400_010312">
       <ENU>"n↓Ed ←= " &amp; (ExtForces.nEd/1000).ToString("0.0") &amp; " kN/m"</ENU>
@@ -6263,13 +6373,10 @@ IF(!IO.IsExternCLC) {
     <Item TranslateID="TEXT_INI400_014737">
       <ENU>"Concrete:"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_014738">
-      <ENU>"Longitudinal:"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_014824">
+    <Item ID="TEXT_INI400_014824">
       <ENU>" " &amp; ConMat.Name</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_014827">
+    <Item ID="TEXT_INI400_014827">
       <ENU>" " &amp; ReqReinfMat.Name</ENU>
     </Item>
     <Item ID="TEXT_INI400_014829">
@@ -6277,9 +6384,6 @@ IF(!IO.IsExternCLC) {
     </Item>
     <Item ID="TEXT_INI400_014842">
       <ENU>"[" &amp; ExtForces.CombiID &amp; "] :"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_014865">
-      <ENU>"Member data"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_015031">
       <ENU>"Design of longitudinal reinforcement"</ENU>
@@ -6339,14 +6443,20 @@ IF(!IO.IsExternCLC) {
     <Item TranslateID="TEXT_INI400_016357">
       <ENU>"Required:"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_016358">
-      <ENU>"Design summary"</ENU>
+    <Item TranslateID="TEXT_KRS116_000005">
+      <ENU>"Upper:"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000006">
+      <ENU>"Lower:"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000048">
+      <ENU>"Required:"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000049">
+      <ENU>"Provided:"</ENU>
     </Item>
     <Item TranslateID="TEXT_PAI116_000046">
       <ENU>"Provided:"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_PAI116_000047">
-      <ENU>"Design summary"</ENU>
     </Item>
     <Item TranslateID="TEXT_PAI116_000069">
       <ENU>"Longitudinal reinforcement"</ENU>
@@ -6361,12 +6471,6 @@ IF(!IO.IsExternCLC) {
       <ENU>"n↓Ed ←= " &amp; Val(ExtremeLoad.nEd/1000, 2) &amp; " kN/m" &amp; 
 "  m↓Ed ←= " &amp; Val(ExtremeLoad.mEd/1000, 2) &amp; " kNm/m" &amp; 
 "  [" &amp; ExtremeLoad.CombiID &amp; "]"</ENU>
-    </Item>
-    <Item ID="TEXT_PAI316_000020">
-      <ENU>"f↓cd← = " &amp; f↓cd←</ENU>
-    </Item>
-    <Item ID="TEXT_PAI316_000025">
-      <ENU>"f↓yd← = " &amp; f↓yd←</ENU>
     </Item>
     <Item TranslateID="TEXT_PAI316_000033">
       <ENU>"Cover:"</ENU>

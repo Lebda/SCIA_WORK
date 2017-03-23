@@ -168,7 +168,7 @@
         →INI400_008506Result.Set("rhow", ρ↓w←); 
     } 
     
-    public void ρ↓w,min←(double f↓ck←, double f↓ctm←, double f↓ywk←, double f↓ywd←, bool Pretension, object Result) { 
+    public void ρ↓w,min←(double f↓ck←, double f↓ctm←, double f↓ywk←, double f↓ywd←, bool Pretension, bool Is1D, object Result) { 
         object Clause9_2_2_5 →INI400_005304= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_9.2.2(5).CLC", true); 
         object Input →KRS001_000013= new Structure(
         "f_ck", f↓ck←, 
@@ -193,8 +193,19 @@
             →INI400_007568TEXT("f↓ywd← = " &amp; Val(f↓ywd←/1000000, 2) &amp; " MPa"); //Onorm
         } 
         →INI400_007561TEXT("Minimal allowed reinforcement percentage of stirrups"); 
-        →INI400_005310Clause9_2_2_5.Draw(Input, Output, 2); 
-        →INI400_008507Result.Set("rhowmin", Output.ρ_w_min); 
+        IF(Is1D) { 
+            →INI400_005310Clause9_2_2_5.Draw(Input, Output, 2); 
+            →INI400_008507Result.Set("rhowmin", Output.ρ_w_min); 
+        } ELSE { 
+            →KRS116_000003double ρ_w_min; 
+            →KRS116_000002Clause9_2_2_5.CalcValueFor2D(f↓ck←, f↓ctm←, f↓ywd←, f↓ywk←, Pretension, out ρ_w_min); 
+            →KRS116_000004Result.Set("rhowmin", ρ_w_min); 
+        } 
+        
+    } 
+    
+    public void ρ↓w,min←(double f↓ck←, double f↓ctm←, double f↓ywk←, double f↓ywd←, bool Pretension, object Result) { 
+        →KRS116_000001ρ↓w,min←(f↓ck←, f↓ctm←, f↓ywk←, f↓ywd←, Pretension, true, Result); 
     } 
 } 
 
@@ -557,6 +568,30 @@
     public void s↓l,hmax←(double s↓max,h←, object Result) { 
         double&lt;mm,0&gt; s↓l,hmax← →INI400_008668= s↓max,h← @REF("(§9.6.3(2))"); 
         →INI400_008669Result.Set("slhmax", s↓l,hmax←); 
+    } 
+} 
+
+→KRS116_000005BLOCK("Clause 9.6.4(1) - Walls - Transverse reinforcement - s↓wl,max←") { 
+    public void s↓wl,max←(double b↓min←, double ϕ↓l←, object Result) { 
+        object Clause9_5_3_3 →KRS116_000006= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_9.5.3(3).CLC"); 
+        object Input →KRS116_000007= new Structure(
+        "ϕ_l", ϕ↓l←, 
+        "b_min", b↓min←, 
+        "f_ck", 1, //ToDo: link it correctly to function parameters - new inputs for standalone SIG annex
+        "A_s", 1, //ToDo: link it correctly to function parameters - new inputs for standalone SIG annex 
+        "f_yd", 1, //ToDo: link it correctly to function parameters - new inputs for standalone SIG annex 
+        "A_c", 1, //ToDo: link it correctly to function parameters - new inputs for standalone SIG annex 
+        "f_cd", 1, //ToDo: link it correctly to function parameters - new inputs for standalone SIG annex 
+        "Bar", null, //ToDo: link it correctly to function parameters - new inputs for standalone SIG annex 
+        "Link", 1); //ToDo: link it correctly to function parameters - new inputs for standalone SIG annex
+        object Output →KRS116_000008= new Structure(); 
+        
+        →KRS116_000009TEXT("Minimal diameter of longitudinal reinforcement"); 
+        →KRS116_000010TEXT("ϕ↓l,min← = " &amp; Val(ϕ↓l←*1000, 2) &amp; " mm"); 
+        →KRS116_000011TEXT("Maximal allowed longitudinal spacing of transversal reinforcement"); 
+        →KRS116_000015double s↓wl,tmax←; 
+        →KRS116_000012Clause9_5_3_3.CalcValueFor2D(Input, out s↓wl,tmax←); 
+        →KRS116_000014Result.Set("swlmax", s↓wl,tmax←); 
     } 
 } 
 
@@ -3370,6 +3405,102 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS116_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7082" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="7082" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="2041" Hor="1" Ver="4" SpX="15" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000005">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000006">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7388" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7388" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7388" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="61.2" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000007">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000008">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000009">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000010">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000011">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000012">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000014">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
@@ -3505,6 +3636,9 @@
     </Item>
     <Item ID="BLOCK_INI400_008680">
       <ENU>"Clause 9.5.2(4) - Columns - Longitudinal reinforcement - n↓col,min,bar←"</ENU>
+    </Item>
+    <Item ID="BLOCK_KRS116_000005">
+      <ENU>"Clause 9.6.4(1) - Walls - Transverse reinforcement - s↓wl,max←"</ENU>
     </Item>
     <Item ID="TEXT_INI400_001097">
       <ENU>"b↓t← = " &amp; Val(b↓t←, 2) &amp; " m"</ENU>
@@ -3781,6 +3915,15 @@
     </Item>
     <Item TranslateID="TEXT_INI400_008704">
       <ENU>"Minimum width of web of cross-section"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000009">
+      <ENU>"Minimal diameter of longitudinal reinforcement"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS116_000010">
+      <ENU>"ϕ↓l,min← = " &amp; Val(ϕ↓l←*1000, 2) &amp; " mm"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000011">
+      <ENU>"Maximal allowed longitudinal spacing of transversal reinforcement"</ENU>
     </Item>
   </Texts>
 </Root>

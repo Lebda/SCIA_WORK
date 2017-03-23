@@ -134,7 +134,6 @@ bimplus.sdk.api.dll
 bimplus.sdk.data.dll
 bimplus.sdk.ifcdata.dll
 bimplus.sdk.utilities.dll
-bimplustosen.dll
 db\EP_BoltAssembly.db4
 set\EP_CalcSetup.set
 EP_ComponentCmdsRegSvr.exe
@@ -200,10 +199,8 @@ ppattribpicturetype3.dll
 ppattribpicturetype7.dll
 protobuf-net.dll
 EP_regsvr32.exe
-EP_Regsvr32_71.exe
 db\EP_ReinfoMeshType.db4
 rgiesecke.dllexport.metadata.dll
-sciabimplus.dll
 db\EP_ShearConnectors.db4
 slimdx.dll
 db\EP_Soil.db4
@@ -505,6 +502,7 @@ CadsLinkSciaWestok\WestokUBSections.xml
 CadsLinkSciaWestok\WestokUCSections.xml
 CadsLinkSciaWestok\westok_main.xml.def
 AddDataCalculator\Setting\XEP_AddDataCalculatorLoggerConfig.xml
+EP_regsvr32.exe
 XEP_ProjectStorageService.exe -createstorage -nofailwhenexist -silentsuccess
 XEP_SectionCheck.exe.config
 XEP_SectionCheck.exe
@@ -1407,6 +1405,7 @@ DocumentDefaults\SteelConnection.EP_PinBolts [Default].TLX
 DocumentDefaults\SteelConnection.EP_PinPlate [Default].TLX
 DocumentDefaults\SteelConnection.EP_ShearIron [Default].TLX
 DocumentDefaults\SteelConnection.EP_Stiffener [Default].TLX
+DocumentDefaults\SteelConnection.EP_TrussConnection_ResultShell-(ResultMain) [Default].TLX
 DocumentDefaults\SteelConnection.EP_Webdoubler [Default].TLX
 DocumentDefaults\TimberCheckEsa.10.00.TimberULSCheckResData [Default].TLX
 DocumentDefaults\TimberCheckEsa.10.00.TimberULSCheckResultsPresent-(IPFile) [Default].TLX
@@ -1586,6 +1585,7 @@ DocumentDefaults\{6C0ED32A-FCEB-4688-8E23-D164644F4DF3} [Default].TLX
 DocumentDefaults\{6CB61D8E-5815-EE33-58CA-246248ABBC65}-(ResultMain) [Default].TLX
 DocumentDefaults\{6CDFD750-1E0C-44EC-B572-17B3DE950AB6} [Default].TLX
 DocumentDefaults\{6D531C87-9E17-446B-9FA9-AA860AF297FC} [Default].TLX
+DocumentDefaults\{6D863BEB-D98C-4D5E-8320-9FD0F66A493C}-(IPFile) [Default].TLX
 DocumentDefaults\{6DD35FBB-2A9C-26C9-B29A-BE269B059924} [Default].TLX
 DocumentDefaults\{6DD41EAB-1BDC-30E4-ACF3-E3AED4E94E62} [Default].TLX
 DocumentDefaults\{6E1B6CE5-58F2-4C38-BB57-462435552173}-(IPFile) [Default].TLX
@@ -1725,6 +1725,7 @@ DocumentDefaults\{C5FB866D-33DE-460E-97D1-09D91F9B2688} [Default].TLX
 DocumentDefaults\{C619365D-EB30-BD01-9A9E-DB11DBE7DA25} [Default].TLX
 DocumentDefaults\{C64E6250-B469-11D6-AB9F-0050FC1D5C09} [Default].TLX
 DocumentDefaults\{C848D417-5328-6DE9-517D-12E0534A4AA6}-(ResultMain) [Default].TLX
+DocumentDefaults\{C896C984-063C-4632-AB66-A52636C4D8FF} [Default].TLX
 DocumentDefaults\{C8C4BDBB-5171-422A-A105-1A0D4899B727} [Default].TLX
 DocumentDefaults\{C9A26F98-C2DF-3835-3841-6F93DCA72F41}-(ResultMain) [Default].TLX
 DocumentDefaults\{C9D51781-0853-776F-AB83-8EBDE2BEC927}-(IPFile) [Default].TLX
@@ -2414,13 +2415,16 @@ OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_Column.CLS
 OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_Column_Shear.CLS
 OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_Column_Shear.TestIO
 OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_DeepBeam.cls
+OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_DeepBeam.TestIO
 OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_Plate.cls
 OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_Plate.TestIO
 OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_Plate_Shear.cls
+OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_Plate_Shear.TestIO
 OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_SEN_Check.cls
 OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_Wall.cls
 OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_Wall.TestIO
 OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_Wall_Shear.cls
+OpenChecks\Forms\Concrete\EC_Concrete_Detailing_provisions_Wall_Shear.TestIO
 OpenChecks\Forms\Concrete\EC_Concrete_Forces2D.cls
 OpenChecks\Forms\Concrete\EC_Concrete_Forces2D_SEN.cls
 OpenChecks\Forms\Concrete\EC_Concrete_Forces_2D.cls

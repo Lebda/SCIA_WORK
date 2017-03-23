@@ -74,17 +74,23 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                             H =  <xsl:value-of select="StiffnessInput2D/InputRect2D/@H"/>
                           </span>
                           <h5>Add data</h5>
-                          <span class="label label-warning">
-                            SigmaCr =  <xsl:value-of select="StiffnessInput2D/@SigmaCr"/>
+                          <span class="label label-danger">
+                            eCalcPosCdd =  <xsl:value-of select="StiffnessInput2D/InputRect2D/@eCalcPosCdd"/>
                           </span>
                           <span class="label label-warning">
-                            CreepCoeff =  <xsl:value-of select="StiffnessInput2D/@CreepCoeff"/>
+                            SigmaCr =  <xsl:value-of select="StiffnessInput2D/@SigmaCr"/>
                           </span>
                           <span class="label label-warning">
                             Zcalc =  <xsl:value-of select="StiffnessInput2D/InputRect2D/@Zcalc"/>
                           </span>
                           <span class="label label-warning">
                             LocalAxisAlpha =  <xsl:value-of select="StiffnessInput2D/InputRect2D/@LocalAxisAlpha"/>
+                          </span>
+                          <span class="label label-warning">
+                            CreepCoeffAutoCalc =  <xsl:value-of select="StiffnessInput2D/@CreepCoeffAutoCalc"/>
+                          </span>
+                          <span class="label label-warning">
+                            CreepCoeff =  <xsl:value-of select="StiffnessInput2D/@CreepCoefficient"/>
                           </span>
                           <h5>Material</h5>
                           <span class="label label-warning">
@@ -102,6 +108,30 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                           <span class="label label-warning">
                             PoissonCoeff =  <xsl:value-of select="StiffnessInput2D/InputRect2D/Material/@PoissonCoeff"/>
                           </span>
+                          <xsl:if test ="(StiffnessInput2D/@CreepCoeffAutoCalc = 'True')">
+                            <h5>CreepCoeff auto calculation</h5>
+                            <span class="label label-warning">
+                              Ac =  <xsl:value-of select="StiffnessInput2D/CreepCoeffIn/@Ac"/>
+                            </span>
+                            <span class="label label-warning">
+                              AtmoPeriMeter =  <xsl:value-of select="StiffnessInput2D/CreepCoeffIn/@AtmoPeriMeter"/>
+                            </span>
+                            <span class="label label-warning">
+                              Cement =  <xsl:value-of select="StiffnessInput2D/CreepCoeffIn/@Cement"/>
+                            </span>
+                            <span class="label label-warning">
+                              ConsideredTime_t =  <xsl:value-of select="StiffnessInput2D/CreepCoeffIn/@ConsideredTime_t"/>
+                            </span>
+                            <span class="label label-warning">
+                              LoadingTime_t0 =  <xsl:value-of select="StiffnessInput2D/CreepCoeffIn/@LoadingTime_t0"/>
+                            </span>
+                            <span class="label label-warning">
+                              Fcm =  <xsl:value-of select="StiffnessInput2D/CreepCoeffIn/@Fcm"/>
+                            </span>
+                            <span class="label label-warning">
+                              Relative humidity =  <xsl:value-of select="StiffnessInput2D/CreepCoeffIn/@RH"/>
+                            </span>
+                          </xsl:if>
                           <h5>Reinforcement</h5>
                           <xsl:for-each select="StiffnessInput2D/ReinfLayer2D">
                             <span class="label label-Danger">
@@ -124,6 +154,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                             </span>
                             <span class="label label-warning">
                               DistSs =  <xsl:value-of select="@DistSs"/>
+                            </span>
+                            <span class="label label-warning">
+                              IncreaseCoeff =  <xsl:value-of select="@IncreaseCoeff"/>
                             </span>
                             <span class="label label-warning">
                               Emodulus =  <xsl:value-of select="@E"/>

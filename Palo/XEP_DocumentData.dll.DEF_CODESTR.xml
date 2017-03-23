@@ -75,10 +75,6 @@
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>1031</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2egetpresentationdata}</StringId>
-		<SourceDll>XEP_DocumentData.2edll</SourceDll>
-		<ResourceId>1071</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2edocumentitemdelete}</StringId>
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>1079</ResourceId>
@@ -86,6 +82,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eproceeddocitemnotifyarray}</StringId>
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>1075</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2egetpresentationdata}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1071</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditdocumentresulttableresultpropertiesdatasave}</StringId>
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
@@ -319,13 +319,13 @@
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>1148</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2ereactonchangeddocumentds}</StringId>
-		<SourceDll>XEP_DocumentData.2edll</SourceDll>
-		<ResourceId>1073</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2edocumentitemregenerate}</StringId>
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>1084</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2ereactonchangeddocumentds}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1073</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditdocumentpicturegraphiceditdatasave}</StringId>
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>

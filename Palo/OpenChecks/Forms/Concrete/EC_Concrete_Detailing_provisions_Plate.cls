@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="bfb6f4a8-1844-415f-bb88-4fa90c3f0614">
   <CodeEditor>
-    <SourceCode Collapsed="73|78|93|142|164|173|180|188|196|212|229|245|260|271|285|332|345" BreakPoints="">//@EC_Concrete_Detailing_provisions_Plate
+    <SourceCode Collapsed="6|19|55|67|77|82|100|149|171|178|185|192|199|207|248|265|281|296|307|349|371|384" BreakPoints="">//@EC_Concrete_Detailing_provisions_Plate
 
 
 //------------------------------------------------------------
@@ -29,12 +29,16 @@
     →INI400_016300bool _bPlateCheckTransversePercentage; 
     →INI400_016302bool _bPlateCheckMaxDistancePrincipal; 
     →INI400_016303bool _bPlateCheckMaxDistanceSecondary; 
+    →KRS116_000022bool _bUseAutoMinPerctentageLower; 
+    →KRS116_000023bool _bUseAutoMinPerctentageUpper; 
     
     →INI400_016236double h; 
     →INI400_015113object DesignDefaults; 
     →INI400_015114object DesignReinf; 
     →INI400_016168object ConMat; 
     →PAI316_000001object obEWN; 
+    
+    →KRS116_000024double _Coeff; 
     
     //results
     →INI400_016309double A↓s,min,1-←; 
@@ -54,7 +58,7 @@
 //@Loads included SDF forms
 private void LoadExterns() { 
     FUNCT_EWN →INI400_016007= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_EWN.clc"); 
-    FUNCT_2D →INI400_016005= LoadExternCLC("Concrete\Functions\Functions2D.clc"); 
+    FUNCT_2D →INI400_016005= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions2D.clc"); 
     FUNCT_2D_DEFAULTS →INI400_016009= LoadExternCLC(Tools.Dir_Forms &amp; "\Concrete\Functions\Functions2D_DesignDefaults.clc"); 
     FONTS_COLORS →INI400_016003= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.CLC"); 
     CL_9_2_1_1_1 →INI400_006783= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_9.2.1.1(1).CLC", true); 
@@ -90,7 +94,10 @@ private void LoadDialogInputs() {
     DesignDefaults.Detailing.bPlateCheckMinDistance →INI400_016306= _bPlateCheckMinDistance; 
     DesignDefaults.Detailing.bPlateCheckMaxDistancePrincipal →INI400_016307= _bPlateCheckMaxDistancePrincipal; 
     DesignDefaults.Detailing.bPlateCheckMaxDistanceSecondary →INI400_016308= _bPlateCheckMaxDistanceSecondary; 
-    
+    DesignDefaults.Detailing.bUseAutoMinPerctentageLower →KRS116_000025= _bUseAutoMinPerctentageLower; 
+    DesignDefaults.Detailing.bUseAutoMinPerctentageUpper →KRS116_000026= _bUseAutoMinPerctentageUpper; 
+    DesignDefaults.Detailing.minRatioLower →KRS116_000027= _Coeff; 
+    DesignDefaults.Detailing.minRatioUpper →KRS116_000028= _Coeff; 
 } 
 
 //@Returns table with detailing setup 
@@ -166,8 +173,20 @@ private object GetMainLayerToTransverse(object TransversReinfLayer) {
 
 //@Returns ...
 private bool IsMinimumReinfToBeChecked(object ReinfLayer) { 
+    IF(IsMinimumReinfToBeCheckedPrincipal(ReinfLayer)) { return true; } 
+    IF(IsMinimumReinfToBeCheckedSecondary(ReinfLayer)) { return true; } 
+    return false; 
+} 
+
+//@Returns ...
+private bool IsMinimumReinfToBeCheckedPrincipal(object ReinfLayer) { 
     IF(ReinfLayer.MainVert &amp;&amp; ReinfLayer.Tensile &amp;&amp; DesignDefaults.Detailing.bPlateCheckMinPercentage &amp;&amp; ReinfLayer.As_req &gt; 0) { return true; } 
     IF(ReinfLayer.MainVert &amp;&amp; ReinfLayer.As_req &gt; 0 &amp;&amp; DesignDefaults.Detailing.bPlateCheckMaxDistancePrincipal) { return true; } 
+    return false; 
+} 
+
+//@Returns ...
+private bool IsMinimumReinfToBeCheckedSecondary(object ReinfLayer) { 
     IF(!ReinfLayer.MainVert &amp;&amp; ReinfLayer.As_req &gt; 0 &amp;&amp; DesignDefaults.Detailing.bPlateCheckMaxDistanceSecondary) { return true; } 
     IF(!ReinfLayer.MainVert &amp;&amp; GetMainLayerToTransverse(ReinfLayer) != null &amp;&amp; DesignDefaults.Detailing.bPlateCheckTranversePercentage) { return true; } 
     return false; 
@@ -175,8 +194,8 @@ private bool IsMinimumReinfToBeChecked(object ReinfLayer) {
 
 //@Returns ...
 private bool IsMaximumReinfToBeChecked(object ReinfLayer) { 
-    IF(DesignDefaults.Detailing.bPlateCheckMaxPercentage &amp;&amp; ReinfLayer.As_req &gt; 0) { return true; } 
-    IF(DesignDefaults.Detailing.bPlateCheckMinDistance &amp;&amp; ReinfLayer.As_req &gt; 0) { return true; } 
+    IF(DesignDefaults.Detailing.bPlateCheckMaxPercentage &amp;&amp; ReinfLayer.As_req &gt; 0 &amp;&amp; ReinfLayer.MainVert) { return true; } 
+    IF(DesignDefaults.Detailing.bPlateCheckMinDistance &amp;&amp; (ReinfLayer.As_req &gt; 0 || ReinfLayer.As_det_min &gt; 0)) { return true; } 
     return false; 
 } 
 
@@ -201,12 +220,29 @@ private void CheckPrincipalMinTensileReinf(object ReinfLayer) {
     IF(DesignDefaults.Detailing.bPlateCheckMinPercentage) { 
         double fyk →INI400_016183= DesignDefaults.ReinfLong.Material.EC.fyk; 
         double fctm →INI400_016184= ConMat.fctm; 
+        →KRS116_000018double Coeff; 
+        double b →KRS116_000015= 1; 
+        double&lt;mm↑2←,0&gt; A↓c← →KRS116_000016= b*h; 
         IF(ReinfLayer.MainVert &amp;&amp; ReinfLayer.Tensile &gt; 0 &amp;&amp; ReinfLayer.As_req &gt; 0) { 
             
             →INI400_016189double&lt;mm↑2←/m,1&gt; As_min; 
-            →INI400_016190TEXT("Minium area from reinforcement ratio") @REF("(§9.2.1.1(1))"); 
-            
-            →INI400_016191CL_9_2_1_1_1.CalcValueFor2D(fctm, fyk, 1, ReinfLayer.d, out As_min); 
+            →INI400_016190TEXT("Minimum area from reinforcement ratio") @REF("(§9.2.1.1(1))"); 
+            IF(ReinfLayer.Descript.Contains("-")) { 
+                IF(DesignDefaults.Detailing.bUseAutoMinPerctentageLower) { 
+                    Coeff →KRS116_000014= DesignDefaults.Detailing.minRatioLower; 
+                    As_min →KRS116_000017= Coeff*A↓c←; 
+                } ELSE { 
+                    →INI400_016191CL_9_2_1_1_1.CalcValueFor2D(fctm, fyk, 1, ReinfLayer.d, out As_min); 
+                } 
+            } 
+            IF(ReinfLayer.Descript.Contains("+")) { 
+                IF(DesignDefaults.Detailing.bUseAutoMinPerctentageUpper) { 
+                    Coeff →KRS116_000020= DesignDefaults.Detailing.minRatioUpper; 
+                    As_min →KRS116_000021= Coeff*A↓c←; 
+                } ELSE { 
+                    →KRS116_000019CL_9_2_1_1_1.CalcValueFor2D(fctm, fyk, 1, ReinfLayer.d, out As_min); 
+                } 
+            } 
             ReinfLayer.As_det_min →INI400_016192= MAX(ReinfLayer.As_det_min, As_min); 
         } 
     } 
@@ -248,11 +284,11 @@ private void CheckSecondaryReinfMaxBarDist(object ReinfLayer) {
 //@Checks minimum area of secondary transverse longitudinal reinforcement
 private void CheckSecondaryTransverseReinf(object ReinfLayer) { 
     IF(DesignDefaults.Detailing.bPlateCheckTranversePercentage) { 
-        IF(!ReinfLayer.MainVert &amp;&amp; ReinfLayer.As_req == 0) { 
+        IF(!ReinfLayer.MainVert) { 
             object MainReinfLayer →INI400_016250= GetMainLayerToTransverse(ReinfLayer); 
             IF(MainReinfLayer != null) { 
                 double Coeff↓ρl,min,sec← →INI400_016256= DesignDefaults.Detailing.ρ↓l,min,sec←; 
-                double&lt;mm↑2←,1&gt; A↓s,req,princip← →INI400_016249= MainReinfLayer.As_req; 
+                double&lt;mm↑2←,1&gt; A↓s,req,princip← →INI400_016249= MAX(MainReinfLayer.As_req, MainReinfLayer.As_det_min); 
                 →INI400_016246TEXT("Minimum area of transverse reinforcement") @REF("(§9.3.1.1(2))"); 
                 double&lt;mm↑2←/m,0&gt; A↓s,min← →INI400_016248= Coeff↓ρl,min,sec←*A↓s,req,princip←; 
                 ReinfLayer.As_det_min →INI400_016251= MAX(ReinfLayer.As_det_min, A↓s,min←); 
@@ -262,7 +298,7 @@ private void CheckSecondaryTransverseReinf(object ReinfLayer) {
 } 
 
 private void CheckMaximumPercentage(object ReinfLayer) { 
-    IF(DesignDefaults.Detailing.bPlateCheckMaxPercentage &amp;&amp; (ReinfLayer.As_req &gt; 0)) { 
+    IF(DesignDefaults.Detailing.bPlateCheckMaxPercentage &amp;&amp; ReinfLayer.As_req &gt; 0 &amp;&amp; ReinfLayer.MainVert) { 
         →INI400_016486TEXT("Maximum area from reinforcement ratio"); 
         double&lt;mm↑2←/m,0&gt; A↓s,max← →INI400_016487= 0; 
         double&lt;mm,0&gt; b →INI400_016504= 1; 
@@ -288,24 +324,27 @@ private void CheckMinimumBarDist(object ReinfLayer) {
 //@Checks minimum area of longitudinal tension reinforcement 
 private void CheckMinimumReinf() { 
     IF(IsMinimumReinfToBeChecked()) { 
-        
         →INI400_015193TEXT("Minimum reinforcement area"); 
-        
         FOREACH(object ReinfLayer in DesignReinf) { 
-            IF(IsMinimumReinfToBeChecked(ReinfLayer)) { 
+            IF(IsMinimumReinfToBeCheckedPrincipal(ReinfLayer)) { 
                 →INI400_016186TEXT(ReinfLayer.Type); 
                 →INI400_016188TEXT(ReinfLayer.Descript); 
                 string Stress →INI400_016226= ReinfLayer.Tensile &gt; 0 ? TR("tension") : TR("compression"); 
                 →INI400_016225TEXT("(" &amp; Stress &amp; ")"); 
                 →INI400_016193CheckPrincipalMinTensileReinf(ReinfLayer); 
                 →INI400_016215CheckPrincipalReinfMaxBarDist(ReinfLayer); 
-                →INI400_016247CheckSecondaryTransverseReinf(ReinfLayer); 
-                →INI400_016216CheckSecondaryReinfMaxBarDist(ReinfLayer); 
                 →INI400_016254PAGEBREAK(); 
-                
             } 
-            ELSE { 
-                Continue(); 
+        } 
+        FOREACH(object ReinfLayer in DesignReinf) { 
+            IF(IsMinimumReinfToBeCheckedSecondary(ReinfLayer)) { 
+                →KRS116_000001TEXT(ReinfLayer.Type); 
+                →KRS116_000002TEXT(ReinfLayer.Descript); 
+                string Stress →KRS116_000003= ReinfLayer.Tensile &gt; 0 ? TR("tension") : TR("compression"); 
+                →KRS116_000004TEXT("(" &amp; Stress &amp; ")"); 
+                →KRS116_000007CheckSecondaryTransverseReinf(ReinfLayer); 
+                →KRS116_000008CheckSecondaryReinfMaxBarDist(ReinfLayer); 
+                →KRS116_000009PAGEBREAK(); 
             } 
         } 
     } 
@@ -450,6 +489,23 @@ IF(!IO.IsExternCLC) {
           <ENU>_bPlateCheckTransversePercentage</ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="_bUseAutoMinPerctentageLower" ESA_ID="" Type="Boolean">
+        <Description TranslateID="VARIABLE__bUseAutoMinPerctentageLower">
+          <ENU>_bUseAutoMinPerctentageLower</ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="_bUseAutoMinPerctentageUpper" ESA_ID="" Type="Boolean">
+        <Description TranslateID="VARIABLE__bUseAutoMinPerctentageUpper">
+          <ENU>_bUseAutoMinPerctentageUpper</ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="_Coeff" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE__Coeff">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="_dialog_DesignReinf" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -581,7 +637,7 @@ IF(!IO.IsExternCLC) {
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_EWN" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_FUNCT_EWN">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -594,7 +650,7 @@ IF(!IO.IsExternCLC) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="obEWN" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_obEWN">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -637,14 +693,6 @@ IF(!IO.IsExternCLC) {
     </Layouts>
     <VisualComponents>
       <VC ID="">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_000000">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1116,14 +1164,6 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016216">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_016217">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1260,14 +1300,6 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016247">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_016248">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1300,31 +1332,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016252">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_016253">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_016254">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_016255">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1572,14 +1580,6 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016481">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_016486">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1700,6 +1700,166 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS116_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="3" Font1="Segoe UI|12|0|2" Font2="Segoe UI|12|4|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000007">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000008">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000009">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000014">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000015">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000016">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000017">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000019">
+        <Set Vis="1" Prev="" Style="1" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000020">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000021">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000022">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000023">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000025">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000026">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000027">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000028">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="PAI316_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1719,7 +1879,7 @@ IF(!IO.IsExternCLC) {
         </Texts>
         <Tabs>
           <Tab Text="LONGITUDINAL">
-            <TTableInput Name="" ID="136" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="29" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_DesignReinf" Value="[1-]|0|300|0|0|Principal|True|1|180|10|0║[2-]|90|0|0|0|Principal|True|0|170|10|0║[1+]|0|0|0|0|Principal|True|0|180|10|2║[2+]|90|0|0|0|Principal|True|0|170|10|2" CellBG="-1" HeaderBG="-986896" FixedRows="4">
+            <TTableInput Name="" ID="136" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="29" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_DesignReinf" Value="[1-]|0|300|0|0|Principal|True|1|180|10|0║[2-]|90|0|0|0|Transverse||0|170|10|0║[1+]|0|0|0|0|Principal|True|0|180|10|2║[2+]|90|0|0|0|Transverse|False|0|170|10|2" CellBG="-1" HeaderBG="-986896" FixedRows="4">
               <Texts>
                 <ENU>Layer|Alpha [°]|As,req [mm2/m]|As,det,min [mm2/m]|As,det,max [mm2/m]|Type|MainVert|Tensile|d [mm]|ds [mm]|Edge</ENU>
               </Texts>
@@ -1755,6 +1915,18 @@ IF(!IO.IsExternCLC) {
             </TTableInput>
           </Tab>
           <Tab Text="DETAILING">
+            <TCheckBox Name="" ID="152" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="36" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="150|23" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="_bUseAutoMinPerctentageUpper" BookMarkID="" ForeColor="-16711423" ChbRight="False">
+              <Texts TranslateID="DIALOG_000152">
+                <ENU>
+                </ENU>
+              </Texts>
+            </TCheckBox>
+            <TCheckBox Name="" ID="151" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="35" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="150|23" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="_bUseAutoMinPerctentageLower" BookMarkID="" ForeColor="-16711423" ChbRight="False">
+              <Texts TranslateID="DIALOG_000151">
+                <ENU>
+                </ENU>
+              </Texts>
+            </TCheckBox>
             <TCheckBox Name="" ID="150" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="34" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="150|23" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="_bPlateCheckMinDistance" BookMarkID="" ForeColor="-16711423" ChbRight="False">
               <Texts TranslateID="DIALOG_000150">
                 <ENU>
@@ -2512,7 +2684,7 @@ IF(!IO.IsExternCLC) {
               <P>ČSN EN 1991-2</P>
               <P>ČSN EN 1991-3</P>
               <P>ČSN EN 1991-4</P>
-              <P>ČSN EN 1992-1-1</P>
+              <P>ČSN EN 1992-1-1/NA: 2011-07</P>
               <P>1</P>
               <P>1</P>
               <P>1.3</P>
@@ -2692,28 +2864,16 @@ IF(!IO.IsExternCLC) {
     <Item ID="BLOCK_INI400_015111">
       <ENU>"@VARIABLES"</ENU>
     </Item>
-    <Item TranslateID="STRING_027A212C">
-      <ENU>"Check minimum bar distance"</ENU>
-    </Item>
     <Item TranslateID="STRING_0B39C6D5">
       <ENU>"Increase depth of member or quality of used materials."</ENU>
     </Item>
-    <Item TranslateID="STRING_0B6870C7">
-      <ENU>"tension"</ENU>
-    </Item>
     <Item TranslateID="STRING_183364CD">
       <ENU>"Check minimum ratio of principal reinforcement"</ENU>
-    </Item>
-    <Item TranslateID="STRING_1BA099DD">
-      <ENU>"Check maximum spacing of principal longitudinal reinforcement"</ENU>
     </Item>
     <Item TranslateID="STRING_1FFE0D07">
       <ENU>"Yes"</ENU>
     </Item>
     <Item TranslateID="STRING_2C4A7463">
-      <ENU>"Check minimum transverse ratio of secondary reinforcement"</ENU>
-    </Item>
-    <Item TranslateID="STRING_392E895D">
       <ENU>"Check minimum transverse ratio of secondary reinforcement"</ENU>
     </Item>
     <Item TranslateID="STRING_3FE0138D">
@@ -2725,37 +2885,16 @@ IF(!IO.IsExternCLC) {
     <Item TranslateID="STRING_4622AF34">
       <ENU>"No"</ENU>
     </Item>
-    <Item TranslateID="STRING_477F93E5">
-      <ENU>"Yes"</ENU>
-    </Item>
-    <Item TranslateID="STRING_61DA746B">
-      <ENU>"Check minimum ratio of principal reinforcement"</ENU>
-    </Item>
     <Item TranslateID="STRING_70E068C6">
       <ENU>"Value"</ENU>
     </Item>
-    <Item TranslateID="STRING_787E6ADB">
-      <ENU>"compression"</ENU>
-    </Item>
-    <Item TranslateID="STRING_79C2D790">
-      <ENU>"Check maximum spacing of secondary longitudinal reinforcement"</ENU>
-    </Item>
-    <Item TranslateID="STRING_7B03F6D5">
-      <ENU>"Detailing checks / Plate, Shell (plate)"</ENU>
-    </Item>
     <Item TranslateID="STRING_7EADA3CE">
       <ENU>"Check maximum spacing of principal longitudinal reinforcement"</ENU>
-    </Item>
-    <Item TranslateID="STRING_A5B0C00A">
-      <ENU>"No"</ENU>
     </Item>
     <Item TranslateID="STRING_B0EA8D8A">
       <ENU>"Check minimum bar distance"</ENU>
     </Item>
     <Item TranslateID="STRING_BC04769F">
-      <ENU>"Check maximum ratio of principal reinforcement"</ENU>
-    </Item>
-    <Item TranslateID="STRING_C0908D88">
       <ENU>"Check maximum ratio of principal reinforcement"</ENU>
     </Item>
     <Item TranslateID="STRING_CF8EE397">
@@ -2767,14 +2906,11 @@ IF(!IO.IsExternCLC) {
     <Item TranslateID="STRING_F4CF6EE9">
       <ENU>"Check maximum spacing of secondary longitudinal reinforcement"</ENU>
     </Item>
-    <Item TranslateID="STRING_F6CB9F74">
-      <ENU>"Value"</ENU>
-    </Item>
     <Item TranslateID="TEXT_INI400_015193">
       <ENU>"Minimum reinforcement area"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_016190">
-      <ENU>"Minium area from reinforcement ratio"</ENU>
+      <ENU>"Minimum area from reinforcement ratio"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_016222">
       <ENU>"Minimum area from maximum spacing of reinforcement bars"</ENU>
@@ -2798,6 +2934,9 @@ IF(!IO.IsExternCLC) {
       <ENU>"Maximum area from reinforcement ratio"</ENU>
     </Item>
     <Item ID="TEXT_INI400_016498">
+      <ENU>"(" &amp; Stress &amp; ")"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS116_000004">
       <ENU>"(" &amp; Stress &amp; ")"</ENU>
     </Item>
   </Texts>

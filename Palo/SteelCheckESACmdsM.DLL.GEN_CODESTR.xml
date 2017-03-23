@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="53"><StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_df_user_template_item_name}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="52"><StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_df_user_template_item_name}</StringId>
 		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
 		<ResourceId>9004</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_scaff_con_check}</StringId>
 		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
 		<ResourceId>222</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_check_of_steel_fire}</StringId>
-		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
-		<ResourceId>5014</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_ep_boltedconnection}</StringId>
 		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
@@ -66,6 +62,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_purlin_lap_data}</StringId>
 		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
 		<ResourceId>9003</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_ep_trussconnection_check}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>9013</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_con_pinbolt}</StringId>
 		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
@@ -198,10 +198,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_check_of_steel_asd}</StringId>
 		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
 		<ResourceId>9005</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_check_of_steel}</StringId>
-		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
-		<ResourceId>5022</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_con_sheariron}</StringId>
 		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>

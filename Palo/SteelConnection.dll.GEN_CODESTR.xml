@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="1"><StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2eids_ep_trussconnection_resultshell_name}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>1002</ResourceId>
+	</StringCode>
+</StringCodeDatabase>
