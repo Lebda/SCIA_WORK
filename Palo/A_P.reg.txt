@@ -586,4 +586,9 @@ Macrobot.dll
 Example_ESACOM_Multithread.dll
 EP_ComponentCmdsGUI.dll
 XEP_NexisMock.dll
+DocCtrl.dll
+EP_ConSectionCheck.dll
 FLBTiiCls.dll
+iBolt.dll
+iPun.dll
+Nessie.dll

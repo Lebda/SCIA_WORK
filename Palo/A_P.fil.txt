@@ -1212,6 +1212,7 @@ r:\A\Src\Kernel\EP_StopWatches\EP_StopWatchLock.cpp
 r:\A\Src\Kernel\EP_StopWatches\EP_StopWatchProvider.cpp
 r:\A\Src\Tra\BCGCBPro\BCGCBPro.14.00.vcxproj
 r:\A\Src\Tra\BCGCBPro\BCGCBPro.14.00.vcxproj.filters
+r:\A\Src\Tra\BCGCBPro\BCGCBPro.14.00.sln
 r:\A\Src\Tra\BCGCBPro\BCGCBPro.rc
 r:\A\Src\Tra\BCGCBPro\BCGCBPro.def
 r:\A\Src\Tra\BCGCBPro\StdAfx.h
@@ -34701,6 +34702,7 @@ r:\A\Src\Tra\Services\Damping\DampingM\res\DampingNodeCmd_Icon.bmp
 r:\A\Src\Tra\Services\Damping\DampingM\res\dumper_s.bmp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CodeDependentDeflections.14.00.vcxproj
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CodeDependentDeflections.14.00.vcxproj.filters
+r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CodeDependentDeflections.14.00.sln
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\__AutoGenerTLH.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CodeDependentDeflections.idl
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CodeDependentDeflections.rc
@@ -35061,6 +35063,7 @@ r:\A\Src\Checks\ConcreteChecks\Punching\Data4CriticalPerimCalc.h
 r:\A\Src\Checks\ConcreteChecks\Punching\DetailingDistancesCalc.h
 r:\A\Src\Checks\ConcreteChecks\Punching\DetailingRulesUCCalc.h
 r:\A\Src\Checks\ConcreteChecks\Punching\DiContainerProvider.h
+r:\A\Src\Checks\ConcreteChecks\Punching\Enum2String.h
 r:\A\Src\Checks\ConcreteChecks\Punching\FydCalc.h
 r:\A\Src\Checks\ConcreteChecks\Punching\FywdEffCalc.h
 r:\A\Src\Checks\ConcreteChecks\Punching\LastControlPerim4ShearLinkCalc.h
@@ -35138,6 +35141,7 @@ r:\A\Src\Checks\ConcreteChecks\Punching\BetaCalculator.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\BetaKCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\BoundingCircle.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\CalculationChecker.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching\CCriticalPerimHandlerInOut.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\ColumnPerimeterModificator.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\ConcreteShearCapacityCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\ControlPerimLogger.cpp
@@ -35181,6 +35185,7 @@ r:\A\Src\Checks\ConcreteChecks\Punching\PunchingForcesCalculator.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\PunchingNodesFinder.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\PunchingReinfDesigner.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\PunchingReinfDesignInput.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching\PunchingReinfDesignResult.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\PunchingWModulHandler.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\RealNumberLinksCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\ReinfDesignUCCalc.cpp
@@ -35213,10 +35218,12 @@ r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_MSUT.rc
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_MSUT.def
 r:\A\inc\IncUT\Help\UtHelp.h
 r:\A\inc\MSUT_Helpers.h
+r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\Common.h
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\Constants.h
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\PunchingAssert.h
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\StdAfx.h
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\Resource.h
+r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestAoutCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestAswChecker.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestAswMin.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestAswReq.cpp
@@ -35244,6 +35251,7 @@ r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestPunchGeomTransformator.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestPunchingAngleFinder.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestPunchingDirFinder.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestPunchingReinfDesign.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestPunchingReinfDesignInput.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestPunchingWModulHandler.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestRealNumberLinks.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestReinfDesignUC.cpp
@@ -35262,6 +35270,7 @@ r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestPerpendicularityChecker.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestControlPerimeter.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestSlabVRdcCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestTangentialSpacing.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestUsLast.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestVrdMaxCalc.cpp
 r:\A\Src\Par\Services\ConcreteESACmds\ConcreteESACmds.14.00.vcxproj
 r:\A\Src\Par\Services\ConcreteESACmds\ConcreteESACmds.14.00.vcxproj.filters
