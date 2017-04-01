@@ -35078,6 +35078,7 @@ r:\A\Src\Checks\ConcreteChecks\Punching\PunchingCalculationLogger.h
 r:\A\Src\Checks\ConcreteChecks\Punching\ReductBaseCalc.h
 r:\A\Src\Checks\ConcreteChecks\Punching\ReductCircCalc.h
 r:\A\Src\Checks\ConcreteChecks\Punching\Reduction.h
+r:\A\Src\Checks\ConcreteChecks\Punching\ReductionU0.h
 r:\A\Src\Checks\ConcreteChecks\Punching\ReductRectCornerCalc.h
 r:\A\Src\Checks\ConcreteChecks\Punching\ReductRectEdgeCalc.h
 r:\A\Src\Checks\ConcreteChecks\Punching\ReductRectInternalCalc.h
@@ -35203,6 +35204,7 @@ r:\A\Src\Checks\ConcreteChecks\Punching\RealNumberLinksCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\PunchingCalculationLogger.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\ReductCircCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\Reduction.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching\ReductionU0.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\ReductRectCornerCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\ReductRectEdgeCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\ReductRectInternalCalc.cpp

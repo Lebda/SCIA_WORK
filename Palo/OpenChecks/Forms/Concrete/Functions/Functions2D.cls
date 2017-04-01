@@ -900,13 +900,13 @@ public string ReinfForPunchToString(object DesignReinf) {
     //required
     double Rr↓1-← →PAI021_000021= DesignReinf[0].As_req/(DesignReinf[0].d*b); 
     double Rr↓2-← →PAI021_000022= DesignReinf[1].As_req/(DesignReinf[1].d*b); 
-    double Rr↓-← →PAI021_000019= SQRT((ABS(Rr↓1-←*COS(DesignReinf[0].α))+ABS(Rr↓2-←*COS(DesignReinf[1].α)))*
-    (ABS(Rr↓1-←*SIN(DesignReinf[0].α))+ABS(Rr↓2-←*SIN(DesignReinf[1].α)))); 
+    double Rr↓-← →PAI021_000037= SQRT((Rr↓1-←+Rr↓2-←*ABS(COS(DesignReinf[0].α-DesignReinf[1].α)))*
+    (Rr↓1-←+Rr↓2-←*ABS(SIN(DesignReinf[0].α-DesignReinf[1].α)))); 
     
     double Rr↓1+← →PAI021_000023= DesignReinf[2].As_req/(DesignReinf[2].d*b); 
     double Rr↓2+← →PAI021_000024= DesignReinf[3].As_req/(DesignReinf[3].d*b); 
-    double Rr↓+← →PAI021_000025= SQRT((ABS(Rr↓1+←*COS(DesignReinf[2].α))+ABS(Rr↓2+←*COS(DesignReinf[3].α)))*
-    (ABS(Rr↓1+←*SIN(DesignReinf[2].α))+ABS(Rr↓2+←*SIN(DesignReinf[3].α)))); 
+    double Rr↓+← →PAI021_000038= SQRT((Rr↓1+←+Rr↓2+←*ABS(COS(DesignReinf[0].α-DesignReinf[1].α)))*
+    (Rr↓1+←+Rr↓2+←*ABS(SIN(DesignReinf[0].α-DesignReinf[1].α)))); 
     
     ReinfString →PAI021_000007= ReinfString &amp; "Rr-:" &amp; (Rr↓-←).ToString("0.000000") &amp; ";"; 
     ReinfString →PAI021_000008= ReinfString &amp; "Rr+:" &amp; (Rr↓+←).ToString("0.000000") &amp; ";"; 
@@ -914,13 +914,13 @@ public string ReinfForPunchToString(object DesignReinf) {
     //provided  
     double Rp↓1-← →PAI021_000026= DesignReinf[0].As_prov/(DesignReinf[0].d*b); 
     double Rp↓2-← →PAI021_000027= DesignReinf[1].As_prov/(DesignReinf[1].d*b); 
-    double Rp↓-← →PAI021_000028= SQRT((ABS(Rp↓1-←*COS(DesignReinf[0].α))+ABS(Rp↓2-←*COS(DesignReinf[1].α)))*
-    (ABS(Rp↓1-←*SIN(DesignReinf[0].α))+ABS(Rp↓2-←*SIN(DesignReinf[1].α)))); 
+    double Rp↓-← →PAI021_000036= SQRT((Rp↓1-←+Rp↓2-←*ABS(COS(DesignReinf[3].α-DesignReinf[2].α)))*
+    (Rp↓1-←+Rp↓2-←*ABS(SIN(DesignReinf[3].α-DesignReinf[3].α)))); 
     
     double Rp↓1+← →PAI021_000029= DesignReinf[2].As_prov/(DesignReinf[2].d*b); 
     double Rp↓2+← →PAI021_000030= DesignReinf[3].As_prov/(DesignReinf[3].d*b); 
-    double Rp↓+← →PAI021_000031= SQRT((ABS(Rp↓1+←*COS(DesignReinf[2].α))+ABS(Rp↓2+←*COS(DesignReinf[3].α)))*
-    (ABS(Rp↓1+←*SIN(DesignReinf[2].α))+ABS(Rp↓2+←*SIN(DesignReinf[3].α)))); 
+    double Rp↓+← →PAI021_000031= SQRT((Rp↓1+←+Rp↓2+←*ABS(COS(DesignReinf[3].α-DesignReinf[2].α)))*
+    (Rp↓1+←+Rp↓2+←*ABS(SIN(DesignReinf[3].α-DesignReinf[3].α)))); 
     
     ReinfString →PAI021_000032= ReinfString &amp; "Rp-:" &amp; (Rp↓-←).ToString("0.000000") &amp; ";"; 
     ReinfString →PAI021_000033= ReinfString &amp; "Rp+:" &amp; (Rp↓+←).ToString("0.000000") &amp; ";"; 
@@ -3712,6 +3712,46 @@ public string ReinfForPunchToString(object DesignReinf) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS027_000026">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS027_000027">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS027_000028">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="PAI021_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3976,47 +4016,47 @@ public string ReinfForPunchToString(object DesignReinf) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="PAI021_000034">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI021_000035">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI021_000036">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI021_000037">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI021_000038">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="PAI116_000001">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS027_000026">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS027_000027">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS027_000028">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS116_000001">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS116_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
