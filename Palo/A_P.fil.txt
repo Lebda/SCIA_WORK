@@ -1212,7 +1212,6 @@ r:\A\Src\Kernel\EP_StopWatches\EP_StopWatchLock.cpp
 r:\A\Src\Kernel\EP_StopWatches\EP_StopWatchProvider.cpp
 r:\A\Src\Tra\BCGCBPro\BCGCBPro.14.00.vcxproj
 r:\A\Src\Tra\BCGCBPro\BCGCBPro.14.00.vcxproj.filters
-r:\A\Src\Tra\BCGCBPro\BCGCBPro.14.00.sln
 r:\A\Src\Tra\BCGCBPro\BCGCBPro.rc
 r:\A\Src\Tra\BCGCBPro\BCGCBPro.def
 r:\A\Src\Tra\BCGCBPro\StdAfx.h
@@ -28641,11 +28640,11 @@ r:\A\Src\Cads\DataAddCads\EP_MixBeamData.rgs
 r:\A\Src\Cads\DataAddCads\EP_WebCripplingData.rgs
 r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.14.00.vcxproj
 r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.14.00.vcxproj.filters
-r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.14.00.sln
 r:\A\Src\Checks\EP_CheckDataProvider\__AutoGenerTLH.cpp
 r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.idl
 r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.rc
 r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.def
+r:\A\Src\Checks\EP_CheckDataProvider\AnnexCalculationCoeff.h
 r:\A\Src\Checks\EP_CheckDataProvider\CombiFromCombiHash.h
 r:\A\Src\Checks\EP_CheckDataProvider\DesignReinforcementParser.h
 r:\A\Src\Checks\EP_CheckDataProvider\StdAfx.h
@@ -28765,6 +28764,7 @@ r:\A\Src\Checks\EP_CheckDataProvider\SetupNADFromDFLibrary.h
 r:\A\Src\Checks\EP_CheckDataProvider\SetupValues.h
 r:\A\Src\Checks\EP_CheckDataProvider\SMinMaxForces2D.h
 r:\A\Src\Checks\EP_CheckDataProvider\WholeCheckCommonData.h
+r:\A\Src\Checks\EP_CheckDataProvider\AnnexCalculationCoeff.cpp
 r:\A\Src\Checks\EP_CheckDataProvider\CombiFromCombiHash.cpp
 r:\A\Src\Checks\EP_CheckDataProvider\DesignReinforcementParser.cpp
 r:\A\Src\Checks\EP_CheckDataProvider\StdAfx.cpp
@@ -34702,7 +34702,6 @@ r:\A\Src\Tra\Services\Damping\DampingM\res\DampingNodeCmd_Icon.bmp
 r:\A\Src\Tra\Services\Damping\DampingM\res\dumper_s.bmp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CodeDependentDeflections.14.00.vcxproj
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CodeDependentDeflections.14.00.vcxproj.filters
-r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CodeDependentDeflections.14.00.sln
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\__AutoGenerTLH.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CodeDependentDeflections.idl
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CodeDependentDeflections.rc
@@ -35031,7 +35030,6 @@ r:\A\Src\Checks\ConcreteChecks\UnitTestsConcrete\TestCodeDependentDeflection\Cdd
 r:\A\Src\Checks\ConcreteChecks\UnitTestsConcrete\TestCodeDependentDeflection\CddCalcResult2D.xsl
 r:\A\Src\Checks\ConcreteChecks\Punching\Punching.14.00.vcxproj
 r:\A\Src\Checks\ConcreteChecks\Punching\Punching.14.00.vcxproj.filters
-r:\A\Src\Checks\ConcreteChecks\Punching\Punching.14.00.sln
 r:\A\Src\Checks\ConcreteChecks\Punching\__AutoGenerTLH.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\Punching.idl
 r:\A\Src\Checks\ConcreteChecks\Punching\Punching.rc
@@ -35056,6 +35054,7 @@ r:\A\Src\Checks\ConcreteChecks\Punching\Constants.h
 r:\A\Src\Checks\ConcreteChecks\Punching\ControlPerimLogger.h
 r:\A\Src\Checks\ConcreteChecks\Punching\ControlPerimWCalculator.h
 r:\A\Src\Checks\ConcreteChecks\Punching\CRdcCalc.h
+r:\A\Src\Checks\ConcreteChecks\Punching\CriticalPerim4Type.h
 r:\A\Src\Checks\ConcreteChecks\Punching\CriticalPerimResultHolder.h
 r:\A\Src\Checks\ConcreteChecks\Punching\CriticialPerimHandler.h
 r:\A\Src\Checks\ConcreteChecks\Punching\CssShapeChecker.h
@@ -35066,6 +35065,7 @@ r:\A\Src\Checks\ConcreteChecks\Punching\DiContainerProvider.h
 r:\A\Src\Checks\ConcreteChecks\Punching\Enum2String.h
 r:\A\Src\Checks\ConcreteChecks\Punching\FydCalc.h
 r:\A\Src\Checks\ConcreteChecks\Punching\FywdEffCalc.h
+r:\A\Src\Checks\ConcreteChecks\Punching\KmaxCalc.h
 r:\A\Src\Checks\ConcreteChecks\Punching\LastControlPerim4ShearLinkCalc.h
 r:\A\Src\Checks\ConcreteChecks\Punching\NiRdcsCalc.h
 r:\A\Src\Checks\ConcreteChecks\Punching\NumShearLinksInBasicControlPerimCalc.h
@@ -35074,7 +35074,7 @@ r:\A\Src\Checks\ConcreteChecks\Punching\PunchingReinfDesignInput.h
 r:\A\Src\Checks\ConcreteChecks\Punching\PunchingReinfDesignResult.h
 r:\A\Src\Checks\ConcreteChecks\Punching\PunchingShapePreparator.h
 r:\A\Src\Checks\ConcreteChecks\Punching\RealNumberLinksCalc.h
-r:\A\Src\Checks\ConcreteChecks\Punching\PunchingCalculationLogger.h
+r:\A\Src\Checks\ConcreteChecks\Punching\PunchingCalculationDebugInfo.h
 r:\A\Src\Checks\ConcreteChecks\Punching\ReductBaseCalc.h
 r:\A\Src\Checks\ConcreteChecks\Punching\ReductCircCalc.h
 r:\A\Src\Checks\ConcreteChecks\Punching\Reduction.h
@@ -35158,6 +35158,7 @@ r:\A\Src\Checks\ConcreteChecks\Punching\ConcreteShearCapacityCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\ControlPerimLogger.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\ControlPerimWCalculator.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\CRdcCalc.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching\CriticalPerim4Type.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\CriticalPerimResultHolder.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\CriticialPerimHandler.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\CssShapeChecker.cpp
@@ -35174,6 +35175,7 @@ r:\A\Src\Checks\ConcreteChecks\Punching\FydCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\FywdEffCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\IntersectionChecker.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\K4VRdcCalc.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching\KmaxCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\LastControlPerim4ShearLinkCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\MeshReader.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\MeshWalker.cpp
@@ -35201,7 +35203,7 @@ r:\A\Src\Checks\ConcreteChecks\Punching\PunchingReinfDesignResult.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\PunchingShapePreparator.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\PunchingWModulHandler.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\RealNumberLinksCalc.cpp
-r:\A\Src\Checks\ConcreteChecks\Punching\PunchingCalculationLogger.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching\PunchingCalculationDebugInfo.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\ReductCircCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\Reduction.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\ReductionU0.cpp
@@ -35255,6 +35257,7 @@ r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestControlPerimWCalculator.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestCPPropCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestDetailingDistancesCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestDetailingRulesUC.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestEnum2String.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestFywdEffCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestLastControlPerim4ShearLinkCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestNiRdcs.cpp
@@ -35278,6 +35281,7 @@ r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestPunchingWModulHandler.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestRealNumberLinks.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestReinfDesignUC.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestShearCapacityInOut.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestShearReinfStringFormater.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestShearReinfUC.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestShearStressNiEdCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestSlabDCalc.cpp
@@ -56135,6 +56139,7 @@ r:\A\Db\DocumentDefaults\PreviewReportTemplates\00_PreviewDefault.ertt
 r:\A\Db\DocumentDefaults\PreviewReportTemplates\00_PreviewDefault.ertz
 r:\A\Db\DocumentDefaults\PreviewReportTemplates\Letter.ertt
 r:\A\Db\DocumentDefaults\PreviewReportTemplates\Letter.ertz
+r:\A\Db\DocumentDefaults\Punching.14.00.EP_Punching0D_ResultShell-(ResultMain) [Default].TLX
 r:\A\Db\DocumentDefaults\ReinforcementManager.LongReinfTemplates [Default].TLX
 r:\A\Db\DocumentDefaults\ReinforcementManager.ReinforcementTemplates [Default].TLX
 r:\A\Db\DocumentDefaults\ReportTemplates\0D_Reactions.ertt

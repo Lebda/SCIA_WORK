@@ -23,10 +23,6 @@
 		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
 		<ResourceId>1056</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_creepshort_z}</StringId>
-		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
-		<ResourceId>1057</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_creepshort}</StringId>
 		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
 		<ResourceId>1055</ResourceId>
@@ -34,6 +30,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_creeplong}</StringId>
 		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
 		<ResourceId>1058</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_creepshort_z}</StringId>
+		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
+		<ResourceId>1057</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2ecdd.2edeflection.2e1d2d.2ew7_7.2edescription}</StringId>
 		<SourceDll>CodeDependentDeflections.2edll</SourceDll>

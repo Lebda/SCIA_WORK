@@ -1330,6 +1330,7 @@ DocumentDefaults\PreviewReportTemplates\00_PreviewDefault.ertt
 DocumentDefaults\PreviewReportTemplates\00_PreviewDefault.ertz
 DocumentDefaults\PreviewReportTemplates\Letter.ertt
 DocumentDefaults\PreviewReportTemplates\Letter.ertz
+DocumentDefaults\Punching.14.00.EP_Punching0D_ResultShell-(ResultMain) [Default].TLX
 DocumentDefaults\ReinforcementManager.LongReinfTemplates [Default].TLX
 DocumentDefaults\ReinforcementManager.ReinforcementTemplates [Default].TLX
 DocumentDefaults\ReportTemplates\0D_Reactions.ertt

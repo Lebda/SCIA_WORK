@@ -355,14 +355,6 @@ FOR(li, 0, allPerimeters.Count-1) {
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="cssModul" ESA_ID="Result.101" Type="Double" Value="NaN" Precision="2">
-        <Description TranslateID="VARIABLE_cssModul">
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="cssPoints" ESA_ID="" Type="Object">
         <Description TranslateID="VARIABLE_cssPoints">
           <ENU>
@@ -388,18 +380,20 @@ FOR(li, 0, allPerimeters.Count-1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Ex" ESA_ID="" Type="Double" Value="16.73971e-6" Precision="2">
+      <Variable Modifier="Public" Name="Ex" ESA_ID="Result.105" Type="Double" Value="16.73971e-6" Precision="2">
         <Description TranslateID="VARIABLE_Ex">
           <ENU>
           </ENU>
         </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Ey" ESA_ID="" Type="Double" Value="64.68505e-3" Precision="2">
+      <Variable Modifier="Public" Name="Ey" ESA_ID="Result.106" Type="Double" Value="64.68505e-3" Precision="2">
         <Description TranslateID="VARIABLE_Ey">
           <ENU>
           </ENU>
         </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="G" ESA_ID="" Type="Object">
@@ -537,18 +531,20 @@ FOR(li, 0, allPerimeters.Count-1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Wx" ESA_ID="" Type="Double" Value="12.12111" Precision="2">
+      <Variable Modifier="Public" Name="Wx" ESA_ID="Result.107" Type="Double" Value="10.92875" Precision="2">
         <Description TranslateID="VARIABLE_Wx">
           <ENU>
           </ENU>
         </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Wy" ESA_ID="" Type="Double" Value="10.92875" Precision="2">
+      <Variable Modifier="Public" Name="Wy" ESA_ID="Result.108" Type="Double" Value="12.12111" Precision="2">
         <Description TranslateID="VARIABLE_Wy">
           <ENU>
           </ENU>
         </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="X" ESA_ID="" Type="Double" Value="0" Precision="2">

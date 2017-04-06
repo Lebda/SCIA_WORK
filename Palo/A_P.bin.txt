@@ -114,7 +114,6 @@ DL70BIBUtils.dll
 DL70CoolType.dll
 DL70JP2KLib.dll
 DL70PDFL.dll
-DocCtrl.dll
 DocGenSettings.txt
 DocumentFormat.OpenXml.dll
 doxygen.exe
@@ -140,7 +139,6 @@ EP_ComponentCmdsRegSvr.exe
 db\EP_CompositeShearConnectors.db4
 set\EP_Connection.set
 set\EP_ConnectionDIN.set
-EP_ConSectionCheck.dll
 set\EP_DefaultSettingsDirectories.set
 set\EP_DefaultSettingsEnviroment.set
 set\EP_DefaultSettingsOverviewDrawings.set
@@ -224,7 +222,6 @@ Esac_1B.dat
 ep_regsvr32.exe Esa.exe
 set\ESA_AdvancedGraphicSetup.set
 set\ESA_ConnectStructureSetup.set
-ESA.chm
 set\ESA_Upgrade2Dto1DSetup.set
 xml\esa_xml_def.xsd
 etabs.tdx
@@ -249,10 +246,8 @@ GepInstall.exe
 GepNexVC.dll
 ProfileLibrary\German.FIL
 set\IBC.set
-iBolt.dll
 iconv.dll
 IFC_2X3_Schema.exp
-iform.dll.CODESTRREG
 IFXCore.dll
 Plugins\IFXExporting.dll
 Plugins\IFXImporting.dll
@@ -269,7 +264,6 @@ Interop.EP_MEMARCHIVELib.dll
 Interop.EP_XMLEXCHANGELib.dll
 Interop.GRIDBASELib.dll
 Interop.UNITLib.dll
-iPun.dll
 ProfileLibrary\Japanese.FIL
 libclang.dll
 license.txt
@@ -298,7 +292,6 @@ ModellerR.lt
 Moq.dll
 MWellCalc.dll
 set\NEN.set
-Nessie.dll
 BimPlus\Newtonsoft.Json.dll
 NOTICE.txt
 nunit-agent-x86.exe.config
@@ -1329,6 +1322,7 @@ DocumentDefaults\PreviewReportTemplates\00_PreviewDefault.ertt
 DocumentDefaults\PreviewReportTemplates\00_PreviewDefault.ertz
 DocumentDefaults\PreviewReportTemplates\Letter.ertt
 DocumentDefaults\PreviewReportTemplates\Letter.ertz
+DocumentDefaults\Punching.14.00.EP_Punching0D_ResultShell-(ResultMain) [Default].TLX
 DocumentDefaults\ReinforcementManager.LongReinfTemplates [Default].TLX
 DocumentDefaults\ReinforcementManager.ReinforcementTemplates [Default].TLX
 DocumentDefaults\ReportTemplates\0D_Reactions.ertt
