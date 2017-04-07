@@ -1212,6 +1212,7 @@ r:\A\Src\Kernel\EP_StopWatches\EP_StopWatchLock.cpp
 r:\A\Src\Kernel\EP_StopWatches\EP_StopWatchProvider.cpp
 r:\A\Src\Tra\BCGCBPro\BCGCBPro.14.00.vcxproj
 r:\A\Src\Tra\BCGCBPro\BCGCBPro.14.00.vcxproj.filters
+r:\A\Src\Tra\BCGCBPro\BCGCBPro.14.00.sln
 r:\A\Src\Tra\BCGCBPro\BCGCBPro.rc
 r:\A\Src\Tra\BCGCBPro\BCGCBPro.def
 r:\A\Src\Tra\BCGCBPro\StdAfx.h
@@ -35090,7 +35091,6 @@ r:\A\Src\Checks\ConcreteChecks\Punching\PunchingReinfDesigner.h
 r:\A\Src\Checks\ConcreteChecks\Punching\ShearReinfStringFormater.h
 r:\A\Src\Checks\ConcreteChecks\Punching\ShearReinfUCCalc.h
 r:\A\Src\Checks\ConcreteChecks\Punching\UnManagedableStateHelper.h
-r:\A\Src\Checks\ConcreteChecks\Punching\SDFDesignHandler.h
 r:\A\Src\Checks\ConcreteChecks\Punching\SDFDesignInOut.h
 r:\A\Src\Checks\ConcreteChecks\Punching\SlabPropertiesReader.h
 r:\A\Src\Checks\ConcreteChecks\Punching\MeshWalker.h
@@ -35232,7 +35232,6 @@ r:\A\Src\Checks\ConcreteChecks\Punching\TangentialSpacingCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\U0Calculator.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\UsLastCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\VrdMaxCalc.cpp
-r:\A\Src\Checks\ConcreteChecks\Punching\ClassDiagram.cd
 r:\A\Src\Checks\ConcreteChecks\Punching\EP_Punching0D_ResultShell.rgs
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_MSUT.14.00.vcxproj
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_MSUT.14.00.vcxproj.filters
