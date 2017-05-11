@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="6644ef50-2179-4db9-a328-dbea620e1bf9">
   <CodeEditor>
-    <SourceCode Collapsed="6|57|74|82|97|115|140|164|193|202|210|218|247|275|285|300|318|329|519" BreakPoints="">
+    <SourceCode Collapsed="6|18|57|74|82|97|115|150|174|203|212|220|228|257|285|295|310|328|339|530" BreakPoints="">
 
 //------------------------------------------------------------
 //@VARIABLES
@@ -124,13 +124,23 @@ private void GetLongReinfInLCS(object DesignReinf, out double A↓sl,x←, out d
     FOR(j, 0, 3) { 
         IF(MemberType == 16 || MemberType == 64) { 
             IF(DesignReinf[j].Tensile != 0 &amp;&amp; DesignReinf[j].MainVert) { 
-                A↓sl,x← →INI400_016023= A↓sl,x←+DesignReinf[j].As_req*[COS(DesignReinf[j].α)]↑2←; 
-                A↓sl,y← →INI400_016025= A↓sl,y←+DesignReinf[j].As_req*[COS(90-DesignReinf[j].α)]↑2←; 
+                IF(DesignDefaults.ReinfLong.UseBasicReinf) { 
+                    A↓sl,x← →INI400_016023= A↓sl,x←+DesignReinf[j].As_prov*[COS(DesignReinf[j].α)]↑2←; 
+                    A↓sl,y← →INI400_016025= A↓sl,y←+DesignReinf[j].As_prov*[COS(90-DesignReinf[j].α)]↑2←; 
+                } ELSE { 
+                    A↓sl,x← →KRS106_000005= A↓sl,x←+DesignReinf[j].As_req*[COS(DesignReinf[j].α)]↑2←; 
+                    A↓sl,y← →KRS106_000006= A↓sl,y←+DesignReinf[j].As_req*[COS(90-DesignReinf[j].α)]↑2←; 
+                } 
             } 
         } ELSE { 
             IF(DesignReinf[j].Tensile != 0) { 
-                A↓sl,x← →INI400_016779= A↓sl,x←+DesignReinf[j].As_req*[COS(DesignReinf[j].α)]↑2←; 
-                A↓sl,y← →INI400_016781= A↓sl,y←+DesignReinf[j].As_req*[COS(90-DesignReinf[j].α)]↑2←; 
+                IF(DesignDefaults.ReinfLong.UseBasicReinf) { 
+                    A↓sl,x← →INI400_016779= A↓sl,x←+DesignReinf[j].As_prov*[COS(DesignReinf[j].α)]↑2←; 
+                    A↓sl,y← →INI400_016781= A↓sl,y←+DesignReinf[j].As_prov*[COS(90-DesignReinf[j].α)]↑2←; 
+                } ELSE { 
+                    A↓sl,x← →KRS106_000007= A↓sl,x←+DesignReinf[j].As_req*[COS(DesignReinf[j].α)]↑2←; 
+                    A↓sl,y← →KRS106_000008= A↓sl,y←+DesignReinf[j].As_req*[COS(90-DesignReinf[j].α)]↑2←; 
+                } 
             } 
         } 
     } 
@@ -258,7 +268,7 @@ private void GetVRdc(double d, double b, double f↓ck←, double ρ↓1←, dou
     object gamaCoeffs →INI400_016320= Clause2xxClass.GetGamas(isAccidentalCombi); 
     double γ↓C← →INI400_016321= gamaCoeffs.γ_C; 
     object Clause6xxClass →INI400_016322= CLAUSE_NA.GetClause6xxCoeffs(); 
-    →INI400_016323Clause6xxClass.GetCrdc(ConstrType, d, f↓ck←, k, γ↓C←, !isAccidentalCombi, False, ResultNA); //TODO : refactoring
+    →INI400_016323Clause6xxClass.GetCrdc(ConstrType, d, f↓ck←, k, γ↓C←, CS_Material.dg, !isAccidentalCombi, False, σ↓cp← &gt;= 0, ResultNA); //TODO : refactoring
     double C↓Rdc← →INI400_016324= ResultNA.C_Rdc; 
     double v↓min← →INI400_016325= ResultNA.v_min; 
     double k↓1← →INI400_016326= ResultNA.k1; 
@@ -414,7 +424,8 @@ private void CalcShearDesign(double ForceID, out object DesignShear) {
         σ↓ct← →INI400_016642= -σ↓cc←; 
     } 
     double σ↓cd← →INI400_016643= -RecalcForcesPOD[ForceID].nz/(b*h); 
-    →INI400_016645Clause6xxClass.GetThetaMinMax(f↓ywk,req←, f↓yk,req←/γ↓S←, k↓1←, b, σ↓cp←, d, ShearReinf.ss, ShearReinf.Asw, z, ShearReinf.fyk/γ↓S←, σ↓ct←, CS_Material.fctm, v↓Ed←, 0, CS_Material.fck, f↓cd←, σ↓cd←, False, True, ShearReinf.Angle != 90, False, Result); 
+    double σ↓t← →KRS116_000001= (BasicForces[ForceID].nx/b*h+BasicForces[ForceID].ny/b*h)/2; 
+    →INI400_016645Clause6xxClass.GetThetaMinMax(f↓ywk,req←, f↓yk,req←/γ↓S←, k↓1←, b, σ↓cp←, d, ShearReinf.ss, ShearReinf.Asw, z, ShearReinf.fyk/γ↓S←, σ↓ct←, CS_Material.fctm, v↓Ed←, 0, CS_Material.fck, f↓cd←, σ↓cd←, CS_Material.fctk_05, σ↓t←, False, True, ShearReinf.Angle != 90, False, Result); 
     double&lt;°,2&gt; θ↓min← →INI400_016646= Result.θ_min; 
     double cotθmin →INI400_016647= cotg(θ↓min←); 
     double&lt;°,2&gt; θ↓max← →INI400_016648= Result.θ_max; 
@@ -3550,6 +3561,46 @@ IF(COMPARE(A↓sw,req←, 0, 6) == 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS106_000005">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000006">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000007">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000008">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS116_000002">
         <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
@@ -3937,9 +3988,9 @@ IF(COMPARE(A↓sw,req←, 0, 6) == 0) {
         </Texts>
         <Tabs>
           <Tab Text="LONGITUDINAL">
-            <TTableInput Name="" ID="134" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="29" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|120" MaxSize="320|120" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_DesignReinf" Value="[1-]|0|0|0|True║[2-]|90|0|0|True║[1+]|0|0|0|True║[2+]|90|0|0|True" CellBG="-1" HeaderBG="-986896" FixedRows="4">
+            <TTableInput Name="" ID="134" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="29" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|120" MaxSize="320|120" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_DesignReinf" Value="[1-]|0|0|0|True|0║[2-]|90|0|0|True|0║[1+]|0|0|0|True|0║[2+]|90|0|0|True|0" CellBG="-1" HeaderBG="-986896" FixedRows="4">
               <Texts>
-                <ENU>Layer|Alpha [°]|As,req [mm2/m]|Tensile|MainVert</ENU>
+                <ENU>Layer|Alpha [°]|As,req [mm2/m]|Tensile|MainVert|As,prov [mm2/m]</ENU>
               </Texts>
               <Columns>
                 <Column Sort="False" Name="Descript" Description="Layer" Type="String" />
@@ -3953,6 +4004,9 @@ IF(COMPARE(A↓sw,req←, 0, 6) == 0) {
                   <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
                 </Column>
                 <Column Sort="False" Name="MainVert" Description="MainVert" Type="Bool" />
+                <Column Sort="True" Name="As_prov" Description="As,prov [mm2/m]" Type="Numeric">
+                  <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
+                </Column>
               </Columns>
             </TTableInput>
           </Tab>
@@ -4042,7 +4096,7 @@ IF(COMPARE(A↓sw,req←, 0, 6) == 0) {
         </Texts>
       </TLabel>
       <TDoubleInput Name="" ID="137" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="33" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="h" VarNameVisible="True" UnitsVisible="True" InputColor="-1" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-      <TComboBox Name="" ID="88" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="15" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="MemberType" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="16|32|64|256|512" Index="-1">
+      <TComboBox Name="" ID="88" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="15" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="MemberType" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="16|32|64|256|512" Index="0">
         <Texts>
           <ENU>Plate|Wall|Shell(Plate)|Shell(Wall)|Deep beam</ENU>
         </Texts>

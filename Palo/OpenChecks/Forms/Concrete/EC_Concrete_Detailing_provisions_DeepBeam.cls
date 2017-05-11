@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="bc8b45aa-75c5-4d80-8068-872273109d1e">
   <CodeEditor>
-    <SourceCode Collapsed="0|9|16|25|50|60|72|119|124|130|137|145|159|175|188|205|221" BreakPoints="">public bool ValidateInput(object Input) { 
+    <SourceCode Collapsed="0|9|16|25|50|60|72|120|128|133|139|146|154|168|184|197|214|230" BreakPoints="">public bool ValidateInput(object Input) { 
     h →KRS116_000002= Input.Get("h"); 
     DesignDefaults →KRS116_000003= Input.Get("DesignDefaults"); 
     DesignReinf →KRS116_000004= Input.Get("DesignReinfData"); 
@@ -120,14 +120,23 @@ private object GetDetailingSetupTable() {
 //------------------------------------------------------------
 //@FUNCTIONS
 
+//Return diameter of reinforcement for detailing
+private double DiamForDetailig(object ReinfLayer) { 
+    IF(DesignDefaults.ReinfLong.UseBasicReinf &amp;&amp; COMPARE(ReinfLayer.As_add, 0, 6) == 0 &amp;&amp; ReinfLayer.As_det_min &lt; ReinfLayer.As_bas) { 
+        return ReinfLayer.dsb; //basic diameter for detailing
+    } ELSE { 
+        return ReinfLayer.ds; //required or additional diameter for detailing
+    } 
+} 
+
 private bool IsMaximumReinfToBeChecked(object ReinfLayer) { 
-    IF(DesignDefaults.Detailing.bDeepBeamCheckMinBarDistance &amp;&amp; (ReinfLayer.As_req &gt; 0 || ReinfLayer.As_det_min &gt; 0)) { return true; } 
+    IF(DesignDefaults.Detailing.bDeepBeamCheckMinBarDistance &amp;&amp; (ReinfLayer.As_req &gt; 0 || ReinfLayer.As_det_min &gt; 0 || ReinfLayer.As_prov &gt; 0)) { return true; } 
     return false; 
 } 
 
 private bool IsMinimumReinfToBeChecked(object ReinfLayer) { 
     IF(DesignDefaults.Detailing.bDeepBeamCheckMaxSpacing) { return true; } 
-    IF(DesignDefaults.Detailing.bDeepBeamCheckMinPercentage &amp;&amp; ReinfLayer.As_req &gt; 0) { return true; } 
+    IF(DesignDefaults.Detailing.bDeepBeamCheckMinPercentage &amp;&amp; (ReinfLayer.As_req &gt; 0 || ReinfLayer.As_prov &gt; 0)) { return true; } 
     return false; 
 } 
 
@@ -147,7 +156,7 @@ private bool IsMaximumReinfToBeChecked() {
 
 //@Checks minimum area of reinforcement from minimal percentage 
 private void CheckReinfFromMinPercentage(object ReinfLayer) { 
-    IF(DesignDefaults.Detailing.bDeepBeamCheckMinPercentage) { 
+    IF(DesignDefaults.Detailing.bDeepBeamCheckMinPercentage &amp;&amp; (ReinfLayer.As_req &gt; 0 || ReinfLayer.As_prov &gt; 0)) { 
         double&lt;mm,0&gt; b →KRS116_000016= 1.0; 
         double&lt;mm↑2←,0&gt; A↓c← →INI400_016183= b*h; //b*h 
         →INI400_016189double&lt;mm↑2←/m,1&gt; As_min; 
@@ -163,7 +172,7 @@ private void CheckReinfFromMinPercentage(object ReinfLayer) {
 private void CheckReinfFromMaxBarDist(object ReinfLayer) { 
     IF(DesignDefaults.Detailing.bDeepBeamCheckMaxSpacing) { 
         double&lt;mm,0&gt; b →INI400_016219= 1.0; 
-        double&lt;mm,0&gt; ϕ →INI400_016220= ReinfLayer.ds; 
+        double&lt;mm,0&gt; ϕ →INI400_016220= DiamForDetailig(ReinfLayer); 
         double π →INI400_016221= Math.PI; 
         double Coeff →KRS116_000021= DesignDefaults.Detailing.coeff_s↓max,db←; 
         double s↓max← →KRS116_000022= DesignDefaults.Detailing.s↓max,db←; 
@@ -177,11 +186,11 @@ private void CheckReinfFromMaxBarDist(object ReinfLayer) {
 
 //@Checks maximum area of reinforcement from minimal spacing of bars
 private void CheckReinfFromMinBarDist(object ReinfLayer) { 
-    IF(DesignDefaults.Detailing.bDeepBeamCheckMinBarDistance) { 
+    IF(DesignDefaults.Detailing.bDeepBeamCheckMinBarDistance &amp;&amp; (ReinfLayer.As_req &gt; 0 || ReinfLayer.As_det_min &gt; 0 || ReinfLayer.As_prov &gt; 0)) { 
         →INI400_016261TEXT("Maximum area from minimum clear spacing of reinforcement bars"); 
         double&lt;mm,0&gt; s↓min,lim← →INI400_016265= 0; 
-        double&lt;mm,0&gt; ϕ →KRS116_000052= ReinfLayer.ds; 
-        →INI400_016278CL_8_2_2.CalcMinimumSpacing(ϕ, ConMat.dg, DesignDefaults.Detailing.s↓ldb,min←, false, out s↓min,lim←); 
+        double&lt;mm,0&gt; ϕ →KRS116_000052= DiamForDetailig(ReinfLayer); 
+        →INI400_016278CL_8_2_2.CalcMinimumSpacing(ϕ, ConMat.dg, DesignDefaults.Detailing.s↓ldb,min←, false, false, out s↓min,lim←); 
         double&lt;mm,0&gt; b →INI400_016274= 1.0; 
         double π →INI400_016275= Math.PI; 
         double&lt;mm↑2←/m,0&gt; A↓s,max← →INI400_016263= (b/(ϕ+s↓min,lim←))*0.25*π*ϕ↑2←; 
@@ -1287,7 +1296,7 @@ IF(!IO.IsExternCLC) {
     <Images />
   </Calculation>
   <Dialog>
-    <Main Width="730">
+    <Main Width="630">
       <TTabControl Name="" ID="151" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="32" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" Index="0" TabBG="-657931" SelTab="-1842205" Alignment="0">
         <Texts>
           <ENU>LONGITUDINAL|DETAILING</ENU>

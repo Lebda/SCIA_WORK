@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="10"><StringCode SourceType="DLLRC:"><StringId>@{soilstressdiagram.2ename}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="11"><StringCode SourceType="DLLRC:"><StringId>@{soilstressdiagram.2ename}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
 		<ResourceId>210</ResourceId>
 	</StringCode>
@@ -38,5 +38,9 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2ereactions}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
 		<ResourceId>36621</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2ereactionsresultant}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>36625</ResourceId>
 	</StringCode>
 </StringCodeDatabase>

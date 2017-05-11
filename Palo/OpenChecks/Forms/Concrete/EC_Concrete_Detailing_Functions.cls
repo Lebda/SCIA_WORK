@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="aa63074a-058a-45ea-919b-c10c14de4f91">
   <CodeEditor>
-    <SourceCode Collapsed="6|19|36|55|66|77|132|149|168|186|207|226|246|278|312|353|377|401|462|482|511|553|570|596|621|641|671|697|725|751|768|797|821|840|858|895|922|950|977|1010|1036|1068|1094|1142|1172|1211|1260|1300|1345|1385|1419|1457|1497|1551|1582|1618|1652|1673|1712|1751|1765|1777|1826|1872|1912|1949|1967|1982|2062|2079|2090|2123|2197|2222|2253|2285|2309|2329|2360|2389|2428|2442|2461|2481|2504|2535|2575|2609|2644|2678|2697" BreakPoints="">
+    <SourceCode Collapsed="6|19|36|55|66|77|132|150|169|187|208|227|247|279|313|354|378|402|463|483|512|554|571|597|622|642|672|698|727|753|770|799|823|843|861|898|925|953|980|1013|1039|1071|1097|1145|1175|1214|1263|1303|1348|1388|1422|1460|1500|1554|1585|1621|1655|1676|1715|1754|1768|1780|1829|1875|1915|1952|1970|1985|2065|2082|2093|2126|2200|2225|2256|2288|2312|2332|2363|2392|2431|2445|2464|2484|2507|2538|2578|2612|2647|2681|2700" BreakPoints="">
 //Detailing provisions functions
 IF(IO.IsStandalone) { 
     object FunctionDetailing →INI400_005887= LoadExternCLC("Detailing.clc"); 
@@ -142,8 +142,9 @@ object SumTwoArrayReinf(object[] ArrayReinf1, object[] ArrayReinf2) {
         double V↓Rd,c← →INI400_009445= DetProvInputs.V↓Rd,c←; 
         double V↓Rd,max← →INI400_009446= DetProvInputs.V↓Rd,max←; 
         double&lt;mm,0&gt; ϕ →INI400_009447= DetProvInputs.ϕ; 
+        double h_carka →KRS116_000034= DetProvInputs.h_carka; 
         //
-        double s↓l,max← →INI400_010314= FunctionDetailing.s↓l,max←(d, α, f↓ck←, h, V↓Ed←, V↓Rd,c←, V↓Rd,max←, object DetProvResults); 
+        double s↓l,max← →INI400_010314= FunctionDetailing.s↓l,max←(d, α, f↓ck←, h, V↓Ed←, V↓Rd,c←, V↓Rd,max←, h_carka, object DetProvResults); 
         →INI400_010313DetProvResults.Set("sl_max", s↓l,max←); 
         →INI400_009908DetProvResults.Set("Asw", DetProvInputs.A↓sw←); 
     } 
@@ -706,12 +707,13 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
         double V↓Ed← →INI400_009134= DetProvInputs.V↓Ed←; 
         double V↓Rd,max← →INI400_009136= DetProvInputs.V↓Rd,max←; 
         double&lt;mm,0&gt; ϕ →INI400_009137= DetProvInputs.ϕ; 
+        double h_carka →KRS116_000035= DetProvInputs.h_carka; 
         double π →INI400_009138= Math.PI; 
         double&lt;mm↑2←/m,0&gt; A↓sw,trans,min← →INI400_009139= 0; 
         //
         →INI400_009123BLOCK("Minimal area of shear reinforcement from maximum transverse spacing 9.2.2(8)") { 
             object Result →INI400_009124= new Structure(); 
-            →INI400_009125FunctionDetailing.s↓t,max←(d, h, f↓ck←, V↓Ed←, V↓Rd,max←, Result); 
+            →INI400_009125FunctionDetailing.s↓t,max←(d, h, f↓ck←, V↓Ed←, V↓Rd,max←, h_carka, Result); 
             double s↓t,max← →INI400_009126= Result.stmax; 
             →INI400_009127TEXT("Minimal area of shear reinforcement"); 
             double A↓sw,trans,min← →INI400_009128= (1/s↓t,max←)*π*(ϕ↑2←/4)*n↓s←; 
@@ -826,11 +828,12 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
         double A↓c← →INI400_008993= DetProvInputs.A↓c←; 
         double f↓yd← →INI400_008994= DetProvInputs.f↓yd←; 
         double N↓Ed← →INI400_008995= DetProvInputs.N↓Ed←; 
+        double f↓cd← →KRS116_000036= DetProvInputs.f↓cd←; 
         double A↓s,min,col← →INI400_010280= 0; 
         //
         →INI400_007056BLOCK("Minimal area of reinforcement from minimal ratio 9.5.2(2)") { 
             object Result →INI400_008479= new Structure(); 
-            →INI400_008441FunctionDetailing.A↓s,min,col←(A↓c←, f↓yd←, N↓Ed←, Result); 
+            →INI400_008441FunctionDetailing.A↓s,min,col←(A↓c←, f↓yd←, N↓Ed←, f↓cd←, Result); 
             A↓s,min,col← →INI400_008442= Result.Asmincol; 
         } 
         →INI400_008646PAGEBREAK(); 
@@ -13486,6 +13489,30 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000034">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000035">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000036">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

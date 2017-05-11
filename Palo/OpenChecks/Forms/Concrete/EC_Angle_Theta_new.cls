@@ -338,9 +338,9 @@ private void CalculateMinMaxTheta() {
     object Clause6xxClass →VAL316_000096= clauseObjects.GetClause6xxCoeffs(); 
     IF(IO.SetupNA.EC_NA.Code == "NBN") { 
         →VAL316_048586CalculateShearReinf(θ↓inp←); 
-        →VAL316_048499Clause6xxClass.GetThetaMinMax(σ↓sd←, ReinfMat.fyk/γ↓S←, k↓1←, b↓w←, σ↓cp←, d, ShearReinf.ss, ShearReinf.Asw, z, ShearReinf.fyk/γ↓S←, σ↓ct←, ConMat.fctm, V↓Ed←, Forces.N, ConMat.fck, f↓cd←, σ↓cd←, False, True, ShearReinf.Angle != 90, False, Result); 
+        →VAL316_048499Clause6xxClass.GetThetaMinMax(σ↓sd←, ReinfMat.fyk/γ↓S←, k↓1←, b↓w←, σ↓cp←, d, ShearReinf.ss, ShearReinf.Asw, z, ShearReinf.fyk/γ↓S←, σ↓ct←, ConMat.fctm, V↓Ed←, Forces.N, ConMat.fck, f↓cd←, σ↓cd←, ConMat.fctk_05, Forces.N/A↓c←, False, True, ShearReinf.Angle != 90, False, Result); 
     } ELSE { 
-        →INI400_013924Clause6xxClass.GetThetaMinMax(σ↓sd←, ReinfMat.fyk/γ↓S←, k↓1←, b↓w←, σ↓cp←, d, 999, 999, z, 999, σ↓ct←, ConMat.fctm, V↓Ed←, Forces.N, ConMat.fck, f↓cd←, σ↓cd←, False, True, False, False, Result); 
+        →INI400_013924Clause6xxClass.GetThetaMinMax(σ↓sd←, ReinfMat.fyk/γ↓S←, k↓1←, b↓w←, σ↓cp←, d, 999, 999, z, 999, σ↓ct←, ConMat.fctm, V↓Ed←, Forces.N, ConMat.fck, f↓cd←, σ↓cd←, ConMat.fctk_05, Forces.N/A↓c←, False, True, False, False, Result); 
     } 
     θ↓min← →INI400_013880= Result.θ_min; 
     θ↓max← →INI400_013881= Result.θ_max; 
@@ -3130,7 +3130,7 @@ cotθ →INI400_007468= COTG(θ);
                   <P>EC EN 1991-2</P>
                   <P>EC EN 1991-3</P>
                   <P>EC EN 1991-4</P>
-                  <P>EC EN 1992-1-1</P>
+                  <P>EC EN 1992-1-1:2004/AC:2008</P>
                   <P>1</P>
                   <P>1</P>
                   <P>1.3</P>

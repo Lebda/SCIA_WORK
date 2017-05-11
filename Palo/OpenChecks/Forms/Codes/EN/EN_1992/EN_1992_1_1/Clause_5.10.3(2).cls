@@ -51,6 +51,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     //    CASE "IS": { } 
     //    CASE "LU": { } 
     //    CASE "MAL": { } 
+    //    CASE "NS": { } 
     //    CASE "PN": { } 
     //    CASE "SR": { } 
     //    CASE "SIG": { } 

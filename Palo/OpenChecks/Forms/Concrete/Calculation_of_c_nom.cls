@@ -97,10 +97,16 @@ IF(!IO.IsStandalone) {
             SWITCH(BondArrangement) { 
                 CASE 0 :  { 
                     IF(COMPARE(d↓g←, 0.032, 6) != 1) { 
-                        c↓min,b,l← →INI400_006465= ϕ↓l←; 
+                        SWITCH(IO.SetupNA.EC_NA.Code) { 
+                            CASE "NS" :  { c↓min,b,l← →KRS116_000001= MAX(ϕ↓l←, 0.01); } 
+                            DEFAULT :  { c↓min,b,l← →INI400_006465= ϕ↓l←; } 
+                        } 
                         c↓min,b,s← →INI400_006466= ϕ↓s←; 
                     } ELSE { 
-                        c↓min,b,l← →INI400_006470= ϕ↓l←+PhysConst(5, "mm"); 
+                        SWITCH(IO.SetupNA.EC_NA.Code) { 
+                            CASE "NS" :  { c↓min,b,l← →KRS116_000004= MAX(ϕ↓l←, 0.01)+PhysConst(5, "mm"); } 
+                            DEFAULT :  { c↓min,b,l← →INI400_006470= ϕ↓l←+PhysConst(5, "mm"); } 
+                        } 
                         c↓min,b,s← →INI400_006467= ϕ↓s←+PhysConst(5, "mm"); 
                     } 
                     c↓min,b← →INI400_006468= MAX(c↓min,b,l←-ϕ↓s←, c↓min,b,s←) @REF("§4.4.1.2(3)"); 
@@ -148,6 +154,7 @@ IF(!IO.IsStandalone) {
         →INI400_006903Input.Add("vtc_ekv", vtc↓ekv←); 
         →INI400_006904Input.Add("NormalReinf", NormalReinf); 
         →INI400_006905Input.Add("fck", f↓ck←); 
+        →KRS116_000005Input.Add("cminb", c↓min,b←); 
         →INI400_006917Clause4_4_1_2_5.Draw(Input, Output, 0); 
         c↓min,dur← →INI400_006898= Output.c_min_dur; 
         S →INI400_013805= Output.S; 
@@ -211,17 +218,28 @@ IF(!IO.IsStandalone) {
         Δc↓dev,min← →INI400_006437= Output.Δ_c_dev_min; //From SEN: In-situ
         Δc↓dev,max← →INI400_006438= Output.Δ_c_dev_max; //From SEN: reduction
         
-        IF(SpecialQuality) { 
-            IF(ConcreteType == 0) { 
-                Δc↓dev← →INI400_006420= Δc↓dev,min←-Δc↓dev,max←; //(2-3)  //in-situ
-            } ELSE { 
-                Δc↓dev← →INI400_006421= Δc↓dev,acc←-Δc↓dev,max←; //(1-3)  //prefabricated
+        SWITCH(IO.SetupNA.EC_NA.Code) { 
+            CASE "NS" :  { 
+                IF(PrefabricatedSpecialQuality) { 
+                    Δc↓dev← →KRS116_000008= Δc↓dev,acc←; //(1)  //prefabricated
+                } ELSE { 
+                    Δc↓dev← →KRS116_000009= Δc↓dev,min←; //(2)  //in-situ
+                } 
             } 
-        } ELSE { 
-            IF(ConcreteType == 0) { 
-                Δc↓dev← →INI400_006422= Δc↓dev,min←; //(2)  //in-situ
-            } ELSE { 
-                Δc↓dev← →INI400_006423= Δc↓dev,acc←; //(1)  //prefabricated
+            DEFAULT :  { 
+                IF(SpecialQuality) { 
+                    IF(ConcreteType == 0) { 
+                        Δc↓dev← →INI400_006420= Δc↓dev,min←-Δc↓dev,max←; //(2-3)  //in-situ
+                    } ELSE { 
+                        Δc↓dev← →INI400_006421= Δc↓dev,acc←-Δc↓dev,max←; //(1-3)  //prefabricated
+                    } 
+                } ELSE { 
+                    IF(ConcreteType == 0) { 
+                        Δc↓dev← →INI400_006422= Δc↓dev,min←; //(2)  //in-situ
+                    } ELSE { 
+                        Δc↓dev← →INI400_006423= Δc↓dev,acc←; //(1)  //prefabricated
+                    } 
+                } 
             } 
         } 
     } ELSE { 
@@ -2635,6 +2653,46 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 1) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS116_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+      </VC>
+      <VC ID="KRS116_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000005">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000008">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+      </VC>
+      <VC ID="KRS116_000009">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
@@ -3426,7 +3484,7 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 1) {
               <P>ČSN EN 1991-2</P>
               <P>ČSN EN 1991-3</P>
               <P>ČSN EN 1991-4</P>
-              <P>ČSN EN 1992-1-1</P>
+              <P>ČSN EN 1992-1-1/NA: 2011-07</P>
               <P>1</P>
               <P>1</P>
               <P>1.3</P>

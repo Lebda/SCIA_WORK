@@ -3,10 +3,6 @@
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>108</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2ebeamsslabssolids}</StringId>
-		<SourceDll>EP_ProjectData.2edll</SourceDll>
-		<ResourceId>124</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2emasonary}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>9127</ResourceId>
@@ -14,6 +10,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2elevel.2eadvanced}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>9011</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2ebeamsslabssolids}</StringId>
+		<SourceDll>EP_ProjectData.2edll</SourceDll>
+		<ResourceId>124</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2enumberofslabs}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
@@ -23,10 +23,6 @@
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>9015</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2eauthor}</StringId>
-		<SourceDll>EP_ProjectData.2edll</SourceDll>
-		<ResourceId>9008</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2enumberofsolids}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>9064</ResourceId>
@@ -34,6 +30,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2esaveddatetime}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>128</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2eauthor}</StringId>
+		<SourceDll>EP_ProjectData.2edll</SourceDll>
+		<ResourceId>9008</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2elevel.2estandard}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
@@ -51,33 +51,33 @@
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>5003</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2enonlinearcalculation}</StringId>
-		<SourceDll>EP_ProjectData.2edll</SourceDll>
-		<ResourceId>5007</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2esavedversion}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>9030</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2enonlinearcalculation}</StringId>
+		<SourceDll>EP_ProjectData.2edll</SourceDll>
+		<ResourceId>5007</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2enationalcode}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>9028</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2ecalculationfinished}</StringId>
-		<SourceDll>EP_ProjectData.2edll</SourceDll>
-		<ResourceId>123</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2ereinforcementsteel}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>125</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2elevel}</StringId>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2ecalculationfinished}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
-		<ResourceId>9012</ResourceId>
+		<ResourceId>123</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2estructure}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>9013</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2elevel}</StringId>
+		<SourceDll>EP_ProjectData.2edll</SourceDll>
+		<ResourceId>9012</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2edescription}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
@@ -115,13 +115,13 @@
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>9014</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2epart}</StringId>
-		<SourceDll>EP_ProjectData.2edll</SourceDll>
-		<ResourceId>9005</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2edynamiccalculation}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>5004</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2epart}</StringId>
+		<SourceDll>EP_ProjectData.2edll</SourceDll>
+		<ResourceId>9005</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2edate}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
@@ -130,6 +130,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2enumberofusedmaterials}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>9020</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2estabilitycalculation}</StringId>
+		<SourceDll>EP_ProjectData.2edll</SourceDll>
+		<ResourceId>5008</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2etimber}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
@@ -142,9 +146,5 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2enumberofusedprofiles}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>9018</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2estabilitycalculation}</StringId>
-		<SourceDll>EP_ProjectData.2edll</SourceDll>
-		<ResourceId>5008</ResourceId>
 	</StringCode>
 </StringCodeDatabase>

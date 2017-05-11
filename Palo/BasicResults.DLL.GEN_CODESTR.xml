@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="367"><StringCode SourceType="DLLRC:"><StringId>@{basicresults.2e30969}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="368"><StringCode SourceType="DLLRC:"><StringId>@{basicresults.2e30969}</StringId>
 		<SourceDll>BasicResults.2eDLL</SourceDll>
 		<ResourceId>30969</ResourceId>
 	</StringCode>
@@ -414,6 +414,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eima9004}</StringId>
 		<SourceDll>BasicResults.2eDLL</SourceDll>
 		<ResourceId>9004</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eids_resultant_of_reactions_shell}</StringId>
+		<SourceDll>BasicResults.2eDLL</SourceDll>
+		<ResourceId>36632</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eima_slope}</StringId>
 		<SourceDll>BasicResults.2eDLL</SourceDll>

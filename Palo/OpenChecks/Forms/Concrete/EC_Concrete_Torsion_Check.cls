@@ -410,7 +410,11 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0) {
                 →INI400_008013BLOCK { 
                     IF(IO.IsDrawing &amp;&amp; bPrint_Img &amp;&amp; (IO.LayoutIndex == 2 || IO.LayoutIndex == 4) &amp;&amp; TypeTorCssInput != 4) { 
                         object G5 →INI400_005409= LoadExternCLC("Graphics_5_CSS_with_torsion.CLC", true); 
-                        G5.Reinf →INI400_006423= CONCRETE.General.GetReinfBars(CssID); 
+                        IF(IO.IsStandalone) { 
+                            G5.Reinf →KRS106_000037= CONCRETE.General.GetReinfBars(CssID); 
+                        } ELSE { 
+                            G5.Reinf →KRS106_000038= CrossSection.Reinf.Bars; 
+                        } 
                         G5.Outline →INI400_006424= CONCRETE.General.GetOutline(CssID); 
                         G5.UserScale →INI400_005413= UserScale; 
                         G5.ShapeCSS →INI400_005414= ShapeCss; 
@@ -3188,14 +3192,6 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006423">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
       <VC ID="INI400_006424">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -5101,6 +5097,22 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2969" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
       <VC ID="KRS106_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000037">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000038">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

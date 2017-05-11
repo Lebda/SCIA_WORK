@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="237c0f37-8e1a-41a6-aadf-a3b8bf862bcf">
   <CodeEditor>
-    <SourceCode Collapsed="1|57|62|90|95|125|130|155|210|334|361|396|457|515|550|588|601|628|649|700|747|756|778|792|835|868|887|891|969|973|1123|1144|1172|1234|1367|1390|1404|1415|1431|1442|1458|1466|1477|1519|1558|1609|1633|1661|1707|1735|1764|1843|1875|1925|1945|1969|1984|1999|2012|2029|2052|2069|2107|2108|2175|2205|2220|2230|2247|2310|2341|2362|2386|2404|2423|2464|2480|2491|2508|2529|2549|2550|2614|2649|2673|2701|2722|2747|2765|2784|2824|2825|2841|2854|2873|2893|2911|2973|3023|3098|3123|3203|3216|3240|3258|3271|3286|3301|3315|3326|3419|3512|3513|3522|3532|3533|3548|3549|3604|3605|3611|3662|3681|3694" BreakPoints="">→INI400_013605BLOCK("Function for preparation ReqReinfMat and ReqReinfDiagram") { 
+    <SourceCode Collapsed="1|57|62|90|95|125|130|155|210|334|361|396|457|515|550|588|601|628|649|700|747|756|778|792|835|868|887|891|969|973|1123|1144|1172|1234|1367|1390|1404|1415|1431|1442|1458|1466|1477|1519|1558|1609|1633|1661|1707|1735|1764|1843|1875|1925|1945|1969|1984|1999|2012|2029|2052|2069|2107|2108|2175|2205|2220|2230|2247|2310|2341|2362|2386|2404|2423|2464|2480|2491|2508|2529|2549|2550|2614|2649|2673|2701|2722|2747|2765|2784|2824|2825|2841|2854|2873|2893|2911|2973|3023|3098|3123|3199|3212|3236|3256|3269|3284|3299|3313|3324|3417|3526|3527|3536|3546|3547|3562|3563|3618|3619|3625|3676|3695|3708" BreakPoints="">→INI400_013605BLOCK("Function for preparation ReqReinfMat and ReqReinfDiagram") { 
     object GetReqReinfMat() { 
         object ReqReinfMat →INI400_013912= null; 
         
@@ -3156,8 +3156,6 @@
                             sBarsBasic →KRS127_000041= sBarsBasic &amp; nreq_basic &amp; "ϕ" &amp; (BasicPerEdges[j].diam*1000).ToString("0"); 
                         } 
                     } 
-                } ELSE { 
-                    string sBarsBasic →KRS127_000269= ""; 
                 } 
             } 
             
@@ -3183,8 +3181,6 @@
                             sBarsAdditional →KRS127_000266= sBarsAdditional &amp; nreq_additional &amp; "ϕ" &amp; (AdditionalPerEdges[j].diam*1000).ToString("0"); 
                         } 
                     } 
-                } ELSE { 
-                    string sBarsAdditional →KRS127_000270= ""; 
                 } 
             } 
             
@@ -3247,12 +3243,14 @@
             IF(obAs[i].MaxReinfExceed) { 
                 return TR("n/a"); 
             } ELSE { 
-                IF(i &gt; 0) { 
-                    sReinf →DLO316_000067= sReinf &amp; " + "; 
-                } 
-                sReinf →DLO316_000068= sReinf &amp; (ROUNDUP(obAs[i].nreq)).ToString("0") &amp; "ϕ" &amp; (obAs[i].diam*1000).ToString("0"); 
-                IF(obAs[i].Contains("MinReinfExceed") &amp;&amp; !obAs[i].MinReinfExceed) { 
-                    sReinf →KRS127_000317= sReinf &amp; "*"; 
+                IF(COMPARE(obAs[i].As, 0, 6) == 1) { 
+                    IF(i &gt; 0 &amp;&amp; sReinf != "") { 
+                        sReinf →DLO316_000067= sReinf &amp; " + "; 
+                    } 
+                    sReinf →DLO316_000068= sReinf &amp; (ROUNDUP(obAs[i].nreq)).ToString("0") &amp; "ϕ" &amp; (obAs[i].diam*1000).ToString("0"); 
+                    IF(obAs[i].Contains("MinReinfExceed") &amp;&amp; !obAs[i].MinReinfExceed) { 
+                        sReinf →KRS127_000317= sReinf &amp; "*"; 
+                    } 
                 } 
             } 
         } 
@@ -3442,37 +3440,49 @@
                         object obAsz_basic →KRS135_000058= sBarsProvidedSurfaces.ReinfBasic_zpos; 
                         obAsz_basic[0].nreq →KRS127_000217= obAsz_basic[0].nreq*2; 
                         string sReinfBasic_z →KRS127_000220= GetStringOfReinfFinalSurface(obAsz_basic); 
+                    } ELSE { 
+                        string sReinfBasic_z →KRS106_000064= ""; 
                     } 
                     IF(sBarsProvidedSurfaces.ReinfAdditional_zpos.Count &gt; 0) { 
                         object obAsz_additional →KRS127_000218= sBarsProvidedSurfaces.ReinfAdditional_zpos; 
                         obAsz_additional[0].nreq →KRS127_000219= obAsz_additional[0].nreq*2; 
                         string sReinfAdd_z →KRS127_000221= GetStringOfReinfFinalSurface(obAsz_additional); 
+                    } ELSE { 
+                        string sReinfAdd_z →KRS106_000063= ""; 
                     } 
                     
                     IF(sBarsProvidedSurfaces.ReinfBasic_zpos.Count &gt; 0 || sBarsProvidedSurfaces.ReinfAdditional_zpos.Count &gt; 0) { 
                         string sReinf_z →KRS127_000222= sReinfBasic_z; 
-                        IF(sReinf_z != "") { 
+                        IF(sReinf_z != "" &amp;&amp; sReinfAdd_z != "") { 
                             sReinf_z →KRS127_000274= sReinf_z &amp; " + "; 
                         } 
                         sReinf_z →KRS127_000275= sReinf_z &amp; sReinfAdd_z; 
-                        sReinfProv →KRS127_000223= "[z]" &amp; sReinf_z; 
+                        
+                        IF(sReinf_z != "") { 
+                            sReinfProv →KRS127_000223= "[z]" &amp; sReinf_z; 
+                        } ELSE { 
+                            sReinfProv →KRS106_000067= ""; 
+                        } 
                     } 
                     
                     IF(sBarsProvidedSurfaces.ReinfBasic_ypos.Count &gt; 0) { 
                         object obAsy_basic →KRS127_000224= sBarsProvidedSurfaces.ReinfBasic_ypos; 
                         obAsy_basic[0].nreq →KRS127_000225= obAsy_basic[0].nreq*2; 
                         string sReinfBasic_y →KRS127_000226= GetStringOfReinfFinalSurface(obAsy_basic); 
-                        
+                    } ELSE { 
+                        string sReinfBasic_y →KRS106_000065= ""; 
                     } 
                     IF(sBarsProvidedSurfaces.ReinfAdditional_ypos.Count &gt; 0) { 
                         object obAsy_additional →KRS127_000227= sBarsProvidedSurfaces.ReinfAdditional_ypos; 
                         obAsy_additional[0].nreq →KRS127_000228= obAsy_additional[0].nreq*2; 
                         string sReinfAdd_y →KRS127_000229= GetStringOfReinfFinalSurface(obAsy_additional); 
+                    } ELSE { 
+                        string sReinfAdd_y →KRS106_000066= ""; 
                     } 
                     
                     IF(sBarsProvidedSurfaces.ReinfBasic_ypos.Count &gt; 0 || sBarsProvidedSurfaces.ReinfAdditional_ypos.Count &gt; 0) { 
                         string sReinf_y →KRS127_000230= sReinfBasic_y; 
-                        IF(sReinf_y != "") { 
+                        IF(sReinf_y != "" &amp;&amp; sReinfAdd_y != "") { 
                             sReinf_y →KRS127_000232= sReinf_y &amp; " + "; 
                         } 
                         sReinf_y →KRS127_000277= sReinf_y &amp; sReinfAdd_y; 
@@ -3480,7 +3490,11 @@
                         IF(sReinfProv != "") { 
                             sReinfProv →KRS127_000276= sReinfProv &amp; ", "; 
                         } 
-                        sReinfProv →KRS127_000231= sReinfProv &amp; "[y]" &amp; sReinf_y; 
+                        IF(sReinf_y != "") { 
+                            sReinfProv →KRS127_000231= sReinfProv &amp; "[y]" &amp; sReinf_y; 
+                        } ELSE { 
+                            sReinfProv →KRS106_000068= ""; 
+                        } 
                     } 
                 } 
                 DEFAULT :  { 
@@ -10998,6 +11012,54 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS106_000063">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000064">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000065">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000066">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000067">
+        <Set Vis="0" Prev="" Style="2" StyleName="None" EqStyle="31" />
+        <Set Vis="0" Prev="" Style="2" StyleName="None" EqStyle="31" />
+        <Set Vis="0" Prev="" Style="2" StyleName="None" EqStyle="31" />
+        <Set Vis="0" Prev="" Style="2" StyleName="None" EqStyle="31" />
+        <Set Vis="0" Prev="" Style="2" StyleName="None" EqStyle="31" />
+        <Set Vis="0" Prev="" Style="2" StyleName="None" EqStyle="31" />
+      </VC>
+      <VC ID="KRS106_000068">
+        <Set Vis="0" Prev="" Style="2" StyleName="None" EqStyle="31" />
+        <Set Vis="0" Prev="" Style="2" StyleName="None" EqStyle="31" />
+        <Set Vis="0" Prev="" Style="2" StyleName="None" EqStyle="31" />
+        <Set Vis="0" Prev="" Style="2" StyleName="None" EqStyle="31" />
+        <Set Vis="0" Prev="" Style="2" StyleName="None" EqStyle="31" />
+        <Set Vis="0" Prev="" Style="2" StyleName="None" EqStyle="31" />
+      </VC>
       <VC ID="KRS116_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -11799,14 +11861,6 @@
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
       <VC ID="KRS116_000149">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS116_000151">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -13573,22 +13627,6 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS127_000269">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS127_000270">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS127_000271">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -18384,9 +18422,6 @@
     </Item>
     <Item TranslateID="STRING_FBF31099">
       <ENU>"Buckling length y"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_">
-      <ENU>"A↓s.prov← = " &amp; Val(SumProvReinf.As*1000000, 3) &amp; " mm↑2←"</ENU>
     </Item>
     <Item ID="TEXT_INI400_001117">
       <ENU>"γ↓C← = " &amp; γ↓C←</ENU>

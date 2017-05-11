@@ -12,6 +12,8 @@
         →INI400_011660Output.Add("c_2l", c_2l); 
         →INI400_011661Output.Add("c_1u", c_1u); 
         →INI400_011662Output.Add("c_2u", c_2u); 
+        →KRS116_000001Output.Add("c_u_dur", c_u_dur); 
+        →KRS116_000002Output.Add("c_l_dur", c_l_dur); 
         return Output; 
     } 
 } 
@@ -25,6 +27,8 @@ IF(!IO.Contains("Load")) {
     c_2l →INI400_011794= 0; 
     c_1u →INI400_011795= 0; 
     c_2u →INI400_011796= 0; 
+    c_u_dur →KRS116_000003= 0; 
+    c_l_dur →KRS116_000004= 0; 
 } 
 
 object DataFromSEN →INI400_008984= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FunctionsDataFromSEN.CLC"); 
@@ -36,7 +40,7 @@ object DataFromSEN →INI400_008984= LoadExternCLC(Tools.Dir_Forms &amp; "Concre
 
 //general data - always set
 object CoverParam →INI400_011726= new Structure(); 
-→INI400_011740CoverParam.Set("DesignWorkingLife", IO.MemberData.Concrete.Solver.General.MinCover.DesignWorkingLife); 
+→INI400_011740CoverParam.Set("DesignWorkingLife", IO.MemberData.Concrete.Solver.General.MinCover.DesignWorkingLife/365); 
 →INI400_011741CoverParam.Set("DifferentSurfaces", IO.MemberData.Concrete.Solver.General.MinCover.DifferentSurfaces); 
 →INI400_011742CoverParam.Set("ConstructionClass1", IO.MemberData.Concrete.Solver.General.MinCover.ConstructionClass); 
 →INI400_011743CoverParam.Set("CemType", IO.Point.Material.EC.CementType); 
@@ -121,7 +125,7 @@ void InitCoverParamWall(object CoverParam) {
     →INI400_011786CoverParam.Set("c_user", IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Main.Cover); 
 } 
 
-double ConcreteCover(object CoverParam, double d_s1, double d_s2) { //Calling auto calc of cover
+object ConcreteCover(object CoverParam, double d_s1, double d_s2) { //Calling auto calc of cover
     IF(CoverParam.Type_c == 0) { 
         object Durability →INI400_011686= LoadExternCLC("Calculation_of_c_nom.CLC"); 
         object InputCover →INI400_011687= new Structure(); 
@@ -172,34 +176,40 @@ double ConcreteCover(object CoverParam, double d_s1, double d_s2) { //Calling au
         →INI400_011720InputCover.Set("Deviation", null); 
         
         →INI400_011721Durability.Calculate(InputCover, OutputCover); 
-        return OutputCover.c_nom; 
+        return OutputCover; 
     } ELSE { 
-        return CoverParam.c_user; 
+        return new Structure("c_nom", →KRS116_000007CoverParam.c_user, "c_min_dur", →KRS116_000008CoverParam.c_user); 
     } 
 } 
 
 SWITCH(DataFromSENResult.MemberType) { 
     CASE 32 :  { //Wall
         →INI400_011792InitCoverParamWall(CoverParam); 
-        c_1l →INI400_011788= ConcreteCover(CoverParam, CoverParam.d_s1, CoverParam.d_s2); 
+        c_1l →INI400_011788= ConcreteCover(CoverParam, CoverParam.d_s1, CoverParam.d_s2).c_nom; 
         c_2l →INI400_011789= c_1l+CoverParam.d_s1; 
         c_1u →INI400_011790= c_1l; 
         c_2u →INI400_011791= c_2l; 
+        c_u_dur →KRS116_000005= ConcreteCover(CoverParam, CoverParam.d_s1, CoverParam.d_s2).c_min_dur; 
+        c_l_dur →KRS116_000006= c_u_dur; 
     } 
     DEFAULT :  { //Plate, slab
         IF(CoverParam.DifferentSurfaces == 1) { //for different surfaces
             →INI400_011771InitCoverParamPlateShellLower(CoverParam); 
-            c_1l →INI400_011772= ConcreteCover(CoverParam, CoverParam.d_s1l, CoverParam.d_s2l); 
+            c_1l →INI400_011772= ConcreteCover(CoverParam, CoverParam.d_s1l, CoverParam.d_s2l).c_nom; 
             c_2l →INI400_011773= c_1l+CoverParam.d_s1l; 
+            c_l_dur →KRS116_000009= ConcreteCover(CoverParam, CoverParam.d_s1l, CoverParam.d_s2l).c_min_dur; 
             →INI400_011776InitCoverParamPlateShellUpper(CoverParam); 
-            c_1u →INI400_011774= ConcreteCover(CoverParam, CoverParam.d_s1u, CoverParam.d_s2u); 
+            c_1u →INI400_011774= ConcreteCover(CoverParam, CoverParam.d_s1u, CoverParam.d_s2u).c_nom; 
             c_2u →INI400_011775= c_1u+CoverParam.d_s2u; 
+            c_u_dur →KRS116_000010= ConcreteCover(CoverParam, CoverParam.d_s1u, CoverParam.d_s2u).c_min_dur; 
         } ELSE { //for same surfaces
             →INI400_011724InitCoverParamPlateShellLower(CoverParam); 
-            c_1l →INI400_011750= ConcreteCover(CoverParam, CoverParam.d_s1l, CoverParam.d_s2l); 
+            c_1l →INI400_011750= ConcreteCover(CoverParam, CoverParam.d_s1l, CoverParam.d_s2l).c_nom; 
             c_2l →INI400_011751= c_1l+CoverParam.d_s1l; 
-            c_1u →INI400_011752= ConcreteCover(CoverParam, CoverParam.d_s1u, CoverParam.d_s2u); 
+            c_l_dur →KRS116_000011= ConcreteCover(CoverParam, CoverParam.d_s1l, CoverParam.d_s2l).c_min_dur; 
+            c_1u →INI400_011752= ConcreteCover(CoverParam, CoverParam.d_s1u, CoverParam.d_s2u).c_nom; 
             c_2u →INI400_011753= c_1u+CoverParam.d_s2u; 
+            c_u_dur →KRS116_000012= ConcreteCover(CoverParam, CoverParam.d_s1u, CoverParam.d_s2u).c_min_dur; 
         } 
     } 
 } 
@@ -263,6 +273,20 @@ SWITCH(DataFromSENResult.MemberType) {
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="c_l_dur" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="c_u_dur" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="CoverParam" ESA_ID="" Type="Object">
@@ -1252,6 +1276,86 @@ SWITCH(DataFromSENResult.MemberType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000005">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000006">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000009">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000010">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000011">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000012">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

@@ -5,6 +5,7 @@
     A↓c← →INI400_000007= Input.Get("A_c"); //Area of concrete Css
     f↓yd← →INI400_006029= Input.Get("f_yd"); //Design yield strength of reinforcement
     N↓Ed← →INI400_006030= Input.Get("N_Ed"); //Normal force in column
+    f↓cd← →KRS116_000006= Input.Get("f_cd"); //Design yield strength of reinforcement
     
     bool Result →INI400_006028= true; 
     //Add some Limits for inputs?
@@ -49,6 +50,16 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     //    CASE "IS": { } 
     //    CASE "LU": { } 
     //    CASE "MAL": { } 
+    CASE "NS" :  { 
+        IF(IO.IsStandalone) { 
+            A↓s,min,col← →KRS116_000001= MAX(0.2*A↓c←*f↓cd←/f↓yd←, 0.5*ABS(N↓Ed←)/f↓yd←, 0.01*A↓c←) @REF("(NS 9.12N)"); 
+        } ELSE { 
+            double Coeff↓As,min,col.A← →KRS116_000002= IO.SetupNA.EC_1992_1_1.A_s_min_column[0]; 
+            double Coeff↓As,min,col.B← →KRS116_000003= IO.SetupNA.EC_1992_1_1.A_s_min_column[1]; 
+            double Coeff↓As,min,col.C← →KRS116_000005= IO.SetupNA.EC_1992_1_1.A_s_min_column[2]; 
+            A↓s,min,col← →KRS116_000004= MAX(Coeff↓As,min,col.A←*A↓c←*f↓cd←/f↓yd←, Coeff↓As,min,col.B←*ABS(N↓Ed←)/f↓yd←, Coeff↓As,min,col.C←*A↓c←) @REF("(NS 9.12N)"); 
+        } 
+    } 
     //    CASE "PN": { } 
     CASE "SR" :  { 
         IF(IO.IsStandalone) { 
@@ -141,6 +152,20 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="Coeff↓As,min,col.C←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="f↓cd←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓yd←" ESA_ID="" Type="Double" Precision="2">
         <Description>
@@ -402,6 +427,54 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_006030">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="31" />
+      </VC>
+      <VC ID="KRS116_000005">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000006">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

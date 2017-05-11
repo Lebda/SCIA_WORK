@@ -1,12 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="f857a535-2d0e-4513-af8d-489f58a7aa66">
   <CodeEditor>
-    <SourceCode Collapsed="25" BreakPoints="">bool ValidateInput(object Input) { 
+    <SourceCode Collapsed="" BreakPoints="">bool ValidateInput(object Input) { 
     A↓c← →INI400_006029= Input.Get("A_c"); //Area of concrete Css
     ThinWall →INI400_006030= Input.Get("ThinWall"); //True - walls with λ ≥ λ↓min← 
     N↓Ed← →INI400_006031= Input.Get("N_Ed"); //Normal force
     f↓cd← →INI400_006033= Input.Get("f_cd"); //Design compressive cylinder strength of concrete at 28 days
     A↓s,v← →INI400_006035= Input.Get("A_s_v"); //Area of vertical reinforcement
+    IsExteriorWall →KRS116_000001= Input.Get("IsExteriorWall"); //True - wall is exterior, False - wall is interior
+    f↓ctm← →KRS116_000045= Input.Get("f_ctm"); //Average axial tensile strength
+    f↓yk← →KRS116_000046= Input.Get("f_yk"); //Characteristic yield strength
 
     bool Result →INI400_006028= true; 
     //Add some Limits for inputs?
@@ -16,9 +19,9 @@ object GetOutput() {
     return new Structure("A_s_hmin", A↓s,hmin←); 
 } 
 
-public void CalcMinArea(double A↓c←, double N↓Ed←, double f↓cd←, double A↓s,v←, out double A↓s,hmin←) { 
+public void CalcMinArea(double A↓c←, double N↓Ed←, double f↓cd←, double A↓s,v←, double f↓ctm←, double f↓yk←, bool IsExteriorWall, out double A↓s,hmin←) { 
     double&lt;mm↑2←/m,0&gt; A↓s,hmin← →INI400_008682= 0; 
-    →INI400_008680ValidateInput(new Structure("A_c", A↓c←, "N_Ed", N↓Ed←, "f_cd", f↓cd←, "A_s_v", A↓s,v←, "ThinWall", false)); 
+    →INI400_008680ValidateInput(new Structure("A_c", A↓c←, "N_Ed", N↓Ed←, "f_cd", f↓cd←, "A_s_v", A↓s,v←, "f_ctm", f↓ctm←, "f_yk", f↓yk←, "ThinWall", false, "IsExteriorWall", IsExteriorWall)); 
     →INI400_008708CalcScript(out A↓s,hmin←); 
 } 
 
@@ -87,6 +90,25 @@ void CalcScript(out double A↓s,hmin←) {
         //    CASE "IS": { } 
         //    CASE "LU": { } 
         //    CASE "MAL": { } 
+        CASE "NS" :  { 
+            IF(IsExteriorWall) { 
+                IF(IO.IsStandalone) { 
+                    A↓s,hmin← →KRS116_000002= MAX(0.25*A↓s,v←, 0.3*A↓c←*f↓ctm←/f↓yk←) @REF("(NS §9.6.3(1))"); 
+                } ELSE { 
+                    double Coeff↓AshminA← →KRS116_000040= IO.SetupNA.EC_1992_1_1.ρ_min_h[0]; 
+                    double Coeff↓AshminB← →KRS116_000041= IO.SetupNA.EC_1992_1_1.ρ_min_h[1]; 
+                    A↓s,hmin← →KRS116_000042= MAX(Coeff↓AshminA←*A↓s,v←, Coeff↓AshminB←*A↓c←*f↓ctm←/f↓yk←) @REF("(NS §9.6.3(1))"); 
+                } 
+            } ELSE { 
+                IF(IO.IsStandalone) { 
+                    A↓s,hmin← →KRS116_000043= MAX(0.25*A↓s,v←, 0.15*A↓c←*f↓ctm←/f↓yk←) @REF("(NS §9.6.3(1))"); 
+                } ELSE { 
+                    double Coeff↓AshminA← →KRS116_000008= IO.SetupNA.EC_1992_1_1.ρ_min_h[0]; 
+                    double Coeff↓AshminB← →KRS116_000009= IO.SetupNA.EC_1992_1_1.ρ_min_h[2]; 
+                    A↓s,hmin← →KRS116_000044= MAX(Coeff↓AshminA←*A↓s,v←, Coeff↓AshminB←*A↓c←*f↓ctm←/f↓yk←) @REF("(NS §9.6.3(1))"); 
+                } 
+            } 
+        } 
         //    CASE "PN": { } 
         CASE "SR" :  { 
             IF(IO.IsStandalone) { 
@@ -193,6 +215,26 @@ void CalcScript(out double A↓s,hmin←) {
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
+      </Variable>
+      <Variable Modifier="Public" Name="f↓ctm←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_f↓ctm←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
+      </Variable>
+      <Variable Modifier="Public" Name="f↓yk←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_f↓yk←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
+      </Variable>
+      <Variable Modifier="Public" Name="IsExteriorWall" ESA_ID="" Type="Boolean">
+        <Description TranslateID="VARIABLE_IsExteriorWall">
+          <ENU>
+          </ENU>
+        </Description>
       </Variable>
       <Variable Modifier="Public" Name="N↓Ed←" ESA_ID="" Type="Double" Precision="2">
         <Description>
@@ -380,6 +422,22 @@ void CalcScript(out double A↓s,hmin←) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS116_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
       <VC ID="KRS116_000004">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -405,6 +463,22 @@ void CalcScript(out double A↓s,hmin←) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="KRS116_000007">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000008">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000009">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -619,6 +693,62 @@ void CalcScript(out double A↓s,hmin←) {
         <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000040">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000041">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000042">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000043">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000044">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000045">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000046">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
     </VisualComponents>
     <Images />

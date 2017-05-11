@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="45ce1118-f867-4f60-ad05-bd16ba89b064">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">public double Calculate_wk_max2D(double CssIDCrack, double SetForcesQp, bool QuasiComb, bool CorossionSensitive) { 
+    <SourceCode Collapsed="0|123|234|273|328|365" BreakPoints="">public double Calculate_wk_max2D(double CssIDCrack, double SetForcesQp, bool QuasiComb, bool CorossionSensitive) { 
     SWITCH(IO.MemberData.Concrete.Solver.CrackWidth.TypeCrackWidth) { 
         CASE 0 :  { //Automatic
             double MaxFibreID →DLO134_013782= Concrete.StressStrain.GetFibreExtremeStressMax(CssIDCrack, SetForcesQp); 
@@ -13,7 +13,9 @@
             double XC →DLO134_048550= obExposureClasses.XC; 
             double XS →DLO134_048551= obExposureClasses.XS; 
             double XD →DLO134_048552= obExposureClasses.XD; 
-            
+            IF(IO.SetupNA.EC_NA.Code == "NS") { 
+                double XSA →KRS116_000009= obExposureClasses.XSA; 
+            } 
             // 16 - Plate
             // 64 - ShellPlate
             // 32 - Wall
@@ -25,22 +27,17 @@
                 double c↓used← →DLO134_013836= →DLO134_013837IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.Cover; 
             } ELSE { //Plate; ShellPlate; Deep beam
                 IF(Upper) { 
-                    
                     double CoverType →DLO134_013841= IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Upper.TypeOfCover; 
                     double c↓used← →DLO134_013842= →DLO134_013843IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Upper.Cover; 
-                    
-                    
                 } ELSE { 
-                    
                     double CoverType →DLO134_013847= IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Lower.TypeOfCover; 
                     double c↓used← →DLO134_013848= →DLO134_013849IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Lower.Cover; 
-                    
                 } 
             } 
             
             →DLO134_013812BLOCK { //NA.2.71 Clause 7.3.1 General considerations, Paragraph (5) - Table 7.1N
                 object Clause7_3_1_5 →DLO134_013813= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_7.3.1(5).CLC"); 
-                IF(IO.SetupNA.EC_NA.Code == "NEN") { 
+                IF(IO.SetupNA.EC_NA.Code == "NEN" || IO.SetupNA.EC_NA.Code == "NS") { 
                     IF(CoverType == 0) { 
                         object cover →DLO134_013814= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\EC_Concrete_cover_SEN_Design2D.CLC"); 
                         →DLO134_013815cover.Calculate(False); 
@@ -48,35 +45,57 @@
                     IF(MemberType == 2) { 
                         IF(CoverType == 0) { 
                             double c↓nom← →DLO134_013816= cover.c↓nom,m←; 
+                            double c↓min,dur← →KRS116_000010= cover.c↓min,dur,m←; 
                         } ELSE { 
                             double c↓nom← →DLO134_013817= c↓used←; 
+                            double c↓min,dur← →KRS116_000013= c↓used←; 
                         } 
                     } ELSE { 
                         IF(Upper) { 
                             IF(CoverType == 0) { 
                                 double c↓nom← →DLO134_013818= cover.c↓nom,u←; 
+                                double c↓min,dur← →KRS116_000011= cover.c↓min,dur,u←; 
                             } ELSE { 
                                 double c↓nom← →DLO134_013819= c↓used←; 
+                                double c↓min,dur← →KRS116_000014= c↓used←; 
                             } 
                         } ELSE { 
                             IF(CoverType == 0) { 
                                 double c↓nom← →DLO134_013820= cover.c↓nom,l←; 
+                                double c↓min,dur← →KRS116_000012= cover.c↓min,dur,l←; 
                             } ELSE { 
                                 double c↓nom← →DLO134_013821= c↓used←; 
+                                double c↓min,dur← →KRS116_000015= c↓used←; 
                             } 
                         } 
                     } 
                 } 
                 double DesignLife →DLO134_013822= IO.MemberData.Concrete.Defaults.MinCover.DesignWorkingLife; 
-                object Input →DLO134_013823= new Structure(
-                "DesignLife", DesignLife, 
-                "Quasi", QuasiComb, 
-                "XC", XC, 
-                "XS", XS, 
-                "XD", XD, 
-                "c_nom", c↓nom←, 
-                "c_used", c↓used←, 
-                "CorossionSensitive", CorossionSensitive); 
+                IF(IO.SetupNA.EC_NA.Code == "NS") { 
+                    object Input →DLO134_013823= new Structure(
+                    "DesignLife", DesignLife, 
+                    "Quasi", QuasiComb, 
+                    "XC", XC, 
+                    "XS", XS, 
+                    "XD", XD, 
+                    "XSA", XSA, 
+                    "c_nom", c↓nom←, 
+                    "c_used", c↓used←, 
+                    "c_min_dur", c↓min,dur←, 
+                    "CorossionSensitive", CorossionSensitive); 
+                } ELSE { 
+                    object Input →KRS116_000016= new Structure(
+                    "DesignLife", DesignLife, 
+                    "Quasi", QuasiComb, 
+                    "XC", XC, 
+                    "XS", XS, 
+                    "XD", XD, 
+                    "XSA", 0, 
+                    "c_nom", c↓nom←, 
+                    "c_used", c↓used←, 
+                    "c_min_dur", 0, 
+                    "CorossionSensitive", CorossionSensitive); 
+                } 
                 object Output →DLO134_013824= new Structure(); 
                 →DLO134_013825Clause7_3_1_5.Calculate(Input, Output); 
                 double w↓max← →DLO134_013826= Output.w_max; 
@@ -104,6 +123,7 @@
     } 
     return w↓max←; 
 } 
+
 public double Calculate_wk_max2D_ForSurface(bool Upper, bool QuasiComb, bool CorossionSensitive) { 
     SWITCH(IO.MemberData.Concrete.Solver.CrackWidth.TypeCrackWidth) { 
         CASE 0 :  { //Automatic
@@ -117,6 +137,9 @@ public double Calculate_wk_max2D_ForSurface(bool Upper, bool QuasiComb, bool Cor
             double XC →DLO134_048546= obExposureClasses.XC; 
             double XS →DLO134_048547= obExposureClasses.XS; 
             double XD →DLO134_048548= obExposureClasses.XD; 
+            IF(IO.SetupNA.EC_NA.Code == "NS") { 
+                double XSA →KRS116_000001= obExposureClasses.XSA; 
+            } 
             IF(MemberType == 32 || MemberType == 256) { //Wall and Shell wall
                 
                 
@@ -136,38 +159,57 @@ public double Calculate_wk_max2D_ForSurface(bool Upper, bool QuasiComb, bool Cor
             
             →DLO134_013937BLOCK { //NA.2.71 Clause 7.3.1 General considerations, Paragraph (5) - Table 7.1N
                 object Clause7_3_1_5 →DLO134_013938= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_7.3.1(5).CLC"); 
-                IF(IO.SetupNA.EC_NA.Code == "NEN") { 
+                IF(IO.SetupNA.EC_NA.Code == "NEN" || IO.SetupNA.EC_NA.Code == "NS") { 
                     IF(CoverType == 0) { 
                         object cover →DLO134_013939= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\EC_Concrete_cover_SEN_Design2D.clc"); 
-                        
                         →DLO134_013940cover.Calculate(False); 
                     } 
                     
                     IF(Upper) { 
                         IF(CoverType == 0) { 
                             double c↓nom← →DLO134_013943= cover.c_1u; 
+                            double c↓min,dur← →KRS116_000005= cover.c_u_dur; 
                         } ELSE { 
                             double c↓nom← →DLO134_013944= c↓used←; 
+                            double c↓min,dur← →KRS116_000007= c↓used←; 
                         } 
                     } ELSE { 
                         IF(CoverType == 0) { 
                             double c↓nom← →DLO134_013945= cover.c_1l; 
+                            double c↓min,dur← →KRS116_000006= cover.c_l_dur; 
                         } ELSE { 
                             double c↓nom← →DLO134_013946= c↓used←; 
+                            double c↓min,dur← →KRS116_000008= c↓used←; 
                         } 
                     } 
                     
                 } 
                 double DesignLife →DLO134_013947= IO.MemberData.Concrete.Solver.General.MinCover.DesignWorkingLife/365; 
-                object Input →DLO134_013948= new Structure(
-                "DesignLife", DesignLife, 
-                "Quasi", QuasiComb, 
-                "XC", XC, 
-                "XS", XS, 
-                "XD", XD, 
-                "c_nom", c↓nom←, 
-                "c_used", c↓used←, 
-                "CorossionSensitive", CorossionSensitive); 
+                IF(IO.SetupNA.EC_NA.Code == "NS") { 
+                    object Input →DLO134_013948= new Structure(
+                    "DesignLife", DesignLife, 
+                    "Quasi", QuasiComb, 
+                    "XC", XC, 
+                    "XS", XS, 
+                    "XD", XD, 
+                    "XSA", XSA, 
+                    "c_nom", c↓nom←, 
+                    "c_used", c↓used←, 
+                    "c_min_dur", c↓min,dur←, 
+                    "CorossionSensitive", CorossionSensitive); 
+                } ELSE { 
+                    object Input →KRS116_000017= new Structure(
+                    "DesignLife", DesignLife, 
+                    "Quasi", QuasiComb, 
+                    "XC", XC, 
+                    "XS", XS, 
+                    "XD", XD, 
+                    "XSA", 0, 
+                    "c_nom", c↓nom←, 
+                    "c_used", c↓used←, 
+                    "c_min_dur", 0, 
+                    "CorossionSensitive", CorossionSensitive); 
+                } 
                 object Output →DLO134_013949= new Structure(); 
                 →DLO134_013950Clause7_3_1_5.Calculate(Input, Output); 
                 double w↓max← →DLO134_013951= Output.w_max; 
@@ -192,6 +234,7 @@ public double Calculate_wk_max2D_ForSurface(bool Upper, bool QuasiComb, bool Cor
     } 
     return w↓max←; 
 } 
+
 public double Calculate_wk_max2DLiquid(double CssIDCrack, double SetForcesQp, bool QuasiComb, bool CorossionSensitive) { 
     IF(IO.MemberData.Concrete.Solver.CrackWidth.TypeCrackWidth == 0) { // TODO - here selection for liquid 2D
         double MemberType →DLO134_013850= IO.MemberData.Concrete.MemberType2D; 
@@ -230,6 +273,7 @@ public double Calculate_wk_max2DLiquid(double CssIDCrack, double SetForcesQp, bo
     } 
     return w↓max←; 
 } 
+
 private void CalcWkmax2DLiquid(double TightnessClass, double h↓d←, double h, double XA, double XF) { 
     →DLO134_006700TEXT("according to ČSN EN 1992-3 (7.3.1)"); 
     →DLO134_013871TR("Hydrostatic  pressure:"); 
@@ -280,12 +324,11 @@ private void CalcWkmax2DLiquid(double TightnessClass, double h↓d←, double h,
         CASE "Default" :  { //standard 7.3.1}5] from EN1992-1-1
             →DLO134_013887TEXT("The provisions in 7.3.1 of EN 1992-1-1 are applied for Tightness class 0"); 
             →DLO134_013906double w↓max←; 
-            
         } 
     } 
-    
     return w↓max←; 
 } 
+
 public object GetExposureClassFor2D(double MemberType, bool Upper) { 
     // 16 - Plate
     // 64 - ShellPlate
@@ -296,21 +339,33 @@ public object GetExposureClassFor2D(double MemberType, bool Upper) {
         double XC →DLO134_013962= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Carbonation; 
         double XD →DLO134_013963= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Chlorides; 
         double XS →DLO134_013964= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.ChloridesSea; 
+        IF(IO.SetupNA.EC_NA.Code == "NS") { 
+            double XSA →KRS116_000002= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.StrongChemical; 
+        } 
     } ELSE { //Plate; ShellPlate; Deep beam
         IF(Upper) { 
             double XC →DLO134_013968= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Carbonation; 
             double XD →DLO134_013969= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Chlorides; 
             double XS →DLO134_013970= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.ChloridesSea; 
-            
+            IF(IO.SetupNA.EC_NA.Code == "NS") { 
+                double XSA →KRS116_000003= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.StrongChemical; 
+            } 
         } ELSE { 
             double XC →DLO134_013974= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Carbonation; 
             double XD →DLO134_013975= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Chlorides; 
             double XS →DLO134_013976= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.ChloridesSea; 
-            
+            IF(IO.SetupNA.EC_NA.Code == "NS") { 
+                double XSA →KRS116_000004= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.StrongChemical; 
+            } 
         } 
     } 
-    return new Structure("XC", XC, "XD", XD, "XS", XS); 
+    IF(IO.SetupNA.EC_NA.Code == "NS") { 
+        return new Structure("XC", XC, "XD", XD, "XS", XS, "XSA", XSA); 
+    } ELSE { 
+        return new Structure("XC", XC, "XD", XD, "XS", XS, "XSA", 0); 
+    } 
 } 
+
 public bool bIsCrackWidthRequiredFor2D(double DesignLife, object obExposureClasses, bool CorossionSensitive, double TypeCrackCalc) { 
     bool bIsCrackWidthRequired →DLO134_048514= True; 
     double XC →DLO134_048515= obExposureClasses.XC; 
@@ -1575,6 +1630,142 @@ public bool bIsCrackWidthRequiredFor2D(double DesignLife, object obExposureClass
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000005">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000006">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000007">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000008">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000009">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000010">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000011">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000012">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000013">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000014">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000015">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000016">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000017">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
     </VisualComponents>
     <Images />

@@ -588,17 +588,6 @@ Each system check is defined using a block as follows:
     <category>internal</category>
   </openCheck>
   <openCheck>
-    <clc>Geotechnics\Pad_foundation.CLC</clc>
-    <protection>532</protection>
-    <autodesign>0</autodesign>
-    <singlecheck>0</singlecheck>
-    <multidesign>0</multidesign>
-    <allcombiForDetailed>0</allcombiForDetailed>
-    <ribplatebeam>0</ribplatebeam>
-    <combiforclass>0</combiforclass>
-    <category>internal</category>
-  </openCheck>
-  <openCheck>
     <clc>CS_Unit_Stresses.CLC</clc>
     <protection>514</protection>
     <autodesign>0</autodesign>

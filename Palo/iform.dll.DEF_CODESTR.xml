@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="140"><StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils582}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>6582</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils652}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="140"><StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils652}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>6652</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils472}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>6472</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils582}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>6582</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s076}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17576</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s075}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17575</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eitm_5177}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>5177</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s074}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17574</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s073}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17573</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s072}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -35,26 +55,6 @@
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>17577</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s076}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17576</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s075}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17575</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eitm_5177}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>5177</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s074}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17574</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s073}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17573</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk016}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>15016</ResourceId>
@@ -62,10 +62,6 @@
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk006}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>15006</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils653}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>6653</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils433}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -75,21 +71,9 @@
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>6583</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s063}</StringId>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils653}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17563</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s062}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17562</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s061}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17561</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s069}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17569</ResourceId>
+		<ResourceId>6653</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s060}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -115,29 +99,29 @@
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>17564</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk017}</StringId>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s063}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>15017</ResourceId>
+		<ResourceId>17563</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s062}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17562</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s061}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17561</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s069}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17569</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk007}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>15007</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s055}</StringId>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk017}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17555</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s054}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17554</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s053}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17553</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s052}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17552</ResourceId>
+		<ResourceId>15017</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s051}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -163,6 +147,26 @@
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>17556</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s055}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17555</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s054}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17554</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s053}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17553</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s052}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17552</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk020}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>15020</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk040}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>15040</ResourceId>
@@ -170,22 +174,6 @@
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk010}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>15010</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk020}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>15020</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s046}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17546</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s045}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17545</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s044}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17544</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s043}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -215,13 +203,17 @@
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>17547</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk011}</StringId>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s046}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>15011</ResourceId>
+		<ResourceId>17546</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk001}</StringId>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s045}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>15001</ResourceId>
+		<ResourceId>17545</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s044}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17544</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk021}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -231,25 +223,13 @@
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>15041</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s030}</StringId>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk011}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17530</ResourceId>
+		<ResourceId>15011</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s038}</StringId>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk001}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17538</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s037}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17537</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s036}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17536</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s035}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17535</ResourceId>
+		<ResourceId>15001</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s034}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -271,9 +251,25 @@
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>17539</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk002}</StringId>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s030}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>15002</ResourceId>
+		<ResourceId>17530</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s038}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17538</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s037}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17537</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s036}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17536</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s035}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17535</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk022}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -287,25 +283,9 @@
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>15012</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s021}</StringId>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk002}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17521</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s029}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17529</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s020}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17520</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s028}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17528</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s027}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17527</ResourceId>
+		<ResourceId>15002</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s026}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -327,6 +307,26 @@
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>17522</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s021}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17521</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s029}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17529</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s020}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17520</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s028}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17528</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s027}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17527</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk023}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>15023</ResourceId>
@@ -346,26 +346,6 @@
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils588}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>6588</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s013}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17513</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s012}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17512</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s011}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17511</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s019}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17519</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s010}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17510</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s018}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -387,17 +367,25 @@
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>17514</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s004}</StringId>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s013}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17504</ResourceId>
+		<ResourceId>17513</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s003}</StringId>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s012}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17503</ResourceId>
+		<ResourceId>17512</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s002}</StringId>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s011}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17502</ResourceId>
+		<ResourceId>17511</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s019}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17519</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s010}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17510</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s001}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -427,25 +415,21 @@
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>17505</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s004}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17504</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s003}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17503</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s002}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17502</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_stypepolynomial}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>17583</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk018_1}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>15036</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk017_1}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>15035</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk014_1}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>15034</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk013_1}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>15033</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk012_1}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -463,13 +447,29 @@
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>15037</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils654}</StringId>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk018_1}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>6654</ResourceId>
+		<ResourceId>15036</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk017_1}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>15035</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk014_1}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>15034</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk013_1}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>15033</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils584}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>6584</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils654}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>6654</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk018}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -511,13 +511,13 @@
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>6587</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils400}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>6400</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils440}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>6440</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils400}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>6400</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk024}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -539,10 +539,6 @@
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>6651</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s080}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17580</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s082}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>17582</ResourceId>
@@ -550,6 +546,10 @@
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s081}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>17581</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s080}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17580</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk015}</StringId>
 		<SourceDll>iform.2edll</SourceDll>

@@ -36,7 +36,7 @@ object DataFromSEN →INI400_008984= LoadExternCLC(Tools.Dir_Forms &amp; "Concre
 
 //general data - always set
 object CoverParam →INI400_011726= new Structure(); 
-→INI400_011740CoverParam.Set("DesignWorkingLife", IO.MemberData.Concrete.Solver.General.MinCover.DesignWorkingLife); 
+→INI400_011740CoverParam.Set("DesignWorkingLife", IO.MemberData.Concrete.Solver.General.MinCover.DesignWorkingLife/365); 
 →INI400_011741CoverParam.Set("DifferentSurfaces", IO.MemberData.Concrete.Solver.General.MinCover.DifferentSurfaces); 
 →INI400_011742CoverParam.Set("ConstructionClass1", IO.MemberData.Concrete.Solver.General.MinCover.ConstructionClass); 
 →INI400_011743CoverParam.Set("CemType", IO.Point.Material.EC.CementType); 

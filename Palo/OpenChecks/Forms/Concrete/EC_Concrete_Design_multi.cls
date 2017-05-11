@@ -844,7 +844,7 @@ IF(bShearDesign) {
     object[] TotalArrayReinfShear →INI400_008174= new object[]; 
     FOR(i, 0, TotalArrayReinf.Count-1) { 
         IF(TotalArrayReinf[i].Area &gt; 0) { 
-            →INI400_014226TotalArrayReinfShear.Add(new Structure("X", TotalArrayReinf[i].X, "Y", TotalArrayReinf[i].Y, "D", TotalArrayReinf[i].D, "Area", TotalArrayReinf[i].Area, "IsDetailing", False)); 
+            →INI400_014226TotalArrayReinfShear.Add(new Structure("X", TotalArrayReinf[i].X, "Y", TotalArrayReinf[i].Y, "D", TotalArrayReinf[i].D, "Area", TotalArrayReinf[i].Area, "IsDetailing", 0)); 
         } 
     } 
     //code for debugging

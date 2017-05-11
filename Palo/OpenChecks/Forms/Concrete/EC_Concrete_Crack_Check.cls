@@ -140,6 +140,9 @@ IF(!IO.IsStandalone) {
             double XC →INI400_006415= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Carbonation; 
             double XD →INI400_006416= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Chlorides; 
             double XS →INI400_006417= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.ChloridesSea; 
+            IF(IO.SetupNA.EC_NA.Code == "NS") { 
+            double XSA →KRS116_000024= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.StrongChemical; 
+            } 
             double CoverType →INI400_011120= IO.MemberData.Concrete.Defaults.Column.Longitudinal.Main.TypeOfCover; 
             double c↓used← →INI400_011126= IO.MemberData.Concrete.Defaults.Column.Longitudinal.Main.Cover; 
         } ELSE { 
@@ -147,6 +150,9 @@ IF(!IO.IsStandalone) {
                 double XC →INI400_006409= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Carbonation; 
                 double XD →INI400_006410= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Chlorides; 
                 double XS →INI400_006411= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.ChloridesSea; 
+                IF(IO.SetupNA.EC_NA.Code == "NS") { 
+                double XSA →KRS116_000025= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.StrongChemical; 
+                } 
                 IF(MemberType == 1) { 
                     double CoverType →INI400_011118= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.TypeOfCover; 
                     double c↓used← →INI400_011128= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.Cover; 
@@ -158,6 +164,9 @@ IF(!IO.IsStandalone) {
                 double XC →INI400_006412= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Carbonation; 
                 double XD →INI400_006413= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Chlorides; 
                 double XS →INI400_006414= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.ChloridesSea; 
+                IF(IO.SetupNA.EC_NA.Code == "NS") { 
+                double XSA →KRS116_000026= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.StrongChemical; 
+                } 
                 IF(MemberType == 1) { 
                     double CoverType →INI400_011119= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.TypeOfCover; 
                     double c↓used← →INI400_011130= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.Cover; 
@@ -170,7 +179,7 @@ IF(!IO.IsStandalone) {
         
         →INI400_006140BLOCK { //NA.2.71 Clause 7.3.1 General considerations, Paragraph (5) - Table 7.1N
             object Clause7_3_1_5 →INI400_006141= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_7.3.1(5).CLC"); 
-            IF(IO.SetupNA.EC_NA.Code == "NEN") { 
+            IF(IO.SetupNA.EC_NA.Code == "NEN" || IO.SetupNA.EC_NA.Code == "NS") { 
                 IF(CoverType == 0) { 
                     object cover →INI400_007021= LoadExternCLC("EC_Concrete_cover_SEN_Design.CLC"); 
                     →INI400_007022cover.Calculate(False); 
@@ -178,21 +187,27 @@ IF(!IO.IsStandalone) {
                 IF(MemberType == 2) { 
                     IF(CoverType == 0) { 
                         double c↓nom← →INI400_011136= cover.c↓nom,m←; 
+                        double c↓min,dur← →KRS116_000029= cover.c↓min,dur,m←; 
                     } ELSE { 
                         double c↓nom← →INI400_011137= c↓used←; 
+                        double c↓min,dur← →KRS116_000032= c↓used←; 
                     } 
                 } ELSE { 
                     IF(Upper) { 
                         IF(CoverType == 0) { 
                             double c↓nom← →INI400_011139= cover.c↓nom,u←; 
+                            double c↓min,dur← →KRS116_000030= cover.c↓min,dur,u←; 
                         } ELSE { 
                             double c↓nom← →INI400_011140= c↓used←; 
+                            double c↓min,dur← →KRS116_000033= c↓used←; 
                         } 
                     } ELSE { 
                         IF(CoverType == 0) { 
                             double c↓nom← →INI400_011141= cover.c↓nom,l←; 
+                            double c↓min,dur← →KRS116_000031= cover.c↓min,dur,l←; 
                         } ELSE { 
                             double c↓nom← →INI400_011142= c↓used←; 
+                            double c↓min,dur← →KRS116_000034= c↓used←; 
                         } 
                     } 
                 } 
@@ -212,8 +227,18 @@ IF(!IO.IsStandalone) {
             →INI400_012416Input.Add("XC", XC); 
             →INI400_012417Input.Add("XS", XS); 
             →INI400_012418Input.Add("XD", XD); 
+            IF(IO.SetupNA.EC_NA.Code == "NS") { 
+            →KRS116_000027Input.Add("XSA", XSA); 
+            } ELSE { 
+                →KRS116_000035Input.Add("XSA", 0); 
+            } 
             →INI400_012419Input.Add("c_nom", c↓nom←); 
             →INI400_012420Input.Add("c_used", c↓REDES←); 
+            IF(IO.SetupNA.EC_NA.Code == "NS") { 
+            →KRS116_000028Input.Add("c_min_dur", c↓min,dur←); 
+            } ELSE { 
+                →KRS116_000036Input.Add("c_min_dur", 0); 
+            } 
             →INI400_012421Input.Add("CorossionSensitive", CorossionSensitive); 
             object Output →INI400_011602= new Structure(); 
             →INI400_012422Clause7_3_1_5.Calculate(Input, Output); 
@@ -408,6 +433,7 @@ IF(COMPARE(N↓qp←, 0, 6) == 0 &amp;&amp; COMPARE(M↓y.qp←, 0, 6) == 0 &amp
             //create cross-section
             →INI400_012395InputCrack.Add("CssIDCrack", CssIDCrack); 
             →INI400_012396InputCrack.Add("CssIDUncrack", CssIDUncrack); 
+            →KRS106_000001InputCrack.Add("ReinfMat", ReinfMat); 
             
             //loading
             //characteristic
@@ -472,6 +498,13 @@ IF(COMPARE(N↓qp←, 0, 6) == 0 &amp;&amp; COMPARE(M↓y.qp←, 0, 6) == 0 &amp
         →INI400_002961BLOCK("Limit value of crack width") { 
             IF(COMPARE(w↓max←, 0, 6) == 0) { 
                 w↓max← →INI400_008622= 0.000000001; 
+                IF(IO.SetupNA.EC_NA.Code == "NS") { 
+                    string DescriptionN →DLO134_048709= TR("Crack width check is not required for selected NA and exposure class."); 
+                    string SolutionN →DLO134_048710= TR("To define different exposure class."); 
+                    string TypeN →DLO134_048711= TR("Error"); 
+                    →KRS116_000040Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
+                    Number↓E← →KRS116_000039= Number↓E←+1; 
+                } 
             } 
             IF(!IO.IsStandalone) { 
                 IF(IO.MemberData.Concrete.Solver.CrackWidth.TypeCrackWidth == 0) { 
@@ -704,6 +737,13 @@ IF((bPod) &amp;&amp; (!ZeroForces) &amp;&amp; w &gt; 0) {
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
+      </Variable>
+      <Variable Modifier="Public" Name="c↓min,dur←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="c↓nom←" ESA_ID="" Type="Double" Precision="2">
         <Description>
@@ -1003,7 +1043,7 @@ IF((bPod) &amp;&amp; (!ZeroForces) &amp;&amp; w &gt; 0) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="HEADER" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_HEADER">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -1468,6 +1508,13 @@ IF((bPod) &amp;&amp; (!ZeroForces) &amp;&amp; w &gt; 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
+      <Variable Modifier="Public" Name="XSA" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="ZeroForces" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
@@ -1617,6 +1664,30 @@ IF((bPod) &amp;&amp; (!ZeroForces) &amp;&amp; w &gt; 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="DLO134_048709">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="DLO134_048710">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="DLO134_048711">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="DLO316_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4706,6 +4777,14 @@ IF((bPod) &amp;&amp; (!ZeroForces) &amp;&amp; w &gt; 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="203" Y="128" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="188" Y="128" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
       </VC>
+      <VC ID="KRS106_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS116_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4731,6 +4810,126 @@ IF((bPod) &amp;&amp; (!ZeroForces) &amp;&amp; w &gt; 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS116_000021">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000024">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000025">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000026">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000027">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000028">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000029">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000030">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000031">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000032">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000033">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000034">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000035">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000036">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000039">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000040">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />

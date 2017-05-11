@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="cc36f554-58c2-4f20-a838-c42036d94e50">
   <CodeEditor>
-    <SourceCode Collapsed="23|32|123" BreakPoints="">bool ValidateInput(object Input) { 
+    <SourceCode Collapsed="23|32|124" BreakPoints="">bool ValidateInput(object Input) { 
     A↓c← →INI400_006029= Input.Get("A_c"); //Area of concrete Css
     Laps →INI400_000007= Input.Get("Laps"); //True - Area with laps, False - Area without laps
     ThinWall →INI400_006030= Input.Get("ThinWall"); //True - walls with λ ≥ λ↓min← 
@@ -100,6 +100,7 @@ void CalcScriptForMin(out double A↓s,vmin←) {
         //    CASE "IS": { } 
         //    CASE "LU": { } 
         //    CASE "MAL": { } 
+        //    CASE "NS": { } 
         //    CASE "PN": { } 
         //    CASE "SR": { } 
         //    CASE "SIG": { } 
@@ -169,6 +170,7 @@ void CalcScriptForMax(out double A↓s,vmax←) {
         //    CASE "IS": { } 
         //    CASE "LU": { } 
         //    CASE "MAL": { } 
+        //    CASE "NS": { } 
         //    CASE "PN": { } 
         //    CASE "SR": { } 
         //    CASE "SIG": { } 

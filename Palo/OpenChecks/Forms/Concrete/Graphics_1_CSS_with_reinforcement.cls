@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="b2e00426-36fc-475f-9370-60e5498642b0">
   <CodeEditor>
-    <SourceCode Collapsed="43|62" BreakPoints="">//Graphics 1 - CSS with reinforcement
+    <SourceCode Collapsed="" BreakPoints="">//Graphics 1 - CSS with reinforcement
 →INI400_001626object[] Outline; //Polygon outline - loaded from master
 object Bounds →INI400_001528= GetBounds(Outline); 
 →INI400_001630object[] Reinf; //Reinforcement - loaded from master
@@ -66,7 +66,7 @@ IF(ShearReinf != null) { //Pen for stirrups
 IF(IO.Contains("REINF")) { 
     IF(ShearReinf != null) { 
         IF(ShearReinf.Contains("Branch")) { 
-            →INI400_012735GrfFunct.DrawStirrups(G, Outline, ShapeCSS, ShearReinf, PenStirrups, DrawStirrups); //Method for drawing stirrups
+            →INI400_012735GrfFunct.DrawStirrups(G, Outline, ShapeCSS, ShearReinf, ZoomDrawX, DrawStirrups); //Method for drawing stirrups
         } 
     } 
     →INI400_012734GrfFunct.DrawReinf(G, Reinf, DrawReinfBars); //Method for drawing longitudinal reinforcement bars
@@ -102,7 +102,11 @@ IF(IO.Contains("REINF")) {
                 IF(Reinf.Count == 1) { 
                     n →INI400_013608= 1; 
                     RArea →KRS116_000008= GrfFunct.GetReinfArea(Reinf, n, i); 
-                    →INI400_013607G.DrawText(n &amp; "ϕ" &amp; Val(Reinf[0].D*10↑3←, 0) &amp; " (" &amp; RArea &amp; " mm2)", DimFont, Bounds.Right+10/ZoomDrawX, Reinf[0].Y, ContentAlignment.MiddleLeft, Color.Black); 
+                    IF(IO.IsStandalone || (!IO.IsStandalone &amp;&amp; Reinf[i].IsDetailing == 0)) { 
+                        →INI400_013607G.DrawText(n &amp; "ϕ" &amp; Val(Reinf[0].D*10↑3←, 0) &amp; " (" &amp; RArea &amp; " mm2)", DimFont, Bounds.Right+10/ZoomDrawX, Reinf[0].Y, ContentAlignment.MiddleLeft, Color.Black); 
+                    } ELSE { 
+                        →KRS116_000238G.DrawText(n &amp; "ϕ" &amp; Val(Reinf[0].D*10↑3←, 0) &amp; " (" &amp; RArea &amp; " mm2)", DimFont, Bounds.Right+10/ZoomDrawX, Reinf[0].Y, ContentAlignment.MiddleLeft, Color.FromArgb(148, 148, 140)); 
+                    } 
                 } ELSE { 
                     FOR(i, 0, Reinf.Count-2) { 
                         IF(ABS(Reinf[i].Y-Reinf[i+1].Y) &lt;= Reinf[i].D &amp;&amp; Reinf[i].D == Reinf[i+1].D) { //Same position (position in tolerance of bar dimeter) and same diameter
@@ -124,7 +128,11 @@ IF(IO.Contains("REINF")) {
                                 MoveDetReinfText →KRS116_000234= Reinf[i].Y+FontHeight/2; 
                             } 
                             RArea →KRS116_000009= GrfFunct.GetReinfArea(Reinf, n, i); 
-                            →INI400_003857G.DrawText(n &amp; "ϕ" &amp; Val(Reinf[i].D*10↑3←, 0) &amp; " (" &amp; RArea &amp; " mm2)", DimFont, Bounds.Right+10/ZoomDrawX, MoveDetReinfText, ContentAlignment.MiddleLeft, Color.Black); 
+                            IF(IO.IsStandalone || (!IO.IsStandalone &amp;&amp; Reinf[i].IsDetailing == 0)) { 
+                                →INI400_003857G.DrawText(n &amp; "ϕ" &amp; Val(Reinf[i].D*10↑3←, 0) &amp; " (" &amp; RArea &amp; " mm2)", DimFont, Bounds.Right+10/ZoomDrawX, MoveDetReinfText, ContentAlignment.MiddleLeft, Color.Black); 
+                            } ELSE { 
+                                →KRS116_000239G.DrawText(n &amp; "ϕ" &amp; Val(Reinf[i].D*10↑3←, 0) &amp; " (" &amp; RArea &amp; " mm2)", DimFont, Bounds.Right+10/ZoomDrawX, MoveDetReinfText, ContentAlignment.MiddleLeft, Color.FromArgb(148, 148, 140)); 
+                            } 
                             n →INI400_003853= 0; 
                             IF(i == Reinf.Count-2) { //Different bar than before &amp; last bar
                                 n →INI400_005557= n+1; 
@@ -138,7 +146,11 @@ IF(IO.Contains("REINF")) {
                 } 
                 
                 RArea →KRS116_000011= GrfFunct.GetReinfArea(Reinf, n, i); 
-                →INI400_003858G.DrawText(n &amp; "ϕ" &amp; Val(Reinf[i].D*10↑3←, 0) &amp; " (" &amp; RArea &amp; " mm2)", DimFont, Bounds.Right+10/ZoomDrawX, MoveDetReinfText, ContentAlignment.MiddleLeft, Color.Black); 
+                IF(IO.IsStandalone || (!IO.IsStandalone &amp;&amp; Reinf[i].IsDetailing == 0)) { 
+                    →INI400_003858G.DrawText(n &amp; "ϕ" &amp; Val(Reinf[i].D*10↑3←, 0) &amp; " (" &amp; RArea &amp; " mm2)", DimFont, Bounds.Right+10/ZoomDrawX, MoveDetReinfText, ContentAlignment.MiddleLeft, Color.Black); 
+                } ELSE { 
+                    →KRS116_000240G.DrawText(n &amp; "ϕ" &amp; Val(Reinf[i].D*10↑3←, 0) &amp; " (" &amp; RArea &amp; " mm2)", DimFont, Bounds.Right+10/ZoomDrawX, MoveDetReinfText, ContentAlignment.MiddleLeft, Color.FromArgb(148, 148, 140)); 
+                } 
             } 
             IF(FormCode != 3000) { 
                 IF(ShearReinf != null) { 
@@ -146,14 +158,22 @@ IF(IO.Contains("REINF")) {
                         IF(ShearReinf.ExistShearReinf) { 
                             double zoneID →KRS116_000185= 0; 
                             IF(ShearReinf.StirrupsAroundSection == null) { 
-                                →KRS116_000191G.DrawText("ϕ" &amp; ROUND(ShearReinf.D*10↑3←, 0) &amp; "/" &amp; ROUND(ShearReinf.ss*10↑3←, 0) &amp; " mm, ns=" &amp; ShearReinf.Ns, DimFont, Bounds.Right+10/ZoomDrawX, Bounds.Top-(Convert.ToSingle(UserDimFont+5))/ZoomDrawX, ContentAlignment.MiddleLeft, Color.Black); 
+                                IF(IO.IsStandalone || (!IO.IsStandalone &amp;&amp; ShearReinf.Contains("Branch") &amp;&amp; ShearReinf.Branch != null &amp;&amp; ShearReinf.Branch.Count &gt; 0 &amp;&amp; ShearReinf.Branch[0].Contains("IsDetailing") &amp;&amp; ShearReinf.Branch[0].IsDetailing == 0)) { 
+                                    →KRS116_000191G.DrawText("ϕ" &amp; ROUND(ShearReinf.D*10↑3←, 0) &amp; "/" &amp; ROUND(ShearReinf.ss*10↑3←, 0) &amp; " mm, ns=" &amp; ShearReinf.Ns, DimFont, Bounds.Right+10/ZoomDrawX, Bounds.Top-(Convert.ToSingle(UserDimFont+5))/ZoomDrawX, ContentAlignment.MiddleLeft, Color.Black); 
+                                } ELSE { 
+                                    →KRS106_000001G.DrawText("ϕ" &amp; ROUND(ShearReinf.D*10↑3←, 0) &amp; "/" &amp; ROUND(ShearReinf.ss*10↑3←, 0) &amp; " mm, ns=" &amp; ShearReinf.Ns, DimFont, Bounds.Right+10/ZoomDrawX, Bounds.Top-(Convert.ToSingle(UserDimFont+5))/ZoomDrawX, ContentAlignment.MiddleLeft, Color.FromArgb(148, 148, 140)); 
+                                } 
                             } ELSE { 
                                 FOREACH(object StirrupsAroundSection in ShearReinf.StirrupsAroundSection) { 
                                     IF(zoneID == StirrupsAroundSection.zoneID) { 
                                         Continue(); 
                                     } ELSE { 
                                         zoneID →KRS116_000187= StirrupsAroundSection.zoneID; 
-                                        →KRS116_000192G.DrawText("ϕ" &amp; ROUND(StirrupsAroundSection.stirrupDiam*10↑3←, 0) &amp; "/" &amp; ROUND(StirrupsAroundSection.stirrupDistanceSs*10↑3←, 0) &amp; " mm, ns=" &amp; StirrupsAroundSection.NumberOfStirrupLinks, DimFont, Bounds.Right+10/ZoomDrawX, Bounds.Top-(Convert.ToSingle((UserDimFont+5)*zoneID))/ZoomDrawX, ContentAlignment.MiddleLeft, Color.Black); 
+                                        IF(IO.IsStandalone || (!IO.IsStandalone &amp;&amp; ShearReinf.Contains("Branch") &amp;&amp; ShearReinf.Branch != null &amp;&amp; ShearReinf.Branch.Count &gt; 0 &amp;&amp; ShearReinf.Branch[0].Contains("IsDetailing") &amp;&amp; ShearReinf.Branch[0].IsDetailing == 0)) { 
+                                            →KRS116_000192G.DrawText("ϕ" &amp; ROUND(StirrupsAroundSection.stirrupDiam*10↑3←, 0) &amp; "/" &amp; ROUND(StirrupsAroundSection.stirrupDistanceSs*10↑3←, 0) &amp; " mm, ns=" &amp; StirrupsAroundSection.NumberOfStirrupLinks, DimFont, Bounds.Right+10/ZoomDrawX, Bounds.Top-(Convert.ToSingle((UserDimFont+5)*zoneID))/ZoomDrawX, ContentAlignment.MiddleLeft, Color.Black); 
+                                        } ELSE { 
+                                            →KRS106_000002G.DrawText("ϕ" &amp; ROUND(StirrupsAroundSection.stirrupDiam*10↑3←, 0) &amp; "/" &amp; ROUND(StirrupsAroundSection.stirrupDistanceSs*10↑3←, 0) &amp; " mm, ns=" &amp; StirrupsAroundSection.NumberOfStirrupLinks, DimFont, Bounds.Right+10/ZoomDrawX, Bounds.Top-(Convert.ToSingle((UserDimFont+5)*zoneID))/ZoomDrawX, ContentAlignment.MiddleLeft, Color.FromArgb(148, 148, 140)); 
+                                        } 
                                     } 
                                 } 
                             } 
@@ -757,6 +777,22 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="373" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="373" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
+      <VC ID="KRS106_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="496" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="496" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="496" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="496" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="496" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="496" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS106_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="496" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="496" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="496" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="496" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="496" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="496" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+      </VC>
       <VC ID="KRS116_000006">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -940,6 +976,30 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000238">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="365" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="365" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="365" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="365" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="365" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="365" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000239">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="365" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="365" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="365" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="365" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="365" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="365" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000240">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="496" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="496" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="496" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="496" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="496" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="496" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
       <VC ID="PAI127_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

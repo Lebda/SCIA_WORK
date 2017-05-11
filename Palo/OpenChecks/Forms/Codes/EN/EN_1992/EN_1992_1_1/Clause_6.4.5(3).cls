@@ -7,8 +7,9 @@
     u↓0← →INI400_008542= Input.Get("u_0"); //perimeter of the face of column
     u↓1← →INI400_008543= Input.Get("u_1"); //first critical perimeter
     V↓Ed,c← →INI400_008545= Input.Get("V_Ed_c"); //applied shear force
-    v↓rd,c← →INI400_008546= Input.Get("v_rd_c"); //Punching shear resistance
+    v↓rd,c← →INI400_008546= Input.Get("v_rd_c"); //Punching shear resistance, for NS without σ↓cp←, for others with σ↓cp←
     ν →INI400_008547= Input.Get("ν"); //coefficient, see 6.6N (Clause 6.2.2(6))
+    β →KRS116_000002= Input.Get("β"); //coefficient β
     
     bool Result →INI400_000020= true; 
     //Add some limits for inputs?
@@ -40,6 +41,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     //    CASE "IS": { } 
     //    CASE "LU": { } 
     //    CASE "MAL": { } 
+    CASE "NS" :  { 
+        v↓Rd,max← →KRS116_000001= MIN(0.4*ν*f↓cd←, 1.6*v↓rd,c←*(u↓1←/(β*u↓0←))); //v↓rd,c← without contribution of σ↓cp←
+    } 
     //    CASE "PN": { } 
     //    CASE "SR": { } 
     CASE "SIG" :  { 
@@ -126,6 +130,13 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
+      </Variable>
+      <Variable Modifier="Public" Name="β" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_β">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ν" ESA_ID="" Type="Double" Precision="2">
         <Description>
@@ -260,6 +271,22 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_008550">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|19|0|2" Font2="Arial|19|1|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="21.9" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|19|0|2" Font2="Arial|19|1|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />

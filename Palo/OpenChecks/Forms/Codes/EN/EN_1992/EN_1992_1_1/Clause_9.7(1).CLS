@@ -22,7 +22,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         IF(IO.IsStandalone) { 
             A↓s,dbmin← →INI400_000151= 0.002*A↓c← @REF("(BS §9.7(1))"); 
         } ELSE { 
-            double Coeff↓A← →INI400_006041= IO.SetupNA.EC_1992_1_1.ρ_min_db[0]; 
+            double Coeff↓A← →INI400_006041= IO.SetupNA.EC_1992_1_1.ρ_min_db; 
             A↓s,dbmin← →INI400_006042= Coeff↓A←*A↓c← @REF("(BS §9.7(1))"); 
         } 
     } 
@@ -55,7 +55,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         IF(IO.IsStandalone) { 
             A↓s,dbmin← →INI400_000154= 0.002*A↓c← @REF("(IS §9.7(1))"); 
         } ELSE { 
-            double Coeff↓A← →INI400_006039= IO.SetupNA.EC_1992_1_1.ρ_min_db[0]; 
+            double Coeff↓A← →INI400_006039= IO.SetupNA.EC_1992_1_1.ρ_min_db; 
             A↓s,dbmin← →INI400_006040= Coeff↓A←*A↓c← @REF("(IS §9.7(1))"); 
         } 
     } 
@@ -64,17 +64,18 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         IF(IO.IsStandalone) { 
             A↓s,dbmin← →INI400_000155= 0.002*A↓c← @REF("(MS §9.7(1))"); 
         } ELSE { 
-            double Coeff↓A← →INI400_006037= IO.SetupNA.EC_1992_1_1.ρ_min_db[0]; 
+            double Coeff↓A← →INI400_006037= IO.SetupNA.EC_1992_1_1.ρ_min_db; 
             A↓s,dbmin← →INI400_006038= Coeff↓A←*A↓c← @REF("(MS §9.7(1))"); 
         } 
     } 
+    //    CASE "NS": { } 
     //    CASE "PN": { } 
     //    CASE "SR": {  } 
     CASE "SIG" :  { 
         IF(IO.IsStandalone) { 
             A↓s,dbmin← →INI400_000156= 0.002*A↓c← @REF("(SS §9.7(1))"); 
         } ELSE { 
-            double Coeff↓A← →INI400_006033= IO.SetupNA.EC_1992_1_1.ρ_min_db[0]; 
+            double Coeff↓A← →INI400_006033= IO.SetupNA.EC_1992_1_1.ρ_min_db; 
             A↓s,dbmin← →INI400_006036= Coeff↓A←*A↓c← @REF("(SS §9.7(1))"); 
         } 
     } 

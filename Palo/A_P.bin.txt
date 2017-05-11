@@ -52,6 +52,8 @@ CddCalcResult2D.xsl
 OpenChecks\CheckManagerSystemLib.db4
 OpenChecks\CheckManagerSystemLib.xml
 ProfileLibrary\Chinese.FIL
+CHS_DLL_32.dll
+CHS_DLL_64.dll
 Cities_ro.csv
 Cities_ro_2013.csv
 clipper_library.dll
@@ -59,6 +61,8 @@ set\Coeff3xx.set
 CommandsAcceleratorsLCID_9.allacc
 ContinousBeam.def.xml
 db\CPTRule.db4
+CrossSectionF.dll
+CrossSectionF64.dll
 set\CSN.set
 set\DataSetSciaTra-EP_DumperSetupData-1.set
 ProfileLibrary\dbgeo
@@ -92,6 +96,8 @@ DesignForms_Equations4.dll.config
 DesignForms_Equations4.dll
 DesignForms_Equations4.xml
 DesignForms_ILS.dll
+DesignForms_Renderer.exe.config
+DesignForms_Renderer.exe
 DesignForms_TraceViewer.exe.config
 DesignForms_TraceViewer.exe
 DesignForms_User.exe.config
@@ -114,7 +120,6 @@ DL70BIBUtils.dll
 DL70CoolType.dll
 DL70JP2KLib.dll
 DL70PDFL.dll
-DocCtrl.dll
 DocGenSettings.txt
 DocumentFormat.OpenXml.dll
 doxygen.exe
@@ -140,7 +145,6 @@ EP_ComponentCmdsRegSvr.exe
 db\EP_CompositeShearConnectors.db4
 set\EP_Connection.set
 set\EP_ConnectionDIN.set
-EP_ConSectionCheck.dll
 set\EP_DefaultSettingsDirectories.set
 set\EP_DefaultSettingsEnviroment.set
 set\EP_DefaultSettingsOverviewDrawings.set
@@ -224,7 +228,6 @@ Esac_1B.dat
 ep_regsvr32.exe Esa.exe
 set\ESA_AdvancedGraphicSetup.set
 set\ESA_ConnectStructureSetup.set
-ESA.chm
 set\ESA_Upgrade2Dto1DSetup.set
 xml\esa_xml_def.xsd
 etabs.tdx
@@ -233,6 +236,12 @@ ProfileLibrary\European.FIL
 Example_ESACOM_Multithread.dll
 EXPERT.exe
 FemBase.dll
+FemBase64.dll
+FEMDIM.dll
+FemPnLin.dll
+FemPnLin64.dll
+FemTors.dll
+FemTors64.dll
 FileTransfer.dll
 ProfileLibrary\Filter_Names.TXT
 ProfileLibrary\Filter_Names_05.TXT
@@ -243,16 +252,18 @@ ProfileLibrary\Filter_Names_13.TXT
 ProfileLibrary\Filter_Names_1b.TXT
 ProfileLibrary\Finnish.FIL
 FLBTiiCls.dll
+For.dll
+For64.dll
 set\France.set
 SectionCheck\Layouts\FreeLayouts.xml
+Genex_EXE.exe
 GepInstall.exe
 GepNexVC.dll
 ProfileLibrary\German.FIL
+GSS_DLL_6D.dll
 set\IBC.set
-iBolt.dll
 iconv.dll
 IFC_2X3_Schema.exp
-iform.dll.CODESTRREG
 IFXCore.dll
 Plugins\IFXExporting.dll
 Plugins\IFXImporting.dll
@@ -269,9 +280,14 @@ Interop.EP_MEMARCHIVELib.dll
 Interop.EP_XMLEXCHANGELib.dll
 Interop.GRIDBASELib.dll
 Interop.UNITLib.dll
-iPun.dll
 ProfileLibrary\Japanese.FIL
 libclang.dll
+libifcoremd.dll
+libifportmd.dll
+libiomp5md.dll
+libiomp5md32.dll
+libiompstubs5md.dll
+libmmd.dll
 license.txt
 LICENSE.txt
 LicenseClipper.txt
@@ -298,8 +314,17 @@ ModellerR.lt
 Moq.dll
 MWellCalc.dll
 set\NEN.set
-Nessie.dll
+NEPR10.DLL
+nepr1064.dll
+NEPR14.DLL
+nepr1464.dll
+NEPR15.DLL
+nepr1564.dll
+Newmark.dll
+Newmark64.dll
 BimPlus\Newtonsoft.Json.dll
+NEXX.DLL
+nexx64.dll
 NOTICE.txt
 nunit-agent-x86.exe.config
 nunit-agent-x86.exe
@@ -356,6 +381,7 @@ ProfileLibrary\SBPBIBL2.DAT
 ProfileLibrary\SBPBIBL3.DAT
 ProfileLibrary\SB__BIBL.DBD
 set\ScaleAdministrator.set
+scia-logo-silver.png
 scia.bmp
 Scia2Etabs.exe
 Scia2SDNF.exe
@@ -369,6 +395,7 @@ Scia2Tekla_19.1.net4.exe
 Scia2Tekla_20.0.net4.exe
 Scia2Tekla_2016.net4.exe
 Scia2Tekla_2016i.net4.exe
+Scia2Tekla_2017.net4.exe
 Scia2Tekla_21.0.net4.exe
 Scia2Tekla_21.1.net4.exe
 SCIABearingPilesPlugin.dll
@@ -376,6 +403,7 @@ BimPlus\SciaBimPlus.dll
 BimPlus\SciaBimPlusGUI.dll
 SCIACPTipCalc.dll
 SCIACPTipUI.dll
+sciadesignforms.html
 SciaOpenInterface.net4.dll
 SciaOpenInterface.dll
 SCIAPileType.dll
@@ -392,6 +420,17 @@ set\SE_CrosssectionsSetup.set
 SectionCheck\Layouts\ShearReinforcementLayouts.xml
 set\SIA26x.set
 SoapMan.dll
+soilin.dll
+soilin64.dll
+SolveLib.dll
+SolveLib64.dll
+Solver.exe.config
+Solver.exe
+Solver64.exe.config
+Solver64.exe
+SolverExeLib.dll
+SolverExeLib64.dll
+SolverStrings.xml
 ProfileLibrary\Source_ID.TXT
 ProfileLibrary\Source_ID_05.TXT
 ProfileLibrary\Source_ID_07.TXT
@@ -399,11 +438,14 @@ ProfileLibrary\Source_ID_09.TXT
 ProfileLibrary\Source_ID_0c.TXT
 ProfileLibrary\Source_ID_13.TXT
 ProfileLibrary\Source_ID_1b.TXT
+SPRUT.DLL
+sprut64.dll
 Startup.ini
 set\STN.set
 Structure.ico
 Structure.lt
 Subst.dat
+svml_dispmd.dll
 ProfileLibrary\Swiss.FIL
 BimPlus\System.Net.Http.dll
 System.Windows.Interactivity.dll
@@ -526,6 +568,7 @@ DocumentDefaults\BasicResults.10.00.EP_ResPropertyBillMaterialConcrete14-(Result
 DocumentDefaults\BasicResults.10.00.EP_ResPropertyConcreteSetupBrazil-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.10.00.EP_StressStrain2D_Shell-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.10.00.EP_SubsoilC2D_Shell-(ResultMain) [Default].TLX
+DocumentDefaults\BasicResults.14.00.EP_ReactionsResultant_Shell-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.14.00.EP_Reactions_Shell-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.8.00.EP_ResConcreteDetailsCheck-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.8.00.EP_ResPropertyConcreteSetupNew-(ResultMain) [Default].TLX
@@ -962,6 +1005,8 @@ DocumentDefaults\DataAddLoad.EP_SurfaceTemperature [Default].TLX
 DocumentDefaults\DataAddLoad.EP_UnitMobileLoad [Brief].TLX
 DocumentDefaults\DataAddLoad.EP_UnitMobileLoad [Default].TLX
 DocumentDefaults\DataAddScia.10.00.EP_CompositeBeamDataFromSetup [Default].TLX
+DocumentDefaults\DataAddScia.14.00.EP_CompositeBeamDesignInfo [Default].TLX
+DocumentDefaults\DataAddScia.14.00.EP_VirtualJoistDesignInfo [Default].TLX
 DocumentDefaults\DataAddScia.8.00.AluminiumCheckData [Default].TLX
 DocumentDefaults\DataAddScia.8.00.EP_Aluminium_Diaphra [Default].TLX
 DocumentDefaults\DataAddScia.8.00.EP_Aluminium_LTBRest [Default].TLX
@@ -1115,6 +1160,7 @@ DocumentDefaults\EP_CheckNEN.EP_ResDataNEN [Default].TLX
 DocumentDefaults\EP_CheckNEN.EP_ResDataNENFireResistance [Default].TLX
 DocumentDefaults\EP_CodeCSNSteel.EP_ResDataCSN [Default].TLX
 DocumentDefaults\EP_CodeECSteel.EP_ResDataECTimber [Default].TLX
+DocumentDefaults\EP_CodeONORMSteel.EP_ResDataoNORM [Default].TLX
 DocumentDefaults\EP_CodeSIASteel.EP_ResDataSIA [Default].TLX
 DocumentDefaults\EP_CodeSIASteel.EP_ResDataSIAFireResistance [Default].TLX
 DocumentDefaults\EP_DataAddStructure.EP_ArbitraryBeam [Default].TLX

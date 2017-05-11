@@ -103,6 +103,7 @@ object[] DetProvInputs →INI400_008964= new Structure();
 →INI400_009148DetProvInputs.Add("u", u); 
 →INI400_009149DetProvInputs.Add("b↓min←", b↓min←); 
 →KRS135_000039DetProvInputs.Add("n↓s←", n↓s←); 
+→KRS116_000001DetProvInputs.Add("h_carka", d); //h_carka = d; because in design are no reinforcement bars (only areas) and I cant calculate COG for it
 //
 →INI400_009733CalcDetailing.PreprocessEWN(DetProvResults, EWNBasicIndex, EWNAddDescription); 
 →INI400_009153CalcDetailing.PreprocessShearReinf(DetProvInputs, DetProvResults); 
@@ -927,6 +928,14 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS116_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS135_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1739,7 +1748,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
               <P>ČSN EN 1991-2</P>
               <P>ČSN EN 1991-3</P>
               <P>ČSN EN 1991-4</P>
-              <P>ČSN EN 1992-1-1</P>
+              <P>ČSN EN 1992-1-1/NA: 2011-07</P>
               <P>1</P>
               <P>1</P>
               <P>1.3</P>

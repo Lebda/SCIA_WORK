@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="bfb6f4a8-1844-415f-bb88-4fa90c3f0614">
   <CodeEditor>
-    <SourceCode Collapsed="6|19|55|67|77|82|100|149|171|178|185|192|199|207|248|265|281|296|307|349|371|384" BreakPoints="">//@EC_Concrete_Detailing_provisions_Plate
+    <SourceCode Collapsed="6|19|55|67|77|82|104|153|175|182|189|196|203|211|219|228|261|278|294|309|320|334|362|384|397" BreakPoints="">//@EC_Concrete_Detailing_provisions_Plate
 
 
 //------------------------------------------------------------
@@ -88,6 +88,10 @@ private void LoadDialogInputs() {
     DesignDefaults →INI400_016023= FUNCT_2D_DEFAULTS.GetDesignDefaults(16); 
     ConMat →INI400_016171= IO.CONCRETE.EC; 
     DesignReinf →INI400_016178= _dialog_DesignReinf; 
+    →KRS106_000001DesignReinf[0].Add("As_prov", 0); 
+    →KRS106_000002DesignReinf[1].Add("As_prov", 0); 
+    →KRS106_000003DesignReinf[2].Add("As_prov", 0); 
+    →KRS106_000004DesignReinf[3].Add("As_prov", 0); 
     DesignDefaults.Detailing.bPlateCheckTranversePercentage →INI400_016286= _bPlateCheckTransversePercentage; 
     DesignDefaults.Detailing.bPlateCheckMinPercentage →INI400_016304= _bPlateCheckMinPercentage; 
     DesignDefaults.Detailing.bPlateCheckMaxPercentage →INI400_016305= _bPlateCheckMaxPercentage; 
@@ -154,18 +158,18 @@ private object GetMainLayerToTransverse(object TransversReinfLayer) {
     SWITCH(TransversReinfLayer.Edge) { 
         CASE 0 :  { 
             IF(TransversReinfLayer.Descript != DesignReinf[0].Descript) { 
-                return (DesignReinf[0].MainVert &amp;&amp; DesignReinf[0].As_req &gt; 0) ? DesignReinf[0] : null; 
+                return (DesignReinf[0].MainVert &amp;&amp; (DesignReinf[0].As_req &gt; 0 || DesignReinf[0].As_prov &gt; 0)) ? DesignReinf[0] : null; 
             } 
             ELSE { 
-                return (DesignReinf[1].MainVert &amp;&amp; DesignReinf[1].As_req &gt; 0) ? DesignReinf[1] : null; 
+                return (DesignReinf[1].MainVert &amp;&amp; (DesignReinf[1].As_req &gt; 0 || DesignReinf[1].As_prov &gt; 0)) ? DesignReinf[1] : null; 
             } 
         } 
         CASE 2 :  { 
             IF(TransversReinfLayer.Descript != DesignReinf[2].Descript) { 
-                return (DesignReinf[2].MainVert &amp;&amp; DesignReinf[2].As_req &gt; 0) ? DesignReinf[2] : null; 
+                return (DesignReinf[2].MainVert &amp;&amp; (DesignReinf[2].As_req &gt; 0 || DesignReinf[2].As_prov &gt; 0)) ? DesignReinf[2] : null; 
             } 
             ELSE { 
-                return (DesignReinf[3].MainVert &amp;&amp; DesignReinf[3].As_req &gt; 0) ? DesignReinf[3] : null; 
+                return (DesignReinf[3].MainVert &amp;&amp; (DesignReinf[3].As_req &gt; 0 || DesignReinf[3].As_prov &gt; 0)) ? DesignReinf[3] : null; 
             } 
         } 
     } 
@@ -180,22 +184,22 @@ private bool IsMinimumReinfToBeChecked(object ReinfLayer) {
 
 //@Returns ...
 private bool IsMinimumReinfToBeCheckedPrincipal(object ReinfLayer) { 
-    IF(ReinfLayer.MainVert &amp;&amp; ReinfLayer.Tensile &amp;&amp; DesignDefaults.Detailing.bPlateCheckMinPercentage &amp;&amp; ReinfLayer.As_req &gt; 0) { return true; } 
-    IF(ReinfLayer.MainVert &amp;&amp; ReinfLayer.As_req &gt; 0 &amp;&amp; DesignDefaults.Detailing.bPlateCheckMaxDistancePrincipal) { return true; } 
+    IF(ReinfLayer.MainVert &amp;&amp; DesignDefaults.Detailing.bPlateCheckMinPercentage &amp;&amp; ((ReinfLayer.Tensile &amp;&amp; ReinfLayer.As_req &gt; 0) || ReinfLayer.As_prov &gt; 0)) { return true; } 
+    IF(ReinfLayer.MainVert &amp;&amp; DesignDefaults.Detailing.bPlateCheckMaxDistancePrincipal &amp;&amp; (ReinfLayer.As_req &gt; 0 || ReinfLayer.As_prov &gt; 0)) { return true; } 
     return false; 
 } 
 
 //@Returns ...
 private bool IsMinimumReinfToBeCheckedSecondary(object ReinfLayer) { 
-    IF(!ReinfLayer.MainVert &amp;&amp; ReinfLayer.As_req &gt; 0 &amp;&amp; DesignDefaults.Detailing.bPlateCheckMaxDistanceSecondary) { return true; } 
-    IF(!ReinfLayer.MainVert &amp;&amp; GetMainLayerToTransverse(ReinfLayer) != null &amp;&amp; DesignDefaults.Detailing.bPlateCheckTranversePercentage) { return true; } 
+    IF(!ReinfLayer.MainVert &amp;&amp; DesignDefaults.Detailing.bPlateCheckMaxDistanceSecondary &amp;&amp; (ReinfLayer.As_req &gt; 0 || ReinfLayer.As_prov &gt; 0)) { return true; } 
+    IF(!ReinfLayer.MainVert &amp;&amp; DesignDefaults.Detailing.bPlateCheckTranversePercentage &amp;&amp; GetMainLayerToTransverse(ReinfLayer) != null) { return true; } 
     return false; 
 } 
 
 //@Returns ...
 private bool IsMaximumReinfToBeChecked(object ReinfLayer) { 
-    IF(DesignDefaults.Detailing.bPlateCheckMaxPercentage &amp;&amp; ReinfLayer.As_req &gt; 0 &amp;&amp; ReinfLayer.MainVert) { return true; } 
-    IF(DesignDefaults.Detailing.bPlateCheckMinDistance &amp;&amp; (ReinfLayer.As_req &gt; 0 || ReinfLayer.As_det_min &gt; 0)) { return true; } 
+    IF(ReinfLayer.MainVert &amp;&amp; DesignDefaults.Detailing.bPlateCheckMaxPercentage &amp;&amp; (ReinfLayer.As_req &gt; 0 || ReinfLayer.As_prov &gt; 0)) { return true; } 
+    IF(DesignDefaults.Detailing.bPlateCheckMinDistance &amp;&amp; (ReinfLayer.As_req &gt; 0 || ReinfLayer.As_det_min &gt; 0 || ReinfLayer.As_prov &gt; 0)) { return true; } 
     return false; 
 } 
 
@@ -215,6 +219,15 @@ private bool IsMaximumReinfToBeChecked() {
     return false; 
 } 
 
+//Return diameter of reinforcement for detailing
+private double DiamForDetailig(object ReinfLayer) { 
+    IF(DesignDefaults.ReinfLong.UseBasicReinf &amp;&amp; COMPARE(ReinfLayer.As_add, 0, 6) == 0 &amp;&amp; ReinfLayer.As_det_min &lt; ReinfLayer.As_bas) { 
+        return ReinfLayer.dsb; //basic diameter for detailing
+    } ELSE { 
+        return ReinfLayer.ds; //required or additional diameter for detailing
+    } 
+} 
+
 //@Checks minimum area of principal longitudinal reinforcement in tension 
 private void CheckPrincipalMinTensileReinf(object ReinfLayer) { 
     IF(DesignDefaults.Detailing.bPlateCheckMinPercentage) { 
@@ -223,7 +236,7 @@ private void CheckPrincipalMinTensileReinf(object ReinfLayer) {
         →KRS116_000018double Coeff; 
         double b →KRS116_000015= 1; 
         double&lt;mm↑2←,0&gt; A↓c← →KRS116_000016= b*h; 
-        IF(ReinfLayer.MainVert &amp;&amp; ReinfLayer.Tensile &gt; 0 &amp;&amp; ReinfLayer.As_req &gt; 0) { 
+        IF(ReinfLayer.MainVert &amp;&amp; ((ReinfLayer.Tensile &gt; 0 &amp;&amp; ReinfLayer.As_req &gt; 0) || ReinfLayer.As_prov &gt; 0)) { 
             
             →INI400_016189double&lt;mm↑2←/m,1&gt; As_min; 
             →INI400_016190TEXT("Minimum area from reinforcement ratio") @REF("(§9.2.1.1(1))"); 
@@ -251,10 +264,10 @@ private void CheckPrincipalMinTensileReinf(object ReinfLayer) {
 //@Checks minimum area of principal longitudinal reinforcement from spacing of bars
 private void CheckPrincipalReinfMaxBarDist(object ReinfLayer) { 
     IF(DesignDefaults.Detailing.bPlateCheckMaxDistancePrincipal) { 
-        IF(ReinfLayer.MainVert &amp;&amp; ReinfLayer.As_req &gt; 0) { 
+        IF(ReinfLayer.MainVert &amp;&amp; (ReinfLayer.As_req &gt; 0 || ReinfLayer.As_prov &gt; 0)) { 
             →INI400_016200double&lt;mm,0&gt; s↓max,slab←; 
             double&lt;mm,0&gt; b →INI400_016219= 1.0; 
-            double&lt;mm,0&gt; ϕ →INI400_016220= ReinfLayer.ds; 
+            double&lt;mm,0&gt; ϕ →INI400_016220= DiamForDetailig(ReinfLayer); 
             double π →INI400_016221= Math.PI; 
             →INI400_016222TEXT("Minimum area from maximum spacing of reinforcement bars"); 
             →INI400_016218CL_9_3_1_1_3.CalcValueForPrincipalReinfOfPlate(h, false, out s↓max,slab←); //TODO : concentrated load
@@ -268,10 +281,10 @@ private void CheckPrincipalReinfMaxBarDist(object ReinfLayer) {
 //@Checks minimum area of secondary longitudinal reinforcement from spacing of bars
 private void CheckSecondaryReinfMaxBarDist(object ReinfLayer) { 
     IF(DesignDefaults.Detailing.bPlateCheckMaxDistanceSecondary) { 
-        IF(!ReinfLayer.MainVert &amp;&amp; (ReinfLayer.As_req &gt; 0)) { 
+        IF(!ReinfLayer.MainVert &amp;&amp; (ReinfLayer.As_req &gt; 0 || ReinfLayer.As_prov &gt; 0)) { 
             →INI400_016227double&lt;mm,0&gt; s↓max,slab←; 
             double&lt;mm,0&gt; b →INI400_016228= 1.0; 
-            double&lt;mm,0&gt; ϕ →INI400_016229= ReinfLayer.ds; 
+            double&lt;mm,0&gt; ϕ →INI400_016229= DiamForDetailig(ReinfLayer); 
             double π →INI400_016230= Math.PI; 
             →INI400_016231TEXT("Minimum area from maximum spacing of reinforcement bars"); 
             →INI400_016232CL_9_3_1_1_3.CalcValueForSecondaryReinfOfPlate(h, false, out s↓max,slab←); //TODO : concentrated load
@@ -298,7 +311,7 @@ private void CheckSecondaryTransverseReinf(object ReinfLayer) {
 } 
 
 private void CheckMaximumPercentage(object ReinfLayer) { 
-    IF(DesignDefaults.Detailing.bPlateCheckMaxPercentage &amp;&amp; ReinfLayer.As_req &gt; 0 &amp;&amp; ReinfLayer.MainVert) { 
+    IF(DesignDefaults.Detailing.bPlateCheckMaxPercentage &amp;&amp; ReinfLayer.MainVert &amp;&amp; (ReinfLayer.As_req &gt; 0 || ReinfLayer.As_prov &gt; 0)) { 
         →INI400_016486TEXT("Maximum area from reinforcement ratio"); 
         double&lt;mm↑2←/m,0&gt; A↓s,max← →INI400_016487= 0; 
         double&lt;mm,0&gt; b →INI400_016504= 1; 
@@ -309,12 +322,12 @@ private void CheckMaximumPercentage(object ReinfLayer) {
 } 
 
 private void CheckMinimumBarDist(object ReinfLayer) { 
-    IF(DesignDefaults.Detailing.bPlateCheckMinDistance &amp;&amp; (ReinfLayer.As_req &gt; 0 || ReinfLayer.As_det_min &gt; 0)) { 
+    IF(DesignDefaults.Detailing.bPlateCheckMinDistance &amp;&amp; (ReinfLayer.As_req &gt; 0 || ReinfLayer.As_det_min &gt; 0 || ReinfLayer.As_prov &gt; 0)) { 
         →INI400_016261TEXT("Maximum area from minimum clear spacing of reinforcement bars"); 
         double&lt;mm,0&gt; s↓min,lim← →INI400_016265= 0; 
-        →INI400_016278CL_8_2_2.CalcMinimumSpacing(ReinfLayer.ds, ConMat.dg, DesignDefaults.Detailing.s↓lb,min←, false, out s↓min,lim←); 
+        →INI400_016278CL_8_2_2.CalcMinimumSpacing(DiamForDetailig(ReinfLayer), ConMat.dg, DesignDefaults.Detailing.s↓lb,min←, false, false, out s↓min,lim←); 
         double&lt;mm,0&gt; b →INI400_016274= 1.0; 
-        double&lt;mm,0&gt; ϕ →INI400_016264= ReinfLayer.ds; 
+        double&lt;mm,0&gt; ϕ →INI400_016264= DiamForDetailig(ReinfLayer); 
         double π →INI400_016275= Math.PI; 
         double&lt;mm↑2←/m,0&gt; A↓s,max← →INI400_016263= (b/(ϕ+s↓min,lim←))*0.25*π*ϕ↑2←; 
         ReinfLayer.As_det_max →INI400_016509= (ReinfLayer.As_det_max &gt; 0) ? MIN(ReinfLayer.As_det_max, A↓s,max←) : A↓s,max←; 
@@ -1700,6 +1713,38 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS106_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS116_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -1812,22 +1857,6 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000022">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS116_000023">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="KRS116_000025">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1873,13 +1902,13 @@ IF(!IO.IsExternCLC) {
   </Calculation>
   <Dialog>
     <Main Width="630">
-      <TTabControl Name="" ID="135" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="32" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" Index="1" TabBG="-657931" SelTab="-1842205" Alignment="0">
+      <TTabControl Name="" ID="135" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="32" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" Index="0" TabBG="-657931" SelTab="-1842205" Alignment="0">
         <Texts>
           <ENU>LONGITUDINAL|DETAILING</ENU>
         </Texts>
         <Tabs>
           <Tab Text="LONGITUDINAL">
-            <TTableInput Name="" ID="136" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="29" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_DesignReinf" Value="[1-]|0|300|0|0|Principal|True|1|180|10|0║[2-]|90|0|0|0|Transverse||0|170|10|0║[1+]|0|0|0|0|Principal|True|0|180|10|2║[2+]|90|0|0|0|Transverse|False|0|170|10|2" CellBG="-1" HeaderBG="-986896" FixedRows="4">
+            <TTableInput Name="" ID="136" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="29" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_DesignReinf" Value="[1-]|0|300|0|0|Principal|True|1|180|10|0║[2-]|90|100|0|0|Transverse||0|170|10|0║[1+]|0|0|0|0|Principal|True|0|180|10|2║[2+]|90|0|0|0|Transverse|False|0|170|10|2" CellBG="-1" HeaderBG="-986896" FixedRows="4">
               <Texts>
                 <ENU>Layer|Alpha [°]|As,req [mm2/m]|As,det,min [mm2/m]|As,det,max [mm2/m]|Type|MainVert|Tensile|d [mm]|ds [mm]|Edge</ENU>
               </Texts>

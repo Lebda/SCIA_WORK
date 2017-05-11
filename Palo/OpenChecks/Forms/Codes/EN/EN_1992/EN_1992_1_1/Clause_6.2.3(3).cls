@@ -205,6 +205,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
             →INI400_005321TEXT(" (for non-prestressed member)"); 
         } 
     } 
+    //    CASE "NS": { } 
     //    CASE "PN": { } 
     //    CASE "SR": { } 
     CASE "SIG" :  { 
@@ -1809,7 +1810,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
               <P>EC EN 1991-2</P>
               <P>EC EN 1991-3</P>
               <P>EC EN 1991-4</P>
-              <P>EC EN 1992-1-1</P>
+              <P>EC EN 1992-1-1:2004/AC:2008</P>
               <P>1</P>
               <P>1</P>
               <P>1.3</P>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="71a433a2-5028-4f92-a040-7d98d93c4075">
   <CodeEditor>
-    <SourceCode Collapsed="2|100|110|122|132|143|155|168|179|189|226|254|267|276|357|370|407|420|459|504|527|540|550|582|635|673|748|759|779|790|807|829|838|856|869|878" BreakPoints="">//Functions for Crack width check and SLS design
+    <SourceCode Collapsed="2|132|142|154|164|175|187|200|211|221|258|286|299|308|402|439|452|491|536|559|572|582|614|667|705|780|791|811|822|839|861|870|888|901" BreakPoints="">//Functions for Crack width check and SLS design
 
 public double Calculate_wk_max(double CssIDCrack, double SetForcesQp, bool QuasiComb, bool CorossionSensitive) { 
     IF(IO.MemberData.Concrete.Solver.CrackWidth.TypeCrackWidth == 0) { 
@@ -18,6 +18,9 @@ public double Calculate_wk_max(double CssIDCrack, double SetForcesQp, bool Quasi
             double XC →DLO134_006415= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Carbonation; 
             double XD →DLO134_006416= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Chlorides; 
             double XS →DLO134_006417= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.ChloridesSea; 
+            IF(IO.SetupNA.EC_NA.Code == "NS") { 
+                double XSA →KRS116_000024= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.StrongChemical; 
+            } 
             double CoverType →DLO134_011120= IO.MemberData.Concrete.Defaults.Column.Longitudinal.Main.TypeOfCover; 
             double c↓used← →DLO134_011126= IO.MemberData.Concrete.Defaults.Column.Longitudinal.Main.Cover; 
         } ELSE { 
@@ -25,6 +28,9 @@ public double Calculate_wk_max(double CssIDCrack, double SetForcesQp, bool Quasi
                 double XC →DLO134_006409= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Carbonation; 
                 double XD →DLO134_006410= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Chlorides; 
                 double XS →DLO134_006411= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.ChloridesSea; 
+                IF(IO.SetupNA.EC_NA.Code == "NS") { 
+                    double XSA →KRS116_000025= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.StrongChemical; 
+                } 
                 IF(MemberType == 1) { 
                     double CoverType →DLO134_011118= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.TypeOfCover; 
                     double c↓used← →DLO134_011128= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.Cover; 
@@ -36,6 +42,9 @@ public double Calculate_wk_max(double CssIDCrack, double SetForcesQp, bool Quasi
                 double XC →DLO134_006412= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Carbonation; 
                 double XD →DLO134_006413= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Chlorides; 
                 double XS →DLO134_006414= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.ChloridesSea; 
+                IF(IO.SetupNA.EC_NA.Code == "NS") { 
+                    double XSA →KRS116_000026= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.StrongChemical; 
+                } 
                 IF(MemberType == 1) { 
                     double CoverType →DLO134_011119= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.TypeOfCover; 
                     double c↓used← →DLO134_011130= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.Cover; 
@@ -48,7 +57,7 @@ public double Calculate_wk_max(double CssIDCrack, double SetForcesQp, bool Quasi
         
         →DLO134_006140BLOCK { //NA.2.71 Clause 7.3.1 General considerations, Paragraph (5) - Table 7.1N
             object Clause7_3_1_5 →DLO134_006141= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_7.3.1(5).CLC"); 
-            IF(IO.SetupNA.EC_NA.Code == "NEN") { 
+            IF(IO.SetupNA.EC_NA.Code == "NEN" || IO.SetupNA.EC_NA.Code == "NS") { 
                 IF(CoverType == 0) { 
                     object cover →DLO134_007021= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\EC_Concrete_cover_SEN_Design.CLC"); 
                     →DLO134_007022cover.Calculate(False); 
@@ -56,35 +65,58 @@ public double Calculate_wk_max(double CssIDCrack, double SetForcesQp, bool Quasi
                 IF(MemberType == 2) { 
                     IF(CoverType == 0) { 
                         double c↓nom← →DLO134_011136= cover.c↓nom,m←; 
+                        double c↓min,dur← →KRS116_000029= cover.c↓min,dur,m←; 
                     } ELSE { 
                         double c↓nom← →DLO134_011137= c↓used←; 
+                        double c↓min,dur← →KRS116_000032= c↓used←; 
                     } 
                 } ELSE { 
                     IF(Upper) { 
                         IF(CoverType == 0) { 
                             double c↓nom← →DLO134_011139= cover.c↓nom,u←; 
+                            double c↓min,dur← →KRS116_000030= cover.c↓min,dur,u←; 
                         } ELSE { 
                             double c↓nom← →DLO134_011140= c↓used←; 
+                            double c↓min,dur← →KRS116_000033= c↓used←; 
                         } 
                     } ELSE { 
                         IF(CoverType == 0) { 
                             double c↓nom← →DLO134_011141= cover.c↓nom,l←; 
+                            double c↓min,dur← →KRS116_000031= cover.c↓min,dur,l←; 
                         } ELSE { 
                             double c↓nom← →DLO134_011142= c↓used←; 
+                            double c↓min,dur← →KRS116_000034= c↓used←; 
                         } 
                     } 
                 } 
             } 
             double DesignLife →DLO134_012424= IO.MemberData.Concrete.Solver.General.MinCover.DesignWorkingLife; 
-            object Input →DLO134_006857= new Structure(
-            "DesignLife", DesignLife, 
-            "Quasi", QuasiComb, 
-            "XC", XC, 
-            "XS", XS, 
-            "XD", XD, 
-            "c_nom", c↓nom←, 
-            "c_used", c↓used←, 
-            "CorossionSensitive", CorossionSensitive); 
+            
+            IF(IO.SetupNA.EC_NA.Code == "NS") { 
+                object Input →DLO134_006857= new Structure(
+                "DesignLife", DesignLife, 
+                "Quasi", QuasiComb, 
+                "XC", XC, 
+                "XS", XS, 
+                "XD", XD, 
+                "XSA", XSA, 
+                "c_nom", c↓nom←, 
+                "c_used", c↓used←, 
+                "c_min_dur", c↓min,dur←, 
+                "CorossionSensitive", CorossionSensitive); 
+            } ELSE { 
+                object Input →KRS116_000035= new Structure(
+                "DesignLife", DesignLife, 
+                "Quasi", QuasiComb, 
+                "XC", XC, 
+                "XS", XS, 
+                "XD", XD, 
+                "XSA", 0, 
+                "c_nom", c↓nom←, 
+                "c_used", c↓used←, 
+                "c_min_dur", 0, 
+                "CorossionSensitive", CorossionSensitive); 
+            } 
             object Output →DLO134_011602= new Structure(); 
             →DLO134_012423Clause7_3_1_5.Calculate(Input, Output); 
             double w↓max← →DLO134_006143= Output.w_max; 
@@ -1010,104 +1042,115 @@ class CalcCrackRectCss {
                             →DLO134_001811TEXT("Maximal value of tensile stress of the reinforcement inside area A↓c,eff←"); 
                             →DLO134_046030CalculateCrackedReinfStress(ReinfLayersInsideAceff, IndexMostTensileReinf, out σ↓s←); 
                             →DLO134_048049TEXT("σ↓s← = " &amp; σ↓s←); 
-                            →KRS134_000014PAGEBREAK(); 
-                            
-                            →DLO134_001812TEXT("Area of reinforcement inside area A↓c,eff←"); 
-                            FOR(i, 0, ReinfLayersInsideAceff.Count-1) { 
-                                A↓s← →DLO134_046293= A↓s←+ReinfLayersInsideAceff[i].As; 
-                            } 
-                            →DLO134_048058TEXT("A↓s← = " &amp; A↓s←); 
-                            →DLO134_001813TEXT("Ratio of modulus of concrete and reinforcement"); 
-                            E↓s← →DLO134_046040= ReinfLayersInsideAceff[IndexMostTensileReinf].Material.Es; 
-                            α↓E← →DLO134_001737= E↓s←/E↓c← @REF("(§7.3.4(2))"); 
-                            →DLO134_006716PAGEBREAK(); 
-                            
-                            →DLO134_001814TEXT("Ratio of reinforcement inside area A↓c,eff←"); 
-                            IF(A↓c.eff← == 0) { 
-                                ρ↓p.eff← →DLO134_001738= 0; 
-                            } ELSE { 
-                                ρ↓p.eff← →DLO134_001739= A↓s←/A↓c.eff← @REF("(7.10)"); 
-                            } 
-                            →DLO134_001815TEXT("Cover of the reinf., which is nearest to the edge of css in direction of bending moment resultant"); 
-                            →DLO134_006700TEXT("c = " &amp; c); 
-                            →KRS134_000015PAGEBREAK(); 
-                            
-                            →DLO134_001816TEXT("Calculation maximal centre to centre distance between bars inside area A↓c,eff←"); 
-                            s↓max← →DLO134_001741= ReinfLayersInsideAceff[IndexMostTensileReinf].s; 
-                            double s↓pom← →DLO134_003267= b; 
-                            IF(s↓max← &gt; s↓pom←) { 
-                                s↓max← →DLO134_003274= s↓pom←; 
-                                →DLO134_003276TEXT("s↓max← = " &amp; s↓max←); 
-                                string DescriptionN →DLO134_006681= TR("The maximum spacing of reinforcement cannot be calculated. The width of cross-section perpendicular to direction of bending moment resultant crossing the bar with maximum tensile stress will be taken into account."); 
-                                string SolutionN →DLO134_045646= TR(""); 
-                                string TypeN →DLO134_045647= TR("Note"); 
-                                →DLO134_046053FUNCT_1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
-                                NumberEWN[2] →DLO134_046054= NumberEWN[2]+1; 
-                                →DLO134_006686obEWN.Add(new Structure("Index", "N" &amp; IndexEWN &amp; "/4", "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
-                            } ELSE { 
-                                →DLO134_003275TEXT("s↓max← = " &amp; s↓max←); 
-                            } 
-                            →DLO134_001817TEXT("Coefficient, which takes bond properties of the reinforcement"); 
-                            k↓1← →DLO134_046616= 0.8; //TODO according to material
-                            →DLO134_006345TEXT(→DLO134_001744"k↓1← = " &amp; k↓1←); 
-                            →DLO134_001818TEXT("Coefficient for calculation maximum crack spacing"); 
-                            →DLO134_005816BLOCK { //NA.2.74 Clause 7.3.4 Calculation of crack widths, Paragraph (3)
-                                object Clause7_3_4 →DLO134_005817= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_7.3.4(3).CLC"); 
-                                object InputClause7_3_4 →KRS134_000024= new Structure(
-                                "c", c, 
-                                "f_ct_eff", f↓ct.eff←, 
-                                "k_1", k↓1←, 
-                                "k_2", k↓2←, 
-                                "ρ_p_eff", ρ↓p.eff←, 
-                                "σ_s", σ↓s←, 
-                                "ϕ", ϕ↓eq←); 
-                                object OutputClause7_3_4 →KRS134_000025= new Structure(); 
+                            IF(σ↓s← &lt; ReinfMat[0].fyk) { 
+                                →KRS134_000014PAGEBREAK(); 
                                 
-                                →DLO134_005625Clause7_3_4.Draw(InputClause7_3_4, OutputClause7_3_4); 
-                                k↓3← →DLO134_005628= OutputClause7_3_4.k_3; 
-                                k↓4← →DLO134_005629= OutputClause7_3_4.k_4; 
-                            } 
-                            →KRS134_000016PAGEBREAK(); 
-                            →DLO134_006349TEXT("k↓3← = " &amp; k↓3←); 
-                            →DLO134_006350TEXT("k↓4← = " &amp; k↓4←); 
-                            
-                            →DLO134_001819TEXT("Maximum crack spacing"); 
-                            s↓lim← →DLO134_001821= 5*(c+0.5*ϕ↓eq←); 
-                            →DLO134_047810double s↓r.max←; 
-                            IF(s↓max← &gt; 5*(c+0.5*ϕ↓eq←) || ρ↓p.eff← == 0) { 
-                                →DLO134_001820TEXT("s↓max← = " &amp; s↓max← &amp; " &gt; 5*(c+0.5*ϕ↓eq←) = " &amp; s↓lim← &amp; " or ρ↓p.eff← = 0, "); 
-                                →DLO134_003299TEXT("therefore:"); 
-                                SWITCH(IO.SetupNA.EC_NA.Code) { 
-                                    CASE "ONORM" :  { 
-                                        s↓r.max← →DLO134_048510= MIN(1.3*[h-x↓r←], (ϕ↓eq←*σ↓s←)/(3.6*f↓ct.eff←)) @REF("(ÖNORM-NA 7.11)"); 
+                                →DLO134_001812TEXT("Area of reinforcement inside area A↓c,eff←"); 
+                                FOR(i, 0, ReinfLayersInsideAceff.Count-1) { 
+                                    A↓s← →DLO134_046293= A↓s←+ReinfLayersInsideAceff[i].As; 
+                                } 
+                                →DLO134_048058TEXT("A↓s← = " &amp; A↓s←); 
+                                →DLO134_001813TEXT("Ratio of modulus of concrete and reinforcement"); 
+                                E↓s← →DLO134_046040= ReinfLayersInsideAceff[IndexMostTensileReinf].Material.Es; 
+                                α↓E← →DLO134_001737= E↓s←/E↓c← @REF("(§7.3.4(2))"); 
+                                →DLO134_006716PAGEBREAK(); 
+                                
+                                →DLO134_001814TEXT("Ratio of reinforcement inside area A↓c,eff←"); 
+                                IF(A↓c.eff← == 0) { 
+                                    ρ↓p.eff← →DLO134_001738= 0; 
+                                } ELSE { 
+                                    ρ↓p.eff← →DLO134_001739= A↓s←/A↓c.eff← @REF("(7.10)"); 
+                                } 
+                                →DLO134_001815TEXT("Cover of the reinf., which is nearest to the edge of css in direction of bending moment resultant"); 
+                                →DLO134_006700TEXT("c = " &amp; c); 
+                                →KRS134_000015PAGEBREAK(); 
+                                
+                                →DLO134_001816TEXT("Calculation maximal centre to centre distance between bars inside area A↓c,eff←"); 
+                                s↓max← →DLO134_001741= ReinfLayersInsideAceff[IndexMostTensileReinf].s; 
+                                double s↓pom← →DLO134_003267= b; 
+                                IF(s↓max← &gt; s↓pom←) { 
+                                    s↓max← →DLO134_003274= s↓pom←; 
+                                    →DLO134_003276TEXT("s↓max← = " &amp; s↓max←); 
+                                    string DescriptionN →DLO134_006681= TR("The maximum spacing of reinforcement cannot be calculated. The width of cross-section perpendicular to direction of bending moment resultant crossing the bar with maximum tensile stress will be taken into account."); 
+                                    string SolutionN →DLO134_045646= TR(""); 
+                                    string TypeN →DLO134_045647= TR("Note"); 
+                                    →DLO134_046053FUNCT_1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
+                                    NumberEWN[2] →DLO134_046054= NumberEWN[2]+1; 
+                                    →DLO134_006686obEWN.Add(new Structure("Index", "N" &amp; IndexEWN &amp; "/4", "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
+                                } ELSE { 
+                                    →DLO134_003275TEXT("s↓max← = " &amp; s↓max←); 
+                                } 
+                                →DLO134_001817TEXT("Coefficient, which takes bond properties of the reinforcement"); 
+                                k↓1← →DLO134_046616= 0.8; //TODO according to material
+                                →DLO134_006345TEXT(→DLO134_001744"k↓1← = " &amp; k↓1←); 
+                                →DLO134_001818TEXT("Coefficient for calculation maximum crack spacing"); 
+                                →DLO134_005816BLOCK { //NA.2.74 Clause 7.3.4 Calculation of crack widths, Paragraph (3)
+                                    object Clause7_3_4 →DLO134_005817= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_7.3.4(3).CLC"); 
+                                    object InputClause7_3_4 →KRS134_000024= new Structure(
+                                    "c", c, 
+                                    "f_ct_eff", f↓ct.eff←, 
+                                    "k_1", k↓1←, 
+                                    "k_2", k↓2←, 
+                                    "ρ_p_eff", ρ↓p.eff←, 
+                                    "σ_s", σ↓s←, 
+                                    "ϕ", ϕ↓eq←); 
+                                    object OutputClause7_3_4 →KRS134_000025= new Structure(); 
+                                    
+                                    →DLO134_005625Clause7_3_4.Draw(InputClause7_3_4, OutputClause7_3_4); 
+                                    k↓3← →DLO134_005628= OutputClause7_3_4.k_3; 
+                                    k↓4← →DLO134_005629= OutputClause7_3_4.k_4; 
+                                } 
+                                →KRS134_000016PAGEBREAK(); 
+                                →DLO134_006349TEXT("k↓3← = " &amp; k↓3←); 
+                                →DLO134_006350TEXT("k↓4← = " &amp; k↓4←); 
+                                
+                                →DLO134_001819TEXT("Maximum crack spacing"); 
+                                s↓lim← →DLO134_001821= 5*(c+0.5*ϕ↓eq←); 
+                                →DLO134_047810double s↓r.max←; 
+                                IF(s↓max← &gt; 5*(c+0.5*ϕ↓eq←) || ρ↓p.eff← == 0) { 
+                                    →DLO134_001820TEXT("s↓max← = " &amp; s↓max← &amp; " &gt; 5*(c+0.5*ϕ↓eq←) = " &amp; s↓lim← &amp; " or ρ↓p.eff← = 0, "); 
+                                    →DLO134_003299TEXT("therefore:"); 
+                                    SWITCH(IO.SetupNA.EC_NA.Code) { 
+                                        CASE "ONORM" :  { 
+                                            s↓r.max← →DLO134_048510= MIN(1.3*[h-x↓r←], (ϕ↓eq←*σ↓s←)/(3.6*f↓ct.eff←)) @REF("(ÖNORM-NA 7.11)"); 
+                                        } 
+                                        CASE "DIN" :  { 
+                                            s↓r.max← →DLO134_048511= MIN(1.3*[h-x↓r←], (ϕ↓eq←*σ↓s←)/(3.6*f↓ct.eff←)) @REF("(DIN-NA 7.11)"); 
+                                        } 
+                                        DEFAULT :  { 
+                                            s↓r.max← →DLO134_048512= 1.3*[h-x↓r←] @REF("(7.14)"); 
+                                        } 
                                     } 
-                                    CASE "DIN" :  { 
-                                        s↓r.max← →DLO134_048511= MIN(1.3*[h-x↓r←], (ϕ↓eq←*σ↓s←)/(3.6*f↓ct.eff←)) @REF("(DIN-NA 7.11)"); 
-                                    } 
-                                    DEFAULT :  { 
-                                        s↓r.max← →DLO134_048512= 1.3*[h-x↓r←] @REF("(7.14)"); 
+                                } ELSE { 
+                                    →DLO134_001822TEXT("s↓max← = " &amp; s↓max← &amp; " ≤ 5*(c+0.5*ϕ↓eq←) = " &amp; s↓lim← &amp; " or ρ↓p.eff← = 0, "); 
+                                    →DLO134_003300TEXT("therefore:"); 
+                                    SWITCH(IO.SetupNA.EC_NA.Code) { 
+                                        CASE "ONORM" :  { 
+                                            s↓r.max← →DLO134_048508= MIN(k↓3←*c+(k↓1←*k↓2←*k↓4←*ϕ↓eq←)/ρ↓p.eff←, (ϕ↓eq←*σ↓s←)/(3.6*f↓ct.eff←)) @REF("(ÖNORM-NA 7.11)"); 
+                                        } 
+                                        CASE "DIN" :  { 
+                                            s↓r.max← →DLO134_048509= MIN(k↓3←*c+(k↓1←*k↓2←*k↓4←*ϕ↓eq←)/ρ↓p.eff←, (ϕ↓eq←*σ↓s←)/(3.6*f↓ct.eff←)) @REF("(DIN-NA 7.11)"); 
+                                        } 
+                                        DEFAULT :  { 
+                                            s↓r.max← →DLO134_048513= k↓3←*c+(k↓1←*k↓2←*k↓4←*ϕ↓eq←)/ρ↓p.eff← @REF("(7.11)"); 
+                                        } 
                                     } 
                                 } 
+                                →KRS134_000017PAGEBREAK(); 
+                                →DLO134_001823TEXT("Mean strain in the reinforcement"); 
+                                ε↓sm_cm← →DLO134_001748= MAX((σ↓s←-(k↓t←*[f↓ct.eff←/ρ↓p.eff←]*[1+α↓E←*ρ↓p.eff←]))/E↓s←, 0.6*σ↓s←/E↓s←) @REF("(7.9)"); 
+                                →DLO134_001824TEXT("Calculated crack width"); 
+                                w →DLO134_045649= ε↓sm_cm←*s↓r.max← @REF("(7.8)"); 
                             } ELSE { 
-                                →DLO134_001822TEXT("s↓max← = " &amp; s↓max← &amp; " ≤ 5*(c+0.5*ϕ↓eq←) = " &amp; s↓lim← &amp; " or ρ↓p.eff← = 0, "); 
-                                →DLO134_003300TEXT("therefore:"); 
-                                SWITCH(IO.SetupNA.EC_NA.Code) { 
-                                    CASE "ONORM" :  { 
-                                        s↓r.max← →DLO134_048508= MIN(k↓3←*c+(k↓1←*k↓2←*k↓4←*ϕ↓eq←)/ρ↓p.eff←, (ϕ↓eq←*σ↓s←)/(3.6*f↓ct.eff←)) @REF("(ÖNORM-NA 7.11)"); 
-                                    } 
-                                    CASE "DIN" :  { 
-                                        s↓r.max← →DLO134_048509= MIN(k↓3←*c+(k↓1←*k↓2←*k↓4←*ϕ↓eq←)/ρ↓p.eff←, (ϕ↓eq←*σ↓s←)/(3.6*f↓ct.eff←)) @REF("(DIN-NA 7.11)"); 
-                                    } 
-                                    DEFAULT :  { 
-                                        s↓r.max← →DLO134_048513= k↓3←*c+(k↓1←*k↓2←*k↓4←*ϕ↓eq←)/ρ↓p.eff← @REF("(7.11)"); 
-                                    } 
-                                } 
+                                w →KRS106_000001= 0.003; 
+                                UC →KRS106_000002= UC_lim; 
+                                string DescriptionN →KRS106_000003= TR("Maximal value of tensile stress of the reinforcement exceed allowed maximal value of stress of the reinforcement f↓yk←") &amp; " = " &amp; Val(ReinfMat[0].fyk/10↑6←, 0) &amp; " MPa."; 
+                                string SolutionN →KRS106_000004= ""; 
+                                string TypeN →KRS106_000005= TR("Error"); 
+                                →KRS106_000017FUNCT_1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
+                                NumberEWN[0] →KRS106_000016= NumberEWN[0]+1; 
+                                →KRS106_000008obEWN.Add(new Structure("Index", "E" &amp; IndexEWN &amp; "/3", "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
                             } 
-                            →KRS134_000017PAGEBREAK(); 
-                            →DLO134_001823TEXT("Mean strain in the reinforcement"); 
-                            ε↓sm_cm← →DLO134_001748= MAX((σ↓s←-(k↓t←*[f↓ct.eff←/ρ↓p.eff←]*[1+α↓E←*ρ↓p.eff←]))/E↓s←, 0.6*σ↓s←/E↓s←) @REF("(7.9)"); 
-                            →DLO134_001824TEXT("Calculated crack width"); 
-                            w →DLO134_045649= ε↓sm_cm←*s↓r.max← @REF("(7.8)"); 
                         } ELSE { 
                             →DLO134_048484TEXT("Calculated crack width"); 
                             w →DLO134_048485= 0.003; 
@@ -5688,12 +5731,12 @@ class CalcCrackRectCss {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="DLO134_048490">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
       <VC ID="DLO134_048491">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="593" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -5822,6 +5865,150 @@ class CalcCrackRectCss {
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000005">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000008">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000016">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000017">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000024">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000025">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000026">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000029">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000030">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000031">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000032">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000033">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000034">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000035">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS134_000009">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -6017,6 +6204,9 @@ class CalcCrackRectCss {
     </Item>
     <Item TranslateID="STRING_AFD7E9CC">
       <ENU>"To input bars with the same reinforcement material inside effective area."</ENU>
+    </Item>
+    <Item TranslateID="STRING_C2B6FA38">
+      <ENU>"Maximal value of tensile stress of the reinforcement exceed allowed maximal value of stress of the reinforcement f↓yk←"</ENU>
     </Item>
     <Item TranslateID="STRING_C2EAB742">
       <ENU>"Note"</ENU>

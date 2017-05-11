@@ -580,15 +580,8 @@ XEP_ProjectRepository_UT.dll
 UT_TRE_CMQuestion.dll
 UT_ECTools.dll
 UTFIL_Units2XML.dll
-BimPlusToSEN.dll
-SEN_NET_Wraper.dll
 Macrobot.dll
 Example_ESACOM_Multithread.dll
 EP_ComponentCmdsGUI.dll
 XEP_NexisMock.dll
-DocCtrl.dll
-EP_ConSectionCheck.dll
 FLBTiiCls.dll
-iBolt.dll
-iPun.dll
-Nessie.dll

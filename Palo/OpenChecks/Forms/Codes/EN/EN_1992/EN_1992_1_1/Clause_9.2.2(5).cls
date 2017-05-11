@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="02675b25-cd3a-4b09-bedc-71dd9417f523">
   <CodeEditor>
-    <SourceCode Collapsed="27|91" BreakPoints="">bool ValidateInput(object Input) { 
+    <SourceCode Collapsed="27|99" BreakPoints="">bool ValidateInput(object Input) { 
     f↓ck← →INI400_006029= Input.Get("f_ck"); //Characteristic compressive cylinder strength of concrete at 28 days
     f↓ctm← →INI400_000007= Input.Get("f_ctm"); //Mean value of axial tensile strength of concrete
     f↓ywd← →INI400_006030= Input.Get("f_ywd"); //Design yield of shear reinforcement
@@ -71,6 +71,14 @@ private void CalcScriptFor2D(out double ρ↓w,min←) {
         //    CASE "IS": { } 
         //    CASE "LU": { } 
         //    CASE "MAL": { } 
+        CASE "NS" :  { 
+            IF(IO.IsStandalone) { 
+                ρ↓w,min← →KRS116_000018= (0.1*SQRT(CUnit(f↓ck←, "MPa")))/CUnit(f↓ywk←, "MPa") @REF("(NS 9.5N)"); 
+            } ELSE { 
+                double Coeff↓ρw,min← →KRS116_000019= IO.SetupNA.EC_1992_1_1.ρ_w_smin; 
+                ρ↓w,min← →KRS116_000020= (Coeff↓ρw,min←*SQRT(CUnit(f↓ck←, "MPa")))/CUnit(f↓ywk←, "MPa") @REF("(NS 9.5N)"); 
+            } 
+        } 
         //    CASE "PN": { } 
         //    CASE "SR": { } 
         //    CASE "SIG": { } 
@@ -135,6 +143,14 @@ private void CalcScriptFor1D(out double ρ↓w,min←) {
         //    CASE "IS": { } 
         //    CASE "LU": { } 
         //    CASE "MAL": { } 
+        CASE "NS" :  { 
+            IF(IO.IsStandalone) { 
+                ρ↓w,min← →KRS116_000015= (0.1*SQRT(CUnit(f↓ck←, "MPa")))/CUnit(f↓ywk←, "MPa") @REF("(NS 9.5N)"); 
+            } ELSE { 
+                double Coeff↓ρw,min← →KRS116_000016= IO.SetupNA.EC_1992_1_1.ρ_w_min; 
+                ρ↓w,min← →KRS116_000017= (Coeff↓ρw,min←*SQRT(CUnit(f↓ck←, "MPa")))/CUnit(f↓ywk←, "MPa") @REF("(NS 9.5N)"); 
+            } 
+        } 
         //    CASE "PN": { } 
         //    CASE "SR": { } 
         //    CASE "SIG": { } 
@@ -553,6 +569,54 @@ private void CalcScriptFor1D(out double ρ↓w,min←) {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000015">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="26.4" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000016">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000017">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="26.4" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000018">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="26.4" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000019">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000020">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="26.4" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
     </VisualComponents>
     <Images />

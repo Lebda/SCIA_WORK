@@ -1466,6 +1466,7 @@ IF(!N2↓1←) {
         } 
     } 
     →INI400_004235BLOCK { 
+        IF(IO.IsDrawing) { 
         SWITCH(IDMethodOfCheck) { 
             CASE 0 :  { //Nu
 
@@ -1575,7 +1576,7 @@ IF(!N2↓1←) {
             } 
         } 
     } 
-    
+    } 
     
 } 
 IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 3) { 
@@ -1600,7 +1601,7 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 3) {
             →INI400_008877TEXT("M↓Edy← = " &amp; Val(Forces.My/1000, 2) &amp; " kNm"); 
             →INI400_008878TEXT("M↓Edz← = " &amp; Val(Forces.Mz/1000, 2) &amp; " kNm"); 
             →INI400_008879TEXT("Resistance:"); 
-            →INI400_009322TEXT("N↓Rd← = " &amp; Val(ROUND(N↓Rd←/10↑3←, 5), 0) &amp; " kNm"); 
+            →INI400_009322TEXT("N↓Rd← = " &amp; Val(ROUND(N↓Rd←/10↑3←, 5), 0) &amp; " kN"); 
             →INI400_009320TEXT("M↓Rdy← = " &amp; Val(ROUND(M↓Rdy←/10↑3←, 5), 0) &amp; " kNm"); 
             →INI400_009321TEXT("M↓Rdz← = " &amp; Val(ROUND(M↓Rdz←/10↑3←, 5), 0) &amp; " kNm"); 
             →INI400_008885TEXT("Calculation of unity check:"); 
@@ -2324,40 +2325,6 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Check" ESA_ID="Result.4" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="CheckID" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="CheckPoint1" ESA_ID="" Type="String">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="CheckPoint2" ESA_ID="" Type="String">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="Checkxu" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="Clause12xxClass" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -2654,6 +2621,40 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="Check" ESA_ID="Result.4" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="CheckID" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="CheckPoint1" ESA_ID="" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="CheckPoint2" ESA_ID="" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="Checkxu" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
         <Description>
@@ -12130,7 +12131,7 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
             <ENU>Nu|Mu|NuMu|Muy|Muz</ENU>
           </Texts>
         </TComboBox>
-        <TComboBox Name="" ID="25" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="9" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="_dialog_MemberType" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="1|2" Index="0">
+        <TComboBox Name="" ID="25" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="9" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="_dialog_MemberType" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="1|2" Index="-1">
           <Texts>
             <ENU>Beam|Column</ENU>
           </Texts>
@@ -12867,7 +12868,7 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
                 <P>EC EN 1991-2</P>
                 <P>EC EN 1991-3</P>
                 <P>EC EN 1991-4</P>
-                <P>EC EN 1992-1-1</P>
+                <P>EC EN 1992-1-1:2004/AC:2008</P>
                 <P>1</P>
                 <P>1</P>
                 <P>1.3</P>
@@ -13391,7 +13392,7 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
       <ENU>"M↓Rdz← = " &amp; Val(ROUND(M↓Rdz←/10↑3←, 5), 0) &amp; " kNm"</ENU>
     </Item>
     <Item ID="TEXT_INI400_009322">
-      <ENU>"N↓Rd← = " &amp; Val(ROUND(N↓Rd←/10↑3←, 5), 0) &amp; " kNm"</ENU>
+      <ENU>"N↓Rd← = " &amp; Val(ROUND(N↓Rd←/10↑3←, 5), 0) &amp; " kN"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_013794">
       <ENU>"Unity check based on x↓u,lim ← acc. to 6.1(9)from NEN EN 1992-1-1 "</ENU>

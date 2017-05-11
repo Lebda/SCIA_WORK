@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="213c52a9-e919-4c79-8328-cf11d84dc56f">
   <CodeEditor>
-    <SourceCode Collapsed="2|11|18|36|55|82|107|118|129|169|180|197|237|285|299|308|316|324|353|415|428|441|459|476" BreakPoints="">
+    <SourceCode Collapsed="2|11|18|36|55|82|107|118|129|169|180|197|237|298|312|321|329|337|366|428|441|454|472|489" BreakPoints="">
 /// Returns true if ULS combination is accidental
 public bool IsAccidentalCombi(object ActLoad) { 
     SWITCH(ActLoad.Type) { 
@@ -262,6 +262,9 @@ bool CalcImpAccordingToCombi() {
                 double XS →INI400_006794= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.ChloridesSea; 
                 double XF →INI400_006870= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.FreezeThaw; 
                 double XA →INI400_006943= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Chemical; 
+                IF(IO.SetupNA.EC_NA.Code == "NS") { 
+                    double XSA →KRS116_000001= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.StrongChemical; 
+                } 
             } 
             DEFAULT :  { 
                 IF(Upper) { 
@@ -270,6 +273,9 @@ bool CalcImpAccordingToCombi() {
                     double XS →INI400_006797= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.ChloridesSea; 
                     double XF →INI400_006871= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.FreezeThaw; 
                     double XA →INI400_006942= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Chemical; 
+                    IF(IO.SetupNA.EC_NA.Code == "NS") { 
+                        double XSA →KRS116_000002= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.StrongChemical; 
+                    } 
                 } 
                 ELSE { 
                     double XC →INI400_006798= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Carbonation; 
@@ -277,10 +283,17 @@ bool CalcImpAccordingToCombi() {
                     double XS →INI400_006800= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.ChloridesSea; 
                     double XF →INI400_006872= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.FreezeThaw; 
                     double XA →INI400_006941= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Chemical; 
+                    IF(IO.SetupNA.EC_NA.Code == "NS") { 
+                        double XSA →KRS116_000003= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.StrongChemical; 
+                    } 
                 } 
             } 
         } 
-        object Classes →INI400_006944= new Structure("XC", XC, "XD", XD, "XS", XS, "XF", XF, "XA", XA); 
+        IF(IO.SetupNA.EC_NA.Code == "NS") { 
+            object Classes →INI400_006944= new Structure("XC", XC, "XD", XD, "XS", XS, "XF", XF, "XA", XA, "XSA", XSA); 
+        } ELSE { 
+            object Classes →KRS116_000004= new Structure("XC", XC, "XD", XD, "XS", XS, "XF", XF, "XA", XA, "XSA", 0); 
+        } 
         return Classes; 
     } 
 } 
@@ -556,6 +569,14 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="DLO134_006857">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="DLO316_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="34.6" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -1636,6 +1657,38 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="VAL116_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="5" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />

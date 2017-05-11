@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="302a30c5-024d-4e62-a63e-b120cb03b8c3">
   <CodeEditor>
-    <SourceCode Collapsed="1|265|372|399|595|610|682|744|836|895|925|933|983|1041|1103|1164|1230|1317|1486|1521|1552|1574|1586|1599|1662|1728|1807|1980|2053|2164|2293|2464|2959|2999|3024|3035|3177|3189|3213" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure
+    <SourceCode Collapsed="1|257|265|373|400|632|695|704|768|860|919|949|957|1007|1064|1127|1188|1254|1343|1406|1472|1512|1547|1578|1602|1614|1627|1690|1756|1835|2008|2081|2192|2321|2492|2987|3027|3052|3063|3205|3217|3241" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure
     bool ValidateInput(object Input) { //Validate inputs from master to this form
         //Fonts, colors, pens...
         object FontRegular →INI400_012845= Input.Get("FontRegular"); //Standard font for tables
@@ -281,6 +281,7 @@ void UpdateDialog() { //changes in visibility
     Dialog.GetComponentByName("XS").Visible →INI400_007557= IO.SetupNA.EC_NA.Code != "ONORM" &amp;&amp; IO.SetupNA.EC_NA.Code != "CSN" &amp;&amp; IO.SetupNA.EC_NA.Code != "STN"; 
     Dialog.GetComponentByName("PrefabricatedSpecialQuality").Visible →INI400_007558= IO.SetupNA.EC_NA.Code == "ONORM"; 
     Dialog.GetComponentByName("XC").Visible →INI400_007560= IO.SetupNA.EC_NA.Code != "NBN"; 
+    Dialog.GetComponentByName("XSA").Visible →KRS116_000079= IO.SetupNA.EC_NA.Code == "NS"; 
     Dialog.GetComponentByName("DesignLife_CSN").Visible →INI400_007561= IO.SetupNA.EC_NA.Code == "CSN" || IO.SetupNA.EC_NA.Code == "STN"; 
     Dialog.GetComponentByName("DesignLife_NEN").Visible →INI400_007562= IO.SetupNA.EC_NA.Code == "NEN"; 
     Dialog.GetComponentByName("DesignLife").Visible →INI400_007563= IO.SetupNA.EC_NA.Code != "CSN" &amp;&amp; IO.SetupNA.EC_NA.Code != "NEN" &amp;&amp; IO.SetupNA.EC_NA.Code != "DIN" &amp;&amp; IO.SetupNA.EC_NA.Code != "STN"; 
@@ -449,6 +450,18 @@ IF(!IO.IsExternCLC) {
                 IF(IsNaN(TableForcesULSMember[i].M_z_beg)) { TableForcesULSMember[i].M_z_beg →KRS106_000019= 0; } 
                 IF(IsNaN(TableForcesULSMember[i].M_z_end)) { TableForcesULSMember[i].M_z_end →KRS106_000020= 0; } 
             } 
+            IF(TableForcesULS.Count != TableForcesULSMember.Count) { 
+                IF(TableForcesULS.Count &gt; TableForcesULSMember.Count) { 
+                    WHILE(TableForcesULS.Count != TableForcesULSMember.Count) { 
+                        →KRS106_000065TableForcesULSMember.Add(new Structure("M_y_beg", 0, "M_y_end", 0, "M_z_beg", 0, "M_z_end", 0)); 
+                    } 
+                } 
+                IF(TableForcesULS.Count &lt; TableForcesULSMember.Count) { 
+                    WHILE(TableForcesULS.Count != TableForcesULSMember.Count) { 
+                        →KRS106_000066TableForcesULS.Add(new Structure("N", 0, "Vy", 0, "Vz", 0, "Mx", 0, "My", 0, "Mz", 0)); 
+                    } 
+                } 
+            } 
             
             IF(TableForcesSLSChar.Count == 0) { 
                 object DummyForces →INI400_014367= new Structure("N", 0, "Vy", 0, "Vz", 0, "Mx", 0, "My", 0, "Mz", 0); 
@@ -477,6 +490,18 @@ IF(!IO.IsExternCLC) {
                 IF(IsNaN(TableForcesSLSQP[i].My)) { TableForcesSLSQP[i].My →KRS106_000033= 0; } 
                 IF(IsNaN(TableForcesSLSQP[i].Mz)) { TableForcesSLSQP[i].Mz →KRS106_000034= 0; } 
             } 
+            IF(TableForcesSLSChar.Count != TableForcesSLSQP.Count) { 
+                IF(TableForcesSLSChar.Count &gt; TableForcesSLSQP.Count) { 
+                    WHILE(TableForcesSLSChar.Count != TableForcesSLSQP.Count) { 
+                        →KRS106_000062TableForcesSLSQP.Add(new Structure("N", 0, "Vy", 0, "Vz", 0, "Mx", 0, "My", 0, "Mz", 0)); 
+                    } 
+                } 
+                IF(TableForcesSLSChar.Count &lt; TableForcesSLSQP.Count) { 
+                    WHILE(TableForcesSLSChar.Count != TableForcesSLSQP.Count) { 
+                        →KRS106_000061TableForcesSLSChar.Add(new Structure("N", 0, "Vy", 0, "Vz", 0, "Mx", 0, "My", 0, "Mz", 0)); 
+                    } 
+                } 
+            } 
             
             IF(TableForcesSLSFreq.Count == 0) { 
                 object DummyForces →KRS006_000003= new Structure("N", 0, "Vy", 0, "Vz", 0, "Mx", 0, "My", 0, "Mz", 0); 
@@ -503,7 +528,19 @@ IF(!IO.IsExternCLC) {
                 IF(IsNaN(TableElasticDeformations[i].uzl)) { TableElasticDeformations[i].uzl →KRS106_000043= 0; } 
                 IF(IsNaN(TableElasticDeformations[i].uzs)) { TableElasticDeformations[i].uzs →KRS106_000044= 0; } 
             } 
-            
+            IF(bCalculateDeflectionCheck &amp;&amp; TableForcesSLSChar.Count != TableElasticDeformations.Count) { 
+                IF(TableForcesSLSChar.Count &gt; TableElasticDeformations.Count) { 
+                    WHILE(TableForcesSLSChar.Count != TableElasticDeformations.Count) { 
+                        →KRS106_000049TableElasticDeformations.Add(new Structure("uys", 0, "uzs", 0, "uyl", 0, "uzl", 0)); 
+                    } 
+                } 
+                IF(TableForcesSLSChar.Count &lt; TableElasticDeformations.Count) { 
+                    WHILE(TableForcesSLSChar.Count != TableElasticDeformations.Count) { 
+                        →KRS106_000058TableForcesSLSChar.Add(new Structure("N", 0, "Vy", 0, "Vz", 0, "Mx", 0, "My", 0, "Mz", 0)); 
+                        →KRS106_000059TableForcesSLSQP.Add(new Structure("N", 0, "Vy", 0, "Vz", 0, "Mx", 0, "My", 0, "Mz", 0)); 
+                    } 
+                } 
+            } 
             θ →INI400_011362= -1; 
             sTheta →INI400_011382= ""; 
             EWN_Theta →INI400_011383= null; 
@@ -594,21 +631,6 @@ IF(!IO.IsExternCLC) {
         double Coeff↓stat_lo← →VAL127_000004= 0; 
         object IncreasingStatReinf →VAL127_000006= new Structure("CoeffUpper", Coeff↓stat_up←, "CoeffLower", Coeff↓stat_lo←); 
     } 
-} 
-
-→INI400_013005BLOCK { //Checks for correctness of load inputs
-    IF(cTypeOfMember == 2) { //for column
-        IF(TableForcesULS.Count != TableForcesULSMember.Count) { //Number of ULS load cases have to be same
-            →INI400_013004TEXT("Error: Number of load sets for ULS have to be same as number of ending moments sets."); 
-            Exit(); 
-        } 
-    } 
-    
-    IF(TableForcesSLSChar.Count != TableForcesSLSQP.Count || (bCalculateDeflectionCheck &amp;&amp; TableForcesSLSChar.Count != TableElasticDeformations.Count)) { //Number of SLS load cases have to be same
-        →INI400_013200TEXT("Error: Number of load sets for SLS char have to be same as number of SLS Q-P and Elastic Deformations sets."); 
-        Exit(); 
-    } 
-    
 } 
 
 →INI400_012857BLOCK { //Check status and design results on zero
@@ -715,6 +737,8 @@ IF(!IO.IsExternCLC) {
         
         object[] aReinfBars →INI400_005883= IO.Beam.Reinforcement.Bar; 
         Object[] S_ShearReinf →INI400_005571= IO.Beam.Reinforcement.StirrupChars; 
+        →KRS106_000069S_ShearReinf.Add("ExistShearReinf", True); 
+        →KRS106_000070S_ShearReinf.Add("StirrupsAroundSection", null); 
         object S_ReinfMat →INI400_005997= IO.REINF; 
         object S_ShearReinfMat →INI400_007301= IO.ShearREINF.EC; 
         object S_ShearReinfMatReq →INI400_007445= IO.ShearREINF.EC; 
@@ -756,7 +780,7 @@ IF(!IO.IsExternCLC) {
         →INI400_013697HeaderDrawInput.Add("DrawStirrups", true); 
         →INI400_013741HeaderDrawInput.Add("ForcesID", ForcesIDZero); 
         →INI400_014009HeaderDrawInput.Add("TypeOfCalculation", cTypeOfCalculation); //0 - Check, 1 - Design
-        →INI400_013698CrossSection.HeaderCSSDrawing(HeaderDrawInput); 
+        →INI400_013698CrossSection.HeaderCSSDrawing(HeaderDrawInput, S_ShearReinf); 
     } 
     
     →INI400_007988BLOCK { //Input data
@@ -1381,6 +1405,7 @@ IF(bRecalIntForces) {
                 sImpFor →INI400_014050= sImpFor &amp; ", M↓Edy,2← = " &amp; TR("Bending moment around y axis at the begin of member") &amp; ", M↓Edz,2← = " &amp; TR("Bending moment around z axis at the end of member"); 
             } 
             →INI400_014051Functions1D_General.CombikeyWrapped(sImpFor, FontsAndColors.TableWidth(), FontsAndColors.TableCellsFont(), FontsAndColors.WhitePen()); //Function for wrapping text row
+            →KRS106_000067PAGEBREAK(); 
         } 
         →INI400_014052BLOCK { //SLS Load
             →INI400_014053TEXT("SLS Inputted Forces"); 
@@ -1446,6 +1471,7 @@ IF(bRecalIntForces) {
             sImpFor →INI400_014081= sImpFor &amp; ", N↓Ed← = " &amp; TR("Normal force") &amp; ", V↓Edy← = " &amp; TR("Shear force in direction y axis") &amp; ", V↓Edz← = " &amp; TR("Shear force in direction z axis"); 
             sImpFor →INI400_014082= sImpFor &amp; ", T↓Ed← = " &amp; TR("Torsional moment") &amp; ", M↓Edy← = " &amp; TR("Bending moment around y axis") &amp; ", M↓Edz← = " &amp; TR("Bending moment around z axis"); 
             →INI400_014083Functions1D_General.CombikeyWrapped(sImpFor, FontsAndColors.TableWidth(), FontsAndColors.TableCellsFont(), FontsAndColors.WhitePen()); //Function for wrapping text row
+            →KRS106_000068PAGEBREAK(); 
         } 
         →INI400_014084BLOCK { //Elastic deformations 
             IF(bCalculateDeflectionCheck) { 
@@ -1563,10 +1589,12 @@ double Calculate_w_max() {
         →INI400_014352InputClauseAutowmax.Set("XC", XC); 
         →INI400_014353InputClauseAutowmax.Set("XD", XD); 
         →INI400_014354InputClauseAutowmax.Set("XS", XS); 
+        →KRS116_000077InputClauseAutowmax.Set("XSA", XSA); 
         →INI400_014355InputClauseAutowmax.Set("Quasi", True); 
         →INI400_014356InputClauseAutowmax.Set("CorossionSensitive", False); //Corrosion-sensitive reinforcing steel is any reinforcing steel with a diameter ≤ 4 mm, prestressing steel or cold-formed reinforcing steel with a permanent stress greater than 400 MPa. Any of this is not used in SCS
         →INI400_014357InputClauseAutowmax.Set("c_used", MIN(IO.Beam.Reinforcement.c_min, IO.Beam.Reinforcement.c_max)); 
         →INI400_014358InputClauseAutowmax.Set("c_nom", OutputCover.c_nom); 
+        →KRS116_000078InputClauseAutowmax.Set("c_min_dur", OutputCover.c_min_dur); 
         
         →INI400_006147oExtCalc_Clause7_3_1_5.Calculate(InputClauseAutowmax, OutputClauseAutowmax); 
         return OutputClauseAutowmax.w_max; 
@@ -3283,7 +3311,7 @@ SWITCH(cTypeOfCalculation) {
         <ENU>http://design-forms.scia.net/forms/en/SCS152/SciaConcreteSection.htm</ENU>
       </Document>
       <CalculationName TranslateID="CalculationName">
-        <ENU>Scia Concrete Section 16.1</ENU>
+        <ENU>Scia Concrete Section 17.0</ENU>
       </CalculationName>
     </Header>
     <Styles>
@@ -3649,6 +3677,11 @@ SWITCH(cTypeOfCalculation) {
           <ENU>Use second order effect</ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="bCharReinfCalcRatio" ESA_ID="" Type="Boolean">
+        <Description TranslateID="VARIABLE_bCharReinfCalcRatio">
+          <ENU>The characteristic of reinforcement is calculated for inputted ratio of reinf</ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="bColumnCheckMaxBarDistance" ESA_ID="" Type="Boolean">
         <Description TranslateID="VARIABLE_bColumnCheckMaxBarDistance">
           <ENU>Check max. bar distance</ENU>
@@ -3763,11 +3796,6 @@ SWITCH(cTypeOfCalculation) {
       <Variable Modifier="Public" Name="bEquivMoment" ESA_ID="" Type="Boolean">
         <Description TranslateID="VARIABLE_bEquivMoment">
           <ENU>Use equivalent first order value</ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="bCharReinfCalcRatio" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_bCharReinfCalcRatio">
-          <ENU>The characteristic of reinforcement is calculated for inputted ratio of reinf</ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="bIndirectLoad" ESA_ID="" Type="Boolean">
@@ -4307,12 +4335,6 @@ SWITCH(cTypeOfCalculation) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="ExplodedToBars" ESA_ID="" Type="Boolean">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
       <Variable Modifier="Public" Name="ExtCalc_cover" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -4355,13 +4377,13 @@ SWITCH(cTypeOfCalculation) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="ExtCalc_RecalForcesSLSFreq" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="ExtCalc_RecalForcesSLSCH" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="ExtCalc_RecalForcesSLSCH" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="ExtCalc_RecalForcesSLSFreq" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -4494,7 +4516,7 @@ SWITCH(cTypeOfCalculation) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Forces_IntDiagCheck" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="Forces_RecalcSLSChar" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4502,13 +4524,6 @@ SWITCH(cTypeOfCalculation) {
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Forces_RecalcSLSFreq" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="Forces_RecalcSLSChar" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4536,14 +4551,14 @@ SWITCH(cTypeOfCalculation) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ForcesID_CrackFreq" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="ForcesID_CrackChar" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ForcesID_CrackChar" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="ForcesID_CrackFreq" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4894,13 +4909,13 @@ SWITCH(cTypeOfCalculation) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="InputRecalForcesSLSFreq" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="InputRecalForcesSLSCH" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="InputRecalForcesSLSCH" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="InputRecalForcesSLSFreq" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -5012,13 +5027,13 @@ SWITCH(cTypeOfCalculation) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓Edy,freq,recal←" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="M↓Edy,char,recal←" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="M↓Edy,char,recal←" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="M↓Edy,freq,recal←" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -5042,13 +5057,13 @@ SWITCH(cTypeOfCalculation) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="M↓Edz,freq,recal←" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="M↓Edz,char,recal←" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="M↓Edz,char,recal←" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="M↓Edz,freq,recal←" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -5297,6 +5312,12 @@ SWITCH(cTypeOfCalculation) {
           <ENU>Normal reinforcement</ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="oChars" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="oDesignedReinf" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -5332,12 +5353,6 @@ SWITCH(cTypeOfCalculation) {
           <ENU>Surface to surface distance of layers reinforcement</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
-      </Variable>
-      <Variable Modifier="Public" Name="oChars" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
       </Variable>
       <Variable Modifier="Public" Name="oT_Deflections" ESA_ID="" Type="Object">
         <Description>
@@ -5519,13 +5534,13 @@ SWITCH(cTypeOfCalculation) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="OutputRecalForcesSLSFreq" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="OutputRecalForcesSLSCH" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="OutputRecalForcesSLSCH" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="OutputRecalForcesSLSFreq" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -5962,13 +5977,13 @@ SWITCH(cTypeOfCalculation) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="TableForcesSLSFreq" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="TableForcesSLSChar" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="TableForcesSLSChar" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="TableForcesSLSFreq" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -6253,6 +6268,12 @@ SWITCH(cTypeOfCalculation) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
+      <Variable Modifier="Public" Name="XSA" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_XSA">
+          <ENU>Strong chemical attack</ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="z" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -6525,14 +6546,6 @@ SWITCH(cTypeOfCalculation) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="DLO110_000001">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO110_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -16388,22 +16401,6 @@ SWITCH(cTypeOfCalculation) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013004">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Remark" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_013005">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_013006">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -16923,14 +16920,6 @@ SWITCH(cTypeOfCalculation) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_013200">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Remark" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_013205">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -22508,6 +22497,94 @@ SWITCH(cTypeOfCalculation) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS106_000049">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000058">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000059">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000061">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000062">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000065">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000066">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000067">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000068">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000069">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000070">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS116_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -22931,6 +23008,30 @@ SWITCH(cTypeOfCalculation) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000077">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000078">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000079">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="1179" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="1179" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1179" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1179" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1179" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1179" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
       <VC ID="KRS127_000073">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -24581,7 +24682,7 @@ SWITCH(cTypeOfCalculation) {
                             <P>EC EN 1991-2</P>
                             <P>EC EN 1991-3</P>
                             <P>EC EN 1991-4</P>
-                            <P>EC EN 1992-1-1</P>
+                            <P>EC EN 1992-1-1:2004/AC:2008</P>
                             <P>1</P>
                             <P>1</P>
                             <P>1.3</P>
@@ -25147,6 +25248,11 @@ SWITCH(cTypeOfCalculation) {
                   <Childs>
                     <Node Expanded="False">
                       <Panel>
+                        <TComboBox Name="XSA" ID="2005" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="16" Dock="1" Anchor="5" Padding="0|5|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="XSA" VarNameVisible="False" InputColor="-1" DescPos="2" InputWidth="300" Values="0|1" Index="0">
+                          <Texts TranslateID="DIALOG_002005">
+                            <ENU>No risk of strong chemical attack|XSA - Strong chemical attack</ENU>
+                          </Texts>
+                        </TComboBox>
                         <TComboBox Name="XD" ID="1960" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="16" Dock="1" Anchor="5" Padding="0|5|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="XD" VarNameVisible="False" InputColor="-1" DescPos="2" InputWidth="300" Values="0|1|2|3" Index="0">
                           <Texts TranslateID="DIALOG_001960">
                             <ENU>No risk of corrosion or attack|XD1 - Moderate humidity|XD2 - Wet, rarely dry|XD3 - Cyclic wet and dry</ENU>
@@ -25918,12 +26024,6 @@ SWITCH(cTypeOfCalculation) {
     </Item>
     <Item TranslateID="TEXT_INI400_011332">
       <ENU>"Cover"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_013004">
-      <ENU>"Error: Number of load sets for ULS have to be same as number of ending moments sets."</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_013200">
-      <ENU>"Error: Number of load sets for SLS char have to be same as number of SLS Q-P and Elastic Deformations sets."</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_013549">
       <ENU>"Creep coefficient"</ENU>

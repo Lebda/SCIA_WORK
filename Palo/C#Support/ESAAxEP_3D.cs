@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 //[assembly: System.Reflection.AssemblyVersion("1.0.0.0")]
-//[assembly: System.Windows.Forms.AxHost.TypeLibraryTimeStamp("6.4.2017 14:45:27")]
+//[assembly: System.Windows.Forms.AxHost.TypeLibraryTimeStamp("10.5.2017 13:01:43")]
 
 namespace AxEP_3DLib {
     

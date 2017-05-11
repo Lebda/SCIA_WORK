@@ -108,6 +108,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         k↓5← →INI400_008558= Result.k5; 
         k↓6← →INI400_008560= Result.k6; 
     } 
+    //    CASE "NS": { } 
     //    CASE "PN": { } 
     //    CASE "SR": { } 
     CASE "SIG" :  { 

@@ -1,4 +1,4 @@
-<Root Version="1" Type="CustomLibrary" GUID="fcbe28df-88ce-4c96-a53c-e1804f593501">
+<Root Version="1" Type="CustomLibrary" GUID="632b24d1-181f-4431-afb2-656142a62bc5">
   <Header>
     <PropertySet Symbol="Code" ESA_ID="EC_NA.Code" Unit="" Type="String">
       <Description TranslateID="EC_NA.Code">
@@ -3866,6 +3866,219 @@
     </Item>
     <Item>
       <Property>Eurocode NA</Property>
+      <Property>Norwegian NS-EN</Property>
+      <Property>NS</Property>
+      <Property>21</Property>
+      <Property>NS EN 1990</Property>
+      <Property>NS EN 1991-1-1</Property>
+      <Property>NS EN 1991-1-2</Property>
+      <Property>NS EN 1991-1-3</Property>
+      <Property>0</Property>
+      <Property>NaN</Property>
+      <Property>True;2;</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>1.0</Property>
+      <Property>NaN</Property>
+      <Property>True</Property>
+      <Property>1.6</Property>
+      <Property>2.0</Property>
+      <Property>NaN</Property>
+      <Property>0.8;4;5;15;</Property>
+      <Property>True</Property>
+      <Property>True</Property>
+      <Property>True</Property>
+      <Property>NaN</Property>
+      <Property>NS EN 1991-1-4</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>1</Property>
+      <Property>1</Property>
+      <Property>0.2;0.5;</Property>
+      <Property>False</Property>
+      <Property>NaN</Property>
+      <Property>True;1;</Property>
+      <Property>True</Property>
+      <Property>True</Property>
+      <Property>1</Property>
+      <Property>NaN</Property>
+      <Property>1.25</Property>
+      <Property>False</Property>
+      <Property>True</Property>
+      <Property>NaN</Property>
+      <Property>NS EN 1991-1-5</Property>
+      <Property>NS EN 1991-1-6</Property>
+      <Property>NS EN 1991-1-7</Property>
+      <Property>NS EN 1991-2</Property>
+      <Property>NS EN 1991-3</Property>
+      <Property>NS EN 1991-4</Property>
+      <Property>NS EN 1992-1-1:2004/NA:2008-11</Property>
+      <Property>1</Property>
+      <Property>0.9</Property>
+      <Property>1.3</Property>
+      <Property>1.2</Property>
+      <Property>1.5;1.15;1.15;1.2;1.0;1.0;</Property>
+      <Property>1;1;</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>0.85</Property>
+      <Property>0.85</Property>
+      <Property>600</Property>
+      <Property>0.4</Property>
+      <Property>1.1</Property>
+      <Property>0.4;0.01;0.9;</Property>
+      <Property>1.5;2.5;</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0;0;0;</Property>
+      <Property>10</Property>
+      <Property>5;10;NaN;</Property>
+      <Property>40;75;5;</Property>
+      <Property>0.005</Property>
+      <Property>0.44;NaN;0.54;NaN;0.7;0.9;</Property>
+      <Property>NaN</Property>
+      <Property>1.2</Property>
+      <Property>0.8;0.9;</Property>
+      <Property>0.95</Property>
+      <Property>50;30;</Property>
+      <Property>0.7</Property>
+      <Property>0.75;0.85;</Property>
+      <Property>1.05;0.95;1.1;0.9;1;1;</Property>
+      <Property>NaN;NaN;NaN;</Property>
+      <Property>NaN</Property>
+      <Property>0.380482;0.785398;</Property>
+      <Property>NaN;NaN;</Property>
+      <Property>26.5;45;38.6;45;</Property>
+      <Property>0.4</Property>
+      <Property>1.15;1.4;1.5;</Property>
+      <Property>NaN;NaN;NaN;</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>1;0.85;</Property>
+      <Property>0.6</Property>
+      <Property>0.45</Property>
+      <Property>0.8;1;0.75;</Property>
+      <Property>NaN;NaN;NaN;NaN;NaN;NaN;</Property>
+      <Property>3.4;0.425;</Property>
+      <Property>NaN;5;</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>0.15</Property>
+      <Property>0.25</Property>
+      <Property>0.5</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>10</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>8</Property>
+      <Property>8</Property>
+      <Property>8</Property>
+      <Property>10</Property>
+      <Property>5;8;</Property>
+      <Property>600;NaN;</Property>
+      <Property>0.8;0.8;</Property>
+      <Property>1.5</Property>
+      <Property>0.3</Property>
+      <Property>0.5</Property>
+      <Property>NS EN 1992-1-2:2004/NA:2010</Property>
+      <Property>NS EN 1992-2</Property>
+      <Property>NS EN 1992-3</Property>
+      <Property>NS EN 1993-1-1</Property>
+      <Property>NaN;NaN;</Property>
+      <Property>1;1;1.25;</Property>
+      <Property>NS EN 1993-1-2</Property>
+      <Property>NS EN 1993-1-3</Property>
+      <Property>NS EN 1993-1-4</Property>
+      <Property>NS EN 1993-1-5</Property>
+      <Property>1.20;1.00;</Property>
+      <Property>NS EN 1993-1-6</Property>
+      <Property>NS EN 1993-1-7</Property>
+      <Property>NS EN 1993-1-8</Property>
+      <Property>1.25;1.25;1.1;1.0;1.0;1.0;1.1;</Property>
+      <Property>NS EN 1993-1-9</Property>
+      <Property>NS EN 1993-1-10</Property>
+      <Property>NS EN 1993-1-11</Property>
+      <Property>NS EN 1993-1-12</Property>
+      <Property>NS EN 1993-2</Property>
+      <Property>1.0;1.1;1.25;1.25;1.1;1.1;1.1;1.0;1.1;</Property>
+      <Property>NS EN 1993-3-1</Property>
+      <Property>NS EN 1993-3-2</Property>
+      <Property>NS EN 1993-4-1</Property>
+      <Property>NS EN 1993-4-2</Property>
+      <Property>NS EN 1993-4-3</Property>
+      <Property>NS EN 1993-5</Property>
+      <Property>NS EN 1993-6</Property>
+      <Property>NS EN 1994-1-1</Property>
+      <Property>1;1;</Property>
+      <Property>1.25</Property>
+      <Property>1.25</Property>
+      <Property>1</Property>
+      <Property>0.000325;0.000500;0.000200;0.000300;</Property>
+      <Property>0.70</Property>
+      <Property>NaN</Property>
+      <Property>1.25;1.25;</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>1.0</Property>
+      <Property>1.0</Property>
+      <Property>0.6</Property>
+      <Property>180</Property>
+      <Property>1.25</Property>
+      <Property>1.25</Property>
+      <Property>0.5</Property>
+      <Property>1.25</Property>
+      <Property>1.25</Property>
+      <Property>NS EN 1994-1-2</Property>
+      <Property>NS EN 1994-2</Property>
+      <Property>NS EN 1995-1-1</Property>
+      <Property>NaN</Property>
+      <Property>0.67;0.67;1.0;</Property>
+      <Property>NS EN 1995-1-2</Property>
+      <Property>NS EN 1995-2</Property>
+      <Property>NS EN 1996-1-1</Property>
+      <Property>NaN</Property>
+      <Property>1</Property>
+      <Property>NaN</Property>
+      <Property>True</Property>
+      <Property>1000</Property>
+      <Property>NaN;NaN;NaN;</Property>
+      <Property>NaN</Property>
+      <Property>NS EN 1996-1-2</Property>
+      <Property>NS EN 1996-2</Property>
+      <Property>NS EN 1996-3</Property>
+      <Property>NS EN 1997-1</Property>
+      <Property>1.1;0.9;1.5;0;</Property>
+      <Property>1.25;1.25;1.4;1.4;1.0;</Property>
+      <Property>1.35;1;1.5;0;1;1;1.3;0;</Property>
+      <Property>1;1;1;1;1;1.25;1.25;1.4;1.4;1;</Property>
+      <Property>1;1;1.4;1.1;1;1;</Property>
+      <Property>NS EN 1997-2</Property>
+      <Property>NS EN 1998-1</Property>
+      <Property>NS EN 1998-2</Property>
+      <Property>NS EN 1998-3</Property>
+      <Property>NS EN 1998-4</Property>
+      <Property>NS EN 1998-5</Property>
+      <Property>NS EN 1998-6</Property>
+      <Property>NS EN 1999-1-1</Property>
+      <Property>NS EN 1999-1-2</Property>
+      <Property>NS EN 1999-1-3</Property>
+      <Property>NS EN 1999-1-4</Property>
+      <Property>NS EN 1999-1-5</Property>
+    </Item>
+    <Item>
+      <Property>Eurocode NA</Property>
       <Property>Polish PN-EN</Property>
       <Property>PN</Property>
       <Property>12</Property>
@@ -4928,6 +5141,219 @@
       <Property>SIST EN 1999-1-3</Property>
       <Property>SIST EN 1999-1-4</Property>
       <Property>SIST EN 1999-1-5</Property>
+    </Item>
+    <Item>
+      <Property>Eurocode NA</Property>
+      <Property>Spanish UNE-EN</Property>
+      <Property>UNE</Property>
+      <Property>22</Property>
+      <Property>UNE EN 1990</Property>
+      <Property>UNE EN 1991-1-1</Property>
+      <Property>UNE EN 1991-1-2</Property>
+      <Property>UNE EN 1991-1-3</Property>
+      <Property>0</Property>
+      <Property>NaN</Property>
+      <Property>True;2;</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>1.0</Property>
+      <Property>NaN</Property>
+      <Property>True</Property>
+      <Property>1.6</Property>
+      <Property>2.0</Property>
+      <Property>NaN</Property>
+      <Property>0.8;4;5;15;</Property>
+      <Property>True</Property>
+      <Property>True</Property>
+      <Property>True</Property>
+      <Property>NaN</Property>
+      <Property>UNE EN 1991-1-4</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>1</Property>
+      <Property>1</Property>
+      <Property>0.2;0.5;</Property>
+      <Property>False</Property>
+      <Property>NaN</Property>
+      <Property>True;1;</Property>
+      <Property>True</Property>
+      <Property>True</Property>
+      <Property>1</Property>
+      <Property>NaN</Property>
+      <Property>1.25</Property>
+      <Property>False</Property>
+      <Property>True</Property>
+      <Property>NaN</Property>
+      <Property>UNE EN 1991-1-5</Property>
+      <Property>UNE EN 1991-1-6</Property>
+      <Property>UNE EN 1991-1-7</Property>
+      <Property>UNE EN 1991-2</Property>
+      <Property>UNE EN 1991-3</Property>
+      <Property>UNE EN 1991-4</Property>
+      <Property>UNE EN 1992-1-1:2004/AN:2015-10</Property>
+      <Property>1</Property>
+      <Property>1</Property>
+      <Property>1.3</Property>
+      <Property>1.2</Property>
+      <Property>1.5;1.15;1.15;1.2;1.0;1.0;</Property>
+      <Property>1;1;</Property>
+      <Property>90</Property>
+      <Property>0.85</Property>
+      <Property>1</Property>
+      <Property>1</Property>
+      <Property>600</Property>
+      <Property>0.9</Property>
+      <Property>1.1</Property>
+      <Property>0.9;0.02;0.9;</Property>
+      <Property>1.5;2.5;</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>0</Property>
+      <Property>5;10;15;</Property>
+      <Property>10</Property>
+      <Property>0;5;10;</Property>
+      <Property>40;75;5;</Property>
+      <Property>0.005</Property>
+      <Property>0.44;NaN;0.54;NaN;0.7;0.8;</Property>
+      <Property>NaN</Property>
+      <Property>1.2</Property>
+      <Property>0.8;0.9;</Property>
+      <Property>0.95</Property>
+      <Property>50;30;</Property>
+      <Property>0.7</Property>
+      <Property>0.75;0.85;</Property>
+      <Property>1.05;0.95;1.1;0.9;1;1;</Property>
+      <Property>NaN;NaN;0.15;</Property>
+      <Property>NaN</Property>
+      <Property>0.380482;0.785398;</Property>
+      <Property>NaN;NaN;</Property>
+      <Property>26.5;45;38.6;45;</Property>
+      <Property>0.4</Property>
+      <Property>1.15;1.4;1.5;</Property>
+      <Property>NaN;NaN;0.1;</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>1;0.85;</Property>
+      <Property>0.6</Property>
+      <Property>0.45</Property>
+      <Property>0.8;1;0.75;</Property>
+      <Property>0.4;0.3;0.3;0.2;0.2;NaN;</Property>
+      <Property>3.4;0.425;</Property>
+      <Property>1;5;</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>32</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>0.15</Property>
+      <Property>0.25</Property>
+      <Property>0.5</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>8</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>8</Property>
+      <Property>8</Property>
+      <Property>8</Property>
+      <Property>10</Property>
+      <Property>5;8;</Property>
+      <Property>600;NaN;</Property>
+      <Property>0.8;0.8;</Property>
+      <Property>1.5</Property>
+      <Property>0.25</Property>
+      <Property>0.5</Property>
+      <Property>UNE EN 1992-1-2</Property>
+      <Property>UNE EN 1992-2</Property>
+      <Property>UNE EN 1992-3</Property>
+      <Property>UNE EN 1993-1-1</Property>
+      <Property>NaN;NaN;</Property>
+      <Property>1;1;1.25;</Property>
+      <Property>UNE EN 1993-1-2</Property>
+      <Property>UNE EN 1993-1-3</Property>
+      <Property>UNE EN 1993-1-4</Property>
+      <Property>UNE EN 1993-1-5</Property>
+      <Property>1.20;1.00;</Property>
+      <Property>UNE EN 1993-1-6</Property>
+      <Property>UNE EN 1993-1-7</Property>
+      <Property>UNE EN 1993-1-8</Property>
+      <Property>1.25;1.25;1.1;1.0;1.0;1.0;1.1;</Property>
+      <Property>UNE EN 1993-1-9</Property>
+      <Property>UNE EN 1993-1-10</Property>
+      <Property>UNE EN 1993-1-11</Property>
+      <Property>UNE EN 1993-1-12</Property>
+      <Property>UNE EN 1993-2</Property>
+      <Property>1.0;1.1;1.25;1.25;1.1;1.1;1.1;1.0;1.1;</Property>
+      <Property>UNE EN 1993-3-1</Property>
+      <Property>UNE EN 1993-3-2</Property>
+      <Property>UNE EN 1993-4-1</Property>
+      <Property>UNE EN 1993-4-2</Property>
+      <Property>UNE EN 1993-4-3</Property>
+      <Property>UNE EN 1993-5</Property>
+      <Property>UNE EN 1993-6</Property>
+      <Property>UNE EN 1994-1-1</Property>
+      <Property>1;1;</Property>
+      <Property>1.25</Property>
+      <Property>1.25</Property>
+      <Property>1</Property>
+      <Property>0.000325;0.000500;0.000200;0.000300;</Property>
+      <Property>0.70</Property>
+      <Property>NaN</Property>
+      <Property>1.25;1.25;</Property>
+      <Property>NaN</Property>
+      <Property>NaN</Property>
+      <Property>1.0</Property>
+      <Property>1.0</Property>
+      <Property>0.6</Property>
+      <Property>180</Property>
+      <Property>1.25</Property>
+      <Property>1.25</Property>
+      <Property>0.5</Property>
+      <Property>1.25</Property>
+      <Property>1.25</Property>
+      <Property>UNE EN 1994-1-2</Property>
+      <Property>UNE EN 1994-2</Property>
+      <Property>UNE EN 1995-1-1</Property>
+      <Property>NaN</Property>
+      <Property>0.67;0.67;1.0;</Property>
+      <Property>UNE EN 1995-1-2</Property>
+      <Property>UNE EN 1995-2</Property>
+      <Property>UNE EN 1996-1-1</Property>
+      <Property>NaN</Property>
+      <Property>1</Property>
+      <Property>NaN</Property>
+      <Property>True</Property>
+      <Property>1000</Property>
+      <Property>NaN;NaN;NaN;</Property>
+      <Property>NaN</Property>
+      <Property>UNE EN 1996-1-2</Property>
+      <Property>UNE EN 1996-2</Property>
+      <Property>UNE EN 1996-3</Property>
+      <Property>UNE EN 1997-1</Property>
+      <Property>1.1;0.9;1.5;0;</Property>
+      <Property>1.25;1.25;1.4;1.4;1.0;</Property>
+      <Property>1.35;1;1.5;0;1;1;1.3;0;</Property>
+      <Property>1;1;1;1;1;1.25;1.25;1.4;1.4;1;</Property>
+      <Property>1;1;1.4;1.1;1;1;</Property>
+      <Property>UNE EN 1997-2</Property>
+      <Property>UNE EN 1998-1</Property>
+      <Property>UNE EN 1998-2</Property>
+      <Property>UNE EN 1998-3</Property>
+      <Property>UNE EN 1998-4</Property>
+      <Property>UNE EN 1998-5</Property>
+      <Property>UNE EN 1998-6</Property>
+      <Property>UNE EN 1999-1-1</Property>
+      <Property>UNE EN 1999-1-2</Property>
+      <Property>UNE EN 1999-1-3</Property>
+      <Property>UNE EN 1999-1-4</Property>
+      <Property>UNE EN 1999-1-5</Property>
     </Item>
     <Item>
       <Property>Eurocode NA</Property>

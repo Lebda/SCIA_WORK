@@ -128,6 +128,7 @@ IF(Results.Contains("DesignResults")) {
     Reinf↓y.add.req-← →KRS127_000201= →KRS127_000205DesignResults.ReinfAddReq_yneg; 
     
     ReinfString →KRS027_000002= →KRS027_000001DesignResults.ReinfString; 
+    Member →KRS106_000001= →KRS106_000002DesignResults.Member; 
     
     Exit(); 
 } 
@@ -945,6 +946,7 @@ IF(CssConditions.ConditionsForCss) {
     Reinf↓y.add.req-← →KRS127_000197= ""; 
     
     ReinfString →KRS027_000005= ""; 
+    Member →KRS106_000003= ""; 
     
     string sListEWN →INI400_006483= Functions1D.FListEWN(obEWN, TR(""), TR("NO")); 
     double dString →DLO006_000003= 0; 
@@ -1042,7 +1044,8 @@ object DesignResults →INI400_013922= new Structure(
 "UC_Prov_zneg", UC↓z.prov-←, 
 "UC_Prov_ypos", UC↓y.prov+←, 
 "UC_Prov_yneg", UC↓y.prov-←, 
-"ReinfString", ReinfString
+"ReinfString", ReinfString, 
+"Member", Member
 ); 
 
 →INI400_000007SaveResults(ResultType.Section, "DesignResults", DesignResults); 
@@ -5559,6 +5562,22 @@ object DesignResults →INI400_013922= new Structure(
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS027_000005">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000003">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

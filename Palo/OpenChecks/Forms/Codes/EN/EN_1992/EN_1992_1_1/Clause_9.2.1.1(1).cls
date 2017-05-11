@@ -105,6 +105,7 @@ private void CalcScriptFor1D(out double A↓s,min←) {
         //    CASE "IS": { } 
         //    CASE "LU": { } 
         //    CASE "MAL": { } 
+        //    CASE "NS": { } 
         //    CASE "PN": { } 
         //    CASE "SR": { } 
         //    CASE "SIG": { } 

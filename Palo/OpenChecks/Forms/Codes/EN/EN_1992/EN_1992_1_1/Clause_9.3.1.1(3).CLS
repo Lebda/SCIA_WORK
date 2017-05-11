@@ -286,6 +286,7 @@ private void CalcScript(out double s↓max,slab←) {
             } 
         } 
         //    CASE "MAL": { } 
+        //    CASE "NS": { } 
         //    CASE "PN": { } 
         CASE "SR" :  { 
             IF(ConcentratedLoads) { //Area with concetrated load

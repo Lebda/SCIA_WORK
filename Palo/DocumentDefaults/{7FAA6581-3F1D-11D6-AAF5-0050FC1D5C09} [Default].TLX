@@ -3,7 +3,7 @@
 	<DataSourceNameExtension></DataSourceNameExtension>
 	<Name>{7FAA6581-3F1D-11D6-AAF5-0050FC1D5C09}</Name>
 	<AdvancedName>Default</AdvancedName>
-	<Cells Size="19"><ARRAY_ITEM ID="0"><CX64TLXCell><Width><Width>0.03</Width>
+	<Cells Size="20"><ARRAY_ITEM ID="0"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -706,6 +706,43 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
+		<ARRAY_ITEM ID="19"><CX64TLXCell><Width><Width>0.03</Width>
+				</Width>
+				<Height><Height>0.05</Height>
+				</Height>
+				<Items><Items Size="1"><ARRAY_ITEM ID="0"><TLXITEM><PropName></PropName>
+								<RealValue><Value>0</Value>
+									<ValueName>eTLXItem_RealValue_Real</ValueName>
+								</RealValue>
+								<FormattedText>0</FormattedText>
+								<NameFormattedText>0</NameFormattedText>
+								<PictureInTable>0</PictureInTable>
+								<PropertyUserName></PropertyUserName>
+								<TLXItemHorizontalAlignment><Value>0</Value>
+									<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
+								</TLXItemHorizontalAlignment>
+								<clsid>{7FAA6580-3F1D-11D6-AAF5-0050FC1D5C09}</clsid>
+								<Units>-1</Units>
+								<SourceCLSID>{5C124DF6-E0EC-11D6-ABEE-0050FC1D5C09}</SourceCLSID>
+								<SourceNameExtension></SourceNameExtension>
+								<SourceID>-1</SourceID>
+								<TLX></TLX>
+								<Item_Type><Value>2</Value>
+									<ValueName>eTLXItem_Type_Subtable</ValueName>
+								</Item_Type>
+								<Parametric_Values_Representation><Value>3</Value>
+									<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
+								</Parametric_Values_Representation>
+								<Value_Type><Value>13</Value>
+									<ValueName></ValueName>
+								</Value_Type>
+								<Item_Value>Default</Item_Value>
+							</TLXITEM>
+						</ARRAY_ITEM>
+					</Items>
+				</Items>
+			</CX64TLXCell>
+		</ARRAY_ITEM>
 	</Cells>
 	<TLXType><Value>3</Value>
 		<ValueName>eX64TLX_Type_SimpleForm</ValueName>
@@ -731,7 +768,7 @@
 						</TLXItemHorizontalAlignment>
 						<clsid>{7FAA6580-3F1D-11D6-AAF5-0050FC1D5C09}</clsid>
 						<Units>-1</Units>
-						<SourceCLSID>{C4232377-9759-45D5-AA2E-252B87C1319D}</SourceCLSID>
+						<SourceCLSID>{5C124DF6-E0EC-11D6-ABEE-0050FC1D5C09}</SourceCLSID>
 						<SourceNameExtension></SourceNameExtension>
 						<SourceID>-1</SourceID>
 						<TLX></TLX>

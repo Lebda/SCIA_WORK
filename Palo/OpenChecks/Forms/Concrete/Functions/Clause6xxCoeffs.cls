@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="c7d9646f-1cbc-4b83-ac33-e2cc6c2cbcce">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">void GetCrdc(double ConstrType, double d, double f↓ck←, double k, double γ↓C←, bool Load, bool Beam, object Result) { 
+    <SourceCode Collapsed="" BreakPoints="">void GetCrdc(double ConstrType, double d, double f↓ck←, double k, double γ↓C←, double d↓g←, bool Load, bool Beam, bool Compression, object Result) { 
     object Clause6_2_2_1 →INI400_013958= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_6.2.2(1).CLC"); 
     object Input →INI400_013948= new Structure(); 
     object Output →INI400_013949= new Structure(); 
@@ -12,6 +12,8 @@
     →INI400_013953Input.Set("γ_C", γ↓C←); 
     →INI400_013956Input.Set("Load", Load); 
     →INI400_013957Input.Set("Beam", Beam); 
+    →KRS116_000001Input.Set("d_g", d↓g←); 
+    →KRS116_000002Input.Set("Compression", Compression); 
     →INI400_013954Clause6_2_2_1.Draw(Input, Output, 3); 
     →INI400_013955Result.Set("C_Rdc", Output.C_Rdc); 
     →INI400_013959Result.Set("v_min", Output.v_min); 
@@ -49,7 +51,7 @@ void GetNii1AlfaCt(object ConMat, object ShearReinf, double α↓cc←, double �
     →INI400_013947Result.Set("α_cw", Output.α_cw); 
 } 
 
-void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←, double b↓w←, double σ↓cp←, double d, double s, double A↓sw←, double z, double f↓ywd←, double σ↓ct←, double f↓ctm←, double V↓Ed←, double N↓Ed←, double f↓ck←, double f↓cd←, double σ↓cd←, bool ShearTens, bool Compression, bool InclinedShearReinf, bool Prestress, object Result) { 
+void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←, double b↓w←, double σ↓cp←, double d, double s, double A↓sw←, double z, double f↓ywd←, double σ↓ct←, double f↓ctm←, double V↓Ed←, double N↓Ed←, double f↓ck←, double f↓cd←, double σ↓cd←, double f↓ctk,0.05←, double σ↓t←, bool ShearTens, bool Compression, bool InclinedShearReinf, bool Prestress, object Result) { 
     object Clause6_2_3_2 →INI400_005269= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_6.2.3(2).CLC"); 
     object Input →INI400_013874= new Structure(); 
     →INI400_013877Input.Set("σ_sd", σ↓sd←); 
@@ -73,6 +75,8 @@ void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←, double
     →INI400_013894Input.Set("σ_cd", σ↓cd←); 
     →INI400_013895Input.Set("InclinedShearReinf", InclinedShearReinf); 
     →INI400_013896Input.Set("Prestress", Prestress); 
+    →KRS116_000003Input.Set("f_ctk005", f↓ctk,0.05←); 
+    →KRS116_000004Input.Set("σ_t", σ↓t←); 
     object Output →INI400_013873= new Structure(); 
     →INI400_013876Clause6_2_3_2.Calculate(Input, Output); 
     →INI400_013962Result.Set("θ_min", Output.θ_min); 
@@ -661,6 +665,38 @@ void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←, double
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS316_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

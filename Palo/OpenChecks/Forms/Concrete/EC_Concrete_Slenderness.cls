@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="cc6882bc-744a-471b-aba2-27fe6c59f517">
   <CodeEditor>
-    <SourceCode Collapsed="41|175" BreakPoints="">
+    <SourceCode Collapsed="513" BreakPoints="">
 //------------------------------------------------------------
 //@FUNCTIONS
 
@@ -356,8 +356,10 @@ l↓0z← →INI400_000582= β↓zz←*L↓z←;
 IF(n &gt; 0) { 
     
     →INI400_000279TEXT("Parameters for calculation limit slenderness:") @REF("(§5.8.3.1(1))"); 
-    A →INI400_000023= 1/(1+0.2*φ↓ef←); 
-    B →INI400_000030= MAX(SQRT(1+2*ω), 1.1); 
+    IF(IO.SetupNA.EC_NA.Code != "NS") { 
+        A →INI400_000023= 1/(1+0.2*φ↓ef←); 
+        B →INI400_000030= MAX(SQRT(1+2*ω), 1.1); 
+    } 
     IF(!(BraceMemberY) || M↓02y← == 0) { 
         r↓my← →INI400_000042= 1; 
         string DescriptionN →INI400_006455= TR("The value r↓my←=1 because the member is unbraced around y-axis or value M↓02y← is zero."); 
@@ -376,7 +378,19 @@ IF(n &gt; 0) {
             Number↓N← →INI400_006844= Number↓N←+1; 
             →INI400_006845obEWN.Add(new Structure("Index", "N" &amp; IndexEWN &amp; "/5", "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
         } ELSE { 
-            r↓my← →INI400_000041= M↓01y←/M↓02y←; 
+            IF(IO.SetupNA.EC_NA.Code == "NS" &amp;&amp; M↓02y← &lt; -N↓Ed←*h/20) { 
+                →KRS116_000078TEXT("M↓02y← &lt; -N↓Ed←*h/20"); 
+                →KRS116_000079TEXT(Val(M↓02y←/1000, 1) &amp; " kNm &lt; " &amp; Val(-N↓Ed←*h/20/1000, 1) &amp; " kNm"); 
+                r↓my← →KRS116_000070= 1; 
+                string DescriptionN →KRS116_000071= TR("The value r↓my←=1 because M↓02y← &lt; N↓Ed←*h/20."); 
+                string SolutionN →KRS116_000072= TR(""); 
+                string TypeN →KRS116_000073= TR("Note"); 
+                →KRS116_000074Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
+                Number↓N← →KRS116_000075= Number↓N←+1; 
+                →KRS116_000076obEWN.Add(new Structure("Index", "N" &amp; IndexEWN &amp; "/5", "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
+            } ELSE { 
+                r↓my← →INI400_000041= M↓01y←/M↓02y←; 
+            } 
         } 
     } 
     IF(!(BraceMemberZ) || M↓02z← == 0) { 
@@ -397,32 +411,57 @@ IF(n &gt; 0) {
             Number↓N← →INI400_006851= Number↓N←+1; 
             →INI400_006852obEWN.Add(new Structure("Index", "N" &amp; IndexEWN &amp; "/7", "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
         } ELSE { 
-            r↓mz← →INI400_000039= M↓01z←/M↓02z←; 
+            IF(IO.SetupNA.EC_NA.Code == "NS" &amp;&amp; M↓02z← &lt; -N↓Ed←*h/20) { 
+                →KRS116_000080TEXT("M↓02z← &lt; -N↓Ed←*h/20"); 
+                →KRS116_000081TEXT(Val(M↓02z←/1000, 1) &amp; " kNm &lt; " &amp; Val(-N↓Ed←*h/20/1000, 1) &amp; " kNm"); 
+                r↓my← →KRS116_000082= 1; 
+                string DescriptionN →KRS116_000083= TR("The value r↓mz←=1 because M↓02z← &lt; N↓Ed←*h/20."); 
+                string SolutionN →KRS116_000084= TR(""); 
+                string TypeN →KRS116_000085= TR("Note"); 
+                →KRS116_000086Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
+                Number↓N← →KRS116_000087= Number↓N←+1; 
+                →KRS116_000088obEWN.Add(new Structure("Index", "N" &amp; IndexEWN &amp; "/5", "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
+            } ELSE { 
+                r↓mz← →INI400_000039= M↓01z←/M↓02z←; 
+            } 
         } 
     } 
-    C↓y← →INI400_000044= 1.7-r↓my←; 
-    C↓z← →INI400_000043= 1.7-r↓mz←; 
+    IF(IO.SetupNA.EC_NA.Code != "NS") { 
+        C↓y← →INI400_000044= 1.7-r↓my←; 
+        C↓z← →INI400_000043= 1.7-r↓mz←; 
+    } 
     
     →INI400_005851BLOCK { //NA.2.31 Clause 5.8.3.1 Slenderness criterion for isolated members, Paragraph(1)
         object Clause5_8_3_1 →INI400_005852= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_5.8.3.1(1).CLC"); 
-        Clause5_8_3_1.A →INI400_005857= A; 
-        Clause5_8_3_1.B →INI400_005858= B; 
-        Clause5_8_3_1.n →INI400_005860= n; 
+        object Input →KRS116_000036= new Structure("A", A, "B", B, "n", n); 
+        object Output →KRS116_000039= new Structure(); 
+    } 
+    IF(IO.SetupNA.EC_NA.Code == "NS") { 
+        A↓φ← →KRS116_000045= MIN(1.25/(1+0.2*φ↓ef←), 1); 
+        →KRS116_000044Input.Set("A_φ", A↓φ←); 
+    } ELSE { 
+        →KRS116_000046Input.Set("A_φ", 1); 
     } 
     
     →PAI127_000012TEXT("Limit slenderness:"); 
     →INI400_005866BLOCK("National Annex parameter 5.8.3.1") { //hidden block with NA 5.8.3.1(1)
-        Clause5_8_3_1.C →INI400_005859= C↓y←; 
+        →KRS116_000037Input.Set("C", C↓y←); 
+        →KRS116_000042Input.Set("r_m", r↓my←); 
+        →KRS116_000048Input.Set("BracedNoTransv", BraceMemberY &amp;&amp; !bTransverseY &amp;&amp; M↓02y← != 0); 
+        →KRS116_000051Input.Set("index", "↓y←"); 
     } 
-    →INI400_005864Clause5_8_3_1.Draw(False, 2); 
-    λ↓limy← →INI400_005865= Clause5_8_3_1.λ↓lim←; 
+    →INI400_005864Clause5_8_3_1.Draw(→KRS116_000038Input, Output, 2); 
+    λ↓limy← →INI400_005865= Output.λ_lim; 
+    
     →INI400_005225BLOCK("National Annex parameter 5.8.3.1") { //hidden block with NA 5.8.3.1(1)
-        Clause5_8_3_1.C →INI400_005229= C↓z←; 
+        →KRS116_000040Input.Set("C", C↓z←); 
+        →KRS116_000043Input.Set("r_m", r↓mz←); 
+        →KRS116_000050Input.Set("BracedNoTransv", BraceMemberZ &amp;&amp; !bTransverseZ &amp;&amp; M↓02z← != 0); 
+        →KRS116_000052Input.Set("index", "↓z←"); 
     } 
-    →INI400_005867Clause5_8_3_1.Draw(false, 2); 
-    →INI400_005231BLOCK { 
-        λ↓limz← →INI400_005232= Clause5_8_3_1.λ↓lim←; 
-    } 
+    →INI400_005867Clause5_8_3_1.Draw(→KRS116_000041Input, Output, 2); 
+    λ↓limz← →INI400_005232= Output.λ_lim; 
+    
 } ELSE { 
     string DescriptionN →INI400_006467= TR("Limit slenderness is not calculated for tensile or zero normal force."); 
     string SolutionN →INI400_006468= TR(""); 
@@ -436,44 +475,42 @@ IF(n &gt; 0) {
 →PAI127_000005PAGEBREAK(); 
 IF(n &gt; 0) { 
     →PAI127_000006TEXT("Slenderness criterion"); 
-    IF(λ↓y← &lt;= λ↓limy←) { 
-        →INI400_000054TEXT("λ↓y← = " &amp; λ↓y← &amp; " ≤ λ↓limy← = " &amp; λ↓limy←); 
-        string DescriptionN →INI400_006473= TR("Slenderness λ↓y← is lesser than λ↓limy←, it follows second order effect will be ignored."); 
-        string SolutionN →INI400_006474= TR(""); 
-        string TypeN →INI400_006475= TR("Note"); 
-        →INI400_006476Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
-        Number↓N← →INI400_006477= Number↓N←+1; 
-        →INI400_006478obEWN.Add(new Structure("Index", "N" &amp; IndexEWN &amp; "/9", "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
-        SCheckY →INI400_005185= TR("1↑st← order"); 
+    IF(IO.SetupNA.EC_NA.Code == "NS") { 
+        →KRS116_000053TEXT("Radius of gyration of reinforcement:"); 
+        IF(Design) { 
+            I↓sy← →KRS116_000098= μ↓s←*I↓cy←; 
+            I↓sz← →KRS116_000099= μ↓s←*I↓cz←; 
+        } ELSE { 
+            I↓sy← →KRS116_000057= CssReinfChar.Iy; 
+            I↓sz← →KRS116_000058= CssReinfChar.Iz; 
+        } 
+        IF(COMPARE(I↓sy←, 0, 12) == 1) { 
+            i↓sy← →KRS116_000054= SQRT(I↓sy←/A↓s←); 
+        } ELSE { 
+            i↓sy← →KRS116_000093= 0; 
+        } 
+        IF(COMPARE(I↓sz←, 0, 12) == 1) { 
+            i↓sz← →KRS116_000055= SQRT(I↓sz←/A↓s←); 
+        } ELSE { 
+            i↓sz← →KRS116_000094= 0; 
+        } 
+        →KRS116_000089PAGEBREAK(); 
+        →KRS116_000100TEXT("Ratio of radiuses of gyration:"); 
+        k↓ay← →KRS116_000059= (i↓sy←/i↓cy←)↑2←; 
+        k↓az← →KRS116_000063= (i↓sz←/i↓cz←)↑2←; 
+        →KRS116_000090PAGEBREAK(); 
+        →KRS116_000060TEXT("Normalized slenderness:"); 
+        λ↓ny← →KRS116_000061= λ↓y←*SQRT(n/(1+2*k↓ay←*ω)); 
+        λ↓nz← →KRS116_000064= λ↓z←*SQRT(n/(1+2*k↓az←*ω)); 
+        →KRS116_000091PAGEBREAK(); 
+        →KRS116_000066SlendernessEvaluation(λ↓ny←, λ↓limy←, λ↓nz←, λ↓limz←, "↓n←"); 
+        //Setting normalized slendernesses as common slenderness to have only one slendernesses in results.
+        λ↓y← →KRS116_000068= λ↓ny←; 
+        λ↓z← →KRS116_000069= λ↓nz←; 
     } ELSE { 
-        →INI400_000057TEXT("λ↓y← = " &amp; λ↓y← &amp; " &gt; λ↓limy← = " &amp; λ↓limy←); 
-        string DescriptionN →INI400_006479= TR("Slenderness λ↓y← is bigger than λ↓limy←."); 
-        string SolutionN →INI400_006480= TR("Second order effect has to be considered."); 
-        string TypeN →INI400_006481= TR("Warning"); 
-        →INI400_006482Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
-        Number↓W← →INI400_006483= Number↓W←+1; 
-        →INI400_006484obEWN.Add(new Structure("Index", "W" &amp; IndexEWN &amp; "/1", "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
-        SCheckY →INI400_005186= TR("2↑nd← order"); 
+        →KRS116_000065SlendernessEvaluation(λ↓y←, λ↓limy←, λ↓z←, λ↓limz←, ""); 
     } 
-    IF(λ↓z← &lt;= λ↓limz←) { 
-        →INI400_000059TEXT("λ↓z← = " &amp; λ↓z← &amp; " ≤ λ↓limz← = " &amp; λ↓limz←); 
-        string DescriptionN →INI400_006485= TR("Slenderness λ↓z← is lesser than λ↓limz←, it follows second order effect will be ignored."); 
-        string SolutionN →INI400_006486= TR(""); 
-        string TypeN →INI400_006487= TR("Note"); 
-        →INI400_006488Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
-        Number↓N← →INI400_006489= Number↓N←+1; 
-        →INI400_006490obEWN.Add(new Structure("Index", "N" &amp; IndexEWN &amp; "/10", "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
-        SCheckZ →INI400_005187= TR("1↑st← order"); 
-    } ELSE { 
-        →INI400_000058TEXT("λ↓z← = " &amp; λ↓z← &amp; " &gt; λ↓limz← = " &amp; λ↓limz←); 
-        string DescriptionN →INI400_006491= TR("Slenderness λ↓z← is bigger than λ↓limz←."); 
-        string SolutionN →INI400_006492= TR("Second order effect has to be considered."); 
-        string TypeN →INI400_006493= TR("Warning"); 
-        →INI400_006494Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
-        Number↓W← →INI400_006495= Number↓W←+1; 
-        →INI400_006496obEWN.Add(new Structure("Index", "W" &amp; IndexEWN &amp; "/2", "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
-        SCheckZ →INI400_005188= TR("2↑nd← order"); 
-    } 
+    →KRS116_000092PAGEBREAK(); 
 } 
 
 
@@ -542,6 +579,46 @@ IF(IO.IsDrawing) {
 } 
 
 
+private void SlendernessEvaluation(double λ↓y←, double λ↓limy←, double λ↓z←, double λ↓limz←, string index) { 
+    IF(λ↓y← &lt;= λ↓limy←) { 
+        →INI400_000054TEXT("λ" &amp; index &amp; "↓y← = " &amp; λ↓y← &amp; " ≤ λ" &amp; index &amp; "↓limy← = " &amp; λ↓limy←); 
+        string DescriptionN →INI400_006473= TR("Slenderness λ" &amp; index &amp; "↓y← is lesser than λ" &amp; index &amp; "↓limy←, it follows second order effect will be ignored."); 
+        string SolutionN →INI400_006474= TR(""); 
+        string TypeN →INI400_006475= TR("Note"); 
+        →INI400_006476Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
+        Number↓N← →INI400_006477= Number↓N←+1; 
+        →INI400_006478obEWN.Add(new Structure("Index", "N" &amp; IndexEWN &amp; "/9", "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
+        SCheckY →INI400_005185= TR("1↑st← order"); 
+    } ELSE { 
+        →INI400_000057TEXT("λ" &amp; index &amp; "↓y← = " &amp; λ↓y← &amp; " &gt; λ" &amp; index &amp; "↓limy← = " &amp; λ↓limy←); 
+        string DescriptionN →INI400_006479= TR("Slenderness λ" &amp; index &amp; "↓y← is bigger than λ" &amp; index &amp; "↓limy←."); 
+        string SolutionN →INI400_006480= TR("Second order effect has to be considered."); 
+        string TypeN →INI400_006481= TR("Warning"); 
+        →INI400_006482Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
+        Number↓W← →INI400_006483= Number↓W←+1; 
+        →INI400_006484obEWN.Add(new Structure("Index", "W" &amp; IndexEWN &amp; "/1", "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
+        SCheckY →INI400_005186= TR("2↑nd← order"); 
+    } 
+    IF(λ↓z← &lt;= λ↓limz←) { 
+        →INI400_000059TEXT("λ" &amp; index &amp; "↓z← = " &amp; λ↓z← &amp; " ≤ λ" &amp; index &amp; "↓limz← = " &amp; λ↓limz←); 
+        string DescriptionN →INI400_006485= TR("Slenderness λ" &amp; index &amp; "↓z← is lesser than λ" &amp; index &amp; "↓limz←, it follows second order effect will be ignored."); 
+        string SolutionN →INI400_006486= TR(""); 
+        string TypeN →INI400_006487= TR("Note"); 
+        →INI400_006488Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
+        Number↓N← →INI400_006489= Number↓N←+1; 
+        →INI400_006490obEWN.Add(new Structure("Index", "N" &amp; IndexEWN &amp; "/10", "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
+        SCheckZ →INI400_005187= TR("1↑st← order"); 
+    } ELSE { 
+        →INI400_000058TEXT("λ" &amp; index &amp; "↓z← = " &amp; λ↓z← &amp; " &gt; λ" &amp; index &amp; "↓limz← = " &amp; λ↓limz←); 
+        string DescriptionN →INI400_006491= TR("Slenderness λ" &amp; index &amp; "↓z← is bigger than λ" &amp; index &amp; "↓limz←."); 
+        string SolutionN →INI400_006492= TR("Second order effect has to be considered."); 
+        string TypeN →INI400_006493= TR("Warning"); 
+        →INI400_006494Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
+        Number↓W← →INI400_006495= Number↓W←+1; 
+        →INI400_006496obEWN.Add(new Structure("Index", "W" &amp; IndexEWN &amp; "/2", "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
+        SCheckZ →INI400_005188= TR("2↑nd← order"); 
+    } 
+} 
 
 
 </SourceCode>
@@ -603,6 +680,13 @@ IF(IO.IsDrawing) {
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
+      </Variable>
+      <Variable Modifier="Public" Name="A↓φ←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="AccidentalCombi" ESA_ID="" Type="Boolean">
         <Description>
@@ -878,6 +962,40 @@ IF(IO.IsDrawing) {
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-12" Dim="mm↑4←" />
       </Variable>
+      <Variable Modifier="Public" Name="i↓sy←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
+      </Variable>
+      <Variable Modifier="Public" Name="I↓sy←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-12" Dim="mm↑4←" />
+      </Variable>
+      <Variable Modifier="Public" Name="i↓sz←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
+      </Variable>
+      <Variable Modifier="Public" Name="I↓sz←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-12" Dim="mm↑4←" />
+      </Variable>
+      <Variable Modifier="Public" Name="index" ESA_ID="" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="IndexEWN" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -890,6 +1008,20 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="k↓ay←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="k↓az←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="l↓0y←" ESA_ID="Result.5" Type="Double" Precision="2">
         <Description>
@@ -1143,12 +1275,6 @@ IF(IO.IsDrawing) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Shear" ESA_ID="" Type="Boolean">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
       <Variable Modifier="Public" Name="SCheckY" ESA_ID="" Type="String">
         <Description>
           <ENU>
@@ -1156,6 +1282,12 @@ IF(IO.IsDrawing) {
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="SCheckZ" ESA_ID="" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="Shear" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
@@ -1292,6 +1424,20 @@ IF(IO.IsDrawing) {
           <ENU>Limit value of slenderness around z-axis</ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="λ↓ny←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="λ↓nz←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="λ↓y←" ESA_ID="Result.7" Type="Double" Precision="2">
@@ -2572,29 +2718,13 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005229">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="2263" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_005231">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="2332" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="439" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
       <VC ID="INI400_005232">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="2345" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="452" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="2345" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="2345" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="2345" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="2345" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="2345" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="2345" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
       <VC ID="INI400_005569">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="452" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -2626,38 +2756,6 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="2164" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="228" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="198" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_005857">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="599" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="599" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="2184" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="248" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_005858">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="618" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="618" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="2203" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="268" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_005859">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="638" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="638" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="2177" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="241" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_005860">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="658" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="658" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="2223" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="287" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_005864">
@@ -4300,6 +4398,438 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS116_000036">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000037">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000039">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000040">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000042">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000043">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000044">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000045">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="2231" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="2231" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1779" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|16.9|0|2" Font2="Arial|16.9|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|16.9|0|2" Font2="Arial|16.9|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000046">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000048">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000050">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000051">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000052">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000053">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1839" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1839" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|16.9|0|2" Font2="Arial|16.9|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|16.9|0|2" Font2="Arial|16.9|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000054">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1925" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1925" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|16.9|0|2" Font2="Arial|16.9|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|16.9|0|2" Font2="Arial|16.9|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000055">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1877" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1877" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|16.9|0|2" Font2="Arial|16.9|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|16.9|0|2" Font2="Arial|16.9|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000057">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1080" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1080" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1080" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1080" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="549" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="2179" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="4" />
+      </VC>
+      <VC ID="KRS116_000058">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1080" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1080" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1080" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1080" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="549" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="2179" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="4" />
+      </VC>
+      <VC ID="KRS116_000059">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000060">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1839" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1839" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|16.9|0|2" Font2="Arial|16.9|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|16.9|0|2" Font2="Arial|16.9|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000061">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1983" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1983" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|20.3|0|2" Font2="Arial|20.3|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|20.3|0|2" Font2="Arial|20.3|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000063">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000064">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1983" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1983" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|20.3|0|2" Font2="Arial|20.3|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|20.3|0|2" Font2="Arial|20.3|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000065">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000066">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000068">
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000069">
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000070">
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+      </VC>
+      <VC ID="KRS116_000071">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000072">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000073">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000074">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000075">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="452" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="452" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1861" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="593" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="143" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="452" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000076">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="235" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="235" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="90.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="601" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="151" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="333" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000078">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000079">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000080">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000081">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000082">
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+      </VC>
+      <VC ID="KRS116_000083">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000084">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000085">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000086">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000087">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="452" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="452" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1861" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="593" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="143" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="452" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000088">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="235" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="235" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="90.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="601" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="151" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="333" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000089">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1378" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1378" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="1774" Y="48.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000090">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1378" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1378" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="1774" Y="48.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000091">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1378" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1378" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="1774" Y="48.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000092">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1378" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1378" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="877" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="1774" Y="48.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000093">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1925" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1925" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|16.9|0|2" Font2="Arial|16.9|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|16.9|0|2" Font2="Arial|16.9|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000094">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1877" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1877" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|16.9|0|2" Font2="Arial|16.9|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|16.9|0|2" Font2="Arial|16.9|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000098">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1080" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1080" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1080" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="549" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="2179" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="4" />
+      </VC>
+      <VC ID="KRS116_000099">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1080" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1080" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1080" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="549" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="2179" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="4" />
+      </VC>
+      <VC ID="KRS116_000100">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1839" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1839" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|16.9|0|2" Font2="Arial|16.9|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|16.9|0|2" Font2="Arial|16.9|0|2" EqStyle="7" />
+      </VC>
       <VC ID="PAI127_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -5173,7 +5703,7 @@ IF(IO.IsDrawing) {
                   <P>EC EN 1991-2</P>
                   <P>EC EN 1991-3</P>
                   <P>EC EN 1991-4</P>
-                  <P>EC EN 1992-1-1</P>
+                  <P>EC EN 1992-1-1:2004/AC:2008</P>
                   <P>1</P>
                   <P>1</P>
                   <P>1.3</P>
@@ -5400,11 +5930,17 @@ IF(IO.IsDrawing) {
     <Item TranslateID="STRING_5C604367">
       <ENU>"Not defined"</ENU>
     </Item>
-    <Item TranslateID="STRING_68689B52">
-      <ENU>"Slenderness λ↓y← is lesser than λ↓limy←, it follows second order effect will be ignored."</ENU>
+    <Item TranslateID="STRING_659C824F">
+      <ENU>"Slenderness λ" &amp; index &amp; "↓z← is lesser than λ" &amp; index &amp; "↓limz←, it follows second order effect will be ignored."</ENU>
+    </Item>
+    <Item TranslateID="STRING_6E59734D">
+      <ENU>"Slenderness λ" &amp; index &amp; "↓y← is lesser than λ" &amp; index &amp; "↓limy←, it follows second order effect will be ignored."</ENU>
     </Item>
     <Item TranslateID="STRING_780FEABE">
       <ENU>"1↑st← order"</ENU>
+    </Item>
+    <Item TranslateID="STRING_79F9B216">
+      <ENU>"The value r↓my←=1 because M↓02y← &lt; N↓Ed←*h/20."</ENU>
     </Item>
     <Item TranslateID="STRING_86C1EDAF">
       <ENU>"2↑nd← order"</ENU>
@@ -5418,17 +5954,14 @@ IF(IO.IsDrawing) {
     <Item TranslateID="STRING_8AB4D602">
       <ENU>"Axis"</ENU>
     </Item>
+    <Item TranslateID="STRING_90804649">
+      <ENU>"The value r↓mz←=1 because M↓02z← &lt; N↓Ed←*h/20."</ENU>
+    </Item>
     <Item TranslateID="STRING_9619EBED">
       <ENU>"Warning"</ENU>
     </Item>
-    <Item TranslateID="STRING_964C4831">
-      <ENU>"Slenderness λ↓z← is bigger than λ↓limz←."</ENU>
-    </Item>
     <Item TranslateID="STRING_9822122C">
       <ENU>"The value r↓mz←=1 because the member is braced around y-axis and first order moments arise mainly due to imperfections or transverse loading. "</ENU>
-    </Item>
-    <Item TranslateID="STRING_B500A331">
-      <ENU>"Slenderness λ↓z← is lesser than λ↓limz←, it follows second order effect will be ignored."</ENU>
     </Item>
     <Item TranslateID="STRING_B55A5558">
       <ENU>"The value r↓my←=1 because the member is braced around y-axis and first order moments arise mainly due to imperfections or transverse loading."</ENU>
@@ -5439,23 +5972,26 @@ IF(IO.IsDrawing) {
     <Item TranslateID="STRING_C2EAB742">
       <ENU>"Note"</ENU>
     </Item>
+    <Item TranslateID="STRING_CF6B8276">
+      <ENU>"Slenderness λ" &amp; index &amp; "↓z← is bigger than λ" &amp; index &amp; "↓limz←."</ENU>
+    </Item>
     <Item TranslateID="STRING_D370CE30">
       <ENU>"Cross-sectional area of reinforcement is calculated  for inputted ratio of reinforcement."</ENU>
     </Item>
-    <Item TranslateID="STRING_F094BC3E">
-      <ENU>"Slenderness λ↓y← is bigger than λ↓limy←."</ENU>
+    <Item TranslateID="STRING_FB0F2F1B">
+      <ENU>"Slenderness λ" &amp; index &amp; "↓y← is bigger than λ" &amp; index &amp; "↓limy←."</ENU>
     </Item>
     <Item ID="TEXT_INI400_000054">
-      <ENU>"λ↓y← = " &amp; λ↓y← &amp; " ≤ λ↓limy← = " &amp; λ↓limy←</ENU>
+      <ENU>"λ" &amp; index &amp; "↓y← = " &amp; λ↓y← &amp; " ≤ λ" &amp; index &amp; "↓limy← = " &amp; λ↓limy←</ENU>
     </Item>
     <Item ID="TEXT_INI400_000057">
-      <ENU>"λ↓y← = " &amp; λ↓y← &amp; " &gt; λ↓limy← = " &amp; λ↓limy←</ENU>
+      <ENU>"λ" &amp; index &amp; "↓y← = " &amp; λ↓y← &amp; " &gt; λ" &amp; index &amp; "↓limy← = " &amp; λ↓limy←</ENU>
     </Item>
     <Item ID="TEXT_INI400_000058">
-      <ENU>"λ↓z← = " &amp; λ↓z← &amp; " &gt; λ↓limz← = " &amp; λ↓limz←</ENU>
+      <ENU>"λ" &amp; index &amp; "↓z← = " &amp; λ↓z← &amp; " &gt; λ" &amp; index &amp; "↓limz← = " &amp; λ↓limz←</ENU>
     </Item>
     <Item ID="TEXT_INI400_000059">
-      <ENU>"λ↓z← = " &amp; λ↓z← &amp; " ≤ λ↓limz← = " &amp; λ↓limz←</ENU>
+      <ENU>"λ" &amp; index &amp; "↓z← = " &amp; λ↓z← &amp; " ≤ λ" &amp; index &amp; "↓limz← = " &amp; λ↓limz←</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_000108">
       <ENU>"First order end moments:"</ENU>
@@ -5621,6 +6157,27 @@ IF(IO.IsDrawing) {
     </Item>
     <Item ID="TEXT_KRS116_000003">
       <ENU>"α↓cc,pl← = " &amp; α↓cc,pl←</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000053">
+      <ENU>"Radius of gyration of reinforcement:"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000060">
+      <ENU>"Normalized slenderness:"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS116_000078">
+      <ENU>"M↓02y← &lt; -N↓Ed←*h/20"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS116_000079">
+      <ENU>Val(M↓02y←/1000, 1) &amp; " kNm &lt; " &amp; Val(-N↓Ed←*h/20/1000, 1) &amp; " kNm"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS116_000080">
+      <ENU>"M↓02z← &lt; -N↓Ed←*h/20"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS116_000081">
+      <ENU>Val(M↓02z←/1000, 1) &amp; " kNm &lt; " &amp; Val(-N↓Ed←*h/20/1000, 1) &amp; " kNm"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000100">
+      <ENU>"Ratio of radiuses of gyration:"</ENU>
     </Item>
     <Item TranslateID="TEXT_PAI127_000003">
       <ENU>"Slenderness"</ENU>

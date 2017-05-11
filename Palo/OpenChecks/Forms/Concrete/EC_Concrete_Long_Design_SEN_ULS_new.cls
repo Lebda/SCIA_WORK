@@ -460,6 +460,7 @@ IF(True) {
             double XD →INI400_006950= ExpClasses.XD; 
             double XS →INI400_006951= ExpClasses.XS; 
             double XF →INI400_006952= ExpClasses.XF; 
+            double XSA →KRS116_000001= ExpClasses.XSA; 
             
             //determination crack width
             IF(IO.MemberData.Concrete.Solver.CrackWidth.TypeCrackWidth == 0) { 
@@ -472,6 +473,7 @@ IF(True) {
                     Clause7_3_1_5.XC →INI400_006158= XC; 
                     Clause7_3_1_5.XD →INI400_006159= XD; 
                     Clause7_3_1_5.XS →INI400_006160= XS; 
+                    Clause7_3_1_5.XSA →KRS116_000002= XSA; //ToDo: fix connection, whole form is not used anywhere now
                     →INI400_006147Clause7_3_1_5.Calculate(false); 
                     double w↓max← →INI400_006143= Clause7_3_1_5.w↓max←; 
                 } 
@@ -1552,6 +1554,13 @@ IF(CssConditions.ConditionsForCss == False || (bUseUserReinf == True &amp;&amp; 
       </Variable>
       <Variable Modifier="Public" Name="XS" ESA_ID="" Type="Double" Precision="2">
         <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="XSA" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_XSA">
           <ENU>
           </ENU>
         </Description>
@@ -4645,6 +4654,22 @@ IF(CssConditions.ConditionsForCss == False || (bUseUserReinf == True &amp;&amp; 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
+      <VC ID="KRS116_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="5718" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
@@ -4655,7 +4680,7 @@ IF(CssConditions.ConditionsForCss == False || (bUseUserReinf == True &amp;&amp; 
           <ENU>
           </ENU>
         </Texts>
-        <TEMDLoader Name="TEMDLoader" ID="69" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.5" SectionID="-1" CombiID="-1" />
+        <TEMDLoader Name="TEMDLoader" ID="69" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="D:\_VERSIONS\DEVE_16_ConcreteDeve\TEMP\Esa_Model_Data\Beam.1" MemberID="Beam.1" SectionID="0" CombiID="0" />
       </TPanel>
     </Main>
     <MemberData Width="500" />

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="2d8967a1-8b99-46cf-8ce0-a251fbbb7427">
   <CodeEditor>
-    <SourceCode Collapsed="420|1220" BreakPoints="">IF(PrintCaption) { 
+    <SourceCode Collapsed="420" BreakPoints="">IF(PrintCaption) { 
     →INI400_001093TEXT(Caption); 
 } 
 →INI400_007174BLOCK { // using data exchange structure
@@ -370,7 +370,7 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0 &amp;&amp; COMPARE(V↓Ed←, 0, 6) == 0) {
             →INI400_003077TEXT(Description("d")); 
             d →INI400_008141= ConcreteParam.GetEffectiveHeigthForShear(α↓ΜV←, 1); 
             →INI400_001169TEXT(Description("z")); 
-            z →INI400_008143= ConcreteParam.GetInnerArmForShear(α↓ΜV←, 1); 
+            z →INI400_008143= ROUND(ConcreteParam.GetInnerArmForShear(α↓ΜV←, 1), 0, "mm"); 
             
             →INI400_001138TEXT(Description("A↓c←")); 
             
@@ -534,7 +534,8 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0 &amp;&amp; COMPARE(V↓Ed←, 0, 6) == 0) {
                     Compression →INI400_013997= True; 
                     InclinedShearReinf →INI400_013998= ShearReinf.Angle != 90; 
                     Prestress →INI400_013999= False; 
-                    →INI400_013989Clause6xxClass.GetThetaMinMax(σ↓sd←, f↓yk←/γ↓S←, k↓1←, b↓w←, σ↓cp←, d, ShearReinf.ss, ShearReinf.Asw, z, f↓yk←/γ↓S←, σ↓ct←, f↓ctm←, V↓Ed←, N↓Ed←, f↓ck←, f↓cd←, σ↓cd←, ShearTens, Compression, InclinedShearReinf, Prestress, Result); 
+                    object ConMat →INI400_013720= CrossSection.GetMaterialForComponent(0); 
+                    →INI400_013989Clause6xxClass.GetThetaMinMax(σ↓sd←, f↓yk←/γ↓S←, k↓1←, b↓w←, σ↓cp←, d, ShearReinf.ss, ShearReinf.Asw, z, f↓yk←/γ↓S←, σ↓ct←, f↓ctm←, V↓Ed←, N↓Ed←, f↓ck←, f↓cd←, σ↓cd←, ConMat.fctk_05, Forces.N/A↓c←, ShearTens, Compression, InclinedShearReinf, Prestress, Result); 
                     θ↓min← →INI400_013990= Result.θ_min; 
                     θ↓max← →INI400_013991= Result.θ_max; 
                     cotθ↓max← →INI400_001103= cotg(θ↓max←); 
@@ -544,7 +545,6 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0 &amp;&amp; COMPARE(V↓Ed←, 0, 6) == 0) {
                 →INI400_006399BLOCK { //NA.2.46 Clause 6.2.2 Members not requiring design shear reinforcement, Paragraph(6)
                     →INI400_013723TEXT("Strength reduction factor for concrete cracked in shear - value ν"); 
                     object Result →INI400_013919= new Structure(); 
-                    object ConMat →INI400_013720= CrossSection.GetMaterialForComponent(0); 
                     →INI400_013918Clause6xxClass.GetNii(ConMat.fck, α↓cc←, 0, null, Result); 
                     ν →INI400_013920= Result.ν; 
                 } 
@@ -679,16 +679,6 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0 &amp;&amp; COMPARE(V↓Ed←, 0, 6) == 0) {
                         →INI400_001211TEXT(Description("k")); 
                         k →INI400_001212= MIN(1+[200/CUnit(d, "mm")]↑1/2←, 2) @REF("(§6.2.2(1))"); 
                         double ConstrType →INI400_013705= 1; 
-                        →INI400_013707BLOCK { //NA.2.45 Clause 6.2.2 Members not requiring design shear reinforcement, Paragraph(1)
-                            object Result →INI400_008501= new Structure(); 
-                            →INI400_006718TEXT("Other coefficients for calculation value V↓Rdc←"); 
-                            Beam →INI400_006380= True; 
-                            →INI400_013706Clause6xxClass.GetCrdc(ConstrType, d, f↓ck←, k, γ↓C←, Load, Beam, Result); 
-                            double C↓Rdc← →INI400_013702= Result.C_Rdc; 
-                            double v↓min← →INI400_013703= Result.v_min; 
-                            double k↓1← →INI400_013704= Result.k1; 
-                        } 
-                        //                         
                         →INI400_001215TEXT(Description("ρ↓1←")); 
                         ρ↓1← →INI400_001216= MIN(A↓sl←/(b↓w←*d), 0.02) @REF("(§6.2.2(1))"); 
                         →INI400_009235PAGEBREAK(); 
@@ -698,6 +688,16 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0 &amp;&amp; COMPARE(V↓Ed←, 0, 6) == 0) {
                         } ELSE { 
                             σ↓cp← →INI400_001218= MIN(-N↓Ed←/A↓c←, 0.2*f↓cd←) @REF("(§6.2.2(1))"); 
                         } 
+                        →INI400_013707BLOCK { //NA.2.45 Clause 6.2.2 Members not requiring design shear reinforcement, Paragraph(1)
+                            object Result →INI400_008501= new Structure(); 
+                            →INI400_006718TEXT("Other coefficients for calculation value V↓Rdc←"); 
+                            Beam →INI400_006380= True; 
+                            →INI400_013706Clause6xxClass.GetCrdc(ConstrType, d, f↓ck←, k, γ↓C←, d↓g←, Load, Beam, σ↓cp← &gt;= 0, Result); 
+                            double C↓Rdc← →INI400_013702= Result.C_Rdc; 
+                            double v↓min← →INI400_013703= Result.v_min; 
+                            double k↓1← →INI400_013704= Result.k1; 
+                        } 
+                        //  
                         →INI400_001221TEXT(Description("V↓Rdc←")); 
                         V↓Rdc← →INI400_001222= 10↑6←*[C↓Rdc←*k*[100*ρ↓1←*CUnit(f↓ck←, "MPa")]↑1/3←+k↓1←*CUnit(σ↓cp←, "MPa")]*b↓w←*d @REF("(6.2.a)"); 
                         V↓Rdcmin← →INI400_001223= 10↑6←*[v↓min←+k↓1←*CUnit(σ↓cp←, "MPa")]*b↓w←*d @REF("(6.2.b)"); 
@@ -11560,7 +11560,7 @@ IF(IO.IsDrawing) {
                   <P>ČSN EN 1991-2</P>
                   <P>ČSN EN 1991-3</P>
                   <P>ČSN EN 1991-4</P>
-                  <P>ČSN EN 1992-1-1</P>
+                  <P>ČSN EN 1992-1-1/NA: 2011-07</P>
                   <P>1</P>
                   <P>1</P>
                   <P>1.3</P>

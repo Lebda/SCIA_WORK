@@ -55,7 +55,7 @@ IF(InnerPol.Count &gt; 2) {
 IF(IO.Contains("REINF")) { 
     →INI400_012734GrfFunct.DrawReinf(G, Reinf, True); //Method for drawing longitudinal reinforcement bars
     IF(ShearReinf != null) { 
-        →INI400_012735GrfFunct.DrawStirrups(G, Outline, ShapeCSS, ShearReinf, PenStirrups, DrawStirrups); //Method for drawing stirrups
+        →INI400_012735GrfFunct.DrawStirrups(G, Outline, ShapeCSS, ShearReinf, Scale, DrawStirrups); //Method for drawing stirrups
     } 
 } 
 

@@ -351,7 +351,7 @@ IF(!IO.IsExternCLC) { //settings for table drawing
     
     // cross-section
     object ExternCreateCS →INI400_011701= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\CreateCs.clc"); 
-    object CrossSection →INI400_012847= ExternCreateCS.CreateCS_ULS(CssID, Forces, AccidentalULS); 
+    object CrossSection →INI400_012847= ExternCreateCS.CreateCS_ULS(CssID, Forces, AccidentalULS, false, true); 
     Shape →INI400_012794= CrossSection.GetOrigShape(); 
     ConMat →INI400_012795= CrossSection.GetMaterialForComponent(0); 
     sConcreteName →INI400_006960= ConMat.Name; 
@@ -1057,7 +1057,11 @@ IF(bStirrups || ReinfMat != null) {
                     ϕ↓m,min← →INI400_008659= Result.phi_m_min; 
                     
                     →INI400_008614TEXT(Description("UC↓8.3(2)←")); 
-                    UC↓8.3(2)← →INI400_008615= ϕ↓m,min←/ϕ↓m←; 
+                    IF(COMPARE(ϕ↓m←, 0, 3) == 1) { 
+                        UC↓8.3(2)← →INI400_008615= ϕ↓m,min←/ϕ↓m←; 
+                    } ELSE { 
+                        UC↓8.3(2)← →KRS116_000033= ErrorValue; 
+                    } 
                     IF(COMPARE(UC↓8.3(2)←, UC↓lim←, 3) == 1) { 
                         StatusStirrupDiameter →INI400_008624= 0; //NOT OK
                     } ELSE { 
@@ -1500,7 +1504,7 @@ IF(bStirrups || ReinfMat != null) {
                 →INI400_007084TEXT("A↓s← = " &amp; A↓s←); 
                 
                 object Result →INI400_008510= new Structure(); 
-                →INI400_007366FunctionDetailing.A↓s,min,col←(A↓c←, f↓yd←, N↓Ed←, Result); 
+                →INI400_007366FunctionDetailing.A↓s,min,col←(A↓c←, f↓yd←, N↓Ed←, f↓cd←, Result); 
                 double A↓s,min,col← →INI400_008512= Result.Asmincol; 
                 →INI400_008781TEXT(Description("μ↓lc←")); 
                 double μ↓lc← →INI400_008782= A↓s←/A↓c←; 
@@ -1760,7 +1764,8 @@ IF(bStirrups || ReinfMat != null) {
                         double h↓beam← →INI400_007129= h↓slab←; //for NF and DIN NA
                     } 
                     object Result →INI400_008485= new Structure(); 
-                    →INI400_007367FunctionDetailing.s↓l,max←(d↓v←, α↓s←, f↓ck←, h↓beam←, V↓Ed←, V↓Rd,c←, V↓Rd,max←, Result); 
+                    double h_carka →KRS116_000031= Functions1D_Geometrics.Get_h_carka(CssID, ForcesID, d↓v←); 
+                    →INI400_007367FunctionDetailing.s↓l,max←(d↓v←, α↓s←, f↓ck←, h↓beam←, V↓Ed←, V↓Rd,c←, V↓Rd,max←, h_carka, Result); 
                     double s↓l,max← →INI400_008487= Result.slmax; 
                     
                     →INI400_007538TEXT(Description("s↓l←")); 
@@ -1805,7 +1810,8 @@ IF(bStirrups || ReinfMat != null) {
                     double h↓beam← →INI400_008810= h↓slab←; //for NF and DIN NA
                 } 
                 object Result →INI400_008811= new Structure(); 
-                →INI400_008812FunctionDetailing.s↓l,max←(d↓v←, α↓s←, f↓ck←, h↓beam←, V↓Ed←, V↓Rd,c←, V↓Rd,max←, Result); 
+                double h_carka →KRS116_000032= Functions1D_Geometrics.Get_h_carka(CssID, ForcesID, d↓v←); 
+                →INI400_008812FunctionDetailing.s↓l,max←(d↓v←, α↓s←, f↓ck←, h↓beam←, V↓Ed←, V↓Rd,c←, V↓Rd,max←, h_carka, Result); 
                 double s↓l,max← →INI400_008813= Result.slmax; 
                 
                 object Result →INI400_008492= new Structure(); 
@@ -3877,6 +3883,13 @@ IF(bStirrups || ReinfMat != null) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
+      <Variable Modifier="Public" Name="h_carka" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="h↓beam←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -3892,7 +3905,7 @@ IF(bStirrups || ReinfMat != null) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="HEADER" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_HEADER">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -3973,7 +3986,7 @@ IF(bStirrups || ReinfMat != null) {
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="IsAutoCutsCalc" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_IsAutoCutsCalc">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -19172,6 +19185,30 @@ IF(bStirrups || ReinfMat != null) {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000031">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000032">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000033">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS127_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

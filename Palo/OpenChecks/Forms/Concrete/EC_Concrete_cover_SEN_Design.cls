@@ -64,7 +64,7 @@ IF(CssConditions.ConditionsForCss) {
     →INI400_005944TEXT("Concrete cover"); 
     //general data
     bool bDifferentSurfaces →INI400_005954= IO.MemberData.Concrete.Solver.General.MinCover.DifferentSurfaces; 
-    double DesignWorkingLife →INI400_006668= IO.MemberData.Concrete.Solver.General.MinCover.DesignWorkingLife; 
+    double DesignWorkingLife →INI400_006668= IO.MemberData.Concrete.Solver.General.MinCover.DesignWorkingLife/365; 
     double ConstructionClass1 →INI400_011540= IO.MemberData.Concrete.Solver.General.MinCover.ConstructionClass; // True - construction class 1 is used (RakMK B4) - only SFS
     double CemType →INI400_011541= 1; // add IO.CS.Material.EC.CementType;
     double vtc↓ekv← →INI400_011542= 1; //// IO.CS.Material.EC.vtc_ekv; - water ratio, only for SS, 0 - 1;
@@ -155,7 +155,9 @@ IF(CssConditions.ConditionsForCss) {
         double ChloridesSeaLower →INI400_005957= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.ChloridesSea; 
         double FreezeThawLower →INI400_005958= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.FreezeThaw; 
         double ChemicalLower →INI400_005959= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Chemical; 
-        
+        IF(IO.SetupNA.EC_NA.Code == "NS") { 
+            double StrongChemical →KRS116_000001= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.StrongChemical; 
+        } 
         double GeometricControlLower →INI400_006672= IO.MemberData.Concrete.Solver.General.MinCover.Lower.SpecialControl.Geometric; 
         double QualityControlLower →INI400_006673= IO.MemberData.Concrete.Solver.General.MinCover.Lower.SpecialControl.Quality; 
         double SurfaceTypeLower →INI400_006924= IO.MemberData.Concrete.Solver.General.MinCover.Lower.SurfaceType; 
@@ -170,7 +172,9 @@ IF(CssConditions.ConditionsForCss) {
             double ChloridesSeaUpper →INI400_005962= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.ChloridesSea; 
             double FreezeThawUpper →INI400_005963= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.FreezeThaw; 
             double ChemicalUpper →INI400_005964= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Chemical; 
-            
+            IF(IO.SetupNA.EC_NA.Code == "NS") { 
+                double StrongChemical →KRS116_000002= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.StrongChemical; 
+            } 
             double GeometricControlUpper →INI400_006678= IO.MemberData.Concrete.Solver.General.MinCover.Upper.SpecialControl.Geometric; 
             double QualityControlUpper →INI400_006679= IO.MemberData.Concrete.Solver.General.MinCover.Upper.SpecialControl.Quality; 
             double SurfaceTypeUpper →INI400_006680= IO.MemberData.Concrete.Solver.General.MinCover.Upper.SurfaceType; 
@@ -186,7 +190,9 @@ IF(CssConditions.ConditionsForCss) {
         double ChloridesSeaMain →INI400_005967= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.ChloridesSea; 
         double FreezeThawMain →INI400_005968= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.FreezeThaw; 
         double ChemicalMain →INI400_005969= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Chemical; 
-        
+        IF(IO.SetupNA.EC_NA.Code == "NS") { 
+            double StrongChemical →KRS116_000003= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.StrongChemical; 
+        } 
         double GeometricControlMain →INI400_006687= IO.MemberData.Concrete.Solver.General.MinCover.Main.SpecialControl.Geometric; 
         double QualityControlMain →INI400_006688= IO.MemberData.Concrete.Solver.General.MinCover.Main.SpecialControl.Quality; 
         double SurfaceTypeMain →INI400_006689= IO.MemberData.Concrete.Solver.General.MinCover.Main.SurfaceType; 
@@ -342,16 +348,16 @@ IF(CssConditions.ConditionsForCss) {
                 
                 //output values
                 //forces
-                double c↓nom,l← →INI400_011591= Output.c_nom; 
+                double c↓nom,u← →INI400_011591= Output.c_nom; 
                 
-                double c↓min,l← →INI400_011592= Output.c_min; 
-                double Δc↓dev,l← →INI400_011593= Output.Δc_dev; 
+                double c↓min,u← →INI400_011592= Output.c_min; 
+                double Δc↓dev,u← →INI400_011593= Output.Δc_dev; 
                 
-                double c↓min,b,l← →INI400_011594= Output.c_min_b; 
-                double c↓min,dur,l← →INI400_011595= Output.c_min_dur; 
-                double Δc↓dur,st,l← →INI400_011596= Output.Δc_dur_st; 
-                double Δc↓dur,add,l← →INI400_011597= Output.Δc_dur_add; 
-                double Δc↓dur,γ,l← →INI400_011598= Output.Δc_dur_γ; 
+                double c↓min,b,u← →INI400_011594= Output.c_min_b; 
+                double c↓min,dur,u← →INI400_011595= Output.c_min_dur; 
+                double Δc↓dur,st,u← →INI400_011596= Output.Δc_dur_st; 
+                double Δc↓dur,add,u← →INI400_011597= Output.Δc_dur_add; 
+                double Δc↓dur,γ,u← →INI400_011598= Output.Δc_dur_γ; 
                 
                 //output values
                 //forces
@@ -1136,6 +1142,13 @@ IF(CssConditions.ConditionsForCss) {
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
+      </Variable>
+      <Variable Modifier="Public" Name="StrongChemical" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_StrongChemical">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Structure" ESA_ID="" Type="String">
         <Description>
@@ -3666,12 +3679,36 @@ IF(CssConditions.ConditionsForCss) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS116_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
   <Dialog>
     <Main Width="500">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.84|0|3" Active="1" PreDef="0" MemberDirectory="D:\_PROJECTS\17.0\improvements\EMD_po\Beam.1" MemberID="Beam.1" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.84|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.1" SectionID="-1" CombiID="-1" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />

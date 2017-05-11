@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="4c9c5d2f-65bc-4e1b-b8f4-6e1da4be7670">
   <CodeEditor>
-    <SourceCode Collapsed="23|77" BreakPoints="">bool ValidateInput(object Input) { 
+    <SourceCode Collapsed="23|78" BreakPoints="">bool ValidateInput(object Input) { 
     A↓c← →INI400_000007= Input.Get("A_c"); //Area of concrete Css
     Bridge →INI400_006029= Input.Get("Bridge"); //True - Construction is bridge type, False - Normal construction
 
@@ -55,6 +55,7 @@ private void CalcScriptFor1D(out double A↓s,max←) {
         //    CASE "IS": { } 
         //    CASE "LU": { } 
         //    CASE "MAL": { } 
+        //    CASE "NS": { } 
         //    CASE "PN": { } 
         //    CASE "SR": { } 
         //    CASE "SIG": { } 
@@ -107,7 +108,8 @@ private void CalcScriptFor2D(out double A↓s,max←) {
         //    CASE "UNI": { } 
         //    CASE "IS": { } 
         //    CASE "LU": { } 
-        //    CASE "MAL": { } 
+        //    CASE "MAL": { }
+        //    CASE "NS": { }  
         //    CASE "PN": { } 
         //    CASE "SR": { } 
         //    CASE "SIG": { } 

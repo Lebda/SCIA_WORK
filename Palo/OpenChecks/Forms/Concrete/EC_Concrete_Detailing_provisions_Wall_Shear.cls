@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="35600871-897d-4247-8041-40c0c7f13454">
   <CodeEditor>
-    <SourceCode Collapsed="0|13|17|23|44|51|75|85|93|101|106|111|137|161|194|215" BreakPoints="">bool ValidateInput(object Input) { 
+    <SourceCode Collapsed="0|13|17|23|44|51|75|85|93|101|106|111|137|163|196|217" BreakPoints="">bool ValidateInput(object Input) { 
     h →INI400_016237= Input.Get("h"); 
     b →KRS116_000076= Input.Get("b"); 
     DesignDefaults →INI400_014800= Input.Get("DesignDefaults"); 
@@ -143,13 +143,15 @@ private void CalcWallMaxSpacingShearLinks() {
     double&lt;mm,0&gt; ϕ →INI400_013711= DesignDefaults.ReinfShear.d; 
     double π →INI400_013712= Math.PI; 
     double&lt;mm↑2←/m,0&gt; A↓swm,sp,min← →INI400_013713= 0; 
+    double&lt;mm↑2←,0&gt; A↓sl← →KRS116_000097= SumVerticalReinf(); 
+    double&lt;mm↑2←,0&gt; A↓c← →KRS116_000099= b*h; 
     →KRS116_000087bool bCheckWallShearReinf; 
     //
     →INI400_013714BLOCK("Minimal area of transverse reinforcement from maximum spacing of links 9.6.4(1)") { 
         →INI400_013773TestIfCheckWallMaxSpacingShearLinks(out bCheckWallShearReinf); 
         IF(bCheckWallShearReinf) { 
             object Result →INI400_013715= new Structure(); 
-            →INI400_013716FunctionDetailing.s↓wl,max←(h, ϕ↓l←, object Result); 
+            →INI400_013716FunctionDetailing.s↓wl,max←(h, ϕ↓l←, A↓sl←, A↓c←, object Result); 
             double s↓wl,max← →INI400_013717= Result.swlmax; 
             →INI400_013718TEXT("Minimal area of transverse reinforcement"); 
             A↓swm,sp,min← →INI400_013719= (1/s↓wl,max←)*π*(ϕ↑2←/4); 
@@ -1167,6 +1169,30 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000097">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="20" />
+      </VC>
+      <VC ID="KRS116_000098">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000099">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="20" />
       </VC>
       <VC ID="PAI316_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

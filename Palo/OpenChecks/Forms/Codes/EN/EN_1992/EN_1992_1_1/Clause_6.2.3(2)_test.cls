@@ -30,6 +30,8 @@ string Item →INI400_006873= IO.SetupNA.Item;
     →INI400_008548Input.Add("σ_cd", σ↓cd←); 
     →INI400_008549Input.Add("InclinedShearReinf", isInclinedShearReinf); 
     →INI400_008550Input.Add("Prestress", Prestress); 
+    →KRS116_000001Input.Add("σ_t", σ↓t←); 
+    →KRS116_000002Input.Add("f_ctk005", f↓ctk,0.05←); 
     
     object Output →INI400_006878= new Structure(); 
     
@@ -217,6 +219,13 @@ string Item →INI400_006873= IO.SetupNA.Item;
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
+      <Variable Modifier="Public" Name="f↓ctk,0.05←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_f↓ctk,0.05←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
+      </Variable>
       <Variable Modifier="Public" Name="f↓ctm←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -376,6 +385,13 @@ string Item →INI400_006873= IO.SetupNA.Item;
       </Variable>
       <Variable Modifier="Public" Name="σ↓sd←" ESA_ID="" Type="Double" Precision="2">
         <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
+      </Variable>
+      <Variable Modifier="Public" Name="σ↓t←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_σ↓t←">
           <ENU>
           </ENU>
         </Description>
@@ -666,6 +682,22 @@ string Item →INI400_006873= IO.SetupNA.Item;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS116_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS316_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -683,7 +715,7 @@ string Item →INI400_006873= IO.SetupNA.Item;
         <Texts>
           <ENU>National Annex</ENU>
         </Texts>
-        <TCustomLibrary Name="" ID="39" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="SetupNA" DataFile="EC_NA.xml" Collapsed="True" UseCombo="True" Category="Eurocode NA" Item="German DIN-EN">
+        <TCustomLibrary Name="" ID="39" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="SetupNA" DataFile="EC_NA.xml" Collapsed="True" UseCombo="True" Category="Eurocode NA" Item="Norwegian NS-EN">
           <Data>
             <Header>
               <PropertySet Symbol="Code" ESA_ID="EC_NA.Code" Unit="" Type="String" />
@@ -1208,36 +1240,36 @@ string Item →INI400_006873= IO.SetupNA.Item;
             <Items>
               <Item>
                 <P>Eurocode NA</P>
-                <P>German DIN-EN</P>
-                <P>DIN</P>
-                <P>8</P>
-                <P>DIN EN 1990</P>
-                <P>DIN EN 1991-1-1</P>
-                <P>DIN EN 1991-1-2</P>
-                <P>DIN EN 1991-1-3</P>
+                <P>Norwegian NS-EN</P>
+                <P>NS</P>
+                <P>21</P>
+                <P>NS EN 1990</P>
+                <P>NS EN 1991-1-1</P>
+                <P>NS EN 1991-1-2</P>
+                <P>NS EN 1991-1-3</P>
                 <P>0</P>
                 <P>NaN</P>
                 <P>True;2;</P>
                 <P>NaN</P>
-                <P>1.0</P>
+                <P>NaN</P>
                 <P>1.0</P>
                 <P>NaN</P>
-                <P>False</P>
-                <P>NaN</P>
+                <P>True</P>
+                <P>1.6</P>
                 <P>2.0</P>
                 <P>NaN</P>
-                <P>NaN;NaN;5;15;</P>
-                <P>False</P>
-                <P>False</P>
+                <P>0.8;4;5;15;</P>
+                <P>True</P>
+                <P>True</P>
                 <P>True</P>
                 <P>NaN</P>
-                <P>DIN EN 1991-1-4</P>
+                <P>NS EN 1991-1-4</P>
                 <P>NaN</P>
                 <P>NaN</P>
                 <P>1</P>
                 <P>1</P>
-                <P>0.1;0.5;</P>
-                <P>True</P>
+                <P>0.2;0.5;</P>
+                <P>False</P>
                 <P>NaN</P>
                 <P>True;1;</P>
                 <P>True</P>
@@ -1248,68 +1280,68 @@ string Item →INI400_006873= IO.SetupNA.Item;
                 <P>False</P>
                 <P>True</P>
                 <P>NaN</P>
-                <P>DIN EN 1991-1-5</P>
-                <P>DIN EN 1991-1-6</P>
-                <P>DIN EN 1991-1-7</P>
-                <P>DIN EN 1991-2</P>
-                <P>DIN EN 1991-3</P>
-                <P>DIN EN 1991-4</P>
-                <P>DIN EN 1992-1-1</P>
+                <P>NS EN 1991-1-5</P>
+                <P>NS EN 1991-1-6</P>
+                <P>NS EN 1991-1-7</P>
+                <P>NS EN 1991-2</P>
+                <P>NS EN 1991-3</P>
+                <P>NS EN 1991-4</P>
+                <P>NS EN 1992-1-1:2004/NA:2008-11</P>
                 <P>1</P>
-                <P>1</P>
+                <P>0.9</P>
                 <P>1.3</P>
-                <P>1.35</P>
-                <P>1.5;1.15;1.3;1.2;1.0;1.0;</P>
+                <P>1.2</P>
+                <P>1.5;1.15;1.15;1.2;1.0;1.0;</P>
                 <P>1;1;</P>
-                <P>100</P>
+                <P>NaN</P>
                 <P>NaN</P>
                 <P>0.85</P>
                 <P>0.85</P>
-                <P>500</P>
-                <P>NaN</P>
+                <P>600</P>
+                <P>0.4</P>
                 <P>1.1</P>
-                <P>0.9;NaN;0.9;</P>
-                <P>2.5;3;</P>
-                <P>NaN</P>
+                <P>0.4;0.01;0.9;</P>
+                <P>1.5;2.5;</P>
                 <P>0</P>
-                <P>NaN</P>
-                <P>5;10;15;</P>
+                <P>0</P>
+                <P>0</P>
+                <P>0;0;0;</P>
                 <P>10</P>
-                <P>5;5;10;</P>
-                <P>20;50;5;</P>
+                <P>5;10;NaN;</P>
+                <P>40;75;5;</P>
+                <P>0.005</P>
+                <P>0.44;NaN;0.54;NaN;0.7;0.9;</P>
                 <P>NaN</P>
-                <P>0.64;0.8;0.72;0.8;NaN;NaN;</P>
-                <P>NaN</P>
-                <P>1.5</P>
+                <P>1.2</P>
                 <P>0.8;0.9;</P>
-                <P>NaN</P>
+                <P>0.95</P>
                 <P>50;30;</P>
                 <P>0.7</P>
                 <P>0.75;0.85;</P>
                 <P>1.05;0.95;1.1;0.9;1;1;</P>
-                <P>NaN;NaN;0.12;</P>
+                <P>NaN;NaN;NaN;</P>
                 <P>NaN</P>
-                <P>NaN;NaN;</P>
+                <P>0.380482;0.785398;</P>
                 <P>NaN;NaN;</P>
                 <P>26.5;45;38.6;45;</P>
                 <P>0.4</P>
                 <P>1.15;1.4;1.5;</P>
-                <P>NaN;NaN;0.1;</P>
+                <P>NaN;NaN;NaN;</P>
                 <P>NaN</P>
                 <P>NaN</P>
-                <P>1.1;0.75;</P>
+                <P>1;0.85;</P>
                 <P>0.6</P>
                 <P>0.45</P>
-                <P>0.8;1;0.65;</P>
-                <P>0.4;0.3;0.3;0.2;0.2;0.2;</P>
-                <P>NaN;NaN;</P>
-                <P>1;NaN;</P>
+                <P>0.8;1;0.75;</P>
+                <P>NaN;NaN;NaN;NaN;NaN;NaN;</P>
+                <P>3.4;0.425;</P>
+                <P>NaN;5;</P>
                 <P>NaN</P>
                 <P>NaN</P>
                 <P>32</P>
                 <P>NaN</P>
                 <P>NaN</P>
-                <P>0.25</P>
+                <P>0.15</P>
                 <P>0.25</P>
                 <P>0.5</P>
                 <P>NaN</P>
@@ -1317,7 +1349,7 @@ string Item →INI400_006873= IO.SetupNA.Item;
                 <P>NaN</P>
                 <P>NaN</P>
                 <P>NaN</P>
-                <P>12</P>
+                <P>10</P>
                 <P>NaN</P>
                 <P>NaN</P>
                 <P>NaN</P>
@@ -1325,56 +1357,56 @@ string Item →INI400_006873= IO.SetupNA.Item;
                 <P>NaN</P>
                 <P>NaN</P>
                 <P>8</P>
-                <P>NaN</P>
+                <P>8</P>
                 <P>8</P>
                 <P>10</P>
-                <P>5;NaN;</P>
+                <P>5;8;</P>
                 <P>600;NaN;</P>
                 <P>0.8;0.8;</P>
-                <P>NaN</P>
+                <P>1.5</P>
                 <P>0.25</P>
                 <P>0.5</P>
-                <P>DIN EN 1992-1-2</P>
-                <P>DIN EN 1992-2</P>
-                <P>DIN EN 1992-3</P>
-                <P>DIN EN 1993-1-1</P>
+                <P>NS EN 1992-1-2:2004/NA:2010</P>
+                <P>NS EN 1992-2</P>
+                <P>NS EN 1992-3</P>
+                <P>NS EN 1993-1-1</P>
                 <P>NaN;NaN;</P>
-                <P>1;1.1;1.25;</P>
-                <P>DIN EN 1993-1-2</P>
-                <P>DIN EN 1993-1-3</P>
-                <P>DIN EN 1993-1-4</P>
-                <P>DIN EN 1993-1-5</P>
+                <P>1;1;1.25;</P>
+                <P>NS EN 1993-1-2</P>
+                <P>NS EN 1993-1-3</P>
+                <P>NS EN 1993-1-4</P>
+                <P>NS EN 1993-1-5</P>
                 <P>1.20;1.00;</P>
-                <P>DIN EN 1993-1-6</P>
-                <P>DIN EN 1993-1-7</P>
-                <P>DIN EN 1993-1-8</P>
+                <P>NS EN 1993-1-6</P>
+                <P>NS EN 1993-1-7</P>
+                <P>NS EN 1993-1-8</P>
                 <P>1.25;1.25;1.1;1.0;1.0;1.0;1.1;</P>
-                <P>DIN EN 1993-1-9</P>
-                <P>DIN EN 1993-1-10</P>
-                <P>DIN EN 1993-1-11</P>
-                <P>DIN EN 1993-1-12</P>
-                <P>DIN EN 1993-2</P>
+                <P>NS EN 1993-1-9</P>
+                <P>NS EN 1993-1-10</P>
+                <P>NS EN 1993-1-11</P>
+                <P>NS EN 1993-1-12</P>
+                <P>NS EN 1993-2</P>
                 <P>1.0;1.1;1.25;1.25;1.1;1.1;1.1;1.0;1.1;</P>
-                <P>DIN EN 1993-3-1</P>
-                <P>DIN EN 1993-3-2</P>
-                <P>DIN EN 1993-4-1</P>
-                <P>DIN EN 1993-4-2</P>
-                <P>DIN EN 1993-4-3</P>
-                <P>DIN EN 1993-5</P>
-                <P>DIN EN 1993-6</P>
-                <P>DIN EN 1994-1-1</P>
-                <P>1;1.1;</P>
+                <P>NS EN 1993-3-1</P>
+                <P>NS EN 1993-3-2</P>
+                <P>NS EN 1993-4-1</P>
+                <P>NS EN 1993-4-2</P>
+                <P>NS EN 1993-4-3</P>
+                <P>NS EN 1993-5</P>
+                <P>NS EN 1993-6</P>
+                <P>NS EN 1994-1-1</P>
+                <P>1;1;</P>
                 <P>1.25</P>
                 <P>1.25</P>
-                <P>1.25</P>
+                <P>1</P>
                 <P>0.000325;0.000500;0.000200;0.000300;</P>
                 <P>0.70</P>
                 <P>NaN</P>
-                <P>1.25;1.5;</P>
+                <P>1.25;1.25;</P>
                 <P>NaN</P>
                 <P>NaN</P>
                 <P>1.0</P>
-                <P>NaN</P>
+                <P>1.0</P>
                 <P>0.6</P>
                 <P>180</P>
                 <P>1.25</P>
@@ -1382,14 +1414,14 @@ string Item →INI400_006873= IO.SetupNA.Item;
                 <P>0.5</P>
                 <P>1.25</P>
                 <P>1.25</P>
-                <P>DIN EN 1994-1-2</P>
-                <P>DIN EN 1994-2</P>
-                <P>DIN EN 1995-1-1</P>
+                <P>NS EN 1994-1-2</P>
+                <P>NS EN 1994-2</P>
+                <P>NS EN 1995-1-1</P>
                 <P>NaN</P>
-                <P>NaN;NaN;NaN;</P>
-                <P>DIN EN 1995-1-2</P>
-                <P>DIN EN 1995-2</P>
-                <P>DIN EN 1996-1-1</P>
+                <P>0.67;0.67;1.0;</P>
+                <P>NS EN 1995-1-2</P>
+                <P>NS EN 1995-2</P>
+                <P>NS EN 1996-1-1</P>
                 <P>NaN</P>
                 <P>1</P>
                 <P>NaN</P>
@@ -1397,27 +1429,27 @@ string Item →INI400_006873= IO.SetupNA.Item;
                 <P>1000</P>
                 <P>NaN;NaN;NaN;</P>
                 <P>NaN</P>
-                <P>DIN EN 1996-1-2</P>
-                <P>DIN EN 1996-2</P>
-                <P>DIN EN 1996-3</P>
-                <P>DIN EN 1997-1</P>
+                <P>NS EN 1996-1-2</P>
+                <P>NS EN 1996-2</P>
+                <P>NS EN 1996-3</P>
+                <P>NS EN 1997-1</P>
                 <P>1.1;0.9;1.5;0;</P>
                 <P>1.25;1.25;1.4;1.4;1.0;</P>
                 <P>1.35;1;1.5;0;1;1;1.3;0;</P>
                 <P>1;1;1;1;1;1.25;1.25;1.4;1.4;1;</P>
                 <P>1;1;1.4;1.1;1;1;</P>
-                <P>DIN EN 1997-2</P>
-                <P>DIN EN 1998-1</P>
-                <P>DIN EN 1998-2</P>
-                <P>DIN EN 1998-3</P>
-                <P>DIN EN 1998-4</P>
-                <P>DIN EN 1998-5</P>
-                <P>DIN EN 1998-6</P>
-                <P>DIN EN 1999-1-1</P>
-                <P>DIN EN 1999-1-2</P>
-                <P>DIN EN 1999-1-3</P>
-                <P>DIN EN 1999-1-4</P>
-                <P>DIN EN 1999-1-5</P>
+                <P>NS EN 1997-2</P>
+                <P>NS EN 1998-1</P>
+                <P>NS EN 1998-2</P>
+                <P>NS EN 1998-3</P>
+                <P>NS EN 1998-4</P>
+                <P>NS EN 1998-5</P>
+                <P>NS EN 1998-6</P>
+                <P>NS EN 1999-1-1</P>
+                <P>NS EN 1999-1-2</P>
+                <P>NS EN 1999-1-3</P>
+                <P>NS EN 1999-1-4</P>
+                <P>NS EN 1999-1-5</P>
               </Item>
             </Items>
           </Data>

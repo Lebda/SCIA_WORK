@@ -1009,6 +1009,11 @@ IF(CssConditions.ConditionsForCss) {
           </ENU>
         </Names>
       </ResultTable>
+      <ResultTable Visible="0" Vars="δ↓lin,y←|0|1;δ↓lin,z←|1|1">
+        <Names TranslateID="ResultGroup_3D values">
+          <ENU>3D values</ENU>
+        </Names>
+      </ResultTable>
     </ResultTables>
     <ResultGroups />
     <Layouts>

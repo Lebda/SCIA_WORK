@@ -184,7 +184,7 @@ IF(!IO.IsExternCLC) {
     σ↓ct← →INI400_013878= concrete.StressStrain.GetExtremeStressOfConcreteMax(CssID, ForcesID); 
     σ↓cd← →INI400_013879= Concrete.StressStrain.GetExtremeStressOfConcreteMin(CssID, ForcesID); 
     object Result →INI400_013923= new Structure(); 
-    →INI400_013924Clause6xxClass.GetThetaMinMax(σ↓sd←, ReinfMat.fyk/γ↓S←, k↓1←, b↓w←, σ↓cp←, d, ShearReinf.ss, ShearReinf.Asw, z, ShearReinf.fyk/γ↓S←, σ↓ct←, ConMat.fctm, V↓Ed←, Forces.N, ConMat.fck, f↓cd←, σ↓cd←, False, True, ShearReinf.Angle != 90, False, Result); 
+    →INI400_013924Clause6xxClass.GetThetaMinMax(σ↓sd←, ReinfMat.fyk/γ↓S←, k↓1←, b↓w←, σ↓cp←, d, ShearReinf.ss, ShearReinf.Asw, z, ShearReinf.fyk/γ↓S←, σ↓ct←, ConMat.fctm, V↓Ed←, Forces.N, ConMat.fck, f↓cd←, σ↓cd←, ConMat.fctk_05, Forces.N/A↓c←, False, True, ShearReinf.Angle != 90, False, Result); 
     θ↓min← →INI400_013880= Result.θ_min; 
     θ↓max← →INI400_013881= Result.θ_max; 
     
@@ -3436,7 +3436,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
                   <P>EC EN 1991-2</P>
                   <P>EC EN 1991-3</P>
                   <P>EC EN 1991-4</P>
-                  <P>EC EN 1992-1-1</P>
+                  <P>EC EN 1992-1-1:2004/AC:2008</P>
                   <P>1</P>
                   <P>1</P>
                   <P>1.3</P>

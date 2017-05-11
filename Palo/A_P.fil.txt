@@ -1212,7 +1212,6 @@ r:\A\Src\Kernel\EP_StopWatches\EP_StopWatchLock.cpp
 r:\A\Src\Kernel\EP_StopWatches\EP_StopWatchProvider.cpp
 r:\A\Src\Tra\BCGCBPro\BCGCBPro.14.00.vcxproj
 r:\A\Src\Tra\BCGCBPro\BCGCBPro.14.00.vcxproj.filters
-r:\A\Src\Tra\BCGCBPro\BCGCBPro.14.00.sln
 r:\A\Src\Tra\BCGCBPro\BCGCBPro.rc
 r:\A\Src\Tra\BCGCBPro\BCGCBPro.def
 r:\A\Src\Tra\BCGCBPro\StdAfx.h
@@ -4324,12 +4323,6 @@ r:\A\inc\DefSupport.h
 r:\A\Src\Tra\Protection\DefSupport\ExtProtBaseSimple.h
 r:\A\inc\InstalledModule.h
 r:\A\inc\InstalledModule_AUTOUSE.h
-r:\A\inc\lm_code2.h
-r:\A\inc\lm_cro.h
-r:\A\inc\lm_trl.h
-r:\A\inc\lmhostid.h
-r:\A\inc\lmprikey.h
-r:\A\inc\lmseeds.h
 r:\A\inc\version_dependent.h
 r:\A\inc\version_hotfix.h
 r:\A\inc\version_info.h
@@ -4352,15 +4345,9 @@ r:\A\inc\DefenderExt.h
 r:\A\inc\DefenderGlobals.h
 r:\A\inc\EP_ConvLPSTR.h
 r:\A\inc\KeyTest.h
-r:\A\inc\LM_ATTR.H
-r:\A\inc\LM_CODE.H
-r:\A\inc\LMCLIENT.H
-r:\A\inc\LMPOLICY.H
-r:\A\inc\LS_ATTR.H
 r:\A\inc\RedirectProt.h
 r:\A\Src\Tra\Protection\Defender\RESOURCE.H
 r:\A\inc\simplepro.h
-r:\A\inc\SPROMEPS.H
 r:\A\Src\Tra\Protection\DefSupport\inlinedasm.asm
 r:\A\Src\Tra\Protection\DefSupport\inlinedasm64.asm
 r:\A\Src\Lat\ComponentCmds\EP_ComponentCmdsLibBase\EP_ComponentCmdsLibBase.14.00.vcxproj
@@ -5907,6 +5894,7 @@ r:\A\Src\LOK\GRAPHIC\EP_Graphic\__AutoGenerTLH.cpp
 r:\A\Src\LOK\GRAPHIC\EP_Graphic\EP_Graphic.idl
 r:\A\Src\LOK\GRAPHIC\EP_Graphic\EP_Graphic.rc
 r:\A\Src\LOK\GRAPHIC\EP_Graphic\EP_Graphic.def
+r:\A\Src\LOK\GRAPHIC\EP_Graphic\EP_GraphicResults0D.h
 r:\A\Src\LOK\GRAPHIC\EP_Graphic\StdAfx.h
 r:\A\Src\LOK\GRAPHIC\EP_Graphic\AutoCADConvertor.h
 r:\A\Src\LOK\GRAPHIC\EP_Graphic\AutoCADConvertorDlg.h
@@ -6101,6 +6089,7 @@ r:\A\Src\LOK\GRAPHIC\EP_Graphic\WorkingPlane.h
 r:\A\Src\LOK\GRAPHIC\EP_Objects\XFont.h
 r:\A\Src\LOK\GRAPHIC\EP_Graphic\glext.h
 r:\A\Src\LOK\GRAPHIC\EP_Graphic\wglext.h
+r:\A\Src\LOK\GRAPHIC\EP_Graphic\EP_GraphicResults0D.cpp
 r:\A\Src\LOK\GRAPHIC\EP_Graphic\StdAfx.cpp
 r:\A\Src\LOK\GRAPHIC\EP_Graphic\AutoCADConvertor.cpp
 r:\A\Src\LOK\GRAPHIC\EP_Graphic\AutoCADConvertorDlg.cpp
@@ -6363,6 +6352,7 @@ r:\A\Src\LOK\GRAPHIC\EP_Graphic\EP_Font.rgs
 r:\A\Src\LOK\GRAPHIC\EP_Graphic\EP_GraphicLayerBasic.rgs
 r:\A\Src\LOK\GRAPHIC\EP_Graphic\EP_GraphicParameters.rgs
 r:\A\Src\LOK\GRAPHIC\EP_Graphic\EP_GraphicProperties.rgs
+r:\A\Src\LOK\GRAPHIC\EP_Graphic\EP_GraphicResults0D.rgs
 r:\A\Src\LOK\GRAPHIC\EP_Graphic\EP_GraphicResults1D.rgs
 r:\A\Src\LOK\GRAPHIC\EP_Graphic\EP_GraphicResults1DStyle.rgs
 r:\A\Src\LOK\GRAPHIC\EP_Graphic\EP_GraphicResults1DStyles.rgs
@@ -6669,6 +6659,7 @@ r:\A\Src\CHA\GeomSpace\EP_GSBasic\FilletArc.h
 r:\A\Src\CHA\GeomSpace\EP_GSBasic\GSHook.h
 r:\A\Src\CHA\GeomSpace\EP_GSBasic\GSHookLong.h
 r:\A\Src\CHA\GeomSpace\EP_GSBasic\Offset.h
+r:\A\Src\CHA\GeomSpace\EP_GSBasic\EP_GSElement.cpp
 r:\A\Src\CHA\GeomSpace\EP_GSBasic\StdAfx.cpp
 r:\A\Src\CHA\GeomSpace\EP_GSBasic\CIC_ComArchiveGSImpl.cpp
 r:\A\Src\CHA\GeomSpace\EP_GSBasic\DrawApprox.cpp
@@ -10731,6 +10722,10 @@ r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentRendering.idl
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentRendering.rc
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentRendering.def
 r:\A\Src\LOK\X64Document\X64DocumentRendering\EP_Information3D.h
+r:\A\Src\LOK\X64Document\X64DocumentRendering\EP_X64DesignFormsMathematicalFormula.h
+r:\A\Src\LOK\X64Document\X64DocumentRendering\EP_X64ExcelData.h
+r:\A\Src\LOK\X64Document\X64DocumentRendering\ExcelDataDlg.h
+r:\A\Src\LOK\X64Document\X64DocumentRendering\MSOfficeTools.h
 r:\A\Src\LOK\X64Document\X64DocumentRendering\StdAfx.h
 r:\A\Inc\EP_EnhMetaFile.h
 r:\A\inc\X64DocumentRenderingExp.h
@@ -10765,6 +10760,7 @@ r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_ContentsRow.h
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_DDS.h
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_DFForm.h
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_Document.h
+r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_Excel.h
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_ExternalPDF.h
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_ExternalPicture_Metafile.h
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_External_Text.h
@@ -10776,6 +10772,7 @@ r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_IPFileBlock.h
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_IPFileData.h
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_IPicture.h
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_Long.h
+r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_MathematicalFormula.h
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_PageBreak.h
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_PageFrame.h
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_PageHeaderFooter.h
@@ -10803,6 +10800,7 @@ r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_TPScale.h
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_Watermark.h
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentRendering_GUID.h
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentSetup.h
+r:\A\Src\LOK\X64Document\X64DocumentRendering\X64ExcelData.h
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64ExportSetup.h
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64ExportSetupEnum.h
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64FlagsStyle.h
@@ -10921,6 +10919,10 @@ r:\A\Src\LOK\X64Document\X64DocumentRendering\PDFCreatorPilot.h
 r:\A\Src\LOK\X64Document\X64DocumentRendering\pdftypes.h
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64EMFInfoDlg.h
 r:\A\Src\LOK\X64Document\X64DocumentRendering\EP_Information3D.cpp
+r:\A\Src\LOK\X64Document\X64DocumentRendering\EP_X64DesignFormsMathematicalFormula.cpp
+r:\A\Src\LOK\X64Document\X64DocumentRendering\EP_X64ExcelData.cpp
+r:\A\Src\LOK\X64Document\X64DocumentRendering\ExcelDataDlg.cpp
+r:\A\Src\LOK\X64Document\X64DocumentRendering\MSOfficeTools.cpp
 r:\A\Src\LOK\X64Document\X64DocumentRendering\StdAfx.cpp
 r:\A\Src\LOK\X64Document\X64DocumentRendering\EP_ExportPDF.cpp
 r:\A\Src\LOK\X64Document\X64DocumentRendering\EP_IPFile.cpp
@@ -10944,6 +10946,7 @@ r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_ContentsRow.cpp
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_DDS.cpp
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_DFForm.cpp
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_Document.cpp
+r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_Excel.cpp
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_ExternalPDF.cpp
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_ExternalPicture_Metafile.cpp
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_FormattedText.cpp
@@ -10953,6 +10956,7 @@ r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_Icon.cpp
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_IPFileBlock.cpp
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_IPFileData.cpp
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_IPicture.cpp
+r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_MathematicalFormula.cpp
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_PageFrame.cpp
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_PageHeaderFooter.cpp
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_Repository.cpp
@@ -10991,6 +10995,7 @@ r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_Picture_2D.cpp
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentItem_Picture_3D.cpp
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentSetup.cpp
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64Document_Structures.cpp
+r:\A\Src\LOK\X64Document\X64DocumentRendering\X64ExcelData.cpp
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64ExportSetup.cpp
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64FlagsStyle.cpp
 r:\A\Src\LOK\X64Document\X64DocumentRendering\X64Fonts.cpp
@@ -11075,8 +11080,10 @@ r:\A\Src\LOK\X64Document\X64DocumentRendering\X64EMFInfoDlg.cpp
 r:\A\Src\LOK\X64Document\X64DocumentRendering\EP_ExportPDF.rgs
 r:\A\Src\LOK\X64Document\X64DocumentRendering\EP_Information3D.rgs
 r:\A\Src\LOK\X64Document\X64DocumentRendering\EP_IPFile.rgs
+r:\A\Src\LOK\X64Document\X64DocumentRendering\EP_X64DesignFormsMathematicalFormula.rgs
 r:\A\Src\LOK\X64Document\X64DocumentRendering\EP_X64DocumentSetup.rgs
 r:\A\Src\LOK\X64Document\X64DocumentRendering\EP_X64DocumentValidator.rgs
+r:\A\Src\LOK\X64Document\X64DocumentRendering\EP_X64ExcelData.rgs
 r:\A\Src\LOK\X64Document\X64DocumentRendering\EP_X64Repository.rgs
 r:\A\Src\LOK\X64Document\X64DocumentRendering\res\scialogo.bmp
 r:\A\Src\LOK\X64Document\X64DocumentRendering\EP_X64Document.rgs
@@ -11163,6 +11170,7 @@ r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DocumentProcessorRequest_Invalidat
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DocumentProcessorRequest_LoadPreviewTemplate.h
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DocumentProcessorRequest_ParentTaskHolder.h
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DocumentProcessorRequest_Prepare3DPicture.h
+r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DocumentProcessorRequest_PrepareExternalFileAppExcel.h
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DocumentProcessorRequest_PrepareExternalPicture.h
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DocumentProcessorRequest_TLXManagerRescan.h
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DocumentProcessorRequest_TLXManagerScan.h
@@ -11222,9 +11230,13 @@ r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemDesignForm.h
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemDocumentExternal.h
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemEditAutoCADColorConvertorData.h
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemEditDFFormData.h
+r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemEditExternalFileAppData.h
+r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemEditExternalFileAppData_Excel.h
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemEditExternalPictureData.h
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemEditFormattedTextData.h
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemEditStyleData.h
+r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemExcel.h
+r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemExternalFileApp.h
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemExternalFileBase.h
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemInternal_Style.h
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemPDFExternal.h
@@ -11258,6 +11270,7 @@ r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemTextTools.h
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemTLXEditData.h
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemURLTools.h
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentLargeDataItem.h
+r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentLargeDataItemAttributes.h
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentReference.h
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentReferenceGUIUserMatch.h
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsProjectItems.h
@@ -11327,6 +11340,7 @@ r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DocumentProcessorRequest_Invalidat
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DocumentProcessorRequest_LoadPreviewTemplate.cpp
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DocumentProcessorRequest_ParentTaskHolder.cpp
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DocumentProcessorRequest_Prepare3DPicture.cpp
+r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DocumentProcessorRequest_PrepareExternalFileAppExcel.cpp
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DocumentProcessorRequest_PrepareExternalPicture.cpp
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DocumentProcessorRequest_TLXManagerRescan.cpp
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DocumentProcessorRequest_TLXManagerScan.cpp
@@ -11346,6 +11360,7 @@ r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_Document__EditDesignForm.cpp
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_Document__EditDocumentPictureGraphicEdit.cpp
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_Document__EditDocumentPictureProperties.cpp
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_Document__EditDocumentPictureShowViewParams.cpp
+r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_Document__EditExternalFileAppFarEdit.cpp
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_Document__EditExternalPictureView.cpp
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_Document__EditFormattedText.cpp
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_Document__EditHFX.cpp
@@ -11377,9 +11392,13 @@ r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemDesignForm.cpp
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemDocumentExternal.cpp
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemEditAutoCADColorConvertorData.cpp
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemEditDFFormData.cpp
+r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemEditExternalFileAppData.cpp
+r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemEditExternalFileAppData_Excel.cpp
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemEditExternalPictureData.cpp
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemEditFormattedTextData.cpp
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemEditStyleData.cpp
+r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemExcel.cpp
+r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemExternalFileApp.cpp
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemExternalFileBase.cpp
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemInternal_Style.cpp
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemPDFExternal.cpp
@@ -11392,6 +11411,7 @@ r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemResultTableResultPro
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemTextECTools.cpp
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemTextExternal.cpp
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemTextTools.cpp
+r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentLargeDataItemAttributes.cpp
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsProjectItems.cpp
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_FormManager.cpp
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_MapDSContainerFeatures.cpp
@@ -11484,6 +11504,7 @@ r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemEditDFFormData.rgs
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemEditExternalPictureData.rgs
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemEditFormattedTextData.rgs
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemEditStyleData.rgs
+r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemExcel.rgs
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemInternal_Style.rgs
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemPDFExternal.rgs
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemPictureEditData.rgs
@@ -11510,6 +11531,7 @@ r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemTextECTools.rgs
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemTextExternal.rgs
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentItemTLXEditData.rgs
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentLargeDataItem.rgs
+r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentLargeDataItemAttributes.rgs
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentReference.rgs
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_DsDocumentReferenceGUIUserMatch.rgs
 r:\A\Src\LOK\X64Document\XEP_DocumentData\XEP_FLX.rgs
@@ -15595,6 +15617,7 @@ r:\A\Src\LOK\X64Document\XEP_DocumentFrameworkMFC\res\ViewPat_4.png
 r:\A\Src\LOK\X64Document\XEP_DocumentFrameworkMFC\res\viewsmall.png
 r:\A\Src\LOK\X64Document\XEP_DocumentFrameworkMFC\res\WidgetSorting.png
 r:\A\Src\LOK\X64Document\XEP_DocumentFrameworkMFC\XEP_DocumentManagerMFC.rgs
+r:\A\Src\LOK\X64Document\XEP_DocumentFrameworkMFC\res\DocItemType_ExternalFileApp_Excel_16.png
 r:\A\Src\LOK\X64Document\XEP_DocumentMFC\XEP_DocumentMFC.14.00.vcxproj
 r:\A\Src\LOK\X64Document\XEP_DocumentMFC\XEP_DocumentMFC.14.00.vcxproj.filters
 r:\A\Src\LOK\X64Document\XEP_DocumentMFC\XEP_DocumentMFC.rc
@@ -16510,6 +16533,86 @@ r:\A\Src\C#Common\NUnit\NUnit_Support\UT_XEP_RunAll.bat
 r:\A\Src\C#Common\XEP_ExternalLibs\NUnit 2.6.2\nunit-agent-x86.exe.config
 r:\A\Src\C#Common\XEP_ExternalLibs\NUnit 2.6.2\nunit-console-x86.exe.config
 r:\A\Src\C#Common\XEP_ExternalLibs\NUnit 2.6.2\nunit-x86.exe.config
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\BimPlus.Client.Api.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\BimPlus.Client.Api.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\BimPlus.Client.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\BimPlus.Client.Integration.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\BimPlus.Client.Integration.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\BimPlus.Client.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\BimPlus.Client.WebControls.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\BimPlus.Client.WebControls.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\BimPlus.LightCaseClient.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\BimPlus.LightCaseClient.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\BimPlus.sdk.Api.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\BimPlus.sdk.Api.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\BimPlus.Sdk.Data.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\BimPlus.Sdk.Data.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\BimPlus.Sdk.IfcData.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\BimPlus.Sdk.IfcData.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\BimPlus.Sdk.Utilities.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\BimPlus.Sdk.Utilities.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\EO.Base.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\EO.WebBrowser.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\EO.WebBrowser.Wpf.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\EO.WebEngine.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\log4net.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\Microsoft.SqlServer.Types.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\NBase.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\NBase.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\Nemetschek.UtilLibrary.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\Nemetschek.UtilLibrary.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\Newtonsoft.Json.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\NUtilLibrary.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\NUtilLibrary.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\PPAttribPictureType3.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\PPAttribPictureType3.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\PPAttribPictureType7.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\PPAttribPictureType7.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\protobuf-net.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\protobuf-net.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\RGiesecke.DllExport.Metadata.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\SlimDX.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\TestApplication.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\BimPlus.Client.Api.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\BimPlus.Client.Api.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\BimPlus.Client.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\BimPlus.Client.Integration.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\BimPlus.Client.Integration.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\BimPlus.Client.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\BimPlus.Client.WebControls.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\BimPlus.Client.WebControls.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\BimPlus.LightCaseClient.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\BimPlus.LightCaseClient.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\BimPlus.sdk.Api.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\BimPlus.sdk.Api.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\BimPlus.Sdk.Data.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\BimPlus.Sdk.Data.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\BimPlus.Sdk.IfcData.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\BimPlus.Sdk.IfcData.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\BimPlus.Sdk.Utilities.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\BimPlus.Sdk.Utilities.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\EO.Base.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\EO.WebBrowser.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\EO.WebBrowser.Wpf.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\EO.WebEngine.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\log4net.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\Microsoft.SqlServer.Types.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\NBase.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\NBase.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\Nemetschek.UtilLibrary.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\Nemetschek.UtilLibrary.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\Newtonsoft.Json.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\NUtilLibrary.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\NUtilLibrary.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\PPAttribPictureType3.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\PPAttribPictureType3.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\PPAttribPictureType7.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\PPAttribPictureType7.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\protobuf-net.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\protobuf-net.pdb
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\RGiesecke.DllExport.Metadata.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\SlimDX.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\TestApplication.pdb
 r:\A\Src\C#Common\XEP_ExternalLibs\Clipper\clipper_library.dll
 r:\A\Src\C#Common\XEP_ExternalLibs\Clipper\LicenseClipper.txt
 r:\A\Src\C#Common\XEP_ExternalLibs\NUnit 2.6.2\license.txt
@@ -17065,33 +17168,53 @@ r:\A\Src\ProjectManager\XEP_EsaFilePreviewHandler\Properties\AssemblyInfo.cs
 r:\A\FEM\FEM_Preparation.14.00.vcxproj
 r:\A\FEM\FEM_Preparation.14.00.vcxproj.filters
 r:\A\FEM\FEM_Preparation.def
-r:\A\FEM\FemBase\140_x64\BetStr.H
-r:\A\FEM\FemBase\140_x64\FemBase.h
-r:\A\FEM\FemBase\140_x86\BetStr.H
-r:\A\FEM\FemBase\140_x86\fembase.h
-r:\A\FEM\FemSolver\140_x64\SolverStrings.xml
+r:\A\FEM\FemBase\BetStr.H
+r:\A\FEM\FemBase\FemBase.h
+r:\A\FEM\FemSolver\SolverStrings.xml
 r:\A\FEM\FemBase\140_x64\FemBase64.dll
 r:\A\FEM\FemBase\140_x86\FemBase.dll
 r:\A\FEM\FemSolver\140_x64\CHS_DLL_64.dll
+r:\A\FEM\FemSolver\140_x86\CHS_DLL_32.dll
 r:\A\FEM\FemSolver\140_x64\CrossSectionF64.dll
+r:\A\FEM\FemSolver\140_x86\CrossSectionF.dll
 r:\A\FEM\FemSolver\140_x64\FemPnLin64.dll
+r:\A\FEM\FemSolver\140_x86\FemPnLin.dll
 r:\A\FEM\FemSolver\140_x64\FemTors64.dll
+r:\A\FEM\FemSolver\140_x86\FemTors.dll
 r:\A\FEM\FemSolver\140_x64\For64.dll
-r:\A\FEM\FemSolver\140_x64\libifcoremd.dll
-r:\A\FEM\FemSolver\140_x64\libifportmd.dll
-r:\A\FEM\FemSolver\140_x64\libiomp5md.dll
-r:\A\FEM\FemSolver\140_x64\libmmd.dll
+r:\A\FEM\FemSolver\140_x86\For.dll
+r:\A\FEM\FemSolver\FEMDIM.dll
+r:\A\FEM\FemSolver\Genex_EXE.exe
+r:\A\FEM\FemSolver\GSS_DLL_6D.dll
+r:\A\FEM\FemSolver\libifcoremd.dll
+r:\A\FEM\FemSolver\libifportmd.dll
+r:\A\FEM\FemSolver\libiomp5md32.dll
+r:\A\FEM\FemSolver\libiomp5md.dll
+r:\A\FEM\FemSolver\libiompstubs5md.dll
+r:\A\FEM\FemSolver\libmmd.dll
 r:\A\FEM\FemSolver\140_x64\nepr1064.dll
+r:\A\FEM\FemSolver\140_x86\NEPR10.DLL
 r:\A\FEM\FemSolver\140_x64\nepr1464.dll
+r:\A\FEM\FemSolver\140_x86\NEPR14.DLL
 r:\A\FEM\FemSolver\140_x64\nepr1564.dll
+r:\A\FEM\FemSolver\140_x86\NEPR15.DLL
 r:\A\FEM\FemSolver\140_x64\Newmark64.dll
+r:\A\FEM\FemSolver\140_x86\Newmark.dll
 r:\A\FEM\FemSolver\140_x64\nexx64.dll
+r:\A\FEM\FemSolver\140_x86\NEXX.DLL
 r:\A\FEM\FemSolver\140_x64\soilin64.dll
+r:\A\FEM\FemSolver\140_x86\soilin.dll
 r:\A\FEM\FemSolver\140_x64\SolveLib64.dll
+r:\A\FEM\FemSolver\140_x86\SolveLib.dll
 r:\A\FEM\FemSolver\140_x64\Solver64.exe
+r:\A\FEM\FemSolver\140_x86\Solver.exe
 r:\A\FEM\FemSolver\140_x64\Solver64.exe.config
+r:\A\FEM\FemSolver\140_x86\Solver.exe.config
 r:\A\FEM\FemSolver\140_x64\SolverExeLib64.dll
+r:\A\FEM\FemSolver\140_x86\SolverExeLib.dll
 r:\A\FEM\FemSolver\140_x64\sprut64.dll
+r:\A\FEM\FemSolver\140_x86\SPRUT.DLL
+r:\A\FEM\FemSolver\svml_dispmd.dll
 r:\A\FEM\PrepareSolver.bat
 r:\A\FEM\FemBase\140_x64\FemBase64.lib
 r:\A\FEM\FemBase\140_x86\FemBase.lib
@@ -17525,8 +17648,10 @@ r:\A\Src\CHA\GeomData\EasySettingObjects\__AutoGenerTLH.cpp
 r:\A\Src\CHA\GeomData\EasySettingObjects\EasySettingObjects.idl
 r:\A\Src\CHA\GeomData\EasySettingObjects\EasySettingObjects.rc
 r:\A\Src\CHA\GeomData\EasySettingObjects\EasySettingObjects.def
+r:\A\inc\EasyVFTributaryAreaItems.h
 r:\A\inc\EasyVF_EP_IDEA_StatiCa_Connection_Data.h
 r:\A\Src\CHA\GeomData\EasySettingObjects\EP_IDEA_StatiCa_Connection_DataContainerVFItem.h
+r:\A\Src\CHA\GeomData\EasySettingObjects\EP_TributaryAreaVFItem.h
 r:\A\Src\CHA\GeomData\EasySettingObjects\StdAfx.h
 r:\A\inc\EasyProjectForStructure.h
 r:\A\inc\EasySettingObjects_DLL_EXP_IMP.h
@@ -17696,8 +17821,10 @@ r:\A\Src\CHA\GeomData\EasySettingObjects\EP_VoidedSlabVFItem.h
 r:\A\Src\CHA\GeomData\EasySettingObjects\Resource.h
 r:\A\Src\CHA\GeomData\EasySettingObjects\SharedVFPropertyChecks.h
 r:\A\inc\StructNodeVFData.h
+r:\A\Src\CHA\GeomData\EasySettingObjects\EasyVFTributaryAreaItems.cpp
 r:\A\Src\CHA\GeomData\EasySettingObjects\EasyVF_EP_IDEA_StatiCa_Connection_Data.cpp
 r:\A\Src\CHA\GeomData\EasySettingObjects\EP_IDEA_StatiCa_Connection_DataContainerVFItem.cpp
+r:\A\Src\CHA\GeomData\EasySettingObjects\EP_TributaryAreaVFItem.cpp
 r:\A\Src\CHA\GeomData\EasySettingObjects\StdAfx.cpp
 r:\A\Src\CHA\GeomData\EasySettingObjects\EasyProjectForStructure.cpp
 r:\A\Src\CHA\GeomData\EasySettingObjects\EasySettingObjects.cpp
@@ -17947,6 +18074,7 @@ r:\A\Src\CHA\GeomData\EasySettingObjects\EP_SupportSubsoilContainerVFItem.rgs
 r:\A\Src\CHA\GeomData\EasySettingObjects\EP_TendonContainerVFItem.rgs
 r:\A\Src\CHA\GeomData\EasySettingObjects\EP_TendonVFItem.rgs
 r:\A\Src\CHA\GeomData\EasySettingObjects\EP_TimberDataContainerVFItem.rgs
+r:\A\Src\CHA\GeomData\EasySettingObjects\EP_TributaryAreaVFItem.rgs
 r:\A\Src\CHA\GeomData\EasySettingObjects\EP_VoidedSlabContainerVFItem.rgs
 r:\A\Src\CHA\GeomData\EasySettingObjects\EP_VoidedSlabVFItem.rgs
 r:\A\Src\CHA\GeomData\EasySettingObjects\IDB_VF_PROPERTY_TAB_ALUMINIUM.bmp
@@ -19774,6 +19902,7 @@ r:\A\Src\CHA\GeomData\EP_DSG_Elements\EP_MergeResultsModificator.h
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\EP_MergingToolHelper.h
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\EP_SlabMergingTool.h
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\EP_TributaryArea.h
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\TACheckBase.h
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\FilterSlabs.h
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\LoadGenerMethod.h
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\LoadGenerProperties.h
@@ -19981,8 +20110,19 @@ r:\A\Src\CHA\GeomData\EP_DSG_Elements\SubstitutionBeamForcesCreator.h
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\SubstitutionBeamFunctionality.h
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\SubstitutionBeamRecognizer.h
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\SubstitutionBeamSolid.h
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\TACurvedBeamsCheck.h
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\TACurvedFreeLoadCheck.h
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\TACurvedLPCheck.h
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\TALPWithOpeningCheck.h
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\TANonUniformFreeLoadCheck.h
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\TAOverlapEdgesCheck.h
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\TAPointLineFreeLoad.h
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\TASoilinWaterLoadCheck.h
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\TASumGenerLoadCheck.h
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\TransferLoadFromPanel.h
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\EP_TributaryAreasGenerator.h
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\TributaryAreaChecker.h
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\TributaryAreaErrorsFormater.h
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\UpdateTool.h
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\UpdateTool_Functors.h
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\WeightPropItem.h
@@ -20106,6 +20246,7 @@ r:\A\Src\CHA\GeomData\EP_DSG_Elements\EP_MergeResultsModificator.cpp
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\EP_MergingToolHelper.cpp
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\EP_SlabMergingTool.cpp
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\EP_TributaryArea.cpp
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\TACheckBase.cpp
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\FilterSlabs.cpp
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\LoadGenerMethod.cpp
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\LoadGenerProperties.cpp
@@ -20284,8 +20425,19 @@ r:\A\Src\CHA\GeomData\EP_DSG_Elements\SubstitutionBeamForcesCreator.cpp
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\SubstitutionBeamFunctionality.cpp
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\SubstitutionBeamRecognizer.cpp
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\SubstitutionBeamSolid.cpp
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\TACurvedBeamsCheck.cpp
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\TACurvedFreeLoadCheck.cpp
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\TACurvedLPCheck.cpp
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\TALPWithOpeningCheck.cpp
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\TANonUniformFreeLoadCheck.cpp
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\TAOverlapEdgesCheck.cpp
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\TAPointLineFreeLoad.cpp
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\TASoilinWaterLoadCheck.cpp
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\TASumGenerLoadCheck.cpp
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\TransferLoadFromPanel.cpp
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\EP_TributaryAreasGenerator.cpp
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\TributaryAreaChecker.cpp
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\TributaryAreaErrorsFormater.cpp
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\UpdateTool.cpp
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\UpdateTool_Functors.cpp
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\WeightPropItem.cpp
@@ -22372,8 +22524,40 @@ r:\A\Src\Mar\DataLibScia\res\ibc_plate_min_bar_distance.bmp
 r:\A\Src\Mar\DataLibScia\res\ibc_max_spacing.bmp
 r:\A\Src\Mar\DataLibScia\res\MinTensionReinfType.bmp
 r:\A\Src\Mar\DataLibScia\res\MinTensionReinf.bmp
+r:\A\Src\Mar\DataLibScia\res\LimCheck.bmp
+r:\A\Src\Mar\DataLibScia\res\NcalcCheck.bmp
+r:\A\Src\Mar\DataLibScia\res\RatioIntAbs.bmp
+r:\A\Src\Mar\DataLibScia\res\RatioIntRel.bmp
+r:\A\Src\Mar\DataLibScia\res\ModifIntForces.bmp
+r:\A\Src\Mar\DataLibScia\res\UseGeomImperfect.bmp
+r:\A\Src\Mar\DataLibScia\res\Eorfd.bmp
+r:\A\Src\Mar\DataLibScia\res\DesignMethodBeam.bmp
+r:\A\Src\Mar\DataLibScia\res\DesignMethodColumn.bmp
+r:\A\Src\Mar\DataLibScia\res\CoeffStatUp.bmp
+r:\A\Src\Mar\DataLibScia\res\CoeffStatLo.bmp
+r:\A\Src\Mar\DataLibScia\res\CoeffStat.bmp
+r:\A\Src\Mar\DataLibScia\res\DesignByTorsion.bmp
+r:\A\Src\Mar\DataLibScia\res\EquivThinWalledCSS.bmp
+r:\A\Src\Mar\DataLibScia\res\CheckMinMandrelDiameter.bmp
+r:\A\Src\Mar\DataLibScia\res\CheckMinBarsInCircColumn.bmp
+r:\A\Src\Mar\DataLibScia\res\CheckMinRatioPrincipalReinf.bmp
+r:\A\Src\Mar\DataLibScia\res\CheckMaxRatioPrincipalReinf.bmp
+r:\A\Src\Mar\DataLibScia\res\ShiftRules.bmp
 r:\A\Src\Mar\DataLibScia\res\LimitRatioBendingMomentUnaxial.bmp
 r:\A\Src\tra\anices\FlagCyprus.ico
+r:\A\Src\Mar\DataLibScia\res\Composite_density.bmp
+r:\A\Src\Mar\DataLibScia\res\Composite_EcLong.bmp
+r:\A\Src\Mar\DataLibScia\res\Composite_nbRows.bmp
+r:\A\Src\Mar\DataLibScia\res\Composite_nbRowsMinMax.bmp
+r:\A\Src\Mar\DataLibScia\res\Composite_partialAction.bmp
+r:\A\Src\Mar\DataLibScia\res\Composite_placement.bmp
+r:\A\Src\Mar\DataLibScia\res\Composite_reinf_cover.bmp
+r:\A\Src\Mar\DataLibScia\res\Composite_reinf_long_diam.bmp
+r:\A\Src\Mar\DataLibScia\res\Composite_reinf_long_spacing.bmp
+r:\A\Src\Mar\DataLibScia\res\Composite_reinf_material.bmp
+r:\A\Src\Mar\DataLibScia\res\Composite_reinf_transv_diam.bmp
+r:\A\Src\Mar\DataLibScia\res\Composite_reinf_transv_spacing.bmp
+r:\A\Src\Mar\DataLibScia\res\Composite_rowConnectors.bmp
 r:\A\Src\Mar\DataLibScia\__AutoGenerTLH_RAW.cpp
 r:\A\Src\Mar\DataLibScia\Cities_ro_2013.csv
 r:\A\Src\Mar\DataLibScia\EP_WindSpeedAtCity_IBC.db4
@@ -24422,6 +24606,7 @@ r:\A\Src\Cih\Prestressing\__AutoGenerTLH.cpp
 r:\A\Src\Cih\Prestressing\Prestressing.idl
 r:\A\Src\Cih\Prestressing\Prestressing.rc
 r:\A\Src\Cih\Prestressing\Prestressing.def
+r:\A\inc\TendonTableIdsESA_EPW_Holder.h
 r:\A\Src\Cih\Prestressing\StdAfx.h
 r:\A\Src\Cih\Prestressing\AutoAllocationDlg.h
 r:\A\Src\Cih\Prestressing\BeamReinforcementDataProvider.h
@@ -24548,6 +24733,7 @@ r:\A\Src\Cih\Prestressing\TendonParam2DTab.cpp
 r:\A\Src\Cih\Prestressing\TendonParam3DTab.cpp
 r:\A\Src\Cih\Prestressing\TendonSheatSupportsData.cpp
 r:\A\Src\Cih\Prestressing\TendonStressSummary.cpp
+r:\A\Src\Cih\Prestressing\TendonTableIdsESA_EPW_Holder.cpp
 r:\A\Src\Cih\Prestressing\TypeOfStressing.cpp
 r:\A\Src\Cih\Prestressing\TypeOfStressingDlg.cpp
 r:\A\Src\Cih\Prestressing\res\Allocation.gif
@@ -25559,6 +25745,8 @@ r:\A\Src\Tom\BasicResults\__AutoGenerTLH.cpp
 r:\A\Src\Tom\BasicResults\BasicResults.idl
 r:\A\Src\Tom\BasicResults\BasicResults.rc
 r:\A\Src\Tom\BasicResults\BasicResults.def
+r:\A\Src\Tom\BasicResults\EP_EWNDraw0D.h
+r:\A\Src\Tom\BasicResults\EP_OCMemberDataExportTool.h
 r:\A\Src\Tom\BasicResults\EP_PropertyDlgAsControl.h
 r:\A\Inc\DocExternalResourceEnum.h
 r:\A\Src\Tom\BasicResults\CheckRunnerTool.h
@@ -25574,6 +25762,8 @@ r:\A\Src\Tom\BasicResults\EP_EWNTools.h
 r:\A\Src\Tom\BasicResults\EP_EWNSettingsWBP.h
 r:\A\Src\Tom\BasicResults\EP_EWNBasic.h
 r:\A\Src\Tom\BasicResults\EP_EWNTextExtractorForOC.h
+r:\A\Src\Tom\BasicResults\EP_ReactionsResultantCalculator.h
+r:\A\Src\Tom\BasicResults\EP_ReactionsResultant_Shell.h
 r:\A\Src\Tom\BasicResults\EP_ResultShellProperties.h
 r:\A\Src\Tom\BasicResults\EP_ResultTableDataItemType.h
 r:\A\Src\Tom\BasicResults\EP_FibreSelection.h
@@ -26279,6 +26469,8 @@ r:\A\Src\Tom\BasicResults\FolderDeleter.h
 r:\A\Src\Tom\BasicResults\EP_OpenCheck_2D_Shell_OldVersion.h
 r:\A\Src\Tom\BasicResults\EP_ResultShell_MinimalImplementation_1D.h
 r:\A\Src\Tom\BasicResults\EP_ResultShell_MinimalImplementation_2D.h
+r:\A\Src\Tom\BasicResults\EP_EWNDraw0D.cpp
+r:\A\Src\Tom\BasicResults\EP_OCMemberDataExportTool.cpp
 r:\A\Src\Tom\BasicResults\EP_PropertyDlgAsControl.cpp
 r:\A\Src\Tom\BasicResults\CheckRunnerTool.cpp
 r:\A\Src\Tom\BasicResults\DialogSelectMoreComponents.cpp
@@ -26300,6 +26492,8 @@ r:\A\Src\Tom\BasicResults\EP_LinearReactionsCalculator.cpp
 r:\A\Src\Tom\BasicResults\EP_NodeDisplacementCalculator.cpp
 r:\A\Src\Tom\BasicResults\EP_NodeDisplacement_Shell.cpp
 r:\A\Src\Tom\BasicResults\EP_NodeReactionsCalculator.cpp
+r:\A\Src\Tom\BasicResults\EP_ReactionsResultantCalculator.cpp
+r:\A\Src\Tom\BasicResults\EP_ReactionsResultant_Shell.cpp
 r:\A\Src\Tom\BasicResults\EP_Reactions_Shell.cpp
 r:\A\Src\Tom\BasicResults\EP_ResultDrawSetup0DWBP.cpp
 r:\A\Src\Tom\BasicResults\EP_ResultShell_MinimalImplementation_0D.cpp
@@ -26952,6 +27146,7 @@ r:\A\Src\Tom\BasicResults\EP_OpenCheck_1D_Shell.rgs
 r:\A\Src\Tom\BasicResults\EP_OpenCheck_2D_Shell.rgs
 r:\A\Src\Tom\BasicResults\EP_OpenCheck_CustomizableResDataPresenter.rgs
 r:\A\Src\Tom\BasicResults\EP_OpenCheck_CustomizableResDataStorage.rgs
+r:\A\Src\Tom\BasicResults\EP_ReactionsResultant_Shell.rgs
 r:\A\Src\Tom\BasicResults\EP_Reactions_Shell.rgs
 r:\A\Src\Tom\BasicResults\EP_ResAdaptivityMesh.rgs
 r:\A\Src\Tom\BasicResults\EP_OpenCheck_DocumentSupport.rgs
@@ -27355,12 +27550,12 @@ r:\A\Src\DRA\SteelConnection\View_FrameType.h
 r:\A\Src\DRA\SteelConnection\View_GapOverlap.h
 r:\A\Src\DRA\SteelConnection\View_IO.h
 r:\A\Src\DRA\SteelConnection\EP_TrussConnection.h
-r:\A\Src\DRA\SteelConnection\Joint_Data.h
+r:\A\Src\DRA\SteelConnection\Data_Calculator.h
 r:\A\Src\DRA\SteelConnection\Toolbox_Calculation_Truss.h
-r:\A\Src\DRA\SteelConnection\Joint_Basic.h
+r:\A\Src\DRA\SteelConnection\Joint_AddData_Truss.h
 r:\A\Src\DRA\SteelConnection\Data_Member.h
 r:\A\Src\DRA\SteelConnection\Data_Node.h
-r:\A\Src\DRA\SteelConnection\Result.h
+r:\A\Src\DRA\SteelConnection\Data_Package.h
 r:\A\Src\DRA\SteelConnection\StdAfx.h
 r:\A\inc\EP_GeneralConnectionInterfaces.h
 r:\A\inc\WeldDrawing.h
@@ -27516,6 +27711,7 @@ r:\A\Src\DRA\SteelConnection\UnicodeSpecialCharacter.h
 r:\A\Src\DRA\SteelConnection\View_Members.h
 r:\A\Src\DRA\SteelConnection\View_Node.h
 r:\A\Src\DRA\SteelConnection\XEP_ConnectionsStringsDefinition.h
+r:\A\Src\DRA\SteelConnection\Data_TrussCheck.cpp
 r:\A\Src\DRA\SteelConnection\EP_IDEA_StatiCa_Inifile.cpp
 r:\A\Src\DRA\SteelConnection\EP_IDEA_StatiCa_ResultShell.cpp
 r:\A\Src\DRA\SteelConnection\EP_IDEA_StatiCa_SingleCheck.cpp
@@ -27524,7 +27720,7 @@ r:\A\Src\DRA\SteelConnection\Data_Member.cpp
 r:\A\Src\DRA\SteelConnection\EP_TrussConnection.cpp
 r:\A\Src\DRA\SteelConnection\EP_TrussConnection_Check.cpp
 r:\A\Src\DRA\SteelConnection\EP_TrussConnection_ResultShell.cpp
-r:\A\Src\DRA\SteelConnection\Joint_Basic.cpp
+r:\A\Src\DRA\SteelConnection\Joint_AddData_Truss.cpp
 r:\A\Src\DRA\SteelConnection\Joint_Check.cpp
 r:\A\Src\DRA\SteelConnection\Joint_Check_Truss_UnityCheck_02.cpp
 r:\A\Src\DRA\SteelConnection\Joint_Check_Truss_UnityCheck_03.cpp
@@ -27532,7 +27728,7 @@ r:\A\Src\DRA\SteelConnection\Joint_Check_Truss_UnityCheck_Output.cpp
 r:\A\Src\DRA\SteelConnection\Joint_Check_Truss_Info.cpp
 r:\A\Src\DRA\SteelConnection\Joint_Check_Truss_UnityCheck_01.cpp
 r:\A\Src\DRA\SteelConnection\Joint_Check_Truss_Validity.cpp
-r:\A\Src\DRA\SteelConnection\Joint_Data.cpp
+r:\A\Src\DRA\SteelConnection\Data_Calculator.cpp
 r:\A\Src\DRA\SteelConnection\OutputIPFileManager.cpp
 r:\A\Src\DRA\SteelConnection\StdAfx.cpp
 r:\A\Src\DRA\SteelConnection\Calcon2013\AdvanceGroupECENCalculation.cpp
@@ -28505,6 +28701,7 @@ r:\A\Src\Mar\DataAddScia\Res\steel_member_data.ico
 r:\A\Src\Mar\DataAddScia\Res\stiffness_modifier1D.ico
 r:\A\Src\Mar\DataAddScia\Res\stiffness_modifier2D.ico
 r:\A\Src\Mar\DataAddScia\Res\Tranverse_welds.GIF
+r:\A\Src\Mar\DataAddScia\Res\VirtualJoistDesignInfo.ico
 r:\A\Src\Tra\ProjectMWELL\DataAddMWELL\DataAddMWELL.14.00.vcxproj
 r:\A\Src\Tra\ProjectMWELL\DataAddMWELL\DataAddMWELL.14.00.vcxproj.filters
 r:\A\Src\Tra\ProjectMWELL\DataAddMWELL\__AutoGenerTLH.cpp
@@ -28648,6 +28845,8 @@ r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.def
 r:\A\Src\Checks\EP_CheckDataProvider\AnnexCalculationCoeff.h
 r:\A\Src\Checks\EP_CheckDataProvider\CombiFromCombiHash.h
 r:\A\Src\Checks\EP_CheckDataProvider\DesignReinforcementParser.h
+r:\A\Src\Checks\EP_CheckDataProvider\MeshInformationReader.h
+r:\A\Src\Checks\EP_CheckDataProvider\FemMeshReader.h
 r:\A\Src\Checks\EP_CheckDataProvider\StdAfx.h
 r:\A\inc\EP_ConCheckDefinition.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteChecksEsa\EP_SmartQuantity.h
@@ -28768,6 +28967,7 @@ r:\A\Src\Checks\EP_CheckDataProvider\WholeCheckCommonData.h
 r:\A\Src\Checks\EP_CheckDataProvider\AnnexCalculationCoeff.cpp
 r:\A\Src\Checks\EP_CheckDataProvider\CombiFromCombiHash.cpp
 r:\A\Src\Checks\EP_CheckDataProvider\DesignReinforcementParser.cpp
+r:\A\Src\Checks\EP_CheckDataProvider\FemMeshReader.cpp
 r:\A\Src\Checks\EP_CheckDataProvider\StdAfx.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteChecksEsa\EP_SmartQuantity.cpp
 r:\A\Src\Checks\EP_CheckDataProvider\CombinatorHelper.cpp
@@ -29200,6 +29400,7 @@ r:\A\Src\Tom\CalcManager\CalcManager.idl
 r:\A\Src\Tom\CalcManager\CalcManager.rc
 r:\A\Src\Tom\CalcManager\EP_CalcManager.def
 r:\A\Src\Tom\CalcManager\CalcManager.def
+r:\A\Src\Tom\CalcManager\CMCustomMessage.h
 r:\A\Src\Tom\CalcManager\StdAfx.h
 r:\A\inc\Data_kody_Tvar.h
 r:\A\inc\EP_GUIDOperatorsForMap.h
@@ -29213,6 +29414,7 @@ r:\A\Src\Tom\CalcManager\EP_StaticRemovers.h
 r:\A\Src\Tom\CalcManager\EP_TestCalcManager.h
 r:\A\Src\Tom\CalcManager\Resource.h
 r:\A\Src\Tom\CalcManager\UniversalRemovers.h
+r:\A\Src\Tom\CalcManager\CMCustomMessage.cpp
 r:\A\Src\Tom\CalcManager\CMTrussConnectionAddDataChecker.cpp
 r:\A\Src\Tom\CalcManager\StdAfx.cpp
 r:\A\Src\Tom\CalcManager\CMAttributeDefinitionChecker.cpp
@@ -29403,6 +29605,7 @@ r:\A\Src\MIK\TableInput\FormatPainterTool.h
 r:\A\Src\MIK\TableInput\StdAfx.h
 r:\A\Src\MIK\TableInput\Resource.h
 r:\A\Src\MIK\TableInput\TableActivityFilter.h
+r:\A\Src\MIK\TableInput\TableBuildPropHelper.h
 r:\A\Src\MIK\TableInput\TableDefaultEntityProperties.h
 r:\A\Src\MIK\TableInput\TableDialog.h
 r:\A\Src\MIK\TableInput\TableDlgInterface.h
@@ -29428,6 +29631,7 @@ r:\A\Src\MIK\TableInput\TableToolbar.h
 r:\A\Src\MIK\TableInput\FormatPainterTool.cpp
 r:\A\Src\MIK\TableInput\StdAfx.cpp
 r:\A\Src\MIK\TableInput\TableActivityFilter.cpp
+r:\A\Src\MIK\TableInput\TableBuildPropHelper.cpp
 r:\A\Src\MIK\TableInput\TableDialog.cpp
 r:\A\Src\MIK\TableInput\TableDlgInterface.cpp
 r:\A\Src\MIK\TableInput\TableDSEventHandler.cpp
@@ -30531,6 +30735,7 @@ r:\A\Src\Tom\Services\ResultsESACmds\__AutoGenerTLH.cpp
 r:\A\Src\Tom\Services\ResultsESACmds\ResultsESACmds.idl
 r:\A\Src\Tom\Services\ResultsESACmds\ResultsESACmds.rc
 r:\A\Src\Tom\Services\ResultsESACmds\ResultsESACmds.def
+r:\A\Src\Tom\Services\ResultsESACmds\EP_ResultsESA_ReactionsResultant_Registrar.h
 r:\A\Src\Tom\Services\ResultsESACmds\EP_ResultsESA_Refresh_Result_Registrar.h
 r:\A\Src\Tom\Services\ResultsESACmds\EP_ResultsESA_Deformations1D_Registrar.h
 r:\A\Src\Tom\Services\ResultsESACmds\EP_ResultsESA_NodeDisplacement_Registrar.h
@@ -30628,6 +30833,7 @@ r:\A\Src\Tom\Services\ResultsESACmds\ResultsESA_TreeDynamic_Registrar.h
 r:\A\Src\Tom\Services\ResultsESACmds\ResultsESA_TreeSupports_Registrar.h
 r:\A\Src\Tom\Services\ResultsESACmds\ResultsESA_TubeCheck_Registrar.h
 r:\A\Src\Tom\Services\ResultsESACmds\ResultsESACmds_RegFactory.h
+r:\A\Src\Tom\Services\ResultsESACmds\EP_ResultsESA_ReactionsResultant_Registrar.cpp
 r:\A\Src\Tom\Services\ResultsESACmds\EP_ResultsESA_Refresh_Result_Registrar.cpp
 r:\A\Src\Tom\Services\ResultsESACmds\EP_ResultsESA_NodeDisplacement_Registrar.cpp
 r:\A\Src\Tom\Services\ResultsESACmds\EP_ResultsESA_Stresses1D_Registrar.cpp
@@ -31080,6 +31286,7 @@ r:\A\Src\Tom\Services\ResultsESACmdsM\ResultsESACmdsM.14.00.vcxproj
 r:\A\Src\Tom\Services\ResultsESACmdsM\ResultsESACmdsM.14.00.vcxproj.filters
 r:\A\Src\Tom\Services\ResultsESACmdsM\ResultsESACmdsM.rc
 r:\A\Src\Tom\Services\ResultsESACmdsM\ResultsESACmdsM.def
+r:\A\Src\Tom\Services\ResultsESACmdsM\EP_ResultsESA_ReactionsResultant_Main.h
 r:\A\Src\Tom\Services\ResultsESACmdsM\EP_ResultsESA_Refresh_Result.h
 r:\A\Src\Tom\Services\ResultsESACmdsM\EP_ResultsESA_Deformations1D_Main.h
 r:\A\Src\Tom\Services\ResultsESACmdsM\EP_ResultsESA_NodeDisplacement_Main.h
@@ -31182,6 +31389,7 @@ r:\A\Src\Tom\Services\ResultsESACmdsM\ResultsESA_TreeDynamic_Main.h
 r:\A\Src\Tom\Services\ResultsESACmdsM\ResultsESA_TreeSupports_Main.h
 r:\A\Src\Tom\Services\ResultsESACmdsM\ResultsESA_TubeCheck_Main.h
 r:\A\Src\Tom\Services\ResultsESACmdsM\ZenDocRes.h
+r:\A\Src\Tom\Services\ResultsESACmdsM\EP_ResultsESA_ReactionsResultant_Main.cpp
 r:\A\Src\Tom\Services\ResultsESACmdsM\EP_ResultsESA_Refresh_Result.cpp
 r:\A\Src\Tom\Services\ResultsESACmdsM\EP_ResultsESA_Deformations1D_Main.cpp
 r:\A\Src\Tom\Services\ResultsESACmdsM\EP_ResultsESA_Stresses1D_Main.cpp
@@ -35035,7 +35243,6 @@ r:\A\Src\Checks\ConcreteChecks\Punching\__AutoGenerTLH.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\Punching.idl
 r:\A\Src\Checks\ConcreteChecks\Punching\Punching.rc
 r:\A\Src\Checks\ConcreteChecks\Punching\Punching.def
-r:\A\Src\Checks\ConcreteChecks\Punching\AoutCalc.h
 r:\A\Src\Checks\ConcreteChecks\Punching\AswChecker.h
 r:\A\Src\Checks\ConcreteChecks\Punching\AswMinCalc.h
 r:\A\Src\Checks\ConcreteChecks\Punching\AswReqCalc.h
@@ -35101,8 +35308,6 @@ r:\A\Src\Checks\ConcreteChecks\Punching\EP_PunchingCheckParallel.h
 r:\A\Src\Checks\ConcreteChecks\Punching\EP_PunchingCheckResult.h
 r:\A\Src\Checks\ConcreteChecks\Punching\FcdCalc.h
 r:\A\Src\Checks\ConcreteChecks\Punching\FilterSlabsForPunching.h
-r:\A\Src\Checks\ConcreteChecks\Punching\MeshInformationReader.h
-r:\A\Src\Checks\ConcreteChecks\Punching\MeshReader.h
 r:\A\Src\Checks\ConcreteChecks\Punching\IntersectionChecker.h
 r:\A\Src\Checks\ConcreteChecks\Punching\K4VRdcCalc.h
 r:\A\Src\Checks\ConcreteChecks\Punching\NiCalc.h
@@ -35139,7 +35344,6 @@ r:\A\Src\Checks\ConcreteChecks\Punching\TangentialSpacingCalc.h
 r:\A\Src\Checks\ConcreteChecks\Punching\U0Calculator.h
 r:\A\Src\Checks\ConcreteChecks\Punching\UsLastCalc.h
 r:\A\Src\Checks\ConcreteChecks\Punching\VrdMaxCalc.h
-r:\A\Src\Checks\ConcreteChecks\Punching\AoutCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\AswChecker.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\AswMinCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\AswReqCalc.cpp
@@ -35177,7 +35381,6 @@ r:\A\Src\Checks\ConcreteChecks\Punching\IntersectionChecker.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\K4VRdcCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\KmaxCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\LastControlPerim4ShearLinkCalc.cpp
-r:\A\Src\Checks\ConcreteChecks\Punching\MeshReader.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\MeshWalker.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\NiCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\NiMinCalc.cpp
@@ -35187,7 +35390,6 @@ r:\A\Src\Checks\ConcreteChecks\Punching\NumShearLinksInBasicControlPerimCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\OuterControlPerimCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\PerpendicularityChecker.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\PointForceChecker.cpp
-r:\A\Src\Checks\ConcreteChecks\Punching\PolygonLinesMergingTool.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\PrepareSetupValues.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\PunchGeometryHelper.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\PunchGeomTransformator.cpp
@@ -35235,8 +35437,7 @@ r:\A\Src\Checks\ConcreteChecks\Punching\VrdMaxCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\EP_Punching0D_ResultShell.rgs
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_MSUT.14.00.vcxproj
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_MSUT.14.00.vcxproj.filters
-r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\__AutoGenerTLH.cpp
-r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_MSUT.idl
+r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_msut.14.00.sln
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_MSUT.rc
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_MSUT.def
 r:\A\inc\IncUT\Help\UtHelp.h
@@ -35244,33 +35445,38 @@ r:\A\inc\MSUT_Helpers.h
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\Common.h
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\Constants.h
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\PunchingAssert.h
+r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\resource.h
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\StdAfx.h
-r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\Resource.h
-r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestAoutCalc.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_msut.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\StdAfx.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestAswChecker.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestAswMin.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestAswReq.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestAswTotal.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestBetaCalculator.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestConcreteShearCapacityCalc.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestControlPerimeter.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestControlPerimWCalculator.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestCPPropCalc.cpp
-r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestDetailingDistancesCalc.cpp
-r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestDetailingRulesUC.cpp
-r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestEnum2String.cpp
-r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestFywdEffCalc.cpp
-r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestLastControlPerim4ShearLinkCalc.cpp
-r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestNiRdcs.cpp
-r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestNumShearLinksInBasicControlPerimCalc.cpp
-r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestOuterControlPerimCalc.cpp
-r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestPunchGeometryHelper.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestCRdcCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestCriticialPerimHandler.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestCurveRotation.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestDetailingDistancesCalc.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestDetailingRulesUC.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestEnum2String.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestFcdCalc.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestFywdEffCalc.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestIntersectionChecker.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestK4VRdcCalc.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestLastControlPerim4ShearLinkCalc.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestMergingTool.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestNiCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestNiMinCalc.cpp
-r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestNodeService.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestNiRdcs.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestNumShearLinksInBasicControlPerimCalc.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestOuterControlPerimCalc.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestPerpendicularityChecker.cpp
+r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestPunchGeometryHelper.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestPunchGeomTransformator.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestPunchingAngleFinder.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestPunchingDirFinder.cpp
@@ -35286,13 +35492,6 @@ r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestShearStressNiEdCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestSlabDCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestSlabRhoCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestSlabService.cpp
-r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\StdAfx.cpp
-r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_MSUT.cpp
-r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestBetaCalculator.cpp
-r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestIntersectionChecker.cpp
-r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestMergingTool.cpp
-r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestPerpendicularityChecker.cpp
-r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestControlPerimeter.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestSlabVRdcCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestTangentialSpacing.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestUsLast.cpp
@@ -35803,6 +36002,7 @@ r:\A\Src\Par\Services\ConcreteESACmds\res\ConcreteCheckFireResistanceDiagram_Ico
 r:\A\Src\Par\Services\ConcreteESACmds\res\ConcreteCheckFireResistanceResponce_Icon.bmp
 r:\A\Src\Par\Services\ConcreteESACmds\res\ConcreteCrossSectionCharakteristic_Icon.bmp
 r:\A\Src\Par\Services\ConcreteESACmds\res\ConcreteESA_Icon.bmp
+r:\A\Src\Par\Services\ConcreteESACmds\res\ConcreteESAnew_Icon.bmp
 r:\A\Src\Par\Services\ConcreteESACmds\ConcreteESACmds_RegFactory.rgs
 r:\A\Src\Par\Services\ConcreteESACmds\res\ConcreteHollowCoreSlab_Icon.bmp
 r:\A\Src\Par\Services\ConcreteESACmds\res\ConcreteInternalForces_Icon.bmp
@@ -37995,6 +38195,7 @@ r:\A\Src\Checks\SteelChecks\SteelCheckEsa\SteelCheckEsa.rc
 r:\A\Src\Checks\SteelChecks\SteelCheckEsa\SteelCheckEsa.def
 r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EN_1993_SteelStringCodes.h
 r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EN_1993_Tables\EN_1993_SemiCompTable.h
+r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EN_1993_Tables\EN_1993_SheetingTable.h
 r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EP_CombiAndSectionVector.h
 r:\A\Src\Checks\SteelChecks\SteelCheckEsa\StdAfx.h
 r:\A\Src\Checks\SteelChecks\SteelCheckEsa\resource.h
@@ -38088,7 +38289,6 @@ r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EN_1993\EN_1993_TorsionalFlexuralBuckl
 r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EN_1993_Fire\EN_1993_TorsionalFlexuralBuckling_Fire.h
 r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EN_1993\EN_1993_LateralTorsionalBuckling.h
 r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EN_1993_Fire\EN_1993_LateralTorsionalBuckling_Fire.h
-r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EN_1993_Tables\EN_1993_DiaphragmTable.h
 r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EN_1993\EN_1993_CompressionBending.h
 r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EN_1993_Fire\EN_1993_CompressionBending_Fire.h
 r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EN_1993\EN_1993_TensionBending.h
@@ -38110,6 +38310,7 @@ r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EN_1993_SteelResultAncestor.h
 r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EN_1993_SteelResultULS.h
 r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EN_1993_Support\EN_1993_ClassificationToolHolder.h
 r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EN_1993_Tables\EN_1993_SemiCompTable.cpp
+r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EN_1993_Tables\EN_1993_SheetingTable.cpp
 r:\A\Src\Checks\SteelChecks\SteelCheckEsa\StdAfx.cpp
 r:\A\Src\Checks\SteelChecks\SteelCheckEsa\CubicFunctionSolver.cpp
 r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EN_1993\EN_1993_CompressionBending.cpp
@@ -38126,7 +38327,6 @@ r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EN_1993_Fire\EN_1993_LateralTorsionalB
 r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EN_1993_Fire\EN_1993_ShearBuckling_Fire.cpp
 r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EN_1993_Fire\EN_1993_TensionBending_Fire.cpp
 r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EN_1993_Fire\EN_1993_TorsionalFlexuralBuckling_Fire.cpp
-r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EN_1993_Tables\EN_1993_DiaphragmTable.cpp
 r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EP_FormulaRendering\EP_FR_Equation.cpp
 r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EP_FormulaRendering\EP_FR_EquationList.cpp
 r:\A\Src\Checks\SteelChecks\SteelCheckEsa\EP_FormulaRendering\EP_FR_IpFilePictures.cpp
@@ -38419,6 +38619,7 @@ r:\A\Src\Mic\Ds\EP_XmlProject\__AutoGenerTLH.cpp
 r:\A\Src\Mic\Ds\EP_XmlProject\EP_XmlProject.idl
 r:\A\Src\Mic\Ds\EP_XmlProject\EP_XmlProject.rc
 r:\A\Src\Mic\Ds\EP_XmlProject\EP_XmlProject.def
+r:\A\Src\Mic\Ds\EP_XmlProject\EP_XmlProjectApp.h
 r:\A\Src\Mic\Ds\EP_XmlProject\StdAfx.h
 r:\A\Src\Mic\Ds\EP_XmlProject\EPX_App.h
 r:\A\Src\Mic\Ds\EP_XmlProject\EPX_Project.h
@@ -40057,7 +40258,9 @@ r:\A\designforms\TraceViewer\TraceViewer.ico
 r:\A\Src\Checks\DesignForms\DesignForms\Scia.ESA.DesignForms.14.00.vcxproj
 r:\A\Src\Checks\DesignForms\DesignForms\Scia.ESA.DesignForms.14.00.vcxproj.filters
 r:\A\Src\Checks\DesignForms\DesignForms\Scia.ESA.DesignForms.def
+r:\A\DesignForms\User\StartUpScreen\scia-logo-silver.png
 r:\A\DesignForms\DesignForms.snk
+r:\A\DesignForms\User\StartUpScreen\sciadesignforms.html
 r:\A\Src\Checks\DesignForms\DesignForms\bin\readme.txt
 r:\A\Src\Checks\DesignForms\DesignForms\bin\DForm.c2t
 r:\A\Src\Checks\DesignForms\DesignForms\bin\DesignForms.cms
@@ -43506,9 +43709,11 @@ r:\A\Src\mar\Code\CodeECNew\Res\beam cover.gif
 r:\A\Src\mar\Code\CodeECNew\Res\Beam stirrup leg distance by factor.gif
 r:\A\Src\mar\Code\CodeECNew\Res\Beam stirrup leg distance.gif
 r:\A\Src\mar\Code\CodeECNew\Res\Beam stirrup leg distance_din.gif
+r:\A\Src\mar\Code\CodeECNew\Res\Beam stirrup leg distance_norway.gif
 r:\A\Src\mar\Code\CodeECNew\Res\Beam stirrup leg distance_fra.gif
 r:\A\Src\mar\Code\CodeECNew\Res\Beam stirrup spacing.gif
 r:\A\Src\mar\Code\CodeECNew\Res\Beam stirrup spacing_csn.gif
+r:\A\Src\mar\Code\CodeECNew\Res\Beam stirrup spacing_norway.gif
 r:\A\Src\mar\Code\CodeECNew\Res\Beam stirrup spacing_din.gif
 r:\A\Src\mar\Code\CodeECNew\Res\Beam stirrup spacing_fra.gif
 r:\A\Src\mar\Code\CodeECNew\Res\Beams bars min distance.gif
@@ -43599,6 +43804,7 @@ r:\A\Src\mar\Code\CodeECNew\Res\max_ratio_vertical_reinf.gif
 r:\A\Src\mar\Code\CodeECNew\Res\min_ratio_horizontal_reinf.gif
 r:\A\Src\mar\Code\CodeECNew\Res\min_ratio_horizontal_reinf_din.gif
 r:\A\Src\mar\Code\CodeECNew\Res\min_ratio_horizontal_reinf_onorm.gif
+r:\A\Src\mar\Code\CodeECNew\Res\min_ratio_horizontal_reinf_norway.gif
 r:\A\Src\mar\Code\CodeECNew\Res\min_ratio_reinf_deep_beam.gif
 r:\A\Src\mar\Code\CodeECNew\Res\min_ratio_reinf_deep_beam_is.gif
 r:\A\Src\mar\Code\CodeECNew\Res\min_tens_reinf.gif
@@ -43848,6 +44054,7 @@ r:\A\Src\mar\Code\CodeECNew\Res\L_vertical.gif
 r:\A\Src\mar\Code\CodeECNew\Res\Lambda_lim.gif
 r:\A\Src\mar\Code\CodeECNew\Res\Lambda_lim_csn.gif
 r:\A\Src\mar\Code\CodeECNew\Res\Lambda_lim_din.gif
+r:\A\Src\mar\Code\CodeECNew\Res\Lambda_lim_norway.gif
 r:\A\Src\mar\Code\CodeECNew\Res\Length of prestressing units.gif
 r:\A\Src\mar\Code\CodeECNew\Res\Length of stressng bed.gif
 r:\A\Src\mar\Code\CodeECNew\Res\Links per control perimeter.gif
@@ -43875,6 +44082,7 @@ r:\A\Src\mar\Code\CodeECNew\Res\min_reinf_beam_din.gif
 r:\A\Src\mar\Code\CodeECNew\Res\min_reinf_beam_fra.gif
 r:\A\Src\mar\Code\CodeECNew\Res\min_reinf_beam_postten_fra.gif
 r:\A\Src\mar\Code\CodeECNew\Res\min_reinf_column.gif
+r:\A\Src\mar\Code\CodeECNew\Res\min_reinf_column_norway.gif
 r:\A\Src\mar\Code\CodeECNew\Res\min_reinf_column_SS.gif
 r:\A\Src\mar\Code\CodeECNew\Res\min_reinf_diam_column.gif
 r:\A\Src\mar\Code\CodeECNew\Res\min_shear_reinf_beam.gif
@@ -43974,6 +44182,7 @@ r:\A\Src\mar\Code\CodeECNew\Res\Vertical strut reduction factor.gif
 r:\A\Src\mar\Code\CodeECNew\Res\vmin.gif
 r:\A\Src\mar\Code\CodeECNew\Res\vmin_din.gif
 r:\A\Src\mar\Code\CodeECNew\Res\vmin_fra.gif
+r:\A\Src\mar\Code\CodeECNew\Res\vmin_norway.gif
 r:\A\Src\mar\Code\CodeECNew\Res\Vrd, max.gif
 r:\A\Src\mar\Code\CodeECNew\Res\Vrd, max_DIN.gif
 r:\A\Src\mar\Code\CodeECNew\Res\Vrd, max_IS.gif
@@ -43982,6 +44191,7 @@ r:\A\Src\mar\Code\CodeECNew\Res\Vrd, max_SS.gif
 r:\A\Src\mar\Code\CodeECNew\Res\Vrd. max_BS.gif
 r:\A\Src\mar\Code\CodeECNew\Res\Vrd. max_NBN.gif
 r:\A\Src\mar\Code\CodeECNew\Res\Vrd, max_Singapore.gif
+r:\A\Src\mar\Code\CodeECNew\Res\Vrd, max_norway.gif
 r:\A\Src\mar\Code\CodeECNew\Res\w crack.gif
 r:\A\Src\mar\Code\CodeECNew\Res\x_lim.gif
 r:\A\Src\mar\Code\CodeECNew\Res\xlim 1.gif
@@ -45551,6 +45761,7 @@ r:\A\Src\HEK\WLELink\WLELink.idl
 r:\A\Src\HEK\WLELink\WLELink.rc
 r:\A\Src\HEK\WLELink\WLELink.def
 r:\A\Src\HEK\WLELink\StdAfx.h
+r:\A\Src\HEK\WLELink\CheckInstalledModule.h
 r:\A\Src\HEK\WLELink\EP_EsaModelForWLE.h
 r:\A\inc\ep_esawleinterface.h
 r:\A\Src\HEK\WLELink\EsaModelForWLE.h
@@ -45737,6 +45948,7 @@ r:\A\Src\Bog\PluginsBIN\Scia2Tekla_21.0.net4.exe
 r:\A\Src\Bog\PluginsBIN\Scia2Tekla_21.1.net4.exe
 r:\A\Src\Bog\PluginsBIN\Scia2Tekla_2016.net4.exe
 r:\A\Src\Bog\PluginsBIN\Scia2Tekla_2016i.net4.exe
+r:\A\Src\Bog\PluginsBIN\Scia2Tekla_2017.net4.exe
 r:\A\Src\Tom\Services\AutodesignStarter\AutodesignStarter\AutodesignStarter.14.00.vcxproj
 r:\A\Src\Tom\Services\AutodesignStarter\AutodesignStarter\AutodesignStarter.14.00.vcxproj.filters
 r:\A\Src\Tom\Services\AutodesignStarter\AutodesignStarter\__AutoGenerTLH.cpp
@@ -48560,6 +48772,7 @@ r:\A\Src\Kernel\Base\EP_BasicTypes\EP_BasicTypesTests\EP_BasicTypesTests.rc
 r:\A\Src\Kernel\Base\EP_BasicTypes\EP_BasicTypesTests\EP_BasicTypesTests.def
 r:\A\Src\Kernel\Base\EP_BasicTypes\EP_BasicTypesTests\resource.h
 r:\A\Src\Kernel\Base\EP_BasicTypes\EP_BasicTypesTests\StdAfx.h
+r:\A\Src\Kernel\Base\EP_BasicTypes\EP_BasicTypesTests\Clamp.cpp
 r:\A\Src\Kernel\Base\EP_BasicTypes\EP_BasicTypesTests\integralCastTest.cpp
 r:\A\Src\Kernel\Base\EP_BasicTypes\EP_BasicTypesTests\StdAfx.cpp
 r:\A\Src\Kernel\Base\EP_BasicTypes\EP_BasicTypesTests\EP_BasicTypesTests.cpp
@@ -49711,6 +49924,7 @@ r:\A\Src\lok\X64Document\X64DocumentRendering_UT\64DocRenderingTest_ExternalPict
 r:\A\Src\lok\X64Document\X64DocumentRendering_UT\64DocRenderingTest_Table.h
 r:\A\Src\lok\X64Document\X64DocumentRendering_UT\Resource.h
 r:\A\Src\lok\X64Document\X64DocumentRendering_UT\X64DocRenderingTestBase.h
+r:\A\Src\lok\X64Document\X64DocumentRendering_UT\X64DocRenderingTest_IPFile_DesignFormsMathematicalFormula.h
 r:\A\Src\lok\X64Document\X64DocumentRendering_UT\X64DocumentRendering_UT.h
 r:\A\Src\lok\X64Document\X64DocumentRendering_UT\X64DocumentRendering_UTDLL_EXP_IMP.h
 r:\A\Src\lok\X64Document\X64DocumentRendering_UT\StdAfx.cpp
@@ -49720,6 +49934,7 @@ r:\A\Src\lok\X64Document\X64DocumentRendering_UT\64DocRenderingTest_EP_IPFile_Wi
 r:\A\Src\lok\X64Document\X64DocumentRendering_UT\64DocRenderingTest_ExternalPicture.cpp
 r:\A\Src\lok\X64Document\X64DocumentRendering_UT\64DocRenderingTest_Table.cpp
 r:\A\Src\lok\X64Document\X64DocumentRendering_UT\X64DocRenderingTestBase.cpp
+r:\A\Src\lok\X64Document\X64DocumentRendering_UT\X64DocRenderingTest_IPFile_DesignFormsMathematicalFormula.cpp
 r:\A\Src\lok\X64Document\X64DocumentRendering_UT\X64DocumentRendering_UT.cpp
 r:\A\Src\lok\X64Document\X64DocumentRendering_UT\X64DocumentRendering_UT.rc
 r:\A\Src\LOK\X64Document\XEP_DocumentData_UT\XEP_DocumentData_UT.14.00.vcxproj
@@ -49837,12 +50052,14 @@ r:\A\Src\CHA\UnitTests\UTCHA_DataAddStructure\UTCHA_DataAddStructure.rc
 r:\A\Src\CHA\UnitTests\EP_StructureToolsTest_UT\EP_StructureToolsTest_UT.14.00.vcxproj
 r:\A\Src\CHA\UnitTests\EP_StructureToolsTest_UT\EP_StructureToolsTest_UT.14.00.vcxproj.filters
 r:\A\Src\CHA\UnitTests\EP_StructureToolsTest_UT\EP_StructureToolsTest_UT.def
+r:\A\Src\CHA\UnitTests\EP_StructureToolsTest_UT\IntersectionUpdateTest.h
 r:\A\Src\CHA\UnitTests\EP_StructureToolsTest_UT\StdAfx.h
 r:\A\Src\CHA\UnitTests\EP_StructureToolsTest_UT\EffectiveWidthCalculationTest.h
 r:\A\Src\CHA\UnitTests\EP_StructureToolsTest_UT\EP_StructureToolsTest_UT.h
 r:\A\Src\CHA\UnitTests\EP_StructureToolsTest_UT\EP_StructureToolsTest_UTDLL_EXP_IMP.h
 r:\A\Src\CHA\UnitTests\EP_StructureToolsTest_UT\LineUpToolTest.h
 r:\A\Src\CHA\UnitTests\EP_StructureToolsTest_UT\Resource.h
+r:\A\Src\CHA\UnitTests\EP_StructureToolsTest_UT\IntersectionUpdateTest.cpp
 r:\A\Src\CHA\UnitTests\EP_StructureToolsTest_UT\StdAfx.cpp
 r:\A\Src\CHA\UnitTests\EP_StructureToolsTest_UT\EffectiveWidthCalculationTest.cpp
 r:\A\Src\CHA\UnitTests\EP_StructureToolsTest_UT\EP_StructureToolsTest_UT.cpp
@@ -50401,6 +50618,8 @@ r:\A\Src\PLE\UnitTest_PLE\UnitTest_PLE.rc
 r:\A\Src\HEK\_UnitTest\WLELink_UT\WLELink_UT.14.00.vcxproj
 r:\A\Src\HEK\_UnitTest\WLELink_UT\WLELink_UT.14.00.vcxproj.filters
 r:\A\Src\HEK\_UnitTest\WLELink_UT\WLELink_UT.def
+r:\A\Src\HEK\_UnitTest\WLELink_UT\RoofOverhangWindTest.h
+r:\A\Src\HEK\_UnitTest\WLELink_UT\SlabsWindTestCommon.h
 r:\A\Src\HEK\_UnitTest\WLELink_UT\StdAfx.h
 r:\A\Src\HEK\_UnitTest\WLELink_UT\PlaneForWLETests.h
 r:\A\Src\HEK\_UnitTest\WLELink_UT\Resource.h
@@ -50408,6 +50627,8 @@ r:\A\Src\HEK\_UnitTest\WLELink_UT\WallsInWindTest.h
 r:\A\Src\HEK\_UnitTest\WLELink_UT\WallsInWindTest2.h
 r:\A\Src\HEK\_UnitTest\WLELink_UT\WLELink_UT.h
 r:\A\Src\HEK\_UnitTest\WLELink_UT\WLELink_UTDLL_EXP_IMP.h
+r:\A\Src\HEK\_UnitTest\WLELink_UT\RoofOverhangWindTest.cpp
+r:\A\Src\HEK\_UnitTest\WLELink_UT\SlabsWindTestCommon.cpp
 r:\A\Src\HEK\_UnitTest\WLELink_UT\StdAfx.cpp
 r:\A\Src\HEK\_UnitTest\WLELink_UT\PlaneForWLETests.cpp
 r:\A\Src\HEK\_UnitTest\WLELink_UT\WallsInWindTest.cpp
@@ -50882,6 +51103,7 @@ r:\A\Src\MIK\_UnitTests\UTMIK_TableInput\UTMIK_TableInput.14.00.vcxproj.filters
 r:\A\Src\MIK\_UnitTests\UTMIK_TableInput\UTMIK_TableInput.def
 r:\A\Src\MIK\_UnitTests\UTMIK_TableInput\MikFormatPainterToolTest.h
 r:\A\Src\MIK\_UnitTests\UTMIK_TableInput\MikTableInputExcelExport.h
+r:\A\Src\MIK\_UnitTests\UTMIK_TableInput\MikTableInputRowCreator.h
 r:\A\Src\MIK\_UnitTests\UTMIK_TableInput\StdAfx.h
 r:\A\Src\MIK\_UnitTests\UTMIK_TableInput\MikTableInputPaste.h
 r:\A\Src\MIK\_UnitTests\UTMIK_TableInput\MikTableInputPasteNewRows.h
@@ -50900,6 +51122,7 @@ r:\A\Src\MIK\_UnitTests\UTMIK_TableInput\MikTableInputRename.h
 r:\A\Src\MIK\_UnitTests\UTMIK_TableInput\MikTableInputMultipleEditCheck.h
 r:\A\Src\MIK\_UnitTests\UTMIK_TableInput\MikFormatPainterToolTest.cpp
 r:\A\Src\MIK\_UnitTests\UTMIK_TableInput\MikTableInputExcelExport.cpp
+r:\A\Src\MIK\_UnitTests\UTMIK_TableInput\MikTableInputRowCreator.cpp
 r:\A\Src\MIK\_UnitTests\UTMIK_TableInput\StdAfx.cpp
 r:\A\Src\MIK\_UnitTests\UTMIK_TableInput\MikTableInputPaste.cpp
 r:\A\Src\MIK\_UnitTests\UTMIK_TableInput\MikTableInputPasteNewRows.cpp
@@ -50990,7 +51213,6 @@ r:\A\Src\JNIE\_UnitTests\UTJNIE_SolverData\PROMerging.h
 r:\A\Src\JNIE\_UnitTests\UTJNIE_SolverData\Resource.h
 r:\A\Src\JNIE\_UnitTests\UTJNIE_SolverData\UTCalculationJob.h
 r:\A\Src\JNIE\_UnitTests\UTJNIE_SolverData\UTCompositeJob.h
-r:\A\Src\JNIE\_UnitTests\UTJNIE_SolverData\UTCreateResultsTaskLoadCases.h
 r:\A\Src\JNIE\_UnitTests\UTJNIE_SolverData\UTDynamicCalculationJob.h
 r:\A\Src\JNIE\_UnitTests\UTJNIE_SolverData\UTJNIE_SolverData.h
 r:\A\Src\JNIE\_UnitTests\UTJNIE_SolverData\UTJNIE_SolverDataDLL_EXP_IMP.h
@@ -51008,7 +51230,6 @@ r:\A\Src\JNIE\_UnitTests\UTJNIE_SolverData\PROMerging.cpp
 r:\A\Src\JNIE\_UnitTests\UTJNIE_SolverData\SolverDataExportTests.cpp
 r:\A\Src\JNIE\_UnitTests\UTJNIE_SolverData\UTCalculationJob.cpp
 r:\A\Src\JNIE\_UnitTests\UTJNIE_SolverData\UTCompositeJob.cpp
-r:\A\Src\JNIE\_UnitTests\UTJNIE_SolverData\UTCreateResultsTaskLoadCases.cpp
 r:\A\Src\JNIE\_UnitTests\UTJNIE_SolverData\UTDynamicCalculationJob.cpp
 r:\A\Src\JNIE\_UnitTests\UTJNIE_SolverData\UTJNIE_SolverData.cpp
 r:\A\Src\JNIE\_UnitTests\UTJNIE_SolverData\UTBaseFunctions.cpp
@@ -52134,92 +52355,12 @@ r:\A\Src\Sam\BimPlus\SCIABimPlus\Images\save projection-icon-16x16.png
 r:\A\Src\Sam\BimPlus\SCIABimPlus\Images\Back-icon-16x16.png
 r:\A\Src\Sam\BimPlus\SCIABimPlus\Images\start-32.png
 r:\A\Src\Sam\BimPlus\SCIABimPlus\Images\upload-16x16.png
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\BimPlus.Client.Api.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\BimPlus.Client.Api.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\BimPlus.Client.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\BimPlus.Client.Integration.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\BimPlus.Client.Integration.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\BimPlus.Client.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\BimPlus.Client.WebControls.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\BimPlus.Client.WebControls.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\BimPlus.LightCaseClient.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\BimPlus.LightCaseClient.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\BimPlus.sdk.Api.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\BimPlus.sdk.Api.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\BimPlus.Sdk.Data.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\BimPlus.Sdk.Data.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\BimPlus.Sdk.IfcData.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\BimPlus.Sdk.IfcData.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\BimPlus.Sdk.Utilities.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\BimPlus.Sdk.Utilities.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\EO.Base.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\EO.WebBrowser.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\EO.WebBrowser.Wpf.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\EO.WebEngine.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\log4net.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\Microsoft.SqlServer.Types.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\NBase.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\NBase.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\Nemetschek.UtilLibrary.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\Nemetschek.UtilLibrary.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\Newtonsoft.Json.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\NUtilLibrary.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\NUtilLibrary.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\PPAttribPictureType3.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\PPAttribPictureType3.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\PPAttribPictureType7.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\PPAttribPictureType7.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\protobuf-net.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\protobuf-net.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\RGiesecke.DllExport.Metadata.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\SlimDX.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x64\TestApplication.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\BimPlus.Client.Api.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\BimPlus.Client.Api.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\BimPlus.Client.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\BimPlus.Client.Integration.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\BimPlus.Client.Integration.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\BimPlus.Client.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\BimPlus.Client.WebControls.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\BimPlus.Client.WebControls.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\BimPlus.LightCaseClient.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\BimPlus.LightCaseClient.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\BimPlus.sdk.Api.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\BimPlus.sdk.Api.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\BimPlus.Sdk.Data.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\BimPlus.Sdk.Data.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\BimPlus.Sdk.IfcData.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\BimPlus.Sdk.IfcData.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\BimPlus.Sdk.Utilities.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\BimPlus.Sdk.Utilities.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\EO.Base.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\EO.WebBrowser.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\EO.WebBrowser.Wpf.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\EO.WebEngine.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\log4net.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\Microsoft.SqlServer.Types.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\NBase.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\NBase.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\Nemetschek.UtilLibrary.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\Nemetschek.UtilLibrary.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\Newtonsoft.Json.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\NUtilLibrary.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\NUtilLibrary.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\PPAttribPictureType3.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\PPAttribPictureType3.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\PPAttribPictureType7.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\PPAttribPictureType7.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\protobuf-net.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\protobuf-net.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\SlimDX.dll
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\TestApplication.pdb
 r:\A\Src\Sam\BimPlus\SCIABimPlus\packages\UnmanagedExports.1.2.7\lib\net\RGiesecke.DllExport.Metadata.dll
 r:\A\Src\Sam\BimPlus\SCIABimPlus\packages\UnmanagedExports.1.2.7\tools\Mono.Cecil.dll
 r:\A\Src\Sam\BimPlus\SCIABimPlus\packages\UnmanagedExports.1.2.7\tools\RGiesecke.DllExport.dll
 r:\A\Src\Sam\BimPlus\SCIABimPlus\packages\UnmanagedExports.1.2.7\tools\RGiesecke.DllExport.MSBuild.dll
 r:\A\Src\Sam\BimPlus\SCIABimPlus\packages\UnmanagedExports.1.2.7\tools\RGiesecke.DllExport.MSBuild.pdb
 r:\A\Src\Sam\BimPlus\SCIABimPlus\packages\UnmanagedExports.1.2.7\tools\RGiesecke.DllExport.pdb
-r:\A\Src\Sam\BimPlus\SCIABimPlus\External_Libs\x86\RGiesecke.DllExport.Metadata.dll
 r:\A\Src\Sam\BimPlus\SCIABimPlus\Views\BimPlusRevisionView.xaml
 r:\A\Src\Sam\BimPlus\SCIABimPlus\Views\BimPlusUploadUpdateView.xaml
 r:\A\Src\Sam\BimPlus\SCIABimPlus\Views\IssueDetailControl.xaml
@@ -55342,6 +55483,7 @@ r:\A\Db\DocumentDefaults\BasicResults.10.00.EP_ResPropertyBillMaterialConcrete14
 r:\A\Db\DocumentDefaults\BasicResults.10.00.EP_ResPropertyConcreteSetupBrazil-(ResultMain) [Default].TLX
 r:\A\Db\DocumentDefaults\BasicResults.10.00.EP_StressStrain2D_Shell-(ResultMain) [Default].TLX
 r:\A\Db\DocumentDefaults\BasicResults.10.00.EP_SubsoilC2D_Shell-(ResultMain) [Default].TLX
+r:\A\Db\DocumentDefaults\BasicResults.14.00.EP_ReactionsResultant_Shell-(ResultMain) [Default].TLX
 r:\A\Db\DocumentDefaults\BasicResults.14.00.EP_Reactions_Shell-(ResultMain) [Default].TLX
 r:\A\Db\DocumentDefaults\BasicResults.8.00.EP_ResConcreteDetailsCheck-(ResultMain) [Default].TLX
 r:\A\Db\DocumentDefaults\BasicResults.8.00.EP_ResPropertyConcreteSetupNew-(ResultMain) [Default].TLX
@@ -55926,6 +56068,7 @@ r:\A\Db\DocumentDefaults\EP_CheckNEN.EP_ResDataNEN [Default].TLX
 r:\A\Db\DocumentDefaults\EP_CheckNEN.EP_ResDataNENFireResistance [Default].TLX
 r:\A\Db\DocumentDefaults\EP_CodeCSNSteel.EP_ResDataCSN [Default].TLX
 r:\A\Db\DocumentDefaults\EP_CodeECSteel.EP_ResDataECTimber [Default].TLX
+r:\A\Db\DocumentDefaults\EP_CodeONORMSteel.EP_ResDataoNORM [Default].TLX
 r:\A\Db\DocumentDefaults\EP_CodeSIASteel.EP_ResDataSIA [Default].TLX
 r:\A\Db\DocumentDefaults\EP_CodeSIASteel.EP_ResDataSIAFireResistance [Default].TLX
 r:\A\Db\DocumentDefaults\EP_DataAddStructure.EP_ArbitraryBeam [Default].TLX
@@ -56618,6 +56761,8 @@ r:\A\Db\EP_CLEANSCRIPT_DocumentDefaultsFiles.txt
 r:\A\Db\DocumentDefaults\BasicResults.10.00.EP_ECEN_1993_SteelCheck_Fire_ResultShell-(ResultMain) [Default].TLX
 r:\A\Db\DocumentDefaults\BasicResults.10.00.EP_ECEN_1993_SteelCheck_ULS_ResultShell-(ResultMain) [Default].TLX
 r:\A\Db\DocumentDefaults\CrossSection.EP_CrossSection [Effective section].TLX
+r:\A\Db\DocumentDefaults\DataAddScia.14.00.EP_CompositeBeamDesignInfo [Default].TLX
+r:\A\Db\DocumentDefaults\DataAddScia.14.00.EP_VirtualJoistDesignInfo [Default].TLX
 r:\A\Db\DocumentDefaults\DataSetSciaTra.EP_DumperSetupData [Default].TLX
 r:\A\Db\DocumentDefaults\PageLayout\Brief.HFX
 r:\A\Db\DocumentDefaults\{060FA601-E7DF-4C78-B898-C10C76837DA4}-(IPFile) [Default].TLX

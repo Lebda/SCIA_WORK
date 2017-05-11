@@ -246,7 +246,7 @@ CodeDependentDeflections \A\Src\Checks\ConcreteChecks\CodeDependentDeflections\C
 CodeDependentDeflections_UT \A\Src\Checks\ConcreteChecks\CodeDependentDeflections_UT\CodeDependentDeflections_UT.rc CodeDependentDeflections_UT.tlb
 TestCodeDependentDeflection \A\Src\Checks\ConcreteChecks\UnitTestsConcrete\TestCodeDependentDeflection\TestCodeDependentDeflection.rc TestCodeDependentDeflection.tlb
 Punching \A\Src\Checks\ConcreteChecks\Punching\Punching.rc Punching.tlb
-Punching_MSUT \A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_MSUT.rc Punching_MSUT.tlb
+Punching_MSUT \A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_MSUT.rc 
 ConcreteESACmds \A\Src\Par\Services\ConcreteESACmds\ConcreteESACmds.rc ConcreteESACmds.tlb
 ConcreteESACmdsM \A\Src\Par\Services\ConcreteESACmdsM\ConcreteESACmdsM.rc 
 HeatTransferESACmd \A\Src\Pos\Services\HeatTransferESACmd\HeatTransferESACmd.rc HeatTransferESACmd.tlb

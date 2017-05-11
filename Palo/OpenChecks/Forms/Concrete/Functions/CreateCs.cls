@@ -1,12 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="f379241a-d164-49fb-8d12-1548e5bb579e">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">→INI400_010085BLOCK("Function for general creation of ULS CrossSection") { 
+    <SourceCode Collapsed="1|5|9|72|172|224|259|286" BreakPoints="">→INI400_010085BLOCK("Function for general creation of ULS CrossSection") { 
     object CreateCS_ULS(double CssID, object Forces, bool bAccidental) { 
-        return CreateCS_ULS(CssID, Forces, bAccidental, false); 
+        return CreateCS_ULS(CssID, Forces, bAccidental, false, false); 
     } 
     
     object CreateCS_ULS(double CssID, object Forces, bool bAccidental, bool IsShear) { 
+        return CreateCS_ULS(CssID, Forces, bAccidental, IsShear, false); 
+    } 
+    
+    object CreateCS_ULS(double CssID, object Forces, bool bAccidental, bool IsShear, bool IsDetailing) { 
         object CreateCS_common →INI400_010114= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\CreateCS_common.clc"); 
         
         object Css →INI400_012972= CreateCS_common.GetIfExistsULSCS(CssID, Forces, bAccidental); 
@@ -58,10 +62,11 @@
         } 
         //create cross-sections
         object CrossSectionClc →INI400_011768= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\CrossSection.clc"); 
-        object Css →INI400_010360= new CrossSectionClc.CrossSection(CssID, cssComponents, cssReinf); 
-        object Input →INI400_012995= new Structure(); 
-        →INI400_012996Input.Add("Forces", Forces); 
-        →INI400_012997Input.Add("Accidental", bAccidental); 
+        object Css →INI400_010360= new CrossSectionClc.CrossSection(CssID, cssComponents, cssReinf, true, IsDetailing); 
+        object Input →INI400_012995= new Structure(
+        "Forces", Forces, 
+        "Accidental", bAccidental
+        ); 
         →INI400_012998Css.SetULSCreationParams(Input); 
         →INI400_013008CreateCS_common.SaveCS(Css); 
         return Css; 
@@ -403,14 +408,6 @@
     </Layouts>
     <VisualComponents>
       <VC ID="">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_000000">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -787,22 +784,6 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_012995">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_012996">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_012997">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1826,14 +1807,6 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL134_014045">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="VAL134_014046">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1897,14 +1870,6 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="VAL134_014055">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="VAL134_014056">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

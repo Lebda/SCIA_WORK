@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="aae55477-e7f7-49aa-ab77-38f5940b0f58">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">//CLS with functions for 2D concrete
+    <SourceCode Collapsed="3|25|45|77|93|104|111|122|133|144|154|168|204|210|256|270|302|310|328|339|351|358|363|370|377|388|415|437|464|484|500|524|540|556|563|582|589|613|627|638|651|660|670|681|693|702|711|721" BreakPoints="">//CLS with functions for 2D concrete
 
 →INI400_006756BLOCK("Clause 8.2(2) - Spacing of bars - s↓min←") { 
     public void s↓min←(double ϕ, double d↓g←, double s↓lb,min←, bool Layer, object Result) { 
         object Clause8_2_2 →INI400_006757= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_8.2(2).CLC", true); 
         object Input →KRS001_000001= new Structure(
         "Layer", Layer, 
+        "LayerSpace", false, //More layers are not supported now
         "d_g", d↓g←); 
         object Output →KRS001_000002= new Structure(); 
         
@@ -210,7 +211,7 @@
 } 
 
 →INI400_005320BLOCK("Clause 9.2.2(6) - Shear reinforcement - s↓l,max←") { 
-    public void s↓l,max←(double d, double α, double f↓ck←, double h, double V↓Ed←, double V↓Rd,c←, double V↓Rd,max←, object Result) { 
+    public void s↓l,max←(double d, double α, double f↓ck←, double h, double V↓Ed←, double V↓Rd,c←, double V↓Rd,max←, double h_carka, object Result) { 
         object Clause9_2_2_6 →INI400_006280= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_9.2.2(6).CLC"); 
         object Input →KRS001_000015= new Structure(
         "d", d, 
@@ -219,15 +220,26 @@
         "V_Ed", V↓Ed←, 
         "V_Rd_c", V↓Rd,c←, 
         "V_Rd_max", V↓Rd,max←, 
-        "α_s", α); 
+        "α_s", α, 
+        "h_carka", h_carka); 
         object Output →KRS001_000016= new Structure(); 
         
         IF((IO.SetupNA.EC_NA.Code == "NF") || (IO.SetupNA.EC_NA.Code == "DIN")) { 
             →INI400_007527TEXT("Depth of member"); 
             →INI400_008489TEXT("h = " &amp; Val(h*1000, 2) &amp; " mm"); //for NF and DIN NA
         } 
-        →INI400_007526TEXT("Effective depth"); 
-        →INI400_007130TEXT("d = " &amp; Val(d*1000, 2) &amp; " mm"); 
+        IF(IO.SetupNA.EC_NA.Code == "NS") { 
+            →KRS116_000016TEXT("Distance between center of gravity of the tension reinforcement and the compression reinforcement"); 
+            IF(COMPARE(h_carka, d, 3) == 0) { 
+                →KRS116_000018TEXT("h' = d = " &amp; Val(h_carka*1000, 2) &amp; " mm"); 
+                →KRS116_000019TEXT("because compression or tension reinforcement does not exist"); 
+            } ELSE { 
+                →KRS116_000017TEXT("h' = " &amp; Val(h_carka*1000, 2) &amp; " mm"); 
+            } 
+        } ELSE { 
+            →INI400_007526TEXT("Effective depth"); 
+            →INI400_007130TEXT("d = " &amp; Val(d*1000, 2) &amp; " mm"); 
+        } 
         IF(IO.SetupNA.EC_NA.Code == "DIN") { 
             →INI400_007528TEXT("Characteristic cylinder concrete strength"); 
             →INI400_007131TEXT("f↓ck← = " &amp; Val(f↓ck←/1000000, 2) &amp; " MPa"); //only for DIN NA
@@ -245,12 +257,13 @@
 } 
 
 →INI400_006307BLOCK("Clause 9.2.2(7) - Shear reinforcement - s↓b,max←") { 
-    public void s↓b,max←(double d, double h, double α, object Result) { 
+    public void s↓b,max←(double d, double h, double α, double h_carka, object Result) { 
         object Clause9_2_2_7 →INI400_006493= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_9.2.2(7).CLC"); 
         object Input →KRS001_000017= new Structure(
         "d", d, 
         "h", h, 
-        "α_s", α); 
+        "α_s", α, 
+        "h_carka", h_carka); 
         object Output →KRS001_000018= new Structure(); 
         →INI400_006508Clause9_2_2_7.Draw(Input, Output, 2); 
         →INI400_008626Result.Set("sbmax", Output.s_b_max); 
@@ -258,14 +271,15 @@
 } 
 
 →INI400_006518BLOCK("Clause 9.2.2(8) - Shear reinforcement - s↓st,max,lim←") { 
-    public void s↓t,max←(double d, double h, double f↓ck←, double V↓Ed←, double V↓Rd,max←, object Result) { 
+    public void s↓t,max←(double d, double h, double f↓ck←, double V↓Ed←, double V↓Rd,max←, double h_carka, object Result) { 
         object Clause9_2_2_8 →INI400_006519= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_9.2.2(8).CLC"); 
         object Input →KRS001_000019= new Structure(
         "d", d, 
         "f_ck", f↓ck←, 
         "h", h, 
         "V_Ed", V↓Ed←, 
-        "V_Rd_max", V↓Rd,max←); 
+        "V_Rd_max", V↓Rd,max←, 
+        "h_carka", h_carka); 
         object Output →KRS001_000020= new Structure(); 
         
         IF((IO.SetupNA.EC_NA.Code == "NF") || (IO.SetupNA.EC_NA.Code == "DIN")) { 
@@ -402,12 +416,13 @@
 } 
 
 →INI400_006588BLOCK("Clause 9.5.2(2) - Columns - Longitudinal reinforcement - A↓s,min,col←") { 
-    public void A↓s,min,col←(double A↓c←, double f↓yd←, double N↓Ed←, object Result) { 
+    public void A↓s,min,col←(double A↓c←, double f↓yd←, double N↓Ed←, double f↓cd←, object Result) { 
         object Clause9_5_2_2 →INI400_006589= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_9.5.2(2).CLC"); 
         object Input →KRS001_000025= new Structure(
         "A_c", A↓c←, 
         "f_yd", f↓yd←, 
-        "N_Ed", N↓Ed←); 
+        "N_Ed", N↓Ed←, 
+        "f_cd", f↓cd←); 
         object Output →KRS001_000026= new Structure(); 
         
         →INI400_007498TEXT("Area of concrete cross-section"); 
@@ -549,14 +564,17 @@
 } 
 
 →INI400_006647BLOCK("Clause 9.6.3(1) - Walls - Horizontal reinforcement - A↓s,hmin←") { 
-    public void A↓s,hmin←(double A↓c←, double A↓sv←, double f↓cd←, double N↓Ed←, bool ThinWall, object Result) { 
+    public void A↓s,hmin←(double A↓c←, double A↓sv←, double f↓cd←, double N↓Ed←, double f↓ctm←, double f↓yk←, bool ThinWall, bool IsExteriorWall, object Result) { 
         object Clause9_6_3_1 →INI400_006648= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_9.6.3(1).CLC"); 
         object Input →KRS001_000035= new Structure(
         "A_c", A↓c←, 
         "ThinWall", ThinWall, 
         "N_Ed", N↓Ed←, 
         "f_cd", f↓cd←, 
-        "A_s_v", A↓sv←); 
+        "A_s_v", A↓sv←, 
+        "IsExteriorWall", IsExteriorWall, 
+        "f_ctm", f↓ctm←, 
+        "f_yk", f↓yk←); 
         object Output →KRS001_000036= new Structure(); 
         →INI400_006642Clause9_6_3_1.Draw(Input, Output, 2); 
         →INI400_006781Clause9_6_3_1.Draw(Input, Output, 3); 
@@ -572,15 +590,15 @@
 } 
 
 →KRS116_000005BLOCK("Clause 9.6.4(1) - Walls - Transverse reinforcement - s↓wl,max←") { 
-    public void s↓wl,max←(double b↓min←, double ϕ↓l←, object Result) { 
+    public void s↓wl,max←(double b↓min←, double ϕ↓l←, double A_s, double A_c, object Result) { 
         object Clause9_5_3_3 →KRS116_000006= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_9.5.3(3).CLC"); 
         object Input →KRS116_000007= new Structure(
         "ϕ_l", ϕ↓l←, 
         "b_min", b↓min←, 
         "f_ck", 1, //ToDo: link it correctly to function parameters - new inputs for standalone SIG annex
-        "A_s", 1, //ToDo: link it correctly to function parameters - new inputs for standalone SIG annex 
+        "A_s", A_s, 
         "f_yd", 1, //ToDo: link it correctly to function parameters - new inputs for standalone SIG annex 
-        "A_c", 1, //ToDo: link it correctly to function parameters - new inputs for standalone SIG annex 
+        "A_c", A_c, 
         "f_cd", 1, //ToDo: link it correctly to function parameters - new inputs for standalone SIG annex 
         "Bar", null, //ToDo: link it correctly to function parameters - new inputs for standalone SIG annex 
         "Link", 1); //ToDo: link it correctly to function parameters - new inputs for standalone SIG annex
@@ -3501,6 +3519,38 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
+      <VC ID="KRS116_000016">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000017">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000018">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000019">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
@@ -3924,6 +3974,18 @@
     </Item>
     <Item TranslateID="TEXT_KRS116_000011">
       <ENU>"Maximal allowed longitudinal spacing of transversal reinforcement"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000016">
+      <ENU>"Distance between center of gravity of the tension reinforcement and the compression reinforcement"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS116_000017">
+      <ENU>"h' = " &amp; Val(h_carka*1000, 2) &amp; " mm"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS116_000018">
+      <ENU>"h' = d = " &amp; Val(h_carka*1000, 2) &amp; " mm"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000019">
+      <ENU>"because compression or tension reinforcement does not exist"</ENU>
     </Item>
   </Texts>
 </Root>

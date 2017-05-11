@@ -823,7 +823,8 @@ k_SLS_diagram →VAL134_000001= 20;
         ϕ↓eq-← →DLO134_048585= DetailedOutputCrack[→DLO134_048579FinalOutput.LowerDirection].OutputCrack.ϕ_eq; 
         w↓-← →DLO134_048586= DetailedOutputCrack[→DLO134_048587FinalOutput.LowerDirection].OutputCrack.w; 
         UC↓-← →DLO134_043061= DetailedOutputCrack[→DLO134_043062FinalOutput.LowerDirection].OutputCrack.UC; 
-        
+        w↓max-← →KRS106_000001= DetailedOutputCrack[→KRS106_000002FinalOutput.LowerDirection].OutputCrack.w_max; 
+                
         //upper surface
         N↓cr+← →DLO134_048588= DetailedOutputCrack[2+→DLO134_048589FinalOutput.UpperDirection].OutputCrack.N_cr; 
         M↓cry+← →DLO134_048590= DetailedOutputCrack[2+→DLO134_048591FinalOutput.UpperDirection].OutputCrack.M_cry; 
@@ -843,6 +844,7 @@ k_SLS_diagram →VAL134_000001= 20;
         ϕ↓eq+← →DLO134_048618= DetailedOutputCrack[2+→DLO134_048619FinalOutput.UpperDirection].OutputCrack.ϕ_eq; 
         w↓+← →DLO134_043059= DetailedOutputCrack[2+→DLO134_043060FinalOutput.UpperDirection].OutputCrack.w; 
         UC↓+← →DLO134_043063= DetailedOutputCrack[2+→DLO134_043064FinalOutput.UpperDirection].OutputCrack.UC; 
+        w↓max+← →KRS106_000002= DetailedOutputCrack[2+→KRS106_000004FinalOutput.UpperDirection].OutputCrack.w_max; 
         double UC →DLO134_048459= MAX(UC↓+←, UC↓-←); 
         
     } 
@@ -5346,8 +5348,8 @@ IF(IO.IsDrawing) {
       </VC>
       <VC ID="DLO134_048712">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -5402,8 +5404,8 @@ IF(IO.IsDrawing) {
       </VC>
       <VC ID="DLO134_048719">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -5450,8 +5452,8 @@ IF(IO.IsDrawing) {
       </VC>
       <VC ID="DLO134_048725">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -5612,6 +5614,22 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

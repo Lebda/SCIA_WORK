@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="8489d14c-2e61-4aa0-b166-b755ba178cf2">
   <CodeEditor>
-    <SourceCode Collapsed="1|22|38|54|165|179|201|215|235|255|262|373|387|407|420|440|448|464|475|486|497|508|523|535|567|601|611|621|629|637|660|688|696|711|744|748|765|775|785|812|816|831|839|849|861|871" BreakPoints="">→INI400_015411BLOCK("@RESOURCES") { 
+    <SourceCode Collapsed="1|38|54|165|179|201|215|235|255|262|373|387|413|426|446|454|470|481|492|503|514|529|541|573|607|617|627|635|643|666|694|702|717|750|754|771|781|791|818|822|838|846|856|868|878" BreakPoints="">→INI400_015411BLOCK("@RESOURCES") { 
     private void InitStrings() { 
         sPrincipal →INI400_015324= TR("principal"); 
         sSecondary →INI400_015325= TR("secondary"); 
@@ -390,6 +390,11 @@ private object GetWallShearReinfDesignDefaults() {
 
 private object GetWallDetailingDefaults() { 
     IF(IO.ContainsPath("Setup.Concrete.Solver.DetProv.WallShellWall.Longitudinal")) { 
+        IF(IO.SetupNA.EC_NA.Code == "NS") { 
+            bool IsExteriorWall →KRS116_000006= IO.MemberData.Concrete.WallType == 1; 
+        } ELSE { 
+            bool IsExteriorWall →KRS116_000007= true; 
+        } 
         return new Structure(
         "bWallCheckVertMinPercentage", (IO.Setup.Concrete.Solver.DetProv.WallShellWall.Longitudinal.CheckMinRatioVerticalReinf == 1), 
         "bWallCheckVertMaxPercentage", (IO.Setup.Concrete.Solver.DetProv.WallShellWall.Longitudinal.CheckMaxRatioVerticalReinf == 1), 
@@ -400,7 +405,8 @@ private object GetWallDetailingDefaults() {
         "bWallCheckHorizMaxSpacing", (IO.Setup.Concrete.Solver.DetProv.WallShellWall.Longitudinal.CheckMaxSpacingHorizontalReinf == 1), 
         "s↓max,h←", IO.Setup.Concrete.Solver.DetProv.WallShellWall.Longitudinal.MaxSpacingHorizontalReinf, 
         "bWallCheckMinBarDistance", (IO.Setup.Concrete.Solver.DetProv.WallShellWall.Longitudinal.CheckMinBarDistance == 1), 
-        "s↓lw,min←", IO.Setup.Concrete.Solver.DetProv.WallShellWall.Longitudinal.MinBarDistance
+        "s↓lw,min←", IO.Setup.Concrete.Solver.DetProv.WallShellWall.Longitudinal.MinBarDistance, 
+        "IsExteriorWall", IsExteriorWall
         ); 
     } 
     ELSE { 
@@ -828,7 +834,8 @@ private object GetWallDetailingDefaultsForUT() {
     "bWallCheckHorizMaxSpacing", True, 
     "s↓max,h←", 0.4, 
     "bWallCheckMinBarDistance", True, 
-    "s↓lw,min←", 0.02
+    "s↓lw,min←", 0.02, 
+    "IsExteriorWall", True
     ); 
 } 
 
@@ -2069,6 +2076,22 @@ object DesignDefaults →PAI116_000002= →PAI116_000001GetDesignDefaults(32);
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS116_000006">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000007">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="PAI116_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2621,7 +2644,7 @@ object DesignDefaults →PAI116_000002= →PAI116_000001GetDesignDefaults(32);
           </Items>
         </Data>
       </TCustomLibrary>
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="4|4|4|4" MinSize="465|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.8|0|3" Active="1" PreDef="0" MemberDirectory="D:\_VERSIONS\DEVE_16\TEMP\Esa_Model_Data\Member2D.1" MemberID="Member2D.1" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="4|4|4|4" MinSize="465|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.8|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Member2D.1" SectionID="-1" CombiID="-1" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />

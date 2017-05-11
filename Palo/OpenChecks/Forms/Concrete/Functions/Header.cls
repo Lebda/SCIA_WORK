@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="6e20e037-9a10-4827-b4ee-db6a3ebfc7b2">
   <CodeEditor>
-    <SourceCode Collapsed="5|47|76|85|108|116|124|157|188|215|267|288|304|367|397|406|415" BreakPoints="">
+    <SourceCode Collapsed="5|47|76|85|108|116|124|160|191|224|276|297|313|376|406|415|424" BreakPoints="">
 //------------------------------------------------------------
 //@FUNCTIONS
 
@@ -125,27 +125,30 @@ private string GetLimitString(string InputString, double LimitLength) {
     } 
 } 
 
-private string GetExposureClasses() { 
+private string GetExposureClasses(bool Upper) { 
     IF(!IO.IsStandalone) { 
         object IOhelper →KRS116_000072= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
-        object ExposureClasses →KRS116_000073= IOhelper.GetExposureClasses(); 
+        object ExposureClasses →KRS116_000073= IOhelper.GetExposureClasses(Upper); 
         string sExplosureClasses →KRS116_000074= ""; 
         IF(ExposureClasses.XC != 0) { 
             sExplosureClasses →KRS116_000075= "XC" &amp; ExposureClasses.XC; 
         } 
         IF(ExposureClasses.XD != 0) { 
-            sExplosureClasses →KRS116_000077= (sExplosureClasses == "" ? "" : ", ") &amp; "XD" &amp; ExposureClasses.XD; 
+            sExplosureClasses →KRS116_000077= (sExplosureClasses == "" ? "" : sExplosureClasses &amp; ", ") &amp; "XD" &amp; ExposureClasses.XD; 
         } 
         IF(ExposureClasses.XS != 0) { 
-            sExplosureClasses →KRS116_000078= (sExplosureClasses == "" ? "" : ", ") &amp; "XS" &amp; ExposureClasses.XS; 
+            sExplosureClasses →KRS116_000078= (sExplosureClasses == "" ? "" : sExplosureClasses &amp; ", ") &amp; "XS" &amp; ExposureClasses.XS; 
         } 
         IF(ExposureClasses.XF != 0) { 
-            sExplosureClasses →KRS116_000079= (sExplosureClasses == "" ? "" : ", ") &amp; "XF" &amp; ExposureClasses.XF; 
+            sExplosureClasses →KRS116_000079= (sExplosureClasses == "" ? "" : sExplosureClasses &amp; ", ") &amp; "XF" &amp; ExposureClasses.XF; 
         } 
         IF(ExposureClasses.XA != 0) { 
-            sExplosureClasses →KRS116_000080= (sExplosureClasses == "" ? "" : ", ") &amp; "XA" &amp; ExposureClasses.XA; 
+            sExplosureClasses →KRS116_000080= (sExplosureClasses == "" ? "" : sExplosureClasses &amp; ", ") &amp; "XA" &amp; ExposureClasses.XA; 
         } 
-        IF(ExposureClasses.XC == 0 &amp;&amp; ExposureClasses.XD == 0 &amp;&amp; ExposureClasses.XS == 0 &amp;&amp; ExposureClasses.XF == 0 &amp;&amp; ExposureClasses.XA == 0) { 
+        IF(ExposureClasses.XSA != 0) { 
+            sExplosureClasses →KRS116_000247= (sExplosureClasses == "" ? "" : sExplosureClasses &amp; ", ") &amp; "XSA"; 
+        } 
+        IF(ExposureClasses.XC == 0 &amp;&amp; ExposureClasses.XD == 0 &amp;&amp; ExposureClasses.XS == 0 &amp;&amp; ExposureClasses.XF == 0 &amp;&amp; ExposureClasses.XA == 0 &amp;&amp; ExposureClasses.XSA == 0) { 
             sExplosureClasses →KRS116_000076= "X0"; 
         } 
         //Abrasion class
@@ -202,7 +205,13 @@ private void PrintConcreteMaterial() {
     ConcreteMaterialTable[0][0].Value →KRS116_000040= TR("Concrete") &amp; ": " &amp; NameConcrete; 
     ConcreteMaterialTable[1][0].Value →KRS116_000055= TypeDiagram ? TR("Bi-linear stress-strain diagram") : TR("Parabola-rectangle stress-straing diagram"); 
     IF(!IO.IsStandalone) { 
-        ConcreteMaterialTable[2][0].Value →KRS116_000082= TR("Exposure class") &amp; ": " &amp; GetExposureClasses(); 
+        IF(IO.MemberData.Concrete.Solver.General.MinCover.DifferentSurfaces == 0) { 
+            ConcreteMaterialTable[2][0].Value →KRS116_000082= TR("Exposure class") &amp; ": " &amp; GetExposureClasses(true); 
+        } ELSE { 
+            ConcreteMaterialTable[2][0].Value →KRS116_000244= TR("Exposure class") &amp; ":"; 
+            ConcreteMaterialTable[3][0].Value →KRS116_000245= TR("Upper") &amp; ": " &amp; GetExposureClasses(true); 
+            ConcreteMaterialTable[4][0].Value →KRS116_000246= TR("Lower") &amp; ": " &amp; GetExposureClasses(false); 
+        } 
     } 
     
     →KRS116_000048ConcreteMaterialTable.Padding.All →KRS116_000043= 0; 
@@ -398,9 +407,9 @@ private void PrintCover(object Shape, object ShearReinf, double FormCode) {
     →KRS116_000206CoverTable.Draw(); 
 } 
 
-private void PrintCSS(object CrossSection, object HeaderDrawInput) { 
+private void PrintCSS(object CrossSection, object HeaderDrawInput, object ShearReinfStandard) { 
     
-    →INI400_012793CrossSection.HeaderCSSDrawing(HeaderDrawInput); 
+    →INI400_012793CrossSection.HeaderCSSDrawing(HeaderDrawInput, ShearReinfStandard); 
     
     
     
@@ -419,15 +428,15 @@ public void DrawHeaderForSEN() {
 public void DrawHeaderForStandalone(object CrossSection, object HeaderDrawInput) { 
     object FontsColors →KRS116_000070= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.CLC"); 
     object FontsAndColors →KRS116_000071= FontsColors.GetFontsAndColors(); 
-    →KRS116_000233CrossSection.GetShearReinf(HeaderDrawInput.ForcesID); 
+    object ShearReinfStandard →KRS106_000001= →KRS116_000233CrossSection.GetShearReinf(HeaderDrawInput.ForcesID, 0); 
     
     //Left side contains bucklign lengths and CSS drawing
     object LeftSubTable →KRS116_000083= new Table(1); 
     IF(IO.IsExternCLC) { 
         LeftSubTable[0][0].Value →KRS116_000058=  { →KRS116_000033PrintMemberLengths(); } 
-        LeftSubTable[1][0].Value →KRS116_000085=  { →KRS116_000229PrintCSS(CrossSection, HeaderDrawInput); } 
+        LeftSubTable[1][0].Value →KRS116_000085=  { →KRS116_000229PrintCSS(CrossSection, HeaderDrawInput, ShearReinfStandard); } 
     } ELSE { 
-        LeftSubTable[0][0].Value →KRS116_000096=  { →KRS116_000234PrintCSS(CrossSection, HeaderDrawInput); } 
+        LeftSubTable[0][0].Value →KRS116_000096=  { →KRS116_000234PrintCSS(CrossSection, HeaderDrawInput, ShearReinfStandard); } 
     } 
     LeftSubTable.Padding.All →KRS116_000088= 0; 
     LeftSubTable.Columns[0].Width →KRS116_000090= 310; 
@@ -442,8 +451,8 @@ public void DrawHeaderForStandalone(object CrossSection, object HeaderDrawInput)
     RightSubTable[0][0].Value →KRS116_000098=  { →KRS116_000109PrintConcreteMaterial(); } 
     IF(Reinf != null &amp;&amp; Reinf.Keys.Count &gt; 0) { 
         RightSubTable[1][0].Value →KRS116_000099=  { →KRS116_000136PrintLongReinfMaterial(HeaderDrawInput.CssID, HeaderDrawInput.ForcesID); } 
-        RightSubTable[2][0].Value →KRS116_000111=  { →KRS116_000172PrintShearReinfMaterial(HeaderDrawInput.CssID, HeaderDrawInput.ForcesID, CrossSection.ShearReinfStandard); } 
-        RightSubTable[3][0].Value →KRS116_000112=  { →KRS116_000191PrintCover(CrossSection.GetOrigShape(), CrossSection.ShearReinfStandard, HeaderDrawInput.FormCode); } 
+        RightSubTable[2][0].Value →KRS116_000111=  { →KRS116_000172PrintShearReinfMaterial(HeaderDrawInput.CssID, HeaderDrawInput.ForcesID, ShearReinfStandard); } 
+        RightSubTable[3][0].Value →KRS116_000112=  { →KRS116_000191PrintCover(CrossSection.GetOrigShape(), ShearReinfStandard, HeaderDrawInput.FormCode); } 
     } 
     RightSubTable.Padding.All →KRS116_000101= 0; 
     RightSubTable.Columns[0].Width →KRS116_000103= 290; 
@@ -518,37 +527,37 @@ T[0][0].Padding.Left →KRS116_000211= 10;
     </NormRef>
     <Variables>
       <Variable Modifier="Public" Name="CrossSection" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_CrossSection">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="ExternCreateCS" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_ExternCreateCS">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="Forces" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Forces">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="HeaderDrawInput" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_HeaderDrawInput">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="ShearReinf" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_ShearReinf">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="T" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_T">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -949,6 +958,14 @@ T[0][0].Padding.Left →KRS116_000211= 10;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS116_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2142,14 +2159,6 @@ T[0][0].Padding.Left →KRS116_000211= 10;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000233">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="KRS116_000234">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2207,6 +2216,38 @@ T[0][0].Padding.Left →KRS116_000211= 10;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS116_000242">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000244">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000245">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000246">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000247">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2487,6 +2528,9 @@ T[0][0].Padding.Left →KRS116_000211= 10;
     <Item TranslateID="STRING_B6F06627">
       <ENU>"ShellPlate"</ENU>
     </Item>
+    <Item TranslateID="STRING_B9996D96">
+      <ENU>"Lower"</ENU>
+    </Item>
     <Item TranslateID="STRING_BC444F7D">
       <ENU>"Buckling y-y"</ENU>
     </Item>
@@ -2501,6 +2545,9 @@ T[0][0].Padding.Left →KRS116_000211= 10;
     </Item>
     <Item TranslateID="STRING_D11CD721">
       <ENU>"Beam"</ENU>
+    </Item>
+    <Item TranslateID="STRING_D2ED0F6A">
+      <ENU>"Upper"</ENU>
     </Item>
     <Item TranslateID="STRING_D55630D3">
       <ENU>"RECT"</ENU>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="f3034ee6-dc5e-41c0-ac7d-1d7c12bfa2ef">
   <CodeEditor>
-    <SourceCode Collapsed="6" BreakPoints="">//@EC_Concrete_Design2D_Multi
+    <SourceCode Collapsed="6|16|75|96|106|116|163|186|239|304|319" BreakPoints="">//@EC_Concrete_Design2D_Multi
 
 
 //=================================================================
@@ -160,6 +160,11 @@ private void LoadDialogInputs() {
         } 
         DesignDefaults.ReinfLong.Layers[i].Additional →PAI116_000085= AddReinf; 
     } 
+    IF(DesignDefaults.ReinfLong.UseBasicReinf) { 
+        FOR(i, 0, 3) { 
+            DesignDefaults.ReinfLong.Layers[i].ds →KRS106_000003= DesignDefaults.ReinfLong.Layers[i].Additional[0].ds; 
+        } 
+    } 
 } 
 
 private void DrawInternalForcesInDetailed() { 
@@ -304,18 +309,21 @@ private void DrawReinfAssumpInDetailed() {
 } 
 
 private bool IsZeroLoad() { 
-    
-    double LoadProduct →INI400_016505= 
-    BasicForces[0].mx+
-    BasicForces[0].my+
-    BasicForces[0].mxy+
-    BasicForces[0].nx+
-    BasicForces[0].ny+
-    BasicForces[0].nxy+
-    BasicForces[0].qx+
-    BasicForces[0].qy; 
-    
-    return (COMPARE(LoadProduct, 0, 6) == 0); 
+    IF(BasicForces.Count == 1) { 
+        double LoadProduct →INI400_016505= 
+        BasicForces[0].mx+
+        BasicForces[0].my+
+        BasicForces[0].mxy+
+        BasicForces[0].nx+
+        BasicForces[0].ny+
+        BasicForces[0].nxy+
+        BasicForces[0].qx+
+        BasicForces[0].qy; 
+        return (COMPARE(LoadProduct, 0, 6) == 0); 
+    } 
+    ELSE { 
+        return false; 
+    } 
 } 
 
 private void SetResultsForUT() { 
@@ -395,31 +403,33 @@ IF(IO.LayoutIndex == 2) {
     } 
     →KRS116_000003LONG_DESIGN_2D.PrintDesignReinfView(); 
     →KRS116_000007PAGEBREAK(); 
+    →KRS106_000001FUNCT_EWN.DisplayTableOfEWN(obEWN); 
+    →KRS106_000002PAGEBREAK(); 
 } 
 
 IF(MemberType != 512) { //no shear for deep beam
-object SHEAR_DESIGN_2D →INI400_014154= LoadExternCLC("EC_Concrete_Design2D_ShearReinf.CLC"); 
-object DesignShearInput →INI400_014152= new Structure(
-"MemberType", MemberType, 
-"h", h, 
-"ElementID", ElementID, 
-"IndexEWN", IndexEWN, 
-"RecalcForces", RecalcForces, 
-"RecalcForcesPOD", RecalcForcesPOD, 
-"DesignDefaults", DesignDefaults, 
-"DesignReinf", DesignReinf, 
-"CssID", CssID, 
-"obEWN", obEWN, 
-"BasicForces", BasicForces
-); 
-object DesignShearOutput →INI400_014153= new Structure(); 
-IF(IO.IsDrawing) { 
-    →INI400_014592SHEAR_DESIGN_2D.Draw(DesignShearInput, DesignShearOutput, IO.LayoutIndex); 
-} ELSE { 
-    →INI400_014593SHEAR_DESIGN_2D.Calculate(DesignShearInput, DesignShearOutput); 
-} 
-DesignShear →INI400_016062= DesignShearOutput.DesignShear; 
-obEWN →PAI316_000002= DesignShearOutput.obEWN; 
+    object SHEAR_DESIGN_2D →INI400_014154= LoadExternCLC("EC_Concrete_Design2D_ShearReinf.CLC"); 
+    object DesignShearInput →INI400_014152= new Structure(
+    "MemberType", MemberType, 
+    "h", h, 
+    "ElementID", ElementID, 
+    "IndexEWN", IndexEWN, 
+    "RecalcForces", RecalcForces, 
+    "RecalcForcesPOD", RecalcForcesPOD, 
+    "DesignDefaults", DesignDefaults, 
+    "DesignReinf", DesignReinf, 
+    "CssID", CssID, 
+    "obEWN", obEWN, 
+    "BasicForces", BasicForces
+    ); 
+    object DesignShearOutput →INI400_014153= new Structure(); 
+    IF(IO.IsDrawing) { 
+        →INI400_014592SHEAR_DESIGN_2D.Draw(DesignShearInput, DesignShearOutput, IO.LayoutIndex); 
+    } ELSE { 
+        →INI400_014593SHEAR_DESIGN_2D.Calculate(DesignShearInput, DesignShearOutput); 
+    } 
+    DesignShear →INI400_016062= DesignShearOutput.DesignShear; 
+    obEWN →PAI316_000002= DesignShearOutput.obEWN; 
 } ELSE { 
     DesignShear →KRS116_000008= FUNCT_2D.CreateDefaultDesignShearData(); 
 } 
@@ -434,7 +444,7 @@ IF(IO.LayoutIndex == 1) {
     →PAI116_000005LONG_DESIGN_2D.PrintDesignReinfTable(); 
     →PAI116_000001LONG_DESIGN_2D.PrintProvidedReinfTable(); 
     IF(MemberType != 512) { //no shear for deep beam
-    →PAI116_000003SHEAR_DESIGN_2D.PrintDesignReinfTable(); 
+        →PAI116_000003SHEAR_DESIGN_2D.PrintDesignReinfTable(); 
     } 
     →PAI116_000088PAGEBREAK(); 
     →PAI116_000004FUNCT_EWN.DisplayTableOfEWN(obEWN); 
@@ -683,18 +693,6 @@ IF(!IO.IsExternCLC) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="CheckStrut" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_CheckStrut">
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="CheckStrutValues" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_CheckStrutValues">
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
       <Variable Modifier="Public" Name="Coeff↓d←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -832,6 +830,18 @@ IF(!IO.IsExternCLC) {
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
+      </Variable>
+      <Variable Modifier="Public" Name="CheckStrut" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_CheckStrut">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="CheckStrutValues" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_CheckStrutValues">
+          <ENU>
+          </ENU>
+        </Description>
       </Variable>
       <Variable Modifier="Public" Name="IndexEWN" ESA_ID="" Type="Double" Precision="2">
         <Description>
@@ -1114,7 +1124,7 @@ IF(!IO.IsExternCLC) {
       <VC ID="INI400_014592">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2311,6 +2321,30 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS106_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS116_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2426,7 +2460,7 @@ IF(!IO.IsExternCLC) {
       <VC ID="PAI116_000004">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2506,7 +2540,7 @@ IF(!IO.IsExternCLC) {
       <VC ID="PAI116_000088">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

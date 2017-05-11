@@ -82,7 +82,9 @@ namespace ESAAtl
         uint dwClsContext,
         [MarshalAs(UnmanagedType.LPStruct)] Guid riid);
 
-        
+        [DllImport("ESAAtl80Extern.dll", PreserveSig = false)]
+        static extern void ESAAtl_Terminate();
+
         protected bool _Create(string ESAPath, bool bMultithread)
         {
             String AppPath = System.Windows.Forms.Application.StartupPath;
@@ -115,6 +117,11 @@ namespace ESAAtl
         public bool Create(string ESAPath)
         {
             return _Create(ESAPath, false);
+        }
+
+        public void Destroy()
+        {
+            ESAAtl_Terminate();
         }
 
         public bool CreateMultithread(string ESAPath)
@@ -220,6 +227,18 @@ namespace ESAAtl
                 }
             }
             return g_ESAAtl;
+        }
+
+        public static void Destroy()
+        {
+            lock (lockGetESAAtl)
+            {
+                if (g_ESAAtl != null)
+                {
+                    g_ESAAtl.Destroy();
+                    g_ESAAtl = null;
+                }
+            }
         }
 
         public static object newESA(Type Type_rclsid)

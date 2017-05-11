@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="3c2dd39d-282d-4f67-91d7-937993676ab3">
   <CodeEditor>
-    <SourceCode Collapsed="3|35|114|151|163|209|245|308|363|387|401|417|431|438|443|459" BreakPoints="">
+    <SourceCode Collapsed="3|35|114|151|163|209|245|305|309|370|394|408|424|438|445|450|466" BreakPoints="">
 →INI400_012924BLOCK("GetListConcreteMaterialNames") { 
     string GetListConcreteMaterialNames()
     { 
@@ -262,10 +262,8 @@
                 { 
                     double NBars →INI400_010137= ObjectReinfBars.Count; 
                     FOR(i, 0, NBars-1) { 
-                        IF(ObjectReinfBars[i].IsDetailing == 0) { 
-                            →INI400_010138ReinfBars.Add(ObjectReinfBars[i]); 
-                            →INI400_010139ReinfMat.Add(GetModifiedMaterial(ObjectReinfBars[i].Material)); 
-                        } 
+                        →INI400_010138ReinfBars.Add(ObjectReinfBars[i]); 
+                        →INI400_010139ReinfMat.Add(GetModifiedMaterial(ObjectReinfBars[i].Material)); 
                     } 
                 } 
                 ELSE
@@ -308,8 +306,11 @@
 } 
 
 →INI400_010190BLOCK("CreateCS") { 
-    object CreateCS(double CssID, object ComponentShapes, object ComponentDiagrams, object ReinfBars, object ReinfDiagrams)
-    { 
+    object CreateCS(double CssID, object ComponentShapes, object ComponentDiagrams, object ReinfBars, object ReinfDiagrams) { 
+        →KRS106_000001CreateCS(CssID, ComponentShapes, ComponentDiagrams, ReinfBars, ReinfDiagrams, false); 
+    } 
+    
+    object CreateCS(double CssID, object ComponentShapes, object ComponentDiagrams, object ReinfBars, object ReinfDiagrams, bool IsDetailing) { 
         FOR(i, 0, ComponentShapes.Count-1) { 
             IF(i == 0) { 
                 // CreateCs4MoreShapes 
@@ -326,7 +327,13 @@
         IF(ReinfBars != null &amp;&amp; ReinfBars.Count &gt; 0) { 
             FOR(i, 0, ReinfBars.Count-1) { 
                 object[] ReinfBarsArr →INI400_010203= new object[]; 
-                →INI400_010204ReinfBarsArr.Add(ReinfBars[i]); 
+                IF(IsDetailing) { //For detailing check are all bars added to CS, regardless on their Detailing setting
+                    →KRS106_000002ReinfBarsArr.Add(ReinfBars[i]); 
+                } ELSE { 
+                    IF(IO.IsStandalone || (!IO.IsStandalone &amp;&amp; ReinfBars[i].IsDetailing == 0)) { //For other checks are used only bars without detailing mark
+                        →INI400_010204ReinfBarsArr.Add(ReinfBars[i]); 
+                    } 
+                } 
                 object inputAddReinfComponent4Parts →INI400_010198= CONCRETE.Creator.CreateAddReinfComponentIn(CssID, ReinfBarsArr, ReinfDiagrams[i]); 
                 object output →INI400_010199= CONCRETE.Creator.AddReinfComponent(inputAddReinfComponent4Parts); 
             } 
@@ -1649,6 +1656,22 @@ object GetCSstoreResultType()
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS006_013741">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

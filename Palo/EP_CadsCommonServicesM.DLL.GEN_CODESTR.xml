@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="22"><StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_compositecolumn}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="21"><StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_compositecolumn}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
 		<ResourceId>114</ResourceId>
 	</StringCode>
@@ -74,10 +74,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_1d_member}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
 		<ResourceId>110</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_pad_foundation_check}</StringId>
-		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
-		<ResourceId>214</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_geotechnics}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>

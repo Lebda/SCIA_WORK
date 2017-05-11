@@ -503,14 +503,14 @@ IF(ABS(rib_dir) &lt;= 5 || (ABS(rib_dir) &lt;= 185 &amp;&amp; ABS(rib_dir) &gt;=
     "b↓0←", PhysConst(6, "in"), 
     "b↓s←", b↓s←, 
     "b↓b←", b↓b←, 
-    "b↓r←", b↓b←, 
+    "b↓r←", b↓r,steel←, 
     "d↓csb←", PhysConst(2.5, "in"), 
     "d↓cc←", PhysConst(1, "in"), 
-    "DimFontSize", 8, 
+    "DimFontSize", 9, 
     "VisibDim", TRUE, 
     "Type", 1, 
     "Edge", true, 
-    "UserScale", 19
+    "UserScale", 30
     ); 
     //Edge Condition with Deck Ribs Perp. to Beam Span - FINISHED
     IF(ribsParal == FALSE &amp;&amp; (COMPARE(NeighborLeft, 2, 2) == 0 || COMPARE(NeighborRight, 2, 2) == 0)) { 
@@ -4448,7 +4448,7 @@ IF(ABS(rib_dir) &lt;= 5 || (ABS(rib_dir) &lt;= 185 &amp;&amp; ABS(rib_dir) &gt;=
   </Calculation>
   <Dialog>
     <Main Width="500">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="0" PreDef="0" MemberDirectory="C:\SCIA\builds\R16_P2\temp\Esa_Model_Data\Beam.69" MemberID="Beam.69" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="0" PreDef="0" MemberDirectory="" MemberID="Beam.69" SectionID="-1" CombiID="-1" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />
