@@ -12164,6 +12164,7 @@ r:\A\Src\VON\GeomSpace\SolverData\SESolverJobImpl.h
 r:\A\Src\VON\GeomSpace\SolverData\SolverData.h
 r:\A\Src\VON\GeomSpace\SolverData\SolverGeoContext.h
 r:\A\Src\VON\GeomSpace\SolverData\SpecificExceptions.h
+r:\A\Src\VON\GeomSpace\SolverData\StiffnessFileWriter.h
 r:\A\Src\VON\GeomSpace\SolverData\targetver.h
 r:\A\Src\VON\GeomSpace\SolverData\WriteManager.h
 r:\A\Src\VON\GeomSpace\SolverData\SDDataContainer.h
@@ -12227,6 +12228,7 @@ r:\A\Src\VON\GeomSpace\SolverData\SDSurfLoad.cpp
 r:\A\Src\VON\GeomSpace\SolverData\SESolverJobImpl.cpp
 r:\A\Src\VON\GeomSpace\SolverData\SolverGeoContext.cpp
 r:\A\Src\VON\GeomSpace\SolverData\SpecificExceptions.cpp
+r:\A\Src\VON\GeomSpace\SolverData\StiffnessFileWriter.cpp
 r:\A\Src\VON\GeomSpace\SolverData\WriteManager.cpp
 r:\A\Src\VON\GeomSpace\SolverData\gMaleData.cpp
 r:\A\Src\VON\GeomSpace\SolverData\Interval.cpp
@@ -25823,8 +25825,10 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\NACalculations_NBN.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\NACalculations_EN.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\NACalculations_NEN.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\NACalculations_NF.h
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\NACalculations_ONORM.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\NACalculations_SFS.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\NACalculations_SS.h
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\NACalculations_SWE.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\NACalculations_UNE.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\NACalculator.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\BaumannAngles.h
@@ -25886,8 +25890,10 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\NACalculations_NBN.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\NACalculations_EN.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\NACalculations_NEN.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\NACalculations_NF.cpp
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\NACalculations_ONORM.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\NACalculations_SFS.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\NACalculations_SS.cpp
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\NACalculations_SWE.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\NACalculations_UNE.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\NACalculator.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\BaumannAngles.cpp
