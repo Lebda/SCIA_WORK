@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="6"><StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2eids_sfrc_internal_forces_2d_resultshell_name}</StringId>
+		<SourceDll>ConcreteCheckResultShell.2eDLL</SourceDll>
+		<ResourceId>111</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2eids_sfrc_capacity_check_2d_resultshell_name}</StringId>
+		<SourceDll>ConcreteCheckResultShell.2eDLL</SourceDll>
+		<ResourceId>113</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2eids_sfrc_crack_width_2d_resultshell_name}</StringId>
+		<SourceDll>ConcreteCheckResultShell.2eDLL</SourceDll>
+		<ResourceId>122</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2eids_sfrc_dosage_design_2d_resultshell_name}</StringId>
+		<SourceDll>ConcreteCheckResultShell.2eDLL</SourceDll>
+		<ResourceId>127</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2eids_sfrc_stress_limitation_2d_resultshell_name}</StringId>
+		<SourceDll>ConcreteCheckResultShell.2eDLL</SourceDll>
+		<ResourceId>129</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2eids_sfrc_shear_check_2d_resultshell_name}</StringId>
+		<SourceDll>ConcreteCheckResultShell.2eDLL</SourceDll>
+		<ResourceId>116</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

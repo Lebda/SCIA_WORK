@@ -76,6 +76,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     //    CASE "SR": { } 
     //    CASE "SIG": { } 
     //    CASE "STN": { } 
+    //    CASE "UNE": { } 
     //    CASE "SIST": { } 
     CASE "SS" :  { 
         IF(IO.IsStandalone) { 

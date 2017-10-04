@@ -32,6 +32,7 @@ IF(!IO.Contains("Load")) {
 } 
 
 object DataFromSEN →INI400_008984= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FunctionsDataFromSEN.CLC"); 
+object Functions_NA →KRS116_000016= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EC_NA_1992_1_1_Functions.CLC"); 
 
 →INI400_008759BLOCK { //member type test
     object DataFromSENResult →INI400_011001= new Structure(); 
@@ -81,6 +82,8 @@ void InitCoverParamPlateShellLower(object CoverParam) {
     →INI400_011727CoverParam.Set("XC", IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Carbonation); 
     →INI400_011728CoverParam.Set("XD", IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Chlorides); 
     →INI400_011729CoverParam.Set("XS", IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.ChloridesSea); 
+    →KRS116_000017CoverParam.Set("XF", IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.FreezeThaw); 
+    →KRS116_000018CoverParam.Set("XA", IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Chemical); 
     
     →INI400_011730CoverParam.Set("GeometricControl", IO.MemberData.Concrete.Solver.General.MinCover.Lower.SpecialControl.Geometric); 
     →INI400_011731CoverParam.Set("QualityControl", IO.MemberData.Concrete.Solver.General.MinCover.Lower.SpecialControl.Quality); 
@@ -97,6 +100,8 @@ void InitCoverParamPlateShellUpper(object CoverParam) {
     →INI400_011760CoverParam.Set("XC", IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Carbonation); 
     →INI400_011761CoverParam.Set("XD", IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Chlorides); 
     →INI400_011762CoverParam.Set("XS", IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.ChloridesSea); 
+    →KRS116_000019CoverParam.Set("XF", IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.FreezeThaw); 
+    →KRS116_000020CoverParam.Set("XA", IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Chemical); 
     
     →INI400_011763CoverParam.Set("GeometricControl", IO.MemberData.Concrete.Solver.General.MinCover.Upper.SpecialControl.Geometric); 
     →INI400_011764CoverParam.Set("QualityControl", IO.MemberData.Concrete.Solver.General.MinCover.Upper.SpecialControl.Quality); 
@@ -113,6 +118,8 @@ void InitCoverParamWall(object CoverParam) {
     →INI400_011777CoverParam.Set("XC", IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Carbonation); 
     →INI400_011778CoverParam.Set("XD", IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Chlorides); 
     →INI400_011779CoverParam.Set("XS", IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.ChloridesSea); 
+    →KRS116_000021CoverParam.Set("XF", IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.FreezeThaw); 
+    →KRS116_000022CoverParam.Set("XA", IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Chemical); 
     
     →INI400_011780CoverParam.Set("GeometricControl", IO.MemberData.Concrete.Solver.General.MinCover.Main.SpecialControl.Geometric); 
     →INI400_011781CoverParam.Set("QualityControl", IO.MemberData.Concrete.Solver.General.MinCover.Main.SpecialControl.Quality); 
@@ -163,7 +170,11 @@ object ConcreteCover(object CoverParam, double d_s1, double d_s2) { //Calling au
         →INI400_011712InputCover.Set("vtc_ekv", CoverParam.vtc_ekv); // water ratio, only for SS, 0 - 1
         →INI400_011713InputCover.Set("NormalReinf", CoverParam.bNormalReinf); // True - normal reinforcement is used - only for SS
         →INI400_011714InputCover.Set("fck", CoverParam.f_ck); 
+        →KRS116_000015InputCover.Set("AdequateCement", Functions_NA.AdequateCementDecision(CoverParam.XD, CoverParam.XS, CoverParam.XF, CoverParam.XA, CoverParam.CemType)); 
         
+        →KRS116_000025InputCover.Set("StainlessSteel", false); //Parameter is not in SEN
+        →KRS116_000026InputCover.Set("AddProtection", false); //Parameter is not in SEN
+
         //For Δcdur,γ
         →INI400_011715InputCover.Set("Quality", CoverParam.GeometricControl); // True - Quality assurance system for prestress is used, only for IS
 
@@ -302,6 +313,12 @@ SWITCH(DataFromSENResult.MemberType) {
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="DataFromSENResult" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="Functions_NA" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -1360,12 +1377,92 @@ SWITCH(DataFromSENResult.MemberType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS116_000015">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000016">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="231" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="22.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000017">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000018">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000019">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000020">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000021">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000022">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000025">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000026">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
   <Dialog>
     <Main Width="500">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.84|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Member2D.1" SectionID="-1" CombiID="-1" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.84|0|3" Active="0" PreDef="0" MemberDirectory="" MemberID="Member2D.1" SectionID="-1" CombiID="-1" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />

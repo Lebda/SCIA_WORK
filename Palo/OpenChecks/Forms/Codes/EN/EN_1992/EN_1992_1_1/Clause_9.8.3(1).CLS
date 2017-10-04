@@ -59,6 +59,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         } 
     } 
     //    CASE "SIST": { } 
+    //    CASE "UNE": { } 
     //    CASE "SS": { } 
     DEFAULT :  { 
         ϕ↓min← →INI400_000082= IO.SetupNA.EC_1992_1_1.ϕ_min_tie; 

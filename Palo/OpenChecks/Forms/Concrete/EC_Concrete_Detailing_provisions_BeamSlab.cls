@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="ee1a8944-1244-47ff-b1df-d2b88ba39b23">
   <CodeEditor>
-    <SourceCode Collapsed="0|35" BreakPoints="">//→INI400_010123BLOCK { //TESTING DATA
+    <SourceCode Collapsed="0|35|50" BreakPoints="">//→INI400_010123BLOCK { //TESTING DATA
 //    IF(IO.IsStandalone) { //TESTING DATA
 //        object[] ArrayReqReinf →INI400_008962= new object[]; 
 //        →INI400_008963ArrayReqReinf.Add(new Structure("Edge", 1, "Layer", 1, "y", 0, "z", -0.154, "As", 0.0005, "Tensile", 0, "diam", 0.02, "diamOpt", 0.00899, "nreq", 3.470, "nmax", 9.444, "Ld", 0.850)); 
@@ -74,6 +74,13 @@
     →INI400_009023DetProvInputs.Add("BeamSlab", BeamSlab); 
     →INI400_009038DetProvInputs.Add("ArrayReqReinf", ArrayReqReinf); 
     →KRS127_000001DetProvInputs.Add("FormCode", IO.CS.Geometry.FormCode); 
+    →KRS116_000001DetProvInputs.Add("ConcreteWholeCssChar", ConcreteWholeCssChar); 
+    →KRS116_000002DetProvInputs.Add("α↓NA←", α↓NA←); 
+    →KRS116_000003DetProvInputs.Add("a", a); 
+    →KRS116_000004DetProvInputs.Add("z", z); 
+    →KRS116_000005DetProvInputs.Add("f↓ctm,fl←", f↓ctm,fl←); 
+    →KRS116_000006DetProvInputs.Add("f↓yd←", f↓yd←); 
+    →KRS116_000010DetProvInputs.Add("DesignInput", DesignInput); 
     object[] ArrayTorsReinf →INI400_010124= DetProvFunct.GetDeepCopyOfReinfArray(ArrayReqReinf, True); 
     
     →INI400_009743DetProvInputs.Add("ArrayTorsReinf", ArrayTorsReinf); 
@@ -146,6 +153,13 @@
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
+      <Variable Modifier="Public" Name="a" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_a">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="A↓c←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -233,6 +247,12 @@
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="ConcreteWholeCssChar" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_ConcreteWholeCssChar">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -246,6 +266,12 @@
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
+      </Variable>
+      <Variable Modifier="Public" Name="DesignInput" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_DesignInput">
+          <ENU>
+          </ENU>
+        </Description>
       </Variable>
       <Variable Modifier="Public" Name="DetProvFunct" ESA_ID="" Type="Object">
         <Description>
@@ -284,12 +310,26 @@
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
+      <Variable Modifier="Public" Name="f↓ctm,fl←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_f↓ctm,fl←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="f↓ctm←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
+      </Variable>
+      <Variable Modifier="Public" Name="f↓yd←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_f↓yd←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="f↓yk←" ESA_ID="" Type="Double" Precision="2">
         <Description>
@@ -323,6 +363,20 @@
           <ENU>
           </ENU>
         </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="z" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_z">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="α↓NA←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_α↓NA←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ϕ" ESA_ID="" Type="Double" Precision="2">
         <Description>
@@ -657,6 +711,62 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_010124">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000005">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000006">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000010">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1256,7 +1366,7 @@
               <P>ČSN EN 1991-2</P>
               <P>ČSN EN 1991-3</P>
               <P>ČSN EN 1991-4</P>
-              <P>ČSN EN 1992-1-1</P>
+              <P>ČSN EN 1992-1-1/NA: 2011-07</P>
               <P>1</P>
               <P>1</P>
               <P>1.3</P>

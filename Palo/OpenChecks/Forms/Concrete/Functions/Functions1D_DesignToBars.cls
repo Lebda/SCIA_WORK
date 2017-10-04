@@ -486,16 +486,16 @@
                                 } 
                             } 
                         } 
-                        object[] EdgeArrayBar1 →INI400_009895= new object[]; 
-                        EdgeArrayBar1 →INI400_009897= ArrayReqReinfOvalCSS(CssID, DistFromEdge, Diameter, As_sum1-DelatAsOval, TypeArea, 1, -90, 1); 
-                        FOR(k, 1, EdgeArrayBar1.Count) { 
-                            →INI400_009899CssArrayBar.Add(new Structure("Edge", 0, "Layer", i, "y", EdgeArrayBar1[k-1].y, "z", EdgeArrayBar1[k-1].z, "diam", EdgeArrayBar1[k-1].diam, "As", EdgeArrayBar1[k-1].reinfArea)); 
-                        } 
-                        object[] EdgeArrayBar2 →INI400_009907= new object[]; 
-                        EdgeArrayBar2 →INI400_009909= ArrayReqReinfOvalCSS(CssID, DistFromEdge, Diameter, As_sum2-DelatAsOval, TypeArea, 1, 90, -1); 
-                        FOR(k, 1, EdgeArrayBar2.Count) { 
-                            →INI400_009911CssArrayBar.Add(new Structure("Edge", 0, "Layer", i, "y", EdgeArrayBar2[k-1].y, "z", EdgeArrayBar2[k-1].z, "diam", EdgeArrayBar2[k-1].diam, "As", EdgeArrayBar2[k-1].reinfArea)); 
-                        } 
+                        //                        object[] EdgeArrayBar1 →INI400_009895= new object[];  //Commented due bugfix JBU17-220APVGPN, keep it in code for future use
+                        //                        EdgeArrayBar1 →INI400_009897= ArrayReqReinfOvalCSS(CssID, DistFromEdge, Diameter, As_sum1-DelatAsOval, TypeArea, 1, -90, 1); 
+                        //                        FOR(k, 1, EdgeArrayBar1.Count) { 
+                        //                            →INI400_009899CssArrayBar.Add(new Structure("Edge", 0, "Layer", i, "y", EdgeArrayBar1[k-1].y, "z", EdgeArrayBar1[k-1].z, "diam", EdgeArrayBar1[k-1].diam, "As", EdgeArrayBar1[k-1].reinfArea)); 
+                        //                        } 
+                        //                        object[] EdgeArrayBar2 →INI400_009907= new object[]; 
+                        //                        EdgeArrayBar2 →INI400_009909= ArrayReqReinfOvalCSS(CssID, DistFromEdge, Diameter, As_sum2-DelatAsOval, TypeArea, 1, 90, -1); 
+                        //                        FOR(k, 1, EdgeArrayBar2.Count) { 
+                        //                            →INI400_009911CssArrayBar.Add(new Structure("Edge", 0, "Layer", i, "y", EdgeArrayBar2[k-1].y, "z", EdgeArrayBar2[k-1].z, "diam", EdgeArrayBar2[k-1].diam, "As", EdgeArrayBar2[k-1].reinfArea)); 
+                        //                        } 
                     } 
                 } ELSE { 
                     object[] PractData →INI400_007799= new object[]; 

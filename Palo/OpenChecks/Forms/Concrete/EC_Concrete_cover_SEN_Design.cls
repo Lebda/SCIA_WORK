@@ -46,6 +46,7 @@
     IndexEWN →INI400_005886= 1; 
 } 
 object DataFromSEN →INI400_008984= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FunctionsDataFromSEN.CLC"); 
+object Functions_NA →KRS116_000007= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EC_NA_1992_1_1_Functions.CLC"); 
 →INI400_008759BLOCK { //member type test
     object Result →INI400_011001= new Structure(); 
     →INI400_011004DataFromSEN.MemberTypeTest(Result); 
@@ -66,8 +67,8 @@ IF(CssConditions.ConditionsForCss) {
     bool bDifferentSurfaces →INI400_005954= IO.MemberData.Concrete.Solver.General.MinCover.DifferentSurfaces; 
     double DesignWorkingLife →INI400_006668= IO.MemberData.Concrete.Solver.General.MinCover.DesignWorkingLife/365; 
     double ConstructionClass1 →INI400_011540= IO.MemberData.Concrete.Solver.General.MinCover.ConstructionClass; // True - construction class 1 is used (RakMK B4) - only SFS
-    double CemType →INI400_011541= 1; // add IO.CS.Material.EC.CementType;
-    double vtc↓ekv← →INI400_011542= 1; //// IO.CS.Material.EC.vtc_ekv; - water ratio, only for SS, 0 - 1;
+    double CemType →INI400_011541= IO.CS.Material.EC.Contains("CementType") ? IO.CS.Material.EC.CementType : 0; 
+    double vtc↓ekv← →INI400_011542= IO.CS.Material.EC.Contains("vctekv") ? IO.CS.Material.EC.vctekv : 1; 
     bool bSlabGeometry →INI400_011008= False; 
     IF(MemberType == 128) { 
         bSlabGeometry →INI400_006829= True; 
@@ -254,13 +255,16 @@ IF(CssConditions.ConditionsForCss) {
             →INI400_011523Input.Add("SpecialQuality", QualityControlLower); 
             →INI400_011524Input.Add("PrefabricatedSpecialQuality", GeometricControlLower); 
             →INI400_011525Input.Add("ConstructionClass1", ConstructionClass1); // True - construction class 1 is used (RakMK B4) - only SFS
-            →INI400_011526Input.Add("CemType", CemType); // cement/combination type - only for BS, IS, MAL, SIG - 0,1,2,...,26,27
+            →INI400_011526Input.Add("CemType", CemType); // cement/combination type - only for BS, MAL, SIG - 0,1,2,...,26,27
             →INI400_011527Input.Add("XC", CarbonationLower); 
             →INI400_011528Input.Add("XD", ChloridesLower); 
             →INI400_011529Input.Add("XS", ChloridesSeaLower); 
             →INI400_011530Input.Add("vtc_ekv", vtc↓ekv←); // water ratio, only for SS, 0 - 1
             →INI400_011531Input.Add("NormalReinf", bNormalReinf); // True - normal reinforcement is used - only for SS
             →INI400_011532Input.Add("fck", f↓ck←); 
+            
+            →KRS116_000008Input.Add("StainlessSteel", false); //Parameter is not in SEN
+            →KRS116_000009Input.Add("AddProtection", false); //Parameter is not in SEN
             
             //For Δcdur,γ
             →INI400_011536Input.Add("Quality", GeometricControlLower); // True - Quality assurance system for prestress is used, only for IS
@@ -273,6 +277,7 @@ IF(CssConditions.ConditionsForCss) {
             →KRS106_000002Input.Add("Unevenness", SurfaceTypeLower); 
             →KRS106_000003Input.Add("Deviation", ConcreteCharLower); 
             
+            →KRS116_000004Input.Add("AdequateCement", Functions_NA.AdequateCementDecision(ChloridesLower, ChloridesSeaLower, FreezeThawLower, ChemicalLower, CemType)); 
             
             →INI400_006778DurabilityLower.Calculate(Input, Output); 
             
@@ -326,13 +331,16 @@ IF(CssConditions.ConditionsForCss) {
                 →INI400_011576Input.Add("SpecialQuality", QualityControlUpper); 
                 →INI400_011577Input.Add("PrefabricatedSpecialQuality", GeometricControlUpper); 
                 →INI400_011578Input.Add("ConstructionClass1", ConstructionClass1); // True - construction class 1 is used (RakMK B4) - only SFS
-                →INI400_011579Input.Add("CemType", CemType); // cement/combination type - only for BS, IS, MAL, SIG - 0,1,2,...,26,27
+                →INI400_011579Input.Add("CemType", CemType); // cement/combination type - only for BS, MAL, SIG - 0,1,2,...,26,27
                 →INI400_011580Input.Add("XC", CarbonationUpper); 
                 →INI400_011581Input.Add("XD", ChloridesUpper); 
                 →INI400_011582Input.Add("XS", ChloridesSeaUpper); 
                 →INI400_011583Input.Add("vtc_ekv", vtc↓ekv←); // water ratio, only for SS, 0 - 1
                 →INI400_011584Input.Add("NormalReinf", bNormalReinf); // True - normal reinforcement is used - only for SS
                 →INI400_011585Input.Add("fck", f↓ck←); 
+                
+                →KRS116_000010Input.Add("StainlessSteel", false); //Parameter is not in SEN
+                →KRS116_000011Input.Add("AddProtection", false); //Parameter is not in SEN
                 
                 //For Δcdur,γ
                 →INI400_011586Input.Add("Quality", GeometricControlUpper); // True - Quality assurance system for prestress is used, only for IS
@@ -343,6 +351,8 @@ IF(CssConditions.ConditionsForCss) {
                 →KRS106_000004Input.Add("UnevenSurf", SurfaceTypeUpper == 3); 
                 →KRS106_000005Input.Add("Unevenness", SurfaceTypeUpper); 
                 →KRS106_000006Input.Add("Deviation", ConcreteCharUpper); 
+                
+                →KRS116_000005Input.Add("AdequateCement", Functions_NA.AdequateCementDecision(ChloridesUpper, ChloridesSeaUpper, FreezeThawUpper, ChemicalUpper, CemType)); 
                 
                 →INI400_011599DurabilityUpper.Calculate(Input, Output); 
                 
@@ -401,13 +411,16 @@ IF(CssConditions.ConditionsForCss) {
             →INI400_011626Input.Add("SpecialQuality", QualityControlMain); 
             →INI400_011627Input.Add("PrefabricatedSpecialQuality", GeometricControlMain); 
             →INI400_011628Input.Add("ConstructionClass1", ConstructionClass1); // True - construction class 1 is used (RakMK B4) - only SFS
-            →INI400_011629Input.Add("CemType", CemType); // cement/combination type - only for BS, IS, MAL, SIG - 0,1,2,...,26,27
+            →INI400_011629Input.Add("CemType", CemType); // cement/combination type - only for BS, MAL, SIG - 0,1,2,...,26,27
             →INI400_011630Input.Add("XC", CarbonationMain); 
             →INI400_011631Input.Add("XD", ChloridesMain); 
             →INI400_011632Input.Add("XS", ChloridesSeaMain); 
             →INI400_011633Input.Add("vtc_ekv", vtc↓ekv←); // water ratio, only for SS, 0 - 1
             →INI400_011634Input.Add("NormalReinf", bNormalReinf); // True - normal reinforcement is used - only for SS
             →INI400_011635Input.Add("fck", f↓ck←); 
+            
+            →KRS116_000012Input.Add("StainlessSteel", false); //Parameter is not in SEN
+            →KRS116_000013Input.Add("AddProtection", false); //Parameter is not in SEN
             
             //For Δcdur,γ
             →INI400_011636Input.Add("Quality", GeometricControlMain); // True - Quality assurance system for prestress is used, only for IS
@@ -418,6 +431,8 @@ IF(CssConditions.ConditionsForCss) {
             →KRS106_000007Input.Add("UnevenSurf", SurfaceTypeMain == 3); 
             →KRS106_000008Input.Add("Unevenness", SurfaceTypeMain); 
             →KRS106_000009Input.Add("Deviation", ConcreteCharMain); 
+            
+            →KRS116_000006Input.Add("AdequateCement", Functions_NA.AdequateCementDecision(ChloridesMain, ChloridesSeaMain, FreezeThawMain, ChemicalMain, CemType)); 
             
             →INI400_011640DurabilityMain.Calculate(Input, Output); 
             
@@ -957,6 +972,12 @@ IF(CssConditions.ConditionsForCss) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
+      <Variable Modifier="Public" Name="Functions_NA" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="Functions1D_EWN" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -1144,7 +1165,7 @@ IF(CssConditions.ConditionsForCss) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="StrongChemical" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_StrongChemical">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -3703,12 +3724,92 @@ IF(CssConditions.ConditionsForCss) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS116_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000005">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000006">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000007">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="231" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="22.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000008">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000009">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000010">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000011">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000012">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000013">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
   <Dialog>
     <Main Width="500">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.84|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.1" SectionID="-1" CombiID="-1" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.84|0|3" Active="0" PreDef="0" MemberDirectory="D:\_VERSIONS\Deve_16\TEMP\Esa_Model_Data\Beam.1" MemberID="Beam.1" SectionID="0" CombiID="0" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="80219969-dbe2-4a03-96bc-d925b3e5d88d">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">→INI400_000001TEXT("Design of steel sections under tension loads based on NBR-8800/2008"); 
+    <SourceCode Collapsed="1|28" BreakPoints="">→INI400_000001TEXT("Design of steel sections under tension loads based on NBR-8800/2008"); 
 →INI400_001669BLOCK { 
     →INI400_000003double N↓tRd←; // cross section tensile strength
     →INI400_000020double N↓d←; // applied Load
@@ -57,11 +57,11 @@
     IF(UserTable) { 
         object CS →INI400_000650= IO.CSS; 
         FormCode →INI400_000651= CS.Geometry.FormCode; 
-        IF(FormCode == 2001) { FormCode →MPF000_000003= 5; } 
+        //   IF(FormCode == 2001) { FormCode →MPF000_000003= 5; } 
     } ELSE { 
         object CS →INI400_000659= IO.CS; 
         FormCode →INI400_000660= CS.Geometry.FormCode; 
-        IF(FormCode == 2001) { FormCode →MPF000_000004= 5; } 
+        //  IF(FormCode == 2001) { FormCode →MPF000_000004= 5; } 
     } 
 } 
 →INI400_000506BLOCK { 
@@ -114,76 +114,77 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
     // check for the sections covered
     IF((FormCode != 1) &amp;&amp; (FormCode != 2) &amp;&amp; (FormCode != 3) &amp;&amp; (FormCode != 4) &amp;&amp; (FormCode != 101) &amp;&amp; (FormCode != 5) &amp;&amp; (FormCode != 6) &amp;&amp; (FormCode != 11) &amp;&amp; (FormCode != 2001)) { 
         →INI400_000615TEXT("Tension: Type of section not covered by this routine or cannot be designed for this effort!"); 
-        Exit(); 
+        // Exit(); 
     } 
-    
-    IF(FormCode != 11) { 
-        // Check Slenderness Limitations
-        →INI400_001670BLOCK("Slenderness") { 
-            →INI400_000032TEXT("Item 5.2.8 - Slenderness Limitation (λ≤300)"); 
-            λ↓x← →INI400_000036= Lbfx/rx; 
-            λ↓y← →INI400_000037= Lbfy/ry; 
+    ELSE { 
+        
+        IF(FormCode != 11) { 
+            // Check Slenderness Limitations
+            →INI400_001670BLOCK("Slenderness") { 
+                →INI400_000032TEXT("Item 5.2.8 - Slenderness Limitation (λ≤300)"); 
+                λ↓x← →INI400_000036= Lbfx/rx; 
+                λ↓y← →INI400_000037= Lbfy/ry; 
+                
+                IF(λ↓x← &gt;= 300 || λ↓y← &gt;= 300) { 
+                    →INI400_000038TEXT("Slenderness criteria not OK!"); 
+                    UnCheck →INI400_000254= 999; 
+                    →INI400_000255TEXT("Unity Check:"); 
+                    →INI400_001680TEXT(UnCheck); 
+                    Exit(); 
+                } ELSE { 
+                    →INI400_000040TEXT("OK!"); 
+                } 
+            } 
             
-            IF(λ↓x← &gt;= 300 || λ↓y← &gt;= 300) { 
-                →INI400_000038TEXT("Slenderness criteria not OK!"); 
-                UnCheck →INI400_000254= 999; 
-                →INI400_000255TEXT("Unity Check:"); 
-                →INI400_001680TEXT(UnCheck); 
+            →INI400_000161TEXT("Item 5.2.2  - Tensile Strength"); 
+            →INI400_000162TEXT("a) Tension yielding in Gross Section"); 
+            N↓tRdy← →INI400_000164= A↓g←*fy/γ↓a1←; 
+            
+            →INI400_000166TEXT("b) Tension Rupture in Net Section"); 
+            A↓n← →INI400_000241= (1-NARedFactor)*A↓g←; 
+            IF(COMPARE(A↓n←, 0, 6) == 0) { 
+                →INI400_000239TEXT("Net area set to zero. Using A↓n← = A↓g←"); 
+                A↓n← →INI400_000237= A↓g←; 
+            } 
+            IF(COMPARE(A↓n←, A↓g←) == 1) { 
+                →INI400_000238TEXT("Net area greater than gross area! Please check it!"); 
                 Exit(); 
+            } 
+            
+            A↓e← →INI400_000167= Ct*A↓n←; 
+            N↓tRdr← →INI400_000168= A↓e←*fu/γ↓a2←; 
+            N↓tRd← →INI400_000170= MIN(N↓tRdy←, N↓tRdr←); 
+            
+            UnCheck →INI400_000246= N↓d←/N↓tRd←; 
+            
+            →INI400_000247TEXT("S↓d←/R↓d ←= " &amp; UnCheck); 
+            IF(COMPARE(N↓tRd←, N↓d←) == 1) { 
+                →INI400_000171TEXT("OK!"); 
             } ELSE { 
-                →INI400_000040TEXT("OK!"); 
+                →INI400_000172TEXT("Not OK!"); 
+            } 
+        } ELSE { // For Rods
+            →INI400_000194TEXT("Item 5.2.2  - Tensile Strength"); 
+            →INI400_000195TEXT("a) Tension yielding in Gross Section"); 
+            N↓tRdy← →INI400_000196= A↓g←*fy/γ↓a1←; 
+            →INI400_000197TEXT("Item 6.3.3.1 - Rupture for round bars and bolts"); 
+            A↓be← →INI400_000230= 0.75*A↓g←; 
+            F↓tRd← →INI400_000236= A↓be←*fu/γ↓a2←; 
+            N↓tRd← →INI400_001676= MIN(N↓tRdy←, F↓tRd←); 
+            IF(COMPARE(N↓tRd←, 0, 6) == 0) { 
+                N↓tRd← →INI400_001681= 10↑-6←; 
+            } 
+            UnCheck →INI400_000244= N↓d←/N↓tRd←; 
+            →INI400_000248TEXT("S↓d←/R↓d ←=" &amp; UnCheck); 
+            IF(COMPARE(N↓tRd←, N↓d←) == 1) { 
+                →INI400_000240TEXT("OK!"); 
+            } ELSE { 
+                →INI400_000201TEXT("Not OK!"); 
             } 
         } 
-        
-        →INI400_000161TEXT("Item 5.2.2  - Tensile Strength"); 
-        →INI400_000162TEXT("a) Tension yielding in Gross Section"); 
-        N↓tRdy← →INI400_000164= A↓g←*fy/γ↓a1←; 
-        
-        →INI400_000166TEXT("b) Tension Rupture in Net Section"); 
-        A↓n← →INI400_000241= (1-NARedFactor)*A↓g←; 
-        IF(COMPARE(A↓n←, 0, 6) == 0) { 
-            →INI400_000239TEXT("Net area set to zero. Using A↓n← = A↓g←"); 
-            A↓n← →INI400_000237= A↓g←; 
-        } 
-        IF(COMPARE(A↓n←, A↓g←) == 1) { 
-            →INI400_000238TEXT("Net area greater than gross area! Please check it!"); 
-            Exit(); 
-        } 
-        
-        A↓e← →INI400_000167= Ct*A↓n←; 
-        N↓tRdr← →INI400_000168= A↓e←*fu/γ↓a2←; 
-        N↓tRd← →INI400_000170= MIN(N↓tRdy←, N↓tRdr←); 
-        
-        UnCheck →INI400_000246= N↓d←/N↓tRd←; 
-        
-        →INI400_000247TEXT("S↓d←/R↓d ←= " &amp; UnCheck); 
-        IF(COMPARE(N↓tRd←, N↓d←) == 1) { 
-            →INI400_000171TEXT("OK!"); 
-        } ELSE { 
-            →INI400_000172TEXT("Not OK!"); 
-        } 
-    } ELSE { // For Rods
-        →INI400_000194TEXT("Item 5.2.2  - Tensile Strength"); 
-        →INI400_000195TEXT("a) Tension yielding in Gross Section"); 
-        N↓tRdy← →INI400_000196= A↓g←*fy/γ↓a1←; 
-        →INI400_000197TEXT("Item 6.3.3.1 - Rupture for round bars and bolts"); 
-        A↓be← →INI400_000230= 0.75*A↓g←; 
-        F↓tRd← →INI400_000236= A↓be←*fu/γ↓a2←; 
-        N↓tRd← →INI400_001676= MIN(N↓tRdy←, F↓tRd←); 
-        IF(COMPARE(N↓tRd←, 0, 6) == 0) { 
-            N↓tRd← →INI400_001681= 10↑-6←; 
-        } 
-        UnCheck →INI400_000244= N↓d←/N↓tRd←; 
-        →INI400_000248TEXT("S↓d←/R↓d ←=" &amp; UnCheck); 
-        IF(COMPARE(N↓tRd←, N↓d←) == 1) { 
-            →INI400_000240TEXT("OK!"); 
-        } ELSE { 
-            →INI400_000201TEXT("Not OK!"); 
-        } 
+        return N↓tRd←; 
     } 
-    return N↓tRd←; 
 } 
-
 →INI400_001672TensionCheck(CS, FormCode, Ct, Lx, Ly, fy); 
 
 </SourceCode>
@@ -231,7 +232,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         </Description>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="100e-6" Dim="cm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓e←" ESA_ID="" Type="Double" Value="19.4133e-3" Precision="2">
+      <Variable Modifier="Public" Name="A↓e←" ESA_ID="" Type="Double" Value="16.8e-3" Precision="2">
         <Description>
           <ENU>Effective area</ENU>
         </Description>
@@ -353,7 +354,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓tRdr←" ESA_ID="" Type="Double" Value="5.752089e6" Precision="2">
+      <Variable Modifier="Public" Name="N↓tRdr←" ESA_ID="" Type="Double" Value="4.977778e6" Precision="2">
         <Description>
           <ENU>Tensile strength for ruputure in net section</ENU>
         </Description>
@@ -1227,7 +1228,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
   </Calculation>
   <Dialog>
     <Main Width="500">
-      <TEMDLoader Name="" ID="26" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="13" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="C:\Users\Avell 1513\ESA16.1\Temp\Esa_Model_Data\Beam.3892" MemberID="" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="" ID="26" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="13" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.12" SectionID="-1" CombiID="-1" />
       <TGroupBox Name="" ID="15" Translate="1" Height="200" AutoWidth="False" AutoHeight="False" TabIndex="8" Dock="1" Anchor="5" Padding="5|15|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|1|3" BorderColor="-5192482">
         <Texts TranslateID="DIALOG_000015">
           <ENU>User Inputs</ENU>
@@ -1292,11 +1293,17 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
     <Command Width="500" />
   </Dialog>
   <Texts>
+    <Item TranslateID="BLOCK_">
+      <ENU>"Slenderness"</ENU>
+    </Item>
     <Item TranslateID="BLOCK_INI400_000182">
       <ENU>"Loading"</ENU>
     </Item>
     <Item TranslateID="BLOCK_INI400_001670">
       <ENU>"Slenderness"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_">
+      <ENU>"Not OK!"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_000001">
       <ENU>"Design of steel sections under tension loads based on NBR-8800/2008"</ENU>

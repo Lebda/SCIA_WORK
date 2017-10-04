@@ -53,6 +53,7 @@
     →UNK000_018558double HeigthRatio; // claculation position of extra rotation point
     →UNK000_018559double StrainRatio; // claculation valus of strain of extra rotation point
     
+    →RLF098_000003bool Imperialunit; 
     
     //@Constructor
     void CalculateParamForDesignCheck(object _ConMat, object _ReinfMatLow, object _ReinfMatUp, double _b, double _h, object _Force, object _DesignDefaults, bool _IsAccidental) { 
@@ -199,11 +200,20 @@
     
     //function for calculation balaned heigths of compresion zone
     void CalculateBalancedHeigthCompressionZone1(object Inputd) { 
-        →REZ006_000053TEXT("f'↓c←= " &amp; CUnit(f↓cd←, "psi") &amp; "psi " &amp; " -&gt;  " &amp; "β↓1←= " &amp; β) @REF("Factor of rectangular compressive stress block"); 
+        Imperialunit →RLF098_000008= Inputd.Imperialunit; 
+        IF(Imperialunit) { 
+            →REZ006_000053TEXT("f'↓c←= " &amp; CUnit(f↓cd←, "psi") &amp; "psi " &amp; " -&gt;  " &amp; "β↓1←= " &amp; β) @REF("Factor of rectangular compressive stress block"); 
+        } ELSE { 
+            →RLF098_000009TEXT("f'↓c←= " &amp; CUnit(f↓cd←, "MPa") &amp; "MPa " &amp; " -&gt;  " &amp; "β↓1←= " &amp; β) @REF("Factor of rectangular compressive stress block"); 
+        } 
         →UNK000_018648CalculateBalanceParam1(); 
         →UNK000_018649CalculateEffectiveDepth(Inputd); 
         x↓bal1← →UNK000_018651= ξ↓bal1←*d; 
-        →UNK000_022093TEXT("x↓bal1← =" &amp; 'ξ↓bal1←*d' &amp; " = " &amp; CUnit(x↓bal1←, "in") &amp; "in") @REF("Depth of compressive stress block"); 
+        IF(Imperialunit) { 
+            →UNK000_022093TEXT("x↓bal1← =" &amp; 'ξ↓bal1←*d' &amp; " = " &amp; CUnit(x↓bal1←, "in") &amp; "in") @REF("Depth of compressive stress block"); 
+        } ELSE { 
+            →RLF098_000010TEXT("x↓bal1← =" &amp; 'ξ↓bal1←*d' &amp; " = " &amp; CUnit(x↓bal1←, "mm") &amp; "mm") @REF("Depth of compressive stress block"); 
+        } 
     } 
     //function for calculation balaned heigths of compresion zone
     void CalculateBalancedHeigthCompressionZone2() { 
@@ -251,9 +261,11 @@
         double ε↓st0← →REZ006_000194= 100*ε↓st←; 
         double ε↓sty0← →REZ006_000195= 100*ε↓sty←; 
         double ε↓cu230← →REZ006_000196= 100*ε↓cu23←; 
-        
-        →REZ006_000181TEXT("x=" &amp; CUnit(x, "in") &amp; "in" &amp; "  ε↓st← =" &amp; ε↓st0← &amp; "%  ε↓sty←= " &amp; ε↓sty0← &amp; "%   ε↓c←=" &amp; ε↓cu230← &amp; "% ") @REF("Strain in reinforcement and concrete"); 
-        
+        IF(Imperialunit) { 
+            →REZ006_000181TEXT("x=" &amp; CUnit(x, "in") &amp; "in" &amp; "  ε↓st← =" &amp; ε↓st0← &amp; "%  ε↓sty←= " &amp; ε↓sty0← &amp; "%   ε↓c←=" &amp; ε↓cu230← &amp; "% ") @REF("Strain in reinforcement and concrete"); 
+        } ELSE { 
+            →RLF098_000011TEXT("x=" &amp; CUnit(x, "m") &amp; "m" &amp; "  ε↓st← =" &amp; ε↓st0← &amp; "%  ε↓sty←= " &amp; ε↓sty0← &amp; "%   ε↓c←=" &amp; ε↓cu230← &amp; "% ") @REF("Strain in reinforcement and concrete"); 
+        } 
         IF(ε↓st← &lt; ε↓sty←) { 
             ϕ↓st← →UNK000_020834= 0.65; 
         } ELSE { 
@@ -273,12 +285,17 @@
         c↓-← →REZ006_000246= Inputd.c↓-←; 
         c↓+← →REZ006_000247= Inputd.c↓+←; 
         h →REZ006_000248= Inputd.h; 
+        Imperialunit →RLF098_000007= Inputd.Imperialunit; 
         IF(M↓n← &gt;= 0) { 
             d →UNK000_018661= h-(c↓-←+0.5*d↓s-←); 
         } ELSE { 
             d →UNK000_018662= h-(c↓+←+0.5*d↓s+←); 
         } 
-        →UNK000_022090TEXT("d= " &amp; 'h-(c+0.5*d↓s←)' &amp; " = " &amp; CUnit(d, "in") &amp; "in") @REF("Distance from extreme compression fiber"); 
+        IF(Imperialunit) { 
+            →UNK000_022090TEXT("d= " &amp; 'h-(c+0.5*d↓s←)' &amp; " = " &amp; CUnit(d, "in") &amp; "in") @REF("Distance from extreme compression fiber"); 
+        } ELSE { 
+            →RLF098_000006TEXT("d= " &amp; 'h-(c+0.5*d↓s←)' &amp; " = " &amp; CUnit(d, "m") &amp; "m") @REF("Distance from extreme compression fiber"); 
+        } 
         →REZ006_000190TEXT(" ") @REF("to centroid of tension reinforcement"); 
     } 
     // function for calculation values d-
@@ -330,6 +347,7 @@ class DesignRectCss {
         →UNK000_018682bool IsAccidental; //acidental combination
         →UNK000_018683double b; //width of cross-section
         →UNK000_018684double h; //heigth of cross-section
+        →RLF098_000004bool Imperialunit; // Unit for Imperial or SI
         →UNK000_018685object[] RegReinfArea; //array of designed reinforcement for each force
         →UNK000_018686object[] ArrayReqReinf; //structure of designed reinforcement (same structure which is used in multidesign)
         →unk000_022019private double E↓s+←; //module of elasticity of upper reinforcement
@@ -350,7 +368,7 @@ class DesignRectCss {
         →UNK000_018702object[] NumberEWN; //object with number of notes/warnings and errors
     } 
     //@Constructor
-    void DesignRectCss(double _Dir, object _ConMat, object _ReinfMat, double _NLayerSel, double _b, double _h, object[] _Forces, object _DesignDefaults, bool _IsAccidental, object _CalcSetting) { 
+    void DesignRectCss(double _Dir, object _ConMat, object _ReinfMat, double _NLayerSel, bool _Imperialunit, double _b, double _h, object[] _Forces, object _DesignDefaults, bool _IsAccidental, object _CalcSetting) { 
         Dir →UNK000_018703= _Dir; 
         ConMat →UNK000_018704= _ConMat; 
         ReinfMatLow →UNK000_018705= _ReinfMat; 
@@ -362,6 +380,7 @@ class DesignRectCss {
         DesignDefaults →UNK000_018710= _DesignDefaults; 
         IsAccidental →UNK000_018711= _IsAccidental; 
         CalcSetting →UNK000_018712= _CalcSetting; 
+        Imperialunit →RLF098_000001= _Imperialunit; 
         →UNK000_018713InitValues(); 
     } 
     //initialization of values for SEN
@@ -489,7 +508,7 @@ class DesignRectCss {
     void CalculatePODParamForDesign(double Index, out object PodParam) { 
         object CalculatePODParam →UNK000_018748= GetPODParam(Index); 
         object Inputd →UNK000_016705= new Structure("d↓s-←", DesignDefaults.dslo, "d↓s+←", DesignDefaults.dsup, 
-        "c↓-←", DesignDefaults.clo, "c↓+←", DesignDefaults.cup, "h", h); 
+        "c↓-←", DesignDefaults.clo, "c↓+←", DesignDefaults.cup, "h", h, "Imperialunit", Imperialunit); 
         →UNK000_018749CalculatePODParam.CalculateBalanceForce(Inputd); 
         →UNK000_018750CalculatePODParam.CalculateBalancedHeigthCompressionZone2(); 
         →REZ006_000005CalculatePODParam.CalculateBalancedHeigthCompressionZone3(Inputd); 
@@ -512,7 +531,11 @@ class DesignRectCss {
         →REZ006_000149double&lt;psi,2&gt; p1; 
         →REZ006_000150double&lt;psi,2&gt; p2; 
         →UNK000_022064double&lt;in,3&gt; x↓pom←; 
-        b →UNK000_022086= PhysConst(1, "ft"); // b should be 1 because moment is based on kip*ft/ft and it doesn't have the effect of that
+        IF(Imperialunit) { 
+            b →UNK000_022086= PhysConst(1, "ft"); // b should be 1 because moment is based on kip*ft/ft and it doesn't have the effect of that
+        } ELSE { 
+            b →RLF098_000013= PhysConst(1, "m"); // b should be 1
+        } 
         x↓pom← →UNK000_022066= ABS(N↓n←)/(λ*b*β↓1←*f↓cd←); 
         double wcounter →UNK000_022057= 0; 
         →REZ006_000189TEXT("- Iteration on effective depth "); 
@@ -571,7 +594,7 @@ class DesignRectCss {
         object CalculatePODParam →UNK000_018785= GetPODParam(Index); 
         CalculatePODParamtest →UNK000_022048= GetPODParam(Index); 
         object Inputd →REZ006_000242= new Structure("d↓s-←", DesignDefaults.dslo, "d↓s+←", DesignDefaults.dsup, 
-        "c↓-←", DesignDefaults.clo, "c↓+←", DesignDefaults.cup, "h", h); 
+        "c↓-←", DesignDefaults.clo, "c↓+←", DesignDefaults.cup, "h", h, "Imperialunit", Imperialunit); 
         →UNK000_018786CalculatePODParam.CalculateBalanceForce(Inputd); 
         →UNK000_018787CalculatePODParam.CalculateBalancedHeigthCompressionZone2(); 
         →UNK000_018788CalculatePODParam.CalculateDistanceFromEdge(); 
@@ -601,8 +624,12 @@ class DesignRectCss {
         double&lt;in↑2←,3&gt; A↓sreq← →UNK000_022289= 0; 
         double Tensile↓+← →UNK000_018804= 0; 
         double Tensile↓-← →UNK000_018805= 0; 
-        double&lt;in,3&gt; b →UNK000_022088= PhysConst(1, "ft"); 
         
+        IF(Imperialunit) { 
+            b →RLF098_000014= PhysConst(1, "ft"); // b should be 1 because moment is based on kip*ft/ft and it doesn't have the effect of that
+        } ELSE { 
+            b →RLF098_000015= PhysConst(1, "m"); // b should be 1
+        } 
         →REZ006_000095CalculateReinfStress(Index); 
         ϕ↓st← →UNK000_022232= CalculatePODParam.ϕ↓st←; 
         N↓n← →UNK000_022233= Forces[Index].N/ϕ↓st←; 
@@ -612,7 +639,8 @@ class DesignRectCss {
         IF(NLayerSel == 2) { 
             IF(x &gt; 0 &amp;&amp; x &lt; x↓bal1←) { 
                 IF(M↓n← &gt; 0) { 
-                    A↓sreq-← →UNK000_022159= (0.85*β↓1←*f↓cd←*b*x+b*N↓n←)/f↓yd-← @REF("Area of lower reinforcement per ft"); 
+                    A↓sreq-← →UNK000_022159= (0.85*β↓1←*f↓cd←*b*x+b*N↓n←)/f↓yd-← @REF("Area of lower reinforcement per unit width"); 
+                    IF(!Imperialunit) { →RLF098_000037TEXT("A↓sreq-← = " &amp; CUnit(A↓sreq-←, "mm↑2←") &amp; " mm↑2←"); } 
                     A↓sreq+← →UNK000_022157= 0; 
                     →REZ006_000184TEXT("A↓sreq+← = 0") @REF("No upper reinforcement is needed"); 
                     Tensile↓-← →REZ006_000037= 1; 
@@ -620,7 +648,8 @@ class DesignRectCss {
                 } ELSE { 
                     A↓sreq-← →UNK000_022158= 0; 
                     →REZ006_000185TEXT("A↓sreq-← = 0 ") @REF("No lower reinforcement is needed"); 
-                    A↓sreq+← →UNK000_022160= (0.85*β↓1←*f↓cd←*b*x+b*N↓n←)/f↓yd+← @REF("Area of upper reinforcement per ft"); 
+                    A↓sreq+← →UNK000_022160= (0.85*β↓1←*f↓cd←*b*x+b*N↓n←)/f↓yd+← @REF("Area of upper reinforcement per unit width"); 
+                    IF(!Imperialunit) { →RLF098_000036TEXT("A↓sreq+← = " &amp; CUnit(A↓sreq+←, "mm↑2←") &amp; " mm↑2←"); } 
                     Tensile↓-← →REZ006_000039= 0; 
                     Tensile↓+← →REZ006_000040= 1; 
                 } 
@@ -629,13 +658,20 @@ class DesignRectCss {
                     →UNK000_022214TEXT("Large forces and no solution without compressive reinforcement"); 
                     IF(M↓n← &gt; 0) { 
                         m↓bal1← →UNK000_022172= (0.85*f↓cd←*b*β↓1←*x↓bal1←+b*N↓n←)*(d-0.5*β↓1←*x↓bal1←); 
-                        →REZ006_000230TEXT("M↓bal← = " &amp; '(0.85*f↓cd←*b*β↓1←*x↓bal←)*(d-0.5*β↓1←*x↓bal←)' &amp; " = " &amp; CUnit(m↓bal1←, "kip*ft") &amp; "kip.ft") @REF("Balanced Moment"); 
+                        IF(Imperialunit) { 
+                            →REZ006_000230TEXT("M↓bal← = " &amp; '(0.85*f↓cd←*b*β↓1←*x↓bal←)*(d-0.5*β↓1←*x↓bal←)' &amp; " = " &amp; CUnit(m↓bal1←, "kip*ft") &amp; "kip.ft") @REF("Balanced Moment"); 
+                        } ELSE { 
+                            →RLF098_000012TEXT("M↓bal← = " &amp; '(0.85*f↓cd←*b*β↓1←*x↓bal←)*(d-0.5*β↓1←*x↓bal←)' &amp; " = " &amp; CUnit(m↓bal1←, "kN*m") &amp; "kN.m") @REF("Balanced Moment"); 
+                        } 
                         IF(d &gt; d↓2←) { 
-                            A↓sreq+← →UNK000_022161= (b*M↓n←-m↓bal1←)/(f↓yd+←*(d-d↓2←)) @REF("Area of upper reinforcement per ft"); 
-                            A↓sreq-← →UNK000_022163= A↓sreq+←+(0.85*β↓1←*f↓cd←*b*x↓bal1←+b*N↓n←)/f↓yd-← @REF("Area of lower reinforcement per ft"); 
+                            A↓sreq+← →UNK000_022161= (b*M↓n←-m↓bal1←)/(f↓yd+←*(d-d↓2←)) @REF("Area of upper reinforcement per unit width"); 
+                            IF(!Imperialunit) { →RLF098_000021TEXT("A↓sreq+← = " &amp; CUnit(A↓sreq+←, "mm↑2←") &amp; " mm↑2←"); } 
+                            A↓sreq-← →UNK000_022163= A↓sreq+←+(0.85*β↓1←*f↓cd←*b*x↓bal1←+b*N↓n←)/f↓yd-← @REF("Area of lower reinforcement unit width"); 
+                            IF(!Imperialunit) { →RLF098_000019TEXT("A↓sreq-← = " &amp; CUnit(A↓sreq-←, "mm↑2←") &amp; " mm↑2←"); } 
                         } ELSE { 
                             →REZ006_000203TEXT("d&lt;d↓2←," &amp; TR("No compressive reinforcement can be added")); 
-                            A↓sreq-← →REZ006_000202= (0.85*β↓1←*f↓cd←*b*x+b*N↓n←)/σ↓s+← @REF("Area of lower reinforcement per ft"); 
+                            A↓sreq-← →REZ006_000202= (0.85*β↓1←*f↓cd←*b*x+b*N↓n←)/σ↓s+← @REF("Area of lower reinforcement per unit width"); 
+                            IF(!Imperialunit) { →RLF098_000022TEXT("A↓sreq-← = " &amp; CUnit(A↓sreq-←, "mm↑2←") &amp; " mm↑2←"); } 
                         } 
                         Tensile↓-← →REZ006_000033= 1; 
                         Tensile↓+← →REZ006_000034= 0; 
@@ -644,11 +680,14 @@ class DesignRectCss {
                         m↓bal2← →UNK000_022176= (0.85*f↓cd←*b*β↓1←*x↓bal1←+b*N↓n←)*(d-0.5*β↓1←*x↓bal1←); 
                         →REZ006_000231TEXT("M↓bal← = " &amp; '(0.85*f↓cd←*b*β↓1←*x↓bal←)*(d-0.5*β↓1←*x↓bal←)' &amp; " = " &amp; CUnit(m↓bal2←, "kip*ft") &amp; "kip.ft") @REF("Balanced Moment"); 
                         IF(d &gt; d↓2←) { 
-                            A↓sreq-← →UNK000_022177= (b*ABS(M↓n←)-m↓bal2←)/(f↓yd-←*(d-d↓2←)) @REF("Area of lower reinforcement per ft"); 
-                            A↓sreq+← →UNK000_022178= A↓sreq-←+(0.85*β↓1←*f↓cd←*b*x↓bal1←+N↓n←*b)/f↓yd+← @REF("Area of upper reinforcement per ft"); 
+                            A↓sreq-← →UNK000_022177= (b*ABS(M↓n←)-m↓bal2←)/(f↓yd-←*(d-d↓2←)) @REF("Area of lower reinforcement per unit width"); 
+                            IF(!Imperialunit) { →RLF098_000023TEXT("A↓sreq-← = " &amp; CUnit(A↓sreq-←, "mm↑2←") &amp; " mm↑2←"); } 
+                            A↓sreq+← →UNK000_022178= A↓sreq-←+(0.85*β↓1←*f↓cd←*b*x↓bal1←+N↓n←*b)/f↓yd+← @REF("Area of upper reinforcement per unit width"); 
+                            IF(!Imperialunit) { →RLF098_000024TEXT("A↓sreq+← = " &amp; CUnit(A↓sreq+←, "mm↑2←") &amp; " mm↑2←"); } 
                         } ELSE { 
                             →REZ006_000204TEXT("d&lt;d↓2←," &amp; TR("No compressive reinforcement can be added")); 
-                            A↓sreq+← →REZ006_000206= (0.85*β↓1←*f↓cd←*b*x+b*N↓n←)/σ↓s+← @REF("Area of lower reinforcement per ft"); 
+                            A↓sreq+← →REZ006_000206= (0.85*β↓1←*f↓cd←*b*x+b*N↓n←)/σ↓s+← @REF("Area of lower reinforcement per unit width"); 
+                            IF(!Imperialunit) { →RLF098_000025TEXT("A↓sreq+← = " &amp; CUnit(A↓sreq+←, "mm↑2←") &amp; " mm↑2←"); } 
                         } 
                         Tensile↓-← →REZ006_000035= 0; 
                         Tensile↓+← →REZ006_000036= 1; 
@@ -658,13 +697,16 @@ class DesignRectCss {
                     →REZ006_000192TEXT("All concrete section is in tension"); 
                     IF(M↓n← &gt; 0) { 
                         A↓sreq+← →UNK000_022192= (N↓n←*b)/(2*f↓yd+←) @REF("Area of upper reinforcement"); 
-                        A↓sreq-← →UNK000_022193= A↓sreq+←+(0.85*β↓1←*f↓cd←*b*x↓M←)/f↓yd-← @REF("Area of lower reinforcement per ft"); 
-                        
+                        IF(!Imperialunit) { →RLF098_000026TEXT("A↓sreq+← = " &amp; CUnit(A↓sreq+←, "mm↑2←") &amp; " mm↑2←"); } 
+                        A↓sreq-← →UNK000_022193= A↓sreq+←+(0.85*β↓1←*f↓cd←*b*x↓M←)/f↓yd-← @REF("Area of lower reinforcement per unit width"); 
+                        IF(!Imperialunit) { →RLF098_000027TEXT("A↓sreq-← = " &amp; CUnit(A↓sreq-←, "mm↑2←") &amp; " mm↑2←"); } 
                         Tensile↓-← →REZ006_000029= 1; 
                         Tensile↓+← →REZ006_000030= 0; 
                     } ELSE { 
                         A↓sreq-← →UNK000_022195= (N↓n←*b)/(2*f↓yd-←) @REF("Area of lower reinforcement per ft"); 
-                        A↓sreq+← →UNK000_022196= A↓sreq-←+(0.85*β↓1←*f↓cd←*b*x↓M←)/f↓yd+← @REF("Area of upper reinforcement per ft"); 
+                        IF(!Imperialunit) { →RLF098_000028TEXT("A↓sreq-← = " &amp; CUnit(A↓sreq-←, "mm↑2←") &amp; " mm↑2←"); } 
+                        A↓sreq+← →UNK000_022196= A↓sreq-←+(0.85*β↓1←*f↓cd←*b*x↓M←)/f↓yd+← @REF("Area of upper reinforcement per unit width"); 
+                        IF(!Imperialunit) { →RLF098_000029TEXT("A↓sreq+← = " &amp; CUnit(A↓sreq+←, "mm↑2←") &amp; " mm↑2←"); } 
                         Tensile↓-← →REZ006_000031= 0; 
                         Tensile↓+← →REZ006_000032= 1; 
                     } 
@@ -681,11 +723,14 @@ class DesignRectCss {
                         IF(d &gt; d↓2←) { 
                             m↓bal1← →REZ006_000171= (0.85*f↓cd←*b*β↓1←*x↓bal1←)*(d-0.5*β↓1←*x↓bal1←); 
                             →REZ006_000198TEXT("M↓bal← = " &amp; '(0.85*f↓cd←*b*β↓1←*x↓bal←)*(d-0.5*β↓1←*x↓bal←)' &amp; " = " &amp; CUnit(m↓bal1←, "kip*ft") &amp; "kip.ft") @REF("Balanced Moment"); 
-                            A↓sreq+← →UNK000_022275= (b*M↓n←-m↓bal1←)/(f↓yd+←*(d-d↓2←)) @REF("Area of upper reinforcement per ft"); 
-                            A↓sreq-← →UNK000_022276= A↓sreq+←+(0.85*β↓1←*f↓cd←*b*x↓bal1←-b*N↓n←)/f↓yd-← @REF("Area of lower reinforcement per ft"); 
+                            A↓sreq+← →UNK000_022275= (b*M↓n←-m↓bal1←)/(f↓yd+←*(d-d↓2←)) @REF("Area of upper reinforcement per unit width"); 
+                            IF(!Imperialunit) { →RLF098_000030TEXT("A↓sreq+← = " &amp; CUnit(A↓sreq+←, "mm↑2←") &amp; " mm↑2←"); } 
+                            A↓sreq-← →UNK000_022276= A↓sreq+←+(0.85*β↓1←*f↓cd←*b*x↓bal1←-b*N↓n←)/f↓yd-← @REF("Area of lower reinforcement per unit width"); 
+                            IF(!Imperialunit) { →RLF098_000031TEXT("A↓sreq-← = " &amp; CUnit(A↓sreq-←, "mm↑2←") &amp; " mm↑2←"); } 
                         } ELSE { 
                             →REZ006_000210TEXT("d&lt;d↓2←," &amp; TR("No compressive reinforcement can be added")); 
-                            A↓sreq-← →REZ006_000209= (0.85*β↓1←*f↓cd←*b*x+b*N↓n←)/σ↓s-← @REF("Area of lower reinforcement per ft"); 
+                            A↓sreq-← →REZ006_000209= (0.85*β↓1←*f↓cd←*b*x+b*N↓n←)/σ↓s-← @REF("Area of lower reinforcement per unit width"); 
+                            IF(!Imperialunit) { →RLF098_000032TEXT("A↓sreq-← = " &amp; CUnit(A↓sreq-←, "mm↑2←") &amp; " mm↑2←"); } 
                         } 
                         Tensile↓-← →REZ006_000164= 1; 
                         Tensile↓+← →REZ006_000165= 0; 
@@ -693,19 +738,22 @@ class DesignRectCss {
                         IF(d &gt; d↓2←) { 
                             m↓bal2← →REZ006_000166= (0.85*f↓cd←*b*β↓1←*x↓bal1←-b*N↓n←)*(d-0.5*β↓1←*x↓bal1←) @REF("Balanced Moment"); 
                             →REZ006_000232TEXT("M↓bal← = " &amp; '(0.85*f↓cd←*b*β↓1←*x↓bal←)*(d-0.5*β↓1←*x↓bal←)' &amp; " = " &amp; CUnit(m↓bal2←, "kip*ft") &amp; "kip.ft") @REF("Balanced Moment"); 
-                            A↓sreq-← →REZ006_000167= (b*ABS(M↓n←)-m↓bal2←)/(f↓yd-←*(d-d↓2←)) @REF("Area of lower reinforcement per ft"); 
-                            A↓sreq+← →REZ006_000168= A↓sreq-←+(0.85*β↓1←*f↓cd←*b*x↓bal1←-N↓n←*b)/f↓yd+← @REF("Area of upper reinforcement per ft"); 
+                            A↓sreq-← →REZ006_000167= (b*ABS(M↓n←)-m↓bal2←)/(f↓yd-←*(d-d↓2←)) @REF("Area of lower reinforcement per unit width"); 
+                            IF(!Imperialunit) { →RLF098_000033TEXT("A↓sreq-← = " &amp; CUnit(A↓sreq-←, "mm↑2←") &amp; " mm↑2←"); } 
+                            A↓sreq+← →REZ006_000168= A↓sreq-←+(0.85*β↓1←*f↓cd←*b*x↓bal1←-N↓n←*b)/f↓yd+← @REF("Area of upper reinforcement per unit width"); 
+                            IF(!Imperialunit) { →RLF098_000034TEXT("A↓sreq+← = " &amp; CUnit(A↓sreq+←, "mm↑2←") &amp; " mm↑2←"); } 
                         } ELSE { 
                             →REZ006_000211TEXT("d&lt;d↓2←," &amp; TR("No compressive reinforcement can be added")); 
-                            A↓sreq+← →REZ006_000213= (0.85*β↓1←*f↓cd←*b*x+b*N↓n←)/σ↓s+← @REF("Area of lower reinforcement per ft"); 
+                            A↓sreq+← →REZ006_000213= (0.85*β↓1←*f↓cd←*b*x+b*N↓n←)/σ↓s+← @REF("Area of lower reinforcement per unit width"); 
+                            IF(!Imperialunit) { →RLF098_000035TEXT("A↓sreq+← = " &amp; CUnit(A↓sreq+←, "mm↑2←") &amp; " mm↑2←"); } 
                         } 
                         Tensile↓-← →REZ006_000169= 0; 
                         Tensile↓+← →REZ006_000170= 1; 
                     } 
                 } 
                 IF(x &gt;= d) { 
-                    A↓sreq+← →REZ006_000153= 0 @REF("Area of upper reinforcement per ft"); 
-                    A↓sreq-← →REZ006_000154= 0 @REF("Area of lower reinforcement per ft"); 
+                    A↓sreq+← →REZ006_000153= 0 @REF("Area of upper reinforcement per unit width"); 
+                    A↓sreq-← →REZ006_000154= 0 @REF("Area of lower reinforcement per unit width"); 
                     →REZ006_000186TEXT("A↓sreq-← = 0 "); 
                     →REZ006_000187TEXT("A↓sreq+← = 0 "); 
                 } 
@@ -718,12 +766,14 @@ class DesignRectCss {
                 IF(M↓n← &gt; 0) { 
                     A↓sreq← →UNK000_022285= (0.85*β↓1←*f↓cd←*b*x-N↓n←)/f↓yd-←; 
                     A↓sreq-← →UNK000_022198= (0.85*β↓1←*f↓cd←*b*x-N↓n←)/f↓yd-←; 
+                    IF(!Imperialunit) { →RLF098_000038TEXT("A↓sreq-← = " &amp; CUnit(A↓sreq-←, "mm↑2←") &amp; " mm↑2←"); } 
                     A↓sreq+← →UNK000_022199= 0; 
                     Tensile↓-← →REZ006_000021= 1; 
                     Tensile↓+← →REZ006_000022= 0; 
                 } ELSE { 
                     A↓sreq-← →UNK000_022200= 0; 
                     A↓sreq+← →UNK000_022201= (0.85*β↓1←*f↓cd←*b*x-N↓n←)/f↓yd+←; 
+                    IF(!Imperialunit) { →RLF098_000039TEXT("A↓sreq+← = " &amp; CUnit(A↓sreq+←, "mm↑2←") &amp; " mm↑2←"); } 
                     A↓sreq← →UNK000_022286= (0.85*β↓1←*f↓cd←*b*x-N↓n←)/f↓yd+←; 
                     Tensile↓-← →REZ006_000023= 0; 
                     Tensile↓+← →REZ006_000024= 1; 
@@ -735,12 +785,14 @@ class DesignRectCss {
                     IF(M↓n← &gt; 0) { 
                         A↓sreq+← →UNK000_022208= 0; 
                         A↓sreq-← →UNK000_022209= (N↓n←)/(f↓yd+←)+(0.85*β↓1←*f↓cd←*b*x↓M←)/f↓yd-←; 
+                        IF(!Imperialunit) { →RLF098_000040TEXT("A↓sreq-← = " &amp; CUnit(A↓sreq-←, "mm↑2←") &amp; " mm↑2←"); } 
                         A↓sreq← →UNK000_022287= (N↓n←)/(f↓yd+←)+(0.85*β↓1←*f↓cd←*b*x↓M←)/f↓yd-←; 
                         Tensile↓-← →REZ006_000017= 1; 
                         Tensile↓+← →REZ006_000018= 0; 
                     } ELSE { 
                         A↓sreq-← →UNK000_022210= 0; 
                         A↓sreq+← →UNK000_022211= (N↓n←)/(f↓yd-←)+(0.85*β↓1←*f↓cd←*b*x↓M←)/f↓yd+←; 
+                        IF(!Imperialunit) { →RLF098_000041TEXT("A↓sreq+← = " &amp; CUnit(A↓sreq+←, "mm↑2←") &amp; " mm↑2←"); } 
                         Tensile↓-← →REZ006_000015= 0; 
                         Tensile↓+← →REZ006_000016= 1; 
                     } 
@@ -759,7 +811,11 @@ class DesignRectCss {
         double MaxAs_up →UNK000_018887= 0; 
         IF(RegReinfArea[0] == null) { 
             FOR(i, 0, Forces.Count-1) { 
-                →UNK000_022095TEXT(TR("Design Forces:") &amp; "  N↓u←=" &amp; CUnit(Forces[i].N, "kip/ft") &amp; "  kip    M↓u←=" &amp; CUnit(Forces[i].My, "kip*ft/ft") &amp; "  kip.ft"); 
+                IF(Imperialunit) { 
+                    →RLF098_000005TEXT(TR("Design Forces:") &amp; "  N↓u←=" &amp; CUnit(Forces[i].N, "kip/ft") &amp; "  kip/ft    M↓u←=" &amp; CUnit(Forces[i].My, "kip*ft/ft") &amp; "  kip.ft/ft"); 
+                } ELSE { 
+                    →UNK000_022095TEXT(TR("Design Forces:") &amp; "  N↓u←=" &amp; CUnit(Forces[i].N, "kN/m") &amp; "  kN/m    M↓u←=" &amp; CUnit(Forces[i].My, "kN*m/m") &amp; "  kN.m/m"); 
+                } 
                 object obRegArea →UNK000_018888= null; 
                 obEWN →UNK000_018889= new object[]; 
                 NumberEWN →UNK000_018890= new object[]; 
@@ -1051,6 +1107,11 @@ Force1D[1] →UNK000_019318= new Forces1D(nEd, -mEd, 0, 0, 0, 0);
 object CalcSettingCheck →UNK000_019331= new Structure("DivisionOfStrain", 200, "NoOfPtsInVertCut", 300, "IDMethodOfCheck", 2, "ExtraRotationPoint", True); 
 
 →UNK000_022248double ξ↓bal3←; 
+IF(Imperialunit) { 
+    b →RLF098_000016= PhysConst(1, "ft"); // b should be 1 because moment is based on kip*ft/ft and it doesn't have the effect of that
+} ELSE { 
+    b →RLF098_000017= PhysConst(1, "m"); // b should be 1
+} 
 double b →UNK000_019916= PhysConst(12, "in"); 
 double h →UNK000_019917= PhysConst(6, "in"); 
 double NLayerSel →UNK000_022281= 1; 
@@ -1528,6 +1589,12 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="Imperialunit" ESA_ID="" Type="Boolean">
+        <Description TranslateID="VARIABLE_Imperialunit">
+          <ENU>
+          </ENU>
+        </Description>
       </Variable>
       <Variable Modifier="Public" Name="IndexMax_lo" ESA_ID="" Type="Double" Precision="2">
         <Description>
@@ -2140,7 +2207,7 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
     </Layouts>
     <VisualComponents>
       <VC ID="">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3159,6 +3226,318 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000005">
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|12|0|2" Font2="Segoe UI|12|1|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|12|0|2" Font2="Segoe UI|12|1|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000006">
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000007">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000008">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000009">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000010">
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000011">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000012">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000013">
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000014">
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000015">
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000016">
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000017">
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000018">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000019">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000020">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000021">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000022">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000023">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000024">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000025">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000026">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000027">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000028">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000029">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000030">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000031">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000032">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000033">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000034">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000035">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000036">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000037">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000038">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000039">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000040">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000041">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -6426,6 +6805,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
     <Item TranslateID="STRING_F547252F">
       <ENU>"To increase dimensions of cross-section or quality of used materials"</ENU>
     </Item>
+    <Item ID="TEXT_">
+      <ENU>"A↓sreq+← = " &amp; CUnit(A↓sreq+←, "mm↑2←") &amp; " mm↑2←"</ENU>
+    </Item>
     <Item ID="TEXT_REZ006_000053">
       <ENU>"f'↓c←= " &amp; CUnit(f↓cd←, "psi") &amp; "psi " &amp; " -&gt;  " &amp; "β↓1←= " &amp; β</ENU>
     </Item>
@@ -6501,6 +6883,93 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
     <Item ID="TEXT_REZ006_000232">
       <ENU>"M↓bal← = " &amp; '(0.85*f↓cd←*b*β↓1←*x↓bal←)*(d-0.5*β↓1←*x↓bal←)' &amp; " = " &amp; CUnit(m↓bal2←, "kip*ft") &amp; "kip.ft"</ENU>
     </Item>
+    <Item ID="TEXT_RLF098_000005">
+      <ENU>TR("Design Forces:") &amp; "  N↓u←=" &amp; CUnit(Forces[i].N, "kip/ft") &amp; "  kip/ft    M↓u←=" &amp; CUnit(Forces[i].My, "kip*ft/ft") &amp; "  kip.ft/ft"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000006">
+      <ENU>"d= " &amp; 'h-(c+0.5*d↓s←)' &amp; " = " &amp; CUnit(d, "m") &amp; "m"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000009">
+      <ENU>"f'↓c←= " &amp; CUnit(f↓cd←, "MPa") &amp; "MPa " &amp; " -&gt;  " &amp; "β↓1←= " &amp; β</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000010">
+      <ENU>"x↓bal1← =" &amp; 'ξ↓bal1←*d' &amp; " = " &amp; CUnit(x↓bal1←, "mm") &amp; "mm"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000011">
+      <ENU>"x=" &amp; CUnit(x, "m") &amp; "m" &amp; "  ε↓st← =" &amp; ε↓st0← &amp; "%  ε↓sty←= " &amp; ε↓sty0← &amp; "%   ε↓c←=" &amp; ε↓cu230← &amp; "% "</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000012">
+      <ENU>"M↓bal← = " &amp; '(0.85*f↓cd←*b*β↓1←*x↓bal←)*(d-0.5*β↓1←*x↓bal←)' &amp; " = " &amp; CUnit(m↓bal1←, "kN*m") &amp; "kN.m"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000018">
+      <ENU>"A↓sreq+← = " &amp; CUnit(A↓sreq+←, "mm↑2←") &amp; "mm↑2←"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000019">
+      <ENU>"A↓sreq-← = " &amp; CUnit(A↓sreq-←, "mm↑2←") &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000021">
+      <ENU>"A↓sreq+← = " &amp; CUnit(A↓sreq+←, "mm↑2←") &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000022">
+      <ENU>"A↓sreq-← = " &amp; CUnit(A↓sreq-←, "mm↑2←") &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000023">
+      <ENU>"A↓sreq-← = " &amp; CUnit(A↓sreq-←, "mm↑2←") &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000024">
+      <ENU>"A↓sreq+← = " &amp; CUnit(A↓sreq+←, "mm↑2←") &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000025">
+      <ENU>"A↓sreq+← = " &amp; CUnit(A↓sreq+←, "mm↑2←") &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000026">
+      <ENU>"A↓sreq+← = " &amp; CUnit(A↓sreq+←, "mm↑2←") &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000027">
+      <ENU>"A↓sreq-← = " &amp; CUnit(A↓sreq-←, "mm↑2←") &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000028">
+      <ENU>"A↓sreq-← = " &amp; CUnit(A↓sreq-←, "mm↑2←") &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000029">
+      <ENU>"A↓sreq+← = " &amp; CUnit(A↓sreq+←, "mm↑2←") &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000030">
+      <ENU>"A↓sreq+← = " &amp; CUnit(A↓sreq+←, "mm↑2←") &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000031">
+      <ENU>"A↓sreq-← = " &amp; CUnit(A↓sreq-←, "mm↑2←") &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000032">
+      <ENU>"A↓sreq-← = " &amp; CUnit(A↓sreq-←, "mm↑2←") &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000033">
+      <ENU>"A↓sreq-← = " &amp; CUnit(A↓sreq-←, "mm↑2←") &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000034">
+      <ENU>"A↓sreq+← = " &amp; CUnit(A↓sreq+←, "mm↑2←") &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000035">
+      <ENU>"A↓sreq+← = " &amp; CUnit(A↓sreq+←, "mm↑2←") &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000036">
+      <ENU>"A↓sreq+← = " &amp; CUnit(A↓sreq+←, "mm↑2←") &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000037">
+      <ENU>"A↓sreq-← = " &amp; CUnit(A↓sreq-←, "mm↑2←") &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000038">
+      <ENU>"A↓sreq-← = " &amp; CUnit(A↓sreq-←, "mm↑2←") &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000039">
+      <ENU>"A↓sreq+← = " &amp; CUnit(A↓sreq+←, "mm↑2←") &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000040">
+      <ENU>"A↓sreq-← = " &amp; CUnit(A↓sreq-←, "mm↑2←") &amp; " mm↑2←"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000041">
+      <ENU>"A↓sreq+← = " &amp; CUnit(A↓sreq+←, "mm↑2←") &amp; " mm↑2←"</ENU>
+    </Item>
     <Item TranslateID="TEXT_UNK000_018618">
       <ENU>"Calculation strains for concrete stress-strain diagram"</ENU>
     </Item>
@@ -6565,7 +7034,7 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
       <ENU>"ξ↓bal2 ←= " &amp; 'ε↓cu23←/(ε↓cu23←-(f↓yd-←/E↓s-←))' &amp; " = " &amp; ξ↓bal2←</ENU>
     </Item>
     <Item ID="TEXT_UNK000_022095">
-      <ENU>TR("Design Forces:") &amp; "  N↓u←=" &amp; CUnit(Forces[i].N, "kip/ft") &amp; "  kip    M↓u←=" &amp; CUnit(Forces[i].My, "kip*ft/ft") &amp; "  kip.ft"</ENU>
+      <ENU>TR("Design Forces:") &amp; "  N↓u←=" &amp; CUnit(Forces[i].N, "kN/m") &amp; "  kN/m    M↓u←=" &amp; CUnit(Forces[i].My, "kN*m/m") &amp; "  kN.m/m"</ENU>
     </Item>
     <Item TranslateID="TEXT_UNK000_022197">
       <ENU>"Design for one layers of reinforcement"</ENU>

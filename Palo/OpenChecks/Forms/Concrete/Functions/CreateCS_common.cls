@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="3c2dd39d-282d-4f67-91d7-937993676ab3">
   <CodeEditor>
-    <SourceCode Collapsed="3|35|114|151|163|209|245|305|309|370|394|408|424|438|445|450|466" BreakPoints="">
+    <SourceCode Collapsed="3|35|114|151|214|250|310|314|375|399|413|429|443|450|455|471" BreakPoints="">
 →INI400_012924BLOCK("GetListConcreteMaterialNames") { 
     string GetListConcreteMaterialNames()
     { 
@@ -182,7 +182,12 @@
             string name →INI400_010242= origMat.EC.Item; 
         } 
         //object mat →INI400_013013= origMat.EC; Sle has some problem with this in some situation...
-        object mat →INI400_012777= origMat.EC.Clone(); 
+        object mat →PAI106_000001= null; 
+        double iterCount →PAI106_000003= 0; 
+        WHILE(mat == null &amp;&amp; iterCount &lt; 99) { 
+            mat →INI400_012777= origMat.EC.Clone(); 
+            →PAI106_000002iterCount++; 
+        } 
         IF(!mat.Contains("Name")) { 
             →INI400_012785mat.Add("Name", name); 
         } 
@@ -1872,6 +1877,30 @@ object GetCSstoreResultType()
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="LUN001_000089">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI106_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI106_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI106_000003">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

@@ -754,34 +754,34 @@
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
-      <Variable Modifier="Public" Name="Bridging" ESA_ID="" Type="Double" Value="5" Precision="2">
+      <Variable Modifier="Public" Name="Bridging" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_Bridging">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Camber" ESA_ID="" Type="Double" Value="6.35e-3" Precision="2">
+      <Variable Modifier="Public" Name="Camber" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_Camber">
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="CSS" ESA_ID="" Type="String" Value="12KCS2">
+      <Variable Modifier="Public" Name="CSS" ESA_ID="" Type="String">
         <Description TranslateID="VARIABLE_CSS">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_d">
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="DesignMethod" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="DesignMethod" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_DesignMethod">
           <ENU>Design Method</ENU>
         </Description>
@@ -793,13 +793,13 @@
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Ext" ESA_ID="" Type="Boolean" Value="0">
+      <Variable Modifier="Public" Name="Ext" ESA_ID="" Type="Boolean">
         <Description TranslateID="VARIABLE_Ext">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Filter" ESA_ID="" Type="String" Value="Column4&gt;0 AND Column2&gt; 46394 AND Column3&gt; 18238">
+      <Variable Modifier="Public" Name="Filter" ESA_ID="" Type="String">
         <Description TranslateID="VARIABLE_Filter">
           <ENU>
           </ENU>
@@ -817,14 +817,14 @@
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Value="36" Precision="2">
+      <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_i">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="I↓y←" ESA_ID="" Type="Double" Value="22.89273e-6" Precision="2">
+      <Variable Modifier="Public" Name="I↓y←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_I↓y←">
           <ENU>Second moment of area about the principal weak-axis</ENU>
         </Description>
@@ -836,50 +836,50 @@
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="KCS_depth" ESA_ID="" Type="Double" Value="304.8e-3" Precision="2">
+      <Variable Modifier="Public" Name="KCS_depth" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_KCS_depth">
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="L" ESA_ID="" Type="Double" Value="1.524" Precision="2">
+      <Variable Modifier="Public" Name="L" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_L">
           <ENU>Length</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="304.8e-3" Dim="ft" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓n←" ESA_ID="" Type="Double" Value="46436.76" Precision="2">
+      <Variable Modifier="Public" Name="M↓n←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_M↓n←">
           <ENU>Nominal Flexural Strength</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1355.818" Dim="kip•ft" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓y,max←" ESA_ID="" Type="Double" Value="46394.4" Precision="2">
+      <Variable Modifier="Public" Name="M↓y,max←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_M↓y,max←">
           <ENU>Max Applied Moment</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1355.818" Dim="kip•ft" />
       </Variable>
-      <Variable Modifier="Public" Name="MatchVJDepth" ESA_ID="" Type="Boolean" Value="1">
+      <Variable Modifier="Public" Name="MatchVJDepth" ESA_ID="" Type="Boolean">
         <Description TranslateID="VARIABLE_MatchVJDepth">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Name" ESA_ID="" Type="String" Value="12KCS2">
+      <Variable Modifier="Public" Name="Name" ESA_ID="" Type="String">
         <Description TranslateID="VARIABLE_Name">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="r↓b←" ESA_ID="" Type="String" Value="1 row">
+      <Variable Modifier="Public" Name="r↓b←" ESA_ID="" Type="String">
         <Description TranslateID="VARIABLE_r↓b←">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="SA" ESA_ID="" Type="Boolean" Value="0">
+      <Variable Modifier="Public" Name="SA" ESA_ID="" Type="Boolean">
         <Description TranslateID="VARIABLE_SA">
           <ENU>
           </ENU>
@@ -891,74 +891,74 @@
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Sort_KCS" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="Sort_KCS" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_Sort_KCS">
           <ENU>depth</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC↓b←" ESA_ID="" Type="Double" Value="999.0877e-3" Precision="2">
+      <Variable Modifier="Public" Name="UC↓b←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_UC↓b←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC↓v←" ESA_ID="" Type="Double" Value="911.1107e-3" Precision="2">
+      <Variable Modifier="Public" Name="UC↓v←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_UC↓v←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC↓w←" ESA_ID="" Type="Double" Value="13.27273" Precision="2">
+      <Variable Modifier="Public" Name="UC↓w←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_UC↓w←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="V↓n←" ESA_ID="" Type="Double" Value="20017" Precision="2">
+      <Variable Modifier="Public" Name="V↓n←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_V↓n←">
           <ENU>Shear Capacity</ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
-      <Variable Modifier="Public" Name="V↓z,max←" ESA_ID="" Type="Double" Value="18237.7" Precision="2">
+      <Variable Modifier="Public" Name="V↓z,max←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_V↓z,max←">
           <ENU>Max Shear</ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
-      <Variable Modifier="Public" Name="W" ESA_ID="" Type="Double" Value="116.7512" Precision="2">
+      <Variable Modifier="Public" Name="W" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_W">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="w↓b←" ESA_ID="" Type="Double" Value="159803.3" Precision="2">
+      <Variable Modifier="Public" Name="w↓b←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_w↓b←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="w↓eq←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="w↓eq←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_w↓eq←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="0" A="0" K="0" cd="0" mol="0" Coef="14.5939" Dim="lb/ft" />
       </Variable>
-      <Variable Modifier="Public" Name="w↓L←" ESA_ID="" Type="Double" Value="159803.3" Precision="2">
+      <Variable Modifier="Public" Name="w↓L←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_w↓L←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="w↓v←" ESA_ID="" Type="Double" Value="23933.99" Precision="2">
+      <Variable Modifier="Public" Name="w↓v←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_w↓v←">
           <ENU>
           </ENU>

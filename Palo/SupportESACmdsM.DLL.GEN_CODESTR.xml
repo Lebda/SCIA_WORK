@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StringCodeDatabase Version="2" ItemsCount="2"><StringCode SourceType="DLLRC:"><StringId>@{supportesacmdsm.2eids_ids_liveloadreduction}</StringId>
+		<SourceDll>SupportESACmdsM.2eDLL</SourceDll>
+		<ResourceId>113</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{supportesacmdsm.2eids_liveloadreduction_memberdatafromsetup}</StringId>
+		<SourceDll>SupportESACmdsM.2eDLL</SourceDll>
+		<ResourceId>114</ResourceId>
+	</StringCode>
+</StringCodeDatabase>

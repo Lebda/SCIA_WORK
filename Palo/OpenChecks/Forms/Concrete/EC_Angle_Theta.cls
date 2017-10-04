@@ -15,6 +15,7 @@
         ForcesID →INI400_011192= Input.Get("ForcesID"); 
         CssID →INI400_011193= Input.Get("CssID"); 
         Coeff↓d← →INI400_013874= Input.Get("Coeff_d"); 
+        Coeff↓com← →KRS116_000005= Input.Get("Coeff_com"); 
         
         TypeMethod →INI400_013893= Input.Get("TypeMethod"); //Type of method for calculation torsion characteristics, 0 - Auto, 1 - From torsional stirrup, 2 - Inputted cross-section, 3 - Effective rectangular, 4 - User input
         t↓ef.inp← →INI400_013894= Input.Get("t_ef_inp"); //User input of effective width of wall for torsion
@@ -184,7 +185,7 @@ IF(!IO.IsExternCLC) {
     σ↓ct← →INI400_013878= concrete.StressStrain.GetExtremeStressOfConcreteMax(CssID, ForcesID); 
     σ↓cd← →INI400_013879= Concrete.StressStrain.GetExtremeStressOfConcreteMin(CssID, ForcesID); 
     object Result →INI400_013923= new Structure(); 
-    →INI400_013924Clause6xxClass.GetThetaMinMax(σ↓sd←, ReinfMat.fyk/γ↓S←, k↓1←, b↓w←, σ↓cp←, d, ShearReinf.ss, ShearReinf.Asw, z, ShearReinf.fyk/γ↓S←, σ↓ct←, ConMat.fctm, V↓Ed←, Forces.N, ConMat.fck, f↓cd←, σ↓cd←, ConMat.fctk_05, Forces.N/A↓c←, False, True, ShearReinf.Angle != 90, False, Result); 
+    →INI400_013924Clause6xxClass.GetThetaMinMax(σ↓sd←, ReinfMat.fyk/γ↓S←, k↓1←, b↓w←, σ↓cp←, d, ShearReinf.ss, ShearReinf.Asw, z, ShearReinf.fyk/γ↓S←, σ↓ct←, ConMat.fctm, V↓Ed←, Forces.N, ConMat.fck, f↓cd←, σ↓cd←, ConMat.fctk_05, Forces.N/A↓c←, A↓c←, Coeff↓com←, False, True, ShearReinf.Angle != 90, False, Result); 
     θ↓min← →INI400_013880= Result.θ_min; 
     θ↓max← →INI400_013881= Result.θ_max; 
     
@@ -495,6 +496,13 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="Coeff↓com←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Coeff↓d←" ESA_ID="" Type="Double" Precision="2">
         <Description>
@@ -2830,6 +2838,14 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS116_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000005">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

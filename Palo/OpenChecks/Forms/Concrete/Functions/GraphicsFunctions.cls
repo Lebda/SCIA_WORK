@@ -117,7 +117,7 @@ public void DrawCssMoreParts(object Graphics, object Input) {
 //Drawing of longitudinal reinforcement bars
 void DrawReinf(object Graphics, object Reinf, bool DrawReinfBars) { 
     IF(DrawReinfBars) { 
-        IF(Reinf.Count != 0) { 
+        IF(Reinf != null &amp;&amp; Reinf.Count != 0) { 
             FOR(i, 0, Reinf.Count-1) { //Drawing longitudinal reinforcement
                 IF(IO.IsStandalone || (!IO.IsStandalone &amp;&amp; IO.Setup.NationalCode == "NBR") || (!IO.IsStandalone &amp;&amp; Reinf[i].IsDetailing == 0)) { 
                     →INI400_012741Graphics.FillCircle(Reinf[i].X, Reinf[i].Y, Reinf[i].D, Color.FromArgb(178, 34, 34)); //Reinforcement with color setting for active reinf

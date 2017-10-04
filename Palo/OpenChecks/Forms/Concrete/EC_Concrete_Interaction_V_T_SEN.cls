@@ -107,6 +107,7 @@ IF(CssConditions.ConditionsForCss) {
     →INI400_010882InputInteraction.Add("IndexEWN", IndexEWN); 
     →INI400_010883InputInteraction.Add("Coeff_d", IO.Setup.Concrete.Solver.General.Coeffd); 
     →INI400_010884InputInteraction.Add("Coeff_z", IO.Setup.Concrete.Solver.General.Coeffz); 
+    →KRS116_000002InputInteraction.Add("Coeff_com", IO.Setup.Concrete.Solver.General.Coeffcom); 
     →INI400_010885InputInteraction.Add("Limit_check", IO.Setup.Concrete.Solver.General.LimCheck); 
     →INI400_010886InputInteraction.Add("AutoCalNStirCut", False); 
     →INI400_010887InputInteraction.Add("UC_lim", IO.Setup.Concrete.Solver.General.NcalcCheck); 
@@ -130,6 +131,7 @@ IF(CssConditions.ConditionsForCss) {
     →INI400_010901InputInteraction.Add("CssID", CssID); 
     →INI400_010902InputInteraction.Add("CssIDLinear", CssIDLinear); 
     →INI400_010903InputInteraction.Add("ForcesID", ForcesID); 
+    →KRS106_000001InputInteraction.Add("MemberType", IO.MemberData.Concrete.MemberType); 
     
     IF(IO.IsDrawing) { 
         →INI400_005217InteractionCheck.Draw(InputInteraction, OutputInteraciton, IO.LayoutIndex+1); 
@@ -2127,7 +2129,23 @@ IF(CssConditions.ConditionsForCss) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS106_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS116_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2201,7 +2219,7 @@ IF(CssConditions.ConditionsForCss) {
           <ENU>
           </ENU>
         </Texts>
-        <TEMDLoader Name="TEMDLoader" ID="69" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="G:\_PROJECTS\17.0\improvements\EMD_HeaderImprovements\Beam.1" MemberID="Beam.1" SectionID="0" CombiID="0" />
+        <TEMDLoader Name="TEMDLoader" ID="69" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.1" SectionID="-1" CombiID="-1" />
       </TPanel>
     </Main>
     <MemberData Width="500" />

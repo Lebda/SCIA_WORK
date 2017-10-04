@@ -89,131 +89,131 @@ double σ↓E_bot← →INI400_000020= SQRT(σ↓x_bot←↑2←+σ↓y_bot←�
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
-      <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="ID" ESA_ID="" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="ID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="mx" ESA_ID="" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="mx" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="mxy" ESA_ID="" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="mxy" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm/m" />
       </Variable>
-      <Variable Modifier="Public" Name="my" ESA_ID="" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="my" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm/m" />
       </Variable>
-      <Variable Modifier="Public" Name="nx" ESA_ID="" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="nx" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="nxy" ESA_ID="" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="nxy" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="ny" ESA_ID="" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="ny" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="W" ESA_ID="" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="W" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-9" Dim="mm↑3←/m" />
       </Variable>
-      <Variable Modifier="Public" Name="σ↓E_bot←" ESA_ID="Result.3" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="σ↓E_bot←" ESA_ID="Result.3" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="9" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="235e6" DrawLimitMin="-235e6" />
+        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="9" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1e9" DrawLimitMin="-1e9" />
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="σ↓E_top←" ESA_ID="Result.2" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="σ↓E_top←" ESA_ID="Result.2" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="9" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="235e6" DrawLimitMin="-235e6" />
+        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="9" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1e9" DrawLimitMin="-1e9" />
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="σ↓x_bot←" ESA_ID="Result.5" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="σ↓x_bot←" ESA_ID="Result.5" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="9" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="235e6" DrawLimitMin="-235e6" />
+        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="9" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1e9" DrawLimitMin="-1e9" />
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="σ↓x_top←" ESA_ID="Result.4" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="σ↓x_top←" ESA_ID="Result.4" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="9" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="235e6" DrawLimitMin="-235e6" />
+        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="9" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1e9" DrawLimitMin="-1e9" />
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="σ↓xy_bot←" ESA_ID="Result.9" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="σ↓xy_bot←" ESA_ID="Result.9" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="9" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="235e6" DrawLimitMin="-235e6" />
+        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="9" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1e9" DrawLimitMin="-1e9" />
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="σ↓xy_top←" ESA_ID="Result.8" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="σ↓xy_top←" ESA_ID="Result.8" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="9" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="235e6" DrawLimitMin="-235e6" />
+        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="9" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1e9" DrawLimitMin="-1e9" />
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="σ↓y_bot←" ESA_ID="Result.7" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="σ↓y_bot←" ESA_ID="Result.7" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="9" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="235e6" DrawLimitMin="-235e6" />
+        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="9" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1e9" DrawLimitMin="-1e9" />
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="σ↓y_top←" ESA_ID="Result.6" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="σ↓y_top←" ESA_ID="Result.6" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="9" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="235e6" DrawLimitMin="-235e6" />
+        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="9" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1e9" DrawLimitMin="-1e9" />
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
     </Variables>

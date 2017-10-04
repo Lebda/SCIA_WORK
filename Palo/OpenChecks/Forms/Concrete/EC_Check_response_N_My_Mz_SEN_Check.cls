@@ -91,6 +91,8 @@ IF(CssConditions.ConditionsForCss) {
     →INI400_013589InputResponseCheck.Set("AccidentalCombi", DataFromSEN.IsAccidentalCombi()); 
     →INI400_013163InputResponseCheck.Set("Combikey", DataFromSEN.CreateCombiKey()); 
     →DLO010_000001InputResponseCheck.Add("MemberType", IO.MemberData.Concrete.MemberType); 
+    →KRS106_000002InputResponseCheck.Add("CompressMember", ForcesCalc.CompressMember); 
+    →KRS106_000003InputResponseCheck.Add("N_com", ForcesCalc.N↓com←); 
     
     object CheckResponse →INI400_002727= LoadExternCLC("EC_Check_response_N_My_Mz.CLC"); 
     
@@ -1504,6 +1506,22 @@ IF(CssConditions.ConditionsForCss) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS106_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS116_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1573,7 +1591,7 @@ IF(CssConditions.ConditionsForCss) {
   </Calculation>
   <Dialog>
     <Main Width="500">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.84|0|3" Active="1" PreDef="0" MemberDirectory="C:\Users\jkrsik\ESA16.1\Temp\SINGLE_CHECK_EMD\3D056828-1F0B-4D02-91A9-FB1F661892DD\Input\Beam.1" MemberID="Beam.1" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.84|0|3" Active="1" PreDef="0" MemberDirectory="D:\_VERSIONS\DEVE_06\TEMP\Esa_Model_Data\Beam.4" MemberID="Beam.4" SectionID="0" CombiID="0" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />

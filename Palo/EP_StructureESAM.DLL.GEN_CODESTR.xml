@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="36"><StringCode SourceType="DLLRC:"><StringId>@{ep_structureesam.2eids_line_support}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="39"><StringCode SourceType="DLLRC:"><StringId>@{ep_structureesam.2eids_line_support}</StringId>
 		<SourceDll>EP_StructureESAM.2eDLL</SourceDll>
 		<ResourceId>116</ResourceId>
 	</StringCode>
@@ -91,6 +91,10 @@
 		<SourceDll>EP_StructureESAM.2eDLL</SourceDll>
 		<ResourceId>141</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_structureesam.2eids_e2dm_diaphragm}</StringId>
+		<SourceDll>EP_StructureESAM.2eDLL</SourceDll>
+		<ResourceId>146</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_structureesam.2eids_boreholeprofile}</StringId>
 		<SourceDll>EP_StructureESAM.2eDLL</SourceDll>
 		<ResourceId>126</ResourceId>
@@ -115,6 +119,10 @@
 		<SourceDll>EP_StructureESAM.2eDLL</SourceDll>
 		<ResourceId>108</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_structureesam.2eids_e2dm_load_panel}</StringId>
+		<SourceDll>EP_StructureESAM.2eDLL</SourceDll>
+		<ResourceId>145</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_structureesam.2eids_arbitrary}</StringId>
 		<SourceDll>EP_StructureESAM.2eDLL</SourceDll>
 		<ResourceId>110</ResourceId>
@@ -130,6 +138,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_structureesam.2eids_surface_support}</StringId>
 		<SourceDll>EP_StructureESAM.2eDLL</SourceDll>
 		<ResourceId>121</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_structureesam.2eids_e2dm_plane}</StringId>
+		<SourceDll>EP_StructureESAM.2eDLL</SourceDll>
+		<ResourceId>147</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_structureesam.2eids_linehingesurface}</StringId>
 		<SourceDll>EP_StructureESAM.2eDLL</SourceDll>

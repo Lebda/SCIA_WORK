@@ -29,8 +29,9 @@ void LoadExterns() {
     →INI400_015102double A↓s,req,2-←; 
     →REZ006_000006double A↓s,req,1+←; 
     →INI400_015104double A↓s,req,2+←; 
-    
     →PAI316_000001double Errors; 
+    
+    →RLF098_000025bool Imperialunit; 
 } 
 
 
@@ -104,8 +105,18 @@ void ReadLoadFromIO() {
 
 
 private object GetDesignDefaults() { 
+    
     object DesignDefaults →UNK006_000021= new Structure(); 
-    DesignDefaults →UNK006_000022= FUNCT_2D_DEFAULTS.GetDesignDefaults(IO.MemberData.ConcreteIBC.MemberType2D); 
+    →RLF098_000001object Designdefaultinput →UNK006_000006= new Structure(); 
+    double h →RLF098_000027= IO.Point.H; 
+    IF(COMPARE(MOD(10^6*h, 3175), 0, 2) == 0) { 
+        Imperialunit →RLF098_000002= true; 
+    } ELSE { 
+        Imperialunit →RLF098_000003= false; 
+    } 
+    →RLF098_000023Designdefaultinput.Add("MemberType", IO.MemberData.ConcreteIBC.MemberType2D); 
+    →RLF098_000015Designdefaultinput.Add("Imperialunit", Imperialunit); 
+    DesignDefaults →UNK006_000022= FUNCT_2D_DEFAULTS.GetDesignDefaults(→RLF098_000024Designdefaultinput); 
     DesignDefaultstest →UNK006_000026= DesignDefaults; 
     return DesignDefaults; 
 } 
@@ -118,7 +129,8 @@ private object GetDesignInputs() {
     "BasicForces", BasicForces, 
     "RecalcForces", RecalcForces, 
     "RecalcForcesPOD", RecalcForcesPOD, 
-    "DesignDefaults", GetDesignDefaults()
+    "DesignDefaults", GetDesignDefaults(), 
+    "Imperialunit", Imperialunit
     ); 
 } 
 
@@ -133,7 +145,7 @@ IF(IO.MemberData.ConcreteIBC.MemberType2D == 16 || IO.MemberData.ConcreteIBC.Mem
     object DesignInput →UNK006_000002= GetDesignInputs(); 
     object DesignResults →PAI006_000011= new Structure(); 
     IF(IO.IsDrawing) { 
-        →REZ006_000029FUNCT_2D.DrawHeaderForSEN(); 
+        →REZ006_000029FUNCT_2D.DrawHeaderForSEN(Imperialunit); 
         →REZ006_000030PAGEBREAK(); 
         →UNK006_000004DESIGN2D_MULTI.Draw(DesignInput, DesignResults); 
     } ELSE { 
@@ -273,6 +285,12 @@ IF(IO.MemberData.ConcreteIBC.MemberType2D == 16 || IO.MemberData.ConcreteIBC.Mem
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_2D_DEFAULTS" ESA_ID="" Type="Object">
         <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="Imperialunit" ESA_ID="" Type="Boolean">
+        <Description TranslateID="VARIABLE_Imperialunit">
           <ENU>
           </ENU>
         </Description>
@@ -498,14 +516,6 @@ IF(IO.MemberData.ConcreteIBC.MemberType2D == 16 || IO.MemberData.ConcreteIBC.Mem
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015963">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_015966">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -690,6 +700,62 @@ IF(IO.MemberData.ConcreteIBC.MemberType2D == 16 || IO.MemberData.ConcreteIBC.Mem
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="231" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="231" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
+      <VC ID="RLF036_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000015">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000023">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000026">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000027">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="UNK006_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -702,6 +768,14 @@ IF(IO.MemberData.ConcreteIBC.MemberType2D == 16 || IO.MemberData.ConcreteIBC.Mem
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="UNK006_000006">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -751,7 +825,7 @@ IF(IO.MemberData.ConcreteIBC.MemberType2D == 16 || IO.MemberData.ConcreteIBC.Mem
   </Calculation>
   <Dialog>
     <Main Width="552">
-      <TEMDLoader Name="" ID="1" Translate="1" Left="76" Top="271" Width="350" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="0" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="Q:\TEMP\Esa_Model_Data\Member2D.2" MemberID="Member2D.2" SectionID="74" CombiID="0" />
+      <TEMDLoader Name="" ID="1" Translate="1" Left="140" Top="271" Width="350" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="0" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="C:\Users\rlotfi\ESA17.0\Temp\Esa_Model_Data\Member2D.5" MemberID="Member2D.5" SectionID="0" CombiID="0" />
     </Main>
     <MemberData Width="400" />
     <Setup Width="400" />

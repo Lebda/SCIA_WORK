@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="9f67512b-0a36-4d6c-a9a7-422d2a0e1c8c">
   <CodeEditor>
-    <SourceCode Collapsed="75|186|277|301|337|391|439|553|646|700|777" BreakPoints="">→INI400_000001TEXT("Design Members for Compression according to NBR-8800"); 
+    <SourceCode Collapsed="75|80|97|107|137|409|867" BreakPoints="">→INI400_000001TEXT("Design Members for Compression according to NBR-8800"); 
 →INI400_000019BLOCK { 
     // variables definition
     
@@ -88,12 +88,12 @@ IF(N↓d← &gt; 0) {
     IF(UserTable) { 
         object CS →INI400_000650= IO.CSS; 
         FormCode →INI400_000651= CS.Geometry.FormCode; 
-        IF(FormCode == 2001) { FormCode →MPF000_000001= 5; } 
+        //       IF(FormCode == 2001) { FormCode →MPF000_000001= 5; } // 01/05/2017
     } 
     IF((!UserTable)) { 
         object CS →INI400_000659= IO.CS; 
         FormCode →INI400_000660= CS.Geometry.FormCode; 
-        IF(FormCode == 2001) { FormCode →MPF000_000002= 5; } 
+        //        IF(FormCode == 2001) { FormCode →MPF000_000002= 5; } // 01/05/2017
     } 
     
 } 
@@ -112,13 +112,8 @@ IF(N↓d← &gt; 0) {
     //Important: in Brazilian code, E=20.000kN/cm2 and G=7700 kN/cm2
     // some modification needs to be done in the database, or just remove
     // the comment in the lines below
-
-
-
     E →MPF000_000004= STL.E; 
     G →MPF000_000005= STL.G; 
-    
-    
     γ↓a1← →INI400_000379= 1.10; 
 } 
 →INI400_001937PAGEBREAK(); 
@@ -134,788 +129,821 @@ double DefineBucklingLoad(object CS, double Lb↓x←, double Lb↓y←, double 
 
     IF((FormCode != 1) &amp;&amp; (FormCode != 2) &amp;&amp; (FormCode != 3) &amp;&amp; (FormCode != 4) &amp;&amp; (FormCode != 5) &amp;&amp; (FormCode != 6) &amp;&amp; (FormCode != 101) &amp;&amp; (FormCode != 2001)) { 
         →INI400_000614TEXT("Compression: Type of section not covered by this routine or cannot be designed for this effort!"); 
-        Exit(); 
+        //   Exit(); 
+        Ne →MPF001_000015= 0; 
+        return Ne; 
     } 
-    // Ne definition for I sectiom double simmetric, Welded box section
-    IF((FormCode == 1) || (FormCode == 2) || (FormCode == 2001)) { 
-        // Reading Variables
-        →INI400_001518BLOCK { 
-            IF(FormCode == 1 || FormCode == 2) { 
-                // loads the section and steel grade
-                A↓g← →INI400_001520= CS.Chars.A; 
-                r↓x← →INI400_001521= CS.Chars.iy; 
-                r↓y← →INI400_001522= CS.Chars.iz; 
-                I↓x← →INI400_001523= CS.Chars.Iy; 
-                I↓y← →INI400_001524= CS.Chars.Iz; 
-                C↓w← →INI400_001525= CS.Chars.Iw; // warping constant
-                J →INI400_001526= CS.Chars.It; // torsional constant
+    ELSE { 
+        // Ne definition for I sectiom double simmetric, Welded box section
+        IF((FormCode == 1) || (FormCode == 2) || (FormCode == 2001)) { 
+            // Reading Variables
+            →INI400_001518BLOCK { 
+                IF(FormCode == 1 || FormCode == 2) { 
+                    // loads the section and steel grade
+                    A↓g← →INI400_001520= CS.Chars.A; 
+                    r↓x← →INI400_001521= CS.Chars.iy; 
+                    r↓y← →INI400_001522= CS.Chars.iz; 
+                    I↓x← →INI400_001523= CS.Chars.Iy; 
+                    I↓y← →INI400_001524= CS.Chars.Iz; 
+                    C↓w← →INI400_001525= CS.Chars.Iw; // warping constant
+                    J →INI400_001526= CS.Chars.It; // torsional constant
 
-                IF(CS.Geometry.Contains("s")) { 
-                    tw →INI400_001527= CS.Geometry.s; 
-                    h →INI400_001528= CS.Geometry.h; 
+                    IF(CS.Geometry.Contains("s")) { 
+                        tw →INI400_001527= CS.Geometry.s; 
+                        h →INI400_001528= CS.Geometry.h; 
+                    } 
+                    ELSE { 
+                        tw →INI400_001943= CS.Geometry.tha; 
+                        h →INI400_001944= CS.Geometry.Ba; 
+                    } 
                 } 
                 ELSE { 
-                    tw →INI400_001943= CS.Geometry.tha; 
-                    h →INI400_001944= CS.Geometry.Ba; 
+                    h →MPF001_000001= CS.Geometry.Bb; 
+                    //  bf →MPF001_000002= CS.Geometry.Ba; 
+                    tw →MPF001_000003= CS.Geometry.thb; 
+                    tf →MPF001_000004= CS.Geometry.tha; 
+                    
                 } 
             } 
-            ELSE { 
-                h →MPF001_000001= CS.Geometry.Bb; 
-                //  bf →MPF001_000002= CS.Geometry.Ba; 
-                tw →MPF001_000003= CS.Geometry.thb; 
-                tf →MPF001_000004= CS.Geometry.tha; 
+            // calculates Nex - Annex E item a)
+            →INI400_000043TEXT("Annex E - Axial force of elastic buckling"); 
+            →INI400_000044TEXT("Item E.1.1 - doubly symmetric sections"); 
+            Ne↓x← →INI400_000420= (π↑2←*E*I↓x←)/(Lb↓x←↑2←); 
+            
+            // calculates Ney - Annex E item b)
+            Ne↓y← →INI400_000421= (π↑2←*E*I↓y←)/(Lb↓y←↑2←); 
+            
+            // calculates Nez - Annex E item c)
+            r↓0← →INI400_000036= SQRT(r↓x←↑2←+r↓y←↑2←); 
+            // note: in calculation of r0, it is necessaty to determine also the coordinates
+            // x0 and y0 of the shear center of the section in relation the geometric axis of the section. 
+            // The equation presented above is taking advantage of the fact the x0 and y0 of I-Section
+            // doubly simmetric is known and coincides with centroid. so x0=y0=0;
+            Ne↓z← →INI400_000422= (1/r↓0←↑2←)*[π↑2←*E*C↓w←/(Lb↓z←↑2←)+G*J]; 
+            // define Ne
+            Ne →INI400_000041= MIN(Ne↓x←, Ne↓y←, Ne↓z←); 
+        } 
+        
+        // NE Definition for I-Section Monosymmetric
+        IF(FormCode == 101) { 
+            // Reading Variables
+            →INI400_001670BLOCK { 
+                // loads the section and steel grade
+                A↓g← →INI400_001671= CS.Chars.A; 
+                r↓x← →INI400_001672= CS.Chars.iy; 
+                r↓y← →INI400_001673= CS.Chars.iz; 
+                I↓x← →INI400_001674= CS.Chars.Iy; 
+                I↓y← →INI400_001675= CS.Chars.Iz; 
+                C↓w← →INI400_001676= CS.Chars.Iw; // warping constant
+                J →INI400_001677= CS.Chars.It; // torsional constant
+                IF(CS.Geometry.Contains("s")) { 
+                    tw →INI400_001678= CS.Geometry.s; 
+                    h →MPF000_000031= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
+                    //                h →INI400_001679= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; 
+                } ELSE { 
+                    tw →INI400_001945= CS.Geometry.tha; 
+                    h →MPF000_000032= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
+                    //                h →INI400_001946= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.Ba; 
+                } 
+            } 
+            x0 →INI400_001689= 0; 
+            y0 →INI400_001690= 0; 
+            
+            // calculates Nex - Annex E item a)
+            →INI400_001680TEXT("Annex E - Axial force of elastic buckling"); 
+            →INI400_001681TEXT("Item E.1.1 - doubly symmetric sections"); 
+            Ne↓x← →INI400_001682= (π↑2←*E*I↓x←)/(Lb↓x←↑2←); 
+            
+            // calculates Ney - Annex E item b)
+            Ne↓y← →INI400_001683= (π↑2←*E*I↓y←)/(Lb↓y←↑2←); 
+            
+            // calculates Nez - Annex E item c)
+            r↓0← →INI400_001684= SQRT(r↓x←↑2←+r↓y←↑2←); 
+            // note: in calculation of r0, it is necessaty to determine also the coordinates
+            // x0 and y0 of the shear center of the section in relation the geometric axis of the section. 
+            // The equation presented above is taking advantage of the fact the x0 and y0 of I-Section
+            // doubly simmetric is known and coincides with centroid. so x0=y0=0;
+            Ne↓z← →INI400_001685= (1/r↓0←↑2←)*[π↑2←*E*C↓w←/(Lb↓z←↑2←)+G*J]; 
+            
+            // Calculates Neyz - Elastic buckling for Flexural-torsional
+            Ne↓yz← →INI400_001687= (Ne↓y←+Ne↓z←)/(2*[(1-(y0/r↓0←)↑2←)])*[(1-SQRT(1-(4*Ne↓y←*Ne↓z←*[(1-(y0/r↓0←)↑2←)])/(Ne↓y←+Ne↓z←)↑2←))]; 
+            
+            // define Ne
+            Ne →INI400_001686= MIN(Ne↓x←, Ne↓yz←); 
+        } 
+        
+        // Ne Definition for U-Section 
+        IF(FormCode == 5) { 
+            // Reading Variables
+            →INI400_001531BLOCK { 
+                // loads the section and steel grade
+                A↓g← →INI400_001533= CS.Chars.A; 
+                r↓x← →INI400_001534= CS.Chars.iy; 
+                r↓y← →INI400_001535= CS.Chars.iz; 
+                I↓x← →INI400_001536= CS.Chars.Iy; 
+                I↓y← →INI400_001537= CS.Chars.Iz; 
+                C↓w← →INI400_001538= CS.Chars.Iw; // warping constant
+                J →INI400_001539= CS.Chars.It; // torsional constant
+
+                // REV: revised in 06/04/2016
+
+                tw →INI400_001540= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+                h →INI400_001541= CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h; 
+                tf →INI400_001707= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.t; 
+                
+                d →INI400_001542= h-2*tf; 
+                double bf →INI400_001708= CS.Geometry.Contains("b") ? CS.Geometry.b : CS.Geometry.Ba; 
+            } 
+            
+            // Position of the Shear Center related to Centroid
+            →INI400_001709double xg; // centroid position
+            xg →INI400_001710= CS.Chars.cYUCS; 
+            →INI400_001712TEXT("Shear Center position"); 
+            //x0 →INI400_001711= bf↑2←*h↑2←*tf/(4*I↓x←)+xg; 
+            x0 →INI400_001714= ABS(CS.Chars.dy); 
+            y0 →INI400_001713= 0; 
+            
+            // calculates Ney - Annex E item E.1.2 a) - see footnote comment in the code
+            →INI400_000517TEXT("Calculation of Elastic buckling Load"); 
+            Ne↓y← →INI400_000512= (π↑2←*E*I↓y←)/(Lb↓y←↑2←); 
+            Ne↓x← →INI400_000515= (π↑2←*E*I↓x←)/(Lb↓x←↑2←); 
+            
+            // Calculation of r0 - polar radius of giration
+            r↓0← →INI400_001667= SQRT(r↓x←↑2←+r↓y←↑2←+x0↑2←+y0↑2←); 
+            Ne↓z← →INI400_000516= (1/r↓0←↑2←)*[π↑2←*E*C↓w←/(Lb↓z←↑2←)+G*J]; 
+            Ne↓xz← →INI400_000518= (Ne↓x←+Ne↓z←)/(2*[(1-(x0/r↓0←)↑2←)])*[(1-SQRT(1-(4*Ne↓x←*Ne↓z←*[(1-(x0/r↓0←)↑2←)])/(Ne↓x←+Ne↓z←)↑2←))]; 
+            Ne →INI400_000519= MIN(Ne↓y←, Ne↓xz←); 
+        } 
+        
+        // Ne definition for circular Hollow sections 
+        IF(FormCode == 3) { 
+            // Reading Variables
+            →INI400_001544BLOCK { 
+                // loads the section and steel grade
+                A↓g← →INI400_001546= CS.Chars.A; 
+                r↓x← →INI400_001547= CS.Chars.iy; 
+                r↓y← →INI400_001548= CS.Chars.iz; 
+                I↓x← →INI400_001549= CS.Chars.Iy; 
+                I↓y← →INI400_001550= CS.Chars.Iz; 
+                C↓w← →INI400_001551= CS.Chars.Iw; // warping constant
+                J →INI400_001552= CS.Chars.It; // torsional constant
+
+                //REV: revised in 07/04/2016
+
+                d →INI400_000281= CS.Geometry.Contains("D") ? CS.Geometry.D : CS.Geometry.d; 
+                tw →INI400_000283= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.w; 
                 
             } 
+            Ne↓x← →INI400_000562= (π↑2←*E*I↓x←)/(Lb↓x←↑2←); 
+            Ne↓y← →INI400_000563= (π↑2←*E*I↓y←)/(Lb↓y←↑2←); 
+            Ne →INI400_000564= MIN(Ne↓x←, Ne↓y←); 
         } 
-        // calculates Nex - Annex E item a)
-        →INI400_000043TEXT("Annex E - Axial force of elastic buckling"); 
-        →INI400_000044TEXT("Item E.1.1 - doubly symmetric sections"); 
-        Ne↓x← →INI400_000420= (π↑2←*E*I↓x←)/(Lb↓x←↑2←); 
         
-        // calculates Ney - Annex E item b)
-        Ne↓y← →INI400_000421= (π↑2←*E*I↓y←)/(Lb↓y←↑2←); 
-        
-        // calculates Nez - Annex E item c)
-        r↓0← →INI400_000036= SQRT(r↓x←↑2←+r↓y←↑2←); 
-        // note: in calculation of r0, it is necessaty to determine also the coordinates
-        // x0 and y0 of the shear center of the section in relation the geometric axis of the section. 
-        // The equation presented above is taking advantage of the fact the x0 and y0 of I-Section
-        // doubly simmetric is known and coincides with centroid. so x0=y0=0;
-        Ne↓z← →INI400_000422= (1/r↓0←↑2←)*[π↑2←*E*C↓w←/(Lb↓z←↑2←)+G*J]; 
-        // define Ne
-        Ne →INI400_000041= MIN(Ne↓x←, Ne↓y←, Ne↓z←); 
-    } 
-    
-    // NE Definition for I-Section Monosymmetric
-    IF(FormCode == 101) { 
-        // Reading Variables
-        →INI400_001670BLOCK { 
-            // loads the section and steel grade
-            A↓g← →INI400_001671= CS.Chars.A; 
-            r↓x← →INI400_001672= CS.Chars.iy; 
-            r↓y← →INI400_001673= CS.Chars.iz; 
-            I↓x← →INI400_001674= CS.Chars.Iy; 
-            I↓y← →INI400_001675= CS.Chars.Iz; 
-            C↓w← →INI400_001676= CS.Chars.Iw; // warping constant
-            J →INI400_001677= CS.Chars.It; // torsional constant
-            IF(CS.Geometry.Contains("s")) { 
-                tw →INI400_001678= CS.Geometry.s; 
-                h →MPF000_000031= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
-                //                h →INI400_001679= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; 
-            } ELSE { 
-                tw →INI400_001945= CS.Geometry.tha; 
-                h →MPF000_000032= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
-                //                h →INI400_001946= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.Ba; 
+        // Ne for T Section
+        IF(FormCode == 6) { 
+            // Reading Variables
+            →INI400_001557BLOCK { 
+                // loads the section and steel grade
+                A↓g← →INI400_001559= CS.Chars.A; 
+                r↓x← →INI400_001560= CS.Chars.iy; 
+                r↓y← →INI400_001561= CS.Chars.iz; 
+                I↓x← →INI400_001562= CS.Chars.Iy; 
+                I↓y← →INI400_001563= CS.Chars.Iz; 
+                C↓w← →INI400_001564= CS.Chars.Iw; // warping constant
+                J →INI400_001565= CS.Chars.It; // torsional constant
+
+                //REV: revised in 06/04/2016
+                tw →MPF000_000015= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+                h →MPF000_000016= CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : (CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h); 
+                d →MPF000_000017= h; 
+                
+                
+                
             } 
+            
+            // calculates Nex - Annex E item E.1.2 a) - see footnote comment in the code
+            →INI400_000566TEXT("Calculation of Elastic buckling Load"); 
+            Ne↓y← →INI400_000567= (π↑2←*E*I↓y←)/(Lb↓y←↑2←); 
+            Ne↓x← →INI400_000568= (π↑2←*E*I↓x←)/(Lb↓x←↑2←); 
+            
+            // Calculation of r0 - polar radius of giration
+            r↓0← →INI400_000570= SQRT(r↓x←↑2←+r↓y←↑2←+x0↑2←+y0↑2←); 
+            Ne↓z← →INI400_000569= (1/r↓0←↑2←)*[π↑2←*E*C↓w←/(Lb↓z←↑2←)+G*J]; 
+            Ne↓yz← →INI400_001688= (Ne↓y←+Ne↓z←)/(2*[(1-(y0/r↓0←)↑2←)])*[(1-SQRT(1-(4*Ne↓y←*Ne↓z←*[(1-(y0/r↓0←)↑2←)])/(Ne↓y←+Ne↓z←)↑2←))]; 
+            Ne →INI400_000572= MIN(Ne↓x←, Ne↓yz←); 
         } 
-        x0 →INI400_001689= 0; 
-        y0 →INI400_001690= 0; 
         
-        // calculates Nex - Annex E item a)
-        →INI400_001680TEXT("Annex E - Axial force of elastic buckling"); 
-        →INI400_001681TEXT("Item E.1.1 - doubly symmetric sections"); 
-        Ne↓x← →INI400_001682= (π↑2←*E*I↓x←)/(Lb↓x←↑2←); 
-        
-        // calculates Ney - Annex E item b)
-        Ne↓y← →INI400_001683= (π↑2←*E*I↓y←)/(Lb↓y←↑2←); 
-        
-        // calculates Nez - Annex E item c)
-        r↓0← →INI400_001684= SQRT(r↓x←↑2←+r↓y←↑2←); 
-        // note: in calculation of r0, it is necessaty to determine also the coordinates
-        // x0 and y0 of the shear center of the section in relation the geometric axis of the section. 
-        // The equation presented above is taking advantage of the fact the x0 and y0 of I-Section
-        // doubly simmetric is known and coincides with centroid. so x0=y0=0;
-        Ne↓z← →INI400_001685= (1/r↓0←↑2←)*[π↑2←*E*C↓w←/(Lb↓z←↑2←)+G*J]; 
-        
-        // Calculates Neyz - Elastic buckling for Flexural-torsional
-        Ne↓yz← →INI400_001687= (Ne↓y←+Ne↓z←)/(2*[(1-(y0/r↓0←)↑2←)])*[(1-SQRT(1-(4*Ne↓y←*Ne↓z←*[(1-(y0/r↓0←)↑2←)])/(Ne↓y←+Ne↓z←)↑2←))]; 
-        
-        // define Ne
-        Ne →INI400_001686= MIN(Ne↓x←, Ne↓yz←); 
+        // For single Angles 
+        // this topic is covering article E.1.4.1 and E.1.4.2 of NBR-8800,
+        // considering that the angles are always conected by the larger leg
+        IF(FormCode == 4) { 
+            // Reading Variables
+            →INI400_001570BLOCK { 
+                // loads the section and steel grade
+                A↓g← →INI400_001572= CS.Chars.A; 
+                r↓x← →INI400_001573= CS.Chars.iy; 
+                r↓y← →INI400_001574= CS.Chars.iz; 
+                I↓x← →INI400_001575= CS.Chars.Iy; 
+                I↓y← →INI400_001576= CS.Chars.Iz; 
+                C↓w← →INI400_001577= CS.Chars.Iw; // warping constant
+                J →INI400_001578= CS.Chars.It; // torsional constant
+
+                //REV: revised in 07/04/2016
+
+                tw →MPF000_000026= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.t; 
+                h →MPF000_000027= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; 
+                d →MPF000_000028= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; 
+                
+            } 
+            
+            →INI400_000629TEXT("Annex E - Axial force of elastic buckling"); 
+            →INI400_000630TEXT("Item E.1.4.2 - doubly symmetric sections"); 
+            →INI400_001720TEXT("this routine considers that the L-Sections are alwayes connected by the larger Leg"); 
+            double L2 →INI400_000606= CS.Geometry.h; // in case of unequal legs, take always the larger leg
+            I↓y← →INI400_001722= CS.Chars.IZLCS; 
+            I↓x← →INI400_001726= CS.Chars.IYLCS; 
+            A↓g← →INI400_001728= CS.Chars.A; 
+            r↓x← →INI400_001729= SQRT(I↓x←/A↓g←); 
+            r↓y← →INI400_001730= SQRT(I↓y←/A↓g←); 
+            
+            double r →INI400_000607= r↓y←; // radius of giration about H - axis parallel to larger leg 
+            →INI400_000608double Lb; // modified buckling length
+            
+            // for buckling about the conected leg - in Plane Y-Y -  ( in this case is being considered the larger leg
+            // the buckling length is calculated as follows:
+            
+            IF(Lb↓y←/r &gt; 0 &amp;&amp; Lb↓y←/r &lt;= 80) { 
+                Lb →INI400_000609= 75*r+0.75*Lb↓y←; 
+            } ELSE { 
+                Lb →INI400_000610= 32*r+1.25*Lb↓y←; 
+            } 
+            
+            Ne↓y← →INI400_000605= (π↑2←*E*I↓y←)/(Lb↑2←); 
+            Ne↓x← →INI400_000613= (π↑2←*E*I↓x←)/(Lb↓x←↑2←); 
+            // for buckling out-of-plane  - X-X - the code is not clear. So we are considering
+            // that the buckling lenght is the value entered in the input dialog
+            Ne →INI400_000627= MIN(Ne↓x←, Ne↓y←); 
+        } 
+        return Ne; 
     } 
-    
-    // Ne Definition for U-Section 
-    IF(FormCode == 5) { 
-        // Reading Variables
-        →INI400_001531BLOCK { 
-            // loads the section and steel grade
-            A↓g← →INI400_001533= CS.Chars.A; 
-            r↓x← →INI400_001534= CS.Chars.iy; 
-            r↓y← →INI400_001535= CS.Chars.iz; 
-            I↓x← →INI400_001536= CS.Chars.Iy; 
-            I↓y← →INI400_001537= CS.Chars.Iz; 
-            C↓w← →INI400_001538= CS.Chars.Iw; // warping constant
-            J →INI400_001539= CS.Chars.It; // torsional constant
-
-            // REV: revised in 06/04/2016
-
-            tw →INI400_001540= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-            h →INI400_001541= CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h; 
-            tf →INI400_001707= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.t; 
-            
-            d →INI400_001542= h-2*tf; 
-            double bf →INI400_001708= CS.Geometry.Contains("b") ? CS.Geometry.b : CS.Geometry.Ba; 
-        } 
-        
-        // Position of the Shear Center related to Centroid
-        →INI400_001709double xg; // centroid position
-        xg →INI400_001710= CS.Chars.cYUCS; 
-        →INI400_001712TEXT("Shear Center position"); 
-        //x0 →INI400_001711= bf↑2←*h↑2←*tf/(4*I↓x←)+xg; 
-        x0 →INI400_001714= ABS(CS.Chars.dy); 
-        y0 →INI400_001713= 0; 
-        
-        // calculates Ney - Annex E item E.1.2 a) - see footnote comment in the code
-        →INI400_000517TEXT("Calculation of Elastic buckling Load"); 
-        Ne↓y← →INI400_000512= (π↑2←*E*I↓y←)/(Lb↓y←↑2←); 
-        Ne↓x← →INI400_000515= (π↑2←*E*I↓x←)/(Lb↓x←↑2←); 
-        
-        // Calculation of r0 - polar radius of giration
-        r↓0← →INI400_001667= SQRT(r↓x←↑2←+r↓y←↑2←+x0↑2←+y0↑2←); 
-        Ne↓z← →INI400_000516= (1/r↓0←↑2←)*[π↑2←*E*C↓w←/(Lb↓z←↑2←)+G*J]; 
-        Ne↓xz← →INI400_000518= (Ne↓x←+Ne↓z←)/(2*[(1-(x0/r↓0←)↑2←)])*[(1-SQRT(1-(4*Ne↓x←*Ne↓z←*[(1-(x0/r↓0←)↑2←)])/(Ne↓x←+Ne↓z←)↑2←))]; 
-        Ne →INI400_000519= MIN(Ne↓y←, Ne↓xz←); 
-    } 
-    
-    // Ne definition for circular Hollow sections 
-    IF(FormCode == 3) { 
-        // Reading Variables
-        →INI400_001544BLOCK { 
-            // loads the section and steel grade
-            A↓g← →INI400_001546= CS.Chars.A; 
-            r↓x← →INI400_001547= CS.Chars.iy; 
-            r↓y← →INI400_001548= CS.Chars.iz; 
-            I↓x← →INI400_001549= CS.Chars.Iy; 
-            I↓y← →INI400_001550= CS.Chars.Iz; 
-            C↓w← →INI400_001551= CS.Chars.Iw; // warping constant
-            J →INI400_001552= CS.Chars.It; // torsional constant
-
-            //REV: revised in 07/04/2016
-
-            d →INI400_000281= CS.Geometry.Contains("D") ? CS.Geometry.D : CS.Geometry.d; 
-            tw →INI400_000283= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.w; 
-            
-        } 
-        Ne↓x← →INI400_000562= (π↑2←*E*I↓x←)/(Lb↓x←↑2←); 
-        Ne↓y← →INI400_000563= (π↑2←*E*I↓y←)/(Lb↓y←↑2←); 
-        Ne →INI400_000564= MIN(Ne↓x←, Ne↓y←); 
-    } 
-    
-    // Ne for T Section
-    IF(FormCode == 6) { 
-        // Reading Variables
-        →INI400_001557BLOCK { 
-            // loads the section and steel grade
-            A↓g← →INI400_001559= CS.Chars.A; 
-            r↓x← →INI400_001560= CS.Chars.iy; 
-            r↓y← →INI400_001561= CS.Chars.iz; 
-            I↓x← →INI400_001562= CS.Chars.Iy; 
-            I↓y← →INI400_001563= CS.Chars.Iz; 
-            C↓w← →INI400_001564= CS.Chars.Iw; // warping constant
-            J →INI400_001565= CS.Chars.It; // torsional constant
-
-            //REV: revised in 06/04/2016
-            tw →MPF000_000015= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-            h →MPF000_000016= CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : (CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h); 
-            d →MPF000_000017= h; 
-            
-            
-            
-        } 
-        
-        // calculates Nex - Annex E item E.1.2 a) - see footnote comment in the code
-        →INI400_000566TEXT("Calculation of Elastic buckling Load"); 
-        Ne↓y← →INI400_000567= (π↑2←*E*I↓y←)/(Lb↓y←↑2←); 
-        Ne↓x← →INI400_000568= (π↑2←*E*I↓x←)/(Lb↓x←↑2←); 
-        
-        // Calculation of r0 - polar radius of giration
-        r↓0← →INI400_000570= SQRT(r↓x←↑2←+r↓y←↑2←+x0↑2←+y0↑2←); 
-        Ne↓z← →INI400_000569= (1/r↓0←↑2←)*[π↑2←*E*C↓w←/(Lb↓z←↑2←)+G*J]; 
-        Ne↓yz← →INI400_001688= (Ne↓y←+Ne↓z←)/(2*[(1-(y0/r↓0←)↑2←)])*[(1-SQRT(1-(4*Ne↓y←*Ne↓z←*[(1-(y0/r↓0←)↑2←)])/(Ne↓y←+Ne↓z←)↑2←))]; 
-        Ne →INI400_000572= MIN(Ne↓x←, Ne↓yz←); 
-    } 
-    
-    // For single Angles 
-    // this topic is covering article E.1.4.1 and E.1.4.2 of NBR-8800,
-    // considering that the angles are always conected by the larger leg
-    IF(FormCode == 4) { 
-        // Reading Variables
-        →INI400_001570BLOCK { 
-            // loads the section and steel grade
-            A↓g← →INI400_001572= CS.Chars.A; 
-            r↓x← →INI400_001573= CS.Chars.iy; 
-            r↓y← →INI400_001574= CS.Chars.iz; 
-            I↓x← →INI400_001575= CS.Chars.Iy; 
-            I↓y← →INI400_001576= CS.Chars.Iz; 
-            C↓w← →INI400_001577= CS.Chars.Iw; // warping constant
-            J →INI400_001578= CS.Chars.It; // torsional constant
-
-            //REV: revised in 07/04/2016
-
-            tw →MPF000_000026= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.t; 
-            h →MPF000_000027= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; 
-            d →MPF000_000028= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; 
-            
-        } 
-        
-        →INI400_000629TEXT("Annex E - Axial force of elastic buckling"); 
-        →INI400_000630TEXT("Item E.1.4.2 - doubly symmetric sections"); 
-        →INI400_001720TEXT("this routine considers that the L-Sections are alwayes connected by the larger Leg"); 
-        double L2 →INI400_000606= CS.Geometry.h; // in case of unequal legs, take always the larger leg
-        I↓y← →INI400_001722= CS.Chars.IZLCS; 
-        I↓x← →INI400_001726= CS.Chars.IYLCS; 
-        A↓g← →INI400_001728= CS.Chars.A; 
-        r↓x← →INI400_001729= SQRT(I↓x←/A↓g←); 
-        r↓y← →INI400_001730= SQRT(I↓y←/A↓g←); 
-        
-        double r →INI400_000607= r↓y←; // radius of giration about H - axis parallel to larger leg 
-        →INI400_000608double Lb; // modified buckling length
-        
-        // for buckling about the conected leg - in Plane Y-Y -  ( in this case is being considered the larger leg
-        // the buckling length is calculated as follows:
-        
-        IF(Lb↓y←/r &gt; 0 &amp;&amp; Lb↓y←/r &lt;= 80) { 
-            Lb →INI400_000609= 75*r+0.75*Lb↓y←; 
-        } ELSE { 
-            Lb →INI400_000610= 32*r+1.25*Lb↓y←; 
-        } 
-        
-        Ne↓y← →INI400_000605= (π↑2←*E*I↓y←)/(Lb↑2←); 
-        Ne↓x← →INI400_000613= (π↑2←*E*I↓x←)/(Lb↓x←↑2←); 
-        // for buckling out-of-plane  - X-X - the code is not clear. So we are considering
-        // that the buckling lenght is the value entered in the input dialog
-        Ne →INI400_000627= MIN(Ne↓x←, Ne↓y←); 
-    } 
-    return Ne; 
 } 
-
 double DefineLocalBuckling_Q(object CS, double FormCode, double Fabrication, object ClassParam, double fy, double Ne, double E, double CSClass) { 
     
     object Ext →INI400_001669= LoadExternCLC("NBR8800-SECTION-CLASSIFICATION.CLC"); 
     IF((FormCode != 1) &amp;&amp; (FormCode != 2) &amp;&amp; (FormCode != 3) &amp;&amp; (FormCode != 4) &amp;&amp; (FormCode != 5) &amp;&amp; (FormCode != 6) &amp;&amp; (FormCode != 101) &amp;&amp; (FormCode != 2001)) { 
         →INI400_000615TEXT("Type of section not covered by this routine!"); 
-        Exit(); 
+        //    Exit(); 
+        Q →MPF001_000016= 1; 
+        return Q; 
     } 
-    
-    // this routine returns the value of Q - Local buckling reduction factor - Annex F
-    →INI400_000048Ext.SteelPressureClass(CS, fy, Fabrication, ClassParam, FormCode, E); 
-    CSClass →INI400_000550= Ext.SteelPressureClass(CS, fy, Fabrication, ClassParam, FormCode, E); 
-    
-    →INI400_000072TEXT("Section Classification for Pressure:"); 
-    IF(CSClass == 0) { 
-        →INI400_000078TEXT("compact"); 
-    } 
-    IF(CSClass == 1) { 
-        →INI400_000079TEXT("semicompact"); 
-    } 
-    →INI400_001942PAGEBREAK(); 
-    // I-Sections and U-Sections
-    IF((FormCode == 1) || (FormCode == 5) || (FormCode == 101)) { 
-        // Reading Variables
-        →INI400_001583BLOCK { 
-            
-            // loads the section and steel grade
-            A↓g← →INI400_001585= CS.Chars.A; 
-            r↓x← →INI400_001586= CS.Chars.iy; 
-            r↓y← →INI400_001587= CS.Chars.iz; 
-            I↓x← →INI400_001588= CS.Chars.Iy; 
-            I↓y← →INI400_001589= CS.Chars.Iz; 
-            C↓w← →INI400_001590= CS.Chars.Iw; // warping constant
-            J →INI400_001591= CS.Chars.It; // torsional constant
-            IF(CS.Geometry.Contains("s")) { 
-                tw →INI400_001592= CS.Geometry.s; 
-                h →MPF000_000033= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
-                //                h →INI400_001593= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; 
-            } ELSE { 
-                tw →INI400_001947= CS.Geometry.tha; 
-                h →MPF000_000034= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); 
-                //                h →INI400_001948= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.Ba; 
-            } 
-            
-            IF((FormCode == 1) || (FormCode == 5)) { 
-                IF(CS.Geometry.Contains("t")) { 
-                    tf →INI400_001654= CS.Geometry.t; 
-                } ELSE { 
-                    tf →INI400_001949= CS.Geometry.thb; 
-                } 
-                d →INI400_001594= h-2*tf; 
-            } 
-            IF(FormCode == 101) { 
+    ELSE { 
+        // this routine returns the value of Q - Local buckling reduction factor - Annex F
+        →INI400_000048Ext.SteelPressureClass(CS, fy, Fabrication, ClassParam, FormCode, E); 
+        CSClass →INI400_000550= Ext.SteelPressureClass(CS, fy, Fabrication, ClassParam, FormCode, E); 
+        
+        →INI400_000072TEXT("Section Classification for Pressure:"); 
+        IF(CSClass == 0) { 
+            →INI400_000078TEXT("compact"); 
+        } 
+        IF(CSClass == 1) { 
+            →INI400_000079TEXT("semicompact"); 
+        } 
+        →INI400_001942PAGEBREAK(); 
+        // I-Sections and U-Sections
+        IF((FormCode == 1) || (FormCode == 5) || (FormCode == 101)) { 
+            // Reading Variables
+            →INI400_001583BLOCK { 
+                
+                // loads the section and steel grade
+                A↓g← →INI400_001585= CS.Chars.A; 
+                r↓x← →INI400_001586= CS.Chars.iy; 
+                r↓y← →INI400_001587= CS.Chars.iz; 
+                I↓x← →INI400_001588= CS.Chars.Iy; 
+                I↓y← →INI400_001589= CS.Chars.Iz; 
+                C↓w← →INI400_001590= CS.Chars.Iw; // warping constant
+                J →INI400_001591= CS.Chars.It; // torsional constant
                 IF(CS.Geometry.Contains("s")) { 
-                    // REV: revised in 06/04/2016
-
-                    bb →MPF000_000035= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
-                    tb →MPF000_000036= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
-                    bt →MPF000_000037= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
-                    tt →MPF000_000038= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
-                    tw →MPF000_000039= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-                    h →MPF000_000040= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
-
+                    tw →INI400_001592= CS.Geometry.s; 
+                    h →MPF000_000033= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
+                    //                h →INI400_001593= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; 
                 } ELSE { 
+                    tw →INI400_001947= CS.Geometry.tha; 
+                    h →MPF000_000034= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); 
+                    //                h →INI400_001948= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.Ba; 
+                } 
+                
+                IF((FormCode == 1) || (FormCode == 5)) { 
+                    IF(CS.Geometry.Contains("t")) { 
+                        tf →INI400_001654= CS.Geometry.t; 
+                    } ELSE { 
+                        tf →INI400_001949= CS.Geometry.thb; 
+                    } 
+                    d →INI400_001594= h-2*tf; 
+                } 
+                IF(FormCode == 101) { 
+                    IF(CS.Geometry.Contains("s")) { 
+                        // REV: revised in 06/04/2016
+
+                        bb →MPF000_000035= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
+                        tb →MPF000_000036= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
+                        bt →MPF000_000037= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
+                        tt →MPF000_000038= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
+                        tw →MPF000_000039= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+                        h →MPF000_000040= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
+
+                    } ELSE { 
+                        
+                        // REV: revised in 06/04/2016
+                        bb →MPF000_000041= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
+                        tb →MPF000_000042= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
+                        bt →MPF000_000043= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
+                        tt →MPF000_000044= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
+                        tw →MPF000_000045= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+                        h →MPF000_000046= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
+
+                        
+                    } 
+                    d →INI400_001701= h-tt-tb; // free depth
+                    J →INI400_001705= CS.Chars.It; 
+                } 
+            } 
+            
+            IF(CSClass == 0) { 
+                Q↓s← →INI400_000498= 1; 
+                Q↓a← →INI400_000499= 1; 
+                Q →INI400_000373= Q↓s←*Q↓a←; //section is compact - local buckling does not apply
+            } 
+            IF(CSClass == 1 || CSClass == 2) { 
+                // section is semicompact or slender
+                λf →INI400_001691= ClassParam.λf; 
+                
+                // check if Flange has to be reduced for hot rolled I-Sections - Item F2-b)
+                IF(Fabrication == 0) { 
+                    →INI400_000495TEXT("Calculation of reduction factor for unstiffened elements"); 
+                    λ↓rf← →INI400_000374= 1.03*SQRT(E/fy); 
+                    IF(λf &lt;= λ↓pf←) { Q↓s← →MPF001_000010= 1.0; } 
+                    IF(λf &gt; λ↓pf← &amp;&amp; λf &lt;= λ↓rf←) { 
+                        Q↓s← →INI400_000376= 1.415-0.74*λf*SQRT(fy/E); 
+                    } 
+                    IF(λf &gt; λ↓rf←) { 
+                        Q↓s← →INI400_000377= 0.69*E/(fy*λf↑2←); 
+                    } 
                     
-                    // REV: revised in 06/04/2016
-                    bb →MPF000_000041= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
-                    tb →MPF000_000042= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
-                    bt →MPF000_000043= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
-                    tt →MPF000_000044= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
-                    tw →MPF000_000045= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-                    h →MPF000_000046= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
+                    →INI400_000403TEXT("Q↓s← = " &amp; Q↓s←); 
+                } 
+                
+                // if welded I-Section and U-section - Item F2.c)
+                IF(Fabrication == 1) { 
+                    →INI400_000496TEXT("Calculation of reduction factor for unstiffened elements"); 
+                    →INI400_000497double k↓c←; 
+                    k↓c← →INI400_001694= ClassParam.kc; 
+                    
+                    λ↓rf← →INI400_000460= 1.17*SQRT(E/(fy/k↓c←)); 
+                    IF(λf &lt;= λ↓pf←) { Q↓s← →MPF001_000011= 1.0; } 
+                    IF(λf &gt; λ↓pf← &amp;&amp; λf &lt;= λ↓rf←) { 
+                        Q↓s← →INI400_000461= 1.415-0.65*λf*SQRT(fy/(k↓c←*E)); 
+                    } 
+                    IF(λf &gt; λ↓rf←) { 
+                        Q↓s← →INI400_000462= 0.9*E*k↓c←/(fy*λf↑2←); 
+                    } 
+                    //                IF(λf &lt; λ↓pf←) { 
+                    //                    Q↓s← →INI400_000505= 1; 
+                    //                } 
+                    →INI400_000463TEXT("Q↓s← = " &amp; Q↓s←); 
+                } 
+                
+                // Check if Web has to be reduced
+                // calculation of λ0
+                →INI400_000492TEXT("Calulation of reduction factor χ"); 
+                →INI400_000380DefineBucklingLoad(CS, Lb↓x←, Lb↓y←, Lb↓z←, Ne, FormCode, E, G); 
+                IF(COMPARE(Ne, 0, 6) == 0) { 
+                    Ne →INI400_001956= 10↑-6←; 
+                } 
+                λ↓0← →INI400_000382= SQRT(fy*A↓g←/Ne); 
+                IF(λ↓0← &lt;= 1.5) { 
+                    double aux →INI400_000383= λ↓0←↑2←; 
+                    
+                    χ →INI400_001668= 0.658↑aux←; 
+                } ELSE { 
+                    χ →INI400_000385= 0.877/(λ↓0←↑2←); 
+                } 
+                double σ →INI400_000386= χ*fy; 
+                IF(COMPARE(σ, 0, 6) == 0) { 
+                    σ →INI400_001957= 10↑-6←; 
+                } 
+                double b →INI400_000387= d; 
+                
+                // calculation of bef
+                →INI400_000388double bef; 
+                →INI400_000493TEXT("Definition of effective width"); 
+                bef →INI400_000391= 1.92*tw*SQRT(E/σ)*[1-(0.34/(d/tw))*SQRT(E/σ)]; 
+                IF(bef &gt; b || bef &lt; 0) { 
+                    bef →INI400_000392= b; 
+                } 
+                
+                //Calcation of Qa
+                →INI400_000494TEXT("Reduction factor for stiffened elements"); 
+                A↓ef← →INI400_000393= A↓g←-[(b-bef)]*tw; 
+                Q↓a← →INI400_000394= A↓ef←/A↓g←; 
+                
+                // Calculation of Q
+                Q →INI400_000395= Q↓s←*Q↓a←; 
+                IF(COMPARE(Q, 0, 6) == 0 || Q &gt; 1) { 
+                    Q →INI400_000407= 1; 
+                } 
+            } 
+        } 
+        // for box section
+        IF(FormCode == 2 || FormCode == 2001) { 
+            // Reading Variables
+            →INI400_001596BLOCK { 
+                // loads the section and steel grade
+                A↓g← →INI400_001598= CS.Chars.A; 
+                r↓x← →INI400_001599= CS.Chars.iy; 
+                r↓y← →INI400_001600= CS.Chars.iz; 
+                I↓x← →INI400_001601= CS.Chars.Iy; 
+                I↓y← →INI400_001602= CS.Chars.Iz; 
+                C↓w← →INI400_001603= CS.Chars.Iw; // warping constant
+                J →INI400_001604= CS.Chars.It; // torsional constant
 
+                IF(FormCode == 2001) { 
+                    
+                    h →MPF001_000006= CS.Geometry.Bb; 
+                    // bf →MPF001_000007= CS.Geometry.Ba; 
+                    tw →MPF001_000008= CS.Geometry.thb; 
+                    tf →MPF001_000009= CS.Geometry.tha; 
                     
                 } 
-                d →INI400_001701= h-tt-tb; // free depth
-                J →INI400_001705= CS.Chars.It; 
+                ELSE { 
+                    tw →INI400_001605= CS.Geometry.s; 
+                    h →INI400_001606= CS.Geometry.h; 
+                    d →INI400_001607= h-2*tf; 
+                } 
+            } 
+            
+            IF(CSClass == 0) { 
+                Q↓s← →INI400_000588= 1; 
+                Q↓a← →INI400_000589= 1; 
+                Q →INI400_000590= Q↓s←*Q↓a←; 
+            } //section is compact - local buckling does not apply
+            // if section is not compact
+            IF(CSClass == 1 || CSClass == 2) { 
+                IF(FormCode == 2001) { 
+                    tw →MPF001_000017= CS.Geometry.thb; 
+                    tf →MPF001_000018= CS.Geometry.tha; 
+                } 
+                ELSE { 
+                    tw →INI400_000528= CS.Geometry.s; 
+                    tf →INI400_000543= CS.Geometry.s; 
+                } 
+                
+                //for welded section
+                IF(Fabrication == 1) { 
+                    IF(FormCode == 2001) { 
+                        double b →MPF001_000019= CS.Geometry.Ba-2*tf; // free depth
+                        double b2 →MPF001_000020= CS.Geometry.Bb-2*tw; // flange free width
+                    } 
+                    ELSE { 
+                        double b →INI400_000527= CS.Geometry.h-2*tf; // free depth
+                        double b2 →INI400_000541= CS.Geometry.b-2*tw; // flange free width
+                    } 
+                    
+                } 
+                //for hot rolled
+                IF(Fabrication == 0) { 
+                    IF(FormCode == 2001) { 
+                        double r1 →MPF001_000021= 0; // internal radius
+                        double b →MPF001_000024= CS.Geometry.h-2*tf; // free depth
+                        double b2 →MPF001_000025= CS.Geometry.b-2*tw; // flange free width
+                    } 
+                    ELSE { 
+                        double r1 →INI400_000553= CS.Geometry.r1; // internal radius
+                        double b →INI400_000551= CS.Geometry.h-2*tf-2*r1; // free depth
+                        double b2 →INI400_000552= CS.Geometry.b-2*tw-2*r1; // flange free width
+                    } 
+                } 
+                
+                Q↓s← →INI400_000549= 1; // set Qs to 1 because there is not unstiffned element
+
+                // calculation of λ0 to determine σ, considerin Q=1
+
+                →INI400_000520TEXT("Calulation of reduction factor χ"); 
+                →INI400_000521DefineBucklingLoad(CS, Lb↓x←, Lb↓y←, Lb↓z←, Ne, FormCode, E, G); 
+                λ↓0← →INI400_000522= SQRT(fy*A↓g←/Ne); 
+                
+                IF(λ↓0← &lt;= 1.5) { 
+                    double aux →INI400_000523= λ↓0←↑2←; 
+                    χ →INI400_000524= 0.658↑aux←; 
+                } ELSE { 
+                    χ →INI400_000525= 0.877/(λ↓0←↑2←); 
+                } 
+                double σ →INI400_000526= χ*fy; 
+                
+                // calculation of bef
+                →INI400_000529double befw; // effective width for webs
+                →INI400_000542double beff; // effective width for flanges
+                
+                →INI400_000530TEXT("Definition of effective width of the webs"); 
+                befw →INI400_000531= 1.92*tw*SQRT(E/σ)*[1-(0.38/(b/tw))*SQRT(E/σ)]; 
+                IF(befw &gt; b || befw &lt; 0) { 
+                    befw →INI400_000532= b; 
+                } 
+                
+                →INI400_000538TEXT("Definition of effective width of the flanges"); 
+                beff →INI400_000539= 1.92*tf*SQRT(E/σ)*[1-(0.38/(b2/tf))*SQRT(E/σ)]; 
+                IF(beff &gt; b2 || beff &lt; 0) { 
+                    beff →INI400_000540= b2; 
+                } 
+                
+                //Calcation of Qa
+                →INI400_000533TEXT("Reduction factor for stiffened elements"); 
+                A↓ef← →INI400_000534= A↓g←-2*[b-befw]*tw-2*[b2-beff]*tf; 
+                Q↓a← →INI400_000535= A↓ef←/A↓g←; 
+                
+                // Calculation of Q
+                Q →INI400_000536= Q↓s←*Q↓a←; 
+                IF(Q == 0 || Q &gt; 1) { 
+                    Q →INI400_000537= 1; 
+                } 
             } 
         } 
-        
-        IF(CSClass == 0) { 
-            Q↓s← →INI400_000498= 1; 
-            Q↓a← →INI400_000499= 1; 
-            Q →INI400_000373= Q↓s←*Q↓a←; //section is compact - local buckling does not apply
-        } 
-        IF(CSClass == 1 || CSClass == 2) { 
-            // section is semicompact or slender
-            λf →INI400_001691= ClassParam.λf; 
-            
-            // check if Flange has to be reduced for hot rolled I-Sections - Item F2-b)
-            IF(Fabrication == 0) { 
-                →INI400_000495TEXT("Calculation of reduction factor for unstiffened elements"); 
-                λ↓rf← →INI400_000374= 1.03*SQRT(E/fy); 
-                IF(λf &lt;= λ↓pf←) { Q↓s← →MPF001_000010= 1.0; } 
-                IF(λf &gt; λ↓pf← &amp;&amp; λf &lt;= λ↓rf←) { 
-                    Q↓s← →INI400_000376= 1.415-0.74*λf*SQRT(fy/E); 
-                } 
-                IF(λf &gt; λ↓rf←) { 
-                    Q↓s← →INI400_000377= 0.69*E/(fy*λf↑2←); 
-                } 
+        // for Circular hollow sections
+        IF(FormCode == 3) { 
+            // Reading Variables
+            →INI400_001609BLOCK { 
+                // loads the section and steel grade
+                A↓g← →INI400_001611= CS.Chars.A; 
+                r↓x← →INI400_001612= CS.Chars.iy; 
+                r↓y← →INI400_001613= CS.Chars.iz; 
+                I↓x← →INI400_001614= CS.Chars.Iy; 
+                I↓y← →INI400_001615= CS.Chars.Iz; 
+                C↓w← →INI400_001616= CS.Chars.Iw; // warping constant
+                J →INI400_001617= CS.Chars.It; // torsional constant
+
+                //REV: revised in 07/04/2016
+
+                d →MPF000_000021= CS.Geometry.Contains("D") ? CS.Geometry.D : CS.Geometry.d; 
+                tw →MPF000_000022= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.w; 
                 
-                →INI400_000403TEXT("Q↓s← = " &amp; Q↓s←); 
             } 
             
-            // if welded I-Section and U-section - Item F2.c)
-            IF(Fabrication == 1) { 
-                →INI400_000496TEXT("Calculation of reduction factor for unstiffened elements"); 
-                →INI400_000497double k↓c←; 
-                k↓c← →INI400_001694= ClassParam.kc; 
+            Q↓a← →INI400_000604= 1; 
+            IF(CSClass == 0) { 
+                →INI400_001653TEXT("No reduction needed"); 
+                Q↓s← →INI400_000591= 1; 
+                Q↓a← →INI400_000592= 1; 
+                Q →INI400_000593= Q↓s←*Q↓a←; 
+            } //section is compact - local buckling does not apply
+            
+            IF(CSClass == 1 || CSClass == 2) { 
+                →INI400_000565TEXT("Verification of Local Buckling"); 
+                D →INI400_000555= CS.Geometry.B; // diameter
+                tw →INI400_000556= CS.Geometry.tw; // thickness
+
+                λ↓pw← →INI400_000284= 0.11*(E/fy); 
+                λ↓rw← →INI400_000285= 0.45*(E/fy); 
+                λw →INI400_000289= D/tw; 
                 
-                λ↓rf← →INI400_000460= 1.17*SQRT(E/(fy/k↓c←)); 
-                IF(λf &lt;= λ↓pf←) { Q↓s← →MPF001_000011= 1.0; } 
-                IF(λf &gt; λ↓pf← &amp;&amp; λf &lt;= λ↓rf←) { 
-                    Q↓s← →INI400_000461= 1.415-0.65*λf*SQRT(fy/(k↓c←*E)); 
+                IF(λw &lt;= λ↓pw←) { 
+                    Q↓s← →INI400_000286= 1; 
+                    Q↓a← →INI400_000557= 1; 
                 } 
-                IF(λf &gt; λ↓rf←) { 
-                    Q↓s← →INI400_000462= 0.9*E*k↓c←/(fy*λf↑2←); 
+                IF(λw &gt; λ↓pw← &amp;&amp; λw &lt;= λ↓rw←) { 
+                    Q →INI400_000558= (0.038/(D/tw))*(E/fy)+2/3; 
                 } 
-                //                IF(λf &lt; λ↓pf←) { 
-                //                    Q↓s← →INI400_000505= 1; 
-                //                } 
-                →INI400_000463TEXT("Q↓s← = " &amp; Q↓s←); 
+                IF(λw &gt; λ↓rw←) { 
+                    →INI400_000288TEXT("Ration D/t not allowed by the code!"); 
+                    Exit(); } 
             } 
-            
-            // Check if Web has to be reduced
-            // calculation of λ0
-            →INI400_000492TEXT("Calulation of reduction factor χ"); 
-            →INI400_000380DefineBucklingLoad(CS, Lb↓x←, Lb↓y←, Lb↓z←, Ne, FormCode, E, G); 
-            IF(COMPARE(Ne, 0, 6) == 0) { 
-                Ne →INI400_001956= 10↑-6←; 
-            } 
-            λ↓0← →INI400_000382= SQRT(fy*A↓g←/Ne); 
-            IF(λ↓0← &lt;= 1.5) { 
-                double aux →INI400_000383= λ↓0←↑2←; 
-                
-                χ →INI400_001668= 0.658↑aux←; 
-            } ELSE { 
-                χ →INI400_000385= 0.877/(λ↓0←↑2←); 
-            } 
-            double σ →INI400_000386= χ*fy; 
-            IF(COMPARE(σ, 0, 6) == 0) { 
-                σ →INI400_001957= 10↑-6←; 
-            } 
-            double b →INI400_000387= d; 
-            
-            // calculation of bef
-            →INI400_000388double bef; 
-            →INI400_000493TEXT("Definition of effective width"); 
-            bef →INI400_000391= 1.92*tw*SQRT(E/σ)*[1-(0.34/(d/tw))*SQRT(E/σ)]; 
-            IF(bef &gt; b || bef &lt; 0) { 
-                bef →INI400_000392= b; 
-            } 
-            
-            //Calcation of Qa
-            →INI400_000494TEXT("Reduction factor for stiffened elements"); 
-            A↓ef← →INI400_000393= A↓g←-[(b-bef)]*tw; 
-            Q↓a← →INI400_000394= A↓ef←/A↓g←; 
-            
             // Calculation of Q
-            Q →INI400_000395= Q↓s←*Q↓a←; 
-            IF(COMPARE(Q, 0, 6) == 0 || Q &gt; 1) { 
-                Q →INI400_000407= 1; 
+            Q →INI400_000642= Q↓s←*Q↓a←; 
+            IF(Q == 0 || Q &gt; 1) { 
+                Q →INI400_000643= 1; 
             } 
         } 
-    } 
-    // for box section
-    IF(FormCode == 2 || FormCode == 2001) { 
-        // Reading Variables
-        →INI400_001596BLOCK { 
-            // loads the section and steel grade
-            A↓g← →INI400_001598= CS.Chars.A; 
-            r↓x← →INI400_001599= CS.Chars.iy; 
-            r↓y← →INI400_001600= CS.Chars.iz; 
-            I↓x← →INI400_001601= CS.Chars.Iy; 
-            I↓y← →INI400_001602= CS.Chars.Iz; 
-            C↓w← →INI400_001603= CS.Chars.Iw; // warping constant
-            J →INI400_001604= CS.Chars.It; // torsional constant
-
-            IF(FormCode == 2001) { 
+        // For T eSections
+        IF(FormCode == 6) { 
+            // Reading Variables
+            →INI400_001622BLOCK { 
+                // loads the section and steel grade
+                A↓g← →INI400_001624= CS.Chars.A; 
+                r↓x← →INI400_001625= CS.Chars.iy; 
+                r↓y← →INI400_001626= CS.Chars.iz; 
+                I↓x← →INI400_001627= CS.Chars.Iy; 
+                I↓y← →INI400_001628= CS.Chars.Iz; 
+                C↓w← →INI400_001629= CS.Chars.Iw; // warping constant
+                J →INI400_001630= CS.Chars.It; // torsional constant
+                //REV: revised in 06/04/2016
+                tw →MPF000_000029= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+                h →MPF000_000030= CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : (CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h); 
                 
-                h →MPF001_000006= CS.Geometry.Bb; 
-                // bf →MPF001_000007= CS.Geometry.Ba; 
-                tw →MPF001_000008= CS.Geometry.thb; 
-                tf →MPF001_000009= CS.Geometry.tha; 
+                d →MPF000_000020= h; 
+                
                 
             } 
-            ELSE { 
-                tw →INI400_001605= CS.Geometry.s; 
-                h →INI400_001606= CS.Geometry.h; 
-                d →INI400_001607= h-2*tf; 
+            
+            IF(CSClass == 0) { 
+                Q↓s← →INI400_000594= 1; 
+                Q↓a← →INI400_000595= 1; 
+                Q →INI400_000596= Q↓s←*Q↓a←; 
+            } //section is compact - local buckling does not apply
+            
+            IF(CSClass == 1 || CSClass == 2) { 
+                // section is semicompact or slender
+                λf →INI400_001692= ClassParam.λf; 
+                λw →INI400_001693= ClassParam.λw; 
+                
+                // check if Flange has to be reduced for hot rolled T-Sections - Item F2-b)
+                →INI400_000602double Q↓s2←; // auxiliar             
+                IF(Fabrication == 0) { 
+                    →INI400_000574TEXT("Calculation of reduction factor for unstiffened elements"); 
+                    λ↓rf← →INI400_000575= 1.03*SQRT(E/fy); 
+                    IF(λf &gt; λ↓pf← &amp;&amp; λf &lt;= λ↓rf←) { 
+                        Q↓s← →INI400_000576= 1.415-0.74*λf*SQRT(fy/E); 
+                    } 
+                    IF(λf &gt; λ↓rf←) { 
+                        Q↓s← →INI400_000577= 0.69*E/(fy*λf↑2←); 
+                    } 
+                } 
+                // if welded - Item F2.c)
+                IF(Fabrication == 1) { 
+                    →INI400_000580TEXT("Calculation of reduction factor for unstiffened elements"); 
+                    →INI400_000581double k↓c←; 
+                    k↓c← →INI400_000582= 4/(SQRT(d/tw)); 
+                    λ↓rf← →INI400_000583= 1.17*SQRT(E/(fy/k↓c←)); 
+                    IF(λf &gt; λ↓pf← &amp;&amp; λf &lt;= λ↓rf←) { 
+                        Q↓s← →INI400_000584= 1.415-0.65*λf*SQRT(fy/(k↓c←*E)); 
+                    } 
+                    IF(λf &gt; λ↓rf←) { 
+                        Q↓s← →INI400_000585= 0.9*E*k↓c←/(fy*λf↑2←); 
+                    } 
+                } 
+                
+                // check web
+                λ↓rw← →INI400_000597= 1.03*SQRT(E/fy); 
+                IF(λw &gt; λ↓pw← &amp;&amp; λw &lt;= λ↓rw←) { 
+                    Q↓s2← →INI400_000598= 1.908-1.22*λf*SQRT(fy/(E)); 
+                } 
+                IF(λw &gt; λ↓rw←) { 
+                    Q↓s2← →INI400_000599= 0.69*E/(fy*λw↑2←); 
+                } 
+                Q↓s← →INI400_000603= MIN(Q↓s←, Q↓s2←); 
             } 
-        } 
-        
-        IF(CSClass == 0) { 
-            Q↓s← →INI400_000588= 1; 
-            Q↓a← →INI400_000589= 1; 
-            Q →INI400_000590= Q↓s←*Q↓a←; 
-        } //section is compact - local buckling does not apply
-        // if section is not compact
-        IF(CSClass == 1 || CSClass == 2) { 
-            tw →INI400_000528= CS.Geometry.s; 
-            tf →INI400_000543= CS.Geometry.s; 
-            //for welded section
-            IF(Fabrication == 1) { 
-                double b →INI400_000527= CS.Geometry.h-2*tf; // free depth
-                double b2 →INI400_000541= CS.Geometry.b-2*tw; // flange free width
-            } 
-            //for hot rolled
-            IF(Fabrication == 0) { 
-                double r1 →INI400_000553= CS.Geometry.r1; // internal radius
-                double b →INI400_000551= CS.Geometry.h-2*tf-2*r1; // free depth
-                double b2 →INI400_000552= CS.Geometry.b-2*tw-2*r1; // flange free width
-            } 
-            
-            Q↓s← →INI400_000549= 1; // set Qs to 1 because there is not unstiffned element
-
-            // calculation of λ0 to determine σ, considerin Q=1
-
-            →INI400_000520TEXT("Calulation of reduction factor χ"); 
-            →INI400_000521DefineBucklingLoad(CS, Lb↓x←, Lb↓y←, Lb↓z←, Ne, FormCode, E, G); 
-            λ↓0← →INI400_000522= SQRT(fy*A↓g←/Ne); 
-            
-            IF(λ↓0← &lt;= 1.5) { 
-                double aux →INI400_000523= λ↓0←↑2←; 
-                χ →INI400_000524= 0.658↑aux←; 
-            } ELSE { 
-                χ →INI400_000525= 0.877/(λ↓0←↑2←); 
-            } 
-            double σ →INI400_000526= χ*fy; 
-            
-            // calculation of bef
-            →INI400_000529double befw; // effective width for webs
-            →INI400_000542double beff; // effective width for flanges
-            
-            →INI400_000530TEXT("Definition of effective width of the webs"); 
-            befw →INI400_000531= 1.92*tw*SQRT(E/σ)*[1-(0.38/(b/tw))*SQRT(E/σ)]; 
-            IF(befw &gt; b || befw &lt; 0) { 
-                befw →INI400_000532= b; 
-            } 
-            
-            →INI400_000538TEXT("Definition of effective width of the flanges"); 
-            beff →INI400_000539= 1.92*tf*SQRT(E/σ)*[1-(0.38/(b2/tf))*SQRT(E/σ)]; 
-            IF(beff &gt; b2 || beff &lt; 0) { 
-                beff →INI400_000540= b2; 
-            } 
-            
-            //Calcation of Qa
-            →INI400_000533TEXT("Reduction factor for stiffened elements"); 
-            A↓ef← →INI400_000534= A↓g←-2*[b-befw]*tw-2*[b2-beff]*tf; 
-            Q↓a← →INI400_000535= A↓ef←/A↓g←; 
-            
             // Calculation of Q
-            Q →INI400_000536= Q↓s←*Q↓a←; 
+            Q →INI400_000644= Q↓s←*Q↓a←; 
             IF(Q == 0 || Q &gt; 1) { 
-                Q →INI400_000537= 1; 
+                Q →INI400_000645= 1; 
             } 
         } 
-    } 
-    // for Circular hollow sections
-    IF(FormCode == 3) { 
-        // Reading Variables
-        →INI400_001609BLOCK { 
-            // loads the section and steel grade
-            A↓g← →INI400_001611= CS.Chars.A; 
-            r↓x← →INI400_001612= CS.Chars.iy; 
-            r↓y← →INI400_001613= CS.Chars.iz; 
-            I↓x← →INI400_001614= CS.Chars.Iy; 
-            I↓y← →INI400_001615= CS.Chars.Iz; 
-            C↓w← →INI400_001616= CS.Chars.Iw; // warping constant
-            J →INI400_001617= CS.Chars.It; // torsional constant
-
-            //REV: revised in 07/04/2016
-
-            d →MPF000_000021= CS.Geometry.Contains("D") ? CS.Geometry.D : CS.Geometry.d; 
-            tw →MPF000_000022= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.w; 
-            
-        } 
         
-        Q↓a← →INI400_000604= 1; 
-        IF(CSClass == 0) { 
-            →INI400_001653TEXT("No reduction needed"); 
-            Q↓s← →INI400_000591= 1; 
-            Q↓a← →INI400_000592= 1; 
-            Q →INI400_000593= Q↓s←*Q↓a←; 
-        } //section is compact - local buckling does not apply
-        
-        IF(CSClass == 1 || CSClass == 2) { 
-            →INI400_000565TEXT("Verification of Local Buckling"); 
-            D →INI400_000555= CS.Geometry.B; // diameter
-            tw →INI400_000556= CS.Geometry.tw; // thickness
+        // For single Angles
+        // this topic is covering article E.1.4.1 and E.1.4.2 of NBR-8800,
+        // considering that the angles are always conected by the larger leg
+        IF(FormCode == 4) { 
+            →INI400_001635BLOCK { 
+                // loads the section and steel grade
+                I↓x← →INI400_001640= CS.Chars.IYLCS; 
+                I↓y← →INI400_001641= CS.Chars.IZLCS; 
+                A↓g← →INI400_001637= CS.Chars.A; 
+                r↓x← →INI400_001638= SQRT(I↓x←/A↓g←); 
+                r↓y← →INI400_001639= SQRT(I↓y←/A↓g←); 
+                C↓w← →INI400_001642= CS.Chars.Iw; // warping constant
+                J →INI400_001643= CS.Chars.It; // torsional constant
+                //REV: revised in 07/04/2016
 
-            λ↓pw← →INI400_000284= 0.11*(E/fy); 
-            λ↓rw← →INI400_000285= 0.45*(E/fy); 
-            λw →INI400_000289= D/tw; 
-            
-            IF(λw &lt;= λ↓pw←) { 
-                Q↓s← →INI400_000286= 1; 
-                Q↓a← →INI400_000557= 1; 
+                tw →MPF000_000023= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.t; 
+                h →MPF000_000024= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; 
+                d →MPF000_000025= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; 
+                
             } 
-            IF(λw &gt; λ↓pw← &amp;&amp; λw &lt;= λ↓rw←) { 
-                Q →INI400_000558= (0.038/(D/tw))*(E/fy)+2/3; 
-            } 
-            IF(λw &gt; λ↓rw←) { 
-                →INI400_000288TEXT("Ration D/t not allowed by the code!"); 
-                Exit(); } 
-        } 
-        // Calculation of Q
-        Q →INI400_000642= Q↓s←*Q↓a←; 
-        IF(Q == 0 || Q &gt; 1) { 
-            Q →INI400_000643= 1; 
-        } 
-    } 
-    // For T eSections
-    IF(FormCode == 6) { 
-        // Reading Variables
-        →INI400_001622BLOCK { 
-            // loads the section and steel grade
-            A↓g← →INI400_001624= CS.Chars.A; 
-            r↓x← →INI400_001625= CS.Chars.iy; 
-            r↓y← →INI400_001626= CS.Chars.iz; 
-            I↓x← →INI400_001627= CS.Chars.Iy; 
-            I↓y← →INI400_001628= CS.Chars.Iz; 
-            C↓w← →INI400_001629= CS.Chars.Iw; // warping constant
-            J →INI400_001630= CS.Chars.It; // torsional constant
-            //REV: revised in 06/04/2016
-            tw →MPF000_000029= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-            h →MPF000_000030= CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : (CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h); 
-            
-            d →MPF000_000020= h; 
-            
-            
-        } 
-        
-        IF(CSClass == 0) { 
-            Q↓s← →INI400_000594= 1; 
-            Q↓a← →INI400_000595= 1; 
-            Q →INI400_000596= Q↓s←*Q↓a←; 
-        } //section is compact - local buckling does not apply
-        
-        IF(CSClass == 1 || CSClass == 2) { 
-            // section is semicompact or slender
-            λf →INI400_001692= ClassParam.λf; 
-            λw →INI400_001693= ClassParam.λw; 
-            
-            // check if Flange has to be reduced for hot rolled T-Sections - Item F2-b)
-            →INI400_000602double Q↓s2←; // auxiliar             
-            IF(Fabrication == 0) { 
-                →INI400_000574TEXT("Calculation of reduction factor for unstiffened elements"); 
-                λ↓rf← →INI400_000575= 1.03*SQRT(E/fy); 
+            →INI400_000646TEXT("Checking Local buckling"); 
+            IF(CSClass == 0) { 
+                Q↓s← →INI400_000616= 1; 
+                Q↓a← →INI400_000617= 1; 
+                Q →INI400_000618= Q↓s←*Q↓a←; 
+            } //section is compact - local buckling does not apply
+            Q↓a← →INI400_000628= 1; // there is no stiffned element so Qa=1;
+
+            IF(CSClass == 1 || CSClass == 2) { 
+                // section is semicompact or slender
+                λ↓rw← →INI400_000619= 0.91*SQRT(E/fy); 
+                λ↓rf← →INI400_000620= 0.91*SQRT(E/fy); 
+                double L1 →INI400_000631= CS.Geometry.b; 
+                tf →INI400_000632= CS.Geometry.t; 
+                λf →INI400_000633= L1/tf; 
+                λ↓pf← →INI400_000637= 0.45*SQRT(E/fy); 
+                λ↓pw← →INI400_000638= 0.45*SQRT(E/fy); 
+                
+                // check smaller leg
                 IF(λf &gt; λ↓pf← &amp;&amp; λf &lt;= λ↓rf←) { 
-                    Q↓s← →INI400_000576= 1.415-0.74*λf*SQRT(fy/E); 
+                    Q↓s← →INI400_000621= 1.34-0.76*λf*SQRT(fy/E); 
                 } 
                 IF(λf &gt; λ↓rf←) { 
-                    Q↓s← →INI400_000577= 0.69*E/(fy*λf↑2←); 
+                    Q↓s← →INI400_000622= 0.53*E/(fy*λf↑2←); 
+                } 
+                IF(λf &lt; λ↓pf←) { 
+                    Q↓s← →INI400_000639= 1; 
+                } 
+                L1 →INI400_000634= CS.Geometry.h; 
+                tw →INI400_000635= CS.Geometry.t; 
+                λw →INI400_000636= L1/tw; 
+                // check larger leg
+                IF(λw &gt; λ↓pw← &amp;&amp; λw &lt;= λ↓rw←) { 
+                    Q↓s2← →INI400_000623= 1.34-0.76*λw*SQRT(fy/E); 
+                } 
+                IF(λw &gt; λ↓rw←) { 
+                    Q↓s2← →INI400_000624= 0.53*E/(fy*λw↑2←); 
+                } 
+                IF(λw &lt; λ↓pf←) { 
+                    Q↓s2← →INI400_000640= 1; 
+                } 
+                Q↓s← →INI400_000625= MIN(Q↓s←, Q↓s2←); 
+                Q →INI400_000641= Q↓s←*Q↓a←; 
+                IF(Q == 0 || Q &gt; 1) { 
+                    Q →INI400_000408= 1; 
                 } 
             } 
-            // if welded - Item F2.c)
-            IF(Fabrication == 1) { 
-                →INI400_000580TEXT("Calculation of reduction factor for unstiffened elements"); 
-                →INI400_000581double k↓c←; 
-                k↓c← →INI400_000582= 4/(SQRT(d/tw)); 
-                λ↓rf← →INI400_000583= 1.17*SQRT(E/(fy/k↓c←)); 
-                IF(λf &gt; λ↓pf← &amp;&amp; λf &lt;= λ↓rf←) { 
-                    Q↓s← →INI400_000584= 1.415-0.65*λf*SQRT(fy/(k↓c←*E)); 
-                } 
-                IF(λf &gt; λ↓rf←) { 
-                    Q↓s← →INI400_000585= 0.9*E*k↓c←/(fy*λf↑2←); 
-                } 
-            } 
-            
-            // check web
-            λ↓rw← →INI400_000597= 1.03*SQRT(E/fy); 
-            IF(λw &gt; λ↓pw← &amp;&amp; λw &lt;= λ↓rw←) { 
-                Q↓s2← →INI400_000598= 1.908-1.22*λf*SQRT(fy/(E)); 
-            } 
-            IF(λw &gt; λ↓rw←) { 
-                Q↓s2← →INI400_000599= 0.69*E/(fy*λw↑2←); 
-            } 
-            Q↓s← →INI400_000603= MIN(Q↓s←, Q↓s2←); 
         } 
-        // Calculation of Q
-        Q →INI400_000644= Q↓s←*Q↓a←; 
-        IF(Q == 0 || Q &gt; 1) { 
-            Q →INI400_000645= 1; 
-        } 
+        return Q; 
     } 
-    
-    // For single Angles
-    // this topic is covering article E.1.4.1 and E.1.4.2 of NBR-8800,
-    // considering that the angles are always conected by the larger leg
-    IF(FormCode == 4) { 
-        →INI400_001635BLOCK { 
-            // loads the section and steel grade
-            I↓x← →INI400_001640= CS.Chars.IYLCS; 
-            I↓y← →INI400_001641= CS.Chars.IZLCS; 
-            A↓g← →INI400_001637= CS.Chars.A; 
-            r↓x← →INI400_001638= SQRT(I↓x←/A↓g←); 
-            r↓y← →INI400_001639= SQRT(I↓y←/A↓g←); 
-            C↓w← →INI400_001642= CS.Chars.Iw; // warping constant
-            J →INI400_001643= CS.Chars.It; // torsional constant
-            //REV: revised in 07/04/2016
-
-            tw →MPF000_000023= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.t; 
-            h →MPF000_000024= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; 
-            d →MPF000_000025= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; 
-            
-        } 
-        →INI400_000646TEXT("Checking Local buckling"); 
-        IF(CSClass == 0) { 
-            Q↓s← →INI400_000616= 1; 
-            Q↓a← →INI400_000617= 1; 
-            Q →INI400_000618= Q↓s←*Q↓a←; 
-        } //section is compact - local buckling does not apply
-        Q↓a← →INI400_000628= 1; // there is no stiffned element so Qa=1;
-
-        IF(CSClass == 1 || CSClass == 2) { 
-            // section is semicompact or slender
-            λ↓rw← →INI400_000619= 0.91*SQRT(E/fy); 
-            λ↓rf← →INI400_000620= 0.91*SQRT(E/fy); 
-            double L1 →INI400_000631= CS.Geometry.b; 
-            tf →INI400_000632= CS.Geometry.t; 
-            λf →INI400_000633= L1/tf; 
-            λ↓pf← →INI400_000637= 0.45*SQRT(E/fy); 
-            λ↓pw← →INI400_000638= 0.45*SQRT(E/fy); 
-            
-            // check smaller leg
-            IF(λf &gt; λ↓pf← &amp;&amp; λf &lt;= λ↓rf←) { 
-                Q↓s← →INI400_000621= 1.34-0.76*λf*SQRT(fy/E); 
-            } 
-            IF(λf &gt; λ↓rf←) { 
-                Q↓s← →INI400_000622= 0.53*E/(fy*λf↑2←); 
-            } 
-            IF(λf &lt; λ↓pf←) { 
-                Q↓s← →INI400_000639= 1; 
-            } 
-            L1 →INI400_000634= CS.Geometry.h; 
-            tw →INI400_000635= CS.Geometry.t; 
-            λw →INI400_000636= L1/tw; 
-            // check larger leg
-            IF(λw &gt; λ↓pw← &amp;&amp; λw &lt;= λ↓rw←) { 
-                Q↓s2← →INI400_000623= 1.34-0.76*λw*SQRT(fy/E); 
-            } 
-            IF(λw &gt; λ↓rw←) { 
-                Q↓s2← →INI400_000624= 0.53*E/(fy*λw↑2←); 
-            } 
-            IF(λw &lt; λ↓pf←) { 
-                Q↓s2← →INI400_000640= 1; 
-            } 
-            Q↓s← →INI400_000625= MIN(Q↓s←, Q↓s2←); 
-            Q →INI400_000641= Q↓s←*Q↓a←; 
-            IF(Q == 0 || Q &gt; 1) { 
-                Q →INI400_000408= 1; 
-            } 
-        } 
-    } 
-    return Q; 
 } 
+
 double Compression_Check(object CS, double Lb↓x←, double Lb↓y←, double Lb↓z←, double FormCode, object ClassParam, double fy, double E, double G) { 
     //Check for Sections covered
     IF((FormCode != 1) &amp;&amp; (FormCode != 2) &amp;&amp; (FormCode != 3) &amp;&amp; (FormCode != 4) &amp;&amp; (FormCode != 101) &amp;&amp; (FormCode != 5) &amp;&amp; (FormCode != 6) &amp;&amp; (FormCode != 2001)) { 
         →INI400_001715TEXT("Compression: Type of section not covered by this routine!"); 
-        Exit(); 
-    } 
-    // →INI400_001658double Ne; // Elastic buckling load
-    →INI400_001664double Q; 
-    →INI400_000397TEXT("Item 5.3.2 - Compression resistance"); 
-    
-    →INI400_001650BLOCK("Slenderness") { 
-        →INI400_000442TEXT(" item 5.3.4 - Verification of slenderness"); 
-        →INI400_000445double λ↓x←; 
-        →INI400_000447double λ↓y←; 
-        r↓x← →INI400_001648= CS.Chars.iy; 
-        r↓y← →INI400_001649= CS.Chars.iz; 
-        λ↓x← →INI400_000446= Lb↓x←/r↓x←; 
-        λ↓y← →INI400_000448= Lb↓y←/r↓y←; 
-        
-        IF(λ↓y← &gt; 200 || λ↓x← &gt; 200) { 
-            →INI400_000449TEXT("Slenderness greater than 200 not allowed!"); 
-            unitCheck →INI400_000647= 999; 
-            →INI400_000648TEXT("Unit Check:"); 
-            →INI400_001733TEXT(unitCheck); 
-            Exit(); } 
-        ELSE { 
-            →INI400_000450TEXT("OK!"); 
-        } 
-    } 
-    →INI400_001938PAGEBREAK(); 
-    
-    // First call is just to show the report
-    →INI400_001734BLOCK("Definition of elastic buckling load - ANNEX E") { 
-        →INI400_000435DefineBucklingLoad(CS, Lb↓x←, Lb↓y←, Lb↓z←, Ne, FormCode, E, G); 
-        Ne →INI400_000434= DefineBucklingLoad(CS, Lb↓x←, Lb↓y←, Lb↓z←, Ne, FormCode, E, G); 
-        →INI400_000554TEXT("Ne = " &amp; Ne &amp; " kN"); 
-    } 
-    →INI400_001939PAGEBREAK(); 
-    
-    →INI400_001941BLOCK("Definition of effective width for cross section elements - ANNEX F") { 
-        →INI400_001660DefineLocalBuckling_Q(CS, FormCode, Fabrication, ClassParam, fy, Ne, E, CSClass); 
-        Q →INI400_001661= DefineLocalBuckling_Q(CS, FormCode, Fabrication, ClassParam, fy, Ne, E, CSClass); 
-    } 
-    →INI400_001940PAGEBREAK(); 
-    
-    →INI400_000432TEXT("Item 5.3.3.2 - Calculation of reduced slenderness"); 
-    λ↓0← →INI400_000433= SQRT(Q*A↓g←*fy/Ne); 
-    
-    →INI400_000399TEXT("Definition of Global buckling reduction factor χ"); 
-    IF(λ↓0← &lt;= 1.5) { 
-        double ax →INI400_000436= λ↓0←↑2←; 
-        χ →INI400_000437= 0.658↑ax←; 
-    } ELSE { 
-        χ →INI400_000439= 0.877/λ↓0←↑2←; 
-    } 
-    
-    →INI400_000440TEXT("Compression resistance"); 
-    N↓cRd← →INI400_000441= χ*Q*A↓g←*fy/γ↓a1←; 
-    
-    IF(N↓cRd← &gt;= ABS(N↓d←)) { 
-        →INI400_000452TEXT("OK!"); 
+        //  Exit(); 
+        UnitCheck →MPF001_000012= 3; 
+        N↓cRd← →MPF001_000014= 0; 
+        return N↓cRd←; 
     } 
     ELSE { 
-        →INI400_000453TEXT("Section is not sufficient!"); 
+        // →INI400_001658double Ne; // Elastic buckling load
+        →INI400_001664double Q; 
+        →INI400_000397TEXT("Item 5.3.2 - Compression resistance"); 
+        
+        →INI400_001650BLOCK("Slenderness") { 
+            →INI400_000442TEXT(" Item 5.3.4 - Verification of slenderness"); 
+            →INI400_000445double λ↓x←; 
+            →INI400_000447double λ↓y←; 
+            r↓x← →INI400_001648= CS.Chars.iy; 
+            r↓y← →INI400_001649= CS.Chars.iz; 
+            λ↓x← →INI400_000446= Lb↓x←/r↓x←; 
+            λ↓y← →INI400_000448= Lb↓y←/r↓y←; 
+            
+            IF(λ↓y← &gt; 200 || λ↓x← &gt; 200) { 
+                →INI400_000449TEXT("Slenderness greater than 200 not allowed!"); 
+                unitCheck →INI400_000647= 999; 
+                →INI400_000648TEXT("Unit Check:"); 
+                →INI400_001733TEXT(unitCheck); 
+                Exit(); } 
+            ELSE { 
+                →INI400_000450TEXT("OK!"); 
+            } 
+        } 
+        →INI400_001938PAGEBREAK(); 
+        
+        // First call is just to show the report
+        →INI400_001734BLOCK("Definition of elastic buckling load - ANNEX E") { 
+            →INI400_000435DefineBucklingLoad(CS, Lb↓x←, Lb↓y←, Lb↓z←, Ne, FormCode, E, G); 
+            Ne →INI400_000434= DefineBucklingLoad(CS, Lb↓x←, Lb↓y←, Lb↓z←, Ne, FormCode, E, G); 
+            →INI400_000554TEXT("Ne = " &amp; Ne &amp; " kN"); 
+        } 
+        →INI400_001939PAGEBREAK(); 
+        
+        →INI400_001941BLOCK("Definition of effective width for cross section elements - ANNEX F") { 
+            →INI400_001660DefineLocalBuckling_Q(CS, FormCode, Fabrication, ClassParam, fy, Ne, E, CSClass); 
+            Q →INI400_001661= DefineLocalBuckling_Q(CS, FormCode, Fabrication, ClassParam, fy, Ne, E, CSClass); 
+        } 
+        →INI400_001940PAGEBREAK(); 
+        
+        →INI400_000432TEXT("Item 5.3.3.2 - Calculation of reduced slenderness"); 
+        λ↓0← →INI400_000433= SQRT(Q*A↓g←*fy/Ne); 
+        
+        →INI400_000399TEXT("Definition of Global buckling reduction factor χ"); 
+        IF(λ↓0← &lt;= 1.5) { 
+            double ax →INI400_000436= λ↓0←↑2←; 
+            χ →INI400_000437= 0.658↑ax←; 
+        } ELSE { 
+            χ →INI400_000439= 0.877/λ↓0←↑2←; 
+        } 
+        
+        →INI400_000440TEXT("Compression resistance"); 
+        N↓cRd← →INI400_000441= χ*Q*A↓g←*fy/γ↓a1←; 
+        
+        IF(N↓cRd← &gt;= ABS(N↓d←)) { 
+            →INI400_000452TEXT("OK!"); 
+        } 
+        ELSE { 
+            →INI400_000453TEXT("Section is not sufficient!"); 
+        } 
+        return N↓cRd←; 
     } 
-    return N↓cRd←; 
 } 
-
 →INI400_001647Compression_Check(CS, Lb↓x←, Lb↓y←, Lb↓z←, FormCode, ClassParam, fy, E, G); 
 aux1 →INI400_001718= Compression_Check(CS, Lb↓x←, Lb↓y←, Lb↓z←, FormCode, ClassParam, fy, E, G); 
-UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
+
+UnitCheck →INI400_001719= COMPARE(N↓cRd←, 0, 6) == 0 ? 3 : ABS(N↓d←/aux1); </SourceCode>
   </CodeEditor>
   <Calculation>
     <Header NormCode="0" Member="1000" Material="0" CSType="-1" LimitState="0" IFFilter="0" LicenceID="30300" Autor="" Autor2="" Version="5" EWNSource="" Icon="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">
@@ -953,14 +981,14 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
-      <Variable Modifier="Public" Name="A↓ef←" ESA_ID="" Type="Double" Value="4.552501e-3" Precision="2">
+      <Variable Modifier="Public" Name="A↓ef←" ESA_ID="" Type="Double" Value="6.237424e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="100e-6" Dim="cm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓g←" ESA_ID="" Type="Double" Value="4.93e-3" Precision="2">
+      <Variable Modifier="Public" Name="A↓g←" ESA_ID="" Type="Double" Value="8.6e-3" Precision="2">
         <Description>
           <ENU>Gross Area</ENU>
         </Description>
@@ -973,7 +1001,7 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="aux1" ESA_ID="" Type="Double" Value="1.410377e6" Precision="2">
+      <Variable Modifier="Public" Name="aux1" ESA_ID="" Type="Double" Value="1.951195e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1036,7 +1064,7 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="C↓w←" ESA_ID="" Type="Double" Value="163e-9" Precision="2">
+      <Variable Modifier="Public" Name="C↓w←" ESA_ID="" Type="Double" Value="446.509e-9" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1062,7 +1090,7 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Value="290.6e-3" Precision="2">
+      <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Value="581e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1076,7 +1104,7 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="E" ESA_ID="" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="E" ESA_ID="" Type="Double" Value="200e9" Precision="2">
         <Description>
           <ENU>Elastic Modulus</ENU>
         </Description>
@@ -1088,14 +1116,14 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Fabrication" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="Fabrication" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="FormCode" ESA_ID="" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="FormCode" ESA_ID="" Type="Double" Value="2001" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1109,7 +1137,7 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10e6" Dim="kN/cm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="G" ESA_ID="" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="G" ESA_ID="" Type="Double" Value="76.9231e9" Precision="2">
         <Description TranslateID="VARIABLE_G">
           <ENU>Shear Modulus</ENU>
         </Description>
@@ -1121,28 +1149,28 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Value="310e-3" Precision="2">
+      <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Value="400e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="I↓x←" ESA_ID="" Type="Double" Value="85e-6" Precision="2">
+      <Variable Modifier="Public" Name="I↓x←" ESA_ID="" Type="Double" Value="250.449e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-9" Dim="cm↑4←" />
       </Variable>
-      <Variable Modifier="Public" Name="I↓y←" ESA_ID="" Type="Double" Value="7.21e-6" Precision="2">
+      <Variable Modifier="Public" Name="I↓y←" ESA_ID="" Type="Double" Value="113.036e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-9" Dim="cm↑4←" />
       </Variable>
-      <Variable Modifier="Public" Name="J" ESA_ID="" Type="Double" Value="125e-9" Precision="2">
+      <Variable Modifier="Public" Name="J" ESA_ID="" Type="Double" Value="222.331e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1195,7 +1223,7 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓cRd←" ESA_ID="" Type="Double" Value="1.410377e6" Precision="2">
+      <Variable Modifier="Public" Name="N↓cRd←" ESA_ID="" Type="Double" Value="1.951195e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1208,13 +1236,13 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="Ne" ESA_ID="" Type="Double" Value="56.92788e6" Precision="2">
+      <Variable Modifier="Public" Name="Ne" ESA_ID="" Type="Double" Value="488.0513e6" Precision="2">
         <Description>
           <ENU>Elastic Buckling Load</ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="Ne↓x←" ESA_ID="" Type="Double" Value="671.1331e6" Precision="2">
+      <Variable Modifier="Public" Name="Ne↓x←" ESA_ID="" Type="Double" Value="1.977466e9" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1228,7 +1256,7 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="Ne↓y←" ESA_ID="" Type="Double" Value="56.92788e6" Precision="2">
+      <Variable Modifier="Public" Name="Ne↓y←" ESA_ID="" Type="Double" Value="892.4965e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1242,20 +1270,20 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="Ne↓z←" ESA_ID="" Type="Double" Value="69.32367e6" Precision="2">
+      <Variable Modifier="Public" Name="Ne↓z←" ESA_ID="" Type="Double" Value="488.0513e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="Q" ESA_ID="" Type="Double" Value="923.4282e-3" Precision="-2">
+      <Variable Modifier="Public" Name="Q" ESA_ID="" Type="Double" Value="725.2819e-3" Precision="-2">
         <Description>
           <ENU>Local buckling reduction factor</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Q↓a←" ESA_ID="" Type="Double" Value="923.4282e-3" Precision="-2">
+      <Variable Modifier="Public" Name="Q↓a←" ESA_ID="" Type="Double" Value="725.2819e-3" Precision="-2">
         <Description>
           <ENU>
           </ENU>
@@ -1290,14 +1318,14 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="r↓x←" ESA_ID="" Type="Double" Value="131.306e-3" Precision="2">
+      <Variable Modifier="Public" Name="r↓x←" ESA_ID="" Type="Double" Value="170.652e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="r↓y←" ESA_ID="" Type="Double" Value="38.2423e-3" Precision="2">
+      <Variable Modifier="Public" Name="r↓y←" ESA_ID="" Type="Double" Value="114.646e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1324,7 +1352,7 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="tf" ESA_ID="" Type="Double" Value="9.7e-3" Precision="2">
+      <Variable Modifier="Public" Name="tf" ESA_ID="" Type="Double" Value="8e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1338,7 +1366,7 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="tw" ESA_ID="" Type="Double" Value="5.8e-3" Precision="2">
+      <Variable Modifier="Public" Name="tw" ESA_ID="" Type="Double" Value="4.75e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1352,7 +1380,7 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UnitCheck" ESA_ID="" Type="Double" Value="35.45152e-3" Precision="2">
+      <Variable Modifier="Public" Name="UnitCheck" ESA_ID="" Type="Double" Value="25.62532e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1364,7 +1392,7 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
           <ENU>Use User Profile Table</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="x0" ESA_ID="" Type="Double" Value="672.705e-18" Precision="2">
+      <Variable Modifier="Public" Name="x0" ESA_ID="" Type="Double" Value="78.6958e-18" Precision="2">
         <Description>
           <ENU>X-Coordinate of Shear Center in relation to centroid</ENU>
         </Description>
@@ -1383,7 +1411,7 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λ↓0←" ESA_ID="" Type="Double" Value="166.0378e-3" Precision="2">
+      <Variable Modifier="Public" Name="λ↓0←" ESA_ID="" Type="Double" Value="66.37651e-3" Precision="2">
         <Description>
           <ENU>Reduced slenderness index</ENU>
         </Description>
@@ -1403,7 +1431,7 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λ↓rf←" ESA_ID="" Type="Double" Value="24.80891" Precision="2">
+      <Variable Modifier="Public" Name="λ↓rf←" ESA_ID="" Type="Double" Value="18.18769" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1431,7 +1459,7 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λf" ESA_ID="" Type="Double" Value="8.505155" Precision="2">
+      <Variable Modifier="Public" Name="λf" ESA_ID="" Type="Double" Value="17.36842" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1459,7 +1487,7 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="χ" ESA_ID="" Type="Double" Value="988.5275e-3" Precision="2">
+      <Variable Modifier="Public" Name="χ" ESA_ID="" Type="Double" Value="998.1576e-3" Precision="2">
         <Description>
           <ENU>Global buckling reduction factor</ENU>
         </Description>
@@ -2072,14 +2100,6 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
       </VC>
       <VC ID="INI400_000499">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_000505">
-        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -4326,22 +4346,6 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="MPF000_000001">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="MPF000_000002">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="MPF000_000003">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="34.5" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -4623,7 +4627,7 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="MPF001_000001">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4631,7 +4635,7 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="MPF001_000003">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4639,7 +4643,7 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="MPF001_000004">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4647,15 +4651,7 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="MPF001_000006">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="MPF001_000007">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4663,7 +4659,7 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="MPF001_000008">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4671,7 +4667,7 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="MPF001_000009">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4694,12 +4690,116 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="MPF001_000012">
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000014">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000015">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000016">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000017">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000018">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000019">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000020">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000021">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000022">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000023">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000024">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000025">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
   <Dialog>
     <Main Width="500">
-      <TEMDLoader Name="" ID="17" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="12" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="" SectionID="-1" CombiID="-1" />
+      <TEMDLoader Name="" ID="17" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="12" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="C:\Users\Avell 1513\ESA16.1\Temp\Esa_Model_Data\Beam.3900" MemberID="Beam.3900" SectionID="0" CombiID="0" />
       <TDoubleInput Name="" ID="14" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="9" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="y0" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
       <TDoubleInput Name="" ID="13" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="8" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="x0" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
       <TCustomLibrary Name="" ID="12" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="7" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="CSS" DataFile="User.xml" Collapsed="True" UseCombo="True" Category="" Item="" />
@@ -4709,7 +4809,7 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
           </ENU>
         </Texts>
       </TCheckBox>
-      <TComboBox Name="" ID="9" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="4" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Fabrication" VarNameVisible="True" InputColor="-4128832" DescPos="1" InputWidth="150" Values="0|1" Index="0">
+      <TComboBox Name="" ID="9" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="4" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Fabrication" VarNameVisible="True" InputColor="-4128832" DescPos="1" InputWidth="150" Values="0|1" Index="1">
         <Texts TranslateID="DIALOG_000009">
           <ENU>Hot rolled|Welded</ENU>
         </Texts>
@@ -4759,9 +4859,6 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
     <Command Width="500" />
   </Dialog>
   <Texts>
-    <Item TranslateID="BLOCK_">
-      <ENU>"Definition of effective width for cross section elements - ANNEX F"</ENU>
-    </Item>
     <Item TranslateID="BLOCK_INI400_000047">
       <ENU>"Parameters:"</ENU>
     </Item>
@@ -4773,9 +4870,6 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
     </Item>
     <Item TranslateID="BLOCK_INI400_001941">
       <ENU>"Definition of effective width for cross section elements - ANNEX F"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_">
-      <ENU>"Section is not sufficient!"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_000001">
       <ENU>"Design Members for Compression according to NBR-8800"</ENU>
@@ -4814,7 +4908,7 @@ UnitCheck →INI400_001719= ABS(N↓d←/aux1); </SourceCode>
       <ENU>"Compression resistance"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_000442">
-      <ENU>" item 5.3.4 - Verification of slenderness"</ENU>
+      <ENU>" Item 5.3.4 - Verification of slenderness"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_000449">
       <ENU>"Slenderness greater than 200 not allowed!"</ENU>

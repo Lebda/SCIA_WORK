@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="6d363cf6-ad64-488a-a7b5-3e079026ea32">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">bool ValidateInput(object Input) { 
+    <SourceCode Collapsed="20|36|54|74|83|95|99" BreakPoints="">bool ValidateInput(object Input) { 
     d →INI400_000007= Input.Get("d"); //Effective depth of a cross-section
     f↓ck← →INI400_006029= Input.Get("f_ck"); //Characteristic compressive cylinder strength of concrete at 28 days
     h →INI400_006030= Input.Get("h"); //Height of a cross-section
@@ -96,6 +96,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     //    CASE "SIG": { } 
     //    CASE "STN": { } 
     //    CASE "SIST": { } 
+    CASE "UNE" :  { 
+        s↓st,max,lim← →KRS116_000006= MIN(d, 0.5) @REF("(UNE 9.8N)"); 
+    } 
     //    CASE "SS": { }  
     DEFAULT :  { 
         IF(IO.IsStandalone) { 
@@ -518,6 +521,14 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000006">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="13.8" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
     </VisualComponents>
     <Images />

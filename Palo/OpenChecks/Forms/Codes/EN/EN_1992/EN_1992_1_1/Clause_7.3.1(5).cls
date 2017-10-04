@@ -1,11 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="634ba8b0-e513-4bc8-8809-e5cc176ca61e">
   <CodeEditor>
-    <SourceCode Collapsed="31|86|144|222|451" BreakPoints="">bool ValidateInput(object Input) { 
+    <SourceCode Collapsed="33|88|146|224|258|487" BreakPoints="">bool ValidateInput(object Input) { 
     DesignLife →INI400_005255= Input.Get("DesignLife"); //Designed life of construction
     XC →INI400_006024= Input.Get("XC"); //Exposure classes - Corrosion induced by carbonation
     XD →INI400_006025= Input.Get("XD"); //Exposure classes - Corrosion induced by chlorides
     XS →INI400_006026= Input.Get("XS"); //Exposure classes - Corrosion induced by chlorides from sea water
+    XF →KRS116_000050= Input.Get("XF"); //Exposure classes - Freeze/Thaw Attack
+    XA →KRS116_000051= Input.Get("XA"); //Exposure classes - Chemical attack
     XSA →KRS116_000037= Input.Get("XSA"); //Exposure classes - Corrosion induced by strong chemical attack - only in NS
     Quasi →INI400_006027= Input.Get("Quasi"); //True - Quasi-permanent load combination, False - Frequent load combination
     CorossionSensitive →INI400_006028= Input.Get("CorossionSensitive"); //True - Corrosion-sensitive reinforcing steel is any reinforcing steel with a diameter ≤ 4 mm, prestressing steel or cold-formed reinforcing steel with a permanent stress greater than 400 MPa., False - all other reinforcement
@@ -223,6 +225,40 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     //    CASE "SIG": { } 
     //    CASE "STN": { } 
     //    CASE "SIST": { } 
+    CASE "UNE" :  { 
+        w↓max← →KRS116_000039= 0; 
+        IF(IO.IsStandalone) { 
+            IF(Quasi) { 
+                IF(XC == 0 &amp;&amp; XD == 0 &amp;&amp; XS == 0 &amp;&amp; XF == 0 &amp;&amp; XA == 0) { 
+                    w↓max← →KRS116_000040= 0.0004; 
+                } 
+                IF(XC == 1 || XC == 2 || XC == 3 || XC == 4 || XF == 1 || XF == 3) { 
+                    w↓max← →KRS116_000041= 0.0003; 
+                } 
+                IF(XS == 1 || XS == 2 || XD == 1 || XD == 2 || XD == 3 || XF == 2 || XF == 4 || XA == 1) { 
+                    w↓max← →KRS116_000042= 0.0002; 
+                } 
+                IF(XS == 3 || XA == 2 || XA == 3) { 
+                    w↓max← →KRS116_000043= 0.0001; 
+                } 
+            } 
+        } ELSE { 
+            IF(Quasi) { 
+                IF(XC == 0 &amp;&amp; XD == 0 &amp;&amp; XS == 0 &amp;&amp; XF == 0 &amp;&amp; XA == 0) { 
+                    w↓max← →KRS116_000046= IO.SetupNA.EC_1992_1_1.w_max.Quasi_X0_XC1[0]; 
+                } 
+                IF(XC == 1 || XC == 2 || XC == 3 || XC == 4 || XF == 1 || XF == 3) { 
+                    w↓max← →KRS116_000047= IO.SetupNA.EC_1992_1_1.w_max.Quasi_X0_XC1[8]; 
+                } 
+                IF(XS == 1 || XS == 2 || XD == 1 || XD == 2 || XD == 3 || XF == 2 || XF == 4 || XA == 1) { 
+                    w↓max← →KRS116_000048= IO.SetupNA.EC_1992_1_1.w_max.Quasi_X0_XC1[16]; 
+                } 
+                IF(XS == 3 || XA == 2 || XA == 3) { 
+                    w↓max← →KRS116_000049= IO.SetupNA.EC_1992_1_1.w_max.Quasi_X0_XC1[24]; 
+                } 
+            } 
+        } 
+    } 
     CASE "SS" :  { 
         IF(IO.IsStandalone) { 
             IF(CorossionSensitive) { //Corrosion-sensitive reinforcing steel is any reinforcing steel with a diameter ≤ 4 mm, prestressing steel or cold-formed reinforcing steel with a permanent stress greater than 400 MPa.
@@ -602,6 +638,13 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
+      <Variable Modifier="Public" Name="XA" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_XA">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="XC" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -611,6 +654,13 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
       </Variable>
       <Variable Modifier="Public" Name="XD" ESA_ID="" Type="Double" Precision="2">
         <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="XF" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_XF">
           <ENU>
           </ENU>
         </Description>
@@ -724,7 +774,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_005957">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="26.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="26.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="26.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="26.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1826,6 +1876,94 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000039">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="26.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="26.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="26.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="26.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="26.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000040">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+      </VC>
+      <VC ID="KRS116_000041">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+      </VC>
+      <VC ID="KRS116_000042">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+      </VC>
+      <VC ID="KRS116_000043">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+      </VC>
+      <VC ID="KRS116_000046">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+      </VC>
+      <VC ID="KRS116_000047">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+      </VC>
+      <VC ID="KRS116_000048">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+      </VC>
+      <VC ID="KRS116_000049">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+      </VC>
+      <VC ID="KRS116_000050">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000051">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
     </VisualComponents>
     <Images />

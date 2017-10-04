@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="5004cac5-fa96-43a3-a611-9c1bc6c4c8c4">
   <CodeEditor>
-    <SourceCode Collapsed="5|44|59" BreakPoints="">//@EC_Concrete_Check2D_CompressStrut
+    <SourceCode Collapsed="5|45|60" BreakPoints="">//@EC_Concrete_Check2D_CompressStrut
 
 //------------------------------------------------------------
 //@VARIABLES
@@ -22,7 +22,7 @@
     →INI400_016446object[] RecalcForcesPOD; 
     double b →INI400_016502= 1.0; 
     →INI400_016449double f↓ck←; 
-    double Red↓fcd← →INI400_016458= 1.0; 
+    →PAI106_000001double Red↓fcd←; 
     double CompressZoneDepthType →INI400_016443= 2; 
     double UC_limit →INI400_016501= 1.0; 
     
@@ -38,6 +38,7 @@ bool ValidateInput(object Input) {
     RecalcForces →INI400_016450= Input.Get("RecalcForces"); 
     RecalcForcesPOD →INI400_016451= Input.Get("RecalcForcesPOD"); 
     f↓ck← →INI400_014816= Input.Get("fck"); 
+    Red↓fcd← →PAI106_000002= Input.Get("Red_fcd"); 
     return true; 
 } 
 
@@ -332,6 +333,18 @@ SWITCH(IO.LayoutIndex) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
+      <Variable Modifier="Public" Name="CheckedStruts" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="CheckedValues" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="CLAUSE_NA" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -353,18 +366,6 @@ SWITCH(IO.LayoutIndex) {
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="FONTS_COLORS" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="CheckedStruts" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="CheckedValues" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -1007,6 +1008,14 @@ SWITCH(IO.LayoutIndex) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="PAI106_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
@@ -1018,7 +1027,7 @@ SWITCH(IO.LayoutIndex) {
         </Texts>
         <Tabs>
           <Tab Text="RECALC_FORCES">
-            <TTableInput Name="" ID="70" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="22" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_RecalcForces_ID_5" Value="CO1/1|LC1|-100|10|-100|135║CO1/2|LC2|-500|10|-500|135" CellBG="-1" HeaderBG="-986896" FixedRows="2">
+            <TTableInput Name="" ID="70" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="22" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_RecalcForces_ID_5" Value="CO1/1|LC1|-25|0|-25|135║CO1/2|LC2|-50|0|-50|135" CellBG="-1" HeaderBG="-986896" FixedRows="2">
               <Texts>
                 <ENU>CombiID|CombiKey|nEd [kN/m]|mEd [kNm/m]|nEds [kN/m]|alpha [°]</ENU>
               </Texts>
@@ -1043,7 +1052,7 @@ SWITCH(IO.LayoutIndex) {
                 </ENU>
               </Texts>
             </TCheckBox>
-            <TTableInput Name="" ID="68" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="20" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_RecalcForces_ID_2" Value="CO1/1|LC1|-25|10|-25|45║CO1/2|LC2|-50|10|-50|45" CellBG="-1" HeaderBG="-986896" FixedRows="2">
+            <TTableInput Name="" ID="68" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="20" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_RecalcForces_ID_2" Value="CO1/1|LC1|-25|0|-25|45║CO1/2|LC2|-50|0|-50|45" CellBG="-1" HeaderBG="-986896" FixedRows="2">
               <Texts>
                 <ENU>CombiID|CombiKey|nEd [kN/m]|mEd [kNm/m]|nEds [kN/m]|alpha [°]</ENU>
               </Texts>
@@ -1070,7 +1079,7 @@ SWITCH(IO.LayoutIndex) {
             </TCheckBox>
           </Tab>
           <Tab Text="RECALC_FORCES_POD">
-            <TTableInput Name="" ID="71" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="25" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_RecalcForces_POD" Value="25|182|156|-25|10|45║15|182|166|-500|10|135" CellBG="-1" HeaderBG="-986896" FixedRows="2">
+            <TTableInput Name="" ID="71" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="25" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_RecalcForces_POD" Value="25|182|156|-25|10|45║15|182|166|-50|10|45" CellBG="-1" HeaderBG="-986896" FixedRows="2">
               <Texts>
                 <ENU>x [mm]|d [mm]|z [mm]|nz [kN/m]|mz [kNm/m]|Alpha_z [°]</ENU>
               </Texts>
@@ -1820,7 +1829,7 @@ SWITCH(IO.LayoutIndex) {
               <P>EC EN 1991-2</P>
               <P>EC EN 1991-3</P>
               <P>EC EN 1991-4</P>
-              <P>EC EN 1992-1-1</P>
+              <P>EC EN 1992-1-1:2004/AC:2008</P>
               <P>1</P>
               <P>1</P>
               <P>1.3</P>

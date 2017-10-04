@@ -105,7 +105,12 @@ string s_Cmin →UNK000_015447= TR("minimum cover due to environmental condition
 //------------
 IF(!IO.IsExternCLC) { 
     object FUNCT_2D_DEFAULTS →UNK000_014945= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_IBC\Functions\ACI_Functions2D_DesignDefaults.clc"); 
-    object DesignDefaults →UNK000_014946= FUNCT_2D_DEFAULTS.GetDesignDefaults(16); 
+    double MemberType →RLF098_000026= 16; 
+    bool Imperialunit →RLF098_000024= true; 
+    →UNK006_000003object Designdefaultinput →UNK006_000006= new Structure(); 
+    →RLF098_000023Designdefaultinput.Add("MemberType", MemberType); 
+    →RLF098_000015Designdefaultinput.Add("Imperialunit", Imperialunit); 
+    object DesignDefaults →UNK000_014946= FUNCT_2D_DEFAULTS.GetDesignDefaults(→RLF098_000025Designdefaultinput); 
     object CoverData →UNK000_015003= →UNK000_015448GetConcreteCover(DesignDefaults); 
     object CoverDataForSurf →UNK000_015011= CoverData.Lower; 
     object UsingCover →UNK000_015111= GetAppliedCover(CoverData, DesignDefaults); 
@@ -167,6 +172,12 @@ IF(!IO.IsExternCLC) {
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="Designdefaultinput" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_Designdefaultinput">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="DesignDefaults" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -185,6 +196,19 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="Imperialunit" ESA_ID="" Type="Boolean">
+        <Description TranslateID="VARIABLE_Imperialunit">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="MemberType" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_MemberType">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="s_Cmin" ESA_ID="" Type="String">
         <Description>
@@ -236,6 +260,38 @@ IF(!IO.IsExternCLC) {
     </Layouts>
     <VisualComponents>
       <VC ID="REZ006_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000015">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000023">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000024">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000026">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -546,6 +602,14 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="UNK006_000006">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
     </VisualComponents>
     <Images />

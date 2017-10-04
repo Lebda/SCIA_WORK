@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="9f0ce47b-4c02-4af0-969b-fdd4b65efb19">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">→INI400_000049BLOCK { // using data exchange structure
+    <SourceCode Collapsed="39|51|74" BreakPoints="">→INI400_000049BLOCK { // using data exchange structure
     bool ValidateInput(object Input) { 
-        XD →INI400_000005= Input.Get("XD"); // Exposure class for corrosion by chlorides, 0,1,2,3, only for DIN
-        XS →INI400_000050= Input.Get("XS"); //  Exposure class for corrosion by chlorides from sea water, 0,1,2,3 only for DIN
+        XD →INI400_000005= Input.Get("XD"); // Exposure class for corrosion by chlorides, 0,1,2,3, only for DIN and UNE
+        XS →INI400_000050= Input.Get("XS"); //  Exposure class for corrosion by chlorides from sea water, 0,1,2,3 only for DIN and UNE
         Prestres →INI400_000051= Input.Get("Prestres"); // True - Prestressed concrete is used, only for IS
         Quality →INI400_000052= Input.Get("Quality"); // True - Quality assurance system for prestress is used, only for IS
+        AdequateCement →KRS116_000002= Input.Get("AdequateCement"); // True - Adecuado cemento - Adequate cement by UNE, only for UNE
 
         bool Result →INI400_000020= true; 
         IF(XD &lt; 0 || XD &gt; 3) { 
@@ -74,6 +75,29 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     //    CASE "SIG": { } 
     //    CASE "STN": { } 
     //    CASE "SIST": { } 
+    CASE "UNE" :  { //Table AN/4
+        Δc↓dur,γ← →KRS116_000004= 0; //normally no modification
+        IF(Prestres) { 
+            IF(AdequateCement) { 
+                IF(XS == 2 || XS == 3) { // for XS2 or XS3 only, increase by 5 mm
+                    Δc↓dur,γ← →KRS116_000007= 0.005; 
+                } 
+            } 
+        } ELSE { 
+            IF(AdequateCement) { 
+                IF(XD != 0) { //for all XD, decrease by 5 mm
+                    Δc↓dur,γ← →KRS116_000003= -0.005; 
+                } 
+                IF(XS == 1) { // for XS1 only, decrease by 5 mm
+                    Δc↓dur,γ← →KRS116_000005= -0.005; 
+                } 
+            } ELSE { 
+                IF(XD != 0 || XS != 0) { //for all XD and XS, increase by 5 mm
+                    Δc↓dur,γ← →KRS116_000006= 0.005; 
+                } 
+            } 
+        } 
+    } 
     //    CASE "SS": { }  
     DEFAULT :  { 
         Δc↓dur,γ← →INI400_000041= IO.SetupNA.EC_1992_1_1.Δc_dur_γ; 
@@ -103,6 +127,12 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
+      <Variable Modifier="Public" Name="AdequateCement" ESA_ID="" Type="Boolean">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="Prestres" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
@@ -310,6 +340,54 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS106_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="12.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|19|0|2" Font2="Arial|19|1|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="12.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="12.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000005">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="12.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000006">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="12.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000007">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="12.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />

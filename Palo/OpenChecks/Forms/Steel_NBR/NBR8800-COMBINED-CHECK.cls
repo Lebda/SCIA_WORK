@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="83787b19-698f-480b-adb6-9831fc8acac6">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">
+    <SourceCode Collapsed="93|120|182" BreakPoints="">
 void ValidateInput(double Cta) { 
     _Ct →INI400_002332= Cta; 
     
@@ -118,70 +118,70 @@ void ValidateInput(double Cta) {
 // check for the sections covered
 IF((FormCode != 1) &amp;&amp; (FormCode != 2) &amp;&amp; (FormCode != 3) &amp;&amp; (FormCode != 4) &amp;&amp; (FormCode != 101) &amp;&amp; (FormCode != 5) &amp;&amp; (FormCode != 6) &amp;&amp; (FormCode != 11) &amp;&amp; (FormCode != 2001)) { 
     →MPF000_000003TEXT("Type of section not covered by this routine!"); 
-    UnCheck →MPF000_000004= 999; 
-    Exit(); 
+    //  UnCheck →MPF000_000004= 999; 
+    //    Exit(); 
 } 
-
-→INI400_001682BLOCK("Steel Grade") { 
-    fy →INI400_001898= IO.Material.NBR.fy; 
-    fu →INI400_001899= IO.Material.NBR.fu; 
-    E →INI400_001918= IO.Material.NBR.E; 
-    G →INI400_001919= IO.Material.NBR.G; 
-    γ↓a1← →INI400_001689= 1.1; 
-    γ↓a2← →INI400_001734= 1.35; 
-} 
-→INI400_001938PAGEBREAK(); 
-//------
-double Section →INI400_002295= IO.Section.ID; // identify the actual section sent by SE
-double CombiID →INI400_002321= IO.InternalForces.ID; // identify the actual combination sent by SE
-object Ext_Cb →INI400_002322= LoadExternCLC("cb.CLC"); 
-
-//-------
-
-→INI400_001809BLOCK("Input Data") { 
-    _Mdx →INI400_001817= IO.InternalForces.My; 
-    _Mdy →INI400_001818= IO.InternalForces.Mz; 
-    _Nd →INI400_001819= IO.InternalForces.N; 
-    _Vdx →INI400_001820= IO.InternalForces.Vy; 
-    _Vdy →INI400_001821= IO.InternalForces.Vz; 
-    _Td →INI400_001822= IO.InternalForces.Mx; 
-    _Lbb →INI400_001823= IO.Section.BucklingData.ltBottom.Span.L*IO.Section.BucklingData.ltBottom.Span.klt; 
-    _Lbt →INI400_001824= IO.Section.BucklingData.ltTop.Span.L*IO.Section.BucklingData.ltTop.Span.klt; 
-    _Lbfx →INI400_001825= IO.Section.BucklingData.yy.Span.k*IO.Section.BucklingData.yy.Span.L; 
-    _Lbfy →INI400_001826= IO.Section.BucklingData.zz.Span.k*IO.Section.BucklingData.zz.Span.L; 
-    _Lbfz →INI400_001827= IO.Section.BucklingData.yz.Span.k*IO.Section.BucklingData.yz.Span.L; 
-    _L →INI400_001829= IO.Beam.Member.Length; 
+ELSE { 
+    →INI400_001682BLOCK("Steel Grade") { 
+        fy →INI400_001898= IO.Material.NBR.fy; 
+        fu →INI400_001899= IO.Material.NBR.fu; 
+        E →INI400_001918= IO.Material.NBR.E; 
+        G →INI400_001919= IO.Material.NBR.G; 
+        γ↓a1← →INI400_001689= 1.1; 
+        γ↓a2← →INI400_001734= 1.35; 
+    } 
+    →INI400_001938PAGEBREAK(); 
+    //------
+    double Section →INI400_002295= IO.Section.ID; // identify the actual section sent by SE
+    double CombiID →INI400_002321= IO.InternalForces.ID; // identify the actual combination sent by SE
+    object Ext_Cb →INI400_002322= LoadExternCLC("cb.CLC"); 
     
-    →INI400_001814TEXT("Nd  =  " &amp; _Nd); 
-    →INI400_001808TEXT("Mdx = " &amp; _Mdx); 
-    →INI400_001810TEXT("Mdy = " &amp; _Mdy); 
-    →INI400_001811TEXT("Vdx = " &amp; _Vdx); 
-    →INI400_001812TEXT("Vdy = " &amp; _Vdy); 
-    →INI400_001813TEXT("Td  = " &amp; _Td); 
+    //-------
+
+    →INI400_001809BLOCK("Input Data") { 
+        _Mdx →INI400_001817= IO.InternalForces.My; 
+        _Mdy →INI400_001818= IO.InternalForces.Mz; 
+        _Nd →INI400_001819= IO.InternalForces.N; 
+        _Vdx →INI400_001820= IO.InternalForces.Vy; 
+        _Vdy →INI400_001821= IO.InternalForces.Vz; 
+        _Td →INI400_001822= IO.InternalForces.Mx; 
+        _Lbb →INI400_001823= IO.Section.BucklingData.ltBottom.Span.L*IO.Section.BucklingData.ltBottom.Span.klt; 
+        _Lbt →INI400_001824= IO.Section.BucklingData.ltTop.Span.L*IO.Section.BucklingData.ltTop.Span.klt; 
+        _Lbfx →INI400_001825= IO.Section.BucklingData.yy.Span.k*IO.Section.BucklingData.yy.Span.L; 
+        _Lbfy →INI400_001826= IO.Section.BucklingData.zz.Span.k*IO.Section.BucklingData.zz.Span.L; 
+        _Lbfz →INI400_001827= IO.Section.BucklingData.yz.Span.k*IO.Section.BucklingData.yz.Span.L; 
+        _L →INI400_001829= IO.Beam.Member.Length; 
+        
+        →INI400_001814TEXT("Nd  =  " &amp; _Nd); 
+        →INI400_001808TEXT("Mdx = " &amp; _Mdx); 
+        →INI400_001810TEXT("Mdy = " &amp; _Mdy); 
+        →INI400_001811TEXT("Vdx = " &amp; _Vdx); 
+        →INI400_001812TEXT("Vdy = " &amp; _Vdy); 
+        →INI400_001813TEXT("Td  = " &amp; _Td); 
+        
+        InternalForces.Mdx →INI400_001902= _Mdx; 
+        InternalForces.Mdy →INI400_001903= _Mdy; 
+        InternalForces.Nd →INI400_001904= _Nd; 
+        InternalForces.Vdx →INI400_001905= _Vdx; 
+        InternalForces.Vdy →INI400_001906= _Vdy; 
+        InternalForces.Td →INI400_001907= _Td; 
+        MemberData.Lbb →INI400_001908= _Lbb; 
+        MemberData.Lbt →INI400_001909= _Lbt; 
+        MemberData.Lbfx →INI400_001910= _Lbfx; 
+        MemberData.Lbfy →INI400_001911= _Lbfy; 
+        MemberData.Lbfz →INI400_001912= _Lbfz; 
+        MemberData.Lv →INI400_001913= _Lv; 
+        MemberData.L →INI400_001914= _L; 
+        MemberData.a →INI400_001915= _a; 
+        MemberData.Ct →INI400_001916= _Ct; 
+        MemberData.Cb →INI400_001917= _Cb; 
+        Fabrication →MPF000_000001= IO.CS.Chars.Fabrication; 
+    } 
     
-    InternalForces.Mdx →INI400_001902= _Mdx; 
-    InternalForces.Mdy →INI400_001903= _Mdy; 
-    InternalForces.Nd →INI400_001904= _Nd; 
-    InternalForces.Vdx →INI400_001905= _Vdx; 
-    InternalForces.Vdy →INI400_001906= _Vdy; 
-    InternalForces.Td →INI400_001907= _Td; 
-    MemberData.Lbb →INI400_001908= _Lbb; 
-    MemberData.Lbt →INI400_001909= _Lbt; 
-    MemberData.Lbfx →INI400_001910= _Lbfx; 
-    MemberData.Lbfy →INI400_001911= _Lbfy; 
-    MemberData.Lbfz →INI400_001912= _Lbfz; 
-    MemberData.Lv →INI400_001913= _Lv; 
-    MemberData.L →INI400_001914= _L; 
-    MemberData.a →INI400_001915= _a; 
-    MemberData.Ct →INI400_001916= _Ct; 
-    MemberData.Cb →INI400_001917= _Cb; 
-    Fabrication →MPF000_000001= IO.CS.Chars.Fabrication; 
+    
+    
+    →INI400_001939PAGEBREAK(); 
 } 
-
-
-
-→INI400_001939PAGEBREAK(); 
-
 // Check torsion for box and tube sections
 double TorsionCheck(object CS, double FormCode, double L, double fy, double E) { 
     →INI400_001797BLOCK { 
@@ -198,55 +198,58 @@ double TorsionCheck(object CS, double FormCode, double L, double fy, double E) {
     } 
     
     // test type of section
-    IF((FormCode != 2) &amp;&amp; (FormCode != 3)) { 
+    IF((FormCode != 2) &amp;&amp; (FormCode != 3) &amp;&amp; (FormCode != 2001)) { 
         →INI400_001767TEXT("Section type subject to torsion and not covered by the code"); 
-        Exit(); 
+        //  Exit(); 
     } 
-    
-    // Circular hollow section
-    IF(FormCode == 3) { 
-        //REV: revised in 07/04/2016
+    ELSE { 
+        // Circular hollow section
+        IF(FormCode == 3) { 
+            //REV: revised in 07/04/2016
 
-        D →INI400_000281= CS.Geometry.Contains("D") ? CS.Geometry.D : CS.Geometry.d; 
-        t →INI400_000283= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.w; 
+            D →INI400_000281= CS.Geometry.Contains("D") ? CS.Geometry.D : CS.Geometry.d; 
+            t →INI400_000283= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.w; 
+            
+            WT →INI400_001777= (3.1416*[(D-t)]↑2←*t)/2; 
+            aux1 →INI400_001780= (1/γ↓a1←)*(1.23*WT*E)/([(D/t)↑1.25←]*SQRT(L/D)); 
+            aux2 →INI400_001783= (1/γ↓a1←)*(0.60*WT*E)/([(D/t)↑1.5←]); 
+            aux3 →INI400_001782= 0.6*WT*fy/γ↓a1←; 
+            IF(aux1 &gt; aux3) { 
+                aux1 →INI400_001784= aux3; 
+            } 
+            IF(aux2 &gt; aux3) { 
+                aux2 →INI400_001785= aux3; 
+            } 
+            Trd →INI400_001786= MAX(aux1, aux2); 
+        } 
         
-        WT →INI400_001777= (3.1416*[(D-t)]↑2←*t)/2; 
-        aux1 →INI400_001780= (1/γ↓a1←)*(1.23*WT*E)/([(D/t)↑1.25←]*SQRT(L/D)); 
-        aux2 →INI400_001783= (1/γ↓a1←)*(0.60*WT*E)/([(D/t)↑1.5←]); 
-        aux3 →INI400_001782= 0.6*WT*fy/γ↓a1←; 
-        IF(aux1 &gt; aux3) { 
-            aux1 →INI400_001784= aux3; 
+        // rectangular hollow sections
+        IF((FormCode == 2) || (FormCode == 2001)) { 
+            B →INI400_001787= CS.Geometry.Contains("b") ? CS.Geometry.b : CS.Geometry.Ba; 
+            H →INI400_001788= CS.Geometry.Contains("h") ? CS.Geometry.h : CS.Geometry.Bb; 
+            t →INI400_001789= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.thb; 
+            r1 →INI400_001792= CS.Geometry.Contains("r1") ? CS.Geometry.r1 : 0; 
+            
+            
+            WT →INI400_001790= 2*[(B-t)]*[(H-t)]*t-4.5*(4-3.1416)*t↑3←; 
+            IF(H/t &lt;= 2.45*SQRT(E/fy)) { 
+                Trd →INI400_001793= 0.6*WT*fy/γ↓a1←; 
+            } 
+            IF((H/t &gt; 2.45*SQRT(E/fy)) &amp;&amp; (H/t &lt;= 3.07*SQRT(E/fy))) { 
+                Trd →INI400_001796= (1/γ↓a1←)*0.6*WT*[(2.45*SQRT(E/fy))/(H/t)]; 
+            } 
+            IF((H/t &gt; 3.07*SQRT(E/fy)) &amp;&amp; (H/t &lt;= 260)) { 
+                Trd →INI400_001795= (1/γ↓a1←)*(0.46*3.1416↑2←*WT*E)/(H/t)↑2←; 
+            } 
+            IF(H/t &gt; 260) { 
+                →INI400_001794TEXT("Relation H/t greater than 260 not allowed!"); 
+                Exit(); } 
         } 
-        IF(aux2 &gt; aux3) { 
-            aux2 →INI400_001785= aux3; 
-        } 
-        Trd →INI400_001786= MAX(aux1, aux2); 
+        return Trd; 
     } 
-    
-    // rectangular hollow sections
-    IF(FormCode == 2) { 
-        B →INI400_001787= CS.Geometry.b; 
-        H →INI400_001788= CS.Geometry.h; 
-        t →INI400_001789= CS.Geometry.s; 
-        r1 →INI400_001792= CS.Geometry.r1; 
-        WT →INI400_001790= 2*[(B-t)]*[(H-t)]*t-4.5*(4-3.1416)*t↑3←; 
-        IF(H/t &lt;= 2.45*SQRT(E/fy)) { 
-            Trd →INI400_001793= 0.6*WT*fy/γ↓a1←; 
-        } 
-        IF((H/t &gt; 2.45*SQRT(E/fy)) &amp;&amp; (H/t &lt;= 3.07*SQRT(E/fy))) { 
-            Trd →INI400_001796= (1/γ↓a1←)*0.6*WT*[(2.45*SQRT(E/fy))/(H/t)]; 
-        } 
-        IF((H/t &gt; 3.07*SQRT(E/fy)) &amp;&amp; (H/t &lt;= 260)) { 
-            Trd →INI400_001795= (1/γ↓a1←)*(0.46*3.1416↑2←*WT*E)/(H/t)↑2←; 
-        } 
-        IF(H/t &gt; 260) { 
-            →INI400_001794TEXT("Relation H/t greater than 260 not allowed!"); 
-            Exit(); } 
-    } 
-    return Trd; 
 } 
 
-double TreatInput(object CS, double FormCode, object ClassParam, double Fabrication, double MomentSign, object MemberData, object InternalForces) { 
+void TreatInput(object CS, double FormCode, object ClassParam, double Fabrication, double MomentSign, object MemberData, object InternalForces) { 
     →INI400_001800BLOCK { 
         →INI400_001735double aux1; 
         →INI400_001736double aux2; 
@@ -295,8 +298,6 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         Cb →INI400_001935= MemberData.Cb; 
     } 
     
-    
-    
     // Loading external files
     object Ext_Compression →INI400_000011= LoadExternCLC("NBR8800-COMPRESSION CHECK.CLC"); 
     object Ext_Tension →INI400_001676= LoadExternCLC("NBR8800-TENSION CHECK.CLC"); 
@@ -307,218 +308,224 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         // check for the sections covered
         IF((FormCode != 1) &amp;&amp; (FormCode != 2) &amp;&amp; (FormCode != 3) &amp;&amp; (FormCode != 4) &amp;&amp; (FormCode != 101) &amp;&amp; (FormCode != 5) &amp;&amp; (FormCode != 6) &amp;&amp; (FormCode != 11) &amp;&amp; (FormCode != 2001)) { 
             →INI400_000615TEXT("Type of section not covered by this routine!"); 
-            Exit(); 
+            //  Exit(); 
+            
+            UnCheck →MPF001_000003= 999; 
+            return UnCheck; 
         } 
-        // Check input for Ct
-        IF((Ct &lt;= 0) || (Ct &gt; 1)) { 
-            →INI400_001749TEXT("Ct value must be between 0 and 1"); 
-            Exit(); 
-        } 
-        // Check input for Cb
-        IF((Cb &lt;= 0) || (Cb &gt; 3)) { 
-            →INI400_001750TEXT("Cb value must be between 0 and 3"); 
-            Exit(); 
-        } 
-        // check input for beam span
-        IF(L &lt;= 0) { 
-            →INI400_001752TEXT("Beam span must be greater than zero"); 
-            Exit(); 
-        } 
-        // Check input for bucling length
-        IF((Lbfx &lt;= 0) || (Lbfy &lt;= 0) || (Lbfz &lt;= 0)) { 
-            →INI400_001753TEXT("Buckling length must be greater than zero"); 
-            Exit(); 
-        } 
-    } 
-    
-    // check Normal forces input case and determine the resistance
-    
-    IF(COMPARE(Nd, 0, 6) != 0) { 
-        →INI400_001695BLOCK("Normal Force") { 
-            IF(Nd &lt; 0) { 
-                →INI400_001679Ext_Compression.Compression_Check(CS, Lbfx, Lbfy, Lbfz, FormCode, ClassParam, fy, E, G); 
-                NRd →INI400_001680= Ext_Compression.Compression_Check(CS, Lbfx, Lbfy, Lbfz, FormCode, ClassParam, fy, E, G); 
-            } ELSE { 
-                →INI400_001693Ext_Tension.TensionCheck(CS, FormCode, Ct, Lbfx, Lbfy, fy); 
-                NRd →INI400_001694= Ext_Tension.TensionCheck(CS, FormCode, Ct, Lbfx, Lbfy, fy); 
+        ELSE { 
+            // Check input for Ct
+            IF((Ct &lt;= 0) || (Ct &gt; 1)) { 
+                →INI400_001749TEXT("Ct value must be between 0 and 1"); 
+                // Exit(); 
             } 
-            IF(COMPARE(NRd, 0, 6) == 0) { 
-                NRd →INI400_001979= 10↑-6←; 
+            // Check input for Cb
+            IF((Cb &lt;= 0) || (Cb &gt; 3)) { 
+                →INI400_001750TEXT("Cb value must be between 0 and 3"); 
+                // Exit(); 
             } 
-            aux1 →INI400_001738= ABS(Nd/NRd); 
-            →INI400_001878TEXT("Unity Check"); 
-            →INI400_001940TEXT(" = " &amp; aux1); 
-        } 
-    } ELSE { 
-        aux1 →INI400_001743= 0; 
-        NRd →INI400_001889= 10000000; // to avoi division by zero 
-    } 
-    →INI400_001956PAGEBREAK(); 
-    
-    // Check Bending about Major Axis
-    IF(COMPARE(Mdx, 0, 6) != 0) { 
-        →INI400_001697BLOCK("Bending_X") { 
-            IF(Mdx &gt; 0) { 
-                // top flange in compression
-                →INI400_001707TEXT("Top Flange in compression"); 
-                Lb →INI400_001700= Lbt; 
-                MomentSign →INI400_001696= 0; 
-                Cb →INI400_002323= Ext_Cb.CalculateCb(CS, Section, CombiID, "X", MomentSign); 
-                
-                →INI400_001698Ext_Bending.BendingCheck_X(CS, ClassParam, MomentSign, FormCode, Fabrication, 0, Lb, fy, Cb); 
-                MRdx →INI400_001701= Ext_Bending.BendingCheck_X(CS, ClassParam, MomentSign, FormCode, Fabrication, 0, Lb, fy, Cb); 
-            } ELSE { 
-                //Bottom flange in compression
-                →INI400_001708TEXT("Bottom Flange in Compression"); 
-                Lb →INI400_001702= Lbb; 
-                MomentSign →INI400_001703= 1; 
-                
-                Cb →INI400_002328= Ext_Cb.CalculateCb(CS, Section, CombiID, "X", MomentSign); 
-                
-                →INI400_001704Ext_Bending.BendingCheck_X(CS, ClassParam, MomentSign, FormCode, Fabrication, 0, Lb, fy, Cb); 
-                MRdx →INI400_001705= Ext_Bending.BendingCheck_X(CS, ClassParam, MomentSign, FormCode, Fabrication, 0, Lb, fy, Cb); 
+            // check input for beam span
+            IF(L &lt;= 0) { 
+                →INI400_001752TEXT("Beam span must be greater than zero"); 
+                //  Exit(); 
             } 
-            IF(COMPARE(MRdx, 0, 6) == 0) { 
-                MRdx →INI400_001980= 10↑-6←; 
+            // Check input for bucling length
+            IF((Lbfx &lt;= 0) || (Lbfy &lt;= 0) || (Lbfz &lt;= 0)) { 
+                →INI400_001753TEXT("Buckling length must be greater than zero"); 
+                //  Exit(); 
             } 
-            aux2 →INI400_001739= ABS(Mdx/MRdx); 
-            →INI400_001941TEXT("Unity Check"); 
-            →INI400_001942TEXT(" = " &amp; aux2); 
-        } 
-    } ELSE { 
-        aux2 →INI400_001742= 0; 
-        MRdx →INI400_001890= 1000000000; // to avoid division by zero 
-    } 
-    →INI400_001957PAGEBREAK(); 
-    
-    // Check Bending about Minor axis
-    
-    IF(COMPARE(Mdy, 0, 6) != 0) { 
-        →INI400_001709BLOCK("Bending_Y") { 
-            IF(Mdy &gt; 0) { 
-                MomentSign →INI400_001732= 1; // Web in Tension For U-Section 
-            } ELSE { 
-                MomentSign →INI400_001733= 0; // Web in compression for U-Section
-            } 
-            →INI400_001710Ext_Bending.BendingCheck_Y(CS, ClassParam, MomentSign, FormCode, Fabrication, 1, fy); 
-            MRdy →INI400_001711= Ext_Bending.BendingCheck_Y(CS, ClassParam, MomentSign, FormCode, Fabrication, 1, fy); 
-            IF(COMPARE(MRdy, 0, 6) == 0) { 
-                MRdy →INI400_001981= 10↑-6←; 
-            } 
-            aux3 →INI400_001740= ABS(Mdy/MRdy); 
-            →INI400_001943TEXT("Unity Check"); 
-            →INI400_001944TEXT(" = " &amp; aux3); 
-        } 
-    } ELSE { 
-        aux3 →INI400_001744= 0; 
-        MRdy →INI400_001891= 100000000; // to avoid division by zero
-    } 
-    →INI400_001958PAGEBREAK(); 
-    
-    // Check for Shear in Y direction
-    IF(COMPARE(Vdy, 0, 6) != 0) { 
-        →INI400_001963BLOCK("Shear Y-Y") { 
-            →INI400_001758Ext_Shear.ShearCheck(CS, FormCode, 1, Fabrication, Lv); 
-            VRdy →INI400_001763= Ext_Shear.ShearCheck(CS, FormCode, 1, Fabrication, Lv); 
-            IF(COMPARE(VRdy, 0, 6) == 0) { 
-                VRdy →INI400_001982= 10↑-6←; 
-            } 
-            aux4 →INI400_001764= ABS(Vdy/VRdy); 
-            →INI400_001945TEXT("Unity Check"); 
-            →INI400_001946TEXT(" = " &amp; aux4); 
-        } 
-    } ELSE { 
-        aux4 →INI400_001866= 0; 
-        VRdy →INI400_001892= 100000000; // to avoid division by zero
-    } 
-    →INI400_001959PAGEBREAK(); 
-    
-    // Check for Shear in Y direction
-    IF(COMPARE(Vdx, 0, 6) != 0) { 
-        →INI400_001759BLOCK("Shear X-X") { 
-            →INI400_001760Ext_Shear.ShearCheck(CS, FormCode, 0, Fabrication, Lv); 
-            VRdx →INI400_001765= Ext_Shear.ShearCheck(CS, FormCode, 0, Fabrication, Lv); 
-            IF(COMPARE(VRdx, 0, 6) == 0) { 
-                VRdx →INI400_001983= 10↑-6←; 
-            } 
-            aux5 →INI400_001766= ABS(Vdx/VRdx); 
-            →INI400_001947TEXT("Unity Check"); 
-            →INI400_001948TEXT(" = " &amp; aux5); 
-        } 
-    } ELSE { 
-        aux5 →INI400_001867= 0; 
-        VRdx →INI400_001893= 100000000; // to avoid division by zero
-    } 
-    →INI400_001960PAGEBREAK(); 
-    
-    // Check for Torsion
-    IF(((FormCode == 2) &amp;&amp; (Td != 0)) || ((FormCode == 3) &amp;&amp; (Td != 0))) { 
-        →INI400_001802BLOCK("Torsion") { 
-            →INI400_001895TEXT("Check for Torsion according to section 5.5.2.1"); 
-            TRd →INI400_001801= TorsionCheck(CS, FormCode, L, fy, E); 
-            →INI400_001887TorsionCheck(CS, FormCode, L, fy, E); 
-            IF(COMPARE(TRd, 0, 6) == 0) { 
-                TRd →INI400_001984= 10↑-6←; 
-            } 
-            aux6 →INI400_001868= ABS(Td/TRd); 
-            →INI400_001949TEXT("Unity Check"); 
-            →INI400_001950TEXT(" = " &amp; aux6); 
-        } 
-    } ELSE { 
-        aux6 →INI400_001869= 0; 
-        TRd →INI400_001894= 100000000; // to avoid division by zero
-    } 
-    →INI400_001961PAGEBREAK(); 
-    
-    // Check for combined Stress according to section 5.5.1.2 Bending and Normal
-    IF(((COMPARE(Mdx, 0, 6) != 0) &amp;&amp; (COMPARE(Nd, 0, 6) != 0)) || ((COMPARE(Mdy, 0, 6) != 0) &amp;&amp; (COMPARE(Nd, 0, 6) != 0)) || ((COMPARE(Mdx, 0, 6) != 0) &amp;&amp; (COMPARE(Mdy, 0, 6) != 0))) { 
-        →INI400_001715BLOCK("M+N") { 
-            →INI400_001712TEXT("Combined Stress Check - section 5.5.1.2 - Bending and Normal Forces"); 
-            IF(aux1 &gt;= 0.2) { // Case a)
-                →INI400_001713TEXT("Case a)"); 
-                UnCheck →INI400_001714= ABS(Nd)/NRd+(8/9)*[(ABS(Mdx)/MRdx+ABS(Mdy)/MRdy)]; 
-                aux7 →INI400_001871= UnCheck; 
-            } ELSE { // case b)
-                →INI400_001716TEXT("Case b)"); 
-                UnCheck →INI400_001717= ABS(Nd)/(2*NRd)+[(ABS(Mdx)/MRdx+ABS(Mdy)/MRdy)]; 
-                aux7 →INI400_001872= UnCheck; 
-            } 
-            →INI400_001951TEXT("Unity Check"); 
-            →INI400_001952TEXT(" = " &amp; aux7); 
-        } 
-        →INI400_001962PAGEBREAK(); 
-    } 
-    
-    
-    // Check for combined stress according to 5.5.2.2 - only for tube and box sections
-    
-    IF((FormCode == 2) || (FormCode == 3)) { 
-        IF(((COMPARE(Vdx, 0, 6) != 0) &amp;&amp; (COMPARE(Td, 0, 6) != 0)) || ((COMPARE(Vdy, 0, 6) != 0) &amp;&amp; (COMPARE(Td, 0, 6) != 0)) || ((COMPARE(Vdx, 0, 6) != 0) &amp;&amp; (COMPARE(Vdy, 0, 6) != 0))) { 
-            →INI400_001798BLOCK("Shear - Moment - Torsion") { 
-                →INI400_001803TEXT("Check For combined Shear and Torsion according to section 5.5.2.2 - box and tubes"); 
-                
-                // if Td&gt;TRd Torsion can be negleted      
-                IF(Td &gt;= 0.2*TRd) { 
-                    →INI400_001888TEXT("Td &gt; 0.2 TRd - Torsion cannot be neglected!"); 
-                    UnCheck →INI400_001873= [(ABS(Nd/NRd)+ABS(Mdx/MRdx)+ABS(Mdy/MRdy))]+[(ABS(Vdx/VRdx)+ABS(Vdy/VRdy)+ABS(Td/TRd))]↑2←; 
-                    aux8 →INI400_001874= UnCheck; 
-                } ELSE { 
-                    →INI400_001804TEXT("Td &lt; 0.2 TRd - Torsion can be neglected!"); 
-                    UnCheck →INI400_001875= [(ABS(Nd/NRd)+ABS(Mdx/MRdx)+ABS(Mdy/MRdy))]+[(ABS(Vdx/VRdx)+ABS(Vdy/VRdy))]↑2←; 
-                    aux8 →INI400_001876= UnCheck; 
+            
+            
+            // check Normal forces input case and determine the resistance
+            
+            IF(COMPARE(Nd, 0, 6) != 0) { 
+                →INI400_001695BLOCK("Normal Force") { 
+                    IF(Nd &lt; 0) { 
+                        →INI400_001679Ext_Compression.Compression_Check(CS, Lbfx, Lbfy, Lbfz, FormCode, ClassParam, fy, E, G); 
+                        NRd →INI400_001680= Ext_Compression.Compression_Check(CS, Lbfx, Lbfy, Lbfz, FormCode, ClassParam, fy, E, G); 
+                    } ELSE { 
+                        →INI400_001693Ext_Tension.TensionCheck(CS, FormCode, Ct, Lbfx, Lbfy, fy); 
+                        NRd →INI400_001694= Ext_Tension.TensionCheck(CS, FormCode, Ct, Lbfx, Lbfy, fy); 
+                    } 
+                    IF(COMPARE(NRd, 0, 6) == 0) { 
+                        NRd →INI400_001979= 10↑-6←; 
+                    } 
+                    aux1 →INI400_001738= ABS(Nd/NRd); 
+                    →INI400_001878TEXT("Unity Check"); 
+                    →INI400_001940TEXT(" = " &amp; aux1); 
                 } 
-                →INI400_001953TEXT("Unity Check"); 
-                →INI400_001954TEXT(" = " &amp; aux8); 
-                →INI400_001968PAGEBREAK(); 
+            } ELSE { 
+                aux1 →INI400_001743= 0; 
+                NRd →INI400_001889= 10000000; // to avoi division by zero 
             } 
+            →INI400_001956PAGEBREAK(); 
+            
+            // Check Bending about Major Axis
+            IF(COMPARE(Mdx, 0, 6) != 0) { 
+                →INI400_001697BLOCK("Bending_X") { 
+                    IF(Mdx &gt; 0) { 
+                        // top flange in compression
+                        →INI400_001707TEXT("Top Flange in compression"); 
+                        Lb →INI400_001700= Lbt; 
+                        MomentSign →INI400_001696= 0; 
+                        Cb →INI400_002323= Ext_Cb.CalculateCb(CS, Section, CombiID, "X", MomentSign); 
+                        
+                        →INI400_001698Ext_Bending.BendingCheck_X(CS, ClassParam, MomentSign, FormCode, Fabrication, 0, Lb, fy, Cb); 
+                        MRdx →INI400_001701= Ext_Bending.BendingCheck_X(CS, ClassParam, MomentSign, FormCode, Fabrication, 0, Lb, fy, Cb); 
+                    } ELSE { 
+                        //Bottom flange in compression
+                        →INI400_001708TEXT("Bottom Flange in Compression"); 
+                        Lb →INI400_001702= Lbb; 
+                        MomentSign →INI400_001703= 1; 
+                        
+                        Cb →INI400_002328= Ext_Cb.CalculateCb(CS, Section, CombiID, "X", MomentSign); 
+                        
+                        →INI400_001704Ext_Bending.BendingCheck_X(CS, ClassParam, MomentSign, FormCode, Fabrication, 0, Lb, fy, Cb); 
+                        MRdx →INI400_001705= Ext_Bending.BendingCheck_X(CS, ClassParam, MomentSign, FormCode, Fabrication, 0, Lb, fy, Cb); 
+                    } 
+                    IF(COMPARE(MRdx, 0, 6) == 0) { 
+                        MRdx →INI400_001980= 10↑-6←; 
+                    } 
+                    aux2 →INI400_001739= ABS(Mdx/MRdx); 
+                    →INI400_001941TEXT("Unity Check"); 
+                    →INI400_001942TEXT(" = " &amp; aux2); 
+                } 
+            } ELSE { 
+                aux2 →INI400_001742= 0; 
+                MRdx →INI400_001890= 1000000000; // to avoid division by zero 
+            } 
+            →INI400_001957PAGEBREAK(); 
+            
+            // Check Bending about Minor axis
+            
+            IF(COMPARE(Mdy, 0, 6) != 0) { 
+                →INI400_001709BLOCK("Bending_Y") { 
+                    IF(Mdy &gt; 0) { 
+                        MomentSign →INI400_001732= 1; // Web in Tension For U-Section 
+                    } ELSE { 
+                        MomentSign →INI400_001733= 0; // Web in compression for U-Section
+                    } 
+                    →INI400_001710Ext_Bending.BendingCheck_Y(CS, ClassParam, MomentSign, FormCode, Fabrication, 1, fy); 
+                    MRdy →INI400_001711= Ext_Bending.BendingCheck_Y(CS, ClassParam, MomentSign, FormCode, Fabrication, 1, fy); 
+                    IF(COMPARE(MRdy, 0, 6) == 0) { 
+                        MRdy →INI400_001981= 10↑-6←; 
+                    } 
+                    aux3 →INI400_001740= ABS(Mdy/MRdy); 
+                    →INI400_001943TEXT("Unity Check"); 
+                    →INI400_001944TEXT(" = " &amp; aux3); 
+                } 
+            } ELSE { 
+                aux3 →INI400_001744= 0; 
+                MRdy →INI400_001891= 100000000; // to avoid division by zero
+            } 
+            →INI400_001958PAGEBREAK(); 
+            
+            // Check for Shear in Y direction
+            IF(COMPARE(Vdy, 0, 6) != 0) { 
+                →INI400_001963BLOCK("Shear Y-Y") { 
+                    →INI400_001758Ext_Shear.ShearCheck(CS, FormCode, 1, Fabrication, Lv); 
+                    VRdy →INI400_001763= Ext_Shear.ShearCheck(CS, FormCode, 1, Fabrication, Lv); 
+                    IF(COMPARE(VRdy, 0, 6) == 0) { 
+                        VRdy →INI400_001982= 10↑-6←; 
+                    } 
+                    aux4 →INI400_001764= ABS(Vdy/VRdy); 
+                    →INI400_001945TEXT("Unity Check"); 
+                    →INI400_001946TEXT(" = " &amp; aux4); 
+                } 
+            } ELSE { 
+                aux4 →INI400_001866= 0; 
+                VRdy →INI400_001892= 100000000; // to avoid division by zero
+            } 
+            →INI400_001959PAGEBREAK(); 
+            
+            // Check for Shear in Y direction
+            IF(COMPARE(Vdx, 0, 6) != 0) { 
+                →INI400_001759BLOCK("Shear X-X") { 
+                    →INI400_001760Ext_Shear.ShearCheck(CS, FormCode, 0, Fabrication, Lv); 
+                    VRdx →INI400_001765= Ext_Shear.ShearCheck(CS, FormCode, 0, Fabrication, Lv); 
+                    IF(COMPARE(VRdx, 0, 6) == 0) { 
+                        VRdx →INI400_001983= 10↑-6←; 
+                    } 
+                    aux5 →INI400_001766= ABS(Vdx/VRdx); 
+                    →INI400_001947TEXT("Unity Check"); 
+                    →INI400_001948TEXT(" = " &amp; aux5); 
+                } 
+            } ELSE { 
+                aux5 →INI400_001867= 0; 
+                VRdx →INI400_001893= 100000000; // to avoid division by zero
+            } 
+            →INI400_001960PAGEBREAK(); 
+            
+            // Check for Torsion
+            IF(((FormCode == 2) &amp;&amp; (Td != 0)) || ((FormCode == 3) &amp;&amp; (Td != 0))) { 
+                →INI400_001802BLOCK("Torsion") { 
+                    →INI400_001895TEXT("Check for Torsion according to section 5.5.2.1"); 
+                    TRd →INI400_001801= TorsionCheck(CS, FormCode, L, fy, E); 
+                    →INI400_001887TorsionCheck(CS, FormCode, L, fy, E); 
+                    IF(COMPARE(TRd, 0, 6) == 0) { 
+                        TRd →INI400_001984= 10↑-6←; 
+                    } 
+                    aux6 →INI400_001868= ABS(Td/TRd); 
+                    →INI400_001949TEXT("Unity Check"); 
+                    →INI400_001950TEXT(" = " &amp; aux6); 
+                } 
+            } ELSE { 
+                aux6 →INI400_001869= 0; 
+                TRd →INI400_001894= 100000000; // to avoid division by zero
+            } 
+            →INI400_001961PAGEBREAK(); 
+            
+            // Check for combined Stress according to section 5.5.1.2 Bending and Normal
+            IF(((COMPARE(Mdx, 0, 6) != 0) &amp;&amp; (COMPARE(Nd, 0, 6) != 0)) || ((COMPARE(Mdy, 0, 6) != 0) &amp;&amp; (COMPARE(Nd, 0, 6) != 0)) || ((COMPARE(Mdx, 0, 6) != 0) &amp;&amp; (COMPARE(Mdy, 0, 6) != 0))) { 
+                →INI400_001715BLOCK("M+N") { 
+                    →INI400_001712TEXT("Combined Stress Check - section 5.5.1.2 - Bending and Normal Forces"); 
+                    IF(aux1 &gt;= 0.2) { // Case a)
+                        →INI400_001713TEXT("Case a)"); 
+                        UnCheck →INI400_001714= ABS(Nd)/NRd+(8/9)*[(ABS(Mdx)/MRdx+ABS(Mdy)/MRdy)]; 
+                        aux7 →INI400_001871= UnCheck; 
+                    } ELSE { // case b)
+                        →INI400_001716TEXT("Case b)"); 
+                        UnCheck →INI400_001717= ABS(Nd)/(2*NRd)+[(ABS(Mdx)/MRdx+ABS(Mdy)/MRdy)]; 
+                        aux7 →INI400_001872= UnCheck; 
+                    } 
+                    →INI400_001951TEXT("Unity Check"); 
+                    →INI400_001952TEXT(" = " &amp; aux7); 
+                } 
+                →INI400_001962PAGEBREAK(); 
+            } 
+            
+            // Check for combined stress according to 5.5.2.2 - only for tube and box sections
+            
+            IF((FormCode == 2) || (FormCode == 3)) { 
+                IF(((COMPARE(Vdx, 0, 6) != 0) &amp;&amp; (COMPARE(Td, 0, 6) != 0)) || ((COMPARE(Vdy, 0, 6) != 0) &amp;&amp; (COMPARE(Td, 0, 6) != 0)) || ((COMPARE(Vdx, 0, 6) != 0) &amp;&amp; (COMPARE(Vdy, 0, 6) != 0))) { 
+                    →INI400_001798BLOCK("Shear - Moment - Torsion") { 
+                        →INI400_001803TEXT("Check For combined Shear and Torsion according to section 5.5.2.2 - box and tubes"); 
+                        
+                        // if Td&gt;TRd Torsion can be negleted      
+                        IF(Td &gt;= 0.2*TRd) { 
+                            →INI400_001888TEXT("Td &gt; 0.2 TRd - Torsion cannot be neglected!"); 
+                            UnCheck →INI400_001873= [(ABS(Nd/NRd)+ABS(Mdx/MRdx)+ABS(Mdy/MRdy))]+[(ABS(Vdx/VRdx)+ABS(Vdy/VRdy)+ABS(Td/TRd))]↑2←; 
+                            aux8 →INI400_001874= UnCheck; 
+                        } ELSE { 
+                            →INI400_001804TEXT("Td &lt; 0.2 TRd - Torsion can be neglected!"); 
+                            UnCheck →INI400_001875= [(ABS(Nd/NRd)+ABS(Mdx/MRdx)+ABS(Mdy/MRdy))]+[(ABS(Vdx/VRdx)+ABS(Vdy/VRdy))]↑2←; 
+                            aux8 →INI400_001876= UnCheck; 
+                        } 
+                        →INI400_001953TEXT("Unity Check"); 
+                        →INI400_001954TEXT(" = " &amp; aux8); 
+                        →INI400_001968PAGEBREAK(); 
+                    } 
+                } 
+            } 
+            
+            UnCheck →INI400_001877= MAX(aux1, aux2, aux3, aux4, aux5, aux6, aux7, aux8); 
+            →INI400_001886TEXT("Maximum Unit Check"); 
+            →INI400_001955TEXT("= " &amp; UnCheck); 
+            //return UnCheck; 
         } 
     } 
-    
-    UnCheck →INI400_001877= MAX(aux1, aux2, aux3, aux4, aux5, aux6, aux7, aux8); 
-    →INI400_001886TEXT("Maximum Unit Check"); 
-    →INI400_001955TEXT("= " &amp; UnCheck); 
-    return UnCheck; 
 } 
+
 
 →INI400_001681TreatInput(CS, FormCode, ClassParam, Fabrication, MomentSign, MemberData, InternalForces); 
 →INI400_001965TEXT(""); 
@@ -560,7 +567,7 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
-      <Variable Modifier="Public" Name="_a" ESA_ID="MemberData.a" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="_a" ESA_ID="MemberData.a" Type="Double" Value="750e-3" Precision="2">
         <Description>
           <ENU>Stiffener spacing</ENU>
         </Description>
@@ -578,7 +585,7 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="_L" ESA_ID="" Type="Double" Value="13.7" Precision="2">
+      <Variable Modifier="Public" Name="_L" ESA_ID="" Type="Double" Value="5" Precision="2">
         <Description>
           <ENU>Beam Span</ENU>
         </Description>
@@ -590,31 +597,31 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="_Lbb" ESA_ID="" Type="Double" Value="6.85" Precision="2">
+      <Variable Modifier="Public" Name="_Lbb" ESA_ID="" Type="Double" Value="5" Precision="2">
         <Description>
           <ENU>Unbraced Length for bottom Flange</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="_Lbfx" ESA_ID="" Type="Double" Value="12.5874" Precision="2">
+      <Variable Modifier="Public" Name="_Lbfx" ESA_ID="" Type="Double" Value="5" Precision="2">
         <Description>
           <ENU>Buckling length about X axis</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="_Lbfy" ESA_ID="" Type="Double" Value="6.85" Precision="2">
+      <Variable Modifier="Public" Name="_Lbfy" ESA_ID="" Type="Double" Value="4.999875" Precision="2">
         <Description>
           <ENU>Buckling length about Y axis</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="_Lbfz" ESA_ID="" Type="Double" Value="6.85" Precision="2">
+      <Variable Modifier="Public" Name="_Lbfz" ESA_ID="" Type="Double" Value="5" Precision="2">
         <Description>
           <ENU>Buckling length about Z axis</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="_Lbt" ESA_ID="" Type="Double" Value="6.85" Precision="2">
+      <Variable Modifier="Public" Name="_Lbt" ESA_ID="" Type="Double" Value="5" Precision="2">
         <Description>
           <ENU>Unbraced Length for top Flange</ENU>
         </Description>
@@ -626,37 +633,37 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="_Mdx" ESA_ID="" Type="Double" Value="-83388.5" Precision="2">
+      <Variable Modifier="Public" Name="_Mdx" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>Moment About X</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10" Dim="kN•cm" />
       </Variable>
-      <Variable Modifier="Public" Name="_Mdy" ESA_ID="" Type="Double" Value="85.947" Precision="2">
+      <Variable Modifier="Public" Name="_Mdy" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>Moment About Y</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10" Dim="kN•cm" />
       </Variable>
-      <Variable Modifier="Public" Name="_Nd" ESA_ID="" Type="Double" Value="-244346" Precision="2">
+      <Variable Modifier="Public" Name="_Nd" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>Normal Forces</ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="_Td" ESA_ID="" Type="Double" Value="2.53168" Precision="2">
+      <Variable Modifier="Public" Name="_Td" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>Torsion</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10" Dim="kN•cm" />
       </Variable>
-      <Variable Modifier="Public" Name="_Vdx" ESA_ID="" Type="Double" Value="2.8068" Precision="2">
+      <Variable Modifier="Public" Name="_Vdx" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>Shear in X direction</ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="_Vdy" ESA_ID="" Type="Double" Value="24428.7" Precision="2">
+      <Variable Modifier="Public" Name="_Vdy" ESA_ID="" Type="Double" Value="50500" Precision="2">
         <Description>
           <ENU>Shear in Y direction</ENU>
         </Description>
@@ -751,7 +758,7 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="CombinationID" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="CombinationID" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -813,28 +820,28 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Fabrication" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="Fabrication" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="FormCode" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="FormCode" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="fu" ESA_ID="" Type="Double" Value="485e6" Precision="2">
+      <Variable Modifier="Public" Name="fu" ESA_ID="" Type="Double" Value="400e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10e6" Dim="kN/cm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="fy" ESA_ID="" Type="Double" Value="345e6" Precision="2">
+      <Variable Modifier="Public" Name="fy" ESA_ID="" Type="Double" Value="248e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -872,7 +879,7 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="Lb" ESA_ID="" Type="Double" Value="6.85" Precision="2">
+      <Variable Modifier="Public" Name="Lb" ESA_ID="" Type="Double" Value="12.3874" Precision="2">
         <Description>
           <ENU>Unbraced Length for Bending check</ENU>
         </Description>
@@ -939,14 +946,14 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="MRdx" ESA_ID="" Type="Double" Value="484205.9" Precision="2">
+      <Variable Modifier="Public" Name="MRdx" ESA_ID="" Type="Double" Value="1e9" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10" Dim="kN•cm" />
       </Variable>
-      <Variable Modifier="Public" Name="MRdy" ESA_ID="" Type="Double" Value="78593.11" Precision="2">
+      <Variable Modifier="Public" Name="MRdy" ESA_ID="" Type="Double" Value="100e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -959,7 +966,7 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="NRd" ESA_ID="" Type="Double" Value="1.490334e6" Precision="2">
+      <Variable Modifier="Public" Name="NRd" ESA_ID="" Type="Double" Value="10e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -993,7 +1000,7 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UnCheck" ESA_ID="Result.1" Type="Double" Value="255.2875e-3" Precision="2">
+      <Variable Modifier="Public" Name="UnCheck" ESA_ID="Result.1" Type="Double" Value="999" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1018,14 +1025,14 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="VRdx" ESA_ID="" Type="Double" Value="1.1799e6" Precision="2">
+      <Variable Modifier="Public" Name="VRdx" ESA_ID="" Type="Double" Value="100e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="VRdy" ESA_ID="" Type="Double" Value="363736" Precision="2">
+      <Variable Modifier="Public" Name="VRdy" ESA_ID="" Type="Double" Value="231045.8" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1252,7 +1259,7 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001681">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1340,7 +1347,7 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001702">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1428,7 +1435,7 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001714">
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1452,7 +1459,7 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001717">
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1564,7 +1571,7 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001754">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1780,7 +1787,7 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001800">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1788,7 +1795,7 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001801">
-        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -2044,7 +2051,7 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001873">
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="5" />
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="5" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -2060,7 +2067,7 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001875">
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -2092,7 +2099,7 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001886">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Tahoma|14|0|2" Font2="Tahoma|14|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="15" Font1="Segoe UI|18|0|2" Font2="Segoe UI|18|1|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -2612,7 +2619,7 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001955">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="0" Hor="0" Ver="1" SpX="0" SpY="0" Font1="Segoe UI|18|0|2" Font2="Segoe UI|18|1|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -2868,7 +2875,7 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_002323">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2876,7 +2883,7 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_002328">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2907,14 +2914,6 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="MPF000_000002">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="MPF000_000003">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -2923,8 +2922,8 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="MPF000_000004">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      <VC ID="MPF001_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2936,7 +2935,7 @@ double TreatInput(object CS, double FormCode, object ClassParam, double Fabricat
   </Calculation>
   <Dialog>
     <Main Width="500">
-      <TEMDLoader Name="" ID="49" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="C:\Users\Avell 1513\ESA16.1\Temp\Esa_Model_Data\Beam.1157" MemberID="Beam.1157" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="" ID="49" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="" SectionID="-1" CombiID="-1" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />

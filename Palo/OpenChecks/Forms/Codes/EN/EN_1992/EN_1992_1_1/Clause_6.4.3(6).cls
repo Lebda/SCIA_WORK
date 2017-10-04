@@ -39,6 +39,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     //    CASE "SIG": { } 
     //    CASE "STN": { } 
     //    CASE "SIST": { } 
+    //    CASE "UNE": { } 
     //    CASE "SS": { } 
     DEFAULT :  { 
         SWITCH(ColType) { 

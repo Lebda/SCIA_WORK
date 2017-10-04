@@ -8,6 +8,7 @@
     h →KRS135_000004= Input.Get("h"); //Heigth of cross-section recalculated to direction of shear force resultant
     V↓Ed← →KRS135_000005= Input.Get("V↓Ed←"); //Resultant of shear force
     V↓Rd,c← →KRS135_000006= Input.Get("V↓Rd,c←"); //Calculation design shear resistance of the member without shear reinforcement
+    V↓Rd← →KRS116_000004= Input.Get("V↓Rd←"); //Design value of the max. shear force which can be sustained by the member
     V↓Rd,max← →KRS135_000007= Input.Get("V↓Rd,max←"); //Design value of the max. shear force which can be sustained by the member
     ϕ →KRS135_000008= Input.Get("ϕ"); //diameter of stirrups
     f↓ctm← →KRS135_000009= Input.Get("f↓ctm←"); //Mean value of strength of concrete in tension
@@ -50,6 +51,7 @@ IF(!IO.IsExternCLC) { //TESTING DATA
     h →INI400_009114= 0.55; 
     V↓Ed← →INI400_009115= 145000; 
     V↓Rd,c← →INI400_009116= 105000; 
+    V↓Rd← →KRS116_000003= 150000; 
     V↓Rd,max← →INI400_009117= 250000; 
     A↓sw← →INI400_009727= 0.0002; 
     ϕ →INI400_009118= 0.008; 
@@ -89,6 +91,7 @@ object[] DetProvInputs →INI400_008964= new Structure();
 →INI400_009011DetProvInputs.Add("h", h); 
 →INI400_009012DetProvInputs.Add("V↓Ed←", V↓Ed←); 
 →INI400_009013DetProvInputs.Add("V↓Rd,c←", V↓Rd,c←); 
+→KRS116_000002DetProvInputs.Add("V↓Rd←", V↓Rd←); 
 →INI400_009014DetProvInputs.Add("V↓Rd,max←", V↓Rd,max←); 
 →INI400_009015DetProvInputs.Add("ϕ", ϕ); 
 →INI400_009726DetProvInputs.Add("A↓sw←", A↓sw←); 
@@ -354,6 +357,13 @@ IF(bBeamShearCheckMaxTorsDistance) {
       </Variable>
       <Variable Modifier="Public" Name="V↓Rd,max←" ESA_ID="" Type="Double" Precision="2">
         <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="V↓Rd←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_V↓Rd←">
           <ENU>
           </ENU>
         </Description>
@@ -935,6 +945,30 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS135_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

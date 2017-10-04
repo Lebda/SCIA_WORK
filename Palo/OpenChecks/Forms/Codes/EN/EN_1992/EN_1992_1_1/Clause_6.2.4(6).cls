@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="c621c4fb-c800-4add-8b5e-4acb87ed9cd5">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">bool ValidateInput(object Input) { 
+    <SourceCode Collapsed="24" BreakPoints="">bool ValidateInput(object Input) { 
     RoughVertSurf →INI400_005255= Input.Get("RoughVertSurf"); //True - Rough vertical casting joint surface
     bool Result →INI400_000020= true; 
     //Add some limits for inputs?
@@ -52,6 +52,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     //    CASE "SIG": { }  
     //    CASE "STN": { } 
     //    CASE "SIST": { } 
+    //    CASE "UNE": { } 
     //    CASE "SS": { } 
     DEFAULT :  { 
         k →INI400_005271= IO.SetupNA.EC_1992_1_1.k_6_2_4_6; 

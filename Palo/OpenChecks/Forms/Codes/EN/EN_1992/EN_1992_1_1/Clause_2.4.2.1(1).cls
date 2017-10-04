@@ -33,6 +33,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     //    CASE "SIG": { } 
     //    CASE "STN": { } 
     //    CASE "SIST": { } 
+    //    CASE "UNE": { } 
     //    CASE "SS": { } 
     DEFAULT :  { 
         γ↓SH← →INI400_000041= IO.SetupNA.EC_1992_1_1.γ_SH; 

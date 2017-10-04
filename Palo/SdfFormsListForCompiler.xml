@@ -493,6 +493,7 @@
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete\Graphics_5_CSS_with_torsion.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete\Graphics_6_CSS_with_web_flange.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete\Graphics_7_side_view_reinf.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete\Graphics_8_CSS_POD_Char.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete\Overal_Check_SEN.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete\PrepareToCheck2D.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete\SciaConcreteSection.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete" AUTHOR="Nemetschek Scia" />

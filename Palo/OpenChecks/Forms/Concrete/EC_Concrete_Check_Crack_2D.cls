@@ -357,7 +357,7 @@ void CalculateCrack2D(double Surface, double Direction, double ForceIndex, objec
                 //create cross-section
                 →DLO134_042962InputCrack.Set("CssIDCrack", CrosssectionCrack.GetCssID()); 
                 →DLO134_042963InputCrack.Set("CssIDUncrack", CrosssectionUncrack.GetCssID()); 
-                
+                →VAL000_000001InputCrack.Set("ReinfMat", ReinfMatBars[0]); 
                 //loading
                 //characteristic
                 →DLO134_042964InputCrack.Set("N_char", Input.→DLO134_042974RecalcForces[ForceIndex].RecalcForcesChar[dir].nEd); 
@@ -466,11 +466,11 @@ void CalculateAndCheckCrack2D(double Surface, double Direction, double ForceInde
 
 // function for finding indde ofcombination with maximum tensile stress
 private double IndexCombiMaxTensileStress(object RecalcForces, double h, double Surface, double Dir) { 
-    double sigma_max →DLO134_043138= FUNCT_2D.SurfaceStress(RecalcForces[0].RecalcForces[Dir+2*Surface].nEd, RecalcForces[0].RecalcForces[Dir+2*Surface].mEd, h, Surface); 
+    double sigma_max →DLO134_043138= FUNCT_2D.SurfaceStress(RecalcForces[0].RecalcForces[Dir+3*Surface].nEd, RecalcForces[0].RecalcForces[Dir+3*Surface].mEd, h, Surface); 
     double Index →DLO134_043139= 0; 
     IF(RecalcForces.Count &gt; 1) { 
         FOR(i, 1, RecalcForces.Count-1) { 
-            double sigma →DLO134_043140= FUNCT_2D.SurfaceStress(RecalcForces[i].RecalcForces[Dir+2*Surface].nEd, RecalcForces[i].RecalcForces[Dir+2*Surface].mEd, h, Surface); 
+            double sigma →DLO134_043140= FUNCT_2D.SurfaceStress(RecalcForces[i].RecalcForces[Dir+3*Surface].nEd, RecalcForces[i].RecalcForces[Dir+3*Surface].mEd, h, Surface); 
             IF(sigma &gt; sigma_max) { 
                 sigma_max →DLO134_043141= sigma; 
                 Index →DLO134_043142= i; 
@@ -625,7 +625,7 @@ private void GetMaterialCharacteristcics(object ConMat, object ReinfMat, object 
         } 
     } 
     →DLO134_048492BLOCK { 
-        IF(Reinforcement_2D != null) { 
+        IF(Reinforcement_2D != null &amp;&amp; Reinforcement_2D.Count &gt; 0) { 
             →DLO134_048491TEXT("Reinforcement:"); 
             →INI400_014826BLOCK { 
                 →DLO134_048476TEXT("Reinforcement:"); 
@@ -824,7 +824,7 @@ k_SLS_diagram →VAL134_000001= 20;
         w↓-← →DLO134_048586= DetailedOutputCrack[→DLO134_048587FinalOutput.LowerDirection].OutputCrack.w; 
         UC↓-← →DLO134_043061= DetailedOutputCrack[→DLO134_043062FinalOutput.LowerDirection].OutputCrack.UC; 
         w↓max-← →KRS106_000001= DetailedOutputCrack[→KRS106_000002FinalOutput.LowerDirection].OutputCrack.w_max; 
-                
+        
         //upper surface
         N↓cr+← →DLO134_048588= DetailedOutputCrack[2+→DLO134_048589FinalOutput.UpperDirection].OutputCrack.N_cr; 
         M↓cry+← →DLO134_048590= DetailedOutputCrack[2+→DLO134_048591FinalOutput.UpperDirection].OutputCrack.M_cry; 
@@ -935,7 +935,7 @@ IF(IO.IsDrawing) {
             
             object[] obOutputCrack →DLO134_043266= new object[]; 
             //maximal crack width at upper surface
-            →DLO134_048397ForcesPresentation(DetailedOutputCrack[→DLO134_048398FinalOutput.UpperDirection].Forces); 
+            →DLO134_048397ForcesPresentation(DetailedOutputCrack[→DLO134_048398FinalOutput.UpperDirection+2].Forces); 
             →KRS134_000005PAGEBREAK(); 
             →DLO134_048393FUNCT_1D_CRACK.→DLO134_048394GetCharacteristicsTable(DetailedOutputCrack[→DLO134_048395FinalOutput.UpperDirection].OutputCrack.TransformCharUncrack, DetailedOutputCrack[→DLO134_048396FinalOutput.UpperDirection].OutputCrack.TransformCharCrack, FontsAndColors); 
             →KRS134_000006PAGEBREAK(); 
@@ -5786,6 +5786,14 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="VAL000_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="VAL134_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -5843,7 +5851,7 @@ IF(IO.IsDrawing) {
           <ENU>Short|Long</ENU>
         </Texts>
       </TComboBox>
-      <TComboBox Name="" ID="116" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="24" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="_dialog_f_cteff" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1" Index="0">
+      <TComboBox Name="" ID="116" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="24" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="_dialog_f_cteff" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1" Index="1">
         <Texts>
           <ENU>fctm|fctm,fl</ENU>
         </Texts>
@@ -5883,7 +5891,7 @@ IF(IO.IsDrawing) {
           <ENU>Reinforcement</ENU>
         </Texts>
       </TLabel>
-      <TTableInput Name="" ID="112" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="20" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_BasicForces" Value="CO1/1|LC1|0|0|0|15,1|23,8|1,7|0|0║CO1/2|LC2|0|0|0|0|0|0|0|0" CellBG="-1" HeaderBG="-986896" FixedRows="2">
+      <TTableInput Name="" ID="112" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="20" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_BasicForces" Value="CO1/1|LC1|0|0|0|5.1|25.9|1.9|0|0║CO1/2|LC2|0|0|0|0|0|0|0|0" CellBG="-1" HeaderBG="-986896" FixedRows="2">
         <Texts>
           <ENU>CombiID|CombiKey|nx [kN/m]|ny [kN/m]|nxy [kN/m]|mx [kNm/m]|my [kNm/m]|mxy [kNm/m]|qx [kN/m]|qy [kN/m]</ENU>
         </Texts>
@@ -5922,7 +5930,7 @@ IF(IO.IsDrawing) {
         </Texts>
       </TLabel>
       <TDoubleInput Name="" ID="9" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="h" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-      <TComboBox Name="" ID="64" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="15" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="MemberType" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="16|32|64|256|528" Index="-1">
+      <TComboBox Name="" ID="64" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="15" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="MemberType" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="16|32|64|256|528" Index="0">
         <Texts>
           <ENU>Plate|Wall|Shell(Plate)|Shell(Wall)|Deep beam</ENU>
         </Texts>
@@ -6073,7 +6081,7 @@ IF(IO.IsDrawing) {
           </Items>
         </Data>
       </TCustomLibrary>
-      <TCustomLibrary Name="" ID="37" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="15" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="SetupNA" DataFile="EC_NA.xml" Collapsed="True" UseCombo="False" Category="Eurocode NA" Item="Standard EN">
+      <TCustomLibrary Name="" ID="37" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="15" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="SetupNA" DataFile="EC_NA.xml" Collapsed="False" UseCombo="False" Category="Eurocode NA" Item="Sweden SS-EN">
         <Data>
           <Header>
             <PropertySet Symbol="Code" ESA_ID="EC_NA.Code" Unit="" Type="String" />
@@ -6598,30 +6606,30 @@ IF(IO.IsDrawing) {
           <Items>
             <Item>
               <P>Eurocode NA</P>
-              <P>Standard EN</P>
-              <P>STD</P>
+              <P>Sweden SS-EN</P>
+              <P>SS</P>
+              <P>20</P>
+              <P>SS EN 1990</P>
+              <P>SS EN 1991-1-1</P>
+              <P>SS EN 1991-1-2</P>
+              <P>SS EN 1991-1-3</P>
               <P>0</P>
-              <P>EC EN 1990</P>
-              <P>EC EN 1991-1-1</P>
-              <P>EC EN 1991-1-2</P>
-              <P>EC EN 1991-1-3</P>
-              <P>0</P>
               <P>NaN</P>
-              <P>True;2;</P>
+              <P>False;1;</P>
               <P>NaN</P>
               <P>NaN</P>
-              <P>1.0</P>
+              <P>NaN</P>
               <P>NaN</P>
               <P>True</P>
               <P>1.6</P>
-              <P>2.0</P>
+              <P>1.6</P>
               <P>NaN</P>
               <P>0.8;4;5;15;</P>
               <P>True</P>
               <P>True</P>
               <P>True</P>
               <P>NaN</P>
-              <P>EC EN 1991-1-4</P>
+              <P>SS EN 1991-1-4</P>
               <P>NaN</P>
               <P>NaN</P>
               <P>1</P>
@@ -6638,21 +6646,21 @@ IF(IO.IsDrawing) {
               <P>False</P>
               <P>True</P>
               <P>NaN</P>
-              <P>EC EN 1991-1-5</P>
-              <P>EC EN 1991-1-6</P>
-              <P>EC EN 1991-1-7</P>
-              <P>EC EN 1991-2</P>
-              <P>EC EN 1991-3</P>
-              <P>EC EN 1991-4</P>
-              <P>EC EN 1992-1-1</P>
+              <P>SS EN 1991-1-5</P>
+              <P>SS EN 1991-1-6</P>
+              <P>SS EN 1991-1-7</P>
+              <P>SS EN 1991-2</P>
+              <P>SS EN 1991-3</P>
+              <P>SS EN 1991-4</P>
+              <P>SS EN 1992-1-1:2005/NA:2010-12</P>
               <P>1</P>
               <P>1</P>
               <P>1.3</P>
               <P>1.2</P>
               <P>1.5;1.15;1.15;1.2;1.0;1.0;</P>
               <P>1;1;</P>
-              <P>90</P>
-              <P>0.85</P>
+              <P>100</P>
+              <P>1</P>
               <P>1</P>
               <P>1</P>
               <P>600</P>
@@ -6666,7 +6674,7 @@ IF(IO.IsDrawing) {
               <P>5;10;15;</P>
               <P>10</P>
               <P>0;5;10;</P>
-              <P>40;75;5;</P>
+              <P>15;65;5;</P>
               <P>0.005</P>
               <P>0.44;NaN;0.54;NaN;0.7;0.8;</P>
               <P>NaN</P>
@@ -6679,7 +6687,7 @@ IF(IO.IsDrawing) {
               <P>1.05;0.95;1.1;0.9;1;1;</P>
               <P>NaN;NaN;0.15;</P>
               <P>NaN</P>
-              <P>0.380482;0.785398;</P>
+              <P>0.321664;0.785398;</P>
               <P>NaN;NaN;</P>
               <P>26.5;45;38.6;45;</P>
               <P>0.4</P>
@@ -6691,8 +6699,8 @@ IF(IO.IsDrawing) {
               <P>0.6</P>
               <P>0.45</P>
               <P>0.8;1;0.75;</P>
-              <P>0.4;0.3;0.3;0.2;0.2;NaN;</P>
-              <P>3.4;0.425;</P>
+              <P>NaN;NaN;NaN;NaN;NaN;NaN;</P>
+              <P>NaN;0.425;</P>
               <P>1;5;</P>
               <P>NaN</P>
               <P>NaN</P>
@@ -6708,7 +6716,7 @@ IF(IO.IsDrawing) {
               <P>NaN</P>
               <P>NaN</P>
               <P>8</P>
-              <P>NaN</P>
+              <P>0.2</P>
               <P>NaN</P>
               <P>NaN</P>
               <P>NaN</P>
@@ -6720,39 +6728,39 @@ IF(IO.IsDrawing) {
               <P>10</P>
               <P>5;8;</P>
               <P>600;NaN;</P>
-              <P>0.8;0.8;</P>
+              <P>1.0;0.5;</P>
               <P>1.5</P>
               <P>0.25</P>
               <P>0.5</P>
-              <P>EC EN 1992-1-2</P>
-              <P>EC EN 1992-2</P>
-              <P>EC EN 1992-3</P>
-              <P>EC EN 1993-1-1</P>
+              <P>SS EN 1992-1-2</P>
+              <P>SS EN 1992-2</P>
+              <P>SS EN 1992-3</P>
+              <P>SS EN 1993-1-1</P>
               <P>NaN;NaN;</P>
               <P>1;1;1.25;</P>
-              <P>EC EN 1993-1-2</P>
-              <P>EC EN 1993-1-3</P>
-              <P>EC EN 1993-1-4</P>
-              <P>EC EN 1993-1-5</P>
+              <P>SS EN 1993-1-2</P>
+              <P>SS EN 1993-1-3</P>
+              <P>SS EN 1993-1-4</P>
+              <P>SS EN 1993-1-5</P>
               <P>1.20;1.00;</P>
-              <P>EC EN 1993-1-6</P>
-              <P>EC EN 1993-1-7</P>
-              <P>EC EN 1993-1-8</P>
+              <P>SS EN 1993-1-6</P>
+              <P>SS EN 1993-1-7</P>
+              <P>SS EN 1993-1-8</P>
               <P>1.25;1.25;1.1;1.0;1.0;1.0;1.1;</P>
-              <P>EC EN 1993-1-9</P>
-              <P>EC EN 1993-1-10</P>
-              <P>EC EN 1993-1-11</P>
-              <P>EC EN 1993-1-12</P>
-              <P>EC EN 1993-2</P>
+              <P>SS EN 1993-1-9</P>
+              <P>SS EN 1993-1-10</P>
+              <P>SS EN 1993-1-11</P>
+              <P>SS EN 1993-1-12</P>
+              <P>SS EN 1993-2</P>
               <P>1.0;1.1;1.25;1.25;1.1;1.1;1.1;1.0;1.1;</P>
-              <P>EC EN 1993-3-1</P>
-              <P>EC EN 1993-3-2</P>
-              <P>EC EN 1993-4-1</P>
-              <P>EC EN 1993-4-2</P>
-              <P>EC EN 1993-4-3</P>
-              <P>EC EN 1993-5</P>
-              <P>EC EN 1993-6</P>
-              <P>EC EN 1994-1-1</P>
+              <P>SS EN 1993-3-1</P>
+              <P>SS EN 1993-3-2</P>
+              <P>SS EN 1993-4-1</P>
+              <P>SS EN 1993-4-2</P>
+              <P>SS EN 1993-4-3</P>
+              <P>SS EN 1993-5</P>
+              <P>SS EN 1993-6</P>
+              <P>SS EN 1994-1-1</P>
               <P>1;1;</P>
               <P>1.25</P>
               <P>1.25</P>
@@ -6772,14 +6780,14 @@ IF(IO.IsDrawing) {
               <P>0.5</P>
               <P>1.25</P>
               <P>1.25</P>
-              <P>EC EN 1994-1-2</P>
-              <P>EC EN 1994-2</P>
-              <P>EC EN 1995-1-1</P>
+              <P>SS EN 1994-1-2</P>
+              <P>SS EN 1994-2</P>
+              <P>SS EN 1995-1-1</P>
               <P>NaN</P>
               <P>0.67;0.67;1.0;</P>
-              <P>EC EN 1995-1-2</P>
-              <P>EC EN 1995-2</P>
-              <P>EC EN 1996-1-1</P>
+              <P>SS EN 1995-1-2</P>
+              <P>SS EN 1995-2</P>
+              <P>SS EN 1996-1-1</P>
               <P>NaN</P>
               <P>1</P>
               <P>NaN</P>
@@ -6787,27 +6795,27 @@ IF(IO.IsDrawing) {
               <P>1000</P>
               <P>NaN;NaN;NaN;</P>
               <P>NaN</P>
-              <P>EC EN 1996-1-2</P>
-              <P>EC EN 1996-2</P>
-              <P>EC EN 1996-3</P>
-              <P>EC EN 1997-1</P>
+              <P>SS EN 1996-1-2</P>
+              <P>SS EN 1996-2</P>
+              <P>SS EN 1996-3</P>
+              <P>SS EN 1997-1</P>
               <P>1.1;0.9;1.5;0;</P>
               <P>1.25;1.25;1.4;1.4;1.0;</P>
               <P>1.35;1;1.5;0;1;1;1.3;0;</P>
               <P>1;1;1;1;1;1.25;1.25;1.4;1.4;1;</P>
               <P>1;1;1.4;1.1;1;1;</P>
-              <P>EC EN 1997-2</P>
-              <P>EC EN 1998-1</P>
-              <P>EC EN 1998-2</P>
-              <P>EC EN 1998-3</P>
-              <P>EC EN 1998-4</P>
-              <P>EC EN 1998-5</P>
-              <P>EC EN 1998-6</P>
-              <P>EC EN 1999-1-1</P>
-              <P>EC EN 1999-1-2</P>
-              <P>EC EN 1999-1-3</P>
-              <P>EC EN 1999-1-4</P>
-              <P>EC EN 1999-1-5</P>
+              <P>SS EN 1997-2</P>
+              <P>SS EN 1998-1</P>
+              <P>SS EN 1998-2</P>
+              <P>SS EN 1998-3</P>
+              <P>SS EN 1998-4</P>
+              <P>SS EN 1998-5</P>
+              <P>SS EN 1998-6</P>
+              <P>SS EN 1999-1-1</P>
+              <P>SS EN 1999-1-2</P>
+              <P>SS EN 1999-1-3</P>
+              <P>SS EN 1999-1-4</P>
+              <P>SS EN 1999-1-5</P>
             </Item>
           </Items>
         </Data>

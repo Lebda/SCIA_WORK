@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="bb92d589-0fc6-4c55-83e6-637a3d4b49ec">
   <CodeEditor>
-    <SourceCode Collapsed="4|70|133|166|214" BreakPoints="">→INI400_000001TEXT("Cross Section Classification according to NBR-8800"); 
+    <SourceCode Collapsed="4|70|133|166|214|270|359|526|585|647|919|1112|1288|1422" BreakPoints="">→INI400_000001TEXT("Cross Section Classification according to NBR-8800"); 
 //REV: revised in 06/04/2016
 //object STEEL →INI400_000067= IO.STEEL.US; // creating steel 
 object STEEL →MPF000_000001= IO.Material.NBR; 
@@ -78,7 +78,7 @@ object STEEL →MPF000_000001= IO.Material.NBR;
     IF(UserTable) { 
         object CS →INI400_000385= IO.CSS; 
         FormCode →INI400_000409= CS.Geometry.FormCode; 
-        IF(FormCode == 2001) { FormCode →MPF000_000040= 5; } 
+        //   IF(FormCode == 2001) { FormCode →MPF000_000040= 5; }  // 01/05/2017
         IF(FormCode == 101) { 
             
             // REV: revised in 06/04/2016
@@ -100,7 +100,7 @@ object STEEL →MPF000_000001= IO.Material.NBR;
     } ELSE { 
         object CS →INI400_000394= IO.CS; 
         FormCode →INI400_000410= CS.Geometry.FormCode; 
-        IF(FormCode == 2001) { FormCode →MPF000_000041= 5; } 
+        //    IF(FormCode == 2001) { FormCode →MPF000_000041= 5; }  // 01/05/2017
         IF(FormCode == 101) { 
             IF(CS.Geometry.Contains("s")) { 
                 
@@ -264,78 +264,372 @@ double SteelPressureClass(object CS, double fy, double Fabrication, object Class
     
     IF((FormCode != 1) &amp;&amp; (FormCode != 2) &amp;&amp; (FormCode != 3) &amp;&amp; (FormCode != 4) &amp;&amp; (FormCode != 101) &amp;&amp; (FormCode != 5) &amp;&amp; (FormCode != 6) &amp;&amp; (FormCode != 2001)) { 
         →INI400_000615TEXT("Compression: Type of section not covered by this routine!"); 
-        Exit(); 
+        // Exit(); 
+
     } 
-    // for I and U sections hot rolled and welded
-    →INI400_001725BLOCK("Steel Section Classification for Pressure - Table F.1 - NBR-8800") { 
-        
-        IF((FormCode == 1 || FormCode == 5) &amp;&amp; (Fabrication == 0 || Fabrication == 1)) { 
-            // reading variables
-            →INI400_001675BLOCK { 
-                IF(CS.Geometry.Contains("s")) { 
-                    //REV: revises in 07/04/2016
-                    bf →MPF000_000066= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; 
-                    tf →MPF000_000067= CS.Geometry.Contains("t") ? CS.Geometry.t : CS.Geometry.t; 
-                    tw →MPF000_000068= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.s; 
+    ELSE { 
+        // for I and U sections hot rolled and welded
+        →INI400_001725BLOCK("Steel Section Classification for Pressure - Table F.1 - NBR-8800") { 
+            
+            IF((FormCode == 1 || FormCode == 5) &amp;&amp; (Fabrication == 0 || Fabrication == 1)) { 
+                // reading variables
+                →INI400_001675BLOCK { 
+                    IF(CS.Geometry.Contains("s")) { 
+                        //REV: revises in 07/04/2016
+                        bf →MPF000_000066= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; 
+                        tf →MPF000_000067= CS.Geometry.Contains("t") ? CS.Geometry.t : CS.Geometry.t; 
+                        tw →MPF000_000068= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.s; 
+                        
+                    } ELSE { 
+                        bf →INI400_001814= CS.Geometry.Bb; 
+                        tf →INI400_001815= CS.Geometry.thb; 
+                        tw →INI400_001816= CS.Geometry.tha; 
+                    } 
+                } 
+                →INI400_001787PAGEBREAK(); 
+                // Flanges
+                →INI400_001726BLOCK("Checking Flanges") { 
+                    →INI400_000013double aux1; 
+                    →INI400_000021double aux2; 
                     
-                } ELSE { 
-                    bf →INI400_001814= CS.Geometry.Bb; 
-                    tf →INI400_001815= CS.Geometry.thb; 
-                    tw →INI400_001816= CS.Geometry.tha; 
+                    λf →INI400_000025= 0; 
+                    IF(Fabrication == 0) { // if hot rolled
+                        λ↓pf← →INI400_000009= 0.56*SQRT(E/fy); 
+                    } 
+                    IF(Fabrication == 1) { // if welded
+                        // h →INI400_000210= CS.Geometry.Contains("H") ? CS.Geometry.H-2*tf : CS.Geometry.h-2*tf; 
+                        IF(CS.Geometry.Contains("H")) { h →MPF001_000011= CS.Geometry.H-2*tf; } 
+                        ELSE { h →MPF001_000010= CS.Geometry.Contains("h") ? CS.Geometry.h-2*tf : CS.Geometry.Ba-2*tf; } 
+                        
+                        k↓c← →INI400_000212= 4/(SQRT(h/tw)); 
+                        λ↓pf← →INI400_000209= 0.64*SQRT(E/(fy/k↓c←)); 
+                    } 
+                    ClassParam.kc →INI400_001658= k↓c←; 
+                    
+                    IF(FormCode == 1) { // if I-section 
+                        λf →INI400_000010= bf/(2*tf); 
+                    } ELSE { // if U-Section} 
+                        λf →INI400_000024= bf/tf; 
+                    } 
+                    
+                    ClassParam.λpf →INI400_000925= λ↓pf←; 
+                    ClassParam.λf →INI400_001661= λf; 
+                    IF(λf &lt;= λ↓pf←) { 
+                        aux1 →INI400_000014= 0; 
+                    } ELSE { 
+                        aux1 →INI400_000015= 1; 
+                    } 
+                    
+                    
+                    
+                    →INI400_001771PAGEBREAK(); 
+                    
+                    // Web - classification parameters are the same for hot rolled and welded
+                    →INI400_001727BLOCK("Checking Web") { 
+                        λ↓pw← →INI400_000016= 1.49*SQRT(E/fy); 
+                        λw →INI400_000026= 0; 
+                        IF(CS.Geometry.Contains("h")) { 
+                            d →INI400_000158= CS.Geometry.Contains("H") ? CS.Geometry.H-2*tf : CS.Geometry.h-2*tf; 
+                        } ELSE { 
+                            d →INI400_001873= CS.Geometry.Contains("H") ? CS.Geometry.H-2*tf : CS.Geometry.Ba-2*tf; 
+                        } 
+                        λw →INI400_000017= d/tw; 
+                        ClassParam.λw →INI400_000877= λw; 
+                        ClassParam.λpw →INI400_000927= λ↓pw←; 
+                        
+                        IF(λw &lt;= λ↓pw←) { 
+                            aux2 →INI400_000022= 0; 
+                        } ELSE { 
+                            aux2 →INI400_000023= 1; 
+                        } 
+                    } 
+                    
+                    IF((aux1 == 0) &amp;&amp; (aux2 == 0)) { 
+                        return 0; 
+                    } 
+                    IF(((aux1 == 0) &amp;&amp; (aux2 == 1)) || ((aux1 == 1) &amp;&amp; (aux2 == 0))) { 
+                        return 1; 
+                    } 
+                    IF(aux1 == 1 &amp;&amp; aux2 == 1) { 
+                        return 1; 
+                    } 
+                    IF((aux1 == 2) || (aux2 == 2)) { 
+                        return 2; 
+                    } 
                 } 
             } 
-            →INI400_001787PAGEBREAK(); 
-            // Flanges
-            →INI400_001726BLOCK("Checking Flanges") { 
-                →INI400_000013double aux1; 
-                →INI400_000021double aux2; 
-                
-                λf →INI400_000025= 0; 
-                IF(Fabrication == 0) { // if hot rolled
-                    λ↓pf← →INI400_000009= 0.56*SQRT(E/fy); 
-                } 
-                IF(Fabrication == 1) { // if welded
-                    h →INI400_000210= CS.Geometry.Contains("H") ? CS.Geometry.H-2*tf : CS.Geometry.h-2*tf; 
-                    k↓c← →INI400_000212= 4/(SQRT(h/tw)); 
-                    λ↓pf← →INI400_000209= 0.64*SQRT(E/(fy/k↓c←)); 
-                } 
-                ClassParam.kc →INI400_001658= k↓c←; 
-                
-                IF(FormCode == 1) { // if I-section 
-                    λf →INI400_000010= bf/(2*tf); 
-                } ELSE { // if U-Section} 
-                    λf →INI400_000024= bf/tf; 
-                } 
-                
-                ClassParam.λpf →INI400_000925= λ↓pf←; 
-                ClassParam.λf →INI400_001661= λf; 
-                IF(λf &lt;= λ↓pf←) { 
-                    aux1 →INI400_000014= 0; 
-                } ELSE { 
-                    aux1 →INI400_000015= 1; 
-                } 
-                
-                
-                
-                →INI400_001771PAGEBREAK(); 
-                
-                // Web - classification parameters are the same for hot rolled and welded
-                →INI400_001727BLOCK("Checking Web") { 
-                    λ↓pw← →INI400_000016= 1.49*SQRT(E/fy); 
-                    λw →INI400_000026= 0; 
-                    IF(CS.Geometry.Contains("h")) { 
-                        d →INI400_000158= CS.Geometry.Contains("H") ? CS.Geometry.H-2*tf : CS.Geometry.h-2*tf; 
+            // For single symmteric I-Section
+
+            IF(FormCode == 101) { 
+                →INI400_000902BLOCK { 
+                    IF(CS.Geometry.Contains("s")) { 
+                        //REV: revised in 07/04/2016
+                        bb →MPF000_000115= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
+                        tb →MPF000_000116= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
+                        bt →MPF000_000117= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
+                        tt →MPF000_000118= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
+                        tw →MPF000_000119= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+                        h →MPF000_000120= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
+
+                        
                     } ELSE { 
-                        d →INI400_001873= CS.Geometry.Contains("H") ? CS.Geometry.H-2*tf : CS.Geometry.Ba-2*tf; 
+                        // REV: revised in 06/04/2016
+
+                        bb →MPF000_000139= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
+                        tb →MPF000_000140= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
+                        bt →MPF000_000141= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
+                        tt →MPF000_000142= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
+                        tw →MPF000_000143= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+                        h →MPF000_000144= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
+
+                        
                     } 
-                    λw →INI400_000017= d/tw; 
-                    ClassParam.λw →INI400_000877= λw; 
-                    ClassParam.λpw →INI400_000927= λ↓pw←; 
+                    
+                    
+                    d →INI400_001829= h-tt-tb; // free depth 
+                    Z↓x← →INI400_001830= CS.Chars.Wply; 
+                    Wy →INI400_001831= CS.Chars.Welz; 
+                } 
+                →INI400_001732PAGEBREAK(); 
+                // Checking Flanges
+                →INI400_001728BLOCK("Checking Flanges") { 
+                    
+                    λf1 →INI400_000490= bb/(2*tb); // bottom flange slenderness
+                    λf2 →INI400_000491= bt/(2*tt); // top flange slenderness
+                    ClassParam.λf →INI400_000883= MAX(λf1, λf2); 
+                    // tests for fabrication
+                    IF(Fabrication == 0) { // if hot rolled
+                        λ↓pf← →INI400_000493= 0.56*SQRT(E/fy); 
+                    } 
+                    IF(Fabrication == 1) { // if welded
+                        k↓c← →INI400_000492= 4/(SQRT(h/tw)); 
+                        λ↓pf← →INI400_000494= 0.64*SQRT(E/(fy/k↓c←)); 
+                        ClassParam.kc →INI400_000928= k↓c←; 
+                    } 
+                    →INI400_000929ClassParam.λpf; 
+                    
+                    IF(λf1 &lt;= λ↓pf← &amp;&amp; λf2 &lt;= λ↓pf←) { 
+                        aux1 →INI400_000495= 0; 
+                    } 
+                    IF(λf1 &gt; λ↓pf← || λf2 &gt; λ↓pf←) { 
+                        aux1 →INI400_000496= 1; 
+                    } 
+                } 
+                →INI400_001786PAGEBREAK(); 
+                // checking Web
+                →INI400_001729BLOCK("Checking Web") { 
+                    λ↓pw← →INI400_000498= 1.49*SQRT(E/fy); 
+                    λw →INI400_000499= 0; 
+                    IF(CS.Geometry.Contains("h")) { 
+                        d →MPF000_000187= h-2*tf; 
+                        
+                    } ELSE { 
+                        d →MPF000_000188= h-2*tf; 
+                        
+                    } 
+                    
+                    λw →INI400_000502= d/tw; 
+                    ClassParam.λw →INI400_000884= λw; 
+                    ClassParam.λpw →INI400_000930= λ↓pw←; 
                     
                     IF(λw &lt;= λ↓pw←) { 
-                        aux2 →INI400_000022= 0; 
+                        aux2 →INI400_000503= 0; 
                     } ELSE { 
-                        aux2 →INI400_000023= 1; 
+                        aux2 →INI400_000504= 1; 
+                    } 
+                } 
+                IF((aux1 == 0) &amp;&amp; (aux2 == 0)) { 
+                    return 0; 
+                } 
+                IF(((aux1 == 0) &amp;&amp; (aux2 == 1)) || ((aux1 == 1) &amp;&amp; (aux2 == 0))) { 
+                    return 1; 
+                } 
+                IF(aux1 == 1 &amp;&amp; aux2 == 1) { 
+                    return 1; 
+                } 
+                IF((aux1 == 2) || (aux2 == 2)) { 
+                    return 2; 
+                } 
+            } 
+            
+            // for steel hollow rectangular sections - hot rolled / box welded
+
+            IF((FormCode == 2 || FormCode == 2001) &amp;&amp; (Fabrication == 0 || Fabrication == 1)) { 
+                // reading variables
+                →INI400_001677BLOCK { 
+                    
+                    IF(FormCode == 2001) { 
+                        
+                        h →MPF001_000006= CS.Geometry.Bb; 
+                        bf →MPF001_000007= CS.Geometry.Ba; 
+                        tw →MPF001_000008= CS.Geometry.thb; 
+                        tf →MPF001_000009= CS.Geometry.tha; 
+                        b1 →MPF001_000018= h-2*tf; 
+                        b2 →MPF001_000019= bf-2*tw; 
+                        
+                    } 
+                    ELSE { 
+                        //  REV:  revised in 07/04/2016
+                        h →MPF000_000075= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; // out-to-out depth
+                        bf →MPF000_000076= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; // out-to-out width
+                        r1 →INI400_000206= CS.Geometry.r1; // inner radius
+                        tf →INI400_000160= CS.Geometry.s; 
+                        tw →INI400_000163= CS.Geometry.s; 
+                        
+                        
+                        b1 →INI400_000092= h-2*(r1+tf); 
+                        
+                        b2 →INI400_000094= bf-2*(r1+tw); 
+                    } 
+                } 
+                →INI400_001788PAGEBREAK(); 
+                // tests if hot rolled or welded        
+                IF(Fabrication == 0) { 
+                    λ↓pw← →INI400_000090= 1.4*SQRT(E/fy); 
+                    λ↓pf← →INI400_000372= λ↓pw←; 
+                } ELSE { 
+                    λ↓pw← →INI400_000205= 1.49*SQRT(E/fy); 
+                    λ↓pf← →INI400_000373= λ↓pw←; 
+                } 
+                ClassParam.λpw →INI400_000931= λ↓pw←; 
+                ClassParam.λpf →INI400_000932= λ↓pf←; 
+                
+                // defining web slenderness
+                λw →INI400_000093= b1/tw; 
+                ClassParam.λw →INI400_000933= λw; 
+                IF(λw &lt;= λ↓pw←) { 
+                    aux1 →INI400_000096= 0; 
+                } ELSE { 
+                    aux1 →INI400_000619= 1; 
+                } 
+                
+                // defining flange slenderness
+                λf →INI400_000095= b2/tf; 
+                ClassParam.λf →INI400_000934= λf; 
+                IF(λf &lt;= λ↓pf←) { 
+                    aux2 →INI400_000098= 0; 
+                } ELSE { 
+                    aux2 →INI400_000620= 1; 
+                } 
+                
+                IF((aux1 == 0) &amp;&amp; (aux2 == 0)) { 
+                    return 0; 
+                } 
+                IF(((aux1 == 0) &amp;&amp; (aux2 == 1)) || ((aux1 == 1) &amp;&amp; (aux2 == 0))) { 
+                    return 1; 
+                } 
+                IF(aux1 == 1 &amp;&amp; aux2 == 1) { 
+                    return 1; 
+                } 
+                IF((aux1 == 2) || (aux2 == 2)) { 
+                    return 2; 
+                } 
+            } 
+            
+            // for hot rolled Angles
+            IF(FormCode == 4 &amp;&amp; Fabrication == 0) { 
+                
+                // Reading variables
+                →INI400_001685BLOCK { 
+                    //REV: revised in 07/04/2016
+
+                    tw →MPF000_000097= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.t; 
+                    tf →MPF000_000100= tw; 
+                    h →MPF000_000098= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; 
+                    bf →MPF000_000099= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; 
+                    
+                    
+                } 
+                →INI400_001789PAGEBREAK(); 
+                // Welded sections not covered
+                IF(Fabrication == 1) { 
+                    →INI400_000616TEXT("Section not Covered by this routine!"); 
+                    Exit(); 
+                } 
+                λ↓pw← →INI400_000104= 0.45*SQRT(E/fy); 
+                λ↓pf← →INI400_000374= λ↓pw←; 
+                ClassParam.λpw →INI400_000935= λ↓pw←; 
+                ClassParam.λpf →INI400_000936= λ↓pf←; 
+                
+                →INI400_000292TEXT("Checking Leg 1"); 
+                λf →INI400_000107= bf/tf; 
+                ClassParam.λf →INI400_000937= λf; 
+                
+                IF(λf &lt;= λ↓pf←) { 
+                    aux1 →INI400_000105= 0; 
+                } ELSE { 
+                    aux1 →INI400_000617= 1; 
+                } 
+                
+                →INI400_000293TEXT("Checking Leg 2"); 
+                λw →INI400_000109= h/tw; 
+                ClassParam.λw →INI400_000938= λw; 
+                
+                IF(λw &lt;= λ↓pw←) { 
+                    aux2 →INI400_000108= 0; 
+                } ELSE { 
+                    aux2 →INI400_000618= 1; 
+                } 
+                
+                IF((aux1 == 0) &amp;&amp; (aux2 == 0)) { 
+                    return 0; 
+                } 
+                IF(((aux1 == 0) &amp;&amp; (aux2 == 1)) || ((aux1 == 1) &amp;&amp; (aux2 == 0))) { 
+                    return 1; 
+                } 
+                IF(aux1 == 1 &amp;&amp; aux2 == 1) { 
+                    return 1; 
+                } 
+                IF((aux1 == 2) || (aux2 == 2)) { 
+                    return 2; 
+                } 
+            } 
+            
+            // for T-Sections - hot rolled and welded       
+            IF((FormCode == 6) &amp;&amp; (Fabrication == 0 || Fabrication == 1)) { 
+                
+                // reading variables
+                →INI400_001688BLOCK { 
+                    //REV: revised in 06/04/2016
+
+                    tw →MPF000_000101= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+                    h →MPF000_000102= CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : (CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h); 
+                    
+                    tf →MPF000_000056= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.t; 
+                    bf →MPF000_000057= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : (CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b); 
+                    
+                } 
+                →INI400_001790PAGEBREAK(); 
+                // Flanges
+                →INI400_001730BLOCK("Checking Flanges") { 
+                    IF(Fabrication == 0) { // if hot rolled 
+                        λ↓pf← →INI400_000110= 0.56*SQRT(E/fy); 
+                    } ELSE { // if welded
+                        double k↓c← →INI400_000215= 4/(SQRT(h/tw)); 
+                        λ↓pf← →INI400_000216= 0.64*SQRT(E/(fy/k↓c←)); 
+                    } 
+                    ClassParam.λpf →INI400_000939= λ↓pf←; 
+                    λf →INI400_000112= bf/(2*tf); 
+                    ClassParam.λf →INI400_000940= λf; 
+                    
+                    IF(λf &lt;= λ↓pf←) { 
+                        aux1 →INI400_000111= 0; 
+                    } ELSE { 
+                        →INI400_000117aux1 == 1; 
+                    } 
+                } 
+                →INI400_001791PAGEBREAK(); 
+                // Webs NBR-8800 does not make difference for hot rolled or welded for this classification
+                →INI400_001731BLOCK("Checking Web") { 
+                    λ↓pw← →INI400_000113= 0.75*SQRT(E/fy); 
+                    λw →INI400_000119= h/tw; 
+                    ClassParam.λpw →INI400_000941= λ↓pw←; 
+                    ClassParam.λw →INI400_000942= λw; 
+                    
+                    IF(λw &lt;= λ↓pw←) { 
+                        aux2 →INI400_000114= 0; 
+                    } ELSE { 
+                        aux2 →INI400_000523= 1; 
                     } 
                 } 
                 
@@ -352,329 +646,43 @@ double SteelPressureClass(object CS, double fy, double Fabrication, object Class
                     return 2; 
                 } 
             } 
-        } 
-        // For single symmteric I-Section
-
-        IF(FormCode == 101) { 
-            →INI400_000902BLOCK { 
-                IF(CS.Geometry.Contains("s")) { 
+            
+            // for hollow circular sections
+            IF(FormCode == 3) { 
+                // reading section properties
+                →INI400_001691BLOCK { 
                     //REV: revised in 07/04/2016
-                    bb →MPF000_000115= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
-                    tb →MPF000_000116= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
-                    bt →MPF000_000117= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
-                    tt →MPF000_000118= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
-                    tw →MPF000_000119= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-                    h →MPF000_000120= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
 
-                    
-                } ELSE { 
-                    // REV: revised in 06/04/2016
-
-                    bb →MPF000_000139= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
-                    tb →MPF000_000140= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
-                    bt →MPF000_000141= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
-                    tt →MPF000_000142= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
-                    tw →MPF000_000143= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-                    h →MPF000_000144= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
-
-                    
+                    D →INI400_000281= CS.Geometry.Contains("D") ? CS.Geometry.D : CS.Geometry.d; 
+                    tw →INI400_000283= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.w; 
                 } 
-                
-                
-                d →INI400_001829= h-tt-tb; // free depth 
-                Z↓x← →INI400_001830= CS.Chars.Wply; 
-                Wy →INI400_001831= CS.Chars.Welz; 
-            } 
-            →INI400_001732PAGEBREAK(); 
-            // Checking Flanges
-            →INI400_001728BLOCK("Checking Flanges") { 
-                
-                λf1 →INI400_000490= bb/(2*tb); // bottom flange slenderness
-                λf2 →INI400_000491= bt/(2*tt); // top flange slenderness
-                ClassParam.λf →INI400_000883= MAX(λf1, λf2); 
-                // tests for fabrication
-                IF(Fabrication == 0) { // if hot rolled
-                    λ↓pf← →INI400_000493= 0.56*SQRT(E/fy); 
-                } 
-                IF(Fabrication == 1) { // if welded
-                    k↓c← →INI400_000492= 4/(SQRT(h/tw)); 
-                    λ↓pf← →INI400_000494= 0.64*SQRT(E/(fy/k↓c←)); 
-                    ClassParam.kc →INI400_000928= k↓c←; 
-                } 
-                →INI400_000929ClassParam.λpf; 
-                
-                IF(λf1 &lt;= λ↓pf← &amp;&amp; λf2 &lt;= λ↓pf←) { 
-                    aux1 →INI400_000495= 0; 
-                } 
-                IF(λf1 &gt; λ↓pf← || λf2 &gt; λ↓pf←) { 
-                    aux1 →INI400_000496= 1; 
-                } 
-            } 
-            →INI400_001786PAGEBREAK(); 
-            // checking Web
-            →INI400_001729BLOCK("Checking Web") { 
-                λ↓pw← →INI400_000498= 1.49*SQRT(E/fy); 
-                λw →INI400_000499= 0; 
-                IF(CS.Geometry.Contains("h")) { 
-                    d →MPF000_000187= h-2*tf; 
-                    
-                } ELSE { 
-                    d →MPF000_000188= h-2*tf; 
-                    
-                } 
-                
-                λw →INI400_000502= d/tw; 
-                ClassParam.λw →INI400_000884= λw; 
-                ClassParam.λpw →INI400_000930= λ↓pw←; 
+                →INI400_001792PAGEBREAK(); 
+                λ↓pw← →INI400_000284= 0.11*(E/fy); 
+                λ↓rw← →INI400_000285= 0.45*(E/fy); 
+                λw →INI400_000289= D/tw; 
+                ClassParam.λpw →INI400_000943= λ↓pw←; 
+                ClassParam.λrw →INI400_000944= λ↓rw←; 
+                ClassParam.λw →INI400_000945= λw; 
                 
                 IF(λw &lt;= λ↓pw←) { 
-                    aux2 →INI400_000503= 0; 
+                    aux1 →INI400_000286= 0; 
                 } ELSE { 
-                    aux2 →INI400_000504= 1; 
+                    IF(λw &lt;= λ↓rw←) { 
+                        aux1 →INI400_000287= 1; 
+                    } ELSE { 
+                        →INI400_000288TEXT("Ratio D/t is not allowed by the code!"); 
+                        aux1 →INI400_000621= 3; 
+                        Exit(); } 
                 } 
-            } 
-            IF((aux1 == 0) &amp;&amp; (aux2 == 0)) { 
-                return 0; 
-            } 
-            IF(((aux1 == 0) &amp;&amp; (aux2 == 1)) || ((aux1 == 1) &amp;&amp; (aux2 == 0))) { 
-                return 1; 
-            } 
-            IF(aux1 == 1 &amp;&amp; aux2 == 1) { 
-                return 1; 
-            } 
-            IF((aux1 == 2) || (aux2 == 2)) { 
-                return 2; 
-            } 
-        } 
-        
-        // for steel hollow rectangular sections - hot rolled / box welded
-
-        IF((FormCode == 2 || FormCode == 2001) &amp;&amp; (Fabrication == 0 || Fabrication == 1)) { 
-            // reading variables
-            →INI400_001677BLOCK { 
-                
-                IF(FormCode == 2001) { 
-                    
-                    h →MPF001_000006= CS.Geometry.Bb; 
-                    bf →MPF001_000007= CS.Geometry.Ba; 
-                    tw →MPF001_000008= CS.Geometry.thb; 
-                    tf →MPF001_000009= CS.Geometry.tha; 
-                    
+                IF(aux1 == 0) { 
+                    return 0; 
                 } 
-                ELSE { 
-                    //  REV:  revised in 07/04/2016
-                    h →MPF000_000075= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; // out-to-out depth
-                    bf →MPF000_000076= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; // out-to-out width
-                    r1 →INI400_000206= CS.Geometry.r1; // inner radius
-                    tf →INI400_000160= CS.Geometry.s; 
-                    tw →INI400_000163= CS.Geometry.s; 
-                    
-                    
-                    b1 →INI400_000092= h-2*(r1+tf); 
-                    
-                    b2 →INI400_000094= bf-2*(r1+tw); 
+                IF(aux1 == 1) { 
+                    return 1; 
                 } 
-            } 
-            →INI400_001788PAGEBREAK(); 
-            // tests if hot rolled or welded        
-            IF(Fabrication == 0) { 
-                λ↓pw← →INI400_000090= 1.4*SQRT(E/fy); 
-                λ↓pf← →INI400_000372= λ↓pw←; 
-            } ELSE { 
-                λ↓pw← →INI400_000205= 1.49*SQRT(E/fy); 
-                λ↓pf← →INI400_000373= λ↓pw←; 
-            } 
-            ClassParam.λpw →INI400_000931= λ↓pw←; 
-            ClassParam.λpf →INI400_000932= λ↓pf←; 
-            
-            // defining web slenderness
-            λw →INI400_000093= b1/tw; 
-            ClassParam.λw →INI400_000933= λw; 
-            IF(λw &lt;= λ↓pw←) { 
-                aux1 →INI400_000096= 0; 
-            } ELSE { 
-                aux1 →INI400_000619= 1; 
-            } 
-            
-            // defining flange slenderness
-            λf →INI400_000095= b2/tf; 
-            ClassParam.λf →INI400_000934= λf; 
-            IF(λf &lt;= λ↓pf←) { 
-                aux2 →INI400_000098= 0; 
-            } ELSE { 
-                aux2 →INI400_000620= 1; 
-            } 
-            
-            IF((aux1 == 0) &amp;&amp; (aux2 == 0)) { 
-                return 0; 
-            } 
-            IF(((aux1 == 0) &amp;&amp; (aux2 == 1)) || ((aux1 == 1) &amp;&amp; (aux2 == 0))) { 
-                return 1; 
-            } 
-            IF(aux1 == 1 &amp;&amp; aux2 == 1) { 
-                return 1; 
-            } 
-            IF((aux1 == 2) || (aux2 == 2)) { 
-                return 2; 
-            } 
-        } 
-        
-        // for hot rolled Angles
-        IF(FormCode == 4 &amp;&amp; Fabrication == 0) { 
-            
-            // Reading variables
-            →INI400_001685BLOCK { 
-                //REV: revised in 07/04/2016
-
-                tw →MPF000_000097= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.t; 
-                tf →MPF000_000100= tw; 
-                h →MPF000_000098= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; 
-                bf →MPF000_000099= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; 
-                
-                
-            } 
-            →INI400_001789PAGEBREAK(); 
-            // Welded sections not covered
-            IF(Fabrication == 1) { 
-                →INI400_000616TEXT("Section not Covered by this routine!"); 
-                Exit(); 
-            } 
-            λ↓pw← →INI400_000104= 0.45*SQRT(E/fy); 
-            λ↓pf← →INI400_000374= λ↓pw←; 
-            ClassParam.λpw →INI400_000935= λ↓pw←; 
-            ClassParam.λpf →INI400_000936= λ↓pf←; 
-            
-            →INI400_000292TEXT("Checking Leg 1"); 
-            λf →INI400_000107= bf/tf; 
-            ClassParam.λf →INI400_000937= λf; 
-            
-            IF(λf &lt;= λ↓pf←) { 
-                aux1 →INI400_000105= 0; 
-            } ELSE { 
-                aux1 →INI400_000617= 1; 
-            } 
-            
-            →INI400_000293TEXT("Checking Leg 2"); 
-            λw →INI400_000109= h/tw; 
-            ClassParam.λw →INI400_000938= λw; 
-            
-            IF(λw &lt;= λ↓pw←) { 
-                aux2 →INI400_000108= 0; 
-            } ELSE { 
-                aux2 →INI400_000618= 1; 
-            } 
-            
-            IF((aux1 == 0) &amp;&amp; (aux2 == 0)) { 
-                return 0; 
-            } 
-            IF(((aux1 == 0) &amp;&amp; (aux2 == 1)) || ((aux1 == 1) &amp;&amp; (aux2 == 0))) { 
-                return 1; 
-            } 
-            IF(aux1 == 1 &amp;&amp; aux2 == 1) { 
-                return 1; 
-            } 
-            IF((aux1 == 2) || (aux2 == 2)) { 
-                return 2; 
-            } 
-        } 
-        
-        // for T-Sections - hot rolled and welded       
-        IF((FormCode == 6) &amp;&amp; (Fabrication == 0 || Fabrication == 1)) { 
-            
-            // reading variables
-            →INI400_001688BLOCK { 
-                //REV: revised in 06/04/2016
-
-                tw →MPF000_000101= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-                h →MPF000_000102= CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : (CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h); 
-                
-                tf →MPF000_000056= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.t; 
-                bf →MPF000_000057= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : (CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b); 
-                
-            } 
-            →INI400_001790PAGEBREAK(); 
-            // Flanges
-            →INI400_001730BLOCK("Checking Flanges") { 
-                IF(Fabrication == 0) { // if hot rolled 
-                    λ↓pf← →INI400_000110= 0.56*SQRT(E/fy); 
-                } ELSE { // if welded
-                    double k↓c← →INI400_000215= 4/(SQRT(h/tw)); 
-                    λ↓pf← →INI400_000216= 0.64*SQRT(E/(fy/k↓c←)); 
+                IF(aux1 == 3) { 
+                    return 3; 
                 } 
-                ClassParam.λpf →INI400_000939= λ↓pf←; 
-                λf →INI400_000112= bf/(2*tf); 
-                ClassParam.λf →INI400_000940= λf; 
-                
-                IF(λf &lt;= λ↓pf←) { 
-                    aux1 →INI400_000111= 0; 
-                } ELSE { 
-                    →INI400_000117aux1 == 1; 
-                } 
-            } 
-            →INI400_001791PAGEBREAK(); 
-            // Webs NBR-8800 does not make difference for hot rolled or welded for this classification
-            →INI400_001731BLOCK("Checking Web") { 
-                λ↓pw← →INI400_000113= 0.75*SQRT(E/fy); 
-                λw →INI400_000119= h/tw; 
-                ClassParam.λpw →INI400_000941= λ↓pw←; 
-                ClassParam.λw →INI400_000942= λw; 
-                
-                IF(λw &lt;= λ↓pw←) { 
-                    aux2 →INI400_000114= 0; 
-                } ELSE { 
-                    aux2 →INI400_000523= 1; 
-                } 
-            } 
-            
-            IF((aux1 == 0) &amp;&amp; (aux2 == 0)) { 
-                return 0; 
-            } 
-            IF(((aux1 == 0) &amp;&amp; (aux2 == 1)) || ((aux1 == 1) &amp;&amp; (aux2 == 0))) { 
-                return 1; 
-            } 
-            IF(aux1 == 1 &amp;&amp; aux2 == 1) { 
-                return 1; 
-            } 
-            IF((aux1 == 2) || (aux2 == 2)) { 
-                return 2; 
-            } 
-        } 
-        
-        // for hollow circular sections
-        IF(FormCode == 3) { 
-            // reading section properties
-            →INI400_001691BLOCK { 
-                //REV: revised in 07/04/2016
-
-                D →INI400_000281= CS.Geometry.Contains("D") ? CS.Geometry.D : CS.Geometry.d; 
-                tw →INI400_000283= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.w; 
-            } 
-            →INI400_001792PAGEBREAK(); 
-            λ↓pw← →INI400_000284= 0.11*(E/fy); 
-            λ↓rw← →INI400_000285= 0.45*(E/fy); 
-            λw →INI400_000289= D/tw; 
-            ClassParam.λpw →INI400_000943= λ↓pw←; 
-            ClassParam.λrw →INI400_000944= λ↓rw←; 
-            ClassParam.λw →INI400_000945= λw; 
-            
-            IF(λw &lt;= λ↓pw←) { 
-                aux1 →INI400_000286= 0; 
-            } ELSE { 
-                IF(λw &lt;= λ↓rw←) { 
-                    aux1 →INI400_000287= 1; 
-                } ELSE { 
-                    →INI400_000288TEXT("Ratio D/t is not allowed by the code!"); 
-                    aux1 →INI400_000621= 3; 
-                    Exit(); } 
-            } 
-            IF(aux1 == 0) { 
-                return 0; 
-            } 
-            IF(aux1 == 1) { 
-                return 1; 
-            } 
-            IF(aux1 == 3) { 
-                return 3; 
             } 
         } 
     } 
@@ -692,1043 +700,1068 @@ double SteelBendingClass(object CS, double fy, double BendingAxis, double Fabric
     //FormCode →INI400_000622= FormCode; 
     IF((FormCode != 1) &amp;&amp; (FormCode != 2) &amp;&amp; (FormCode != 3) &amp;&amp; (FormCode != 5) &amp;&amp; (FormCode != 6) &amp;&amp; (FormCode != 101) &amp;&amp; (FormCode != 4) &amp;&amp; (FormCode != 2001)) { 
         →INI400_000614TEXT("Bending: Type of section not covered by this routine or cannot be designed for this effort!"); 
-        Exit(); 
+        // Exit(); 
     } 
-    
-    →INI400_001733BLOCK("Steel section classification for bending - Table G.1 - NBR-8800") { 
-        double aux1 →INI400_000031= 0; 
-        double aux2 →INI400_000032= 0; 
-        
-        //-----------------------------------------------------------------------------    
-        // for Bending about X axis
-        //-----------------------------------------------------------------------------
+    ELSE { 
+        →INI400_001733BLOCK("Steel section classification for bending - Table G.1 - NBR-8800") { 
+            double aux1 →INI400_000031= 0; 
+            double aux2 →INI400_000032= 0; 
+            
+            //-----------------------------------------------------------------------------    
+            // for Bending about X axis
+            //-----------------------------------------------------------------------------
 
-        IF((BendingAxis == 0) &amp;&amp; (Fabrication == 0 || Fabrication == 1)) { 
-            
-            →INI400_000274TEXT("Bending about X axis (Major Axis)"); 
-            
-            IF(FormCode == 1 || FormCode == 5 || FormCode == 2001) { // for I (double and single symmetric) and U-Sections hot rolled and welded
-                // reading section properties
-                →INI400_001674BLOCK { 
-                    IF(CS.Geometry.Contains("s")) { 
-                        
-                        //REV: revises in 07/04/2016
-                        bf →MPF000_000069= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; 
-                        tf →MPF000_000070= CS.Geometry.Contains("t") ? CS.Geometry.t : CS.Geometry.t; 
-                        tw →MPF000_000071= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.s; 
-                        h →MPF000_000072= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; 
-                        h →MPF000_000073= h-2*tf; 
-                        d →MPF000_000074= h-2*tf; 
-                        
-                    } ELSE { 
-                        IF(FormCode == 2001) { 
-                            bf →MPF001_000001= CS.Geometry.Ba; 
-                            tw →MPF001_000002= CS.Geometry.thb; 
-                            tf →MPF001_000003= CS.Geometry.tha; 
-                            h →MPF001_000004= CS.Geometry.Bb; 
-                            d →MPF001_000005= CS.Geometry.Bb; 
+            IF((BendingAxis == 0) &amp;&amp; (Fabrication == 0 || Fabrication == 1)) { 
+                
+                →INI400_000274TEXT("Bending about X axis (Major Axis)"); 
+                
+                IF(FormCode == 1 || FormCode == 5) { // for I (double and single symmetric) and U-Sections hot rolled and welded
+                    // reading section properties
+                    →INI400_001674BLOCK { 
+                        IF(CS.Geometry.Contains("s")) { 
+                            
+                            //REV: revises in 07/04/2016
+                            bf →MPF000_000069= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; 
+                            tf →MPF000_000070= CS.Geometry.Contains("t") ? CS.Geometry.t : CS.Geometry.t; 
+                            tw →MPF000_000071= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.s; 
+                            h →MPF000_000072= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; 
+                            h →MPF000_000073= h-2*tf; 
+                            d →MPF000_000074= h-2*tf; 
+                            
                         } 
                         ELSE { 
-                            bf →INI400_001834= CS.Geometry.Bb; 
-                            tw →INI400_001835= CS.Geometry.tha; 
-                            tf →INI400_001836= CS.Geometry.thb; 
-                            h →INI400_001832= CS.Geometry.Ba-2*tf; 
-                            d →INI400_001833= CS.Geometry.Ba-2*tf; 
-                        } 
-                    } 
-                } 
-                →INI400_001793PAGEBREAK(); 
-                //Flanges
-                //parameters for comparison   - table G.1
-                →INI400_001734BLOCK("Checking Flanges") { 
-                    λ↓p← →INI400_000030= 0.38*SQRT(E/fy); 
-                    ClassParam.λpf →INI400_000688= λ↓p←; // store flange slenderness to the variable
-                    σ↓r← →INI400_000037= 0.3*fy; 
-                    
-                    //tests for Fabrication type
-                    IF(Fabrication == 0) { 
-                        λ↓r← →INI400_000039= 0.83*SQRT(E/(fy-σ↓r←)); // if Hot rolled
-                    } ELSE { // if welded
-                        →INI400_001736BLOCK { 
-                            double k↓c← →INI400_000219= 4/(SQRT(h/tw)); 
-                            IF(k↓c← &lt; 0.35) { 
-                                →INI400_001737TEXT("&lt; 0.35 --&gt;"); 
-                                k↓c← →INI400_000750= 0.35; 
+                            IF(FormCode == 2001) { 
+                                bf →MPF001_000001= CS.Geometry.Ba; 
+                                tw →MPF001_000002= CS.Geometry.thb; 
+                                tf →MPF001_000003= CS.Geometry.tha; 
+                                h →MPF001_000004= CS.Geometry.Bb; 
+                                d →MPF001_000005= CS.Geometry.Bb; 
                             } 
-                            IF(k↓c← &gt; 0.76) { 
-                                →INI400_001735TEXT("&gt; 0.76 --&gt;"); 
-                                k↓c← →INI400_000751= 0.76; 
+                            ELSE { 
+                                bf →INI400_001834= CS.Geometry.Bb; 
+                                tw →INI400_001835= CS.Geometry.tha; 
+                                tf →INI400_001836= CS.Geometry.thb; 
+                                h →INI400_001832= CS.Geometry.Ba-2*tf; 
+                                d →INI400_001833= CS.Geometry.Ba-2*tf; 
                             } 
                         } 
-                        λ↓r← →INI400_000220= 0.95*SQRT(E/[(fy-σ↓r←)/k↓c←]); 
                     } 
-                    ClassParam.λrf →INI400_000689= λ↓r←; // store flange slenderness to the variable
-                    ClassParam.kc →INI400_000734= k↓c←; 
-                    
-                    IF(FormCode == 1) { // for I-Section
-                        λ →INI400_000028= bf/(2*tf); 
-                    } 
-                    IF(FormCode == 5) { // for U-Section 
-                        λ →INI400_000029= bf/tf; 
-                    } 
-                    
-                    ClassParam.λf →INI400_000682= λ; // store flange slenderness to the variable
-                    
-                    IF(λ &lt;= λ↓p←) { 
-                        aux1 →INI400_000257= 0; 
-                    } 
-                    IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                        aux1 →INI400_000258= 1; 
-                    } 
-                    IF(λ &gt; λ↓r←) { 
-                        aux1 →INI400_000260= 2; 
-                    } 
-                } 
-                →INI400_001794PAGEBREAK(); 
-                //Web
-                // parameters for comparisson - Table G.1
-                →INI400_001738BLOCK("Checking Web") { 
-                    λ↓p← →INI400_000035= 3.76*SQRT(E/fy); 
-                    λ↓r← →INI400_000047= 5.7*SQRT(E/fy); 
-                    ClassParam.λpw →INI400_000690= λ↓p←; // store flange slenderness to the variable
-                    ClassParam.λrw →INI400_000691= λ↓r←; // store flange slenderness to the variable
-                    
-                    λ →INI400_000042= d/tw; 
-                    ClassParam.λw →INI400_000685= λ; // store flange slenderness to the variable            
-
-                    IF(λ &lt;= λ↓p←) { 
-                        aux2 →INI400_000043= 0; 
-                    } 
-                    IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                        aux2 →INI400_000044= 1; 
-                    } 
-                    IF(λ &gt; λ↓r←) { 
-                        aux2 →INI400_000046= 2; 
-                    } 
-                } 
-                //Class definition
-                IF((aux1 == 0) &amp;&amp; (aux2 == 0)) { 
-                    return 0; 
-                } 
-                IF(((aux1 == 0) &amp;&amp; (aux2 == 1)) || ((aux1 == 1) &amp;&amp; (aux2 == 0))) { 
-                    return 1; 
-                } 
-                IF((aux1 == 1 &amp;&amp; aux2 == 1)) { 
-                    return 1; 
-                } 
-                IF((aux1 == 2) || (aux2 == 2)) { 
-                    return 2; 
-                } 
-            } 
-            
-            IF(FormCode == 2) { // For rectangular hollow sections 
-                // reading section properties
-                →INI400_001740BLOCK { 
-                    
-                    //  REV:  revised in 07/04/2016
-                    h →MPF000_000077= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; // out-to-out depth
-                    bf →MPF000_000078= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; // out-to-out width
-                    r1 →MPF000_000079= CS.Geometry.r1; // inner radius
-                    tf →MPF000_000080= CS.Geometry.s; 
-                    tw →MPF000_000081= CS.Geometry.s; 
-                    
-                    
-                } 
-                →INI400_001795PAGEBREAK(); 
-                →INI400_001739BLOCK("Checking Flanges") { 
+                    →INI400_001793PAGEBREAK(); 
                     //Flanges
-                    λ↓p← →INI400_000124= 1.12*SQRT(E/fy); 
-                    λ↓r← →INI400_000125= 1.4*SQRT(E/fy); 
-                    ClassParam.λpf →INI400_000692= λ↓p←; // store flange slenderness to the variable 
-                    ClassParam.λrf →INI400_000693= λ↓r←; // store flange slenderness to the variable
-                    
-                    λ →INI400_000130= (bf-2*[tw+r1])/tf; 
-                    ClassParam.λf →INI400_000686= λ; // store flange slenderness to the variable 
-
-                    IF(λ &lt;= λ↓p←) { 
-                        aux1 →INI400_000253= 0; 
-                    } 
-                    IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                        aux1 →INI400_000254= 1; 
-                    } 
-                    IF(λ &gt; λ↓r←) { 
-                        aux1 →INI400_000256= 2; 
-                    } 
-                } 
-                →INI400_001796PAGEBREAK(); 
-                // Web
-                // tests if hot rolled or welded
-                →INI400_001742BLOCK("Checking Web") { 
-                    IF(Fabrication == 0) { // hot rolled
-                        λ↓p← →INI400_000131= 2.42*SQRT(E/fy); 
-                    } ELSE { // welded
-                        λ↓p← →INI400_000221= 3.76*SQRT(E/fy); 
-                    } 
-                    λ↓r← →INI400_000132= 5.7*SQRT(E/fy); 
-                    ClassParam.λpw →INI400_000694= λ↓p←; // store flange slenderness to the variable
-                    ClassParam.λrw →INI400_000695= λ↓r←; // store flange slenderness to the variable
-                    
-                    λ →INI400_000133= (h-2*[tf+r1])/tw; 
-                    ClassParam.λw →INI400_000687= λ; // store flange slenderness to the variable
-
-                    IF(λ &lt;= λ↓p←) { 
-                        aux2 →INI400_000233= 0; 
-                    } 
-                    IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                        aux2 →INI400_000234= 1; 
-                    } 
-                    IF(λ &gt; λ↓r←) { 
-                        aux2 →INI400_000236= 2; 
-                    } 
-                } 
-                
-                //Class definition
-                IF((aux1 == 0) &amp;&amp; (aux2 == 0)) { 
-                    return 0; 
-                } 
-                IF(((aux1 == 0) &amp;&amp; (aux2 == 1)) || ((aux1 == 1) &amp;&amp; (aux2 == 0))) { 
-                    return 1; 
-                } 
-                IF((aux1 == 1 &amp;&amp; aux2 == 1)) { 
-                    return 1; 
-                } 
-                IF((aux1 == 2) || (aux2 == 2)) { 
-                    return 2; 
-                } 
-            } 
-            
-            // For I_section single symmetric
-            IF(FormCode == 101) { 
-                // for single symmetric sections is necessary to determine the position of centroid to find h↓c←
-                // It is Also necessary to determine the h↓p← distance
-                // this is done finding the position of PNA ( Plastic Neutral Axis)
-
-                // reading section properties
-                →INI400_000903BLOCK { 
-                    IF(CS.Geometry.Contains("s")) { 
-                        //REV: revised in 07/04/2016
-                        bb →MPF000_000121= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
-                        tb →MPF000_000122= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
-                        bt →MPF000_000123= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
-                        tt →MPF000_000124= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
-                        tw →MPF000_000125= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-                        h →MPF000_000126= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
-
+                    //parameters for comparison   - table G.1
+                    →INI400_001734BLOCK("Checking Flanges") { 
+                        λ↓p← →INI400_000030= 0.38*SQRT(E/fy); 
+                        ClassParam.λpf →INI400_000688= λ↓p←; // store flange slenderness to the variable
+                        σ↓r← →INI400_000037= 0.3*fy; 
                         
-                    } ELSE { 
-                        // REV: revised in 06/04/2016
-
-                        bb →MPF000_000145= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
-                        tb →MPF000_000146= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
-                        bt →MPF000_000147= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
-                        tt →MPF000_000148= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
-                        tw →MPF000_000149= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-                        h →MPF000_000150= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
-
-                        
-                    } 
-                    
-                    
-                    d →INI400_001849= h-tt-tb; // free depth 
-                    Z↓x← →INI400_001850= CS.Chars.Wply; 
-                    Wy →INI400_001851= CS.Chars.Welz; 
-                } 
-                →INI400_001743PAGEBREAK(); 
-                // verification of Limitations according to note 9 of appendix G
-                →INI400_001744I↓yc←; // moment of inertia about Y of the compressed flange
-                →INI400_001745I↓yt←; // moment of inertia about Y of the tensioned flange
-                →INI400_001746α↓y←; // Annex G note 9
-                →INI400_001747A1; // area portion superior
-                →INI400_001748A2; // area portion inferior
-                →INI400_001749d1; // extreme fiber at top
-                →INI400_001750d2; // extreme fiber at bottom 
-                ryc →INI400_000795= 0; 
-                //h →INI400_000418= CS.Geometry.h; 
-                YCG →INI400_000486= DefineYCG(CS, FormCode); 
-                h↓c← →INI400_000483= Definehc_ISect(MomentSign, CS, FormCode); 
-                h↓p← →INI400_000484= Definehp_ISect(MomentSign, CS, FormCode); 
-                ClassParam.hc →INI400_000805= h↓c←; 
-                ClassParam.hp →INI400_000882= h↓p←; 
-                
-                →INI400_000421TEXT("Checking limitations - Appendix G note 9"); 
-                IF(bt &lt;= bb) { 
-                    A1 →INI400_000422= bt*tt+d*tw; 
-                    A2 →INI400_000423= bb*tb; 
-                } 
-                IF(bt &gt;= bb) { 
-                    A1 →INI400_000424= bb*tb+d*tw; 
-                    A2 →INI400_000425= bt*tt; 
-                } 
-                
-                IF(A1 &gt;= A2) { 
-                    IF(MomentSign == 0) { 
-                        I↓yc← →INI400_000426= tt*bt↑3←/12; 
-                        I↓yt← →INI400_000427= tb*bb↑3←/12; 
-                    } 
-                    IF(MomentSign == 1) { 
-                        I↓yc← →INI400_000429= tb*bb↑3←/12; 
-                        I↓yt← →INI400_000428= tt*bt↑3←/12; 
-                    } 
-                    α↓y← →INI400_000430= I↓yc←/I↓yt←; 
-                    IF(α↓y← &gt;= 1/9 &amp;&amp; α↓y← &lt;= 9) { 
-                        // If Section fulfills the Limitations
-                        // moment of inertia about major axis
-                        I↓x← →INI400_000433= bt*(tt↑3←)/12+bt*tt*[(h-YCG-tt/2)]↑2←+tw*((h-tt-tb)↑3←)/12+(h-tt-tb)*tw*((h-tt-tb)/2-(YCG-tb))↑2←+bb*(tb↑3←)/12+bb*tb*(YCG-tb/2)↑2←; 
-                        W↓c← →INI400_000434= I↓x←/(h-YCG); 
-                        Wt →INI400_000738= I↓x←/(YCG); 
-                        →INI400_001759PAGEBREAK(); 
-                        →INI400_001752BLOCK("Checking Flanges") { 
-                            IF(MomentSign == 0) { 
-                                // if Top flange is in compression
-                                λ →INI400_000435= bt/(2*tt); // calculate flange slenderness
-                                // calculate ryc to pass through ClassParam
-                                ryc →INI400_000747= SQRT((I↓yc←+((h↓c←/2)*tw↑3←)/12)/(tt*bt+(h↓c←/2)*tw)); 
-                            } 
-                            IF(MomentSign == 1) { 
-                                // if bottom flange is in compression
-                                λ →INI400_000437= bb/(2*tb); // calculate flange slenderness
-                                // calculate ryc to pass through ClassParam
-                                ryc →INI400_000749= SQRT((I↓yc←+((h↓c←/2)*tw↑3←)/12)/(tb*bb+(h↓c←/2)*tw)); 
-                            } 
-                            
-                            ClassParam.λf →INI400_000696= λ; // store flange slenderness to the variable
-                            ClassParam.Wc →INI400_000741= W↓c←; 
-                            ClassParam.Wt →INI400_000742= Wt; 
-                            ClassParam.αy →INI400_000743= α↓y←; 
-                            ClassParam.ryc →INI400_000748= ryc; 
-                            
-                            // check for Flanges
-                            λ↓p← →INI400_000439= 0.38*SQRT(E/fy); 
-                            ClassParam.λpf →INI400_000697= λ↓p←; // store flange slenderness to the variable
-                            σ↓r← →INI400_000440= 0.3*fy; 
-                            // Check for Fabrication
-                            IF(Fabrication == 0) { // if hot rolled 
-                                λ↓r← →INI400_000441= 0.83*SQRT(E/(fy-σ↓r←)); 
-                            } 
-                            IF(Fabrication == 1) { // if welded
-                                →INI400_001757BLOCK { 
-                                    k↓c← →INI400_000444= 4/(SQRT(d/tw)); 
-                                    IF(k↓c← &lt; 0.35) { 
-                                        →INI400_001753TEXT("&lt; 0.35 --&gt;"); 
-                                        k↓c← →INI400_001754= 0.35; 
-                                    } 
-                                    IF(k↓c← &gt; 0.76) { 
-                                        →INI400_001755TEXT("&gt; 0.76 --&gt;"); 
-                                        k↓c← →INI400_001756= 0.76; 
-                                    } 
+                        //tests for Fabrication type
+                        IF(Fabrication == 0) { 
+                            λ↓r← →INI400_000039= 0.83*SQRT(E/(fy-σ↓r←)); // if Hot rolled
+                        } ELSE { // if welded
+                            →INI400_001736BLOCK { 
+                                double k↓c← →INI400_000219= 4/(SQRT(h/tw)); 
+                                IF(k↓c← &lt; 0.35) { 
+                                    →INI400_001737TEXT("&lt; 0.35 --&gt;"); 
+                                    k↓c← →INI400_000750= 0.35; 
                                 } 
-                                λ↓r← →INI400_000445= 0.95*SQRT(E/([(fy-σ↓r←)]/k↓c←)); 
+                                IF(k↓c← &gt; 0.76) { 
+                                    →INI400_001735TEXT("&gt; 0.76 --&gt;"); 
+                                    k↓c← →INI400_000751= 0.76; 
+                                } 
                             } 
-                            ClassParam.λrf →INI400_000698= λ↓r←; // store flange slenderness to the variable
-                            ClassParam.kc →INI400_000735= k↓c←; 
-                            IF(λ &lt;= λ↓p←) { 
-                                aux1 →INI400_000446= 0; 
-                            } 
-                            IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                                aux1 →INI400_000447= 1; 
-                            } 
-                            IF(λ &gt; λ↓r←) { 
-                                aux1 →INI400_000449= 2; 
-                            } 
+                            λ↓r← →INI400_000220= 0.95*SQRT(E/[(fy-σ↓r←)/k↓c←]); 
                         } 
-                        →INI400_001760PAGEBREAK(); 
+                        ClassParam.λrf →INI400_000689= λ↓r←; // store flange slenderness to the variable
+                        ClassParam.kc →INI400_000734= k↓c←; 
                         
-                        // Check for Web 
-                        →INI400_001758BLOCK("Checking Web") { 
-                            
-                            d1 →INI400_000451= h-YCG; 
-                            d2 →INI400_000452= YCG; 
-                            W →INI400_000453= I↓x←/MAX(d1, d2); 
-                            M↓r← →INI400_000454= fy*W; // see table G.1
-                            M↓pl← →INI400_000455= Z↓x←*fy; 
-                            
-                            λ↓p← →INI400_000456= ((h↓c←/h↓p←)*SQRT(E/fy))/([(0.54*(M↓pl←/M↓r←)-0.09)]↑2←); 
-                            λ↓r← →INI400_000457= 5.7*SQRT(E/fy); 
-                            IF(λ↓p← &gt;= λ↓r←) { 
-                                λ↓p← →INI400_000458= λ↓r←; 
-                            } 
-                            ClassParam.λpw →INI400_000699= λ↓p←; // store flange slenderness to the variable            
-                            ClassParam.λrw →INI400_000700= λ↓r←; // store flange slenderness to the variable        
+                        IF(FormCode == 1) { // for I-Section
+                            λ →INI400_000028= bf/(2*tf); 
+                        } 
+                        IF(FormCode == 5) { // for U-Section 
+                            λ →INI400_000029= bf/tf; 
+                        } 
+                        
+                        ClassParam.λf →INI400_000682= λ; // store flange slenderness to the variable
+                        
+                        IF(λ &lt;= λ↓p←) { 
+                            aux1 →INI400_000257= 0; 
+                        } 
+                        IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                            aux1 →INI400_000258= 1; 
+                        } 
+                        IF(λ &gt; λ↓r←) { 
+                            aux1 →INI400_000260= 2; 
+                        } 
+                    } 
+                    →INI400_001794PAGEBREAK(); 
+                    //Web
+                    // parameters for comparisson - Table G.1
+                    →INI400_001738BLOCK("Checking Web") { 
+                        λ↓p← →INI400_000035= 3.76*SQRT(E/fy); 
+                        λ↓r← →INI400_000047= 5.7*SQRT(E/fy); 
+                        ClassParam.λpw →INI400_000690= λ↓p←; // store flange slenderness to the variable
+                        ClassParam.λrw →INI400_000691= λ↓r←; // store flange slenderness to the variable
+                        
+                        λ →INI400_000042= d/tw; 
+                        ClassParam.λw →INI400_000685= λ; // store flange slenderness to the variable            
 
-                            λ →INI400_000459= h↓c←/tw; 
-                            ClassParam.λw →INI400_000701= λ; // store flange slenderness to the variable
-                            
-                            IF(λ &lt;= λ↓p←) { 
-                                aux2 →INI400_000460= 0; 
-                            } 
-                            IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                                aux2 →INI400_000461= 1; 
-                            } 
-                            IF(λ &gt; λ↓r←) { 
-                                aux2 →INI400_000463= 2; 
-                            } 
+                        IF(λ &lt;= λ↓p←) { 
+                            aux2 →INI400_000043= 0; 
                         } 
-                        →INI400_001761PAGEBREAK(); 
+                        IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                            aux2 →INI400_000044= 1; 
+                        } 
+                        IF(λ &gt; λ↓r←) { 
+                            aux2 →INI400_000046= 2; 
+                        } 
+                    } 
+                    //Class definition
+                    IF((aux1 == 0) &amp;&amp; (aux2 == 0)) { 
+                        return 0; 
+                    } 
+                    IF(((aux1 == 0) &amp;&amp; (aux2 == 1)) || ((aux1 == 1) &amp;&amp; (aux2 == 0))) { 
+                        return 1; 
+                    } 
+                    IF((aux1 == 1 &amp;&amp; aux2 == 1)) { 
+                        return 1; 
+                    } 
+                    IF((aux1 == 2) || (aux2 == 2)) { 
+                        return 2; 
+                    } 
+                } 
+                
+                IF((FormCode == 2) || (FormCode == 2001)) { // For rectangular hollow sections 
+                    // reading section properties
+                    →INI400_001740BLOCK { 
                         
-                        //Class definition
-                        IF((aux1 == 0) &amp;&amp; (aux2 == 0)) { 
-                            return 0; 
+                        //  REV:  revised in 07/04/2016
+                        IF(FormCode == 2) { 
+                            h →MPF000_000077= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; // out-to-out depth
+                            bf →MPF000_000078= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; // out-to-out width
+                            r1 →MPF000_000079= CS.Geometry.r1; // inner radius
+                            tf →MPF000_000080= CS.Geometry.s; 
+                            tw →MPF000_000081= CS.Geometry.s; 
                         } 
-                        IF(((aux1 == 0) &amp;&amp; (aux2 == 1)) || ((aux1 == 1) &amp;&amp; (aux2 == 0))) { 
-                            return 1; 
+                        IF(FormCode == 2001) { 
+                            bf →MPF001_000012= CS.Geometry.Ba; 
+                            tw →MPF001_000013= CS.Geometry.thb; 
+                            tf →MPF001_000014= CS.Geometry.tha; 
+                            h →MPF001_000015= CS.Geometry.Bb; 
+                            d →MPF001_000016= CS.Geometry.Bb; 
+                            r1 →MPF001_000017= 0; 
+                            
                         } 
-                        IF((aux1 == 1 &amp;&amp; aux2 == 1)) { 
-                            return 1; 
+                        
+                        
+                    } 
+                    →INI400_001795PAGEBREAK(); 
+                    →INI400_001739BLOCK { 
+                        //Flanges
+                        →MPF001_000020TEXT("Checking Flanges"); 
+                        λ↓p← →INI400_000124= 1.12*SQRT(E/fy); 
+                        λ↓r← →INI400_000125= 1.4*SQRT(E/fy); 
+                        ClassParam.λpf →INI400_000692= λ↓p←; // store flange slenderness to the variable 
+                        ClassParam.λrf →INI400_000693= λ↓r←; // store flange slenderness to the variable
+                        
+                        λ →INI400_000130= (bf-2*[tw+r1])/tf; 
+                        ClassParam.λf →INI400_000686= λ; // store flange slenderness to the variable 
+
+                        IF(λ &lt;= λ↓p←) { 
+                            aux1 →INI400_000253= 0; 
                         } 
-                        IF((aux1 == 2) || (aux2 == 2)) { 
-                            return 2; 
+                        IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                            aux1 →INI400_000254= 1; 
+                        } 
+                        IF(λ &gt; λ↓r←) { 
+                            aux1 →INI400_000256= 2; 
+                        } 
+                    } 
+                    →INI400_001796PAGEBREAK(); 
+                    // Web
+                    // tests if hot rolled or welded
+                    →INI400_001742BLOCK { 
+                        →MPF001_000021TEXT("Checking Web"); 
+                        IF(Fabrication == 0) { // hot rolled
+                            λ↓p← →INI400_000131= 2.42*SQRT(E/fy); 
+                        } ELSE { // welded
+                            λ↓p← →INI400_000221= 3.76*SQRT(E/fy); 
+                        } 
+                        λ↓r← →INI400_000132= 5.7*SQRT(E/fy); 
+                        ClassParam.λpw →INI400_000694= λ↓p←; // store flange slenderness to the variable
+                        ClassParam.λrw →INI400_000695= λ↓r←; // store flange slenderness to the variable
+                        
+                        λ →INI400_000133= (h-2*[tf+r1])/tw; 
+                        ClassParam.λw →INI400_000687= λ; // store flange slenderness to the variable
+
+                        IF(λ &lt;= λ↓p←) { 
+                            aux2 →INI400_000233= 0; 
+                        } 
+                        IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                            aux2 →INI400_000234= 1; 
+                        } 
+                        IF(λ &gt; λ↓r←) { 
+                            aux2 →INI400_000236= 2; 
                         } 
                     } 
                     
-                    IF(α↓y← &lt; 1/9 || α↓y← &gt; 9) { 
-                        // if Section does not fulfill the limitations
-                        →INI400_000464TEXT("Section does not fulfill limitations of Appendix G note 9"); 
+                    //Class definition
+                    IF((aux1 == 0) &amp;&amp; (aux2 == 0)) { 
+                        return 0; 
+                    } 
+                    IF(((aux1 == 0) &amp;&amp; (aux2 == 1)) || ((aux1 == 1) &amp;&amp; (aux2 == 0))) { 
+                        return 1; 
+                    } 
+                    IF((aux1 == 1 &amp;&amp; aux2 == 1)) { 
+                        return 1; 
+                    } 
+                    IF((aux1 == 2) || (aux2 == 2)) { 
+                        return 2; 
+                    } 
+                } 
+                
+                // For I_section single symmetric
+                IF(FormCode == 101) { 
+                    // for single symmetric sections is necessary to determine the position of centroid to find h↓c←
+                    // It is Also necessary to determine the h↓p← distance
+                    // this is done finding the position of PNA ( Plastic Neutral Axis)
+
+                    // reading section properties
+                    →INI400_000903BLOCK { 
+                        IF(CS.Geometry.Contains("s")) { 
+                            //REV: revised in 07/04/2016
+                            bb →MPF000_000121= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
+                            tb →MPF000_000122= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
+                            bt →MPF000_000123= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
+                            tt →MPF000_000124= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
+                            tw →MPF000_000125= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+                            h →MPF000_000126= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
+
+                            
+                        } ELSE { 
+                            // REV: revised in 06/04/2016
+
+                            bb →MPF000_000145= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
+                            tb →MPF000_000146= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
+                            bt →MPF000_000147= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
+                            tt →MPF000_000148= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
+                            tw →MPF000_000149= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+                            h →MPF000_000150= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
+
+                            
+                        } 
+                        
+                        
+                        d →INI400_001849= h-tt-tb; // free depth 
+                        Z↓x← →INI400_001850= CS.Chars.Wply; 
+                        Wy →INI400_001851= CS.Chars.Welz; 
+                    } 
+                    →INI400_001743PAGEBREAK(); 
+                    // verification of Limitations according to note 9 of appendix G
+                    →INI400_001744I↓yc←; // moment of inertia about Y of the compressed flange
+                    →INI400_001745I↓yt←; // moment of inertia about Y of the tensioned flange
+                    →INI400_001746α↓y←; // Annex G note 9
+                    →INI400_001747A1; // area portion superior
+                    →INI400_001748A2; // area portion inferior
+                    →INI400_001749d1; // extreme fiber at top
+                    →INI400_001750d2; // extreme fiber at bottom 
+                    ryc →INI400_000795= 0; 
+                    //h →INI400_000418= CS.Geometry.h; 
+                    YCG →INI400_000486= DefineYCG(CS, FormCode); 
+                    h↓c← →INI400_000483= Definehc_ISect(MomentSign, CS, FormCode); 
+                    h↓p← →INI400_000484= Definehp_ISect(MomentSign, CS, FormCode); 
+                    ClassParam.hc →INI400_000805= h↓c←; 
+                    ClassParam.hp →INI400_000882= h↓p←; 
+                    
+                    →INI400_000421TEXT("Checking limitations - Appendix G note 9"); 
+                    IF(bt &lt;= bb) { 
+                        A1 →INI400_000422= bt*tt+d*tw; 
+                        A2 →INI400_000423= bb*tb; 
+                    } 
+                    IF(bt &gt;= bb) { 
+                        A1 →INI400_000424= bb*tb+d*tw; 
+                        A2 →INI400_000425= bt*tt; 
+                    } 
+                    
+                    IF(A1 &gt;= A2) { 
+                        IF(MomentSign == 0) { 
+                            I↓yc← →INI400_000426= tt*bt↑3←/12; 
+                            I↓yt← →INI400_000427= tb*bb↑3←/12; 
+                        } 
+                        IF(MomentSign == 1) { 
+                            I↓yc← →INI400_000429= tb*bb↑3←/12; 
+                            I↓yt← →INI400_000428= tt*bt↑3←/12; 
+                        } 
+                        α↓y← →INI400_000430= I↓yc←/I↓yt←; 
+                        IF(α↓y← &gt;= 1/9 &amp;&amp; α↓y← &lt;= 9) { 
+                            // If Section fulfills the Limitations
+                            // moment of inertia about major axis
+                            I↓x← →INI400_000433= bt*(tt↑3←)/12+bt*tt*[(h-YCG-tt/2)]↑2←+tw*((h-tt-tb)↑3←)/12+(h-tt-tb)*tw*((h-tt-tb)/2-(YCG-tb))↑2←+bb*(tb↑3←)/12+bb*tb*(YCG-tb/2)↑2←; 
+                            W↓c← →INI400_000434= I↓x←/(h-YCG); 
+                            Wt →INI400_000738= I↓x←/(YCG); 
+                            →INI400_001759PAGEBREAK(); 
+                            →INI400_001752BLOCK("Checking Flanges") { 
+                                IF(MomentSign == 0) { 
+                                    // if Top flange is in compression
+                                    λ →INI400_000435= bt/(2*tt); // calculate flange slenderness
+                                    // calculate ryc to pass through ClassParam
+                                    ryc →INI400_000747= SQRT((I↓yc←+((h↓c←/2)*tw↑3←)/12)/(tt*bt+(h↓c←/2)*tw)); 
+                                } 
+                                IF(MomentSign == 1) { 
+                                    // if bottom flange is in compression
+                                    λ →INI400_000437= bb/(2*tb); // calculate flange slenderness
+                                    // calculate ryc to pass through ClassParam
+                                    ryc →INI400_000749= SQRT((I↓yc←+((h↓c←/2)*tw↑3←)/12)/(tb*bb+(h↓c←/2)*tw)); 
+                                } 
+                                
+                                ClassParam.λf →INI400_000696= λ; // store flange slenderness to the variable
+                                ClassParam.Wc →INI400_000741= W↓c←; 
+                                ClassParam.Wt →INI400_000742= Wt; 
+                                ClassParam.αy →INI400_000743= α↓y←; 
+                                ClassParam.ryc →INI400_000748= ryc; 
+                                
+                                // check for Flanges
+                                λ↓p← →INI400_000439= 0.38*SQRT(E/fy); 
+                                ClassParam.λpf →INI400_000697= λ↓p←; // store flange slenderness to the variable
+                                σ↓r← →INI400_000440= 0.3*fy; 
+                                // Check for Fabrication
+                                IF(Fabrication == 0) { // if hot rolled 
+                                    λ↓r← →INI400_000441= 0.83*SQRT(E/(fy-σ↓r←)); 
+                                } 
+                                IF(Fabrication == 1) { // if welded
+                                    →INI400_001757BLOCK { 
+                                        k↓c← →INI400_000444= 4/(SQRT(d/tw)); 
+                                        IF(k↓c← &lt; 0.35) { 
+                                            →INI400_001753TEXT("&lt; 0.35 --&gt;"); 
+                                            k↓c← →INI400_001754= 0.35; 
+                                        } 
+                                        IF(k↓c← &gt; 0.76) { 
+                                            →INI400_001755TEXT("&gt; 0.76 --&gt;"); 
+                                            k↓c← →INI400_001756= 0.76; 
+                                        } 
+                                    } 
+                                    λ↓r← →INI400_000445= 0.95*SQRT(E/([(fy-σ↓r←)]/k↓c←)); 
+                                } 
+                                ClassParam.λrf →INI400_000698= λ↓r←; // store flange slenderness to the variable
+                                ClassParam.kc →INI400_000735= k↓c←; 
+                                IF(λ &lt;= λ↓p←) { 
+                                    aux1 →INI400_000446= 0; 
+                                } 
+                                IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                                    aux1 →INI400_000447= 1; 
+                                } 
+                                IF(λ &gt; λ↓r←) { 
+                                    aux1 →INI400_000449= 2; 
+                                } 
+                            } 
+                            →INI400_001760PAGEBREAK(); 
+                            
+                            // Check for Web 
+                            →INI400_001758BLOCK("Checking Web") { 
+                                
+                                d1 →INI400_000451= h-YCG; 
+                                d2 →INI400_000452= YCG; 
+                                W →INI400_000453= I↓x←/MAX(d1, d2); 
+                                M↓r← →INI400_000454= fy*W; // see table G.1
+                                M↓pl← →INI400_000455= Z↓x←*fy; 
+                                
+                                λ↓p← →INI400_000456= ((h↓c←/h↓p←)*SQRT(E/fy))/([(0.54*(M↓pl←/M↓r←)-0.09)]↑2←); 
+                                λ↓r← →INI400_000457= 5.7*SQRT(E/fy); 
+                                IF(λ↓p← &gt;= λ↓r←) { 
+                                    λ↓p← →INI400_000458= λ↓r←; 
+                                } 
+                                ClassParam.λpw →INI400_000699= λ↓p←; // store flange slenderness to the variable            
+                                ClassParam.λrw →INI400_000700= λ↓r←; // store flange slenderness to the variable        
+
+                                λ →INI400_000459= h↓c←/tw; 
+                                ClassParam.λw →INI400_000701= λ; // store flange slenderness to the variable
+                                
+                                IF(λ &lt;= λ↓p←) { 
+                                    aux2 →INI400_000460= 0; 
+                                } 
+                                IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                                    aux2 →INI400_000461= 1; 
+                                } 
+                                IF(λ &gt; λ↓r←) { 
+                                    aux2 →INI400_000463= 2; 
+                                } 
+                            } 
+                            →INI400_001761PAGEBREAK(); 
+                            
+                            //Class definition
+                            IF((aux1 == 0) &amp;&amp; (aux2 == 0)) { 
+                                return 0; 
+                            } 
+                            IF(((aux1 == 0) &amp;&amp; (aux2 == 1)) || ((aux1 == 1) &amp;&amp; (aux2 == 0))) { 
+                                return 1; 
+                            } 
+                            IF((aux1 == 1 &amp;&amp; aux2 == 1)) { 
+                                return 1; 
+                            } 
+                            IF((aux1 == 2) || (aux2 == 2)) { 
+                                return 2; 
+                            } 
+                        } 
+                        
+                        IF(α↓y← &lt; 1/9 || α↓y← &gt; 9) { 
+                            // if Section does not fulfill the limitations
+                            →INI400_000464TEXT("Section does not fulfill limitations of Appendix G note 9"); 
+                            Exit(); } 
+                    } 
+                    IF(A1 &lt; A2) { 
+                        →INI400_000465TEXT("Section does not fulfill limitations of Appendix G note 9"); 
                         Exit(); } 
                 } 
-                IF(A1 &lt; A2) { 
-                    →INI400_000465TEXT("Section does not fulfill limitations of Appendix G note 9"); 
-                    Exit(); } 
-            } 
-            
-            // for hollow circular sections
-            IF(FormCode == 3) { 
-                //REV: revised in 07/04/2016
-                D →MPF000_000087= CS.Geometry.Contains("D") ? CS.Geometry.D : CS.Geometry.d; 
-                tw →MPF000_000088= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.w; 
-                //                D →INI400_000623= CS.Geometry.d; 
-                //                tw →INI400_000624= CS.Geometry.w; 
-                λ↓pw← →INI400_000625= 0.07*(E/fy); 
-                λ↓rw← →INI400_000626= 0.31*(E/fy); 
-                λw →INI400_000627= D/tw; 
                 
-                ClassParam.λpw →INI400_000702= λ↓pw←; // store flange slenderness to the variable
-                ClassParam.λrw →INI400_000703= λ↓rw←; // store flange slenderness to the variable
-                ClassParam.λw →INI400_000704= λw; // store flange slenderness to the variable 
-                ClassParam.λf →INI400_000705= 0; // store flange slenderness to the variable
-                ClassParam.λpf →INI400_000706= 0; // store flange slenderness to the variable
-                ClassParam.λrf →INI400_000707= 0; // store flange slenderness to the variable
-
-                IF(λw &lt;= λ↓pw←) { 
-                    aux1 →INI400_000628= 0; 
-                } 
-                IF(λw &gt; λ↓pw← &amp;&amp; λw &lt;= λ↓rw←) { 
-                    aux1 →INI400_000629= 1; 
-                } 
-                IF(λw &gt; λ↓rw←) { 
-                    aux1 →INI400_000669= 3; 
-                } 
-                
-                IF(λw &gt; 0.45*(E/fy)) { 
-                    →INI400_000630TEXT("Ratio D/t not allowed by the code!"); 
-                    aux1 →INI400_000631= 3; 
-                    Exit(); 
-                } 
-                
-                // class Definition
-                IF(aux1 == 0) { 
-                    return 0; 
-                } 
-                IF(aux1 == 1) { 
-                    return 1; 
-                } 
-                IF(aux1 == 3) { 
-                    return 3; 
-                } 
-            } 
-            
-            // for T sections
-            IF((FormCode == 6) &amp;&amp; (Fabrication == 0 || Fabrication == 1)) { 
-                →INI400_001763BLOCK { 
-                    
-                    //REV: revised in 06/04/2016
-                    
-                    h →MPF000_000104= CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : (CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h); 
-                    tw →MPF000_000058= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-                    tf →MPF000_000060= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.t; 
-                    bf →MPF000_000061= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : (CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b); 
-                    
-                } 
-                →INI400_001797PAGEBREAK(); 
-                // Flanges
-                →INI400_001762BLOCK("Checking Flanges") { // Section G.2.3
-                    λ↓pf← →INI400_000646= 0.38*SQRT(E/fy); 
-                    λ↓rf← →INI400_000663= 1*SQRT(E/fy); 
-                    
-                    ClassParam.λpf →INI400_000708= λ↓pf←; // store flange slenderness to the variable
-                    ClassParam.λrf →INI400_000709= λ↓rf←; // store flange slenderness to the variable
-
-                    λf →INI400_000649= bf/(2*tf); 
-                    ClassParam.λf →INI400_000710= λf; // store flange slenderness to the variable
-
-                    IF(λf &lt;= λ↓pf←) { 
-                        aux1 →INI400_000659= 0; 
-                    } 
-                    IF((λf &gt; λ↓pf←) &amp;&amp; (λf &lt;= λ↓rf←)) { 
-                        aux1 →INI400_000660= 1; 
-                    } 
-                    IF(λf &gt; λ↓rf←) { 
-                        aux1 →INI400_000662= 2; 
-                    } 
-                } 
-                →INI400_001798PAGEBREAK(); 
-                // Webs NBR-8800 does not make difference for hot rolled or welded for this classification
-                →INI400_001764BLOCK("Checking Web") { 
-                    // OBS: This was extracted from AISC-360-10 since Brazilian code does not make any mention about
-                    // web local buckling on T sections
-                    
-                    λ↓pw← →INI400_000653= 0.84*SQRT(E/fy); 
-                    λ↓rw← →INI400_000664= 1.03*SQRT(E/fy); 
-                    
-                    ClassParam.λpw →INI400_000711= λ↓pw←; // store flange slenderness to the variable
-                    ClassParam.λrw →INI400_000712= λ↓rw←; // store flange slenderness to the variable
-
-                    
-                    λw →INI400_000656= h/tw; 
-                    ClassParam.λw →INI400_000713= λw; // store flange slenderness to the variable 
-
-                    IF(λf &lt;= λ↓pw←) { 
-                        aux2 →INI400_000665= 0; 
-                    } 
-                    IF((λf &gt; λ↓pw←) &amp;&amp; (λf &lt;= λ↓rw←)) { 
-                        aux2 →INI400_000666= 1; 
-                    } 
-                    IF(λf &gt; λ↓rw←) { 
-                        aux2 →INI400_000668= 2; 
-                    } 
-                } 
-                
-                IF((aux1 == 0) &amp;&amp; (aux2 == 0)) { 
-                    return 0; 
-                } 
-                IF(((aux1 == 0) &amp;&amp; (aux2 == 1)) || ((aux1 == 1) &amp;&amp; (aux2 == 0))) { 
-                    return 1; 
-                } 
-                IF(aux1 == 1 &amp;&amp; aux2 == 1) { 
-                    return 1; 
-                } 
-                IF((aux1 == 2) || (aux2 == 2)) { 
-                    return 2; 
-                } 
-            } 
-            
-            // For Single Angles of eaqual legs
-            // this is an extract from AISC-360-10 since Brazilian code do not covers this situation
-            IF(FormCode == 4) { 
-                // Reading Section Properties
-                →INI400_001570BLOCK { 
-                    // loads the section and steel grade
+                // for hollow circular sections
+                IF(FormCode == 3) { 
                     //REV: revised in 07/04/2016
-
-                    tw →MPF000_000091= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.t; 
-                    h →MPF000_000092= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; 
-                    d →MPF000_000093= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; 
+                    D →MPF000_000087= CS.Geometry.Contains("D") ? CS.Geometry.D : CS.Geometry.d; 
+                    tw →MPF000_000088= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.w; 
+                    //                D →INI400_000623= CS.Geometry.d; 
+                    //                tw →INI400_000624= CS.Geometry.w; 
+                    λ↓pw← →INI400_000625= 0.07*(E/fy); 
+                    λ↓rw← →INI400_000626= 0.31*(E/fy); 
+                    λw →INI400_000627= D/tw; 
                     
-                    
-                } 
-                →INI400_001799PAGEBREAK(); 
-                IF(COMPARE(d, h, 6) != 0) { 
-                    →INI400_001693TEXT("Only angles of single legs are covered!"); 
-                    Exit(); 
-                } 
-                λ↓p← →INI400_001697= 0.54*SQRT(E/fy); 
-                λ↓r← →INI400_001698= 0.91*SQRT(E/fy); 
-                
-                λ →INI400_001694= d/tw; 
-                ClassParam.λw →INI400_001695= λ; 
-                ClassParam.λf →INI400_001696= λ; 
-                ClassParam.λpw →INI400_001699= λ↓p←; 
-                ClassParam.λrw →INI400_001700= λ↓r←; 
-                
-                IF(λ &lt;= λ↓p←) { 
-                    aux1 →INI400_001703= 0; 
-                } 
-                IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                    aux1 →INI400_001704= 1; 
-                } 
-                IF(λ &gt; λ↓r←) { 
-                    aux1 →INI400_001706= 2; 
-                } 
-                
-                IF(aux1 == 0) { 
-                    return 0; 
-                } 
-                IF(aux1 == 1) { 
-                    return 1; 
-                } 
-                IF(aux1 == 2) { 
-                    return 2; 
-                } 
-            } 
-        } 
-        
-        //------------------------------------------------------------------------    
-        // for Bending about Y axis
-        //------------------------------------------------------------------------ 
-        IF((BendingAxis == 1) &amp;&amp; (Fabrication == 0) || (Fabrication == 1)) { 
-            
-            →INI400_000679TEXT("Bending about Y axis (Minor Axis)"); 
-            IF((FormCode == 1) || (FormCode == 5)) { 
-                //For I-Section
-                //Flanges
-                //parameters for comparison   - table G.1   
+                    ClassParam.λpw →INI400_000702= λ↓pw←; // store flange slenderness to the variable
+                    ClassParam.λrw →INI400_000703= λ↓rw←; // store flange slenderness to the variable
+                    ClassParam.λw →INI400_000704= λw; // store flange slenderness to the variable 
+                    ClassParam.λf →INI400_000705= 0; // store flange slenderness to the variable
+                    ClassParam.λpf →INI400_000706= 0; // store flange slenderness to the variable
+                    ClassParam.λrf →INI400_000707= 0; // store flange slenderness to the variable
 
-                // reading section properties
-                →INI400_001668BLOCK { 
-                    IF(CS.Geometry.Contains("s")) { 
+                    IF(λw &lt;= λ↓pw←) { 
+                        aux1 →INI400_000628= 0; 
+                    } 
+                    IF(λw &gt; λ↓pw← &amp;&amp; λw &lt;= λ↓rw←) { 
+                        aux1 →INI400_000629= 1; 
+                    } 
+                    IF(λw &gt; λ↓rw←) { 
+                        aux1 →INI400_000669= 3; 
+                    } 
+                    
+                    IF(λw &gt; 0.45*(E/fy)) { 
+                        →INI400_000630TEXT("Ratio D/t not allowed by the code!"); 
+                        aux1 →INI400_000631= 3; 
+                        Exit(); 
+                    } 
+                    
+                    // class Definition
+                    IF(aux1 == 0) { 
+                        return 0; 
+                    } 
+                    IF(aux1 == 1) { 
+                        return 1; 
+                    } 
+                    IF(aux1 == 3) { 
+                        return 3; 
+                    } 
+                } 
+                
+                // for T sections
+                IF((FormCode == 6) &amp;&amp; (Fabrication == 0 || Fabrication == 1)) { 
+                    →INI400_001763BLOCK { 
                         
-                        
-                        tf →INI400_001663= CS.Geometry.t; 
-                        h →INI400_001664= CS.Geometry.h-2*tf; 
-                        d →INI400_000193= CS.Geometry.h-2*tf; 
-                        tw →INI400_001665= CS.Geometry.s; 
-                        bf →INI400_001666= CS.Geometry.b; 
-                    } ELSE { 
-                        tf →INI400_001852= CS.Geometry.thb; 
-                        h →INI400_001853= CS.Geometry.Ba-2*tf; 
-                        d →INI400_001854= CS.Geometry.Ba-2*tf; 
-                        tw →INI400_001855= CS.Geometry.tha; 
-                        bf →INI400_001856= CS.Geometry.Bb; 
-                    } 
-                } 
-                →INI400_001800PAGEBREAK(); 
-                →INI400_001765BLOCK("Checking Flanges") { 
-                    λ↓p← →INI400_000048= 0.38*SQRT(E/fy); 
-                    σ↓r← →INI400_000049= 0.3*fy; 
-                    ClassParam.λpf →INI400_000714= λ↓p←; // store flange slenderness to the variable 
-                    
-                    //tests for Fabrication
-                    IF(Fabrication == 0) { // Hot rolled
-                        λ↓r← →INI400_000050= 0.83*SQRT(E/(fy-σ↓r←)); 
-                    } ELSE { // if welded
-                        →INI400_001770BLOCK { 
-                            k↓c← →INI400_000227= 4/(SQRT(h/tw)); 
-                            IF(k↓c← &lt; 0.35) { 
-                                →INI400_001766TEXT("&lt; 0.35 --&gt;"); 
-                                k↓c← →INI400_001767= 0.35; 
-                            } 
-                            IF(k↓c← &gt; 0.76) { 
-                                →INI400_001768TEXT("&gt; 0.76 --&gt;"); 
-                                k↓c← →INI400_001769= 0.76; 
-                            } 
-                        } 
-                        λ↓r← →INI400_000228= 0.95*SQRT(E/[(fy-σ↓r←)/k↓c←]); 
-                    } 
-                    
-                    ClassParam.λrf →INI400_000715= λ↓r←; // store flange slenderness to the variable
-                    ClassParam.kc →INI400_000736= k↓c←; 
-                    
-                    // I-Section
-                    IF(FormCode == 1) { 
-                        // for I-Section
-                        λ →INI400_000053= bf/(2*tf); 
-                        ClassParam.λf →INI400_000879= λ; 
-                    } 
-                    
-                    // U-Section
-                    IF(FormCode == 5 &amp;&amp; MomentSign == 1) { 
-                        // for U-Section with free edge of flanges in compression
-                        λ →INI400_000054= bf/tf; 
-                        ClassParam.λf →INI400_000880= λ; 
-                    } 
-                    //in case of web in compression, there is no flange local Buckling
-                    // make slenderness zero to get compact section in this case
-                    IF(FormCode == 5 &amp;&amp; MomentSign == 0) { 
-                        →INI400_000296TEXT("Web in compression. Flange Local buckling does not Apply!"); 
-                        λ →INI400_000229= 0; 
-                    } 
-                    
-                    IF(λ &lt;= λ↓p←) { 
-                        aux1 →INI400_000245= 0; 
-                    } 
-                    IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                        aux1 →INI400_000246= 1; 
-                    } 
-                    IF(λ &gt; λ↓r←) { 
-                        aux1 →INI400_000248= 2; 
-                    } 
-                } 
-                →INI400_001772PAGEBREAK(); 
-                
-                →INI400_001773BLOCK("Checking Web") { 
-                    //Web
-                    // For Y-Y(minor axis) Bending, Web Local buckling only applies to U-Section with the web in compression
-                    IF(FormCode == 5 &amp;&amp; MomentSign == 0) { 
-                        // parameters for comparisson - Table G.1 
-                        λ↓p← →INI400_000059= 1.12*SQRT(E/fy); 
-                        λ↓r← →INI400_000060= 1.4*SQRT(E/fy); 
-                        
-                        λ →INI400_000061= d/tw; 
-                        ClassParam.λpw →INI400_000718= λ↓p←; // store flange slenderness to the variable
-                        ClassParam.λrw →INI400_000719= λ↓r←; // store flange slenderness to the variable
-                        ClassParam.λw →INI400_000720= λ; // store flange slenderness to the variable
-                    } 
-                    IF(FormCode == 5 &amp;&amp; MomentSign == 1) { 
-                        →INI400_000295TEXT("Web not in compression. Web local buckling does not Apply!"); 
-                        λ →INI400_001774= 0; // make slenderness zero to get compact section
-                    } 
-                    // for I-Section bent about Y(minor) web local buckling does no apply        
-                    
-                    IF(FormCode == 1) { 
-                        →INI400_000294TEXT("Web Local Buckling does not Apply!"); 
-                        λ →INI400_000230= 0; 
-                    } // make slenderness zero to get compact section
-                    
-                    IF(λ &lt;= λ↓p←) { 
-                        aux2 →INI400_000237= 0; 
-                    } 
-                    IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                        aux2 →INI400_000238= 1; 
-                    } 
-                    IF(λ &gt; λ↓r←) { 
-                        aux2 →INI400_000240= 2; 
-                    } 
-                } 
-                
-                //Class definition
-                IF((aux1 == 0) &amp;&amp; (aux2 == 0)) { 
-                    return 0; 
-                } 
-                IF(((aux1 == 0) &amp;&amp; (aux2 == 1)) || ((aux1 == 1) &amp;&amp; (aux2 == 0))) { 
-                    return 1; 
-                } 
-                IF((aux1 == 1 &amp;&amp; aux2 == 1)) { 
-                    return 1; 
-                } 
-                IF((aux1 == 2) || (aux2 == 2)) { 
-                    return 2; 
-                } 
-            } 
-            
-            // For single symmetric I-Section
-
-            IF(FormCode == 101) { 
-                // Checking Flanges
-                // NOTE: NBR8800 does not have a classification for flanges of single symmetric I section.
-                // in this case we are using the classification provided in AISC-360-10
-                
-                // reading section properties
-                →INI400_000913BLOCK { 
-                    IF(CS.Geometry.Contains("s")) { 
-                        
-                        //REV:revised in 07/04/2016
-                        bb →MPF000_000181= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
-                        tb →MPF000_000182= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
-                        bt →MPF000_000183= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
-                        tt →MPF000_000184= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
-                        tw →MPF000_000185= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-                        h →MPF000_000186= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
-
-                        
-                    } ELSE { 
-                        // REV: revised in 06/04/2016
-                        bb →MPF000_000151= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
-                        tb →MPF000_000152= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
-                        bt →MPF000_000153= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
-                        tt →MPF000_000154= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
-                        tw →MPF000_000155= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-                        h →MPF000_000156= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
-
-                        
-                    } 
-                    
-                    
-                    
-                    d →INI400_001869= h-tt-tb; // free depth 
-                    Z↓x← →INI400_001870= CS.Chars.Wply; 
-                    Wy →INI400_001871= CS.Chars.Welz; 
-                } 
-                →INI400_001775PAGEBREAK(); 
-                →INI400_001782BLOCK("Checking Flanges") { 
-                    λ↓p← →INI400_000510= 0.38*SQRT(E/fy); 
-                    
-                    IF(Fabrication == 1) { 
-                        →INI400_001780BLOCK { 
-                            k↓c← →INI400_000762= 4/(SQRT(h/tw)); 
-                            IF(k↓c← &lt; 0.35) { 
-                                →INI400_001776TEXT("&lt; 0.35 --&gt;"); 
-                                k↓c← →INI400_001777= 0.35; 
-                            } 
-                            IF(k↓c← &gt; 0.76) { 
-                                →INI400_001778TEXT("&gt; 0.76 --&gt;"); 
-                                k↓c← →INI400_001779= 0.76; 
-                            } 
-                        } 
-                        λ↓r← →INI400_000765= 0.95*SQRT(E*k↓c←/(fy-σ↓r←)); 
-                    } 
-                    IF(Fabrication == 0) { // this came from AISC-360-10 ( american Code)
-                        λ↓r← →INI400_000515= 0.83*SQRT(E/(fy-σ↓r←)); 
-                    } 
-                    
-                    λf1 →INI400_000508= bb/(2*tb); 
-                    λf2 →INI400_000509= bt/(2*tt); 
-                    
-                    ClassParam.λf1 →INI400_000887= λf2; 
-                    ClassParam.λf →INI400_000888= λf1; // store flange slenderness to the variable
-                    ClassParam.kc →INI400_000891= k↓c←; 
-                    ClassParam.λpf →INI400_000721= λ↓p←; // store flange slenderness to the variable
-                    ClassParam.λrf →INI400_000722= λ↓r←; // store flange slenderness to the variable
-                    
-                    
-                    IF(λf1 &lt;= λ↓p← &amp;&amp; λf2 &lt;= λ↓p←) { 
-                        aux1 →INI400_000511= 0; 
-                    } 
-                    IF((λf1 &gt; λ↓p← || λf2 &gt; λ↓p←) &amp;&amp; (λf1 &lt;= λ↓r← || λf2 &lt;= λ↓r←)) { 
-                        aux1 →INI400_000512= 1; 
-                    } 
-                    IF(λf1 &gt; λ↓r← || λf2 &gt; λ↓r←) { 
-                        aux1 →INI400_000514= 2; 
-                    } 
-                } 
-                →INI400_001801PAGEBREAK(); 
-                // FLA does not apply in this case
-                →INI400_001781BLOCK("Checking Web") { 
-                    →INI400_000516TEXT("Web Local Buckling does not Apply!"); 
-                    λ →INI400_000517= 0; // make slenderness zero to get compact section
-                    
-                    IF(λ &lt;= λ↓p←) { 
-                        aux2 →INI400_000518= 0; 
-                    } 
-                    IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                        aux2 →INI400_000519= 1; 
-                    } 
-                    IF(λ &gt; λ↓r←) { 
-                        aux2 →INI400_000521= 2; 
-                    } 
-                } 
-                //Class definition
-                IF((aux1 == 0) &amp;&amp; (aux2 == 0)) { 
-                    return 0; 
-                } 
-                IF(((aux1 == 0) &amp;&amp; (aux2 == 1)) || ((aux1 == 1) &amp;&amp; (aux2 == 0))) { 
-                    return 1; 
-                } 
-                IF((aux1 == 1 &amp;&amp; aux2 == 1)) { 
-                    return 1; 
-                } 
-                IF((aux1 == 2) || (aux2 == 2)) { 
-                    return 2; 
-                } 
-                
-            } 
-            
-            // For steel hollow rectangular sections 
-            IF(FormCode == 2) { 
-                // reading section properties
-                →INI400_001669BLOCK { 
-                    
-                    //  REV:  revised in 07/04/2016
-                    h →MPF000_000082= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; // out-to-out depth
-                    bf →MPF000_000083= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; // out-to-out width
-                    r1 →MPF000_000084= CS.Geometry.r1; // inner radius
-                    tf →MPF000_000085= CS.Geometry.s; 
-                    tw →MPF000_000086= CS.Geometry.s; 
-                    
-                } 
-                →INI400_001802PAGEBREAK(); 
-                →INI400_001783BLOCK("Checking Flanges") { 
-                    //Flanges
-                    λ↓p← →INI400_000138= 1.12*SQRT(E/fy); 
-                    λ↓r← →INI400_000139= 1.4*SQRT(E/fy); 
-                    ClassParam.λpf →INI400_000725= λ↓p←; // store flange slenderness to the variable
-                    ClassParam.λrf →INI400_000726= λ↓r←; // store flange slenderness to the variable
-                    
-                    λ →INI400_000140= (h-2*(tf+r1))/tw; 
-                    ClassParam.λf →INI400_000727= λ; // store flange slenderness to the variable
-
-                    IF(λ &lt;= λ↓p←) { 
-                        aux1 →INI400_000249= 0; 
-                    } 
-                    IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                        aux1 →INI400_000250= 1; 
-                    } 
-                    IF(λ &gt; λ↓r←) { 
-                        aux1 →INI400_000252= 2; 
-                    } 
-                } 
-                →INI400_001803PAGEBREAK(); 
-                // Web
-                // tests for fabrication type   
-                →INI400_001784BLOCK("Checking Web") { 
-                    IF(Fabrication == 0) { // for hot rolled
-                        λ↓p← →INI400_000145= 2.42*SQRT(E/fy); 
-                    } ELSE { // for welded      
-                        λ↓p← →INI400_000232= 3.76*SQRT(E/fy); 
-                    } 
-                    
-                    λ↓r← →INI400_000146= 5.7*SQRT(E/fy); 
-                    ClassParam.λpw →INI400_000728= λ↓p←; // store flange slenderness to the variable 
-                    ClassParam.λrw →INI400_000729= λ↓r←; // store flange slenderness to the variable
-                    
-                    λ →INI400_000147= (bf-2*(tw+r1))/tf; 
-                    ClassParam.λw →INI400_000730= λ; // store flange slenderness to the variable 
-
-                    IF(λ &lt;= λ↓p←) { 
-                        aux2 →INI400_000241= 0; 
-                    } 
-                    IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                        aux2 →INI400_000242= 1; 
-                    } 
-                    IF(λ &gt; λ↓r←) { 
-                        aux2 →INI400_000244= 2; 
-                    } 
-                } 
-                
-                //Class definition
-                IF((aux1 == 0) &amp;&amp; (aux2 == 0)) { 
-                    return 0; 
-                } 
-                IF(((aux1 == 0) &amp;&amp; (aux2 == 1)) || ((aux1 == 1) &amp;&amp; (aux2 == 0))) { 
-                    return 1; 
-                } 
-                IF((aux1 == 1 &amp;&amp; aux2 == 1)) { 
-                    return 1; 
-                } 
-                IF((aux1 == 2) || (aux2 == 2)) { 
-                    return 2; 
-                } 
-            } 
-            
-            // for hollow circular sections
-            IF(FormCode == 3) { 
-                
-                // reading section properties
-                →INI400_001670BLOCK { 
-                    //REV: revised in 07/04/2016
-                    D →MPF000_000089= CS.Geometry.Contains("D") ? CS.Geometry.D : CS.Geometry.d; 
-                    tw →MPF000_000090= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.w; 
-                    
-                } 
-                
-                λ↓pw← →INI400_000634= 0.07*(E/fy); 
-                λ↓rw← →INI400_000635= 0.31*(E/fy); 
-                ClassParam.λpw →INI400_000731= λ↓pw←; // store flange slenderness to the variable
-                ClassParam.λrw →INI400_000732= λ↓rw←; // store flange slenderness to the variable
-
-                λw →INI400_000636= D/tw; 
-                ClassParam.λw →INI400_000733= λw; // store flange slenderness to the variable
-
-                IF(λw &lt;= λ↓pw←) { 
-                    aux1 →INI400_000637= 0; 
-                } 
-                IF(λw &gt; λ↓pw← &amp;&amp; λw &lt;= λ↓rw←) { 
-                    aux1 →INI400_000638= 1; 
-                } 
-                IF(λw &gt; λ↓rw←) { 
-                    →INI400_000639TEXT("Ratio D/t not allowed by the code!"); 
-                    aux1 →INI400_000640= 3; 
-                } 
-                IF(aux1 == 0) { 
-                    return 0; 
-                } 
-                IF(aux1 == 1) { 
-                    return 1; 
-                } 
-                IF(aux1 == 3) { 
-                    return 3; 
-                } 
-            } 
-            
-            IF((FormCode == 6) &amp;&amp; (Fabrication == 0 || Fabrication == 1)) { 
-                // Flanges
-                →INI400_001785BLOCK("Checking Flanges") { // Section G.2.3
-                    // reading section properties
-                    →INI400_001671BLOCK { 
                         //REV: revised in 06/04/2016
                         
+                        h →MPF000_000104= CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : (CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h); 
+                        tw →MPF000_000058= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+                        tf →MPF000_000060= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.t; 
+                        bf →MPF000_000061= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : (CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b); 
                         
-                        tf →MPF000_000064= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.t; 
-                        bf →MPF000_000065= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : (CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b); 
+                    } 
+                    →INI400_001797PAGEBREAK(); 
+                    // Flanges
+                    →INI400_001762BLOCK("Checking Flanges") { // Section G.2.3
+                        λ↓pf← →INI400_000646= 0.38*SQRT(E/fy); 
+                        λ↓rf← →INI400_000663= 1*SQRT(E/fy); 
                         
+                        ClassParam.λpf →INI400_000708= λ↓pf←; // store flange slenderness to the variable
+                        ClassParam.λrf →INI400_000709= λ↓rf←; // store flange slenderness to the variable
+
+                        λf →INI400_000649= bf/(2*tf); 
+                        ClassParam.λf →INI400_000710= λf; // store flange slenderness to the variable
+
+                        IF(λf &lt;= λ↓pf←) { 
+                            aux1 →INI400_000659= 0; 
+                        } 
+                        IF((λf &gt; λ↓pf←) &amp;&amp; (λf &lt;= λ↓rf←)) { 
+                            aux1 →INI400_000660= 1; 
+                        } 
+                        IF(λf &gt; λ↓rf←) { 
+                            aux1 →INI400_000662= 2; 
+                        } 
+                    } 
+                    →INI400_001798PAGEBREAK(); 
+                    // Webs NBR-8800 does not make difference for hot rolled or welded for this classification
+                    →INI400_001764BLOCK("Checking Web") { 
+                        // OBS: This was extracted from AISC-360-10 since Brazilian code does not make any mention about
+                        // web local buckling on T sections
+                        
+                        λ↓pw← →INI400_000653= 0.84*SQRT(E/fy); 
+                        λ↓rw← →INI400_000664= 1.03*SQRT(E/fy); 
+                        
+                        ClassParam.λpw →INI400_000711= λ↓pw←; // store flange slenderness to the variable
+                        ClassParam.λrw →INI400_000712= λ↓rw←; // store flange slenderness to the variable
+
+                        
+                        λw →INI400_000656= h/tw; 
+                        ClassParam.λw →INI400_000713= λw; // store flange slenderness to the variable 
+
+                        IF(λf &lt;= λ↓pw←) { 
+                            aux2 →INI400_000665= 0; 
+                        } 
+                        IF((λf &gt; λ↓pw←) &amp;&amp; (λf &lt;= λ↓rw←)) { 
+                            aux2 →INI400_000666= 1; 
+                        } 
+                        IF(λf &gt; λ↓rw←) { 
+                            aux2 →INI400_000668= 2; 
+                        } 
                     } 
                     
-                    λ↓pf← →INI400_000769= 0.38*SQRT(E/fy); 
-                    λ↓rf← →INI400_000770= 1*SQRT(E/fy); 
+                    IF((aux1 == 0) &amp;&amp; (aux2 == 0)) { 
+                        return 0; 
+                    } 
+                    IF(((aux1 == 0) &amp;&amp; (aux2 == 1)) || ((aux1 == 1) &amp;&amp; (aux2 == 0))) { 
+                        return 1; 
+                    } 
+                    IF(aux1 == 1 &amp;&amp; aux2 == 1) { 
+                        return 1; 
+                    } 
+                    IF((aux1 == 2) || (aux2 == 2)) { 
+                        return 2; 
+                    } 
+                } 
+                
+                // For Single Angles of eaqual legs
+                // this is an extract from AISC-360-10 since Brazilian code do not covers this situation
+                IF(FormCode == 4) { 
+                    // Reading Section Properties
+                    →INI400_001570BLOCK { 
+                        // loads the section and steel grade
+                        //REV: revised in 07/04/2016
+
+                        tw →MPF000_000091= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.t; 
+                        h →MPF000_000092= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; 
+                        d →MPF000_000093= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; 
+                        
+                        
+                    } 
+                    →INI400_001799PAGEBREAK(); 
+                    IF(COMPARE(d, h, 6) != 0) { 
+                        →INI400_001693TEXT("Only angles of single legs are covered!"); 
+                        Exit(); 
+                    } 
+                    λ↓p← →INI400_001697= 0.54*SQRT(E/fy); 
+                    λ↓r← →INI400_001698= 0.91*SQRT(E/fy); 
                     
-                    ClassParam.λpf →INI400_000771= λ↓pf←; // store flange slenderness to the variable
-                    ClassParam.λrf →INI400_000772= λ↓rf←; // store flange slenderness to the variable
-
-                    λf →INI400_000773= bf/(2*tf); 
-                    ClassParam.λf →INI400_000774= λf; // store flange slenderness to the variable
-
-                    IF(λf &lt;= λ↓pf←) { 
-                        aux1 →INI400_000775= 0; 
+                    λ →INI400_001694= d/tw; 
+                    ClassParam.λw →INI400_001695= λ; 
+                    ClassParam.λf →INI400_001696= λ; 
+                    ClassParam.λpw →INI400_001699= λ↓p←; 
+                    ClassParam.λrw →INI400_001700= λ↓r←; 
+                    
+                    IF(λ &lt;= λ↓p←) { 
+                        aux1 →INI400_001703= 0; 
                     } 
-                    IF((λf &gt; λ↓pf←) &amp;&amp; (λf &lt;= λ↓rf←)) { 
-                        aux1 →INI400_000776= 1; 
+                    IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                        aux1 →INI400_001704= 1; 
                     } 
-                    IF(λf &gt; λ↓rf←) { 
-                        aux1 →INI400_000778= 2; 
+                    IF(λ &gt; λ↓r←) { 
+                        aux1 →INI400_001706= 2; 
+                    } 
+                    
+                    IF(aux1 == 0) { 
+                        return 0; 
+                    } 
+                    IF(aux1 == 1) { 
+                        return 1; 
+                    } 
+                    IF(aux1 == 2) { 
+                        return 2; 
                     } 
                 } 
-                
-                // Webs NBR-8800 does not make difference for hot rolled or welded for this classification
-                aux2 →INI400_000794= 0; 
-                
-                IF((aux1 == 0) &amp;&amp; (aux2 == 0)) { 
-                    return 0; 
-                } 
-                IF(((aux1 == 0) &amp;&amp; (aux2 == 1)) || ((aux1 == 1) &amp;&amp; (aux2 == 0))) { 
-                    return 1; 
-                } 
-                IF(aux1 == 1 &amp;&amp; aux2 == 1) { 
-                    return 1; 
-                } 
-                IF((aux1 == 2) || (aux2 == 2)) { 
-                    return 2; 
-                } 
-                
             } 
             
-            // For Single Angles of eaqual legs
-            // this is an extract from AISC-360-10 since Brazilian code do not covers this situation
-            IF(FormCode == 4) { 
-                // Reading Section Properties
-                →INI400_001707BLOCK { 
-                    // loads the section and steel grade
-                    //REV: revised in 07/04/2016
+            //------------------------------------------------------------------------    
+            // for Bending about Y axis
+            //------------------------------------------------------------------------ 
+            IF((BendingAxis == 1) &amp;&amp; (Fabrication == 0) || (Fabrication == 1)) { 
+                
+                →INI400_000679TEXT("Bending about Y axis (Minor Axis)"); 
+                IF((FormCode == 1) || (FormCode == 5)) { 
+                    //For I-Section
+                    //Flanges
+                    //parameters for comparison   - table G.1   
 
-                    tw →MPF000_000094= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.t; 
-                    h →MPF000_000095= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; 
-                    d →MPF000_000096= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; 
+                    // reading section properties
+                    →INI400_001668BLOCK { 
+                        IF(CS.Geometry.Contains("s")) { 
+                            
+                            
+                            tf →INI400_001663= CS.Geometry.t; 
+                            h →INI400_001664= CS.Geometry.h-2*tf; 
+                            d →INI400_000193= CS.Geometry.h-2*tf; 
+                            tw →INI400_001665= CS.Geometry.s; 
+                            bf →INI400_001666= CS.Geometry.b; 
+                        } ELSE { 
+                            tf →INI400_001852= CS.Geometry.thb; 
+                            h →INI400_001853= CS.Geometry.Ba-2*tf; 
+                            d →INI400_001854= CS.Geometry.Ba-2*tf; 
+                            tw →INI400_001855= CS.Geometry.tha; 
+                            bf →INI400_001856= CS.Geometry.Bb; 
+                        } 
+                    } 
+                    →INI400_001800PAGEBREAK(); 
+                    →INI400_001765BLOCK("Checking Flanges") { 
+                        λ↓p← →INI400_000048= 0.38*SQRT(E/fy); 
+                        σ↓r← →INI400_000049= 0.3*fy; 
+                        ClassParam.λpf →INI400_000714= λ↓p←; // store flange slenderness to the variable 
+                        
+                        //tests for Fabrication
+                        IF(Fabrication == 0) { // Hot rolled
+                            λ↓r← →INI400_000050= 0.83*SQRT(E/(fy-σ↓r←)); 
+                        } ELSE { // if welded
+                            →INI400_001770BLOCK { 
+                                k↓c← →INI400_000227= 4/(SQRT(h/tw)); 
+                                IF(k↓c← &lt; 0.35) { 
+                                    →INI400_001766TEXT("&lt; 0.35 --&gt;"); 
+                                    k↓c← →INI400_001767= 0.35; 
+                                } 
+                                IF(k↓c← &gt; 0.76) { 
+                                    →INI400_001768TEXT("&gt; 0.76 --&gt;"); 
+                                    k↓c← →INI400_001769= 0.76; 
+                                } 
+                            } 
+                            λ↓r← →INI400_000228= 0.95*SQRT(E/[(fy-σ↓r←)/k↓c←]); 
+                        } 
+                        
+                        ClassParam.λrf →INI400_000715= λ↓r←; // store flange slenderness to the variable
+                        ClassParam.kc →INI400_000736= k↓c←; 
+                        
+                        // I-Section
+                        IF(FormCode == 1) { 
+                            // for I-Section
+                            λ →INI400_000053= bf/(2*tf); 
+                            ClassParam.λf →INI400_000879= λ; 
+                        } 
+                        
+                        // U-Section
+                        IF(FormCode == 5 &amp;&amp; MomentSign == 1) { 
+                            // for U-Section with free edge of flanges in compression
+                            λ →INI400_000054= bf/tf; 
+                            ClassParam.λf →INI400_000880= λ; 
+                        } 
+                        //in case of web in compression, there is no flange local Buckling
+                        // make slenderness zero to get compact section in this case
+                        IF(FormCode == 5 &amp;&amp; MomentSign == 0) { 
+                            →INI400_000296TEXT("Web in compression. Flange Local buckling does not Apply!"); 
+                            λ →INI400_000229= 0; 
+                        } 
+                        
+                        IF(λ &lt;= λ↓p←) { 
+                            aux1 →INI400_000245= 0; 
+                        } 
+                        IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                            aux1 →INI400_000246= 1; 
+                        } 
+                        IF(λ &gt; λ↓r←) { 
+                            aux1 →INI400_000248= 2; 
+                        } 
+                    } 
+                    →INI400_001772PAGEBREAK(); 
                     
+                    →INI400_001773BLOCK("Checking Web") { 
+                        //Web
+                        // For Y-Y(minor axis) Bending, Web Local buckling only applies to U-Section with the web in compression
+                        IF(FormCode == 5 &amp;&amp; MomentSign == 0) { 
+                            // parameters for comparisson - Table G.1 
+                            λ↓p← →INI400_000059= 1.12*SQRT(E/fy); 
+                            λ↓r← →INI400_000060= 1.4*SQRT(E/fy); 
+                            
+                            λ →INI400_000061= d/tw; 
+                            ClassParam.λpw →INI400_000718= λ↓p←; // store flange slenderness to the variable
+                            ClassParam.λrw →INI400_000719= λ↓r←; // store flange slenderness to the variable
+                            ClassParam.λw →INI400_000720= λ; // store flange slenderness to the variable
+                        } 
+                        IF(FormCode == 5 &amp;&amp; MomentSign == 1) { 
+                            →INI400_000295TEXT("Web not in compression. Web local buckling does not Apply!"); 
+                            λ →INI400_001774= 0; // make slenderness zero to get compact section
+                        } 
+                        // for I-Section bent about Y(minor) web local buckling does no apply        
+                        
+                        IF(FormCode == 1) { 
+                            →INI400_000294TEXT("Web Local Buckling does not Apply!"); 
+                            λ →INI400_000230= 0; 
+                        } // make slenderness zero to get compact section
+                        
+                        IF(λ &lt;= λ↓p←) { 
+                            aux2 →INI400_000237= 0; 
+                        } 
+                        IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                            aux2 →INI400_000238= 1; 
+                        } 
+                        IF(λ &gt; λ↓r←) { 
+                            aux2 →INI400_000240= 2; 
+                        } 
+                    } 
+                    
+                    //Class definition
+                    IF((aux1 == 0) &amp;&amp; (aux2 == 0)) { 
+                        return 0; 
+                    } 
+                    IF(((aux1 == 0) &amp;&amp; (aux2 == 1)) || ((aux1 == 1) &amp;&amp; (aux2 == 0))) { 
+                        return 1; 
+                    } 
+                    IF((aux1 == 1 &amp;&amp; aux2 == 1)) { 
+                        return 1; 
+                    } 
+                    IF((aux1 == 2) || (aux2 == 2)) { 
+                        return 2; 
+                    } 
+                } 
+                
+                // For single symmetric I-Section
+
+                IF(FormCode == 101) { 
+                    // Checking Flanges
+                    // NOTE: NBR8800 does not have a classification for flanges of single symmetric I section.
+                    // in this case we are using the classification provided in AISC-360-10
+                    
+                    // reading section properties
+                    →INI400_000913BLOCK { 
+                        IF(CS.Geometry.Contains("s")) { 
+                            
+                            //REV:revised in 07/04/2016
+                            bb →MPF000_000181= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
+                            tb →MPF000_000182= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
+                            bt →MPF000_000183= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
+                            tt →MPF000_000184= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
+                            tw →MPF000_000185= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+                            h →MPF000_000186= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
+
+                            
+                        } ELSE { 
+                            // REV: revised in 06/04/2016
+                            bb →MPF000_000151= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
+                            tb →MPF000_000152= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
+                            bt →MPF000_000153= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
+                            tt →MPF000_000154= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
+                            tw →MPF000_000155= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+                            h →MPF000_000156= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
+
+                            
+                        } 
+                        
+                        
+                        
+                        d →INI400_001869= h-tt-tb; // free depth 
+                        Z↓x← →INI400_001870= CS.Chars.Wply; 
+                        Wy →INI400_001871= CS.Chars.Welz; 
+                    } 
+                    →INI400_001775PAGEBREAK(); 
+                    →INI400_001782BLOCK("Checking Flanges") { 
+                        λ↓p← →INI400_000510= 0.38*SQRT(E/fy); 
+                        
+                        IF(Fabrication == 1) { 
+                            →INI400_001780BLOCK { 
+                                k↓c← →INI400_000762= 4/(SQRT(h/tw)); 
+                                IF(k↓c← &lt; 0.35) { 
+                                    →INI400_001776TEXT("&lt; 0.35 --&gt;"); 
+                                    k↓c← →INI400_001777= 0.35; 
+                                } 
+                                IF(k↓c← &gt; 0.76) { 
+                                    →INI400_001778TEXT("&gt; 0.76 --&gt;"); 
+                                    k↓c← →INI400_001779= 0.76; 
+                                } 
+                            } 
+                            λ↓r← →INI400_000765= 0.95*SQRT(E*k↓c←/(fy-σ↓r←)); 
+                        } 
+                        IF(Fabrication == 0) { // this came from AISC-360-10 ( american Code)
+                            λ↓r← →INI400_000515= 0.83*SQRT(E/(fy-σ↓r←)); 
+                        } 
+                        
+                        λf1 →INI400_000508= bb/(2*tb); 
+                        λf2 →INI400_000509= bt/(2*tt); 
+                        
+                        ClassParam.λf1 →INI400_000887= λf2; 
+                        ClassParam.λf →INI400_000888= λf1; // store flange slenderness to the variable
+                        ClassParam.kc →INI400_000891= k↓c←; 
+                        ClassParam.λpf →INI400_000721= λ↓p←; // store flange slenderness to the variable
+                        ClassParam.λrf →INI400_000722= λ↓r←; // store flange slenderness to the variable
+                        
+                        
+                        IF(λf1 &lt;= λ↓p← &amp;&amp; λf2 &lt;= λ↓p←) { 
+                            aux1 →INI400_000511= 0; 
+                        } 
+                        IF((λf1 &gt; λ↓p← || λf2 &gt; λ↓p←) &amp;&amp; (λf1 &lt;= λ↓r← || λf2 &lt;= λ↓r←)) { 
+                            aux1 →INI400_000512= 1; 
+                        } 
+                        IF(λf1 &gt; λ↓r← || λf2 &gt; λ↓r←) { 
+                            aux1 →INI400_000514= 2; 
+                        } 
+                    } 
+                    →INI400_001801PAGEBREAK(); 
+                    // FLA does not apply in this case
+                    →INI400_001781BLOCK("Checking Web") { 
+                        →INI400_000516TEXT("Web Local Buckling does not Apply!"); 
+                        λ →INI400_000517= 0; // make slenderness zero to get compact section
+                        
+                        IF(λ &lt;= λ↓p←) { 
+                            aux2 →INI400_000518= 0; 
+                        } 
+                        IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                            aux2 →INI400_000519= 1; 
+                        } 
+                        IF(λ &gt; λ↓r←) { 
+                            aux2 →INI400_000521= 2; 
+                        } 
+                    } 
+                    //Class definition
+                    IF((aux1 == 0) &amp;&amp; (aux2 == 0)) { 
+                        return 0; 
+                    } 
+                    IF(((aux1 == 0) &amp;&amp; (aux2 == 1)) || ((aux1 == 1) &amp;&amp; (aux2 == 0))) { 
+                        return 1; 
+                    } 
+                    IF((aux1 == 1 &amp;&amp; aux2 == 1)) { 
+                        return 1; 
+                    } 
+                    IF((aux1 == 2) || (aux2 == 2)) { 
+                        return 2; 
+                    } 
                     
                 } 
-                →INI400_001804PAGEBREAK(); 
-                IF(COMPARE(d, h, 6) != 0) { 
-                    →INI400_001711TEXT("Only angles of single legs are covered!"); 
-                } 
-                λ↓p← →INI400_001715= 0.54*SQRT(E/fy); 
-                λ↓r← →INI400_001716= 0.91*SQRT(E/fy); 
-                ClassParam.λpw →INI400_001717= λ↓p←; 
-                ClassParam.λrw →INI400_001718= λ↓r←; 
-                ClassParam.λpf →INI400_001719= λ↓p←; 
-                ClassParam.λrf →INI400_001720= λ↓r←; 
                 
-                λ →INI400_001712= d/tw; 
-                ClassParam.λw →INI400_001713= λ; 
-                ClassParam.λf →INI400_001714= λ; 
+                // For steel hollow rectangular sections 
+                IF((FormCode == 2) || (FormCode == 2001)) { 
+                    // reading section properties
+                    →INI400_001669BLOCK { 
+                        IF(FormCode == 2) { 
+                            //  REV:  revised in 07/04/2016
+                            h →MPF000_000082= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; // out-to-out depth
+                            bf →MPF000_000083= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; // out-to-out width
+                            r1 →MPF000_000084= CS.Geometry.r1; // inner radius
+                            tf →MPF000_000085= CS.Geometry.s; 
+                            tw →MPF000_000086= CS.Geometry.s; 
+                        } 
+                        
+                        IF(FormCode == 2001) { 
+                            bf →MPF001_000022= CS.Geometry.Ba; 
+                            tw →MPF001_000023= CS.Geometry.thb; 
+                            tf →MPF001_000024= CS.Geometry.tha; 
+                            h →MPF001_000025= CS.Geometry.Bb; 
+                            d →MPF001_000026= CS.Geometry.Bb; 
+                            r1 →MPF001_000027= 0; 
+                            
+                        } 
+                    } 
+                    →INI400_001802PAGEBREAK(); 
+                    →INI400_001783BLOCK("Checking Flanges") { 
+                        //Flanges
+                        λ↓p← →INI400_000138= 1.12*SQRT(E/fy); 
+                        λ↓r← →INI400_000139= 1.4*SQRT(E/fy); 
+                        ClassParam.λpf →INI400_000725= λ↓p←; // store flange slenderness to the variable
+                        ClassParam.λrf →INI400_000726= λ↓r←; // store flange slenderness to the variable
+                        
+                        λ →INI400_000140= (h-2*(tf+r1))/tw; 
+                        ClassParam.λf →INI400_000727= λ; // store flange slenderness to the variable
+
+                        IF(λ &lt;= λ↓p←) { 
+                            aux1 →INI400_000249= 0; 
+                        } 
+                        IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                            aux1 →INI400_000250= 1; 
+                        } 
+                        IF(λ &gt; λ↓r←) { 
+                            aux1 →INI400_000252= 2; 
+                        } 
+                    } 
+                    →INI400_001803PAGEBREAK(); 
+                    // Web
+                    // tests for fabrication type   
+                    →INI400_001784BLOCK("Checking Web") { 
+                        IF(Fabrication == 0) { // for hot rolled
+                            λ↓p← →INI400_000145= 2.42*SQRT(E/fy); 
+                        } ELSE { // for welded      
+                            λ↓p← →INI400_000232= 3.76*SQRT(E/fy); 
+                        } 
+                        
+                        λ↓r← →INI400_000146= 5.7*SQRT(E/fy); 
+                        ClassParam.λpw →INI400_000728= λ↓p←; // store flange slenderness to the variable 
+                        ClassParam.λrw →INI400_000729= λ↓r←; // store flange slenderness to the variable
+                        
+                        λ →INI400_000147= (bf-2*(tw+r1))/tf; 
+                        ClassParam.λw →INI400_000730= λ; // store flange slenderness to the variable 
+
+                        IF(λ &lt;= λ↓p←) { 
+                            aux2 →INI400_000241= 0; 
+                        } 
+                        IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                            aux2 →INI400_000242= 1; 
+                        } 
+                        IF(λ &gt; λ↓r←) { 
+                            aux2 →INI400_000244= 2; 
+                        } 
+                    } 
+                    
+                    //Class definition
+                    IF((aux1 == 0) &amp;&amp; (aux2 == 0)) { 
+                        return 0; 
+                    } 
+                    IF(((aux1 == 0) &amp;&amp; (aux2 == 1)) || ((aux1 == 1) &amp;&amp; (aux2 == 0))) { 
+                        return 1; 
+                    } 
+                    IF((aux1 == 1 &amp;&amp; aux2 == 1)) { 
+                        return 1; 
+                    } 
+                    IF((aux1 == 2) || (aux2 == 2)) { 
+                        return 2; 
+                    } 
+                } 
                 
-                IF(λ &lt;= λ↓p←) { 
-                    aux1 →INI400_001721= 0; 
-                } 
-                IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                    aux1 →INI400_001722= 1; 
-                } 
-                IF(λ &gt; λ↓r←) { 
-                    aux1 →INI400_001724= 2; 
+                // for hollow circular sections
+                IF(FormCode == 3) { 
+                    
+                    // reading section properties
+                    →INI400_001670BLOCK { 
+                        //REV: revised in 07/04/2016
+                        D →MPF000_000089= CS.Geometry.Contains("D") ? CS.Geometry.D : CS.Geometry.d; 
+                        tw →MPF000_000090= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.w; 
+                        
+                    } 
+                    
+                    λ↓pw← →INI400_000634= 0.07*(E/fy); 
+                    λ↓rw← →INI400_000635= 0.31*(E/fy); 
+                    ClassParam.λpw →INI400_000731= λ↓pw←; // store flange slenderness to the variable
+                    ClassParam.λrw →INI400_000732= λ↓rw←; // store flange slenderness to the variable
+
+                    λw →INI400_000636= D/tw; 
+                    ClassParam.λw →INI400_000733= λw; // store flange slenderness to the variable
+
+                    IF(λw &lt;= λ↓pw←) { 
+                        aux1 →INI400_000637= 0; 
+                    } 
+                    IF(λw &gt; λ↓pw← &amp;&amp; λw &lt;= λ↓rw←) { 
+                        aux1 →INI400_000638= 1; 
+                    } 
+                    IF(λw &gt; λ↓rw←) { 
+                        →INI400_000639TEXT("Ratio D/t not allowed by the code!"); 
+                        aux1 →INI400_000640= 3; 
+                    } 
+                    IF(aux1 == 0) { 
+                        return 0; 
+                    } 
+                    IF(aux1 == 1) { 
+                        return 1; 
+                    } 
+                    IF(aux1 == 3) { 
+                        return 3; 
+                    } 
                 } 
                 
-                IF(aux1 == 0) { 
-                    return 0; 
+                IF((FormCode == 6) &amp;&amp; (Fabrication == 0 || Fabrication == 1)) { 
+                    // Flanges
+                    →INI400_001785BLOCK("Checking Flanges") { // Section G.2.3
+                        // reading section properties
+                        →INI400_001671BLOCK { 
+                            //REV: revised in 06/04/2016
+                            
+                            
+                            tf →MPF000_000064= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.t; 
+                            bf →MPF000_000065= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : (CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b); 
+                            
+                        } 
+                        
+                        λ↓pf← →INI400_000769= 0.38*SQRT(E/fy); 
+                        λ↓rf← →INI400_000770= 1*SQRT(E/fy); 
+                        
+                        ClassParam.λpf →INI400_000771= λ↓pf←; // store flange slenderness to the variable
+                        ClassParam.λrf →INI400_000772= λ↓rf←; // store flange slenderness to the variable
+
+                        λf →INI400_000773= bf/(2*tf); 
+                        ClassParam.λf →INI400_000774= λf; // store flange slenderness to the variable
+
+                        IF(λf &lt;= λ↓pf←) { 
+                            aux1 →INI400_000775= 0; 
+                        } 
+                        IF((λf &gt; λ↓pf←) &amp;&amp; (λf &lt;= λ↓rf←)) { 
+                            aux1 →INI400_000776= 1; 
+                        } 
+                        IF(λf &gt; λ↓rf←) { 
+                            aux1 →INI400_000778= 2; 
+                        } 
+                    } 
+                    
+                    // Webs NBR-8800 does not make difference for hot rolled or welded for this classification
+                    aux2 →INI400_000794= 0; 
+                    
+                    IF((aux1 == 0) &amp;&amp; (aux2 == 0)) { 
+                        return 0; 
+                    } 
+                    IF(((aux1 == 0) &amp;&amp; (aux2 == 1)) || ((aux1 == 1) &amp;&amp; (aux2 == 0))) { 
+                        return 1; 
+                    } 
+                    IF(aux1 == 1 &amp;&amp; aux2 == 1) { 
+                        return 1; 
+                    } 
+                    IF((aux1 == 2) || (aux2 == 2)) { 
+                        return 2; 
+                    } 
+                    
                 } 
-                IF(aux1 == 1) { 
-                    return 1; 
+                
+                // For Single Angles of eaqual legs
+                // this is an extract from AISC-360-10 since Brazilian code do not covers this situation
+                IF(FormCode == 4) { 
+                    // Reading Section Properties
+                    →INI400_001707BLOCK { 
+                        // loads the section and steel grade
+                        //REV: revised in 07/04/2016
+
+                        tw →MPF000_000094= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.t; 
+                        h →MPF000_000095= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; 
+                        d →MPF000_000096= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; 
+                        
+                        
+                    } 
+                    →INI400_001804PAGEBREAK(); 
+                    IF(COMPARE(d, h, 6) != 0) { 
+                        →INI400_001711TEXT("Only angles of single legs are covered!"); 
+                    } 
+                    λ↓p← →INI400_001715= 0.54*SQRT(E/fy); 
+                    λ↓r← →INI400_001716= 0.91*SQRT(E/fy); 
+                    ClassParam.λpw →INI400_001717= λ↓p←; 
+                    ClassParam.λrw →INI400_001718= λ↓r←; 
+                    ClassParam.λpf →INI400_001719= λ↓p←; 
+                    ClassParam.λrf →INI400_001720= λ↓r←; 
+                    
+                    λ →INI400_001712= d/tw; 
+                    ClassParam.λw →INI400_001713= λ; 
+                    ClassParam.λf →INI400_001714= λ; 
+                    
+                    IF(λ &lt;= λ↓p←) { 
+                        aux1 →INI400_001721= 0; 
+                    } 
+                    IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                        aux1 →INI400_001722= 1; 
+                    } 
+                    IF(λ &gt; λ↓r←) { 
+                        aux1 →INI400_001724= 2; 
+                    } 
+                    
+                    IF(aux1 == 0) { 
+                        return 0; 
+                    } 
+                    IF(aux1 == 1) { 
+                        return 1; 
+                    } 
+                    IF(aux1 == 2) { 
+                        return 2; 
+                    } 
                 } 
-                IF(aux1 == 2) { 
-                    return 2; 
-                } 
-            } 
-        } // end of main IF Block. 
+            } // end of main IF Block. 
+        } 
     } 
 } 
 →INI400_001874PAGEBREAK(); 
@@ -1844,14 +1877,14 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="b1" ESA_ID="" Type="Double" Value="26.4e-3" Precision="2">
+      <Variable Modifier="Public" Name="b1" ESA_ID="" Type="Double" Value="384e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="b2" ESA_ID="" Type="Double" Value="26.4e-3" Precision="2">
+      <Variable Modifier="Public" Name="b2" ESA_ID="" Type="Double" Value="290.5e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1872,7 +1905,7 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="bf" ESA_ID="" Type="Double" Value="165e-3" Precision="2">
+      <Variable Modifier="Public" Name="bf" ESA_ID="" Type="Double" Value="300e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1898,7 +1931,7 @@ IF(BendingAxis == 1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Value="271.2e-3" Precision="2">
+      <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Value="400e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1926,7 +1959,7 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="E" ESA_ID="" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="E" ESA_ID="" Type="Double" Value="200e9" Precision="2">
         <Description>
           <ENU>Elastic Modulus</ENU>
         </Description>
@@ -1939,14 +1972,14 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="FormCode" ESA_ID="" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="FormCode" ESA_ID="" Type="Double" Value="2001" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="fy" ESA_ID="" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="fy" ESA_ID="" Type="Double" Value="345e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1959,7 +1992,7 @@ IF(BendingAxis == 1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Value="290.6e-3" Precision="2">
+      <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Value="400e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2036,7 +2069,7 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="r1" ESA_ID="" Type="Double" Value="2.3e-3" Precision="2">
+      <Variable Modifier="Public" Name="r1" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2063,7 +2096,7 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="tf" ESA_ID="" Type="Double" Value="9.7e-3" Precision="2">
+      <Variable Modifier="Public" Name="tf" ESA_ID="" Type="Double" Value="8e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2077,7 +2110,7 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="tw" ESA_ID="" Type="Double" Value="5.8e-3" Precision="2">
+      <Variable Modifier="Public" Name="tw" ESA_ID="" Type="Double" Value="4.75e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2145,26 +2178,26 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λ" ESA_ID="" Type="Double" Value="46.75862" Precision="2">
+      <Variable Modifier="Public" Name="λ" ESA_ID="" Type="Double" Value="80.84211" Precision="2">
         <Description>
           <ENU>Element slenderness</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λ↓p←" ESA_ID="" Type="Double" Value="90.53016" Precision="2">
+      <Variable Modifier="Public" Name="λ↓p←" ESA_ID="" Type="Double" Value="58.26675" Precision="2">
         <Description>
           <ENU>Plastic slenderness limit</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λ↓pf←" ESA_ID="" Type="Double" Value="13.48322" Precision="2">
+      <Variable Modifier="Public" Name="λ↓pf←" ESA_ID="" Type="Double" Value="33.70804" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λ↓pw←" ESA_ID="" Type="Double" Value="35.87498" Precision="2">
+      <Variable Modifier="Public" Name="λ↓pw←" ESA_ID="" Type="Double" Value="33.70804" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2191,7 +2224,7 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λf" ESA_ID="" Type="Double" Value="8.505155" Precision="2">
+      <Variable Modifier="Public" Name="λf" ESA_ID="" Type="Double" Value="36.3125" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2212,7 +2245,7 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λw" ESA_ID="" Type="Double" Value="50.10345" Precision="2">
+      <Variable Modifier="Public" Name="λw" ESA_ID="" Type="Double" Value="80.84211" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3984,7 +4017,7 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_000620">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -7639,12 +7672,156 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="MPF001_000010">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="6" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000011">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000012">
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000013">
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000014">
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000015">
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000016">
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000017">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000018">
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000019">
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000020">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000021">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000022">
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000023">
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000024">
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000025">
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000026">
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000027">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
   <Dialog>
     <Main Width="500">
-      <TEMDLoader Name="" ID="13" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="9" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="" SectionID="-1" CombiID="-1" />
+      <TEMDLoader Name="" ID="13" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="9" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="C:\Users\Avell 1513\ESA16.1\Temp\Esa_Model_Data\Beam.3900" MemberID="Beam.3900" SectionID="0" CombiID="0" />
       <TCustomLibrary Name="" ID="11" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="7" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="CSS" DataFile="User.xml" Collapsed="True" UseCombo="True" Category="" Item="" />
       <TCheckBox Name="FUserTable" ID="8" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="4" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="150|23" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="UserTable" BookMarkID="" ForeColor="-16777216" ChbRight="False">
         <Texts TranslateID="DIALOG_000008">
@@ -7786,7 +7963,7 @@ IF(BendingAxis == 1) {
       <ENU>"Checking Flanges"</ENU>
     </Item>
     <Item TranslateID="TEXT_">
-      <ENU>"Slender"</ENU>
+      <ENU>"Checking Web"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_000001">
       <ENU>"Cross Section Classification according to NBR-8800"</ENU>
@@ -7904,6 +8081,12 @@ IF(BendingAxis == 1) {
     </Item>
     <Item ID="TEXT_INI400_001778">
       <ENU>"&gt; 0.76 --&gt;"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_MPF001_000020">
+      <ENU>"Checking Flanges"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_MPF001_000021">
+      <ENU>"Checking Web"</ENU>
     </Item>
   </Texts>
 </Root>

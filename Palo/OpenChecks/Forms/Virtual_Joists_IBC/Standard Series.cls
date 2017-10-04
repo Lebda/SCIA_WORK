@@ -307,65 +307,65 @@
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
-      <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_d">
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="d↓min←" ESA_ID="" Type="Double" Value="711e-3" Precision="2">
+      <Variable Modifier="Public" Name="d↓min←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_d↓min←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="DesignMethod" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="DesignMethod" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_DesignMethod">
           <ENU>LRFD (0) or ASD (1)</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Ext" ESA_ID="" Type="Boolean" Value="0">
+      <Variable Modifier="Public" Name="Ext" ESA_ID="" Type="Boolean">
         <Description TranslateID="VARIABLE_Ext">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Filter2" ESA_ID="" Type="String" Value="Column1 &gt;= 7.62 AND Column2 &gt; 43782">
+      <Variable Modifier="Public" Name="Filter2" ESA_ID="" Type="String">
         <Description TranslateID="VARIABLE_Filter2">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Value="-1" Precision="2">
+      <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_i">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="index2" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="index2" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_index2">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="L" ESA_ID="" Type="Double" Value="7.62" Precision="2">
+      <Variable Modifier="Public" Name="L" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_L">
           <ENU>Joist Length</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="304.8e-3" Dim="ft" />
       </Variable>
-      <Variable Modifier="Public" Name="MatchVJDepth" ESA_ID="" Type="Boolean" Value="1">
+      <Variable Modifier="Public" Name="MatchVJDepth" ESA_ID="" Type="Boolean">
         <Description TranslateID="VARIABLE_MatchVJDepth">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="SA" ESA_ID="" Type="Boolean" Value="1">
+      <Variable Modifier="Public" Name="SA" ESA_ID="" Type="Boolean">
         <Description TranslateID="VARIABLE_SA">
           <ENU>
           </ENU>
@@ -377,13 +377,13 @@
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="SJtype" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="SJtype" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_SJtype">
           <ENU>K only (0), LH only (1), DLH only (2), Any Type (3)</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Sort_SJ" ESA_ID="" Type="Double" Value="2" Precision="2">
+      <Variable Modifier="Public" Name="Sort_SJ" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_Sort_SJ">
           <ENU>Sort Standard Joists by Weight (0) or  Depth (1)</ENU>
         </Description>
@@ -401,34 +401,34 @@
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="StandardJoistCapacity" ESA_ID="" Type="Double" Value="110169.4" Precision="2">
+      <Variable Modifier="Public" Name="StandardJoistCapacity" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_StandardJoistCapacity">
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="0" A="0" K="0" cd="0" mol="0" Coef="14.5939" Dim="lb/ft" />
       </Variable>
-      <Variable Modifier="Public" Name="StandardJoistDepth" ESA_ID="" Type="Double" Value="1.016" Precision="2">
+      <Variable Modifier="Public" Name="StandardJoistDepth" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_StandardJoistDepth">
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="StandardJoistName" ESA_ID="" Type="String" Value="None">
+      <Variable Modifier="Public" Name="StandardJoistName" ESA_ID="" Type="String">
         <Description TranslateID="VARIABLE_StandardJoistName">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="W↓app-min←" ESA_ID="" Type="Double" Value="1e27" Precision="2">
+      <Variable Modifier="Public" Name="W↓app-min←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_W↓app-min←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="w↓eq←" ESA_ID="" Type="Double" Value="43781.7" Precision="2">
+      <Variable Modifier="Public" Name="w↓eq←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_w↓eq←">
           <ENU>Uniform Loading on Joist</ENU>
         </Description>

@@ -19,7 +19,7 @@ object GetOutput() {
 //Clause 9.8.5 Bored piles, Paragraph(3)
 //For use different formula, uncomment proper code and place formula there. Save and export file after this change.
 SWITCH(IO.SetupNA.EC_NA.Code) { 
-    //    CASE "ONORM": {   } 
+    //    CASE "ONORM": { } 
     CASE "NBN" :  { 
         h↓1← →INI400_000087= IO.SetupNA.EC_1992_1_1.h_1.h1; 
         IF(COMPARE(d, h↓1←, 3) != 1) { 
@@ -36,12 +36,12 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         h↓1← →INI400_000090= IO.SetupNA.EC_1992_1_1.h_1.h1; 
         A↓s,bpmin← →INI400_000091= 0.003*A↓c←; 
     } 
-    //    CASE "SFS": {  } 
+    //    CASE "SFS": { } 
     CASE "NF" :  { //This clause do not apply in NF
         h↓1← →INI400_000092= IO.SetupNA.EC_1992_1_1.h_1.h1; 
         A↓s,bpmin← →INI400_000093= 0; 
     } 
-    //    CASE "DIN": {    } 
+    //    CASE "DIN": { } 
     //    CASE "ELOT": { } 
     //    CASE "UNI": { } 
     //    CASE "IS": { } 
@@ -53,6 +53,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     //    CASE "SIG": { } 
     //    CASE "STN": { } 
     //    CASE "SIST": { } 
+    //    CASE "UNE": { } 
     //    CASE "SS": { } 
     DEFAULT :  { 
         h↓1← →INI400_000083= IO.SetupNA.EC_1992_1_1.h_1.h1; //if h↓1← = 10000 mm --&gt; h↓1← is unlimited

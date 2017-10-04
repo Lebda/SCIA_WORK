@@ -198,7 +198,7 @@ private void CheckVerticalReinfMinRatio(object ReinfLayer, out double A↓s,vmin
         
         →INI400_016334double&lt;mm↑2←/m,1&gt; A↓s,vmin←; 
         →INI400_016190TEXT("Minium ratio (area) of vertical reinforcement"); 
-        →INI400_016302CL_9_6_2_1.CalcMinArea(Ac, NEd, fcd, fyd, out A↓s,vmin←); 
+        →INI400_016302CL_9_6_2_1.CalcMinArea(Ac, NEd, fcd, fyd, fyk, out A↓s,vmin←); 
         →INI400_016189double&lt;mm↑2←/m,1&gt; A↓s,vmin←; 
         →INI400_016284TEXT("Half of the area should be located at each surface:"); 
         A↓s,vmin← →INI400_016285= 0.5*A↓s,vmin← @REF("(§9.6.2(2))"); 
@@ -2080,7 +2080,7 @@ IF(!IO.IsExternCLC) { →INI400_016480SetResultsForUT(); }
         </Texts>
         <Tabs>
           <Tab Text="LONGITUDINAL">
-            <TTableInput Name="" ID="152" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="29" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_DesignReinf" Value="[1-]|0|0|0|0|Vertical|True|1|180|10|0|0|0║[2-]|90|300|0|0|Horizontal|False|0|170|10|0|0|0║[1+]|0|0|0|0|Vertical|True|0|180|10|2|0|0║[2+]|90|300|0|0|Horizontal|False|0|170|10|2|0|0" CellBG="-1" HeaderBG="-986896" FixedRows="4">
+            <TTableInput Name="" ID="152" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="29" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_DesignReinf" Value="[1-]|0|300|0|0|Vertical|True|1|180|10|0|0|0║[2-]|90|0|0|0|Horizontal|False|0|170|10|0|0|0║[1+]|0|0|0|0|Vertical|True|0|180|10|2|0|0║[2+]|90|0|0|0|Horizontal|False|0|170|10|2|0|0" CellBG="-1" HeaderBG="-986896" FixedRows="4">
               <Texts>
                 <ENU>Layer|Alpha [°]|As,req [mm2/m]|As,det,min [mm2/m]|As,det,max [mm2/m]|Type|MainVert|Tensile|d [mm]|ds [mm]|Edge|Forces_ID|Combi_ID</ENU>
               </Texts>

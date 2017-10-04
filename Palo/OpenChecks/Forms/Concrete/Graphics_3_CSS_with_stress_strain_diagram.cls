@@ -328,7 +328,7 @@ IF(DrawStress) {
             } 
         } 
     } 
-    IF(Reinf.Count != 0) { 
+    IF(Reinf != null &amp;&amp; Reinf.Count != 0) { 
         object[] PtsR →INI400_001693= new object[]; 
         object[] Ysup →INI400_003928= new object[]; //additonal array of points, it store Y points from next cycle
         →INI400_004017object[] σst; 
@@ -476,7 +476,7 @@ IF(DrawStrain) {
             } 
         } 
     } 
-    IF(Reinf.Count != 0) { 
+    IF(Reinf != null &amp;&amp; Reinf.Count != 0) { 
         object[] PtsSR →INI400_001729= new object[]; 
         object BrushSR →INI400_001730= new SolidBrush(Color.FromArgb(128, Color.Green)); //Color for reinforcement strain
         object[] Ysup →INI400_003939= new object[]; //additonal array of points, it store Y points from next cycle

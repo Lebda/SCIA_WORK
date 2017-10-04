@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="71a433a2-5028-4f92-a040-7d98d93c4075">
   <CodeEditor>
-    <SourceCode Collapsed="2|132|142|154|164|175|187|200|211|221|258|286|299|308|402|439|452|491|536|559|572|582|614|667|705|780|791|811|822|839|861|870|888|901" BreakPoints="">//Functions for Crack width check and SLS design
+    <SourceCode Collapsed="2|132|142|154|164|175|187|200|211|221|258|286|299|308|402|439|452|491|536|559|572|582|614|667|705|786|797|817|828|845|867|876|894|907|916" BreakPoints="">//Functions for Crack width check and SLS design
 
 public double Calculate_wk_max(double CssIDCrack, double SetForcesQp, bool QuasiComb, bool CorossionSensitive) { 
     IF(IO.MemberData.Concrete.Solver.CrackWidth.TypeCrackWidth == 0) { 
@@ -776,7 +776,13 @@ class CalcCrackRectCss {
                 } 
             } 
             IF(x↓r← &lt; 0) { 
-                x↓r← →DLO134_045557= -999; 
+                x↓r← →VAL000_000001= -999; 
+            } 
+            IF(x↓r← &gt; h) { 
+                x↓r← →VAL000_000007= -999; 
+            } 
+            IF(x↓r← == -999) { 
+                x↓r← →VAL000_000008= 0; 
             } 
         } 
         
@@ -830,7 +836,7 @@ class CalcCrackRectCss {
                 FOR(i, 0, ReinfLayers.Count-1) { 
                     →DLO134_045962double σ↓si←; 
                     →DLO134_045963CalculateCrackedReinfStress(ReinfLayers, i, out σ↓si←); 
-                    IF(σ↓si← &gt; σ↓smax← &amp;&amp; σ↓si← &gt; 0) { 
+                    IF(σ↓si← &gt; σ↓smax← &amp;&amp; σ↓si← &gt; 0 &amp;&amp; COMPARE(ReinfLayers[i].As, 0, 6) &gt; 0) { 
                         pomIndex →DLO134_045672= i; 
                         σ↓smax← →DLO134_045673= σ↓si←; 
                     } 
@@ -846,12 +852,12 @@ class CalcCrackRectCss {
                 double value →DLO134_045764= 0; 
                 FOR(i, 0, ReinfLayers.Count-1) { 
                     IF(Surface == 0) { 
-                        IF(ReinfLayers[i].Y &lt;= value &amp;&amp; ReinfLayers[i].As &gt; 0) { 
+                        IF(ReinfLayers[i].Y &lt;= value &amp;&amp; COMPARE(ReinfLayers[i].As, 0, 6) &gt; 0) { 
                             value →DLO134_045766= ReinfLayers[i].Y; 
                             Index →DLO134_045775= i; 
                         } 
                     } ELSE { 
-                        IF(ReinfLayers[i].Y &gt; value &amp;&amp; ReinfLayers[i].As &gt; 0) { 
+                        IF(ReinfLayers[i].Y &gt; value &amp;&amp; COMPARE(ReinfLayers[i].As, 0, 6) &gt; 0) { 
                             value →DLO134_045767= ReinfLayers[i].Y; 
                             Index →DLO134_045776= i; 
                         } 
@@ -1042,14 +1048,15 @@ class CalcCrackRectCss {
                             →DLO134_001811TEXT("Maximal value of tensile stress of the reinforcement inside area A↓c,eff←"); 
                             →DLO134_046030CalculateCrackedReinfStress(ReinfLayersInsideAceff, IndexMostTensileReinf, out σ↓s←); 
                             →DLO134_048049TEXT("σ↓s← = " &amp; σ↓s←); 
+                            →DLO134_001812TEXT("Area of reinforcement inside area A↓c,eff←"); 
+                            FOR(i, 0, ReinfLayersInsideAceff.Count-1) { 
+                                A↓s← →DLO134_046293= A↓s←+ReinfLayersInsideAceff[i].As; 
+                            } 
+                            →DLO134_048058TEXT("A↓s← = " &amp; A↓s←); 
                             IF(σ↓s← &lt; ReinfMat[0].fyk) { 
                                 →KRS134_000014PAGEBREAK(); 
                                 
-                                →DLO134_001812TEXT("Area of reinforcement inside area A↓c,eff←"); 
-                                FOR(i, 0, ReinfLayersInsideAceff.Count-1) { 
-                                    A↓s← →DLO134_046293= A↓s←+ReinfLayersInsideAceff[i].As; 
-                                } 
-                                →DLO134_048058TEXT("A↓s← = " &amp; A↓s←); 
+                                
                                 →DLO134_001813TEXT("Ratio of modulus of concrete and reinforcement"); 
                                 E↓s← →DLO134_046040= ReinfLayersInsideAceff[IndexMostTensileReinf].Material.Es; 
                                 α↓E← →DLO134_001737= E↓s←/E↓c← @REF("(§7.3.4(2))"); 
@@ -1101,9 +1108,6 @@ class CalcCrackRectCss {
                                     k↓4← →DLO134_005629= OutputClause7_3_4.k_4; 
                                 } 
                                 →KRS134_000016PAGEBREAK(); 
-                                →DLO134_006349TEXT("k↓3← = " &amp; k↓3←); 
-                                →DLO134_006350TEXT("k↓4← = " &amp; k↓4←); 
-                                
                                 →DLO134_001819TEXT("Maximum crack spacing"); 
                                 s↓lim← →DLO134_001821= 5*(c+0.5*ϕ↓eq←); 
                                 →DLO134_047810double s↓r.max←; 
@@ -1111,11 +1115,15 @@ class CalcCrackRectCss {
                                     →DLO134_001820TEXT("s↓max← = " &amp; s↓max← &amp; " &gt; 5*(c+0.5*ϕ↓eq←) = " &amp; s↓lim← &amp; " or ρ↓p.eff← = 0, "); 
                                     →DLO134_003299TEXT("therefore:"); 
                                     SWITCH(IO.SetupNA.EC_NA.Code) { 
-                                        CASE "ONORM" :  { 
-                                            s↓r.max← →DLO134_048510= MIN(1.3*[h-x↓r←], (ϕ↓eq←*σ↓s←)/(3.6*f↓ct.eff←)) @REF("(ÖNORM-NA 7.11)"); 
-                                        } 
                                         CASE "DIN" :  { 
                                             s↓r.max← →DLO134_048511= MIN(1.3*[h-x↓r←], (ϕ↓eq←*σ↓s←)/(3.6*f↓ct.eff←)) @REF("(DIN-NA 7.11)"); 
+                                        } 
+                                        CASE "CSN" :  { 
+                                            IF(ρ↓p.eff← == 0) { 
+                                                s↓r.max← →KRS116_000002= 1.3*[h-x↓r←] @REF("(7.14)"); 
+                                            } ELSE { 
+                                                s↓r.max← →KRS116_000001= PARMAX(1.3*[h-x↓r←], k↓3←*c+(k↓1←*k↓2←*k↓4←*ϕ↓eq←)/ρ↓p.eff←) @REF("(ČSN-NA 7.14)"); 
+                                            } 
                                         } 
                                         DEFAULT :  { 
                                             s↓r.max← →DLO134_048512= 1.3*[h-x↓r←] @REF("(7.14)"); 
@@ -2099,44 +2107,44 @@ class CalcCrackRectCss {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="DLO134_005625">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1276" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="6027" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
       <VC ID="DLO134_005628">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1283" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1283" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="6035" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="DLO134_005629">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1304" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1304" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="6055" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="DLO134_005816">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="44" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1231" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="5748" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
       <VC ID="DLO134_005817">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1244" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1244" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="5761" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
       <VC ID="DLO134_006140">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2174,22 +2182,6 @@ class CalcCrackRectCss {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="DLO134_006349">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="DLO134_006350">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -3803,14 +3795,6 @@ class CalcCrackRectCss {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="DLO134_045554">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_045557">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -5930,6 +5914,22 @@ class CalcCrackRectCss {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
+      <VC ID="KRS116_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="1622" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="444" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1622" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="1581" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="1622" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="444" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1622" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="1581" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+      </VC>
       <VC ID="KRS116_000024">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -6115,6 +6115,30 @@ class CalcCrackRectCss {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS134_000027">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL000_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+      </VC>
+      <VC ID="VAL000_000007">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+      </VC>
+      <VC ID="VAL000_000008">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -6348,12 +6372,6 @@ class CalcCrackRectCss {
     </Item>
     <Item ID="TEXT_DLO134_006345">
       <ENU>→DLO134_001744"k↓1← = " &amp; k↓1←</ENU>
-    </Item>
-    <Item ID="TEXT_DLO134_006349">
-      <ENU>"k↓3← = " &amp; k↓3←</ENU>
-    </Item>
-    <Item ID="TEXT_DLO134_006350">
-      <ENU>"k↓4← = " &amp; k↓4←</ENU>
     </Item>
     <Item ID="TEXT_DLO134_006700">
       <ENU>"c = " &amp; c</ENU>

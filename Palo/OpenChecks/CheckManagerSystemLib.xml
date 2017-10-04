@@ -10,6 +10,7 @@ Each system check is defined using a block as follows:
     <multidesign>0</multidesign>                       // Flag to show the MultiDesign checkbox with '0' false and '1' true
     <ribplatebeam>0</ribplatebeam>                     // Flag to filter for composite beam type rib plate with '0' false and '1' true
     <combiforclass>0</combiforclass>                   // Generate dangerous combinations separately for each item in the class
+    <llrfactor>0</llrfactor>                           // Flag to use LLR factor in DF check in combinations
     <category>examples</category>                      // The sub-category in the Design Forms Check service.
                                                        // Allowable values are 'concrete', 'steel', 'composite', 'other', 'poirot', 'examples', 'internal'
   </openCheck>
@@ -24,6 +25,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -35,6 +37,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -46,6 +49,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -57,6 +61,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -68,6 +73,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -79,6 +85,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -90,6 +97,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -101,6 +109,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -112,6 +121,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -123,6 +133,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -134,6 +145,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -145,6 +157,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>1</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -156,6 +169,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -167,6 +181,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -178,6 +193,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -189,6 +205,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -200,6 +217,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -211,6 +229,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -222,6 +241,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>1</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -233,6 +253,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>1</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -244,6 +265,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>1</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -255,6 +277,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -266,6 +289,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -277,6 +301,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -288,6 +313,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -299,6 +325,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -310,6 +337,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -321,6 +349,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -332,6 +361,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
     <openCheck>
@@ -340,9 +370,10 @@ Each system check is defined using a block as follows:
     <autodesign>0</autodesign>
     <singlecheck>0</singlecheck>
     <multidesign>0</multidesign>
-    <allcombiForDetailed>0</allcombiForDetailed>
+    <allcombiForDetailed>1</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -354,6 +385,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -365,6 +397,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -376,6 +409,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>examples</category>
   </openCheck>
   <openCheck>
@@ -387,6 +421,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>examples</category>
   </openCheck>
   <openCheck>
@@ -398,6 +433,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>examples</category>
   </openCheck>
   <openCheck>
@@ -409,6 +445,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -420,6 +457,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -431,6 +469,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -442,6 +481,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -453,6 +493,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>examples</category>
   </openCheck>
   <openCheck>
@@ -464,6 +505,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -475,6 +517,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -486,6 +529,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -497,6 +541,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -508,6 +553,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -519,6 +565,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -530,6 +577,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -541,6 +589,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -552,6 +601,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -563,6 +613,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -574,6 +625,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -585,6 +637,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>1</ribplatebeam>
     <combiforclass>1</combiforclass>
+    <llrfactor>1</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -596,6 +649,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -607,6 +661,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -618,6 +673,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -629,6 +685,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -640,6 +697,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -651,6 +709,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -662,6 +721,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>1</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -673,6 +733,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>1</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -684,6 +745,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -695,6 +757,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -706,6 +769,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -717,6 +781,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -728,6 +793,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -739,6 +805,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -750,6 +817,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -761,6 +829,7 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
     <category>poirot</category>
   </openCheck>
 </checkManager>

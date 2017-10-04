@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="f857a535-2d0e-4513-af8d-489f58a7aa66">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">bool ValidateInput(object Input) { 
+    <SourceCode Collapsed="31|44|55|89|109|120|129|147" BreakPoints="">bool ValidateInput(object Input) { 
     A↓c← →INI400_006029= Input.Get("A_c"); //Area of concrete Css
     ThinWall →INI400_006030= Input.Get("ThinWall"); //True - walls with λ ≥ λ↓min← 
     N↓Ed← →INI400_006031= Input.Get("N_Ed"); //Normal force
@@ -128,6 +128,23 @@ void CalcScript(out double A↓s,hmin←) {
                 double Coeff↓AshminA← →KRS116_000021= IO.SetupNA.EC_1992_1_1.ρ_min_h[0]; 
                 double Coeff↓AshminB← →KRS116_000022= IO.SetupNA.EC_1992_1_1.ρ_min_h[1]; 
                 A↓s,hmin← →KRS116_000023= MAX(Coeff↓AshminA←*A↓s,v←, Coeff↓AshminB←*A↓c←) @REF("(SIST §9.6.3(1))"); 
+            } 
+        } 
+        CASE "UNE" :  { 
+            IF(IO.IsStandalone) { 
+                IF(COMPARE(f↓yk←, 500000000, 3) == 0) { //for fyk = 500 MPa
+                    A↓s,hmin← →KRS116_000051= MAX(0.0032*A↓c←) @REF("(UNE §9.6.3(1))"); 
+                } ELSE { //for other fyk
+                    A↓s,hmin← →KRS116_000052= MAX(0.004*A↓c←) @REF("(UNE §9.6.3(1))"); 
+                } 
+            } ELSE { 
+                double Coeff↓AshminA← →KRS116_000048= IO.SetupNA.EC_1992_1_1.ρ_min_h[0]; 
+                double Coeff↓AshminB← →KRS116_000049= IO.SetupNA.EC_1992_1_1.ρ_min_h[1]; 
+                IF(COMPARE(f↓yk←, 500000000, 3) == 0) { //for fyk = 500 MPa
+                    A↓s,hmin← →KRS116_000053= MAX(Coeff↓AshminB←*A↓c←) @REF("(UNE §9.6.3(1))"); 
+                } ELSE { //for other fyk
+                    A↓s,hmin← →KRS116_000054= MAX(Coeff↓AshminA←*A↓c←) @REF("(UNE §9.6.3(1))"); 
+                } 
             } 
         } 
         //    CASE "SS": { } 
@@ -749,6 +766,54 @@ void CalcScript(out double A↓s,hmin←) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000048">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000049">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000051">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000052">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000053">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000054">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
     </VisualComponents>
     <Images />

@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="11"><StringCode SourceType="DLLRC:"><StringId>@{soilstressdiagram.2ename}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="15"><StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eliveloadreduction}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>5007</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{soilstressdiagram.2ename}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
 		<ResourceId>210</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2einternalforces1d_name}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>12037</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2einternal_forces}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
 		<ResourceId>5007</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2edeformations1d_name}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>36610</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eids_open_checks_document_root}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
@@ -14,6 +26,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2elinear_reactions}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
 		<ResourceId>6311</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eliveloadreduction_name}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>12037</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eitm5004}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
@@ -41,6 +57,6 @@
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2ereactionsresultant}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
-		<ResourceId>36625</ResourceId>
+		<ResourceId>36632</ResourceId>
 	</StringCode>
 </StringCodeDatabase>

@@ -41,6 +41,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     //    CASE "SIG": { } 
     //    CASE "STN": { } 
     //    CASE "SIST": { } 
+    //    CASE "UNE": { } 
     //    CASE "SS": { } 
     DEFAULT :  { 
         θ↓f,min,comp← →INI400_005267= IO.SetupNA.EC_1992_1_1.θ_f_lim.θ_f_min_comp; 

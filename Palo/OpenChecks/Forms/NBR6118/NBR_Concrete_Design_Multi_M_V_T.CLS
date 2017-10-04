@@ -77,6 +77,10 @@ IF(IO.IsStandalone) {
         { 
             TypeMember →INI400_011886= 1; 
         } 
+        CASE 4 : // rib
+        { 
+            TypeMember →RFM106_017291= 0; 
+        } 
         CASE 13 : //beam as slab
         { 
             TypeMember →INI400_011887= 0; 
@@ -546,9 +550,9 @@ IF(COMPARE(M↓y←, 0.0, 15) == 0 &amp;&amp; COMPARE(N, 0.0, 15) == 0 &amp;&amp
 →INI400_001335PAGEBREAK(); 
 //  for testing
 //N →INI400_011485= 0; 
-//M↓y← →INI400_011486= 0; 
+//M↓y← →INI400_011486= -16000; 
 //ϕ →INI400_011596= 0.016; 
-//M↓z← →INI400_011487= 67920; 
+//M↓z← →INI400_011487= -9000; 
 //V↓y← →INI400_011488= 0; 
 //V↓z← →INI400_011489= 0; 
 //M↓x← →INI400_011490= 0; 
@@ -844,26 +848,29 @@ SWITCH(TypeMember) {
         →INI400_012253TEXT(ey); 
         →INI400_012254TEXT("Minimum bending moments:"); 
         IF(UniMethod == 0) { 
-            →INI400_012255TEXT("Direction: y"); 
-            double W↓0y← →INI400_012256= I↓y←/ABS(ez); 
-            double M↓dy,min← →INI400_012257= 0.8*W↓0y←*1.3*f↓ctm← @REF("( 17.3.5.2.1 )"); 
-            IF(COMPARE(ABS(M↓y←), M↓dy,min←, 6) == -1) { 
-                →INI400_012288TEXT("M↓y← &lt; M↓dy,min←"); 
-                IF(COMPARE(M↓y←, 0, 15) == -1) { 
-                    M↓y← →INI400_012284= -M↓dy,min←; 
-                } ELSE { 
-                    M↓y← →INI400_012285= M↓dy,min←; 
+            IF(COMPARE(ABS(M↓y←), ABS(M↓z←), 6) == 1) { 
+                →INI400_012255TEXT("Direction: y"); 
+                double W↓0y← →INI400_012256= I↓y←/ABS(ez); 
+                double M↓dy,min← →INI400_012257= 0.8*W↓0y←*1.3*f↓ctm← @REF("( 17.3.5.2.1 )"); 
+                IF(COMPARE(ABS(M↓y←), M↓dy,min←, 6) == -1) { 
+                    →INI400_012288TEXT("M↓y← &lt; M↓dy,min←"); 
+                    IF(COMPARE(M↓y←, 0, 15) == -1) { 
+                        M↓y← →INI400_012284= -M↓dy,min←; 
+                    } ELSE { 
+                        M↓y← →INI400_012285= M↓dy,min←; 
+                    } 
                 } 
-            } 
-            →INI400_012258TEXT("Direction: z"); 
-            double W↓0z← →INI400_012259= I↓z←/ABS(ey); 
-            double M↓dz,min← →INI400_012260= 0.8*W↓0z←*1.3*f↓ctm← @REF("( 17.3.5.2.1 )"); 
-            IF(COMPARE(ABS(M↓z←), M↓dz,min←, 6) == -1) { 
-                →INI400_012289TEXT("M↓z← &lt; M↓dz,min←"); 
-                IF(COMPARE(M↓z←, 0, 15) == -1) { 
-                    M↓z← →INI400_012283= -M↓dz,min←; 
-                } ELSE { 
-                    M↓z← →INI400_012282= M↓dz,min←; 
+            } ELSE { 
+                →INI400_012258TEXT("Direction: z"); 
+                double W↓0z← →INI400_012259= I↓z←/ABS(ey); 
+                double M↓dz,min← →INI400_012260= 0.8*W↓0z←*1.3*f↓ctm← @REF("( 17.3.5.2.1 )"); 
+                IF(COMPARE(ABS(M↓z←), M↓dz,min←, 6) == -1) { 
+                    →INI400_012289TEXT("M↓z← &lt; M↓dz,min←"); 
+                    IF(COMPARE(M↓z←, 0, 15) == -1) { 
+                        M↓z← →INI400_012283= -M↓dz,min←; 
+                    } ELSE { 
+                        M↓z← →INI400_012282= M↓dz,min←; 
+                    } 
                 } 
             } 
         } ELSE { 
@@ -2944,11 +2951,33 @@ void Txsection() {
         →INI400_012462TEXT("Section on member"); 
         →INI400_012463TEXT("Member:"); 
         →INI400_012464TEXT(IO.Beam.Member.Name &amp; " -"); 
-        IF(TypeMember == 0) { 
-            →INI400_012465TEXT("Beam"); 
-        } ELSE { 
-            →INI400_012466TEXT("Column"); 
+        SWITCH(StructuralType) { 
+            CASE 0 : //general
+            { 
+                →RFM106_017302TEXT("Beam"); 
+            } 
+            CASE 1 : //beam
+            { 
+                →RFM106_017298TEXT("Beam"); 
+            } 
+            CASE 2 : //column
+            { 
+                →RFM106_017299TEXT("Column"); 
+            } 
+            CASE 4 : // rib
+            { 
+                →RFM106_017300TEXT("Rib"); 
+            } 
+            CASE 13 : //beam as slab
+            { 
+                →RFM106_017301TEXT("Beam-Slab"); 
+            } 
         } 
+        //        IF(TypeMember == 0) { 
+        //            →INI400_012465TEXT("Beam"); 
+        //        } ELSE { 
+        //            →INI400_012466TEXT("Column"); 
+        //        } 
         →INI400_012467TEXT("Number of section on member:"); 
         →INI400_012468TEXT(Val(SecID+1, 0)); 
         →INI400_012469TEXT("Position of section on member from the begin:"); 
@@ -3038,7 +3067,7 @@ void TxReif() {
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
-      <Variable Modifier="Public" Name="A" ESA_ID="" Type="Double" Value="1" Precision="3">
+      <Variable Modifier="Public" Name="A" ESA_ID="" Type="Double" Value="NaN" Precision="3">
         <Description TranslateID="VARIABLE_A">
           <ENU>Cross section area</ENU>
         </Description>
@@ -3093,7 +3122,7 @@ void TxReif() {
         </Description>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="100e-6" Dim="cm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="a↓l,min←" ESA_ID="" Type="Double" Value="177.85e-3" Precision="2">
+      <Variable Modifier="Public" Name="a↓l,min←" ESA_ID="" Type="Double" Value="417e-3" Precision="2">
         <Description TranslateID="VARIABLE_a↓l,min←">
           <ENU>Minimum displacement parallel to the longitudinal axis</ENU>
         </Description>
@@ -3105,7 +3134,7 @@ void TxReif() {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓s,max←" ESA_ID="" Type="Double" Value="8e-3" Precision="2">
+      <Variable Modifier="Public" Name="A↓s,max←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3126,7 +3155,7 @@ void TxReif() {
         </Description>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="100e-6" Dim="cm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓s,min←" ESA_ID="Result.5" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="A↓s,min←" ESA_ID="Result.5" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3212,7 +3241,7 @@ void TxReif() {
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="100e-6" Dim="cm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓sw/s←" ESA_ID="Result.8" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="A↓sw/s←" ESA_ID="Result.8" Type="Double" Value="-99.9e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3220,7 +3249,7 @@ void TxReif() {
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="140" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="100e-6" Dim="cm↑2←/m" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓sw←" ESA_ID="" Type="Double" Value="100.531e-6" Precision="2">
+      <Variable Modifier="Public" Name="A↓sw←" ESA_ID="" Type="Double" Value="39.26991e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3235,7 +3264,7 @@ void TxReif() {
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="140" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="100e-6" Dim="cm↑2←/m" />
       </Variable>
-      <Variable Modifier="Public" Name="Abars" ESA_ID="" Type="Double" Value="3.639782" Precision="2">
+      <Variable Modifier="Public" Name="Abars" ESA_ID="" Type="Double" Value="3.659083" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3248,7 +3277,7 @@ void TxReif() {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="ActCombiId" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="ActCombiId" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3262,7 +3291,14 @@ void TxReif() {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="AngleAxis" ESA_ID="" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="alphageo" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description TranslateID="VARIABLE_alphageo">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="AngleAxis" ESA_ID="" Type="Double" Value="90" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3313,14 +3349,14 @@ void TxReif() {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="b" ESA_ID="" Type="Double" Value="200e-3" Precision="2">
+      <Variable Modifier="Public" Name="b" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="b↓w←" ESA_ID="" Type="Double" Value="200e-3" Precision="2">
+      <Variable Modifier="Public" Name="b↓w←" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description TranslateID="VARIABLE_b↓w←">
           <ENU>Cross section width for calculation shear</ENU>
         </Description>
@@ -3355,7 +3391,7 @@ void TxReif() {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="bLayerDesign" ESA_ID="" Type="Boolean" Value="0">
+      <Variable Modifier="Public" Name="bLayerDesign" ESA_ID="" Type="Boolean" Value="1">
         <Description>
           <ENU>
           </ENU>
@@ -3367,7 +3403,7 @@ void TxReif() {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="bPODNotOK" ESA_ID="" Type="Boolean" Value="1">
+      <Variable Modifier="Public" Name="bPODNotOK" ESA_ID="" Type="Boolean" Value="0">
         <Description>
           <ENU>
           </ENU>
@@ -3385,13 +3421,13 @@ void TxReif() {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="bShear" ESA_ID="" Type="Boolean" Value="0">
+      <Variable Modifier="Public" Name="bShear" ESA_ID="" Type="Boolean" Value="1">
         <Description TranslateID="VARIABLE_bShear">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="bTorsion" ESA_ID="" Type="Boolean" Value="0">
+      <Variable Modifier="Public" Name="bTorsion" ESA_ID="" Type="Boolean" Value="1">
         <Description TranslateID="VARIABLE_bTorsion">
           <ENU>
           </ENU>
@@ -3446,14 +3482,14 @@ void TxReif() {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="ClassReinf" ESA_ID="" Type="Double" Value="17" Precision="2">
+      <Variable Modifier="Public" Name="ClassReinf" ESA_ID="" Type="Double" Value="458" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ClassShearReinf" ESA_ID="" Type="Double" Value="17" Precision="2">
+      <Variable Modifier="Public" Name="ClassShearReinf" ESA_ID="" Type="Double" Value="458" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3493,19 +3529,19 @@ void TxReif() {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Combi↓key←" ESA_ID="" Type="String" Value="">
+      <Variable Modifier="Public" Name="Combi↓key←" ESA_ID="" Type="String" Value="LC1+LC2+LC3">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Combikey" ESA_ID="" Type="String" Value="">
+      <Variable Modifier="Public" Name="Combikey" ESA_ID="" Type="String" Value="LC1+LC2+LC3">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="compPortion" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="compPortion" ESA_ID="" Type="Double" Value="450e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3548,14 +3584,14 @@ void TxReif() {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="CssTotalID" ESA_ID="" Type="Double" Value="666" Precision="2">
+      <Variable Modifier="Public" Name="CssTotalID" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description TranslateID="VARIABLE_d">
           <ENU>Effective height of cross-section</ENU>
         </Description>
@@ -3594,7 +3630,7 @@ void TxReif() {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="DescriptionN" ESA_ID="" Type="String" Value="Transversal reinforcement was designed from minimal ratio of transversal reinforcement.">
+      <Variable Modifier="Public" Name="DescriptionN" ESA_ID="" Type="String" Value="Design internal shearing force is greater than design resistance shearing force.">
         <Description>
           <ENU>
           </ENU>
@@ -3653,7 +3689,7 @@ void TxReif() {
           <ENU>Draw stirrups</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="dx" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="dx" ESA_ID="" Type="Double" Value="800e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3667,7 +3703,7 @@ void TxReif() {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="E↓cs←" ESA_ID="" Type="Double" Value="21.2874e9" Precision="2">
+      <Variable Modifier="Public" Name="E↓cs←" ESA_ID="" Type="Double" Value="26.8384e9" Precision="2">
         <Description TranslateID="VARIABLE_E↓cs←">
           <ENU>Secant deformation module</ENU>
         </Description>
@@ -3718,27 +3754,27 @@ void TxReif() {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="ey" ESA_ID="" Type="Double" Value="100e-3" Precision="2">
+      <Variable Modifier="Public" Name="ey" ESA_ID="" Type="Double" Value="500e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="ez" ESA_ID="" Type="Double" Value="200e-3" Precision="2">
+      <Variable Modifier="Public" Name="ez" ESA_ID="" Type="Double" Value="500e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="f↓cd←" ESA_ID="" Type="Double" Value="14.28571e6" Precision="2">
+      <Variable Modifier="Public" Name="f↓cd←" ESA_ID="" Type="Double" Value="21.42857e6" Precision="2">
         <Description TranslateID="VARIABLE_f↓cd←">
           <ENU>Design value of compressive strength</ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="f↓ck←" ESA_ID="" Type="Double" Value="20e6" Precision="1">
+      <Variable Modifier="Public" Name="f↓ck←" ESA_ID="" Type="Double" Value="30e6" Precision="1">
         <Description TranslateID="VARIABLE_f↓ck←">
           <ENU>Characteristic value of compressive strength</ENU>
         </Description>
@@ -3762,19 +3798,19 @@ void TxReif() {
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="f↓ctm←" ESA_ID="" Type="Double" Value="2.21042e6" Precision="2">
+      <Variable Modifier="Public" Name="f↓ctm←" ESA_ID="" Type="Double" Value="2.89647e6" Precision="2">
         <Description TranslateID="VARIABLE_f↓ctm←">
           <ENU>Mean tensile strength</ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="f↓yd←" ESA_ID="" Type="Double" Value="434.7826e6" Precision="1">
+      <Variable Modifier="Public" Name="f↓yd←" ESA_ID="" Type="Double" Value="521.7391e6" Precision="1">
         <Description TranslateID="VARIABLE_f↓yd←">
           <ENU>Design value strength</ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="f↓yk←" ESA_ID="" Type="Double" Value="500e6" Precision="1">
+      <Variable Modifier="Public" Name="f↓yk←" ESA_ID="" Type="Double" Value="600e6" Precision="1">
         <Description TranslateID="VARIABLE_f↓yk←">
           <ENU>Characteristic yield strength</ENU>
         </Description>
@@ -3786,7 +3822,7 @@ void TxReif() {
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="f↓ywk←" ESA_ID="" Type="Double" Value="500e6" Precision="2">
+      <Variable Modifier="Public" Name="f↓ywk←" ESA_ID="" Type="Double" Value="600e6" Precision="2">
         <Description TranslateID="VARIABLE_f↓ywk←">
           <ENU>Characteristic yield strength</ENU>
         </Description>
@@ -3819,14 +3855,14 @@ void TxReif() {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="FormCode" ESA_ID="" Type="Double" Value="2055" Precision="2">
+      <Variable Modifier="Public" Name="FormCode" ESA_ID="" Type="Double" Value="2003" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="fraction" ESA_ID="" Type="Double" Value="782.5112e-3" Precision="2">
+      <Variable Modifier="Public" Name="fraction" ESA_ID="" Type="Double" Value="1.483962" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3884,13 +3920,13 @@ void TxReif() {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="hs" ESA_ID="" Type="Double" Value="400e-3" Precision="2">
+      <Variable Modifier="Public" Name="hs" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description TranslateID="VARIABLE_hs">
           <ENU>Height of cross-section for shear design</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3944,7 +3980,7 @@ void TxReif() {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="IndexEWN" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="IndexEWN" ESA_ID="" Type="Double" Value="2" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3964,7 +4000,7 @@ void TxReif() {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Inter_V_T" ESA_ID="" Type="Double" Value="45.01826e-3" Precision="2">
+      <Variable Modifier="Public" Name="Inter_V_T" ESA_ID="" Type="Double" Value="29.50495e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3997,7 +4033,7 @@ void TxReif() {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="j" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="j" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4043,28 +4079,28 @@ void TxReif() {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓0←" ESA_ID="" Type="Double" Value="140.1412" Precision="2">
+      <Variable Modifier="Public" Name="M↓0←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓dy,min←" ESA_ID="" Type="Double" Value="16065.75" Precision="2">
+      <Variable Modifier="Public" Name="M↓dy,min←" ESA_ID="" Type="Double" Value="502054.8" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓dz,min←" ESA_ID="" Type="Double" Value="444593.1" Precision="2">
+      <Variable Modifier="Public" Name="M↓dz,min←" ESA_ID="" Type="Double" Value="8032.877" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓Edy←" ESA_ID="" Type="Double" Value="-16065.75" Precision="2">
+      <Variable Modifier="Public" Name="M↓Edy←" ESA_ID="" Type="Double" Value="-502054.8" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4078,52 +4114,52 @@ void TxReif() {
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓Ey←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="M↓Ey←" ESA_ID="" Type="Double" Value="-303.133" Precision="2">
         <Description TranslateID="VARIABLE_M↓Ey←">
           <ENU>Bending moment - Y direction</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓Ez←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="M↓Ez←" ESA_ID="" Type="Double" Value="-71.1296" Precision="2">
         <Description TranslateID="VARIABLE_M↓Ez←">
           <ENU>Bending moment - Z direction</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓s,max,y←" ESA_ID="" Type="Double" Value="-9269.67" Precision="2">
+      <Variable Modifier="Public" Name="M↓s,max,y←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓s,max,z←" ESA_ID="" Type="Double" Value="-129.797" Precision="2">
+      <Variable Modifier="Public" Name="M↓s,max,z←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓s,max←" ESA_ID="" Type="Double" Value="18918.38" Precision="2">
+      <Variable Modifier="Public" Name="M↓s,max←" ESA_ID="" Type="Double" Value="376425" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓x←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="M↓x←" ESA_ID="" Type="Double" Value="-179.173" Precision="2">
         <Description TranslateID="VARIABLE_M↓x←">
           <ENU>Torsion moment - X direction</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓y←" ESA_ID="" Type="Double" Value="30600" Precision="2">
+      <Variable Modifier="Public" Name="M↓y←" ESA_ID="" Type="Double" Value="-502054.8" Precision="2">
         <Description TranslateID="VARIABLE_M↓y←">
           <ENU>Bending moment - Y direction</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓z←" ESA_ID="" Type="Double" Value="30600" Precision="2">
+      <Variable Modifier="Public" Name="M↓z←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description TranslateID="VARIABLE_M↓z←">
           <ENU>Bending moment - Z direction</ENU>
         </Description>
@@ -4135,7 +4171,7 @@ void TxReif() {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Method" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="Method" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>Method of design</ENU>
         </Description>
@@ -4154,7 +4190,7 @@ void TxReif() {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="MoreLayer" ESA_ID="" Type="String" Value="No">
+      <Variable Modifier="Public" Name="MoreLayer" ESA_ID="" Type="String" Value="Yes">
         <Description>
           <ENU>
           </ENU>
@@ -4201,13 +4237,13 @@ void TxReif() {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="N" ESA_ID="" Type="Double" Value="-1.2e6" Precision="2">
+      <Variable Modifier="Public" Name="N" ESA_ID="" Type="Double" Value="4108.86" Precision="2">
         <Description>
           <ENU>The acting axial force</ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓E←" ESA_ID="" Type="Double" Value="-1.2e6" Precision="2">
+      <Variable Modifier="Public" Name="N↓E←" ESA_ID="" Type="Double" Value="4108.86" Precision="2">
         <Description TranslateID="VARIABLE_N↓E←">
           <ENU>Axial force</ENU>
         </Description>
@@ -4220,7 +4256,7 @@ void TxReif() {
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓s,min←" ESA_ID="" Type="Double" Value="4204.23" Precision="2">
+      <Variable Modifier="Public" Name="N↓s,min←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4253,13 +4289,13 @@ void TxReif() {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="NameConcrete" ESA_ID="" Type="String" Value="C20">
+      <Variable Modifier="Public" Name="NameConcrete" ESA_ID="" Type="String" Value="C30">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="NameReqReinf" ESA_ID="" Type="String" Value="CA-50">
+      <Variable Modifier="Public" Name="NameReqReinf" ESA_ID="" Type="String" Value="CA-60">
         <Description>
           <ENU>
           </ENU>
@@ -4314,7 +4350,7 @@ void TxReif() {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="noerror" ESA_ID="" Type="String" Value="No errors, warnings, notes">
+      <Variable Modifier="Public" Name="noerror" ESA_ID="" Type="String" Value="There are no errors, warnings and notes">
         <Description>
           <ENU>
           </ENU>
@@ -4334,7 +4370,7 @@ void TxReif() {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Number↓N←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="Number↓N←" ESA_ID="" Type="Double" Value="2" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4348,7 +4384,7 @@ void TxReif() {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="NumberAllErrors" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="NumberAllErrors" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4597,7 +4633,7 @@ void TxReif() {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="s" ESA_ID="Result.10" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="s" ESA_ID="Result.10" Type="Double" Value="-9.99" Precision="2">
         <Description TranslateID="VARIABLE_s">
           <ENU>Stirrup distance</ENU>
         </Description>
@@ -4642,7 +4678,7 @@ void TxReif() {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="SecID" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="SecID" ESA_ID="" Type="Double" Value="3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4679,7 +4715,7 @@ void TxReif() {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="shTest" ESA_ID="" Type="Double" Value="5.100599e-3" Precision="2">
+      <Variable Modifier="Public" Name="shTest" ESA_ID="" Type="Double" Value="8.385278e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4692,13 +4728,13 @@ void TxReif() {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="slist" ESA_ID="" Type="String" Value="Errors, warnings, notes: ">
+      <Variable Modifier="Public" Name="slist" ESA_ID="" Type="String" Value="List of errors/warnings/notes: ">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="SolutionN" ESA_ID="" Type="String" Value="">
+      <Variable Modifier="Public" Name="SolutionN" ESA_ID="" Type="String" Value="To increase cross-section dimensions or to increase material quality.">
         <Description>
           <ENU>
           </ENU>
@@ -4732,7 +4768,7 @@ void TxReif() {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="StructuralType" ESA_ID="" Type="Double" Value="2" Precision="2">
+      <Variable Modifier="Public" Name="StructuralType" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4745,7 +4781,7 @@ void TxReif() {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="SymReinf" ESA_ID="" Type="Boolean" Value="1">
+      <Variable Modifier="Public" Name="SymReinf" ESA_ID="" Type="Boolean" Value="0">
         <Description TranslateID="VARIABLE_SymReinf">
           <ENU>Try to design symmetrical reinforcement</ENU>
         </Description>
@@ -4770,7 +4806,7 @@ void TxReif() {
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="T↓sd←" ESA_ID="" Type="Double" Value="178.468" Precision="2">
+      <Variable Modifier="Public" Name="T↓sd←" ESA_ID="" Type="Double" Value="179.173" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4857,45 +4893,45 @@ void TxReif() {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="TypeCoverDiam" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="TypeCoverDiam" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description>
           <ENU>Type for definition covers and diameters</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="TypeDes" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="TypeDes" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description>
           <ENU>Number of layer for design</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="TypeMember" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="TypeMember" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description TranslateID="VARIABLE_TypeMember">
           <ENU>Member type</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="TypeN" ESA_ID="" Type="String" Value="Note">
+      <Variable Modifier="Public" Name="TypeN" ESA_ID="" Type="String" Value="Error">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="typeofCombi" ESA_ID="" Type="Double" Value="-1" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="typeOfLimitState" ESA_ID="" Type="Double" Value="-1" Precision="2">
+      <Variable Modifier="Public" Name="typeofCombi" ESA_ID="" Type="Double" Value="2" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="typeOfLoad" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="typeOfLimitState" ESA_ID="" Type="Double" Value="1" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="typeOfLoad" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5037,21 +5073,21 @@ void TxReif() {
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="V↓Edy←" ESA_ID="" Type="Double" Value="71.3987" Precision="2">
+      <Variable Modifier="Public" Name="V↓Edy←" ESA_ID="" Type="Double" Value="70.4116" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="V↓Edz←" ESA_ID="" Type="Double" Value="13998.1" Precision="2">
+      <Variable Modifier="Public" Name="V↓Edz←" ESA_ID="" Type="Double" Value="8397.05" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="V↓Rd2←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="V↓Rd2←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description TranslateID="VARIABLE_V↓Rd2←">
           <ENU>Diagonal compression of concrete</ENU>
         </Description>
@@ -5063,7 +5099,7 @@ void TxReif() {
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="V↓s←" ESA_ID="" Type="Double" Value="13998.28" Precision="2">
+      <Variable Modifier="Public" Name="V↓s←" ESA_ID="" Type="Double" Value="8397.05" Precision="2">
         <Description TranslateID="VARIABLE_V↓s←">
           <ENU>Shear force</ENU>
         </Description>
@@ -5076,14 +5112,14 @@ void TxReif() {
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="V↓y←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="V↓y←" ESA_ID="" Type="Double" Value="70.4116" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="V↓z←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="V↓z←" ESA_ID="" Type="Double" Value="8397.05" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5111,14 +5147,14 @@ void TxReif() {
         </Description>
         <Unit m="3" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="cm↑3←" />
       </Variable>
-      <Variable Modifier="Public" Name="W↓0y←" ESA_ID="" Type="Double" Value="5.333333e-3" Precision="2">
+      <Variable Modifier="Public" Name="W↓0y←" ESA_ID="" Type="Double" Value="166.6667e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="3" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="cm↑3←" />
       </Variable>
-      <Variable Modifier="Public" Name="W↓0z←" ESA_ID="" Type="Double" Value="166.6667e-3" Precision="2">
+      <Variable Modifier="Public" Name="W↓0z←" ESA_ID="" Type="Double" Value="2.666667e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5152,7 +5188,7 @@ void TxReif() {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="x↓2,3←" ESA_ID="" Type="Double" Value="93.85185e-3" Precision="2">
+      <Variable Modifier="Public" Name="x↓2,3←" ESA_ID="" Type="Double" Value="94.33665e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5242,13 +5278,13 @@ void TxReif() {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓VV←" ESA_ID="" Type="Double" Value="89.70776" Precision="2">
+      <Variable Modifier="Public" Name="α↓VV←" ESA_ID="" Type="Double" Value="89.51957" Precision="2">
         <Description TranslateID="VARIABLE_α↓VV←">
           <ENU>Angle of shear resultant</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓ΒΜ←" ESA_ID="" Type="Double" Value="90" Precision="2">
+      <Variable Modifier="Public" Name="α↓ΒΜ←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description TranslateID="VARIABLE_α↓ΒΜ←">
           <ENU>Angle of gradient of strain plane</ENU>
         </Description>
@@ -5261,7 +5297,7 @@ void TxReif() {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓ΜV←" ESA_ID="" Type="Double" Value="292.2403e-3" Precision="2">
+      <Variable Modifier="Public" Name="α↓ΜV←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description TranslateID="VARIABLE_α↓ΜV←">
           <ENU>Difference between angles α↓ΜB ←and α↓VV←</ENU>
         </Description>
@@ -5333,7 +5369,7 @@ void TxReif() {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="‰" />
       </Variable>
-      <Variable Modifier="Public" Name="ε↓yd←" ESA_ID="" Type="Double" Value="2.070393e-3" Precision="3">
+      <Variable Modifier="Public" Name="ε↓yd←" ESA_ID="" Type="Double" Value="2.484472e-3" Precision="3">
         <Description TranslateID="VARIABLE_ε↓yd←">
           <ENU>Compressive strain</ENU>
         </Description>
@@ -5399,7 +5435,7 @@ void TxReif() {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ρ↓M←" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="ρ↓M←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5420,7 +5456,7 @@ void TxReif() {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="%" />
       </Variable>
-      <Variable Modifier="Public" Name="ρ↓sl←" ESA_ID="" Type="Double" Value="55.8875e-6" Precision="2">
+      <Variable Modifier="Public" Name="ρ↓sl←" ESA_ID="" Type="Double" Value="56.10827e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5434,7 +5470,7 @@ void TxReif() {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="%" />
       </Variable>
-      <Variable Modifier="Public" Name="ρ↓sw←" ESA_ID="" Type="Double" Value="25.70825e-6" Precision="2">
+      <Variable Modifier="Public" Name="ρ↓sw←" ESA_ID="" Type="Double" Value="25.8098e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5468,34 +5504,34 @@ void TxReif() {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="ϕ↓l←" ESA_ID="Result.7" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="ϕ↓l←" ESA_ID="Result.7" Type="Double" Value="NaN" Precision="2">
         <Description TranslateID="VARIABLE_ϕ↓l←">
           <ENU>Longitudinal diameter</ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="84" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="40e-3" DrawLimitMin="5e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="ϕ↓lo←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="ϕ↓lo←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description TranslateID="VARIABLE_ϕ↓lo←">
           <ENU>Diameter of reinforcement of lower reinforcement</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="ϕ↓M←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="ϕ↓M←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ϕ↓side←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="ϕ↓side←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="ϕ↓up←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="ϕ↓up←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description TranslateID="VARIABLE_ϕ↓up←">
           <ENU>Diameter of reinforcement of upper reinforcement</ENU>
         </Description>
@@ -5536,7 +5572,7 @@ void TxReif() {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="ϕ↓ω←" ESA_ID="Result.9" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="ϕ↓ω←" ESA_ID="Result.9" Type="Double" Value="5e-3" Precision="2">
         <Description TranslateID="VARIABLE_ϕ↓ω←">
           <ENU>Stirrups diameter</ENU>
         </Description>
@@ -14023,6 +14059,22 @@ void TxReif() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="INI400_011486">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_011487">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="INI400_011491">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -19351,6 +19403,150 @@ void TxReif() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="RFM106_017291">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_017292">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_017293">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_017294">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_017295">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_017296">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_017297">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_017298">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_017299">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_017300">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_017301">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_017302">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_017303">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_017304">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_017305">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_017306">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_017307">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_017308">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="RFM227_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -19748,7 +19944,7 @@ void TxReif() {
           </ENU>
         </Texts>
         <TDoubleInput Name="" ID="83" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="23" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="ρ↓lim,M←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TComboBox Name="DTypeMember" ID="83" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="32" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeMember" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1" Index="1">
+        <TComboBox Name="DTypeMember" ID="83" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="32" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeMember" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1" Index="0">
           <Texts TranslateID="DIALOG_000083">
             <ENU>Beam|Column</ENU>
           </Texts>
@@ -19759,12 +19955,12 @@ void TxReif() {
         <TDoubleInput Name="" ID="83" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="12" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="MaxNlayers" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="" ID="83" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="14" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="biaxcoef" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="" ID="83" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="3" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Coeff↓Area←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TComboBox Name="DTypeCoverDiam" ID="83" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="22" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeCoverDiam" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1" Index="0">
+        <TComboBox Name="DTypeCoverDiam" ID="83" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="22" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeCoverDiam" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1" Index="1">
           <Texts TranslateID="DIALOG_000083">
             <ENU>Same values (column)|Upper, lower (beam)</ENU>
           </Texts>
         </TComboBox>
-        <TComboBox Name="MethodCombo" ID="83" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Method" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1|2|3" Index="1">
+        <TComboBox Name="MethodCombo" ID="83" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Method" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1|2|3" Index="0">
           <Texts TranslateID="DIALOG_000083">
             <ENU>Uniaxial|Biaxial|General|Corner</ENU>
           </Texts>
@@ -19774,7 +19970,7 @@ void TxReif() {
             <ENU>Area of real bars|Delta area</ENU>
           </Texts>
         </TComboBox>
-        <TComboBox Name="TypeDes" ID="83" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="15" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeDes" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1" Index="0">
+        <TComboBox Name="TypeDes" ID="83" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="15" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeDes" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1" Index="1">
           <Texts TranslateID="DIALOG_000083">
             <ENU>One layer|More layers</ENU>
           </Texts>
@@ -19803,7 +19999,7 @@ void TxReif() {
           <TDoubleInput Name="" ID="107" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="3" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
           <TDoubleInput Name="" ID="108" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="c" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
           <TDoubleInput Name="" ID="109" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="2" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="offset" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-          <TCheckBox Name="" ID="110" Translate="1" Left="2" Top="-1132" Width="300" AutoWidth="False" AutoHeight="True" TabIndex="2" Dock="0" Anchor="13" Padding="3|3|3|3" MinSize="150|23" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|11.3|0|2" VarName="bUseUserReinf" BookMarkID="" ForeColor="-16711423" ChbRight="False">
+          <TCheckBox Name="" ID="110" Translate="1" Left="2" Top="-1230" Width="300" AutoWidth="False" AutoHeight="True" TabIndex="2" Dock="0" Anchor="13" Padding="3|3|3|3" MinSize="150|23" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|11.3|0|2" VarName="bUseUserReinf" BookMarkID="" ForeColor="-16711423" ChbRight="False">
             <Texts TranslateID="DIALOG_000110">
               <ENU>
               </ENU>
@@ -19811,7 +20007,7 @@ void TxReif() {
           </TCheckBox>
         </TGroupBox>
         <TDoubleInput Name="" ID="100" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="23" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="ρ↓lim,M←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TComboBox Name="DTypeMember" ID="96" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="32" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeMember" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1" Index="1">
+        <TComboBox Name="DTypeMember" ID="96" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="32" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeMember" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1" Index="0">
           <Texts>
             <ENU>Beam|Column</ENU>
           </Texts>
@@ -19822,12 +20018,12 @@ void TxReif() {
         <TDoubleInput Name="" ID="88" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="12" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="MaxNlayers" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="" ID="87" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="14" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="biaxcoef" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="" ID="85" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="3" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Coeff↓Area←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TComboBox Name="DTypeCoverDiam" ID="84" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="22" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeCoverDiam" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1" Index="0">
+        <TComboBox Name="DTypeCoverDiam" ID="84" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="22" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeCoverDiam" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1" Index="1">
           <Texts>
             <ENU>Same values (column)|Upper, lower (beam)</ENU>
           </Texts>
         </TComboBox>
-        <TComboBox Name="MethodCombo" ID="82" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Method" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1|2|3" Index="1">
+        <TComboBox Name="MethodCombo" ID="82" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Method" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1|2|3" Index="0">
           <Texts>
             <ENU>Uniaxial|Biaxial|General|Corner</ENU>
           </Texts>
@@ -19837,7 +20033,7 @@ void TxReif() {
             <ENU>Area of real bars|Delta area</ENU>
           </Texts>
         </TComboBox>
-        <TComboBox Name="TypeDes" ID="79" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="15" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeDes" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1" Index="0">
+        <TComboBox Name="TypeDes" ID="79" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="15" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeDes" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1" Index="1">
           <Texts>
             <ENU>One layer|More layers</ENU>
           </Texts>
@@ -20447,7 +20643,7 @@ void TxReif() {
                 <P>ÖNORM EN 1991-2</P>
                 <P>ÖNORM EN 1991-3</P>
                 <P>ÖNORM EN 1991-4</P>
-                <P>ÖNORM EN 1992-1-1</P>
+                <P>ÖNORM EN 1992-1-1/NA: 2007-02-01</P>
                 <P>1</P>
                 <P>1</P>
                 <P>1.3</P>
@@ -20767,7 +20963,7 @@ void TxReif() {
             </Items>
           </Data>
         </TCustomLibrary>
-        <TDoubleInput Name="" ID="69" Translate="1" Left="512" Top="-8593" Width="505" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="0" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="MaxNlayers" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
+        <TDoubleInput Name="" ID="69" Translate="1" Left="524" Top="-8581" Width="505" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="0" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="MaxNlayers" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TEMDLoader Name="" ID="112" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="34" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="" SectionID="-1" CombiID="-1" />
         <TConcreteSectionLibrary Name="" ID="55" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="22" Dock="2" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="1" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="" SelectedCS="3" Units="2" ReinfTabsVis="True" TabBG="-2894893" SelTab="-1">
           <CS SelReinf="0" H="600e-3" B="450e-3" Hf="160e-3" Bw="200e-3" />
@@ -20983,6 +21179,9 @@ void TxReif() {
     </Item>
     <Item TranslateID="STRING_FFB115F3">
       <ENU>"The member may be overloaded"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_">
+      <ENU>"M↓z← &lt; M↓dz,min←"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_000143">
       <ENU>"MULTI DESIGN OF REINFORCEMENT - NBR-6118:2014"</ENU>
@@ -21880,6 +22079,24 @@ void TxReif() {
     </Item>
     <Item ID="TEXT_INI400_012518">
       <ENU>"A↓s,pele← &gt; 5 cm² =&gt; "</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RFM106_017298">
+      <ENU>"Beam"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RFM106_017299">
+      <ENU>"Column"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RFM106_017300">
+      <ENU>"Rib"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RFM106_017301">
+      <ENU>"Beam-Slab"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RFM106_017302">
+      <ENU>"Beam"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RFM106_017304">
+      <ENU>"Both minimum bending moments are necessary. Biaxial method of calculation should be used."</ENU>
     </Item>
     <Item TranslateID="TEXT_RFM227_000045">
       <ENU>"1"</ENU>

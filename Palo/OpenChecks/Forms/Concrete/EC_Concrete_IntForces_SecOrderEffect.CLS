@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="81a76008-631d-4593-9e06-af3dad5626f3">
   <CodeEditor>
-    <SourceCode Collapsed="76|737" BreakPoints="">
+    <SourceCode Collapsed="714" BreakPoints="">
 
 //------------------------------------------------------------
 //@FUNCTIONS
@@ -31,7 +31,8 @@ bool ValidateInput(object Input) { //Validate inputs from master to this form
     EquivMoment →INI400_011628= Input.Get("EquivMoment"); //True - Use in calculation equivalent first order moment
     CalSecOrder →INI400_011629= Input.Get("CalSecOrder"); //True - Calculation of second order eccentricity
     CalMinEcc →INI400_011630= Input.Get("CalMinEcc"); //True - Calculation minimum value of eccentricity
-
+    MemberType →KRS106_000005= Input.Get("MemberType"); 
+    
     // Forces 
     M↓beg,y← →INI400_011637= Input.Get("M_beg_y"); //Bending moment around y axis at the begin of member
     M↓beg,z← →INI400_011638= Input.Get("M_beg_z"); //Bending moment around z axis at the begin of member
@@ -71,6 +72,8 @@ object GetOutput() { //Outputs from this form to master
     →INI400_011666Output.Add("M_Edy", M↓Edy←); //Final value of  bending moment  around y-axis
     →INI400_011667Output.Add("M_Edz", M↓Edz←); //Final value of bending moment  around z-axis
     →KRS116_000005Output.Add("sListEWN", sListEWN); 
+    →KRS106_000001Output.Add("CompressMember", CompressMember); //True - member is predominantly in compression
+    →KRS106_000002Output.Add("N_com", N↓com←); //Normal force for distinguis if member is in compression
     return Output; 
 } 
 
@@ -94,7 +97,7 @@ IF(!IO.IsExternCLC) {
     double CssID →INI400_011703= 0; 
     ZeroSign_y →INI400_007756= -1; 
     ZeroSign_z →INI400_007757= -1; 
-    
+    MemberType →KRS106_000006= 2; 
 } 
 
 →KRS116_000002BLOCK { //preparation of CSS and internal Forces
@@ -345,7 +348,7 @@ double ZeroForcesID →INI400_009520= 535;
             X2.M↓y← →INI400_000504= M↓y←; 
             X2.M↓z← →INI400_000503= M↓z←; 
             IF(IO.IsDrawing) { 
-                →INI400_000693X2.DRAW(False, 0); 
+                →INI400_000693X2.DRAW(False, 2); 
             } ELSE { 
                 →INI400_006859X2.Calculate(False); 
             } 
@@ -373,7 +376,7 @@ double ZeroForcesID →INI400_009520= 535;
             X3.c↓nom← →INI400_005225= c↓nom←; 
             X3.ϕ →INI400_005226= ϕ; 
             IF(IO.IsDrawing) { 
-                →INI400_006860X3.DRAW(False, 0); 
+                →INI400_006860X3.DRAW(False, 2); 
             } ELSE { 
                 →INI400_006862X3.Calculate(False); 
             } 
@@ -414,33 +417,7 @@ double ZeroForcesID →INI400_009520= 535;
 //determination if member is in compression
 →INI400_000696PAGEBREAK(); 
 
-→PAI127_000097TEXT("Compression member"); 
-→INI400_000328TEXT("Limit axial force to consider member as compression:"); 
-N↓com← →INI400_000326= -Coeff↓com←*[f↓cd←*A↓c←]; 
-→PAI127_000098TEXT("Check condition:"); 
-IF(N↓Ed← &gt;= N↓com←) { 
-    CompressMember →INI400_004071= false; 
-    →INI400_000325TEXT("N↓Ed← ≥ N↓com← = " &amp; N↓Ed← &amp; " ≥ " &amp; N↓com← &amp; " ... "); 
-    →INI400_006825TEXT("not compression member"); 
-    string DescriptionN →INI400_006566= TR("First and second order eccentricity will not be taken into account, because the member is not considered as a compression member (normal force is relatively small or zero)."); 
-    string SolutionN →INI400_006567= TR(""); 
-    string TypeN →INI400_006568= TR("Note"); 
-    →INI400_006569Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
-    Number↓N← →INI400_006570= Number↓N←+1; 
-    →INI400_006571obEWN.Add(new Structure("Index", "N" &amp; IndexEWN &amp; "/" &amp; Number↓N←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
-} ELSE { 
-    CompressMember →INI400_004072= true; 
-    →INI400_000331TEXT("N↓Ed← &lt; N↓com ←= " &amp; N↓Ed← &amp; " &lt; " &amp; N↓com← &amp; " ... "); 
-    →INI400_006826TEXT("compression member"); 
-    string DescriptionN →INI400_006572= TR("First and second order eccentricity shall be taken into account, because the member is considered as a compression member (significant normal force is presented)."); 
-    string SolutionN →INI400_006573= TR(""); 
-    string TypeN →INI400_006574= TR("Note"); 
-    →INI400_006575Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
-    Number↓N← →INI400_006576= Number↓N←+1; 
-    →INI400_006577obEWN.Add(new Structure("Index", "N" &amp; IndexEWN &amp; "/" &amp; Number↓N←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
-} 
-
-→PAI127_000095PAGEBREAK(); 
+→KRS106_000004Functions1D_General.CheckCompressMember(Coeff↓com←, f↓cd←, A↓c←, N↓Ed←, obEWN, IndexEWN, MemberType, out CompressMember, out N↓com←, out Number↓N←, out Number↓W←); 
 
 //calculation for memebr in compression
 IF(CompressMember) { 
@@ -510,6 +487,8 @@ IF(CompressMember) {
     →INI400_011598InputSlenderness.Add("M_beg_z", M↓beg,z←); 
     →INI400_011599InputSlenderness.Add("M_end_y", M↓end,y←); 
     →INI400_011600InputSlenderness.Add("M_end_z", M↓end,z←); 
+    →KRS116_000025InputSlenderness.Add("ZeroSign_y", ZeroSign_y); 
+    →KRS116_000026InputSlenderness.Add("ZeroSign_z", ZeroSign_z); 
     
     //other parameters
     →INI400_011601InputSlenderness.Add("PrintCaption", False); //Never print caption
@@ -1106,8 +1085,13 @@ IF(CompressMember) {
             M↓iy← →INI400_000179= N↓Ed←*e↓iz←; 
             M↓iz← →INI400_000181= N↓Ed←*e↓iy←; 
         } 
-        e↓0Edy← →INI400_000189= sign↓y←*MAX(ABS(e↓0y←+e↓iy←), ABS(e↓0min,y←)); 
-        e↓0Edz← →INI400_000515= sign↓z←*MAX(ABS(e↓0z←+e↓iz←), ABS(e↓0min,z←)); 
+        IF(IO.SetupNA.EC_NA.Code == "ONORM") { 
+            e↓0Edy← →KRS116_000025= e↓0y←+e↓iy←; 
+            e↓0Edz← →KRS116_000026= e↓0z←+e↓iz←; 
+        } ELSE { 
+            e↓0Edy← →INI400_000189= sign↓y←*MAX(ABS(e↓0y←+e↓iy←), ABS(e↓0min,y←)); 
+            e↓0Edz← →INI400_000515= sign↓z←*MAX(ABS(e↓0z←+e↓iz←), ABS(e↓0min,z←)); 
+        } 
         M↓0Edy← →INI400_000182= N↓Ed←*e↓0Edz←; 
         M↓0Edz← →INI400_000183= N↓Ed←*e↓0Edy←; 
         IF((CalSecOrder) &amp;&amp; (CombiULS)) { 
@@ -1116,8 +1100,13 @@ IF(CompressMember) {
             M↓2y← →INI400_000184= N↓Ed←*e↓2z←; 
             M↓2z← →INI400_000185= N↓Ed←*e↓2y←; 
         } 
-        e↓dy← →INI400_000162= e↓0Edy←+e↓2y←; 
-        e↓dz← →INI400_000164= e↓0Edz←+e↓2z←; 
+        IF(IO.SetupNA.EC_NA.Code == "ONORM") { 
+            e↓dy← →KRS116_000027= sign↓y←*MAX(ABS(e↓0Edy←+e↓2y←), ABS(e↓0min,y←)); 
+            e↓dz← →KRS116_000028= sign↓z←*MAX(ABS(e↓0Edz←+e↓2z←), ABS(e↓0min,z←)); 
+        } ELSE { 
+            e↓dy← →INI400_000162= e↓0Edy←+e↓2y←; 
+            e↓dz← →INI400_000164= e↓0Edz←+e↓2z←; 
+        } 
         IF(ABS(N↓Ed←*e↓dz←) &gt;= ABS(M↓y←)) { 
             M↓Edy← →INI400_000187= N↓Ed←*e↓dz←; 
         } ELSE { 
@@ -2023,6 +2012,13 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
           <ENU>Bending moment  z-z</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
+      </Variable>
+      <Variable Modifier="Public" Name="MemberType" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_MemberType">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="n" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_n">
@@ -3630,38 +3626,6 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|11.7|0|2" Font2="Arial|11.7|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|11.7|0|2" Font2="Arial|11.7|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000325">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="168" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Arial|12.9|3|2" Font2="Arial|12.9|3|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="168" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Arial|12.9|3|2" Font2="Arial|12.9|3|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|11.7|0|2" Font2="Arial|11.7|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|11.7|0|2" Font2="Arial|11.7|0|2" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_000326">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="2712" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Arial|12.9|0|2" Font2="Arial|12.9|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="2712" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Arial|12.9|0|2" Font2="Arial|12.9|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|11.7|0|2" Font2="Arial|11.7|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|11.7|0|2" Font2="Arial|11.7|0|2" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_000328">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2685" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|12.9|0|2" Font2="Arial|12.9|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2685" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|12.9|0|2" Font2="Arial|12.9|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|11.7|0|2" Font2="Arial|11.7|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|11.7|0|2" Font2="Arial|11.7|0|2" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_000331">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="2757" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Arial|12.9|1|2" Font2="Arial|12.9|1|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="2757" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Arial|12.9|1|2" Font2="Arial|12.9|1|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|11.7|0|2" Font2="Arial|11.7|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|11.7|0|2" Font2="Arial|11.7|0|2" EqStyle="7" />
-      </VC>
       <VC ID="INI400_000473">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2023" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|11.7|0|2" Font2="Arial|11.7|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2023" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|11.7|0|2" Font2="Arial|11.7|0|2" EqStyle="23" />
@@ -4349,22 +4313,6 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1810" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="549" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="2179" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="4" />
-      </VC>
-      <VC ID="INI400_004071">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1689" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1689" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_004072">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="2732" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="2732" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1689" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1689" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_004096">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="3195" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|12.9|0|2" Font2="Arial|12.9|0|2" EqStyle="7" />
@@ -5489,7 +5437,7 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
       <VC ID="INI400_006366">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -5497,7 +5445,7 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
       <VC ID="INI400_006367">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -5767,102 +5715,6 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="452" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
       <VC ID="INI400_006565">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="235" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="235" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="90.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="601" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="151" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="333" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_006566">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_006567">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_006568">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_006569">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_006570">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="452" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="452" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1861" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="593" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="143" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="452" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_006571">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="235" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="235" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="90.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="601" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="151" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="333" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_006572">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_006573">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_006574">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_006575">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_006576">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="452" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="452" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1861" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="593" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="143" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="452" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_006577">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="235" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="235" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="90.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -7198,22 +7050,6 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006825">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_006826">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
       <VC ID="INI400_006829">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -7599,156 +7435,156 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_011578">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_011581">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_011582">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_011583">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_011584">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_011585">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_011586">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_011587">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_011588">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_011589">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_011590">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_011591">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_011592">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_011593">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_011597">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_011598">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_011599">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_011600">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_011601">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_011603">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -8167,12 +8003,12 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_013021">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_013024">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -8302,45 +8138,29 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013721">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_013722">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_013732">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_014428">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_014433">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_015065">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -8349,6 +8169,46 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000005">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000006">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS116_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -8493,6 +8353,38 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000025">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
+      </VC>
+      <VC ID="KRS116_000026">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
+      </VC>
+      <VC ID="KRS116_000027">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
+      </VC>
+      <VC ID="KRS116_000028">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
       </VC>
       <VC ID="PAI127_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -9142,14 +9034,6 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="90" Y="17323" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="90" Y="17323" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="7" />
       </VC>
-      <VC ID="PAI127_000095">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2604" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2604" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="1589" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="2285" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
       <VC ID="PAI127_000096">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -9157,22 +9041,6 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="PAI127_000097">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="PAI127_000098">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2685" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|12.9|0|2" Font2="Arial|12.9|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2685" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|12.9|0|2" Font2="Arial|12.9|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|11.7|0|2" Font2="Arial|11.7|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|11.7|0|2" Font2="Arial|11.7|0|2" EqStyle="7" />
       </VC>
       <VC ID="VAL106_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -9191,20 +9059,20 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="VAL106_000003">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="VAL106_000004">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
     </VisualComponents>
     <Images />
@@ -9299,9 +9167,9 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
         <TDoubleInput Name="" ID="93" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="L↓z←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="" ID="95" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="3" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="β↓yy←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="" ID="92" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="L↓y←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TConcreteSectionLibrary Name="" ID="64" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="59" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="1" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="" SelectedCS="1" Units="0" ReinfTabsVis="True" TabBG="-2894893" SelTab="-1">
-          <CS SelReinf="0" H="400e-3" B="401e-3" />
-          <Reinf Ver="1" Stirrup="0" Stirrup_D="10e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="40e-3" D_upper="20e-3" N_upper="2" c_lower="40e-3" D_lower="20e-3" N_lower="2" />
+        <TConcreteSectionLibrary Name="" ID="64" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="59" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="1" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="" SelectedCS="2" Units="0" ReinfTabsVis="True" TabBG="-2894893" SelTab="-1">
+          <CS SelReinf="0" D="400e-3" />
+          <Reinf Ver="1" Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c="30e-3" D="20e-3" N="6" />
         </TConcreteSectionLibrary>
         <TCustomLibrary Name="" ID="68" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="REINF.EC" DataFile="EC_Reinf.xml" Collapsed="True" UseCombo="False" Category="Inclined top branch" Item="B 500 B">
           <Data>
@@ -9370,7 +9238,7 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
             </Items>
           </Data>
         </TCustomLibrary>
-        <TCustomLibrary Name="" ID="65" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="60" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="CONCRETE.EC" DataFile="EC_Concrete.xml" Collapsed="True" UseCombo="False" Category="Bilinear" Item="C 25/30">
+        <TCustomLibrary Name="" ID="65" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="60" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="CONCRETE.EC" DataFile="EC_Concrete.xml" Collapsed="True" UseCombo="False" Category="Bilinear" Item="C 20/25">
           <Data>
             <Header>
               <PropertySet Symbol="f↓ck←" ESA_ID="fck" Unit="MPa" Type="Numeric" />
@@ -9418,15 +9286,15 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
             <Items>
               <Item>
                 <P>Bilinear</P>
-                <P>C 25/30</P>
+                <P>C 20/25</P>
+                <P>20</P>
                 <P>25</P>
+                <P>28</P>
+                <P>2.2</P>
+                <P>1.5</P>
+                <P>2.9</P>
                 <P>30</P>
-                <P>33</P>
-                <P>2.6</P>
-                <P>1.8</P>
-                <P>3.3</P>
-                <P>31</P>
-                <P>2.1</P>
+                <P>2</P>
                 <P>3.5</P>
                 <P>2</P>
                 <P>3.5</P>
@@ -9434,13 +9302,13 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
                 <P>3.5</P>
                 <P>2</P>
                 <P>0;0;</P>
-                <P>-0.00175;-16666670;</P>
-                <P>-0.0035;-16666670;</P>
+                <P>-0.00175;-13333330;</P>
+                <P>-0.0035;-13333330;</P>
                 <P>true</P>
                 <P>32</P>
                 <P>0.2</P>
                 <P>2500</P>
-                <P>13.1</P>
+                <P>12.5</P>
                 <P>0.2</P>
                 <P>4500</P>
                 <P>0.0006</P>
@@ -10020,7 +9888,7 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
                 <P>ČSN EN 1991-2</P>
                 <P>ČSN EN 1991-3</P>
                 <P>ČSN EN 1991-4</P>
-                <P>ČSN EN 1992-1-1</P>
+                <P>ČSN EN 1992-1-1/NA: 2011-07</P>
                 <P>1</P>
                 <P>1</P>
                 <P>1.3</P>
@@ -10210,9 +10078,6 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
     <Item TranslateID="STRING_018D39E8">
       <ENU>"Conditions cannot be calculated (biaxial bending is taken as default). Imperfections should be taken into account in both directions."</ENU>
     </Item>
-    <Item TranslateID="STRING_0926C736">
-      <ENU>"First and second order eccentricity shall be taken into account, because member is in compression."</ENU>
-    </Item>
     <Item TranslateID="STRING_199CE32B">
       <ENU>"The first order moment M↓y ←is constant (M↓01y←=M↓y←=M↓02y←) or equivalent first bending moment M↓0ey← is used."</ENU>
     </Item>
@@ -10221,9 +10086,6 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
     </Item>
     <Item TranslateID="STRING_3035448F">
       <ENU>"Minimum eccentricity is not taken into account for SLS combination, see §5.2(3)."</ENU>
-    </Item>
-    <Item TranslateID="STRING_31F02114">
-      <ENU>"First and second order eccentricity shall be taken into account, because the member is considered as a compression member."</ENU>
     </Item>
     <Item TranslateID="STRING_3422FBFC">
       <ENU>"Error"</ENU>
@@ -10260,9 +10122,6 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
     </Item>
     <Item TranslateID="STRING_5C604367">
       <ENU>"Not defined"</ENU>
-    </Item>
-    <Item TranslateID="STRING_61DFFFA7">
-      <ENU>"First and second order eccentricity shall be taken into account, because the member is considered as a compression member (significant normal force is presented)."</ENU>
     </Item>
     <Item TranslateID="STRING_62042395">
       <ENU>"List of errors/warnings/notes: "</ENU>
@@ -10315,9 +10174,6 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
     <Item TranslateID="STRING_B89FE70A">
       <ENU>"The calculation of imperfection is switched off by the user (e↓i← = 0)."</ENU>
     </Item>
-    <Item TranslateID="STRING_BD42C622">
-      <ENU>"First and second order eccentricity will not be taken into account, because the member is not considered as a compression member."</ENU>
-    </Item>
     <Item TranslateID="STRING_BEB983D7">
       <ENU>"Second order effect is not calculated for SLS combination."</ENU>
     </Item>
@@ -10326,9 +10182,6 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
     </Item>
     <Item TranslateID="STRING_C392D377">
       <ENU>"Curvature will be estimated based on assumption of non-symmetrical cross-section and reinforcement."</ENU>
-    </Item>
-    <Item TranslateID="STRING_CAEEE245">
-      <ENU>"First and second order eccentricity shall not be taken into account, because member is not in compression."</ENU>
     </Item>
     <Item TranslateID="STRING_CC9DF75C">
       <ENU>"The reinforcement characteristics are calculated for rectangle cross-section and for inputted ratio of reinforcement"</ENU>
@@ -10344,9 +10197,6 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
     </Item>
     <Item TranslateID="STRING_DC380D01">
       <ENU>"The reinforcement characteristics are calculated for general cross-section and for inputted ratio of reinforcement"</ENU>
-    </Item>
-    <Item TranslateID="STRING_DD6334B7">
-      <ENU>"First and second order eccentricity will not be taken into account, because the member is not considered as a compression member (normal force is relatively small or zero)."</ENU>
     </Item>
     <Item TranslateID="STRING_DF7D8A96">
       <ENU>"Reinforcement is distributed also parallel to the plane of bending z-z┴."</ENU>
@@ -10492,15 +10342,6 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
     <Item TranslateID="TEXT_INI400_000306">
       <ENU>"Relative eccentricity condition:"</ENU>
     </Item>
-    <Item ID="TEXT_INI400_000325">
-      <ENU>"N↓Ed← ≥ N↓com← = " &amp; N↓Ed← &amp; " ≥ " &amp; N↓com← &amp; " ... "</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_000328">
-      <ENU>"Limit axial force to consider member as compression:"</ENU>
-    </Item>
-    <Item ID="TEXT_INI400_000331">
-      <ENU>"N↓Ed← &lt; N↓com ←= " &amp; N↓Ed← &amp; " &lt; " &amp; N↓com← &amp; " ... "</ENU>
-    </Item>
     <Item TranslateID="TEXT_INI400_000502">
       <ENU>"The distances from the edge to centre of reinforcement"</ENU>
     </Item>
@@ -10551,12 +10392,6 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
     </Item>
     <Item ID="TEXT_INI400_006350">
       <ENU>Functions1D_EWN.FListEWN(obEWN, TR("List of errors/warnings/notes: "), TR("There is no errors, warnings and notes"))</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_006825">
-      <ENU>"not compression member"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_006826">
-      <ENU>"compression member"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_006829">
       <ENU>"... 1↑st← order effect"</ENU>
@@ -10659,12 +10494,6 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
     </Item>
     <Item TranslateID="TEXT_PAI127_000090">
       <ENU>"Second order effect and imperfections"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_PAI127_000097">
-      <ENU>"Compression member"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_PAI127_000098">
-      <ENU>"Check condition:"</ENU>
     </Item>
   </Texts>
 </Root>

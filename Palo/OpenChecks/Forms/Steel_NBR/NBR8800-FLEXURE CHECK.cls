@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="8296b99e-584d-4ceb-8a3b-a5eac28e1ef9">
   <CodeEditor>
-    <SourceCode Collapsed="13|97|108|118|130|163|419|761" BreakPoints="">
+    <SourceCode Collapsed="130|163|422|563|1221" BreakPoints="">
 
 
 
@@ -102,11 +102,11 @@ object STEEL →MPF000_000001= IO.Material.NBR;
     IF(UserTable) { 
         object CS →INI400_000517= IO.CSS; 
         FormCode →INI400_000518= CS.Geometry.FormCode; 
-        IF(FormCode == 2001) { FormCode →MPF000_000002= 5; } 
+        //      IF(FormCode == 2001) { FormCode →MPF000_000002= 5; } // 01/05/2017
     } ELSE { 
         object CS →INI400_000527= IO.CS; 
         FormCode →INI400_000528= CS.Geometry.FormCode; 
-        IF(FormCode == 2001) { FormCode →MPF000_000003= 5; } 
+        //    IF(FormCode == 2001) { FormCode →MPF000_000003= 5; } // 01/05/2017
     } 
 } 
 →INI400_000506BLOCK { 
@@ -408,816 +408,819 @@ double BendingCheck_X(object CS, object ClassParam, double MomentSign, double Fo
     IF((FormCode != 1) &amp;&amp; (FormCode != 2) &amp;&amp; (FormCode != 3) &amp;&amp; (FormCode != 4) &amp;&amp; (FormCode != 101) &amp;&amp; (FormCode != 5) &amp;&amp; (FormCode != 6) &amp;&amp; (FormCode != 2001)) { 
         
         →INI400_000615TEXT("Bending: Type of section not covered by this routine or cannot be designed for this effort!"); 
-        Exit(); 
+        //  Exit(); 
+        UnCheck →MPF001_000016= 3; 
+        MRd →MPF001_000019= 0; 
     } 
-    // Bending about X-X - Major axis
-    →INI400_000742double aux1; // auxiliar variables 
-    →INI400_000743double aux2; 
-    →INI400_000744double aux3; 
-    σ↓r← →INI400_000693= 0.3*fy; 
-    →INI400_001697double SClass; // section classification
-    object Ext →INI400_001663= LoadExternCLC("NBR8800-SECTION-CLASSIFICATION.CLC"); 
-    →INI400_000705TEXT("Design for bending about X - Major axis according to NBR-8800 - Section G"); 
-    
-    // I-Section and U-Section
-    IF((FormCode == 1) || (FormCode == 5)) { 
-        J →INI400_000696= CS.Chars.It; 
-        ry →INI400_000687= CS.Chars.iz; 
-        Cw →INI400_000700= CS.Chars.Iw; 
-        Iy →INI400_000701= CS.Chars.Iz; 
-        W →INI400_000704= CS.Chars.Wely; 
-        Z↓x← →INI400_000710= CS.Chars.Wply; // Plastic section modulus
-        M↓pl← →INI400_000711= Z↓x←*fy; 
-        →INI400_001833PAGEBREAK(); 
-        →INI400_000717BLOCK("Classification") { 
-            // Proceed to Section Classification and get the slenderness parameters
-            →INI400_000514Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
-            SClass →INI400_001692= Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
-            SWITCH(SClass) { 
-                CASE 0 :  { 
-                    →INI400_001694TEXT("Classification:"); 
-                    →INI400_001827TEXT("Compact"); 
+    ELSE { 
+        // Bending about X-X - Major axis
+        →INI400_000742double aux1; // auxiliar variables 
+        →INI400_000743double aux2; 
+        →INI400_000744double aux3; 
+        σ↓r← →INI400_000693= 0.3*fy; 
+        →INI400_001697double SClass; // section classification
+        object Ext →INI400_001663= LoadExternCLC("NBR8800-SECTION-CLASSIFICATION.CLC"); 
+        →INI400_000705TEXT("Design for bending about X - Major axis according to NBR-8800 - Section G"); 
+        
+        // I-Section and U-Section
+        IF((FormCode == 1) || (FormCode == 5)) { 
+            J →INI400_000696= CS.Chars.It; 
+            ry →INI400_000687= CS.Chars.iz; 
+            Cw →INI400_000700= CS.Chars.Iw; 
+            Iy →INI400_000701= CS.Chars.Iz; 
+            W →INI400_000704= CS.Chars.Wely; 
+            Z↓x← →INI400_000710= CS.Chars.Wply; // Plastic section modulus
+            M↓pl← →INI400_000711= Z↓x←*fy; 
+            →INI400_001833PAGEBREAK(); 
+            →INI400_000717BLOCK("Classification") { 
+                // Proceed to Section Classification and get the slenderness parameters
+                →INI400_000514Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
+                SClass →INI400_001692= Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
+                SWITCH(SClass) { 
+                    CASE 0 :  { 
+                        →INI400_001694TEXT("Classification:"); 
+                        →INI400_001827TEXT("Compact"); 
+                    } 
+                    CASE 1 :  { 
+                        →INI400_001695TEXT("Classification"); 
+                        →INI400_001828TEXT("SemiCompact"); 
+                    } 
+                    CASE 2 :  { 
+                        →INI400_001696TEXT("Classification"); 
+                        →INI400_001829TEXT("Slender"); 
+                    } 
                 } 
-                CASE 1 :  { 
-                    →INI400_001695TEXT("Classification"); 
-                    →INI400_001828TEXT("SemiCompact"); 
-                } 
-                CASE 2 :  { 
-                    →INI400_001696TEXT("Classification"); 
-                    →INI400_001829TEXT("Slender"); 
-                } 
+                →INI400_001834PAGEBREAK(); 
             } 
-            →INI400_001834PAGEBREAK(); 
+            
+            // FLA - Web Local Buckling
+            →INI400_000748BLOCK("FLA") { 
+                →INI400_000763TEXT("3 - Section G.2.2 - FLA - Web local Buckling"); 
+                λ →INI400_000757= ClassParam.λw; 
+                λ↓p← →INI400_000758= ClassParam.λpw; 
+                λ↓r← →INI400_000759= ClassParam.λrw; 
+                
+                IF(λ &lt;= λ↓p←) { 
+                    MRd →INI400_000750= M↓pl←/γ↓a1←; 
+                } 
+                IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                    M↓r← →INI400_000760= fy*W; 
+                    MRd →INI400_000751= (1/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
+                    IF(MRd &gt; M↓pl←/γ↓a1←) { 
+                        MRd →INI400_000752= M↓pl←/γ↓a1←; 
+                    } 
+                } 
+                →INI400_001835PAGEBREAK(); 
+                IF(λ &gt; λ↓r←) { 
+                    →INI400_001403TEXT("Slender Web - FLA does not apply. Verification according to Annex H"); 
+                    →INI400_001423BendingCheck_SlenderWeb(CS, ClassParam, MomentSign, FormCode, Fabrication, Lb); 
+                    MRd →INI400_001422= BendingCheck_SlenderWeb(CS, ClassParam, MomentSign, FormCode, Fabrication, Lb); 
+                    aux1 →INI400_001424= MRd; 
+                    aux2 →INI400_001425= MRd; 
+                    aux3 →INI400_001426= MRd; 
+                    //→INI400_000762TEXT("Slender Web - Verification accoding to Annex H of NBR-8800"); 
+                } ELSE { 
+                    // FLM - Flange Local Buckling
+                    →INI400_001405BLOCK("FLM") { 
+                        →INI400_001406TEXT(" 2 - Section G.2.2 - FLM - Flange local Buckling"); 
+                        
+                        // Define MRd for FLM
+                        λ →INI400_001408= ClassParam.λf; 
+                        λ↓p← →INI400_001409= ClassParam.λpf; 
+                        λ↓r← →INI400_001410= ClassParam.λrf; 
+                        
+                        IF(λ &lt;= λ↓p←) { 
+                            MRd →INI400_001412= M↓pl←/γ↓a1←; 
+                        } 
+                        IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                            M↓r← →INI400_001413= [(fy-σ↓r←)]*W; 
+                            MRd →INI400_001414= (1/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
+                            IF(MRd &gt; M↓pl←/γ↓a1←) { 
+                                MRd →INI400_001415= M↓pl←/γ↓a1←; 
+                            } 
+                        } 
+                        IF(λ &gt; λ↓r←) { 
+                            // if hot rolled
+                            IF(Fabrication == 0) { 
+                                Mcr →INI400_001416= 0.69*E*W/λ↑2←; 
+                            } ELSE { 
+                                kc →INI400_001417= ClassParam.kc; 
+                                Mcr →INI400_001418= 0.9*E*kc*W/λ↑2←; 
+                            } 
+                            IF((Mcr/γ↓a1←) &lt;= (M↓pl←/γ↓a1←)) { 
+                                MRd →INI400_001419= Mcr/γ↓a1←; 
+                            } ELSE { 
+                                MRd →INI400_001420= M↓pl←/γ↓a1←; 
+                            } 
+                        } 
+                        aux2 →INI400_001421= MRd; 
+                    } 
+                    →INI400_001836PAGEBREAK(); 
+                    // Checking FLT - Lateral torsional buckling - item G2.1
+                    →INI400_001385BLOCK("FLT") { 
+                        →INI400_001386TEXT(" 1- Section G.2.1 - FLT - Lateral torsional buckling"); 
+                        
+                        // Slendernes parameters for FLT
+                        λ →INI400_001388= Lb/ry; 
+                        λ↓p← →INI400_001389= 1.76*SQRT(E/fy); // see table G1
+                        
+                        // parameter to define λr
+                        β1 →INI400_001390= ([(fy-σ↓r←)]*W)/(E*J); 
+                        λ↓r← →INI400_001391= 1.38*(SQRT(Iy*J)/(ry*J*β1))*SQRT(1+SQRT(1+(27*Cw*β1↑2←)/Iy)); 
+                        
+                        // Define Mpl - Plastic moment and Mr
+                        M↓r← →INI400_001392= [(fy-σ↓r←)]*W; 
+                        
+                        // Define MRd for FLT
+                        IF(λ &lt;= λ↓p←) { 
+                            MRd →INI400_001394= M↓pl←/γ↓a1←; 
+                        } 
+                        IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                            MRd →INI400_001395= (Cb/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
+                            IF(MRd &gt; M↓pl←/γ↓a1←) { 
+                                MRd →INI400_001396= M↓pl←/γ↓a1←; 
+                            } 
+                        } 
+                        IF(λ &gt; λ↓r←) { 
+                            Mcr →INI400_001397= (Cb*3.1416*3.1416*E*Iy/Lb↑2←)*SQRT(Cw/Iy*[(1+0.039*J*Lb↑2←/Cw)]); 
+                            IF((Mcr/γ↓a1←) &lt;= (M↓pl←/γ↓a1←)) { 
+                                MRd →INI400_001398= Mcr/γ↓a1←; 
+                            } ELSE { 
+                                MRd →INI400_001399= M↓pl←/γ↓a1←; 
+                            } 
+                        } 
+                        IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
+                            →INI400_001400TEXT("Additional Check According to 5.4.2.2: "); 
+                            MRd →INI400_001401= 1.5*W*fy/γ↓a1←; 
+                        } 
+                        aux1 →INI400_001402= MRd; 
+                        →INI400_001837PAGEBREAK(); 
+                    } 
+                } 
+                aux3 →INI400_000756= MRd; 
+            } 
         } 
         
-        // FLA - Web Local Buckling
-        →INI400_000748BLOCK("FLA") { 
-            →INI400_000763TEXT("3 - Section G.2.2 - FLA - Web local Buckling"); 
-            λ →INI400_000757= ClassParam.λw; 
-            λ↓p← →INI400_000758= ClassParam.λpw; 
-            λ↓r← →INI400_000759= ClassParam.λrw; 
-            
-            IF(λ &lt;= λ↓p←) { 
-                MRd →INI400_000750= M↓pl←/γ↓a1←; 
-            } 
-            IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                M↓r← →INI400_000760= fy*W; 
-                MRd →INI400_000751= (1/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
-                IF(MRd &gt; M↓pl←/γ↓a1←) { 
-                    MRd →INI400_000752= M↓pl←/γ↓a1←; 
-                } 
-            } 
-            →INI400_001835PAGEBREAK(); 
-            IF(λ &gt; λ↓r←) { 
-                →INI400_001403TEXT("Slender Web - FLA does not apply. Verification according to Annex H"); 
-                →INI400_001423BendingCheck_SlenderWeb(CS, ClassParam, MomentSign, FormCode, Fabrication, Lb); 
-                MRd →INI400_001422= BendingCheck_SlenderWeb(CS, ClassParam, MomentSign, FormCode, Fabrication, Lb); 
-                aux1 →INI400_001424= MRd; 
-                aux2 →INI400_001425= MRd; 
-                aux3 →INI400_001426= MRd; 
-                //→INI400_000762TEXT("Slender Web - Verification accoding to Annex H of NBR-8800"); 
-            } ELSE { 
-                // FLM - Flange Local Buckling
-                →INI400_001405BLOCK("FLM") { 
-                    →INI400_001406TEXT(" 2 - Section G.2.2 - FLM - Flange local Buckling"); 
-                    
-                    // Define MRd for FLM
-                    λ →INI400_001408= ClassParam.λf; 
-                    λ↓p← →INI400_001409= ClassParam.λpf; 
-                    λ↓r← →INI400_001410= ClassParam.λrf; 
-                    
-                    IF(λ &lt;= λ↓p←) { 
-                        MRd →INI400_001412= M↓pl←/γ↓a1←; 
-                    } 
-                    IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                        M↓r← →INI400_001413= [(fy-σ↓r←)]*W; 
-                        MRd →INI400_001414= (1/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
-                        IF(MRd &gt; M↓pl←/γ↓a1←) { 
-                            MRd →INI400_001415= M↓pl←/γ↓a1←; 
-                        } 
-                    } 
-                    IF(λ &gt; λ↓r←) { 
-                        // if hot rolled
-                        IF(Fabrication == 0) { 
-                            Mcr →INI400_001416= 0.69*E*W/λ↑2←; 
-                        } ELSE { 
-                            kc →INI400_001417= ClassParam.kc; 
-                            Mcr →INI400_001418= 0.9*E*kc*W/λ↑2←; 
-                        } 
-                        IF((Mcr/γ↓a1←) &lt;= (M↓pl←/γ↓a1←)) { 
-                            MRd →INI400_001419= Mcr/γ↓a1←; 
-                        } ELSE { 
-                            MRd →INI400_001420= M↓pl←/γ↓a1←; 
-                        } 
-                    } 
-                    aux2 →INI400_001421= MRd; 
-                } 
-                →INI400_001836PAGEBREAK(); 
-                // Checking FLT - Lateral torsional buckling - item G2.1
-                →INI400_001385BLOCK("FLT") { 
-                    →INI400_001386TEXT(" 1- Section G.2.1 - FLT - Lateral torsional buckling"); 
-                    
-                    // Slendernes parameters for FLT
-                    λ →INI400_001388= Lb/ry; 
-                    λ↓p← →INI400_001389= 1.76*SQRT(E/fy); // see table G1
-                    
-                    // parameter to define λr
-                    β1 →INI400_001390= ([(fy-σ↓r←)]*W)/(E*J); 
-                    λ↓r← →INI400_001391= 1.38*(SQRT(Iy*J)/(ry*J*β1))*SQRT(1+SQRT(1+(27*Cw*β1↑2←)/Iy)); 
+        // Rectangular hollow section and welded box section
+        IF(FormCode == 2 || FormCode == 2001) { 
+            // Checking FLT - Lateral torsional buckling - item G2.1
+            →INI400_000764BLOCK("FLT") { 
+                →INI400_000765TEXT("1 - Section G.2.1 - FLT - Lateral torsional buckling"); 
+                
+                
+                // Slendernes parameters for FLT
+                →INI400_000770BLOCK { 
+                    ry →INI400_000771= CS.Chars.iz; 
+                    J →INI400_000772= CS.Chars.It; 
+                    Cw →INI400_000773= CS.Chars.Iw; 
+                    Iy →INI400_000774= CS.Chars.Iz; 
+                    W →INI400_000775= CS.Chars.Wely; 
+                    A →INI400_000782= CS.Chars.A; 
                     
                     // Define Mpl - Plastic moment and Mr
-                    M↓r← →INI400_001392= [(fy-σ↓r←)]*W; 
+                    Z↓x← →INI400_000783= CS.Chars.Wply; // Plastic section modulus
+                    M↓pl← →INI400_000784= Z↓x←*fy; 
+                    σ↓r← →INI400_000778= 0.3*fy; 
+                    M↓r← →INI400_000785= [(fy-σ↓r←)]*W; 
+                    
+                    λ →INI400_000776= Lb/ry; 
+                    λ↓p← →INI400_000777= (0.13*E/M↓pl←)*SQRT(J*A); // see table G1
+                    
+                    // parameter to define λr
+                    λ↓r← →INI400_000780= (2*E/M↓r←)*SQRT(J*A); 
                     
                     // Define MRd for FLT
                     IF(λ &lt;= λ↓p←) { 
-                        MRd →INI400_001394= M↓pl←/γ↓a1←; 
+                        MRd →INI400_000787= M↓pl←/γ↓a1←; 
                     } 
                     IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                        MRd →INI400_001395= (Cb/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
+                        MRd →INI400_000788= (Cb/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
                         IF(MRd &gt; M↓pl←/γ↓a1←) { 
-                            MRd →INI400_001396= M↓pl←/γ↓a1←; 
+                            MRd →INI400_000789= M↓pl←/γ↓a1←; 
                         } 
                     } 
                     IF(λ &gt; λ↓r←) { 
-                        Mcr →INI400_001397= (Cb*3.1416*3.1416*E*Iy/Lb↑2←)*SQRT(Cw/Iy*[(1+0.039*J*Lb↑2←/Cw)]); 
+                        Mcr →INI400_000790= (2*Cb*E/λ)*SQRT(J*A); 
                         IF((Mcr/γ↓a1←) &lt;= (M↓pl←/γ↓a1←)) { 
-                            MRd →INI400_001398= Mcr/γ↓a1←; 
+                            MRd →INI400_000791= Mcr/γ↓a1←; 
                         } ELSE { 
-                            MRd →INI400_001399= M↓pl←/γ↓a1←; 
+                            MRd →INI400_000792= M↓pl←/γ↓a1←; 
                         } 
                     } 
                     IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
-                        →INI400_001400TEXT("Additional Check According to 5.4.2.2: "); 
-                        MRd →INI400_001401= 1.5*W*fy/γ↓a1←; 
+                        →INI400_001372TEXT("Additional Check According to 5.4.2.2: "); 
+                        MRd →INI400_001373= 1.5*W*fy/γ↓a1←; 
                     } 
-                    aux1 →INI400_001402= MRd; 
-                    →INI400_001837PAGEBREAK(); 
+                    aux1 →INI400_000793= MRd; 
                 } 
             } 
-            aux3 →INI400_000756= MRd; 
-        } 
-    } 
-    
-    // Rectangular hollow section and welded box section
-    IF(FormCode == 2 || FormCode == 2001) { 
-        // Checking FLT - Lateral torsional buckling - item G2.1
-        →INI400_000764BLOCK("FLT") { 
-            →INI400_000765TEXT("1 - Section G.2.1 - FLT - Lateral torsional buckling"); 
-            
-            
-            // Slendernes parameters for FLT
-            →INI400_000770BLOCK { 
-                ry →INI400_000771= CS.Chars.iz; 
-                J →INI400_000772= CS.Chars.It; 
-                Cw →INI400_000773= CS.Chars.Iw; 
-                Iy →INI400_000774= CS.Chars.Iz; 
-                W →INI400_000775= CS.Chars.Wely; 
-                A →INI400_000782= CS.Chars.A; 
+            →INI400_001830PAGEBREAK(); 
+            →INI400_000794BLOCK("Classification") { 
+                // Proceed to Section Classification and get the slenderness parameters
+                →INI400_000795Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
+                SClass →INI400_001698= Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
+                SWITCH(SClass) { 
+                    CASE 0 :  { 
+                        →INI400_001838TEXT("Classification:"); 
+                        →INI400_001839TEXT("Compact"); 
+                    } 
+                    CASE 1 :  { 
+                        →INI400_001840TEXT("Classification"); 
+                        →INI400_001841TEXT("SemiCompact"); 
+                    } 
+                    CASE 2 :  { 
+                        →INI400_001842TEXT("Classification"); 
+                        →INI400_001843TEXT("Slender"); 
+                    } 
+                } 
+                →INI400_001844PAGEBREAK(); 
+            } 
+            // Parameters to Check FLM 
+
+            →INI400_000796BLOCK("FLM") { 
+                →INI400_000797TEXT(" 2 - Section G.2.2 - FLM - Flange local Buckling"); 
                 
-                // Define Mpl - Plastic moment and Mr
-                Z↓x← →INI400_000783= CS.Chars.Wply; // Plastic section modulus
-                M↓pl← →INI400_000784= Z↓x←*fy; 
-                σ↓r← →INI400_000778= 0.3*fy; 
-                M↓r← →INI400_000785= [(fy-σ↓r←)]*W; 
+                // Define MRd for FLM
+                λ →INI400_000799= ClassParam.λf; 
+                λ↓p← →INI400_000800= ClassParam.λpf; 
+                λ↓r← →INI400_000801= ClassParam.λrf; 
+                IF(FormCode == 2001) { 
+                    
+                    h →MPF001_000010= CS.Geometry.Bb; 
+                    bf →MPF001_000011= CS.Geometry.Ba; 
+                    tw →MPF001_000012= CS.Geometry.thb; 
+                    tf →MPF001_000013= CS.Geometry.tha; 
+                    d →MPF001_000014= h; 
+                } 
+                ELSE { 
+                    
+                    r1 →INI400_000827= CS.Geometry.r1; 
+                    tw →INI400_000822= CS.Geometry.s; 
+                    //REV: revised in 07/04/2016
+                    //            bf →INI400_000817= CS.Geometry.b-2*r1-2*tw; 
+                    tf →INI400_000818= CS.Geometry.s; 
+                    //            d →INI400_000821= CS.Geometry.h-2*r1-2*tf; 
+                    bf →MPF000_000041= CS.Geometry.Contains("B") ? CS.Geometry.B-2*r1-2*tw : CS.Geometry.b-2*r1-2*tw; 
+                    d →MPF000_000042= CS.Geometry.Contains("H") ? CS.Geometry.H-2*r1-2*tf : CS.Geometry.h-2*r1-2*tf; 
+                    // check for reduction in width
+                    // At this point the difference in the position of the centroid due the width reduction is negleted
+                } 
+                σ →INI400_000816= fy; 
+                beff →INI400_000539= 1.92*tf*SQRT(E/σ)*[1-(0.38/(bf/tf))*SQRT(E/σ)]; 
                 
-                λ →INI400_000776= Lb/ry; 
-                λ↓p← →INI400_000777= (0.13*E/M↓pl←)*SQRT(J*A); // see table G1
-                
-                // parameter to define λr
-                λ↓r← →INI400_000780= (2*E/M↓r←)*SQRT(J*A); 
-                
-                // Define MRd for FLT
+                IF(beff &gt;= bf) { 
+                    beff →INI400_000819= bf; 
+                    Wef →INI400_001177= W; 
+                } ELSE { 
+                    Ief →INI400_000823= 2*tw*(d↑3←)/12+(bf*tf↑3←)/12+bf*tf*[(d/2+tf/2)]↑2←+(beff*tf↑3←)/12+beff*tf*[(d/2+tf/2)]↑2←; 
+                    Wef →INI400_000825= (Ief)/[(d/2+tf)]; 
+                } 
                 IF(λ &lt;= λ↓p←) { 
-                    MRd →INI400_000787= M↓pl←/γ↓a1←; 
+                    MRd →INI400_000803= M↓pl←/γ↓a1←; 
                 } 
                 IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                    MRd →INI400_000788= (Cb/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
+                    M↓r← →INI400_000804= fy*Wef; 
+                    MRd →INI400_000805= (1/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
                     IF(MRd &gt; M↓pl←/γ↓a1←) { 
-                        MRd →INI400_000789= M↓pl←/γ↓a1←; 
+                        MRd →INI400_000806= M↓pl←/γ↓a1←; 
                     } 
                 } 
                 IF(λ &gt; λ↓r←) { 
-                    Mcr →INI400_000790= (2*Cb*E/λ)*SQRT(J*A); 
+                    Mcr →INI400_000807= (Wef↑2←/W)*fy; 
                     IF((Mcr/γ↓a1←) &lt;= (M↓pl←/γ↓a1←)) { 
-                        MRd →INI400_000791= Mcr/γ↓a1←; 
+                        MRd →INI400_000810= Mcr/γ↓a1←; 
                     } ELSE { 
-                        MRd →INI400_000792= M↓pl←/γ↓a1←; 
+                        MRd →INI400_000811= M↓pl←/γ↓a1←; 
                     } 
+                } 
+                aux2 →INI400_000812= MRd; 
+                →INI400_001845PAGEBREAK(); 
+            } 
+            
+            // FLA - Web Local Buckling
+            →INI400_000828BLOCK("FLA") { 
+                →INI400_000829TEXT("3 - Section G.2.2 - FLA - Web local Buckling"); 
+                λ →INI400_000830= ClassParam.λw; 
+                λ↓p← →INI400_000831= ClassParam.λpw; 
+                λ↓r← →INI400_000832= ClassParam.λrw; 
+                
+                →INI400_000833BLOCK { 
+                    IF(λ &lt;= λ↓p←) { 
+                        MRd →INI400_000834= M↓pl←/γ↓a1←; 
+                    } 
+                    IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                        M↓r← →INI400_000835= fy*W; 
+                        MRd →INI400_000836= (1/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
+                        IF(MRd &gt; M↓pl←/γ↓a1←) { 
+                            MRd →INI400_000837= M↓pl←/γ↓a1←; 
+                        } 
+                    } 
+                    IF(λ &gt; λ↓r←) { 
+                        →INI400_000838TEXT("Slender Web - Verification accoding to Annex H of NBR-8800"); } 
+                } 
+                aux3 →INI400_000839= MRd; 
+            } 
+        } 
+        
+        // Circular hollow section
+        IF(FormCode == 3) { 
+            // for circular hollow sections, the only limit state to be verified is the buckling tube wall
+            // section G.2.7
+            →INI400_000956Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
+            λ →INI400_000957= ClassParam.λw; 
+            λ↓p← →INI400_000958= ClassParam.λpw; 
+            λ↓r← →INI400_000959= ClassParam.λrw; 
+            W →INI400_001072= CS.Chars.Wely; 
+            Z↓x← →INI400_001073= CS.Chars.Wply; 
+            M↓pl← →INI400_001074= Z↓x←*fy; 
+            
+            →INI400_000960BLOCK { 
+                IF(λ &lt;= λ↓p←) { 
+                    MRd →INI400_000961= M↓pl←/γ↓a1←; 
+                } 
+                IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                    MRd →INI400_000963= (1/γ↓a1←)*[((0.021*E/λ)+fy)*W]; 
+                    IF(MRd &gt; M↓pl←/γ↓a1←) { 
+                        MRd →INI400_000964= M↓pl←/γ↓a1←; 
+                    } 
+                } 
+                IF((λ &gt; λ↓r←) &amp;&amp; (λ &lt;= 0.45*E/fy)) { 
+                    MRd →INI400_000967= (1/γ↓a1←)*[(0.33*E*W/λ)]; 
+                } 
+                IF(λ &gt; 0.45*E/fy) { 
+                    →INI400_000970TEXT("Slenderness D/t is not allowed by the code"); 
+                    Exit(); 
                 } 
                 IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
-                    →INI400_001372TEXT("Additional Check According to 5.4.2.2: "); 
-                    MRd →INI400_001373= 1.5*W*fy/γ↓a1←; 
-                } 
-                aux1 →INI400_000793= MRd; 
-            } 
-        } 
-        →INI400_001830PAGEBREAK(); 
-        →INI400_000794BLOCK("Classification") { 
-            // Proceed to Section Classification and get the slenderness parameters
-            →INI400_000795Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
-            SClass →INI400_001698= Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
-            SWITCH(SClass) { 
-                CASE 0 :  { 
-                    →INI400_001838TEXT("Classification:"); 
-                    →INI400_001839TEXT("Compact"); 
-                } 
-                CASE 1 :  { 
-                    →INI400_001840TEXT("Classification"); 
-                    →INI400_001841TEXT("SemiCompact"); 
-                } 
-                CASE 2 :  { 
-                    →INI400_001842TEXT("Classification"); 
-                    →INI400_001843TEXT("Slender"); 
+                    →INI400_001370TEXT("Additional Check According to 5.4.2.2:"); 
+                    MRd →INI400_001371= 1.5*W*fy/γ↓a1←; 
                 } 
             } 
-            →INI400_001844PAGEBREAK(); 
-        } 
-        // Parameters to Check FLM 
-
-        →INI400_000796BLOCK("FLM") { 
-            →INI400_000797TEXT(" 2 - Section G.2.2 - FLM - Flange local Buckling"); 
-            
-            // Define MRd for FLM
-            λ →INI400_000799= ClassParam.λf; 
-            λ↓p← →INI400_000800= ClassParam.λpf; 
-            λ↓r← →INI400_000801= ClassParam.λrf; 
-            IF(FormCode == 2001) { 
-                
-                h →MPF001_000010= CS.Geometry.Bb; 
-                bf →MPF001_000011= CS.Geometry.Ba; 
-                tw →MPF001_000012= CS.Geometry.thb; 
-                tf →MPF001_000013= CS.Geometry.tha; 
-                d →MPF001_000014= h; 
-            } 
-            ELSE { 
-                
-                r1 →INI400_000827= CS.Geometry.r1; 
-                tw →INI400_000822= CS.Geometry.s; 
-                //REV: revised in 07/04/2016
-                //            bf →INI400_000817= CS.Geometry.b-2*r1-2*tw; 
-                tf →INI400_000818= CS.Geometry.s; 
-                //            d →INI400_000821= CS.Geometry.h-2*r1-2*tf; 
-                bf →MPF000_000041= CS.Geometry.Contains("B") ? CS.Geometry.B-2*r1-2*tw : CS.Geometry.b-2*r1-2*tw; 
-                d →MPF000_000042= CS.Geometry.Contains("H") ? CS.Geometry.H-2*r1-2*tf : CS.Geometry.h-2*r1-2*tf; 
-                // check for reduction in width
-                // At this point the difference in the position of the centroid due the width reduction is negleted
-            } 
-            σ →INI400_000816= fy; 
-            beff →INI400_000539= 1.92*tf*SQRT(E/σ)*[1-(0.38/(bf/tf))*SQRT(E/σ)]; 
-            
-            IF(beff &gt;= bf) { 
-                beff →INI400_000819= bf; 
-                Wef →INI400_001177= W; 
-            } ELSE { 
-                Ief →INI400_000823= 2*tw*(d↑3←)/12+(bf*tf↑3←)/12+bf*tf*[(d/2+tf/2)]↑2←+(beff*tf↑3←)/12+beff*tf*[(d/2+tf/2)]↑2←; 
-                Wef →INI400_000825= (Ief)/[(d/2+tf)]; 
-            } 
-            IF(λ &lt;= λ↓p←) { 
-                MRd →INI400_000803= M↓pl←/γ↓a1←; 
-            } 
-            IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                M↓r← →INI400_000804= fy*Wef; 
-                MRd →INI400_000805= (1/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
-                IF(MRd &gt; M↓pl←/γ↓a1←) { 
-                    MRd →INI400_000806= M↓pl←/γ↓a1←; 
-                } 
-            } 
-            IF(λ &gt; λ↓r←) { 
-                Mcr →INI400_000807= (Wef↑2←/W)*fy; 
-                IF((Mcr/γ↓a1←) &lt;= (M↓pl←/γ↓a1←)) { 
-                    MRd →INI400_000810= Mcr/γ↓a1←; 
-                } ELSE { 
-                    MRd →INI400_000811= M↓pl←/γ↓a1←; 
-                } 
-            } 
-            aux2 →INI400_000812= MRd; 
-            →INI400_001845PAGEBREAK(); 
+            aux1 →INI400_000968= MRd; 
+            aux2 →INI400_000969= MRd; 
+            aux3 →INI400_000966= MRd; 
         } 
         
-        // FLA - Web Local Buckling
-        →INI400_000828BLOCK("FLA") { 
-            →INI400_000829TEXT("3 - Section G.2.2 - FLA - Web local Buckling"); 
-            λ →INI400_000830= ClassParam.λw; 
-            λ↓p← →INI400_000831= ClassParam.λpw; 
-            λ↓r← →INI400_000832= ClassParam.λrw; 
+        // Singly symmetric I-Section
+        IF(FormCode == 101) { 
             
-            →INI400_000833BLOCK { 
+            // reading section properties
+            →INI400_001530BLOCK { 
+                IF(CS.Geometry.Contains("s"))
+                { 
+                    // REV: revised in 06/04/2016
+
+                    bb →MPF000_000079= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
+                    tb →MPF000_000080= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
+                    bt →MPF000_000081= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
+                    tt →MPF000_000082= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
+                    tw →MPF000_000083= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+                    h →MPF000_000084= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
+
+                    
+                } 
+                ELSE
+                { 
+                    
+                    // REV: revised in 06/04/2016
+                    bb →MPF000_000027= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
+                    tb →MPF000_000028= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
+                    bt →MPF000_000029= CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt; 
+                    tt →MPF000_000030= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
+                    tw →MPF000_000031= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+                    h →MPF000_000032= CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h; // full depth
+
+                    
+                } 
+                d →INI400_001524= h-tt-tb; // free depth
+                Z↓x← →INI400_001525= CS.Chars.Wply; 
+                Iy →INI400_001526= CS.Chars.Iz; 
+                Ix →INI400_001527= CS.Chars.Iy; 
+                J →INI400_001528= CS.Chars.It; 
+                Cw →INI400_001529= CS.Chars.Iw; 
+            } 
+            →INI400_001846PAGEBREAK(); 
+            
+            →INI400_001480BLOCK("Classification") { 
+                // Proceed to Section Classification and get the slenderness parameters
+                →INI400_001481Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
+                SClass →INI400_001703= Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
+                
+                SWITCH(SClass) { 
+                    CASE 0 :  { 
+                        →INI400_001847TEXT("Classification:"); 
+                        →INI400_001848TEXT("Compact"); 
+                    } 
+                    CASE 1 :  { 
+                        →INI400_001849TEXT("Classification"); 
+                        →INI400_001850TEXT("SemiCompact"); 
+                    } 
+                    CASE 2 :  { 
+                        →INI400_001851TEXT("Classification"); 
+                        →INI400_001852TEXT("Slender"); 
+                    } 
+                } 
+            } 
+            // FLA - Web Local Buckling
+            →INI400_000887BLOCK("FLA") { 
+                →INI400_000888TEXT("3 - Section G.2.2 - FLA - Web local Buckling"); 
+                λ →INI400_000889= ClassParam.λw; 
+                λ↓p← →INI400_000890= ClassParam.λpw; 
+                λ↓r← →INI400_000891= ClassParam.λrw; 
+                
+                
                 IF(λ &lt;= λ↓p←) { 
-                    MRd →INI400_000834= M↓pl←/γ↓a1←; 
+                    MRd →INI400_000893= M↓pl←/γ↓a1←; 
                 } 
                 IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                    M↓r← →INI400_000835= fy*W; 
-                    MRd →INI400_000836= (1/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
+                    M↓r← →INI400_000894= fy*W; 
+                    MRd →INI400_000895= (1/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
                     IF(MRd &gt; M↓pl←/γ↓a1←) { 
-                        MRd →INI400_000837= M↓pl←/γ↓a1←; 
+                        MRd →INI400_000896= M↓pl←/γ↓a1←; 
                     } 
                 } 
+                →INI400_001854PAGEBREAK(); 
                 IF(λ &gt; λ↓r←) { 
-                    →INI400_000838TEXT("Slender Web - Verification accoding to Annex H of NBR-8800"); } 
+                    →INI400_000897TEXT("Slender Web - Verification accoding to Annex H of NBR-8800"); 
+                    →INI400_001427BendingCheck_SlenderWeb(CS, ClassParam, MomentSign, FormCode, Fabrication, Lb); 
+                    MRd →INI400_001428= BendingCheck_SlenderWeb(CS, ClassParam, MomentSign, FormCode, Fabrication, Lb); 
+                    aux1 →INI400_001430= MRd; 
+                    aux2 →INI400_001431= MRd; 
+                    aux3 →INI400_001432= MRd; 
+                } ELSE { 
+                    // Check for FLM - Flange Local Buckling
+                    →INI400_001433BLOCK("FLM") { 
+                        →INI400_001437TEXT("2 - Section G.2.2 - FLM - Flange local Buckling"); 
+                        // Define MRd for FLM
+                        λ →INI400_001438= ClassParam.λf; 
+                        λ↓p← →INI400_001439= ClassParam.λpf; 
+                        λ↓r← →INI400_001440= ClassParam.λrf; 
+                        
+                        IF(λ &lt;= λ↓p←) { 
+                            MRd →INI400_001442= M↓pl←/γ↓a1←; 
+                        } 
+                        IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                            M↓r← →INI400_001443= [(fy-σ↓r←)]*W↓c←; 
+                            MRd →INI400_001444= (1/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
+                            IF(MRd &gt; M↓pl←/γ↓a1←) { 
+                                MRd →INI400_001445= M↓pl←/γ↓a1←; 
+                            } 
+                        } 
+                        IF(λ &gt; λ↓r←) { 
+                            // if hot rolled
+                            IF(Fabrication == 0) { 
+                                Mcr →INI400_001446= 0.69*E*W↓c←/λ↑2←; 
+                            } ELSE { 
+                                kc →INI400_001447= ClassParam.kc; 
+                                Mcr →INI400_001448= 0.9*E*kc*W↓c←/λ↑2←; 
+                            } 
+                            IF((Mcr/γ↓a1←) &lt;= (M↓pl←/γ↓a1←)) { 
+                                MRd →INI400_001449= Mcr/γ↓a1←; 
+                            } ELSE { 
+                                MRd →INI400_001450= M↓pl←/γ↓a1←; 
+                            } 
+                        } 
+                        IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
+                            →INI400_001451TEXT("Additional Check According to 5.4.2.2: "); 
+                            MRd →INI400_001452= 1.5*W*fy/γ↓a1←; 
+                        } 
+                        aux2 →INI400_001453= MRd; 
+                        →INI400_001855PAGEBREAK(); 
+                    } 
+                    
+                    // Check for FLT - Lateral torsional buckling
+                    →INI400_001454BLOCK("FLT") { 
+                        →INI400_001455TEXT("Section G.2.1-  FLT - Lateral Torsional Buckling"); 
+                        ryc →INI400_001456= 0; 
+                        W↓c← →INI400_001457= ClassParam.Wc; 
+                        Wt →INI400_001458= ClassParam.Wt; 
+                        ryc →INI400_001459= ClassParam.ryc; 
+                        αy →INI400_001460= ClassParam.αy; 
+                        W →INI400_001461= MIN(W↓c←, Wt); 
+                        β1 →INI400_001462= [((fy-σ↓r←)*W↓c←)]/(E*J); 
+                        β3 →INI400_001463= 0.45*[(h-(tt+tb)/2)]*[((αy-1)/(αy+1))]; 
+                        β2 →INI400_001464= 5.2*β1*β3+1; 
+                        M↓pl← →INI400_001465= Z↓x←*fy; 
+                        →INI400_001853PAGEBREAK(); 
+                        λ↓p← →INI400_001466= 1.76*SQRT(E/fy); 
+                        λ↓r← →INI400_001467= (1.38*SQRT(Iy*J)/(ryc*J*β1))*SQRT(β2+SQRT(β2↑2←+(27*Cw*β1↑2←)/Iy)); 
+                        λ →INI400_001468= Lb/ryc; 
+                        
+                        M↓r← →INI400_001469= [(fy-σ↓r←)]*W↓c←; 
+                        IF(M↓r← &gt; fy*Wt) { 
+                            M↓r← →INI400_001470= fy*Wt; 
+                        } 
+                        IF(λ &lt;= λ↓p←) { 
+                            MRd →INI400_001471= M↓pl←/γ↓a1←; 
+                        } 
+                        IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                            MRd →INI400_001472= (Cb/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
+                            IF(MRd &gt; M↓pl←/γ↓a1←) { 
+                                MRd →INI400_001473= M↓pl←/γ↓a1←; 
+                            } 
+                        } 
+                        IF(λ &gt; λ↓r←) { 
+                            Mcr →INI400_001474= (Cb*3.1416*3.1416*E*Iy/Lb↑2←)*[(β3+SQRT(β3↑2←+(Cw/Iy)*[(1+0.039*J*Lb↑2←/Cw)]))]; 
+                            IF((Mcr/γ↓a1←) &lt;= (M↓pl←/γ↓a1←)) { 
+                                MRd →INI400_001475= Mcr/γ↓a1←; 
+                            } ELSE { 
+                                MRd →INI400_001476= M↓pl←/γ↓a1←; 
+                            } 
+                        } 
+                        W →INI400_001485= ClassParam.Wc; 
+                        IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
+                            →INI400_001477TEXT("Additional Check According to 5.4.2.2:"); 
+                            →INI400_001856TEXT("W = " &amp; W); 
+                            MRd →INI400_001478= 1.5*W*fy/γ↓a1←; 
+                        } 
+                        aux1 →INI400_001479= MRd; 
+                    } 
+                } 
+                W →INI400_001486= ClassParam.Wc; 
+                IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
+                    →INI400_001364TEXT("Additional Check According to 5.4.2.2:"); 
+                    →INI400_001857TEXT("W = " &amp; W); 
+                    MRd →INI400_001365= 1.5*W*fy/γ↓a1←; 
+                } 
+                aux3 →INI400_000898= MRd; 
             } 
-            aux3 →INI400_000839= MRd; 
         } 
-    } 
-    
-    // Circular hollow section
-    IF(FormCode == 3) { 
-        // for circular hollow sections, the only limit state to be verified is the buckling tube wall
-        // section G.2.7
-        →INI400_000956Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
-        λ →INI400_000957= ClassParam.λw; 
-        λ↓p← →INI400_000958= ClassParam.λpw; 
-        λ↓r← →INI400_000959= ClassParam.λrw; 
-        W →INI400_001072= CS.Chars.Wely; 
-        Z↓x← →INI400_001073= CS.Chars.Wply; 
-        M↓pl← →INI400_001074= Z↓x←*fy; 
         
-        →INI400_000960BLOCK { 
-            IF(λ &lt;= λ↓p←) { 
-                MRd →INI400_000961= M↓pl←/γ↓a1←; 
-            } 
-            IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                MRd →INI400_000963= (1/γ↓a1←)*[((0.021*E/λ)+fy)*W]; 
-                IF(MRd &gt; M↓pl←/γ↓a1←) { 
-                    MRd →INI400_000964= M↓pl←/γ↓a1←; 
-                } 
-            } 
-            IF((λ &gt; λ↓r←) &amp;&amp; (λ &lt;= 0.45*E/fy)) { 
-                MRd →INI400_000967= (1/γ↓a1←)*[(0.33*E*W/λ)]; 
-            } 
-            IF(λ &gt; 0.45*E/fy) { 
-                →INI400_000970TEXT("Slenderness D/t is not allowed by the code"); 
-                Exit(); 
-            } 
-            IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
-                →INI400_001370TEXT("Additional Check According to 5.4.2.2:"); 
-                MRd →INI400_001371= 1.5*W*fy/γ↓a1←; 
-            } 
-        } 
-        aux1 →INI400_000968= MRd; 
-        aux2 →INI400_000969= MRd; 
-        aux3 →INI400_000966= MRd; 
-    } 
-    
-    // Singly symmetric I-Section
-    IF(FormCode == 101) { 
-        
-        // reading section properties
-        →INI400_001530BLOCK { 
-            IF(CS.Geometry.Contains("s"))
-            { 
-                // REV: revised in 06/04/2016
-
-                bb →MPF000_000079= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
-                tb →MPF000_000080= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
-                bt →MPF000_000081= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
-                tt →MPF000_000082= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
-                tw →MPF000_000083= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-                h →MPF000_000084= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
-
+        // T Sections
+        IF(FormCode == 6) { 
+            →INI400_001718BLOCK { 
                 
-            } 
-            ELSE
-            { 
+                //REV: revised in 06/04/2016
+                tw →MPF000_000055= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+                h →MPF000_000056= CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : (CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h); 
                 
-                // REV: revised in 06/04/2016
-                bb →MPF000_000027= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
-                tb →MPF000_000028= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
-                bt →MPF000_000029= CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt; 
-                tt →MPF000_000030= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
-                tw →MPF000_000031= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-                h →MPF000_000032= CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h; // full depth
-
+                tf →MPF000_000036= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.t; 
+                d →MPF000_000035= h; 
                 
+                //            tf →INI400_000916= CS.Geometry.t; 
+                //            h →INI400_000909= CS.Geometry.h; 
+                W →INI400_001337= CS.Chars.Wely; 
+                Iy →INI400_001492= CS.Chars.Iz; 
+                J →INI400_001493= CS.Chars.It; 
+                //            d →INI400_001494= CS.Geometry.h; 
+                M↓pl← →INI400_001272= Z↓x←*fy; 
             } 
-            d →INI400_001524= h-tt-tb; // free depth
-            Z↓x← →INI400_001525= CS.Chars.Wply; 
-            Iy →INI400_001526= CS.Chars.Iz; 
-            Ix →INI400_001527= CS.Chars.Iy; 
-            J →INI400_001528= CS.Chars.It; 
-            Cw →INI400_001529= CS.Chars.Iw; 
-        } 
-        →INI400_001846PAGEBREAK(); 
-        
-        →INI400_001480BLOCK("Classification") { 
-            // Proceed to Section Classification and get the slenderness parameters
-            →INI400_001481Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
-            SClass →INI400_001703= Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
+            →INI400_001858PAGEBREAK(); 
+            // Check for FLT - Lateral torsional Buckling
+            →INI400_000902BLOCK("FLT") { 
+                →INI400_000906TEXT("1 - Section G.2.3 - FLT - Lateral Torsional Buckling"); 
+                // parameter to define MRd
+                IF(MomentSign == 0) { 
+                    B →INI400_000900= 2.3*(d/Lb)*SQRT(Iy/J); 
+                } ELSE { 
+                    B →INI400_000901= -2.3*(d/Lb)*SQRT(Iy/J); 
+                } 
+                MRd →INI400_000904= (1/γ↓a1←)*3.1416*(SQRT(E*Iy*G*J)/Lb)*[(B+SQRT(1+B↑2←))]; 
+                IF(MRd &gt;= M↓pl←/γ↓a1←) { MRd →INI400_000903= M↓pl←/γ↓a1←; } 
+                aux1 →INI400_000905= MRd; 
+            } 
             
-            SWITCH(SClass) { 
-                CASE 0 :  { 
-                    →INI400_001847TEXT("Classification:"); 
-                    →INI400_001848TEXT("Compact"); 
+            // Check for FLM
+            →INI400_000907BLOCK("FLM") { 
+                →INI400_000908Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
+                SClass →INI400_001708= Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
+                SWITCH(SClass) { 
+                    CASE 0 :  { 
+                        →INI400_001859TEXT("Classification:"); 
+                        →INI400_001860TEXT("Compact"); 
+                    } 
+                    CASE 1 :  { 
+                        →INI400_001861TEXT("Classification"); 
+                        →INI400_001862TEXT("SemiCompact"); 
+                    } 
+                    CASE 2 :  { 
+                        →INI400_001863TEXT("Classification"); 
+                        →INI400_001864TEXT("Slender"); 
+                    } 
                 } 
-                CASE 1 :  { 
-                    →INI400_001849TEXT("Classification"); 
-                    →INI400_001850TEXT("SemiCompact"); 
-                } 
-                CASE 2 :  { 
-                    →INI400_001851TEXT("Classification"); 
-                    →INI400_001852TEXT("Slender"); 
-                } 
-            } 
-        } 
-        // FLA - Web Local Buckling
-        →INI400_000887BLOCK("FLA") { 
-            →INI400_000888TEXT("3 - Section G.2.2 - FLA - Web local Buckling"); 
-            λ →INI400_000889= ClassParam.λw; 
-            λ↓p← →INI400_000890= ClassParam.λpw; 
-            λ↓r← →INI400_000891= ClassParam.λrw; 
-            
-            
-            IF(λ &lt;= λ↓p←) { 
-                MRd →INI400_000893= M↓pl←/γ↓a1←; 
-            } 
-            IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                M↓r← →INI400_000894= fy*W; 
-                MRd →INI400_000895= (1/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
-                IF(MRd &gt; M↓pl←/γ↓a1←) { 
-                    MRd →INI400_000896= M↓pl←/γ↓a1←; 
-                } 
-            } 
-            →INI400_001854PAGEBREAK(); 
-            IF(λ &gt; λ↓r←) { 
-                →INI400_000897TEXT("Slender Web - Verification accoding to Annex H of NBR-8800"); 
-                →INI400_001427BendingCheck_SlenderWeb(CS, ClassParam, MomentSign, FormCode, Fabrication, Lb); 
-                MRd →INI400_001428= BendingCheck_SlenderWeb(CS, ClassParam, MomentSign, FormCode, Fabrication, Lb); 
-                aux1 →INI400_001430= MRd; 
-                aux2 →INI400_001431= MRd; 
-                aux3 →INI400_001432= MRd; 
-            } ELSE { 
-                // Check for FLM - Flange Local Buckling
-                →INI400_001433BLOCK("FLM") { 
-                    →INI400_001437TEXT("2 - Section G.2.2 - FLM - Flange local Buckling"); 
+                // if flange is in compression
+                →INI400_000936TEXT("2 - Section G.2.3 - FLM - Flange Local Buckling"); 
+                →INI400_000920BLOCK { 
                     // Define MRd for FLM
-                    λ →INI400_001438= ClassParam.λf; 
-                    λ↓p← →INI400_001439= ClassParam.λpf; 
-                    λ↓r← →INI400_001440= ClassParam.λrf; 
-                    
-                    IF(λ &lt;= λ↓p←) { 
-                        MRd →INI400_001442= M↓pl←/γ↓a1←; 
-                    } 
-                    IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                        M↓r← →INI400_001443= [(fy-σ↓r←)]*W↓c←; 
-                        MRd →INI400_001444= (1/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
-                        IF(MRd &gt; M↓pl←/γ↓a1←) { 
-                            MRd →INI400_001445= M↓pl←/γ↓a1←; 
-                        } 
-                    } 
-                    IF(λ &gt; λ↓r←) { 
-                        // if hot rolled
-                        IF(Fabrication == 0) { 
-                            Mcr →INI400_001446= 0.69*E*W↓c←/λ↑2←; 
-                        } ELSE { 
-                            kc →INI400_001447= ClassParam.kc; 
-                            Mcr →INI400_001448= 0.9*E*kc*W↓c←/λ↑2←; 
-                        } 
-                        IF((Mcr/γ↓a1←) &lt;= (M↓pl←/γ↓a1←)) { 
-                            MRd →INI400_001449= Mcr/γ↓a1←; 
-                        } ELSE { 
-                            MRd →INI400_001450= M↓pl←/γ↓a1←; 
-                        } 
-                    } 
-                    IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
-                        →INI400_001451TEXT("Additional Check According to 5.4.2.2: "); 
-                        MRd →INI400_001452= 1.5*W*fy/γ↓a1←; 
-                    } 
-                    aux2 →INI400_001453= MRd; 
-                    →INI400_001855PAGEBREAK(); 
-                } 
-                
-                // Check for FLT - Lateral torsional buckling
-                →INI400_001454BLOCK("FLT") { 
-                    →INI400_001455TEXT("Section G.2.1-  FLT - Lateral Torsional Buckling"); 
-                    ryc →INI400_001456= 0; 
-                    W↓c← →INI400_001457= ClassParam.Wc; 
-                    Wt →INI400_001458= ClassParam.Wt; 
-                    ryc →INI400_001459= ClassParam.ryc; 
-                    αy →INI400_001460= ClassParam.αy; 
-                    W →INI400_001461= MIN(W↓c←, Wt); 
-                    β1 →INI400_001462= [((fy-σ↓r←)*W↓c←)]/(E*J); 
-                    β3 →INI400_001463= 0.45*[(h-(tt+tb)/2)]*[((αy-1)/(αy+1))]; 
-                    β2 →INI400_001464= 5.2*β1*β3+1; 
-                    M↓pl← →INI400_001465= Z↓x←*fy; 
-                    →INI400_001853PAGEBREAK(); 
-                    λ↓p← →INI400_001466= 1.76*SQRT(E/fy); 
-                    λ↓r← →INI400_001467= (1.38*SQRT(Iy*J)/(ryc*J*β1))*SQRT(β2+SQRT(β2↑2←+(27*Cw*β1↑2←)/Iy)); 
-                    λ →INI400_001468= Lb/ryc; 
-                    
-                    M↓r← →INI400_001469= [(fy-σ↓r←)]*W↓c←; 
-                    IF(M↓r← &gt; fy*Wt) { 
-                        M↓r← →INI400_001470= fy*Wt; 
-                    } 
-                    IF(λ &lt;= λ↓p←) { 
-                        MRd →INI400_001471= M↓pl←/γ↓a1←; 
-                    } 
-                    IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                        MRd →INI400_001472= (Cb/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
-                        IF(MRd &gt; M↓pl←/γ↓a1←) { 
-                            MRd →INI400_001473= M↓pl←/γ↓a1←; 
-                        } 
-                    } 
-                    IF(λ &gt; λ↓r←) { 
-                        Mcr →INI400_001474= (Cb*3.1416*3.1416*E*Iy/Lb↑2←)*[(β3+SQRT(β3↑2←+(Cw/Iy)*[(1+0.039*J*Lb↑2←/Cw)]))]; 
-                        IF((Mcr/γ↓a1←) &lt;= (M↓pl←/γ↓a1←)) { 
-                            MRd →INI400_001475= Mcr/γ↓a1←; 
-                        } ELSE { 
-                            MRd →INI400_001476= M↓pl←/γ↓a1←; 
-                        } 
-                    } 
-                    W →INI400_001485= ClassParam.Wc; 
-                    IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
-                        →INI400_001477TEXT("Additional Check According to 5.4.2.2:"); 
-                        →INI400_001856TEXT("W = " &amp; W); 
-                        MRd →INI400_001478= 1.5*W*fy/γ↓a1←; 
-                    } 
-                    aux1 →INI400_001479= MRd; 
-                } 
-            } 
-            W →INI400_001486= ClassParam.Wc; 
-            IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
-                →INI400_001364TEXT("Additional Check According to 5.4.2.2:"); 
-                →INI400_001857TEXT("W = " &amp; W); 
-                MRd →INI400_001365= 1.5*W*fy/γ↓a1←; 
-            } 
-            aux3 →INI400_000898= MRd; 
-        } 
-    } 
-    
-    // T Sections
-    IF(FormCode == 6) { 
-        →INI400_001718BLOCK { 
-            
-            //REV: revised in 06/04/2016
-            tw →MPF000_000055= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-            h →MPF000_000056= CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : (CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h); 
-            
-            tf →MPF000_000036= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.t; 
-            d →MPF000_000035= h; 
-            
-            //            tf →INI400_000916= CS.Geometry.t; 
-            //            h →INI400_000909= CS.Geometry.h; 
-            W →INI400_001337= CS.Chars.Wely; 
-            Iy →INI400_001492= CS.Chars.Iz; 
-            J →INI400_001493= CS.Chars.It; 
-            //            d →INI400_001494= CS.Geometry.h; 
-            M↓pl← →INI400_001272= Z↓x←*fy; 
-        } 
-        →INI400_001858PAGEBREAK(); 
-        // Check for FLT - Lateral torsional Buckling
-        →INI400_000902BLOCK("FLT") { 
-            →INI400_000906TEXT("1 - Section G.2.3 - FLT - Lateral Torsional Buckling"); 
-            // parameter to define MRd
-            IF(MomentSign == 0) { 
-                B →INI400_000900= 2.3*(d/Lb)*SQRT(Iy/J); 
-            } ELSE { 
-                B →INI400_000901= -2.3*(d/Lb)*SQRT(Iy/J); 
-            } 
-            MRd →INI400_000904= (1/γ↓a1←)*3.1416*(SQRT(E*Iy*G*J)/Lb)*[(B+SQRT(1+B↑2←))]; 
-            IF(MRd &gt;= M↓pl←/γ↓a1←) { MRd →INI400_000903= M↓pl←/γ↓a1←; } 
-            aux1 →INI400_000905= MRd; 
-        } 
-        
-        // Check for FLM
-        →INI400_000907BLOCK("FLM") { 
-            →INI400_000908Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
-            SClass →INI400_001708= Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
-            SWITCH(SClass) { 
-                CASE 0 :  { 
-                    →INI400_001859TEXT("Classification:"); 
-                    →INI400_001860TEXT("Compact"); 
-                } 
-                CASE 1 :  { 
-                    →INI400_001861TEXT("Classification"); 
-                    →INI400_001862TEXT("SemiCompact"); 
-                } 
-                CASE 2 :  { 
-                    →INI400_001863TEXT("Classification"); 
-                    →INI400_001864TEXT("Slender"); 
-                } 
-            } 
-            // if flange is in compression
-            →INI400_000936TEXT("2 - Section G.2.3 - FLM - Flange Local Buckling"); 
-            →INI400_000920BLOCK { 
-                // Define MRd for FLM
-                λ →INI400_000921= ClassParam.λf; 
-                λ↓p← →INI400_000922= ClassParam.λpf; 
-                λ↓r← →INI400_000923= ClassParam.λrf; 
-            } 
-            IF(MomentSign == 0) { 
-                Ix →INI400_000913= CS.Chars.Iy; 
-                Wt →INI400_000914= CS.Chars.Wely; 
-                YCG →INI400_000915= Ix/Wt; 
-                y →INI400_000918= h-YCG; 
-                W↓c← →INI400_000919= Ix/y; // determine the elastic modulus of compression portion - flange
-                
-                // Define MRd
-                →INI400_000924BLOCK { 
-                    IF(λ &lt;= λ↓p←) { 
-                        MRd →INI400_000925= M↓pl←/γ↓a1←; 
-                    } 
-                    IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                        MRd →INI400_000927= (1/γ↓a1←)*[(1.19-0.5*λ*SQRT(fy/E))]*fy*W↓c←; 
-                        IF(MRd &gt; M↓pl←/γ↓a1←) { 
-                            MRd →INI400_000928= M↓pl←/γ↓a1←; 
-                        } 
-                    } 
-                    IF(λ &gt; λ↓r←) { 
-                        MRd →INI400_000935= (1/γ↓a1←)*[(0.69*E*W↓c←)/(λ↑2←)]; 
-                    } 
-                    IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
-                        →INI400_001496TEXT("Additional Check:"); 
-                        MRd →INI400_001338= 1.5*W*fy/γ↓a1←; 
-                    } 
-                    aux2 →INI400_000934= MRd; 
-                } 
-            } 
-            IF(MomentSign == 1) { 
-                →INI400_000910TEXT("FLM does not Apply - Flange not in compression!"); 
-                MRd →INI400_000911= M↓pl←/γ↓a1←; 
-                aux2 →INI400_001495= MRd; 
-            } 
-        } 
-        
-        // Check for FLA - Extract from AISC-360-10
-        →INI400_000937BLOCK("FLA") { 
-            // this section is not covered by NBR-8800. This was extracted from AISC-360-10
-            // FLA - Web Local Buckling
-            →INI400_000939TEXT("3 - Section F9.4 - extract from AISC-360-10 - FLA - Web local Buckling"); 
-            
-            λ →INI400_000940= ClassParam.λw; 
-            λ↓p← →INI400_000941= ClassParam.λpw; 
-            λ↓r← →INI400_000942= ClassParam.λrw; 
-            
-            →INI400_000943BLOCK { 
-                // Web local buckling in case of moment compressing web
-                IF(MomentSign == 1) { 
-                    →INI400_000950double Fcr; // critical stress
-
-                    IF(λ &lt;= λ↓p←) { 
-                        MRd →INI400_000944= W*fy*0.9; 
-                    } 
-                    IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                        Fcr →INI400_000951= [(2.55-1.84*λ*SQRT(fy/E))]*fy; 
-                        MRd →INI400_000946= 0.9*Fcr*W; 
-                        IF(MRd &gt; M↓pl←/γ↓a1←) { 
-                            MRd →INI400_000947= M↓pl←/γ↓a1←; 
-                        } 
-                    } 
-                    IF(λ &gt; λ↓r←) { 
-                        Fcr →INI400_000952= 0.69*E/λ↑2←; 
-                        MRd →INI400_000953= 0.9*Fcr*W; 
-                    } 
+                    λ →INI400_000921= ClassParam.λf; 
+                    λ↓p← →INI400_000922= ClassParam.λpf; 
+                    λ↓r← →INI400_000923= ClassParam.λrf; 
                 } 
                 IF(MomentSign == 0) { 
-                    →INI400_000954TEXT("Web Local Buckling does not apply"); 
-                    MRd →INI400_000955= M↓pl←/γ↓a1←; 
-                } 
-                aux3 →INI400_000949= MRd; 
-            } 
-        } 
-    } 
-    
-    // Solid Rectangular Sections - "Flat bar"
-    IF(FormCode == 7) { 
-        // For bending about major axis of this section, only FLT ( lateral torsional bucklin) should be verified
-
-        // FLT - Lateral Torional Buckling - Section G.2.1
-        →INI400_000971BLOCK("FLT") { 
-            →INI400_000972TEXT("1 - Section G.2.1 - FLT - Lateral torsional buckling"); 
-            
-            // Slendernes parameters for FLT
-            →INI400_000973BLOCK { 
-                W →INI400_001340= CS.Chars.Welz; 
-                Z↓x← →INI400_001503= CS.Chars.Wplz; 
-                J →INI400_001504= CS.Chars.It; 
-                A →INI400_001510= CS.Chars.A; 
-                ry →INI400_001511= CS.Chars.iy; 
-                λ →INI400_000974= Lb/ry; 
-                λ↓p← →INI400_000975= (0.13*E/M↓pl←)*SQRT(J*A); // see table G1
-                M↓r← →INI400_000987= W*fy; 
-                λ↓r← →INI400_000977= (2*E/M↓r←)*SQRT(J*A); 
-                M↓pl← →INI400_001273= Z↓x←*fy; 
-            } 
-            →INI400_001865PAGEBREAK(); 
-            // Define MRd for FLT
-            →INI400_000979BLOCK { 
-                IF(λ &lt;= λ↓p←) { 
-                    MRd →INI400_000980= M↓pl←/γ↓a1←; 
-                } 
-                IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                    MRd →INI400_000981= (Cb/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
-                    IF(MRd &gt; M↓pl←/γ↓a1←) { 
-                        MRd →INI400_000982= M↓pl←/γ↓a1←; 
+                    Ix →INI400_000913= CS.Chars.Iy; 
+                    Wt →INI400_000914= CS.Chars.Wely; 
+                    YCG →INI400_000915= Ix/Wt; 
+                    y →INI400_000918= h-YCG; 
+                    W↓c← →INI400_000919= Ix/y; // determine the elastic modulus of compression portion - flange
+                    
+                    // Define MRd
+                    →INI400_000924BLOCK { 
+                        IF(λ &lt;= λ↓p←) { 
+                            MRd →INI400_000925= M↓pl←/γ↓a1←; 
+                        } 
+                        IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                            MRd →INI400_000927= (1/γ↓a1←)*[(1.19-0.5*λ*SQRT(fy/E))]*fy*W↓c←; 
+                            IF(MRd &gt; M↓pl←/γ↓a1←) { 
+                                MRd →INI400_000928= M↓pl←/γ↓a1←; 
+                            } 
+                        } 
+                        IF(λ &gt; λ↓r←) { 
+                            MRd →INI400_000935= (1/γ↓a1←)*[(0.69*E*W↓c←)/(λ↑2←)]; 
+                        } 
+                        IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
+                            →INI400_001496TEXT("Additional Check:"); 
+                            MRd →INI400_001338= 1.5*W*fy/γ↓a1←; 
+                        } 
+                        aux2 →INI400_000934= MRd; 
                     } 
                 } 
-                IF(λ &gt; λ↓r←) { 
-                    Mcr →INI400_000983= (2*Cb*E/λ)*SQRT(J*A); 
-                    IF((Mcr/γ↓a1←) &lt;= (M↓pl←/γ↓a1←)) { 
-                        MRd →INI400_000984= Mcr/γ↓a1←; 
-                    } ELSE { 
-                        MRd →INI400_000985= M↓pl←/γ↓a1←; 
+                IF(MomentSign == 1) { 
+                    →INI400_000910TEXT("FLM does not Apply - Flange not in compression!"); 
+                    MRd →INI400_000911= M↓pl←/γ↓a1←; 
+                    aux2 →INI400_001495= MRd; 
+                } 
+            } 
+            
+            // Check for FLA - Extract from AISC-360-10
+            →INI400_000937BLOCK("FLA") { 
+                // this section is not covered by NBR-8800. This was extracted from AISC-360-10
+                // FLA - Web Local Buckling
+                →INI400_000939TEXT("3 - Section F9.4 - extract from AISC-360-10 - FLA - Web local Buckling"); 
+                
+                λ →INI400_000940= ClassParam.λw; 
+                λ↓p← →INI400_000941= ClassParam.λpw; 
+                λ↓r← →INI400_000942= ClassParam.λrw; 
+                
+                →INI400_000943BLOCK { 
+                    // Web local buckling in case of moment compressing web
+                    IF(MomentSign == 1) { 
+                        →INI400_000950double Fcr; // critical stress
+
+                        IF(λ &lt;= λ↓p←) { 
+                            MRd →INI400_000944= W*fy*0.9; 
+                        } 
+                        IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                            Fcr →INI400_000951= [(2.55-1.84*λ*SQRT(fy/E))]*fy; 
+                            MRd →INI400_000946= 0.9*Fcr*W; 
+                            IF(MRd &gt; M↓pl←/γ↓a1←) { 
+                                MRd →INI400_000947= M↓pl←/γ↓a1←; 
+                            } 
+                        } 
+                        IF(λ &gt; λ↓r←) { 
+                            Fcr →INI400_000952= 0.69*E/λ↑2←; 
+                            MRd →INI400_000953= 0.9*Fcr*W; 
+                        } 
+                    } 
+                    IF(MomentSign == 0) { 
+                        →INI400_000954TEXT("Web Local Buckling does not apply"); 
+                        MRd →INI400_000955= M↓pl←/γ↓a1←; 
+                    } 
+                    aux3 →INI400_000949= MRd; 
+                } 
+            } 
+        } 
+        
+        // Solid Rectangular Sections - "Flat bar"
+        IF(FormCode == 7) { 
+            // For bending about major axis of this section, only FLT ( lateral torsional bucklin) should be verified
+
+            // FLT - Lateral Torional Buckling - Section G.2.1
+            →INI400_000971BLOCK("FLT") { 
+                →INI400_000972TEXT("1 - Section G.2.1 - FLT - Lateral torsional buckling"); 
+                
+                // Slendernes parameters for FLT
+                →INI400_000973BLOCK { 
+                    W →INI400_001340= CS.Chars.Welz; 
+                    Z↓x← →INI400_001503= CS.Chars.Wplz; 
+                    J →INI400_001504= CS.Chars.It; 
+                    A →INI400_001510= CS.Chars.A; 
+                    ry →INI400_001511= CS.Chars.iy; 
+                    λ →INI400_000974= Lb/ry; 
+                    λ↓p← →INI400_000975= (0.13*E/M↓pl←)*SQRT(J*A); // see table G1
+                    M↓r← →INI400_000987= W*fy; 
+                    λ↓r← →INI400_000977= (2*E/M↓r←)*SQRT(J*A); 
+                    M↓pl← →INI400_001273= Z↓x←*fy; 
+                } 
+                →INI400_001865PAGEBREAK(); 
+                // Define MRd for FLT
+                →INI400_000979BLOCK { 
+                    IF(λ &lt;= λ↓p←) { 
+                        MRd →INI400_000980= M↓pl←/γ↓a1←; 
+                    } 
+                    IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                        MRd →INI400_000981= (Cb/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
+                        IF(MRd &gt; M↓pl←/γ↓a1←) { 
+                            MRd →INI400_000982= M↓pl←/γ↓a1←; 
+                        } 
+                    } 
+                    IF(λ &gt; λ↓r←) { 
+                        Mcr →INI400_000983= (2*Cb*E/λ)*SQRT(J*A); 
+                        IF((Mcr/γ↓a1←) &lt;= (M↓pl←/γ↓a1←)) { 
+                            MRd →INI400_000984= Mcr/γ↓a1←; 
+                        } ELSE { 
+                            MRd →INI400_000985= M↓pl←/γ↓a1←; 
+                        } 
+                    } 
+                    IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
+                        MRd →INI400_001352= 1.5*W*fy/γ↓a1←; 
+                    } 
+                    aux1 →INI400_000986= MRd; 
+                    aux2 →INI400_000988= MRd; 
+                    aux3 →INI400_000989= MRd; 
+                } 
+            } 
+        } 
+        
+        // single angle equal legs
+        IF(FormCode == 4) { 
+            
+            // this algorithm considers bending about geometric axis only. 
+            // Reading Variables
+            →INI400_001570BLOCK { 
+                // loads the section and steel grade
+                J →INI400_001578= CS.Chars.It; // torsional constant
+
+                //REV: revised in 07/04/2016
+
+                tw →MPF000_000046= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.t; 
+                h →MPF000_000047= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; 
+                d →MPF000_000048= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; 
+                //            tw →INI400_001579= CS.Geometry.t; 
+                //            h →INI400_001580= CS.Geometry.h; 
+                //            d →INI400_001581= CS.Geometry.b; 
+
+                W →INI400_001719= CS.Chars.Wely; 
+            } 
+            →INI400_001738TEXT("Using Section F10 of AISC-360-10"); 
+            IF(d != h) { 
+                →INI400_001717TEXT("Only angles of single legs are covered!"); 
+                MRd →MPF000_000052= Md/999; 
+                return MRd; 
+            } 
+            IF(Cb &gt; 1.5) { 
+                →INI400_001730TEXT("Cb must be smaller than 1.5. The calculation will proceed considering Cb = 1.5"); 
+                Cb →INI400_001731= 1.5; 
+            } 
+            
+            My →INI400_001724= W*fy; 
+            
+            IF(MomentSign == 0) { 
+                // compressign one leg and the toe
+                Me →INI400_001766= (0.66*E*d↑4←*tw*Cb/Lb)*[(SQRT(1+0.78*[(Lb*tw/d↑2←)]↑2←)-1)]; 
+            } 
+            IF(MomentSign == 1) { 
+                Me →INI400_001767= (0.66*E*d↑4←*tw*Cb/Lb)*[(SQRT(1+0.78*[(Lb*tw/d↑2←)]↑2←)+1)]; 
+            } 
+            
+            // checking for Yielding
+            →INI400_001725TEXT("Checking for Yielding"); 
+            Mn →INI400_001726= 1.5*W*fy; 
+            aux1 →INI400_001778= Mn; 
+            
+            // Checkgin for Lateral Torsional Buckling
+            →INI400_001732TEXT("Checking for FLT"); 
+            IF(Me &lt;= My) { 
+                Mn →INI400_001727= [(0.92-0.17*Me/My)]*Me; 
+                aux2 →INI400_001733= Mn; 
+            } 
+            IF(Me &gt; My) { 
+                →INI400_001866BLOCK { 
+                    Mn →INI400_001729= [(1.92-1.17*SQRT(My/Me))]*My; 
+                    IF(Mn &gt; 1.5*My) { 
+                        →INI400_001867TEXT("&gt; " &amp; '1.5*Mn' &amp; " --&gt;"); 
+                        Mn →INI400_001728= 1.5*My; 
                     } 
                 } 
-                IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
-                    MRd →INI400_001352= 1.5*W*fy/γ↓a1←; 
+                aux2 →INI400_001734= Mn; 
+                
+                // Checking for Leg local buckling
+                →INI400_001765TEXT("Leg local Buckling"); 
+                
+                →INI400_001768BLOCK("Classification") { 
+                    // Proceed to Section Classification and get the slenderness parameters
+                    →INI400_001769Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
+                    SClass →INI400_001770= Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
                 } 
-                aux1 →INI400_000986= MRd; 
-                aux2 →INI400_000988= MRd; 
-                aux3 →INI400_000989= MRd; 
-            } 
-        } 
-    } 
-    
-    // single angle equal legs
-    IF(FormCode == 4) { 
-        
-        // this algorithm considers bending about geometric axis only. 
-        // Reading Variables
-        →INI400_001570BLOCK { 
-            // loads the section and steel grade
-            J →INI400_001578= CS.Chars.It; // torsional constant
-
-            //REV: revised in 07/04/2016
-
-            tw →MPF000_000046= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.t; 
-            h →MPF000_000047= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; 
-            d →MPF000_000048= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; 
-            //            tw →INI400_001579= CS.Geometry.t; 
-            //            h →INI400_001580= CS.Geometry.h; 
-            //            d →INI400_001581= CS.Geometry.b; 
-
-            W →INI400_001719= CS.Chars.Wely; 
-        } 
-        →INI400_001738TEXT("Using Section F10 of AISC-360-10"); 
-        IF(d != h) { 
-            →INI400_001717TEXT("Only angles of single legs are covered!"); 
-            MRd →MPF000_000052= Md/999; 
-            return MRd; 
-        } 
-        IF(Cb &gt; 1.5) { 
-            →INI400_001730TEXT("Cb must be smaller than 1.5. The calculation will proceed considering Cb = 1.5"); 
-            Cb →INI400_001731= 1.5; 
-        } 
-        
-        My →INI400_001724= W*fy; 
-        
-        IF(MomentSign == 0) { 
-            // compressign one leg and the toe
-            Me →INI400_001766= (0.66*E*d↑4←*tw*Cb/Lb)*[(SQRT(1+0.78*[(Lb*tw/d↑2←)]↑2←)-1)]; 
-        } 
-        IF(MomentSign == 1) { 
-            Me →INI400_001767= (0.66*E*d↑4←*tw*Cb/Lb)*[(SQRT(1+0.78*[(Lb*tw/d↑2←)]↑2←)+1)]; 
-        } 
-        
-        // checking for Yielding
-        →INI400_001725TEXT("Checking for Yielding"); 
-        Mn →INI400_001726= 1.5*W*fy; 
-        aux1 →INI400_001778= Mn; 
-        
-        // Checkgin for Lateral Torsional Buckling
-        →INI400_001732TEXT("Checking for FLT"); 
-        IF(Me &lt;= My) { 
-            Mn →INI400_001727= [(0.92-0.17*Me/My)]*Me; 
-            aux2 →INI400_001733= Mn; 
-        } 
-        IF(Me &gt; My) { 
-            →INI400_001866BLOCK { 
-                Mn →INI400_001729= [(1.92-1.17*SQRT(My/Me))]*My; 
-                IF(Mn &gt; 1.5*My) { 
-                    →INI400_001867TEXT("&gt; " &amp; '1.5*Mn' &amp; " --&gt;"); 
-                    Mn →INI400_001728= 1.5*My; 
+                λw →INI400_001772= ClassParam.λw; 
+                λ↓pw← →INI400_001773= ClassParam.λpw; 
+                λ↓rw← →INI400_001774= ClassParam.λrw; 
+                
+                IF(λw &lt;= λ↓pw←) { 
+                    Mn →INI400_001775= aux1; 
                 } 
+                IF((λw &gt; λ↓pw←) &amp;&amp; (λw &lt;= λ↓rw←)) { 
+                    Mn →INI400_001777= fy*W*0.8*[(2.43-1.72*[(d/tw)]*SQRT(fy/E))]; 
+                } 
+                IF(λw &gt; λ↓rw←) { 
+                    Mn →INI400_001776= [(0.71*E/[(d/tw)↑2←])]*W*0.8; 
+                } 
+                aux3 →INI400_001779= Mn; 
             } 
-            aux2 →INI400_001734= Mn; 
-            
-            // Checking for Leg local buckling
-            →INI400_001765TEXT("Leg local Buckling"); 
-            
-            →INI400_001768BLOCK("Classification") { 
-                // Proceed to Section Classification and get the slenderness parameters
-                →INI400_001769Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
-                SClass →INI400_001770= Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
-            } 
-            λw →INI400_001772= ClassParam.λw; 
-            λ↓pw← →INI400_001773= ClassParam.λpw; 
-            λ↓rw← →INI400_001774= ClassParam.λrw; 
-            
-            IF(λw &lt;= λ↓pw←) { 
-                Mn →INI400_001775= aux1; 
-            } 
-            IF((λw &gt; λ↓pw←) &amp;&amp; (λw &lt;= λ↓rw←)) { 
-                Mn →INI400_001777= fy*W*0.8*[(2.43-1.72*[(d/tw)]*SQRT(fy/E))]; 
-            } 
-            IF(λw &gt; λ↓rw←) { 
-                Mn →INI400_001776= [(0.71*E/[(d/tw)↑2←])]*W*0.8; 
-            } 
-            aux3 →INI400_001779= Mn; 
         } 
+        MRd →INI400_000747= MIN(aux1, aux2, aux3); 
+        return MRd; 
     } 
-    MRd →INI400_000747= MIN(aux1, aux2, aux3); 
-    return MRd; 
 } 
-
 // design for bending about Minor Axis (Y)
 double BendingCheck_Y(object CS, object ClassParam, double MomentSign, double FormCode, double Fabrication, double BendingAxis, double fy) { 
     
@@ -1229,619 +1232,623 @@ double BendingCheck_Y(object CS, object ClassParam, double MomentSign, double Fo
     // check for the sections covered
     IF((FormCode != 1) &amp;&amp; (FormCode != 2) &amp;&amp; (FormCode != 3) &amp;&amp; (FormCode != 4) &amp;&amp; (FormCode != 101) &amp;&amp; (FormCode != 5) &amp;&amp; (FormCode != 6) &amp;&amp; (FormCode != 2001)) { 
         →MPF000_000040TEXT(" Bending: Type of section not covered by this routine or cannot be designed for this effort!"); 
-        Exit(); } 
-    
-    
-    W →INI400_001098= CS.Chars.Welz; 
-    Z↓y← →INI400_001101= CS.Chars.Wplz; 
-    σ↓r← →INI400_001381= 0.3*fy; 
-    M↓pl← →INI400_001491= fy*Z↓y←; 
-    object Ext →INI400_001664= LoadExternCLC("NBR8800-SECTION-CLASSIFICATION.CLC"); 
-    →INI400_001817TEXT("Design for bending about Y - Minor axis according to NBR-8800 - Section G"); 
-    // I-Sections and I-Singly symetric
-    IF((FormCode == 1) || (FormCode == 101)) { 
-        
-        // reading section properties for Singly Symmetric sections       
-        IF(FormCode == 101) { 
-            IF(CS.Geometry.Contains("s"))
-            { 
-                
-                // REV: revised in 06/04/2016
-                bb →MPF000_000085= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
-                tb →MPF000_000086= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
-                bt →MPF000_000087= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
-                tt →MPF000_000088= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
-                tw →MPF000_000089= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-                h →MPF000_000090= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
-
-            } 
-            ELSE
-            { 
-                // REV: revised in 06/04/2016
-                bb →MPF000_000021= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
-                tb →MPF000_000022= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
-                bt →MPF000_000023= CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt; 
-                tt →MPF000_000024= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
-                tw →MPF000_000025= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-                h →MPF000_000026= CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h; // full depth
-
-                
-            } 
-            d →INI400_001537= h-tt-tb; // free depth
-            Z↓x← →INI400_001538= CS.Chars.Wply; 
-            Iy →INI400_001539= CS.Chars.Iz; 
-            Ix →INI400_001540= CS.Chars.Iy; 
-            J →INI400_001541= CS.Chars.It; 
-            Cw →INI400_001542= CS.Chars.Iw; 
-        } 
-        
-        // for Bending about minor axis, of I_sections, Only FLM - Flange local buckling applies
-        →INI400_001076BLOCK("FLM") { 
-            →INI400_001106Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
-            SClass →INI400_001668= Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
-            SWITCH(SClass) { 
-                CASE 0 :  { 
-                    →INI400_001868TEXT("Classification:"); 
-                    →INI400_001869TEXT("Compact"); 
-                } 
-                CASE 1 :  { 
-                    →INI400_001870TEXT("Classification"); 
-                    →INI400_001871TEXT("SemiCompact"); 
-                } 
-                CASE 2 :  { 
-                    →INI400_001872TEXT("Classification"); 
-                    →INI400_001873TEXT("Slender"); 
-                } 
-            } 
-            
-            →INI400_001665TEXT("Checking FLM - Flange Local Buckling"); 
-            // Define MRd for FLM
-            // take the greater flange slenderness
-            IF(FormCode == 101) { 
-                λ →INI400_001093= MAX(ClassParam.λf, ClassParam.λf1); 
-            } 
-            IF(FormCode == 1) { 
-                λ →INI400_001079= ClassParam.λf; 
-            } 
-            
-            λ↓p← →INI400_001080= ClassParam.λpf; 
-            λ↓r← →INI400_001081= ClassParam.λrf; 
-            M↓pl← →INI400_001104= fy*Z↓y←; 
-            
-            →INI400_001082BLOCK { 
-                IF(λ &lt;= λ↓p←) { 
-                    MRd →INI400_001083= M↓pl←/γ↓a1←; 
-                } 
-                IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                    M↓r← →INI400_001084= [(fy-σ↓r←)]*W; 
-                    →INI400_001875BLOCK { 
-                        MRd →INI400_001085= (1/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
-                        IF(MRd &gt; M↓pl←/γ↓a1←) { 
-                            →INI400_001874TEXT("&gt; " &amp; 'M↓pl←/γ↓a1←' &amp; " --&gt;"); 
-                            MRd →INI400_001086= M↓pl←/γ↓a1←; 
-                        } 
-                    } 
-                } 
-                IF(λ &gt; λ↓r←) { 
-                    // if hot rolled
-                    IF(Fabrication == 0) { 
-                        Mcr →INI400_001087= 0.69*E*W/λ↑2←; 
-                    } ELSE { 
-                        kc →INI400_001088= ClassParam.kc; 
-                        Mcr →INI400_001089= 0.9*E*kc*W/λ↑2←; 
-                    } 
-                    IF((Mcr/γ↓a1←) &lt;= (M↓pl←/γ↓a1←)) { 
-                        MRd →INI400_001090= Mcr/γ↓a1←; 
-                    } ELSE { 
-                        MRd →INI400_001091= M↓pl←/γ↓a1←; 
-                    } 
-                } 
-                IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
-                    →INI400_001362TEXT("Additional Check According to 5.4.2.2: "); 
-                    MRd →INI400_001345= 1.5*W*fy/γ↓a1←; 
-                } 
-                aux1 →INI400_001092= MRd; 
-                aux2 →INI400_001149= M↓pl←/γ↓a1←; 
-                aux3 →INI400_001150= M↓pl←/γ↓a1←; 
-            } 
-        } 
+        //  Exit();
+        UnCheck →MPF001_000015= 3; 
+        MRd →MPF001_000018= 0; 
     } 
-    
-    // U-Sections
-    IF(FormCode == 5) { 
-        // for Bending about minor axis, of I_sections, Only FLM - Flange local buckling applies
-        →INI400_001107BLOCK("FLM") { 
-            →INI400_001109Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
-            SClass →INI400_001672= Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
-            SWITCH(SClass) { 
-                CASE 0 :  { 
-                    →INI400_001876TEXT("Classification:"); 
-                    →INI400_001877TEXT("Compact"); 
+    ELSE { 
+        
+        W →INI400_001098= CS.Chars.Welz; 
+        Z↓y← →INI400_001101= CS.Chars.Wplz; 
+        σ↓r← →INI400_001381= 0.3*fy; 
+        M↓pl← →INI400_001491= fy*Z↓y←; 
+        object Ext →INI400_001664= LoadExternCLC("NBR8800-SECTION-CLASSIFICATION.CLC"); 
+        →INI400_001817TEXT("Design for bending about Y - Minor axis according to NBR-8800 - Section G"); 
+        // I-Sections and I-Singly symetric
+        IF((FormCode == 1) || (FormCode == 101)) { 
+            
+            // reading section properties for Singly Symmetric sections       
+            IF(FormCode == 101) { 
+                IF(CS.Geometry.Contains("s"))
+                { 
+                    
+                    // REV: revised in 06/04/2016
+                    bb →MPF000_000085= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
+                    tb →MPF000_000086= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
+                    bt →MPF000_000087= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
+                    tt →MPF000_000088= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
+                    tw →MPF000_000089= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+                    h →MPF000_000090= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
+
                 } 
-                CASE 1 :  { 
-                    →INI400_001878TEXT("Classification"); 
-                    →INI400_001879TEXT("SemiCompact"); 
+                ELSE
+                { 
+                    // REV: revised in 06/04/2016
+                    bb →MPF000_000021= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
+                    tb →MPF000_000022= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
+                    bt →MPF000_000023= CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt; 
+                    tt →MPF000_000024= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
+                    tw →MPF000_000025= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+                    h →MPF000_000026= CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h; // full depth
+
+                    
                 } 
-                CASE 2 :  { 
-                    →INI400_001880TEXT("Classification"); 
-                    →INI400_001881TEXT("Slender"); 
-                } 
+                d →INI400_001537= h-tt-tb; // free depth
+                Z↓x← →INI400_001538= CS.Chars.Wply; 
+                Iy →INI400_001539= CS.Chars.Iz; 
+                Ix →INI400_001540= CS.Chars.Iy; 
+                J →INI400_001541= CS.Chars.It; 
+                Cw →INI400_001542= CS.Chars.Iw; 
             } 
             
-            IF(MomentSign == 1) { 
-                →INI400_001108TEXT("2 - Section G.2.2 - FLM - Flange local Buckling"); 
-                // if Free edge of the flange is in compression
-                →INI400_001110BLOCK { 
-                    // Define MRd for FLM
-                    λ →INI400_001113= ClassParam.λf; 
-                    λ↓p← →INI400_001114= ClassParam.λpf; 
-                    λ↓r← →INI400_001115= ClassParam.λrf; 
+            // for Bending about minor axis, of I_sections, Only FLM - Flange local buckling applies
+            →INI400_001076BLOCK("FLM") { 
+                →INI400_001106Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
+                SClass →INI400_001668= Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
+                SWITCH(SClass) { 
+                    CASE 0 :  { 
+                        →INI400_001868TEXT("Classification:"); 
+                        →INI400_001869TEXT("Compact"); 
+                    } 
+                    CASE 1 :  { 
+                        →INI400_001870TEXT("Classification"); 
+                        →INI400_001871TEXT("SemiCompact"); 
+                    } 
+                    CASE 2 :  { 
+                        →INI400_001872TEXT("Classification"); 
+                        →INI400_001873TEXT("Slender"); 
+                    } 
                 } 
-                M↓pl← →INI400_001116= fy*Z↓y←; 
                 
-                IF(λ &lt;= λ↓p←) { 
-                    MRd →INI400_001118= M↓pl←/γ↓a1←; 
+                →INI400_001665TEXT("Checking FLM - Flange Local Buckling"); 
+                // Define MRd for FLM
+                // take the greater flange slenderness
+                IF(FormCode == 101) { 
+                    λ →INI400_001093= MAX(ClassParam.λf, ClassParam.λf1); 
                 } 
-                IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                    M↓r← →INI400_001119= [(fy-σ↓r←)]*W; 
-                    →INI400_001883BLOCK { 
-                        MRd →INI400_001120= (1/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
-                        IF(MRd &gt; M↓pl←/γ↓a1←) { 
-                            →INI400_001882TEXT("&gt; " &amp; 'M↓pl←/γ↓a1←' &amp; " --&gt;"); 
-                            MRd →INI400_001121= M↓pl←/γ↓a1←; 
+                IF(FormCode == 1) { 
+                    λ →INI400_001079= ClassParam.λf; 
+                } 
+                
+                λ↓p← →INI400_001080= ClassParam.λpf; 
+                λ↓r← →INI400_001081= ClassParam.λrf; 
+                M↓pl← →INI400_001104= fy*Z↓y←; 
+                
+                →INI400_001082BLOCK { 
+                    IF(λ &lt;= λ↓p←) { 
+                        MRd →INI400_001083= M↓pl←/γ↓a1←; 
+                    } 
+                    IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                        M↓r← →INI400_001084= [(fy-σ↓r←)]*W; 
+                        →INI400_001875BLOCK { 
+                            MRd →INI400_001085= (1/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
+                            IF(MRd &gt; M↓pl←/γ↓a1←) { 
+                                →INI400_001874TEXT("&gt; " &amp; 'M↓pl←/γ↓a1←' &amp; " --&gt;"); 
+                                MRd →INI400_001086= M↓pl←/γ↓a1←; 
+                            } 
                         } 
                     } 
-                } 
-                IF(λ &gt; λ↓r←) { 
-                    // if hot rolled
-                    IF(Fabrication == 0) { 
-                        Mcr →INI400_001122= 0.69*E*W/λ↑2←; 
-                    } ELSE { 
-                        kc →INI400_001123= ClassParam.kc; 
-                        Mcr →INI400_001124= 0.9*E*kc*W/λ↑2←; 
+                    IF(λ &gt; λ↓r←) { 
+                        // if hot rolled
+                        IF(Fabrication == 0) { 
+                            Mcr →INI400_001087= 0.69*E*W/λ↑2←; 
+                        } ELSE { 
+                            kc →INI400_001088= ClassParam.kc; 
+                            Mcr →INI400_001089= 0.9*E*kc*W/λ↑2←; 
+                        } 
+                        IF((Mcr/γ↓a1←) &lt;= (M↓pl←/γ↓a1←)) { 
+                            MRd →INI400_001090= Mcr/γ↓a1←; 
+                        } ELSE { 
+                            MRd →INI400_001091= M↓pl←/γ↓a1←; 
+                        } 
                     } 
-                    IF((Mcr/γ↓a1←) &lt;= (M↓pl←/γ↓a1←)) { 
-                        MRd →INI400_001125= Mcr/γ↓a1←; 
-                    } ELSE { 
-                        MRd →INI400_001126= M↓pl←/γ↓a1←; 
+                    IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
+                        →INI400_001362TEXT("Additional Check According to 5.4.2.2: "); 
+                        MRd →INI400_001345= 1.5*W*fy/γ↓a1←; 
                     } 
+                    aux1 →INI400_001092= MRd; 
+                    aux2 →INI400_001149= M↓pl←/γ↓a1←; 
+                    aux3 →INI400_001150= M↓pl←/γ↓a1←; 
                 } 
-                IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
-                    →INI400_001363TEXT("Additional Check According to 5.4.2.2: "); 
-                    MRd →INI400_001344= 1.5*W*fy/γ↓a1←; 
-                } 
-                aux1 →INI400_001127= MRd; 
-            } 
-            // if free edge of Flange is in tension, then no FLM can occour.
-            IF(MomentSign == 0) { 
-                →INI400_001148TEXT("FLM does not apply. Flange's free edge is in tension."); 
-                MRd →INI400_001142= M↓pl←/γ↓a1←; 
-                aux1 →INI400_001143= MRd; 
             } 
         } 
-        →INI400_001884PAGEBREAK(); 
-        // FLA - Web Local Buckling - only if web in compresssion due Minor bending
-        →INI400_001129BLOCK("FLA") { 
-            IF(MomentSign == 0) { 
-                →INI400_001130TEXT("3 - Section G.2.2 - FLA - Web local Buckling"); 
-                λ →INI400_001131= ClassParam.λw; 
-                λ↓p← →INI400_001132= ClassParam.λpw; 
-                λ↓r← →INI400_001133= ClassParam.λrw; 
-                tw →MPF000_000004= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-                h →MPF000_000005= CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h; 
-                tf →INI400_001707= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.t; 
-                d →INI400_001157= h-2*tf; 
+        
+        // U-Sections
+        IF(FormCode == 5) { 
+            // for Bending about minor axis, of I_sections, Only FLM - Flange local buckling applies
+            →INI400_001107BLOCK("FLM") { 
+                →INI400_001109Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
+                SClass →INI400_001672= Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
+                SWITCH(SClass) { 
+                    CASE 0 :  { 
+                        →INI400_001876TEXT("Classification:"); 
+                        →INI400_001877TEXT("Compact"); 
+                    } 
+                    CASE 1 :  { 
+                        →INI400_001878TEXT("Classification"); 
+                        →INI400_001879TEXT("SemiCompact"); 
+                    } 
+                    CASE 2 :  { 
+                        →INI400_001880TEXT("Classification"); 
+                        →INI400_001881TEXT("Slender"); 
+                    } 
+                } 
                 
-                xcg →INI400_001179= CS.Chars.cYUCS; 
-                Iy →INI400_001181= CS.Chars.Iz; 
+                IF(MomentSign == 1) { 
+                    →INI400_001108TEXT("2 - Section G.2.2 - FLM - Flange local Buckling"); 
+                    // if Free edge of the flange is in compression
+                    →INI400_001110BLOCK { 
+                        // Define MRd for FLM
+                        λ →INI400_001113= ClassParam.λf; 
+                        λ↓p← →INI400_001114= ClassParam.λpf; 
+                        λ↓r← →INI400_001115= ClassParam.λrf; 
+                    } 
+                    M↓pl← →INI400_001116= fy*Z↓y←; 
+                    
+                    IF(λ &lt;= λ↓p←) { 
+                        MRd →INI400_001118= M↓pl←/γ↓a1←; 
+                    } 
+                    IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                        M↓r← →INI400_001119= [(fy-σ↓r←)]*W; 
+                        →INI400_001883BLOCK { 
+                            MRd →INI400_001120= (1/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
+                            IF(MRd &gt; M↓pl←/γ↓a1←) { 
+                                →INI400_001882TEXT("&gt; " &amp; 'M↓pl←/γ↓a1←' &amp; " --&gt;"); 
+                                MRd →INI400_001121= M↓pl←/γ↓a1←; 
+                            } 
+                        } 
+                    } 
+                    IF(λ &gt; λ↓r←) { 
+                        // if hot rolled
+                        IF(Fabrication == 0) { 
+                            Mcr →INI400_001122= 0.69*E*W/λ↑2←; 
+                        } ELSE { 
+                            kc →INI400_001123= ClassParam.kc; 
+                            Mcr →INI400_001124= 0.9*E*kc*W/λ↑2←; 
+                        } 
+                        IF((Mcr/γ↓a1←) &lt;= (M↓pl←/γ↓a1←)) { 
+                            MRd →INI400_001125= Mcr/γ↓a1←; 
+                        } ELSE { 
+                            MRd →INI400_001126= M↓pl←/γ↓a1←; 
+                        } 
+                    } 
+                    IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
+                        →INI400_001363TEXT("Additional Check According to 5.4.2.2: "); 
+                        MRd →INI400_001344= 1.5*W*fy/γ↓a1←; 
+                    } 
+                    aux1 →INI400_001127= MRd; 
+                } 
+                // if free edge of Flange is in tension, then no FLM can occour.
+                IF(MomentSign == 0) { 
+                    →INI400_001148TEXT("FLM does not apply. Flange's free edge is in tension."); 
+                    MRd →INI400_001142= M↓pl←/γ↓a1←; 
+                    aux1 →INI400_001143= MRd; 
+                } 
+            } 
+            →INI400_001884PAGEBREAK(); 
+            // FLA - Web Local Buckling - only if web in compresssion due Minor bending
+            →INI400_001129BLOCK("FLA") { 
+                IF(MomentSign == 0) { 
+                    →INI400_001130TEXT("3 - Section G.2.2 - FLA - Web local Buckling"); 
+                    λ →INI400_001131= ClassParam.λw; 
+                    λ↓p← →INI400_001132= ClassParam.λpw; 
+                    λ↓r← →INI400_001133= ClassParam.λrw; 
+                    tw →MPF000_000004= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+                    h →MPF000_000005= CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h; 
+                    tf →INI400_001707= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.t; 
+                    d →INI400_001157= h-2*tf; 
+                    
+                    xcg →INI400_001179= CS.Chars.cYUCS; 
+                    Iy →INI400_001181= CS.Chars.Iz; 
+                    
+                    // check for reduction in width
+                    // At this point the difference in the position of the centroid due the width reduction is negleted
+                    σ →INI400_001151= fy; 
+                    beff →INI400_001152= 1.92*tw*SQRT(E/σ)*[1-(0.34/(d/tw))*SQRT(E/σ)]; 
+                    
+                    IF(beff &gt;= d) { 
+                        beff →INI400_001153= d; 
+                        Wef →INI400_001180= W; 
+                    } ELSE { 
+                        Ief →INI400_001182= Iy-([bf-beff]*tf↑3←)/12+[bf-beff]*[xcg-tf/2]↑2←; 
+                        Wef →INI400_001183= Ief/xcg; 
+                    } 
+                    
+                    IF(λ &lt;= λ↓p←) { 
+                        MRd →INI400_001168= M↓pl←/γ↓a1←; 
+                    } 
+                    IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                        M↓r← →INI400_001169= fy*Wef; 
+                        →INI400_001886BLOCK { 
+                            MRd →INI400_001170= (1/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
+                            IF(MRd &gt; M↓pl←/γ↓a1←) { 
+                                →INI400_001885TEXT("&gt; " &amp; 'M↓pl←/γ↓a1←' &amp; " --&gt;"); 
+                                MRd →INI400_001171= M↓pl←/γ↓a1←; 
+                            } 
+                        } 
+                    } 
+                    IF(λ &gt; λ↓r←) { 
+                        Mcr →INI400_001172= (Wef↑2←/W)*fy; 
+                        IF((Mcr/γ↓a1←) &lt;= (M↓pl←/γ↓a1←)) { 
+                            MRd →INI400_001173= Mcr/γ↓a1←; 
+                        } ELSE { 
+                            MRd →INI400_001174= M↓pl←/γ↓a1←; 
+                        } 
+                    } 
+                    aux2 →INI400_001140= MRd; 
+                } 
+                
+                IF(MomentSign == 1) { 
+                    →INI400_001147TEXT("FLA does not apply. Web in tension"); 
+                    MRd →INI400_001144= M↓pl←/γ↓a1←; 
+                    aux2 →INI400_001145= MRd; 
+                } 
+                aux3 →INI400_001146= M↓pl←/γ↓a1←; 
+            } 
+        } 
+        
+        // Rectangular hollow section and welded box section
+        IF(FormCode == 2 || FormCode == 2001) { 
+            // for bending about minor axis, FLT does not apply
+            
+            →INI400_001212BLOCK("Classification") { 
+                // Proceed to Section Classification and get the slenderness parameters
+                →INI400_001213Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
+                SClass →INI400_001677= Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
+                SWITCH(SClass) { 
+                    CASE 0 :  { 
+                        →INI400_001887TEXT("Classification:"); 
+                        →INI400_001888TEXT("Compact"); 
+                    } 
+                    CASE 1 :  { 
+                        →INI400_001889TEXT("Classification"); 
+                        →INI400_001890TEXT("SemiCompact"); 
+                    } 
+                    CASE 2 :  { 
+                        →INI400_001891TEXT("Classification"); 
+                        →INI400_001892TEXT("Slender"); 
+                    } 
+                } 
+            } 
+            →INI400_001893PAGEBREAK(); 
+            // Parameters to Check FLM 
+            →INI400_001214BLOCK("FLM") { 
+                →INI400_001215TEXT("2 - Section G.2.2 - FLM - Flange local Buckling"); 
+                →INI400_001216BLOCK { 
+                    // Define MRd for FLM
+                    λ →INI400_001217= ClassParam.λf; 
+                    λ↓p← →INI400_001218= ClassParam.λpf; 
+                    λ↓r← →INI400_001219= ClassParam.λrf; 
+                    
+                    
+                    
+                    M↓pl← →INI400_001254= fy*Z↓y←; 
+                    Iy →INI400_001498= CS.Chars.Iz; 
+                    IF(FormCode == 2001) { 
+                        
+                        h →MPF001_000006= CS.Geometry.Bb; 
+                        bf →MPF001_000007= CS.Geometry.Ba; 
+                        tw →MPF001_000008= CS.Geometry.thb; 
+                        tf →MPF001_000009= CS.Geometry.tha; 
+                        
+                    } 
+                    ELSE { 
+                        
+                        d →MPF000_000043= CS.Geometry.Contains("B") ? CS.Geometry.B-2*r1-2*tw : CS.Geometry.b-2*r1-2*tw; 
+                        bf →MPF000_000044= CS.Geometry.Contains("H") ? CS.Geometry.H-2*r1-2*tf : CS.Geometry.h-2*r1-2*tf; 
+                        h →MPF000_000045= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; 
+                        
+                        r1 →INI400_001220= CS.Geometry.Contains("r1") ? CS.Geometry.r1 : 0; 
+                        tw →INI400_001221= CS.Geometry.s; 
+                        
+                        tf →INI400_001223= CS.Geometry.s; 
+                    } 
+                } 
                 
                 // check for reduction in width
                 // At this point the difference in the position of the centroid due the width reduction is negleted
-                σ →INI400_001151= fy; 
-                beff →INI400_001152= 1.92*tw*SQRT(E/σ)*[1-(0.34/(d/tw))*SQRT(E/σ)]; 
+                σ →INI400_001226= fy; 
+                beff →INI400_001227= 1.92*tf*SQRT(E/σ)*[1-(0.38/(bf/tf))*SQRT(E/σ)]; 
                 
-                IF(beff &gt;= d) { 
-                    beff →INI400_001153= d; 
-                    Wef →INI400_001180= W; 
+                IF(beff &gt;= bf) { 
+                    beff →INI400_001228= bf; 
+                    Wef →INI400_001229= W; 
                 } ELSE { 
-                    Ief →INI400_001182= Iy-([bf-beff]*tf↑3←)/12+[bf-beff]*[xcg-tf/2]↑2←; 
-                    Wef →INI400_001183= Ief/xcg; 
+                    
+                    Ief →INI400_001500= Iy-[([bf-beff]*tf↑3←/12+[bf-beff]*tf*[h/2-tw/2]↑2←)]; 
+                    Wef →INI400_001232= Ief/(h/2); 
                 } 
-                
                 IF(λ &lt;= λ↓p←) { 
-                    MRd →INI400_001168= M↓pl←/γ↓a1←; 
+                    MRd →INI400_001233= M↓pl←/γ↓a1←; 
                 } 
                 IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                    M↓r← →INI400_001169= fy*Wef; 
-                    →INI400_001886BLOCK { 
-                        MRd →INI400_001170= (1/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
+                    M↓r← →INI400_001234= fy*Wef; 
+                    MRd →INI400_001235= (1/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
+                    IF(MRd &gt; M↓pl←/γ↓a1←) { 
+                        MRd →INI400_001236= M↓pl←/γ↓a1←; 
+                    } 
+                } 
+                IF(λ &gt; λ↓r←) { 
+                    Mcr →INI400_001237= (Wef↑2←/W)*fy; 
+                    IF((Mcr/γ↓a1←) &lt;= (M↓pl←/γ↓a1←)) { 
+                        MRd →INI400_001238= Mcr/γ↓a1←; 
+                    } ELSE { 
+                        MRd →INI400_001239= M↓pl←/γ↓a1←; 
+                    } 
+                } 
+                IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
+                    MRd →INI400_001343= 1.5*W*fy/γ↓a1←; 
+                } 
+                aux2 →INI400_001240= MRd; 
+            } 
+            
+            // FLA - Web Local Buckling
+            →INI400_001241BLOCK("FLA") { 
+                →INI400_001242TEXT("3 - Section G.2.2 - FLA - Web local Buckling"); 
+                
+                λ →INI400_001243= ClassParam.λw; 
+                λ↓p← →INI400_001244= ClassParam.λpw; 
+                λ↓r← →INI400_001245= ClassParam.λrw; 
+                
+                
+                IF(λ &lt;= λ↓p←) { 
+                    MRd →INI400_001247= M↓pl←/γ↓a1←; 
+                } 
+                IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                    M↓r← →INI400_001248= fy*W; 
+                    →INI400_001901BLOCK { 
+                        MRd →INI400_001249= (1/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
                         IF(MRd &gt; M↓pl←/γ↓a1←) { 
-                            →INI400_001885TEXT("&gt; " &amp; 'M↓pl←/γ↓a1←' &amp; " --&gt;"); 
-                            MRd →INI400_001171= M↓pl←/γ↓a1←; 
+                            →INI400_001894TEXT("&gt; " &amp; 'M↓pl←/γ↓a1←' &amp; " --&gt;"); 
+                            MRd →INI400_001250= M↓pl←/γ↓a1←; 
                         } 
                     } 
                 } 
                 IF(λ &gt; λ↓r←) { 
-                    Mcr →INI400_001172= (Wef↑2←/W)*fy; 
-                    IF((Mcr/γ↓a1←) &lt;= (M↓pl←/γ↓a1←)) { 
-                        MRd →INI400_001173= Mcr/γ↓a1←; 
-                    } ELSE { 
-                        MRd →INI400_001174= M↓pl←/γ↓a1←; 
-                    } 
+                    →INI400_001251TEXT("Slender Web - Verification accoding to Annex H of NBR-8800"); } 
+                aux3 →INI400_001252= MRd; 
+            } 
+            aux1 →INI400_001253= M↓pl←/γ↓a1←; 
+        } 
+        
+        // Circular hollow section
+        IF(FormCode == 3) { 
+            // for circular hollow sections, the only limit state to be verified is the buckling tube wall
+            // section G.2.7
+            →INI400_001255Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
+            SClass →INI400_001682= Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
+            SWITCH(SClass) { 
+                CASE 0 :  { 
+                    →INI400_001895TEXT("Classification:"); 
+                    →INI400_001896TEXT("Compact"); 
                 } 
-                aux2 →INI400_001140= MRd; 
+                CASE 1 :  { 
+                    →INI400_001897TEXT("Classification"); 
+                    →INI400_001898TEXT("SemiCompact"); 
+                } 
+                CASE 2 :  { 
+                    →INI400_001899TEXT("Classification"); 
+                    →INI400_001900TEXT("Slender"); 
+                } 
             } 
             
+            λ →INI400_001256= ClassParam.λw; 
+            λ↓p← →INI400_001257= ClassParam.λpw; 
+            λ↓r← →INI400_001258= ClassParam.λrw; 
+            
+            W →INI400_001259= CS.Chars.Wely; 
+            Z↓x← →INI400_001260= CS.Chars.Wply; 
+            M↓pl← →INI400_001261= Z↓x←*fy; 
+            
+            IF(λ &lt;= λ↓p←) { 
+                MRd →INI400_001263= M↓pl←/γ↓a1←; 
+            } 
+            IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                →INI400_001903BLOCK { 
+                    MRd →INI400_001264= (1/γ↓a1←)*[((0.021*E/λ)+fy)*W]; 
+                    IF(MRd &gt; M↓pl←/γ↓a1←) { 
+                        →INI400_001902TEXT("&gt; " &amp; 'M↓pl←/γ↓a1←' &amp; " --&gt;"); 
+                        MRd →INI400_001265= M↓pl←/γ↓a1←; 
+                    } 
+                } 
+            } 
+            IF((λ &gt; λ↓r←) &amp;&amp; (λ &lt;= 0.45*E/fy)) { 
+                MRd →INI400_001266= (1/γ↓a1←)*[(0.33*E*W/λ)]; 
+            } 
+            IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
+                MRd →INI400_001346= 1.5*W*fy/γ↓a1←; 
+            } 
+            IF(λ &gt; 0.45*E/fy) { 
+                →INI400_001267TEXT("Slenderness D/t is not allowed by the code"); 
+                Exit(); 
+            } 
+            aux1 →INI400_001268= MRd; 
+            aux2 →INI400_001269= MRd; 
+            aux3 →INI400_001270= MRd; 
+        } 
+        
+        // T-Sections
+        IF(FormCode == 6) { 
+            →INI400_001274TEXT("T-Sections subject to bending in Minor axis is not explicitly covered by this code"); 
+            →INI400_001275TEXT("However, for this case is considered the MRd for minor axis bending as the lowest value between"); 
+            →INI400_001276TEXT("Yielding and Flange Local Buckling according to G.2.3"); 
+            
+            
+            //REV: revised in 06/04/2016
+            
+            h →MPF000_000058= CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : (CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h); 
+            tf →MPF000_000039= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.t; 
+            
+            
+            M↓pl← →INI400_001279= Z↓y←*fy; 
+            
+            // Check for FLM
+            →INI400_001288BLOCK("FLM") { 
+                
+                →INI400_001290Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
+                SClass →INI400_001687= Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
+                SWITCH(SClass) { 
+                    CASE 0 :  { 
+                        →INI400_001904TEXT("Classification:"); 
+                        →INI400_001905TEXT("Compact"); 
+                    } 
+                    CASE 1 :  { 
+                        →INI400_001906TEXT("Classification"); 
+                        →INI400_001907TEXT("SemiCompact"); 
+                    } 
+                    CASE 2 :  { 
+                        →INI400_001908TEXT("Classification"); 
+                        →INI400_001909TEXT("Slender"); 
+                    } 
+                } 
+                →INI400_001289TEXT("2 - Section G.2.3 - FLM - Flange Local Buckling"); 
+                // if flange is in compression
+                →INI400_001291BLOCK { 
+                    // Define MRd for FLM
+                    λ →INI400_001292= ClassParam.λf; 
+                    λ↓p← →INI400_001293= ClassParam.λpf; 
+                    λ↓r← →INI400_001294= ClassParam.λrf; 
+                } 
+                
+                W↓c← →INI400_001300= CS.Chars.Welz; // determine the elastic modulus of compression portion - flange
+                
+                // Define MRd
+                IF(λ &lt;= λ↓p←) { 
+                    MRd →INI400_001302= M↓pl←/γ↓a1←; 
+                } 
+                IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
+                    →INI400_001911BLOCK { 
+                        MRd →INI400_001303= (1/γ↓a1←)*[(1.19-0.5*λ*SQRT(fy/E))]*fy*W↓c←; 
+                        IF(MRd &gt; M↓pl←/γ↓a1←) { 
+                            →INI400_001910TEXT("&gt; " &amp; 'M↓pl←/γ↓a1←' &amp; " --&gt;"); 
+                            MRd →INI400_001304= M↓pl←/γ↓a1←; 
+                        } 
+                    } 
+                } 
+                IF(λ &gt; λ↓r←) { 
+                    MRd →INI400_001305= (1/γ↓a1←)*[(0.69*E*W↓c←)/(λ↑2←)]; 
+                } 
+                IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
+                    →INI400_001497TEXT("Additional check:"); 
+                    MRd →INI400_001347= 1.5*W*fy/γ↓a1←; 
+                } 
+                aux1 →INI400_001306= MRd; 
+            } 
+            aux2 →INI400_001310= M↓pl←/γ↓a1←; 
+            aux3 →INI400_001309= M↓pl←/γ↓a1←; 
+            
+        } 
+        
+        // Solid rectangular section - "flat Bar" and solid circular sections
+        IF((FormCode == 7) || (FormCode == 11)) { 
+            Z↓y← →INI400_001501= CS.Chars.Wply; 
+            W →INI400_001502= CS.Chars.Wely; 
+            M↓pl← →INI400_001311= fy*Z↓y←; 
+            MRd →INI400_001349= M↓pl←/γ↓a1←; 
+            IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
+                →INI400_001509TEXT("Additional Check:"); 
+                MRd →INI400_001348= 1.5*W*fy/γ↓a1←; 
+            } 
+            aux1 →INI400_001312= MRd; 
+            aux2 →INI400_001313= MRd; 
+            aux3 →INI400_001314= MRd; 
+        } 
+        
+        // single angle equal legs
+        IF(FormCode == 4) { 
+            // this algorithm considers bending about geometric axis only. 
+            // Reading Variables
+            →INI400_001780BLOCK { 
+                // loads the section and steel grade
+                J →INI400_001781= CS.Chars.It; // torsional constant
+
+                //REV: revised in 07/04/2016
+
+                tw →MPF000_000049= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.t; 
+                h →MPF000_000050= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; 
+                d →MPF000_000051= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; 
+                
+                W →INI400_001785= CS.Chars.Wely; 
+            } 
+            →INI400_001912PAGEBREAK(); 
+            →INI400_001786TEXT("Using Section F10 of AISC-360-10"); 
+            IF(d != h) { 
+                →INI400_001787TEXT("Only angles of single legs are covered!"); 
+                MRd →MPF000_000054= Md/999; 
+                return MRd; 
+            } 
+            
+            IF(Cb &gt; 1.5) { 
+                →INI400_001791TEXT("Cb must be smaller than 1.5. The calculation will proceed considering Cb=1.5"); 
+                Cb →INI400_001792= 1.5; 
+            } 
+            My →INI400_001793= W*fy; 
+            IF(MomentSign == 0) { 
+                // compressign one leg and the toe
+                Me →INI400_001794= (0.66*E*d↑4←*tw*Cb/Lb)*[(SQRT(1+0.78*[(Lb*tw/d↑2←)]↑2←)-1)]; 
+            } 
             IF(MomentSign == 1) { 
-                →INI400_001147TEXT("FLA does not apply. Web in tension"); 
-                MRd →INI400_001144= M↓pl←/γ↓a1←; 
-                aux2 →INI400_001145= MRd; 
-            } 
-            aux3 →INI400_001146= M↓pl←/γ↓a1←; 
-        } 
-    } 
-    
-    // Rectangular hollow section and welded box section
-    IF(FormCode == 2 || FormCode == 2001) { 
-        // for bending about minor axis, FLT does not apply
-        
-        →INI400_001212BLOCK("Classification") { 
-            // Proceed to Section Classification and get the slenderness parameters
-            →INI400_001213Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
-            SClass →INI400_001677= Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
-            SWITCH(SClass) { 
-                CASE 0 :  { 
-                    →INI400_001887TEXT("Classification:"); 
-                    →INI400_001888TEXT("Compact"); 
-                } 
-                CASE 1 :  { 
-                    →INI400_001889TEXT("Classification"); 
-                    →INI400_001890TEXT("SemiCompact"); 
-                } 
-                CASE 2 :  { 
-                    →INI400_001891TEXT("Classification"); 
-                    →INI400_001892TEXT("Slender"); 
-                } 
-            } 
-        } 
-        →INI400_001893PAGEBREAK(); 
-        // Parameters to Check FLM 
-        →INI400_001214BLOCK("FLM") { 
-            →INI400_001215TEXT("2 - Section G.2.2 - FLM - Flange local Buckling"); 
-            →INI400_001216BLOCK { 
-                // Define MRd for FLM
-                λ →INI400_001217= ClassParam.λf; 
-                λ↓p← →INI400_001218= ClassParam.λpf; 
-                λ↓r← →INI400_001219= ClassParam.λrf; 
-                
-                
-                
-                M↓pl← →INI400_001254= fy*Z↓y←; 
-                Iy →INI400_001498= CS.Chars.Iz; 
-                IF(FormCode == 2001) { 
-                    
-                    h →MPF001_000006= CS.Geometry.Bb; 
-                    bf →MPF001_000007= CS.Geometry.Ba; 
-                    tw →MPF001_000008= CS.Geometry.thb; 
-                    tf →MPF001_000009= CS.Geometry.tha; 
-                    
-                } 
-                ELSE { 
-                    
-                    d →MPF000_000043= CS.Geometry.Contains("B") ? CS.Geometry.B-2*r1-2*tw : CS.Geometry.b-2*r1-2*tw; 
-                    bf →MPF000_000044= CS.Geometry.Contains("H") ? CS.Geometry.H-2*r1-2*tf : CS.Geometry.h-2*r1-2*tf; 
-                    h →MPF000_000045= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; 
-                    
-                    r1 →INI400_001220= CS.Geometry.Contains("r1") ? CS.Geometry.r1 : 0; 
-                    tw →INI400_001221= CS.Geometry.s; 
-                    
-                    tf →INI400_001223= CS.Geometry.s; 
-                } 
+                Me →INI400_001795= (0.66*E*d↑4←*tw*Cb/Lb)*[(SQRT(1+0.78*[(Lb*tw/d↑2←)]↑2←)+1)]; 
             } 
             
-            // check for reduction in width
-            // At this point the difference in the position of the centroid due the width reduction is negleted
-            σ →INI400_001226= fy; 
-            beff →INI400_001227= 1.92*tf*SQRT(E/σ)*[1-(0.38/(bf/tf))*SQRT(E/σ)]; 
+            // checking for Yielding
+            →INI400_001796TEXT("Checking for Yielding"); 
+            Mn →INI400_001797= 1.5*W*fy; 
+            aux1 →INI400_001798= Mn; 
             
-            IF(beff &gt;= bf) { 
-                beff →INI400_001228= bf; 
-                Wef →INI400_001229= W; 
+            // Checkgin for Lateral Torsional Buckling
+            →INI400_001799TEXT("Checking for FLT"); 
+            IF(Me &lt;= My) { 
+                Mn →INI400_001800= [(0.92-0.17*Me/My)]*Me; 
+                aux2 →INI400_001801= Mn; 
             } ELSE { 
+                Mn →INI400_001802= [(1.92-1.17*SQRT(My/Me))]*My; 
+                IF(Mn &gt; 1.5*My) { 
+                    →INI400_001913TEXT("&gt; " &amp; '1.5*My' &amp; " --&gt;"); 
+                    Mn →INI400_001803= 1.5*My; 
+                } 
+                aux2 →INI400_001804= Mn; 
                 
-                Ief →INI400_001500= Iy-[([bf-beff]*tf↑3←/12+[bf-beff]*tf*[h/2-tw/2]↑2←)]; 
-                Wef →INI400_001232= Ief/(h/2); 
-            } 
-            IF(λ &lt;= λ↓p←) { 
-                MRd →INI400_001233= M↓pl←/γ↓a1←; 
-            } 
-            IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                M↓r← →INI400_001234= fy*Wef; 
-                MRd →INI400_001235= (1/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
-                IF(MRd &gt; M↓pl←/γ↓a1←) { 
-                    MRd →INI400_001236= M↓pl←/γ↓a1←; 
+                // Checking for Leg local buckling
+                →INI400_001805TEXT("Leg local Buckling"); 
+                
+                →INI400_001806BLOCK("Classification") { 
+                    // Proceed to Section Classification and get the slenderness parameters
+                    →INI400_001807Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
+                    SClass →INI400_001808= Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
                 } 
-            } 
-            IF(λ &gt; λ↓r←) { 
-                Mcr →INI400_001237= (Wef↑2←/W)*fy; 
-                IF((Mcr/γ↓a1←) &lt;= (M↓pl←/γ↓a1←)) { 
-                    MRd →INI400_001238= Mcr/γ↓a1←; 
-                } ELSE { 
-                    MRd →INI400_001239= M↓pl←/γ↓a1←; 
+                λw →INI400_001810= ClassParam.λw; 
+                λ↓pw← →INI400_001811= ClassParam.λpw; 
+                λ↓rw← →INI400_001812= ClassParam.λrw; 
+                
+                IF(λw &lt;= λ↓pw←) { 
+                    Mn →INI400_001813= aux1; 
                 } 
+                IF((λw &gt; λ↓pw←) &amp;&amp; (λw &lt;= λ↓rw←)) { 
+                    Mn →INI400_001814= fy*W*0.8*[(2.43-1.72*[(d/tw)]*SQRT(fy/E))]; 
+                } 
+                IF(λw &gt; λ↓rw←) { 
+                    Mn →INI400_001815= [(0.71*E/[(d/tw)↑2←])]*W*0.8; 
+                } 
+                aux3 →INI400_001816= Mn; 
             } 
-            IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
-                MRd →INI400_001343= 1.5*W*fy/γ↓a1←; 
-            } 
-            aux2 →INI400_001240= MRd; 
         } 
-        
-        // FLA - Web Local Buckling
-        →INI400_001241BLOCK("FLA") { 
-            →INI400_001242TEXT("3 - Section G.2.2 - FLA - Web local Buckling"); 
-            
-            λ →INI400_001243= ClassParam.λw; 
-            λ↓p← →INI400_001244= ClassParam.λpw; 
-            λ↓r← →INI400_001245= ClassParam.λrw; 
-            
-            
-            IF(λ &lt;= λ↓p←) { 
-                MRd →INI400_001247= M↓pl←/γ↓a1←; 
-            } 
-            IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                M↓r← →INI400_001248= fy*W; 
-                →INI400_001901BLOCK { 
-                    MRd →INI400_001249= (1/γ↓a1←)*[(M↓pl←-[(M↓pl←-M↓r←)]*((λ-λ↓p←)/(λ↓r←-λ↓p←)))]; 
-                    IF(MRd &gt; M↓pl←/γ↓a1←) { 
-                        →INI400_001894TEXT("&gt; " &amp; 'M↓pl←/γ↓a1←' &amp; " --&gt;"); 
-                        MRd →INI400_001250= M↓pl←/γ↓a1←; 
-                    } 
-                } 
-            } 
-            IF(λ &gt; λ↓r←) { 
-                →INI400_001251TEXT("Slender Web - Verification accoding to Annex H of NBR-8800"); } 
-            aux3 →INI400_001252= MRd; 
-        } 
-        aux1 →INI400_001253= M↓pl←/γ↓a1←; 
+        MRd →INI400_001105= MIN(aux1, aux2, aux3); 
+        return MRd; 
     } 
-    
-    // Circular hollow section
-    IF(FormCode == 3) { 
-        // for circular hollow sections, the only limit state to be verified is the buckling tube wall
-        // section G.2.7
-        →INI400_001255Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
-        SClass →INI400_001682= Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
-        SWITCH(SClass) { 
-            CASE 0 :  { 
-                →INI400_001895TEXT("Classification:"); 
-                →INI400_001896TEXT("Compact"); 
-            } 
-            CASE 1 :  { 
-                →INI400_001897TEXT("Classification"); 
-                →INI400_001898TEXT("SemiCompact"); 
-            } 
-            CASE 2 :  { 
-                →INI400_001899TEXT("Classification"); 
-                →INI400_001900TEXT("Slender"); 
-            } 
-        } 
-        
-        λ →INI400_001256= ClassParam.λw; 
-        λ↓p← →INI400_001257= ClassParam.λpw; 
-        λ↓r← →INI400_001258= ClassParam.λrw; 
-        
-        W →INI400_001259= CS.Chars.Wely; 
-        Z↓x← →INI400_001260= CS.Chars.Wply; 
-        M↓pl← →INI400_001261= Z↓x←*fy; 
-        
-        IF(λ &lt;= λ↓p←) { 
-            MRd →INI400_001263= M↓pl←/γ↓a1←; 
-        } 
-        IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-            →INI400_001903BLOCK { 
-                MRd →INI400_001264= (1/γ↓a1←)*[((0.021*E/λ)+fy)*W]; 
-                IF(MRd &gt; M↓pl←/γ↓a1←) { 
-                    →INI400_001902TEXT("&gt; " &amp; 'M↓pl←/γ↓a1←' &amp; " --&gt;"); 
-                    MRd →INI400_001265= M↓pl←/γ↓a1←; 
-                } 
-            } 
-        } 
-        IF((λ &gt; λ↓r←) &amp;&amp; (λ &lt;= 0.45*E/fy)) { 
-            MRd →INI400_001266= (1/γ↓a1←)*[(0.33*E*W/λ)]; 
-        } 
-        IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
-            MRd →INI400_001346= 1.5*W*fy/γ↓a1←; 
-        } 
-        IF(λ &gt; 0.45*E/fy) { 
-            →INI400_001267TEXT("Slenderness D/t is not allowed by the code"); 
-            Exit(); 
-        } 
-        aux1 →INI400_001268= MRd; 
-        aux2 →INI400_001269= MRd; 
-        aux3 →INI400_001270= MRd; 
-    } 
-    
-    // T-Sections
-    IF(FormCode == 6) { 
-        →INI400_001274TEXT("T-Sections subject to bending in Minor axis is not explicitly covered by this code"); 
-        →INI400_001275TEXT("However, for this case is considered the MRd for minor axis bending as the lowest value between"); 
-        →INI400_001276TEXT("Yielding and Flange Local Buckling according to G.2.3"); 
-        
-        
-        //REV: revised in 06/04/2016
-        
-        h →MPF000_000058= CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : (CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h); 
-        tf →MPF000_000039= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.t; 
-        
-        
-        M↓pl← →INI400_001279= Z↓y←*fy; 
-        
-        // Check for FLM
-        →INI400_001288BLOCK("FLM") { 
-            
-            →INI400_001290Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
-            SClass →INI400_001687= Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
-            SWITCH(SClass) { 
-                CASE 0 :  { 
-                    →INI400_001904TEXT("Classification:"); 
-                    →INI400_001905TEXT("Compact"); 
-                } 
-                CASE 1 :  { 
-                    →INI400_001906TEXT("Classification"); 
-                    →INI400_001907TEXT("SemiCompact"); 
-                } 
-                CASE 2 :  { 
-                    →INI400_001908TEXT("Classification"); 
-                    →INI400_001909TEXT("Slender"); 
-                } 
-            } 
-            →INI400_001289TEXT("2 - Section G.2.3 - FLM - Flange Local Buckling"); 
-            // if flange is in compression
-            →INI400_001291BLOCK { 
-                // Define MRd for FLM
-                λ →INI400_001292= ClassParam.λf; 
-                λ↓p← →INI400_001293= ClassParam.λpf; 
-                λ↓r← →INI400_001294= ClassParam.λrf; 
-            } 
-            
-            W↓c← →INI400_001300= CS.Chars.Welz; // determine the elastic modulus of compression portion - flange
-            
-            // Define MRd
-            IF(λ &lt;= λ↓p←) { 
-                MRd →INI400_001302= M↓pl←/γ↓a1←; 
-            } 
-            IF((λ &gt; λ↓p←) &amp;&amp; (λ &lt;= λ↓r←)) { 
-                →INI400_001911BLOCK { 
-                    MRd →INI400_001303= (1/γ↓a1←)*[(1.19-0.5*λ*SQRT(fy/E))]*fy*W↓c←; 
-                    IF(MRd &gt; M↓pl←/γ↓a1←) { 
-                        →INI400_001910TEXT("&gt; " &amp; 'M↓pl←/γ↓a1←' &amp; " --&gt;"); 
-                        MRd →INI400_001304= M↓pl←/γ↓a1←; 
-                    } 
-                } 
-            } 
-            IF(λ &gt; λ↓r←) { 
-                MRd →INI400_001305= (1/γ↓a1←)*[(0.69*E*W↓c←)/(λ↑2←)]; 
-            } 
-            IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
-                →INI400_001497TEXT("Additional check:"); 
-                MRd →INI400_001347= 1.5*W*fy/γ↓a1←; 
-            } 
-            aux1 →INI400_001306= MRd; 
-        } 
-        aux2 →INI400_001310= M↓pl←/γ↓a1←; 
-        aux3 →INI400_001309= M↓pl←/γ↓a1←; 
-        
-    } 
-    
-    // Solid rectangular section - "flat Bar" and solid circular sections
-    IF((FormCode == 7) || (FormCode == 11)) { 
-        Z↓y← →INI400_001501= CS.Chars.Wply; 
-        W →INI400_001502= CS.Chars.Wely; 
-        M↓pl← →INI400_001311= fy*Z↓y←; 
-        MRd →INI400_001349= M↓pl←/γ↓a1←; 
-        IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
-            →INI400_001509TEXT("Additional Check:"); 
-            MRd →INI400_001348= 1.5*W*fy/γ↓a1←; 
-        } 
-        aux1 →INI400_001312= MRd; 
-        aux2 →INI400_001313= MRd; 
-        aux3 →INI400_001314= MRd; 
-    } 
-    
-    // single angle equal legs
-    IF(FormCode == 4) { 
-        // this algorithm considers bending about geometric axis only. 
-        // Reading Variables
-        →INI400_001780BLOCK { 
-            // loads the section and steel grade
-            J →INI400_001781= CS.Chars.It; // torsional constant
-
-            //REV: revised in 07/04/2016
-
-            tw →MPF000_000049= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.t; 
-            h →MPF000_000050= CS.Geometry.Contains("H") ? CS.Geometry.H : CS.Geometry.h; 
-            d →MPF000_000051= CS.Geometry.Contains("B") ? CS.Geometry.B : CS.Geometry.b; 
-            
-            W →INI400_001785= CS.Chars.Wely; 
-        } 
-        →INI400_001912PAGEBREAK(); 
-        →INI400_001786TEXT("Using Section F10 of AISC-360-10"); 
-        IF(d != h) { 
-            →INI400_001787TEXT("Only angles of single legs are covered!"); 
-            MRd →MPF000_000054= Md/999; 
-            return MRd; 
-        } 
-        
-        IF(Cb &gt; 1.5) { 
-            →INI400_001791TEXT("Cb must be smaller than 1.5. The calculation will proceed considering Cb=1.5"); 
-            Cb →INI400_001792= 1.5; 
-        } 
-        My →INI400_001793= W*fy; 
-        IF(MomentSign == 0) { 
-            // compressign one leg and the toe
-            Me →INI400_001794= (0.66*E*d↑4←*tw*Cb/Lb)*[(SQRT(1+0.78*[(Lb*tw/d↑2←)]↑2←)-1)]; 
-        } 
-        IF(MomentSign == 1) { 
-            Me →INI400_001795= (0.66*E*d↑4←*tw*Cb/Lb)*[(SQRT(1+0.78*[(Lb*tw/d↑2←)]↑2←)+1)]; 
-        } 
-        
-        // checking for Yielding
-        →INI400_001796TEXT("Checking for Yielding"); 
-        Mn →INI400_001797= 1.5*W*fy; 
-        aux1 →INI400_001798= Mn; 
-        
-        // Checkgin for Lateral Torsional Buckling
-        →INI400_001799TEXT("Checking for FLT"); 
-        IF(Me &lt;= My) { 
-            Mn →INI400_001800= [(0.92-0.17*Me/My)]*Me; 
-            aux2 →INI400_001801= Mn; 
-        } ELSE { 
-            Mn →INI400_001802= [(1.92-1.17*SQRT(My/Me))]*My; 
-            IF(Mn &gt; 1.5*My) { 
-                →INI400_001913TEXT("&gt; " &amp; '1.5*My' &amp; " --&gt;"); 
-                Mn →INI400_001803= 1.5*My; 
-            } 
-            aux2 →INI400_001804= Mn; 
-            
-            // Checking for Leg local buckling
-            →INI400_001805TEXT("Leg local Buckling"); 
-            
-            →INI400_001806BLOCK("Classification") { 
-                // Proceed to Section Classification and get the slenderness parameters
-                →INI400_001807Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
-                SClass →INI400_001808= Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
-            } 
-            λw →INI400_001810= ClassParam.λw; 
-            λ↓pw← →INI400_001811= ClassParam.λpw; 
-            λ↓rw← →INI400_001812= ClassParam.λrw; 
-            
-            IF(λw &lt;= λ↓pw←) { 
-                Mn →INI400_001813= aux1; 
-            } 
-            IF((λw &gt; λ↓pw←) &amp;&amp; (λw &lt;= λ↓rw←)) { 
-                Mn →INI400_001814= fy*W*0.8*[(2.43-1.72*[(d/tw)]*SQRT(fy/E))]; 
-            } 
-            IF(λw &gt; λ↓rw←) { 
-                Mn →INI400_001815= [(0.71*E/[(d/tw)↑2←])]*W*0.8; 
-            } 
-            aux3 →INI400_001816= Mn; 
-        } 
-    } 
-    MRd →INI400_001105= MIN(aux1, aux2, aux3); 
-    return MRd; 
 } 
-
 // Call Functions
 IF(BendingAxis == 0) { 
     →INI400_000682BendingCheck_X(CS, ClassParam, MomentSign, FormCode, Fabrication, BendingAxis, Lb, fy, Cb); 
     MRd →INI400_001327= BendingCheck_X(CS, ClassParam, MomentSign, FormCode, Fabrication, BendingAxis, Lb, fy, Cb); 
-    UnCheck →INI400_001328= Md/MRd; 
+    
+    UnCheck →INI400_001328= COMPARE(MRd, 0, 6) == 0 ? 3 : Md/MRd; 
 } 
 
 IF(BendingAxis == 1) { 
     →INI400_001329BendingCheck_Y(CS, ClassParam, MomentSign, FormCode, Fabrication, BendingAxis, fy); 
     MRd →INI400_001330= BendingCheck_Y(CS, ClassParam, MomentSign, FormCode, Fabrication, BendingAxis, fy); 
-    UnCheck →INI400_001332= Md/MRd; 
+    UnCheck →MPF001_000017= COMPARE(MRd, 0, 6) == 0 ? 3 : Md/MRd; 
 } </SourceCode>
   </CodeEditor>
   <Calculation>
@@ -1885,7 +1892,7 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="A" ESA_ID="" Type="Double" Value="755e-6" Precision="2">
+      <Variable Modifier="Public" Name="A" ESA_ID="" Type="Double" Value="8.6e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1906,21 +1913,21 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="aux1" ESA_ID="" Type="Double" Value="259306.7" Precision="2">
+      <Variable Modifier="Public" Name="aux1" ESA_ID="" Type="Double" Value="282594.2" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10" Dim="kN•cm" />
       </Variable>
-      <Variable Modifier="Public" Name="aux2" ESA_ID="" Type="Double" Value="220822.3" Precision="2">
+      <Variable Modifier="Public" Name="aux2" ESA_ID="" Type="Double" Value="118370.1" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10" Dim="kN•cm" />
       </Variable>
-      <Variable Modifier="Public" Name="aux3" ESA_ID="" Type="Double" Value="259306.7" Precision="2">
+      <Variable Modifier="Public" Name="aux3" ESA_ID="" Type="Double" Value="282594.2" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1948,20 +1955,20 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="beff" ESA_ID="" Type="Double" Value="-500e-3" Precision="2">
+      <Variable Modifier="Public" Name="beff" ESA_ID="" Type="Double" Value="279.5946e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="BendingAxis" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="BendingAxis" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>Axis of Bending</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="bf" ESA_ID="" Type="Double" Value="26.4e-3" Precision="2">
+      <Variable Modifier="Public" Name="bf" ESA_ID="" Type="Double" Value="300e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1993,14 +2000,14 @@ IF(BendingAxis == 1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Cw" ESA_ID="" Type="Double" Value="5.54416e-9" Precision="2">
+      <Variable Modifier="Public" Name="Cw" ESA_ID="" Type="Double" Value="446.509e-9" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="6" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-12" Dim="cm↑6←" />
       </Variable>
-      <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Value="-500e-3" Precision="2">
+      <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Value="400e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2014,7 +2021,7 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="E" ESA_ID="" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="E" ESA_ID="" Type="Double" Value="200e9" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2027,7 +2034,7 @@ IF(BendingAxis == 1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Fabrication" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="Fabrication" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description>
           <ENU>Type of fabrication</ENU>
         </Description>
@@ -2040,21 +2047,21 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10e6" Dim="kN/cm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="FormCode" ESA_ID="" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="FormCode" ESA_ID="" Type="Double" Value="2001" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="fy" ESA_ID="" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="fy" ESA_ID="" Type="Double" Value="345e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10e6" Dim="kN/cm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="G" ESA_ID="" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="G" ESA_ID="" Type="Double" Value="76.9231e9" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2067,7 +2074,7 @@ IF(BendingAxis == 1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Value="300e-3" Precision="2">
+      <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Value="400e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2088,7 +2095,7 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="Ief" ESA_ID="" Type="Double" Value="-207.6393e-9" Precision="2">
+      <Variable Modifier="Public" Name="Ief" ESA_ID="" Type="Double" Value="243.6547e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2102,14 +2109,14 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-9" Dim="cm↑4←" />
       </Variable>
-      <Variable Modifier="Public" Name="Iy" ESA_ID="" Type="Double" Value="105.611e-6" Precision="2">
+      <Variable Modifier="Public" Name="Iy" ESA_ID="" Type="Double" Value="113.036e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-9" Dim="cm↑4←" />
       </Variable>
-      <Variable Modifier="Public" Name="J" ESA_ID="" Type="Double" Value="2.5e-9" Precision="2">
+      <Variable Modifier="Public" Name="J" ESA_ID="" Type="Double" Value="222.331e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2149,21 +2156,21 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓pl←" ESA_ID="" Type="Double" Value="285237.4" Precision="2">
+      <Variable Modifier="Public" Name="M↓pl←" ESA_ID="" Type="Double" Value="468924" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10" Dim="kN•cm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓r←" ESA_ID="" Type="Double" Value="43654.84" Precision="2">
+      <Variable Modifier="Public" Name="M↓r←" ESA_ID="" Type="Double" Value="290785.3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10" Dim="kN•cm" />
       </Variable>
-      <Variable Modifier="Public" Name="Mcr" ESA_ID="" Type="Double" Value="242904.5" Precision="2">
+      <Variable Modifier="Public" Name="Mcr" ESA_ID="" Type="Double" Value="393175.6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2196,7 +2203,7 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="MRd" ESA_ID="" Type="Double" Value="220822.3" Precision="2">
+      <Variable Modifier="Public" Name="MRd" ESA_ID="" Type="Double" Value="357432.4" Precision="2">
         <Description>
           <ENU>Moment Strength</ENU>
         </Description>
@@ -2216,7 +2223,7 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="ry" ESA_ID="" Type="Double" Value="1.44338e-3" Precision="2">
+      <Variable Modifier="Public" Name="ry" ESA_ID="" Type="Double" Value="114.646e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2258,7 +2265,7 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="tf" ESA_ID="" Type="Double" Value="400e-3" Precision="2">
+      <Variable Modifier="Public" Name="tf" ESA_ID="" Type="Double" Value="8e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2272,14 +2279,14 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="tw" ESA_ID="" Type="Double" Value="6.35e-3" Precision="2">
+      <Variable Modifier="Public" Name="tw" ESA_ID="" Type="Double" Value="4.75e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="UnCheck" ESA_ID="Result.1" Type="Double" Value="22.64264e-3" Precision="2">
+      <Variable Modifier="Public" Name="UnCheck" ESA_ID="Result.1" Type="Double" Value="13.98866e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2292,7 +2299,7 @@ IF(BendingAxis == 1) {
           <ENU>Use user Profile Table</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="W" ESA_ID="" Type="Double" Value="704.071e-6" Precision="2">
+      <Variable Modifier="Public" Name="W" ESA_ID="" Type="Double" Value="1.20408e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2306,7 +2313,7 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="3" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="cm↑3←" />
       </Variable>
-      <Variable Modifier="Public" Name="Wef" ESA_ID="" Type="Double" Value="704.071e-6" Precision="2">
+      <Variable Modifier="Public" Name="Wef" ESA_ID="" Type="Double" Value="1.171417e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2341,14 +2348,14 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="Z↓x←" ESA_ID="" Type="Double" Value="176.545e-6" Precision="2">
+      <Variable Modifier="Public" Name="Z↓x←" ESA_ID="" Type="Double" Value="1.3592e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="3" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="cm↑3←" />
       </Variable>
-      <Variable Modifier="Public" Name="Z↓y←" ESA_ID="" Type="Double" Value="826.775e-6" Precision="2">
+      <Variable Modifier="Public" Name="Z↓y←" ESA_ID="" Type="Double" Value="901.025e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2390,14 +2397,14 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λ" ESA_ID="" Type="Double" Value="45.74803" Precision="2">
+      <Variable Modifier="Public" Name="λ" ESA_ID="" Type="Double" Value="80.84211" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λ↓p←" ESA_ID="" Type="Double" Value="26.96643" Precision="2">
+      <Variable Modifier="Public" Name="λ↓p←" ESA_ID="" Type="Double" Value="90.53016" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2418,7 +2425,7 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λ↓r←" ESA_ID="" Type="Double" Value="33.70804" Precision="2">
+      <Variable Modifier="Public" Name="λ↓r←" ESA_ID="" Type="Double" Value="137.2399" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3217,7 +3224,7 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_000818">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -3233,7 +3240,7 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_000822">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -3257,7 +3264,7 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_000827">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -5745,7 +5752,7 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001328">
-        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -5762,14 +5769,6 @@ IF(BendingAxis == 1) {
       </VC>
       <VC ID="INI400_001330">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Tahoma|11|0|2" Font2="Tahoma|11|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_001332">
-        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -8400,22 +8399,6 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="MPF000_000002">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="MPF000_000003">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="MPF000_000004">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="283" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -8625,7 +8608,7 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="MPF000_000041">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="6" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="6" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -8633,7 +8616,7 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="MPF000_000042">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="6" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="6" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -9017,7 +9000,47 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="MPF001_000014">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000015">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000016">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000017">
+        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000018">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000019">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -9029,7 +9052,7 @@ IF(BendingAxis == 1) {
   </Calculation>
   <Dialog>
     <Main Width="500">
-      <TEMDLoader Name="" ID="20" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="8" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="C:\Users\Avell 1513\ESA16.1\Temp\Esa_Model_Data\Beam.3892" MemberID="" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="" ID="20" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="8" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="C:\Users\Avell 1513\ESA16.1\Temp\Esa_Model_Data\Beam.3900" MemberID="Beam.3900" SectionID="0" CombiID="0" />
       <TCustomLibrary Name="" ID="6" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="4" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="CSS" DataFile="User.xml" Collapsed="True" UseCombo="True" Category="" Item="" />
       <TCheckBox Name="" ID="19" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="7" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="150|23" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="UserTable" BookMarkID="" ForeColor="-16711423" ChbRight="False">
         <Texts TranslateID="DIALOG_000019">
@@ -9050,13 +9073,13 @@ IF(BendingAxis == 1) {
             <ENU>Postive (Top flange in compression for X / Web in compression for U-section about Y|Negative ( Bottom flange in compression for X / Free edge of flanges in compression for U-section about Y)</ENU>
           </Texts>
         </TComboBox>
-        <TComboBox Name="" ID="7" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="BendingAxis" VarNameVisible="False" InputColor="-4128832" DescPos="1" InputWidth="150" Values="0|1" Index="1">
+        <TComboBox Name="" ID="7" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="BendingAxis" VarNameVisible="False" InputColor="-4128832" DescPos="1" InputWidth="150" Values="0|1" Index="0">
           <Texts>
             <ENU>Bending about X|Bending about Y</ENU>
           </Texts>
         </TComboBox>
         <TDoubleInput Name="" ID="5" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Md" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TComboBox Name="" ID="12" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="6" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Fabrication" VarNameVisible="False" InputColor="-4128832" DescPos="1" InputWidth="150" Values="0|1" Index="0">
+        <TComboBox Name="" ID="12" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="6" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Fabrication" VarNameVisible="False" InputColor="-4128832" DescPos="1" InputWidth="150" Values="0|1" Index="1">
           <Texts>
             <ENU>Hot Rolled|Welded</ENU>
           </Texts>

@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="3e2bdb2c-c387-431e-aac8-e12a84037e22">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">bool ValidateInput(object Input) { 
+    <SourceCode Collapsed="24|44|54|64|81|109|120|130|142" BreakPoints="">bool ValidateInput(object Input) { 
     d →INI400_000007= Input.Get("d"); //Effective depth of a cross-section
     f↓ck← →INI400_006029= Input.Get("f_ck"); //Characteristic compressive cylinder strength of concrete at 28 days
     h →INI400_006030= Input.Get("h"); //Height of a cross-section
     V↓Ed← →INI400_006031= Input.Get("V_Ed"); //Design value of the applied shear force
     V↓Rd,c← →INI400_006032= Input.Get("V_Rd_c"); //Design shear resistance of the member without shear reinforcement.
+    V↓Rd← →KRS116_000014= Input.Get("V_Rd"); //Design value of the maximum shear force which can be sustained by the member, limited by crushing of the compression struts
     V↓Rd,max← →INI400_006033= Input.Get("V_Rd_max"); //Design value of the maximum shear force which can be sustained by the member, limited by crushing of the compression struts
     α↓s← →INI400_006034= Input.Get("α_s"); //Angle of the shear reinforcement, vertical reinforcement is 90°
     h↓'← →KRS116_000004= Input.Get("h_carka"); //distance between compression and tension reinforcement
@@ -130,6 +131,17 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         } 
     } 
     //    CASE "SIST": { } 
+    CASE "UNE" :  { 
+        IF(COMPARE(V↓Rd←, 1/5*V↓Rd,max←, 3) != 1) { 
+            s↓l,max← →KRS116_000005= MIN(0.75*d*[1+COTG(α↓s←)], 0.6) @REF("(UNE 9.6)"); 
+        } ELSE { 
+            IF(COMPARE(V↓Rd←, 2/3*V↓Rd,max←, 3) != 1) { 
+                s↓l,max← →KRS116_000006= MIN(0.6*d*[1+COTG(α↓s←)], 0.45) @REF("(UNE 9.6)"); 
+            } ELSE { 
+                s↓l,max← →KRS116_000007= MIN(0.3*d*[1+COTG(α↓s←)], 0.3) @REF("(UNE 9.6)"); 
+            } 
+        } 
+    } 
     //    CASE "SS": { }
     DEFAULT :  { 
         IF(IO.IsStandalone) { 
@@ -238,6 +250,13 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
       </Variable>
       <Variable Modifier="Public" Name="V↓Rd,max←" ESA_ID="" Type="Double" Precision="2">
         <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
+      </Variable>
+      <Variable Modifier="Public" Name="V↓Rd←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_V↓Rd←">
           <ENU>
           </ENU>
         </Description>
@@ -640,6 +659,38 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="KRS116_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000005">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="13.8" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000006">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="13.8" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000007">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="13.8" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000014">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

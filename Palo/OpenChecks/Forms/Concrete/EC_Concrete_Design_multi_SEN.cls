@@ -475,6 +475,7 @@ IF(CssConditions.ConditionsForCss) {
     //load general coefficients
     double Coeff↓z← →INI400_007616= IO.Setup.Concrete.Solver.General.Coeffz; 
     double Coeff↓d← →INI400_007642= IO.Setup.Concrete.Solver.General.Coeffd; 
+    double Coeff↓com← →KRS116_000015= IO.Setup.Concrete.Solver.General.Coeffcom; 
     
     //calculation minimum surface to surface distance;
     object Detailing →INI400_009310= LoadExternCLC("Detailing.clc"); 
@@ -608,6 +609,7 @@ IF(CssConditions.ConditionsForCss) {
     //shear design
     →INI400_009972InputMultiDesign.Add("AllCombForShearDesign", Auto↓θ←); 
     →INI400_009973InputMultiDesign.Add("Coeff_z", Coeff↓z←); 
+    →KRS116_000016InputMultiDesign.Add("Coeff_com", Coeff↓com←); 
     →INI400_009974InputMultiDesign.Add("AutoCalNStirCut", False); 
     →INI400_009975InputMultiDesign.Add("bUseUserStirrup", bUseUserStirrup); 
     →INI400_009976InputMultiDesign.Add("DesignShearReinf", DesignShearReinf); 
@@ -655,7 +657,11 @@ IF(CssConditions.ConditionsForCss) {
     →INI400_010036InputMultiDesign.Add("s_lc_min", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.MinBarDistance); 
     →INI400_010037InputMultiDesign.Add("s_lc_max", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.MaxBarDistance); 
     →INI400_010038InputMultiDesign.Add("s_lct_max", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.MaxBarTorsion); 
+    IF(IO.SetupNA.EC_NA.Code == "ONORM" &amp;&amp; IO.SetupNA.EC_1992_1_1.Contains("n_lcmin")) { 
+        →KRS116_000022InputMultiDesign.Add("n_lc_min", IO.SetupNA.EC_1992_1_1.n_lcmin); 
+    } ELSE { 
     →INI400_010039InputMultiDesign.Add("n_lc_min", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.MinNumBarsInCircularColumn); 
+    } 
     →INI400_010040InputMultiDesign.Add("bColumnCheckMaxDistance", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.CheckMaxBarDistance); 
     →INI400_010041InputMultiDesign.Add("bColumnCheckMinPercentage", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.CheckMinPercentage); 
     →INI400_010042InputMultiDesign.Add("bColumnCheckMaxPercentage", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.CheckMaxPercentage); 
@@ -1598,6 +1604,13 @@ object DesignResults →INI400_013922= new Structure(
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
+      <Variable Modifier="Public" Name="Coeff↓com←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="Coeff↓d←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -1779,7 +1792,7 @@ object DesignResults →INI400_013922= new Structure(
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="Functions1D_DesignReq" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Functions1D_DesignReq">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -5689,6 +5702,30 @@ object DesignResults →INI400_013922= new Structure(
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
+      <VC ID="KRS116_000015">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000016">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000022">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS127_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -7668,7 +7705,7 @@ object DesignResults →INI400_013922= new Structure(
           </ENU>
         </Texts>
       </TPanel>
-      <TEMDLoader Name="TEMDLoader" ID="69" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="D:\_VERSIONS\DEVE_16\TEMP\Esa_Model_Data\Beam.1" MemberID="Beam.1" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="TEMDLoader" ID="69" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="D:\_VERSIONS\Deve_16\TEMP\Esa_Model_Data\Beam.4" MemberID="Beam.4" SectionID="0" CombiID="0" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />

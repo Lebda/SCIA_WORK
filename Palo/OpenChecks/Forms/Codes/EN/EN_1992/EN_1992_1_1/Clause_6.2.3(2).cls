@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="f9a7d592-4df5-4162-b2c3-5bdd36443688">
   <CodeEditor>
-    <SourceCode Collapsed="45|69|89|105|115|124|167|186|215|220|234|241|257" BreakPoints="">bool ValidateInput(object Input) { 
+    <SourceCode Collapsed="45|69|89|105|115|124|167|186|215|220|234|242|258" BreakPoints="">bool ValidateInput(object Input) { 
     σ↓sd← →INI400_005255= Input.Get("σ_sd"); //Stress in reinforcement
     f↓yd← →INI400_000107= Input.Get("f_yd"); //Design yield strength of reinforcement
 
@@ -21,13 +21,16 @@
     f↓ctm← →INI400_008534= Input.Get("f_ctm"); //Mean value of axial tensile strength of concrete
 
     V↓Ed← →INI400_008535= Input.Get("V_Ed"); //applied shear force
-    N↓Ed← →KRS316_000001= Input.Get("N_Ed"); //applied normal force (for DIN only)
+    N↓Ed← →KRS316_000001= Input.Get("N_Ed"); //applied normal force
     f↓ck← →INI400_008536= Input.Get("f_ck"); //Characteristic compressive cylinder strength of concrete
     f↓cd← →INI400_008541= Input.Get("f_cd"); //Design compressive cylinder strength of concrete
     σ↓cd← →INI400_008537= Input.Get("σ_cd"); //stress in concrete N↓Ed←/A↓c←
     InclinedShearReinf →INI400_008538= Input.Get("InclinedShearReinf"); //True - inclined shear reinforcement, False - normal vertical shear reinforcement
 
     Prestress →INI400_008539= Input.Get("Prestress"); //True - prestressed reinforcement, False - normal reinforcement
+    
+    Coeff↓com← →KRS116_000018= Input.Get("Coeff_com"); //applied shear force
+    A↓c← →KRS116_000019= Input.Get("A_c"); //Area of concrete
 
     σ↓t← →KRS116_000005= Input.Get("σ_t"); //axial tension
     f↓ctk,0.05← →KRS116_000006= Input.Get("f_ctk005"); //5% fractile of cylinder compression strength
@@ -112,7 +115,35 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         θ↓max← →INI400_008542= Result.θ_max; 
     } 
     //    CASE "CYS": { } 
-    //    CASE "CSN": { } 
+    CASE "CSN" :  { 
+        N↓lim← →KRS116_000011= Coeff↓com←*A↓c←*f↓cd←; 
+        IF(IO.IsStandalone) { 
+            IF(COMPARE(N↓Ed←, N↓lim←, 3) == 1) { //For bending and significant tensile force
+                θ↓min← →KRS116_000007= 45; 
+            } ELSE { 
+                IF(COMPARE(ABS(N↓Ed←), N↓lim←, 3) == 1 || Prestress) { //For bending and significant compression force
+                    θ↓min← →KRS116_000012= 21.8; 
+                } ELSE { //For bending only 
+                    θ↓min← →KRS116_000013= 30; 
+                } 
+            } 
+        } ELSE { 
+            IF(Prestress) { 
+                θ↓min← →KRS116_000017= IO.SetupNA.EC_1992_1_1.θ.θ_min_prestress*180/π; 
+            } ELSE { 
+                IF(COMPARE(N↓Ed←, N↓lim←, 3) == 1) { //For bending and significant tensile force
+                    θ↓min← →KRS116_000014= IO.SetupNA.EC_1992_1_1.θ.θ_min[2]*180/π; 
+                } ELSE { 
+                    IF(COMPARE(ABS(N↓Ed←), N↓lim←, 3) == 1) { //For bending and significant compression force
+                        θ↓min← →KRS116_000015= IO.SetupNA.EC_1992_1_1.θ.θ_min[0]*180/π; 
+                    } ELSE { //For bending only 
+                        θ↓min← →KRS116_000016= IO.SetupNA.EC_1992_1_1.θ.θ_min[1]*180/π; 
+                    } 
+                } 
+            } 
+        } 
+        θ↓max← →KRS116_000010= IO.SetupNA.EC_1992_1_1.θ.θ_max*180/π; 
+    } 
     //    CASE "DK": { } 
     //    CASE "NEN": { } 
     //    CASE "SFS": { } 
@@ -242,6 +273,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     } 
     //    CASE "STN": { } 
     //    CASE "SIST": { } 
+    //    CASE "UNE": { } 
     CASE "SS" :  { 
         IF(IO.IsStandalone) { 
             IF(Prestress) { 
@@ -298,6 +330,13 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
+      <Variable Modifier="Public" Name="A↓c←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="A↓sw←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -313,6 +352,13 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="c" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="Coeff↓com←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -347,7 +393,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ctk,0.05←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_f↓ctk,0.05←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -394,14 +440,21 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="N↓Ed←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_N↓Ed←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
+      <Variable Modifier="Public" Name="N↓lim←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="NEd_compared" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_NEd_compared">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -509,7 +562,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓t←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_σ↓t←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -1303,6 +1356,94 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000007">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="39" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000010">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="73.1" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="27.7" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000011">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000012">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="39" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000013">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="39" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000014">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="39" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000015">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="39" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000016">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="39" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000017">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="217" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="27.7" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000018">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|19|0|2" Font2="Arial|19|1|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000019">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|19|0|2" Font2="Arial|19|1|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="KRS316_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

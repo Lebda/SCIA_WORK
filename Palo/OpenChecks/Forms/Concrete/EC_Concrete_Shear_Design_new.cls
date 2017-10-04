@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="2d8967a1-8b99-46cf-8ce0-a251fbbb7427">
   <CodeEditor>
-    <SourceCode Collapsed="420" BreakPoints="">IF(PrintCaption) { 
+    <SourceCode Collapsed="421" BreakPoints="">IF(PrintCaption) { 
     →INI400_001093TEXT(Caption); 
 } 
 →INI400_007174BLOCK { // using data exchange structure
@@ -19,6 +19,7 @@
         θ↓inp← →INI400_014083= Input.Get("θ_inp"); 
         Coeff↓d← →INI400_014000= Input.Get("Coeff_d"); 
         Coeff↓z← →INI400_014001= Input.Get("Coeff_z"); 
+        Coeff↓com← →KRS116_000007= Input.Get("Coeff_com"); 
         b_interaction →INI400_013979= Input.Get("b_interaction"); 
         Beam →INI400_013980= Input.Get("Beam"); 
         Load →INI400_013981= Input.Get("Load"); 
@@ -368,9 +369,9 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0 &amp;&amp; COMPARE(V↓Ed←, 0, 6) == 0) {
             →INI400_014116PAGEBREAK(); 
             
             →INI400_003077TEXT(Description("d")); 
-            d →INI400_008141= ConcreteParam.GetEffectiveHeigthForShear(α↓ΜV←, 1); 
+            d →INI400_008141= ConcreteParam.GetEffectiveHeigthForShear(α↓ΜV←, 0.5); 
             →INI400_001169TEXT(Description("z")); 
-            z →INI400_008143= ROUND(ConcreteParam.GetInnerArmForShear(α↓ΜV←, 1), 0, "mm"); 
+            z →INI400_008143= ROUND(ConcreteParam.GetInnerArmForShear(α↓ΜV←, 0.45), 0, "mm"); 
             
             →INI400_001138TEXT(Description("A↓c←")); 
             
@@ -535,7 +536,7 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0 &amp;&amp; COMPARE(V↓Ed←, 0, 6) == 0) {
                     InclinedShearReinf →INI400_013998= ShearReinf.Angle != 90; 
                     Prestress →INI400_013999= False; 
                     object ConMat →INI400_013720= CrossSection.GetMaterialForComponent(0); 
-                    →INI400_013989Clause6xxClass.GetThetaMinMax(σ↓sd←, f↓yk←/γ↓S←, k↓1←, b↓w←, σ↓cp←, d, ShearReinf.ss, ShearReinf.Asw, z, f↓yk←/γ↓S←, σ↓ct←, f↓ctm←, V↓Ed←, N↓Ed←, f↓ck←, f↓cd←, σ↓cd←, ConMat.fctk_05, Forces.N/A↓c←, ShearTens, Compression, InclinedShearReinf, Prestress, Result); 
+                    →INI400_013989Clause6xxClass.GetThetaMinMax(σ↓sd←, f↓yk←/γ↓S←, k↓1←, b↓w←, σ↓cp←, d, ShearReinf.ss, ShearReinf.Asw, z, f↓yk←/γ↓S←, σ↓ct←, f↓ctm←, V↓Ed←, N↓Ed←, f↓ck←, f↓cd←, σ↓cd←, ConMat.fctk_05, Forces.N/A↓c←, A↓c←, Coeff↓com←, ShearTens, Compression, InclinedShearReinf, Prestress, Result); 
                     θ↓min← →INI400_013990= Result.θ_min; 
                     θ↓max← →INI400_013991= Result.θ_max; 
                     cotθ↓max← →INI400_001103= cotg(θ↓max←); 
@@ -572,6 +573,7 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0 &amp;&amp; COMPARE(V↓Ed←, 0, 6) == 0) {
                 →INI400_013942InputAngleTheta.Set("ForcesID", ForcesID); 
                 →INI400_013944InputAngleTheta.Set("CssID", CssID); 
                 →INI400_013945InputAngleTheta.Set("Coeff_d", Coeff↓d←); 
+                →KRS116_000008InputAngleTheta.Set("Coeff_com", Coeff↓com←); 
                 →INI400_013946InputAngleTheta.Set("TypeMethod", 0); //Type of method for calculation torsion characteristics, 0 - Auto, 1 - From torsional stirrup, 2 - Inputted cross-section, 3 - Effective rectangular, 4 - User input
                 →INI400_013947InputAngleTheta.Set("t_ef_inp", t↓ef.inp←); 
                 →INI400_013948InputAngleTheta.Set("A_k_inp", A↓k.inp←); 
@@ -599,6 +601,7 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0 &amp;&amp; COMPARE(V↓Ed←, 0, 6) == 0) {
                     } 
                 } 
                 →INI400_008118TEXT("- minimum value:"); 
+                →KRS116_000009Functions1D_ShearAndTorsion.DrawThetaMinForCSN(N↓Ed←, Coeff↓com←, A↓c←, f↓cd←); 
                 →INI400_008119TEXT("θ↓min← = " &amp; θ↓min← &amp; " ° =&gt; cot(θ↓min←) = " &amp; cotθ↓min←) @REF("(§6.2.3(2))"); 
                 →INI400_008120TEXT("- maximum value:"); 
                 →INI400_008077TEXT("θ↓max← = " &amp; θ↓max← &amp; " ° =&gt; cot(θ↓max←) = " &amp; cotθ↓max←) @REF("(§6.2.3(2))"); 
@@ -1141,6 +1144,7 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0 &amp;&amp; COMPARE(V↓Ed←, 0, 6) == 0) {
                                 →KRS135_000011DetProvInput.Set("h", h); 
                                 →KRS135_000012DetProvInput.Set("V↓Ed←", V↓Ed←); 
                                 →KRS135_000013DetProvInput.Set("V↓Rd,c←", V↓Rdc←); 
+                                →KRS116_000007DetProvInput.Set("V↓Rd←", V↓Rd←); 
                                 →KRS135_000014DetProvInput.Set("V↓Rd,max←", V↓Rdmax←); 
                                 →KRS135_000015DetProvInput.Set("ϕ", ϕ↓s.req←); 
                                 →KRS135_000016DetProvInput.Set("f↓ctm←", f↓ctm←); 
@@ -1524,7 +1528,7 @@ IF(IO.IsDrawing) {
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓swm.max←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓swm.max←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -1561,7 +1565,7 @@ IF(IO.IsDrawing) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
       <Variable Modifier="Public" Name="A↓swm.stat←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓swm.stat←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -1586,7 +1590,7 @@ IF(IO.IsDrawing) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
       <Variable Modifier="Public" Name="A↓swsm.stat←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓swsm.stat←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -1605,7 +1609,7 @@ IF(IO.IsDrawing) {
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓swtm.min←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓swtm.min←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -1618,7 +1622,7 @@ IF(IO.IsDrawing) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
       <Variable Modifier="Public" Name="A↓swtm.stat←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓swtm.stat←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -1718,7 +1722,7 @@ IF(IO.IsDrawing) {
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="bColumnShearCheckMaxReinfRatio" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_bColumnShearCheckMaxReinfRatio">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -1828,6 +1832,13 @@ IF(IO.IsDrawing) {
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="Coeff↓com←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="Coeff↓d←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Coefficient for calculation effective heigth</ENU>
@@ -1929,14 +1940,14 @@ IF(IO.IsDrawing) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="D" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_D">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="d↓g←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_d↓g←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -1962,7 +1973,7 @@ IF(IO.IsDrawing) {
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="DesignUCShear" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_DesignUCShear">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -2221,7 +2232,7 @@ IF(IO.IsDrawing) {
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="IsShearDesignOK" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_IsShearDesignOK">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -2481,14 +2492,14 @@ IF(IO.IsDrawing) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="s↓w,min←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_s↓w,min←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="sAsw" ESA_ID="" Type="String">
-        <Description TranslateID="VARIABLE_sAsw">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -3097,7 +3108,7 @@ IF(IO.IsDrawing) {
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="τ↓cp←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_τ↓cp←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -6923,22 +6934,6 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008129">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_008130">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
       <VC ID="INI400_008131">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="228" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="15" />
@@ -9859,22 +9854,6 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS006_000001">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS006_000002">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="KRS096_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -9930,6 +9909,30 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="6146" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="740" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="822" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000007">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000008">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000009">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
       <VC ID="KRS135_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -11921,9 +11924,6 @@ IF(IO.IsDrawing) {
     </Item>
     <Item TranslateID="STRING_E63120B3">
       <ENU>"Provided shear reinforcement " &amp; AswPract &amp; " exceeded maximal value A↓swm,max← = " &amp; Val(A↓swm.max←*10↑6←, 0) &amp; " mm↑2←/m"</ENU>
-    </Item>
-    <Item TranslateID="STRING_E9484925">
-      <ENU>"Design additional long. reinforcement caused by torsion is swicthed off by the user."</ENU>
     </Item>
     <Item TranslateID="STRING_E9F6A7A9">
       <ENU>"The check satisfies for crussing of the compresion strut (T↓Ed← &lt; T↓Rd,max←)."</ENU>

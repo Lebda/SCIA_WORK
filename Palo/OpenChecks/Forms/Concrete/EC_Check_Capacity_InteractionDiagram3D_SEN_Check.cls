@@ -66,6 +66,8 @@ IF(CssConditions.ConditionsForCss) { →INI400_005944TEXT("Check capacity - inte
     object Forces →INI400_006418= LoadExternCLC("EC_Concrete_IntForces_SEN_Check.clc"); 
     →INI400_006419Forces.Calculate(False); 
     double ForcesID →INI400_006367= 21; 
+    CompressMember →KRS106_000001= Forces.CompressMember; 
+    N↓com← →KRS106_000004= Forces.N↓com←; 
     →INI400_001315CONCRETE.SetForcesId(ForcesID, Forces.N↓Ed←, 0, 0, 0, Forces.M↓Edy←, Forces.M↓Edz←); 
     
     
@@ -135,7 +137,8 @@ IF(CssConditions.ConditionsForCss) { →INI400_005944TEXT("Check capacity - inte
     →INI400_013612InputInteractionDiagram.Set("ForcesID", ForcesID); 
     →INI400_013613InputInteractionDiagram.Set("InitialForcesID", InitialForcesID); 
     →INI400_013631InputInteractionDiagram.Set("ArrayForcesULS", ArrayForcesULS); 
-    
+    →KRS106_000002InputInteractionDiagram.Set("CompressMember", CompressMember); 
+    →KRS106_000003InputInteractionDiagram.Set("N_com", N↓com←); 
     
     →INI400_005855CheckCapacity.Draw(InputInteractionDiagram, OutputInteractionDiagram, IO.LayoutIndex+2); 
     
@@ -252,6 +255,12 @@ ELSE {
       </Variable>
       <Variable Modifier="Public" Name="CheckCapacity" ESA_ID="" Type="Object">
         <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="CompressMember" ESA_ID="" Type="Boolean">
+        <Description TranslateID="VARIABLE_CompressMember">
           <ENU>
           </ENU>
         </Description>
@@ -486,6 +495,13 @@ ELSE {
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="N↓com←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_N↓com←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="N↓Ed←" ESA_ID="Result.7" Type="Double" Precision="2">
         <Description>
@@ -1630,6 +1646,38 @@ ELSE {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS106_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS106_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
       <VC ID="KRS116_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1667,7 +1715,7 @@ ELSE {
   </Calculation>
   <Dialog>
     <Main Width="483">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.84|0|3" Active="1" PreDef="0" MemberDirectory="G:\_PROJECTS\17.0\improvements\EMD_HeaderImprovements\Beam.1" MemberID="Beam.1" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.84|0|3" Active="1" PreDef="0" MemberDirectory="D:\_VERSIONS\DEVE_06\TEMP\Esa_Model_Data\Beam.4" MemberID="Beam.4" SectionID="0" CombiID="0" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="a240da99-c44b-4446-93f0-6fb126caceea">
   <CodeEditor>
-    <SourceCode Collapsed="209" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure
+    <SourceCode Collapsed="210" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure
     bool ValidateInput(object Input) { //Validate inputs from master to this form
         //tables
         //new development begin
@@ -18,6 +18,7 @@
         CssID →INI400_011193= Input.Get("CssID"); 
         Coeff↓d← →INI400_013874= Input.Get("Coeff_d"); 
         Coeff↓z← →VAL316_000056= Input.Get("Coeff_z"); 
+        Coeff↓com← →KRS116_000001= Input.Get("Coeff_com"); 
         TypeMethod →INI400_013893= Input.Get("TypeMethod"); //Type of method for calculation torsion characteristics, 0 - Auto, 1 - From torsional stirrup, 2 - Inputted cross-section, 3 - Effective rectangular, 4 - User input
         t↓ef.inp← →INI400_013894= Input.Get("t_ef_inp"); //User input of effective width of wall for torsion
         A↓k.inp← →INI400_013895= Input.Get("A_k_inp"); //User input of Area enclosed by the centre line of effective cross-section
@@ -338,9 +339,9 @@ private void CalculateMinMaxTheta() {
     object Clause6xxClass →VAL316_000096= clauseObjects.GetClause6xxCoeffs(); 
     IF(IO.SetupNA.EC_NA.Code == "NBN") { 
         →VAL316_048586CalculateShearReinf(θ↓inp←); 
-        →VAL316_048499Clause6xxClass.GetThetaMinMax(σ↓sd←, ReinfMat.fyk/γ↓S←, k↓1←, b↓w←, σ↓cp←, d, ShearReinf.ss, ShearReinf.Asw, z, ShearReinf.fyk/γ↓S←, σ↓ct←, ConMat.fctm, V↓Ed←, Forces.N, ConMat.fck, f↓cd←, σ↓cd←, ConMat.fctk_05, Forces.N/A↓c←, False, True, ShearReinf.Angle != 90, False, Result); 
+        →VAL316_048499Clause6xxClass.GetThetaMinMax(σ↓sd←, ReinfMat.fyk/γ↓S←, k↓1←, b↓w←, σ↓cp←, d, ShearReinf.ss, ShearReinf.Asw, z, ShearReinf.fyk/γ↓S←, σ↓ct←, ConMat.fctm, V↓Ed←, Forces.N, ConMat.fck, f↓cd←, σ↓cd←, ConMat.fctk_05, Forces.N/A↓c←, A↓c←, Coeff↓com←, False, True, ShearReinf.Angle != 90, False, Result); 
     } ELSE { 
-        →INI400_013924Clause6xxClass.GetThetaMinMax(σ↓sd←, ReinfMat.fyk/γ↓S←, k↓1←, b↓w←, σ↓cp←, d, 999, 999, z, 999, σ↓ct←, ConMat.fctm, V↓Ed←, Forces.N, ConMat.fck, f↓cd←, σ↓cd←, ConMat.fctk_05, Forces.N/A↓c←, False, True, False, False, Result); 
+        →INI400_013924Clause6xxClass.GetThetaMinMax(σ↓sd←, ReinfMat.fyk/γ↓S←, k↓1←, b↓w←, σ↓cp←, d, 999, 999, z, 999, σ↓ct←, ConMat.fctm, V↓Ed←, Forces.N, ConMat.fck, f↓cd←, σ↓cd←, ConMat.fctk_05, Forces.N/A↓c←, A↓c←, Coeff↓com←, False, True, False, False, Result); 
     } 
     θ↓min← →INI400_013880= Result.θ_min; 
     θ↓max← →INI400_013881= Result.θ_max; 
@@ -525,6 +526,13 @@ cotθ →INI400_007468= COTG(θ);
           <ENU>
           </ENU>
         </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="Coeff↓com←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Coeff↓d←" ESA_ID="" Type="Double" Precision="2">
         <Description>
@@ -1891,15 +1899,15 @@ cotθ →INI400_007468= COTG(θ);
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS316_000002">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      <VC ID="KRS116_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL106_000001">
+      <VC ID="KRS316_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1916,14 +1924,6 @@ cotθ →INI400_007468= COTG(θ);
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
       <VC ID="VAL106_000003">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="VAL106_000004">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1955,46 +1955,6 @@ cotθ →INI400_007468= COTG(θ);
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL106_000008">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="VAL106_000009">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="VAL106_000010">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="VAL106_000011">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="VAL106_000012">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="VAL106_000013">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2010,14 +1970,6 @@ cotθ →INI400_007468= COTG(θ);
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="VAL106_000015">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="VAL316_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

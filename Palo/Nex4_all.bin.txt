@@ -66,6 +66,7 @@ CrossSectionF64.dll
 set\CSN.set
 set\DataSetSciaTra-EP_DumperSetupData-1.set
 ProfileLibrary\dbgeo
+CadsLinkSciaWestok\Decking.xml
 defender.dll
 CadsLinkSciaWestok\defFile.xml.def
 ProfileLibrary\Descrip_ID.TXT
@@ -143,7 +144,8 @@ bimplus.sdk.utilities.dll
 db\EP_BoltAssembly.db4
 set\EP_CalcSetup.set
 EP_ComponentCmdsRegSvr.exe
-db\EP_CompositeShearConnectors.db4
+db\EP_CompositeShearConnectorsEC_EN.db4
+db\EP_CompositeShearConnectorsIBC.db4
 set\EP_Connection.set
 set\EP_ConnectionDIN.set
 EP_ConSectionCheck.dll
@@ -152,7 +154,8 @@ set\EP_DefaultSettingsEnviroment.set
 set\EP_DefaultSettingsOverviewDrawings.set
 set\EP_DefaultSettingsPMN.set
 set\EP_DefaultSettingsProtection.set
-db\EP_Diaphragm.db4
+db\EP_DiaphragmEC_EN.db4
+db\EP_DiaphragmIBC.db4
 db\EP_DimensionStyleManager.db4
 set\EP_DocPictureSetup.set
 db\EP_DrawingRule.db4
@@ -164,6 +167,7 @@ eo.webbrowser.dll
 eo.webbrowser.wpf.dll
 eo.webengine.dll
 db\EP_FabricatedCss.db4
+db\EP_Fibres.db4
 db\EP_FreqSpectrum.db4
 db\EP_Hatching.db4
 db\EP_HolloCore.db4
@@ -216,7 +220,6 @@ db\EP_Subsoil.db4
 set\EP_S_Model.set
 db\EP_TemperatureCurve.db4
 db\EP_TrainLoads.db4
-EP_U3DTools_VS2010.dll
 db\EP_VoidFormers.db4
 db\EP_WindSpeedAtCity_IBC.db4
 esa.ver
@@ -263,7 +266,6 @@ Genex_EXE.exe
 GepInstall.exe
 GepNexVC.dll
 ProfileLibrary\German.FIL
-GSS_DLL_6D.dll
 set\IBC.set
 iBolt.dll
 iconv.dll
@@ -301,6 +303,8 @@ log4net.net4cp.dll
 log4net.dll
 logConfig.ini
 SectionCheck\Layouts\LongitudinalReinforcementLayouts.xml
+CadsLinkSciaWestok\manualBS.pdf
+CadsLinkSciaWestok\manualEC.pdf
 set\Metric_format.set
 Microsoft.Expression.Interactions.dll
 Microsoft.Practices.Prism.dll
@@ -355,6 +359,7 @@ oda.bmp
 ep_regsvr32.exe ODA.exe
 set\ONORM.set
 CadsLinkSciaWestok\PatternXmlForLink.xml
+PDFConverter.exe
 PDFCreatorPilot.dll
 PEBWebClient.exe.config
 PEBWebClient.exe
@@ -378,6 +383,8 @@ poirot_copySdfFiles.bat
 BimPlus\PPAttribPictureType3.dll
 BimPlus\PPAttribPictureType7.dll
 BimPlus\PPDbCore.dll
+PropValueDefaults.xml
+PropValueDefaultsM.xml
 db\ReinforcementScaleIsolinie.db4
 ResultsViewer.exe
 revit.tdx
@@ -388,6 +395,7 @@ ProfileLibrary\SBPBIBL2.DAT
 ProfileLibrary\SBPBIBL3.DAT
 ProfileLibrary\SB__BIBL.DBD
 set\ScaleAdministrator.set
+CadsLinkSciaWestok\Sci.TSDCellbeam.dll
 scia-logo-silver.png
 scia.bmp
 Scia2Etabs.exe
@@ -452,7 +460,6 @@ set\STN.set
 Structure.ico
 Structure.lt
 Subst.dat
-svml_dispmd.dll
 ProfileLibrary\Swiss.FIL
 BimPlus\System.Net.Http.dll
 System.Windows.Interactivity.dll
@@ -529,6 +536,7 @@ Toolbars\Light\TB_View.CTC
 Trackerbird.Tracker.clr2.dll
 Trackerbird.Tracker.clr4.dll
 u3d.pdf
+U3DConverter.exe
 set\US_format.set
 UT_ProjectManager_CmdLine.bat
 UT_XEP_CheckManager.bat
@@ -550,6 +558,8 @@ CadsLinkSciaWestok\WestokIPESections.xml
 CadsLinkSciaWestok\WestokUBSections.xml
 CadsLinkSciaWestok\WestokUCSections.xml
 CadsLinkSciaWestok\westok_main.xml.def
+CadsLinkSciaWestok\westok_main.xml
+westok_sections.tdx
 AddDataCalculator\Setting\XEP_AddDataCalculatorLoggerConfig.xml
 EP_regsvr32.exe
 XEP_ProjectStorageService.exe -createstorage -nofailwhenexist -silentsuccess
@@ -1179,6 +1189,9 @@ DocumentDefaults\EP_DataAddStructure.EP_OpenBeam [Default].TLX
 DocumentDefaults\EP_DataAddStructure.EP_RigidArm [Default].TLX
 DocumentDefaults\EP_DataAddStructure.EP_RigidArmSurface [Default].TLX
 DocumentDefaults\EP_DsDocument.EP_DocDb [Default].TLX
+DocumentDefaults\EP_DSG_Elements.14.00.EP_DsContainerE2DMFilter_Diaphragm [Default].TLX
+DocumentDefaults\EP_DSG_Elements.14.00.EP_DsContainerE2DMFilter_LP [Default].TLX
+DocumentDefaults\EP_DSG_Elements.14.00.EP_DsContainerE2DMFilter_Plane [Default].TLX
 DocumentDefaults\EP_DSG_Elements.8.00.EP_CheckMember2D [Default].TLX
 DocumentDefaults\EP_DSG_Elements.8.00.EP_CheckMember2D [Detailed].TLX
 DocumentDefaults\EP_DSG_Elements.8.00.EP_EsaContBeam [Default].TLX
@@ -1472,6 +1485,7 @@ DocumentDefaults\{024CC79E-0E5A-4D62-91D8-6A2506628AA7} [Default].TLX
 DocumentDefaults\{02BE37FF-DC27-4FC9-8D56-9813F32B5CC6} [Default].TLX
 DocumentDefaults\{02BE43FD-E4AD-3EA0-7E6B-DF25296F4BBD}-(IPFile) [Default].TLX
 DocumentDefaults\{02EBB346-83E8-4BEE-8158-F33ECDF856FE} [Default].TLX
+DocumentDefaults\{03A4318F-CFD0-4725-BEAC-314AFAFE7C0F}-(ResultMain) [Default].TLX
 DocumentDefaults\{03DF928C-2FBE-CD99-8281-19EC74DB8995}-(ResultMain) [Default].TLX
 DocumentDefaults\{05D5584A-C743-EC67-1693-955547496DE9}-(ResultMain) [Default].TLX
 DocumentDefaults\{060FA601-E7DF-4C78-B898-C10C76837DA4}-(IPFile) [Default].TLX
@@ -1565,6 +1579,7 @@ DocumentDefaults\{331DD871-2AD8-11D6-AACC-0050FC1D5C09} [Default].TLX
 DocumentDefaults\{331DD872-2AD8-11D6-AACC-0050FC1D5C09} [Default].TLX
 DocumentDefaults\{331DD873-2AD8-11D6-AACC-0050FC1D5C09} [Default].TLX
 DocumentDefaults\{331DD875-2AD8-11D6-AACC-0050FC1D5C09}-(TPComposed) [Default].TLX
+DocumentDefaults\{336145A8-BB0B-4C65-8CF8-4A660524F391} [Default].TLX
 DocumentDefaults\{34288B80-3196-4756-889F-C8EB0B60F27D} [Default].TLX
 DocumentDefaults\{3538A592-7D97-0062-88DC-A34141B0CF5B} [Default].TLX
 DocumentDefaults\{357DF1F2-D138-73F0-DF98-42CA6A078B33}-(IPFile) [Default].TLX
@@ -1634,6 +1649,7 @@ DocumentDefaults\{67089B90-BB6B-4EA2-BB48-B38100E5B0BF} [Default].TLX
 DocumentDefaults\{67C74DA8-648F-4F5F-AE11-08FAB9BF43A2}-(IPFile) [Default].TLX
 DocumentDefaults\{68DD50CD-4945-4679-AC02-928899D4FBE1} [Default].TLX
 DocumentDefaults\{692A22F6-A3E9-40F7-AE31-E1EC4247A407} [Default].TLX
+DocumentDefaults\{6B242BAF-F770-4DE5-9E68-3AC1330CD1D6}-(ResultMain) [Default].TLX
 DocumentDefaults\{6C0C8061-C37F-4F46-A2AE-8713CBDA6150} [Default].TLX
 DocumentDefaults\{6C0ED32A-FCEB-4688-8E23-D164644F4DF3} [Default].TLX
 DocumentDefaults\{6CB61D8E-5815-EE33-58CA-246248ABBC65}-(ResultMain) [Default].TLX
@@ -1688,6 +1704,7 @@ DocumentDefaults\{829211EE-3F84-450C-99CE-8558A3AEB062} [Default].TLX
 DocumentDefaults\{82AAF709-AE73-4F6F-9150-F9992A3F79F8} [Default].TLX
 DocumentDefaults\{83916FFA-3CA6-A98B-163D-027F79616280} [Default].TLX
 DocumentDefaults\{83E22F5C-4C52-4317-9FC8-3A7048A33E9E} [Default].TLX
+DocumentDefaults\{84AD28D6-1285-4F42-9611-9664BC01AA41}-(ResultMain) [Default].TLX
 DocumentDefaults\{855FFAF5-15FE-4448-B16B-40BABF333611} [Default].TLX
 DocumentDefaults\{863671DA-8E14-424E-A8A1-B4DD7402142A} [Default].TLX
 DocumentDefaults\{867F068B-ACBE-4B38-BAAB-5A2709636835} [Default].TLX
@@ -1698,6 +1715,7 @@ DocumentDefaults\{8A0A477E-61BE-43D0-9D45-80A638F48972} [Default].TLX
 DocumentDefaults\{8A61C51B-30F5-78F0-DD60-860163F80445}-(IPFile) [Default].TLX
 DocumentDefaults\{8BD71871-B162-7213-4F33-C4405CD3DCEB}-(ResultMain) [Default].TLX
 DocumentDefaults\{8C91F478-5A26-1E24-C90F-38E4DEA5F839} [Default].TLX
+DocumentDefaults\{8D99C6D8-DD9F-4A88-B116-633500816D4B} [Default].TLX
 DocumentDefaults\{8DDDC394-EA68-4E38-A124-F578539CF90F} [Default].TLX
 DocumentDefaults\{8F0FF435-6DAC-4B12-A734-BA0E2F75BBAB} [Default].TLX
 DocumentDefaults\{90E3BEEE-0237-66EF-9D0E-214F3C0EBDAA}-(ResultMain) [Default].TLX
@@ -1945,6 +1963,7 @@ OpenChecks\CustomLibrary\CDT\EN_1991_1_4_Table_vm_NB2_NB3_STN.xml
 OpenChecks\CustomLibrary\CDT\EN_1992_1_1_Table_4.4N_NBN.xml
 OpenChecks\CustomLibrary\CDT\EN_1992_1_1_Table_4.4N_NEN.xml
 OpenChecks\CustomLibrary\CDT\EN_1992_1_1_Table_4.4N_STD.xml
+OpenChecks\CustomLibrary\CDT\EN_1992_1_1_Table_4.4N_UNE.xml
 OpenChecks\CustomLibrary\CDT\EN_1992_1_1_Table_4.5N_NBN.xml
 OpenChecks\CustomLibrary\CDT\EN_1992_1_1_Table_4.5N_NEN.xml
 OpenChecks\CustomLibrary\CDT\EN_1992_1_1_Table_4.5N_STD.xml
@@ -2537,6 +2556,7 @@ OpenChecks\Forms\Concrete\Functions\CreateCs.cls
 OpenChecks\Forms\Concrete\Functions\CreateCS_common.cls
 OpenChecks\Forms\Concrete\Functions\CrossSection.cls
 OpenChecks\Forms\Concrete\Functions\DesignRegRectForces.cls
+OpenChecks\Forms\Concrete\Functions\DesignRegRectForces.TestIO
 OpenChecks\Forms\Concrete\Functions\FontsAndColors.cls
 OpenChecks\Forms\Concrete\Functions\Functions1D_Crack.cls
 OpenChecks\Forms\Concrete\Functions\Functions1D_DesignReq.cls
@@ -2566,6 +2586,7 @@ OpenChecks\Forms\Concrete\Graphics_4_CSS_with_designed_reinforcement.cls
 OpenChecks\Forms\Concrete\Graphics_5_CSS_with_torsion.cls
 OpenChecks\Forms\Concrete\Graphics_6_CSS_with_web_flange.cls
 OpenChecks\Forms\Concrete\Graphics_7_side_view_reinf.cls
+OpenChecks\Forms\Concrete\Graphics_8_CSS_POD_Char.cls
 OpenChecks\Forms\Concrete_IBC\ACI_Calculation_of_c_nom.CLS
 OpenChecks\Forms\Concrete_IBC\ACI_Concrete_Design2D_CompressStrut.cls
 OpenChecks\Forms\Concrete_IBC\ACI_Concrete_Design2D_LongReinf.cls

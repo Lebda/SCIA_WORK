@@ -23,7 +23,8 @@
         A↓k.inp← →INI400_011679= Input.Get("A_k_inp"); //Input value of area enclosed by the centre line of effective cross-section
         u↓k.inp← →INI400_011680= Input.Get("u_k_inp"); //Input value of perimeter of area enclosed by the centre line of effective cross-section
         Coeff↓z← →KRS116_000001= Input.Get("Coeff_z"); //
-
+        Coeff↓d← →KRS116_000004= Input.Get("Coeff_d"); //
+        Coeff↓com← →KRS116_000005= Input.Get("Coeff_com"); //
         //loading 
         T↓ccd← →INI400_011712= Input.Get("T_ccd"); //Design value of the shear component of the force in compression area
         T↓td← →INI400_011713= Input.Get("T_td"); //Design value of the shear component of the force in tensile reinforcement
@@ -373,8 +374,9 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0) {
                 "ForcesID", ForcesID, 
                 "CssID", CssID, 
                 "AccidentalCombi", AccidentalULS, 
-                "Coeff_d", 0.9, //TODO
+                "Coeff_d", Coeff↓d←, //TODO
                 "Coeff_z", Coeff↓z←, //TODO
+                "Coeff_com", Coeff↓com←, 
                 "TypeMethod", TypeTorCssInput, 
                 "t_ef_inp", t↓ef.inp←, 
                 "A_k_inp", A↓k.inp←, 
@@ -462,7 +464,8 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0) {
                 →INI400_013908InputCalcTheta.Add("θ_inp", θ↓inp←); 
                 →INI400_013909InputCalcTheta.Add("ForcesID", ForcesID); 
                 →INI400_013910InputCalcTheta.Add("CssID", CssID); 
-                →INI400_013911InputCalcTheta.Add("Coeff_d", 0.9); 
+                →INI400_013911InputCalcTheta.Add("Coeff_d", Coeff↓d←); 
+                →KRS116_000006InputCalcTheta.Add("Coeff_com", Coeff↓com←); 
                 →INI400_013912InputCalcTheta.Add("TypeMethod", TypeTorCss); 
                 →INI400_013913InputCalcTheta.Add("t_ef_inp", t↓ef.inp←); 
                 →INI400_013914InputCalcTheta.Add("A_k_inp", A↓k.inp←); 
@@ -484,6 +487,7 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0) {
                     →INI400_013949obEWN.Add(EWN_Theta[i-1]); 
                 } 
                 →INI400_008074TEXT("- minimum value:"); 
+                →KRS116_000003Functions1D_ShearAndTorsion.DrawThetaMinForCSN(N↓Ed←, Coeff↓com←, A↓c←, f↓cd←); 
                 →INI400_008075TEXT("θ↓min← = " &amp; θ↓min← &amp; "° =&gt; cot(θ↓min←) = " &amp; cotθ↓min←) @REF("(§6.2.3(2))"); 
                 →INI400_008076TEXT("- maximum value:"); 
                 →INI400_008077TEXT("θ↓max← = " &amp; θ↓max← &amp; "° =&gt; cot(θ↓max←) = " &amp; cotθ↓max←) @REF("(§6.2.3(2))"); 
@@ -881,6 +885,20 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="Coeff↓com←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_Coeff↓com←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="Coeff↓d←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_Coeff↓d←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Coeff↓z←" ESA_ID="" Type="Double" Precision="2">
         <Description>
@@ -5136,6 +5154,38 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS116_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000005">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000006">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="VAL316_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -5203,7 +5253,7 @@ IF(IO.IsDrawing) {
             </Shapes>
           </Reinf>
         </TConcreteSectionLibrary>
-        <TGroupBox Name="" ID="51" Translate="0" Left="193" Top="-3924" Width="475" AutoWidth="False" AutoHeight="True" TabIndex="55" Dock="0" Anchor="5" Padding="5|13|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" BorderColor="-5192482">
+        <TGroupBox Name="" ID="51" Translate="0" Left="196" Top="-3921" Width="475" AutoWidth="False" AutoHeight="True" TabIndex="55" Dock="0" Anchor="5" Padding="5|13|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" BorderColor="-5192482">
           <Texts>
             <ENU>General setting</ENU>
           </Texts>
@@ -5961,7 +6011,7 @@ IF(IO.IsDrawing) {
                   <P>ČSN EN 1991-2</P>
                   <P>ČSN EN 1991-3</P>
                   <P>ČSN EN 1991-4</P>
-                  <P>ČSN EN 1992-1-1</P>
+                  <P>ČSN EN 1992-1-1/NA: 2011-07</P>
                   <P>1</P>
                   <P>1</P>
                   <P>1.3</P>

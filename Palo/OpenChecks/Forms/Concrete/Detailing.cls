@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="aae55477-e7f7-49aa-ab77-38f5940b0f58">
   <CodeEditor>
-    <SourceCode Collapsed="3|25|45|77|93|104|111|122|133|144|154|168|204|210|256|270|302|310|328|339|351|358|363|370|377|388|415|437|464|484|500|524|540|556|563|582|589|613|627|638|651|660|670|681|693|702|711|721" BreakPoints="">//CLS with functions for 2D concrete
+    <SourceCode Collapsed="3|26|35|55|108|124|135|142|153|164|175|185|199|235|241|294|308|340|348|366|377|389|396|401|408|415|426|453|475|504|528|544|568|584|600|607|626|633|657|671|682|695|704|714|725|737|746|755|765" BreakPoints="">//CLS with functions for 2D concrete
 
 →INI400_006756BLOCK("Clause 8.2(2) - Spacing of bars - s↓min←") { 
     public void s↓min←(double ϕ, double d↓g←, double s↓lb,min←, bool Layer, object Result) { 
@@ -18,10 +18,20 @@
         →INI400_007454TEXT("Minimal allowed clear distance between bars from all bars in cross-section"); 
         →INI400_008676double&lt;mm,0&gt; ϕ; 
         →INI400_008677double&lt;mm,0&gt; d↓g←; 
-        →INI400_008678double&lt;mm,0&gt; k↓2←; 
         →INI400_008679double&lt;mm,0&gt; s↓lb,min←; 
-        double&lt;mm,0&gt; s↓s-s,min,lim← →INI400_006761= MAX(k↓1←*ϕ, d↓g←+k↓2←, s↓lb,min←) @REF("(§8.2(2))"); 
+        →KRS116_000039double&lt;mm,0&gt; k↓2←; 
+        IF(IO.SetupNA.EC_NA.Code == "UNE") { 
+            →KRS116_000042UNE_s↓min←(ϕ, d↓g←, s↓lb,min←, k↓1←, k↓2←, out s↓s-s,min,lim←); 
+        } ELSE { 
+            double&lt;mm,0&gt; s↓s-s,min,lim← →INI400_006761= MAX(k↓1←*ϕ, d↓g←+k↓2←, s↓lb,min←) @REF("(§8.2(2))"); 
+        } 
         →INI400_008487Result.Set("smin", s↓s-s,min,lim←); 
+    } 
+    private void UNE_s↓min←(double ϕ, double d↓g←, double s↓lb,min←, double k↓1←, double k↓2←, out double s↓s-s,min,lim←) { 
+        →KRS116_000043double&lt;mm,0&gt; ϕ; 
+        →KRS116_000044double&lt;mm,0&gt; d↓g←; 
+        →KRS116_000045double&lt;mm,0&gt; s↓lb,min←; 
+        double&lt;mm,0&gt; s↓s-s,min,lim← →KRS116_000038= MAX(k↓1←*ϕ, d↓g←+k↓2←*d↓g←, s↓lb,min←) @REF("(UNE §8.2(2))"); 
     } 
 } 
 
@@ -46,14 +56,25 @@
 } 
 
 →INI400_000001BLOCK("Clause 9.2.1.1(1) - Minimum and maximum reinforcement areas - A↓s,min←") { 
-    public void Clause↓9.2.1.1(1)←(double A↓s←, double f↓ctm←, double f↓yk←, double b↓t←, double d, bool BrittleFailure, object Result) { 
+    public void Clause↓9.2.1.1(1)←(double A↓s←, double f↓ctm←, double f↓yk←, double b↓t←, double d, double I↓y←, double I↓z←, double α↓Μ←, double a, double z, double f↓ctm,fl←, double f↓yd←, bool BrittleFailure, object DesignInput, object Result) { 
         object Clause9_2_1_1_1 →INI400_006783= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_9.2.1.1(1).CLC", true); 
         object Input →KRS001_000005= new Structure(
         "f_ctm", f↓ctm←, 
         "b_t", b↓t←, 
         "d", d, 
-        "f_yk", f↓yk←); 
+        "f_yk", f↓yk←, 
+        "W", W, 
+        "z", z, 
+        "f_ctmfl", f↓ctm,fl←, 
+        "f_yd", f↓yd←, 
+        "I_y", I↓y←, 
+        "I_z", I↓z←, 
+        "A_s", A↓s←, 
+        "DesignInput", DesignInput); 
         object Output →KRS001_000006= new Structure(); 
+        →KRS116_000024double&lt;mm↑4←,2&gt; I↓y←; 
+        →KRS116_000025double&lt;mm↑4←,2&gt; I↓z←; 
+        →KRS116_000115double&lt;mm↑2←,2&gt; A↓s←; 
         
         IF(BrittleFailure) { 
             →INI400_007678TEXT("Area of reinforcement"); 
@@ -62,15 +83,25 @@
             double&lt;mm↑2←,2&gt; A↓s,min← →INI400_008443= A↓s←*1.2; 
             →INI400_008483Result.Set("Asmin", A↓s,min←); 
         } ELSE { 
-            →INI400_007458TEXT("Mean tensile strength of concrete"); 
-            →INI400_007041TEXT("f↓ctm← = " &amp; Val(f↓ctm←/1000000, 2) &amp; " MPa"); 
-            →INI400_007459TEXT("Characteristic yield strength of reinforcement"); 
-            →INI400_007042TEXT("f↓yk← = " &amp; Val(f↓yk←/1000000, 2) &amp; " MPa"); 
-            →INI400_007460TEXT("Average value of CSS width in tensile area of cross-section"); 
-            →INI400_001097TEXT("b↓t← = " &amp; Val(b↓t←, 2) &amp; " m"); 
-            →INI400_007461TEXT("Effective depth of cross-section"); 
-            →INI400_007043TEXT("d = " &amp; Val(d, 2) &amp; " m"); 
-            →INI400_007465TEXT("Minimal allowed area of longitudinal reinforcement"); 
+            IF(IO.SetupNA.EC_NA.Code != "NEN") { 
+                IF(IO.SetupNA.EC_NA.Code == "UNE") { 
+                    →KRS116_000022TEXT("Distance between center of gravity and the most tensiled fiber"); 
+                    →KRS116_000028double&lt;mm,2&gt; a →KRS116_000029= a; 
+                    →KRS116_000020TEXT("Resistant modulus of the section relative to the most tensiled fiber"); 
+                    double&lt;mm↑3←,2&gt; W →KRS116_000021= (I↓y←*COS(α↓Μ←)+I↓z←*SIN(α↓Μ←))/a; 
+                } ELSE { 
+                    →INI400_007458TEXT("Mean tensile strength of concrete"); 
+                    →INI400_007041TEXT("f↓ctm← = " &amp; Val(f↓ctm←/1000000, 2) &amp; " MPa"); 
+                    →INI400_007459TEXT("Characteristic yield strength of reinforcement"); 
+                    →INI400_007042TEXT("f↓yk← = " &amp; Val(f↓yk←/1000000, 2) &amp; " MPa"); 
+                    →INI400_007460TEXT("Average value of CSS width in tensile area of cross-section"); 
+                    →INI400_001097TEXT("b↓t← = " &amp; Val(b↓t←, 2) &amp; " m"); 
+                    →INI400_007461TEXT("Effective depth of cross-section"); 
+                    →INI400_007043TEXT("d = " &amp; Val(d, 2) &amp; " m"); 
+                } 
+                →INI400_007465TEXT("Minimal allowed area of longitudinal reinforcement"); 
+                →KRS116_000026Input.Set("W", W); 
+            } 
             →INI400_008444Clause9_2_1_1_1.Draw(Input, Output, 2); 
             →INI400_008484Result.Set("Asmin", Output.A_s_min); 
         } 
@@ -211,7 +242,7 @@
 } 
 
 →INI400_005320BLOCK("Clause 9.2.2(6) - Shear reinforcement - s↓l,max←") { 
-    public void s↓l,max←(double d, double α, double f↓ck←, double h, double V↓Ed←, double V↓Rd,c←, double V↓Rd,max←, double h_carka, object Result) { 
+    public void s↓l,max←(double d, double α, double f↓ck←, double h, double V↓Ed←, double V↓Rd,c←, double V↓Rd←, double V↓Rd,max←, double h_carka, object Result) { 
         object Clause9_2_2_6 →INI400_006280= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_9.2.2(6).CLC"); 
         object Input →KRS001_000015= new Structure(
         "d", d, 
@@ -219,6 +250,7 @@
         "h", h, 
         "V_Ed", V↓Ed←, 
         "V_Rd_c", V↓Rd,c←, 
+        "V_Rd", V↓Rd←, 
         "V_Rd_max", V↓Rd,max←, 
         "α_s", α, 
         "h_carka", h_carka); 
@@ -249,6 +281,12 @@
             →INI400_007532TEXT("V↓Rd,c← = " &amp; Val(V↓Rd,c←/1000, 2) &amp; " kN"); //only for DIN NA
             →INI400_007533TEXT("Shear resistance of concrete strut"); 
             →INI400_007534TEXT("V↓Rd,max← = " &amp; Val(V↓Rd,max←/1000, 2) &amp; " kN"); //only for DIN NA
+        } 
+        IF(IO.SetupNA.EC_NA.Code == "UNE") { 
+            →KRS116_000034TEXT("Shear resistance of the member"); 
+            →KRS116_000035TEXT("V↓Rd← = " &amp; Val(V↓Rd←/1000, 2) &amp; " kN"); 
+            →KRS116_000036TEXT("Shear resistance of concrete strut"); 
+            →KRS116_000037TEXT("V↓Rd,max← = " &amp; Val(V↓Rd,max←/1000, 2) &amp; " kN"); 
         } 
         →INI400_007535TEXT("Maximal allowed longitudinal spacing of stirrups"); 
         →INI400_006306Clause9_2_2_6.Draw(Input, Output, 2); 
@@ -438,12 +476,14 @@
 } 
 
 →INI400_006593BLOCK("Clause 9.5.2(3) - Columns - Longitudinal reinforcement - A↓s,max,col←") { 
-    public void A↓s,max,col←(double A↓c←, double ConcrType, bool Laps, object Result) { 
+    public void A↓s,max,col←(double A↓c←, double ConcrType, double f↓cd←, double f↓yd←, bool Laps, object Result) { 
         object Clause9_5_2_3 →INI400_006603= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_9.5.2(3).CLC"); 
         object Input →KRS001_000027= new Structure(
         "A_c", A↓c←, 
         "ConcrType", ConcrType, 
-        "Laps", Laps); 
+        "Laps", Laps, 
+        "f_cd", f↓cd←, 
+        "f_yd", f↓yd←); 
         object Output →KRS001_000028= new Structure(); 
         
         →INI400_008512TEXT("Area of concrete cross-section"); 
@@ -469,7 +509,11 @@
         SWITCH(FormCode) { 
             CASE 2002 :  { 
                 →INI400_008688TEXT("Minimal number of bars for circular column"); 
-                n↓min← →INI400_008689= MAX(n↓lc,min←, 4) @REF("(9.5.2(4))"); 
+                IF(IO.SetupNA.EC_NA.Code == "ONORM") { 
+                    double n↓min← →KRS116_000059= MAX(n↓lc,min←, 6) @REF("(ÖNORM 9.5.2(4))"); 
+                } ELSE { 
+                    n↓min← →INI400_008689= MAX(n↓lc,min←, 4) @REF("(9.5.2(4))"); 
+                } 
                 →INI400_008682Result.Set("ncirccolminbar", n↓min←); 
             } 
             DEFAULT :  { 
@@ -731,6 +775,7 @@
         →INI400_008655Result.Set("Fsrock", F↓s,rock←); 
     } 
 } 
+
 </SourceCode>
   </CodeEditor>
   <Calculation>
@@ -3551,6 +3596,102 @@
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
       </VC>
+      <VC ID="KRS116_000020">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000021">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000022">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000026">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000029">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000034">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000035">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000036">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000037">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000038">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000042">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000059">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
@@ -3986,6 +4127,24 @@
     </Item>
     <Item TranslateID="TEXT_KRS116_000019">
       <ENU>"because compression or tension reinforcement does not exist"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000020">
+      <ENU>"Resistant modulus of the section relative to the most tensiled fiber"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000022">
+      <ENU>"Distance between center of gravity and the most tensiled fiber"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000034">
+      <ENU>"Shear resistance of the member"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS116_000035">
+      <ENU>"V↓Rd← = " &amp; Val(V↓Rd←/1000, 2) &amp; " kN"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000036">
+      <ENU>"Shear resistance of concrete strut"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS116_000037">
+      <ENU>"V↓Rd,max← = " &amp; Val(V↓Rd,max←/1000, 2) &amp; " kN"</ENU>
     </Item>
   </Texts>
 </Root>

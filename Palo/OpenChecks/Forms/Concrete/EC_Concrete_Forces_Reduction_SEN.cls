@@ -296,7 +296,7 @@ IF(actSection.PlaceForReduction.ReduceMoment == 1) {
                 IF(WidthInfo_My.SupportType == 0) { // nad podporou
                     →INI400_014180TEXT("Bending moment reduction is performed from the value of bending moment above support"); 
                     →INI400_014129TEXT("Reactions from current support"); 
-                    double R↓z← →INI400_014131= WidthInfo_My.Support.Point[0].InternalForces[combiID].Vz; 
+                    double R↓z← →INI400_014131= WidthInfo_My.Support.Point[0].InternalForces[ForceID].Vz; 
                     →INI400_014134TEXT("Values of bending moments which can be used for reduction"); 
                     
                     double ΔM↓Edy,red← →INI400_014135= R↓z←*SupportWidth/8; 
@@ -376,7 +376,7 @@ IF(actSection.PlaceForReduction.ReduceMoment == 1) {
                     →INI400_014181TEXT("Bending moment reduction is performed from the value of bending moment above support"); 
                     
                     →INI400_014154TEXT("Reactions from current support"); 
-                    double R↓y← →INI400_014157= WidthInfo_Mz.Support.Point[0].InternalForces[combiID].Vy; 
+                    double R↓y← →INI400_014157= WidthInfo_Mz.Support.Point[0].InternalForces[ForceID].Vy; 
                     →INI400_014159TEXT("Values of bending moments which can be used for reduction"); 
                     double ΔM↓Edz,red← →INI400_014161= R↓y←*SupportWidth/8; 
                     bool mzZero →INI400_014163= COMPARE(reducedMz, 0, 6) == 0; 

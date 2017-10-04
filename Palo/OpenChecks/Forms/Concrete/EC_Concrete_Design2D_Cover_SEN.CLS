@@ -160,6 +160,9 @@ double ConcreteCover(object CoverParam, double d_s1, double d_s2) { //Calling au
         →INI400_011713InputCover.Set("NormalReinf", CoverParam.bNormalReinf); // True - normal reinforcement is used - only for SS
         →INI400_011714InputCover.Set("fck", CoverParam.f_ck); 
         
+        →KRS116_000010InputCover.Set("StainlessSteel", false); //Parameter is not in SEN
+        →KRS116_000011InputCover.Set("AddProtection", false); //Parameter is not in SEN
+        
         //For Δcdur,γ
         →INI400_011715InputCover.Set("Quality", CoverParam.GeometricControl); // True - Quality assurance system for prestress is used, only for IS
 
@@ -1255,6 +1258,22 @@ SWITCH(DataFromSENResult.MemberType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000010">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000011">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
     </VisualComponents>
     <Images />

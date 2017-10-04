@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="9516d6b8-6cf4-47a5-a78f-7b8641f3941c">
   <CodeEditor>
-    <SourceCode Collapsed="5|12|50|83|91|98|111|406|427|495" BreakPoints="">
+    <SourceCode Collapsed="84|92|118|413|514" BreakPoints="">
 
 //------------------------------------------------------------
 //@VARIABLES
@@ -33,6 +33,7 @@
     →INI400_016263double m↓y←; 
     →INI400_016264double m↓xy←; 
     
+    →RLF098_000026bool Imperialunit; 
     //results
     →INI400_016274object RecalcForces↓1-←; 
     →INI400_016275object RecalcForces↓1+←; 
@@ -54,7 +55,7 @@
 bool ValidateInput(object Input) { 
     
     h →INI400_008761= Input.Get("h"); //thickness of 2D element
-    
+    Imperialunit →RLF098_000035= Input.Get("Imperialunit"); 
     object InternalForces →INI400_014653= Input.Get("InternalForces"); 
     CombiID →INI400_014727= InternalForces.Get("CombiID"); 
     CombiKey →INI400_013738= InternalForces.Get("CombiKey"); 
@@ -108,6 +109,12 @@ void LoadDialogInputs() {
         m↓x← →PAI006_000012= InternalForces.mx; 
         m↓y← →PAI006_000014= InternalForces.my; 
         m↓xy← →PAI006_000013= InternalForces.mxy; 
+        
+        IF(COMPARE(MOD(10^6*h, 3175), 0, 2) == 0) { 
+            Imperialunit →RLF098_000002= true; 
+        } ELSE { 
+            Imperialunit →RLF098_000003= false; 
+        } 
     } 
 } 
 
@@ -442,8 +449,6 @@ private void DrawRecalcForcesTable() {
         LayerLabel[4] →INI400_016195= "[2+]"; 
         LayerLabel[5] →INI400_016196= TR("Concrete"); 
         
-        
-        
         double Ncolumns →INI400_005286= 7; 
         double Nrows →INI400_005821= RecalcForces.Count; 
         object T →INI400_002858= new Table(Ncolumns); 
@@ -451,20 +456,34 @@ private void DrawRecalcForcesTable() {
         T[0][0].Value →INI400_002941= TR("Layer"); 
         T[0][1].Value →INI400_005829= TR("Surface / Direction"); 
         T[0][2].Value →INI400_005837= "α↓inp←&lt;BR&gt;[°]"; 
-        T[0][3].Value →INI400_005843= "n↓Eds←&lt;BR&gt;[kip/ft]"; 
-        T[0][4].Value →INI400_014729= "n↓Eds,virt ←&lt;BR&gt;[kip/ft]"; 
-        T[0][5].Value →INI400_005851= "Nu&lt;BR&gt;[kip/ft]"; 
-        T[0][6].Value →INI400_005854= "Mu&lt;BR&gt;[kip·ft/ft]"; 
+        IF(Imperialunit) { 
+            T[0][3].Value →INI400_005843= "n↓Eds←&lt;BR&gt;[kip/ft]"; 
+            T[0][4].Value →INI400_014729= "n↓Eds,virt ←&lt;BR&gt;[kip/ft]"; 
+            T[0][5].Value →INI400_005851= "Nu&lt;BR&gt;[kip/ft]"; 
+            T[0][6].Value →INI400_005854= "Mu&lt;BR&gt;[kip·ft/ft]"; 
+        } ELSE { 
+            T[0][3].Value →RLF098_000027= "n↓Eds←&lt;BR&gt;[kN/m]"; 
+            T[0][4].Value →RLF098_000028= "n↓Eds,virt ←&lt;BR&gt;[kN/m]"; 
+            T[0][5].Value →RLF098_000029= "Nu&lt;BR&gt;[kN/m]"; 
+            T[0][6].Value →RLF098_000030= "Mu&lt;BR&gt;[kN.m/m]"; 
+        } 
         
         FOR(i, 0, Nrows-1) { 
             double RowID →INI400_016314= (i &lt; 3) ? i+3 : i-3; 
             T[RowID+1][0].Value →INI400_016300= LayerLabel[i]; 
             T[RowID+1][1].Value →INI400_016301= RecalcForces[i].Surface &amp; " / " &amp; RecalcForces[i].Dir; 
             T[RowID+1][2].Value →INI400_016304= (RecalcForces[i].Alpha).ToString(decimRound); 
-            T[RowID+1][3].Value →INI400_016306= CUnit(RecalcForces[i].nEds, "kip/ft"); 
-            T[RowID+1][4].Value →INI400_016308= CUnit(RecalcForces[i].nEdsv, "kip/ft"); 
-            T[RowID+1][5].Value →INI400_016310= CUnit(RecalcForces[i].nEd, "kip/ft"); 
-            T[RowID+1][6].Value →INI400_016312= CUnit(RecalcForces[i].mEd, "kipft/ft"); 
+            IF(Imperialunit) { 
+                T[RowID+1][3].Value →INI400_016306= CUnit(RecalcForces[i].nEds, "kip/ft"); 
+                T[RowID+1][4].Value →INI400_016308= CUnit(RecalcForces[i].nEdsv, "kip/ft"); 
+                T[RowID+1][5].Value →INI400_016310= CUnit(RecalcForces[i].nEd, "kip/ft"); 
+                T[RowID+1][6].Value →INI400_016312= CUnit(RecalcForces[i].mEd, "kipft/ft"); 
+            } ELSE { 
+                T[RowID+1][3].Value →RLF098_000031= CUnit(RecalcForces[i].nEds, "kN/m"); 
+                T[RowID+1][4].Value →RLF098_000032= CUnit(RecalcForces[i].nEdsv, "kN/m"); 
+                T[RowID+1][5].Value →RLF098_000033= CUnit(RecalcForces[i].nEd, "kN/m"); 
+                T[RowID+1][6].Value →RLF098_000034= CUnit(RecalcForces[i].mEd, "kNm/m"); 
+            } 
         } 
         
         T.Columns[0].Width →INI400_016136= 60; 
@@ -648,6 +667,12 @@ SWITCH(RecalcForceMethod) {
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="Imperialunit" ESA_ID="" Type="Boolean">
+        <Description TranslateID="VARIABLE_Imperialunit">
+          <ENU>
+          </ENU>
+        </Description>
       </Variable>
       <Variable Modifier="Public" Name="InternalForces" ESA_ID="" Type="Object">
         <Description>
@@ -1178,7 +1203,7 @@ SWITCH(RecalcForceMethod) {
     </Layouts>
     <VisualComponents>
       <VC ID="">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3181,6 +3206,94 @@ SWITCH(RecalcForceMethod) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000027">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="-109" Y="1643" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="-109" Y="1643" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="-109" Y="1643" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="-109" Y="1643" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="-109" Y="1643" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="-109" Y="1643" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000028">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="-109" Y="1643" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="-109" Y="1643" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="-109" Y="1643" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="-109" Y="1643" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="-109" Y="1643" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="-109" Y="1643" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000029">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="-109" Y="1643" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="-109" Y="1643" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="-109" Y="1643" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="-109" Y="1643" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="-109" Y="1643" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="-109" Y="1643" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000030">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="-109" Y="1643" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="-109" Y="1643" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="-109" Y="1643" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="-109" Y="1643" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="-109" Y="1643" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="-109" Y="1643" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000031">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000032">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000033">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000034">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000035">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

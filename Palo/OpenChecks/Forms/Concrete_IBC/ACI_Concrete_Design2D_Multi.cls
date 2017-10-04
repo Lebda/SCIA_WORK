@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="5026f337-49ab-451b-80cc-c63240a6dcb1">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="151">//@ACI_Concrete_Design2D_Multi
+    <SourceCode Collapsed="" BreakPoints="151|206|347|303|307">//@ACI_Concrete_Design2D_Multi
 
 //------------------------------------------------------------
 //@VARIABLES
@@ -31,6 +31,8 @@
     →UNK000_000020bool _dialog_IsRecalcForces_ID_3; 
     →UNK000_000021bool _dialog_IsRecalcForces_ID_4; 
     →UNK000_000022bool _dialog_IsRecalcForces_ID_5; 
+    →RLF098_000001bool Imperialunit; 
+    
     
     →UNK000_000023double CssID; 
     →UNK000_000024double ElementID; 
@@ -48,6 +50,8 @@
     →UNK000_000032object[] DesignReinfPOD; 
     →UNK000_000033object DesignShear; 
     →UNK000_000034object[] obEWN; 
+    
+    
     →UNK000_000035object DesignDefaults; 
     →UNK000_000036object FontsAndColors; 
     
@@ -59,6 +63,7 @@
 bool ValidateInput(object Input) { 
     MemberType →UNK000_000038= Input.Get("MemberType"); 
     h →UNK000_000039= Input.Get("h"); 
+    Imperialunit →RLF036_000001= Input.Get("Imperialunit"); 
     BasicForces →UNK000_000042= Input.Get("BasicForces"); //basic(FEM) forces
     RecalcForces →UNK000_000043= Input.Get("RecalcForces"); //recalculated (dimensional) forces
     RecalcForcesPOD →UNK000_000044= Input.Get("RecalcForcesPOD"); //info about calculation of dimensional forces
@@ -90,6 +95,14 @@ private void LoadDialogInputs() {
     →UNK000_000060FUNCT_2D.WriteSectionToDataCache(h, CS_Material); 
     
     MemberType →UNK000_000061= 16; 
+    →UNK006_000003object Designdefaultinput →UNK006_000006= new Structure(); 
+    →RLF098_000023Designdefaultinput.Add("MemberType", MemberType); 
+    IF(COMPARE(MOD(10^6*h, 3175), 0, 2) == 0) { 
+        Imperialunit →RLF098_000002= true; 
+    } ELSE { 
+        Imperialunit →RLF098_000003= false; 
+    } 
+    →RLF098_000015Designdefaultinput.Add("Imperialunit", Imperialunit); 
     
     RecalcForces →UNK000_000062= new object[]; 
     RecalcForces[0] →UNK000_000063= _dialog_IsRecalcForces_ID_0 ? _dialog_RecalcForces_ID_0 : null; 
@@ -103,7 +116,7 @@ private void LoadDialogInputs() {
     
     BasicForces →UNK000_000070= _dialog_BasicForces; 
     
-    DesignDefaults →UNK000_000071= FUNCT_2D_DEFAULTS.GetDesignDefaults(MemberType); 
+    DesignDefaults →UNK000_000071= FUNCT_2D_DEFAULTS.GetDesignDefaults(→RLF098_000024Designdefaultinput); 
     
     DesignCover →UNK000_000072= FUNCT_2D_COVER.GetConcreteCover(DesignDefaults); 
     
@@ -114,7 +127,7 @@ private void DrawInternalForcesInDetailed() {
     →UNK000_000074TEXT("Design of Concrete Slab"); 
     →REZ006_000010TEXT("Design Inputs"); 
     →UNK000_000081TEXT("Internal Forces"); 
-    object TForce →UNK000_000082= FUNCT_2D.GetBasicForceTable(BasicForces); 
+    object TForce →UNK000_000082= FUNCT_2D.GetBasicForceTable(BasicForces, Imperialunit); 
     
     object TCombiKey →UNK000_000083= FUNCT_2D.GetCombiKeyTable(BasicForces); 
     →UNK000_000084TForce.Draw(); 
@@ -139,11 +152,11 @@ private void DrawConcreteAssumpInDetailed() {
     
     →UNK000_000104TEXT("Material "); 
     
-    object TConcreteKey →UNK000_017169= FUNCT_2D.GetConcreteTable(DesignDefaults.CONCRETE.IBC, DesignDefaults.ReinfLong.Material.IBC, DesignDefaults.ReinfShear.Material.IBC); 
+    object TConcreteKey →UNK000_017169= FUNCT_2D.GetConcreteTable(DesignDefaults.CONCRETE.IBC, DesignDefaults.ReinfLong.Material.IBC, DesignDefaults.ReinfShear.Material.IBC, Imperialunit); 
     →UNK000_017170TConcreteKey.Draw(); 
     →UNK000_017171TEXT(""); 
     →UNK000_017177TEXT("Concrete Cover "); 
-    object TCoverKey →UNK000_017178= FUNCT_2D.GetCoverTable(DesignCover, DesignDefaults.ReinfLong); 
+    object TCoverKey →UNK000_017178= FUNCT_2D.GetCoverTable(DesignCover, DesignDefaults.ReinfLong, Imperialunit); 
     →UNK000_017179TCoverKey.Draw(); 
     
     
@@ -184,12 +197,22 @@ private void DrawDesignReinfSumTable() {
     T_Area[0][2].Value →REZ006_000033= "Longitudinal"; 
     T_Area[0][3].Value →REZ006_000036= "Reinforcement"; 
     T_Area[0][5].Value →REZ006_000045= "Shear&lt;BR&gt;Reinforcements"; 
-    T_Area[1][5].Value →REZ006_000046= "Shear rebar&lt;BR&gt;(#@in)/ft"; 
+    IF(Imperialunit) { 
+        T_Area[1][5].Value →REZ006_000046= "Shear rebar&lt;BR&gt;(#@in)/ft"; 
+    } ELSE { 
+        T_Area[1][5].Value →RLF098_000026= "Shear rebar&lt;BR&gt;(ϕ@mm)/m"; 
+    } 
     //values
     FOR(i, 0, 3) { 
-        T_Area[1][i+1].Value →REZ006_000029= DesignDefaults.ReinfLong.Layers[i].Surface
-         &amp; " / " &amp; DesignDefaults.ReinfLong.Layers[i].Dir
-         &amp; " (" &amp; DesignReinf[i].α &amp; ") &lt;BR&gt;(#@in)/ft"; 
+        IF(Imperialunit) { 
+            T_Area[1][i+1].Value →REZ006_000029= DesignDefaults.ReinfLong.Layers[i].Surface
+             &amp; " / " &amp; DesignDefaults.ReinfLong.Layers[i].Dir
+             &amp; " (" &amp; DesignReinf[i].α &amp; ") &lt;BR&gt;(#@in)/ft"; 
+        } ELSE { 
+            T_Area[1][i+1].Value →RLF098_000025= DesignDefaults.ReinfLong.Layers[i].Surface
+             &amp; " / " &amp; DesignDefaults.ReinfLong.Layers[i].Dir
+             &amp; " (" &amp; DesignReinf[i].α &amp; ") &lt;BR&gt;(ϕ@mm)/m"; 
+        } 
         IF(DesignReinf[i].As_req &lt; DesignReinf[i].As_det_max || DesignReinf[i].As_det_max &lt; 0.0001) { 
             T_Area[2][i+1].Value →UNK000_016912= " (" &amp; DesignReinf[i].Info &amp; ")"; 
         } ELSE { 
@@ -242,9 +265,12 @@ private void DrawDesignReinfSumTable() {
 //@SCRIPT
 
 
+
 →UNK000_000178LoadExterns(); 
 IF(!IO.IsExternCLC) { →UNK000_000179LoadDialogInputs(); } 
 →REZ006_000009TEXT("Summary of design inputs"); 
+
+
 
 IF(IO.IsDrawing) { 
     FontsAndColors →UNK000_000180= FONTS_COLORS.GetFontsAndColors(); 
@@ -270,6 +296,7 @@ object FUNCT_DIAGRAMS →UNK006_000011= LoadExternCLC(Tools.Dir_Forms &amp; "Con
 object DesignReinfInput →UNK000_000190= new Structure(
 "MemberType", MemberType, 
 "h", h, 
+"Imperialunit", Imperialunit, // DesignDefault.Imperialunit
 "RecalcForces", RecalcForces, 
 "RecalcForcesPOD", RecalcForcesPOD, 
 "DesignDefaults", DesignDefaults, 
@@ -306,6 +333,7 @@ object SHEAR_DESIGN_2D →UNK000_000196= LoadExternCLC(Tools.Dir_Forms &amp; "Co
 object DesignShearInput →UNK000_000197= new Structure(
 "MemberType", MemberType, 
 "h", h, 
+"Imperialunit", Imperialunit, 
 "ElementID", ElementID, 
 "IndexEWN", IndexEWN, 
 "RecalcForces", RecalcForces, 
@@ -480,6 +508,12 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="Designdefaultinput" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_Designdefaultinput">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="DesignDefaults" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -597,6 +631,12 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
+      <Variable Modifier="Public" Name="Imperialunit" ESA_ID="" Type="Boolean">
+        <Description TranslateID="VARIABLE_Imperialunit">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="IndexEWN" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -638,18 +678,6 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
       </Variable>
       <Variable Modifier="Public" Name="SHEAR_DESIGN_2D" ESA_ID="" Type="Object">
         <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="T_reqExplanation" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_T_reqExplanation">
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="T_reqExplanationString" ESA_ID="" Type="String">
-        <Description TranslateID="VARIABLE_T_reqExplanationString">
           <ENU>
           </ENU>
         </Description>
@@ -723,38 +751,6 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="REZ006_000001">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="REZ006_000002">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="REZ006_000003">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="REZ006_000004">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="REZ006_000005">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -803,14 +799,6 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="REZ006_000027">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="REZ006_000028">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
@@ -820,14 +808,6 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="REZ006_000029">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="REZ006_000030">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -859,31 +839,7 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="REZ006_000034">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="REZ006_000035">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="REZ006_000036">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="REZ006_000037">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -923,14 +879,6 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="REZ006_000042">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="REZ006_000043">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -963,10 +911,58 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="REZ006_000047">
+      <VC ID="RLF036_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000015">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000023">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000025">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000026">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1547,14 +1543,6 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK000_016782">
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="UNK000_016891">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1579,62 +1567,6 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK000_016903">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016904">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016905">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016907">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016908">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016909">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016911">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="UNK000_016912">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1652,30 +1584,6 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="UNK000_016914">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016915">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016916">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016917">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1739,22 +1647,6 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK000_016925">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016926">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="UNK000_016927">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1811,143 +1703,7 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK000_016938">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016939">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016940">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016941">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016942">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016943">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016944">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016945">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016946">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016947">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="UNK000_016956">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016967">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016968">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016970">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016971">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016972">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016974">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_016975">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2035,6 +1791,14 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="UNK006_000006">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="UNK006_000011">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2048,35 +1812,13 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
   </Calculation>
   <Dialog>
     <Main Width="598">
-      <TCustomLibrary Name="ShearReinforcement" ID="186" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="6" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="SHREINF.IBC" DataFile="US\US_Reinf.xml" Collapsed="False" UseCombo="False" Category="ASTM A706 Gr. 60" Item="#4 ">
-        <Data>
-          <Header>
-            <PropertySet Symbol="d↓b←" ESA_ID="d↓b←" Unit="in" Type="Numeric" />
-            <PropertySet Symbol="A↓s←" ESA_ID="A↓s←" Unit="in↑2←" Type="Numeric" />
-            <PropertySet Symbol="w↓s←" ESA_ID="w↓s←" Unit="lb/ft" Type="Numeric" />
-            <PropertySet Symbol="fy" ESA_ID="fy" Unit="ksi" Type="Numeric" />
-            <PropertySet Symbol="E" ESA_ID="E" Unit="ksi" Type="Numeric" />
-          </Header>
-          <Items>
-            <Item>
-              <P>ASTM A706 Gr. 60</P>
-              <P>#4 </P>
-              <P>0.500</P>
-              <P>0.196</P>
-              <P>0.668</P>
-              <P>60</P>
-              <P>29000</P>
-            </Item>
-          </Items>
-        </Data>
-      </TCustomLibrary>
-      <TTabControl Name="" ID="169" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="27" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|500" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.8|0|3" Index="2" TabBG="-657931" SelTab="-1842205" Alignment="0">
+      <TTabControl Name="" ID="169" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="27" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|500" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.8|0|3" Index="0" TabBG="-657931" SelTab="-1842205" Alignment="0">
         <Texts>
           <ENU>BASIC|RECALC_LOWER|RECALC_UPPER|RECALC_POD</ENU>
         </Texts>
         <Tabs>
           <Tab Text="BASIC">
-            <TTableInput Name="" ID="170" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="20" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_BasicForces" Value="CO1/1|LC1|0.000000000|0|0|0|0|0|5|0║CO1/2|LC2|0|0|0|0|0|0|0|0" CellBG="-1" HeaderBG="-986896" FixedRows="2">
+            <TTableInput Name="" ID="170" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="20" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_BasicForces" Value="CO1/1|LC1|0.000000000|0|0|0|0|0|5|0║CO1/2|LC2|0|0|0|0|0|0|0|3" CellBG="-1" HeaderBG="-986896" FixedRows="2">
               <Texts>
                 <ENU>CombiID|CombiKey|nx [kip/ft]|ny [kip/ft]|nxy [kip/ft]|mx [kipft/ft]|my [kipft/ft]|mxy [kipft/ft]|qx [kip/ft]|qy [kip/ft]</ENU>
               </Texts>
@@ -2296,7 +2038,7 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
           </Tab>
         </Tabs>
       </TTabControl>
-      <TCustomLibrary Name="LongitudinalReinforcement" ID="167" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="6" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="LREINF.IBC" DataFile="US\US_Reinf.xml" Collapsed="False" UseCombo="False" Category="ASTM A706 Gr. 60" Item="#5 ">
+      <TCustomLibrary Name="LongitudinalReinforcement" ID="167" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="6" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="LREINF.IBC" DataFile="US\US_Reinf.xml" Collapsed="True" UseCombo="False" Category="ASTM A706 Gr. 60" Item="#5 ">
         <Data>
           <Header>
             <PropertySet Symbol="d↓b←" ESA_ID="d↓b←" Unit="in" Type="Numeric" />
@@ -2318,7 +2060,7 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
           </Items>
         </Data>
       </TCustomLibrary>
-      <TCustomLibrary Name="" ID="166" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="CONCRETE.IBC" DataFile="US\US_Concrete.xml" Collapsed="False" UseCombo="False" Category="Normal Weight Concrete" Item="C5000">
+      <TCustomLibrary Name="" ID="166" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="CONCRETE.IBC" DataFile="US\US_Concrete.xml" Collapsed="True" UseCombo="False" Category="Normal Weight Concrete" Item="C5000">
         <Data>
           <Header>
             <PropertySet Symbol="w↓c←" ESA_ID="w↓c←" Unit="lb/ft↑3←" Type="Numeric" />
@@ -2370,6 +2112,28 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
           <ENU>RECALC_FORCES_POD</ENU>
         </Texts>
       </TLabel>
+      <TCustomLibrary Name="ShearReinforcement" ID="186" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="6" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="SREINF.IBC" DataFile="US\US_Reinf.xml" Collapsed="True" UseCombo="False" Category="ASTM A706 Gr. 60" Item="#4 ">
+        <Data>
+          <Header>
+            <PropertySet Symbol="d↓b←" ESA_ID="d↓b←" Unit="in" Type="Numeric" />
+            <PropertySet Symbol="A↓s←" ESA_ID="A↓s←" Unit="in↑2←" Type="Numeric" />
+            <PropertySet Symbol="w↓s←" ESA_ID="w↓s←" Unit="lb/ft" Type="Numeric" />
+            <PropertySet Symbol="fy" ESA_ID="fy" Unit="ksi" Type="Numeric" />
+            <PropertySet Symbol="E" ESA_ID="E" Unit="ksi" Type="Numeric" />
+          </Header>
+          <Items>
+            <Item>
+              <P>ASTM A706 Gr. 60</P>
+              <P>#4 </P>
+              <P>0.500</P>
+              <P>0.196</P>
+              <P>0.668</P>
+              <P>60</P>
+              <P>29000</P>
+            </Item>
+          </Items>
+        </Data>
+      </TCustomLibrary>
     </Main>
     <MemberData Width="400" />
     <Setup Width="400" />
@@ -2385,35 +2149,11 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
     <Item TranslateID="STRING_06CFA4DC">
       <ENU>"years"</ENU>
     </Item>
-    <Item TranslateID="STRING_1A2D4239">
-      <ENU>"minimal reinforcement from detailing provisions"</ENU>
-    </Item>
-    <Item TranslateID="STRING_1C5225D6">
-      <ENU>"statically required reinforcement including detailing provisions designed as practical reinforcement"</ENU>
-    </Item>
-    <Item TranslateID="STRING_21322E58">
-      <ENU>"Surface /Direction"</ENU>
-    </Item>
     <Item TranslateID="STRING_2624D1BD">
       <ENU>"design working life of"</ENU>
     </Item>
-    <Item TranslateID="STRING_3C0E4E1A">
-      <ENU>"Upper /Second (0)"</ENU>
-    </Item>
-    <Item TranslateID="STRING_693E58F5">
-      <ENU>"Upper /First (0)"</ENU>
-    </Item>
-    <Item TranslateID="STRING_775F3020">
-      <ENU>"statically required reinforcement"</ENU>
-    </Item>
     <Item TranslateID="STRING_BD744C84">
       <ENU>"Environmental conditions"</ENU>
-    </Item>
-    <Item TranslateID="STRING_F7236EA0">
-      <ENU>"Layer"</ENU>
-    </Item>
-    <Item TranslateID="STRING_F8F54248">
-      <ENU>"maximal reinforcement from detailing provisions"</ENU>
     </Item>
     <Item TranslateID="TEXT_REZ006_000009">
       <ENU>"Summary of design inputs"</ENU>

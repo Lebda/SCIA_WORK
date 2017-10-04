@@ -85,10 +85,12 @@ EP_DsDb.dll
 XEP_DSx64ObjectsBase.dll
 X64DocumentRendering.dll
 X64DocumentPreview.dll
+EP_GraphicAnalysers.dll
 XEP_DocumentData.dll
 XEP_DocumentFramework.dll
 EP_ExpUtility.dll
 CmdDlg.dll
+EP_DSDrawingBase.dll
 EPW4DrawManager.dll
 EP_DrawSupport.dll
 EP_Windows.dll
@@ -203,6 +205,7 @@ PretensioningSpecial.dll
 SoilinData.dll
 SteelOptimizer.dll
 EP_ConcreteToolbox.dll
+ConcreteCheckCalculation.dll
 BasicResults.dll
 BasicCheckSteel.dll
 SteelConnection.dll
@@ -215,6 +218,7 @@ DataAddCads.dll
 EP_CheckDataProvider.dll
 ConcreteChecksEsa.dll
 EP_DataAddDamping.dll
+DataTools.dll
 EP_CalcManager.dll
 EP_NationalAnnices.dll
 EP_ProjectDataDialog.dll
@@ -298,6 +302,8 @@ Damping.dll
 DampingM.dll
 CodeDependentDeflections.dll
 Punching.dll
+ConcreteCheckChecks.dll
+ConcreteCheckResultShell.dll
 ConcreteESACmds.dll
 ConcreteESACmdsM.dll
 HeatTransferESACmd.dll
@@ -322,13 +328,13 @@ CheckRCDesigner.dll
 EP_CadsCommonServices.dll
 EP_CadsCommonServicesM.dll
 CustomCheckCmds.dll
+SteelCheckEsa.dll
 AluminiumCheck.dll
 AluminiumCheckESACmds.dll
 AluminiumCheckESACmdsM.dll
 TimberCheckEsa.dll
 TimberCheckCmds.dll
 TimberCheckCmdsM.dll
-SteelCheckEsa.dll
 EP_Commands_DSDBM.dll
 PluginsCommand.dll
 PluginsCommandM.dll
@@ -338,6 +344,7 @@ UnitTestProject.dll
 CheckDemo.dll
 ResultsPipelineTangentialModel.dll
 CheckScaffConnections.dll
+EP_DSDrawingBasicElements.dll
 CustomBasicClass.dll
 CustomCheckCmdsM.dll
 DesignFormsLink.dll
@@ -499,7 +506,6 @@ X64DocumentRendering_UT.dll
 XEP_DocumentData_UT.dll
 UTCHA_PlateWithBeams.dll
 UTCHA_DataAddStructure.dll
-EP_StructureToolsTest_UT.dll
 UTKOP_LoadGenerator.dll
 UTKOP_Scales.dll
 UTRMA_Dataserver.dll
@@ -564,6 +570,7 @@ UTJNIE_ECEN_SeismicCombiGenerator.dll
 UTGeomToolsTest.dll
 EasyDsObjects.dll
 UT_SolverData.dll
+EP_StructureToolsTest_UT.dll
 UTSolverTasks.dll
 SolUT.dll
 LinCalcJob_UT.dll
@@ -576,7 +583,6 @@ ESA_Processor_UT.dll
 UT_BasicForceDeformation.dll
 UT_ImportIFCProperties.dll
 UnitTestConcreteRefactoring.dll
-XEP_ProjectRepository_UT.dll
 UT_TRE_CMQuestion.dll
 UT_ECTools.dll
 UTFIL_Units2XML.dll
@@ -584,4 +590,9 @@ Macrobot.dll
 Example_ESACOM_Multithread.dll
 EP_ComponentCmdsGUI.dll
 XEP_NexisMock.dll
+DocCtrl.dll
+EP_ConSectionCheck.dll
 FLBTiiCls.dll
+iBolt.dll
+iPun.dll
+Nessie.dll

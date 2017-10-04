@@ -293,7 +293,29 @@ bool bCircular →INI400_009035= False;
 IF(OutputSortMultiForce.DesTypeAfterSort == OutputSortMultiForce.DesTypeAfterSort.eBiaxial &amp;&amp; (FormCode == 2002 || FormCode == 2008)) { 
     bCircular →INI400_009036= True; 
 } 
+
+//DLO:18/11/15 -PRQ 500 -  test if the CSS is symmetric or not
+ShapeCss →INI400_014066= CrossSection.GetCompleteShape(); 
+bool SymCssAroundY →INI400_014067= Functions1D_Geometrics.SymetricCSS(ShapeCss, 0); 
+bool SymCssAroundZ →INI400_014068= Functions1D_Geometrics.SymetricCSS(ShapeCss, 1); 
+bool SymCss →INI400_014071= (SymCssAroundY &amp;&amp; SymCssAroundZ); 
+→INI400_014069CONCRETE.Designer.SetIsCssSymetric(DesAddDataID, SymCss); 
+
 //set edge data for biaxial method
+IF(numEdges &gt; 4 &amp;&amp; !SymCss &amp;&amp; TypeCoverDiam == 0) { 
+    object[] AddEdgeData →VAL106_000008= new object[]; 
+    →VAL106_000001CONCRETE.SetForcesId(555, 0, 0, 0, 0, 0, 0); 
+    double uc →VAL106_000002= Concrete.Characteristics(CssID, 555, Concrete.CharType.WholeCharConcrete, Concrete.StiffnessType.No).Perimeter; 
+    FOR(i, 0, numEdges-1) { 
+        object InfoEdges →VAL106_000003= Concrete.Designer.GetInfoAboutEdgeOfCrossSection(CssID, i); 
+        object CoordFib1 →VAL106_000004= CONCRETE.General.GetCsePointPosition(CssID, InfoEdges.First); 
+        object CoordFib2 →VAL106_000005= CONCRETE.General.GetCsePointPosition(CssID, InfoEdges.Second); 
+        double dist →VAL106_000006= SQRT((CoordFib1.X-CoordFib2.X)↑2←+(CoordFib1.Y-CoordFib2.Y)↑2←); 
+        →VAL106_000007AddEdgeData.Add(CONCRETE.Factory.CreateAddEdgeData(i, dist/uc)); 
+    } 
+    →VAL106_000009CONCRETE.Designer.SetAddEdgeData(DesAddDataID, AddEdgeData); 
+} 
+
 IF(bCircular) { 
     object[] AddEdgeData →INI400_007876= new object[]; 
     IF(FormCode == 2002) { 
@@ -361,12 +383,7 @@ IF(CompPortion != 0) {
 IF(bUseUserReinf) { 
     →INI400_001378CONCRETE.Designer.SetIfCanBeUseUserReinforcement(DesAddDataID, 1); 
 } 
-//DLO:18/11/15 -PRQ 500 -  test if the CSS is symmetric or not
-ShapeCss →INI400_014066= CrossSection.GetCompleteShape(); 
-bool SymCssAroundY →INI400_014067= Functions1D_Geometrics.SymetricCSS(ShapeCss, 0); 
-bool SymCssAroundZ →INI400_014068= Functions1D_Geometrics.SymetricCSS(ShapeCss, 1); 
-bool SymCss →INI400_014071= (SymCssAroundY &amp;&amp; SymCssAroundZ); 
-→INI400_014069CONCRETE.Designer.SetIsCssSymetric(DesAddDataID, SymCss); 
+
 
 ////calculation automatic ratio of reinforcement
 →INI400_007833BLOCK { 
@@ -1463,18 +1480,6 @@ object DesignType →INI400_007953= generalInfo.DesType;
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="checkerAlgSetting" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="CheckType" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
       <Variable Modifier="Public" Name="Coeff_d" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -1765,6 +1770,18 @@ object DesignType →INI400_007953= generalInfo.DesType;
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="checkerAlgSetting" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="CheckType" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
       </Variable>
       <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
         <Description>
@@ -6645,6 +6662,78 @@ object DesignType →INI400_007953= generalInfo.DesType;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="VAL106_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="1281" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="77.7" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="892" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="77.7" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="VAL106_000005">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="1302" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="77.7" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="913" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="77.7" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="VAL106_000006">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000007">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000008">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000009">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="VAL127_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -7662,7 +7751,7 @@ object DesignType →INI400_007953= generalInfo.DesType;
                 <P>EC EN 1991-2</P>
                 <P>EC EN 1991-3</P>
                 <P>EC EN 1991-4</P>
-                <P>EC EN 1992-1-1</P>
+                <P>EC EN 1992-1-1:2004/AC:2008</P>
                 <P>1</P>
                 <P>1</P>
                 <P>1.3</P>

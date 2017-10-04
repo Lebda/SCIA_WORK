@@ -35,6 +35,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     //    CASE "SIG": { } 
     //    CASE "STN": { } 
     //    CASE "SIST": { } 
+    //    CASE "UNE": { } 
     //    CASE "SS": { }  
     DEFAULT :  { 
         r↓sup,preten← →INI400_000063= IO.SetupNA.EC_1992_1_1.r_sup_inf.r_sup_preten; 

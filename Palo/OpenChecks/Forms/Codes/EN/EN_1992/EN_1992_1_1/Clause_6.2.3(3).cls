@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="3a7fa5c6-5fba-4901-b086-4016b494edfc">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">bool ValidateInput(object Input) { 
+    <SourceCode Collapsed="29|60|96|118|141|173|207|242" BreakPoints="">bool ValidateInput(object Input) { 
     
     f↓ck← →INI400_008536= Input.Get("f_ck"); //Characteristic compressive cylinder strength of concrete
     f↓cd← →INI400_008541= Input.Get("f_cd"); //Design compressive cylinder strength of concrete
@@ -240,7 +240,8 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         } 
     } 
     //    CASE "STN": { } 
-    //    CASE "SIST": { } 
+    //    CASE "SIST": { }
+    //    CASE "UNE": { }  
     //    CASE "SS": { } 
     DEFAULT :  { 
         IF(σ↓swd← &lt; 0.8*f↓ywk←) { 

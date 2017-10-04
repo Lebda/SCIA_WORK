@@ -4,12 +4,16 @@
     <SourceCode Collapsed="" BreakPoints="">bool ValidateInput(object Input) { 
     A →INI400_000008= Input.Get("A", 0.7); //Coefficient, influence of effective creep ratio; if not know, use 0,7
     B →INI400_000102= Input.Get("B", 1.1); //Coefficient, influence of mechanical reinforcement ratio; if not know, use 1,1
-    C →INI400_000107= Input.Get("C", 0.7); //Coefficient, influence of moment ratio; if not know, use 0,7
+    C →INI400_000107= Input.Get("C", 0.7); //Coefficient, influence of moment ratio; if not know, use 0,7, for UNE - coefficient based on arrangements of reinforcement: 0.24 for symmetrical reinforcement on two opposing faces in bending direction; 0.20 for equal reinforcement on all four sides; 0.16 for symmetrical reinforcement on the side faces (not in the bending direction)
     n →INI400_000108= Input.Get("n"); //Relative normal force
     BracedNoTransv →KRS116_000003= Input.Get("BracedNoTransv"); // for NS - TRUE for compression members where the ends are braced and that do not have transverse load; FALSE - for compression members where one end is unbraced and for compression members that have transverse load
     r↓m← →KRS116_000004= Input.Get("r_m"); // for NS - M01/M02 is the ratio between the numerically least and numerically greatest first order end moments. If M02 &lt; Nd·h/20, rm is set equal to 1. rm should be taken positive if the end moments M01 and M02 give tension on the same side.
     A↓φ← →KRS116_000005= Input.Get("A_φ"); // for NS - 1,25/(1+0,2*φf) ≤ 1
     index →KRS116_000006= Input.Get("index"); //string index for rename variables for y or z direction
+    e↓1← →KRS116_000013= Input.Get("e1"); // for UNE - equivalent first order moment in bending direction
+    e↓2← →KRS116_000014= Input.Get("e2"); // for UNE - equivalent first order moment in second direction (perpendicular to bending)
+    h →KRS116_000015= Input.Get("h"); // for UNE - height of section in bending direction
+
     
     bool Result →INI400_000020= true; 
     //Add some limits for inputs?
@@ -23,15 +27,20 @@ object GetOutput() {
 //NA.2.31 Clause 5.8.3.1 Slenderness criterion for isolated members, Paragraph(1)
 //For use different formula, uncomment proper code and place formula there. Save and export file after this change.
 →KRS116_000007RenameVar(λ↓lim←, "λ↓lim←" &amp; index); 
-→KRS116_000008RenameVar(C, "C" &amp; index); 
 →KRS116_000009RenameVar(r↓m←, "r↓m←" &amp; index); 
+→KRS116_000008RenameVar(C, "C" &amp; index); 
+
 SWITCH(IO.SetupNA.EC_NA.Code) { 
     //    CASE "ONORM": { } 
     //    CASE "NBN": { } 
     //    CASE "BS": { } 
     //    CASE "CYS": { } 
     CASE "CSN" :  { 
-        λ↓lim← →INI400_000047= MIN(20*A*B*C/SQRT(n), 75) @REF("(ČSN 5.13)"); 
+        IF(ABS(n) &gt;= 0.41) { 
+            λ↓lim← →KRS116_000011= 25 @REF("(ČSN 5.13b)"); 
+        } ELSE { 
+            λ↓lim← →INI400_000047= MIN(20*A*B*C/SQRT(n), 75) @REF("(ČSN 5.13a)"); 
+        } 
     } 
     //    CASE "DK": { } 
     //    CASE "NEN": { } 
@@ -64,6 +73,14 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         λ↓lim← →INI400_000048= MIN(20*A*B*C/SQRT(n), 75) @REF("(STN 5.13)"); 
     } 
     //    CASE "SIST": { } 
+    CASE "UNE" :  { 
+        ν →KRS116_000012= n; //Relative normal force N↓Ed←/(A↓c←*f↓cd←)
+        IF(COMPARE(e↓2←, 0, 6) == 1) { 
+            λ↓lim← →KRS116_000011= MIN(35*SQRT(C/ν*(1+0.24/(e↓2←/h)+3.4*(e↓1←/e↓2←-1)↑2←)), 100) @REF("(UNE 5.13)"); 
+        } ELSE { 
+            λ↓lim← →KRS116_000016= 100 @REF("(UNE 5.13)"); 
+        } 
+    } 
     //    CASE "SS": { } 
     DEFAULT :  { 
         λ↓lim← →INI400_000001= 20*A*B*C/SQRT(n) @REF("(5.13N)"); 
@@ -114,7 +131,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="A↓φ←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓φ←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -128,7 +145,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="BracedNoTransv" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_BracedNoTransv">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -140,8 +157,29 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
+      <Variable Modifier="Public" Name="e↓1←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
+      </Variable>
+      <Variable Modifier="Public" Name="e↓2←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
+      </Variable>
+      <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
+      </Variable>
       <Variable Modifier="Public" Name="index" ESA_ID="" Type="String">
-        <Description TranslateID="VARIABLE_index">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -154,13 +192,20 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="r↓m←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_r↓m←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="λ↓lim←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="ν" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -245,12 +290,12 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_000049">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
       </VC>
       <VC ID="INI400_000050">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="16" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -363,6 +408,54 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000011">
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+      </VC>
+      <VC ID="KRS116_000012">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000013">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000014">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000015">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000016">
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
       </VC>
     </VisualComponents>
     <Images />

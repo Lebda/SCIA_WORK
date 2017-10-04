@@ -33,6 +33,7 @@ bool ValidateInput(object Input) {
 } 
 
 
+
 object GetOutput() { 
     object Result →INI400_015275= new Structure(
     ); 
@@ -49,7 +50,7 @@ object BeamPenShape →INI400_004067= new Pen(Color.Black, 2); //pen for beam
 object PenDim →INI400_003779= new Pen(Color.Navy, Convert.ToSingle(0.5)); //pen for dimensions
 object PenForce →INI400_003958= new Pen(Color.Navy, 2); //pen for forces
 //fonts
-→INI400_003782double DimFontSize; //Size of font used for dimensions
+→INI400_003782double DimFontSize →GMP036_000001= 8; //Size of font used for dimensions
 object DimFont →INI400_003783= new Font("Calibri", DimFontSize, FontStyle.Bold); //Main font for dimensions
 //Color Fill
 object BeamFill →INI400_003784= new SolidBrush(Color.Yellow); 
@@ -59,6 +60,7 @@ object ForceFill →INI400_004080= new SolidBrush(Color.SkyBlue);
 ////Graphics
 object GView →INI400_003793= new Graphics(); 
 ////Dimensions
+
 GView.DefaultDimStyle.DimArrowShape →INI400_003794= ArrowShape.Line; 
 GView.DefaultDimStyle.DimArrowSize →INI400_003795= Convert.ToSingle(MAX(DimFontSize*0.76, 7)); 
 GView.DefaultDimStyle.Overlap →INI400_003796= 0; 
@@ -271,32 +273,32 @@ object G →INI400_003930= new Graphics();
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
-      <Variable Modifier="Public" Name="a" ESA_ID="" Type="Double" Value="50.8e-3" Precision="2">
+      <Variable Modifier="Public" Name="a" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_a">
           <ENU>Depth of compression block in concrete</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="a↓s←" ESA_ID="" Type="Double" Value="50.8e-3" Precision="2">
+      <Variable Modifier="Public" Name="a↓s←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_a↓s←">
           <ENU>Depth of tension region in steel section</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="ArcSmooth" ESA_ID="" Type="Double" Value="8" Precision="2">
+      <Variable Modifier="Public" Name="ArcSmooth" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_ArcSmooth">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="b↓fb←" ESA_ID="" Type="Double" Value="304.8e-3" Precision="2">
+      <Variable Modifier="Public" Name="b↓fb←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_b↓fb←">
           <ENU>Beam Flange Width</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="BeamDia" ESA_ID="" Type="Double" Value="25.4e-3" Precision="2">
+      <Variable Modifier="Public" Name="BeamDia" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_BeamDia">
           <ENU>fillet at flange to web - diameter (k↓1← in library)</ENU>
         </Description>
@@ -320,13 +322,13 @@ object G →INI400_003930= new Graphics();
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="BeamRad" ESA_ID="" Type="Double" Value="12.7e-3" Precision="2">
+      <Variable Modifier="Public" Name="BeamRad" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_BeamRad">
           <ENU>fillet at flange to web - radius</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="C" ESA_ID="" Type="Double" Value="235755.8" Precision="2">
+      <Variable Modifier="Public" Name="C" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_C">
           <ENU>Compressive force in slab</ENU>
         </Description>
@@ -338,40 +340,40 @@ object G →INI400_003930= new Graphics();
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="d↓1←" ESA_ID="" Type="Double" Value="76.2e-3" Precision="2">
+      <Variable Modifier="Public" Name="d↓1←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_d↓1←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="d↓2←" ESA_ID="" Type="Double" Value="25.4e-3" Precision="2">
+      <Variable Modifier="Public" Name="d↓2←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_d↓2←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="d↓3←" ESA_ID="" Type="Double" Value="190.5e-3" Precision="2">
+      <Variable Modifier="Public" Name="d↓3←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_d↓3←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="D↓beam←" ESA_ID="" Type="Double" Value="381e-3" Precision="2">
+      <Variable Modifier="Public" Name="D↓beam←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_D↓beam←">
           <ENU>Depth of Beam</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="d↓r←" ESA_ID="" Type="Double" Value="12.7e-3" Precision="2">
+      <Variable Modifier="Public" Name="d↓r←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_d↓r←">
           <ENU>Diameter of armature</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="d↓sr←" ESA_ID="" Type="Double" Value="50.8e-3" Precision="2">
+      <Variable Modifier="Public" Name="d↓sr←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_d↓sr←">
           <ENU>Distance between two pieces af armature</ENU>
         </Description>
@@ -383,20 +385,20 @@ object G →INI400_003930= new Graphics();
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="DimFontSize" ESA_ID="" Type="Double" Value="8" Precision="2">
+      <Variable Modifier="Public" Name="DimFontSize" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_DimFontSize">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="F↓c←" ESA_ID="" Type="Double" Value="413.6855e6" Precision="2">
+      <Variable Modifier="Public" Name="F↓c←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_F↓c←">
           <ENU>Compressive strength of concrete</ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="6.894758e6" Dim="ksi" />
       </Variable>
-      <Variable Modifier="Public" Name="F↓y←" ESA_ID="" Type="Double" Value="482.6331e6" Precision="2">
+      <Variable Modifier="Public" Name="F↓y←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_F↓y←">
           <ENU>Yield Strength of steel section</ENU>
         </Description>
@@ -426,26 +428,26 @@ object G →INI400_003930= new Graphics();
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Value="6" Precision="2">
+      <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_i">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="M" ESA_ID="" Type="Double" Value="-112.9848" Precision="2">
+      <Variable Modifier="Public" Name="M" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_M">
           <ENU>Moment</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="112.9848" Dim="kip•in" />
       </Variable>
-      <Variable Modifier="Public" Name="P↓y←" ESA_ID="" Type="Double" Value="311375.5" Precision="2">
+      <Variable Modifier="Public" Name="P↓y←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_P↓y←">
           <ENU>Steel Section Axial Capacity</ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
-      <Variable Modifier="Public" Name="P↓yc←" ESA_ID="" Type="Double" Value="355857.7" Precision="2">
+      <Variable Modifier="Public" Name="P↓yc←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_P↓yc←">
           <ENU>Steel Section Axial Capacity</ENU>
         </Description>
@@ -469,13 +471,13 @@ object G →INI400_003930= new Graphics();
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="s" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="s" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_s">
           <ENU>Distance between beam and force shape</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Scale" ESA_ID="" Type="Double" Value="629" Precision="2">
+      <Variable Modifier="Public" Name="Scale" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_Scale">
           <ENU>
           </ENU>
@@ -494,38 +496,38 @@ object G →INI400_003930= new Graphics();
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="T" ESA_ID="" Type="Double" Value="204618.2" Precision="2">
+      <Variable Modifier="Public" Name="T" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_T">
           <ENU>Tensile force in slab reinforcement</ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
-      <Variable Modifier="Public" Name="t↓fb←" ESA_ID="" Type="Double" Value="10.16e-3" Precision="2">
+      <Variable Modifier="Public" Name="t↓fb←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_t↓fb←">
           <ENU>Beam Flange Thickness</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="t↓wb←" ESA_ID="" Type="Double" Value="7.62e-3" Precision="2">
+      <Variable Modifier="Public" Name="t↓wb←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_t↓wb←">
           <ENU>Beam Web Thickness</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="UnitSymbol" ESA_ID="" Type="Boolean" Value="0">
+      <Variable Modifier="Public" Name="UnitSymbol" ESA_ID="" Type="Boolean">
         <Description TranslateID="VARIABLE_UnitSymbol">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="UserScale" ESA_ID="" Type="Double" Value="8" Precision="2">
+      <Variable Modifier="Public" Name="UserScale" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_UserScale">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="VisibDim" ESA_ID="" Type="Boolean" Value="1">
+      <Variable Modifier="Public" Name="VisibDim" ESA_ID="" Type="Boolean">
         <Description TranslateID="VARIABLE_VisibDim">
           <ENU>
           </ENU>
@@ -578,6 +580,30 @@ object G →INI400_003930= new Graphics();
       </VC>
       <VC ID="GMP011_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP036_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP036_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP036_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

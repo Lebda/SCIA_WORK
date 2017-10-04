@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="044f5b82-f6bb-40f7-9cec-8570c6376a1c">
   <CodeEditor>
-    <SourceCode Collapsed="2|25|39|123|148|170" BreakPoints="">
+    <SourceCode Collapsed="2|25|39|123|129|154|176" BreakPoints="">
 
 →INI400_000001BLOCK("GetConreteCover()") { 
     object GetConcreteCover(object ConMat, object DesignDefaults) { 
@@ -54,6 +54,7 @@
         →INI400_014992double XD; 
         →INI400_014993double XS; 
         →INI400_015000double XM; 
+        →KRS116_000003bool AdequateCement; 
         
         SWITCH(Surface) { 
             CASE 0 :  { //lower
@@ -66,6 +67,7 @@
                 XD →INI400_014995= DesignDefaults.MinCover.Lower.XD; 
                 XS →INI400_014998= DesignDefaults.MinCover.Lower.XS; 
                 XM →INI400_015001= DesignDefaults.MinCover.Lower.XM; 
+                AdequateCement →KRS116_000001= DesignDefaults.MinCover.Lower.AdequateCement; 
             } 
             CASE 1 :  { //uper
                 ds1 →INI400_014979= DesignDefaults.ReinfLong.Layers[2].ds; 
@@ -77,6 +79,7 @@
                 XD →INI400_014997= DesignDefaults.MinCover.Upper.XD; 
                 XS →INI400_014999= DesignDefaults.MinCover.Upper.XS; 
                 XM →INI400_015002= DesignDefaults.MinCover.Upper.XM; 
+                AdequateCement →KRS116_000002= DesignDefaults.MinCover.Upper.AdequateCement; 
             } 
         } 
         
@@ -100,6 +103,7 @@
         "XD", XD, 
         "XS", XS, 
         "XM", XM, 
+        "AdequateCement", AdequateCement, 
         "NormalReinf", true, //TODO
         "k2_user", 0, //TODO
         "BundledType", null, 
@@ -113,7 +117,9 @@
         "b", null, 
         "UnevenSurf", null, 
         "Unevenness", null, 
-        "Deviation", null
+        "Deviation", null, 
+        "StainlessSteel", false, 
+        "AddProtection", false
         ); 
     } 
 } 
@@ -1754,6 +1760,22 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
     </VisualComponents>
     <Images />

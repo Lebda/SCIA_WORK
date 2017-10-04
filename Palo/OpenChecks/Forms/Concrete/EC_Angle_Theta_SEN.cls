@@ -66,6 +66,7 @@ object Output →INI400_013875= new Structure();
 →INI400_013884Input.Add("CssID", CssID); 
 →INI400_013885Input.Add("Coeff_d", Coeff↓d←); 
 →VAL316_000002Input.Add("Coeff_z", IO.Setup.Concrete.Solver.General.Coeffz); 
+→KRS116_000001Input.Add("Coeff_com", IO.Setup.Concrete.Solver.General.Coeffcom); 
 →INI400_013886Input.Add("TypeMethod", TypeMethod); 
 →INI400_013887Input.Add("t_ef_inp", t↓ef.inp←); 
 →INI400_013888Input.Add("A_k_inp", A↓k.inp←); 
@@ -906,6 +907,14 @@ IF(IO.IsDrawing) {
       <VC ID="INI400_013900">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

@@ -25,7 +25,7 @@
     →INI400_016098object ShiftedForces; 
     →PAI006_000009object DesignDefaults; 
     →INI400_016089bool isAccidentalCombi; 
-    
+    →RLF098_000024bool Imperialunit; 
     →INI400_016144bool bReducedForcesArray; 
     →INI400_016145bool bSameForcesForSameDir; 
     
@@ -80,7 +80,6 @@ void LoadExterns() {
     FUNCT_2D_DEFAULTS →INI400_015103= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_IBC\Functions\ACI_Functions2D_DesignDefaults.clc"); 
     FORCES_2D_RECALC →INI400_002727= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_IBC\ACI_Concrete_Forces2D.CLC"); 
 } 
-
 //@Initializes results
 void InitResults() { 
     n↓x← →INI400_015968= 0; //fem forces
@@ -154,8 +153,18 @@ void ReadSetupFromIO() {
     MemberType →INI400_016078= IO.MemberData.ConcreteIBC.MemberType2D; 
     h →INI400_016079= IO.Point.H; 
     
+    IF(COMPARE(MOD(10^6*h, 3175), 0, 2) == 0) { 
+        Imperialunit →RLF098_000044= true; 
+    } ELSE { 
+        Imperialunit →RLF098_000045= false; 
+    } 
+    
+    →UNK006_000003object Designdefaultinput →UNK006_000006= new Structure(); 
+    →RLF098_000023Designdefaultinput.Add("MemberType", MemberType); 
+    →RLF098_000015Designdefaultinput.Add("Imperialunit", Imperialunit); 
+    
     //object ResultPlaceType →INI400_015093= ResultType.Member; 
-    DesignDefaults →INI400_015089= FUNCT_2D_DEFAULTS.GetDesignDefaults(MemberType); 
+    DesignDefaults →INI400_015089= FUNCT_2D_DEFAULTS.GetDesignDefaults(→RLF098_000025Designdefaultinput); 
     //DesignCover →INI400_015090= FUNCT_2D_COVER.GetConcreteCover(IO.Point.Material.EC, DesignDefaults, ResultPlaceType); 
 } 
 
@@ -189,6 +198,7 @@ object GetRecalcForcesInputs() {
     →INI400_016065ForcesInputs.Add("MemberType", MemberType); 
     //→INI400_016066ForcesInputs.Add("b", 1); 
     →INI400_016067ForcesInputs.Add("h", h); 
+    →RLF098_000046ForcesInputs.Add("Imperialunit", Imperialunit); 
     →INI400_016068ForcesInputs.Add("CombiKey", CombiKey); 
     →INI400_016069ForcesInputs.Add("CombiID", CombiID); 
     →INI400_016070ForcesInputs.Add("InternalForces", InternalForces); 
@@ -213,6 +223,7 @@ object GetRecalcForcesInputs() {
 →INI400_016099ReadLoadFromIO(); 
 
 
+
 IF(InternalForces == null || !InternalForces.IsCritical) { 
     Exit(); 
 } 
@@ -221,11 +232,11 @@ ForcesInputs →INI400_008037= GetRecalcForcesInputs();
 ForcesResults →PAI006_000011= new Structure(); 
 
 IF(IO.IsDrawing) { 
-    →INI400_015097FUNCT_2D.DrawHeaderForSEN(); 
-    →PAI006_000014PAGEBREAK(); 
-    →INI400_009904FORCES_2D_RECALC.Draw(ForcesInputs, ForcesResults, IO.LayoutIndex+1); 
+    →RLF098_000033FUNCT_2D.DrawHeaderForSEN(Imperialunit); 
+    →RLF098_000034PAGEBREAK(); 
+    →RLF098_000035FORCES_2D_RECALC.Draw(ForcesInputs, ForcesResults, IO.LayoutIndex+1); 
 } ELSE { 
-    →INI400_009905FORCES_2D_RECALC.Calculate(ForcesInputs, ForcesResults); 
+    →RLF098_000036FORCES_2D_RECALC.Calculate(ForcesInputs, ForcesResults); 
 } 
 
 →INI400_016143SetResults(ForcesResults); 
@@ -256,6 +267,12 @@ IF(IO.IsDrawing) {
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
+      <Variable Modifier="Public" Name="BasicForces" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_BasicForces">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="bReducedForcesArray" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
@@ -282,6 +299,12 @@ IF(IO.IsDrawing) {
       </Variable>
       <Variable Modifier="Public" Name="DATA_FROM_SEN" ESA_ID="" Type="Object">
         <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="Designdefaultinput" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_Designdefaultinput">
           <ENU>
           </ENU>
         </Description>
@@ -340,12 +363,18 @@ IF(IO.IsDrawing) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Precision="5">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
+      </Variable>
+      <Variable Modifier="Public" Name="Imperialunit" ESA_ID="" Type="Boolean">
+        <Description TranslateID="VARIABLE_Imperialunit">
+          <ENU>
+          </ENU>
+        </Description>
       </Variable>
       <Variable Modifier="Public" Name="InternalForces" ESA_ID="" Type="Object">
         <Description>
@@ -355,6 +384,12 @@ IF(IO.IsDrawing) {
       </Variable>
       <Variable Modifier="Public" Name="isAccidentalCombi" ESA_ID="" Type="Boolean">
         <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="Load" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_Load">
           <ENU>
           </ENU>
         </Description>
@@ -542,6 +577,12 @@ IF(IO.IsDrawing) {
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
+      <Variable Modifier="Public" Name="RecalcForces" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_RecalcForces">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="ShiftedForces" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -623,22 +664,6 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009904">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_009905">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_010009">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -674,14 +699,6 @@ IF(IO.IsDrawing) {
       <VC ID="INI400_015089">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_015097">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1271,7 +1288,95 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI006_000014">
+      <VC ID="RLF098_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000015">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000023">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000033">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000034">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000035">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000036">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000044">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000045">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000046">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="UNK006_000006">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1284,7 +1389,7 @@ IF(IO.IsDrawing) {
   </Calculation>
   <Dialog>
     <Main Width="400">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="Q:\TEMP\Esa_Model_Data\Member2D.8" MemberID="" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="C:\Users\rlotfi\ESA17.0\Temp\Esa_Model_Data\Member2D.1" MemberID="Member2D.1" SectionID="0" CombiID="0" />
     </Main>
     <MemberData Width="400" />
     <Setup Width="400" />

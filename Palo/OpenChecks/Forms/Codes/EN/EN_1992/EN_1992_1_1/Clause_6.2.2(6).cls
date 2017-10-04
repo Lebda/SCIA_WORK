@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="cd484ca9-cb06-41bc-a739-8272e80dbeee">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">bool ValidateInput(object Input) { 
+    <SourceCode Collapsed="36" BreakPoints="">bool ValidateInput(object Input) { 
     α↓cc← →INI400_005255= Input.Get("α_cc"); //the coefficient taking account of long term effects on the compressive strength
     f↓ck← →INI400_000107= Input.Get("f_ck"); //Characteristic compressive cylinder strength
     Type →INI400_005256= Input.Get("Type"); //Type of ν; 0 - For shear force, 1 - For torsion check according 6.3.2(4), 2 - For shear check in joint according 6.2.5
@@ -101,6 +101,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     //    CASE "SIG": { } 
     //    CASE "STN": { } 
     //    CASE "SIST": { } 
+    //    CASE "UNE": { } 
     //    CASE "SS": { } 
     DEFAULT :  { 
         ν →INI400_005246= 0.6*[1-(CUnit(f↓ck←, "MPa")/250)] @REF("(6.6N)"); 

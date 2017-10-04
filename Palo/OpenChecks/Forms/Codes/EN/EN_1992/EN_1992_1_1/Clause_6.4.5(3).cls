@@ -51,6 +51,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     } 
     //    CASE "STN": { } 
     //    CASE "SIST" :  { } 
+    //    CASE "UNE" :  { } 
     CASE "SS" :  { 
         v↓Rd,max← →INI400_005259= MIN(0.5*ν*f↓cd←, 1.6*v↓rd,c←*(u↓1←/u↓0←)); 
     } 

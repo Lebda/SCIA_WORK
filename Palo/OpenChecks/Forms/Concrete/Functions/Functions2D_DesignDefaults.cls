@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="8489d14c-2e61-4aa0-b166-b755ba178cf2">
   <CodeEditor>
-    <SourceCode Collapsed="1|38|54|165|179|201|215|235|255|262|373|387|413|426|446|454|470|481|492|503|514|529|541|573|607|617|627|635|643|666|694|702|717|750|754|771|781|791|818|822|838|846|856|868|878" BreakPoints="">→INI400_015411BLOCK("@RESOURCES") { 
+    <SourceCode Collapsed="1|22|38|54|176|190|212|226|254|282|289|402|416|442|455|483|491|507|518|529|540|551|566|578|646|656|666|674|682|705|733|741|756|789|793|810|820|831|858|862|878|886|897|909" BreakPoints="">→INI400_015411BLOCK("@RESOURCES") { 
     private void InitStrings() { 
         sPrincipal →INI400_015324= TR("principal"); 
         sSecondary →INI400_015325= TR("secondary"); 
@@ -59,6 +59,15 @@ private object GetPlateLongReinfDesignDefaults() {
     IF(IO.ContainsPath("MemberData.Concrete.Defaults.PlateShell.Longitudinal")) { 
         
         object ReinfMat →INI400_015323= IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Material; 
+        
+        double f↓yd← →INI400_012888= 0; 
+        double f↓yk← →INI400_012839= ReinfMat.EC.fyk; 
+        object clauseObjects →INI400_012842= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\ClauseNAObjects.clc"); 
+        bool bAccidental →KRS116_000009= False; //TODO : isAccidentalCombi = False
+        double γ↓S← →INI400_012844= clauseObjects.GetClause2xxCoeffs().GetGamas(bAccidental).γ_S; 
+        double f↓yd← →INI400_014011= f↓yk←/γ↓S←; 
+        →KRS116_000008ReinfMat.EC.Set("fyd", f↓yd←); 
+        
         object[] Layers →INI400_015010= new object[]; 
         object ProvReinf →PAI116_000028= IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.PlateShellPlate.BasicReinf; 
         bool UseBasicReinf →PAI116_000059= (IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.UseBasicReinf == 1); 
@@ -93,12 +102,13 @@ private object GetPlateLongReinfDesignDefaults() {
                         "As", AddReinf.Area); 
                         Add_ID →PAI116_000050= Add_ID+1; 
                         →PAI116_000053Layers[i].Set("Additional", AddReinfArr); 
+                        →PAI106_000001Layers[i].Set("ds", AddReinf.Diam); 
                         
                     } 
                     ELSE { 
                         →PAI116_000054Layers[i].Set("Additional", null); 
+                        →PAI116_000061Layers[i].Set("ds", BasicReinf.Diam); 
                     } 
-                    →PAI116_000061Layers[i].Set("ds", AddReinf.Diam); 
                 } 
                 ELSE { 
                     double Add_ID →PAI116_000035= 0; 
@@ -120,6 +130,7 @@ private object GetPlateLongReinfDesignDefaults() {
                     } 
                     ELSE { 
                         →PAI116_000056Layers[i].Set("Additional", null); 
+                        →PAI106_000002Layers[i].Set("ds", BasicReinf.Diam); 
                     } 
                 } 
             } 
@@ -218,6 +229,13 @@ private object GetPlateDetailingShearDefaults() {
 
 private object GetPlateCoverDataForUpperSurf() { 
     IF(IO.ContainsPath("MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack")) { 
+        object Functions_NA →KRS116_000016= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EC_NA_1992_1_1_Functions.CLC"); 
+        double XD →KRS116_000017= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Chlorides; 
+        double XS →KRS116_000018= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.ChloridesSea; 
+        double XF →KRS116_000019= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.FreezeThaw; 
+        double XA →KRS116_000020= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Chemical; 
+        double CemType →KRS116_000021= IO.Point.Material.EC.CementType; 
+        
         return new Structure(
         "SurfaceType", IO.MemberData.Concrete.Solver.General.MinCover.Upper.SurfaceType, 
         "QualityControl", IO.MemberData.Concrete.Solver.General.MinCover.Upper.SpecialControl.Quality, 
@@ -225,10 +243,11 @@ private object GetPlateCoverDataForUpperSurf() {
         "ConcreteType", IO.MemberData.Concrete.Solver.General.MinCover.Upper.ConChars.TypeOfConcrete, 
         "XM", IO.MemberData.Concrete.Solver.General.MinCover.Upper.AbrasionAttack, 
         "XC", IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Carbonation, 
-        "XF", IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.FreezeThaw, 
-        "XD", IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Chlorides, 
-        "XS", IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.ChloridesSea, 
-        "XA", IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Chemical
+        "XF", XF, 
+        "XD", XD, 
+        "XS", XS, 
+        "XA", XA, 
+        "AdequateCement", Functions_NA.AdequateCementDecision(XD, XS, XF, XA, CemType)
         ); 
     } 
     ELSE { 
@@ -238,6 +257,13 @@ private object GetPlateCoverDataForUpperSurf() {
 
 private object GetPlateCoverDataForLowerSurf() { 
     IF(IO.ContainsPath("MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack")) { 
+        object Functions_NA →KRS116_000022= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EC_NA_1992_1_1_Functions.CLC"); 
+        double XD →KRS116_000023= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Chlorides; 
+        double XS →KRS116_000024= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.ChloridesSea; 
+        double XF →KRS116_000025= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.FreezeThaw; 
+        double XA →KRS116_000026= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Chemical; 
+        double CemType →KRS116_000027= IO.Point.Material.EC.CementType; 
+        
         return new Structure(
         "SurfaceType", IO.MemberData.Concrete.Solver.General.MinCover.Lower.SurfaceType, 
         "QualityControl", IO.MemberData.Concrete.Solver.General.MinCover.Lower.SpecialControl.Quality, 
@@ -245,10 +271,11 @@ private object GetPlateCoverDataForLowerSurf() {
         "ConcreteType", IO.MemberData.Concrete.Solver.General.MinCover.Lower.ConChars.TypeOfConcrete, 
         "XM", IO.MemberData.Concrete.Solver.General.MinCover.Lower.AbrasionAttack, 
         "XC", IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Carbonation, 
-        "XF", IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.FreezeThaw, 
-        "XD", IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Chlorides, 
-        "XS", IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.ChloridesSea, 
-        "XA", IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Chemical
+        "XF", XF, 
+        "XD", XD, 
+        "XS", XS, 
+        "XA", XA, 
+        "AdequateCement", Functions_NA.AdequateCementDecision(XD, XS, XF, XA, CemType)
         ); 
     } 
     ELSE { 
@@ -301,12 +328,13 @@ private object GetWallLongReinfDesignDefaults() {
                         "As", AddReinf.Area); 
                         Add_ID →PAI116_000083= Add_ID+1; 
                         →PAI116_000084Layers[i].Set("Additional", AddReinfArr); 
+                        →PAI106_000003Layers[i].Set("ds", AddReinf.Diam); 
                         
                     } 
                     ELSE { 
                         →PAI116_000085Layers[i].Set("Additional", null); 
+                        →PAI106_000004Layers[i].Set("ds", BasicReinf.Diam); 
                     } 
-                    →PAI116_000086Layers[i].Set("ds", AddReinf.Diam); 
                 } 
                 ELSE { 
                     double Add_ID →PAI116_000087= 0; 
@@ -328,6 +356,7 @@ private object GetWallLongReinfDesignDefaults() {
                     } 
                     ELSE { 
                         →PAI116_000094Layers[i].Set("Additional", null); 
+                        →PAI116_000086Layers[i].Set("ds", BasicReinf.Diam); 
                     } 
                 } 
             } 
@@ -429,6 +458,13 @@ private object GetWallDetailingShearDefaults() {
 
 private object GetWallCoverDataForMain() { 
     IF(IO.ContainsPath("MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack")) { 
+        object Functions_NA →KRS116_000028= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EC_NA_1992_1_1_Functions.CLC"); 
+        double XD →KRS116_000029= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Chlorides; 
+        double XS →KRS116_000030= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.ChloridesSea; 
+        double XF →KRS116_000031= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.FreezeThaw; 
+        double XA →KRS116_000032= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Chemical; 
+        double CemType →KRS116_000033= IO.Point.Material.EC.CementType; 
+        
         return new Structure(
         "SurfaceType", IO.MemberData.Concrete.Solver.General.MinCover.Main.SurfaceType, 
         "QualityControl", IO.MemberData.Concrete.Solver.General.MinCover.Main.SpecialControl.Quality, 
@@ -436,10 +472,11 @@ private object GetWallCoverDataForMain() {
         "ConcreteType", IO.MemberData.Concrete.Solver.General.MinCover.Main.ConChars.TypeOfConcrete, 
         "XM", IO.MemberData.Concrete.Solver.General.MinCover.Main.AbrasionAttack, 
         "XC", IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Carbonation, 
-        "XF", IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.FreezeThaw, 
-        "XD", IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Chlorides, 
-        "XS", IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.ChloridesSea, 
-        "XA", IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Chemical
+        "XF", XF, 
+        "XD", XD, 
+        "XS", XS, 
+        "XA", XA, 
+        "AdequateCement", Functions_NA.AdequateCementDecision(XD, XS, XF, XA, CemType)
         ); 
     } 
     ELSE { 
@@ -574,6 +611,7 @@ private object GetIncreasingCoeff(double MemberType) {
             return IncreasingStatReinf; } 
     } 
 } 
+
 private object GetSolverDefaults(double MemberType) { 
     IF(IO.ContainsPath("Setup.Concrete.Solver") &amp;&amp; IO.ContainsPath("MemberData.Concrete.Solver.General")) { 
         
@@ -586,8 +624,10 @@ private object GetSolverDefaults(double MemberType) {
         "CompressZoneDepthType", 2, // 1- from design area in inputted directions, 2 - x calculated in direction in which value z is calculated
         "AddTensForceMethod", IO.MemberData.Concrete.Solver.IntForces.ULS.UseShifting, 
         "DesignReqReinfMethod", 1, //1-symplified formula
+        "Coeff_Redfcd", IO.Setup.Concrete.Solver.DesignAs.ReductionStrengthOfConcrete, 
         "Coeff_d", IO.Setup.Concrete.Solver.General.Coeffd, 
         "Coeff_z", IO.Setup.Concrete.Solver.General.Coeffz, 
+        "Coeff_com", IO.Setup.Concrete.Solver.General.Coeffcom, 
         "bAuto_θ", (IO.MemberData.Concrete.Solver.Shear.Typeθ == 0), 
         "θ↓inp←", IO.MemberData.Concrete.Solver.Shear.θ*(180/Math.PI), 
         "LimCheck", IO.Setup.Concrete.Solver.General.LimCheck, 
@@ -788,7 +828,8 @@ private object GetPlateCoverSurfaceDataForUT() {
     "QualityControl", 0, 
     "GeometricControl", 0, 
     "ConcreteType", 0, 
-    "XM", 0, "XC", 3, "XF", 0, "XD", 0, "XS", 0, "XA", 0
+    "XM", 0, "XC", 3, "XF", 0, "XD", 0, "XS", 0, "XA", 0, 
+    "AdequateCement", false
     ); 
 } 
 
@@ -853,7 +894,8 @@ private object GetWallCoverSurfaceDataForUT() {
     "QualityControl", 0, 
     "GeometricControl", 0, 
     "ConcreteType", 0, 
-    "XM", 0, "XC", 3, "XF", 0, "XD", 0, "XS", 0, "XA", 0
+    "XM", 0, "XC", 3, "XF", 0, "XD", 0, "XS", 0, "XA", 0, 
+    "AdequateCement", false
     ); 
 } 
 
@@ -875,7 +917,8 @@ object GetMinCoverGeneralDefaultsForUT() {
     "DesignWorkingLife", 50, 
     "DifferentSurfaces", 0, 
     "ConstructionClass", 0, 
-    "StructuralClass", "S4"
+    "StructuralClass", "S4", 
+    "AdequateCement", false
     ); 
 } 
 
@@ -888,9 +931,11 @@ object GetSolverDefaultsForUT() {
     "StrutOptimMethod", 0, //0-minimal force in concrete strut
     "CompressZoneDepthType", 2, // 1- from design area in inputted directions, 2 - x calculated in direction in which value z is calculated
     "AddTensForceMethod", 1, //1-shifting rule
-    "DesignReqReinfMethod", 1, //1-symplified formula    
+    "DesignReqReinfMethod", 1, //1-symplified formula
+    "Coeff_Redfcd", 1.0, 
     "Coeff_d", 0.9, 
     "Coeff_z", 0.9, 
+    "Coeff_com", 0.1, 
     "bAuto_θ", False, 
     "θ↓inp←", 40, 
     "LimCheck", 1, 
@@ -1179,6 +1224,46 @@ object DesignDefaults →PAI116_000002= →PAI116_000001GetDesignDefaults(32);
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_012839">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_012842">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_012844">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_012888">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_014011">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_015010">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -2092,6 +2177,198 @@ object DesignDefaults →PAI116_000002= →PAI116_000001GetDesignDefaults(32);
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS116_000008">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000009">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000016">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000017">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000018">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000019">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000020">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000021">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000022">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000023">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000024">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000025">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000026">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000027">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000028">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000029">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000030">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000031">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000032">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000033">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI106_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI106_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI106_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI106_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="PAI116_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2644,7 +2921,7 @@ object DesignDefaults →PAI116_000002= →PAI116_000001GetDesignDefaults(32);
           </Items>
         </Data>
       </TCustomLibrary>
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="4|4|4|4" MinSize="465|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.8|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Member2D.1" SectionID="-1" CombiID="-1" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="4|4|4|4" MinSize="465|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.8|0|3" Active="1" PreDef="0" MemberDirectory="F:\_EXAMPLE\emd\concrete_2d_red_fcd\Member2D.1" MemberID="Member2D.1" SectionID="0" CombiID="0" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="484e5486-2e4e-4aa0-9197-71b7c1b6bd0a">
   <CodeEditor>
-    <SourceCode Collapsed="175|345|368" BreakPoints="">
+    <SourceCode Collapsed="" BreakPoints="">
 
 //------------------------------------------------------------
 //@VARIABLES
@@ -443,7 +443,8 @@ private void SetRecalcForcesPOD() {
         //    } 
         CASE 2 :  { //formulas for design
             →PAI116_000048BLOCK { 
-                object ConMat →INI400_016351= CREATE_CS_COMMON.GetModifiedMaterial(IO.CS.Component.Material); //TODO
+                object mat →PAR001_000001= IO.Point.Material; 
+                object ConMat →INI400_016351= CREATE_CS_COMMON.GetModifiedMaterial(mat); 
                 object ReqReinfMat →INI400_015695= FUNCT_DESIGN_REQ.GetReqReinfMat(); 
                 
                 double γ↓S← →INI400_015636= CLAUSE_NA.GetClause2xxCoeffs().GetGamas(isAccidentalCombi).γ_S; 
@@ -477,12 +478,12 @@ private void SetRecalcForcesPOD() {
                 
                 →INI400_016374double&lt;mm,0&gt; x; 
                 IF(n↓z← &lt; n↓c,bal←) { 
-                    →INI400_015689TEXT("n↓z← =" &amp; Val(n↓z←/1000, 2) &amp; "kN/m &lt; n↓c,bal← =" &amp; Val(n↓c,bal←/1000, 2) &amp; "kN/m =&gt;"); 
+                    →INI400_015689TEXT("n↓z← = " &amp; Val(n↓z←/1000, 2) &amp; " kN/m &lt; n↓c,bal← = " &amp; Val(n↓c,bal←/1000, 2) &amp; " kN/m =&gt;"); 
                     →INI400_015693TEXT("predominant compression"); 
                     x →INI400_015661= ((h-d↓+←)/(2*β))*(1+SQRT(1-4*β*((ABS(m↓z←)+n↓z←*(d↓+←-0.5*h))/(b*(h-d↓+←)↑2←*η*f↓cd←)))); 
                     //                x →INI400_015662= (h-d↓+←)*(1+SQRT(1-4*β*(ABS(m↓z←)+n↓z←*(d↓+←-0.5*h))/(b*(h-d↓+←)↑2←*η*f↓cd←)))/(2*β); 
                 } ELSE { 
-                    →INI400_015690TEXT("n↓z← =" &amp; Val(n↓z←/1000, 2) &amp; "kN/m &gt; n↓c,bal← =" &amp; Val(n↓c,bal←/1000, 2) &amp; "kN/m =&gt;"); 
+                    →INI400_015690TEXT("n↓z← = " &amp; Val(n↓z←/1000, 2) &amp; " kN/m &gt; n↓c,bal← = " &amp; Val(n↓c,bal←/1000, 2) &amp; " kN/m =&gt;"); 
                     →INI400_015694TEXT("predominant tension"); 
                     IF(SQRT(1-4*β*((ABS(m↓z←)-n↓z←*(d↓-←-0.5*h))/(b*(d↓-←)↑2←*η*f↓cd←))) &gt;= 0) { 
                         x →INI400_015663= ((d↓-←)/(2*β))*(1-SQRT(1-4*β*((ABS(m↓z←)-n↓z←*(d↓-←-0.5*h))/(b*(d↓-←)↑2←*η*f↓cd←)))); 
@@ -496,7 +497,19 @@ private void SetRecalcForcesPOD() {
                 →INI400_016376double&lt;mm,0&gt; z↓+←; 
                 →INI400_016377double&lt;mm,0&gt; z↓-←; 
                 IF(x &gt;= h || x &lt;= 0) { //TODO : co nastavit za x
-                    z →INI400_015677= DesignDefaults.Solver.Coeff_z*d; 
+                    IF(x &gt;= h) { 
+                        →VAL106_000001TEXT("x = " &amp; Val(x*1000, 2) &amp; " mm &gt; h = " &amp; Val(h*1000, 2) &amp; " mm =&gt;"); 
+                        →KRS196_000002TEXT("member in compression and value z is calculated by simplified formula"); 
+                        →KRS196_000003TEXT("z = " &amp; 'Coeff↓z←*d'); 
+                    } 
+                    IF(x &lt; 0) { 
+                        →VAL106_000003TEXT("x = " &amp; Val(x*1000, 2) &amp; " mm &lt; 0 =&gt; "); 
+                        →KRS196_000004TEXT("member in tension and value z is calculated by simplified formula"); 
+                        →KRS196_000005TEXT("z = " &amp; 'Coeff↓z←*d'); 
+                    } 
+                    
+                    double Coeff↓z← →VAL106_000002= DesignDefaults.Solver.Coeff_z; 
+                    z →KRS196_000001= Coeff↓z←*d; 
                     z↓-← →INI400_015679= 0.5*z; 
                     z↓+← →INI400_015680= 0.5*z; 
                 } ELSE { 
@@ -669,7 +682,7 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="BasicForcesList" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_BasicForcesList">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -687,14 +700,14 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="c↓+←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_c↓+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="c↓-←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_c↓-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -719,7 +732,7 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="ConMat" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_ConMat">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -751,21 +764,21 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="d↓-←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_d↓-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="d↓s+←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_d↓s+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="d↓s-←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_d↓s-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -784,34 +797,34 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="DesignReinfData" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_DesignReinfData">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="E↓s←" ESA_ID="" Type="Double" Precision="0">
-        <Description TranslateID="VARIABLE_E↓s←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓cd←" ESA_ID="" Type="Double" Precision="-2">
-        <Description TranslateID="VARIABLE_f↓cd←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ck←" ESA_ID="" Type="Double" Precision="0">
-        <Description TranslateID="VARIABLE_f↓ck←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓yk←" ESA_ID="" Type="Double" Precision="0">
-        <Description TranslateID="VARIABLE_f↓yk←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -899,7 +912,7 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="m↓z←" ESA_ID="" Type="Double" Precision="-1">
-        <Description TranslateID="VARIABLE_m↓z←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -913,39 +926,39 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="n↓c,bal←" ESA_ID="" Type="Double" Precision="0">
-        <Description TranslateID="VARIABLE_n↓c,bal←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
       <Variable Modifier="Public" Name="n↓z←" ESA_ID="" Type="Double" Precision="-1">
-        <Description TranslateID="VARIABLE_n↓z←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
       <Variable Modifier="Public" Name="obEWN" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_obEWN">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="PrincipalMoment" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_PrincipalMoment">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="PrincipalStressLow" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_PrincipalStressLow">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="PrincipalStressUpp" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_PrincipalStressUpp">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -1001,7 +1014,7 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="ReqReinfMat" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_ReqReinfMat">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -1020,60 +1033,60 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="TCombiKey" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_TCombiKey">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="TForce" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_TForce">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="UsingCover" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_UsingCover">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="x" ESA_ID="" Type="Double" Precision="0">
-        <Description TranslateID="VARIABLE_x">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="z" ESA_ID="" Type="Double" Precision="0">
-        <Description TranslateID="VARIABLE_z">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="z↓+←" ESA_ID="" Type="Double" Precision="0">
-        <Description TranslateID="VARIABLE_z↓+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="z↓-←" ESA_ID="" Type="Double" Precision="0">
-        <Description TranslateID="VARIABLE_z↓-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="α↓cal←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_α↓cal←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="α↓cc←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_α↓cc←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -1108,161 +1121,161 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="α↓z+←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_α↓z+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="α↓z←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_α↓z←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="α↓z-←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_α↓z-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="β" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_β">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="γ↓C←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_γ↓C←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="γ↓S←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_γ↓S←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ε↓c2←" ESA_ID="" Type="Double" Precision="-4">
-        <Description TranslateID="VARIABLE_ε↓c2←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ε↓cu2←" ESA_ID="" Type="Double" Precision="-4">
-        <Description TranslateID="VARIABLE_ε↓cu2←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="η" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_η">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="λ" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_λ">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ξ↓bal←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_ξ↓bal←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓+←" ESA_ID="" Type="Double" Precision="-2">
-        <Description TranslateID="VARIABLE_σ↓+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓-←" ESA_ID="" Type="Double" Precision="-2">
-        <Description TranslateID="VARIABLE_σ↓-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓I+←" ESA_ID="" Type="Double" Precision="-2">
-        <Description TranslateID="VARIABLE_σ↓I+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓I-←" ESA_ID="" Type="Double" Precision="-2">
-        <Description TranslateID="VARIABLE_σ↓I-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓II+←" ESA_ID="" Type="Double" Precision="-2">
-        <Description TranslateID="VARIABLE_σ↓II+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓II-←" ESA_ID="" Type="Double" Precision="-2">
-        <Description TranslateID="VARIABLE_σ↓II-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓x+←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_σ↓x+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓x-←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_σ↓x-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓xy+←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_σ↓xy+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓xy-←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_σ↓xy-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓y+←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_σ↓y+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓y-←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_σ↓y-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -2073,14 +2086,6 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015677">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_015679">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="376" Y="961" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -2857,6 +2862,46 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS196_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS196_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS196_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS196_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS196_000005">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="PAI116_000008">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2925,6 +2970,38 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAR001_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Remark" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3960,10 +4037,10 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
       <ENU>"Inner lever arm estimation"</ENU>
     </Item>
     <Item ID="TEXT_INI400_015689">
-      <ENU>"n↓z← =" &amp; Val(n↓z←/1000, 2) &amp; "kN/m &lt; n↓c,bal← =" &amp; Val(n↓c,bal←/1000, 2) &amp; "kN/m =&gt;"</ENU>
+      <ENU>"n↓z← = " &amp; Val(n↓z←/1000, 2) &amp; " kN/m &lt; n↓c,bal← = " &amp; Val(n↓c,bal←/1000, 2) &amp; " kN/m =&gt;"</ENU>
     </Item>
     <Item ID="TEXT_INI400_015690">
-      <ENU>"n↓z← =" &amp; Val(n↓z←/1000, 2) &amp; "kN/m &gt; n↓c,bal← =" &amp; Val(n↓c,bal←/1000, 2) &amp; "kN/m =&gt;"</ENU>
+      <ENU>"n↓z← = " &amp; Val(n↓z←/1000, 2) &amp; " kN/m &gt; n↓c,bal← = " &amp; Val(n↓c,bal←/1000, 2) &amp; " kN/m =&gt;"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_015693">
       <ENU>"predominant compression"</ENU>
@@ -4009,6 +4086,24 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
     </Item>
     <Item TranslateID="TEXT_INI400_016324">
       <ENU>"Shear resultant direction (angles from x axis of LCS of 2D element):"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS196_000002">
+      <ENU>"member in compression and value z is calculated by simplified formula"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS196_000003">
+      <ENU>"z = " &amp; 'Coeff↓z←*d'</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS196_000004">
+      <ENU>"member in tension and value z is calculated by simplified formula"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS196_000005">
+      <ENU>"z = " &amp; 'Coeff↓z←*d'</ENU>
+    </Item>
+    <Item ID="TEXT_VAL106_000001">
+      <ENU>"x = " &amp; Val(x*1000, 2) &amp; " mm &gt; h = " &amp; Val(h*1000, 2) &amp; " mm =&gt;"</ENU>
+    </Item>
+    <Item ID="TEXT_VAL106_000003">
+      <ENU>"x = " &amp; Val(x*1000, 2) &amp; " mm &lt; 0 =&gt; "</ENU>
     </Item>
   </Texts>
 </Root>

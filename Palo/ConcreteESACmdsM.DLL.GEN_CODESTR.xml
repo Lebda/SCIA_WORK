@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="119"><StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_memberdataconcrete_2d}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="126"><StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_memberdataconcrete_2d}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
 		<ResourceId>110</ResourceId>
 	</StringCode>
@@ -18,6 +18,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_memberdataconcrete}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
 		<ResourceId>106</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_sfrc_2d_shear_check}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32889</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_checkcapacitydiagram}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
@@ -42,6 +46,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_allowable_stress_tendon}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
 		<ResourceId>29002</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_sfrc_2d_capacity_check}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32888</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_reinforcement_check}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
@@ -183,6 +191,10 @@
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
 		<ResourceId>29023</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_sfrc_2d_crack_width}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32890</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_stress_limitation}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
 		<ResourceId>32857</ResourceId>
@@ -214,6 +226,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eijp_presentationofinternalforces}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
 		<ResourceId>30126</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_sfrc_2d_internal_focrces}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32886</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_nbr_2d_reinforcement_design_sls}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
@@ -263,6 +279,10 @@
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
 		<ResourceId>125</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_sfrc_2d_dosage_design}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32887</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eijp_member_design_2d}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
 		<ResourceId>32827</ResourceId>
@@ -310,6 +330,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_fireresistance_inputs}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
 		<ResourceId>29013</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_sfrc_2d_stress_limitation}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32891</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_detailing_provision}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
@@ -466,6 +490,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_codedependenddeflection_resultshell}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
 		<ResourceId>32883</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_sfrc_2d}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32885</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_ibc_internal_forces}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>

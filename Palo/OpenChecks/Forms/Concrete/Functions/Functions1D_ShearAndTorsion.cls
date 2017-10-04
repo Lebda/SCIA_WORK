@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="cbb109a2-e905-4e52-a85c-1b7b55293e63">
   <CodeEditor>
-    <SourceCode Collapsed="1|129|169|204|247|276|300|449|460|465|479|561|563|580|581|685|694|695|770" BreakPoints="">→VAL316_048335BLOCK("Function for width of cross-section for shear") { 
+    <SourceCode Collapsed="1|129|169|204|247|276|300|449|460|465|479|563|581|686|695|696|719|750|771|789" BreakPoints="">→VAL316_048335BLOCK("Function for width of cross-section for shear") { 
     object Function_bw(double CssID, double ForcesID, double Type) { 
         object Results →VAL316_015424= ReadResults(ResultType.Combi); 
         
@@ -592,6 +592,7 @@
         double cotθ↓min← →VAL316_048502= COTG(OutputCalcTheta.θ_min); 
         double cotθ↓max← →VAL316_048503= COTG(OutputCalcTheta.θ_max); 
         →INI400_008074TEXT("- minimum value:"); 
+        →KRS116_000026DrawThetaMinForCSN(InputCalcTheta.N_Ed, InputCalcTheta.Coeff_com, InputCalcTheta.A_c, InputCalcTheta.f_cd); 
         →INI400_008075TEXT("θ↓min← = " &amp; OutputCalcTheta.θ_min &amp; "° =&gt; cot(θ↓min←) = " &amp; cotθ↓min←) @REF("(§6.2.3(2))"); 
         →INI400_008076TEXT("- maximum value:"); 
         →INI400_008077TEXT("θ↓max← = " &amp; OutputCalcTheta.θ_max &amp; "° =&gt; cot(θ↓max←) = " &amp; cotθ↓max←) @REF("(§6.2.3(2))"); 
@@ -786,6 +787,28 @@
         } 
         return new Structure("TypeMethod", TypeMethod, "t_ef_inp", t↓ef.inp←, "A_k_inp", A↓k.inp←, "u_k_inp", u↓k.inp←); 
     } 
+} 
+
+→KRS116_000001BLOCK("Function for draw how Theta_min is calculated for ČSN") { 
+    void DrawThetaMinForCSN(double N↓Ed←, double Coeff↓com←, double A↓c←, double f↓cd←) { 
+        IF(IO.SetupNA.EC_NA.Code == "CSN") { 
+            →KRS116_000023double&lt;MPa,0&gt; f↓cd←; 
+            →KRS116_000021double&lt;kN,0&gt; N↓Ed←; 
+            double&lt;kN,2&gt; N↓lim← →KRS116_000011= Coeff↓com←*A↓c←*f↓cd←; 
+            IF(COMPARE(N↓Ed←, N↓lim←, 3) == 1) { //For bending and significant tensile force
+                →KRS116_000025TEXT("N↓Ed← &gt; N↓lim← = " &amp; N↓Ed← &amp; " &gt; " &amp; N↓lim← &amp; " ... "); 
+                →INI400_006825TEXT("member is considered as in bending with significant tension"); 
+            } ELSE { 
+                IF(COMPARE(ABS(N↓Ed←), N↓lim←, 3) == 1) { //For bending and significant compression force
+                    →KRS116_000024TEXT("N↓Ed← &gt; N↓lim← = " &amp; N↓Ed← &amp; " &gt; -" &amp; N↓lim← &amp; " ... "); 
+                    →KRS116_000018TEXT("member is considered as in bending with significant compression"); 
+                } ELSE { //For bending only 
+                    →KRS116_000019TEXT("N↓Ed← &lt; N↓lim← = " &amp; N↓Ed← &amp; " &lt; ±" &amp; N↓lim← &amp; " ... "); 
+                    →KRS116_000020TEXT("member is considered as in bending"); 
+                } 
+            } 
+        } 
+    } 
 } </SourceCode>
   </CodeEditor>
   <Calculation>
@@ -807,6 +830,7 @@
       <Style Key="None" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" />
       <Style Key="Equation" X="30" Y="194" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|2|2" />
       <Style Key="Text 2" X="30" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" />
+      <Style Key="Text 3" X="30" Y="0" Hor="4" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" />
     </Styles>
     <NormRef>
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1324,6 +1348,14 @@
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="3200" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="3200" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="3200" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_006825">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
       </VC>
       <VC ID="INI400_006966">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1976" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -3037,13 +3069,69 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL106_000001">
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      <VC ID="KRS116_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000011">
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000018">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000019">
+        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000020">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000024">
+        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000025">
+        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000026">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
       <VC ID="VAL316_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4345,6 +4433,9 @@
     <Item ID="BLOCK_INI400_008709">
       <ENU>"Class for calculation basic parametres for torsion asl, Asl and tef"</ENU>
     </Item>
+    <Item ID="BLOCK_KRS116_000001">
+      <ENU>"Function for draw how Theta_min is calculated for ČSN"</ENU>
+    </Item>
     <Item ID="BLOCK_VAL316_048316">
       <ENU>"Function for creating table of stirrups around section"</ENU>
     </Item>
@@ -4486,6 +4577,9 @@
     <Item TranslateID="TEXT_INI400_005305">
       <ENU>"Perimeter of area and area enclosed by the centre line of effective cross-section"</ENU>
     </Item>
+    <Item TranslateID="TEXT_INI400_006825">
+      <ENU>"member is considered as in bending with significant tension"</ENU>
+    </Item>
     <Item TranslateID="TEXT_INI400_007430">
       <ENU>"Effective wall thickness"</ENU>
     </Item>
@@ -4515,6 +4609,21 @@
     </Item>
     <Item TranslateID="TEXT_INI400_013950">
       <ENU>"- input/calculated value:"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000018">
+      <ENU>"member is considered as in bending with significant compression"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS116_000019">
+      <ENU>"N↓Ed← &lt; N↓lim← = " &amp; N↓Ed← &amp; " &lt; ±" &amp; N↓lim← &amp; " ... "</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000020">
+      <ENU>"member is considered as in bending"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS116_000024">
+      <ENU>"N↓Ed← &gt; N↓lim← = " &amp; N↓Ed← &amp; " &gt; -" &amp; N↓lim← &amp; " ... "</ENU>
+    </Item>
+    <Item ID="TEXT_KRS116_000025">
+      <ENU>"N↓Ed← &gt; N↓lim← = " &amp; N↓Ed← &amp; " &gt; " &amp; N↓lim← &amp; " ... "</ENU>
     </Item>
   </Texts>
 </Root>

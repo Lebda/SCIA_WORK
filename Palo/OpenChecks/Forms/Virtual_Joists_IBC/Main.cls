@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="ca35cb8b-f7ae-4a6e-8789-afa2f0d8afb6">
   <CodeEditor>
-    <SourceCode Collapsed="5|27|43|132|138|142|163|177|265" BreakPoints="">→INI400_013731BLOCK { // About
+    <SourceCode Collapsed="5|27|43|88|133|139|143|164|178|266" BreakPoints="">→INI400_013731BLOCK { // About
     // Virtual Joist Design Form 
 } 
 →GMP009_019558PAGEBREAK(); 
@@ -84,6 +84,7 @@
     →INI400_013253bool KCS; 
     →INI400_013940bool pinned; 
     →INI400_013957bool FullBraced; 
+    bool MatchVJDepth →GMP036_000001= true; 
     
     
 } 
@@ -1316,11 +1317,11 @@ IF(StringResult == 0) {
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
-      <Variable Modifier="Public" Name="A" ESA_ID="Result.2" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="A" ESA_ID="Result.2" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_A">
           <ENU>VJ Section Area</ENU>
         </Description>
-        <ResultProperties ESAColor="2" ESAStyle="3" ESAUnit="3" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
+        <ResultProperties ESAColor="2" ESAStyle="1" ESAUnit="3" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="645.16e-6" Dim="in↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="allPtLoads" ESA_ID="" Type="Object">
@@ -1328,85 +1329,85 @@ IF(StringResult == 0) {
           <ENU>All Point Loads</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="CSS" ESA_ID="" Type="String" Value="28KCS2">
+      <Variable Modifier="Public" Name="CSS" ESA_ID="" Type="String">
         <Description TranslateID="VARIABLE_CSS">
           <ENU>KCS Joist Name</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Value="711.2e-3" Precision="2">
+      <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_d">
           <ENU>Depth of VJ (from Model)</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="depth↓max←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="depth↓max←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_depth↓max←">
           <ENU>Max Depth Allowed based on Span-to-Depth Ratio</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="depth↓min←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="depth↓min←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_depth↓min←">
           <ENU>Min Depth Allowed based on Span-to-Depth Ratio</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="Designation" ESA_ID="Result.6" Type="String" Value="Unsupported Joist Material">
+      <Variable Modifier="Public" Name="Designation" ESA_ID="Result.6" Type="String">
         <Description TranslateID="VARIABLE_Designation">
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="1" Numeric="extreme" SenModif="False" LabOri="1" />
       </Variable>
-      <Variable Modifier="Public" Name="designationType" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="designationType" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_designationType">
           <ENU>Designation Type Standard (0), KCS (1), or Special (2)</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="DesignInfo_Case" ESA_ID="Result.13" Type="String" Value="CO1">
+      <Variable Modifier="Public" Name="DesignInfo_Case" ESA_ID="Result.13" Type="String">
         <Description TranslateID="VARIABLE_DesignInfo_Case">
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="extreme" SenModif="False" LabOri="1" />
       </Variable>
-      <Variable Modifier="Public" Name="DesignInfo_JoistDesignation" ESA_ID="Result.8" Type="String" Value="28K6">
+      <Variable Modifier="Public" Name="DesignInfo_JoistDesignation" ESA_ID="Result.8" Type="String">
         <Description TranslateID="VARIABLE_DesignInfo_JoistDesignation">
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="extreme" SenModif="False" LabOri="1" />
       </Variable>
-      <Variable Modifier="Public" Name="DesignInfo_MomentBegin" ESA_ID="Result.9" Type="String" Value="0 k-ft">
+      <Variable Modifier="Public" Name="DesignInfo_MomentBegin" ESA_ID="Result.9" Type="String">
         <Description TranslateID="VARIABLE_DesignInfo_MomentBegin">
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="extreme" SenModif="False" LabOri="1" />
       </Variable>
-      <Variable Modifier="Public" Name="DesignInfo_MomentEnd" ESA_ID="Result.10" Type="String" Value="0 k-ft">
+      <Variable Modifier="Public" Name="DesignInfo_MomentEnd" ESA_ID="Result.10" Type="String">
         <Description TranslateID="VARIABLE_DesignInfo_MomentEnd">
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="extreme" SenModif="False" LabOri="1" />
       </Variable>
-      <Variable Modifier="Public" Name="DesignInfo_ShearBegin" ESA_ID="Result.11" Type="String" Value="7.48 k">
+      <Variable Modifier="Public" Name="DesignInfo_ShearBegin" ESA_ID="Result.11" Type="String">
         <Description TranslateID="VARIABLE_DesignInfo_ShearBegin">
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="extreme" SenModif="False" LabOri="1" />
       </Variable>
-      <Variable Modifier="Public" Name="DesignInfo_ShearEnd" ESA_ID="Result.12" Type="String" Value="-7.48 k">
+      <Variable Modifier="Public" Name="DesignInfo_ShearEnd" ESA_ID="Result.12" Type="String">
         <Description TranslateID="VARIABLE_DesignInfo_ShearEnd">
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="extreme" SenModif="False" LabOri="1" />
       </Variable>
-      <Variable Modifier="Public" Name="DesignMethod" ESA_ID="Setup.Design" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="DesignMethod" ESA_ID="Setup.Design" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_DesignMethod">
           <ENU>Design Method (ASD or LRFD)  :</ENU>
         </Description>
@@ -1422,7 +1423,7 @@ IF(StringResult == 0) {
           <ENU>Standard Module Data</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="extreme" ESA_ID="Result.5" Type="Double" Value="75030.4" Precision="2">
+      <Variable Modifier="Public" Name="extreme" ESA_ID="Result.5" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_extreme">
           <ENU>
           </ENU>
@@ -1430,7 +1431,7 @@ IF(StringResult == 0) {
         <ResultProperties ESAColor="2" ESAStyle="3" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="100e12" DrawLimitMin="0" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="F↓y←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="F↓y←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_F↓y←">
           <ENU>Yield Strength</ENU>
         </Description>
@@ -1458,7 +1459,7 @@ IF(StringResult == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="FullBraced" ESA_ID="" Type="Boolean" Value="0">
+      <Variable Modifier="Public" Name="FullBraced" ESA_ID="" Type="Boolean">
         <Description TranslateID="VARIABLE_FullBraced">
           <ENU>Assume Joist Had Unbraced Length of 0 ft</ENU>
         </Description>
@@ -1493,96 +1494,96 @@ IF(StringResult == 0) {
           <ENU>Uniform Load Diagram</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Value="3" Precision="2">
+      <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_i">
           <ENU>Used in For Loops</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="I↓x←" ESA_ID="Result.3" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="I↓x←" ESA_ID="Result.3" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_I↓x←">
           <ENU>VJ Section Moment of Inertia</ENU>
         </Description>
-        <ResultProperties ESAColor="2" ESAStyle="3" ESAUnit="5" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
+        <ResultProperties ESAColor="2" ESAStyle="1" ESAUnit="5" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="416.2314e-9" Dim="in↑4←" />
       </Variable>
-      <Variable Modifier="Public" Name="ID" ESA_ID="" Type="String" Value="B24">
+      <Variable Modifier="Public" Name="ID" ESA_ID="" Type="String">
         <Description TranslateID="VARIABLE_ID">
           <ENU>Member Name</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="JDM" ESA_ID="" Type="String" Value="">
+      <Variable Modifier="Public" Name="JDM" ESA_ID="" Type="String">
         <Description TranslateID="VARIABLE_JDM">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="JDM2" ESA_ID="" Type="String" Value="">
+      <Variable Modifier="Public" Name="JDM2" ESA_ID="" Type="String">
         <Description TranslateID="VARIABLE_JDM2">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="JDM3" ESA_ID="" Type="String" Value="">
+      <Variable Modifier="Public" Name="JDM3" ESA_ID="" Type="String">
         <Description TranslateID="VARIABLE_JDM3">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="JDM4" ESA_ID="" Type="String" Value=" 4. Use K series joist specifications for seat, end anchorage, bridging, attachment tables, etc.">
+      <Variable Modifier="Public" Name="JDM4" ESA_ID="" Type="String">
         <Description TranslateID="VARIABLE_JDM4">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="JGName" ESA_ID="" Type="String" Value="20G8N8.04F **">
+      <Variable Modifier="Public" Name="JGName" ESA_ID="" Type="String">
         <Description TranslateID="VARIABLE_JGName">
           <ENU>Joist Girder Name</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="JoistGirder" ESA_ID="" Type="Boolean" Value="0">
+      <Variable Modifier="Public" Name="JoistGirder" ESA_ID="" Type="Boolean">
         <Description TranslateID="VARIABLE_JoistGirder">
           <ENU>Is member a joist girder?</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="KCS" ESA_ID="MemberData.KCS" Type="Boolean" Value="0">
+      <Variable Modifier="Public" Name="KCS" ESA_ID="MemberData.KCS" Type="Boolean">
         <Description TranslateID="VARIABLE_KCS">
           <ENU>Allow a KCS Series Joist To Be Used For This Member</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="KCS_depth" ESA_ID="" Type="Double" Value="711.2e-3" Precision="2">
+      <Variable Modifier="Public" Name="KCS_depth" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_KCS_depth">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="KCS_UL↓max←" ESA_ID="" Type="Double" Value="12039.97" Precision="2">
+      <Variable Modifier="Public" Name="KCS_UL↓max←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_KCS_UL↓max←">
           <ENU>Max Uniform Load Allowed on KCS (825 lb/ft for LRFD or 550 lb/ft for ASD)</ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
-      <Variable Modifier="Public" Name="KCSJD" ESA_ID="" Type="Double" Value="711.2e-3" Precision="2">
+      <Variable Modifier="Public" Name="KCSJD" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_KCSJD">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="KCSJoistName" ESA_ID="" Type="String" Value="">
+      <Variable Modifier="Public" Name="KCSJoistName" ESA_ID="" Type="String">
         <Description TranslateID="VARIABLE_KCSJoistName">
           <ENU>KCS Joist Name</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="L" ESA_ID="Result.4" Type="Double" Value="0" Precision="0">
+      <Variable Modifier="Public" Name="L" ESA_ID="Result.4" Type="Double" Precision="0">
         <Description TranslateID="VARIABLE_L">
           <ENU>Length of Joist</ENU>
         </Description>
-        <ResultProperties ESAColor="2" ESAStyle="3" ESAUnit="33" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
+        <ResultProperties ESAColor="2" ESAStyle="1" ESAUnit="33" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="304.8e-3" Dim="ft" />
       </Variable>
-      <Variable Modifier="Public" Name="L↓b←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="L↓b←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_L↓b←">
           <ENU>Unbraced Length of Joist</ENU>
         </Description>
@@ -1594,7 +1595,7 @@ IF(StringResult == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="loadID" ESA_ID="" Type="String" Value="1.20*LC1+1.60*LC2">
+      <Variable Modifier="Public" Name="loadID" ESA_ID="" Type="String">
         <Description TranslateID="VARIABLE_loadID">
           <ENU>Load ID</ENU>
         </Description>
@@ -1609,57 +1610,57 @@ IF(StringResult == 0) {
           <ENU>Array with Uniform loads at section points (New)</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="M↓n←" ESA_ID="" Type="Double" Value="70728.5" Precision="2">
+      <Variable Modifier="Public" Name="M↓n←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_M↓n←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓y,max←" ESA_ID="" Type="Double" Value="75030.4" Precision="2">
+      <Variable Modifier="Public" Name="M↓y,max←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_M↓y,max←">
           <ENU>Max Applied Moment on Joist</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1355.818" Dim="kip∙ft" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓y,min←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="M↓y,min←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_M↓y,min←">
           <ENU>Min Applied Moment on Joist</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1355.818" Dim="kip∙ft" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓y←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="M↓y←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_M↓y←">
           <ENU>Applied Moment on Section</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1355.818" Dim="kip∙ft" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓y0←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="M↓y0←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_M↓y0←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1355.818" Dim="kip∙ft" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓y1←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="M↓y1←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_M↓y1←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1355.818" Dim="kip∙ft" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓y-2←" ESA_ID="" Type="Double" Value="76046.76" Precision="2">
+      <Variable Modifier="Public" Name="M↓y-2←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_M↓y-2←">
           <ENU>Calculated Moment Using Equivelent Uniform Loading</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1355.818" Dim="kip∙ft" />
       </Variable>
-      <Variable Modifier="Public" Name="MatchVJDepth" ESA_ID="Setup.MVJD" Type="Boolean" Value="1">
+      <Variable Modifier="Public" Name="MatchVJDepth" ESA_ID="Setup.MVJD" Type="Boolean">
         <Description TranslateID="VARIABLE_MatchVJDepth">
           <ENU>Use Same Depth of VJ for Standard Designation :</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="MaxAllowedPtLoad" ESA_ID="" Type="Double" Value="444.8222" Precision="2">
+      <Variable Modifier="Public" Name="MaxAllowedPtLoad" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_MaxAllowedPtLoad">
           <ENU>Max Allowed Point Load for Standard Designation (100 lb)</ENU>
         </Description>
@@ -1670,98 +1671,98 @@ IF(StringResult == 0) {
           <ENU>Moment Data for Diagram</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="middle" ESA_ID="" Type="Double" Value="NaN" Precision="2">
+      <Variable Modifier="Public" Name="middle" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_middle">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="n" ESA_ID="" Type="Double" Value="2" Precision="2">
+      <Variable Modifier="Public" Name="n" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_n">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="N" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="N" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_N">
           <ENU>Axial Load on Section</ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓C,max←" ESA_ID="" Type="Double" Value="484.299" Precision="2">
+      <Variable Modifier="Public" Name="N↓C,max←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_N↓C,max←">
           <ENU>Max Compression on Joist</ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓C←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="N↓C←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_N↓C←">
           <ENU>Compression on Section</ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓max←" ESA_ID="" Type="Double" Value="581.105" Precision="2">
+      <Variable Modifier="Public" Name="N↓max←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_N↓max←">
           <ENU>Max Axial Load on Joist</ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓min←" ESA_ID="" Type="Double" Value="-484.299" Precision="2">
+      <Variable Modifier="Public" Name="N↓min←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_N↓min←">
           <ENU>Min Axial Load on Joist</ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓T,max←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="N↓T,max←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_N↓T,max←">
           <ENU>Max Tension on Joist</ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓T←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="N↓T←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_N↓T←">
           <ENU>Tension on Section</ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
-      <Variable Modifier="Public" Name="Ncolumns" ESA_ID="" Type="Double" Value="8" Precision="2">
+      <Variable Modifier="Public" Name="Ncolumns" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_Ncolumns">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="nonUni" ESA_ID="" Type="Boolean" Value="0">
+      <Variable Modifier="Public" Name="nonUni" ESA_ID="" Type="Boolean">
         <Description TranslateID="VARIABLE_nonUni">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="pinned" ESA_ID="" Type="Boolean" Value="1">
+      <Variable Modifier="Public" Name="pinned" ESA_ID="" Type="Boolean">
         <Description TranslateID="VARIABLE_pinned">
           <ENU>End conditions pinned</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="PT↓max_kip←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="PT↓max_kip←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_PT↓max_kip←">
           <ENU>Max Point Load on Joist </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
-      <Variable Modifier="Public" Name="PT↓max_Str←" ESA_ID="" Type="String" Value="0">
+      <Variable Modifier="Public" Name="PT↓max_Str←" ESA_ID="" Type="String">
         <Description TranslateID="VARIABLE_PT↓max_Str←">
           <ENU>String Used in PT max Conversion</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="PT↓max←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="PT↓max←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_PT↓max←">
           <ENU>Max Point Load on Joist (Units not in kips)</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="PT↓min←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="PT↓min←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_PT↓min←">
           <ENU>Min Point Load on Joist (Units not in kips)</ENU>
         </Description>
@@ -1777,7 +1778,7 @@ IF(StringResult == 0) {
           <ENU>Point Load Locations</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="PtLoadSpaces" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="PtLoadSpaces" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_PtLoadSpaces">
           <ENU>Number of spaces between point loads (used for Joist Girder Designation)</ENU>
         </Description>
@@ -1803,83 +1804,83 @@ IF(StringResult == 0) {
           <ENU>Points used for Diagram Borders</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="s2d↓low←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="s2d↓low←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_s2d↓low←">
           <ENU>Lower Limit of Span-to-depth Ratio (Recommended = 12)</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="s2d↓upp←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="s2d↓upp←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_s2d↓upp←">
           <ENU>Upper Limit of Span-to-depth Ratio (Recommended = 24)</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="SA" ESA_ID="" Type="Boolean" Value="0">
+      <Variable Modifier="Public" Name="SA" ESA_ID="" Type="Boolean">
         <Description TranslateID="VARIABLE_SA">
           <ENU>Is Form Used in Stand Alone Analysis</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="SJD" ESA_ID="" Type="Double" Value="711.2e-3" Precision="2">
+      <Variable Modifier="Public" Name="SJD" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_SJD">
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
-      <Variable Modifier="Public" Name="SJtype" ESA_ID="Setup.SJtype" Type="Double" Value="3" Precision="2">
+      <Variable Modifier="Public" Name="SJtype" ESA_ID="Setup.SJtype" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_SJtype">
           <ENU>Standard Joist Type Preference :</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Sort_KCS" ESA_ID="MemberData.SortKCS" Type="Double" Value="4" Precision="2">
+      <Variable Modifier="Public" Name="Sort_KCS" ESA_ID="MemberData.SortKCS" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_Sort_KCS">
           <ENU>Sort KCS Joists by:</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Sort_SJ" ESA_ID="Setup.Sort_SJ" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="Sort_SJ" ESA_ID="Setup.Sort_SJ" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_Sort_SJ">
           <ENU>Sort Standard Joists by :</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="specialJG" ESA_ID="" Type="Boolean" Value="0">
+      <Variable Modifier="Public" Name="specialJG" ESA_ID="" Type="Boolean">
         <Description TranslateID="VARIABLE_specialJG">
           <ENU>Special Joist Girder </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="specialName" ESA_ID="" Type="String" Value="28SP*">
+      <Variable Modifier="Public" Name="specialName" ESA_ID="" Type="String">
         <Description TranslateID="VARIABLE_specialName">
           <ENU>Special Joist Name</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="SpecialType" ESA_ID="" Type="String" Value="K">
+      <Variable Modifier="Public" Name="SpecialType" ESA_ID="" Type="String">
         <Description TranslateID="VARIABLE_SpecialType">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="StandardJoistCapacity" ESA_ID="" Type="Double" Value="10434.64" Precision="2">
+      <Variable Modifier="Public" Name="StandardJoistCapacity" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_StandardJoistCapacity">
           <ENU>Standard Joist Capacity</ENU>
         </Description>
         <Unit m="-1" kg="1" s="0" A="0" K="0" cd="0" mol="0" Coef="14.5939" Dim="lb/ft" />
       </Variable>
-      <Variable Modifier="Public" Name="StandardJoistDepth" ESA_ID="" Type="Double" Value="711.2e-3" Precision="2">
+      <Variable Modifier="Public" Name="StandardJoistDepth" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_StandardJoistDepth">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="StandardJoistName" ESA_ID="" Type="String" Value="28K6">
+      <Variable Modifier="Public" Name="StandardJoistName" ESA_ID="" Type="String">
         <Description TranslateID="VARIABLE_StandardJoistName">
           <ENU>Standard Joist Name</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="StringResult" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="StringResult" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_StringResult">
           <ENU>
           </ENU>
@@ -1903,82 +1904,82 @@ IF(StringResult == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="tol↓VL←" ESA_ID="" Type="Double" Value="200e-3" Precision="2">
+      <Variable Modifier="Public" Name="tol↓VL←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_tol↓VL←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="%" />
       </Variable>
-      <Variable Modifier="Public" Name="TotalPtLoads" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="TotalPtLoads" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_TotalPtLoads">
           <ENU>Total Point Loads</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC↓d1←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="UC↓d1←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_UC↓d1←">
           <ENU>Unity Check (Min Depth)</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC↓d2←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="UC↓d2←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_UC↓d2←">
           <ENU>Unity Check (Max Depth)</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UL↓absmax_kip/ft←" ESA_ID="" Type="Double" Value="7295.492" Precision="2">
+      <Variable Modifier="Public" Name="UL↓absmax_kip/ft←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_UL↓absmax_kip/ft←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UL↓absmax_Str←" ESA_ID="" Type="String" Value="0.4999">
+      <Variable Modifier="Public" Name="UL↓absmax_Str←" ESA_ID="" Type="String">
         <Description TranslateID="VARIABLE_UL↓absmax_Str←">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="UL↓absmax←" ESA_ID="" Type="Double" Value="499.9e-3" Precision="2">
+      <Variable Modifier="Public" Name="UL↓absmax←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_UL↓absmax←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UL↓max_kip/ft←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="UL↓max_kip/ft←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_UL↓max_kip/ft←">
           <ENU>Max Uniform Load on Joist</ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
-      <Variable Modifier="Public" Name="UL↓max_Str←" ESA_ID="" Type="String" Value="0.4999">
+      <Variable Modifier="Public" Name="UL↓max_Str←" ESA_ID="" Type="String">
         <Description TranslateID="VARIABLE_UL↓max_Str←">
           <ENU>String Used in UL max Conversion</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="UL↓max←" ESA_ID="" Type="Double" Value="499.9e-3" Precision="2">
+      <Variable Modifier="Public" Name="UL↓max←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_UL↓max←">
           <ENU>Max Uniform Load on Joist (Units not in kip/ft)</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UL↓min_kip/ft←" ESA_ID="" Type="Double" Value="7259.007" Precision="2">
+      <Variable Modifier="Public" Name="UL↓min_kip/ft←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_UL↓min_kip/ft←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UL↓min_Str←" ESA_ID="" Type="String" Value="0.4974">
+      <Variable Modifier="Public" Name="UL↓min_Str←" ESA_ID="" Type="String">
         <Description TranslateID="VARIABLE_UL↓min_Str←">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="UL↓min←" ESA_ID="" Type="Double" Value="497.4e-3" Precision="2">
+      <Variable Modifier="Public" Name="UL↓min←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_UL↓min←">
           <ENU>
           </ENU>
@@ -2028,7 +2029,7 @@ IF(StringResult == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="uniqueSpaces" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="uniqueSpaces" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_uniqueSpaces">
           <ENU>Unique spaces between Point Loads</ENU>
         </Description>
@@ -2039,46 +2040,46 @@ IF(StringResult == 0) {
           <ENU>Unique Uniform Loads</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="V↓n←" ESA_ID="" Type="Double" Value="30692.73" Precision="2">
+      <Variable Modifier="Public" Name="V↓n←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_V↓n←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="V↓z,max←" ESA_ID="" Type="Double" Value="33266.3" Precision="2">
+      <Variable Modifier="Public" Name="V↓z,max←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_V↓z,max←">
           <ENU>Max Shear on Joist</ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
-      <Variable Modifier="Public" Name="V↓z,min←" ESA_ID="" Type="Double" Value="-33263.1" Precision="2">
+      <Variable Modifier="Public" Name="V↓z,min←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_V↓z,min←">
           <ENU>Min Shear on Joist</ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
-      <Variable Modifier="Public" Name="V↓z←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="V↓z←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_V↓z←">
           <ENU>Shear on Section</ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
-      <Variable Modifier="Public" Name="V↓z0←" ESA_ID="" Type="Double" Value="33266.3" Precision="2">
+      <Variable Modifier="Public" Name="V↓z0←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_V↓z0←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
-      <Variable Modifier="Public" Name="V↓z1←" ESA_ID="" Type="Double" Value="-33263.1" Precision="2">
+      <Variable Modifier="Public" Name="V↓z1←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_V↓z1←">
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
-      <Variable Modifier="Public" Name="V↓z-2←" ESA_ID="" Type="Double" Value="33266.3" Precision="2">
+      <Variable Modifier="Public" Name="V↓z-2←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_V↓z-2←">
           <ENU>Calculated Shear Using Equivelent Uniform Loading</ENU>
         </Description>
@@ -2095,27 +2096,27 @@ IF(StringResult == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="VJSection" ESA_ID="Result.7" Type="String" Value="Unsupported Joist Material">
+      <Variable Modifier="Public" Name="VJSection" ESA_ID="Result.7" Type="String">
         <Description TranslateID="VARIABLE_VJSection">
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="1" Numeric="extreme" SenModif="False" LabOri="1" />
       </Variable>
-      <Variable Modifier="Public" Name="w↓eq←" ESA_ID="Result.1" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="w↓eq←" ESA_ID="Result.1" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_w↓eq←">
           <ENU>Equivalent Uniform Loading (max)</ENU>
         </Description>
-        <ResultProperties ESAColor="2" ESAStyle="3" ESAUnit="27" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="14.594e6" DrawLimitMin="0" />
+        <ResultProperties ESAColor="2" ESAStyle="1" ESAUnit="27" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="14.594e6" DrawLimitMin="0" />
         <Unit m="-1" kg="1" s="0" A="0" K="0" cd="0" mol="0" Coef="14.5939" Dim="lb/ft" />
       </Variable>
-      <Variable Modifier="Public" Name="w↓eq-M←" ESA_ID="" Type="Double" Value="7178.849" Precision="2">
+      <Variable Modifier="Public" Name="w↓eq-M←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_w↓eq-M←">
           <ENU>Equivalent Uniform Loading Based on Max Moment</ENU>
         </Description>
         <Unit m="-1" kg="1" s="0" A="0" K="0" cd="0" mol="0" Coef="14.5939" Dim="lb/ft" />
       </Variable>
-      <Variable Modifier="Public" Name="w↓eq-V←" ESA_ID="" Type="Double" Value="7276.094" Precision="2">
+      <Variable Modifier="Public" Name="w↓eq-V←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_w↓eq-V←">
           <ENU>Equivalent Uniform Loading Based on Max Shear</ENU>
         </Description>
@@ -2432,6 +2433,14 @@ IF(StringResult == 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP036_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -6785,7 +6794,7 @@ IF(StringResult == 0) {
   </Calculation>
   <Dialog>
     <Main Width="630">
-      <TEMDLoader Name="" ID="2" Translate="1" Left="6" Top="0" Width="350" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="0" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="0" PreDef="0" MemberDirectory="" MemberID="Beam.24" SectionID="-1" CombiID="-1" />
+      <TEMDLoader Name="" ID="2" Translate="1" Left="6" Top="0" Width="350" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="0" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="0" PreDef="0" MemberDirectory="" MemberID="Beam.1" SectionID="-1" CombiID="-1" />
     </Main>
     <MemberData Width="597">
       <TPanel Name="" ID="12" Translate="1" Height="48" AutoWidth="True" AutoHeight="False" TabIndex="4" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9.75|0|3" Collapsible="False" CaptionBGColor="-1" CaptionColor="-16777216" Collapsed="False">

@@ -16,15 +16,15 @@ object GetOutput() {
 //NA.2.96 Clause 9.8.4 Column and wall footings - Column footing on rock, Paragraph(1)
 //For use different formula, uncomment proper code and place formula there. Save and export file after this change.
 SWITCH(IO.SetupNA.EC_NA.Code) { 
-    //    CASE "ONORM": {   } 
-    //    CASE "NBN": {     } 
+    //    CASE "ONORM": { } 
+    //    CASE "NBN": { } 
     //    CASE "BS": { } 
     //    CASE "CYS": { } 
-    //    CASE "CSN": {   }
+    //    CASE "CSN": { }
     //    CASE "DK": { }  
     //    CASE "NEN": { } 
-    //    CASE "SFS": {  } 
-    //    CASE "NF": {  } 
+    //    CASE "SFS": { } 
+    //    CASE "NF": { } 
     CASE "DIN" :  { 
         q↓2← →INI400_000117= IO.SetupNA.EC_1992_1_1.q_2.q_2; 
         SWITCH(ReinfType) { 
@@ -39,14 +39,15 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     //    CASE "ELOT": { } 
     //    CASE "UNI": { } 
     //    CASE "IS": { } 
-    //    CASE "LU": {   } 
+    //    CASE "LU": { } 
     //    CASE "MAL": { } 
     //    CASE "NS": { } 
     //    CASE "PN": { } 
     //    CASE "SR": { } 
     //    CASE "SIG": { } 
-    //    CASE "STN": {    } 
+    //    CASE "STN": { } 
     //    CASE "SIST": { } 
+    //    CASE "UNE": { } 
     //    CASE "SS": { } 
     DEFAULT :  { 
         q↓2← →INI400_000116= IO.SetupNA.EC_1992_1_1.q_2.q_2; 

@@ -5,21 +5,22 @@
 
 string Item →INI400_006906= IO.SetupNA.Item; 
 →INI400_006894BLOCK { // by data exchange structure
-    object Input →INI400_006851= new Structure(); 
-    →INI400_006891Input.Add("DesignLife", DesignLife); 
-    →INI400_006892Input.Add("SlabGeometry", SlabGeometry); 
-    →INI400_006893Input.Add("SpecialQuality", SpecialQuality); 
-    →INI400_006894Input.Add("PrefabricatedSpecialQuality", PrefabricatedSpecialQuality); 
-    →INI400_006895Input.Add("ConstructionClass1", ConstructionClass1); 
-    →INI400_006885Input.Add("Prestress", Prestress); 
-    →INI400_006899Input.Add("CemType", CemType); 
-    →INI400_006900Input.Add("XC", XC); 
-    →INI400_006901Input.Add("XD", XD); 
-    →INI400_006902Input.Add("XS", XS); 
-    →INI400_006903Input.Add("vtc_ekv", vtc↓ekv←); 
-    →INI400_006904Input.Add("NormalReinf", NormalReinf); 
-    →INI400_006905Input.Add("fck", f↓ck←); 
-    →KRS116_000001Input.Add("cminb", cminb); 
+    object Input →INI400_006851= new Structure(
+    "DesignLife", DesignLife, 
+    "SlabGeometry", SlabGeometry, 
+    "SpecialQuality", SpecialQuality, 
+    "PrefabricatedSpecialQuality", PrefabricatedSpecialQuality, 
+    "ConstructionClass1", ConstructionClass1, 
+    "Prestress", Prestress, 
+    "CemType", CemType, 
+    "XC", XC, 
+    "XD", XD, 
+    "XS", XS, 
+    "vtc_ekv", vtc↓ekv←, 
+    "NormalReinf", NormalReinf, 
+    "fck", f↓ck←, 
+    "cminb", cminb, 
+    "AdequateCement", AdequateCement); 
     
     object Output →INI400_006878= new Structure(); 
     
@@ -55,8 +56,14 @@ string Item →INI400_006906= IO.SetupNA.Item;
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
+      <Variable Modifier="Public" Name="AdequateCement" ESA_ID="" Type="Boolean">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="c↓min,dur_XC←" ESA_ID="Result.03" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_c↓min,dur_XC←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -64,7 +71,7 @@ string Item →INI400_006906= IO.SetupNA.Item;
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="c↓min,dur_XD←" ESA_ID="Result.04" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_c↓min,dur_XD←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -72,7 +79,7 @@ string Item →INI400_006906= IO.SetupNA.Item;
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="c↓min,dur_XS←" ESA_ID="Result.05" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_c↓min,dur_XS←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -80,7 +87,7 @@ string Item →INI400_006906= IO.SetupNA.Item;
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="c↓min,dur←" ESA_ID="Result.01" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_c↓min,dur←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -88,84 +95,84 @@ string Item →INI400_006906= IO.SetupNA.Item;
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="CemType" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_CemType">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Clause" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Clause">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="cminb" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_cminb">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="ConstructionClass1" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_ConstructionClass1">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="DesignLife" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_DesignLife">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ck←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_f↓ck←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="Input" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Input">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="Item" ESA_ID="Result.09" Type="String">
-        <Description TranslateID="VARIABLE_Item">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="0" Numeric="c↓min,dur←" SenModif="False" LabOri="0" />
       </Variable>
       <Variable Modifier="Public" Name="NormalReinf" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_NormalReinf">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="Output" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Output">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="PrefabricatedSpecialQuality" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_PrefabricatedSpecialQuality">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="Prestress" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_Prestress">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="S" ESA_ID="Result.02" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_S">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -173,40 +180,40 @@ string Item →INI400_006906= IO.SetupNA.Item;
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="SlabGeometry" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_SlabGeometry">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="SpecialQuality" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_SpecialQuality">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="vtc↓ekv←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_vtc↓ekv←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="XC" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_XC">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="XD" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_XD">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="XS" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_XS">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -281,47 +288,7 @@ string Item →INI400_006906= IO.SetupNA.Item;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006885">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006891">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006892">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006893">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_006894">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006895">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -336,62 +303,6 @@ string Item →INI400_006906= IO.SetupNA.Item;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_006899">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006900">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006901">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006902">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006903">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006904">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006905">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_006906">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -433,14 +344,6 @@ string Item →INI400_006906= IO.SetupNA.Item;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="KRS116_000001">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
@@ -450,7 +353,7 @@ string Item →INI400_006906= IO.SetupNA.Item;
         <Texts TranslateID="DIALOG_000038">
           <ENU>National Annex</ENU>
         </Texts>
-        <TCustomLibrary Name="" ID="39" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="SetupNA" DataFile="EC_NA.xml" Collapsed="True" UseCombo="True" Category="Eurocode NA" Item="Norwegian NS-EN">
+        <TCustomLibrary Name="" ID="39" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="SetupNA" DataFile="EC_NA.xml" Collapsed="True" UseCombo="True" Category="Eurocode NA" Item="Standard EN">
           <Data>
             <Header>
               <PropertySet Symbol="Code" ESA_ID="EC_NA.Code" Unit="" Type="String" />
@@ -975,13 +878,13 @@ string Item →INI400_006906= IO.SetupNA.Item;
             <Items>
               <Item>
                 <P>Eurocode NA</P>
-                <P>Norwegian NS-EN</P>
-                <P>NS</P>
-                <P>21</P>
-                <P>NS EN 1990</P>
-                <P>NS EN 1991-1-1</P>
-                <P>NS EN 1991-1-2</P>
-                <P>NS EN 1991-1-3</P>
+                <P>Standard EN</P>
+                <P>STD</P>
+                <P>0</P>
+                <P>EC EN 1990</P>
+                <P>EC EN 1991-1-1</P>
+                <P>EC EN 1991-1-2</P>
+                <P>EC EN 1991-1-3</P>
                 <P>0</P>
                 <P>NaN</P>
                 <P>True;2;</P>
@@ -998,7 +901,7 @@ string Item →INI400_006906= IO.SetupNA.Item;
                 <P>True</P>
                 <P>True</P>
                 <P>NaN</P>
-                <P>NS EN 1991-1-4</P>
+                <P>EC EN 1991-1-4</P>
                 <P>NaN</P>
                 <P>NaN</P>
                 <P>1</P>
@@ -1015,37 +918,37 @@ string Item →INI400_006906= IO.SetupNA.Item;
                 <P>False</P>
                 <P>True</P>
                 <P>NaN</P>
-                <P>NS EN 1991-1-5</P>
-                <P>NS EN 1991-1-6</P>
-                <P>NS EN 1991-1-7</P>
-                <P>NS EN 1991-2</P>
-                <P>NS EN 1991-3</P>
-                <P>NS EN 1991-4</P>
-                <P>NS EN 1992-1-1:2004/NA:2008-11</P>
+                <P>EC EN 1991-1-5</P>
+                <P>EC EN 1991-1-6</P>
+                <P>EC EN 1991-1-7</P>
+                <P>EC EN 1991-2</P>
+                <P>EC EN 1991-3</P>
+                <P>EC EN 1991-4</P>
+                <P>EC EN 1992-1-1:2004/AC:2008</P>
                 <P>1</P>
-                <P>0.9</P>
+                <P>1</P>
                 <P>1.3</P>
                 <P>1.2</P>
                 <P>1.5;1.15;1.15;1.2;1.0;1.0;</P>
                 <P>1;1;</P>
-                <P>NaN</P>
-                <P>NaN</P>
+                <P>90</P>
                 <P>0.85</P>
-                <P>0.85</P>
+                <P>1</P>
+                <P>1</P>
                 <P>600</P>
-                <P>0.4</P>
+                <P>0.9</P>
                 <P>1.1</P>
-                <P>0.4;0.01;0.9;</P>
+                <P>0.9;0.02;0.9;</P>
                 <P>1.5;2.5;</P>
                 <P>0</P>
                 <P>0</P>
                 <P>0</P>
-                <P>0;0;0;</P>
+                <P>5;10;15;</P>
                 <P>10</P>
-                <P>NaN;NaN;NaN;</P>
+                <P>0;5;10;</P>
                 <P>40;75;5;</P>
                 <P>0.005</P>
-                <P>0.44;NaN;0.54;NaN;0.7;0.9;</P>
+                <P>0.44;NaN;0.54;NaN;0.7;0.8;</P>
                 <P>NaN</P>
                 <P>1.2</P>
                 <P>0.8;0.9;</P>
@@ -1054,23 +957,23 @@ string Item →INI400_006906= IO.SetupNA.Item;
                 <P>0.7</P>
                 <P>0.75;0.85;</P>
                 <P>1.05;0.95;1.1;0.9;1;1;</P>
-                <P>NaN;NaN;NaN;</P>
+                <P>NaN;NaN;0.15;</P>
                 <P>NaN</P>
                 <P>0.380482;0.785398;</P>
                 <P>NaN;NaN;</P>
                 <P>26.5;45;38.6;45;</P>
                 <P>0.4</P>
                 <P>1.15;1.4;1.5;</P>
-                <P>NaN;NaN;NaN;</P>
+                <P>NaN;NaN;0.1;</P>
                 <P>NaN</P>
                 <P>NaN</P>
                 <P>1;0.85;</P>
                 <P>0.6</P>
                 <P>0.45</P>
                 <P>0.8;1;0.75;</P>
-                <P>NaN;NaN;NaN;NaN;NaN;NaN;</P>
+                <P>0.4;0.3;0.3;0.2;0.2;NaN;</P>
                 <P>3.4;0.425;</P>
-                <P>NaN;5;</P>
+                <P>1;5;</P>
                 <P>NaN</P>
                 <P>NaN</P>
                 <P>32</P>
@@ -1084,7 +987,7 @@ string Item →INI400_006906= IO.SetupNA.Item;
                 <P>NaN</P>
                 <P>NaN</P>
                 <P>NaN</P>
-                <P>10</P>
+                <P>8</P>
                 <P>NaN</P>
                 <P>NaN</P>
                 <P>NaN</P>
@@ -1101,35 +1004,35 @@ string Item →INI400_006906= IO.SetupNA.Item;
                 <P>1.5</P>
                 <P>0.25</P>
                 <P>0.5</P>
-                <P>NS EN 1992-1-2:2004/NA:2010</P>
-                <P>NS EN 1992-2</P>
-                <P>NS EN 1992-3</P>
-                <P>NS EN 1993-1-1</P>
+                <P>EC EN 1992-1-2</P>
+                <P>EC EN 1992-2</P>
+                <P>EC EN 1992-3</P>
+                <P>EC EN 1993-1-1</P>
                 <P>NaN;NaN;</P>
                 <P>1;1;1.25;</P>
-                <P>NS EN 1993-1-2</P>
-                <P>NS EN 1993-1-3</P>
-                <P>NS EN 1993-1-4</P>
-                <P>NS EN 1993-1-5</P>
+                <P>EC EN 1993-1-2</P>
+                <P>EC EN 1993-1-3</P>
+                <P>EC EN 1993-1-4</P>
+                <P>EC EN 1993-1-5</P>
                 <P>1.20;1.00;</P>
-                <P>NS EN 1993-1-6</P>
-                <P>NS EN 1993-1-7</P>
-                <P>NS EN 1993-1-8</P>
+                <P>EC EN 1993-1-6</P>
+                <P>EC EN 1993-1-7</P>
+                <P>EC EN 1993-1-8</P>
                 <P>1.25;1.25;1.1;1.0;1.0;1.0;1.1;</P>
-                <P>NS EN 1993-1-9</P>
-                <P>NS EN 1993-1-10</P>
-                <P>NS EN 1993-1-11</P>
-                <P>NS EN 1993-1-12</P>
-                <P>NS EN 1993-2</P>
+                <P>EC EN 1993-1-9</P>
+                <P>EC EN 1993-1-10</P>
+                <P>EC EN 1993-1-11</P>
+                <P>EC EN 1993-1-12</P>
+                <P>EC EN 1993-2</P>
                 <P>1.0;1.1;1.25;1.25;1.1;1.1;1.1;1.0;1.1;</P>
-                <P>NS EN 1993-3-1</P>
-                <P>NS EN 1993-3-2</P>
-                <P>NS EN 1993-4-1</P>
-                <P>NS EN 1993-4-2</P>
-                <P>NS EN 1993-4-3</P>
-                <P>NS EN 1993-5</P>
-                <P>NS EN 1993-6</P>
-                <P>NS EN 1994-1-1</P>
+                <P>EC EN 1993-3-1</P>
+                <P>EC EN 1993-3-2</P>
+                <P>EC EN 1993-4-1</P>
+                <P>EC EN 1993-4-2</P>
+                <P>EC EN 1993-4-3</P>
+                <P>EC EN 1993-5</P>
+                <P>EC EN 1993-6</P>
+                <P>EC EN 1994-1-1</P>
                 <P>1;1;</P>
                 <P>1.25</P>
                 <P>1.25</P>
@@ -1149,14 +1052,14 @@ string Item →INI400_006906= IO.SetupNA.Item;
                 <P>0.5</P>
                 <P>1.25</P>
                 <P>1.25</P>
-                <P>NS EN 1994-1-2</P>
-                <P>NS EN 1994-2</P>
-                <P>NS EN 1995-1-1</P>
+                <P>EC EN 1994-1-2</P>
+                <P>EC EN 1994-2</P>
+                <P>EC EN 1995-1-1</P>
                 <P>NaN</P>
                 <P>0.67;0.67;1.0;</P>
-                <P>NS EN 1995-1-2</P>
-                <P>NS EN 1995-2</P>
-                <P>NS EN 1996-1-1</P>
+                <P>EC EN 1995-1-2</P>
+                <P>EC EN 1995-2</P>
+                <P>EC EN 1996-1-1</P>
                 <P>NaN</P>
                 <P>1</P>
                 <P>NaN</P>
@@ -1164,27 +1067,27 @@ string Item →INI400_006906= IO.SetupNA.Item;
                 <P>1000</P>
                 <P>NaN;NaN;NaN;</P>
                 <P>NaN</P>
-                <P>NS EN 1996-1-2</P>
-                <P>NS EN 1996-2</P>
-                <P>NS EN 1996-3</P>
-                <P>NS EN 1997-1</P>
+                <P>EC EN 1996-1-2</P>
+                <P>EC EN 1996-2</P>
+                <P>EC EN 1996-3</P>
+                <P>EC EN 1997-1</P>
                 <P>1.1;0.9;1.5;0;</P>
                 <P>1.25;1.25;1.4;1.4;1.0;</P>
                 <P>1.35;1;1.5;0;1;1;1.3;0;</P>
                 <P>1;1;1;1;1;1.25;1.25;1.4;1.4;1;</P>
                 <P>1;1;1.4;1.1;1;1;</P>
-                <P>NS EN 1997-2</P>
-                <P>NS EN 1998-1</P>
-                <P>NS EN 1998-2</P>
-                <P>NS EN 1998-3</P>
-                <P>NS EN 1998-4</P>
-                <P>NS EN 1998-5</P>
-                <P>NS EN 1998-6</P>
-                <P>NS EN 1999-1-1</P>
-                <P>NS EN 1999-1-2</P>
-                <P>NS EN 1999-1-3</P>
-                <P>NS EN 1999-1-4</P>
-                <P>NS EN 1999-1-5</P>
+                <P>EC EN 1997-2</P>
+                <P>EC EN 1998-1</P>
+                <P>EC EN 1998-2</P>
+                <P>EC EN 1998-3</P>
+                <P>EC EN 1998-4</P>
+                <P>EC EN 1998-5</P>
+                <P>EC EN 1998-6</P>
+                <P>EC EN 1999-1-1</P>
+                <P>EC EN 1999-1-2</P>
+                <P>EC EN 1999-1-3</P>
+                <P>EC EN 1999-1-4</P>
+                <P>EC EN 1999-1-5</P>
               </Item>
             </Items>
           </Data>

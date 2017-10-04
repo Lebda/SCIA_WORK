@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="9446a8aa-280d-496e-ae78-67dc4711c342">
   <CodeEditor>
-    <SourceCode Collapsed="61" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure
+    <SourceCode Collapsed="65" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure
     bool ValidateInput(object Input) { //Validate inputs from master to this form
         ReinfType →INI400_007180= Input.Get("ReinfType"); // type of reinforcement; 0 - normal, 1 - prestressed
         
@@ -35,6 +35,7 @@
         vtc↓ekv← →INI400_007196= Input.Get("vtc_ekv"); // water ratio, only for SS, 0 - 1
         NormalReinf →INI400_007186= Input.Get("NormalReinf"); // True - normal reinforcement is used - only for SS
         f↓ck← →INI400_007205= Input.Get("fck"); // Characteristic compressive cylinder strength
+        AdequateCement →KRS116_000011= Input.Get("AdequateCement"); // for UNE - true if cement is adequate
 
         //For Δcdur,γ
         Quality →INI400_000052= Input.Get("Quality"); // True - Quality assurance system for prestress is used, only for IS
@@ -43,6 +44,9 @@
         k↓2,user← →INI400_007199= Input.Get("k2_user"); // User defined increase of cover for concrete cast directly against soil, only for SFS
         UnevenSurf →INI400_011043= Input.Get("UnevenSurf"); //True - Uneven surface
         Unevenness →INI400_011044= Input.Get("Unevenness"); //Type of unevenes, 0 - concrete cast against prepared ground, 1 - concrete cast directly against soil
+
+        StainlessSteel →KRS116_000013= Input.Get("StainlessSteel"); // True - Stainless steel is used
+        AddProtection →KRS116_000014= Input.Get("AddProtection"); // True - Additional protection is used
 
         //For Δcdev
         Deviation →INI400_011042= Input.Get("Deviation"); //Allowance in design for deviation, 0 - standard, 1 - quality assurance system , 2 - very accurate measurement device      
@@ -155,6 +159,7 @@ IF(!IO.IsStandalone) {
         →INI400_006904Input.Add("NormalReinf", NormalReinf); 
         →INI400_006905Input.Add("fck", f↓ck←); 
         →KRS116_000005Input.Add("cminb", c↓min,b←); 
+        →KRS116_000010Input.Add("AdequateCement", AdequateCement); 
         →INI400_006917Clause4_4_1_2_5.Draw(Input, Output, 0); 
         c↓min,dur← →INI400_006898= Output.c_min_dur; 
         S →INI400_013805= Output.S; 
@@ -178,10 +183,14 @@ IF(!IO.IsStandalone) {
         Δc↓dur,st← →INI400_006350= 0 @REF("§4.4.1.2(7)"); 
     } 
     →INI400_006351TEXT(Description("Δc↓dur,add←")); 
-    →INI400_005915BLOCK { //NA.2.22 Clause 4.4.1.2 Minimum cover, Paragraph (8)
-        object Clause4_4_1_2_8 →INI400_005916= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_4.4.1.2(8).CLC"); 
-        →INI400_006930Clause4_4_1_2_8.Calculate(Input, Output); 
-        Δc↓dur,add← →INI400_006929= Output.Δ_c_dur_add @REF("§4.4.1.2(8)"); 
+    IF(AddProtection) { 
+        →INI400_005915BLOCK { //NA.2.22 Clause 4.4.1.2 Minimum cover, Paragraph (8)
+            object Clause4_4_1_2_8 →INI400_005916= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_4.4.1.2(8).CLC"); 
+            →INI400_006930Clause4_4_1_2_8.Calculate(Input, Output); 
+            Δc↓dur,add← →INI400_006929= Output.Δ_c_dur_add @REF("§4.4.1.2(8)"); 
+        } 
+    } ELSE { 
+        Δc↓dur,add← →KRS116_000012= 0 @REF("§4.4.1.2(8)"); 
     } 
     →INI400_006367TEXT(Description("c↓min←")); 
     c↓min← →INI400_006368= MAX(c↓min,b←, c↓min,dur←+Δc↓dur,γ←-Δc↓dur,st←-Δc↓dur,add←, PhysConst(10, "mm")) @REF("(4.2)"); 
@@ -428,6 +437,18 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 1) {
           <ENU>Smaller dimension of rectangular duct</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
+      </Variable>
+      <Variable Modifier="Public" Name="AddProtection" ESA_ID="" Type="Boolean">
+        <Description TranslateID="VARIABLE_AddProtection">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="AdequateCement" ESA_ID="" Type="Boolean">
+        <Description TranslateID="VARIABLE_AdequateCement">
+          <ENU>
+          </ENU>
+        </Description>
       </Variable>
       <Variable Modifier="Public" Name="b" ESA_ID="" Type="Double" Precision="2">
         <Description>
@@ -2692,6 +2713,46 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+      </VC>
+      <VC ID="KRS116_000010">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000011">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000012">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+      </VC>
+      <VC ID="KRS116_000013">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|19|0|2" Font2="Arial|19|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|19|0|2" Font2="Arial|19|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|19|0|2" Font2="Arial|19|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|19|0|2" Font2="Arial|19|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|19|0|2" Font2="Arial|19|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|19|0|2" Font2="Arial|19|1|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000014">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|19|0|2" Font2="Arial|19|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|19|0|2" Font2="Arial|19|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|19|0|2" Font2="Arial|19|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|19|0|2" Font2="Arial|19|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|19|0|2" Font2="Arial|19|1|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|19|0|2" Font2="Arial|19|1|2" EqStyle="23" />
       </VC>
     </VisualComponents>
     <Images />

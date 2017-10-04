@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="a9809965-49c8-489d-9005-6aa50248fd6c">
   <CodeEditor>
-    <SourceCode Collapsed="590" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure 
+    <SourceCode Collapsed="591" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure 
     bool ValidateInput(object Input) { //Validate inputs from master to this form
         PrintCaption →INI400_013669= Input.Get("PrintCaption"); //True - Draw Caption
         bDrawPictures →INI400_011157= Input.Get("bDrawPictures"); //True - Draw pictures, False - no pictures
@@ -64,6 +64,7 @@
         //Shear design
         AllCombForShearDesign →INI400_013756= Input.Get("AllCombForShearDesign"); //True - Use all combi for shear design (necessary with Autoθ)
         Coeff↓z← →INI400_013757= Input.Get("Coeff_z"); //Coefficient for inner arm of force
+        Coeff↓com← →KRS116_000011= Input.Get("Coeff_com"); 
         AutoCalNStirCut →INI400_013758= Input.Get("AutoCalNStirCut"); //True - Atuomatic calculation of numebr of cuts, False - User defined number of cuts
         bUseUserStirrup →INI400_013903= Input.Get("bUseUserStirrup"); //True - use userdefined stirrups
         DesignShearReinf →INI400_013760= Input.Get("DesignShearReinf"); //True - Design shear reinforcement
@@ -258,7 +259,7 @@ object Functions1D_EWN →INI400_013652= LoadExternCLC(Tools.Dir_Forms &amp; "Co
 object Functions1D_DesignReq →INI400_013653= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_DesignReq.CLC"); 
 object Functions1D_ShearAndTorsion →INI400_013654= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_ShearAndTorsion.CLC"); 
 object Functions1D_DesignToBars →INI400_013658= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_DesignToBars.CLC"); 
-
+object Functions1D_Geometrics →INI400_013795= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_Geometrics.clc"); 
 
 →INI400_002321BLOCK { //preparation of CSS and internal Forces
     object Forces →INI400_010996= ArrayForcesULS[0]; 
@@ -874,13 +875,15 @@ IF(bShearDesign) {
     } 
     double IndexShearLower →INI400_009499= 0; 
     double IndexShearUpper →INI400_009500= NForces-1; 
+    object ConcreteCssCharacteristics →INI400_009489= Concrete.Characteristics(CssShearID, ZeroForcesID, Concrete.CharType.WholeCharConcrete, Concrete.StiffnessType.No); 
+    
     // to find most critical combination for shear design
     IF(!AllCombForShearDesign) { 
         double IndexMostShearDangerous →INI400_009494= 0; 
         double MaxAswm →INI400_009495= 0; 
         double SingleForceULSChangedID →INI400_014121= 66; 
         →INI400_009548Concrete.SetForcesId(SingleForceULSChangedID, ForcesULSChanged[IndexTmax].N, ForcesULSChanged[IndexTmax].Vy, ForcesULSChanged[IndexTmax].Vz, ForcesULSChanged[IndexTmax].Mx, ForcesULSChanged[IndexTmax].My, ForcesULSChanged[IndexTmax].Mz); 
-        object ConcreteCssCharacteristics →INI400_009489= Concrete.Characteristics(CssShearID, ZeroForcesID, Concrete.CharType.WholeCharConcrete, Concrete.StiffnessType.No); 
+        
         double A↓c← →INI400_009547= ConcreteCssCharacteristics.A; 
         
         IF(bTorsion) { 
@@ -984,6 +987,7 @@ IF(bShearDesign) {
         →INI400_014169InputShearDesign.Add("θ_inp", θ↓inp←); 
         →INI400_014170InputShearDesign.Add("Coeff_d", Coeff↓d←); 
         →INI400_014171InputShearDesign.Add("Coeff_z", Coeff↓z←); 
+        →KRS116_000010InputShearDesign.Add("Coeff_com", Coeff↓com←); 
         →INI400_014172InputShearDesign.Add("b_interaction", b_interaction); 
         →INI400_014173InputShearDesign.Add("Beam", True); 
         →INI400_014174InputShearDesign.Add("Load", !AccidentalULS); 
@@ -1285,7 +1289,7 @@ IF(bDetailingProv) {
         object DetProv →INI400_008459= LoadExternCLC("EC_Concrete_Detailing_provisions_Beam.clc"); 
         DetProv.f↓ctm← →INI400_008978= f↓ctm←; 
         DetProv.f↓yk← →INI400_008979= f↓yk←; 
-        DetProv.A↓sp,req← →INI400_008980= 0; 
+        DetProv.A↓sp,req← →INI400_008980= A↓st.req.sum←; 
         DetProv.b →INI400_008997= b↓t←; 
         DetProv.A↓c← →INI400_009635= Concrete.Characteristics(CssULSID, ZeroForcesID, Concrete.CharType.WholeCharConcrete, Concrete.StiffnessType.No).A; 
         DetProv.d →INI400_008998= paramPODULS.d; 
@@ -1306,6 +1310,15 @@ IF(bDetailingProv) {
         DetProv.bBeamCheckMinDistance →INI400_009013= bBeamCheckMinDistance; 
         DetProv.bBeamCheckMinPercentage →INI400_009014= bBeamCheckMinPercentage; 
         DetProv.FormCode →INI400_009813= FormCode; 
+        
+        DetProv.ConcreteWholeCssChar →KRS116_000013= ConcreteCssCharacteristics; 
+        DetProv.α↓NA← →KRS116_000014= OutputDesignULS.AngleM-90; 
+        DetProv.a →KRS116_000015= Functions1D_Geometrics.DistanceOfCoGFromMostTensileFibre(CssULSID, ForcesULSID, OutputDesignULS.AngleM-90); 
+        DetProv.z →KRS116_000016= OutputDesignULS.paramPOD.z; 
+        double h↓char← →INI400_001678= CONCRETE.General.GetCssHeight(CssULSID, OutputDesignULS.AngleM); //- in direction of load resultant;
+        DetProv.f↓ctm,fl← →KRS116_000017= MAX((1.6-h↓char←)*f↓ctm←, f↓ctm←); 
+        DetProv.f↓yd← →KRS116_000018= f↓yd←; 
+        
         DetProv.EWNBasicIndex →INI400_009438= 4; 
         DetProv.EWNAddDescription →INI400_009439= TR("Det. provisions") &amp; ": "; 
         IF(bDesignAddLongReinf &amp;&amp; COMPARE(T↓max←, 0, 6) == 0) { 
@@ -1315,6 +1328,26 @@ IF(bDetailingProv) {
         } 
         DetProv.Equally →INI400_009243= Equally; 
         DetProv.TableParam →INI400_009094= TableParam; 
+        object DesignInput →KRS116_000031= new Structure(
+        "Forces", Forces, 
+        "ForcesDES", new Structure(), 
+        "AccidentalULS", AccidentalULS, 
+        "c", c, 
+        "c_lo", c↓lo←, 
+        "c_up", c↓up←, 
+        "c_side", c↓side←, 
+        "ϕ", ϕ, 
+        "ϕ_lo", ϕ↓lo←, 
+        "ϕ_up", ϕ↓up←, 
+        "IncreasingStatReinf", IncreasingStatReinf, 
+        "CssID", CssULSID, 
+        "ForcesID", ForcesULSID, 
+        "bUseUserReinf", bUseUserReinf, 
+        "A_c", Ac, 
+        "s_min", s↓min←, 
+        "Coeff_d", Coeff↓d←); 
+        
+        DetProv.DesignInput →KRS116_000030= DesignInput; 
         IF(IO.IsDrawing) { 
             →INI400_009015DetProv.Draw(False); 
         } ELSE { 
@@ -1399,6 +1432,36 @@ IF(bDetailingProv) {
         DetProv.bBeamSlabCheckMinPercentage →INI400_009234= bBeamSlabCheckMinPercentage; 
         DetProv.bBeamSlabCheckMaxPercentage →INI400_009235= bBeamSlabCheckMaxPercentage; 
         DetProv.bBeamSlabCheckMinDistance →INI400_009236= bBeamSlabCheckMinDistance; 
+        
+        DetProv.ConcreteWholeCssChar →KRS116_000023= ConcreteCssCharacteristics; 
+        DetProv.α↓NA← →KRS116_000024= OutputDesignULS.AngleM-90; 
+        DetProv.a →KRS116_000025= Functions1D_Geometrics.DistanceOfCoGFromMostTensileFibre(CssULSID, ForcesULSID, OutputDesignULS.AngleM-90); 
+        DetProv.z →KRS116_000026= OutputDesignULS.paramPOD.z; 
+        double h↓char← →KRS116_000027= CONCRETE.General.GetCssHeight(CssULSID, OutputDesignULS.AngleM); //- in direction of load resultant;
+        DetProv.f↓ctm,fl← →KRS116_000028= MAX((1.6-h↓char←)*f↓ctm←, f↓ctm←); 
+        DetProv.f↓yd← →KRS116_000029= f↓yd←; 
+        
+        object DesignInput →KRS116_000032= new Structure(
+        "Forces", Forces, 
+        "ForcesDES", new Structure(), 
+        "AccidentalULS", AccidentalULS, 
+        "c", c, 
+        "c_lo", c↓lo←, 
+        "c_up", c↓up←, 
+        "c_side", c↓side←, 
+        "ϕ", ϕ, 
+        "ϕ_lo", ϕ↓lo←, 
+        "ϕ_up", ϕ↓up←, 
+        "IncreasingStatReinf", IncreasingStatReinf, 
+        "CssID", CssULSID, 
+        "ForcesID", ForcesULSID, 
+        "bUseUserReinf", bUseUserReinf, 
+        "A_c", Ac, 
+        "s_min", s↓min←, 
+        "Coeff_d", Coeff↓d←); 
+        
+        DetProv.DesignInput →KRS116_000033= DesignInput; 
+        
         IF(IO.IsDrawing) { 
             →INI400_009192DetProv.Draw(False); 
         } ELSE { 
@@ -1529,7 +1592,7 @@ object ProvReinfArray →VAL127_000025= Functions1D_DesignReq.SumAreaOfTwoArrays
 
 //calculate type of edges for recalculation
 object[] obTypeOfEdgesForWholeCss →VAL127_000061= new object[]; 
-IF(FormCode == 2008) { 
+IF(FormCode == 2008 &amp;&amp; TypeMember == 1) { 
     obTypeOfEdgesForWholeCss[0] →VAL127_000062= new Structure("Edge", 0, "TypeEdge", 2, "RatioZ", 1); 
     obTypeOfEdgesForWholeCss[1] →VAL127_000063= new Structure("Edge", 1, "TypeEdge", 3, "RatioZ", 0); 
     obTypeOfEdgesForWholeCss[2] →VAL127_000064= new Structure("Edge", 2, "TypeEdge", 1, "RatioZ", 1); 
@@ -2845,6 +2908,13 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
+      <Variable Modifier="Public" Name="Coeff↓com←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_Coeff↓com←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="Coeff↓d←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_Coeff↓d←">
           <ENU>Coefficient for calculation effective height</ENU>
@@ -3029,6 +3099,12 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
       </Variable>
       <Variable Modifier="Public" Name="DescriptionN" ESA_ID="" Type="String">
         <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="DesignInput" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_DesignInput">
           <ENU>
           </ENU>
         </Description>
@@ -3450,6 +3526,12 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="Functions1D_Geometrics" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_Functions1D_Geometrics">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="Functions1D_ShearAndTorsion" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -3470,6 +3552,13 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
       </Variable>
       <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Precision="2">
         <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="h↓char←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_h↓char←">
           <ENU>
           </ENU>
         </Description>
@@ -4787,6 +4876,13 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
+      <Variable Modifier="Public" Name="α↓NA←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_α↓NA←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="α↓s.req←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_α↓s.req←">
           <ENU>Angle of stirrups from axis of member</ENU>
@@ -5325,6 +5421,14 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1741" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1741" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1741" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_001678">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1251" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1251" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1251" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1251" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1251" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1251" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
       <VC ID="INI400_001729">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="123" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -7641,7 +7745,7 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
       <VC ID="INI400_009015">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -10902,6 +11006,14 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
+      <VC ID="INI400_013795">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="INI400_013802">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -13286,6 +13398,158 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS116_000010">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000011">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000013">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000014">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000015">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000016">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000017">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000018">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000023">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000024">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000025">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000026">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000027">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1251" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1251" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1251" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1251" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1251" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="1251" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000028">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000029">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000030">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000031">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000032">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000033">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS127_000061">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -14868,7 +15132,7 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
               <ENU>Auto|Uniaxial y|Uniaxial z|Biaxial|General|Corner</ENU>
             </Texts>
           </TComboBox>
-          <TComboBox Name="DTypeMember" ID="67" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="32" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeMember" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1|2" Index="1">
+          <TComboBox Name="DTypeMember" ID="67" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="32" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeMember" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1|2" Index="0">
             <Texts>
               <ENU>Beam|Column|Slab</ENU>
             </Texts>
@@ -14878,12 +15142,12 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
           <TDoubleInput Name="" ID="56" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="23" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="LimitRatioM" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
           <TDoubleInput Name="" ID="16" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="12" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="MaxNlayers" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
           <TDoubleInput Name="" ID="26" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="3" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Coeff↓Area←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-          <TComboBox Name="DTypeCoverDiam" ID="55" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="22" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeCoverDiam" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1" Index="0">
+          <TComboBox Name="DTypeCoverDiam" ID="55" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="22" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeCoverDiam" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1" Index="1">
             <Texts>
               <ENU>Same values (column)|Upper, lower (beam)</ENU>
             </Texts>
           </TComboBox>
-          <TComboBox Name="TypeAreaCombo" ID="31" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="16" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeArea" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="1|0" Index="1">
+          <TComboBox Name="TypeAreaCombo" ID="31" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="16" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeArea" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="1|0" Index="0">
             <Texts>
               <ENU>Area of real bars|Delta area</ENU>
             </Texts>
@@ -14937,7 +15201,7 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
           <Texts>
             <ENU>Internal forces - Load</ENU>
           </Texts>
-          <TTableInput Name="" ID="70" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="TableForces" Value="1|0|400|500|0|500|30|yyyyy" CellBG="-1" HeaderBG="-986896" FixedRows="-1">
+          <TTableInput Name="" ID="70" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="TableForces" Value="1|-10|40|50|0|100|10|yyyyy" CellBG="-1" HeaderBG="-986896" FixedRows="-1">
             <Texts>
               <ENU>Index|N|My|Mz|Vy|Vz|Mx|Combikey</ENU>
             </Texts>
@@ -14967,9 +15231,9 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
             </Columns>
           </TTableInput>
         </TGroupBox>
-        <TConcreteSectionLibrary Name="" ID="41" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="22" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="1" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="" SelectedCS="2" Units="2" ReinfTabsVis="True" TabBG="-2894893" SelTab="-1">
-          <CS SelReinf="0" D="400e-3" />
-          <Reinf Ver="1" Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c="30e-3" D="20e-3" N="6" />
+        <TConcreteSectionLibrary Name="" ID="41" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="22" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="1" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="" SelectedCS="1" Units="2" ReinfTabsVis="True" TabBG="-2894893" SelTab="-1">
+          <CS SelReinf="0" H="500e-3" B="300e-3" />
+          <Reinf Ver="1" Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="30e-3" D_upper="20e-3" N_upper="2" c_lower="30e-3" D_lower="20e-3" N_lower="2" />
         </TConcreteSectionLibrary>
         <TCustomLibrary Name="" ID="29" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="20" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="CONCRETE.EC" DataFile="EC_Concrete.xml" Collapsed="True" UseCombo="False" Category="Bilinear" Item="C 35/45">
           <Data>
@@ -15121,7 +15385,7 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
           <Texts>
             <ENU>National Annex</ENU>
           </Texts>
-          <TCustomLibrary Name="" ID="30" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="SetupNA" DataFile="EC_NA.xml" Collapsed="True" UseCombo="True" Category="Eurocode NA" Item="Standard EN">
+          <TCustomLibrary Name="" ID="30" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="SetupNA" DataFile="EC_NA.xml" Collapsed="True" UseCombo="True" Category="Eurocode NA" Item="Dutch NEN-EN">
             <Data>
               <Header>
                 <PropertySet Symbol="Code" ESA_ID="EC_NA.Code" Unit="" Type="String" />
@@ -15646,38 +15910,38 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
               <Items>
                 <Item>
                   <P>Eurocode NA</P>
-                  <P>Standard EN</P>
-                  <P>STD</P>
-                  <P>0</P>
-                  <P>EC EN 1990</P>
-                  <P>EC EN 1991-1-1</P>
-                  <P>EC EN 1991-1-2</P>
-                  <P>EC EN 1991-1-3</P>
+                  <P>Dutch NEN-EN</P>
+                  <P>NEN</P>
+                  <P>5</P>
+                  <P>NEN EN 1990</P>
+                  <P>NEN EN 1991-1-1</P>
+                  <P>NEN EN 1991-1-2</P>
+                  <P>NEN EN 1991-1-3</P>
                   <P>0</P>
                   <P>NaN</P>
-                  <P>True;2;</P>
-                  <P>NaN</P>
+                  <P>False;1;</P>
                   <P>NaN</P>
                   <P>1.0</P>
+                  <P>1.0</P>
                   <P>NaN</P>
-                  <P>True</P>
+                  <P>False</P>
                   <P>1.6</P>
                   <P>2.0</P>
                   <P>NaN</P>
                   <P>0.8;4;5;15;</P>
-                  <P>True</P>
-                  <P>True</P>
-                  <P>True</P>
-                  <P>NaN</P>
-                  <P>EC EN 1991-1-4</P>
-                  <P>NaN</P>
-                  <P>NaN</P>
-                  <P>1</P>
-                  <P>1</P>
-                  <P>0.2;0.5;</P>
+                  <P>False</P>
+                  <P>False</P>
                   <P>False</P>
                   <P>NaN</P>
-                  <P>True;1;</P>
+                  <P>NEN EN 1991-1-4</P>
+                  <P>NaN</P>
+                  <P>NaN</P>
+                  <P>1</P>
+                  <P>1</P>
+                  <P>NaN;NaN;</P>
+                  <P>False</P>
+                  <P>NaN</P>
+                  <P>False;1;</P>
                   <P>True</P>
                   <P>True</P>
                   <P>1</P>
@@ -15686,13 +15950,13 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
                   <P>False</P>
                   <P>True</P>
                   <P>NaN</P>
-                  <P>EC EN 1991-1-5</P>
-                  <P>EC EN 1991-1-6</P>
-                  <P>EC EN 1991-1-7</P>
-                  <P>EC EN 1991-2</P>
-                  <P>EC EN 1991-3</P>
-                  <P>EC EN 1991-4</P>
-                  <P>EC EN 1992-1-1:2004/AC:2008</P>
+                  <P>NEN EN 1991-1-5</P>
+                  <P>NEN EN 1991-1-6</P>
+                  <P>NEN EN 1991-1-7</P>
+                  <P>NEN EN 1991-2</P>
+                  <P>NEN EN 1991-3</P>
+                  <P>NEN EN 1991-4</P>
+                  <P>NEN EN 1992-1-1+C2:2011/NB:2011</P>
                   <P>1</P>
                   <P>1</P>
                   <P>1.3</P>
@@ -15706,21 +15970,21 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
                   <P>600</P>
                   <P>0.9</P>
                   <P>1.1</P>
-                  <P>0.9;0.02;0.9;</P>
+                  <P>1.0;0.02;0.9;</P>
                   <P>1.5;2.5;</P>
                   <P>0</P>
                   <P>0</P>
                   <P>0</P>
-                  <P>5;10;15;</P>
-                  <P>10</P>
-                  <P>0;5;10;</P>
-                  <P>40;75;5;</P>
-                  <P>0.005</P>
+                  <P>0;0;0;</P>
+                  <P>5</P>
+                  <P>0;0;5;</P>
+                  <P>NaN;NaN;5;</P>
+                  <P>0.0033333</P>
                   <P>0.44;NaN;0.54;NaN;0.7;0.8;</P>
                   <P>NaN</P>
                   <P>1.2</P>
                   <P>0.8;0.9;</P>
-                  <P>0.95</P>
+                  <P>0.9</P>
                   <P>50;30;</P>
                   <P>0.7</P>
                   <P>0.75;0.85;</P>
@@ -15738,8 +16002,8 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
                   <P>1;0.85;</P>
                   <P>0.6</P>
                   <P>0.45</P>
-                  <P>0.8;1;0.75;</P>
-                  <P>0.4;0.3;0.3;0.2;0.2;NaN;</P>
+                  <P>0;0;0;</P>
+                  <P>0.4;0.3;0.2;0.3;0.2;0.1;</P>
                   <P>3.4;0.425;</P>
                   <P>1;5;</P>
                   <P>NaN</P>
@@ -15767,40 +16031,40 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
                   <P>8</P>
                   <P>10</P>
                   <P>5;8;</P>
-                  <P>600;NaN;</P>
+                  <P>10000;NaN;</P>
                   <P>0.8;0.8;</P>
                   <P>1.5</P>
                   <P>0.25</P>
                   <P>0.5</P>
-                  <P>EC EN 1992-1-2</P>
-                  <P>EC EN 1992-2</P>
-                  <P>EC EN 1992-3</P>
-                  <P>EC EN 1993-1-1</P>
+                  <P>NEN EN 1992-1-2</P>
+                  <P>NEN EN 1992-2</P>
+                  <P>NEN EN 1992-3</P>
+                  <P>NEN EN 1993-1-1</P>
                   <P>NaN;NaN;</P>
                   <P>1;1;1.25;</P>
-                  <P>EC EN 1993-1-2</P>
-                  <P>EC EN 1993-1-3</P>
-                  <P>EC EN 1993-1-4</P>
-                  <P>EC EN 1993-1-5</P>
+                  <P>NEN EN 1993-1-2</P>
+                  <P>NEN EN 1993-1-3</P>
+                  <P>NEN EN 1993-1-4</P>
+                  <P>NEN EN 1993-1-5</P>
                   <P>1.20;1.00;</P>
-                  <P>EC EN 1993-1-6</P>
-                  <P>EC EN 1993-1-7</P>
-                  <P>EC EN 1993-1-8</P>
+                  <P>NEN EN 1993-1-6</P>
+                  <P>NEN EN 1993-1-7</P>
+                  <P>NEN EN 1993-1-8</P>
                   <P>1.25;1.25;1.1;1.0;1.0;1.0;1.1;</P>
-                  <P>EC EN 1993-1-9</P>
-                  <P>EC EN 1993-1-10</P>
-                  <P>EC EN 1993-1-11</P>
-                  <P>EC EN 1993-1-12</P>
-                  <P>EC EN 1993-2</P>
+                  <P>NEN EN 1993-1-9</P>
+                  <P>NEN EN 1993-1-10</P>
+                  <P>NEN EN 1993-1-11</P>
+                  <P>NEN EN 1993-1-12</P>
+                  <P>NEN EN 1993-2</P>
                   <P>1.0;1.1;1.25;1.25;1.1;1.1;1.1;1.0;1.1;</P>
-                  <P>EC EN 1993-3-1</P>
-                  <P>EC EN 1993-3-2</P>
-                  <P>EC EN 1993-4-1</P>
-                  <P>EC EN 1993-4-2</P>
-                  <P>EC EN 1993-4-3</P>
-                  <P>EC EN 1993-5</P>
-                  <P>EC EN 1993-6</P>
-                  <P>EC EN 1994-1-1</P>
+                  <P>NEN EN 1993-3-1</P>
+                  <P>NEN EN 1993-3-2</P>
+                  <P>NEN EN 1993-4-1</P>
+                  <P>NEN EN 1993-4-2</P>
+                  <P>NEN EN 1993-4-3</P>
+                  <P>NEN EN 1993-5</P>
+                  <P>NEN EN 1993-6</P>
+                  <P>NEN EN 1994-1-1</P>
                   <P>1;1;</P>
                   <P>1.25</P>
                   <P>1.25</P>
@@ -15812,7 +16076,7 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
                   <P>NaN</P>
                   <P>NaN</P>
                   <P>1.0</P>
-                  <P>1.0</P>
+                  <P>NaN</P>
                   <P>0.6</P>
                   <P>180</P>
                   <P>1.25</P>
@@ -15820,14 +16084,14 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
                   <P>0.5</P>
                   <P>1.25</P>
                   <P>1.25</P>
-                  <P>EC EN 1994-1-2</P>
-                  <P>EC EN 1994-2</P>
-                  <P>EC EN 1995-1-1</P>
+                  <P>NEN EN 1994-1-2</P>
+                  <P>NEN EN 1994-2</P>
+                  <P>NEN EN 1995-1-1</P>
                   <P>NaN</P>
-                  <P>0.67;0.67;1.0;</P>
-                  <P>EC EN 1995-1-2</P>
-                  <P>EC EN 1995-2</P>
-                  <P>EC EN 1996-1-1</P>
+                  <P>NaN;NaN;NaN;</P>
+                  <P>NEN EN 1995-1-2</P>
+                  <P>NEN EN 1995-2</P>
+                  <P>NEN EN 1996-1-1</P>
                   <P>NaN</P>
                   <P>1</P>
                   <P>NaN</P>
@@ -15835,27 +16099,27 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
                   <P>1000</P>
                   <P>NaN;NaN;NaN;</P>
                   <P>NaN</P>
-                  <P>EC EN 1996-1-2</P>
-                  <P>EC EN 1996-2</P>
-                  <P>EC EN 1996-3</P>
-                  <P>EC EN 1997-1</P>
+                  <P>NEN EN 1996-1-2</P>
+                  <P>NEN EN 1996-2</P>
+                  <P>NEN EN 1996-3</P>
+                  <P>NEN EN 1997-1</P>
                   <P>1.1;0.9;1.5;0;</P>
                   <P>1.25;1.25;1.4;1.4;1.0;</P>
                   <P>1.35;1;1.5;0;1;1;1.3;0;</P>
                   <P>1;1;1;1;1;1.25;1.25;1.4;1.4;1;</P>
                   <P>1;1;1.4;1.1;1;1;</P>
-                  <P>EC EN 1997-2</P>
-                  <P>EC EN 1998-1</P>
-                  <P>EC EN 1998-2</P>
-                  <P>EC EN 1998-3</P>
-                  <P>EC EN 1998-4</P>
-                  <P>EC EN 1998-5</P>
-                  <P>EC EN 1998-6</P>
-                  <P>EC EN 1999-1-1</P>
-                  <P>EC EN 1999-1-2</P>
-                  <P>EC EN 1999-1-3</P>
-                  <P>EC EN 1999-1-4</P>
-                  <P>EC EN 1999-1-5</P>
+                  <P>NEN EN 1997-2</P>
+                  <P>NEN EN 1998-1</P>
+                  <P>NEN EN 1998-2</P>
+                  <P>NEN EN 1998-3</P>
+                  <P>NEN EN 1998-4</P>
+                  <P>NEN EN 1998-5</P>
+                  <P>NEN EN 1998-6</P>
+                  <P>NEN EN 1999-1-1</P>
+                  <P>NEN EN 1999-1-2</P>
+                  <P>NEN EN 1999-1-3</P>
+                  <P>NEN EN 1999-1-4</P>
+                  <P>NEN EN 1999-1-5</P>
                 </Item>
               </Items>
             </Data>

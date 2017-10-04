@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="75628410-1aae-4862-8ed1-9383823cf686">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">bool ValidateInput(object Input) { 
+    <SourceCode Collapsed="26" BreakPoints="">bool ValidateInput(object Input) { 
     c →INI400_000007= Input.Get("c"); //concrete cover perpendicular to both bars
     ϕ↓t← →INI400_006029= Input.Get("ϕ_t"); //diameter of transverse bar (diameter 14 mm - 32 mm)
     σ↓cm← →INI400_006030= Input.Get("σ_cm"); //compression in the concrete perpendicular to both bars (mean value, positive for compression)
@@ -67,6 +67,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     //    CASE "SIG": { } 
     //    CASE "STN": { } 
     //    CASE "SIST": { } 
+    //    CASE "UNE": { } 
     //    CASE "SS": { } 
     DEFAULT :  { 
         IF(COMPARE(ϕ↓t←, 0, 6) == 1) { 

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="2362ad0e-2662-47d5-98d1-b780d7ace3ba">
   <CodeEditor>
-    <SourceCode Collapsed="666" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure
+    <SourceCode Collapsed="672" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure
     bool ValidateInput(object Input) { //Validate inputs from master to this form
 
         //setting of calculation
@@ -9,6 +9,7 @@
         IndexEWN →INI400_013934= Input.Get("IndexEWN"); 
         Coeff↓d← →INI400_011653= Input.Get("Coeff_d"); //Coefficient for calculation effective height
         Coeff↓z← →INI400_011654= Input.Get("Coeff_z"); //Coefficient for calculation inner lever arm
+        Coeff↓com← →KRS116_000024= Input.Get("Coeff_com"); 
         Limit →INI400_011655= Input.Get("Limit_check"); //Limit value of the check
         AutoCalNStirCut →INI400_011656= Input.Get("AutoCalNStirCut"); //True - Automatic calculation number of cut of stirrup
         UC_lim →INI400_011657= Input.Get("UC_lim"); //Value used as UC if calculation cant be finished (like Equilibrium not found)
@@ -17,6 +18,7 @@
         ShearCheckMethod →VAL316_014441= Input.Get("ShearCheckMethod"); //the method for calculation shear reisistnaces 0 - auto, 1 -standart, 2 -interaction formula
         ShearBiaxialCoef →VAL316_014439= Input.Get("ShearBiaxialCoef"); //coeeficient for interaction formula for biaxial shear method
         α↓VM,lim← →VAL316_014443= Input.Get("Alpha_VMlim"); //limit value of difference beween moment resulstant and shear resultant for using stabdart method for calculation shear resistances
+        MemberType →KRS106_000001= Input.Get("MemberType"); 
         
         //Fonts, colors, pens...
         DrawHeader →INI400_011157= Input.Get("DrawHeader"); //True - Draw calculation header
@@ -220,7 +222,8 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
         object HeaderDrawInput →INI400_012791= new Structure(
         "ForcesID", ForcesID, 
         "CssID", CssID, 
-        "FormCode", IO.CS.Geometry.FormCode
+        "FormCode", IO.CS.Geometry.FormCode, 
+        "MemberType", MemberType
         ); 
         object HEADER →PAI127_000001= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Header.CLC"); 
         →KRS116_000021HEADER.DrawHeaderForStandalone(→KRS116_000022CrossSection, →KRS116_000023HeaderDrawInput); 
@@ -446,6 +449,7 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0 &amp;&amp; COMPARE(V↓Ed←, 0, 6) == 0) {
                 →INI400_013909InputCalcTheta.Add("ForcesID", ForcesID); 
                 →INI400_013910InputCalcTheta.Add("CssID", CssID); 
                 →INI400_013911InputCalcTheta.Add("Coeff_d", Coeff↓d←); 
+                →KRS116_000025InputCalcTheta.Add("Coeff_com", Coeff↓com←); 
                 →INI400_013912InputCalcTheta.Add("TypeMethod", TypeTorCss); 
                 →INI400_013913InputCalcTheta.Add("t_ef_inp", t↓ef.inp←); 
                 →INI400_013914InputCalcTheta.Add("A_k_inp", A↓k.inp←); 
@@ -469,6 +473,7 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0 &amp;&amp; COMPARE(V↓Ed←, 0, 6) == 0) {
                     →INI400_006837obEWN.Add(EWN_Theta[i-1]); 
                 } 
                 →INI400_008074TEXT("- minimum value:"); 
+                →KRS116_000029Functions1D_ShearAndTorsion.DrawThetaMinForCSN(N↓Ed←, Coeff↓com←, Concrete.Area.CompressedConcrete(CssID, ForcesID)+Concrete.Area.TensionConcrete(CssID, ForcesID), f↓cd←); 
                 →INI400_008075TEXT("θ↓min← = " &amp; θ↓min← &amp; "° =&gt; cot(θ↓min←) = " &amp; cotθ↓min←) @REF("(§6.2.3(2))"); 
                 →INI400_008076TEXT("- maximum value:"); 
                 →INI400_008077TEXT("θ↓max← = " &amp; θ↓max← &amp; "° =&gt; cot(θ↓max←) = " &amp; cotθ↓max←) @REF("(§6.2.3(2))"); 
@@ -492,6 +497,7 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0 &amp;&amp; COMPARE(V↓Ed←, 0, 6) == 0) {
                 →INI400_012130InputShearCheck.Add("IndexEWN", IndexEWN); 
                 →INI400_012132InputShearCheck.Add("Coeff_d", Coeff↓d←); 
                 →INI400_012133InputShearCheck.Add("Coeff_z", Coeff↓z←); 
+                →KRS116_000026InputShearCheck.Add("Coeff_com", Coeff↓com←); 
                 →VAL316_000001InputShearCheck.Add("bBiaxialMethod", bBiaxialMethod); 
                 →VAL316_014440InputShearCheck.Add("ShearBiaxialCoef", ShearBiaxialCoef); 
                 
@@ -603,6 +609,8 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0 &amp;&amp; COMPARE(V↓Ed←, 0, 6) == 0) {
                 →INI400_012272InputTorsionCheck.Add("A_k_inp", A↓k.inp←); 
                 →INI400_012273InputTorsionCheck.Add("u_k_inp", u↓k.inp←); 
                 →KRS116_000002InputTorsionCheck.Add("Coeff_z", Coeff↓z←); 
+                →KRS116_000027InputTorsionCheck.Add("Coeff_d", Coeff↓d←); 
+                →KRS116_000028InputTorsionCheck.Add("Coeff_com", Coeff↓com←); 
                 
                 //loading 
                 →INI400_012289InputTorsionCheck.Add("T_ccd", 0); 
@@ -1340,6 +1348,13 @@ IF(IO.IsDrawing) {
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="Coeff↓com←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_Coeff↓com←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="Coeff↓d←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Coefficient for calculation effective height</ENU>
@@ -1727,6 +1742,13 @@ IF(IO.IsDrawing) {
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
+      </Variable>
+      <Variable Modifier="Public" Name="MemberType" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_MemberType">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="N" ESA_ID="" Type="Double" Precision="2">
         <Description>
@@ -7678,6 +7700,14 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS106_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS116_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -7717,6 +7747,54 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000024">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000025">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000026">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000027">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000028">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000029">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
       <VC ID="KRS316_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -8070,7 +8148,7 @@ IF(IO.IsDrawing) {
             </Texts>
           </TComboBox>
         </TGroupBox>
-        <TGroupBox Name="" ID="51" Translate="0" Left="200" Top="-5799" Width="475" AutoWidth="False" AutoHeight="True" TabIndex="55" Dock="0" Anchor="5" Padding="5|13|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" BorderColor="-5192482">
+        <TGroupBox Name="" ID="51" Translate="0" Left="203" Top="-5796" Width="475" AutoWidth="False" AutoHeight="True" TabIndex="55" Dock="0" Anchor="5" Padding="5|13|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" BorderColor="-5192482">
           <Texts>
             <ENU>General setting</ENU>
           </Texts>

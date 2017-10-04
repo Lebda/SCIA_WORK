@@ -88,7 +88,7 @@ IF((FormCode == 2005 || FormCode == 2006 || FormCode == 2009 || FormCode == 2013
 
 
 IF(IO.Contains("REINF")) { 
-    IF(Reinf.Count != 0) { 
+    IF(Reinf != null &amp;&amp; Reinf.Count != 0) { 
         IF(DrawDetReinfText) { //Drawing of additional text around CSS
             double FontHeight →KRS116_000197= (Convert.ToSingle(UserDimFont+1))/ZoomDrawX; //Font height to spacing converted to real units [m]
             IF(FormCode != 2002) { 

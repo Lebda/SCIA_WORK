@@ -22,10 +22,13 @@
         CalcImp →INI400_011664= Input.Get("CalcImp"); //True - geometric imperfection is used
         EquivMoment →INI400_011665= Input.Get("EquivMoment"); //True - equivalent first order moment is used
         CalSecOrder →INI400_011666= Input.Get("CalSecOrder"); //True - second order effect is used
-
+        MemberType →KRS106_000001= Input.Get("MemberType"); 
+        CompressMember →KRS106_000012= Input.Get("CompressMember"); 
+        N↓com← →KRS106_000013= Input.Get("N_com"); 
+        
         //lengths
-        L↓y← →INI400_012491= Input.Get("L_y"); //Length for deformation in Y direction
-        L↓z← →INI400_012492= Input.Get("L_z"); //Length for deformation in Z direction
+        l↓0y← →INI400_012491= Input.Get("L_y"); //Length for deformation in Y direction
+        l↓0z← →INI400_012492= Input.Get("L_z"); //Length for deformation in Z direction
 
         //linear deformation
         u↓ys← →INI400_012493= Input.Get("u_ys"); //Linear short-term deformation in (y) direction
@@ -140,7 +143,8 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
         object HeaderDrawInput →KRS116_000017= new Structure(
         "ForcesID", ForcesID, 
         "CssID", CssID, 
-        "FormCode", IO.CS.Geometry.FormCode
+        "FormCode", IO.CS.Geometry.FormCode, 
+        "MemberType", MemberType
         ); 
         object HEADER →PAI127_000001= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Header.CLC"); 
         →KRS116_000021HEADER.DrawHeaderForStandalone(→KRS116_000022CrossSection, →KRS116_000023HeaderDrawInput); 
@@ -179,6 +183,9 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
             →KRS116_000006InputStiffShort.Add("CalcImp", CalcImp); 
             →KRS116_000007InputStiffShort.Add("IsoCol", IsoCol); 
             →KRS116_000008InputStiffShort.Add("EquivMoment", EquivMoment); 
+            →KRS106_000014InputStiffShort.Add("MemberType", MemberType); 
+            →KRS106_000015InputStiffShort.Add("N_com", N↓com←); 
+            →KRS106_000016InputStiffShort.Add("CompressMember", CompressMember); 
             //forces
             →KRS316_000070InputStiffShort.Set("SetForcesChar", SetForcesCharID); 
             →KRS316_000071InputStiffShort.Set("SetForcesQp", SetForcesQpID); 
@@ -226,6 +233,9 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
             →KRS116_000014InputStiffLong.Add("CalcImp", CalcImp); 
             →KRS116_000015InputStiffLong.Add("IsoCol", IsoCol); 
             →KRS116_000016InputStiffLong.Add("EquivMoment", EquivMoment); 
+            →KRS106_000020InputStiffLong.Add("MemberType", MemberType); 
+            →KRS106_000021InputStiffLong.Add("N_com", N↓com←); 
+            →KRS106_000022InputStiffLong.Add("CompressMember", CompressMember); 
             //forces
             →KRS316_000088InputStiffLong.Set("SetForcesChar", SetForcesCharID); 
             →KRS316_000089InputStiffLong.Set("SetForcesQp", SetForcesQpID); 
@@ -337,7 +347,7 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
         
         IF(IO.IsStandalone) { 
             
-            IF(IO.Contains("REINF")) { 
+            IF(IO.Contains("REINF") &amp;&amp; IO.REINF.Contains("Bar")) { 
                 IF(IO.REINF.Bar.Count &gt; 1) { 
                     
                     double δ↓add,y← →INI400_004150= δ↓short,y←+δ↓long,creep,y←-δ↓imm,y←; 
@@ -349,7 +359,7 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
                 } 
             } 
         } ELSE { 
-            IF(IO.Contains("REINF")) { 
+            IF(IO.Contains("REINF") &amp;&amp; IO.REINF.Contains("Bar")) { 
                 IF(IO.REINF.Bar.Count &gt; 1) { 
                     double δ↓add,y← →DLO116_000025= δ↓short,y←+δ↓long,creep,y←-δ↓imm,y←; 
                     double δ↓add,z← →DLO116_000026= δ↓short,z←+δ↓long,creep,z←-δ↓imm,z←; 
@@ -375,19 +385,19 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
                 double δ↓add,lim,y← →DLO116_000015= 0; 
             } ELSE { 
                 IF(δ↓add,y← &lt; 0) { 
-                    double δ↓add,lim,y← →DLO116_000001= -L↓y←/Lim↓add←; 
+                    double δ↓add,lim,y← →DLO116_000001= -l↓0y←/Lim↓add←; 
                     
                 } ELSE { 
-                    double δ↓add,lim,y← →INI400_010991= L↓y←/Lim↓add←; 
+                    double δ↓add,lim,y← →INI400_010991= l↓0y←/Lim↓add←; 
                 } 
             } 
             IF(COMPARE(δ↓add,z←, 0, 6) == 0) { 
                 double δ↓add,lim,z← →DLO116_000016= 0; 
             } ELSE { 
                 IF(δ↓add,z← &lt; 0) { 
-                    double δ↓add,lim,z← →DLO116_000004= -L↓z←/Lim↓add←; 
+                    double δ↓add,lim,z← →DLO116_000004= -l↓0z←/Lim↓add←; 
                 } ELSE { 
-                    double δ↓add,lim,z← →DLO116_000006= L↓z←/Lim↓add←; 
+                    double δ↓add,lim,z← →DLO116_000006= l↓0z←/Lim↓add←; 
                 } 
             } 
         } 
@@ -395,7 +405,7 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
         →INI400_006790TEXT("Total deflection"); 
         IF(IO.IsStandalone) { 
             
-            IF(IO.Contains("REINF")) { 
+            IF(IO.Contains("REINF") &amp;&amp; IO.REINF.Contains("Bar")) { 
                 IF(IO.REINF.Bar.Count &gt; 1) { 
                     double δ↓tot,y← →INI400_004156= δ↓short,y←+δ↓long,creep,y←; 
                     double δ↓tot,z← →INI400_004157= δ↓short,z←+δ↓long,creep,z←; 
@@ -407,7 +417,7 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
             } 
             
         } ELSE { 
-            IF(IO.Contains("REINF")) { 
+            IF(IO.Contains("REINF") &amp;&amp; IO.REINF.Contains("Bar")) { 
                 IF(IO.REINF.Bar.Count &gt; 1) { 
                     double δ↓tot,y← →DLO116_000030= δ↓short,y←+δ↓long,creep,y←; 
                     double δ↓tot,z← →DLO116_000031= δ↓short,z←+δ↓long,creep,z←; 
@@ -429,18 +439,18 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
                 double δ↓tot,lim,y← →DLO116_000013= 0; 
             } ELSE { 
                 IF(δ↓tot,y← &lt; 0) { 
-                    double δ↓tot,lim,y← →DLO116_000007= -L↓y←/Lim↓tot←; 
+                    double δ↓tot,lim,y← →DLO116_000007= -l↓0y←/Lim↓tot←; 
                 } ELSE { 
-                    double δ↓tot,lim,y← →INI400_006804= L↓y←/Lim↓tot←; 
+                    double δ↓tot,lim,y← →INI400_006804= l↓0y←/Lim↓tot←; 
                 } 
             } 
             IF(COMPARE(δ↓tot,z←, 0, 6) == 0) { 
                 double δ↓tot,lim,z← →DLO116_000014= 0; 
             } ELSE { 
                 IF(δ↓tot,z← &lt; 0) { 
-                    double δ↓tot,lim,z← →DLO116_000010= -L↓z←/Lim↓tot←; 
+                    double δ↓tot,lim,z← →DLO116_000010= -l↓0z←/Lim↓tot←; 
                 } ELSE { 
-                    double δ↓tot,lim,z← →DLO116_000012= L↓z←/Lim↓tot←; 
+                    double δ↓tot,lim,z← →DLO116_000012= l↓0z←/Lim↓tot←; 
                 } 
             } 
             
@@ -630,7 +640,7 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
         TCheckDeflections[0][10].Value →INI400_004304= TR("Status") &amp; "&lt;BR&gt; "; 
         //next row
         TCheckDeflections[1][0].Value →INI400_004326= "u↓y←"; 
-        TCheckDeflections[1][1].Value →INI400_004306= ROUND(L↓y←, 3); 
+        TCheckDeflections[1][1].Value →INI400_004306= ROUND(l↓0y←, 3); 
         TCheckDeflections[1][2].Value →INI400_004307= ROUND(δ↓add,y←*1000, 2); 
         TCheckDeflections[1][3].Value →INI400_004308= ROUND(δ↓add,lim,y←*1000, 2); 
         TCheckDeflections[1][4].Value →INI400_004309= ROUND(UnityCheck↓add,y←, 2); 
@@ -644,7 +654,7 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
         
         //next row
         TCheckDeflections[2][0].Value →INI400_004327= "u↓z←"; 
-        TCheckDeflections[2][1].Value →INI400_004316= ROUND(L↓z←, 3); 
+        TCheckDeflections[2][1].Value →INI400_004316= ROUND(l↓0z←, 3); 
         TCheckDeflections[2][2].Value →INI400_004317= ROUND(δ↓add,z←*1000, 2); 
         TCheckDeflections[2][3].Value →INI400_004318= ROUND(δ↓add,lim,z←*1000, 2); 
         TCheckDeflections[2][4].Value →INI400_004319= ROUND(UnityCheck↓add,z←, 2); 
@@ -759,29 +769,14 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Check" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="Check↓y←" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="Check↓z←" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="Combikey" ESA_ID="" Type="String">
         <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="CompressMember" ESA_ID="" Type="Boolean">
+        <Description TranslateID="VARIABLE_CompressMember">
           <ENU>
           </ENU>
         </Description>
@@ -938,6 +933,27 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="Check" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="Check↓y←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="Check↓z←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -970,15 +986,15 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="L↓y←" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="l↓0y←" ESA_ID="" Type="Double" Precision="2">
         <Description>
-          <ENU>Length for deformation in Y direction</ENU>
+          <ENU>Effective length for deformation in Y direction</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="L↓z←" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="l↓0z←" ESA_ID="" Type="Double" Precision="2">
         <Description>
-          <ENU>Length for deformation in Z direction</ENU>
+          <ENU>Effective length for deformation in Z direction</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
@@ -1030,6 +1046,20 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
           <ENU>Bending moment around (z) axis under quasi-permanent combination</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
+      </Variable>
+      <Variable Modifier="Public" Name="MemberType" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_MemberType">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="N↓com←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_N↓com←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="N↓char←" ESA_ID="" Type="Double" Precision="2">
         <Description>
@@ -1158,6 +1188,20 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
+      <Variable Modifier="Public" Name="SetForcesCharID" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="SetForcesQpID" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="sCheck" ESA_ID="" Type="String">
         <Description>
           <ENU>
@@ -1175,20 +1219,6 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
           <ENU>
           </ENU>
         </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="SetForcesCharID" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="SetForcesQpID" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="SLSChar" ESA_ID="" Type="Boolean">
         <Description>
@@ -1244,13 +1274,13 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="TCheckDeflections" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="TDeflections" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="TDeflections" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="TCheckDeflections" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -4476,6 +4506,102 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="34.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="7" />
       </VC>
+      <VC ID="KRS106_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000012">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000013">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000014">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000015">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000016">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000017">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000018">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000019">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000020">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000021">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000022">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS116_000005">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4941,8 +5067,8 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
             </ENU>
           </Texts>
         </TCheckBox>
-        <TDoubleInput Name="" ID="37" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="10" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" VarName="L↓z←" VarNameVisible="False" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TDoubleInput Name="" ID="36" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="9" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" VarName="L↓y←" VarNameVisible="False" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
+        <TDoubleInput Name="" ID="37" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="10" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" VarName="" VarNameVisible="False" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
+        <TDoubleInput Name="" ID="36" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="9" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" VarName="" VarNameVisible="False" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="" ID="35" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="8" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" VarName="" VarNameVisible="False" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="" ID="26" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" VarName="φ" VarNameVisible="False" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TComboBox Name="" ID="38" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="11" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" VarName="Type↓fct,eff←" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1" Index="0">

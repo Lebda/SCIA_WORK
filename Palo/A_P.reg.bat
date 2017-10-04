@@ -1,5 +1,5 @@
 call EXPERT.exe e -o
-call GepInstall.exe e -o
+call GepInstall.exe /auto
 ep_regsvr32 @A_P.reg.txt
 call EP_ComponentCmdsRegSvr.exe EP_ComponentCmdsLibBase.EPW4_Cathegory_Components
 call EP_OpenCheckDbBuilder.exe 

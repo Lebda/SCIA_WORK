@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="8e74b137-cb6d-474f-ae14-ce528797b1b1">
   <CodeEditor>
-    <SourceCode Collapsed="608|1033" BreakPoints="">→INI400_011150BLOCK { // using data exchange structure
+    <SourceCode Collapsed="545|981" BreakPoints="">→INI400_011150BLOCK { // using data exchange structure
     bool ValidateInput(object Input) { //Validate inputs from master to this form
         //Fonts, colors, pens...
         bPrint_Img →INI400_011763= Input.Get("Print_Img"); //Print images
@@ -16,37 +16,18 @@
         SLSChar →INI400_011711= Input.Get("SLSChar"); //True - Load combination is characteristic
         SLSQP →INI400_011712= Input.Get("SLSQP"); //True - Load combination is quasi-permanent
         PercLongtermLoad →INI400_011713= Input.Get("PercLongtermLoad"); //Long-term part of applied load
-        //        RatioShort →INI400_011714= Input.Get("RatioShort"); //percentage of shortterm load, 0 - 0% short, 1 - 100% short
-        //        RatioLong →INI400_011715= Input.Get("RatioLong"); //percentage of longterm load; 0 - 0% long, 1 - 100% long
         bIsLongTerm →INI400_011716= Input.Get("IsLongTerm"); //True - Longterm load
         
         IsoCol →INI400_011663= Input.Get("IsoCol"); //True - Member is isolated
         CalcImp →INI400_011664= Input.Get("CalcImp"); //True - geometric imperfection is used
         EquivMoment →INI400_011665= Input.Get("EquivMoment"); //True - equivalent first order moment is used
         CalSecOrder →INI400_011666= Input.Get("CalSecOrder"); //True - second order effect is used
-
-        // cross-section
-        //        Shape →INI400_011670= Input.Get("ShapeCss"); //Array of point of concrete cross-sections 
-        //        ConMat →INI400_011671= Input.Get("ConMat"); //Structure with concrete material char
-        //        →INI400_011686ReinfMat →INI400_011675= Input.Get(→INI400_011687"ReinfMat"); //Structure with reinforcement material char
-        //        CssID1 →INI400_011677= Input.Get("CssIDUncrack"); //ID of Css with concrete diagram without tension part
-        //        CssID2 →INI400_011678= Input.Get("CssIDCrack"); //ID of Css with concrete diagram 
-        //        CssID5 →INI400_011718= Input.Get("CssIDPlain"); //ID of Css with plain concrete diagram 
-        //        FormCode →INI400_011688= Input.Get("FormCode"); //FormCode of Css
-
+        MemberType →KRS106_000024= Input.Get("MemberType"); 
+        CompressMember →KRS106_000012= Input.Get("CompressMember"); 
+        N↓com← →KRS106_000013= Input.Get("N_com"); 
+        
         //forces
         Combikey →INI400_011730= Input.Get("Combikey"); //Combikey of Css
-        //        N↓ini← →INI400_011727= Input.Get("N_ini"); //Initial normal force
-        //        M↓y,ini← →INI400_011728= Input.Get("M_y_ini"); //Initial bending moment around y axis
-        //        M↓z,ini← →INI400_011729= Input.Get("M_z_ini"); //Initial bending moment around z axis
-        //        //characteristic
-        //        N↓char← →INI400_011722= Input.Get("N_char"); //Characteristics normal force
-        //        M↓y,char← →INI400_011717= Input.Get("M_y_char"); //Characteristics bending moment around y axis
-        //        M↓z,char← →INI400_011723= Input.Get("M_z_char"); //Characteristics bending moment around z axis
-        //        //quasi-permanent
-        //        N↓qp← →INI400_011724= Input.Get("N_qp"); //quasi-permanent normal force
-        //        M↓y,qp← →INI400_011725= Input.Get("M_y_qp"); //quasi-permanent bending moment around y axis
-        //        M↓z,qp← →INI400_011726= Input.Get("M_z_qp"); //quasi-permanent bending moment around z axis
 
         SetForcesCharID →INI400_011681= Input.Get("SetForcesChar"); //ID of char force set
         SetForcesQpID →INI400_011682= Input.Get("SetForcesQp"); //ID of Q-P force set
@@ -415,48 +396,21 @@ object Functions1D_EWN →INI400_013611= LoadExternCLC(Tools.Dir_Forms &amp; "Co
         } 
         →INI400_005574TEXT("α↓Μ← = " &amp; α↓Μ←); 
     } 
-    →INI400_007301TEXT("Recalculation bending moments"); 
-    →INI400_009139BLOCK { 
-        →INI400_007302TEXT("Second order effect:"); 
-        IF(CalSecOrder) { 
-            →INI400_007303TEXT("Yes"); 
-        } ELSE { 
-            →INI400_007304TEXT("No"); 
-        } 
-        →INI400_007305TEXT("Imperfections:"); 
-        IF(CalcImp) { 
-            →INI400_007306TEXT("Yes"); 
-        } ELSE { 
-            →INI400_007307TEXT("No"); 
-        } 
-        →INI400_007308TEXT("Member is taken as isolated member:"); 
-        IF(IsoCol) { 
-            →INI400_007309TEXT("Yes"); 
-        } ELSE { 
-            →INI400_007310TEXT("No"); 
-        } 
-        →INI400_007311TEXT("Use for calculation equivalent moments:"); 
-        IF(EquivMoment) { 
-            →INI400_007312TEXT("Yes"); 
-        } ELSE { 
-            →INI400_007313TEXT("No"); 
-        } 
+    IF(MemberType == 2 ? !CompressMember : false) { 
+        →KRS106_000027TEXT("Compression member evaluation:"); 
+        N2↓2← →KRS106_000026= true; 
+        →INI400_000325TEXT("N↓Ed← &lt; N↓com← = " &amp; N↓char,out← &amp; " &lt; " &amp; N↓com← &amp; " ... "); 
+        →INI400_006825TEXT("not compression member"); 
+        string DescriptionN →KRS106_000025= TR("First and second order eccentricity will not be taken into account, because the member is not considered as a compression member (normal force is relatively small or zero)."); 
+        string SolutionN →KRS106_000026= TR(""); 
+        string TypeN →KRS106_000025= TR("Note"); 
+        →KRS106_000018Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
+        Number↓N← →KRS106_000019= Number↓N←+1; 
+        →KRS106_000020StructEWN.Add(new Structure("Index", "N2↓6←", "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
     } 
-    //    N↓char← →INI400_013725= obForcesChar.N; 
-    //    M↓y,char← →INI400_013726= obForcesChar.My; 
-    //    M↓z,char← →INI400_013727= obForcesChar.Mz; 
-    //    N↓qp← →INI400_013728= obForcesQP.N; 
-    //    M↓y,qp← →INI400_013729= obForcesQP.My; 
-    //    M↓z,qp← →INI400_013730= obForcesQP.Mz; 
+    →INI400_007301TEXT("Recalculation bending moments"); 
+    →KRS106_000023Functions1D_General.RecalcBendingMomentsInfo(MemberType, CompressMember, CalSecOrder, CalcImp, IsoCol, EquivMoment); 
     
-    //    →INI400_013723TEXT("Characteristic values:"); 
-    //    →INI400_012831TEXT("N↓char← = " &amp; VAL(obForcesChar.N/1000, 2) &amp; " kN"); 
-    //    →INI400_012832TEXT("M↓y,char← = " &amp; VAL(obForcesChar.My/1000, 2) &amp; " kNm"); 
-    //    →INI400_012833TEXT("M↓z,char← = " &amp; VAL(obForcesChar.Mz/1000, 2) &amp; " kNm"); 
-    //    →INI400_013724TEXT("Quasi-permanent values:"); 
-    //    →INI400_012834TEXT("N↓qp← = " &amp; VAL(obForcesQP.N/1000, 2) &amp; " kN"); 
-    //    →INI400_012835TEXT("M↓y,qp← = " &amp; VAL(obForcesQP.My/1000, 2) &amp; " kNm"); 
-    //    →INI400_012836TEXT("M↓z,qp← = " &amp; VAL(obForcesQP.Mz/1000, 2) &amp; " kNm"); 
     →INI400_007060TEXT("Characteristic values:"); 
     →INI400_007045TEXT("N↓char,r← = " &amp; N↓char,out←); 
     →INI400_007046TEXT("M↓y,char,r← = " &amp; M↓y,char,out←); 
@@ -472,23 +426,6 @@ object Functions1D_EWN →INI400_013611= LoadExternCLC(Tools.Dir_Forms &amp; "Co
         α↓Μ,r← →INI400_007324= ARCTG(M↓z,qp←, M↓y,qp←); 
     } 
     →INI400_007325TEXT("α↓Μ,r← = " &amp; α↓Μ,r←); 
-    //    } ELSE { 
-    //        //characteristic
-    //        →INI400_013717TEXT("N↓char← = " &amp; VAL(obForcesChar.N/1000, 2) &amp; " kN"); 
-    //        →INI400_013718TEXT("M↓y,char← = " &amp; VAL(obForcesChar.My/1000, 2) &amp; " kNm"); 
-    //        →INI400_013719TEXT("M↓z,char← = " &amp; VAL(obForcesChar.Mz/1000, 2) &amp; " kNm"); 
-    //        //quasi-permanent
-    //        →INI400_013720TEXT("N↓qp← = " &amp; VAL(obForcesQP.N/1000, 2) &amp; " kN"); 
-    //        →INI400_013721TEXT("M↓y,qp← = " &amp; VAL(obForcesQP.My/1000, 2) &amp; " kNm"); 
-    //        →INI400_013722TEXT("M↓z,qp← = " &amp; VAL(obForcesQP.Mz/1000, 2) &amp; " kNm"); 
-    //        →INI400_007334TEXT("Angle of bending moment resultant"); 
-    //        IF(COMPARE(M↓y,qp←, 0, 3) == 0) { 
-    //            α↓Μ← →INI400_007335= 0; 
-    //        } ELSE { 
-    //            α↓Μ← →INI400_007336= ARCTG(M↓z,qp←, M↓y,qp←); 
-    //        } 
-    //        →INI400_007337TEXT("α↓Μ← = " &amp; α↓Μ←); 
-    //    } 
 } 
 →INI400_007053PAGEBREAK(); 
 
@@ -738,14 +675,25 @@ object Functions1D_EWN →INI400_013611= LoadExternCLC(Tools.Dir_Forms &amp; "Co
                         →INI400_007237TEXT(Description("σ↓s←")); 
                         σ↓s← →INI400_001032= CONCRETE.StressStrain.GetExtremeStressOfReinfMax(CssID2, SetForcesQpIDnew); 
                         →INI400_007233TEXT(Description("ζ")); 
-                        IF((f↓ct,eff← &gt;= σ↓ct←) || (COMPARE(0, σ↓s←, 6) == 0) || (COMPARE(0, σ↓sr←, 6) == 0)) { 
-                            ζ →INI400_001030= 0 @REF("(7.19)"); 
+                        IF(COMPARE(0, σ↓s←, 6) == 0) { //longitudinal reinforcement is not defined
+                            ζ →KRS106_000030= 0 @REF("(7.19)"); 
                             bool E8↓1← →INI400_007112= true; 
                             Number↓E← →INI400_007109= Number↓E←+1; 
                             →INI400_007110StructEWN.Add(new Structure("Index", "E8/1", "Type", TR("Error"), "Description", TR("Longitudinal reinforcement is not defined. The distribution coefficient cannot be calculated"), "Solution", TR("Define longitudinal reinforcement"))); 
                         } ELSE { 
-                            ζ →INI400_001029= MAX(0, 1-β*[(σ↓sr←/σ↓s←)]↑2←) @REF("(7.19)"); 
-                            bool E8↓1← →INI400_007108= false; 
+                            IF(COMPARE(0, σ↓sr←, 6) == 0) { //fully cracked, concrete is not effective in tension
+                                ζ →KRS106_000028= 1 @REF("(7.19)"); 
+                                Number↓N← →KRS106_000032= Number↓N←+1; 
+                                →KRS106_000029StructEWN.Add(new Structure("Index", "N8/3", "Type", TR("Note"), "Description", TR("The distribution coefficient is set to 1 because concrete is not effective in tension (σ↓cr← = 0 MPa) and member is fully cracked."), "Solution", TR(""))); 
+                            } ELSE { 
+                                IF(f↓ct,eff← &gt;= σ↓ct←) { //No cracks, concrete is effect in tension 
+                                    ζ →INI400_001030= 0 @REF("(7.19)"); 
+                                    Number↓N← →KRS106_000033= Number↓N←+1; 
+                                    →KRS106_000031StructEWN.Add(new Structure("Index", "N8/2", "Type", TR("Note"), "Description", TR("The distribution coefficient is set to 0 because concrete is not cracked."), "Solution", TR(""))); 
+                                } ELSE { //coefficient is calculated
+                                    ζ →INI400_001029= MAX(0, 1-β*[(σ↓sr←/σ↓s←)]↑2←) @REF("(7.19)"); 
+                                } 
+                            } 
                         } 
                     } 
                 } ELSE { 
@@ -1522,6 +1470,12 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 2) {
           <ENU>Content of combination</ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="CompressMember" ESA_ID="" Type="Boolean">
+        <Description TranslateID="VARIABLE_CompressMember">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="ConcreteCssCharacteristics" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -2244,13 +2198,6 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 2) {
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓y,cr←" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
-      </Variable>
       <Variable Modifier="Public" Name="M↓y,char,out←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -2261,6 +2208,13 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 2) {
       <Variable Modifier="Public" Name="M↓y,char←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Bending moment around (y) axis under characteristic combination</ENU>
+        </Description>
+        <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
+      </Variable>
+      <Variable Modifier="Public" Name="M↓y,cr←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
@@ -2284,13 +2238,6 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 2) {
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓z,cr←" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
-      </Variable>
       <Variable Modifier="Public" Name="M↓z,char,out←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -2301,6 +2248,13 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 2) {
       <Variable Modifier="Public" Name="M↓z,char←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Bending moment around (z) axis under characteristic combination</ENU>
+        </Description>
+        <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
+      </Variable>
+      <Variable Modifier="Public" Name="M↓z,cr←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
@@ -2323,6 +2277,33 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 2) {
           <ENU>Bending moment around (z) axis under quasi-permanent combination</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
+      </Variable>
+      <Variable Modifier="Public" Name="MemberType" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_MemberType">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="N↓char,out←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
+      </Variable>
+      <Variable Modifier="Public" Name="N↓char←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>Normal force in (x) direction under characteristic combination</ENU>
+        </Description>
+        <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
+      </Variable>
+      <Variable Modifier="Public" Name="N↓com←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_N↓com←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="N↓cr,c←" ESA_ID="" Type="Double" Precision="2">
         <Description>
@@ -2373,19 +2354,6 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 2) {
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓char,out←" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
-      </Variable>
-      <Variable Modifier="Public" Name="N↓char←" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>Normal force in (x) direction under characteristic combination</ENU>
-        </Description>
-        <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
-      </Variable>
       <Variable Modifier="Public" Name="N↓ini←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -2408,6 +2376,12 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 2) {
       </Variable>
       <Variable Modifier="Public" Name="N2↓1←" ESA_ID="" Type="Boolean">
         <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="N2↓2←" ESA_ID="" Type="Boolean">
+        <Description TranslateID="VARIABLE_N2↓2←">
           <ENU>
           </ENU>
         </Description>
@@ -3425,6 +3399,14 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 2) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="292" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="2991" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_000325">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_000473">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -6706,6 +6688,14 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 2) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="5538" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
+      <VC ID="INI400_006825">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="INI400_007045">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -6875,28 +6865,28 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 2) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
       </VC>
       <VC ID="INI400_007109">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
       </VC>
       <VC ID="INI400_007110">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="61.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="61.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="61.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="61.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="61.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="61.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="61.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="61.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
       </VC>
       <VC ID="INI400_007112">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
       </VC>
       <VC ID="INI400_007114">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -9554,6 +9544,142 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 2) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
+      <VC ID="KRS106_000012">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000013">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000018">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000019">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000020">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="131" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="131" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="131" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="131" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="131" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="131" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000022">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000023">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000024">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000025">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000026">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000027">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000028">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="4058" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000029">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="61.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="61.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="61.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="61.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="61.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="61.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000030">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="4058" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000031">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="61.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="61.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="61.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="61.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="61.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="61.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000032">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000033">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+      </VC>
       <VC ID="KRS116_000005">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -9845,6 +9971,9 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 2) {
     <Item TranslateID="STRING_096E5A17">
       <ENU>"The maximal effective concrete strength is exceeded; cracks appear under the " &amp; StateText &amp; " characteristic load combination. Furthermore, the concrete stress-strain diagram without tensile branch is used."</ENU>
     </Item>
+    <Item TranslateID="STRING_16FF6980">
+      <ENU>"The distribution coefficient is set to 1 because concrete is not effective in tension (σ↓cr← = 0 MPa) and member is fully cracked."</ENU>
+    </Item>
     <Item TranslateID="STRING_1755617A">
       <ENU>"Longitudinal reinforcement is not defined. The distribution coefficient cannot be calculated"</ENU>
     </Item>
@@ -9869,11 +9998,17 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 2) {
     <Item TranslateID="STRING_69822082">
       <ENU>"Cracked"</ENU>
     </Item>
+    <Item TranslateID="STRING_6F88CF22">
+      <ENU>"The distribution coefficient is set to 0 because concrete is not cracked."</ENU>
+    </Item>
     <Item TranslateID="STRING_7BFD2C22">
       <ENU>"Type of&lt;BR&gt;component"</ENU>
     </Item>
     <Item TranslateID="STRING_803213F5">
       <ENU>"Linear"</ENU>
+    </Item>
+    <Item TranslateID="STRING_8847BBB9">
+      <ENU>"The distribution coefficient is set to 1 because concrete is not effective in tension (σ↓cr← = 0 MPa)"</ENU>
     </Item>
     <Item TranslateID="STRING_8A1A8A08">
       <ENU>""</ENU>
@@ -9899,11 +10034,17 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 2) {
     <Item TranslateID="STRING_C2EAB742">
       <ENU>"Note"</ENU>
     </Item>
+    <Item TranslateID="STRING_DD6334B7">
+      <ENU>"First and second order eccentricity will not be taken into account, because the member is not considered as a compression member (normal force is relatively small or zero)."</ENU>
+    </Item>
     <Item TranslateID="STRING_DE7FC808">
       <ENU>"Please change type of combination to serviceability - quasi-permanent"</ENU>
     </Item>
     <Item TranslateID="STRING_F5A71212">
       <ENU>"The selected combination is not serviceability - quasi-permanent"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_">
+      <ENU>"not compression member"</ENU>
     </Item>
     <Item ID="TEXT_DLO010_000001">
       <ENU>'1/r↓y,I←' &amp; " = " &amp; '(-M↓y,qp←)/(E↓c←*I↓y,I←)' &amp; " = " &amp; -M↓y,qp←/(E↓c←*I↓y,I←) &amp; " = " &amp; Val(-M↓y,qp←/(E↓c←*I↓y,I←), 2) &amp; " m↑-1←"</ENU>
@@ -9946,6 +10087,9 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 2) {
     </Item>
     <Item TranslateID="TEXT_DLO116_000001">
       <ENU>"There is no reinforcement and cross-section is cracked."</ENU>
+    </Item>
+    <Item TranslateID="TEXT_INI400_000325">
+      <ENU>"N↓Ed← &lt; N↓com← = " &amp; N↓char,out← &amp; " &lt; " &amp; N↓com← &amp; " ... "</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_000898">
       <ENU>"Cross-section characteristics"</ENU>
@@ -9997,6 +10141,9 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 2) {
     </Item>
     <Item TranslateID="TEXT_INI400_006326">
       <ENU>State &amp; " stiffnesses and curvatures"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_INI400_006825">
+      <ENU>"not compression member"</ENU>
     </Item>
     <Item ID="TEXT_INI400_007045">
       <ENU>"N↓char,r← = " &amp; N↓char,out←</ENU>
@@ -10207,6 +10354,9 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 2) {
     </Item>
     <Item ID="TEXT_INI400_013761">
       <ENU>'EI↓y,II←' &amp; " = " &amp; 'E↓c←*I↓y,II←' &amp; " = " &amp; E↓c←*I↓y,II← &amp; " = " &amp; Val(EI↓y,II←/10↑6←, 2) &amp; " MNm↑2←"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS106_000027">
+      <ENU>"Compression member evaluation:"</ENU>
     </Item>
   </Texts>
 </Root>

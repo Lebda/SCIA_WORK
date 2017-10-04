@@ -425,7 +425,7 @@ private void CalcShearDesign(double ForceID, out object DesignShear) {
     } 
     double σ↓cd← →INI400_016643= -RecalcForcesPOD[ForceID].nz/(b*h); 
     double σ↓t← →KRS116_000001= (BasicForces[ForceID].nx/b*h+BasicForces[ForceID].ny/b*h)/2; 
-    →INI400_016645Clause6xxClass.GetThetaMinMax(f↓ywk,req←, f↓yk,req←/γ↓S←, k↓1←, b, σ↓cp←, d, ShearReinf.ss, ShearReinf.Asw, z, ShearReinf.fyk/γ↓S←, σ↓ct←, CS_Material.fctm, v↓Ed←, 0, CS_Material.fck, f↓cd←, σ↓cd←, CS_Material.fctk_05, σ↓t←, False, True, ShearReinf.Angle != 90, False, Result); 
+    →INI400_016645Clause6xxClass.GetThetaMinMax(f↓ywk,req←, f↓yk,req←/γ↓S←, k↓1←, b, σ↓cp←, d, ShearReinf.ss, ShearReinf.Asw, z, ShearReinf.fyk/γ↓S←, σ↓ct←, CS_Material.fctm, v↓Ed←, 0, CS_Material.fck, f↓cd←, σ↓cd←, CS_Material.fctk_05, σ↓t←, A↓c←, DesignDefaults.Solver.Coeff_com, False, True, ShearReinf.Angle != 90, False, Result); 
     double&lt;°,2&gt; θ↓min← →INI400_016646= Result.θ_min; 
     double cotθmin →INI400_016647= cotg(θ↓min←); 
     double&lt;°,2&gt; θ↓max← →INI400_016648= Result.θ_max; 
@@ -1055,7 +1055,7 @@ IF(COMPARE(A↓sw,req←, 0, 6) == 0) {
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="Result" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Result">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -4096,7 +4096,7 @@ IF(COMPARE(A↓sw,req←, 0, 6) == 0) {
         </Texts>
       </TLabel>
       <TDoubleInput Name="" ID="137" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="33" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="h" VarNameVisible="True" UnitsVisible="True" InputColor="-1" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-      <TComboBox Name="" ID="88" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="15" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="MemberType" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="16|32|64|256|512" Index="0">
+      <TComboBox Name="" ID="88" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="15" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="MemberType" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="16|32|64|256|512" Index="-1">
         <Texts>
           <ENU>Plate|Wall|Shell(Plate)|Shell(Wall)|Deep beam</ENU>
         </Texts>

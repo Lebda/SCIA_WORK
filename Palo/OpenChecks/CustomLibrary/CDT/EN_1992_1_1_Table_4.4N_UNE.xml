@@ -1,0 +1,294 @@
+<Root Version="1" Type="CustomLibrary" GUID="e244a01d-7966-414c-a155-3887b9dc2be2">
+  <Header>
+    <PropertySet Symbol="X0" ESA_ID="X0" Unit="mm" Type="Numeric">
+      <Description TranslateID="X0">
+        <NEU>X0</NEU>
+        <FRB>X0</FRB>
+        <PTG>X0</PTG>
+        <ELL>X0</ELL>
+        <ESP>X0</ESP>
+        <ENU>X0</ENU>
+        <CSY>X0</CSY>
+        <DEU>X0</DEU>
+        <NLD>X0</NLD>
+        <RUS>X0</RUS>
+        <ROM>X0</ROM>
+        <PLK>X0</PLK>
+        <ITA>X0</ITA>
+        <SKY>X0</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="XC1" ESA_ID="XC1" Unit="mm" Type="Numeric">
+      <Description TranslateID="XC1">
+        <NEU>XC1</NEU>
+        <FRB>XC1</FRB>
+        <PTG>XC1</PTG>
+        <ELL>XC1</ELL>
+        <ESP>XC1</ESP>
+        <ENU>XC1</ENU>
+        <CSY>XC1</CSY>
+        <DEU>XC1</DEU>
+        <NLD>XC1</NLD>
+        <RUS>XC1</RUS>
+        <ROM>XC1</ROM>
+        <PLK>XC1</PLK>
+        <ITA>XC1</ITA>
+        <SKY>XC1</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="XC2" ESA_ID="XC2" Unit="mm" Type="Numeric">
+      <Description TranslateID="XC2">
+        <NEU>XC2</NEU>
+        <FRB>XC2</FRB>
+        <PTG>XC2</PTG>
+        <ELL>XC2</ELL>
+        <ESP>XC2</ESP>
+        <ENU>XC2</ENU>
+        <CSY>XC2</CSY>
+        <DEU>XC2</DEU>
+        <NLD>XC2</NLD>
+        <RUS>XC2</RUS>
+        <ROM>XC2</ROM>
+        <PLK>XC2</PLK>
+        <ITA>XC2</ITA>
+        <SKY>XC2</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="XC3" ESA_ID="XC3" Unit="mm" Type="Numeric">
+      <Description TranslateID="XC3">
+        <NEU>XC3</NEU>
+        <FRB>XC3</FRB>
+        <PTG>XC3</PTG>
+        <ELL>XC3</ELL>
+        <ESP>XC3</ESP>
+        <ENU>XC3</ENU>
+        <CSY>XC3</CSY>
+        <DEU>XC3</DEU>
+        <NLD>XC3</NLD>
+        <RUS>XC3</RUS>
+        <ROM>XC3</ROM>
+        <PLK>XC3</PLK>
+        <ITA>XC3</ITA>
+        <SKY>XC3</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="XC4" ESA_ID="XC4" Unit="mm" Type="Numeric">
+      <Description TranslateID="XC4">
+        <NEU>XC4</NEU>
+        <FRB>XC4</FRB>
+        <PTG>XC4</PTG>
+        <ELL>XC4</ELL>
+        <ESP>XC4</ESP>
+        <ENU>XC4</ENU>
+        <CSY>XC4</CSY>
+        <DEU>XC4</DEU>
+        <NLD>XC4</NLD>
+        <RUS>XC4</RUS>
+        <ROM>XC4</ROM>
+        <PLK>XC4</PLK>
+        <ITA>XC4</ITA>
+        <SKY>XC4</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="XD1" ESA_ID="XD1" Unit="mm" Type="Numeric">
+      <Description TranslateID="XD1">
+        <NEU>XD1</NEU>
+        <FRB>XD1</FRB>
+        <PTG>XD1</PTG>
+        <ELL>XD1</ELL>
+        <ESP>XD1</ESP>
+        <ENU>XD1</ENU>
+        <CSY>XD1</CSY>
+        <DEU>XD1</DEU>
+        <NLD>XD1</NLD>
+        <RUS>XD1</RUS>
+        <ROM>XD1</ROM>
+        <PLK>XD1</PLK>
+        <ITA>XD1</ITA>
+        <SKY>XD1</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="XD2" ESA_ID="XD2" Unit="mm" Type="Numeric">
+      <Description TranslateID="XD2">
+        <NEU>XD2</NEU>
+        <FRB>XD2</FRB>
+        <PTG>XD2</PTG>
+        <ELL>XD2</ELL>
+        <ESP>XD2</ESP>
+        <ENU>XD2</ENU>
+        <CSY>XD2</CSY>
+        <DEU>XD2</DEU>
+        <NLD>XD2</NLD>
+        <RUS>XD2</RUS>
+        <ROM>XD2</ROM>
+        <PLK>XD2</PLK>
+        <ITA>XD2</ITA>
+        <SKY>XD2</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="XD3" ESA_ID="XD3" Unit="mm" Type="Numeric">
+      <Description TranslateID="XD3">
+        <NEU>XD3</NEU>
+        <FRB>XD3</FRB>
+        <PTG>XD3</PTG>
+        <ELL>XD3</ELL>
+        <ESP>XD3</ESP>
+        <ENU>XD3</ENU>
+        <CSY>XD3</CSY>
+        <DEU>XD3</DEU>
+        <NLD>XD3</NLD>
+        <RUS>XD3</RUS>
+        <ROM>XD3</ROM>
+        <PLK>XD3</PLK>
+        <ITA>XD3</ITA>
+        <SKY>XD3</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="XS1" ESA_ID="XS1" Unit="mm" Type="Numeric">
+      <Description TranslateID="XS1">
+        <NEU>XS1</NEU>
+        <FRB>XS1</FRB>
+        <PTG>XS1</PTG>
+        <ELL>XS1</ELL>
+        <ESP>XS1</ESP>
+        <ENU>XS1</ENU>
+        <CSY>XS1</CSY>
+        <DEU>XS1</DEU>
+        <NLD>XS1</NLD>
+        <RUS>XS1</RUS>
+        <ROM>XS1</ROM>
+        <PLK>XS1</PLK>
+        <ITA>XS1</ITA>
+        <SKY>XS1</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="XS2" ESA_ID="XS2" Unit="mm" Type="Numeric">
+      <Description TranslateID="XS2">
+        <NEU>XS2</NEU>
+        <FRB>XS2</FRB>
+        <PTG>XS2</PTG>
+        <ELL>XS2</ELL>
+        <ESP>XS2</ESP>
+        <ENU>XS2</ENU>
+        <CSY>XS2</CSY>
+        <DEU>XS2</DEU>
+        <NLD>XS2</NLD>
+        <RUS>XS2</RUS>
+        <ROM>XS2</ROM>
+        <PLK>XS2</PLK>
+        <ITA>XS2</ITA>
+        <SKY>XS2</SKY>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="XS3" ESA_ID="XS3" Unit="mm" Type="Numeric">
+      <Description TranslateID="XS3">
+        <NEU>XS3</NEU>
+        <FRB>XS3</FRB>
+        <PTG>XS3</PTG>
+        <ELL>XS3</ELL>
+        <ESP>XS3</ESP>
+        <ENU>XS3</ENU>
+        <CSY>XS3</CSY>
+        <DEU>XS3</DEU>
+        <NLD>XS3</NLD>
+        <RUS>XS3</RUS>
+        <ROM>XS3</ROM>
+        <PLK>XS3</PLK>
+        <ITA>XS3</ITA>
+        <SKY>XS3</SKY>
+      </Description>
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>EN 1992-1-1 Table 4.4N</Property>
+      <Property>S1</Property>
+      <Property>10</Property>
+      <Property>10</Property>
+      <Property>10</Property>
+      <Property>10</Property>
+      <Property>15</Property>
+      <Property>30</Property>
+      <Property>30</Property>
+      <Property>30</Property>
+      <Property>30</Property>
+      <Property>30</Property>
+      <Property>30</Property>
+    </Item>
+    <Item>
+      <Property>EN 1992-1-1 Table 4.4N</Property>
+      <Property>S2</Property>
+      <Property>10</Property>
+      <Property>10</Property>
+      <Property>10</Property>
+      <Property>10</Property>
+      <Property>20</Property>
+      <Property>35</Property>
+      <Property>35</Property>
+      <Property>35</Property>
+      <Property>35</Property>
+      <Property>35</Property>
+      <Property>35</Property>
+    </Item>
+    <Item>
+      <Property>EN 1992-1-1 Table 4.4N</Property>
+      <Property>S3</Property>
+      <Property>15</Property>
+      <Property>15</Property>
+      <Property>15</Property>
+      <Property>15</Property>
+      <Property>20</Property>
+      <Property>40</Property>
+      <Property>40</Property>
+      <Property>40</Property>
+      <Property>40</Property>
+      <Property>35</Property>
+      <Property>35</Property>
+    </Item>
+    <Item>
+      <Property>EN 1992-1-1 Table 4.4N</Property>
+      <Property>S4</Property>
+      <Property>15</Property>
+      <Property>15</Property>
+      <Property>20</Property>
+      <Property>20</Property>
+      <Property>25</Property>
+      <Property>40</Property>
+      <Property>40</Property>
+      <Property>40</Property>
+      <Property>40</Property>
+      <Property>35</Property>
+      <Property>35</Property>
+    </Item>
+    <Item>
+      <Property>EN 1992-1-1 Table 4.4N</Property>
+      <Property>S5</Property>
+      <Property>20</Property>
+      <Property>20</Property>
+      <Property>25</Property>
+      <Property>25</Property>
+      <Property>30</Property>
+      <Property>50</Property>
+      <Property>50</Property>
+      <Property>50</Property>
+      <Property>50</Property>
+      <Property>45</Property>
+      <Property>45</Property>
+    </Item>
+    <Item>
+      <Property>EN 1992-1-1 Table 4.4N</Property>
+      <Property>S6</Property>
+      <Property>25</Property>
+      <Property>25</Property>
+      <Property>30</Property>
+      <Property>30</Property>
+      <Property>35</Property>
+      <Property>60</Property>
+      <Property>60</Property>
+      <Property>60</Property>
+      <Property>60</Property>
+      <Property>60</Property>
+      <Property>60</Property>
+    </Item>
+  </Items>
+</Root>

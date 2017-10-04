@@ -27,6 +27,8 @@
         InitialForcesID →INI400_013594= Input.Get("InitialForcesID"); //ID of initial force set
         ArrayForcesULS →INI400_013834= Input.Get("ArrayForcesULS"); 
         MemberType →DLO116_000001= Input.Get("MemberType"); 
+        CompressMember →KRS106_000001= Input.Get("CompressMember"); 
+        N↓com← →KRS106_000008= Input.Get("N_com"); 
         bool Result →INI400_000020= true; 
         //Add some limits for inputs?
         return Result; 
@@ -84,6 +86,7 @@
     bool N6↓1← →INI400_004553= False; 
     bool N6↓2← →INI400_004554= False; 
     bool N6↓3← →INI400_004555= False; 
+    bool N6↓4← →KRS106_000011= False; 
     bool W6↓1← →INI400_004556= False; 
     double UC →INI400_013832= 0; 
     double UC↓xu← →INI400_013833= 0; 
@@ -153,6 +156,7 @@ IF(!IO.IsExternCLC) { //settings for table drawing
     } 
     object Functions1D_DesignReinf →INI400_013614= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_DesignReq.clc"); 
     object Functions1D_General →INI400_013705= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_General.clc"); 
+    object Functions1D_EWN →KRS106_000009= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_EWN.clc"); 
 } 
 
 →INI400_006509BLOCK { 
@@ -165,7 +169,8 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
         object HeaderDrawInput →KRS006_000001= new Structure(
         "ForcesID", ForcesID, 
         "CssID", CssIDLinear, 
-        "FormCode", IO.CS.Geometry.FormCode
+        "FormCode", IO.CS.Geometry.FormCode, 
+        "MemberType", MemberType
         ); 
         object HEADER →PAI127_000001= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Header.CLC"); 
         →KRS116_000021HEADER.DrawHeaderForStandalone(→KRS116_000022CrossSection, →KRS116_000023HeaderDrawInput); 
@@ -195,36 +200,20 @@ IF(IO.IsDrawing) {
                 →INI400_007028TEXT("Content of combination:"); 
                 →INI400_013707Functions1D_General.CombikeyWrapped(Combikey, 450, FontsAndColors.TableCellsFont(), FontsAndColors.WhitePen()); 
             } 
-            
+            IF(MemberType == 2 ? !CompressMember : false) { 
+                →KRS106_000027TEXT("Compression member evaluation:"); 
+                N6↓4← →KRS106_000012= true; 
+                →INI400_000325TEXT("N↓Ed← &lt; N↓com← = " &amp; N↓Ed← &amp; " &lt; " &amp; N↓com← &amp; " ... "); 
+                →INI400_006825TEXT("not compression member"); 
+                string DescriptionN →KRS106_000002= TR("First and second order eccentricity will not be taken into account, because the member is not considered as a compression member (normal force is relatively small or zero)."); 
+                string SolutionN →KRS106_000003= TR(""); 
+                string TypeN →KRS106_000004= TR("Note"); 
+                →KRS106_000005Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
+                Number↓N← →KRS106_000006= Number↓N←+1; 
+                →KRS106_000010StructEWN.Add(new Structure("Index", "N6↓4←", "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
+            } 
             →INI400_005944TEXT("Recalculation bending moments:"); 
-            →INI400_009141BLOCK { 
-                →INI400_005179TEXT("Second order effect:"); 
-                IF(CalSecOrder) { 
-                    →INI400_005180TEXT("Yes"); 
-                } ELSE { 
-                    →INI400_005181TEXT("No"); 
-                } 
-                →INI400_005182TEXT("Imperfections:"); 
-                IF(CalcImp) { 
-                    →INI400_005183TEXT("Yes"); 
-                } ELSE { 
-                    →INI400_005184TEXT("No"); 
-                } 
-            } 
-            →INI400_009140BLOCK { 
-                →INI400_008669TEXT("Member is taken as isolated member:"); 
-                IF(IsoCol) { 
-                    →INI400_008695TEXT("Yes"); 
-                } ELSE { 
-                    →INI400_008671TEXT("No"); 
-                } 
-                →INI400_008672TEXT("Use for calculation equivalent moments:"); 
-                IF(EquivMoment) { 
-                    →INI400_008673TEXT("Yes"); 
-                } ELSE { 
-                    →INI400_005190TEXT("No"); 
-                } 
-            } 
+            →KRS106_000023Functions1D_General.RecalcBendingMomentsInfo(MemberType, CompressMember, CalSecOrder, CalcImp, IsoCol, EquivMoment); 
             →INI400_007045TEXT("N↓Ed← = " &amp; Val(Forces.N/1000, 2) &amp; " kN"); 
             →INI400_007046TEXT("M↓Edy← = " &amp; Val(Forces.My/1000, 2) &amp; " kNm"); 
             →INI400_007047TEXT("M↓Edz← = " &amp; Val(Forces.Mz/1000, 2) &amp; " kNm"); 
@@ -1467,115 +1456,115 @@ IF(!N2↓1←) {
     } 
     →INI400_004235BLOCK { 
         IF(IO.IsDrawing) { 
-        SWITCH(IDMethodOfCheck) { 
-            CASE 0 :  { //Nu
+            SWITCH(IDMethodOfCheck) { 
+                CASE 0 :  { //Nu
 
-                //vertical NMy
-                IF((M↓Edz← &gt;= M↓Rdz,NMz,max← || M↓Edz← &lt;= M↓Rdz,NMz,min←) &amp;&amp; (COMPARE(M↓Rdz←, 0, 6) != 0)) { // Verification if the normal force is outside of ID
-                    bool W6↓4← →INI400_004536= True; 
-                    double Number↓W← →INI400_004182= Number↓W←+1; 
-                    →INI400_004183StructEWN.Add(new Structure("Index", "W6/4", "Type", TR("Error"), "Description", TR("It's not possible to generate the vertical section N-M↓y← because M↓Edz← is outside the maximal or minimal capacity M↓Rdz←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
-                } 
-                
-                //vertical NMz
-                IF(M↓Edy← &gt;= M↓Rdy,NMy,max← || M↓Edy← &lt;= M↓Rdy,NMy,min←) { // Verification if the bending moments resultant is outside of ID
-                    bool W6↓3← →INI400_004537= True; 
-                    double Number↓W← →INI400_004186= Number↓W←+1; 
-                    →INI400_004187StructEWN.Add(new Structure("Index", "W6/3", "Type", TR("Error"), "Description", TR("It's not possible to generate the vertical section N-M↓z← because M↓Edy← is outside the maximal or minimal capacity M↓Rdy←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
-                } 
-                
-                //horizontal MyMz
-                IF(N↓Ed← &gt;= N↓Rd,max← || N↓Ed← &lt;= N↓Rd,min←) { //// Verification if the normal force is outside of ID
-                    bool W6↓2← →INI400_004538= True; 
-                    double Number↓W← →INI400_004191= Number↓W←+1; 
-                    →INI400_004192StructEWN.Add(new Structure("Index", "W6/2", "Type", TR("Error"), "Description", TR("It's not possible to generate the horizontal section M↓y←-M↓z← because N↓Ed← is outside the maximal or minimal capacity N↓Rd←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
+                    //vertical NMy
+                    IF((M↓Edz← &gt;= M↓Rdz,NMz,max← || M↓Edz← &lt;= M↓Rdz,NMz,min←) &amp;&amp; (COMPARE(M↓Rdz←, 0, 6) != 0)) { // Verification if the normal force is outside of ID
+                        bool W6↓4← →INI400_004536= True; 
+                        double Number↓W← →INI400_004182= Number↓W←+1; 
+                        →INI400_004183StructEWN.Add(new Structure("Index", "W6/4", "Type", TR("Error"), "Description", TR("It's not possible to generate the vertical section N-M↓y← because M↓Edz← is outside the maximal or minimal capacity M↓Rdz←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
+                    } 
                     
-                } 
-            } 
-            CASE 1 :  { //Mu
-                
-                //vertical NMy
-                IF((M↓Edz← &gt;= M↓Rdz,NMz,max← || M↓Edz← &lt;= M↓Rdz,NMz,min←) &amp;&amp; (COMPARE(M↓Rdz←, 0, 6) != 0)) { // Verification if the bending moments resultant is outside of ID
-                    bool W6↓4← →INI400_004539= True; 
-                    double Number↓W← →INI400_004195= Number↓W←+1; 
-                    →INI400_004196StructEWN.Add(new Structure("Index", "W6/4", "Type", TR("Error"), "Description", TR("It's not possible to generate the vertical section N-M↓y← because M↓Edz← is outside the maximal or minimal capacity M↓Rdz←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
-                } 
-                
-                //vertical NMz 
-                IF(M↓Edy← &gt;= M↓Rdy,NMy,max← || M↓Edy← &lt;= M↓Rdy,NMy,min←) { // Verification if the bending moments resultant is outside of ID
-                    bool W6↓3← →INI400_004540= True; 
-                    double Number↓W← →INI400_004199= Number↓W←+1; 
-                    →INI400_004200StructEWN.Add(new Structure("Index", "W6/3", "Type", TR("Error"), "Description", TR("It's not possible to generate the vertical section N-M↓z← because M↓Edy← is outside the maximal or minimal capacity M↓Rdy←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
-                } 
-                
-                //horizontal MyMz
-                IF(N↓Ed← &gt;= N↓Rd,max← || N↓Ed← &lt;= N↓Rd,min←) { //// Verification if the normal force is outside of ID
-                    bool W6↓2← →INI400_004541= True; 
-                    double Number↓W← →INI400_004204= Number↓W←+1; 
-                    →INI400_004205StructEWN.Add(new Structure("Index", "W6/2", "Type", TR("Error"), "Description", TR("It's not possible to generate the horizontal section M↓y←-M↓z← because N↓Ed← is outside the maximal or minimal capacity N↓Rd←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
+                    //vertical NMz
+                    IF(M↓Edy← &gt;= M↓Rdy,NMy,max← || M↓Edy← &lt;= M↓Rdy,NMy,min←) { // Verification if the bending moments resultant is outside of ID
+                        bool W6↓3← →INI400_004537= True; 
+                        double Number↓W← →INI400_004186= Number↓W←+1; 
+                        →INI400_004187StructEWN.Add(new Structure("Index", "W6/3", "Type", TR("Error"), "Description", TR("It's not possible to generate the vertical section N-M↓z← because M↓Edy← is outside the maximal or minimal capacity M↓Rdy←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
+                    } 
                     
+                    //horizontal MyMz
+                    IF(N↓Ed← &gt;= N↓Rd,max← || N↓Ed← &lt;= N↓Rd,min←) { //// Verification if the normal force is outside of ID
+                        bool W6↓2← →INI400_004538= True; 
+                        double Number↓W← →INI400_004191= Number↓W←+1; 
+                        →INI400_004192StructEWN.Add(new Structure("Index", "W6/2", "Type", TR("Error"), "Description", TR("It's not possible to generate the horizontal section M↓y←-M↓z← because N↓Ed← is outside the maximal or minimal capacity N↓Rd←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
+                        
+                    } 
                 } 
-            } 
-            
-            CASE 2 :  { //NuMu
+                CASE 1 :  { //Mu
+                    
+                    //vertical NMy
+                    IF((M↓Edz← &gt;= M↓Rdz,NMz,max← || M↓Edz← &lt;= M↓Rdz,NMz,min←) &amp;&amp; (COMPARE(M↓Rdz←, 0, 6) != 0)) { // Verification if the bending moments resultant is outside of ID
+                        bool W6↓4← →INI400_004539= True; 
+                        double Number↓W← →INI400_004195= Number↓W←+1; 
+                        →INI400_004196StructEWN.Add(new Structure("Index", "W6/4", "Type", TR("Error"), "Description", TR("It's not possible to generate the vertical section N-M↓y← because M↓Edz← is outside the maximal or minimal capacity M↓Rdz←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
+                    } 
+                    
+                    //vertical NMz 
+                    IF(M↓Edy← &gt;= M↓Rdy,NMy,max← || M↓Edy← &lt;= M↓Rdy,NMy,min←) { // Verification if the bending moments resultant is outside of ID
+                        bool W6↓3← →INI400_004540= True; 
+                        double Number↓W← →INI400_004199= Number↓W←+1; 
+                        →INI400_004200StructEWN.Add(new Structure("Index", "W6/3", "Type", TR("Error"), "Description", TR("It's not possible to generate the vertical section N-M↓z← because M↓Edy← is outside the maximal or minimal capacity M↓Rdy←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
+                    } 
+                    
+                    //horizontal MyMz
+                    IF(N↓Ed← &gt;= N↓Rd,max← || N↓Ed← &lt;= N↓Rd,min←) { //// Verification if the normal force is outside of ID
+                        bool W6↓2← →INI400_004541= True; 
+                        double Number↓W← →INI400_004204= Number↓W←+1; 
+                        →INI400_004205StructEWN.Add(new Structure("Index", "W6/2", "Type", TR("Error"), "Description", TR("It's not possible to generate the horizontal section M↓y←-M↓z← because N↓Ed← is outside the maximal or minimal capacity N↓Rd←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
+                        
+                    } 
+                } 
+                
+                CASE 2 :  { //NuMu
 
-                //vertical NMy
-                IF((M↓Edz← &gt;= M↓Rdz,NMz,max← || M↓Edz← &lt;= M↓Rdz,NMz,min←) &amp;&amp; (COMPARE(M↓Rdz←, 0, 6) != 0)) { // Verification if the bending moments resultant is outside of ID
-                    bool W6↓4← →INI400_004542= True; 
-                    double Number↓W← →INI400_004208= Number↓W←+1; 
-                    →INI400_004209StructEWN.Add(new Structure("Index", "W6/4", "Type", TR("Error"), "Description", TR("It's not possible to generate the vertical section N-M↓y← because M↓Edz← is outside the maximal or minimal capacity M↓Rdz←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
+                    //vertical NMy
+                    IF((M↓Edz← &gt;= M↓Rdz,NMz,max← || M↓Edz← &lt;= M↓Rdz,NMz,min←) &amp;&amp; (COMPARE(M↓Rdz←, 0, 6) != 0)) { // Verification if the bending moments resultant is outside of ID
+                        bool W6↓4← →INI400_004542= True; 
+                        double Number↓W← →INI400_004208= Number↓W←+1; 
+                        →INI400_004209StructEWN.Add(new Structure("Index", "W6/4", "Type", TR("Error"), "Description", TR("It's not possible to generate the vertical section N-M↓y← because M↓Edz← is outside the maximal or minimal capacity M↓Rdz←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
+                    } 
+                    
+                    //vertical NMz 
+                    IF(M↓Edy← &gt;= M↓Rdy,NMy,max← || M↓Edy← &lt;= M↓Rdy,NMy,min←) { // Verification if the bending moments resultant is outside of ID
+                        bool W6↓3← →INI400_004543= True; 
+                        double Number↓W← →INI400_004212= Number↓W←+1; 
+                        →INI400_004213StructEWN.Add(new Structure("Index", "W6/3", "Type", TR("Error"), "Description", TR("It's not possible to generate the vertical section N-M↓z← because M↓Edy← is outside the maximal or minimal capacity M↓Rdy←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
+                    } 
+                    
+                    //horizontal MyMz
+                    IF(N↓Ed← &gt;= N↓Rd,max← || N↓Ed← &lt;= N↓Rd,min←) { //// Verification if the normal force is outside of ID
+                        bool W6↓2← →INI400_004535= True; 
+                        double Number↓W← →INI400_004217= Number↓W←+1; 
+                        →INI400_004218StructEWN.Add(new Structure("Index", "W6/2", "Type", TR("Error"), "Description", TR("It's not possible to generate the horizontal section M↓y←-M↓z← because N↓Ed← is outside the maximal or minimal capacity N↓Rd←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
+                    } 
                 } 
                 
-                //vertical NMz 
-                IF(M↓Edy← &gt;= M↓Rdy,NMy,max← || M↓Edy← &lt;= M↓Rdy,NMy,min←) { // Verification if the bending moments resultant is outside of ID
-                    bool W6↓3← →INI400_004543= True; 
-                    double Number↓W← →INI400_004212= Number↓W←+1; 
-                    →INI400_004213StructEWN.Add(new Structure("Index", "W6/3", "Type", TR("Error"), "Description", TR("It's not possible to generate the vertical section N-M↓z← because M↓Edy← is outside the maximal or minimal capacity M↓Rdy←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
-                } 
-                
-                //horizontal MyMz
-                IF(N↓Ed← &gt;= N↓Rd,max← || N↓Ed← &lt;= N↓Rd,min←) { //// Verification if the normal force is outside of ID
-                    bool W6↓2← →INI400_004535= True; 
-                    double Number↓W← →INI400_004217= Number↓W←+1; 
-                    →INI400_004218StructEWN.Add(new Structure("Index", "W6/2", "Type", TR("Error"), "Description", TR("It's not possible to generate the horizontal section M↓y←-M↓z← because N↓Ed← is outside the maximal or minimal capacity N↓Rd←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
-                } 
-            } 
-            
-            CASE 3 :  { //Muy
+                CASE 3 :  { //Muy
 
-                //vertical NMy
-                IF((M↓Edz← &gt;= M↓Rdz,NMz,max← || M↓Edz← &lt;= M↓Rdz,NMz,min←) &amp;&amp; (COMPARE(M↓Rdz←, 0, 6) != 0)) { // Verification if the bending moments resultant is outside of ID
-                    bool W6↓4← →INI400_004544= True; 
-                    double Number↓W← →INI400_004221= Number↓W←+1; 
-                    →INI400_004222StructEWN.Add(new Structure("Index", "W6/4", "Type", TR("Error"), "Description", TR("It's not possible to generate the vertical section N-M↓y← because M↓Edz← is outside the maximal or minimal capacity M↓Rdz←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
+                    //vertical NMy
+                    IF((M↓Edz← &gt;= M↓Rdz,NMz,max← || M↓Edz← &lt;= M↓Rdz,NMz,min←) &amp;&amp; (COMPARE(M↓Rdz←, 0, 6) != 0)) { // Verification if the bending moments resultant is outside of ID
+                        bool W6↓4← →INI400_004544= True; 
+                        double Number↓W← →INI400_004221= Number↓W←+1; 
+                        →INI400_004222StructEWN.Add(new Structure("Index", "W6/4", "Type", TR("Error"), "Description", TR("It's not possible to generate the vertical section N-M↓y← because M↓Edz← is outside the maximal or minimal capacity M↓Rdz←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
+                    } 
+                    
+                    //horizontal MyMz
+                    IF(N↓Ed← &gt;= N↓Rd,max← || N↓Ed← &lt;= N↓Rd,min←) { //// Verification if the normal force is outside of ID
+                        bool W6↓2← →INI400_004545= True; 
+                        double Number↓W← →INI400_004225= Number↓W←+1; 
+                        →INI400_004226StructEWN.Add(new Structure("Index", "W6/2", "Type", TR("Error"), "Description", TR("It's not possible to generate the horizontal section M↓y←-M↓z← because N↓Ed← is outside the maximal or minimal capacity N↓Rd←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
+                    } 
                 } 
                 
-                //horizontal MyMz
-                IF(N↓Ed← &gt;= N↓Rd,max← || N↓Ed← &lt;= N↓Rd,min←) { //// Verification if the normal force is outside of ID
-                    bool W6↓2← →INI400_004545= True; 
-                    double Number↓W← →INI400_004225= Number↓W←+1; 
-                    →INI400_004226StructEWN.Add(new Structure("Index", "W6/2", "Type", TR("Error"), "Description", TR("It's not possible to generate the horizontal section M↓y←-M↓z← because N↓Ed← is outside the maximal or minimal capacity N↓Rd←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
-                } 
-            } 
-            
-            CASE 4 :  { //Muz
+                CASE 4 :  { //Muz
 
-                //vertical NMz 
-                IF(M↓Edy← &gt;= M↓Rdy,NMy,max← || M↓Edy← &lt;= M↓Rdy,NMy,min←) { // Verification if the bending moments resultant is outside of ID
-                    bool W6↓3← →INI400_004546= True; 
-                    double Number↓W← →INI400_004229= Number↓W←+1; 
-                    →INI400_004230StructEWN.Add(new Structure("Index", "W6/3", "Type", TR("Error"), "Description", TR("It's not possible to generate the vertical section N-M↓z← because M↓Edy← is outside the maximal or minimal capacity M↓Rdy←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
-                } 
-                
-                //horizontal MyMz
-                IF(N↓Ed← &gt;= N↓Rd,max← || N↓Ed← &lt;= N↓Rd,min←) { //// Verification if the normal force is outside of ID
-                    bool W6↓2← →INI400_004547= True; 
-                    double Number↓W← →INI400_004233= Number↓W←+1; 
-                    →INI400_004234StructEWN.Add(new Structure("Index", "W6/2", "Type", TR("Error"), "Description", TR("It's not possible to generate the horizontal section M↓y←-M↓z← because N↓Ed← is outside the maximal or minimal capacity N↓Rd←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
+                    //vertical NMz 
+                    IF(M↓Edy← &gt;= M↓Rdy,NMy,max← || M↓Edy← &lt;= M↓Rdy,NMy,min←) { // Verification if the bending moments resultant is outside of ID
+                        bool W6↓3← →INI400_004546= True; 
+                        double Number↓W← →INI400_004229= Number↓W←+1; 
+                        →INI400_004230StructEWN.Add(new Structure("Index", "W6/3", "Type", TR("Error"), "Description", TR("It's not possible to generate the vertical section N-M↓z← because M↓Edy← is outside the maximal or minimal capacity M↓Rdy←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
+                    } 
+                    
+                    //horizontal MyMz
+                    IF(N↓Ed← &gt;= N↓Rd,max← || N↓Ed← &lt;= N↓Rd,min←) { //// Verification if the normal force is outside of ID
+                        bool W6↓2← →INI400_004547= True; 
+                        double Number↓W← →INI400_004233= Number↓W←+1; 
+                        →INI400_004234StructEWN.Add(new Structure("Index", "W6/2", "Type", TR("Error"), "Description", TR("It's not possible to generate the horizontal section M↓y←-M↓z← because N↓Ed← is outside the maximal or minimal capacity N↓Rd←."), "Solution", TR("Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."))); 
+                    } 
                 } 
             } 
         } 
-    } 
     } 
     
 } 
@@ -2257,7 +2246,7 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="Angle" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_Angle">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -2325,6 +2314,40 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="Check" ESA_ID="Result.4" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="CheckID" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="CheckPoint1" ESA_ID="" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="CheckPoint2" ESA_ID="" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="Checkxu" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="Clause12xxClass" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -2357,6 +2380,12 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Combikey" ESA_ID="" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="CompressMember" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
@@ -2407,6 +2436,12 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="DescriptionN" ESA_ID="" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
       </Variable>
       <Variable Modifier="Public" Name="DiagramPtsHor3D" ESA_ID="" Type="Object">
         <Description>
@@ -2585,6 +2620,12 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="Functions1D_EWN" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="Functions1D_General" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -2605,7 +2646,7 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="HEADER" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_HEADER">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -2621,40 +2662,6 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="Check" ESA_ID="Result.4" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="CheckID" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="CheckPoint1" ESA_ID="" Type="String">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="CheckPoint2" ESA_ID="" Type="String">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="Checkxu" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
         <Description>
@@ -2964,39 +2971,46 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="Mresi" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_Mresi">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="My" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_My">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Myi" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_Myi">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Mz" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_Mz">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Mzi" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_Mzi">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="N↓com←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="N↓Ed,inp←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_N↓Ed,inp←">
@@ -3197,6 +3211,12 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="N6↓4←" ESA_ID="" Type="Boolean">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="NBars" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -3329,6 +3349,12 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="SolutionN" ESA_ID="" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="Status" ESA_ID="" Type="String">
         <Description>
           <ENU>
@@ -3361,6 +3387,12 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="TSummaryCheck" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="TypeN" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
@@ -3526,7 +3558,7 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="α" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_α">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -3824,22 +3856,6 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO106_000037">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO106_000038">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="DLO110_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4168,6 +4184,14 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="2498" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="21457" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="5568" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_000325">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_000972">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="183" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -7417,54 +7441,6 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="12.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="12.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_005179">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="512" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="522" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="65.9" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="65.9" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_005180">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="531" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="220" Y="522" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="65.9" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="65.9" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_005181">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="65.9" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="129" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="129" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="65.9" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="65.9" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_005182">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="550" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="540" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="65.9" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="65.9" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_005183">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="568" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="201" Y="540" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="65.9" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="65.9" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_005184">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="65.9" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="129" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="129" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="65.9" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="65.9" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-      </VC>
       <VC ID="INI400_005186">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="210" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="678" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -7488,14 +7464,6 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="270" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="267" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="267" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_005190">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="65.9" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="332" Y="166" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="332" Y="166" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="65.9" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="65.9" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
       </VC>
       <VC ID="INI400_005191">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="832" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -8329,6 +8297,14 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="INI400_006825">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="INI400_007028">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -8473,38 +8449,6 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008669">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="587" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="559" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="65.9" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="65.9" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_008671">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="606" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="332" Y="559" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="332" Y="188" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="65.9" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="65.9" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_008672">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="624" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="578" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_008669" Style="0" StyleName="Text 4" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="65.9" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="65.9" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_008673">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="643" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="272" Y="578" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="65.9" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="65.9" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
-      </VC>
       <VC ID="INI400_008682">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="671" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1119" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -8536,14 +8480,6 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="94.4" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="22386" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="2281" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_008695">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_008696">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="671" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -10057,22 +9993,6 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009140">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="315" Y="0" Hor="0" Ver="2" SpX="75" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_009141">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_009142">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -11193,38 +11113,6 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012790">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_012791">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_012793">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_012794">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_013051">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -11337,14 +11225,6 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013612">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_013614">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -11353,14 +11233,6 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013615">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="315" Y="0" Hor="0" Ver="1" SpX="0" SpY="10" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="315" Y="0" Hor="0" Ver="1" SpX="0" SpY="10" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="315" Y="0" Hor="0" Ver="1" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="315" Y="0" Hor="0" Ver="1" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="142" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="56.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-      </VC>
       <VC ID="INI400_013618">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -11368,30 +11240,6 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="246" Hor="0" Ver="4" SpX="0" SpY="30" Font1="Segoe UI|18|0|2" Font2="Segoe UI|18|5|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_013699">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_013700">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_013703">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_013705">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -12017,6 +11865,110 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS106_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000005">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000006">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000008">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000009">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000010">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="131" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="131" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="131" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="131" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="131" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="131" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000011">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="135" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="307" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="307" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="135" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000012">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000023">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000027">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
       <VC ID="KRS116_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -12056,22 +12008,6 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-      </VC>
-      <VC ID="KRS116_000022">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS116_000023">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS316_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -13043,9 +12979,6 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
     <Command Width="500" />
   </Dialog>
   <Texts>
-    <Item TranslateID="BLOCK_">
-      <ENU>"Explanation of errors, warnings and notes"</ENU>
-    </Item>
     <Item TranslateID="BLOCK_INI400_003614">
       <ENU>"Explanation of errors, warnings and notes"</ENU>
     </Item>
@@ -13127,9 +13060,6 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
     <Item TranslateID="BLOCK_INI400_008915">
       <ENU>"calculation of maximal resistances"</ENU>
     </Item>
-    <Item TranslateID="BLOCK_INI400_013615">
-      <ENU>"Coefficients"</ENU>
-    </Item>
     <Item TranslateID="STRING_0278B056">
       <ENU>"Change (a) the dimensions of the cross-section, (b) the amount of reinforcement and/or (c) the quality of the used materials."</ENU>
     </Item>
@@ -13171,6 +13101,9 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
     </Item>
     <Item TranslateID="STRING_8362D9CB">
       <ENU>"NO CALC"</ENU>
+    </Item>
+    <Item ID="STRING_8A1A8A08">
+      <ENU>""</ENU>
     </Item>
     <Item TranslateID="STRING_9619EBED">
       <ENU>"Warning"</ENU>
@@ -13214,6 +13147,9 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
     <Item TranslateID="STRING_DB1432DC">
       <ENU>"Unity check value is zero because M↓Edy← is also zero and the selected method for the check is M↓uy←."</ENU>
     </Item>
+    <Item TranslateID="STRING_DD6334B7">
+      <ENU>"First and second order eccentricity will not be taken into account, because the member is not considered as a compression member (normal force is relatively small or zero)."</ENU>
+    </Item>
     <Item TranslateID="STRING_E93AE0AC">
       <ENU>"Unity check value is zero because N↓Ed← is also zero and the selected method for the check is N↓u←."</ENU>
     </Item>
@@ -13224,7 +13160,10 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
       <ENU>"Division of vertical strains"</ENU>
     </Item>
     <Item TranslateID="TEXT_">
-      <ENU>"List of errors/warnings/notes: "</ENU>
+      <ENU>"Compression member evaluation:"</ENU>
+    </Item>
+    <Item ID="TEXT_INI400_000325">
+      <ENU>"N↓Ed← &lt; N↓com← = " &amp; N↓Ed← &amp; " &lt; " &amp; N↓com← &amp; " ... "</ENU>
     </Item>
     <Item ID="TEXT_INI400_001117">
       <ENU>"N = " &amp; Val(ForcesIni.N/1000, 2) &amp; " kN"</ENU>
@@ -13247,29 +13186,11 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
     <Item TranslateID="TEXT_INI400_004180">
       <ENU>"List of errors/warnings/notes: "</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_005179">
-      <ENU>"Second order effect:"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_005180">
-      <ENU>"Yes"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_005181">
-      <ENU>"No"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_005182">
-      <ENU>"Imperfections:"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_005183">
-      <ENU>"Yes"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_005184">
-      <ENU>"No"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_005190">
-      <ENU>"No"</ENU>
-    </Item>
     <Item TranslateID="TEXT_INI400_005944">
       <ENU>"Recalculation bending moments:"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_INI400_006825">
+      <ENU>"not compression member"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_007028">
       <ENU>"Content of combination:"</ENU>
@@ -13294,21 +13215,6 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
     </Item>
     <Item ID="TEXT_INI400_007047">
       <ENU>"M↓Edz← = " &amp; Val(Forces.Mz/1000, 2) &amp; " kNm"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_008669">
-      <ENU>"Member is taken as isolated member:"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_008671">
-      <ENU>"No"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_008672">
-      <ENU>"Use for calculation equivalent moments:"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_008673">
-      <ENU>"Yes"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_008695">
-      <ENU>"Yes"</ENU>
     </Item>
     <Item ID="TEXT_INI400_008743">
       <ENU>"N↓Rd1←=" &amp; Val(N↓Rd1←, 2)</ENU>
@@ -13396,6 +13302,9 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
     </Item>
     <Item TranslateID="TEXT_INI400_013794">
       <ENU>"Unity check based on x↓u,lim ← acc. to 6.1(9)from NEN EN 1992-1-1 "</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS106_000027">
+      <ENU>"Compression member evaluation:"</ENU>
     </Item>
   </Texts>
 </Root>

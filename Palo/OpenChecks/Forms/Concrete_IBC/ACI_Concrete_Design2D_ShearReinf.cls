@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="101948f4-adb9-47d6-8b06-a2a29dd03c95">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">//------------------------------------------------------------
+    <SourceCode Collapsed="" BreakPoints="526">//------------------------------------------------------------
 //@VARIABLES
 
 →UNK000_014696BLOCK("@EXTERNS") { 
@@ -40,6 +40,8 @@
     →UNK000_020866string comboIDmax; 
     →REZ006_000118string ShearInfo; 
     →UNK006_000007object T_Table; 
+    
+    →RLF098_000004bool Imperialunit; 
 } 
 
 //------------------------------------------------------------
@@ -47,7 +49,8 @@
 
 bool ValidateInput(object Input) { 
     MemberType →UNK000_014714= Input.Get("MemberType"); 
-    h →UNK000_014715= Input.Get("h"); //@height of member    
+    h →UNK000_014715= Input.Get("h"); //@height of member  
+    Imperialunit →RLF098_000025= Input.Get("Imperialunit"); 
     obEWN →UNK000_014716= Input.Get("obEWN"); 
     IndexEWN →UNK000_014717= Input.Get("IndexEWN"); // index of EWN
     ElementID →UNK000_014718= Input.Get("ElementID"); //ID of element
@@ -88,7 +91,15 @@ private void LoadDialogInputs() {
     RecalcForcesPOD →UNK000_014733= _dialog_RecalcForcesPOD; 
     BasicForces →UNK000_014734= _dialog_BasicForces; 
     DesignReinf →UNK000_014735= _dialog_DesignReinf; 
-    DesignDefaults →UNK000_014736= FUNCT_2D_DEFAULTS.GetDesignDefaults(MemberType); 
+    IF(COMPARE(MOD(10^6*h, 3175), 0, 2) == 0) { 
+        Imperialunit →RLF098_000037= true; 
+    } ELSE { 
+        Imperialunit →RLF098_000038= false; 
+    } 
+    →UNK006_000003object Designdefaultinput →UNK006_000006= new Structure(); 
+    →RLF098_000023Designdefaultinput.Add("MemberType", MemberType); 
+    →RLF098_000015Designdefaultinput.Add("Imperialunit", Imperialunit); 
+    DesignDefaults →UNK000_014736= FUNCT_2D_DEFAULTS.GetDesignDefaults(→RLF098_000024Designdefaultinput); 
     bool bAutoTheta →UNK000_014737= _dialog_AutoTheta; 
     →UNK000_014738DesignDefaults.Solver.Set("bAuto_θ", bAutoTheta); 
     obEWN →UNK000_014739= new object[]; 
@@ -111,8 +122,13 @@ private void GetLongReinfInLCS(object DesignReinf, out double A↓sl,x←, out d
             } 
         } 
     } 
-    →UNK000_014748TEXT("A↓sl,x← = " &amp; CUnit(A↓sl,x←, "in↑2←") &amp; " in↑2←/ft") @REF("Longitudinal reinforcement area in x direction"); 
-    →UNK000_014749TEXT("A↓sl,y← = " &amp; CUnit(A↓sl,y←, "in↑2←") &amp; " in↑2←/ft") @REF("Longitudinal reinforcement area in y direction"); 
+    IF(Imperialunit) { 
+        →UNK000_014748TEXT("A↓sl,x← = " &amp; CUnit(A↓sl,x←, "in↑2←") &amp; " in↑2←/ft") @REF("Longitudinal reinforcement area in x direction"); 
+        →UNK000_014749TEXT("A↓sl,y← = " &amp; CUnit(A↓sl,y←, "in↑2←") &amp; " in↑2←/ft") @REF("Longitudinal reinforcement area in y direction"); 
+    } ELSE { 
+        →RLF098_000056TEXT("A↓sl,x← = " &amp; CUnit(A↓sl,x←, "mm↑2←") &amp; " mm↑2←/m") @REF("Longitudinal reinforcement area in x direction"); 
+        →RLF098_000057TEXT("A↓sl,y← = " &amp; CUnit(A↓sl,y←, "mm↑2←") &amp; " mm↑2←/m") @REF("Longitudinal reinforcement area in y direction"); 
+    } 
 } 
 private void NShearLinks(double A↓v,req←, double ϕ↓s,req←, object Result) { 
     double A↓v1← →REZ006_000097= (0.25*Math.PI*ϕ↓s,req←↑2←); 
@@ -124,7 +140,11 @@ private void NShearLinks(double A↓v,req←, double ϕ↓s,req←, object Resul
     } 
     double A↓v,prov← →REZ006_000016= n↓s,req←*(0.25*Math.PI*ϕ↓s,req←↑2←); 
     double Barno →REZ006_000116= FUNCT_BAR.BarNoCalculation(ϕ↓s,req←); 
-    ShearInfo →REZ006_000119= "#" &amp; Barno &amp; "@" &amp; CUnit(s↓l,req←, "in"); 
+    IF(Imperialunit) { 
+        ShearInfo →REZ006_000119= "#" &amp; Barno &amp; "@" &amp; CUnit(s↓l,req←, "in"); 
+    } ELSE { 
+        ShearInfo →RLF098_000036= "ϕ" &amp; 1000*ϕ↓s,req← &amp; "@" &amp; CUnit(s↓l,req←, "mm"); 
+    } 
     →REZ006_000071TEXT("A↓v,prov← = " &amp; 'n↓s,req←*(1/4*π*ϕ↑2←)' &amp; " = " &amp; CUnit(A↓v,prov←, "in↑2←") &amp; " in↑2←/ft") @REF("Provided area of rebars"); 
     →UNK000_014776Result.Set("ns_req", n↓s,req←); 
     →UNK000_014777Result.Set("sl_req", s↓l,req←); 
@@ -165,64 +185,136 @@ private void GetVRdc(double d, double b, double f↓cd←, double ρ↓1←, dou
         } 
     } 
     double A↓g← →UNK000_020891= b*d*1000000; // Use mm in the equations Appendix B of ACI
-    →UNK000_020910TEXT("Design Forces:  N↓n← = " &amp; CUnit(N↓n←, "kip") &amp; "   V↓n ←= " &amp; CUnit(V↓n←, "kip") &amp; " ) "); 
+    IF(Imperialunit) { 
+        →UNK000_020910TEXT("Design Forces:  N↓n← = " &amp; CUnit(N↓n←, "kip") &amp; "   V↓n ←= " &amp; CUnit(V↓n←, "kip") &amp; " ) "); 
+    } ELSE { 
+        →RLF098_000058TEXT("Design Forces:  N↓n← = " &amp; CUnit(N↓n←, "kN") &amp; "   V↓n ←= " &amp; CUnit(V↓n←, "kN") &amp; " ) "); 
+    } 
     IF(N↓n← &gt; 0) { // Tension
         →UNK000_020892TEXT("- Shear with Tension"); 
         →REZ006_000104TEXT("- Nominal shear strength provided by concrete"); 
         double v↓c1← →UNK000_008836= 0.17*(1-0.29*N↓n←/A↓g←)*λ*SQRT(f↓cd←/1000000)*1000000; //  2*λ*SQRT(CUnit(double f↓cd←, "psi")); 
-        →UNK000_020810TEXT("v↓c1 ←= " &amp; '2*(1+N↓n←/(500*A↓g←))*λ*SQRT(f↓cd←)' &amp; " = " &amp; CUnit(v↓c1←, "psi") &amp; " psi") @REF("(ACI 22.5.7.1)"); 
+        IF(Imperialunit) { 
+            →UNK000_020810TEXT("v↓c1 ←= " &amp; '2*(1+N↓n←/(500*A↓g←))*λ*SQRT(f↓cd←)' &amp; " = " &amp; CUnit(v↓c1←, "psi") &amp; " psi") @REF("(ACI 22.5.7.1)"); 
+        } ELSE { 
+            →RLF098_000059TEXT("v↓c1 ←= " &amp; '2*(1+N↓n←/(500*A↓g←))*λ*SQRT(f↓cd←)' &amp; " = " &amp; CUnit(v↓c1←, "MPa") &amp; " MPa") @REF("(ACI 22.5.7.1)"); 
+        } 
         IF(COMPARE(ABS(M↓n←), 0, 5) == 0) { 
             double v↓c2← →UNK000_020893= (0.05*λ*SQRT(f↓cd←/1000000)+4.8)*1000000; 
-            →UNK000_020894TEXT("v↓c2 ←= " &amp; '(0.6*λ*SQRT(f↓cd←)+700*V↓u←*d/M↓u←)' &amp; " = " &amp; CUnit(v↓c2←, "psi") &amp; " psi") @REF("(ACI 22.5.8.2(b))"); 
+            IF(Imperialunit) { 
+                →UNK000_020894TEXT("v↓c2 ←= " &amp; '(0.6*λ*SQRT(f↓cd←)+700*V↓u←*d/M↓u←)' &amp; " = " &amp; CUnit(v↓c2←, "psi") &amp; " psi") @REF("(ACI 22.5.8.2(b))"); 
+            } ELSE { 
+                →RLF098_000060TEXT("v↓c2 ←= " &amp; '(0.6*λ*SQRT(f↓cd←)+700*V↓u←*d/M↓u←)' &amp; " = " &amp; CUnit(v↓c2←, "MPa") &amp; " MPa") @REF("(ACI 22.5.8.2(b))"); 
+            } 
         } ELSE { 
             double v↓c2← →UNK000_008851= (0.05*λ*SQRT(f↓cd←/1000000)+4.8*V↓n←*d/M↓n←)*1000000; 
-            →UNK000_020812TEXT("v↓c2 ←= " &amp; '(1.9*SQRT(f↓cd←)+2500*ρ↓1←*V↓u←*d/M↓u←)' &amp; " = " &amp; CUnit(v↓c2←, "psi") &amp; " psi") @REF("(ACI 22.5.8.2(a))"); 
+            IF(Imperialunit) { 
+                →UNK000_020812TEXT("v↓c2 ←= " &amp; '(1.9*SQRT(f↓cd←)+2500*ρ↓1←*V↓u←*d/M↓u←)' &amp; " = " &amp; CUnit(v↓c2←, "psi") &amp; " psi") @REF("(ACI 22.5.8.2(a))"); 
+            } ELSE { 
+                →RLF098_000061TEXT("v↓c2 ←= " &amp; '(1.9*SQRT(f↓cd←)+2500*ρ↓1←*V↓u←*d/M↓u←)' &amp; " = " &amp; CUnit(v↓c2←, "MPa") &amp; " MPa") @REF("(ACI 22.5.8.2(a))"); 
+            } 
         } 
         double v↓c3← →UNK000_020728= (0.05*λ*SQRT(f↓cd←/1000000)+4.8)*1000000; 
-        →UNK000_020813TEXT("v↓c3 ←= " &amp; '(0.6*λ*SQRT(f↓cd←)+700*V↓n←*d/M↓n←)' &amp; " = " &amp; CUnit(v↓c2←, "psi") &amp; " psi") @REF("(ACI 22.5.8.2(b))"); 
+        IF(Imperialunit) { 
+            →UNK000_020813TEXT("v↓c3 ←= " &amp; '(0.6*λ*SQRT(f↓cd←)+700*V↓n←*d/M↓n←)' &amp; " = " &amp; CUnit(v↓c2←, "psi") &amp; " psi") @REF("(ACI 22.5.8.2(b))"); 
+        } ELSE { 
+            →RLF098_000062TEXT("v↓c3 ←= " &amp; '(0.6*λ*SQRT(f↓cd←)+700*V↓n←*d/M↓n←)' &amp; " = " &amp; CUnit(v↓c2←, "MPa") &amp; " MPa") @REF("(ACI 22.5.8.2(b))"); 
+        } 
         double v↓c4← →UNK000_020768= 0.42*λ*SQRT(f↓cd←/1000000)*1000000; 
-        →UNK000_020814TEXT("v↓c4 ←= " &amp; '5*λ*SQRT(f↓cd←)' &amp; " = " &amp; CUnit(v↓c4←, "psi") &amp; "psi") @REF("(ACI 22.5.8.2(c))"); 
+        IF(Imperialunit) { 
+            →UNK000_020814TEXT("v↓c4 ←= " &amp; '5*λ*SQRT(f↓cd←)' &amp; " = " &amp; CUnit(v↓c4←, "psi") &amp; "psi") @REF("(ACI 22.5.8.2(c))"); 
+        } ELSE { 
+            →RLF098_000063TEXT("v↓c4 ←= " &amp; '5*λ*SQRT(f↓cd←)' &amp; " = " &amp; CUnit(v↓c4←, "MPa") &amp; "MPa") @REF("(ACI 22.5.8.2(c))"); 
+        } 
     } ELSE { 
         IF(N↓n← &lt; 0) { // Compression
             →UNK000_020895TEXT("- Shear with Compression"); 
             →REZ006_000106TEXT("- Nominal shear strength provided by concrete"); 
             double v↓c1← →UNK000_020896= 0.17*(1-N↓n←/(14*A↓g←))*λ*SQRT(f↓cd←/1000000)*1000000; //  2*λ*SQRT(CUnit(double f↓cd←, "psi")); 
-            →UNK000_020897TEXT("v↓c1 ←= " &amp; '2*(1+N↓n←/(2000*A↓g←))*λ*SQRT(f↓cd←)' &amp; " = " &amp; CUnit(v↓c1←, "psi") &amp; " psi") @REF("(ACI 22.5.6.1)"); 
+            IF(Imperialunit) { 
+                →UNK000_020897TEXT("v↓c1 ←= " &amp; '2*(1+N↓n←/(2000*A↓g←))*λ*SQRT(f↓cd←)' &amp; " = " &amp; CUnit(v↓c1←, "psi") &amp; " psi") @REF("(ACI 22.5.6.1)"); 
+            } ELSE { 
+                →RLF098_000064TEXT("v↓c1 ←= " &amp; '2*(1+N↓n←/(2000*A↓g←))*λ*SQRT(f↓cd←)' &amp; " = " &amp; CUnit(v↓c1←, "MPa") &amp; " MPa") @REF("(ACI 22.5.6.1)"); 
+            } 
             IF(COMPARE(ABS(M↓n←+N↓n←*(4*h-d)/8), 0, 5) == 0) { 
                 double v↓c2← →UNK000_020906= (0.16*λ*SQRT(f↓cd←/1000000)+17*ρ↓1←)*1000000; 
-                →UNK000_020899TEXT("v↓c2 ←= " &amp; '(1.9*λ*SQRT(f↓cd←)+2500*ρ↓1←)' &amp; " = " &amp; CUnit(v↓c2←, "psi") &amp; " psi") @REF("(ACI 22.5.6.1(b))"); 
+                IF(Imperialunit) { 
+                    →UNK000_020899TEXT("v↓c2 ←= " &amp; '(1.9*λ*SQRT(f↓cd←)+2500*ρ↓1←)' &amp; " = " &amp; CUnit(v↓c2←, "psi") &amp; " psi") @REF("(ACI 22.5.6.1(b))"); 
+                } ELSE { 
+                    →RLF098_000065TEXT("v↓c2 ←= " &amp; '(1.9*λ*SQRT(f↓cd←)+2500*ρ↓1←)' &amp; " = " &amp; CUnit(v↓c2←, "psi") &amp; " MPa") @REF("(ACI 22.5.6.1(b))"); 
+                } 
             } ELSE { 
                 v↓c2← →UNK000_020907= (0.16*λ*SQRT(f↓cd←/1000000)+17*ρ↓1←*V↓n←*d/(M↓n←+N↓n←*(4*h-d)/8))*1000000; 
-                →UNK000_020901TEXT("v↓c2 ←= " &amp; '(1.9*SQRT(f↓cd←)+2500*ρ↓1←V↓u←*d/(M↓u←-N↓u←*(4*h-d)/8))' &amp; " = " &amp; CUnit(v↓c2←, "psi") &amp; " psi") @REF("(ACI 22.5.6.1(a))"); 
+                IF(Imperialunit) { 
+                    →UNK000_020901TEXT("v↓c2 ←= " &amp; '(1.9*SQRT(f↓cd←)+2500*ρ↓1←V↓u←*d/(M↓u←-N↓u←*(4*h-d)/8))' &amp; " = " &amp; CUnit(v↓c2←, "psi") &amp; " psi") @REF("(ACI 22.5.6.1(a))"); 
+                } ELSE { 
+                    →RLF098_000066TEXT("v↓c2 ←= " &amp; '(1.9*SQRT(f↓cd←)+2500*ρ↓1←V↓u←*d/(M↓u←-N↓u←*(4*h-d)/8))' &amp; " = " &amp; CUnit(v↓c2←, "MPa") &amp; " MPa") @REF("(ACI 22.5.6.1(a))"); 
+                } 
             } 
-            double v↓c3← →UNK000_020908= (0.16*λ*SQRT(f↓cd←/1000000)+17*ρ↓1←)*1000000; 
-            →UNK000_020903TEXT("v↓c3 ←= " &amp; '(1.9*SQRT(f↓cd←)+2500*ρ↓1←)' &amp; " = " &amp; CUnit(v↓c2←, "psi") &amp; " psi") @REF("(ACI 22.5.8.2(b))"); 
-            double v↓c4← →UNK000_020904= 0.29*λ*SQRT(f↓cd←/1000000)*SQRT(1-0.29*N↓n←/A↓g←)*1000000; 
-            →UNK000_020905TEXT("v↓c4 ←= " &amp; '3.5*λ*SQRT(f↓cd←)*SQRT(1+0.29*N↓u←/A↓g←)' &amp; " = " &amp; CUnit(v↓c4←, "psi") &amp; " psi") @REF("(ACI 22.5.8.2(c))"); 
+            IF(Imperialunit) { 
+                double v↓c3← →UNK000_020908= (0.16*λ*SQRT(f↓cd←/1000000)+17*ρ↓1←)*1000000; 
+                →UNK000_020903TEXT("v↓c3 ←= " &amp; '(1.9*SQRT(f↓cd←)+2500*ρ↓1←)' &amp; " = " &amp; CUnit(v↓c2←, "psi") &amp; " psi") @REF("(ACI 22.5.8.2(b))"); 
+                double v↓c4← →UNK000_020904= 0.29*λ*SQRT(f↓cd←/1000000)*SQRT(1-0.29*N↓n←/A↓g←)*1000000; 
+                →UNK000_020905TEXT("v↓c4 ←= " &amp; '3.5*λ*SQRT(f↓cd←)*SQRT(1+0.29*N↓u←/A↓g←)' &amp; " = " &amp; CUnit(v↓c4←, "psi") &amp; " psi") @REF("(ACI 22.5.8.2(c))"); 
+            } ELSE { 
+                double v↓c3← →RLF098_000067= (0.16*λ*SQRT(f↓cd←/1000000)+17*ρ↓1←)*1000000; 
+                →RLF098_000068TEXT("v↓c3 ←= " &amp; '(1.9*SQRT(f↓cd←)+2500*ρ↓1←)' &amp; " = " &amp; CUnit(v↓c2←, "MPa") &amp; " MPa") @REF("(ACI 22.5.8.2(b))"); 
+                double v↓c4← →RLF098_000069= 0.29*λ*SQRT(f↓cd←/1000000)*SQRT(1-0.29*N↓n←/A↓g←)*1000000; 
+                →RLF098_000070TEXT("v↓c4 ←= " &amp; '3.5*λ*SQRT(f↓cd←)*SQRT(1+0.29*N↓u←/A↓g←)' &amp; " = " &amp; CUnit(v↓c4←, "MPa") &amp; " MPa") @REF("(ACI 22.5.8.2(c))"); 
+            } 
         } ELSE { 
             →UNK000_020909TEXT("- Shear with No Axial load"); 
             →REZ006_000107TEXT("- Nominal shear strength provided by concrete"); 
             double v↓c1← →UNK000_020877= 0.17*λ*SQRT(f↓cd←/1000000)*1000000; //  2*λ*SQRT(CUnit(double f↓cd←, "psi")); 
-            →UNK000_020878TEXT("v↓c1 ←= " &amp; '2*λ*SQRT(f↓cd←)' &amp; " = " &amp; CUnit(v↓c1←, "psi") &amp; " psi") @REF("(ACI 22.5.5.1)"); 
+            IF(Imperialunit) { 
+                →UNK000_020878TEXT("v↓c1 ←= " &amp; '2*λ*SQRT(f↓cd←)' &amp; " = " &amp; CUnit(v↓c1←, "psi") &amp; " psi") @REF("(ACI 22.5.5.1)"); 
+            } ELSE { 
+                →RLF098_000071TEXT("v↓c1 ←= " &amp; '2*λ*SQRT(f↓cd←)' &amp; " = " &amp; CUnit(v↓c1←, "MPa") &amp; " MPa") @REF("(ACI 22.5.5.1)"); 
+            } 
             IF(COMPARE(ABS(M↓n←), 0, 5) == 0) { 
                 double v↓c2← →UNK000_020879= (0.16*λ*SQRT(f↓cd←/1000000)+17*ρ↓1←)*1000000; 
-                →UNK000_020880TEXT("v↓c2 ←= " &amp; '(1.9*SQRT(f↓cd←)+2500*ρ↓1←)' &amp; " = " &amp; CUnit(v↓c2←, "psi") &amp; " psi") @REF("(ACI 22.5.5.1(b))"); 
+                IF(Imperialunit) { 
+                    →UNK000_020880TEXT("v↓c2 ←= " &amp; '(1.9*SQRT(f↓cd←)+2500*ρ↓1←)' &amp; " = " &amp; CUnit(v↓c2←, "psi") &amp; " psi") @REF("(ACI 22.5.5.1(b))"); 
+                } ELSE { 
+                    →RLF098_000072TEXT("v↓c2 ←= " &amp; '(1.9*SQRT(f↓cd←)+2500*ρ↓1←)' &amp; " = " &amp; CUnit(v↓c2←, "MPa") &amp; " MPa") @REF("(ACI 22.5.5.1(b))"); 
+                } 
             } ELSE { 
                 double v↓c2← →UNK000_020881= (0.16*λ*SQRT(f↓cd←/1000000)+17*ρ↓1←*V↓n←*d/M↓n←)*1000000; 
-                →UNK000_020882TEXT("v↓c2 ←= " &amp; '(1.9*SQRT(f↓cd←)+2500*ρ↓1←*V↓u←*d/M↓u←)' &amp; " = " &amp; CUnit(v↓c2←, "psi") &amp; " psi") @REF("(ACI 22.5.5.1(a))"); 
+                IF(Imperialunit) { 
+                    →UNK000_020882TEXT("v↓c2 ←= " &amp; '(1.9*SQRT(f↓cd←)+2500*ρ↓1←*V↓u←*d/M↓u←)' &amp; " = " &amp; CUnit(v↓c2←, "psi") &amp; " psi") @REF("(ACI 22.5.5.1(a))"); 
+                } ELSE { 
+                    →RLF098_000073TEXT("v↓c2 ←= " &amp; '(1.9*SQRT(f↓cd←)+2500*ρ↓1←*V↓u←*d/M↓u←)' &amp; " = " &amp; CUnit(v↓c2←, "MPa") &amp; " MPa") @REF("(ACI 22.5.5.1(a))"); 
+                } 
             } 
-            double v↓c3← →UNK000_020883= (0.16*λ*SQRT(f↓cd←/1000000)+17*ρ↓1←)*1000000; 
-            →UNK000_020884TEXT("v↓c3 ←= " &amp; '(1.9*SQRT(f↓cd←)+2500*ρ↓1←)' &amp; " = " &amp; CUnit(v↓c3←, "psi") &amp; " psi") @REF("(ACI 22.5.5.1(b))"); 
-            double v↓c4← →UNK000_020885= 0.29*λ*SQRT(f↓cd←/1000000)*1000000; 
-            →UNK000_020886TEXT("v↓c4 ←= " &amp; '3.5*λ*SQRT(f↓cd←)' &amp; " = " &amp; CUnit(v↓c4←, "psi") &amp; " psi") @REF("(ACI 22.5.5.1(c))"); 
+            IF(Imperialunit) { 
+                double v↓c3← →UNK000_020883= (0.16*λ*SQRT(f↓cd←/1000000)+17*ρ↓1←)*1000000; 
+                →UNK000_020884TEXT("v↓c3 ←= " &amp; '(1.9*SQRT(f↓cd←)+2500*ρ↓1←)' &amp; " = " &amp; CUnit(v↓c3←, "psi") &amp; " psi") @REF("(ACI 22.5.5.1(b))"); 
+                double v↓c4← →UNK000_020885= 0.29*λ*SQRT(f↓cd←/1000000)*1000000; 
+                →UNK000_020886TEXT("v↓c4 ←= " &amp; '3.5*λ*SQRT(f↓cd←)' &amp; " = " &amp; CUnit(v↓c4←, "psi") &amp; " psi") @REF("(ACI 22.5.5.1(c))"); 
+            } ELSE { 
+                double v↓c3← →RLF098_000074= (0.16*λ*SQRT(f↓cd←/1000000)+17*ρ↓1←)*1000000; 
+                →RLF098_000075TEXT("v↓c3 ←= " &amp; '(1.9*SQRT(f↓cd←)+2500*ρ↓1←)' &amp; " = " &amp; CUnit(v↓c3←, "MPa") &amp; " MPa") @REF("(ACI 22.5.5.1(b))"); 
+                double v↓c4← →RLF098_000076= 0.29*λ*SQRT(f↓cd←/1000000)*1000000; 
+                →RLF098_000077TEXT("v↓c4 ←= " &amp; '3.5*λ*SQRT(f↓cd←)' &amp; " = " &amp; CUnit(v↓c4←, "MPa") &amp; " MPa") @REF("(ACI 22.5.5.1(c))"); 
+            } 
         } 
     } 
-    double v↓c← →UNK000_020725= PARMAX(v↓c1←, MIN(v↓c2←, v↓c3←, v↓c4←)); 
-    →UNK000_020844TEXT("v↓c← =" &amp; 'PARMAX(v↓c1←, MIN(v↓c2←, v↓c3←, v↓c4←))' &amp; "= " &amp; CUnit(v↓c←, "psi") &amp; " psi") @REF("(ACI 22.5.5.1)"); 
-    double V↓c← →UNK000_020726= v↓c←*b*d; 
-    →UNK000_020809TEXT("V↓c← = " &amp; 'v↓c←*b*d' &amp; " = " &amp; CUnit(V↓c←, "kip") &amp; " kip") @REF("Nominal shear strength"); 
-    double V↓Rdmax← →UNK000_020769= V↓c←+0.66*λ*SQRT(f↓cd←/1000000)*b*d*1000000; 
-    →UNK000_020815TEXT("V↓max← = " &amp; 'V↓c←+8*λ*SQRT(f↓cd←)*b*d' &amp; " = " &amp; CUnit(V↓Rdmax←, "kip") &amp; " kip") @REF("Maximum nominal shear strength of section"); 
+    IF(Imperialunit) { 
+        double v↓c← →UNK000_020725= PARMAX(v↓c1←, MIN(v↓c2←, v↓c3←, v↓c4←)); 
+        →UNK000_020844TEXT("v↓c← =" &amp; 'PARMAX(v↓c1←, MIN(v↓c2←, v↓c3←, v↓c4←))' &amp; "= " &amp; CUnit(v↓c←, "psi") &amp; " psi") @REF("(ACI 22.5.5.1)"); 
+        double V↓c← →UNK000_020726= v↓c←*b*d; 
+        →UNK000_020809TEXT("V↓c← = " &amp; 'v↓c←*b*d' &amp; " = " &amp; CUnit(V↓c←, "kip") &amp; " kip") @REF("Nominal shear strength"); 
+        double V↓Rdmax← →UNK000_020769= V↓c←+0.66*λ*SQRT(f↓cd←/1000000)*b*d*1000000; 
+        →UNK000_020815TEXT("V↓max← = " &amp; 'V↓c←+8*λ*SQRT(f↓cd←)*b*d' &amp; " = " &amp; CUnit(V↓Rdmax←, "kip") &amp; " kip") @REF("Maximum nominal shear strength of section"); 
+    } ELSE { 
+        double v↓c← →RLF098_000078= PARMAX(v↓c1←, MIN(v↓c2←, v↓c3←, v↓c4←)); 
+        →RLF098_000079TEXT("v↓c← =" &amp; 'PARMAX(v↓c1←, MIN(v↓c2←, v↓c3←, v↓c4←))' &amp; "= " &amp; CUnit(v↓c←, "MPa") &amp; " MPa") @REF("(ACI 22.5.5.1)"); 
+        double V↓c← →RLF098_000080= v↓c←*b*d; 
+        →RLF098_000081TEXT("V↓c← = " &amp; 'v↓c←*b*d' &amp; " = " &amp; CUnit(V↓c←, "kN") &amp; " kN") @REF("Nominal shear strength"); 
+        double V↓Rdmax← →RLF098_000082= V↓c←+0.66*λ*SQRT(f↓cd←/1000000)*b*d*1000000; 
+        →RLF098_000083TEXT("V↓max← = " &amp; 'V↓c←+8*λ*SQRT(f↓cd←)*b*d' &amp; " = " &amp; CUnit(V↓Rdmax←, "kN") &amp; " kN") @REF("Maximum nominal shear strength of section"); 
+    } 
+    
 } 
 
 private void DesignAsw(double d, double b, double V↓s←, double z, double f↓ywd,req←, double θ, double α↓s,req←, double ϕ↓s,req←, object Result) { 
@@ -230,14 +322,25 @@ private void DesignAsw(double d, double b, double V↓s←, double z, double f�
     →REZ006_000075double&lt;psi,0&gt; f↓yt← →REZ006_000076= f↓ywd,req←; 
     →UNK000_020735double&lt;kip,-1&gt; V↓n←; 
     double Barno →REZ006_000077= FUNCT_BAR.BarNoCalculation(ϕ↓s,req←); 
-    →UNK000_020786TEXT("Rebar#" &amp; Barno &amp; "  f↓yt←= " &amp; CUnit(f↓ywd,req←, "psi") &amp; "psi   d=" &amp; CUnit(d, "in") &amp; "in   V↓s←= " &amp; CUnit(V↓s←, "kip") &amp; "kip"); 
-    A↓v,req← →UNK000_020736= V↓s←/(d*f↓ywd,req←); 
-    →UNK000_020817TEXT("A↓v,req←= " &amp; 'V↓s←/(d*f↓yt←)' &amp; " = " &amp; CUnit(A↓v,req←, "in↑2←/ft") &amp; "in↑2←/ft") @REF("Required Area of shear Rebar"); 
-    →UNK000_020738Result.Set("Aswm_req", A↓v,req←); 
+    IF(Imperialunit) { 
+        →UNK000_020786TEXT("Rebar#" &amp; Barno &amp; "  f↓yt←= " &amp; CUnit(f↓ywd,req←, "psi") &amp; "psi   d=" &amp; CUnit(d, "in") &amp; "in   V↓s←= " &amp; CUnit(V↓s←, "kip") &amp; "kip"); 
+        A↓v,req← →UNK000_020736= V↓s←/(d*f↓ywd,req←); 
+        →UNK000_020817TEXT("A↓v,req←= " &amp; 'V↓s←/(d*f↓yt←)' &amp; " = " &amp; CUnit(A↓v,req←, "in↑2←/ft") &amp; "in↑2←/ft") @REF("Required Area of shear Rebar"); 
+        →UNK000_020738Result.Set("Aswm_req", A↓v,req←); 
+    } ELSE { 
+        →RLF098_000084TEXT("Rebar#" &amp; Barno &amp; "  f↓yt←= " &amp; CUnit(f↓ywd,req←, "MPa") &amp; "MPa   d=" &amp; CUnit(d, "mm") &amp; "mm   V↓s←= " &amp; CUnit(V↓s←, "kN") &amp; "kN"); 
+        A↓v,req← →RLF098_000085= V↓s←/(d*f↓ywd,req←); 
+        →RLF098_000086TEXT("A↓v,req←= " &amp; 'V↓s←/(d*f↓yt←)' &amp; " = " &amp; CUnit(A↓v,req←, "mm↑2←/m") &amp; "mm↑2←/m") @REF("Required Area of shear Rebar"); 
+        →RLF098_000087Result.Set("Aswm_req", A↓v,req←); 
+    } 
 } 
 private void MinimumAsw(double d, double b, double f↓cd←, double f↓ywk,req←, out double A↓swm,min←) { 
     A↓swm,min← →UNK000_020781= PARMIN(0.35*b*1000000/f↓ywk,req←, 0.062*SQRT(f↓cd←/1000000)*b*1000000/f↓ywk,req←); 
-    →UNK000_016860TEXT("A↓v,min ←= " &amp; 'PARMAX(50*b↓w←/f↓yt←, 0.75*SQRT(f↓cd←/1000000)*b/f↓yt←)' &amp; " =  " &amp; CUnit(A↓swm,min←, "in*in/ft") &amp; " in↑2←/ft") @REF("(ACI 8.7.5.6.3.1)"); 
+    IF(Imperialunit) { 
+        →UNK000_016860TEXT("A↓v,min ←= " &amp; 'PARMAX(50*b↓w←/f↓yt←, 0.75*SQRT(f↓cd←/1000000)*b/f↓yt←)' &amp; " =  " &amp; CUnit(A↓swm,min←, "in*in/ft") &amp; " in↑2←/ft") @REF("(ACI 8.7.5.6.3.1)"); 
+    } ELSE { 
+        →RLF098_000088TEXT("A↓v,min ←= " &amp; 'PARMAX(50*b↓w←/f↓yt←, 0.75*SQRT(f↓cd←/1000000)*b/f↓yt←)' &amp; " =  " &amp; CUnit(A↓swm,min←, "mm*mm/m") &amp; " mm↑2←/m") @REF("(ACI 8.7.5.6.3.1)"); 
+    } 
 } 
 
 private void CalcShearDesign(double ForceID, out object DesignShear) { 
@@ -258,7 +361,11 @@ private void CalcShearDesign(double ForceID, out object DesignShear) {
     double my →UNK000_020801= ForceSet.my; 
     double nx →UNK000_020875= ForceSet.nx; 
     double ny →UNK000_020876= ForceSet.ny; 
-    →UNK000_020788TEXT("v↓x←=" &amp; CUnit(qx, "kip/ft") &amp; "kip" &amp; "   v↓y←=" &amp; CUnit(qy, "kip/ft") &amp; "kip"); 
+    IF(Imperialunit) { 
+        →UNK000_020788TEXT("v↓x←=" &amp; CUnit(qx, "kip/ft") &amp; "kip/ft" &amp; "   v↓y←=" &amp; CUnit(qy, "kip/ft") &amp; "kip/ft"); 
+    } ELSE { 
+        →RLF098_000055TEXT("v↓x←=" &amp; CUnit(qx, "kN/m") &amp; "kN/m" &amp; "   v↓y←=" &amp; CUnit(qy, "kN/m") &amp; "kN/m"); 
+    } 
     double&lt;kip,-1&gt; V↓n← →UNK000_014834= b*SQRT(ForceSet.qx↑2←+ForceSet.qy↑2←)/ϕ; // Find the shear force in width of b
     double&lt;kip*ft,-1&gt; M↓n← →UNK000_020767= b*SQRT(ForceSet.mx↑2←+ForceSet.my↑2←)/ϕ; // Find the shear force in width of b
     double&lt;kip,-1&gt; N↓n← →UNK000_020874= b*SQRT(ForceSet.nx↑2←+ForceSet.ny↑2←)/ϕ; // Find the shear force in width of b
@@ -383,11 +490,17 @@ private void CalcShearDesign(double ForceID, out object DesignShear) {
 //------------------------------------------------------------
 //@SCRIPT
 
+
+
 →UNK000_014954LoadExterns(); 
 IF(!IO.IsExternCLC) { →UNK000_014955LoadDialogInputs(); } 
 →UNK000_014963BLOCK { //@GLOBAL VARIABLES
     object FontsAndColors →UNK000_014956= FONTS_COLORS.GetFontsAndColors(); 
-    double b →UNK000_014957= PhysConst(1, "ft"); 
+    IF(Imperialunit) { 
+        b →RLF098_000053= PhysConst(1, "ft"); 
+    } ELSE { 
+        b →RLF098_000054= PhysConst(1, "m"); 
+    } 
     UC_lim →UNK000_014958= 3; 
     object CS_Material →UNK000_017133= DesignDefaults.CONCRETE.IBC; 
     object ReinfMat →UNK000_017135= DesignDefaults.ReinfLong.Material; 
@@ -479,27 +592,45 @@ private void DrawDesignReinfSumTable() {
     T_Area[0][0].Value →UNK000_016967= TR("Reinf."); 
     T_Area[0][1].Value →UNK000_016969= "Θ [°]"; 
     T_Area[0][2].Value →UNK000_016970= TR("Case"); 
-    T_Area[0][3].Value →UNK000_016971= "V↓U ←[kip/ft]"; 
-    T_Area[0][4].Value →UNK000_016972= "V↓c ←[kip/ft]"; 
-    T_Area[0][5].Value →REZ006_000012= "U↓C ←"; 
-    T_Area[0][6].Value →UNK000_016975= "A↓v,req ←[in↑2←/ft]"; 
-    T_Area[0][7].Value →REZ006_000025= "A↓v,prov ←[in↑2←/ft]"; 
+    IF(Imperialunit) { 
+        T_Area[0][3].Value →UNK000_016971= "V↓U ←[kip/ft]"; 
+        T_Area[0][4].Value →UNK000_016972= "V↓c ←[kip/ft]"; 
+        T_Area[0][5].Value →REZ006_000012= "U↓C ←"; 
+        T_Area[0][6].Value →UNK000_016975= "A↓v,req ←[in↑2←/ft]"; 
+        T_Area[0][7].Value →REZ006_000025= "A↓v,prov ←[in↑2←/ft]"; 
+    } ELSE { 
+        T_Area[0][3].Value →RLF098_000026= "V↓U ←[kN/m]"; 
+        T_Area[0][4].Value →RLF098_000027= "V↓c ←[kN/m]"; 
+        T_Area[0][5].Value →RLF098_000028= "U↓C ←"; 
+        T_Area[0][6].Value →RLF098_000029= "A↓v,req ←[mm↑2←/m]"; 
+        T_Area[0][7].Value →RLF098_000030= "A↓v,prov ←[mm↑2←/m]"; 
+    } 
     T_Area[0][8].Value →REZ006_000031= "Uc↓t←"; 
     //values
     double RowID →UNK000_016903= 0; 
     T_Area[RowID+1][0].Value →UNK000_016904= TR("Shear"); 
     T_Area[RowID+1][1].Value →UNK000_016906= DesignDefaults.ReinfShear.Alpha; //angle
     T_Area[RowID+1][2].Value →UNK000_016907= comboIDmax; 
-    T_Area[RowID+1][3].Value →UNK000_016908= CUnit(V↓n,max←, "kip"); 
-    T_Area[RowID+1][4].Value →UNK000_016909= CUnit(V↓c←, "kip"); 
+    IF(Imperialunit) { 
+        T_Area[RowID+1][3].Value →UNK000_016908= CUnit(V↓n,max←, "kip"); 
+        T_Area[RowID+1][4].Value →UNK000_016909= CUnit(V↓c←, "kip"); 
+    } ELSE { 
+        T_Area[RowID+1][3].Value →RLF098_000031= CUnit(V↓n,max←, "kN"); 
+        T_Area[RowID+1][4].Value →RLF098_000032= CUnit(V↓c←, "kN"); 
+    } 
     T_Area[RowID+1][5].Value →REZ006_000013= UCmax_VRdc; 
     IF(UCmax_VRdc &lt; 1) { 
         T_Area[RowID+1][6].BackColor →UNK000_017396= FontsAndColors.ColorOK(); 
     } ELSE { 
         T_Area[RowID+1][6].BackColor →REZ006_000041= FontsAndColors.ColorNotOK(); 
     } 
-    T_Area[RowID+1][6].Value →UNK000_016912= CUnit(A↓v,req,max←, "in↑2←/ft"); 
-    T_Area[RowID+1][7].Value →REZ006_000026= CUnit(A↓v,prov,max←, "in↑2←"); 
+    IF(Imperialunit) { 
+        T_Area[RowID+1][6].Value →UNK000_016912= CUnit(A↓v,req,max←, "in↑2←/ft"); 
+        T_Area[RowID+1][7].Value →REZ006_000026= CUnit(A↓v,prov,max←, "in↑2←"); 
+    } ELSE { 
+        T_Area[RowID+1][6].Value →RLF098_000033= CUnit(A↓v,req,max←, "mm↑2←/m"); 
+        T_Area[RowID+1][7].Value →RLF098_000034= 3.28084*CUnit(A↓v,prov,max←, "mm↑2←"); 
+    } 
     T_Area[RowID+1][8].Value →REZ006_000032= UCmax_VR; 
     
     IF(UCmax_VR &lt; 1) { 
@@ -512,10 +643,11 @@ private void DrawDesignReinfSumTable() {
     T_Area.Columns[0].Width →UNK000_016914= 40; 
     T_Area.Columns[1].Width →UNK000_016915= 60; 
     T_Area.Columns[2].Width →UNK000_016916= 50; 
-    T_Area.Columns[Ncolumns-1].Width →UNK000_016917= 60; 
+    T_Area.Columns[Ncolumns-1].Width →UNK000_016917= 40; 
     FOR(i, 3, Ncolumns-2) { 
-        T_Area.Columns[i].Width →UNK000_016918= Convert.ToSingle((FontsAndColors.TableWidth()-220)/(Ncolumns-4)); 
+        T_Area.Columns[i].Width →UNK000_016918= Convert.ToSingle((FontsAndColors.TableWidth()-230)/(Ncolumns-5)); 
     } 
+    T_Area.Columns[5].Width →RLF098_000035= 40; 
     FOR(i, 1, 1) { 
         T_Area[i][0].BackColor →UNK000_016919= FontsAndColors.ColorTableRow(); 
         T_Area[i][1].BackColor →UNK000_016920= FontsAndColors.ColorTableRow(); 
@@ -789,6 +921,12 @@ IF(IO.IsDrawing) {
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="Designdefaultinput" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_Designdefaultinput">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="DesignDefaults" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -932,6 +1070,12 @@ IF(IO.IsDrawing) {
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="Imperialunit" ESA_ID="" Type="Boolean">
+        <Description TranslateID="VARIABLE_Imperialunit">
+          <ENU>
+          </ENU>
+        </Description>
       </Variable>
       <Variable Modifier="Public" Name="IndexEWN" ESA_ID="" Type="Object">
         <Description>
@@ -1096,18 +1240,6 @@ IF(IO.IsDrawing) {
       </Variable>
       <Variable Modifier="Public" Name="ShearInfo" ESA_ID="" Type="String">
         <Description TranslateID="VARIABLE_ShearInfo">
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="ShearInfo1" ESA_ID="" Type="String">
-        <Description TranslateID="VARIABLE_ShearInfo1">
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="ShearInfo2" ESA_ID="" Type="String">
-        <Description TranslateID="VARIABLE_ShearInfo2">
           <ENU>
           </ENU>
         </Description>
@@ -1393,7 +1525,7 @@ IF(IO.IsDrawing) {
     </Layouts>
     <VisualComponents>
       <VC ID="">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1848,34 +1980,426 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="REZ006_000120">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="REZ006_000121">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="REZ006_000122">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="REZ006_000123">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000015">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000023">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000025">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000026">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000027">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000028">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000029">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000030">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000031">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000032">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000033">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000034">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000035">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000036">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000037">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000038">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000053">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000054">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000055">
+        <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="0" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|1|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="0" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|1|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000056">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000057">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000058">
+        <Set Vis="0" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|1|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|1|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000059">
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000060">
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000061">
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000062">
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000063">
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000064">
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000065">
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000066">
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000067">
+        <Set Vis="0" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000068">
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000069">
+        <Set Vis="0" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000070">
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000071">
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000072">
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000073">
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000074">
+        <Set Vis="0" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000075">
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000076">
+        <Set Vis="0" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000077">
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000078">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000079">
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000080">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000081">
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="" X="50" Y="0" Hor="0" Ver="4" SpX="0" SpY="30" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="" X="50" Y="0" Hor="0" Ver="4" SpX="0" SpY="30" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000082">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000083">
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000084">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000085">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000086">
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000087">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000088">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3904,6 +4428,14 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="UNK006_000006">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="UNK006_000008">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4022,7 +4554,7 @@ IF(IO.IsDrawing) {
           </Tab>
         </Tabs>
       </TTabControl>
-      <TCustomLibrary Name="" ID="153" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="6" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="SHREINF.IBC" DataFile="US\US_Reinf.xml" Collapsed="True" UseCombo="False" Category="ASTM A615 Gr. 40" Item="#4 ">
+      <TCustomLibrary Name="" ID="153" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="6" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="SREINF.IBC" DataFile="US\US_Reinf.xml" Collapsed="True" UseCombo="False" Category="ASTM A615 Gr. 40" Item="#5 ">
         <Data>
           <Header>
             <PropertySet Symbol="d↓b←" ESA_ID="d↓b←" Unit="in" Type="Numeric" />
@@ -4034,10 +4566,10 @@ IF(IO.IsDrawing) {
           <Items>
             <Item>
               <P>ASTM A615 Gr. 40</P>
-              <P>#4 </P>
-              <P>0.500</P>
-              <P>0.196</P>
-              <P>0.668</P>
+              <P>#5 </P>
+              <P>0.625</P>
+              <P>0.307</P>
+              <P>1.043</P>
               <P>40</P>
               <P>29000</P>
             </Item>
@@ -4060,7 +4592,7 @@ IF(IO.IsDrawing) {
           <ENU>RECALC_FORCES_POD</ENU>
         </Texts>
       </TLabel>
-      <TCustomLibrary Name="" ID="150" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="CONCRETE.IBC" DataFile="US\US_Concrete.xml" Collapsed="True" UseCombo="False" Category="Normal Weight Concrete" Item="C4000">
+      <TCustomLibrary Name="" ID="150" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="CONCRETE.IBC" DataFile="US\US_Concrete.xml" Collapsed="True" UseCombo="False" Category="Normal Weight Concrete" Item="C5000">
         <Data>
           <Header>
             <PropertySet Symbol="w↓c←" ESA_ID="w↓c←" Unit="lb/ft↑3←" Type="Numeric" />
@@ -4079,24 +4611,24 @@ IF(IO.IsDrawing) {
           <Items>
             <Item>
               <P>Normal Weight Concrete</P>
-              <P>C4000</P>
+              <P>C5000</P>
               <P>155</P>
               <P>5.50E-06</P>
               <P>0.15</P>
-              <P>4027.56</P>
-              <P>1751.11</P>
+              <P>4502.94</P>
+              <P>1957.80</P>
+              <P>5000</P>
+              <P>530.33</P>
+              <P>0.80</P>
               <P>4000</P>
-              <P>474.34</P>
-              <P>0.85</P>
-              <P>3400</P>
-              <P>63.25</P>
-              <P>0.00169</P>
+              <P>70.71</P>
+              <P>0.00178</P>
               <P>0.003</P>
             </Item>
           </Items>
         </Data>
       </TCustomLibrary>
-      <TCustomLibrary Name="" ID="151" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="6" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="LREINF.IBC" DataFile="US\US_Reinf.xml" Collapsed="True" UseCombo="False" Category="ASTM A615 Gr. 40" Item="#6 ">
+      <TCustomLibrary Name="" ID="151" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="6" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="LREINF.IBC" DataFile="US\US_Reinf.xml" Collapsed="True" UseCombo="False" Category="ASTM A615 Gr. 40" Item="#7 ">
         <Data>
           <Header>
             <PropertySet Symbol="d↓b←" ESA_ID="d↓b←" Unit="in" Type="Numeric" />
@@ -4108,10 +4640,10 @@ IF(IO.IsDrawing) {
           <Items>
             <Item>
               <P>ASTM A615 Gr. 40</P>
-              <P>#6 </P>
-              <P>0.750</P>
-              <P>0.442</P>
-              <P>1.502</P>
+              <P>#7 </P>
+              <P>0.875</P>
+              <P>0.601</P>
+              <P>2.044</P>
               <P>40</P>
               <P>29000</P>
             </Item>
@@ -4166,6 +4698,9 @@ IF(IO.IsDrawing) {
     <Item TranslateID="STRING_FEF1B86E">
       <ENU>"Case"</ENU>
     </Item>
+    <Item TranslateID="TEXT_">
+      <ENU>"A↓v,min ←= " &amp; 'PARMAX(50*b↓w←/f↓yt←, 0.75*SQRT(f↓cd←/1000000)*b/f↓yt←)' &amp; " =  " &amp; CUnit(A↓swm,min←, "mm*mm/m") &amp; " mm↑2←/m"</ENU>
+    </Item>
     <Item ID="TEXT_REZ006_000008">
       <ENU>"UC↓v← = " &amp; 'V↓n←/V↓c←' &amp; " = " &amp; UC_VRdc &amp; " &lt; 1"</ENU>
     </Item>
@@ -4192,6 +4727,81 @@ IF(IO.IsDrawing) {
     </Item>
     <Item ID="TEXT_REZ006_000107">
       <ENU>"- Nominal shear strength provided by concrete"</ENU>
+    </Item>
+    <Item ID="TEXT_RLF098_000055">
+      <ENU>"v↓x←=" &amp; CUnit(qx, "kN/m") &amp; "kN/m" &amp; "   v↓y←=" &amp; CUnit(qy, "kN/m") &amp; "kN/m"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000056">
+      <ENU>"A↓sl,x← = " &amp; CUnit(A↓sl,x←, "mm↑2←") &amp; " mm↑2←/m"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000057">
+      <ENU>"A↓sl,y← = " &amp; CUnit(A↓sl,y←, "mm↑2←") &amp; " mm↑2←/m"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000058">
+      <ENU>"Design Forces:  N↓n← = " &amp; CUnit(N↓n←, "kN") &amp; "   V↓n ←= " &amp; CUnit(V↓n←, "kN") &amp; " ) "</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000059">
+      <ENU>"v↓c1 ←= " &amp; '2*(1+N↓n←/(500*A↓g←))*λ*SQRT(f↓cd←)' &amp; " = " &amp; CUnit(v↓c1←, "MPa") &amp; " MPa"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000060">
+      <ENU>"v↓c2 ←= " &amp; '(0.6*λ*SQRT(f↓cd←)+700*V↓u←*d/M↓u←)' &amp; " = " &amp; CUnit(v↓c2←, "MPa") &amp; " MPa"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000061">
+      <ENU>"v↓c2 ←= " &amp; '(1.9*SQRT(f↓cd←)+2500*ρ↓1←*V↓u←*d/M↓u←)' &amp; " = " &amp; CUnit(v↓c2←, "MPa") &amp; " MPa"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000062">
+      <ENU>"v↓c3 ←= " &amp; '(0.6*λ*SQRT(f↓cd←)+700*V↓n←*d/M↓n←)' &amp; " = " &amp; CUnit(v↓c2←, "MPa") &amp; " MPa"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000063">
+      <ENU>"v↓c4 ←= " &amp; '5*λ*SQRT(f↓cd←)' &amp; " = " &amp; CUnit(v↓c4←, "MPa") &amp; "MPa"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000064">
+      <ENU>"v↓c1 ←= " &amp; '2*(1+N↓n←/(2000*A↓g←))*λ*SQRT(f↓cd←)' &amp; " = " &amp; CUnit(v↓c1←, "MPa") &amp; " MPa"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000065">
+      <ENU>"v↓c2 ←= " &amp; '(1.9*λ*SQRT(f↓cd←)+2500*ρ↓1←)' &amp; " = " &amp; CUnit(v↓c2←, "psi") &amp; " MPa"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000066">
+      <ENU>"v↓c2 ←= " &amp; '(1.9*SQRT(f↓cd←)+2500*ρ↓1←V↓u←*d/(M↓u←-N↓u←*(4*h-d)/8))' &amp; " = " &amp; CUnit(v↓c2←, "MPa") &amp; " MPa"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000068">
+      <ENU>"v↓c3 ←= " &amp; '(1.9*SQRT(f↓cd←)+2500*ρ↓1←)' &amp; " = " &amp; CUnit(v↓c2←, "MPa") &amp; " MPa"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000070">
+      <ENU>"v↓c4 ←= " &amp; '3.5*λ*SQRT(f↓cd←)*SQRT(1+0.29*N↓u←/A↓g←)' &amp; " = " &amp; CUnit(v↓c4←, "MPa") &amp; " MPa"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000071">
+      <ENU>"v↓c1 ←= " &amp; '2*λ*SQRT(f↓cd←)' &amp; " = " &amp; CUnit(v↓c1←, "MPa") &amp; " MPa"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000072">
+      <ENU>"v↓c2 ←= " &amp; '(1.9*SQRT(f↓cd←)+2500*ρ↓1←)' &amp; " = " &amp; CUnit(v↓c2←, "MPa") &amp; " MPa"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000073">
+      <ENU>"v↓c2 ←= " &amp; '(1.9*SQRT(f↓cd←)+2500*ρ↓1←*V↓u←*d/M↓u←)' &amp; " = " &amp; CUnit(v↓c2←, "MPa") &amp; " MPa"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000075">
+      <ENU>"v↓c3 ←= " &amp; '(1.9*SQRT(f↓cd←)+2500*ρ↓1←)' &amp; " = " &amp; CUnit(v↓c3←, "MPa") &amp; " MPa"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000077">
+      <ENU>"v↓c4 ←= " &amp; '3.5*λ*SQRT(f↓cd←)' &amp; " = " &amp; CUnit(v↓c4←, "MPa") &amp; " MPa"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000079">
+      <ENU>"v↓c← =" &amp; 'PARMAX(v↓c1←, MIN(v↓c2←, v↓c3←, v↓c4←))' &amp; "= " &amp; CUnit(v↓c←, "MPa") &amp; " MPa"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000081">
+      <ENU>"V↓c← = " &amp; 'v↓c←*b*d' &amp; " = " &amp; CUnit(V↓c←, "kN") &amp; " kN"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000083">
+      <ENU>"V↓max← = " &amp; 'V↓c←+8*λ*SQRT(f↓cd←)*b*d' &amp; " = " &amp; CUnit(V↓Rdmax←, "kN") &amp; " kN"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000084">
+      <ENU>"Rebar#" &amp; Barno &amp; "  f↓yt←= " &amp; CUnit(f↓ywd,req←, "MPa") &amp; "MPa   d=" &amp; CUnit(d, "mm") &amp; "mm   V↓s←= " &amp; CUnit(V↓s←, "kN") &amp; "kN"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000086">
+      <ENU>"A↓v,req←= " &amp; 'V↓s←/(d*f↓yt←)' &amp; " = " &amp; CUnit(A↓v,req←, "mm↑2←/m") &amp; "mm↑2←/m"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000088">
+      <ENU>"A↓v,min ←= " &amp; 'PARMAX(50*b↓w←/f↓yt←, 0.75*SQRT(f↓cd←/1000000)*b/f↓yt←)' &amp; " =  " &amp; CUnit(A↓swm,min←, "mm*mm/m") &amp; " mm↑2←/m"</ENU>
     </Item>
     <Item ID="TEXT_UNK000_014748">
       <ENU>"A↓sl,x← = " &amp; CUnit(A↓sl,x←, "in↑2←") &amp; " in↑2←/ft"</ENU>
@@ -4236,7 +4846,7 @@ IF(IO.IsDrawing) {
       <ENU>"Rebar#" &amp; Barno &amp; "  f↓yt←= " &amp; CUnit(f↓ywd,req←, "psi") &amp; "psi   d=" &amp; CUnit(d, "in") &amp; "in   V↓s←= " &amp; CUnit(V↓s←, "kip") &amp; "kip"</ENU>
     </Item>
     <Item ID="TEXT_UNK000_020788">
-      <ENU>"v↓x←=" &amp; CUnit(qx, "kip/ft") &amp; "kip" &amp; "   v↓y←=" &amp; CUnit(qy, "kip/ft") &amp; "kip"</ENU>
+      <ENU>"v↓x←=" &amp; CUnit(qx, "kip/ft") &amp; "kip/ft" &amp; "   v↓y←=" &amp; CUnit(qy, "kip/ft") &amp; "kip/ft"</ENU>
     </Item>
     <Item ID="TEXT_UNK000_020798">
       <ENU>"V↓n← =" &amp; 'b*SQRT(qx↑2←+qy↑2←)/ϕ' &amp; " = " &amp; CUnit(V↓n←, "kip") &amp; " kip"</ENU>

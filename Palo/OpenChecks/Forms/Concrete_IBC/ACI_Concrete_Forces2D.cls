@@ -1,11 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="22bfd5b9-4473-43ad-b9fb-d25219b48dca">
   <CodeEditor>
-    <SourceCode Collapsed="10|55|73|82|91|103|114|128|158|169|176|213" BreakPoints="">
-
-
-
-//@ACI_Concrete_Forces2D
+    <SourceCode Collapsed="71" BreakPoints="64|97">//@ACI_Concrete_Forces2D
 //Standalone SDF form for re-calculation of internal forces
 //for 2D concrete members acc. to ACI code.
 
@@ -39,6 +35,8 @@
     →PAI006_000001object DesignDefaults; 
     →PAI006_000015bool bReducedForcesArray; 
     →PAI006_000019bool bSameForcesForSameDir; 
+    →RLF098_000026bool Imperialunit; 
+    
     //outputs
     →INI400_015696object BasicForces; 
     →INI400_016340object RecalcForcesPOD; 
@@ -60,7 +58,7 @@ bool ValidateInput(object Input) {
     
     MemberType →INI400_009822= Input.Get("MemberType"); 
     h →INI400_009774= Input.Get("h"); 
-    
+    Imperialunit →RLF098_000029= Input.Get("Imperialunit"); 
     CombiID →INI400_014811= Input.Get("CombiID"); 
     CombiKey →INI400_009787= Input.Get("CombiKey"); 
     isAccidentalCombi →INI400_013979= Input.Get("isAccidentalCombi"); 
@@ -97,9 +95,16 @@ void LoadDialogInputs() {
         //get inputs
         CombiKey →INI400_014593= "1.35*LC1+1.5*LC2"; 
         CombiID →INI400_014812= "CO1/1"; 
-        
+        IF(COMPARE(MOD(10^6*h, 3175), 0, 2) == 0) { 
+            Imperialunit →RLF098_000002= true; 
+        } ELSE { 
+            Imperialunit →RLF098_000003= false; 
+        } 
+        →UNK006_000003object Designdefaultinput →UNK006_000006= new Structure(); 
+        →RLF098_000023Designdefaultinput.Add("MemberType", MemberType); 
+        →RLF098_000015Designdefaultinput.Add("Imperialunit", Imperialunit); 
         InternalForces →INI400_014722= _dialog_InternalForces[0]; 
-        DesignDefaults →INI400_015567= FUNCT_2D_DEFAULTS.GetDesignDefaults(16); 
+        DesignDefaults →INI400_015567= FUNCT_2D_DEFAULTS.GetDesignDefaults(→RLF098_000025Designdefaultinput); 
     } 
 } 
 
@@ -117,10 +122,11 @@ private void SetBasicForces() {
 //Draws tables of basic forces and combinations description
 private void DrawBasicForcesTables() { 
     IF(IO.IsDrawing) { 
+        double Imperialunit →RLF098_000030= DesignDefaults.Imperialunit; 
         object FontsAndColors →INI400_016277= FONTS_COLORS.GetFontsAndColors(); 
         object BasicForcesList →INI400_016228= new object[]; 
         BasicForcesList[0] →INI400_016229= BasicForces; 
-        object TForce →INI400_016155= FUNCT_2D.GetBasicForceTable(BasicForcesList); 
+        object TForce →INI400_016155= FUNCT_2D.GetBasicForceTable(BasicForcesList, Imperialunit); 
         object TCombiKey →INI400_016158= FUNCT_2D.GetCombiKeyTable(BasicForcesList); 
         →INI400_016157TForce.Draw(); 
         →INI400_016161TCombiKey.Draw(); 
@@ -216,6 +222,7 @@ private void SetRecalcForcesPOD() {
 //@Returns input structure for internal forces recalculation
 private object GetRecalcForcesInputs() { 
     return new Structure(
+    "Imperialunit", Imperialunit, 
     "InternalForces", BasicForces, 
     "InnerLeverArmInfo", RecalcForcesPOD, 
     "RecalcForceMethod", DesignDefaults.Solver.RecalcForceMethod, 
@@ -382,6 +389,12 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
+      </Variable>
+      <Variable Modifier="Public" Name="Imperialunit" ESA_ID="" Type="Boolean">
+        <Description TranslateID="VARIABLE_Imperialunit">
+          <ENU>
+          </ENU>
+        </Description>
       </Variable>
       <Variable Modifier="Public" Name="InternalForces" ESA_ID="" Type="Object">
         <Description>
@@ -599,7 +612,7 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
       <VC ID="INI400_005528">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -623,7 +636,7 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
       <VC ID="INI400_006851">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -631,7 +644,7 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
       <VC ID="INI400_006878">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -703,7 +716,7 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
       <VC ID="INI400_013967">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -815,7 +828,7 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
       <VC ID="INI400_016155">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -831,7 +844,7 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
       <VC ID="INI400_016158">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -855,7 +868,7 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
       <VC ID="INI400_016203">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -895,7 +908,7 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
       <VC ID="INI400_016212">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -911,7 +924,7 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
       <VC ID="INI400_016227">
         <Set Vis="1" Prev="" Style="0" StyleName="Chapter" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Chapter" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -983,7 +996,7 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
       <VC ID="INI400_016276">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|16|0|2" Font2="Segoe UI|16|1|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Chapter" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1063,7 +1076,7 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
       <VC ID="INI400_016361">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1132,12 +1145,84 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="RLF098_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000015">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000023">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000027">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000028">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000029">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000030">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="UNK006_000006">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
   <Dialog>
     <Main Width="554">
-      <TCustomLibrary Name="" ID="80" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="6" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="SREINF.IBC" DataFile="US\ACI_Reinf.xml" Collapsed="True" UseCombo="False" Category="Reinfrocement Steel" Item="R50">
+      <TCustomLibrary Name="" ID="80" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="6" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="SREINF.IBC" DataFile="US\ACI_Reinf.xml" Collapsed="True" UseCombo="False" Category="Reinfrocement Steel" Item="S60">
         <Data>
           <Header>
             <PropertySet Symbol="E" ESA_ID="E" Unit="ksi" Type="Numeric" />
@@ -1156,11 +1241,11 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
           <Items>
             <Item>
               <P>Reinfrocement Steel</P>
-              <P>R50</P>
+              <P>S60</P>
               <P>29010</P>
               <P>10e-3</P>
-              <P>1.72369e-3</P>
-              <P>50.0</P>
+              <P>0.2070</P>
+              <P>60</P>
               <P>12610</P>
               <P>0</P>
               <P>150e-3</P>
@@ -1173,7 +1258,7 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
           </Items>
         </Data>
       </TCustomLibrary>
-      <TCustomLibrary Name="" ID="78" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="6" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="LREINF.IBC" DataFile="US\ACI_Reinf.xml" Collapsed="True" UseCombo="False" Category="Reinfrocement Steel" Item="R50">
+      <TCustomLibrary Name="" ID="78" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="6" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="LREINF.IBC" DataFile="US\ACI_Reinf.xml" Collapsed="True" UseCombo="False" Category="Reinfrocement Steel" Item="S40">
         <Data>
           <Header>
             <PropertySet Symbol="E" ESA_ID="E" Unit="ksi" Type="Numeric" />
@@ -1192,11 +1277,11 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
           <Items>
             <Item>
               <P>Reinfrocement Steel</P>
-              <P>R50</P>
+              <P>S40</P>
               <P>29010</P>
               <P>10e-3</P>
-              <P>1.72369e-3</P>
-              <P>50.0</P>
+              <P>0.1380</P>
+              <P>40.0</P>
               <P>12610</P>
               <P>0</P>
               <P>150e-3</P>

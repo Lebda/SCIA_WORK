@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="6e20e037-9a10-4827-b4ee-db6a3ebfc7b2">
   <CodeEditor>
-    <SourceCode Collapsed="5|47|76|85|108|116|124|160|191|224|276|297|313|376|406|415|424" BreakPoints="">
+    <SourceCode Collapsed="5|47|76|85|108|116|124|160|191|224|276|297|313|376|410|419|428" BreakPoints="">
 //------------------------------------------------------------
 //@FUNCTIONS
 
@@ -387,14 +387,18 @@ private void PrintCover(object Shape, object ShearReinf, double FormCode) {
     double CoverBottom →KRS316_000019= ROUND(REDESCovers.CoverBottom, 4); 
     double CoverLeft →KRS316_000020= ROUND(REDESCovers.CoverLeft, 4); 
     double CoverRight →KRS316_000021= ROUND(REDESCovers.CoverRight, 4); 
-    
+    double CoverCirc →KRS106_000003= ROUND(REDESCovers.CoverCirc, 4); 
     
     object CoverTable →KRS116_000194= new Table(1); 
     CoverTable[0][0].Value →KRS116_000195= TR("Cover (stirrup)"); 
-    CoverTable[1][0].Value →KRS116_000196= TR("Top") &amp; ": " &amp; Val(ROUND(CoverTop*10↑3←, 0), 0) &amp; " mm"; 
-    CoverTable[2][0].Value →KRS116_000197= TR("Bottom") &amp; ": " &amp; Val(ROUND(CoverBottom*10↑3←, 0), 0) &amp; " mm"; 
-    CoverTable[3][0].Value →KRS116_000198= TR("Left") &amp; ": " &amp; Val(ROUND(CoverLeft*10↑3←, 0), 0) &amp; " mm"; 
-    CoverTable[4][0].Value →KRS116_000199= TR("Right") &amp; ": " &amp; Val(ROUND(CoverRight*10↑3←, 0), 0) &amp; " mm"; 
+    IF(FormCode == 2002) { // circle
+        CoverTable[1][0].Value →KRS106_000002= TR("Circle") &amp; ": " &amp; Val(ROUND(CoverCirc*10↑3←, 0), 0) &amp; " mm"; 
+    } ELSE { 
+        CoverTable[1][0].Value →KRS116_000196= TR("Top") &amp; ": " &amp; Val(ROUND(CoverTop*10↑3←, 0), 0) &amp; " mm"; 
+        CoverTable[2][0].Value →KRS116_000197= TR("Bottom") &amp; ": " &amp; Val(ROUND(CoverBottom*10↑3←, 0), 0) &amp; " mm"; 
+        CoverTable[3][0].Value →KRS116_000198= TR("Left") &amp; ": " &amp; Val(ROUND(CoverLeft*10↑3←, 0), 0) &amp; " mm"; 
+        CoverTable[4][0].Value →KRS116_000199= TR("Right") &amp; ": " &amp; Val(ROUND(CoverRight*10↑3←, 0), 0) &amp; " mm"; 
+    } 
     
     CoverTable.Padding.All →KRS116_000200= 0; 
     CoverTable.Padding.Left →KRS116_000226= 5; 
@@ -451,8 +455,10 @@ public void DrawHeaderForStandalone(object CrossSection, object HeaderDrawInput)
     RightSubTable[0][0].Value →KRS116_000098=  { →KRS116_000109PrintConcreteMaterial(); } 
     IF(Reinf != null &amp;&amp; Reinf.Keys.Count &gt; 0) { 
         RightSubTable[1][0].Value →KRS116_000099=  { →KRS116_000136PrintLongReinfMaterial(HeaderDrawInput.CssID, HeaderDrawInput.ForcesID); } 
-        RightSubTable[2][0].Value →KRS116_000111=  { →KRS116_000172PrintShearReinfMaterial(HeaderDrawInput.CssID, HeaderDrawInput.ForcesID, ShearReinfStandard); } 
-        RightSubTable[3][0].Value →KRS116_000112=  { →KRS116_000191PrintCover(CrossSection.GetOrigShape(), ShearReinfStandard, HeaderDrawInput.FormCode); } 
+        IF(HeaderDrawInput.MemberType != 128) { 
+            RightSubTable[2][0].Value →KRS116_000111=  { →KRS116_000172PrintShearReinfMaterial(HeaderDrawInput.CssID, HeaderDrawInput.ForcesID, ShearReinfStandard); } 
+            RightSubTable[3][0].Value →KRS116_000112=  { →KRS116_000191PrintCover(CrossSection.GetOrigShape(), ShearReinfStandard, HeaderDrawInput.FormCode); } 
+        } 
     } 
     RightSubTable.Padding.All →KRS116_000101= 0; 
     RightSubTable.Columns[0].Width →KRS116_000103= 290; 
@@ -478,7 +484,8 @@ public void DrawHeaderForStandalone(object CrossSection, object HeaderDrawInput)
 object HeaderDrawInput →INI400_012791= new Structure(
 "ForcesID", 0, 
 "CssID", 0, 
-"FormCode", 2003
+"FormCode", 2003, 
+"MemberType", 0
 ); 
 object Forces →KRS116_000231= null; 
 
@@ -966,6 +973,22 @@ T[0][0].Padding.Left →KRS116_000211= 10;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
       <VC ID="KRS116_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2515,6 +2538,9 @@ T[0][0].Padding.Left →KRS116_000211= 10;
     </Item>
     <Item TranslateID="STRING_A17A8601">
       <ENU>"Plate"</ENU>
+    </Item>
+    <Item TranslateID="STRING_A7E5AB6F">
+      <ENU>"Circle"</ENU>
     </Item>
     <Item TranslateID="STRING_AF642B69">
       <ENU>"Bi-linear without an inclined top branch"</ENU>

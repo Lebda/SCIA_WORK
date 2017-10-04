@@ -29,6 +29,8 @@ M↓iy← →INI400_007047= ForcesSEN.M↓iy←;
 M↓iz← →INI400_007048= ForcesSEN.M↓iz←; 
 M↓2y← →INI400_007049= ForcesSEN.M↓2y←; 
 M↓2z← →INI400_007050= ForcesSEN.M↓2z←; 
+CompressMember →KRS106_000001= ForcesSEN.CompressMember; 
+N↓com← →KRS106_000002= ForcesSEN.N↓com←; 
 double ΔΜ↓y.shift← →INI400_007054= ForcesSEN.ΔΜ↓y.shift←; 
 double ΔΜ↓z.shift← →INI400_007055= ForcesSEN.ΔΜ↓z.shift←; 
 </SourceCode>
@@ -68,6 +70,12 @@ double ΔΜ↓z.shift← →INI400_007055= ForcesSEN.ΔΜ↓z.shift←;
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
+      <Variable Modifier="Public" Name="CompressMember" ESA_ID="" Type="Boolean">
+        <Description TranslateID="VARIABLE_CompressMember">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="Design" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
@@ -186,6 +194,13 @@ double ΔΜ↓z.shift← →INI400_007055= ForcesSEN.ΔΜ↓z.shift←;
         </Description>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="12" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
+      </Variable>
+      <Variable Modifier="Public" Name="N↓com←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_N↓com←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="N↓Ed←" ESA_ID="Result.2" Type="Double" Precision="2">
         <Description>
@@ -554,6 +569,22 @@ double ΔΜ↓z.shift← →INI400_007055= ForcesSEN.ΔΜ↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS106_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
     </VisualComponents>
     <Images />

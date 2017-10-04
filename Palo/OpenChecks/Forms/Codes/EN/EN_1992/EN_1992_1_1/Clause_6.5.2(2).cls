@@ -43,6 +43,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     //    CASE "SIG": { } 
     //    CASE "STN": { } 
     //    CASE "SIST": { }
+    //    CASE "UNE" :  { } 
     //    CASE "SS": { }  
     DEFAULT :  { 
         ν →INI400_005246= 1-(CUnit(f↓ck←, "MPa")/250); 

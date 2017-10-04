@@ -5,17 +5,24 @@ Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934
 	hash=None, flags=None
 Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
+Class BimPlusSENSettings.BimPlusSettings: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    GetModelId(): PrivateScope, Public, Static, HideBySig
+    SetModelId(Guid): PrivateScope, Public, Static, HideBySig
+    GetProjectId(): PrivateScope, Public, Static, HideBySig
+    SetProjectId(Guid): PrivateScope, Public, Static, HideBySig
 Struct Sen3DPoint: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
   :System.ValueType
 Class ProjectViewWrapper.IProjectViewWrapper: AutoLayout, AnsiClass, Class, Public, Abstract, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
-    SaveCurrentViewIntoFile(Int32, Int32, String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    CopyCurrentViewIntoClipboard(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     GetProjectViewWrapper(): PrivateScope, Public, Static, HideBySig
 Class ProjectViewWrapper.ProjectViewWrapper: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :ProjectViewWrapper.IProjectViewWrapper
   Methods:
-    SaveCurrentViewIntoFile(Int32, Int32, String): PrivateScope, Public, Virtual, HideBySig
+    CopyCurrentViewIntoClipboard(): PrivateScope, Public, Virtual, HideBySig
     GetProjectViewWrapper(): PrivateScope, Public, Static, HideBySig
 Class SelectionWrapper.ISelectionWrapper: AutoLayout, AnsiClass, Class, Public, Abstract, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

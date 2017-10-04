@@ -40,33 +40,59 @@ public void WriteSectionToDataCache(double h, object ConMat) {
 } 
 
 //@Returns formatted table of basic 2D forces
-public object GetBasicForceTable(object BasicForces) { 
+public object GetBasicForceTable(object BasicForces, bool Imperialunit) { 
     object fontsColors →UNK000_016192= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_IBC\Functions\FontsAndColors.CLC"); 
     object FontsAndColors →UNK000_016193= fontsColors.GetFontsAndColors(); 
     double Ncol →UNK000_005286= 9; 
     double Nrow →UNK000_007149= BasicForces.Count+1; 
     object T →UNK000_002858= new Table(Ncol); 
+    
     //header
-    T[0][0].Value →UNK000_002941= TR("Case"); 
-    T[0][1].Value →UNK000_007864= "m↓x←&lt;BR&gt;[kipft/ft]"; 
-    T[0][2].Value →UNK000_010225= "m↓y←&lt;BR&gt;[kipft/ft]"; 
-    T[0][3].Value →UNK000_010227= "m↓xy←&lt;BR&gt;[kipft/ft]"; 
-    T[0][4].Value →UNK000_007528= "n↓x←&lt;BR&gt;[kip/ft]"; 
-    T[0][5].Value →UNK000_015263= "n↓y←&lt;BR&gt;[kip/ft]"; 
-    T[0][6].Value →UNK000_007154= "n↓xy←&lt;BR&gt;[kip/ft]"; 
-    T[0][7].Value →UNK000_016129= "v↓x←&lt;BR&gt;[kip/ft]"; 
-    T[0][8].Value →UNK000_016130= "v↓y←&lt;BR&gt;[kip/ft]"; 
+    
+    IF(Imperialunit) { 
+        T[0][0].Value →UNK000_002941= TR("Case"); 
+        T[0][1].Value →UNK000_007864= "m↓x←&lt;BR&gt;[kipft/ft]"; 
+        T[0][2].Value →UNK000_010225= "m↓y←&lt;BR&gt;[kipft/ft]"; 
+        T[0][3].Value →UNK000_010227= "m↓xy←&lt;BR&gt;[kipft/ft]"; 
+        T[0][4].Value →UNK000_007528= "n↓x←&lt;BR&gt;[kip/ft]"; 
+        T[0][5].Value →UNK000_015263= "n↓y←&lt;BR&gt;[kip/ft]"; 
+        T[0][6].Value →UNK000_007154= "n↓xy←&lt;BR&gt;[kip/ft]"; 
+        T[0][7].Value →UNK000_016129= "v↓x←&lt;BR&gt;[kip/ft]"; 
+        T[0][8].Value →UNK000_016130= "v↓y←&lt;BR&gt;[kip/ft]"; 
+    } ELSE { 
+        T[0][0].Value →RLF098_000009= TR("Case"); 
+        T[0][1].Value →RLF098_000010= "m↓x←&lt;BR&gt;[KNm/m]"; 
+        T[0][2].Value →RLF098_000011= "m↓y←&lt;BR&gt;[KNm/m]"; 
+        T[0][3].Value →RLF098_000012= "m↓xy←&lt;BR&gt;[KNm/m]"; 
+        T[0][4].Value →RLF098_000013= "n↓x←&lt;BR&gt;[KN/m]"; 
+        T[0][5].Value →RLF098_000014= "n↓y←&lt;BR&gt;[KN/m]"; 
+        T[0][6].Value →RLF098_000015= "n↓xy←&lt;BR&gt;[KN/m]"; 
+        T[0][7].Value →RLF098_000016= "v↓x←&lt;BR&gt;[KN/m]"; 
+        T[0][8].Value →RLF098_000017= "v↓y←&lt;BR&gt;[KN/m]"; 
+    } 
     //values
     FOR(i, 0, Nrow-2) { 
-        T[i+1][0].Value →UNK000_007156= BasicForces[i].CombiID; 
-        T[i+1][1].Value →UNK000_014731= CUnit(BasicForces[i].mx, "kipft/ft"); 
-        T[i+1][2].Value →UNK000_014732= CUnit(BasicForces[i].my, "kipft/ft"); 
-        T[i+1][3].Value →UNK000_014734= CUnit(BasicForces[i].mxy, "kipft/ft"); 
-        T[i+1][4].Value →UNK000_007534= CUnit(BasicForces[i].nx, "kip/ft"); 
-        T[i+1][5].Value →UNK000_007158= CUnit(BasicForces[i].ny, "kip/ft"); 
-        T[i+1][6].Value →UNK000_007785= CUnit(BasicForces[i].nxy, "kip/ft"); 
-        T[i+1][7].Value →UNK000_007787= CUnit(BasicForces[i].qx, "kip/ft"); 
-        T[i+1][8].Value →UNK000_016131= CUnit(BasicForces[i].qy, "kip/ft"); 
+        IF(Imperialunit) { 
+            T[i+1][0].Value →UNK000_007156= BasicForces[i].CombiID; 
+            T[i+1][1].Value →UNK000_014731= CUnit(BasicForces[i].mx, "kipft/ft"); 
+            T[i+1][2].Value →UNK000_014732= CUnit(BasicForces[i].my, "kipft/ft"); 
+            T[i+1][3].Value →UNK000_014734= CUnit(BasicForces[i].mxy, "kipft/ft"); 
+            T[i+1][4].Value →UNK000_007534= CUnit(BasicForces[i].nx, "kip/ft"); 
+            T[i+1][5].Value →UNK000_007158= CUnit(BasicForces[i].ny, "kip/ft"); 
+            T[i+1][6].Value →UNK000_007785= CUnit(BasicForces[i].nxy, "kip/ft"); 
+            T[i+1][7].Value →UNK000_007787= CUnit(BasicForces[i].qx, "kip/ft"); 
+            T[i+1][8].Value →UNK000_016131= CUnit(BasicForces[i].qy, "kip/ft"); 
+        } ELSE { 
+            T[i+1][0].Value →RLF098_000044= BasicForces[i].CombiID; 
+            T[i+1][1].Value →RLF098_000018= CUnit(BasicForces[i].mx, "kNm/m"); 
+            T[i+1][2].Value →RLF098_000019= CUnit(BasicForces[i].my, "kNm/m"); 
+            T[i+1][3].Value →RLF098_000020= CUnit(BasicForces[i].mxy, "kNm/m"); 
+            T[i+1][4].Value →RLF098_000021= CUnit(BasicForces[i].nx, "kN/m"); 
+            T[i+1][5].Value →RLF098_000022= CUnit(BasicForces[i].ny, "kN/m"); 
+            T[i+1][6].Value →RLF098_000023= CUnit(BasicForces[i].nxy, "kN/m"); 
+            T[i+1][7].Value →RLF098_000024= CUnit(BasicForces[i].qx, "kN/m"); 
+            T[i+1][8].Value →RLF098_000025= CUnit(BasicForces[i].qy, "kN/m"); 
+        } 
     } 
     //format 
     T.Columns[0].Width →UNK000_016136= 100; 
@@ -123,7 +149,7 @@ public object GetCombiKeyTable(object ForcesArr) {
     return T; 
 } 
 
-public object GetConcreteTable(object CONCRETEMAT, object LongReinfMat, object ShearReinfMat) { 
+public object GetConcreteTable(object CONCRETEMAT, object LongReinfMat, object ShearReinfMat, bool Imperialunit) { 
     object fontsColors →UNK000_016275= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_IBC\Functions\FontsAndColors.CLC"); 
     object FontsAndColors →UNK000_016276= fontsColors.GetFontsAndColors(); 
     double Ncol →UNK000_016241= 3; 
@@ -134,15 +160,27 @@ public object GetConcreteTable(object CONCRETEMAT, object LongReinfMat, object S
     T[0][1].Value →UNK000_016245= TR("Value"); 
     T[0][2].Value →UNK000_016262= TR("Description"); 
     //values
-    T[1][0].Value →UNK000_016263= "f'↓c←"; 
-    T[1][1].Value →UNK000_016264= CUnit(CONCRETEMAT.f↓c←, "psi") &amp; "psi"; 
-    T[1][2].Value →UNK000_016265= TR("Specified compressive strength of concrete"); 
-    T[2][0].Value →UNK000_016269= "f↓y←"; 
-    T[2][1].Value →UNK000_016270= CUnit(LongReinfMat.fy, "psi") &amp; "psi"; 
-    T[2][2].Value →UNK000_016271= TR("Specified yield strength of longitudinal reinforcement"); 
-    T[3][0].Value →UNK000_016272= "f↓vy←"; 
-    T[3][1].Value →UNK000_016273= CUnit(ShearReinfMat.fy, "psi") &amp; "psi"; 
-    T[3][2].Value →UNK000_016274= TR("Specified yield strength of shear reinforcement"); 
+    IF(Imperialunit) { 
+        T[1][0].Value →UNK000_016263= "f'↓c←"; 
+        T[1][1].Value →UNK000_016264= CUnit(CONCRETEMAT.f↓c←, "psi") &amp; "psi"; 
+        T[1][2].Value →UNK000_016265= TR("Specified compressive strength of concrete"); 
+        T[2][0].Value →UNK000_016269= "f↓y←"; 
+        T[2][1].Value →UNK000_016270= CUnit(LongReinfMat.fy, "psi") &amp; "psi"; 
+        T[2][2].Value →UNK000_016271= TR("Specified yield strength of longitudinal reinforcement"); 
+        T[3][0].Value →UNK000_016272= "f↓vy←"; 
+        T[3][1].Value →UNK000_016273= CUnit(ShearReinfMat.fy, "psi") &amp; "psi"; 
+        T[3][2].Value →UNK000_016274= TR("Specified yield strength of shear reinforcement"); 
+    } ELSE { 
+        T[1][0].Value →RLF098_000026= "f'↓c←"; 
+        T[1][1].Value →RLF098_000027= CUnit(CONCRETEMAT.f↓c←, "MPa") &amp; "MPa"; 
+        T[1][2].Value →RLF098_000028= TR("Specified compressive strength of concrete"); 
+        T[2][0].Value →RLF098_000029= "f↓y←"; 
+        T[2][1].Value →RLF098_000030= CUnit(LongReinfMat.fy, "MPa") &amp; "MPa"; 
+        T[2][2].Value →RLF098_000031= TR("Specified yield strength of longitudinal reinforcement"); 
+        T[3][0].Value →RLF098_000032= "f↓vy←"; 
+        T[3][1].Value →RLF098_000033= CUnit(ShearReinfMat.fy, "MPa") &amp; "MPa"; 
+        T[3][2].Value →RLF098_000034= TR("Specified yield strength of shear reinforcement"); 
+    } 
     //format
     T.Columns[0].Width →UNK000_016248= 50; 
     FOR(i, 0, Ncol-1) { 
@@ -213,7 +251,7 @@ private string XEDescrip(double XE) {
 } 
 
 
-public object GetCoverTable(object DCover, object DReinf) { 
+public object GetCoverTable(object DCover, object DReinf, bool Imperialunit) { 
     object fontsColors →UNK000_016316= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_IBC\Functions\FontsAndColors.CLC"); 
     object FontsAndColors →UNK000_016317= fontsColors.GetFontsAndColors(); 
     object FUNCT_BAR →REZ006_000008= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_IBC\Functions\ACI_Functions2D_RebarInfo.CLC"); 
@@ -242,8 +280,11 @@ public object GetCoverTable(object DCover, object DReinf) {
         } ELSE { 
             minc →UNK000_016357= DCover.Upper.c; 
         } 
-        T[i+1][3].Value →UNK000_016351= CUnit(minc, "in") &amp; "in"; 
-        
+        IF(Imperialunit) { 
+            T[i+1][3].Value →UNK000_016351= CUnit(minc, "in") &amp; "in"; 
+        } ELSE { 
+            T[i+1][3].Value →RLF098_000035= CUnit(minc, "mm") &amp; "mm"; 
+        } 
         IF(i == 0 || i == 3) { 
             TypeCover →REZ006_000014= DReinf.TypeCover↓lo←; 
         } ELSE { 
@@ -251,10 +292,18 @@ public object GetCoverTable(object DCover, object DReinf) {
         } 
         IF(TypeCover == 0) { //Auto 
             Appc →REZ006_000012= minc; 
-            T[i+1][4].Value →UNK000_016329= CUnit(minc, "in") &amp; "in"; 
+            IF(Imperialunit) { 
+                T[i+1][4].Value →UNK000_016329= CUnit(minc, "in") &amp; "in"; 
+            } ELSE { 
+                T[i+1][4].Value →RLF098_000036= CUnit(minc, "mm") &amp; "mm"; 
+            } 
         } ELSE { 
             Appc →REZ006_000013= DReinf.Layers[i].c; 
-            T[i+1][4].Value →REZ006_000011= CUnit(DReinf.Layers[i].c, "in") &amp; "in"; 
+            IF(Imperialunit) { 
+                T[i+1][4].Value →REZ006_000011= CUnit(DReinf.Layers[i].c, "in") &amp; "in"; 
+            } ELSE { 
+                T[i+1][4].Value →RLF098_000037= CUnit(DReinf.Layers[i].c, "mm") &amp; "mm"; 
+            } 
         } 
         
         IF((minc-Appc) &gt; 0.01*minc) { 
@@ -630,7 +679,7 @@ double GetSIGN(double val) {
 } 
 
 →UNK000_015240BLOCK("DrawHeaderForSEN()") { 
-    void DrawHeaderForSEN() { 
+    void DrawHeaderForSEN(bool Imperialunit) { 
         double MeshElemType →UNK000_015238= IO.Member2D.Member.MeshElementType; //TODO
         double MemberType →UNK000_007165= IO.MemberData.ConcreteIBC.MemberType2D; 
         double PointID →UNK000_009933= IO.Point.ID; 
@@ -640,9 +689,14 @@ double GetSIGN(double val) {
         double z →UNK000_014604= IO.Point.Z; 
         double h →UNK000_014710= IO.Point.H; 
         string sMemberName →UNK000_014601= GetStringOfLimitedLength(IO.Member2D.Member.Name, 15); 
-        string sMemberType →UNK000_014711= GetMemberTypeAsString(MemberType) &amp; "  [h=" &amp; CUnit(h, "in") &amp; "in]"; 
-        string sPosition →UNK000_014708= GetMeshElementTypeAsString(MeshElemType) &amp; " " &amp; ElemID &amp; "/" &amp; PointID &amp; "  [" &amp; "X=" &amp; CUnit(x, "ft") &amp; "ft" &amp; ", Y=" &amp; CUnit(y, "ft") &amp; "ft" &amp; ", Z=" &amp; CUnit(z, "ft") &amp; "ft]"; 
-        string sNormCode →UNK000_014760= "ACI 318-05"; 
+        IF(Imperialunit) { 
+            string sMemberType →UNK000_014711= GetMemberTypeAsString(MemberType) &amp; "  [h=" &amp; CUnit(h, "in") &amp; "in]"; 
+            string sPosition →UNK000_014708= GetMeshElementTypeAsString(MeshElemType) &amp; " " &amp; ElemID &amp; "/" &amp; PointID &amp; "  [" &amp; "X=" &amp; CUnit(x, "ft") &amp; "ft" &amp; ", Y=" &amp; CUnit(y, "ft") &amp; "ft" &amp; ", Z=" &amp; CUnit(z, "ft") &amp; "ft]"; 
+        } ELSE { 
+            string sMemberType →RLF098_000007= GetMemberTypeAsString(MemberType) &amp; "  [h=" &amp; CUnit(h, "mm") &amp; "mm]"; 
+            string sPosition →RLF098_000008= GetMeshElementTypeAsString(MeshElemType) &amp; " " &amp; ElemID &amp; "/" &amp; PointID &amp; "  [" &amp; "X=" &amp; CUnit(x, "m") &amp; "m" &amp; ", Y=" &amp; CUnit(y, "m") &amp; "m" &amp; ", Z=" &amp; CUnit(z, "m") &amp; "m]"; 
+        } 
+        string sNormCode →UNK000_014760= "ACI 318-14"; 
         →UNK000_015236DrawHeader(sMemberName, sMemberType, sPosition, sNormCode); 
     } 
 } 
@@ -737,30 +791,49 @@ double GetSIGN(double val) {
 
 
 →UNK000_014900BLOCK("SetPracticalReinf()") { 
-    void SetPracticalReinf(object ReinfDesignData, double SpacingIncr) { 
+    void SetPracticalReinf(object ReinfDesignData, double SpacingIncr, bool Imperialunit) { 
         object FUNCT_BAR →REZ006_000010= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_IBC\Functions\ACI_Functions2D_RebarInfo.CLC"); 
         →REZ006_000007TEXT("- Calculate number of rebars(n), space between rebars(s) and provided reinforcement area(As↓prov←)"); 
         FOR(i, 0, 3) { 
             double As_sum →UNK000_014901= MAX(ReinfDesignData[i].As_req, ReinfDesignData[i].As_det_min); 
             double ds →UNK000_014914= ReinfDesignData[i].ds; 
             double Barno →UNK000_016209= FUNCT_BAR.BarNoCalculation(ds); 
-            double b →UNK000_016211= physconst(1.0, "ft"); 
+            IF(Imperialunit) { 
+                b →RLF098_000053= PhysConst(1, "ft"); 
+            } ELSE { 
+                b →RLF098_000054= PhysConst(1, "m"); 
+            } 
             IF(As_sum &gt; 0) { 
                 →UNK000_016217TEXT(ReinfDesignData[i].Descript); 
                 double n →UNK000_014903= ROUNDUP(As_sum/(0.25*Math.PI*ds*ds)); 
                 →UNK000_016213TEXT("n =" &amp; 'As↓req←/(0.25*π*b*ϕ↑2←)' &amp; " = " &amp; n); 
                 double s →UNK000_014912= SpacingIncr*ROUNDDOWN(b/n/SpacingIncr); 
-                →UNK000_016214TEXT("s =" &amp; 'b/n' &amp; " = " &amp; CUnit(s, "in") &amp; " in"); 
+                IF(Imperialunit) { 
+                    →UNK000_016214TEXT("s =" &amp; 'b/n' &amp; " = " &amp; CUnit(s, "in") &amp; " in"); 
+                } ELSE { 
+                    →RLF098_000055TEXT("s =" &amp; 'b/n' &amp; " = " &amp; CUnit(s, "mm") &amp; " mm"); 
+                } 
                 IF(COMPARE(s, 0, 5) != 0) { 
                     double As_prov →UNK000_014916= 0.25*Math.PI*ds*ds*b/s; 
                 } ELSE { 
                     double As_prov →REZ106_000001= 0.25*Math.PI*ds*ds*b/(b/n); 
                 } 
-                →UNK000_016216TEXT(" As↓prov← = " &amp; '0.25*π*ϕ↑2←*b/s' &amp; " = " &amp; CUnit(As_prov, "in↑2←") &amp; " in↑2←"); 
+                IF(Imperialunit) { 
+                    →UNK000_016216TEXT(" As↓prov← = " &amp; '0.25*π*ϕ↑2←*b/s' &amp; " = " &amp; CUnit(As_prov, "in↑2←") &amp; " in↑2←"); 
+                } ELSE { 
+                    →RLF098_000056TEXT(" As↓prov← = " &amp; '0.25*π*ϕ↑2←*b/s' &amp; " = " &amp; CUnit(As_prov, "mm↑2←") &amp; " mm↑2←"); 
+                } 
                 →UNK000_014917ReinfDesignData[i].Set("As_prov", As_prov); 
-                →UNK000_014913ReinfDesignData[i].Set("Info", 
-                "#" &amp; Barno.ToString() &amp; 
-                "@" &amp; (CUnit(s, "in")).ToString("0")); 
+                IF(Imperialunit) { 
+                    →UNK000_014913ReinfDesignData[i].Set("Info", 
+                    "#" &amp; Barno.ToString() &amp; 
+                    "@" &amp; (CUnit(s, "in")).ToString("0")); 
+                } ELSE { 
+                    →RLF098_000038ReinfDesignData[i].Set("Info", 
+                    "ϕ" &amp; CUnit(ds, "mm") &amp; 
+                    "@" &amp; (CUnit(s, "mm")).ToString("0")); 
+                } 
+                
             } 
         } 
     } 
@@ -1384,7 +1457,7 @@ double GetSIGN(double val) {
     </Layouts>
     <VisualComponents>
       <VC ID="">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1775,14 +1848,6 @@ double GetSIGN(double val) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="REZ006_000016">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="REZ106_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1790,6 +1855,326 @@ double GetSIGN(double val) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000007">
+        <Set Vis="0" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000008">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000009">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000010">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000011">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000012">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000013">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000014">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000015">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000016">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000017">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000018">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000019">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000020">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000021">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000022">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000023">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000024">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000025">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000026">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000027">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000028">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000029">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000030">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000031">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000032">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000033">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000034">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000035">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000036">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000037">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000038">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000039">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000042">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000043">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000044">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000053">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000054">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000055">
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RLF098_000056">
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="UNK000_002858">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4440,8 +4825,17 @@ double GetSIGN(double val) {
     <Item TranslateID="STRING_FEF1B86E">
       <ENU>"Case"</ENU>
     </Item>
+    <Item TranslateID="TEXT_">
+      <ENU>" As↓prov← = " &amp; '0.25*π*ϕ↑2←*b/s' &amp; " = " &amp; CUnit(As_prov, "mm↑2←") &amp; " mm↑2←"</ENU>
+    </Item>
     <Item TranslateID="TEXT_REZ006_000007">
       <ENU>"- Calculate number of rebars(n), space between rebars(s) and provided reinforcement area(As↓prov←)"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000055">
+      <ENU>"s =" &amp; 'b/n' &amp; " = " &amp; CUnit(s, "mm") &amp; " mm"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RLF098_000056">
+      <ENU>" As↓prov← = " &amp; '0.25*π*ϕ↑2←*b/s' &amp; " = " &amp; CUnit(As_prov, "mm↑2←") &amp; " mm↑2←"</ENU>
     </Item>
     <Item ID="TEXT_UNK000_005820">
       <ENU>SVariable &amp; SFormula &amp; " ="</ENU>

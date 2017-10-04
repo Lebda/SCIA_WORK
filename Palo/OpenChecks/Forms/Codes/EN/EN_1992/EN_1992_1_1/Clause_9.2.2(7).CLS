@@ -50,6 +50,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     //    CASE "SIG": { } 
     //    CASE "STN": { } 
     //    CASE "SIST": { } 
+    //    CASE "UNE": { } 
     //    CASE "SS": { } 
     DEFAULT :  { 
         s↓b,max← →INI400_000067= 0.6*d*[1+COTG(α↓s←)] @REF("(9.7N)"); 

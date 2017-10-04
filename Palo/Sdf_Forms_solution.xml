@@ -3475,6 +3475,12 @@
       <RelativePath>OpenChecks\Forms\Concrete</RelativePath>
       <Settings Languages="ENU,CSY,DEU,FRB,NLD,PTG,SKY,ROM,ELL,PLK,ITA,ESP,HRV" />
     </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Graphics_8_CSS_POD_Char</Name>
+      <Guid>8906fdd4-d9bb-4ad6-9bb9-01202edf8af1</Guid>
+      <CheckSum>29c20807f676c94c3c4c3ac1b1ab9c0e</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete</RelativePath>
+    </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Overal_Check_SEN</Name>
       <Guid>540002cd-c454-4558-8c8f-870f485d2522</Guid>
@@ -4858,6 +4864,12 @@
       <CheckSum>71e6c41a5bfae2b5adfbe32b141dfe9b</CheckSum>
       <RelativePath>OpenChecks\CustomLibrary\CDT</RelativePath>
       <Settings Languages="ENU" />
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="XmlFile" Version="" TranslationType="GlobalSettings">
+      <Name>EN_1992_1_1_Table_4.4N_UNE</Name>
+      <Guid>00000000-0000-0000-0000-000000000000</Guid>
+      <CheckSum>d763f0a67e168e81b5eff4dce86c9385</CheckSum>
+      <RelativePath>OpenChecks\CustomLibrary\CDT</RelativePath>
     </SdfSolutionItem>
     <SdfSolutionItem Type="XmlFile" Version="" TranslationType="LocalSettings">
       <Name>EN_1992_1_1_Table_4.5N_NBN</Name>

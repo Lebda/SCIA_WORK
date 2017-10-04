@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="5db01eb6-bb09-4279-ae26-6181bc07f401">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">bool ValidateInput(object Input) { 
+    <SourceCode Collapsed="25|54|75|98|124|163|180" BreakPoints="">bool ValidateInput(object Input) { 
     ConstrType →INI400_000008= Input.Get("ConstrType"); //Construction type; 0 = Slabs with a transverse redistribution effect in the case of load considered, 1 = for beams and slabs other than before, 2 = for walls
     d →INI400_000102= Input.Get("d"); //Effective height of Css
     f↓ck← →INI400_000107= Input.Get("f_ck"); //Characteristic compressive cylinder strength
@@ -164,6 +164,22 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     //    CASE "SIG": { } 
     //    CASE "STN": { } 
     //    CASE "SIST": { } 
+    CASE "UNE" :  { 
+        →KRS116_000017TEXT(Description("C↓Rdc←")); 
+        IF(IO.IsStandalone) { 
+            C↓Rdc← →KRS116_000018= 0.18/γ↓c← @REF("(§6.2.2(1)"); 
+        } ELSE { 
+            xC↓Rdc← →KRS116_000019= IO.SetupNA.EC_1992_1_1.C_6_2_2_1.C_Rd_c; 
+            C↓Rdc← →KRS116_000020= xC↓Rdc←/γ↓c← @REF("(§6.2.2(1)"); 
+        } 
+        →KRS116_000021TEXT(Description("v↓min←")); 
+        IF(COMPARE(f↓ck←, 60000000, 3) == 1) { //f↓ck← is limited to 60 MPa
+            f↓ck← →KRS116_000025= 60000000; 
+        } 
+        v↓min← →KRS116_000022= 0.075/γ↓c←*k↑3/2←*(CUnit(f↓ck←, "MPa"))↑1/2← @REF("(UNE 6.3)"); 
+        →KRS116_000023TEXT(Description("k↓1←")); 
+        k↓1← →KRS116_000024= IO.SetupNA.EC_1992_1_1.C_6_2_2_1.k_1; 
+    } 
     //    CASE "SS": { } 
     DEFAULT :  { 
         →INI400_001209TEXT(Description("C↓Rdc←")); 
@@ -911,6 +927,78 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
+      <VC ID="KRS116_000017">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="50" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000018">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="29" Hor="1" Ver="4" SpX="200" SpY="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="29" Hor="0" Ver="4" SpX="200" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="29" Hor="0" Ver="4" SpX="200" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="2" StyleName="" X="15" Y="39.3" Hor="1" Ver="4" SpX="15" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="822" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000019">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000020">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="29" Hor="1" Ver="4" SpX="200" SpY="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="29" Hor="0" Ver="4" SpX="200" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="29" Hor="0" Ver="4" SpX="200" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="2" StyleName="" X="15" Y="39.3" Hor="1" Ver="4" SpX="15" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="822" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000021">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="51.7" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="51.7" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="51.7" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="50" Y="51.7" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="62.1" Hor="1" Ver="4" SpX="-15" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000022">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="29" Hor="1" Ver="4" SpX="200" SpY="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="29" Hor="0" Ver="4" SpX="200" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="29" Hor="0" Ver="4" SpX="200" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="86.4" Hor="1" Ver="4" SpX="15" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="822" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000023">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="51.7" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="51.7" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="51.7" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="50" Y="51.7" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="102" Hor="1" Ver="4" SpX="-15" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000024">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="29" Hor="1" Ver="4" SpX="200" SpY="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="29" Hor="0" Ver="4" SpX="200" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="29" Hor="0" Ver="4" SpX="200" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="117" Hor="1" Ver="4" SpX="15" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="822" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000025">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
@@ -973,6 +1061,15 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
       <ENU>Description("v↓min←")</ENU>
     </Item>
     <Item ID="TEXT_KRS116_000007">
+      <ENU>Description("k↓1←")</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000017">
+      <ENU>Description("C↓Rdc←")</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000021">
+      <ENU>Description("v↓min←")</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS116_000023">
       <ENU>Description("k↓1←")</ENU>
     </Item>
   </Texts>

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="58"><StringCode SourceType="DLLRC:"><StringId>@{documentexport.2epdfantialiasingnone}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="58"><StringCode SourceType="DLLRC:"><StringId>@{documentexport.2ehtmlpictureformatjpg}</StringId>
+		<SourceDll>X64DocumentRendering.2edll</SourceDll>
+		<ResourceId>223</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2epdfantialiasingnone}</StringId>
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>131</ResourceId>
 	</StringCode>
@@ -11,9 +15,13 @@
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>225</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2ehtmlpictureformatjpg}</StringId>
+	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2ehtmlpictureformatgif}</StringId>
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
-		<ResourceId>223</ResourceId>
+		<ResourceId>224</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2etxtdescription}</StringId>
+		<SourceDll>X64DocumentRendering.2edll</SourceDll>
+		<ResourceId>218</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2epdfdescription}</StringId>
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
@@ -51,14 +59,6 @@
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>229</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2ehtmlpictureformatgif}</StringId>
-		<SourceDll>X64DocumentRendering.2edll</SourceDll>
-		<ResourceId>224</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2etxtdescription}</StringId>
-		<SourceDll>X64DocumentRendering.2edll</SourceDll>
-		<ResourceId>218</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2epdftitle}</StringId>
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>208</ResourceId>
@@ -74,6 +74,14 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2ehtmlexceltitle}</StringId>
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>231</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2epdfantialiasinghardwarearb}</StringId>
+		<SourceDll>X64DocumentRendering.2edll</SourceDll>
+		<ResourceId>172</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2ertfantialiasinghardwarearb}</StringId>
+		<SourceDll>X64DocumentRendering.2edll</SourceDll>
+		<ResourceId>172</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2ehtmlantialiasinghardwarearb}</StringId>
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
@@ -91,13 +99,13 @@
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>221</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2epdfantialiasinghardwarearb}</StringId>
+	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2epdfbutton}</StringId>
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
-		<ResourceId>172</ResourceId>
+		<ResourceId>210</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2ertfantialiasinghardwarearb}</StringId>
+	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2epdfantialiasingsuper}</StringId>
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
-		<ResourceId>172</ResourceId>
+		<ResourceId>134</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2ertfantialiasingsuper}</StringId>
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
@@ -127,17 +135,13 @@
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>132</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2epdfbutton}</StringId>
-		<SourceDll>X64DocumentRendering.2edll</SourceDll>
-		<ResourceId>210</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2epdfantialiasingsuper}</StringId>
-		<SourceDll>X64DocumentRendering.2edll</SourceDll>
-		<ResourceId>134</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2ehtmlwordtitle}</StringId>
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>230</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2ehtmllaunchword}</StringId>
+		<SourceDll>X64DocumentRendering.2edll</SourceDll>
+		<ResourceId>228</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2ehtmlantialiasinghigh}</StringId>
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
@@ -154,10 +158,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{x64documentrendering.2ecxep_exportpropspdf.2etopage}</StringId>
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>239</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2ehtmllaunchword}</StringId>
-		<SourceDll>X64DocumentRendering.2edll</SourceDll>
-		<ResourceId>228</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{x64documentrendering.2ecxep_exportpropsrtf.2eenablepagelayout}</StringId>
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
@@ -183,6 +183,14 @@
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>120</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{x64documentrendering.2ecxep_exportpropspdf.2epagerange}</StringId>
+		<SourceDll>X64DocumentRendering.2edll</SourceDll>
+		<ResourceId>237</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{x64documentrendering.2ecxep_exportpropspdf.2eautolaunchpdf}</StringId>
+		<SourceDll>X64DocumentRendering.2edll</SourceDll>
+		<ResourceId>220</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2etxttitle}</StringId>
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>217</ResourceId>
@@ -194,14 +202,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{x64documentrendering.2ecxep_exportpropspdf.2efrompage}</StringId>
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>238</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{x64documentrendering.2ecxep_exportpropspdf.2epagerange}</StringId>
-		<SourceDll>X64DocumentRendering.2edll</SourceDll>
-		<ResourceId>237</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{x64documentrendering.2ecxep_exportpropspdf.2eautolaunchpdf}</StringId>
-		<SourceDll>X64DocumentRendering.2edll</SourceDll>
-		<ResourceId>220</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2ertftitle}</StringId>
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>

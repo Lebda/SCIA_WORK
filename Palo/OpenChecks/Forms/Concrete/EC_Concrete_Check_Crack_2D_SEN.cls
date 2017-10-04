@@ -11,6 +11,7 @@
     →DLO134_016188object FUNCT_1D_CRACK; 
     →DLO134_048451object FUNCT_2D_CRACK; 
     →DLO134_016023object FUNCT_2D; 
+    →DLO001_000026object IO_HELPER; 
 } 
 
 →DLO134_015111BLOCK("@VARIABLES") { 
@@ -166,6 +167,7 @@ private void LoadExterns() {
     FUNCT_2D_DEFAULTS →DLO134_015072= LoadExternCLC(Tools.Dir_Forms &amp; "\Concrete\Functions\Functions2D_DesignDefaults.clc"); 
     FUNCT_1D_CRACK →DLO134_016187= LoadExternCLC(Tools.Dir_Forms &amp; "\Concrete\Functions\Functions1D_Crack.clc"); 
     FUNCT_2D_CRACK →DLO134_048452= LoadExternCLC(Tools.Dir_Forms &amp; "\Concrete\Functions\Functions2D_Crack.clc"); 
+    IO_HELPER →DLO001_000027= LoadExternCLC(Tools.Dir_Forms &amp; "\Concrete\Functions\IOhelper.clc"); 
 } 
 
 private void InitResults() { 
@@ -349,102 +351,46 @@ private void ReadReinforcement2DFrom2DMeshes() {
     } 
 } 
 
-private void ReadReinforcement2D_Plate_FromCMD2D() { 
-    
-    Reinforcement_2D →DLO134_016049= new object[]; 
-    h →DLO134_016090= IO.Point.H; 
-    
-    →DLO134_016112Reinforcement_2D.Add(new Structure(//Lower first - →KRS134_000001Reinforcement_2D[0]
-    "dl", IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Lower.DiameterFirst, 
-    "c", IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Lower.Cover, 
-    "Alphal", IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Lower.AngleOfFirstLayerOfReinforcement*180/(Math.PI), 
-    "sl", IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Lower.BarDistanceFirst, 
-    "Material", IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Material, 
-    "Al", -h/2+IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Lower.Cover+IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Lower.DiameterFirst/2, 
-    "Ol", IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Lower.BarDistanceFirst/2)); 
-    
-    →DLO134_016113Reinforcement_2D.Add(new Structure(//Lower second - →KRS134_000002Reinforcement_2D[1]
-    "dl", IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Lower.DiameterSecond, 
-    "c", IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Lower.Cover+IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Lower.DiameterFirst, 
-    "Alphal", IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Lower.AngleOfSecondLayerOfReinforcement*180/(Math.PI), 
-    "sl", IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Lower.BarDistanceSecond, 
-    "Material", IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Material, 
-    "Al", -h/2+IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Lower.Cover+IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Lower.DiameterFirst/2+IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Lower.DiameterSecond, 
-    "Ol", IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Lower.BarDistanceSecond/2)); 
-    
-    →DLO134_016114Reinforcement_2D.Add(new Structure(//Upper first - →KRS134_000003Reinforcement_2D[2]
-    "dl", IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Upper.DiameterFirst, 
-    "c", IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Upper.Cover, 
-    "Alphal", IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Upper.AngleOfFirstLayerOfReinforcement*180/(Math.PI), 
-    "sl", IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Upper.BarDistanceFirst, 
-    "Material", IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Material, 
-    "Al", h/2-IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Upper.Cover-IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Upper.DiameterFirst/2-IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Upper.DiameterSecond, 
-    "Ol", IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Upper.BarDistanceFirst/2)); 
-    
-    →DLO134_016115Reinforcement_2D.Add(new Structure(//Upper second - →KRS134_000004Reinforcement_2D[3]
-    "dl", IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Upper.DiameterSecond, 
-    "c", IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Upper.Cover+IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Upper.DiameterFirst, 
-    "Alphal", IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Upper.AngleOfSecondLayerOfReinforcement*180/(Math.PI), 
-    "sl", IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Upper.BarDistanceSecond, 
-    "Material", IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Material, 
-    "Al", h/2-IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Upper.Cover-IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Upper.DiameterFirst/2, 
-    "Ol", IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Upper.BarDistanceSecond/2)); 
-    
-} 
 
-private void ReadReinforcement2D_Wall_FromCMD2D() { 
-    
-    Reinforcement_2D →DLO134_016116= new object[]; 
-    h →DLO134_016117= IO.Point.H; 
-    
-    →DLO134_016118Reinforcement_2D.Add(new Structure(//First - →KRS134_000005Reinforcement_2D[0]
-    "dl", IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.DiameterFirst, 
-    "c", IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.Cover, 
-    "Alphal", IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.AngleOfFirstLayerOfReinforcement*180/(Math.PI), 
-    "sl", IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.BarDistanceFirst, 
-    "Material", IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Material, 
-    "Al", -h/2+IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.Cover+IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.DiameterFirst/2, 
-    "Ol", IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.BarDistanceFirst/2)); 
-    
-    →DLO134_016119Reinforcement_2D.Add(new Structure(//Second - →KRS134_000006Reinforcement_2D[1]
-    "dl", IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.DiameterSecond, 
-    "c", IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.Cover+IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.DiameterFirst, 
-    "Alphal", IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.AngleOfSecondLayerOfReinforcement*180/(Math.PI), 
-    "sl", IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.BarDistanceSecond, 
-    "Material", IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Material, 
-    "Al", -h/2+IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.Cover+IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.DiameterFirst/2+IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.DiameterSecond, 
-    "Ol", IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.BarDistanceSecond/2)); 
-    
-    →DLO134_016120Reinforcement_2D.Add(new Structure(//First - →KRS134_000007Reinforcement_2D[2]
-    "dl", IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.DiameterFirst, 
-    "c", IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.Cover, 
-    "Alphal", IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.AngleOfFirstLayerOfReinforcement*180/(Math.PI), 
-    "sl", IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.BarDistanceFirst, 
-    "Material", IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Material, 
-    "Al", h/2-IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.Cover-IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.DiameterFirst/2, 
-    "Ol", IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.BarDistanceFirst/2)); 
-    
-    →DLO134_016121Reinforcement_2D.Add(new Structure(//Second - →KRS134_000008Reinforcement_2D[3]
-    "dl", IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.DiameterSecond, 
-    "c", IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.Cover+IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.DiameterFirst, 
-    "Alphal", IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.AngleOfSecondLayerOfReinforcement*180/(Math.PI), 
-    "sl", IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.BarDistanceSecond, 
-    "Material", IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Material, 
-    "Al", h/2-IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.Cover-IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.DiameterFirst/2-IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.DiameterSecond, 
-    "Ol", IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.BarDistanceSecond/2)); 
-    
-} 
-
-private object →DLO134_016166ReadReinforcement2DFromCMD2D() { 
-    SWITCH(IO.MemberData.Concrete.MemberType2D) { 
-        CASE 16 :  { return ReadReinforcement2D_Plate_FromCMD2D(); } //plate
-        CASE 32 :  { return ReadReinforcement2D_Wall_FromCMD2D(); } //wall
-        CASE 64 :  { return ReadReinforcement2D_Plate_FromCMD2D(); } //shell (plate)
-        CASE 256 :  { return ReadReinforcement2D_Wall_FromCMD2D(); } //shell (wall)
-        CASE 512 :  { return ReadReinforcement2D_Wall_FromCMD2D(); } //deepbeam
-        DEFAULT :  { return ReadReinforcement2D_Plate_FromCMD2D(); } 
+private object ParseOneDesignLayer(object DesignLayer)
+{ 
+    double sl →LUN001_000001= 0; 
+    IF(DesignLayer.area &gt; 0) { 
+        sl →LUN001_000002= ROUND(Math.PI*(DesignLayer.dl)↑2←/4/DesignLayer.area, 0, "mm"); 
     } 
+    double cover →DLO001_000014= 0; 
+    IF(DesignLayer.z &gt; 0) { 
+        cover →DLO001_000015= DesignLayer.z-DesignLayer.dl/2; 
+    } ELSE { 
+        cover →DLO001_000016= DesignLayer.z+DesignLayer.dl/2; 
+    } 
+    object Layer →LUN001_000004= new Structure(
+    "dl", DesignLayer.dl, 
+    "c", cover, 
+    "Alphal", DesignLayer.Alphal*180/(Math.PI), 
+    "sl", sl, 
+    "Material", DesignLayer.Material, 
+    "Al", DesignLayer.z, 
+    "Ol", DesignLayer.Ol); 
+    return Layer; 
 } 
+
+private void ReadDesignReinf2D() { 
+    IF(IO.Point.Contains("Reinforcement") &amp;&amp; IO.Point.Reinforcement.Contains("DesignLayer")) { 
+            Reinforcement_2D →LUN001_000009= new object[]; 
+            IF(IO_HELPER.IsArray(IO.Point.Reinforcement.DesignLayer)) { 
+                
+                FOR(i, 0, IO.Point.Reinforcement.DesignLayer.Count-1) { 
+                    IF(IO.Point.Reinforcement.DesignLayer[i].area &gt; 0) { 
+                        →DLO001_000024Reinforcement_2D.Add(ParseOneDesignLayer(IO.Point.Reinforcement.DesignLayer[i])); 
+                    } 
+                } 
+            } 
+            ELSE { 
+                →DLO001_000025Reinforcement_2D.Add(ParseOneDesignLayer(IO.Point.Reinforcement.DesignLayer)); 
+            } 
+        } 
+    } 
 
 private void WriteSectionToIO() { 
     →DLO134_015112FUNCT_2D.WriteSectionToDataCache(h, IO.Point.Material); 
@@ -522,11 +468,14 @@ bool QuasiComb →INI400_006919= DATA_FROM_SEN.IsQuasiPermanentCombi();
 →DLO134_015976ReadLoadFromIO(MemberType); 
 object obExposureClasses →DLO134_048671= GetExposureClasses(MemberType); 
 object obIsCrackCalculated →DLO134_048676= IsCrackCalculated(obExposureClasses); 
-
-IF(IO.MemberData.Concrete.UserReinforcement == 1) { 
-    →DLO134_016110ReadReinforcement2DFromCMD2D(); 
-} ELSE { 
-    →DLO134_016052ReadReinforcement2DFrom2DMeshes(); 
+//
+IF(IO.Contains("REINF")) { 
+    SWITCH(IO.REINF.TypeOfReinforcement) { 
+        CASE "Required" :  { →LUN001_000007ReadDesignReinf2D(); } 
+        CASE "Provided" :  { →LUN001_000008ReadDesignReinf2D(); } 
+        CASE "Real" :  { →DLO001_000011ReadReinforcement2DFrom2DMeshes(); } 
+        DEFAULT :  { →DLO001_000021ReadReinforcement2DFrom2DMeshes(); } 
+    } 
 } 
 →DLO134_015977WriteSectionToIO(); 
 
@@ -808,6 +757,12 @@ IF(IO.IsDrawing) {
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="IO_HELPER" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_IO_HELPER">
+          <ENU>
+          </ENU>
+        </Description>
       </Variable>
       <Variable Modifier="Public" Name="m↓1+←" ESA_ID="Result.9" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_m↓1+←">
@@ -1111,7 +1066,7 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="103" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="0" />
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="103" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UC↓+←" ESA_ID="Result.1" Type="Double" Precision="2">
@@ -1119,15 +1074,15 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="103" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="0" />
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="103" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC↓-←" ESA_ID="Result.3" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="UC↓-←" ESA_ID="Result.4" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
-        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="103" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="0" />
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="103" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UC↓1+←" ESA_ID="Result.15" Type="Double" Precision="2">
@@ -1170,7 +1125,7 @@ IF(IO.IsDrawing) {
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="100" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="0" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="w↓-←" ESA_ID="Result.4" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="w↓-←" ESA_ID="Result.5" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1210,18 +1165,20 @@ IF(IO.IsDrawing) {
         <ResultProperties ESAColor="1" ESAStyle="3" ESAUnit="100" Reference="" Extrem="3" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="w↓max+←" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="w↓max+←" ESA_ID="Result.3" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="100" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="0" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="w↓max-←" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="w↓max-←" ESA_ID="Result.6" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="100" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="0" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="x↓r,1+←" ESA_ID="" Type="Double" Precision="2">
@@ -1666,7 +1623,7 @@ IF(IO.IsDrawing) {
           <ENU>Lower surface</ENU>
         </Names>
       </ResultTable>
-      <ResultTable Visible="0" Vars="UC|0|1;UC↓+←|0|1;UC↓-←|0|1;w↓+←|0|1;w↓-←|0|1">
+      <ResultTable Visible="0" Vars="UC|0|1;UC↓+←|0|1;w↓+←|0|1;UC↓-←|0|1;w↓-←|0|1">
         <Names TranslateID="ResultGroup_">
           <ENU>
           </ENU>
@@ -1708,6 +1665,70 @@ IF(IO.IsDrawing) {
     </Layouts>
     <VisualComponents>
       <VC ID="">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="DLO001_000011">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="DLO001_000014">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="DLO001_000015">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="DLO001_000016">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="DLO001_000021">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="DLO001_000024">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="DLO001_000025">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="DLO001_000027">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2771,118 +2792,6 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_016049">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_016052">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_016090">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_016110">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_016112">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_016113">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_016114">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_016115">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_016116">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_016117">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_016118">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_016119">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_016120">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_016121">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="DLO134_016186">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3043,12 +2952,60 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
+      <VC ID="LUN001_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="LUN001_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="LUN001_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="LUN001_000007">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="LUN001_000008">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="LUN001_000009">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
   <Dialog>
     <Main Width="454">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="C:\SciaVersion\Act_Full_Deve_16\Temp\Esa_Model_Data\Member2D.4" MemberID="Member2D.4" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Member2D.59" SectionID="-1" CombiID="-1" />
     </Main>
     <MemberData Width="400" />
     <Setup Width="400" />

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="8374bee6-b97e-4fa9-b294-ec3518406803">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">bool ValidateInput(object Input) { 
+    <SourceCode Collapsed="18|35|49|60|71|80|89|97" BreakPoints="">bool ValidateInput(object Input) { 
     A↓c← →INI400_000007= Input.Get("A_c"); //Area of concrete Css
     f↓yd← →INI400_006029= Input.Get("f_yd"); //Design yield strength of reinforcement
     N↓Ed← →INI400_006030= Input.Get("N_Ed"); //Normal force in column
@@ -79,6 +79,15 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
             double Coeff↓As,min,col.A← →INI400_000123= IO.SetupNA.EC_1992_1_1.A_s_min_column[0]; 
             double Coeff↓As,min,col.B← →INI400_000124= IO.SetupNA.EC_1992_1_1.A_s_min_column[1]; 
             A↓s,min,col← →INI400_000125= MAX(Coeff↓As,min,col.B←*ABS(N↓Ed←)/f↓yd←, Coeff↓As,min,col.A←*A↓c←) @REF("(SIST 9.12)"); 
+        } 
+    } 
+    CASE "UNE" :  { //KRS: We are not distinguis upper or lower reinforcement, therefore part with A'↓s1min← and A'↓s2min← can not be applicable
+        IF(IO.IsStandalone) { 
+            A↓s,min,col← →KRS116_000007= MAX(0.1*ABS(N↓Ed←)/f↓yd←, 0.004*A↓c←) @REF("(UNE 9.12N)"); 
+        } ELSE { 
+            double Coeff↓As,min,col.A← →KRS116_000008= IO.SetupNA.EC_1992_1_1.A_s_min_column[0]; 
+            double Coeff↓As,min,col.B← →KRS116_000009= IO.SetupNA.EC_1992_1_1.A_s_min_column[1]; 
+            A↓s,min,col← →KRS116_000010= MAX(Coeff↓As,min,col.B←*ABS(N↓Ed←)/f↓yd←, Coeff↓As,min,col.A←*A↓c←) @REF("(UNE 9.12N)"); 
         } 
     } 
     CASE "SS" :  { 
@@ -180,6 +189,12 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
+      </Variable>
+      <Variable Modifier="Public" Name="PureCompression" ESA_ID="" Type="Boolean">
+        <Description TranslateID="VARIABLE_PureCompression">
+          <ENU>
+          </ENU>
+        </Description>
       </Variable>
     </Variables>
     <DrawingGroups />
@@ -481,6 +496,38 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000007">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000008">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000009">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000010">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="31" />
       </VC>
     </VisualComponents>
     <Images />

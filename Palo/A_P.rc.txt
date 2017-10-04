@@ -52,9 +52,11 @@ EP_DsDb \A\Src\Mic\Ds\DSDB\DsDb.rc EP_DsDb.tlb
 XEP_DSx64ObjectsBase \A\Src\Kernel\DataServer\XEP_DSx64ObjectsBase\XEP_DSx64ObjectsBase.rc XEP_DSx64ObjectsBase.tlb
 X64DocumentRendering \A\Src\LOK\X64Document\X64DocumentRendering\X64DocumentRendering.rc X64DocumentRendering.tlb
 X64DocumentPreview \A\Src\LOK\X64Document\X64DocumentPreview\X64DocumentPreview.rc X64DocumentPreview.tlb
+EP_GraphicAnalysers \A\Src\LOK\GRAPHIC\EP_GraphicAnalysers\EP_GraphicAnalysers.rc EP_U3D.tlb
 XEP_DocumentData \A\Src\LOK\X64Document\XEP_DocumentData\XEP_DocumentData.rc EP_GraphicTools.tlb
 XEP_DocumentFramework \A\Src\LOK\X64Document\XEP_DocumentFramework\XEP_DocumentFramework.rc XEP_DocumentFramework.tlb
 EP_ExpUtility \A\Src\Bro\EP_ExpUtility\EP_ExpUtility.rc EP_ExpUtility.tlb
+EP_DSDrawingBase \A\Src\Presentation\DataDrawing\EP_DSDrawingBase\EP_DSDrawingBase.rc EP_DSDrawingBase.tlb
 EPW4DrawManager \A\Src\Lat\DrwMan\DrawManager\EPW4DrawManager.rc EP_DrawManager.tlb
 EP_DrawSupport \A\Src\Lat\DrwMan\EP_DrawSupport\EP_DrawSupport.rc EP_DrawSupport.tlb
 EP_Windows \A\Src\Lat\DrwMan\EP_Windows\EP_Windows.rc EP_Windows.tlb
@@ -153,6 +155,7 @@ PretensioningSpecial \A\Src\Cih\PretensioningSpecial\PretensioningSpecial.rc Pre
 SoilinData \A\Src\Hery\soilin\SoilinData\SoilinData.rc SoilinData.tlb
 SteelOptimizer \A\Src\PLE\SteelOptimizer\SteelOptimizer.rc SteelOptimizer.tlb
 EP_ConcreteToolbox \A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_ConcreteToolbox.rc EP_ConcreteToolbox.tlb
+ConcreteCheckCalculation \A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ConcreteCheckCalculation.rc ConcreteCheckCalculation.tlb
 BasicResults \A\Src\Tom\BasicResults\BasicResults.rc BasicResults.tlb
 BasicCheckSteel \A\Src\Tom\BasicCheckSteel\BasicCheckSteel.rc BasicCheckSteel.tlb
 SteelConnection \A\Src\DRA\SteelConnection\SteelConnection.rc SteelConnection.tlb
@@ -165,6 +168,7 @@ DataAddCads \A\Src\Cads\DataAddCads\DataAddCads.rc DataAddCads.tlb
 EP_CheckDataProvider \A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.rc EP_CheckDataProvider.tlb
 ConcreteChecksEsa \A\Src\Checks\ConcreteChecks\ConcreteChecksEsa\ConcreteChecksEsa.rc ConcreteChecksEsa.tlb
 EP_DataAddDamping \A\Src\Tra\DataAddDamping\DataAddDamping.rc EP_DataAddDamping.tlb
+DataTools \A\Src\Data\DataTools\DataTools.rc DataTools.tlb
 EP_CalcManager \A\Src\Tom\CalcManager\CalcManager.rc EP_CalcManager.tlb
 EP_NationalAnnices \A\Src\Tra\Anices\NationalAnnices.rc EP_NationalAnnices.tlb
 EP_ProjectDataDialog \A\Src\Tom\ProjectDataDialog\ProjectDataDialog.rc EP_ProjectDataDialog.tlb
@@ -247,6 +251,8 @@ CodeDependentDeflections_UT \A\Src\Checks\ConcreteChecks\CodeDependentDeflection
 TestCodeDependentDeflection \A\Src\Checks\ConcreteChecks\UnitTestsConcrete\TestCodeDependentDeflection\TestCodeDependentDeflection.rc TestCodeDependentDeflection.tlb
 Punching \A\Src\Checks\ConcreteChecks\Punching\Punching.rc Punching.tlb
 Punching_MSUT \A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_MSUT.rc 
+ConcreteCheckChecks \A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\ConcreteCheckChecks.rc ConcreteCheckChecks.tlb
+ConcreteCheckResultShell \A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\ConcreteCheckResultShell.rc ConcreteCheckResultShell.tlb
 ConcreteESACmds \A\Src\Par\Services\ConcreteESACmds\ConcreteESACmds.rc ConcreteESACmds.tlb
 ConcreteESACmdsM \A\Src\Par\Services\ConcreteESACmdsM\ConcreteESACmdsM.rc 
 HeatTransferESACmd \A\Src\Pos\Services\HeatTransferESACmd\HeatTransferESACmd.rc HeatTransferESACmd.tlb
@@ -271,13 +277,13 @@ CheckRCDesigner \A\Src\Cads\CheckRCDesigner\CheckRCDesigner.rc CheckRCDesigner.t
 EP_CadsCommonServices \A\Src\Cads\Services\EP_CadsCommonServices\EP_CadsCommonServices.rc EP_CadsCommonServices.tlb
 EP_CadsCommonServicesM \A\Src\Cads\Services\EP_CadsCommonServicesM\EP_CadsCommonServicesM.rc 
 CustomCheckCmds \A\Src\Tom\Services\CustomCheck\CustomCheckCmds\CustomCheckCmds.rc CustomCheckCmds.tlb
+SteelCheckEsa \A\Src\Checks\SteelChecks\SteelCheckEsa\SteelCheckEsa.rc SteelCheckEsa.tlb
 AluminiumCheck \A\Src\Mar\AluminiumCheck\AluminiumCheck.rc AluminiumCheck.tlb
 AluminiumCheckESACmds \A\Src\mar\Services\AluminiumCheckESA\AluminiumCheckESACmds\AluminiumCheckESACmds.rc AluminiumCheckESACmds.tlb
 AluminiumCheckESACmdsM \A\Src\mar\Services\AluminiumCheckESA\AluminiumCheckESACmdsM\AluminiumCheckESACmdsM.rc 
 TimberCheckEsa \A\Src\Mar\TimberCheckEsa\TimberCheckEsa.rc TimberCheckEsa.tlb
 TimberCheckCmds \A\Src\Tom\Services\TimberCheck\TimberCheckCmds\TimberCheckCmds.rc TimberCheckCmds.tlb
 TimberCheckCmdsM \A\Src\Tom\Services\TimberCheck\TimberCheckCmdsM\TimberCheckCmdsM.rc 
-SteelCheckEsa \A\Src\Checks\SteelChecks\SteelCheckEsa\SteelCheckEsa.rc SteelCheckEsa.tlb
 EP_Commands_DSDBM \A\Src\RMA\Services\EP_Commands_DSDB\EP_Commands_DSDBM\EP_Commands_DSDBM.rc 
 PluginsCommand \A\Src\Bog\Services\PluginsCommand\PluginsCommand\PluginsCommand.rc PluginsCommand.tlb
 PluginsCommandM \A\Src\Bog\Services\PluginsCommand\PluginsCommandM\PluginsCommandM.rc 
@@ -286,6 +292,7 @@ EP_XmlProject \A\Src\Mic\Ds\EP_XmlProject\EP_XmlProject.rc EP_XmlProject.tlb
 CheckDemo \A\Src\Tom\CheckDemo\CheckDemo.rc CheckDemo.tlb
 ResultsPipelineTangentialModel \A\Src\Bro\ResultsPipelineTangentialModel\ResultsPipelineTangentialModel.rc ResultsPipelineTangentialModel.tlb
 CheckScaffConnections \A\Src\Cads\CheckScaffConnections\CheckScaffConnections.rc CheckScaffConnections.tlb
+EP_DSDrawingBasicElements \A\Src\Presentation\DataDrawing\EP_DSDrawingBasicElements\EP_DSDrawingBasicElements.rc EP_DSDrawingBasicElements.tlb
 CustomBasicClass \A\Src\Tom\CustomBasicClass\CustomBasicClass.rc CustomBasicClass.tlb
 CustomCheckCmdsM \A\Src\Tom\Services\CustomCheck\CustomCheckCmdsM\CustomCheckCmdsM.rc 
 DesignFormsLink \A\Src\Checks\DesignForms\DesignFormsLink\DesignFormsLink.rc DesignFormsLink.tlb

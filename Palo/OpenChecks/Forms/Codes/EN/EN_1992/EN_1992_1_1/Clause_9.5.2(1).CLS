@@ -114,6 +114,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     //    CASE "SIG": { } 
     //    CASE "STN": { } 
     //    CASE "SIST": { } 
+    //    CASE "UNE": { } 
     //    CASE "SS": { } 
     DEFAULT :  { 
         ϕ↓l,min,col← →INI400_000082= IO.SetupNA.EC_1992_1_1.ϕ_min @REF("(§9.5.2(1))"); 
