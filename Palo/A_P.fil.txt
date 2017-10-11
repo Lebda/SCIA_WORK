@@ -25801,6 +25801,7 @@ r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_CssGeometric.rgs
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\MakeConcreteToolbox_C#wrapper.bat
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ConcreteCheckCalculation.14.00.vcxproj
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ConcreteCheckCalculation.14.00.vcxproj.filters
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ConcreteCheckCalculation.14.00.sln
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\__AutoGenerTLH.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ConcreteCheckCalculation.idl
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ConcreteCheckCalculation.rc
@@ -25872,6 +25873,9 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ShearCheckFormula2DInOut
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ShearCheckStrategy2D.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\StdAfx.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\Resource.h
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\StressLimitationCalculations.h
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\StressLimitationFormulaCalculator2D.h
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\StressLimitationInOut.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\XCalculations.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\CharsCalculations.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\CrackCalculations.cpp
@@ -25925,6 +25929,8 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ShearCheckCalculator2D.c
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ShearCheckStrategy2D.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\StdAfx.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ConcreteCheckCalculation.cpp
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\StressLimitationCalculations.cpp
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\StressLimitationFormulaCalculator2D.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\XCalculations.cpp
 r:\A\Src\Tom\BasicResults\BasicResults.14.00.vcxproj
 r:\A\Src\Tom\BasicResults\BasicResults.14.00.vcxproj.filters
@@ -35161,7 +35167,6 @@ r:\A\Src\Tra\Services\Damping\DampingM\res\DampingNodeCmd_Icon.bmp
 r:\A\Src\Tra\Services\Damping\DampingM\res\dumper_s.bmp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CodeDependentDeflections.14.00.vcxproj
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CodeDependentDeflections.14.00.vcxproj.filters
-r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CodeDependentDeflections.14.00.sln
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\__AutoGenerTLH.cpp
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CodeDependentDeflections.idl
 r:\A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CodeDependentDeflections.rc
@@ -35695,7 +35700,9 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\CalculationEnums.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\CheckEWNhandler.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\ConcreteChecksEngineResult.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\dll_spec_ConcreteCheckChecks.h
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\ParallelCheckConcrete.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\ResultShellAccesInterfaces.h
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\SequentialCheckConcrete.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\SFRCDosageInputType.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\PreparedDataSimpleAcces.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\PreparedDataSimpleAcces2D.h
@@ -35711,13 +35718,17 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\SFRC_2D_InternalForces.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\SFRC_2D_InternalForces_parallel.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\SFRC_2D_ShearCheck.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\SFRC_2D_ShearCheck_parallel.h
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\SFRC_2D_StressLimitation.h
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\SFRC_2D_StressLimitation_parallel.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\SFRC_CalculationCommon.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\StdAfx.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\Resource.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\CheckEWNhandler.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\ConcreteChecksEngineResult.cpp
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\ParallelCheckConcrete.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\PreparedDataSimpleAcces.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\PreparedDataSimpleAcces2D.cpp
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\SequentialCheckConcrete.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\SFRCDesignResultLoader.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\SFRCewnStringCodes.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\SFRC_2D_CapacityCheck.cpp
@@ -35730,11 +35741,14 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\SFRC_2D_InternalForces.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\SFRC_2D_InternalForces_parallel.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\SFRC_2D_ShearCheck.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\SFRC_2D_ShearCheck_parallel.cpp
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\SFRC_2D_StressLimitation.cpp
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\SFRC_2D_StressLimitation_parallel.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\SFRC_CalculationCommon.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\StdAfx.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\ConcreteCheckChecks.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\ConcreteCheckResultShell.14.00.vcxproj
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\ConcreteCheckResultShell.14.00.vcxproj.filters
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\ConcreteCheckResultShell.14.00.sln
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\__AutoGenerTLH.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\ConcreteCheckResultShell.idl
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\ConcreteCheckResultShell.rc
@@ -52614,6 +52628,7 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_ForceRecalculation_MSUT\TestForceRe
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_ForceRecalculation_MSUT\TestRecalculatorForce2D.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\ConcreteCheck_CompZone_MSUT.14.00.vcxproj
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\ConcreteCheck_CompZone_MSUT.14.00.vcxproj.filters
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\ConcreteCheck_CompZone_MSUT.14.00.sln
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\ConcreteCheck_CompZone_MSUT.def
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\Constants.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\StdAfx.h
@@ -57244,6 +57259,7 @@ r:\A\Src\Nexis\XEP_NexisMock\EP_NexCheck.rgs
 r:\A\Src\Nexis\XEP_NexisMock\EP_Tvar.rgs
 r:\A\Src\ADMIN\_Build\_GO_Build_ALL.14.00.vcxproj
 r:\A\Src\ADMIN\_Build\_GO_Build_ALL.14.00.vcxproj.filters
+r:\A\Src\ADMIN\_Build\_GO_Build_ALL.14.00.sln
 r:\A\Src\ADMIN\_Build\_GO_Build_ALL.def
 r:\A\Src\Kernel\PostBuildReflection\CreateStringCodeDatabase.bat
 r:\A\Src\Kernel\PostBuildReflection\CreateOpenCheckSystemDB4.bat

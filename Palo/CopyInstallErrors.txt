@@ -26,27 +26,3 @@ Unable to copy: r:\A\Bin\release32\SciaSteelConnectionForTekla.net4.exe
 to: r:\A\Bin\release32\install\SciaSteelConnectionForTekla.net4.exe
 Unable to copy: r:\A\Bin\release32\XEP_ProjectStorageService.exe -createstorage -nofailwhenexist -silentsuccess
 to: r:\A\Bin\release32\install\XEP_ProjectStorageService.exe -createstorage -nofailwhenexist -silentsuccess
-Unable to copy: r:\A\Bin\release32\BinUtil
-to: r:\A\Bin\release32\install\BinUtil
-Unable to copy: r:\A\Bin\release32\EP_TabTemplRC
-to: r:\A\Bin\release32\install\EP_TabTemplRC
-Unable to copy: r:\A\Bin\release32\FEM_Preparation
-to: r:\A\Bin\release32\install\FEM_Preparation
-Unable to copy: r:\A\Bin\release32\CodeDependentDeflections_UT.dll
-to: r:\A\Bin\release32\install\CodeDependentDeflections_UT.dll
-Unable to copy: r:\A\Bin\release32\Scia.ESA.DesignForms
-to: r:\A\Bin\release32\install\Scia.ESA.DesignForms
-Unable to copy: r:\A\Bin\release32\PluginsBIN.exe
-to: r:\A\Bin\release32\install\PluginsBIN.exe
-Unable to copy: r:\A\Bin\release32\ResultsViewerInterop
-to: r:\A\Bin\release32\install\ResultsViewerInterop
-Unable to copy: r:\A\Bin\release32\EP_BasicTypesTests.dll
-to: r:\A\Bin\release32\install\EP_BasicTypesTests.dll
-Unable to copy: r:\A\Bin\release32\XEP_DocumentDefaults
-to: r:\A\Bin\release32\install\XEP_DocumentDefaults
-Unable to copy: r:\A\Bin\release32\_GO_Build_ALL
-to: r:\A\Bin\release32\install\_GO_Build_ALL
-Unable to copy: r:\A\Bin\release32\CodeDependentDeflections_UT_09.dll
-to: r:\A\Bin\release32\install\CodeDependentDeflections_UT_09.dll
-Unable to copy: r:\A\Bin\release32\EP_BasicTypesTests_09.dll
-to: r:\A\Bin\release32\install\EP_BasicTypesTests_09.dll

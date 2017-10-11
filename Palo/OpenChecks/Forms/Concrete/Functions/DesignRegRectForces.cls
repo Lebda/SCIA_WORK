@@ -1153,11 +1153,11 @@ class CheckRectCss {
         IF(η == 0) { 
             →VAL316_055862CalculateConParameterForCheck(); 
         } 
-        IF(COMPARE(m↓Ed←, 0, 6) == 0) { 
+        IF(x↓c← &lt; 0) { 
             
-            z↓c← →VAL027_000375= 0.5*h-β*x↓c←; 
+            z↓c← →VAL027_000375= 0; 
         } ELSE { 
-            IF(m↓Ed← &gt; 0) { 
+            IF(m↓Ed← &gt;= 0) { 
                 
                 z↓c← →VAL316_054845= 0.5*h-β*x↓c←; 
             } ELSE { 
@@ -1274,13 +1274,17 @@ class CheckRectCss {
                 σ↓ct← →VAL027_000161= f↓ctd_L1←; 
             } 
             →VAL316_055187TEXT("Calculation compressive force in concrete"); 
-            IF(x↓c← &gt; h) { 
-                F↓c← →VAL316_055188= MAX(x↓c←*b*η*σ↓cc←, h*b*σ↓cc←); 
-                
+            IF(x↓c← &lt; 0) { 
+                F↓c← →VAL027_000686= 0; 
             } ELSE { 
-                F↓c← →VAL316_055189= x↓c←*b*η*σ↓cc←; 
+                
+                IF(x↓c← &gt; h) { 
+                    F↓c← →VAL316_055188= MAX(x↓c←*b*η*σ↓cc←, h*b*σ↓cc←); 
+                    
+                } ELSE { 
+                    F↓c← →VAL316_055189= x↓c←*b*η*σ↓cc←; 
+                } 
             } 
-            
             IF(bFibre) { 
                 →VAL027_000162TEXT("Calculation tensile force in concrete"); 
                 IF(x↓c← &gt; h) { 
@@ -1289,7 +1293,7 @@ class CheckRectCss {
                     IF(x↓c← &gt; 0) { 
                         F↓ct← →VAL027_000164= (h-x↓c←)*b*η↓t←*σ↓ct←; 
                     } ELSE { 
-                        F↓ct← →VAL027_000279= (h-x↓c←)*b*f↓ctd_L2←; 
+                        F↓ct← →VAL027_000279= h*b*f↓ctd_L2←; 
                         
                     } 
                 } 
@@ -1306,7 +1310,12 @@ class CheckRectCss {
                         z↓ct← →VAL027_000261= x↓c←+(h-x↓c←)*β↓t←-0.5*h; 
                     } 
                 } ELSE { 
-                    z↓ct← →VAL027_000280= 0; 
+                    //                    z↓ct← →VAL027_000280= 0; 
+                    IF(m↓Ed← &gt;= 0) { 
+                        z↓ct← →VAL027_000684= -x↓c←-(h-x↓c←)*β↓t←+0.5*h; 
+                    } ELSE { 
+                        z↓ct← →VAL027_000685= x↓c←+(h-x↓c←)*β↓t←-0.5*h; 
+                    } 
                 } 
             } 
             →VAL316_055202TEXT("Calculation stresses in upper and lower reinforcement"); 
@@ -1703,9 +1712,9 @@ class CheckRectCss {
         } ELSE { 
             x↓c← →VAL316_059062= →VAL316_059041(-n↓Ed←+A↓s-←*σ↓s-←+A↓s+←*σ↓s+←)/(λ*b*η*f↓cd←); 
         } 
-        IF(x↓c← &lt; 0) { 
-            x↓c← →VAL027_000376= 0; 
-        } 
+        //        IF(x↓c← &lt; 0) { 
+        //            x↓c← →VAL027_000376= 0; 
+        //        } 
     } 
     //function for calculation heigth of compresion zone form condition MRd =M
     private void CalculateHeigthCompressionZoneFromMoment(out double x↓c←) { 
@@ -1841,7 +1850,117 @@ class CheckRectCss {
             } 
         } 
     } 
-    
+    //function for calculation heigth of compresion zone form condition MRd/NRd =e
+    private void CalculateHeigthCompressionZoneFromEccentricityNew(out double x↓c←) { 
+        IF(COMPARE(m↓Ed←, 0, 6) == 0) { 
+            IF(n↓Ed← &gt;= 0) { 
+                x↓c← →VAL027_000583= 0; 
+            } ELSE { 
+                x↓c← →VAL027_000584= h/η; 
+            } 
+        } ELSE { 
+            double e →VAL027_000585= 0; 
+            IF(ABS(n↓Ed←) &gt; 0) { 
+                →VAL027_000586TEXT("Calculation eccentricity of force"); 
+                //                double e →VAL027_000600= (ABS(m↓Ed←)/n↓Ed←); 
+                double e →VAL027_000666= (m↓Ed←/n↓Ed←); 
+                IF(!bFibre) { 
+                    IF(m↓Ed← &gt;= 0) { 
+                        double A →VAL027_000678= (-λ*b*η*f↓cd←*β); 
+                        double B →VAL027_000679= λ*b*η*f↓cd←*(0.5*h+e); 
+                        double C →VAL027_000680= -A↓s-←*σ↓s-←*(z↓s-←+e)-A↓s+←*σ↓s+←*(z↓s+←+e); 
+                    } ELSE { 
+                        A →VAL027_000681= (λ*b*η*f↓cd←*β); 
+                        double B →VAL027_000682= λ*b*η*f↓cd←*(-0.5*h+e); 
+                        double C →VAL027_000683= -A↓s-←*σ↓s-←*(z↓s-←+e)-A↓s+←*σ↓s+←*(z↓s+←+e); 
+                    } 
+                    double D →VAL027_000631= B↑2←-4*A*C; 
+                    
+                    IF(D &gt;= 0) { 
+                        double x↓c1← →VAL027_000632= (-B-SQRT(D))/(2*A); 
+                        double x↓c2← →VAL027_000633= (-B+SQRT(D))/(2*A); 
+                        IF(x↓c1← &gt;= 0 &amp;&amp; x↓c2← &gt;= 0) { 
+                            IF(n↓Ed← &gt;= 0) { 
+                                x↓c← →VAL027_000634= MIN(x↓c1←, x↓c2←); 
+                            } ELSE { 
+                                x↓c← →VAL027_000635= MAX(x↓c1←, x↓c2←); 
+                            } 
+                        } ELSE { 
+                            IF(x↓c1← &gt;= 0 &amp;&amp; x↓c2← &lt; 0) { 
+                                x↓c← →VAL027_000636= x↓c1←; 
+                            } ELSE { 
+                                x↓c← →VAL027_000637= x↓c2←; 
+                            } 
+                        } 
+                        //                        double E →VAL027_000638= A*x↓c1←↑2←+B*x↓c1←+C; 
+                        //                        double Fc →VAL027_000639= -λ*b*η*f↓cd←*x↓c1←; 
+                        //                        double Ft →VAL027_000640= (h-x↓c1←)*b*η↓t←*f↓ctd_L1←; 
+                        //                        double zc →VAL027_000641= 0.5*h-β*x↓c1←; 
+                        //                        double zt →VAL027_000642= -x↓c1←-(h-x↓c1←)*β↓t←+0.5*h; 
+                        //                        double nRd →VAL027_000643= Fc+Ft; 
+                        //                        double mRd →VAL027_000644= -Fc*zc-Ft*zt; 
+                        //                        e →VAL027_000645= mRd/nRd; 
+                    } ELSE { 
+                        x↓c← →VAL027_000646= 0; 
+                    } 
+                    
+                } ELSE { 
+                    
+                    IF(m↓Ed← &gt;= 0) { 
+                        double A →VAL027_000596= (-λ*b*η*f↓cd←*β-λ↓t←*b*η↓t←*f↓ctd_L1←*(1-β↓t←)); 
+                        double B →VAL027_000597= λ*b*η*f↓cd←*(0.5*h+e)-λ↓t←*b*η↓t←*f↓ctd_L1←*(2*β↓t←*h-1.5*h-e); 
+                        double C →VAL027_000598= -A↓s-←*σ↓s-←*(z↓s-←+e)-A↓s+←*σ↓s+←*(z↓s+←+e)-λ↓t←*b*η↓t←*f↓ctd_L1←*(-β↓t←*h*h+0.5*h*h+h*e); 
+                    } ELSE { 
+                        A →VAL027_000663= (λ*b*η*f↓cd←*β+λ↓t←*b*η↓t←*f↓ctd_L1←*(1-β↓t←)); 
+                        double B →VAL027_000664= λ*b*η*f↓cd←*(-0.5*h+e)-λ↓t←*b*η↓t←*f↓ctd_L1←*(-2*β↓t←*h+1.5*h-e); 
+                        double C →VAL027_000665= -A↓s-←*σ↓s-←*(z↓s-←+e)-A↓s+←*σ↓s+←*(z↓s+←+e)-λ↓t←*b*η↓t←*f↓ctd_L1←*(β↓t←*h*h-0.5*h*h+h*e); 
+                    } 
+                    double D →VAL027_000599= B↑2←-4*A*C; 
+                    
+                    IF(D &gt;= 0) { 
+                        double x↓c1← →VAL027_000602= (-B-SQRT(D))/(2*A); 
+                        double x↓c2← →VAL027_000603= (-B+SQRT(D))/(2*A); 
+                        IF(x↓c1← &gt;= 0 &amp;&amp; x↓c2← &gt;= 0) { 
+                            IF(n↓Ed← &gt;= 0) { 
+                                x↓c← →VAL027_000647= MIN(x↓c1←, x↓c2←); 
+                            } ELSE { 
+                                x↓c← →VAL027_000648= MAX(x↓c1←, x↓c2←); 
+                            } 
+                        } ELSE { 
+                            IF(x↓c1← &gt;= 0 &amp;&amp; x↓c2← &lt; 0 &amp;&amp; x↓c1← &lt; h) { 
+                                x↓c← →VAL027_000649= x↓c1←; 
+                            } ELSE { 
+                                x↓c← →VAL027_000650= x↓c2←; 
+                            } 
+                        } 
+                        double E →VAL027_000627= A*x↓c1←↑2←+B*x↓c1←+C; 
+                        double Fc →VAL027_000601= -λ*b*η*f↓cd←*x↓c1←; 
+                        double Ft →VAL027_000602= (h-x↓c1←)*b*η↓t←*f↓ctd_L1←; 
+                        double Fsup →VAL027_000667= A↓s+←*σ↓s+←; 
+                        double Fslo →VAL027_000668= A↓s-←*σ↓s-←; 
+                        IF(m↓Ed← &gt;= 0) { 
+                            double zc →VAL027_000603= 0.5*h-β*x↓c1←; 
+                            double zt →VAL027_000604= -x↓c1←-(h-x↓c1←)*β↓t←+0.5*h; 
+                        } ELSE { 
+                            double zc →VAL027_000673= -0.5*h+β*x↓c1←; 
+                            double zt →VAL027_000674= x↓c1←+(h-x↓c1←)*β↓t←-0.5*h; 
+                        } 
+                        
+                        double zslo →VAL027_000669= →VAL027_000670CalculatePODParam.z↓s-←; 
+                        double zsup →VAL027_000671= →VAL027_000672CalculatePODParam.z↓s+←; 
+                        double nRd →VAL027_000605= Fc+Ft+Fsup+Fslo; 
+                        double mRd →VAL027_000606= -Fc*zc-Ft*zt-Fsup*zsup-Fslo*zslo; 
+                        e →VAL027_000607= mRd/nRd; 
+                    } ELSE { 
+                        x↓c← →VAL027_000608= 0; 
+                    } 
+                } 
+            } ELSE { 
+                →VAL027_000609CalculateHeigthCompressionZoneFromForce(out x↓c←); 
+                
+            } 
+        } 
+    } 
     
     //function for calculation heigth of compresion zone form condition MRd/NRd =e
     // Type= 0 -Nu, 1-Mu,2 -NuMu 
@@ -1856,7 +1975,7 @@ class CheckRectCss {
                 →VAL316_059635CalculateHeigthCompressionZoneFromForce(out x); 
             } 
             DEFAULT :  { 
-                →VAL316_059696CalculateHeigthCompressionZoneFromEccentricity(out x); 
+                →VAL316_059696CalculateHeigthCompressionZoneFromEccentricityNew(out x); 
             } 
         } 
     } 
@@ -1987,6 +2106,9 @@ class CheckRectCss {
                 IF(CalcSetting.FormulaIteration) { 
                     →VAL027_000531IterationX(); 
                 } ELSE { 
+                    →VAL027_000651CalculateStrainStress(); 
+                    →VAL027_000652CalculateConDiagramParam(); 
+                    →VAL027_000653CalculateFibreConParameterForCheck(); 
                     →VAL316_059839CalculateHeigthCompressionZoneAccordingType(CalcSetting.IDMethodOfCheck, out x↓c←); 
                 } 
                 IF((A↓s+← &gt; 0 &amp;&amp; m↓Ed← &gt;= 0) || (A↓s-← &gt; 0 &amp;&amp; m↓Ed← &lt; 0)) { 
@@ -2007,6 +2129,9 @@ class CheckRectCss {
                 IF(CalcSetting.FormulaIteration) { 
                     →VAL027_000538IterationX(); 
                 } ELSE { 
+                    →VAL027_000654CalculateStrainStress(); 
+                    →VAL027_000655CalculateConDiagramParam(); 
+                    →VAL027_000656CalculateFibreConParameterForCheck(); 
                     →VAL027_000539CalculateHeigthCompressionZoneAccordingType(CalcSetting.IDMethodOfCheck, out x↓c←); 
                 } 
                 IF((A↓s-← &gt; 0 &amp;&amp; m↓Ed← &gt;= 0) || (A↓s+← &gt; 0 &amp;&amp; m↓Ed← &lt; 0)) { 
@@ -2036,6 +2161,9 @@ class CheckRectCss {
                 IF(CalcSetting.FormulaIteration) { 
                     →VAL027_000540IterationX(); 
                 } ELSE { 
+                    →VAL027_000657CalculateStrainStress(); 
+                    →VAL027_000658CalculateConDiagramParam(); 
+                    →VAL027_000659CalculateFibreConParameterForCheck(); 
                     →VAL027_000541CalculateHeigthCompressionZoneAccordingType(CalcSetting.IDMethodOfCheck, out x↓c←); 
                 } 
                 IF((A↓s+← &gt; 0 &amp;&amp; m↓Ed← &gt;= 0) || (A↓s-← &gt; 0 &amp;&amp; m↓Ed← &lt; 0)) { 
@@ -2056,6 +2184,9 @@ class CheckRectCss {
                 IF(CalcSetting.FormulaIteration) { 
                     →VAL027_000542IterationX(); 
                 } ELSE { 
+                    →VAL027_000660CalculateStrainStress(); 
+                    →VAL027_000661CalculateConDiagramParam(); 
+                    →VAL027_000662CalculateFibreConParameterForCheck(); 
                     →VAL027_000543CalculateHeigthCompressionZoneAccordingType(CalcSetting.IDMethodOfCheck, out x↓c←); 
                 } 
                 
@@ -2207,6 +2338,27 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
+      <Variable Modifier="Public" Name="A↓s+←" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description TranslateID="VARIABLE_A↓s+←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="a↓s←" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description TranslateID="VARIABLE_a↓s←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="A↓s-←" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description TranslateID="VARIABLE_A↓s-←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="ArrayReinf" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -2237,52 +2389,52 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Aslo" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="Aslo" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="Asup" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="Asup" ESA_ID="" Type="Double" Value="335e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="b" ESA_ID="" Type="Double" Precision="1">
+      <Variable Modifier="Public" Name="b" ESA_ID="" Type="Double" Value="1" Precision="1">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="bCalcByFormula" ESA_ID="" Type="Boolean">
+      <Variable Modifier="Public" Name="bCalcByFormula" ESA_ID="" Type="Boolean" Value="1">
         <Description TranslateID="VARIABLE_bCalcByFormula">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="bFibre" ESA_ID="" Type="Boolean">
+      <Variable Modifier="Public" Name="bFibre" ESA_ID="" Type="Boolean" Value="1">
         <Description TranslateID="VARIABLE_bFibre">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="bFibreConcrete" ESA_ID="" Type="Boolean">
+      <Variable Modifier="Public" Name="bFibreConcrete" ESA_ID="" Type="Boolean" Value="1">
         <Description TranslateID="VARIABLE_bFibreConcrete">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="bFormulaIteration" ESA_ID="" Type="Boolean">
+      <Variable Modifier="Public" Name="bFormulaIteration" ESA_ID="" Type="Boolean" Value="1">
         <Description TranslateID="VARIABLE_bFormulaIteration">
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="bCheckStrains" ESA_ID="" Type="Boolean">
+      <Variable Modifier="Public" Name="bCheckStrains" ESA_ID="" Type="Boolean" Value="0">
         <Description TranslateID="VARIABLE_bCheckStrains">
           <ENU>
           </ENU>
@@ -2306,7 +2458,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="clo" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="clo" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2337,12 +2489,19 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="cup" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="cup" ESA_ID="" Type="Double" Value="43e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
+      </Variable>
+      <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description TranslateID="VARIABLE_d">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="DesignDefaults" ESA_ID="" Type="Object">
         <Description>
@@ -2350,28 +2509,28 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="dslo" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="dslo" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="dsup" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="dsup" ESA_ID="" Type="Double" Value="8e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="fcto_L1" ESA_ID="" Type="Double" Precision="-4">
+      <Variable Modifier="Public" Name="fcto_L1" ESA_ID="" Type="Double" Value="1.2433e6" Precision="-4">
         <Description TranslateID="VARIABLE_fcto_L1">
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="fcto_L2" ESA_ID="" Type="Double" Precision="-4">
+      <Variable Modifier="Public" Name="fcto_L2" ESA_ID="" Type="Double" Value="1.6989e6" Precision="-4">
         <Description TranslateID="VARIABLE_fcto_L2">
           <ENU>
           </ENU>
@@ -2402,27 +2561,41 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Precision="1">
+      <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Value="200e-3" Precision="1">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="IDMethodOfCheck" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Value="2" Precision="2">
+        <Description TranslateID="VARIABLE_i">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="IDMethodOfCheck" ESA_ID="" Type="Double" Value="2" Precision="2">
         <Description TranslateID="VARIABLE_IDMethodOfCheck">
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="IsAccidental" ESA_ID="" Type="Boolean">
+      <Variable Modifier="Public" Name="IsAccidental" ESA_ID="" Type="Boolean" Value="0">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="m↓Rd_formula←" ESA_ID="Result.2" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="m↓Ed←" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description TranslateID="VARIABLE_m↓Ed←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="m↓Rd_formula←" ESA_ID="Result.2" Type="Double" Value="11143.93" Precision="2">
         <Description TranslateID="VARIABLE_m↓Rd_formula←">
           <ENU>
           </ENU>
@@ -2430,7 +2603,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="m↓Rd_toolbox←" ESA_ID="Result.4" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="m↓Rd_toolbox←" ESA_ID="Result.4" Type="Double" Value="11895.96" Precision="2">
         <Description TranslateID="VARIABLE_m↓Rd_toolbox←">
           <ENU>
           </ENU>
@@ -2438,14 +2611,28 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="mEd" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="mEd" ESA_ID="" Type="Double" Value="6340" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓Rd_formula←" ESA_ID="Result.1" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="n↓Ed←" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description TranslateID="VARIABLE_n↓Ed←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="n↓Rd,bal←" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description TranslateID="VARIABLE_n↓Rd,bal←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="n↓Rd_formula←" ESA_ID="Result.1" Type="Double" Value="152157.9" Precision="2">
         <Description TranslateID="VARIABLE_n↓Rd_formula←">
           <ENU>
           </ENU>
@@ -2453,7 +2640,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓Rd_toolbox←" ESA_ID="Result.3" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="n↓Rd_toolbox←" ESA_ID="Result.3" Type="Double" Value="161842.7" Precision="2">
         <Description TranslateID="VARIABLE_n↓Rd_toolbox←">
           <ENU>
           </ENU>
@@ -2461,7 +2648,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="nEd" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="nEd" ESA_ID="" Type="Double" Value="86640" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2485,6 +2672,90 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           <ENU>
           </ENU>
         </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="SumAs" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description TranslateID="VARIABLE_SumAs">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="x↓bal1←" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description TranslateID="VARIABLE_x↓bal1←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="x↓bal2←" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description TranslateID="VARIABLE_x↓bal2←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="x↓balft←" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description TranslateID="VARIABLE_x↓balft←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="x↓c←" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description TranslateID="VARIABLE_x↓c←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="ε↓c23←" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description TranslateID="VARIABLE_ε↓c23←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="ε↓cc←" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description TranslateID="VARIABLE_ε↓cc←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="ξ↓bal1←" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description TranslateID="VARIABLE_ξ↓bal1←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="ξ↓bal1c←" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description TranslateID="VARIABLE_ξ↓bal1c←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="ξ↓bal2←" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description TranslateID="VARIABLE_ξ↓bal2←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="ξ↓bal2t←" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description TranslateID="VARIABLE_ξ↓bal2t←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="ξ↓balft←" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description TranslateID="VARIABLE_ξ↓balft←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>
     <DrawingGroups />
@@ -6260,6 +6531,710 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="VAL027_000582">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000583">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000584">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000585">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000586">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000587">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000588">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000589">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000590">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000591">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000592">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000593">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000594">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000595">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000596">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000597">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000598">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000599">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000600">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000601">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000602">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000603">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000604">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000605">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000606">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000607">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000608">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000609">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000627">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000628">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000629">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000630">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000631">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000632">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000633">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000634">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000635">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000636">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000637">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000638">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000639">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000640">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000641">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000642">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000643">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000644">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000645">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000646">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000647">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000648">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000649">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000650">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000651">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000652">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000653">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000654">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000655">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000656">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000657">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000658">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000659">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000660">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000661">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000662">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000663">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000664">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000665">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000666">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000667">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000668">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000669">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000670">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000671">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000672">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000673">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000674">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000675">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000676">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000677">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000678">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000679">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000680">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000681">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000682">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000683">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000684">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000685">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000686">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL027_000687">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -12518,7 +13493,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           </Items>
         </Data>
       </TCustomLibrary>
-      <TCustomLibrary Name="TCustomLibrary" ID="6" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="8" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="REINF.EC" DataFile="EC_Reinf.xml" Collapsed="False" UseCombo="False" Category="Horizontal top branch" Item="B 500 A">
+      <TCustomLibrary Name="TCustomLibrary" ID="6" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="8" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="REINF.EC" DataFile="EC_Reinf.xml" Collapsed="True" UseCombo="False" Category="Horizontal top branch" Item="B 500 B">
         <Data>
           <Header>
             <PropertySet Symbol="f↓yk←" ESA_ID="fyk" Unit="MPa" Type="Numeric" />
@@ -12565,27 +13540,27 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           <Items>
             <Item>
               <P>Horizontal top branch</P>
-              <P>B 500 A</P>
+              <P>B 500 B</P>
               <P>500</P>
-              <P>1.05</P>
-              <P>525</P>
+              <P>1.08</P>
+              <P>540</P>
               <P>434.78</P>
-              <P>0.025</P>
-              <P>0.0225</P>
+              <P>0.05</P>
+              <P>0.045</P>
               <P>0.002173913</P>
               <P>200000</P>
-              <P>A</P>
+              <P>B</P>
               <P>false</P>
-              <P>-0.025;-434.78;</P>
+              <P>-0.050;-434.78;</P>
               <P>-0.0022;-434.78;</P>
               <P>0;0;</P>
               <P>0.0022;434.78;</P>
-              <P>0.025;434.78;</P>
+              <P>0.050;434.78;</P>
             </Item>
           </Items>
         </Data>
       </TCustomLibrary>
-      <TCustomLibrary Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="CONCRETE.EC" DataFile="EC_Concrete.xml" Collapsed="False" UseCombo="False" Category="Bilinear" Item="C 30/37">
+      <TCustomLibrary Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="CONCRETE.EC" DataFile="EC_Concrete.xml" Collapsed="True" UseCombo="False" Category="Bilinear" Item="C 30/37">
         <Data>
           <Header>
             <PropertySet Symbol="f↓ck←" ESA_ID="fck" Unit="MPa" Type="Numeric" />
@@ -12704,7 +13679,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
       <ENU>"To increase dimensions of cross-section or quality of used materials"</ENU>
     </Item>
     <Item TranslateID="TEXT_">
-      <ENU>"Calculation heigth of compresion zone"</ENU>
+      <ENU>"Check of longitudinal reinforcment"</ENU>
     </Item>
     <Item TranslateID="TEXT_VAL027_000043">
       <ENU>"Concrete tensile area"</ENU>
@@ -12749,6 +13724,9 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
     </Item>
     <Item TranslateID="TEXT_VAL027_000388">
       <ENU>"Calculation of minimal resistances"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_VAL027_000586">
+      <ENU>"Calculation eccentricity of force"</ENU>
     </Item>
     <Item TranslateID="TEXT_VAL316_000341">
       <ENU>"x = " &amp; Val(x*1000, 2) &amp; "mm ≥ x↓bal1← = " &amp; Val(x↓bal1←*1000, 2) &amp; "mm =&gt; AreaI"</ENU>

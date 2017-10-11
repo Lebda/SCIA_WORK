@@ -47,6 +47,10 @@
 		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
 		<ResourceId>128</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_internal_forces_2d_basic_centroid_group}</StringId>
+		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
+		<ResourceId>107</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_internal_forces_2d_design_surface_brief_table_name}</StringId>
 		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
 		<ResourceId>105</ResourceId>
@@ -54,10 +58,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_internal_forces_2d_basic_surface_brief_table_name}</StringId>
 		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
 		<ResourceId>103</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_internal_forces_2d_basic_centroid_group}</StringId>
-		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
-		<ResourceId>107</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_dosage_design_first_2d_brief_table_name}</StringId>
 		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>

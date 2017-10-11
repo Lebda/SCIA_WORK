@@ -43,10 +43,6 @@
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
 		<ResourceId>109</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2en7_f4.2edescription}</StringId>
-		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
-		<ResourceId>119</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2ew7_f1.2esolution}</StringId>
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
 		<ResourceId>122</ResourceId>
@@ -82,6 +78,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2ew7_f3.2edescription}</StringId>
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
 		<ResourceId>123</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2en7_f4.2edescription}</StringId>
+		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
+		<ResourceId>119</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2ew7_f4.2esolution}</StringId>
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
