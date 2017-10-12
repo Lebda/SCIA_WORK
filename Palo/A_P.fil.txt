@@ -52612,6 +52612,7 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_Common_MSUT\ConcreteCheck_Common_MS
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_Common_MSUT\TestCheckDiagram.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_Common_MSUT\TestCheckMaterial.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_Common_MSUT\TestCheckReinfBars.cpp
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_Common_MSUT\TestNACalculationsRest01.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_Common_MSUT\TestNACalculations_EN.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_Common_MSUT\TestNACalculations_MS_NBN_NEN_NF_SFS_SS.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_Common_MSUT\TestNACalculations_NS_BS_DIN_IS_LU_UNE.cpp
@@ -52637,6 +52638,8 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\ConcreteCheck_CompZon
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestCompZoneFormulaCalculations.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestCompZoneFormulaCalculator.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestCompZoneFormulaStrategy.cpp
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestCrackCalculations.cpp
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestCreepCalculations.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestResistanceResponseCalculations.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestResistanceResponseCalculator.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestResistanceResponseFormulaCalculator.cpp
@@ -52644,6 +52647,7 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestResistanceRespons
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestResistanceResponseToolboxNoReinf.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestShearCheckCalculations.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestShearCheckStrategy2D.cpp
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestStressLimitationCalculation.cpp
 r:\A\Src\TRE\_UnitTests\UT_TRE_CMQuestion\UT_TRE_CMQuestion.14.00.vcxproj
 r:\A\Src\TRE\_UnitTests\UT_TRE_CMQuestion\UT_TRE_CMQuestion.14.00.vcxproj.filters
 r:\A\Src\TRE\_UnitTests\UT_TRE_CMQuestion\UT_TRE_CMQuestion.def
