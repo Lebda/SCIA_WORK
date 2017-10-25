@@ -1276,6 +1276,8 @@ DocumentDefaults\EP_MaterialDIN.EP_MaterialSteelDIN-(Composed) [Default].TLX
 DocumentDefaults\EP_MaterialDIN.EP_MaterialSteelDIN-(Composed) [Detailed].TLX
 DocumentDefaults\EP_MaterialEC.10.00.EP_MaterialMasonry_EN-(Composed) [Default].TLX
 DocumentDefaults\EP_MaterialEC.10.00.EP_MaterialMasonry_EN-(Composed) [Detailed].TLX
+DocumentDefaults\EP_MaterialEC.14.00.EP_MaterialFibreCrtEC-(Composed) [Default].TLX
+DocumentDefaults\EP_MaterialEC.14.00.EP_MaterialFibreCrtEC-(Composed) [Detailed].TLX
 DocumentDefaults\EP_MaterialEC.EP_MaterialAluminiun_EN-(Composed) [Default].TLX
 DocumentDefaults\EP_MaterialEC.EP_MaterialAluminiun_EN-(Composed) [Detail].TLX
 DocumentDefaults\EP_MaterialEC.EP_MaterialCrtEC-(Composed) [Default].TLX
@@ -1636,6 +1638,7 @@ DocumentDefaults\{5CC5F309-8E96-4C58-B6BD-7222D4CFD45F} [Default].TLX
 DocumentDefaults\{5CF79027-A3EE-4B5E-9E3E-BC27FDD5D71D} [Default].TLX
 DocumentDefaults\{5D7CACFE-1593-49A3-95BC-41333ACA7DAB} [Default].TLX
 DocumentDefaults\{5E7DADB7-5A0A-4302-0E7A-873F48BF294A} [Default].TLX
+DocumentDefaults\{5F9AD777-B41D-48DE-8ECD-DB6DFA92AEFA}-(ResultMain) [Default].TLX
 DocumentDefaults\{603C1652-294F-4DC0-96D6-66FEF44341B7}-(IPFile) [Default].TLX
 DocumentDefaults\{610435EA-A617-4AB9-BC17-453315B71D82} [Default].TLX
 DocumentDefaults\{61173E18-E1AF-E23F-65ED-8064CEF48F7F}-(IPFile) [Default].TLX
@@ -1838,6 +1841,7 @@ DocumentDefaults\{E3007829-0307-EE0A-571A-4AB745310F59}-(IPFile) [Default].TLX
 DocumentDefaults\{E37E1E36-9E0B-7315-B0BF-7D4C50ABA291}-(IPFile) [Default].TLX
 DocumentDefaults\{E3B7419B-406B-47BE-9CDC-445042EBF4E7} [Default].TLX
 DocumentDefaults\{E4055CCB-7DCB-4C3F-F10B-CCBD6F91D13E}-(IPFile) [Default].TLX
+DocumentDefaults\{E43AE7A0-D768-4871-BCF2-70D5C372ADBC}-(ResultMain) [Default].TLX
 DocumentDefaults\{E44FA895-7FA8-43BC-A0C9-77060B8645F5} [Default].TLX
 DocumentDefaults\{E595DBB8-AE80-BF25-FA1F-1245400BB854} [Default].TLX
 DocumentDefaults\{E5A95615-30AE-4DAF-8BA6-85F0F3454A7F} [Default].TLX

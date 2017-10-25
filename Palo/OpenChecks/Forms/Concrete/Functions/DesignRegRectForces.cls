@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="7c19ad8f-a599-452e-ac23-49c245a8813f">
   <CodeEditor>
-    <SourceCode Collapsed="50|336|455|705|714|724|739|760|776" BreakPoints="">
+    <SourceCode Collapsed="50|337|469|719|728|738|753|774|790" BreakPoints="">
 class CalculateParamForDesignCheck { 
     //@Variables
     →VAL316_021165object ConMat; //material of concrete
@@ -325,6 +325,7 @@ class DesignRectCss {
     →val316_063717private →VAL316_043649double f↓yd+←; //design yield strength of  upper reinforcement
     →val316_063718private →VAL316_043650double f↓yd-←; //design yield strength of  lower reinforcement
     →val316_063719private →VAL316_022789double ε↓c23←; //strain of reinforcement at reaching value fcd
+    →val106_000001private →VAL106_000002double ε↓cu23←; //maximum strain in concrete
     →VAL316_016883double As_lo_tot; //final area of reinforcement at lower surface for all forces
     →VAL316_016884double As_up_tot; //final area of reinforcement at upper surface for all forces
     →VAL316_043750double Ast_tot; //final tensile area of reinforcement
@@ -363,6 +364,7 @@ class DesignRectCss {
         E↓s+← →VAL316_015837= →VAL316_022783CalculatePODParam.E↓s+←; 
         E↓s-← →VAL316_026998= →VAL316_026999CalculatePODParam.E↓s-←; 
         ε↓c23← →VAL316_022823= →VAL316_022801CalculatePODParam.ε↓c23←; 
+        ε↓cu23← →VAL106_000006= →VAL106_000005CalculatePODParam.ε↓cu23←; 
         RegReinfArea →VAL316_041487= new object[]; 
         ArrayReqReinf →VAL316_043199= new object[]; 
         As_lo_tot →VAL316_016903= 0; 
@@ -420,7 +422,7 @@ class DesignRectCss {
                     //                    x →VAL316_021286= ((h-d↓+←)/(2*β))*(1+sqrt(1-4*β*((abs(m↓Ed←)+n↓Ed←*(d↓+←-0.5*h))/(b*(h-d↓+←)↑2←*η*f↓cd←)))); 
                     x →VAL316_021287= (a↓s←/(2*β))*(1+SQRT(1-4*β*((ABS(m↓Ed←)+n↓Ed←*(0.5*h-a↓s←))/(b*a↓s←↑2←*η*f↓cd←)))); 
                 } ELSE { 
-                    x →VAL316_021288= -999; 
+                    x →VAL316_021288= x↓bal1←; 
                 } 
                 //                x →VAL316_021289= (h-d↓+←)*(1+SQRT(1-4*β*(ABS(m↓z←)+n↓z←*(d↓+←-0.5*h))/(b*(h-d↓+←)↑2←*η*f↓cd←)))/(2*β); 
                 
@@ -432,9 +434,15 @@ class DesignRectCss {
                     x →VAL316_021293= ((d)/(2*β))*(1-SQRT(1-4*β*((ABS(m↓Ed←)-n↓Ed←*(d-0.5*h))/(b*(d)↑2←*η*f↓cd←)))); 
                     //                    x →VAL316_021294= d↓-←*(1-SQRT(1-4*β*(ABS(m↓z←)-n↓z←*(d↓-←-0.5*h))/(b*(d↓-←)↑2←*η*f↓cd←)))/(2*β); 
                 } ELSE { 
-                    x →VAL316_021295= -999; 
+                    x →VAL316_021295= x↓bal1←; 
                 } 
             } 
+        } 
+        IF(x &gt; 0 &amp;&amp; x &gt; x↓bal1←) { 
+            
+            →VAL106_000010TEXT("x =" &amp; Val(x*1000, 2) &amp; " mm &gt; x↓bal← =" &amp; Val(x↓bal1←*1000, 2) &amp; "mm =&gt;stress in tensile reinforcement does not reach value f↓yd←/E↓s← =&gt;"); 
+            x →VAL106_000013= x↓bal1←; 
+            
         } 
         →VAL316_040680TEXT("Calculation inner lever arm"); 
         IF(x &gt;= h || x &lt;= 0) { 
@@ -451,7 +459,13 @@ class DesignRectCss {
                 z↓+← →VAL316_021304= z-z↓-←; 
             } 
         } 
-        PodParam →VAL316_040744= new Structure("x", x, "d", d, "z", z, "z_neg", z↓-←, "z_pos", z↓+←); 
+        double eps_z →VAL106_000007= 0; 
+        IF(x != 0 || x != -999) { 
+            eps_z →VAL106_000008= -ε↓cu23←/x; 
+        } 
+        double eps_0 →VAL106_000009= -eps_z*(0.5*h-x); 
+        PodParam →VAL106_000014= new Structure("x", x, "d", d, "z", z, "z_neg", z↓-←, "z_pos", z↓+←, "eps0", eps_0, "epsY", 0, "epsZ", eps_z); 
+        
     } 
     
     
@@ -2603,7 +2617,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="m↓Rd_toolbox←" ESA_ID="Result.4" Type="Double" Value="11895.96" Precision="2">
+      <Variable Modifier="Public" Name="m↓Rd_toolbox←" ESA_ID="Result.4" Type="Double" Value="11179.52" Precision="2">
         <Description TranslateID="VARIABLE_m↓Rd_toolbox←">
           <ENU>
           </ENU>
@@ -2640,7 +2654,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓Rd_toolbox←" ESA_ID="Result.3" Type="Double" Value="161842.7" Precision="2">
+      <Variable Modifier="Public" Name="n↓Rd_toolbox←" ESA_ID="Result.3" Type="Double" Value="151874.4" Precision="2">
         <Description TranslateID="VARIABLE_n↓Rd_toolbox←">
           <ENU>
           </ENU>
@@ -7236,6 +7250,86 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
       </VC>
       <VC ID="VAL027_000687">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="val106_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000005">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000006">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000007">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000008">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000009">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000010">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000013">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000014">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -13493,7 +13587,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           </Items>
         </Data>
       </TCustomLibrary>
-      <TCustomLibrary Name="TCustomLibrary" ID="6" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="8" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="REINF.EC" DataFile="EC_Reinf.xml" Collapsed="True" UseCombo="False" Category="Horizontal top branch" Item="B 500 B">
+      <TCustomLibrary Name="TCustomLibrary" ID="6" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="8" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="REINF.EC" DataFile="EC_Reinf.xml" Collapsed="False" UseCombo="False" Category="Horizontal top branch" Item="B 500 A">
         <Data>
           <Header>
             <PropertySet Symbol="f↓yk←" ESA_ID="fyk" Unit="MPa" Type="Numeric" />
@@ -13540,27 +13634,27 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           <Items>
             <Item>
               <P>Horizontal top branch</P>
-              <P>B 500 B</P>
+              <P>B 500 A</P>
               <P>500</P>
-              <P>1.08</P>
-              <P>540</P>
+              <P>1.05</P>
+              <P>525</P>
               <P>434.78</P>
-              <P>0.05</P>
-              <P>0.045</P>
+              <P>0.025</P>
+              <P>0.0225</P>
               <P>0.002173913</P>
               <P>200000</P>
-              <P>B</P>
+              <P>A</P>
               <P>false</P>
-              <P>-0.050;-434.78;</P>
+              <P>-0.025;-434.78;</P>
               <P>-0.0022;-434.78;</P>
               <P>0;0;</P>
               <P>0.0022;434.78;</P>
-              <P>0.050;434.78;</P>
+              <P>0.025;434.78;</P>
             </Item>
           </Items>
         </Data>
       </TCustomLibrary>
-      <TCustomLibrary Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="CONCRETE.EC" DataFile="EC_Concrete.xml" Collapsed="True" UseCombo="False" Category="Bilinear" Item="C 30/37">
+      <TCustomLibrary Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="CONCRETE.EC" DataFile="EC_Concrete.xml" Collapsed="False" UseCombo="False" Category="Bilinear" Item="C 30/37">
         <Data>
           <Header>
             <PropertySet Symbol="f↓ck←" ESA_ID="fck" Unit="MPa" Type="Numeric" />
@@ -13727,6 +13821,9 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
     </Item>
     <Item TranslateID="TEXT_VAL027_000586">
       <ENU>"Calculation eccentricity of force"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_VAL106_000010">
+      <ENU>"x =" &amp; Val(x*1000, 2) &amp; " mm &gt; x↓bal← =" &amp; Val(x↓bal1←*1000, 2) &amp; "mm =&gt;stress in tensile reinforcement does not reach value f↓yd←/E↓s← =&gt;"</ENU>
     </Item>
     <Item TranslateID="TEXT_VAL316_000341">
       <ENU>"x = " &amp; Val(x*1000, 2) &amp; "mm ≥ x↓bal1← = " &amp; Val(x↓bal1←*1000, 2) &amp; "mm =&gt; AreaI"</ENU>

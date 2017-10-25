@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="5db01eb6-bb09-4279-ae26-6181bc07f401">
   <CodeEditor>
-    <SourceCode Collapsed="25|54|75|98|124|163|180" BreakPoints="">bool ValidateInput(object Input) { 
+    <SourceCode Collapsed="25|58|79|102|128|167|184" BreakPoints="">bool ValidateInput(object Input) { 
     ConstrType →INI400_000008= Input.Get("ConstrType"); //Construction type; 0 = Slabs with a transverse redistribution effect in the case of load considered, 1 = for beams and slabs other than before, 2 = for walls
     d →INI400_000102= Input.Get("d"); //Effective height of Css
     f↓ck← →INI400_000107= Input.Get("f_ck"); //Characteristic compressive cylinder strength
@@ -43,7 +43,11 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
             } 
         } 
         →INI400_005223TEXT(Description("v↓min←")); 
-        v↓min← →INI400_005224= 0.035*k↑3/2←*(CUnit(f↓ck←, "MPa"))↑1/2← @REF("(6.3N)"); 
+        IF(Beam) { 
+            v↓min← →INI400_005224= 0.035*k↑3/2←*(CUnit(f↓ck←, "MPa"))↑1/2← @REF("(6.3N)"); 
+        } ELSE { 
+            v↓min← →KRS106_000012= 1.25*0.035*k↑3/2←*(CUnit(f↓ck←, "MPa"))↑1/2← @REF("(NBN 6.3)"); 
+        } 
         →INI400_005225TEXT(Description("k↓1←")); 
         IF(Beam) { 
             k↓1← →INI400_005226= IO.SetupNA.EC_1992_1_1.C_6_2_2_1.k_1; 
@@ -798,6 +802,14 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000012">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="200" Y="29" Hor="0" Ver="4" SpX="10" SpY="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="29" Hor="0" Ver="4" SpX="10" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="29" Hor="0" Ver="4" SpX="10" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="86.4" Hor="1" Ver="4" SpX="15" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="822" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
       </VC>
       <VC ID="KRS116_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Tahoma|13|0|2" Font2="Tahoma|13|0|2" EqStyle="23" />

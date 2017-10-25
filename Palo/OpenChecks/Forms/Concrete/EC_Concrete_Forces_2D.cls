@@ -474,6 +474,7 @@ private void SetRecalcForcesPOD() {
                 1-((ε↓cu2←↑2←/2-ε↓c2←↑2←/6)/(ε↓cu2←↑2←-ε↓cu2←*ε↓c2←/2)) : 
                 1-((ε↓cu2←↑2←/2-ε↓c2←↑2←/((ConMat.n+1)*(ConMat.n+2)))/(ε↓cu2←↑2←-ε↓cu2←*ε↓c2←/(ConMat.n+1))); 
                 double ξ↓bal← →INI400_015659= ε↓cu2←/(ε↓cu2←+(f↓yk←/(γ↓S←*E↓s←))); 
+                double x↓bal← →VAL106_000011= ξ↓bal←*d; 
                 double&lt;kN/m,0&gt; n↓c,bal← →INI400_015660= -ξ↓bal←*d*b*η*f↓cd←; 
                 
                 →INI400_016374double&lt;mm,0&gt; x; 
@@ -489,10 +490,15 @@ private void SetRecalcForcesPOD() {
                         x →INI400_015663= ((d↓-←)/(2*β))*(1-SQRT(1-4*β*((ABS(m↓z←)-n↓z←*(d↓-←-0.5*h))/(b*(d↓-←)↑2←*η*f↓cd←)))); 
                         //                    x →INI400_015664= d↓-←*(1-SQRT(1-4*β*(ABS(m↓z←)-n↓z←*(d↓-←-0.5*h))/(b*(d↓-←)↑2←*η*f↓cd←)))/(2*β); 
                     } ELSE { 
-                        x →INI400_015665= 0; 
+                        x →INI400_015665= x↓bal←; 
                     } 
                 } 
-                
+                IF(x &gt; 0 &amp;&amp; x &gt; x↓bal←) { 
+                    
+                    →VAL106_000010TEXT("x =" &amp; Val(x*1000, 2) &amp; " mm &gt; x↓bal← =" &amp; Val(x↓bal←*1000, 2) &amp; "mm =&gt;stress in tensile reinforcement does not reach value f↓yd←/E↓s← =&gt;"); 
+                    x →VAL106_000008= x↓bal←; 
+                    
+                } 
                 →INI400_016375double&lt;mm,0&gt; z; 
                 →INI400_016376double&lt;mm,0&gt; z↓+←; 
                 →INI400_016377double&lt;mm,0&gt; z↓-←; 
@@ -3006,6 +3012,30 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="VAL106_000008">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000010">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000011">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
@@ -4104,6 +4134,9 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
     </Item>
     <Item ID="TEXT_VAL106_000003">
       <ENU>"x = " &amp; Val(x*1000, 2) &amp; " mm &lt; 0 =&gt; "</ENU>
+    </Item>
+    <Item TranslateID="TEXT_VAL106_000010">
+      <ENU>"x =" &amp; Val(x*1000, 2) &amp; " mm &gt; x↓bal← =" &amp; Val(x↓bal←*1000, 2) &amp; "mm =&gt;stress in tensile reinforcement does not reach value f↓yd←/E↓s← =&gt;"</ENU>
     </Item>
   </Texts>
 </Root>

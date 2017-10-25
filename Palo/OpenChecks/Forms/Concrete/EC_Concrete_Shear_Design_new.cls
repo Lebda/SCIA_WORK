@@ -310,7 +310,6 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0 &amp;&amp; COMPARE(V↓Ed←, 0, 6) == 0) {
         f↓ctd← →INI400_005748= α↓ct←*f↓ctk005←/γ↓C← @REF("(3.15, 3.16)"); 
     } 
     IF(False) { 
-        
         bPOD →INI400_009233= False; 
         →INI400_007697BLOCK("Calculation of shear resistances") { 
             string DescriptionN →INI400_006444= AddDescription &amp; TR("Design was not done, because plane of equilibrim was not found."); 
@@ -332,13 +331,17 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0 &amp;&amp; COMPARE(V↓Ed←, 0, 6) == 0) {
                 double z↓bw← →INI400_008153= ObjBw.zbw; 
                 b↓w← →INI400_008154= ObjBw.bw; 
                 →INI400_001360TEXT("b↓w← = " &amp; Val(1000*b↓w←, 0) &amp; " mm"); 
+                
+                →KRS106_000014Functions1D_ShearAndTorsion.→KRS106_000010bwModifWarning("", AddDescription, IndexEWN, Number↓W←, →KRS106_000012obEWN, ObjBw); //warning info, if b↓w← is modified
             } 
+            //Note info about calculation b↓w←
             string DescriptionN →INI400_006450= AddDescription &amp; TR("Value b↓w← is calculated as the smallest width of cross-section in tensile area perpendicular to resultant of shear force."); 
             string SolutionN →INI400_006451= TR(""); 
             string TypeN →INI400_006452= TR("Note"); 
             →INI400_006453Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
             Number↓N← →INI400_006454= Number↓N←+1; 
             →INI400_006455obEWN.Add(new Structure("Index", "N" &amp; IndexEWN &amp; "/" &amp; Number↓N←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
+            
             
             →INI400_001828TEXT(Description("b↓w1←")); 
             object ObjBw1 →INI400_008145= Functions1D_ShearAndTorsion.Function_bw(CssID, ForcesID, 1); 
@@ -348,6 +351,8 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0 &amp;&amp; COMPARE(V↓Ed←, 0, 6) == 0) {
             b↓w1← →INI400_008148= ObjBw1.bw; 
             
             →INI400_001829TEXT("b↓w1← = " &amp; Val(1000*b↓w1←, 0) &amp; " mm"); 
+            
+            //Note info about calculation b↓w1←
             string DescriptionN →INI400_006456= AddDescription &amp; TR("Value b↓w1← is calculated as the smallest width of cross-section between tension and compression chord perpendicular to resultant of shear force."); 
             string SolutionN →INI400_008149= TR(""); 
             string TypeN →INI400_008150= TR("Note"); 
@@ -355,6 +360,7 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0 &amp;&amp; COMPARE(V↓Ed←, 0, 6) == 0) {
             Number↓N← →INI400_006460= Number↓N←+1; 
             →INI400_006461obEWN.Add(new Structure("Index", "N" &amp; IndexEWN &amp; "/" &amp; Number↓N←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
             
+            →KRS106_000015Functions1D_ShearAndTorsion.→KRS106_000011bwModifWarning("↓1←", AddDescription, IndexEWN, Number↓W←, →KRS106_000013obEWN, ObjBw1); //warning info, if b↓w1← is modified
             
             →INI400_003081TEXT(Description("h")); 
             object ConcreteParam →INI400_008139= new Functions1D_General.ConCssParameters(); 
@@ -9869,6 +9875,22 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000014">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000015">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
       <VC ID="KRS116_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

@@ -25689,7 +25689,6 @@ r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_AddDataCSEModificator.cpp
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_CSEModificator.cpp
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_DataReaderFromCSE2FactoryCSE.cpp
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_ShearCalculator.cpp
-r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_ShearCalculatorResults.cpp
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_Stirrup.cpp
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_StirrupCreator.cpp
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_StripeData.cpp
@@ -29071,7 +29070,10 @@ r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.idl
 r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.rc
 r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.def
 r:\A\Src\Checks\EP_CheckDataProvider\CombiFromCombiHash.h
+r:\A\Src\Checks\EP_CheckDataProvider\SlsCombinationsConvertor.h
+r:\A\Src\Checks\EP_CheckDataProvider\CombinationsConvertor.h
 r:\A\Src\Checks\EP_CheckDataProvider\DesignReinforcementParser.h
+r:\A\Src\Checks\EP_CheckDataProvider\MapOneDangerCombiInfo.h
 r:\A\Src\Checks\EP_CheckDataProvider\MeshInformationReader.h
 r:\A\Src\Checks\EP_CheckDataProvider\FemMeshReader.h
 r:\A\Src\Checks\EP_CheckDataProvider\PrepareDataLLR_CombinationFactors.h
@@ -29193,8 +29195,11 @@ r:\A\Src\Checks\EP_CheckDataProvider\SetupValues.h
 r:\A\Src\Checks\EP_CheckDataProvider\SMinMaxForces2D.h
 r:\A\Src\Checks\EP_CheckDataProvider\WholeCheckCommonData.h
 r:\A\Src\Checks\EP_CheckDataProvider\CombiFromCombiHash.cpp
+r:\A\Src\Checks\EP_CheckDataProvider\SlsCombinationsConvertor.cpp
+r:\A\Src\Checks\EP_CheckDataProvider\CombinationsConvertor.cpp
 r:\A\Src\Checks\EP_CheckDataProvider\DesignReinforcementParser.cpp
 r:\A\Src\Checks\EP_CheckDataProvider\FemMeshReader.cpp
+r:\A\Src\Checks\EP_CheckDataProvider\MapOneDangerCombiInfo.cpp
 r:\A\Src\Checks\EP_CheckDataProvider\PrepareDataLLR_CombinationFactors.cpp
 r:\A\Src\Checks\EP_CheckDataProvider\StdAfx.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteChecksEsa\EP_SmartQuantity.cpp
@@ -35756,6 +35761,7 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\ConcreteCheckResultShell
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\CBekaertTableCreator.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\dll_spec_ConcreteCheckResultShell.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\DosageDesignCaseTypeReinf.h
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\MagnitudeDataDefinitionsGroupCreator.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\ResultShellConcreteBase_2D.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\SFRCTools.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\SFRC_2D_CapacityCheckShell.h
@@ -35768,6 +35774,7 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\StdAfx.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\Resource.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\CBekaertTableCreator.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\DosageDesignCaseTypeReinf.cpp
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\MagnitudeDataDefinitionsGroupCreator.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\ResultShellConcreteBase_2D.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\SFRCTools.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\SFRC_2D_CapacityCheckShell.cpp
@@ -43269,6 +43276,7 @@ r:\A\Src\Fol\ConcreteCode\EP_CodeDIN88Concrete\EP_CodeDIN88Concrete.cpp
 r:\A\Src\Fol\ConcreteCode\EP_CodeDIN88Concrete\Concrete_CrtCheckDIN88.rgs
 r:\A\Src\DRA\EP_MaterialEC\EP_MaterialEC.14.00.vcxproj
 r:\A\Src\DRA\EP_MaterialEC\EP_MaterialEC.14.00.vcxproj.filters
+r:\A\Src\DRA\EP_MaterialEC\EP_MaterialEC.14.00.sln
 r:\A\Src\DRA\EP_MaterialEC\__AutoGenerTLH.cpp
 r:\A\Src\DRA\EP_MaterialEC\EP_MaterialEC.idl
 r:\A\Src\DRA\EP_MaterialEC\EP_MaterialEC.rc
@@ -52635,10 +52643,12 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\Constants.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\StdAfx.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\StdAfx.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\ConcreteCheck_CompZone_MSUT.cpp
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestCharsCalculations.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestCompZoneFormulaCalculations.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestCompZoneFormulaCalculator.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestCompZoneFormulaStrategy.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestCrackCalculations.cpp
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestCrackCheckStrategy2D.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestCreepCalculations.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestResistanceResponseCalculations.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestResistanceResponseCalculator.cpp
@@ -52648,6 +52658,8 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestResistanceRespons
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestShearCheckCalculations.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestShearCheckStrategy2D.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestStressLimitationCalculation.cpp
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestStressLimitationFormulaCalculator2D.cpp
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestXCalculations.cpp
 r:\A\Src\TRE\_UnitTests\UT_TRE_CMQuestion\UT_TRE_CMQuestion.14.00.vcxproj
 r:\A\Src\TRE\_UnitTests\UT_TRE_CMQuestion\UT_TRE_CMQuestion.14.00.vcxproj.filters
 r:\A\Src\TRE\_UnitTests\UT_TRE_CMQuestion\UT_TRE_CMQuestion.def
@@ -56950,6 +56962,7 @@ r:\A\Db\DocumentDefaults\{5CF79027-A3EE-4B5E-9E3E-BC27FDD5D71D} [Default].TLX
 r:\A\Db\DocumentDefaults\{5CC5F309-8E96-4C58-B6BD-7222D4CFD45F} [Default].TLX
 r:\A\Db\DocumentDefaults\{5D7CACFE-1593-49A3-95BC-41333ACA7DAB} [Default].TLX
 r:\A\Db\DocumentDefaults\{5E7DADB7-5A0A-4302-0E7A-873F48BF294A} [Default].TLX
+r:\A\Db\DocumentDefaults\{5F9AD777-B41D-48DE-8ECD-DB6DFA92AEFA}-(ResultMain) [Default].TLX
 r:\A\Db\DocumentDefaults\{603C1652-294F-4DC0-96D6-66FEF44341B7}-(IPFile) [Default].TLX
 r:\A\Db\DocumentDefaults\{610435EA-A617-4AB9-BC17-453315B71D82} [Default].TLX
 r:\A\Db\DocumentDefaults\{61173E18-E1AF-E23F-65ED-8064CEF48F7F}-(IPFile) [Default].TLX
@@ -57146,6 +57159,7 @@ r:\A\Db\DocumentDefaults\{E3007829-0307-EE0A-571A-4AB745310F59}-(IPFile) [Defaul
 r:\A\Db\DocumentDefaults\{E37E1E36-9E0B-7315-B0BF-7D4C50ABA291}-(IPFile) [Default].TLX
 r:\A\Db\DocumentDefaults\{E3B7419B-406B-47BE-9CDC-445042EBF4E7} [Default].TLX
 r:\A\Db\DocumentDefaults\{E4055CCB-7DCB-4C3F-F10B-CCBD6F91D13E}-(IPFile) [Default].TLX
+r:\A\Db\DocumentDefaults\{E43AE7A0-D768-4871-BCF2-70D5C372ADBC}-(ResultMain) [Default].TLX
 r:\A\Db\DocumentDefaults\{E44FA895-7FA8-43BC-A0C9-77060B8645F5} [Default].TLX
 r:\A\Db\DocumentDefaults\{E595DBB8-AE80-BF25-FA1F-1245400BB854} [Default].TLX
 r:\A\Db\DocumentDefaults\{E5A95615-30AE-4DAF-8BA6-85F0F3454A7F} [Default].TLX
@@ -57205,6 +57219,8 @@ r:\A\Db\DocumentDefaults\CrossSection.EP_CrossSection [Effective section].TLX
 r:\A\Db\DocumentDefaults\DataAddScia.14.00.EP_CompositeBeamDesignInfo [Default].TLX
 r:\A\Db\DocumentDefaults\DataAddScia.14.00.EP_VirtualJoistDesignInfo [Default].TLX
 r:\A\Db\DocumentDefaults\DataSetSciaTra.EP_DumperSetupData [Default].TLX
+r:\A\Db\DocumentDefaults\EP_MaterialEC.14.00.EP_MaterialFibreCrtEC-(Composed) [Default].TLX
+r:\A\Db\DocumentDefaults\EP_MaterialEC.14.00.EP_MaterialFibreCrtEC-(Composed) [Detailed].TLX
 r:\A\Db\DocumentDefaults\PageLayout\Brief.HFX
 r:\A\Db\DocumentDefaults\{060FA601-E7DF-4C78-B898-C10C76837DA4}-(IPFile) [Default].TLX
 r:\A\Db\DocumentDefaults\{06F02EF8-4E64-4A4D-9908-6BBDFC60DEE6} [Default].TLX

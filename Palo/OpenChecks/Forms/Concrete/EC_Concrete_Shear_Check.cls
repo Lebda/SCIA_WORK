@@ -610,11 +610,13 @@ IF(COMPARE(V↓Ed←, 0, 6) == 0) {
                 double z↓bwy← →VAL316_014053= ObjBwY.zbw; 
                 double b↓wy← →VAL316_014054= ObjBwY.bw; 
                 →VAL316_014157TEXT("b↓wy← = " &amp; Val(1000*b↓wy←, 0) &amp; " mm"); 
+                →KRS106_000041Functions1D_ShearAndTorsion.→KRS106_000042bwModifWarning("↓y←", "", IndexEWN, Number↓W←, →KRS106_000043obEWN, ObjBwY); //warning info, if b↓w← is modified
                 object ObjBwZ →VAL316_014066= Functions1D_ShearAndTorsion.Function_bw(CssID, ForcesIDZ, 0); 
                 double y↓bwz← →VAL316_014067= ObjBwZ.ybw; 
                 double z↓bwz← →VAL316_014068= ObjBwZ.zbw; 
                 double b↓wz← →VAL316_014069= ObjBwZ.bw; 
                 →VAL316_014158TEXT("b↓wz← = " &amp; Val(1000*b↓wz←, 0) &amp; " mm"); 
+                →KRS106_000044Functions1D_ShearAndTorsion.→KRS106_000045bwModifWarning("↓z←", "", IndexEWN, Number↓W←, →KRS106_000046obEWN, ObjBwZ); //warning info, if b↓w← is modified
                 →VAL316_014306CalculateBixialValue("b↓w←", b↓wy←, b↓wz←, α↓V←, out b↓w←); 
                 //                →VAL316_014055TEXT("b↓w← = " &amp; Val(1000*b↓w←, 0) &amp; " mm"); 
                 //                string DescriptionN →VAL316_014056= TR("Value b↓w← is calculated as the smallest width of cross-section in tensile area perpendicular to resultant of shear force."); 
@@ -629,11 +631,13 @@ IF(COMPARE(V↓Ed←, 0, 6) == 0) {
                 double z↓bwy1← →VAL316_014148= ObjBw1Y.zbw; 
                 double b↓wy1← →VAL316_014149= ObjBw1Y.bw; 
                 →VAL316_014150TEXT("b↓wy1← = " &amp; Val(1000*b↓wy1←, 0) &amp; " mm"); 
+                →KRS106_000038Functions1D_ShearAndTorsion.→KRS106_000039bwModifWarning("↓y1←", "", IndexEWN, Number↓W←, →KRS106_000040obEWN, ObjBw1Y); //warning info, if b↓w← is modified
                 object ObjBw1Z →VAL316_014159= Functions1D_ShearAndTorsion.Function_bw(CssID, ForcesIDZ, 1); 
                 double y↓bwz1← →VAL316_014160= ObjBw1Z.ybw; 
                 double z↓bwz1← →VAL316_014161= ObjBw1Z.zbw; 
                 double b↓wz1← →VAL316_014162= ObjBw1Z.bw; 
                 →VAL316_014163TEXT("b↓wz1← = " &amp; Val(1000*b↓wz1←, 0) &amp; " mm"); 
+                →KRS106_000047Functions1D_ShearAndTorsion.→KRS106_000048bwModifWarning("↓z1←", "", IndexEWN, Number↓W←, →KRS106_000049obEWN, ObjBw1Z); //warning info, if b↓w← is modified
                 →VAL316_014307CalculateBixialValue("b↓w1←", b↓wy1←, b↓wz1←, α↓V←, out b↓w1←); 
                 //                string DescriptionN →VAL316_014151= TR("Value b↓w1← is calculated as the smallest width of cross-section between tension and compression chord perpendicular to resultant of shear force."); 
                 //                string SolutionN →VAL316_014152= TR(""); 
@@ -684,6 +688,8 @@ IF(COMPARE(V↓Ed←, 0, 6) == 0) {
                 Number↓N← →VAL316_006454= Number↓N←+1; 
                 →VAL316_006455obEWN.Add(new Structure("Index", "N" &amp; IndexEWN &amp; "/" &amp; Number↓N←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
                 
+                →KRS106_000050Functions1D_ShearAndTorsion.→KRS106_000051bwModifWarning("", "", IndexEWN, Number↓W←, →KRS106_000052obEWN, ObjBw); //warning info, if b↓w← is modified
+
                 →VAL316_001828TEXT("Minimum width of cross-section between tension and compression chord"); 
                 object ObjBw1 →VAL316_008057= Functions1D_ShearAndTorsion.Function_bw(CssID, ForcesID, 1); 
                 
@@ -699,6 +705,8 @@ IF(COMPARE(V↓Ed←, 0, 6) == 0) {
                 Number↓N← →VAL316_006460= Number↓N←+1; 
                 →VAL316_006461obEWN.Add(new Structure("Index", "N" &amp; IndexEWN &amp; "/" &amp; Number↓N←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
                 
+                →KRS106_000053Functions1D_ShearAndTorsion.→KRS106_000054bwModifWarning("", "", IndexEWN, Number↓W←, →KRS106_000055obEWN, ObjBw1); //warning info, if b↓w← is modified
+
                 →VAL316_003081TEXT("Height of cross-section recalculated to direction of shear force resultant"); 
                 object ConcreteParam →VAL316_008063= new Functions1D_General.ConCssParameters(); 
                 →VAL316_008064ConcreteParam.Init(CssID, ForcesID, α↓V←, Coeff↓d←, Coeff↓z←, 1, False); 
@@ -6401,6 +6409,54 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000038">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000041">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000044">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000047">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000050">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000053">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
       <VC ID="KRS110_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

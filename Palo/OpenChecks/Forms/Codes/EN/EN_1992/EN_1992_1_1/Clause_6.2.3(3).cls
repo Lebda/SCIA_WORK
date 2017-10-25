@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="3a7fa5c6-5fba-4901-b086-4016b494edfc">
   <CodeEditor>
-    <SourceCode Collapsed="29|60|96|118|141|173|207|242" BreakPoints="">bool ValidateInput(object Input) { 
+    <SourceCode Collapsed="28|51|82|118|145|168|200|234|269" BreakPoints="">bool ValidateInput(object Input) { 
     
     f↓ck← →INI400_008536= Input.Get("f_ck"); //Characteristic compressive cylinder strength of concrete
     f↓cd← →INI400_008541= Input.Get("f_cd"); //Design compressive cylinder strength of concrete
@@ -29,7 +29,29 @@ object GetOutput() {
 
 
 SWITCH(IO.SetupNA.EC_NA.Code) { 
-    //    CASE "ONORM": { } 
+    CASE "ONORM" :  { 
+        ν↓1← →KRS106_000015= ν @REF("(§6.2.3(3)N1)"); 
+        →KRS106_000016TEXT(Description("α↓cw←")); 
+        IF(Prestress) { 
+            IF(σ↓cp← &lt;= 0.25*f↓cd←) { 
+                α↓cw← →KRS106_000017= (1+σ↓cp←/f↓cd←) @REF("(6.11.aN)"); 
+            } ELSE { 
+                IF(0.25*f↓cd← &lt; σ↓cp← &amp;&amp; σ↓cp← &lt;= 0.5*f↓cd←) { 
+                    α↓cw← →KRS106_000018= 1.25 @REF("(6.11.bN)"); 
+                } ELSE { 
+                    α↓cw← →KRS106_000019= 2.5*[1-σ↓cp←/f↓cd←] @REF("(6.11.cN)"); 
+                } 
+            } 
+            →KRS106_000020TEXT(" (for prestressed member)"); 
+        } ELSE { 
+            IF(IO.IsStandalone) { 
+                α↓cw← →KRS106_000021= 1.0 @REF("(§6.2.3(3)N3)"); 
+            } ELSE { 
+                α↓cw← →KRS106_000022= IO.SetupNA.EC_1992_1_1.ν_1_α_cw.α_cw @REF("(§6.2.3(3)N3)"); 
+            } 
+            →KRS106_000023TEXT(" (for non-prestressed member)"); 
+        } 
+    } 
     CASE "NBN" :  { 
         IF(σ↓swd← &lt; 0.8*f↓ywk←) { 
             IF(CUnit(f↓ck←, "MPa") &lt;= 60) { 
@@ -113,7 +135,12 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         } 
         →INI400_005289TEXT(Description("α↓cw←")); 
         IF(σ↓cp← &lt; 0) { //Tension
-            α↓cw← →INI400_005290= 1+σ↓cp←/f↓ctm← @REF("(NF 6.2.3(2)N3)"); 
+            IF(COMPARE(-σ↓cp←, f↓ctm←, 6) == 1) { 
+                α↓cw← →KRS106_000024= 0 @REF("(NF 6.2.3(2)N3)"); 
+                →KRS106_000025TEXT(" (σ↓cp← is greater than f↓ctm←)"); 
+            } ELSE { 
+                α↓cw← →INI400_005290= 1+σ↓cp←/f↓ctm← @REF("(NF 6.2.3(2)N3)"); 
+            } 
         } ELSE { 
             α↓cw← →INI400_005291= 1.0 @REF("(§6.2.3(2)N3)"); 
         } 
@@ -1235,6 +1262,118 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
       </VC>
+      <VC ID="KRS106_000012">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+      </VC>
+      <VC ID="KRS106_000013">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+      </VC>
+      <VC ID="KRS106_000014">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+      </VC>
+      <VC ID="KRS106_000015">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+      </VC>
+      <VC ID="KRS106_000016">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000017">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="85.1" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="85.1" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="85.1" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="85.1" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="85.1" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="85.1" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000018">
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000019">
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000020">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000021">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+      </VC>
+      <VC ID="KRS106_000022">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+      </VC>
+      <VC ID="KRS106_000023">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000024">
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000025">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
@@ -1985,6 +2124,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     <Command Width="500" />
   </Dialog>
   <Texts>
+    <Item TranslateID="TEXT_">
+      <ENU>" (σ↓cp← is greater than f↓ctm←)"</ENU>
+    </Item>
     <Item ID="TEXT_INI400_001352">
       <ENU>Description("α↓cw←")</ENU>
     </Item>
@@ -2044,6 +2186,18 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     </Item>
     <Item TranslateID="TEXT_INI400_005331">
       <ENU>" (for non-prestressed member)"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS106_000016">
+      <ENU>Description("α↓cw←")</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS106_000020">
+      <ENU>" (for prestressed member)"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS106_000023">
+      <ENU>" (for non-prestressed member)"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS106_000025">
+      <ENU>" (σ↓cp← is greater than f↓ctm←)"</ENU>
     </Item>
   </Texts>
 </Root>

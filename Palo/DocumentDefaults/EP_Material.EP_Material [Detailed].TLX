@@ -3,7 +3,7 @@
 	<DataSourceNameExtension></DataSourceNameExtension>
 	<Name>EP_Material.2eEP_Material</Name>
 	<AdvancedName>Detailed</AdvancedName>
-	<Cells Size="54"><ARRAY_ITEM ID="0"><CX64TLXCell><Width><Width>0.03</Width>
+	<Cells Size="55"><ARRAY_ITEM ID="0"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -92,6 +92,43 @@
 								<TLXItemHorizontalAlignment><Value>0</Value>
 									<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
 								</TLXItemHorizontalAlignment>
+								<clsid>{9EC35AC0-FB75-422C-B800-B33729789199}</clsid>
+								<Units>-1</Units>
+								<SourceCLSID>{9EC35AC0-FB75-422C-B800-B33729789199}</SourceCLSID>
+								<SourceNameExtension>Composed</SourceNameExtension>
+								<SourceID>-1</SourceID>
+								<TLX></TLX>
+								<Item_Type><Value>2</Value>
+									<ValueName>eTLXItem_Type_Subtable</ValueName>
+								</Item_Type>
+								<Parametric_Values_Representation><Value>3</Value>
+									<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
+								</Parametric_Values_Representation>
+								<Value_Type><Value>13</Value>
+									<ValueName></ValueName>
+								</Value_Type>
+								<Item_Value>Detailed</Item_Value>
+							</TLXITEM>
+						</ARRAY_ITEM>
+					</Items>
+				</Items>
+			</CX64TLXCell>
+		</ARRAY_ITEM>
+		<ARRAY_ITEM ID="3"><CX64TLXCell><Width><Width>0.03</Width>
+				</Width>
+				<Height><Height>0.05</Height>
+				</Height>
+				<Items><Items Size="1"><ARRAY_ITEM ID="0"><TLXITEM><PropName></PropName>
+								<RealValue><Value>0</Value>
+									<ValueName>eTLXItem_RealValue_Real</ValueName>
+								</RealValue>
+								<FormattedText>0</FormattedText>
+								<NameFormattedText>0</NameFormattedText>
+								<PictureInTable>0</PictureInTable>
+								<PropertyUserName></PropertyUserName>
+								<TLXItemHorizontalAlignment><Value>0</Value>
+									<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
+								</TLXItemHorizontalAlignment>
 								<clsid>{231042E2-E86A-431C-8242-E860D536C56D}</clsid>
 								<Units>-1</Units>
 								<SourceCLSID>{231042E2-E86A-431C-8242-E860D536C56D}</SourceCLSID>
@@ -114,7 +151,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="3"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="4"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -151,7 +188,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="4"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="5"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -188,7 +225,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="5"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="6"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -225,7 +262,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="6"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="7"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -262,7 +299,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="7"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="8"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -299,7 +336,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="8"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="9"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -336,7 +373,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="9"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="10"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -373,7 +410,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="10"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="11"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -410,7 +447,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="11"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="12"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -447,7 +484,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="12"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="13"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -484,7 +521,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="13"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="14"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -521,7 +558,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="14"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="15"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -558,7 +595,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="15"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="16"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -595,7 +632,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="16"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="17"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -632,7 +669,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="17"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="18"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -669,7 +706,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="18"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="19"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -706,7 +743,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="19"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="20"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -743,7 +780,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="20"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="21"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -780,7 +817,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="21"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="22"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -817,7 +854,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="22"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="23"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -854,7 +891,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="23"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="24"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -891,7 +928,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="24"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="25"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -928,7 +965,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="25"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="26"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -965,7 +1002,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="26"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="27"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1002,7 +1039,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="27"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="28"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1039,7 +1076,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="28"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="29"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1076,7 +1113,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="29"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="30"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1113,7 +1150,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="30"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="31"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1150,7 +1187,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="31"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="32"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1187,7 +1224,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="32"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="33"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1224,7 +1261,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="33"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="34"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1261,7 +1298,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="34"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="35"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1298,7 +1335,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="35"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="36"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1335,7 +1372,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="36"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="37"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1372,7 +1409,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="37"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="38"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1409,7 +1446,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="38"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="39"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1446,7 +1483,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="39"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="40"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1483,7 +1520,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="40"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="41"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1520,7 +1557,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="41"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="42"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1557,7 +1594,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="42"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="43"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1594,7 +1631,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="43"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="44"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1631,7 +1668,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="44"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="45"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1668,7 +1705,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="45"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="46"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1705,7 +1742,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="46"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="47"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1742,7 +1779,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="47"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="48"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1779,7 +1816,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="48"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="49"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1816,7 +1853,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="49"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="50"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1853,7 +1890,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="50"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="51"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1890,7 +1927,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="51"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="52"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1927,7 +1964,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="52"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="53"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1964,7 +2001,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="53"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="54"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -2013,7 +2050,7 @@
 	<TableScale><Value>2</Value>
 		<ValueName>eTableScale_Automatic</ValueName>
 	</TableScale>
-	<TLXItems_Buffer><Items Size="98"><ARRAY_ITEM ID="0"><TLXITEMEX><tlxitem><PropName></PropName>
+	<TLXItems_Buffer><Items Size="99"><ARRAY_ITEM ID="0"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4845,68 +4882,6 @@
 						<TLXItemHorizontalAlignment><Value>0</Value>
 							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
 						</TLXItemHorizontalAlignment>
-						<clsid>{231042E2-E86A-431C-8242-E860D536C56D}</clsid>
-						<Units>-1</Units>
-						<SourceCLSID>{231042E2-E86A-431C-8242-E860D536C56D}</SourceCLSID>
-						<SourceNameExtension>Composed</SourceNameExtension>
-						<SourceID>-1</SourceID>
-						<TLX></TLX>
-						<Item_Type><Value>2</Value>
-							<ValueName>eTLXItem_Type_Subtable</ValueName>
-						</Item_Type>
-						<Parametric_Values_Representation><Value>3</Value>
-							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
-						</Parametric_Values_Representation>
-						<Value_Type><Value>13</Value>
-							<ValueName></ValueName>
-						</Value_Type>
-						<Item_Value>Detailed</Item_Value>
-					</tlxitem>
-					<Name>Reinforcement.20EC2</Name>
-				</TLXITEMEX>
-			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="92"><TLXITEMEX><tlxitem><PropName></PropName>
-						<RealValue><Value>0</Value>
-							<ValueName>eTLXItem_RealValue_Real</ValueName>
-						</RealValue>
-						<FormattedText>0</FormattedText>
-						<NameFormattedText>0</NameFormattedText>
-						<PictureInTable>0</PictureInTable>
-						<PropertyUserName></PropertyUserName>
-						<TLXItemHorizontalAlignment><Value>0</Value>
-							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
-						</TLXItemHorizontalAlignment>
-						<clsid>{76931F32-9F6E-4651-ADCE-26BB24F9650A}</clsid>
-						<Units>-1</Units>
-						<SourceCLSID>{76931F32-9F6E-4651-ADCE-26BB24F9650A}</SourceCLSID>
-						<SourceNameExtension>Composed</SourceNameExtension>
-						<SourceID>-1</SourceID>
-						<TLX></TLX>
-						<Item_Type><Value>2</Value>
-							<ValueName>eTLXItem_Type_Subtable</ValueName>
-						</Item_Type>
-						<Parametric_Values_Representation><Value>3</Value>
-							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
-						</Parametric_Values_Representation>
-						<Value_Type><Value>13</Value>
-							<ValueName></ValueName>
-						</Value_Type>
-						<Item_Value>Detailed</Item_Value>
-					</tlxitem>
-					<Name>Concrete.20EC2</Name>
-				</TLXITEMEX>
-			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="93"><TLXITEMEX><tlxitem><PropName></PropName>
-						<RealValue><Value>0</Value>
-							<ValueName>eTLXItem_RealValue_Real</ValueName>
-						</RealValue>
-						<FormattedText>0</FormattedText>
-						<NameFormattedText>0</NameFormattedText>
-						<PictureInTable>0</PictureInTable>
-						<PropertyUserName></PropertyUserName>
-						<TLXItemHorizontalAlignment><Value>0</Value>
-							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
-						</TLXItemHorizontalAlignment>
 						<clsid>{5B11F086-B37A-44BF-8FB6-EC02716CCC6E}</clsid>
 						<Units>-1</Units>
 						<SourceCLSID>{5B11F086-B37A-44BF-8FB6-EC02716CCC6E}</SourceCLSID>
@@ -4927,7 +4902,7 @@
 					<Name>Timber.20EC5</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="94"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="92"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4958,7 +4933,7 @@
 					<Name>Steel.20EC3</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="95"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="93"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4989,7 +4964,7 @@
 					<Name>MaterialB</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="96"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="94"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -5020,7 +4995,7 @@
 					<Name>Concrete.20EN.201992-2</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="97"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="95"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -5049,6 +5024,99 @@
 						<Item_Value></Item_Value>
 					</tlxitem>
 					<Name>Concrete.20ACI.20318(M)-08</Name>
+				</TLXITEMEX>
+			</ARRAY_ITEM>
+			<ARRAY_ITEM ID="96"><TLXITEMEX><tlxitem><PropName></PropName>
+						<RealValue><Value>0</Value>
+							<ValueName>eTLXItem_RealValue_Real</ValueName>
+						</RealValue>
+						<FormattedText>0</FormattedText>
+						<NameFormattedText>0</NameFormattedText>
+						<PictureInTable>0</PictureInTable>
+						<PropertyUserName></PropertyUserName>
+						<TLXItemHorizontalAlignment><Value>0</Value>
+							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
+						</TLXItemHorizontalAlignment>
+						<clsid>{76931F32-9F6E-4651-ADCE-26BB24F9650A}</clsid>
+						<Units>-1</Units>
+						<SourceCLSID>{76931F32-9F6E-4651-ADCE-26BB24F9650A}</SourceCLSID>
+						<SourceNameExtension>Composed</SourceNameExtension>
+						<SourceID>-1</SourceID>
+						<TLX></TLX>
+						<Item_Type><Value>2</Value>
+							<ValueName>eTLXItem_Type_Subtable</ValueName>
+						</Item_Type>
+						<Parametric_Values_Representation><Value>3</Value>
+							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
+						</Parametric_Values_Representation>
+						<Value_Type><Value>13</Value>
+							<ValueName></ValueName>
+						</Value_Type>
+						<Item_Value></Item_Value>
+					</tlxitem>
+					<Name>Concrete.20EC2</Name>
+				</TLXITEMEX>
+			</ARRAY_ITEM>
+			<ARRAY_ITEM ID="97"><TLXITEMEX><tlxitem><PropName></PropName>
+						<RealValue><Value>0</Value>
+							<ValueName>eTLXItem_RealValue_Real</ValueName>
+						</RealValue>
+						<FormattedText>0</FormattedText>
+						<NameFormattedText>0</NameFormattedText>
+						<PictureInTable>0</PictureInTable>
+						<PropertyUserName></PropertyUserName>
+						<TLXItemHorizontalAlignment><Value>0</Value>
+							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
+						</TLXItemHorizontalAlignment>
+						<clsid>{231042E2-E86A-431C-8242-E860D536C56D}</clsid>
+						<Units>-1</Units>
+						<SourceCLSID>{231042E2-E86A-431C-8242-E860D536C56D}</SourceCLSID>
+						<SourceNameExtension>Composed</SourceNameExtension>
+						<SourceID>-1</SourceID>
+						<TLX></TLX>
+						<Item_Type><Value>2</Value>
+							<ValueName>eTLXItem_Type_Subtable</ValueName>
+						</Item_Type>
+						<Parametric_Values_Representation><Value>3</Value>
+							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
+						</Parametric_Values_Representation>
+						<Value_Type><Value>13</Value>
+							<ValueName></ValueName>
+						</Value_Type>
+						<Item_Value></Item_Value>
+					</tlxitem>
+					<Name>Reinforcement.20EC2</Name>
+				</TLXITEMEX>
+			</ARRAY_ITEM>
+			<ARRAY_ITEM ID="98"><TLXITEMEX><tlxitem><PropName></PropName>
+						<RealValue><Value>0</Value>
+							<ValueName>eTLXItem_RealValue_Real</ValueName>
+						</RealValue>
+						<FormattedText>0</FormattedText>
+						<NameFormattedText>0</NameFormattedText>
+						<PictureInTable>0</PictureInTable>
+						<PropertyUserName></PropertyUserName>
+						<TLXItemHorizontalAlignment><Value>0</Value>
+							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
+						</TLXItemHorizontalAlignment>
+						<clsid>{9EC35AC0-FB75-422C-B800-B33729789199}</clsid>
+						<Units>-1</Units>
+						<SourceCLSID>{9EC35AC0-FB75-422C-B800-B33729789199}</SourceCLSID>
+						<SourceNameExtension>Composed</SourceNameExtension>
+						<SourceID>-1</SourceID>
+						<TLX></TLX>
+						<Item_Type><Value>2</Value>
+							<ValueName>eTLXItem_Type_Subtable</ValueName>
+						</Item_Type>
+						<Parametric_Values_Representation><Value>3</Value>
+							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
+						</Parametric_Values_Representation>
+						<Value_Type><Value>13</Value>
+							<ValueName></ValueName>
+						</Value_Type>
+						<Item_Value></Item_Value>
+					</tlxitem>
+					<Name>Steel.20fibre.20concrete</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
 		</Items>

@@ -67,7 +67,7 @@
         bBeamCheckMinStirrupMandrelDiameter →INI400_012565= Input.Get("bBeamCheckMinStirrupMandrelDiameter"); //True - Minimal mandrel diameter of stirrups 8.3(2) calculated
         bBeamCheckMaxLongSpacingShear →INI400_012566= Input.Get("bBeamCheckMaxLongSpacingShear"); //True - Maximal longitudinal spacing (shear) 9.2.2(6) calculated
         bBeamCheckMaxLongSpacingTorsion →INI400_012567= Input.Get("bBeamCheckMaxLongSpacingTorsion"); //True - Maximal longitudinal spacing (torsion) 9.2.3(3) calculated
-        bBeamCheckMaxTransvSpacingShear →INI400_012568= Input.Get("bBeamCheckMaxTransvSpacingShear"); //True - Maximal transverse spacing for compressive reinf. 9.2.1.2(3) calculated
+        bBeamCheckMaxTransvSpacingShear →INI400_012568= Input.Get("bBeamCheckMaxTransvSpacingShear"); //True - Maximal transverse spacing of stirrups 9.2.2(8) calculated
         bBeamCheckMinPercentageOfStirrups →INI400_012569= Input.Get("bBeamCheckMinPercentageOfStirrups"); //True - Minimal percentage of stirrups 9.2.2(5) calculated
         bBeamCheckMaxPercentageOfStirrups →INI400_012570= Input.Get("bBeamCheckMaxPercentageOfStirrups"); //True - Maximal percentage of stirrups 6.2.3(3) calculated
         NumCutUser →KRS106_000007= Input.Get("NumCutUser"); //User defined numebr of cuts
@@ -663,13 +663,13 @@ IF(bStirrups || ReinfMat != null) {
                         →INI400_007279TEXT("No"); 
                     } 
                 } 
-                bBeamCheckMaxTransvSpacingShear →KRS316_000015= false; //KRS: due MRUA-A86H3S - check 9.2.2(8) is temporally disabled. DO NOT delete next commented code
-                //                →INI400_007250TEXT("Check maximal transverse spacing (shear) 9.2.2(8))"); 
-                //                IF(bBeamCheckMaxTransvSpacingShear) { 
-                //                    →INI400_007280TEXT("Yes"); 
-                //                } ELSE { 
-                //                    →INI400_007281TEXT("No"); 
-                //                } 
+                
+                →INI400_007250TEXT("Check maximal transverse spacing 9.2.2(8)"); 
+                IF(bBeamCheckMaxTransvSpacingShear) { 
+                    →INI400_007280TEXT("Yes"); 
+                } ELSE { 
+                    →INI400_007281TEXT("No"); 
+                } 
                 
                 →INI400_007251TEXT("Check minimal percentage of stirrups 9.2.2(5)"); 
                 IF(bBeamCheckMinPercentageOfStirrups) { 
@@ -1781,17 +1781,33 @@ IF(bStirrups || ReinfMat != null) {
         } 
         
         IF(MemberType == 1 &amp;&amp; bBeamCheckMaxTransvSpacingShear) { 
-            →INI400_007179BLOCK("Check max. transverse spacing (shear) 9.2.2(8)") { //not yet finshed
-                //calculation of transversal distance of stirrups is missing - function needed
+            →INI400_007179BLOCK("Check max. transverse spacing 9.2.2(8)") { 
+                
+                //procedure to fill max transverse spacing calculator
+                →KRS106_000035CONCRETE.Stirrup.ClearTransverseSpacing(); 
+                IF(IO.IsStandalone) { //Stirrups position + move vector
+                    FOR(i, 0, ShearReinfShape.Count-1) { 
+                        FOR(j, 0, ShearReinfShape[i].Point.Count-1) { 
+                            →KRS106_000032CONCRETE.Stirrup.AddStirrupPoint4TransverseSpacing(ShearReinfShape[i].Point[j].X+CrossSection.cssMoveVect.X, ShearReinfShape[i].Point[j].Y+CrossSection.cssMoveVect.Y, i); 
+                        } 
+                    } 
+                } ELSE { //Stirrups are in correct position directly, no move is needed
+                    FOR(i, 0, ShearReinfShape.Count-1) { 
+                        FOR(j, 0, ShearReinfShape[i].Point.Count-1) { 
+                            →KRS106_000033CONCRETE.Stirrup.AddStirrupPoint4TransverseSpacing(ShearReinfShape[i].Point[j].X, ShearReinfShape[i].Point[j].Y, i); 
+                        } 
+                    } 
+                } 
+                
                 →INI400_007545TEXT(Description("s↓st,max←")); 
-                s↓st,max← →INI400_009104= s↓l←; 
-                →INI400_007159TEXT("s↓st,max ←= " &amp; s↓l←); 
+                double s↓st,max← →KRS106_000036= CONCRETE.Stirrup.TransverseSpacingMax(); 
                 
                 IF((IO.SetupNA.EC_NA.Code == "NF") || (IO.SetupNA.EC_NA.Code == "DIN")) { 
                     double h↓beam← →INI400_007555= h↓slab←; //for NF and DIN NA
                 } 
                 object Result →INI400_008495= new Structure(); 
-                →INI400_007369FunctionDetailing.s↓t,max←(d↓v←, h↓beam←, f↓ck←, V↓Ed←, V↓Rd,max←, Result); 
+                double h_carka →KRS106_000034= Functions1D_Geometrics.Get_h_carka(CssID, ForcesID, d↓v←); 
+                →INI400_007369FunctionDetailing.s↓t,max←(d↓v←, h↓beam←, f↓ck←, V↓Ed←, V↓Rd,max←, h_carka, Result); 
                 double s↓st,max,lim← →INI400_008496= Result.stmax; 
                 
                 →INI400_007559TEXT(Description("UC↓9.2.2(8)←")); 
@@ -1801,10 +1817,10 @@ IF(bStirrups || ReinfMat != null) {
                 } ELSE { 
                     StatusBeamCheckMaxTransverseSpacingShear →INI400_007737= 1; //OK
                 } 
-                IF(StatusBeamCheckMaxLongitudinalSpacingTorsion == 0) { 
+                IF(StatusBeamCheckMaxTransverseSpacingShear == 0) { 
                     bool W8↓11← →INI400_008874= true; 
                     Number↓W← →INI400_008875= Number↓W←+1; 
-                    →INI400_008876StructEWN.Add(new Structure("Index", "W8/11", "Type", TR("Warning"), "Description", TR("Max. transverse spacing of shear reinforcement for beams according to 9.2.2(8) is not satisfied."), "Solution", TR("To decrease transverse spacing between stirrups links."))); 
+                    →INI400_008876StructEWN.Add(new Structure("Index", "W8/11", "Type", TR("Warning"), "Description", TR("Max. transverse spacing of the legs of shear reinforcement for beams according to 9.2.2(8) is not satisfied."), "Solution", TR("To decrease transverse spacing between stirrup legs."))); 
                 } ELSE { 
                     bool W8↓11← →INI400_008877= false; 
                 } 
@@ -2326,7 +2342,7 @@ IF(bStirrups || ReinfMat != null) {
                 
                 //the 4-th row
                 
-                TBeamStirrupsDetProv[4][0].Value →INI400_007798= TR("Max. transverse spacing (shear)"); 
+                TBeamStirrupsDetProv[4][0].Value →INI400_007798= TR("Max. transverse spacing"); 
                 TBeamStirrupsDetProv[4][1].Value →INI400_007800= "9.2.2(8)"; 
                 TBeamStirrupsDetProv[4][2].Value →INI400_007801= "[mm]"; 
                 TBeamStirrupsDetProv[4][3].Value →INI400_007802= ROUND(s↓st,max←*1000, 0); 
@@ -3095,7 +3111,7 @@ IF(bStirrups || ReinfMat != null) {
       </Variable>
       <Variable Modifier="Public" Name="bBeamCheckMaxTransvSpacingShear" ESA_ID="" Type="Boolean">
         <Description TranslateID="VARIABLE_bBeamCheckMaxTransvSpacingShear">
-          <ENU>Maximal transverse spacing for compressive reinf. 9.2.1.2(3)</ENU>
+          <ENU>Maximal transverse spacing of stirrups 9.2.2(8)</ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="bBeamCheckMinBarDistance" ESA_ID="" Type="Boolean">
@@ -4567,7 +4583,7 @@ IF(bStirrups || ReinfMat != null) {
       </Variable>
       <Variable Modifier="Public" Name="s↓st,max←" ESA_ID="Result.22" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_s↓st,max←">
-          <ENU>Maximal transverse distance of stirrups</ENU>
+          <ENU>Maximal transverse distance of stirrup legs</ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
@@ -5040,7 +5056,7 @@ IF(bStirrups || ReinfMat != null) {
       </Variable>
       <Variable Modifier="Public" Name="UC↓9.2.2(8)←" ESA_ID="Result.40" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_UC↓9.2.2(8)←">
-          <ENU>Unity check of maximal transverse spacing of stirrups</ENU>
+          <ENU>Unity check of maximal transverse spacing of stirrup legs</ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
@@ -7582,14 +7598,6 @@ IF(bStirrups || ReinfMat != null) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007159">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_007169">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -7838,6 +7846,14 @@ IF(bStirrups || ReinfMat != null) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="INI400_007250">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
       <VC ID="INI400_007251">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -8013,6 +8029,22 @@ IF(bStirrups || ReinfMat != null) {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_007280">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_007281">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
       </VC>
       <VC ID="INI400_007282">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -9959,20 +9991,20 @@ IF(bStirrups || ReinfMat != null) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_007736">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
       </VC>
       <VC ID="INI400_007737">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_007738">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -15558,14 +15590,6 @@ IF(bStirrups || ReinfMat != null) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009104">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_009105">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -18382,6 +18406,46 @@ IF(bStirrups || ReinfMat != null) {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
+      <VC ID="KRS106_000032">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000033">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000034">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000035">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000036">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+      </VC>
       <VC ID="KRS116_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -18623,14 +18687,6 @@ IF(bStirrups || ReinfMat != null) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS316_000014">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS316_000015">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -19021,12 +19077,12 @@ IF(bStirrups || ReinfMat != null) {
           <Texts>
             <ENU>Internal forces</ENU>
           </Texts>
-          <TDoubleInput Name="TDoubleInput" ID="17" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|11.3|0|2" VarName="M↓Edz←" VarNameVisible="False" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-          <TDoubleInput Name="TDoubleInput" ID="16" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|11.3|0|2" VarName="M↓Edy←" VarNameVisible="False" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-          <TDoubleInput Name="TDoubleInput" ID="14" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="2" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.1|0|2" VarName="M↓Edx←" VarNameVisible="False" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-          <TDoubleInput Name="TDoubleInput" ID="12" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="3" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.2|0|2" VarName="V↓Edz←" VarNameVisible="False" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-          <TDoubleInput Name="TDoubleInput" ID="11" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="4" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.2|0|2" VarName="V↓Edy←" VarNameVisible="False" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-          <TDoubleInput Name="TDoubleInput" ID="18" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|11.3|0|2" VarName="N↓Ed←" VarNameVisible="False" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
+          <TDoubleInput Name="TDoubleInput" ID="17" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|11.3|0|2" VarName="M↓Edz←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
+          <TDoubleInput Name="TDoubleInput" ID="16" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|11.3|0|2" VarName="M↓Edy←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
+          <TDoubleInput Name="TDoubleInput" ID="14" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="2" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.1|0|2" VarName="M↓Edx←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
+          <TDoubleInput Name="TDoubleInput" ID="12" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="3" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.2|0|2" VarName="V↓Edz←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
+          <TDoubleInput Name="TDoubleInput" ID="11" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="4" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.2|0|2" VarName="V↓Edy←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
+          <TDoubleInput Name="TDoubleInput" ID="18" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|11.3|0|2" VarName="N↓Ed←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         </TGroupBox>
         <TCustomLibrary Name="" ID="67" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="6" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" TargetNodeURL="REINF.EC" DataFile="EC_Reinf.xml" Collapsed="True" UseCombo="False" Category="Inclined top branch" Item="B 500 A">
           <Data>
@@ -19969,7 +20025,7 @@ IF(bStirrups || ReinfMat != null) {
       <ENU>"Check max. long. spacing (torsion) 9.2.3(3) "</ENU>
     </Item>
     <Item TranslateID="BLOCK_INI400_007179">
-      <ENU>"Check max. transverse spacing (shear) 9.2.2(8)"</ENU>
+      <ENU>"Check max. transverse spacing 9.2.2(8)"</ENU>
     </Item>
     <Item TranslateID="BLOCK_INI400_007181">
       <ENU>"Check min. percentage 9.2.2(5)"</ENU>
@@ -20057,9 +20113,6 @@ IF(bStirrups || ReinfMat != null) {
     </Item>
     <Item TranslateID="STRING_2544A904">
       <ENU>"Maximal bar distance based on torsion requirements"</ENU>
-    </Item>
-    <Item TranslateID="STRING_27CA7104">
-      <ENU>"To decrease transverse spacing between stirrups links."</ENU>
     </Item>
     <Item TranslateID="STRING_2BB19579">
       <ENU>"To increase mandrel diameter of stirrups."</ENU>
@@ -20199,9 +20252,6 @@ IF(bStirrups || ReinfMat != null) {
     <Item TranslateID="STRING_B956322B">
       <ENU>"Description"</ENU>
     </Item>
-    <Item TranslateID="STRING_BAFC8D49">
-      <ENU>"Max. transverse spacing of shear reinforcement for beams according to 9.2.2(8) is not satisfied."</ENU>
-    </Item>
     <Item TranslateID="STRING_C230A946">
       <ENU>"Code&lt;BR&gt;Indep."</ENU>
     </Item>
@@ -20235,9 +20285,6 @@ IF(bStirrups || ReinfMat != null) {
     <Item TranslateID="STRING_D0E2B8CA">
       <ENU>"Minimal clear bar distance"</ENU>
     </Item>
-    <Item TranslateID="STRING_D168192A">
-      <ENU>"Max. transverse spacing (shear)"</ENU>
-    </Item>
     <Item TranslateID="STRING_D550C39F">
       <ENU>"Min. mandrel diameter"</ENU>
     </Item>
@@ -20246,6 +20293,9 @@ IF(bStirrups || ReinfMat != null) {
     </Item>
     <Item TranslateID="STRING_DA04A166">
       <ENU>"Maximal area of reinforcement"</ENU>
+    </Item>
+    <Item TranslateID="STRING_DA2BFBEE">
+      <ENU>"Max. transverse spacing"</ENU>
     </Item>
     <Item TranslateID="STRING_DD6334B7">
       <ENU>"First and second order eccentricity will not be taken into account, because the member is not considered as a compression member (normal force is relatively small or zero)."</ENU>
@@ -20262,6 +20312,9 @@ IF(bStirrups || ReinfMat != null) {
     <Item TranslateID="STRING_EEFBB859">
       <ENU>"Code"</ENU>
     </Item>
+    <Item TranslateID="STRING_EF7C5360">
+      <ENU>"To decrease transverse spacing between stirrup legs."</ENU>
+    </Item>
     <Item TranslateID="STRING_F1E181CE">
       <ENU>"Minimal reinf. percentage of beam according to chapter 9.2.1.1(1) is not satisfied."</ENU>
     </Item>
@@ -20270,6 +20323,9 @@ IF(bStirrups || ReinfMat != null) {
     </Item>
     <Item TranslateID="STRING_FB2294A9">
       <ENU>"To decrease clear distance of longitudinal reinforcement bars."</ENU>
+    </Item>
+    <Item TranslateID="STRING_FB2311ED">
+      <ENU>"Max. transverse spacing of the legs of shear reinforcement for beams according to 9.2.2(8) is not satisfied."</ENU>
     </Item>
     <Item TranslateID="STRING_FED4CC84">
       <ENU>"To increase diameter of shear reinforcement."</ENU>
@@ -20400,9 +20456,6 @@ IF(bStirrups || ReinfMat != null) {
     <Item ID="TEXT_INI400_007138">
       <ENU>"s↓l ←= " &amp; s↓l←</ENU>
     </Item>
-    <Item ID="TEXT_INI400_007159">
-      <ENU>"s↓st,max ←= " &amp; s↓l←</ENU>
-    </Item>
     <Item ID="TEXT_INI400_007215">
       <ENU>"ϕ↓l,max← = " &amp; ϕ↓l,max←</ENU>
     </Item>
@@ -20438,6 +20491,9 @@ IF(bStirrups || ReinfMat != null) {
     </Item>
     <Item TranslateID="TEXT_INI400_007249">
       <ENU>"Check maximal longitudinal spacing (torsion)9.2.3(3)"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_INI400_007250">
+      <ENU>"Check maximal transverse spacing 9.2.2(8)"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_007251">
       <ENU>"Check minimal percentage of stirrups 9.2.2(5)"</ENU>
@@ -20503,6 +20559,12 @@ IF(bStirrups || ReinfMat != null) {
       <ENU>"Yes"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_007279">
+      <ENU>"No"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_INI400_007280">
+      <ENU>"Yes"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_INI400_007281">
       <ENU>"No"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_007282">

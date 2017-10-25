@@ -324,8 +324,13 @@
             →INI400_008493TEXT("Depth of member"); 
             →INI400_008494TEXT("h = " &amp; Val(h*1000, 2) &amp; " mm"); //for NF and DIN NA
         } 
-        →INI400_008495TEXT("Effective depth"); 
-        →INI400_008496TEXT("d =" &amp; Val(d*1000, 2) &amp; " mm"); 
+        IF(IO.SetupNA.EC_NA.Code == "NS") { 
+            →KRS106_000002TEXT("The distance between lines of gravity of the tension reinforcement and the compression reinforcement"); 
+            →KRS106_000001TEXT("h' = " &amp; Val(h_carka*1000, 2) &amp; " mm"); 
+        } ELSE { 
+            →INI400_008495TEXT("Effective depth"); 
+            →INI400_008496TEXT("d = " &amp; Val(d*1000, 2) &amp; " mm"); 
+        } 
         IF(IO.SetupNA.EC_NA.Code == "DIN") { 
             →INI400_008497TEXT("Characteristic cylinder concrete strength"); 
             →INI400_008498TEXT("f↓ck← = " &amp; Val(f↓ck←/1000000, 2) &amp; " MPa"); //only for DIN NA
@@ -334,7 +339,7 @@
             →INI400_008503TEXT("Shear resistance of concrete strut"); 
             →INI400_008504TEXT("V↓Rd,max← = " &amp; Val(V↓Rd,max←/1000, 2) &amp; " kN"); //only for DIN NA
         } 
-        →INI400_007558TEXT("Maximal allowed transverse distance of stirrups"); 
+        →INI400_007558TEXT("Maximal allowed transverse distance of stirrup legs"); 
         →INI400_006526Clause9_2_2_8.Draw(Input, Output, 2); 
         →INI400_008505Result.Set("stmax", Output.s_st_max_lim); 
     } 
@@ -3468,6 +3473,22 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS106_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
       <VC ID="KRS116_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3955,7 +3976,7 @@
       <ENU>"Maximal allowed longitudinal spacing of stirrups"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_007558">
-      <ENU>"Maximal allowed transverse distance of stirrups"</ENU>
+      <ENU>"Maximal allowed transverse distance of stirrup legs"</ENU>
     </Item>
     <Item ID="TEXT_INI400_007560">
       <ENU>"b↓w← = " &amp; Val(b↓w←*1000, 2) &amp; " mm"</ENU>
@@ -4021,7 +4042,7 @@
       <ENU>"Effective depth"</ENU>
     </Item>
     <Item ID="TEXT_INI400_008496">
-      <ENU>"d =" &amp; Val(d*1000, 2) &amp; " mm"</ENU>
+      <ENU>"d = " &amp; Val(d*1000, 2) &amp; " mm"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_008497">
       <ENU>"Characteristic cylinder concrete strength"</ENU>
@@ -4106,6 +4127,12 @@
     </Item>
     <Item TranslateID="TEXT_INI400_008704">
       <ENU>"Minimum width of web of cross-section"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS106_000001">
+      <ENU>"h' = " &amp; Val(h_carka*1000, 2) &amp; " mm"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS106_000002">
+      <ENU>"The distance between lines of gravity of the tension reinforcement and the compression reinforcement"</ENU>
     </Item>
     <Item TranslateID="TEXT_KRS116_000009">
       <ENU>"Minimal diameter of longitudinal reinforcement"</ENU>

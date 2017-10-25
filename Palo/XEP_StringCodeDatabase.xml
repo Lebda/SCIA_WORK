@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="3018"><StringCode SourceType="DLLRC:"><StringId>@{ep_dspresent.2eids_101}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="3023"><StringCode SourceType="DLLRC:"><StringId>@{ep_dspresent.2eids_101}</StringId>
 		<SourceDll>EP_DsPresent.2eDLL</SourceDll>
 		<ResourceId>101</ResourceId>
 	</StringCode>
@@ -666,10 +666,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2eother}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>108</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_stress_limitation_second_2d_brief_table_name}</StringId>
-		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
-		<ResourceId>126</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_internal_forces_2d_design_surface_group}</StringId>
 		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
@@ -1370,6 +1366,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{datalibscia.2eids_steelchecks}</StringId>
 		<SourceDll>EP_DataLibScia.2edll</SourceDll>
 		<ResourceId>191</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_stress_limitation_width_upper_2d_brief_table_name}</StringId>
+		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
+		<ResourceId>134</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{soilstressdiagram.2ename}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
@@ -2526,6 +2526,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2eauthor}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>9008</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_stress_limitation_2d_overall_check}</StringId>
+		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
+		<ResourceId>136</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2ew6_f2.2esolution}</StringId>
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
@@ -6407,6 +6411,10 @@
 		<SourceDll>EP_DataLibScia.2edll</SourceDll>
 		<ResourceId>36197</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_stress_limitation_2d_reinf_char}</StringId>
+		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
+		<ResourceId>139</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_shear_check_2d_brief_table_name}</StringId>
 		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
 		<ResourceId>117</ResourceId>
@@ -8435,6 +8443,10 @@
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>9003</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_internal_forces_2d_basic_surface_brief_table_name}</StringId>
+		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
+		<ResourceId>103</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_internal_forces_2d_basic_centroid_group}</StringId>
 		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
 		<ResourceId>107</ResourceId>
@@ -8442,10 +8454,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_internal_forces_2d_design_surface_brief_table_name}</StringId>
 		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
 		<ResourceId>105</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_internal_forces_2d_basic_surface_brief_table_name}</StringId>
-		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
-		<ResourceId>103</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2ew7_f3.2esolution}</StringId>
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
@@ -8959,6 +8967,14 @@
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>9014</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_stress_limitation_2d_3d_drawing}</StringId>
+		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
+		<ResourceId>143</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_stress_limitation_2d_concrete_qp}</StringId>
+		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
+		<ResourceId>138</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_dosage_design_first_2d_brief_table_name}</StringId>
 		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
 		<ResourceId>125</ResourceId>
@@ -9459,9 +9475,13 @@
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>9005</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_stress_limitation_first_2d_brief_table_name}</StringId>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_stress_limitation_2d_concrete_char}</StringId>
 		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
-		<ResourceId>125</ResourceId>
+		<ResourceId>137</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_stress_limitation_width_lower_2d_brief_table_name}</StringId>
+		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
+		<ResourceId>135</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_internal_forces_2d_basic_centroid_brief_table_name}</StringId>
 		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>

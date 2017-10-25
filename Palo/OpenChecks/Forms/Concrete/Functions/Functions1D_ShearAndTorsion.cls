@@ -9,9 +9,7 @@
         string objectID →VAL316_015448= "CssID" &amp; CssID &amp; "_bw" &amp; Type; 
         IF(Results.Contains(objectID)) { 
             object bw_results →KRS010_000019= ReadResults(ResultType.Combi, objectID); 
-            IF((Type == 0 &amp;&amp; bw_results.Contains("bw")) || (Type == 1 &amp;&amp; bw_results.Contains("bw1"))) { 
-                recalculate_bw →KRS010_000021= false; 
-            } 
+            recalculate_bw →KRS010_000021= false; 
         } 
         
         IF(recalculate_bw) { 
@@ -20,39 +18,12 @@
                 object Posbw →VAL316_048337= CONCRETE.Shear.PositionWidthCssForShear(CssID, ForcesID, Type); 
                 double y↓bw← →VAL316_048338= Posbw.X; 
                 double z↓bw← →VAL316_048339= Posbw.Y; 
-                b↓w← →VAL316_048340= CONCRETE.Shear.WidthCssForShear(CssID, ForcesID, Type); 
-                //new development
-                //                Forces →VAL316_048360= Concrete.GetForces(ForcesID); 
-                //                double α↓V← →VAL316_048361= CONCRETE.Shear.AngleShearForceResultant(Forces.Vy, Forces.Vz); 
-                //                IF(α↓V← &lt; 0) { 
-                //                    α↓V← →VAL316_048362= α↓V←+180; 
-                //                } 
-                //                object ReinfTensionCssChar →VAL316_048369= CONCRETE.Characteristics(CssID, ForcesID, CONCRETE.CharType.TensionCharReinf, CONCRETE.StiffnessType.Linear); 
-                //                double b↓w,cog← →VAL316_048370= CONCRETE.Shear.CssDimension(CssID, ReinfTensionCssChar.CenterY, ReinfTensionCssChar.CenterZ, α↓V←); 
+                object bwdetailed →KRS106_000006= Concrete.Shear.WidthCssForShearDetailed(CssID, ForcesID, Type); 
+                double b↓w← →VAL316_048340= bwdetailed.Bw; 
+                bool IsModified →KRS106_000008= bwdetailed.Modified; 
+                double bwOrig →KRS106_000009= bwdetailed.BwOrig; 
+                double bwLimit →KRS106_000010= bwdetailed.BwLimit; 
             } 
-            //new development
-            //            IF(Type == 0 &amp;&amp; b↓w← &lt; b↓w,cog←) { 
-            //                Forces →VAL316_048354= Concrete.GetForces(ForcesID); 
-            //                double α↓V← →VAL316_048355= CONCRETE.Shear.AngleShearForceResultant(Forces.Vy, Forces.Vz); 
-            //                IF(α↓V← &lt; 0) { 
-            //                    α↓V← →VAL316_048356= α↓V←+180; 
-            //                } 
-            //                //            double IDFibreCC →VAL316_048341= CONCRETE.StressStrain.GetFibreExtremeStrainMin(CssID, ForcesID); 
-            //                //            object CoordFibreCC →VAL316_048342= CONCRETE.StressStrain.GetFibrePositionReinf(CssID, IDFibreCC); 
-            //                object[] TensionArea →VAL316_048343= Concrete.POD.TensilePartOfCss(CssID, ForcesID); 
-            //                double CreatePartCss →INI400_001732= CONCRETE.CreateRegionOfCrossSection(1001, CssID, TensionArea); 
-            //                double SetZeroForcesID →VAL316_048367= 666; 
-            //                →VAL316_048345Concrete.SetForcesId(SetZeroForcesID, 0, 0, 0, 0, 0, 0); 
-            //                double A↓ct← →VAL316_048347= CONCRETE.Characteristics(1001, SetZeroForcesID, CONCRETE.CharType.WholeCharConcrete, CONCRETE.StiffnessType.Linear).A; 
-            //                double x↓ct← →VAL316_048353= CONCRETE.Shear.CssDimension(1001, 0, 0, α↓V←); 
-            //                
-            //                IF(x↓ct← &gt; 0) { 
-            //                    b↓w← →VAL316_048351= A↓ct←/x↓ct←; 
-            //                    object CoordCT →VAL316_048368= Concrete.General.CentreOfPolygon(TensionArea); 
-            //                    y↓bw← →VAL316_048364= CoordCT.X; 
-            //                    z↓bw← →VAL316_048365= CoordCT.Y; 
-            //                } 
-            //        } 
             
             IF(IO.CS.Geometry.FormCode == 2002) { 
                 IF(Type == 0) { 
@@ -85,10 +56,7 @@
                     double z →VAL316_048357= CONCRETE.Shear.InnerleverArmProjection(CssID, ForcesID, α↓dz←, 0.9, 1); 
                     double c_pom →VAL316_048358= d-z; 
                     double D →VAL316_048359= IO.CS.Geometry.D; 
-                    //                double r↓sv← →VAL316_048335= D-c_pom; 
-                    //                double e →VAL316_048337= 0.5*(D+2*r↓sv←)-d; 
                     double b↓w,c← →VAL316_048360= 2*POWER(c_pom*(2*D/2-c_pom), 0.5); 
-                    //                double b↓w,t← →VAL316_048336= 2*POWER(e*(2*r↓sv←/2-e), 0.5); 
                     
                     object COG_TensReinf →VAL316_048361= CONCRETE.CenterOfGravity.TensionReinf(CssID, ForcesID); 
                     double b↓w,t← →VAL316_048362= CONCRETE.Shear.CssDimension(CssID, COG_TensReinf.X, COG_TensReinf.Y, 0); 
@@ -107,26 +75,35 @@
                 y↓bw← →VAL316_048377= pom.ybw; 
                 z↓bw← →VAL316_048378= pom.zbw; 
             } 
-            
-            IF(Type == 0) { //KRS: can be simplified - not necessary to save bw and bw1 independently
-                →KRS010_000009SaveResults(ResultType.Combi, objectID, new Structure("ybw", y↓bw←, "zbw", z↓bw←, "bw", b↓w←)); 
-            } ELSE { 
-                →KRS010_000018SaveResults(ResultType.Combi, objectID, new Structure("ybw1", y↓bw←, "zbw1", z↓bw←, "bw1", b↓w←)); 
-            } 
-            
+            →KRS010_000009SaveResults(ResultType.Combi, objectID, new Structure("ybw", y↓bw←, "zbw", z↓bw←, "bw", b↓w←, "IsModified", IsModified, "bwOrig", bwOrig, "bwLimit", bwLimit)); 
         } ELSE { 
-            IF(Type == 0) { 
-                b↓w← →VAL316_048379= bw_results.bw; 
-                y↓bw← →VAL316_048380= bw_results.ybw; 
-                z↓bw← →VAL316_048381= bw_results.zbw; 
-            } ELSE { 
-                b↓w← →VAL316_048385= bw_results.bw1; 
-                y↓bw← →VAL316_048386= bw_results.ybw1; 
-                z↓bw← →VAL316_048387= bw_results.zbw1; 
-            } 
+            b↓w← →VAL316_048379= bw_results.bw; 
+            y↓bw← →VAL316_048380= bw_results.ybw; 
+            z↓bw← →VAL316_048381= bw_results.zbw; 
+            IsModified →KRS106_000012= bw_results.IsModified; 
+            bwOrig →KRS106_000013= bw_results.bwOrig; 
+            bwLimit →KRS106_000014= bw_results.bwLimit; 
         } 
-        return new Structure("ybw", y↓bw←, "zbw", z↓bw←, "bw", b↓w←); 
+        return new Structure("ybw", y↓bw←, "zbw", z↓bw←, "bw", b↓w←, "IsModified", IsModified, "bwOrig", bwOrig, "bwLimit", bwLimit); 
     } 
+    
+    //function with warning which is desplayed when bw is modified due its small value
+    public void bwModifWarning(string T, string AddDescription, double IndexEWN, double Number↓W←, object obEWN, object ObjBw) { 
+        IF(ObjBw.IsModified &amp;&amp; (IO.CS.Geometry.FormCode == 2009 || IO.CS.Geometry.FormCode == 2010 || IO.CS.Geometry.FormCode == 2014)) { 
+            object Functions1D_EWN →INI400_013652= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_EWN.CLC"); 
+            string bwor →KRS106_000015= " b↓w←" &amp; T &amp; "↓,orig←" &amp; " = " &amp; Val(1000*ObjBw.bwOrig, 0) &amp; " mm "; 
+            string bwlim →KRS106_000016= " b↓w←" &amp; T &amp; "↓,lim←" &amp; " = " &amp; Val(1000*ObjBw.bwLimit, 0) &amp; " mm"; 
+            string bww →KRS106_000017= " " &amp; Val(1000*ObjBw.bw, 0) &amp; " mm"; 
+            string DescriptionN →KRS106_000004= AddDescription &amp; TR("Calculated width" &amp; bwor &amp; "is lesser than 10 % of average of cutoff lengths in direction perpedicular on shear forces resultant in each point of cross-section" &amp; bwlim &amp; ". Therefore b↓w←" &amp; T &amp; " is increased to next cutoff length" &amp; bww &amp; ". Pay attention to b↓w←" &amp; T &amp; " it can be higher than expected."); 
+            
+            string SolutionN →KRS106_000018= TR("To decrease effective width of rib or to increase width of web of rib."); 
+            string TypeN →KRS106_000019= TR("Warning"); 
+            →KRS106_000007Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
+            Number↓W← →KRS106_000020= Number↓W←+1; 
+            →KRS106_000021obEWN.Add(new Structure("Index", "W" &amp; IndexEWN &amp; "/" &amp; Number↓W←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
+        } 
+    } 
+    
 } 
 
 →INI400_006974BLOCK("Function for creating thin-walled cross-section from stirrups") { 
@@ -2925,6 +2902,14 @@
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
+      <VC ID="INI400_013652">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
       <VC ID="INI400_013882">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -3005,14 +2990,6 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS010_000018">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="KRS010_000019">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3061,6 +3038,14 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS106_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS106_000005">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3070,6 +3055,14 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS116_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000006">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3132,6 +3125,118 @@
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000007">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000008">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000009">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000010">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000012">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000013">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000014">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000015">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000016">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000017">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000018">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000019">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000020">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000021">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="VAL316_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3861,30 +3966,6 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_048385">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="VAL316_048386">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="VAL316_048387">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="VAL316_048397">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4469,6 +4550,9 @@
     <Item TranslateID="STRING_0307D0CA">
       <ENU>"To use method based on user input value of parameters for torsion."</ENU>
     </Item>
+    <Item TranslateID="STRING_1B731259">
+      <ENU>"Calculated width" &amp; bwor &amp; "is lesser than 10 % of average of cutoff lengths in direction perpedicular on shear forces resultant in each point of cross-section" &amp; bwlim &amp; ". Therefore b↓w←" &amp; T &amp; " is increased to next cutoff length" &amp; bww &amp; ". Pay attention to b↓w←" &amp; T &amp; " it can be higher than expected."</ENU>
+    </Item>
     <Item TranslateID="STRING_1CADC1E3">
       <ENU>"Parameters for torsion [value A↓k← and u↓k←] are calculated for effective rectangular Css, which is created from input Css to area and perimeter of effective cross-section were same as area and perimeter of input Css."</ENU>
     </Item>
@@ -4552,6 +4636,9 @@
     </Item>
     <Item TranslateID="STRING_D48AB802">
       <ENU>"To change geometry of selected stirrup or to select different method for calculation parameters for torsion."</ENU>
+    </Item>
+    <Item TranslateID="STRING_D698F9A9">
+      <ENU>"To decrease effective width of rib or to increase width of web of rib."</ENU>
     </Item>
     <Item TranslateID="STRING_E598B61F">
       <ENU>"Parameters for torsion value [A↓k← and u↓k←] is not possible to calculate by automatic method."</ENU>
