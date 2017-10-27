@@ -25800,7 +25800,6 @@ r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_CssGeometric.rgs
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\MakeConcreteToolbox_C#wrapper.bat
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ConcreteCheckCalculation.14.00.vcxproj
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ConcreteCheckCalculation.14.00.vcxproj.filters
-r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ConcreteCheckCalculation.14.00.sln
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\__AutoGenerTLH.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ConcreteCheckCalculation.idl
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ConcreteCheckCalculation.rc
@@ -35696,7 +35695,6 @@ r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestShearReinfStringFormater.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestSlabService.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\ConcreteCheckChecks.14.00.vcxproj
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\ConcreteCheckChecks.14.00.vcxproj.filters
-r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\ConcreteCheckChecks.14.00.sln
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\__AutoGenerTLH.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\ConcreteCheckChecks.idl
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\ConcreteCheckChecks.rc
@@ -35753,7 +35751,6 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\StdAfx.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\ConcreteCheckChecks.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\ConcreteCheckResultShell.14.00.vcxproj
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\ConcreteCheckResultShell.14.00.vcxproj.filters
-r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\ConcreteCheckResultShell.14.00.sln
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\__AutoGenerTLH.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\ConcreteCheckResultShell.idl
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\ConcreteCheckResultShell.rc
@@ -43276,7 +43273,6 @@ r:\A\Src\Fol\ConcreteCode\EP_CodeDIN88Concrete\EP_CodeDIN88Concrete.cpp
 r:\A\Src\Fol\ConcreteCode\EP_CodeDIN88Concrete\Concrete_CrtCheckDIN88.rgs
 r:\A\Src\DRA\EP_MaterialEC\EP_MaterialEC.14.00.vcxproj
 r:\A\Src\DRA\EP_MaterialEC\EP_MaterialEC.14.00.vcxproj.filters
-r:\A\Src\DRA\EP_MaterialEC\EP_MaterialEC.14.00.sln
 r:\A\Src\DRA\EP_MaterialEC\__AutoGenerTLH.cpp
 r:\A\Src\DRA\EP_MaterialEC\EP_MaterialEC.idl
 r:\A\Src\DRA\EP_MaterialEC\EP_MaterialEC.rc
@@ -52637,7 +52633,6 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_ForceRecalculation_MSUT\TestForceRe
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_ForceRecalculation_MSUT\TestRecalculatorForce2D.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\ConcreteCheck_CompZone_MSUT.14.00.vcxproj
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\ConcreteCheck_CompZone_MSUT.14.00.vcxproj.filters
-r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\ConcreteCheck_CompZone_MSUT.14.00.sln
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\ConcreteCheck_CompZone_MSUT.def
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\Constants.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\StdAfx.h
@@ -55912,6 +55907,7 @@ r:\A\Src\Kernel\PostBuildReflection\XEP_StringCodeGenerator\XEP_StringCodeGenera
 r:\A\Src\Kernel\PostBuildReflection\XEP_StringCodeGenerator\CreateInstallFiles.txt
 r:\A\Db\XEP_DocumentDefaults.14.00.vcxproj
 r:\A\Db\XEP_DocumentDefaults.14.00.vcxproj.filters
+r:\A\Db\XEP_DocumentDefaults.14.00.sln
 r:\A\Db\XEP_DocumentDefaults.def
 r:\A\Db\DocumentDefaults\AluminiumCheck.8.00.AluminiumResCheck [Default].TLX
 r:\A\Db\DocumentDefaults\AluminiumCheck.AluminiumResultsPresenta-(IPFile) [Default].TLX
@@ -56610,6 +56606,8 @@ r:\A\Db\DocumentDefaults\EP_MaterialDIN.EP_MaterialSteelDIN-(Composed) [Default]
 r:\A\Db\DocumentDefaults\EP_MaterialDIN.EP_MaterialSteelDIN-(Composed) [Detailed].TLX
 r:\A\Db\DocumentDefaults\EP_MaterialEC.10.00.EP_MaterialMasonry_EN-(Composed) [Default].TLX
 r:\A\Db\DocumentDefaults\EP_MaterialEC.10.00.EP_MaterialMasonry_EN-(Composed) [Detailed].TLX
+r:\A\Db\DocumentDefaults\EP_MaterialEC.14.00.EP_MaterialFibreCrtEC-(Composed) [Default].TLX
+r:\A\Db\DocumentDefaults\EP_MaterialEC.14.00.EP_MaterialFibreCrtEC-(Composed) [Detailed].TLX
 r:\A\Db\DocumentDefaults\EP_MaterialEC.EP_MaterialAluminiun_EN-(Composed) [Default].TLX
 r:\A\Db\DocumentDefaults\EP_MaterialEC.EP_MaterialAluminiun_EN-(Composed) [Detail].TLX
 r:\A\Db\DocumentDefaults\EP_MaterialEC.EP_MaterialCrtEC-(Composed) [Default].TLX
@@ -57219,8 +57217,6 @@ r:\A\Db\DocumentDefaults\CrossSection.EP_CrossSection [Effective section].TLX
 r:\A\Db\DocumentDefaults\DataAddScia.14.00.EP_CompositeBeamDesignInfo [Default].TLX
 r:\A\Db\DocumentDefaults\DataAddScia.14.00.EP_VirtualJoistDesignInfo [Default].TLX
 r:\A\Db\DocumentDefaults\DataSetSciaTra.EP_DumperSetupData [Default].TLX
-r:\A\Db\DocumentDefaults\EP_MaterialEC.14.00.EP_MaterialFibreCrtEC-(Composed) [Default].TLX
-r:\A\Db\DocumentDefaults\EP_MaterialEC.14.00.EP_MaterialFibreCrtEC-(Composed) [Detailed].TLX
 r:\A\Db\DocumentDefaults\PageLayout\Brief.HFX
 r:\A\Db\DocumentDefaults\{060FA601-E7DF-4C78-B898-C10C76837DA4}-(IPFile) [Default].TLX
 r:\A\Db\DocumentDefaults\{06F02EF8-4E64-4A4D-9908-6BBDFC60DEE6} [Default].TLX
@@ -57279,7 +57275,6 @@ r:\A\Src\Nexis\XEP_NexisMock\EP_NexCheck.rgs
 r:\A\Src\Nexis\XEP_NexisMock\EP_Tvar.rgs
 r:\A\Src\ADMIN\_Build\_GO_Build_ALL.14.00.vcxproj
 r:\A\Src\ADMIN\_Build\_GO_Build_ALL.14.00.vcxproj.filters
-r:\A\Src\ADMIN\_Build\_GO_Build_ALL.14.00.sln
 r:\A\Src\ADMIN\_Build\_GO_Build_ALL.def
 r:\A\Src\Kernel\PostBuildReflection\CreateStringCodeDatabase.bat
 r:\A\Src\Kernel\PostBuildReflection\CreateOpenCheckSystemDB4.bat

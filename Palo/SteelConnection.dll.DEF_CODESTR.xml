@@ -2255,6 +2255,10 @@
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>20541</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_warning_extended_endplate_top}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>60006</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_summary_output}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>22668</ResourceId>
@@ -2370,10 +2374,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_baseplate_ft_pl_rd_individual}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>4050</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_warning_extended_endplate_top}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>60006</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2erigid}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
@@ -2967,6 +2967,10 @@
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>22666</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_lb_star}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>22597</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_leff_only}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>20474</ResourceId>
@@ -3099,9 +3103,9 @@
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>50009</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_lb_star}</StringId>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_ft_ep_rd}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>22597</ResourceId>
+		<ResourceId>20479</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_error_validation_result}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
@@ -3283,10 +3287,6 @@
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>20922</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_ft_ep_rd}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20479</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2esemirigid}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>3274</ResourceId>
@@ -3454,6 +3454,14 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2edesign_resistances}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>22663</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20664}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20664</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20630}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20630</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20846}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
@@ -5002,14 +5010,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20620}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>20620</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20664}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20664</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20630}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20630</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estiffness_check}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
