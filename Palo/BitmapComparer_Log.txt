@@ -1,0 +1,5 @@
+Source file: g:\02.SVN\05.Poirots\Poirot_deve\CONCRETE\EN1992\SDF\2D_Design\SDF_Concrete2D_DesignAs_Increasing.esa.[WallDeepBeam].tst.bmp
+Target file: g:\02.SVN\05.Poirots\Poirot_deve\CONCRETE\EN1992\SDF\2D_Design\SDF_Concrete2D_DesignAs_Increasing.esa.[WallDeepBeam].chk.bmp
+Output file: 
+Ignore alone pixel count disabled.
+Pictures are identical

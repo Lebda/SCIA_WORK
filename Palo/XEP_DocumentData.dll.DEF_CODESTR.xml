@@ -43,13 +43,13 @@
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>136</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2edocumentitemmoveup}</StringId>
-		<SourceDll>XEP_DocumentData.2edll</SourceDll>
-		<ResourceId>1085</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eselecteditemscreatedataobject}</StringId>
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>1364</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2edocumentitemmoveup}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1085</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2eresultpicturegenerator.2etypename}</StringId>
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
@@ -115,10 +115,6 @@
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>1028</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2edocumentitemmovedown}</StringId>
-		<SourceDll>XEP_DocumentData.2edll</SourceDll>
-		<ResourceId>1086</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2einitializedocumentview}</StringId>
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>1076</ResourceId>
@@ -126,6 +122,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2echeckprojectappstate}</StringId>
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>1072</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2edocumentitemmovedown}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1086</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditformattedtextdatacancel}</StringId>
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
@@ -143,6 +143,10 @@
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>1029</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eindent}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1133</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2edragoperationcreatedataobject}</StringId>
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>1365</ResourceId>
@@ -150,10 +154,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eselecteditemscopy}</StringId>
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>1243</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eindent}</StringId>
-		<SourceDll>XEP_DocumentData.2edll</SourceDll>
-		<ResourceId>1133</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2eformattedtext.2etypename}</StringId>
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
@@ -303,10 +303,6 @@
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>1074</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2efinishrequest}</StringId>
-		<SourceDll>XEP_DocumentData.2edll</SourceDll>
-		<ResourceId>1009</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{insertableitemgroup.2eexternal}</StringId>
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>1019</ResourceId>
@@ -314,6 +310,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{insertableitemgroup.2einternal}</StringId>
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>1018</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2efinishrequest}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1009</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditdocumentpictureshowviewparamsdatacancel}</StringId>
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>

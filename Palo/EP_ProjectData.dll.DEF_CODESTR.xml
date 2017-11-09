@@ -3,10 +3,6 @@
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>108</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2ebeamsslabssolids}</StringId>
-		<SourceDll>EP_ProjectData.2edll</SourceDll>
-		<ResourceId>124</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2emasonary}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>9127</ResourceId>
@@ -14,6 +10,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2elevel.2eadvanced}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>9011</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2ebeamsslabssolids}</StringId>
+		<SourceDll>EP_ProjectData.2edll</SourceDll>
+		<ResourceId>124</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2enumberofslabs}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
@@ -79,17 +79,13 @@
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>9012</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2ematerials}</StringId>
-		<SourceDll>EP_ProjectData.2edll</SourceDll>
-		<ResourceId>126</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2edescription}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>9007</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2elicencenumber}</StringId>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2ematerials}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
-		<ResourceId>122</ResourceId>
+		<ResourceId>126</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2esteel}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
@@ -99,9 +95,9 @@
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>5006</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2enumberofloadcases}</StringId>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2elicencenumber}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
-		<ResourceId>9019</ResourceId>
+		<ResourceId>122</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2ealuminium}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
@@ -110,6 +106,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2ename}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>9003</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2enumberofloadcases}</StringId>
+		<SourceDll>EP_ProjectData.2edll</SourceDll>
+		<ResourceId>9019</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2enumberofnodes}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>

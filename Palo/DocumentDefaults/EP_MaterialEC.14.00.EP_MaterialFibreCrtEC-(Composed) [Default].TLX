@@ -3,7 +3,7 @@
 	<DataSourceNameExtension>Composed</DataSourceNameExtension>
 	<Name>EP_MaterialEC.2e14.2e00.2eEP_MaterialFibreCrtEC</Name>
 	<AdvancedName>Default</AdvancedName>
-	<Cells Size="9"><ARRAY_ITEM ID="0"><CX64TLXCell><Width><Width>0.02</Width>
+	<Cells Size="8"><ARRAY_ITEM ID="0"><CX64TLXCell><Width><Width>0.02</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -11,7 +11,7 @@
 								<RealValue><Value>0</Value>
 									<ValueName>eTLXItem_RealValue_Real</ValueName>
 								</RealValue>
-								<FormattedText>0</FormattedText>
+								<FormattedText>1</FormattedText>
 								<NameFormattedText>1</NameFormattedText>
 								<PictureInTable>0</PictureInTable>
 								<PropertyUserName></PropertyUserName>
@@ -129,43 +129,6 @@
 								<TLXItemHorizontalAlignment><Value>0</Value>
 									<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
 								</TLXItemHorizontalAlignment>
-								<clsid>{C7421D31-AF0C-11D4-BAE2-006008A4560F}</clsid>
-								<Units>24</Units>
-								<SourceCLSID>{00000000-0000-0000-0000-000000000000}</SourceCLSID>
-								<SourceNameExtension></SourceNameExtension>
-								<SourceID>-1</SourceID>
-								<TLX></TLX>
-								<Item_Type><Value>0</Value>
-									<ValueName>eTLXItem_Type_Property</ValueName>
-								</Item_Type>
-								<Parametric_Values_Representation><Value>3</Value>
-									<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
-								</Parametric_Values_Representation>
-								<Value_Type><Value>3</Value>
-									<ValueName>eValue_Type_Real</ValueName>
-								</Value_Type>
-								<Item_Value></Item_Value>
-							</TLXITEM>
-						</ARRAY_ITEM>
-					</Items>
-				</Items>
-			</CX64TLXCell>
-		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="4"><CX64TLXCell><Width><Width>0.02</Width>
-				</Width>
-				<Height><Height>0.05</Height>
-				</Height>
-				<Items><Items Size="1"><ARRAY_ITEM ID="0"><TLXITEM><PropName></PropName>
-								<RealValue><Value>0</Value>
-									<ValueName>eTLXItem_RealValue_Real</ValueName>
-								</RealValue>
-								<FormattedText>0</FormattedText>
-								<NameFormattedText>1</NameFormattedText>
-								<PictureInTable>0</PictureInTable>
-								<PropertyUserName></PropertyUserName>
-								<TLXItemHorizontalAlignment><Value>0</Value>
-									<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
-								</TLXItemHorizontalAlignment>
 								<clsid>{14845276-6249-4A55-8955-8809EDB480FD}</clsid>
 								<Units>81</Units>
 								<SourceCLSID>{00000000-0000-0000-0000-000000000000}</SourceCLSID>
@@ -188,7 +151,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="5"><CX64TLXCell><Width><Width>0.02</Width>
+		<ARRAY_ITEM ID="4"><CX64TLXCell><Width><Width>0.02</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -225,7 +188,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="6"><CX64TLXCell><Width><Width>0.02</Width>
+		<ARRAY_ITEM ID="5"><CX64TLXCell><Width><Width>0.02</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -262,7 +225,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="7"><CX64TLXCell><Width><Width>0.02</Width>
+		<ARRAY_ITEM ID="6"><CX64TLXCell><Width><Width>0.02</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -299,7 +262,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="8"><CX64TLXCell><Width><Width>0.02</Width>
+		<ARRAY_ITEM ID="7"><CX64TLXCell><Width><Width>0.02</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -2838,8 +2801,8 @@
 	<FirstColumnWidth><Width>0.05</Width>
 	</FirstColumnWidth>
 	<FirstColumnAsFormattedText>0</FirstColumnAsFormattedText>
-	<ExplanationsAndSymbolsTableFirstColumnWidth>0.04</ExplanationsAndSymbolsTableFirstColumnWidth>
-	<ExplanationsAndSymbolsTableSecondColumnWidth>0.05</ExplanationsAndSymbolsTableSecondColumnWidth>
+	<ExplanationsAndSymbolsTableFirstColumnWidth>0.02</ExplanationsAndSymbolsTableFirstColumnWidth>
+	<ExplanationsAndSymbolsTableSecondColumnWidth>0.02</ExplanationsAndSymbolsTableSecondColumnWidth>
 	<ExplanationsAndSymbolsSplitting>1</ExplanationsAndSymbolsSplitting>
 	<Sorting Size="0"></Sorting>
 </ARCHIVE>

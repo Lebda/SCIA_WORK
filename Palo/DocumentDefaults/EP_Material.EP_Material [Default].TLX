@@ -85,8 +85,8 @@
 								<RealValue><Value>0</Value>
 									<ValueName>eTLXItem_RealValue_Real</ValueName>
 								</RealValue>
-								<FormattedText>0</FormattedText>
-								<NameFormattedText>0</NameFormattedText>
+								<FormattedText>1</FormattedText>
+								<NameFormattedText>1</NameFormattedText>
 								<PictureInTable>0</PictureInTable>
 								<PropertyUserName></PropertyUserName>
 								<TLXItemHorizontalAlignment><Value>0</Value>

@@ -3451,7 +3451,6 @@ r:\A\Src\Mic\Base\ARCHIVE\EP_Archive.def
 r:\A\Src\Mic\Base\ARCHIVE\Archive.def
 r:\A\Src\Mic\Base\ARCHIVE\StdAfx.h
 r:\A\Inc\EP_ArchiveDLL_EXP_IMP.h
-r:\A\Inc\EP_ArchiveEnum.h
 r:\A\Inc\EP_EasyArchiveSafetyCheck.h
 r:\A\inc\EP_MemFileEx.h
 r:\A\inc\EP_PathData.h
@@ -25123,6 +25122,7 @@ r:\A\Src\PLE\SteelOptimizer\SteelOptimizer.cpp
 r:\A\Src\PLE\SteelOptimizer\TransportDivider.cpp
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_ConcreteToolbox.14.00.vcxproj
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_ConcreteToolbox.14.00.vcxproj.filters
+r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_ConcreteToolbox.14.00.sln
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\__AutoGenerTLH.cpp
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_ConcreteToolbox.idl
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_ConcreteToolbox.rc
@@ -25800,6 +25800,7 @@ r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_CssGeometric.rgs
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\MakeConcreteToolbox_C#wrapper.bat
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ConcreteCheckCalculation.14.00.vcxproj
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ConcreteCheckCalculation.14.00.vcxproj.filters
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ConcreteCheckCalculation.14.00.sln
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\__AutoGenerTLH.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ConcreteCheckCalculation.idl
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ConcreteCheckCalculation.rc
@@ -25807,6 +25808,8 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ConcreteCheckCalculation
 r:\A\inc\StdStringHelp.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\CharsCalculations.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\CheckChars.h
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\CompStrut4CapacityCheckCalculator.h
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\CompStrutNMInOut.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\CrackCalculations.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\CrackCheckFormulaCalculator2D.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\CrackCheckInOut.h
@@ -25855,6 +25858,8 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\Force2D.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ForceRecalculation2DInputs.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ForceRecalculation2DOutputs.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ForceRecalStrategy2D.h
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\NoReinfFibreConData.h
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\NoReinfFibreConDataCalculator.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\RecalculatorForce2D.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ResistanceResponseCalculations.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ResistanceResponseCalculator.h
@@ -25876,6 +25881,7 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\StressLimitationFormulaC
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\StressLimitationInOut.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\XCalculations.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\CharsCalculations.cpp
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\CompStrut4CapacityCheckCalculator.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\CrackCalculations.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\CrackCheckFormulaCalculator2D.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\CrackCheckStrategy2D.cpp
@@ -25914,6 +25920,7 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\CompZoneFormulaInOut.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\CompZoneFormulaStrategy.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ConcreteStrutOptimizer.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ForceRecalStrategy2D.cpp
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\NoReinfFibreConDataCalculator.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\RecalculatorForce2D.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ResistanceResponseCalculations.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ResistanceResponseCalculator.cpp
@@ -29064,6 +29071,7 @@ r:\A\Src\Cads\DataAddCads\EP_MixBeamData.rgs
 r:\A\Src\Cads\DataAddCads\EP_WebCripplingData.rgs
 r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.14.00.vcxproj
 r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.14.00.vcxproj.filters
+r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.14.00.sln
 r:\A\Src\Checks\EP_CheckDataProvider\__AutoGenerTLH.cpp
 r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.idl
 r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.rc
@@ -35695,6 +35703,7 @@ r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestShearReinfStringFormater.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestSlabService.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\ConcreteCheckChecks.14.00.vcxproj
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\ConcreteCheckChecks.14.00.vcxproj.filters
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\ConcreteCheckChecks.14.00.sln
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\__AutoGenerTLH.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\ConcreteCheckChecks.idl
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\ConcreteCheckChecks.rc
@@ -35769,6 +35778,7 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\SFRC_2D_ShearCheckShell.
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\SFRC_2D_StressLimitationShell.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\StdAfx.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\Resource.h
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\SymbolExplanationTable.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\CBekaertTableCreator.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\DosageDesignCaseTypeReinf.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\MagnitudeDataDefinitionsGroupCreator.cpp
@@ -35782,6 +35792,7 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\SFRC_2D_ShearCheckShell.
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\SFRC_2D_StressLimitationShell.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\StdAfx.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\ConcreteCheckResultShell.cpp
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\SymbolExplanationTable.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\SFRC_2D_CapacityCheckShell.rgs
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\SFRC_2D_CrackWidthShell.rgs
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\SFRC_2D_DosageDesignShell.rgs
@@ -52633,6 +52644,7 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_ForceRecalculation_MSUT\TestForceRe
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_ForceRecalculation_MSUT\TestRecalculatorForce2D.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\ConcreteCheck_CompZone_MSUT.14.00.vcxproj
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\ConcreteCheck_CompZone_MSUT.14.00.vcxproj.filters
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\ConcreteCheck_CompZone_MSUT.14.00.sln
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\ConcreteCheck_CompZone_MSUT.def
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\Constants.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\StdAfx.h
@@ -55907,7 +55919,6 @@ r:\A\Src\Kernel\PostBuildReflection\XEP_StringCodeGenerator\XEP_StringCodeGenera
 r:\A\Src\Kernel\PostBuildReflection\XEP_StringCodeGenerator\CreateInstallFiles.txt
 r:\A\Db\XEP_DocumentDefaults.14.00.vcxproj
 r:\A\Db\XEP_DocumentDefaults.14.00.vcxproj.filters
-r:\A\Db\XEP_DocumentDefaults.14.00.sln
 r:\A\Db\XEP_DocumentDefaults.def
 r:\A\Db\DocumentDefaults\AluminiumCheck.8.00.AluminiumResCheck [Default].TLX
 r:\A\Db\DocumentDefaults\AluminiumCheck.AluminiumResultsPresenta-(IPFile) [Default].TLX
