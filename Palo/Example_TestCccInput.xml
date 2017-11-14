@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestConcreteChecksCalculations>
+  <CalculationSetting>
+    <Forces1D>
+      <Force1D N="0" My="11.37E3" Mz="0.0"></Force1D>
+      <Force1D N="0" My="15.69E3" Mz="0.0"></Force1D>
+      <Force1D N="0" My="19.55E3" Mz="0.0"></Force1D>
+      <Force1D N="0" My="21.66E3" Mz="0.0"></Force1D>
+      <Force1D N="0" My="22.97E3" Mz="0.0"></Force1D>
+      <Force1D N="0" My="23.7E3" Mz="0.0"></Force1D>
+      <Force1D N="0" My="24.39E3" Mz="0.0"></Force1D>
+      <Force1D N="0" My="24.83E3" Mz="0.0"></Force1D>
+      <Force1D N="0" My="25.44E3" Mz="0.0"></Force1D>
+      <Force1D N="0" My="25.95E3" Mz="0.0"></Force1D>
+      <Force1D N="0" My="27.39E3" Mz="0.0"></Force1D>
+      <Force1D N="0" My="28.69E3" Mz="0.0"></Force1D>
+      <Force1D N="0" My="29.95E3" Mz="0.0"></Force1D>
+    </Forces1D>
+  </CalculationSetting>
+  <CseFactory>
+    <FactoryData eFactoryDataPosition="eFactoryDataConcretePosition" Attribute="1">
+      <WDiagrams>
+        <WDiagram>
+          <WDiagPoint Eps="0.0250000000" Sigma="1959761.3"></WDiagPoint>
+          <WDiagPoint Eps="0.0035000000" Sigma="1434012.0"></WDiagPoint>
+          <WDiagPoint Eps="0.0001000000" Sigma="1434012.0"></WDiagPoint>
+          <WDiagPoint Eps="0.0" Sigma="0.0"></WDiagPoint>
+          <WDiagPoint Eps="-0.2E-3" Sigma="-4.845E6"></WDiagPoint>
+          <WDiagPoint Eps="-0.4E-3" Sigma="-9.18E6"></WDiagPoint>
+          <WDiagPoint Eps="-0.6E-3" Sigma="-13.005E6"></WDiagPoint>
+          <WDiagPoint Eps="-0.8E-3" Sigma="-16.32E6"></WDiagPoint>
+          <WDiagPoint Eps="-1.0E-3" Sigma="-19.125E6"></WDiagPoint>
+          <WDiagPoint Eps="-1.2E-3" Sigma="-21.42E6"></WDiagPoint>
+          <WDiagPoint Eps="-1.4E-3" Sigma="-23.205E6"></WDiagPoint>
+          <WDiagPoint Eps="-1.6E-3" Sigma="-24.48E6"></WDiagPoint>
+          <WDiagPoint Eps="-1.8E-3" Sigma="-25.245E6"></WDiagPoint>
+          <WDiagPoint Eps="-2.0E-3" Sigma="-25.5E6"></WDiagPoint>
+          <WDiagPoint Eps="-3.5E-3" Sigma="-25.5E6"></WDiagPoint>
+        </WDiagram>
+        <!--<WDiagram>
+          <WDiagPoint Eps="5.0000000000" Sigma="1697761.3"></WDiagPoint>
+          <WDiagPoint Eps="0.0250000000" Sigma="1959761.3"></WDiagPoint>
+          <WDiagPoint Eps="0.0035000000" Sigma="1434012.0"></WDiagPoint>
+          <WDiagPoint Eps="0.0001000000" Sigma="1434012.0"></WDiagPoint>
+          <WDiagPoint Eps="0.0" Sigma="0.0"></WDiagPoint>
+          <WDiagPoint Eps="-0.0017500000" Sigma="-25500000.0"></WDiagPoint>
+          <WDiagPoint Eps="-5.0" Sigma="-85714285714"></WDiagPoint>
+          <WDiagPoint Eps="-0.0035000000" Sigma="-25500000.0"></WDiagPoint>
+          <WDiagPoint Eps="-0.7000000000" Sigma="-30000000.0"></WDiagPoint>
+        </WDiagram>-->
+
+      </WDiagrams>
+      <AddDataComp Phase="0" Time="0" ItemID="0" Attribute="1" MaterialID="317">
+        <AddData4CompRect H="0" B="0" Alpha="0.0" Y="0" Z="0" eTypeOfPoint="eOutSidePoint"></AddData4CompRect>
+        <AddData4CompCircular Diameter="0.2" PointsCount="71"></AddData4CompCircular>
+      </AddDataComp>
+      <Poly>
+        <Point Y="0.5" Z="-0.1" eTypeOfPoint="eOutSidePoint"></Point>
+        <Point Y="0.5" Z="0.1" eTypeOfPoint="eOutSidePoint"></Point>
+        <Point Y="-0.5" Z="0.1" eTypeOfPoint="eOutSidePoint"></Point>
+        <Point Y="-0.5" Z="-0.1" eTypeOfPoint="eOutSidePoint"></Point>
+        <Point Y="0.5" Z="-0.1" eTypeOfPoint="eOutSidePoint"></Point>
+      </Poly>
+    </FactoryData>
+  </CseFactory>
+</TestConcreteChecksCalculations>

@@ -121,7 +121,6 @@ DL70BIBUtils.dll
 DL70CoolType.dll
 DL70JP2KLib.dll
 DL70PDFL.dll
-DocCtrl.dll
 DocGenSettings.txt
 DocumentFormat.OpenXml.dll
 doxygen.exe
@@ -148,7 +147,6 @@ db\EP_CompositeShearConnectorsEC_EN.db4
 db\EP_CompositeShearConnectorsIBC.db4
 set\EP_Connection.set
 set\EP_ConnectionDIN.set
-EP_ConSectionCheck.dll
 set\EP_DefaultSettingsDirectories.set
 set\EP_DefaultSettingsEnviroment.set
 set\EP_DefaultSettingsOverviewDrawings.set
@@ -233,13 +231,14 @@ Esac_1B.dat
 ep_regsvr32.exe Esa.exe
 set\ESA_AdvancedGraphicSetup.set
 set\ESA_ConnectStructureSetup.set
-ESA.chm
 set\ESA_Upgrade2Dto1DSetup.set
 xml\esa_xml_def.xsd
 etabs.tdx
 Addons\mapping\EtabsCss.xml
 ProfileLibrary\European.FIL
 Example_ESACOM_Multithread.dll
+Example_TestCccInput.xml
+Example_TestCccResult.xml
 EXPERT.exe
 FemBase.dll
 FemBase64.dll
@@ -267,10 +266,8 @@ GepInstall.exe
 GepNexVC.dll
 ProfileLibrary\German.FIL
 set\IBC.set
-iBolt.dll
 iconv.dll
 IFC_2X3_Schema.exp
-iform.dll.CODESTRREG
 IFXCore.dll
 Plugins\IFXExporting.dll
 Plugins\IFXImporting.dll
@@ -287,7 +284,6 @@ Interop.EP_MEMARCHIVELib.dll
 Interop.EP_XMLEXCHANGELib.dll
 Interop.GRIDBASELib.dll
 Interop.UNITLib.dll
-iPun.dll
 ProfileLibrary\Japanese.FIL
 libclang.dll
 libifcoremd.dll
@@ -330,7 +326,6 @@ NEPR14.DLL
 nepr1464.dll
 NEPR15.DLL
 nepr1564.dll
-Nessie.dll
 Newmark.dll
 Newmark64.dll
 BimPlus\Newtonsoft.Json.dll
@@ -509,6 +504,7 @@ Telerik.Windows.Themes.Windows8Touch.dll
 Telerik.Windows.Zip.dll
 Telerik.Windows.Zip.Extensions.dll
 TelerikCommon.dll
+TestCccResult.xsl
 Addons\mapping\TkCssECEN.xml
 Addons\mapping\TkMaterialECEN.xml
 Toolbars\Light\StyleInfo.xml
@@ -558,7 +554,7 @@ CadsLinkSciaWestok\WestokIPESections.xml
 CadsLinkSciaWestok\WestokUBSections.xml
 CadsLinkSciaWestok\WestokUCSections.xml
 CadsLinkSciaWestok\westok_main.xml.def
-CadsLinkSciaWestok\westok_main.xml
+westok_main.tdx
 westok_sections.tdx
 AddDataCalculator\Setting\XEP_AddDataCalculatorLoggerConfig.xml
 XEP_ProjectStorageService.exe -createstorage -nofailwhenexist -silentsuccess
@@ -3695,6 +3691,7 @@ ConcreteCheckChecks.dll
 ConcreteCheckResultShell.dll
 ConcreteESACmds.dll
 ConcreteESACmdsM.dll
+TestConcreteChecksCalculations.exe
 HeatTransferESACmd.dll
 HeatTransferESACmdM.dll
 EP_ExternalCmds.dll

@@ -25122,7 +25122,6 @@ r:\A\Src\PLE\SteelOptimizer\SteelOptimizer.cpp
 r:\A\Src\PLE\SteelOptimizer\TransportDivider.cpp
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_ConcreteToolbox.14.00.vcxproj
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_ConcreteToolbox.14.00.vcxproj.filters
-r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_ConcreteToolbox.14.00.sln
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\__AutoGenerTLH.cpp
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_ConcreteToolbox.idl
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_ConcreteToolbox.rc
@@ -25800,7 +25799,6 @@ r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\EP_CssGeometric.rgs
 r:\A\Src\Checks\ConcreteChecks\EP_ConcreteToolbox\MakeConcreteToolbox_C#wrapper.bat
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ConcreteCheckCalculation.14.00.vcxproj
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ConcreteCheckCalculation.14.00.vcxproj.filters
-r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ConcreteCheckCalculation.14.00.sln
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\__AutoGenerTLH.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ConcreteCheckCalculation.idl
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckCalculation\ConcreteCheckCalculation.rc
@@ -29071,7 +29069,6 @@ r:\A\Src\Cads\DataAddCads\EP_MixBeamData.rgs
 r:\A\Src\Cads\DataAddCads\EP_WebCripplingData.rgs
 r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.14.00.vcxproj
 r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.14.00.vcxproj.filters
-r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.14.00.sln
 r:\A\Src\Checks\EP_CheckDataProvider\__AutoGenerTLH.cpp
 r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.idl
 r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.rc
@@ -35703,7 +35700,6 @@ r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestShearReinfStringFormater.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestSlabService.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\ConcreteCheckChecks.14.00.vcxproj
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\ConcreteCheckChecks.14.00.vcxproj.filters
-r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\ConcreteCheckChecks.14.00.sln
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\__AutoGenerTLH.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\ConcreteCheckChecks.idl
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\ConcreteCheckChecks.rc
@@ -36929,6 +36925,20 @@ r:\A\Src\Par\Services\ConcreteESACmdsM\Res\newlayer.ico
 r:\A\Src\Par\Services\ConcreteESACmdsM\Res\ResultsESA_BillMaterialConcrete_Icon.bmp
 r:\A\Src\Par\Services\ConcreteESACmdsM\Res\StandardBeamAndZone_Icon.bmp
 r:\A\Src\Par\Services\ConcreteESACmdsM\Res\ZonesData.bmp
+r:\A\Src\Checks\ConcreteChecks\UnitTestsConcrete\TestConcreteChecksCalculations\TestConcreteChecksCalculations.14.00.vcxproj
+r:\A\Src\Checks\ConcreteChecks\UnitTestsConcrete\TestConcreteChecksCalculations\TestConcreteChecksCalculations.14.00.vcxproj.filters
+r:\A\Src\Checks\ConcreteChecks\UnitTestsConcrete\TestConcreteChecksCalculations\TestConcreteChecksCalculations.def
+r:\A\Src\Checks\ConcreteChecks\UnitTestsConcrete\TestConcreteChecksCalculations\CalculationPODHandler.h
+r:\A\Src\Checks\ConcreteChecks\UnitTestsConcrete\TestConcreteChecksCalculations\CalculationSetting.h
+r:\A\Src\Checks\ConcreteChecks\UnitTestsConcrete\TestConcreteChecksCalculations\StdAfx.h
+r:\A\Src\Checks\ConcreteChecks\UnitTestsConcrete\TestConcreteChecksCalculations\TestRunner.h
+r:\A\Src\Checks\ConcreteChecks\UnitTestsConcrete\TestConcreteChecksCalculations\CalculationPODHandler.cpp
+r:\A\Src\Checks\ConcreteChecks\UnitTestsConcrete\TestConcreteChecksCalculations\CalculationSetting.cpp
+r:\A\Src\Checks\ConcreteChecks\UnitTestsConcrete\TestConcreteChecksCalculations\StdAfx.cpp
+r:\A\Src\Checks\ConcreteChecks\UnitTestsConcrete\TestConcreteChecksCalculations\TestConcreteChecksCalculations.cpp
+r:\A\Src\Checks\ConcreteChecks\UnitTestsConcrete\TestConcreteChecksCalculations\Example_TestCccInput.xml
+r:\A\Src\Checks\ConcreteChecks\UnitTestsConcrete\TestConcreteChecksCalculations\Example_TestCccResult.xml
+r:\A\Src\Checks\ConcreteChecks\UnitTestsConcrete\TestConcreteChecksCalculations\TestCccResult.xsl
 r:\A\Src\Pos\Services\HeatTransferESACmd\HeatTransferESACmd.14.00.vcxproj
 r:\A\Src\Pos\Services\HeatTransferESACmd\HeatTransferESACmd.14.00.vcxproj.filters
 r:\A\Src\Pos\Services\HeatTransferESACmd\__AutoGenerTLH.cpp
@@ -52644,7 +52654,6 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_ForceRecalculation_MSUT\TestForceRe
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_ForceRecalculation_MSUT\TestRecalculatorForce2D.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\ConcreteCheck_CompZone_MSUT.14.00.vcxproj
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\ConcreteCheck_CompZone_MSUT.14.00.vcxproj.filters
-r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\ConcreteCheck_CompZone_MSUT.14.00.sln
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\ConcreteCheck_CompZone_MSUT.def
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\Constants.h
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\StdAfx.h
@@ -52657,6 +52666,8 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestCompZoneFormulaSt
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestCrackCalculations.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestCrackCheckStrategy2D.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestCreepCalculations.cpp
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestNoReinfFibreCalculaculator.cpp
+r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestNoReinfFibreCalculations.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestResistanceResponseCalculations.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestResistanceResponseCalculator.cpp
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestResistanceResponseFormulaCalculator.cpp

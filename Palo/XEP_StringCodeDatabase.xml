@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="3026"><StringCode SourceType="DLLRC:"><StringId>@{ep_dspresent.2eids_101}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="3028"><StringCode SourceType="DLLRC:"><StringId>@{ep_dspresent.2eids_101}</StringId>
 		<SourceDll>EP_DsPresent.2eDLL</SourceDll>
 		<ResourceId>101</ResourceId>
 	</StringCode>
@@ -6427,13 +6427,13 @@
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
 		<ResourceId>123</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2en7_f1.2edescription}</StringId>
-		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
-		<ResourceId>112</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2ew7_f1.2edescription}</StringId>
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
 		<ResourceId>122</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2ew7_f6.2edescription}</StringId>
+		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
+		<ResourceId>131</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2ew6_f1.2esolution}</StringId>
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
@@ -6447,25 +6447,29 @@
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
 		<ResourceId>121</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2ew7_f4.2edescription}</StringId>
-		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
-		<ResourceId>126</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2en7_f4.2edescription}</StringId>
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
 		<ResourceId>120</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2ew7_f4.2edescription}</StringId>
+		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
+		<ResourceId>126</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2en7_f3.2edescription}</StringId>
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
 		<ResourceId>119</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2en7_f2.2edescription}</StringId>
+		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
+		<ResourceId>118</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2ew7_f3.2edescription}</StringId>
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
 		<ResourceId>124</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2en7_f2.2edescription}</StringId>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2en7_f1.2edescription}</StringId>
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
-		<ResourceId>118</ResourceId>
+		<ResourceId>112</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2ecdd.2edeflection.2e1d2d.2ew7_6.2edescription}</StringId>
 		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
@@ -7006,6 +7010,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2elevel}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>9012</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_capacity_check_2d_concrete_strut_brief_table_name}</StringId>
+		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
+		<ResourceId>220</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eitm5004}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
@@ -9503,10 +9511,6 @@
 		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
 		<ResourceId>108</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_lin}</StringId>
-		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
-		<ResourceId>1017</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_add_lim_z}</StringId>
 		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
 		<ResourceId>1016</ResourceId>
@@ -9530,6 +9534,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_tot_lim_y}</StringId>
 		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
 		<ResourceId>1009</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_lin}</StringId>
+		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
+		<ResourceId>1017</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_dspresent.2eids_103}</StringId>
 		<SourceDll>EP_DsPresent.2eDLL</SourceDll>

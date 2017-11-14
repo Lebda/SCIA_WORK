@@ -240,6 +240,8 @@ etabs.tdx
 Addons\mapping\EtabsCss.xml
 ProfileLibrary\European.FIL
 Example_ESACOM_Multithread.dll
+Example_TestCccInput.xml
+Example_TestCccResult.xml
 EXPERT.exe
 FemBase.dll
 FemBase64.dll
@@ -509,6 +511,7 @@ Telerik.Windows.Themes.Windows8Touch.dll
 Telerik.Windows.Zip.dll
 Telerik.Windows.Zip.Extensions.dll
 TelerikCommon.dll
+TestCccResult.xsl
 Addons\mapping\TkCssECEN.xml
 Addons\mapping\TkMaterialECEN.xml
 Toolbars\Light\StyleInfo.xml
@@ -558,7 +561,7 @@ CadsLinkSciaWestok\WestokIPESections.xml
 CadsLinkSciaWestok\WestokUBSections.xml
 CadsLinkSciaWestok\WestokUCSections.xml
 CadsLinkSciaWestok\westok_main.xml.def
-CadsLinkSciaWestok\westok_main.xml
+westok_main.tdx
 westok_sections.tdx
 AddDataCalculator\Setting\XEP_AddDataCalculatorLoggerConfig.xml
 EP_regsvr32.exe
