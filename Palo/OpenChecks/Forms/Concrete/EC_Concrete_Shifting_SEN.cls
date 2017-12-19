@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="0d807642-cdb3-4b90-a0fa-537145f9aff5">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure
+    <SourceCode Collapsed="1|9|38|48|56|66|85|112" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure
     bool ValidateInput(object Input) { //Validate inputs from master to this form
         ForceID →INI400_013590= Input.Get("ForceID", ForceID); 
         Design →INI400_014230= Input.Get("Design", Design); 
@@ -42,10 +42,8 @@ IF(!IO.Contains("Beam")) {
 double CalcShiftDistance(double d, double θ, double α, double Coeff↓z←, bool SlabMember) { 
     IF(SlabMember) { 
         double a →INI400_007249= d; 
-    } 
-    ELSE { 
+    } ELSE { 
         double a →INI400_007250= 0.5*(cotg(θ)-cotg(α))*Coeff↓z←*d; 
-        
     } 
     return a; 
 } 
@@ -59,7 +57,6 @@ double SectionLeft(double dxaL, double IDmin) {
     return SecIDLeft; 
 } 
 
-
 double SectionRight(double dxaR, double IDmax) { 
     double SecIDRight →INI400_007811= SectionId; 
     WHILE(SecIDRight &lt; IDmax &amp;&amp; dxaR &gt;= IO.Beam.Section[SecIDRight].Dx) { 
@@ -67,27 +64,33 @@ double SectionRight(double dxaR, double IDmax) {
     } 
     return SecIDRight; 
 } 
+
 // intrepolation of benidng moments
 // 0 =moment around y, 1 = moment around z
-double InterpMoments(double distance, double IDSectionLeft, double IDSectionRight, double PrincipalAngle, double TypeM) { 
+double InterpMoments(double distance, double IDSectionLeft, double IDSectionRight, double TypeM) { 
     double dxL →INI400_007296= IO.Beam.Section[IDSectionLeft].Dx; 
     double dxR →INI400_007297= IO.Beam.Section[IDSectionRight].Dx; 
-    //object NextL →INI400_007298= DataFromSEN.RotateMoments(IO.Beam.Section[IDSectionLeft].InternalForces[ForceID].My, IO.Beam.Section[IDSectionLeft].InternalForces[ForceID].Mz, PrincipalAngle); 
     object NextL →LUN316_000022= GetReducedForces(IDSectionLeft, ForceID); 
-    IF(TypeM == 0) { double M↓L← →INI400_007300= NextL.My; } ELSE { double M↓L← →INI400_007301= NextL.Mz; } 
+    IF(TypeM == 0) { 
+        double M↓L← →INI400_007300= NextL.My; 
+    } ELSE { 
+        double M↓L← →INI400_007301= NextL.Mz; 
+    } 
     object NextR →INI400_007302= GetReducedForces(IDSectionRight, ForceID); 
-    IF(TypeM == 0) { double M↓R← →INI400_007303= NextR.My; } ELSE { double M↓R← →INI400_007304= NextR.Mz; } 
+    IF(TypeM == 0) { 
+        double M↓R← →INI400_007303= NextR.My; 
+    } ELSE { 
+        double M↓R← →INI400_007304= NextR.Mz; 
+    } 
     double M↓int← →INI400_007305= LinInterp(distance, new PointD(dxL, M↓L←), new PointD(dxR, M↓R←)); 
     return M↓int←; 
 } 
 
-double MaxBetweenLeftRight(double IDSectionLeft, double IDSectionRight, double PrincipalAngle, double TypeM, double Mcurrent) { 
+double MaxBetweenLeftRight(double IDSectionLeft, double IDSectionRight, double TypeM, double Mcurrent) { 
     double Mmax →INI400_007778= 0; 
     double i →INI400_007779= 0; 
     FOR(i, IDSectionLeft+1, IDSectionRight-1) { 
-        
         object Msection →INI400_007780= GetReducedForces(i, ForceID); 
-        
         IF(TypeM == 0) { 
             double M↓sec← →INI400_007781= Msection.My; 
         } ELSE { 
@@ -102,8 +105,6 @@ double MaxBetweenLeftRight(double IDSectionLeft, double IDSectionRight, double P
     return Mmax; 
 } 
 
-
-
 // determine sign of forces for zero forces
 double NSection →INI400_007036= IO.Beam.Section.Count-1; 
 object IOhelper →INI400_007806= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
@@ -112,8 +113,7 @@ double SectionId →INI400_007805= IOhelper.GetActSectionID();
 
 object REDUCTION_SEN →LUN316_000001= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\EC_Concrete_Forces_Reduction_SEN.CLC"); 
 
-object GetReducedForces(double SectId, double ForceID)
-{ 
+object GetReducedForces(double SectId, double ForceID) { 
     double actSectID →LUN316_000015= IOhelper.GetActSectionID(); 
     →LUN316_000016IOhelper.SetActSectionID(SectId); 
     object redInput →LUN316_000002= new Structure(); 
@@ -165,13 +165,7 @@ IF(!bShifting) {
 } 
 
 double MemberType →INI400_014229= IO.MemberData.Concrete.MemberType; 
-IF(MemberType == 4) { 
-    double PrincipalAngle →INI400_013627= 0; 
-} ELSE { 
-    double PrincipalAngle →INI400_007058= IOhelper.GetActCS().Chars.alpha*180/Math.PI; 
-} 
 
-//object RecForce →INI400_007317= DataFromSEN.RotateMoments(M↓y.inp←, M↓z.inp←, PrincipalAngle); 
 double M↓y← →INI400_007318= M↓y.inp←; 
 double M↓z← →INI400_007319= M↓z.inp←; 
 →INI400_013849TEXT("Recalculation bending moments (shifting of the bending line)"); 
@@ -238,32 +232,32 @@ double SecIDLeftZ →INI400_007280= SectionLeft(dxaL↓z←, 0);
 double dxaR↓z← →INI400_007281= MIN(IO.Beam.Section[NSection].Dx, dx+a↓z←); 
 double SecIDRightZ →INI400_007282= SectionRight(dxaR↓z←, NSection); 
 //determination maximu between left and right
-double M↓max.y← →INI400_007339= MaxBetweenLeftRight(SecIDLeftY, SecIDRightY, PrincipalAngle, 0, M↓y←); 
+double M↓max.y← →INI400_007339= MaxBetweenLeftRight(SecIDLeftY, SecIDRightY, 0, M↓y←); 
 
-double M↓max.z← →INI400_007340= MaxBetweenLeftRight(SecIDLeftZ, SecIDRightZ, PrincipalAngle, 1, M↓z←); 
+double M↓max.z← →INI400_007340= MaxBetweenLeftRight(SecIDLeftZ, SecIDRightZ, 1, M↓z←); 
 →INI400_007774PAGEBREAK(); 
 →INI400_007320TEXT("Calculation shifting moment around current section"); 
 //determination bending moments for shifting
-double M↓y.LPom← →INI400_007306= InterpMoments(dxaL↓y←, SecIDLeftY, SecIDLeftY+1, PrincipalAngle, 0); 
+double M↓y.LPom← →INI400_007306= InterpMoments(dxaL↓y←, SecIDLeftY, SecIDLeftY+1, 0); 
 IF(M↓y.LPom←*M↓y← &lt; 0) { 
     M↓y.L← →INI400_007684= 0; 
 } ELSE { 
     M↓y.L← →INI400_007686= M↓y.LPom←; 
 } 
-double M↓y.RPom← →INI400_007308= InterpMoments(dxaR↓y←, SecIDRightY-1, SecIDRightY, PrincipalAngle, 0); 
+double M↓y.RPom← →INI400_007308= InterpMoments(dxaR↓y←, SecIDRightY-1, SecIDRightY, 0); 
 IF(M↓y.RPom←*M↓y← &lt; 0) { 
     M↓y.R← →INI400_007687= 0; 
 } ELSE { 
     M↓y.R← →INI400_007688= M↓y.RPom←; 
 } 
 
-double M↓z.LPom← →INI400_007309= InterpMoments(dxaL↓z←, SecIDLeftZ, SecIDLeftZ+1, PrincipalAngle, 1); 
+double M↓z.LPom← →INI400_007309= InterpMoments(dxaL↓z←, SecIDLeftZ, SecIDLeftZ+1, 1); 
 IF(M↓z.LPom←*M↓z← &lt; 0) { 
     M↓z.L← →INI400_007689= 0; 
 } ELSE { 
     M↓z.L← →INI400_007690= M↓z.LPom←; 
 } 
-double M↓z.RPom← →INI400_007310= InterpMoments(dxaR↓z←, SecIDRightZ-1, SecIDRightZ, PrincipalAngle, 1); 
+double M↓z.RPom← →INI400_007310= InterpMoments(dxaR↓z←, SecIDRightZ-1, SecIDRightZ, 1); 
 IF(M↓z.RPom←*M↓z← &lt; 0) { 
     M↓z.R← →INI400_007691= 0; 
 } ELSE { 
@@ -717,13 +711,6 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="PrincipalAngle" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="redInput" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -1046,14 +1033,6 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007058">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_007115">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1862,14 +1841,6 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_013627">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_013733">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

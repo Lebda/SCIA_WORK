@@ -32,13 +32,14 @@ Extern_Calculate.R →INI400_008282= R;
 →INI400_004243Extern_Calculate.Draw(); 
 
 
-double Unity_check →INI400_008270= Extern_Calculate.Unity_check; </SourceCode>
+double UC →INI400_008270= Extern_Calculate.UC; 
+double b↓eff← →POR106_000001= Extern_Calculate.b↓eff←; </SourceCode>
   </CodeEditor>
   <Calculation>
-    <Header NormCode="1" Member="1001" Material="1" CSType="-1" LimitState="2" IFFilter="12" LicenceID="10400" Autor="" Autor2="" Version="40" EWNSource="Composite.xml" Icon="Qk3uAAAAAAAAAHYAAAAoAAAAEAAAAA8AAAABAAQAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAA/wAAgP8AgAD/AICA/4AAAP+AAID/gIAA/8DAwP+AgID/AAD//wD/AP8A/////wAA//8A/////wD//////3d3d3d3d3d3AAAAAAAAAABmZmZmZmZmZmZ3ZmZmZplmZ3d2ZmZpmWZnd3ZmZmmZlnd3d2ZomZl2AAAABmmZmXcP//8HmZmZdw9ETwd5mZl3D///B3eZl3cPTwAHd5l3dw9PDgd5l3d3D/8Ad3d3d3cAAAd3d3d3dw==">
+    <Header NormCode="1" Member="1001" Material="1" CSType="-1" LimitState="2" IFFilter="12" LicenceID="10400" Autor="" Autor2="" Version="42" EWNSource="Composite.xml" Icon="Qk3uAAAAAAAAAHYAAAAoAAAAEAAAAA8AAAABAAQAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAA/wAAgP8AgAD/AICA/4AAAP+AAID/gIAA/8DAwP+AgID/AAD//wD/AP8A/////wAA//8A/////wD//////3d3d3d3d3d3AAAAAAAAAABmZmZmZmZmZmZ3ZmZmZplmZ3d2ZmZpmWZnd3ZmZmmZlnd3d2ZomZl2AAAABmmZmXcP//8HmZmZdw9ETwd5mZl3D///B3eZl3cPTwAHd5l3dw9PDgd5l3d3D/8Ad3d3d3cAAAd3d3d3dw==">
       <Prereq />
       <Languages>
-        <Language Code="ENU" LangName="English" />
+        <Language Code="ENU" LangName="English " />
       </Languages>
       <Document TranslateID="Document">
         <ENU>http://help.scia.net/15.0/en/#sr/composite_analysis_model/04_01-composite_en_checks.htm%3FTocPath%3DDesign%2520of%2520composite%2520members%7CComposite%2520Checks%7CComposite%2520Checks%2520EN%25201994%7C_____0</ENU>
@@ -59,6 +60,14 @@ double Unity_check →INI400_008270= Extern_Calculate.Unity_check; </SourceCode>
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
+      <Variable Modifier="Public" Name="b↓eff←" ESA_ID="Result.2" Type="Double" Value="1.7675" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="11" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1000" DrawLimitMin="100e-6" />
+        <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
+      </Variable>
       <Variable Modifier="Public" Name="C↓4←" ESA_ID="MemberData.C4" Type="Double" Value="25" Precision="2">
         <Description TranslateID="VARIABLE_C↓4←">
           <ENU>Load factor (Designers’ guide to EN 1994-1-1, Appendix A)</ENU>
@@ -115,8 +124,8 @@ double Unity_check →INI400_008270= Extern_Calculate.Unity_check; </SourceCode>
         </Description>
         <Unit m="0" kg="0" s="1" A="0" K="0" cd="0" mol="0" Coef="60" Dim="min" />
       </Variable>
-      <Variable Modifier="Public" Name="Unity_check" ESA_ID="Result.1" Type="Double" Value="999" Precision="-2">
-        <Description TranslateID="VARIABLE_Unity_check">
+      <Variable Modifier="Public" Name="UC" ESA_ID="Result.1" Type="Double" Value="NaN" Precision="-2">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -382,6 +391,14 @@ double Unity_check →INI400_008270= Extern_Calculate.Unity_check; </SourceCode>
       </VC>
       <VC ID="INI400_008285">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

@@ -117,7 +117,7 @@ IF(!IO.IsExternCLC) {
     object ShapeCss →INI400_001729= CrossSection.GetCompleteShape(); 
     object ConMat →INI400_013701= CrossSection.GetMaterialForComponent(0); 
     
-    IF(!IO.IsExternCLC) { 
+    IF(IO.IsStandalone) { 
         IF(Design) { 
             object ReinfMat →KRS116_000006= IO.REINF; 
             NameReinf →KRS116_000009= ReinfMat.EC.Item; 
@@ -187,7 +187,7 @@ double Number↓W← →INI400_001773= 0;
 double Number↓N← →INI400_001774= 0; 
 object[] obEWN →INI400_001776= new object[]; 
 object[] Number↓EWN← →INI400_001783= new object[]; 
-K↓r.lim← →KRS116_000001= 1; 
+K↓r.lim← →KRS116_000001= 0; 
 bPrint_Img →KRS116_000024= true; 
 
 →INI400_003031PAGEBREAK(); 
@@ -493,11 +493,11 @@ IF(CompressMember) {
     //other parameters
     →INI400_011601InputSlenderness.Add("PrintCaption", False); //Never print caption
     
-    IF(IO.IsDrawing) { 
-        →INI400_011603Slenderness.Draw(InputSlenderness, OutputSlenderness); 
-    } ELSE { 
-        →INI400_007745Slenderness.Calculate(InputSlenderness, OutputSlenderness); 
-    } 
+    //    IF(IO.IsDrawing) { 
+    //        →INI400_011603Slenderness.Draw(InputSlenderness, OutputSlenderness); 
+    //    } ELSE { 
+    →INI400_007745Slenderness.Calculate(InputSlenderness, OutputSlenderness); 
+    //    } 
     λ↓y← →INI400_004119= OutputSlenderness.λ_y; 
     λ↓z← →INI400_004120= OutputSlenderness.λ_z; 
     λ↓limy← →INI400_004137= OutputSlenderness.λ_limy; 
@@ -2629,7 +2629,7 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
       <VC ID="INI400_000029">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="3016" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Arial|12.9|0|2" Font2="Arial|12.9|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="3016" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Arial|12.9|0|2" Font2="Arial|12.9|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="169" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|16.9|0|2" Font2="Arial|16.9|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|16.9|0|2" Font2="Arial|16.9|0|2" EqStyle="7" />
@@ -2701,7 +2701,7 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
       <VC ID="INI400_000045">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="3085" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Arial|12.9|0|2" Font2="Arial|12.9|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="3085" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Arial|12.9|0|2" Font2="Arial|12.9|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="169" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|16.9|0|2" Font2="Arial|16.9|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|16.9|0|2" Font2="Arial|16.9|0|2" EqStyle="7" />
@@ -7586,14 +7586,6 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011603">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="None" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_011614">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -9035,8 +9027,8 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="90" Y="17323" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="7" />
       </VC>
       <VC ID="PAI127_000096">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

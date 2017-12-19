@@ -440,26 +440,27 @@ double γ↓s← →RFM227_017360= IO.Setup.ConcreteNBR.Solver.General.GammaS;
 //NBR - READ IO
 →RFM227_014840TEXT("Internal Forces - FEM analysis"); 
 
-double typeOfLoad →RFM227_010564= IO.Load.Type; 
-double loadID →RFM227_010571= IO.Load.ID; 
+double typeOfLoad →INI400_018294= IO.Load.Type; 
+double loadID →INI400_018295= IO.Load.ID; 
 IF(typeOfLoad == 1) { 
-    double typeOfLimitState →RFM227_010565= IO.Load.LimitState; 
-    string Combi↓key← →RFM227_010567= IO.Load.CombiKey; 
-    double typeofCombi →RFM227_010569= IO.Load.CombiType; 
+    double typeOfLimitState →INI400_018296= IO.Load.LimitState; 
+    string Combi↓key← →INI400_018297= IO.Load.CombiKey; 
+    double typeofCombi →INI400_018298= IO.Load.CombiType; 
 } ELSE { 
-    double typeOfLimitState →RFM227_010566= -1; 
-    string Combi↓key← →RFM227_018080= IO.Load.CombiKey; 
-    double typeofCombi →RFM227_010570= -1; 
+    double typeOfLimitState →INI400_018299= -1; 
+    string Combi↓key← →INI400_018300= IO.Load.CombiKey; 
+    double typeofCombi →INI400_018301= -1; 
 } 
 IF(typeOfLoad == 0) { 
-    Combi↓key,out← →RFM227_000620= "-"; 
-    →RFM227_000613TEXT("Load case:"); 
-    →RFM227_018081TEXT("(" &amp; Combi↓key← &amp; ")"); 
+    Combi↓key,out← →INI400_018302= "-"; 
+    →INI400_018303TEXT("Load case:"); 
+    LoadCase →RFM106_000024= IO.Load.LoadName; 
+    →INI400_018304TEXT("( " &amp; LoadCase &amp; " )"); 
 } ELSE { 
     IF(typeOfLimitState == 1) { 
-        →RFM227_000612TEXT("ULS combination:"); 
+        →INI400_018305TEXT("ULS combination:"); 
     } 
-    →RFM227_010563TEXT("(" &amp; Combi↓key← &amp; ")"); 
+    →INI400_018306TEXT("(" &amp; Combi↓key← &amp; ")"); 
 } 
 
 // NBR - Loading:
@@ -800,7 +801,9 @@ object RecalData →RFM227_000011= →RFM227_000009CONCRETE.Calculator2D.CreateC
         } 
         // } 
     } 
-    
+    IF(COMPARE(n↓z←, 0, 6) == 0 &amp;&amp; (COMPARE(m↓z←, 0, 6) == 0)) { 
+        z →RFM106_000025= 0.81*h; 
+    } 
     
     
     →RFM227_005381TEXT("Recalculation forces"); 
@@ -2620,40 +2623,40 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="c↓+←" ESA_ID="" Type="Double" Value="25e-3" Precision="2">
+      <Variable Modifier="Public" Name="c↓+←" ESA_ID="" Type="Double" Value="45e-3" Precision="2">
         <Description TranslateID="VARIABLE_c↓+←">
           <ENU>Cover of reinforcement of upper reinforcement</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="c↓-←" ESA_ID="" Type="Double" Value="25e-3" Precision="2">
+      <Variable Modifier="Public" Name="c↓-←" ESA_ID="" Type="Double" Value="45e-3" Precision="2">
         <Description TranslateID="VARIABLE_c↓-←">
           <ENU>Cover of reinforcement of lower reinforcement</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="c↓1+←" ESA_ID="" Type="Double" Value="25e-3" Precision="2">
+      <Variable Modifier="Public" Name="c↓1+←" ESA_ID="" Type="Double" Value="45e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="c↓1-←" ESA_ID="" Type="Double" Value="25e-3" Precision="2">
+      <Variable Modifier="Public" Name="c↓1-←" ESA_ID="" Type="Double" Value="45e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="c↓2+←" ESA_ID="" Type="Double" Value="25e-3" Precision="2">
+      <Variable Modifier="Public" Name="c↓2+←" ESA_ID="" Type="Double" Value="45e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="c↓2-←" ESA_ID="" Type="Double" Value="25e-3" Precision="2">
+      <Variable Modifier="Public" Name="c↓2-←" ESA_ID="" Type="Double" Value="45e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3056,6 +3059,12 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="LoadCase" ESA_ID="" Type="String" Value="">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
       </Variable>
       <Variable Modifier="Public" Name="loadID" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
@@ -3461,7 +3470,7 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="noerror" ESA_ID="" Type="String" Value="There are no errors, warnings and notes">
-        <Description TranslateID="VARIABLE_noerror">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -3625,7 +3634,7 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="sAggClass" ESA_ID="" Type="String" Value="CAA II - Moderate">
+      <Variable Modifier="Public" Name="sAggClass" ESA_ID="" Type="String" Value="CAA IV - Very strong">
         <Description>
           <ENU>
           </ENU>
@@ -3650,7 +3659,7 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="slist" ESA_ID="" Type="String" Value="List of errors/warnings/notes: ">
-        <Description TranslateID="VARIABLE_slist">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -3740,7 +3749,7 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="TypeCover" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="TypeCover" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3857,7 +3866,7 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="x↓c←" ESA_ID="" Type="Double" Value="54.636e-3" Precision="2">
+      <Variable Modifier="Public" Name="x↓c←" ESA_ID="" Type="Double" Value="570.2876e-6" Precision="2">
         <Description TranslateID="VARIABLE_x↓c←">
           <ENU>Height of compression zone</ENU>
         </Description>
@@ -4123,7 +4132,7 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="μ↓0←" ESA_ID="" Type="Double" Value="10.88062e-3" Precision="2">
+      <Variable Modifier="Public" Name="μ↓0←" ESA_ID="" Type="Double" Value="-375.256e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4158,7 +4167,7 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="μ↓sd←" ESA_ID="" Type="Double" Value="870.7998e-3" Precision="2">
+      <Variable Modifier="Public" Name="μ↓sd←" ESA_ID="" Type="Double" Value="3.09879e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4186,7 +4195,7 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ξ" ESA_ID="" Type="Double" Value="628e-3" Precision="2">
+      <Variable Modifier="Public" Name="ξ" ESA_ID="" Type="Double" Value="3.879507e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4577,6 +4586,110 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="INI400_018294">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_018295">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_018296">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_018297">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_018298">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_018299">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_018300">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_018301">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_018302">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="360" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="360" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="360" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="360" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="360" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="360" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_018303">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_018304">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_018305">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_018306">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
       <VC ID="RFM106_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4595,6 +4708,22 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
       </VC>
       <VC ID="RFM106_000003">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000024">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000025">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -5088,30 +5217,6 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="76.8" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_000612">
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_000613">
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_000620">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="360" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="360" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="360" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="360" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="360" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="360" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
       <VC ID="RFM227_000630">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -6900,70 +7005,6 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
       <VC ID="RFM227_010514">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_010563">
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_010564">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_010565">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_010566">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_010567">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_010569">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_010570">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_010571">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -16561,22 +16602,6 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
       </VC>
-      <VC ID="RFM227_018080">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM227_018081">
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-      </VC>
       <VC ID="RFM227_018082">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -16689,17 +16714,23 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
     <Item TranslateID="STRING_DB3E8F36">
       <ENU>"The direction of principal moments is taken into account."</ENU>
     </Item>
+    <Item TranslateID="TEXT_INI400_018303">
+      <ENU>"Load case:"</ENU>
+    </Item>
+    <Item ID="TEXT_INI400_018304">
+      <ENU>"( " &amp; LoadCase &amp; " )"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_INI400_018305">
+      <ENU>"ULS combination:"</ENU>
+    </Item>
+    <Item ID="TEXT_INI400_018306">
+      <ENU>"(" &amp; Combi↓key← &amp; ")"</ENU>
+    </Item>
     <Item TranslateID="TEXT_RFM106_000002">
       <ENU>"Reinforcement steel"</ENU>
     </Item>
     <Item TranslateID="TEXT_RFM227_000143">
       <ENU>"DESIGN 2D MEMBERS - NBR-6118:2014"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_RFM227_000612">
-      <ENU>"ULS combination:"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_RFM227_000613">
-      <ENU>"Load case:"</ENU>
     </Item>
     <Item ID="TEXT_RFM227_000630">
       <ENU>Description("c↓-←")</ENU>
@@ -16862,9 +16893,6 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
     </Item>
     <Item TranslateID="TEXT_RFM227_009837">
       <ENU>"Calculation settings"</ENU>
-    </Item>
-    <Item ID="TEXT_RFM227_010563">
-      <ENU>"(" &amp; Combi↓key← &amp; ")"</ENU>
     </Item>
     <Item TranslateID="TEXT_RFM227_011436">
       <ENU>"for Regular combinations"</ENU>
@@ -17953,9 +17981,6 @@ IF(COMPARE(M↓yd←, 0, 6) == 1) {
     </Item>
     <Item TranslateID="TEXT_RFM227_018079">
       <ENU>"Shell"</ENU>
-    </Item>
-    <Item ID="TEXT_RFM227_018081">
-      <ENU>"(" &amp; Combi↓key← &amp; ")"</ENU>
     </Item>
   </Texts>
 </Root>

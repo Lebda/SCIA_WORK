@@ -3,118 +3,7 @@
 	<DataSourceNameExtension>ResultMain</DataSourceNameExtension>
 	<Name>BasicResults.2e14.2e00.2eEP_ReactionsResultant_Shell</Name>
 	<AdvancedName>Default</AdvancedName>
-	<Cells Size="4"><ARRAY_ITEM ID="0"><CX64TLXCell><Width><Width>0.03</Width>
-				</Width>
-				<Height><Height>0.05</Height>
-				</Height>
-				<Items><Items Size="1"><ARRAY_ITEM ID="0"><TLXITEM><PropName></PropName>
-								<RealValue><Value>0</Value>
-									<ValueName>eTLXItem_RealValue_Real</ValueName>
-								</RealValue>
-								<FormattedText>0</FormattedText>
-								<NameFormattedText>0</NameFormattedText>
-								<PictureInTable>0</PictureInTable>
-								<PropertyUserName></PropertyUserName>
-								<TLXItemHorizontalAlignment><Value>0</Value>
-									<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
-								</TLXItemHorizontalAlignment>
-								<clsid>{4364BC01-AAB7-11D4-B3D9-00104BC3B531}</clsid>
-								<Units>-1</Units>
-								<SourceCLSID>{00000000-0000-0000-0000-000000000000}</SourceCLSID>
-								<SourceNameExtension></SourceNameExtension>
-								<SourceID>-1</SourceID>
-								<TLX></TLX>
-								<Item_Type><Value>0</Value>
-									<ValueName>eTLXItem_Type_Property</ValueName>
-								</Item_Type>
-								<Parametric_Values_Representation><Value>3</Value>
-									<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
-								</Parametric_Values_Representation>
-								<Value_Type><Value>1</Value>
-									<ValueName>eValue_Type_String</ValueName>
-								</Value_Type>
-								<Item_Value></Item_Value>
-							</TLXITEM>
-						</ARRAY_ITEM>
-					</Items>
-				</Items>
-			</CX64TLXCell>
-		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="1"><CX64TLXCell><Width><Width>0.03</Width>
-				</Width>
-				<Height><Height>0.05</Height>
-				</Height>
-				<Items><Items Size="1"><ARRAY_ITEM ID="0"><TLXITEM><PropName></PropName>
-								<RealValue><Value>0</Value>
-									<ValueName>eTLXItem_RealValue_Real</ValueName>
-								</RealValue>
-								<FormattedText>0</FormattedText>
-								<NameFormattedText>0</NameFormattedText>
-								<PictureInTable>0</PictureInTable>
-								<PropertyUserName></PropertyUserName>
-								<TLXItemHorizontalAlignment><Value>0</Value>
-									<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
-								</TLXItemHorizontalAlignment>
-								<clsid>{EB2C0F85-7275-4F94-9EA7-E8C3DBFB0FA6}</clsid>
-								<Units>-1</Units>
-								<SourceCLSID>{00000000-0000-0000-0000-000000000000}</SourceCLSID>
-								<SourceNameExtension></SourceNameExtension>
-								<SourceID>-1</SourceID>
-								<TLX></TLX>
-								<Item_Type><Value>0</Value>
-									<ValueName>eTLXItem_Type_Property</ValueName>
-								</Item_Type>
-								<Parametric_Values_Representation><Value>3</Value>
-									<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
-								</Parametric_Values_Representation>
-								<Value_Type><Value>1</Value>
-									<ValueName>eValue_Type_String</ValueName>
-								</Value_Type>
-								<Item_Value></Item_Value>
-							</TLXITEM>
-						</ARRAY_ITEM>
-					</Items>
-				</Items>
-			</CX64TLXCell>
-		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="2"><CX64TLXCell><Width><Width>0.03</Width>
-				</Width>
-				<Height><Height>0.05</Height>
-				</Height>
-				<Items><Items Size="1"><ARRAY_ITEM ID="0"><TLXITEM><PropName></PropName>
-								<RealValue><Value>0</Value>
-									<ValueName>eTLXItem_RealValue_Real</ValueName>
-								</RealValue>
-								<FormattedText>0</FormattedText>
-								<NameFormattedText>0</NameFormattedText>
-								<PictureInTable>0</PictureInTable>
-								<PropertyUserName></PropertyUserName>
-								<TLXItemHorizontalAlignment><Value>0</Value>
-									<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
-								</TLXItemHorizontalAlignment>
-								<clsid>{A3400CF1-290F-11D6-AACA-0050FC1D5C09}</clsid>
-								<Units>-1</Units>
-								<SourceCLSID>{00000000-0000-0000-0000-000000000000}</SourceCLSID>
-								<SourceNameExtension></SourceNameExtension>
-								<SourceID>-1</SourceID>
-								<TLX></TLX>
-								<Item_Type><Value>0</Value>
-									<ValueName>eTLXItem_Type_Property</ValueName>
-								</Item_Type>
-								<Parametric_Values_Representation><Value>3</Value>
-									<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
-								</Parametric_Values_Representation>
-								<Value_Type><Value>1</Value>
-									<ValueName>eValue_Type_String</ValueName>
-								</Value_Type>
-								<Item_Value></Item_Value>
-							</TLXITEM>
-						</ARRAY_ITEM>
-					</Items>
-				</Items>
-			</CX64TLXCell>
-		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="3"><CX64TLXCell><Width><Width>0.03</Width>
+	<Cells Size="1"><ARRAY_ITEM ID="0"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -284,7 +173,7 @@
 						</Value_Type>
 						<Item_Value></Item_Value>
 					</tlxitem>
-					<Name>Resultant.20of.20reactions.20-.20not.20finished</Name>
+					<Name>Resultant.20of.20reactions</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
 		</Items>

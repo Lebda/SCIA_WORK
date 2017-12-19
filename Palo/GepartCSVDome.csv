@@ -1,0 +1,16 @@
+ProfDefID;ProfilType;GeoDef;LineDef;Picture;Parameters;Fixed;Inputs;Para1;Para2;Para3;Para4;Para5;Para6;Para7;Para8;Para9;Para10;Para11;Para12;Para13;Para14;
+1;GeoTop2;1;2;GeoTop.wmf;5;1;4;m;n;fy;fz;r; ; ; ; ; ; ; ; ; ;
+2;GeoTop3;3;4;GeoTop.wmf;5;1;4;m;n;fy;fz;r; ; ; ; ; ; ; ; ; ;
+3;GeoTop4;5;6;GeoTop.wmf;5;1;4;m;n;fy;fz;r; ; ; ; ; ; ; ; ; ;
+4;GeoTop5;7;8;GeoTop.wmf;5;1;4;m;n;fy;fz;r; ; ; ; ; ; ; ; ; ;
+5;GeoTop6;9;10;GeoTop.wmf;5;1;4;m;n;fy;fz;r; ; ; ; ; ; ; ; ; ;
+6;GeoRing2;11;12;GeoRing.wmf;6;1;5;m;n;fy;fz;r;f; ; ; ; ; ; ; ; ;
+7;GeoRing3;13;14;GeoRing.wmf;6;1;5;m;n;fy;fz;r;f; ; ; ; ; ; ; ; ;
+8;GeoRing4;15;16;GeoRing.wmf;6;1;5;m;n;fy;fz;r;f; ; ; ; ; ; ; ; ;
+9;GeoRing5;17;18;GeoRing.wmf;6;1;5;m;n;fy;fz;r;f; ; ; ; ; ; ; ; ;
+10;GeoRing6;19;20;GeoRing.wmf;6;1;5;m;n;fy;fz;r;f; ; ; ; ; ; ; ; ;
+11;GeoDome2;21;22;GeoDome.wmf;5;2;4;m;n;fy;fz;r; ; ; ; ; ; ; ; ; ;
+12;GeoDome3;23;24;GeoDome.wmf;5;2;4;m;n;fy;fz;r; ; ; ; ; ; ; ; ; ;
+13;GeoDome4;25;26;GeoDome.wmf;5;2;4;m;n;fy;fz;r; ; ; ; ; ; ; ; ; ;
+14;GeoDome5;27;28;GeoDome.wmf;5;2;4;m;n;fy;fz;r; ; ; ; ; ; ; ; ; ;
+15;GeoDome6;29;30;GeoDome.wmf;5;2;4;m;n;fy;fz;r; ; ; ; ; ; ; ; ; ;

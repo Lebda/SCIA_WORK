@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="5859ad00-61da-4cd2-9c00-4e4607c7b6e5">
   <CodeEditor>
-    <SourceCode Collapsed="54|66|98|134|184|197|205|228|242|252|259|265|272|322" BreakPoints="">//@EC_Concrete_IntForces_SEN
+    <SourceCode Collapsed="5|13|53|65|97|123|171|181|189|212|226|236|243|249|256|306" BreakPoints="">//@EC_Concrete_IntForces_SEN
 
 //------------------------------------------------------------
 //@VARIABLES
@@ -37,7 +37,6 @@
     →PAI121_000100double M↓2z←; 
     
     →INI400_015086double SectionID; 
-    →PAI121_000108double PrincipalAngle; 
     →PAI121_000111double ZeroSign_y; 
     →PAI121_000112double ZeroSign_z; 
     →PAI121_000114double M↓beg,y←; 
@@ -105,25 +104,15 @@ private void ReadLoadFromIO() {
     
     IF(IO.Beam.Load.Contains("CombiKey")) { 
         Combikey →PAI127_000113= IO.Load.CombiKey; 
-    } 
-    ELSE { 
+    } ELSE { 
         Combikey →PAI127_000114= IO.Beam.Load[ForceID].CombiKey; 
     } 
     
-    //recalculation of input forces to LCS system of cross-section 
-    IF(IO.MemberData.Concrete.MemberType == 4) { 
-        PrincipalAngle →INI400_013627= 0; 
-    } ELSE { 
-        PrincipalAngle →INI400_007058= (IO_HELPER.GetActCS().Chars.alpha)*180/Math.PI; 
-    } 
-    object RotateMoments →INI400_007060= DATA_FROM_SEN.RotateMoments(InputForces.My, InputForces.Mz, PrincipalAngle); 
-    object RotateForces →INI400_007065= DATA_FROM_SEN.RotateForces(InputForces.Vy, InputForces.Vz, PrincipalAngle); 
-    
     N →INI400_006514= InputForces.N; 
-    M↓y← →INI400_005894= RotateMoments.My; 
-    M↓z← →INI400_005895= RotateMoments.Mz; 
-    V↓y← →INI400_005896= RotateForces.Vy; 
-    V↓z← →INI400_005897= RotateForces.Vz; 
+    M↓y← →INI400_005894= InputForces.My; 
+    M↓z← →INI400_005895= InputForces.Mz; 
+    V↓y← →INI400_005896= InputForces.Vy; 
+    V↓z← →INI400_005897= InputForces.Vz; 
     M↓x← →INI400_005898= InputForces.Mx; 
     N↓Ed← →PAI121_000122= N; 
     M↓Edy← →PAI121_000123= M↓y←; 
@@ -147,18 +136,17 @@ private void SetZeroMomentSigns() {
     
     IF(SectionID == 0) { 
         object NextForces →PAI121_000109= IO.Beam.Section[SectionID+1].InternalForces[ForceID]; 
-        object RotMoments →INI400_007777= DATA_FROM_SEN.RotateMoments(NextForces.My, NextForces.Mz, PrincipalAngle); 
         IF(COMPARE(M↓z←, 0, 6) == 0) { 
             double e↓y.next← →INI400_007772= 0; 
             IF(COMPARE(N, 0, 6) != 0) { 
-                e↓y.next← →INI400_007778= RotMoments.Mz/N; 
+                e↓y.next← →INI400_007778= NextForces.Mz/N; 
             } 
             ZeroSign_y →INI400_007779= e↓y.next← &gt; 0 ? 1 : -1; 
         } 
         IF(COMPARE(M↓y←, 0, 6) == 0) { 
             double e↓z.next← →INI400_007781= 0; 
             IF(COMPARE(N, 0, 6) != 0) { 
-                e↓z.next← →INI400_007782= RotMoments.My/N; 
+                e↓z.next← →INI400_007782= NextForces.My/N; 
             } 
             ZeroSign_z →INI400_007783= e↓z.next← &gt; 0 ? 1 : -1; 
         } 
@@ -166,11 +154,10 @@ private void SetZeroMomentSigns() {
     
     IF(SectionID == IO.Beam.Section.Count-1) { 
         object PrevForces →PAI121_000110= IO.Beam.Section[SectionID-1].InternalForces[ForceID]; 
-        object RotMoments →INI400_007785= DATA_FROM_SEN.RotateMoments(PrevForces.My, PrevForces.Mz, PrincipalAngle); 
         IF(COMPARE(M↓z←, 0, 6) == 0) { 
             double e↓y.next← →INI400_007786= 0; 
             IF(COMPARE(N, 0, 6) != 0) { 
-                e↓y.next← →INI400_007787= RotMoments.Mz/N; 
+                e↓y.next← →INI400_007787= PrevForces.Mz/N; 
             } 
             ZeroSign_y →INI400_007788= e↓y.next← &gt; 0 ? 1 : -1; 
             
@@ -178,7 +165,7 @@ private void SetZeroMomentSigns() {
         IF(COMPARE(M↓y←, 0, 6) == 0) { 
             double e↓z.next← →INI400_007777= 0; 
             IF(COMPARE(N, 0, 6) != 0) { 
-                e↓z.next← →INI400_007778= RotMoments.My/N; 
+                e↓z.next← →INI400_007778= PrevForces.My/N; 
             } 
             ZeroSign_z →INI400_007790= e↓z.next← &gt; 0 ? 1 : -1; 
         } 
@@ -189,13 +176,10 @@ void SetEndMoments() {
     object EndForcesYY →PAI121_000120= IO_HELPER.GetActSection().BucklingData.yy.Span.EndForcesArray[ForceID]; 
     object EndForcesZZ →PAI121_000121= IO_HELPER.GetActSection().BucklingData.zz.Span.EndForcesArray[ForceID]; 
     
-    →PAI121_000119object RotateMoments; 
-    RotateMoments →INI400_007085= DATA_FROM_SEN.RotateMoments(EndForcesYY.M1, EndForcesZZ.M1, PrincipalAngle); 
-    M↓beg,y← →INI400_007087= RotateMoments.My; 
-    M↓beg,z← →INI400_007088= RotateMoments.Mz; 
-    RotateMoments →INI400_007086= DATA_FROM_SEN.RotateMoments(EndForcesYY.M2, EndForcesZZ.M2, PrincipalAngle); 
-    M↓end,y← →INI400_007089= RotateMoments.My; 
-    M↓end,z← →INI400_007090= RotateMoments.Mz; 
+    M↓beg,y← →INI400_007087= EndForcesYY.M1; 
+    M↓beg,z← →INI400_007088= EndForcesZZ.M1; 
+    M↓end,y← →INI400_007089= EndForcesYY.M2; 
+    M↓end,z← →INI400_007090= EndForcesZZ.M2; 
 } 
 
 private string GetLoadType() { 
@@ -1258,13 +1242,6 @@ IF(IndexModification == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="PrincipalAngle" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="Ratio↓int_abs←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -1280,12 +1257,6 @@ IF(IndexModification == 0) {
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ReinfMat" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="RotMoments" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -1830,14 +1801,6 @@ IF(IndexModification == 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006322">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
       <VC ID="INI400_006324">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -2031,46 +1994,6 @@ IF(IndexModification == 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_007055">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007058">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007060">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007065">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007085">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007086">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -2326,14 +2249,6 @@ IF(IndexModification == 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007785">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
       <VC ID="INI400_007786">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -2493,14 +2408,6 @@ IF(IndexModification == 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_011707">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_012660">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2687,14 +2594,6 @@ IF(IndexModification == 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_013625">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_013627">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

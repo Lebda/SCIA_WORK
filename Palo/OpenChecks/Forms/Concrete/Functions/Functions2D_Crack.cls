@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="45ce1118-f867-4f60-ad05-bd16ba89b064">
   <CodeEditor>
-    <SourceCode Collapsed="0|129|246|285|340|383" BreakPoints="">public double Calculate_wk_max2D(double CssIDCrack, double SetForcesQp, bool QuasiComb, bool CorossionSensitive) { 
+    <SourceCode Collapsed="258|313|356" BreakPoints="">public double Calculate_wk_max2D(double CssIDCrack, double SetForcesQp, bool QuasiComb, bool CorossionSensitive) { 
     SWITCH(IO.MemberData.Concrete.Solver.CrackWidth.TypeCrackWidth) { 
         CASE 0 :  { //Automatic
             double MaxFibreID →DLO134_013782= Concrete.StressStrain.GetFibreExtremeStressMax(CssIDCrack, SetForcesQp); 
@@ -130,7 +130,7 @@
     return w↓max←; 
 } 
 
-public double Calculate_wk_max2D_ForSurface(bool Upper, bool QuasiComb, bool CorossionSensitive) { 
+public double Calculate_wk_max2D_ForSurface(bool Upper, bool QuasiComb, bool CorossionSensitive, double CoverUsed) { 
     SWITCH(IO.MemberData.Concrete.Solver.CrackWidth.TypeCrackWidth) { 
         CASE 0 :  { //Automatic
             double MemberType →DLO134_013917= IO.MemberData.Concrete.MemberType2D; 
@@ -148,49 +148,22 @@ public double Calculate_wk_max2D_ForSurface(bool Upper, bool QuasiComb, bool Cor
             IF(IO.SetupNA.EC_NA.Code == "NS") { 
                 double XSA →KRS116_000001= obExposureClasses.XSA; 
             } 
-            IF(MemberType == 32 || MemberType == 256) { //Wall and Shell wall
-                
-                
-                double CoverType →DLO134_013922= IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.TypeOfCover; 
-                double c↓used← →DLO134_013923= IO.MemberData.Concrete.Defaults.Wall.Longitudinal.Both.Cover; 
-            } ELSE { //Plate; ShellPlate; Deep beam
-                IF(Upper) { 
-                    double CoverType →DLO134_013928= IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Upper.TypeOfCover; 
-                    double c↓used← →DLO134_013929= IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Upper.Cover; 
-                } ELSE { 
-                    
-                    double CoverType →DLO134_013934= IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Lower.TypeOfCover; 
-                    double c↓used← →DLO134_013935= IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Lower.Cover; 
-                    
-                } 
-            } 
+            
+            double c↓used← →DLO134_013923= CoverUsed; 
             
             →DLO134_013937BLOCK { //NA.2.71 Clause 7.3.1 General considerations, Paragraph (5) - Table 7.1N
                 object Clause7_3_1_5 →DLO134_013938= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_7.3.1(5).CLC"); 
                 IF(IO.SetupNA.EC_NA.Code == "NEN" || IO.SetupNA.EC_NA.Code == "NS") { 
-                    IF(CoverType == 0) { 
-                        object cover →DLO134_013939= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\EC_Concrete_cover_SEN_Design2D.clc"); 
-                        →DLO134_013940cover.Calculate(False); 
-                    } 
+                    object cover →DLO134_013939= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\EC_Concrete_cover_SEN_Design2D.clc"); 
+                    →DLO134_013940cover.Calculate(False); 
                     
                     IF(Upper) { 
-                        IF(CoverType == 0) { 
-                            double c↓nom← →DLO134_013943= cover.c_1u; 
-                            double c↓min,dur← →KRS116_000005= cover.c_u_dur; 
-                        } ELSE { 
-                            double c↓nom← →DLO134_013944= c↓used←; 
-                            double c↓min,dur← →KRS116_000007= c↓used←; 
-                        } 
+                        double c↓nom← →DLO134_013943= cover.c_1u; 
+                        double c↓min,dur← →KRS116_000005= cover.c_u_dur; 
                     } ELSE { 
-                        IF(CoverType == 0) { 
-                            double c↓nom← →DLO134_013945= cover.c_1l; 
-                            double c↓min,dur← →KRS116_000006= cover.c_l_dur; 
-                        } ELSE { 
-                            double c↓nom← →DLO134_013946= c↓used←; 
-                            double c↓min,dur← →KRS116_000008= c↓used←; 
-                        } 
+                        double c↓nom← →DLO134_013945= cover.c_1l; 
+                        double c↓min,dur← →KRS116_000006= cover.c_l_dur; 
                     } 
-                    
                 } 
                 double DesignLife →DLO134_013947= IO.MemberData.Concrete.Solver.General.MinCover.DesignWorkingLife/365; 
                 IF(IO.SetupNA.EC_NA.Code == "NS") { 
@@ -1153,47 +1126,7 @@ public bool bIsCrackWidthRequiredFor2D(double DesignLife, object obExposureClass
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_013922">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="DLO134_013923">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_013928">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_013929">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_013934">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_013935">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1241,23 +1174,7 @@ public bool bIsCrackWidthRequiredFor2D(double DesignLife, object obExposureClass
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_013944">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="DLO134_013945">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_013946">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1690,22 +1607,6 @@ public bool bIsCrackWidthRequiredFor2D(double DesignLife, object obExposureClass
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS116_000006">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS116_000007">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS116_000008">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

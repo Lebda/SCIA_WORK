@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="67f1c957-43bd-4832-bd05-3d7c9c0cf2db">
   <CodeEditor>
-    <SourceCode Collapsed="5|47|214|239|260|276|300|327|332|364|383|478|1276|1308|1341|3248" BreakPoints="">//This file contains the calculation of Composite beam according to EN 1994-1-1.
+    <SourceCode Collapsed="56|217|272|288|312|339|344|393|411|521|555|1303" BreakPoints="">//This file contains the calculation of Composite beam according to EN 1994-1-1.
 
-Unity_check →INI400_007153= 999; 
+double UC →INI400_007153= 999; 
+double b↓eff← →POR106_000058= 0; 
 
 //Section properties
 →INI400_006794BLOCK { 
@@ -13,10 +14,12 @@ Unity_check →INI400_007153= 999;
 //Title
 →INI400_006873BLOCK { 
     →INI400_000479TEXT("Composite beam verification"); 
+    string Beam_Name →POR106_000052= IO.Beam.Member.Name; 
+    string Code_Name →POR106_000053= IO.SetupNA.EC_1994_1_1.Name; 
     IF(fire) { 
-        →INI400_008211TEXT("for beam " &amp; IO.Beam.Member.Name &amp; " at section " &amp; d↓x← &amp; " m, in accordance with " &amp; IO.SetupNA.EC_1994_1_1.Name &amp; " &amp; EN 1994-1-2"); 
+        →INI400_008211TEXT("for beam " &amp; Beam_Name &amp; " at section " &amp; d↓x← &amp; " m, in accordance with " &amp; Code_Name &amp; " &amp; EN 1994-1-2"); 
     } ELSE { 
-        →INI400_000926TEXT("for beam " &amp; IO.Beam.Member.Name &amp; " at section " &amp; d↓x← &amp; " m, in accordance with " &amp; IO.SetupNA.EC_1994_1_1.Name); 
+        →INI400_000926TEXT("for beam " &amp; Beam_Name &amp; " at section " &amp; d↓x← &amp; " m, in accordance with " &amp; Code_Name); 
     } 
 } 
 
@@ -216,12 +219,21 @@ Unity_check →INI400_007153= 999;
     
     //Steel section geometry and material
     →INI400_006741BLOCK { 
+        double fabrication →POR106_000015= IO.Beam.CrossSection.Chars.Fabrication; 
         string Beam_CS_Name →INI400_000382= IO.Beam.CrossSection.Description; 
-        double h↓a← →INI400_000335= IO.Beam.CrossSection.Geometry.h; 
-        double b →INI400_000336= IO.Beam.CrossSection.Geometry.b; 
-        double t↓w← →INI400_000337= IO.Beam.CrossSection.Geometry.s; 
-        double t↓f← →INI400_000338= IO.Beam.CrossSection.Geometry.t; 
-        double r →INI400_000339= IO.Beam.CrossSection.Geometry.r; 
+        IF(COMPARE(fabrication, 0, 6) &lt;= 0) { //rolled
+            double h↓a← →POR106_000016= IO.Beam.CrossSection.Geometry.h; 
+            double b →POR106_000017= IO.Beam.CrossSection.Geometry.b; 
+            double t↓w← →POR106_000018= IO.Beam.CrossSection.Geometry.s; 
+            double t↓f← →POR106_000019= IO.Beam.CrossSection.Geometry.t; 
+            double r →POR106_000020= IO.Beam.CrossSection.Geometry.r; 
+        } ELSE { //welded
+            double h↓a← →INI400_000335= IO.Beam.CrossSection.Geometry.Ba; 
+            double b →INI400_000336= IO.Beam.CrossSection.Geometry.Bb; 
+            double t↓w← →INI400_000337= IO.Beam.CrossSection.Geometry.tha; 
+            double t↓f← →INI400_000338= IO.Beam.CrossSection.Geometry.thb; 
+            double a →POR106_000021= IO.Beam.CrossSection.Geometry.a; 
+        } 
         double A↓a← →INI400_000341= IO.Beam.CrossSection.Chars.A; 
         double AL →INI400_007582= IO.Beam.CrossSection.Chars.AL; 
         double I↓y← →INI400_006701= IO.Beam.CrossSection.Chars.Iy; 
@@ -375,11 +387,9 @@ Unity_check →INI400_007153= 999;
         IF(construction) { 
             V↓Ed,constr← →INI400_006749= IO.InternalForces.Vz; 
             M↓Ed,constr← →INI400_006750= IO.InternalForces.My; 
-            double UC_comp →INI400_004717= 0; 
         } ELSE { 
             V↓Ed,comp← →INI400_004710= IO.InternalForces.Vz; 
             M↓Ed,comp← →INI400_004709= IO.InternalForces.My; 
-            double UC_constr →INI400_004718= 0; 
         } 
     } 
     
@@ -539,7 +549,7 @@ Unity_check →INI400_007153= 999;
     //Construction stage &amp; propping
     IF(construction &amp;&amp; propped) { 
         →INI400_008439EWN.TraceEWN("N/08", true, true, false, 600); //The construction stage check is not performed for propped members.
-        Unity_check →INI400_008440= 0; 
+        UC →INI400_008440= 0; 
         Exit(); 
     } 
 } 
@@ -549,16 +559,20 @@ Unity_check →INI400_007153= 999;
 →INI400_007004BLOCK { 
     //Shear resistance of a steel section
     →INI400_007078BLOCK { 
-        void Get_V_Rd(double A↓a←, double b, double t↓f←, double t↓w←, double r, double h↓w←, double η↓sb←, double f↓yb←, double γ↓Μ0←, double γ↓M,fi,a←, double k↓y,θ←, bool fire, bool construction, double k↓y,θ,w←, object Result) { 
+        void Get_V_Rd(double A↓a←, double b, double t↓f←, double t↓w←, double r, double h↓w←, double η↓sb←, double f↓yb←, double γ↓Μ0←, double γ↓M,fi,a←, double k↓y,θ←, bool fire, bool construction, double k↓y,θ,w←, double fabrication, object Result) { 
             //Local variables with the same names as global variables
-            double&lt;mm↑2←,2&gt; A↓v← →INI400_007005= A↓a←-2*b*t↓f←+[t↓w←+2*r]*t↓f←; // Rolled I and H sections, load parallel to web
-            double&lt;mm↑2←,2&gt; A↓v,min← →INI400_007006= η↓sb←*h↓w←*t↓w←; 
-            →INI400_007007TEXT("A↓v← " &amp; " ≥ " &amp; "A↓v,min←"); 
-            IF(COMPARE(A↓v←, A↓v,min←, 6) &gt;= 0) { 
-                →INI400_007008TEXT(Val(10↑6←*A↓v←, 3) &amp; " mm↑2← " &amp; " ≥ " &amp; Val(10↑6←*A↓v,min←, 3) &amp; " mm↑2← "); 
-            } ELSE { 
-                →INI400_007009TEXT(Val(10↑6←*A↓v←, 4) &amp; " mm↑2← " &amp; " &lt; " &amp; Val(10↑6←*A↓v,min←, 4) &amp; " mm↑2← "); 
-                A↓v← →INI400_007010= A↓v,min←; 
+            IF(COMPARE(fabrication, 0, 6) &lt;= 0) { // Rolled I and H sections, load parallel to web
+                double&lt;mm↑2←,2&gt; A↓v← →INI400_007005= A↓a←-2*b*t↓f←+[t↓w←+2*r]*t↓f←; 
+                double&lt;mm↑2←,2&gt; A↓v,min← →INI400_007006= η↓sb←*h↓w←*t↓w←; 
+                →INI400_007007TEXT("A↓v← " &amp; " ≥ " &amp; "A↓v,min←"); 
+                IF(COMPARE(A↓v←, A↓v,min←, 6) &gt;= 0) { 
+                    →INI400_007008TEXT(Val(10↑6←*A↓v←, 3) &amp; " mm↑2← " &amp; " ≥ " &amp; Val(10↑6←*A↓v,min←, 3) &amp; " mm↑2← "); 
+                } ELSE { 
+                    →INI400_007009TEXT(Val(10↑6←*A↓v←, 4) &amp; " mm↑2← " &amp; " &lt; " &amp; Val(10↑6←*A↓v,min←, 4) &amp; " mm↑2← "); 
+                    A↓v← →INI400_007010= A↓v,min←; 
+                } 
+            } ELSE { // Welded I and H sections, load parallel to web
+                double&lt;mm↑2←,2&gt; A↓v← →POR106_000027= η↓sb←*h↓w←*t↓w←; 
             } 
             IF(fire) { 
                 IF(construction) { 
@@ -970,8 +984,13 @@ Unity_check →INI400_007153= 999;
         →INI400_000202TEXT('t↓w←' &amp; " = " &amp; Val(t↓w←*1000, 1) &amp; " mm"); 
         →INI400_000226TEXT(Description("t↓f←")); 
         →INI400_000203TEXT('t↓f←' &amp; " = " &amp; Val(t↓f←*1000, 2) &amp; " mm"); 
-        →INI400_000227TEXT(Description("r")); 
-        →INI400_000204TEXT('r' &amp; " = " &amp; Val(r*1000, 2) &amp; " mm"); 
+        IF(COMPARE(fabrication, 0, 6) &lt;= 0) { 
+            →INI400_000227TEXT(Description("r")); 
+            →INI400_000204TEXT('r' &amp; " = " &amp; Val(r*1000, 2) &amp; " mm"); 
+        } ELSE { 
+            →POR106_000022TEXT(Description("a")); 
+            →POR106_000023TEXT('a' &amp; " = " &amp; Val(a*1000, 2) &amp; " mm"); 
+        } 
         →INI400_000228TEXT(Description("A↓a←")); 
         →INI400_000205TEXT('A↓a←' &amp; " = " &amp; Val(A↓a←*1000000, 3) &amp; " mm↑2←"); 
         →INI400_000229TEXT(Description("I↓y←")); 
@@ -1014,7 +1033,11 @@ Unity_check →INI400_007153= 999;
         // Compression flange classification
         →INI400_000386BLOCK { 
             →INI400_004481TEXT(Val(CN, 1) &amp; ".1.3.1 "); →INI400_000385TEXT("Flange in compression"); 
-            c↓f← →INI400_000388= (b-t↓w←-2*r)/2; 
+            IF(COMPARE(fabrication, 0, 6) &lt;= 0) { 
+                c↓f← →INI400_000388= (b-t↓w←-2*r)/2; 
+            } ELSE { 
+                c↓f← →POR106_000024= (b-t↓w←-2*a*SQRT(2))/2; 
+            } 
             fl_ratio →INI400_000389= c↓f←/t↓f←; 
             IF(COMPARE(fl_ratio, 9*ε, 6) &lt;= 0) { 
                 →INI400_000433TEXT('c↓f←/t↓f←' &amp; " ≤ " &amp; '9*ε'); 
@@ -1047,7 +1070,11 @@ Unity_check →INI400_007153= 999;
         // Web in bending classification
         →INI400_000442BLOCK { 
             →INI400_004483TEXT(Val(CN, 1) &amp; ".1.3.2 "); →INI400_004484TEXT("Web in bending"); 
-            c↓w← →INI400_000443= h↓a←-2*t↓f←-2*r; 
+            IF(COMPARE(fabrication, 0, 6) &lt;= 0) { 
+                c↓w← →INI400_000443= h↓a←-2*t↓f←-2*r; 
+            } ELSE { 
+                c↓w← →POR106_000025= h↓a←-2*t↓f←-2*a*SQRT(2); 
+            } 
             web_ratio →INI400_000444= c↓w←/t↓w←; 
             double α↓cl← →INI400_007123= 0.5; 
             object Result →INI400_007358= new Structure(); 
@@ -1394,7 +1421,11 @@ Unity_check →INI400_007153= 999;
                     
                     //Temperature development
                     →INI400_007609BLOCK { 
-                        double A↓i← →INI400_007610= 4*b+2*(h↓a←-t↓w←-4*r)+2*π*r; 
+                        IF(COMPARE(fabrication, 0, 6) &lt;= 0) { 
+                            double A↓i← →INI400_007610= 4*b+2*(h↓a←-t↓w←-4*r)+2*π*r; 
+                        } ELSE { 
+                            double A↓i← →POR106_000033= 4*b+2*(h↓a←-t↓w←-4*a*SQRT(2))+8*a; 
+                        } 
                         double V↓i← →INI400_007611= A↓a←; 
                         →INI400_008207TEXT("Shape factor = " &amp; Val(10↑-3←*A↓i←/V↓i←, 2) &amp; (" mm↑-1←")); 
                         
@@ -1472,7 +1503,7 @@ Unity_check →INI400_007153= 999;
                     →INI400_004505TEXT(Val(CN, 1) &amp; "." &amp; Val(SCN, 1) &amp; ".2 "); →INI400_004506TEXT("Vertical shear"); 
                     constr_shear →INI400_007417= false; 
                     object Result →INI400_007363= new Structure(); 
-                    →INI400_007021Get_V_Rd(A↓a←, b, t↓f←, t↓w←, r, h↓w←, η↓sb←, f↓yb←, γ↓Μ0←, γ↓M,fi,a←, k↓y,θ←, fire, construction, k↓y,θ,w←, Result); 
+                    →INI400_007021Get_V_Rd(A↓a←, b, t↓f←, t↓w←, r, h↓w←, η↓sb←, f↓yb←, γ↓Μ0←, γ↓M,fi,a←, k↓y,θ←, fire, construction, k↓y,θ,w←, fabrication, Result); 
                     IF(fire) { 
                         double V↓fi,t,Rd← →INI400_007928= Result.Vfi_t_Rd; 
                         UC_constr_V →INI400_007927= (ABS(V↓Ed,constr←)/V↓fi,t,Rd←); 
@@ -1619,8 +1650,7 @@ Unity_check →INI400_007153= 999;
                     } ELSE { 
                         →INI400_000595TEXT("ULS check of Construction stage is OK."); 
                     } 
-                    UC_constr →INI400_007297= MAX(UC_constr_V, UC_constr_M, UC_constr_LTB); 
-                    Unity_check →INI400_006307= UC_constr; 
+                    UC →INI400_007297= MAX(UC_constr_V, UC_constr_M, UC_constr_LTB); 
                 } 
             } 
         } 
@@ -1648,17 +1678,17 @@ Unity_check →INI400_007153= 999;
                     double w↓tot,lim← →INI400_008541= 1/w↓tot,lim,ratio,constr←; 
                     →INI400_008521TEXT('w↓tot←' &amp; " ≤ " &amp; 'L/w↓tot,lim←'); 
                     →INI400_008522TEXT(w↓tot← &amp; " ≤ " &amp; L/w↓tot,lim←); 
-                    IF(w↓tot← &gt; L/w↓tot,lim←) { 
-                        →INI400_008523TEXT(w↓tot← &amp; " ≤ " &amp; Val(L/w↓tot,lim←*10↑3←, 2) &amp; " mm"); 
+                    →INI400_008523TEXT(w↓tot← &amp; " ≤ " &amp; Val(L/w↓tot,lim←*10↑3←, 2) &amp; " mm"); 
+                    double UC_constr_uz →INI400_008530= w↓tot←/(L/w↓tot,lim←); 
+                    IF(COMPARE(UC_constr_uz, 1, 6) &gt;= 0) { 
                         →INI400_008524TEXT("NOT OK"); 
                         →INI400_008525TEXT("Total deflection is not adequate."); 
                         constr_defl →INI400_008526= true; 
                     } ELSE { 
-                        →INI400_008527TEXT(w↓tot← &amp; " ≤ " &amp; Val(L/w↓tot,lim←*10↑3←, 2) &amp; " mm"); 
                         →INI400_008528TEXT("OK"); 
                         →INI400_008529TEXT("Total deflection is adequate."); 
                     } 
-                    double UC_constr_uz →INI400_008530= w↓tot←/(L/w↓tot,lim←); 
+                    
                 } ELSE { 
                     →INI400_008542EWN.TraceEWN("W/26", true, true, false, 600); //Deflection limit is set to zero in composite setup, thus cannot be fulfilled. 
                     constr_defl →INI400_008544= true; 
@@ -1671,7 +1701,7 @@ Unity_check →INI400_007153= 999;
             } ELSE { 
                 →INI400_008533TEXT("SLS check of the Construction stage is OK."); 
             } 
-            Unity_check →INI400_008534= MAX(UC_constr_uz); 
+            UC →INI400_008534= MAX(UC_constr_uz); 
         } 
     } 
 } 
@@ -1724,7 +1754,11 @@ Unity_check →INI400_007153= 999;
                             →INI400_007999TEXT("Protected steel section:"); 
                         } ELSE { 
                             →INI400_008000TEXT("Unprotected steel section:"); 
-                            double A↓i← →INI400_008273= 4*b+2*(h↓a←-t↓w←-4*r)+2*π*r; 
+                            IF(COMPARE(fabrication, 0, 6) &lt;= 0) { 
+                                double A↓i← →POR106_000034= 4*b+2*(h↓a←-t↓w←-4*r)+2*π*r; 
+                            } ELSE { 
+                                double A↓i← →POR106_000035= 4*b+2*(h↓a←-t↓w←-4*a*SQRT(2))+8*a; 
+                            } 
                             double V↓i← →INI400_008274= A↓a←; 
                             double k↓shadow← →INI400_007977= 0.9*[(2*(b+h↓a←)/V↓i←)/(A↓i←/V↓i←)]; 
                         } 
@@ -2189,7 +2223,7 @@ Unity_check →INI400_007153= 999;
                         →INI400_000811TEXT("The resistance to vertical shear should be taken as the resistance of the structural steel section."); 
                         bool comp_shear →INI400_007426= false; 
                         object Result →INI400_007364= new Structure(); 
-                        →INI400_007962Get_V_Rd(A↓a←, b, t↓f←, t↓w←, r, h↓w←, η↓sb←, f↓yb←, γ↓Μ0←, γ↓M,fi,a←, k↓y,θ←, fire, construction, k↓y,θ,w←, Result); 
+                        →INI400_007962Get_V_Rd(A↓a←, b, t↓f←, t↓w←, r, h↓w←, η↓sb←, f↓yb←, γ↓Μ0←, γ↓M,fi,a←, k↓y,θ←, fire, construction, k↓y,θ,w←, fabrication, Result); 
                         
                         IF(fire) { 
                             double V↓fi,t,Rd← →INI400_007963= Result.Vfi_t_Rd; 
@@ -2242,7 +2276,8 @@ Unity_check →INI400_007153= 999;
                             →INI400_006327TEXT('A↓s←' &amp; " ≥ " &amp; 'ρ↓s←*A↓c←'); 
                             →INI400_006350TEXT(Val(10↑6←*A↓s←, 2) &amp; " mm↑2← " &amp; " ≥ " &amp; Val(ρ↓s←, 2)*Val(10↑6←*A↓c←, 2) &amp; " mm↑2← "); 
                             →INI400_006352TEXT(Val(10↑6←*A↓s←, 2) &amp; " mm↑2← " &amp; " ≥ " &amp; Val(ρ↓s←*10↑6←*A↓c←, 2) &amp; " mm↑2← "); 
-                            IF(COMPARE(A↓s←, ρ↓s←*A↓c←, 6) &gt;= 0) { 
+                            double UC_comp_lr →POR106_000036= (ρ↓s←*A↓c←)/A↓s←; 
+                            IF(COMPARE(UC_comp_lr, 1, 6) &lt;= 0) { 
                                 →INI400_006353TEXT("OK"); 
                                 →INI400_006355TEXT("The longitudinal reinforcement of the section is adequate."); 
                             } ELSE { 
@@ -2319,20 +2354,22 @@ Unity_check →INI400_007153= 999;
                                         N↓pl,a← →INI400_007345= 2*t↓f←*b*f↓yb←+(h↓a←-2*t↓f←)*t↓w←*f↓yb,w←; 
                                     } 
                                 } ELSE { 
+                                    double f↓yb,w← →POR106_000057= f↓yb←; 
                                     →INI400_000817TEXT("OK"); 
                                     →INI400_004185TEXT("The influence of the vertical shear on the bending moment resistance may be neglected."); 
-                                    double f↓yb,w← →INI400_007349= f↓yb←; 
-                                    →INI400_007351TEXT("Modified tension resistance of the steel member"); 
-                                    double r →INI400_007350= 0; 
-                                    double A↓a← →INI400_007347= 2*t↓f←*b+t↓w←*(h↓a←-2*t↓f←); 
-                                    N↓pl,a← →INI400_007353= A↓a←*f↓yb←; 
-                                } 
-                                →INI400_007352TEXT("Note: Roundings of the steel cross-section are neglected in bending resistance calculation."); 
-                                
-                                IF(COMPARE(M↓Ed,comp←, 0, 6) &gt;= 0) { 
-                                    N↓c,f← →INI400_007519= MIN(N↓c,Rd←, N↓pl,a←); 
-                                } ELSE { 
-                                    N↓c,f← →INI400_007520= MIN(F↓s←, N↓pl,a←); 
+                                    IF(COMPARE(fabrication, 0, 6) &lt;= 0) { 
+                                        →INI400_007351TEXT("Modified tension resistance of the steel member"); 
+                                        double r →INI400_007350= 0; 
+                                        double A↓a← →INI400_007347= 2*t↓f←*b+t↓w←*(h↓a←-2*t↓f←); 
+                                        N↓pl,a← →POR106_000032= A↓a←*f↓yb←; 
+                                        →INI400_007352TEXT("Note: Roundings of the steel cross-section are neglected in bending resistance calculation."); 
+                                        
+                                        IF(COMPARE(M↓Ed,comp←, 0, 6) &gt;= 0) { 
+                                            N↓c,f← →INI400_007519= MIN(N↓c,Rd←, N↓pl,a←); 
+                                        } ELSE { 
+                                            N↓c,f← →INI400_007520= MIN(F↓s←, N↓pl,a←); 
+                                        } 
+                                    } 
                                 } 
                             } 
                         } 
@@ -2434,7 +2471,7 @@ Unity_check →INI400_007153= 999;
                                         →INI400_000824TEXT("The plastic neutral axis is located within the concrete flange."); 
                                         
                                         →INI400_004662BLOCK { 
-                                            →INI400_000914TEXT('N↓pl,a←' &amp; " = " &amp; 'N↓c,f←'); 
+                                            →INI400_000914TEXT("N↓pl,a← = N↓c,f←"); 
                                             x →INI400_004669= N↓pl,a←/[b↓eff←*0.85*f↓cd←]; 
                                             double x↓pl← →INI400_006546= x; // distance from PNA and the extreme fibre of the concrete slab in compression
                                         } 
@@ -2488,7 +2525,7 @@ Unity_check →INI400_007153= 999;
                                         IF(COMPARE(N↓pl,a←-N↓c,f←, 2*b*t↓f←*f↓yb←, 6) &lt;= 0) { //Nc,Rd + Na,f(full) &gt;= Npl,a(full) - Na,f(full)
                                             →INI400_000839TEXT("The plastic neutral axis is located within the flange of the steel section."); 
                                             →INI400_004653BLOCK { 
-                                                →INI400_000916TEXT('N↓pl,a←-N↓ac,f←' &amp; " = " &amp; 'N↓c,f←+N↓ac,f←'); 
+                                                →INI400_000916TEXT("N↓pl,a← - N↓ac,f← = N↓c,f← + N↓ac,f←"); 
                                                 x →INI400_004676= [N↓pl,a←-N↓c,f←]/[2*b*f↓yb←]; 
                                                 double x↓pl← →INI400_006547= x+h↓s←; // distance from PNA and the extreme fibre of the concrete slab in compression
                                                 N↓ac,f← →INI400_004677= b*x*f↓yb←; 
@@ -2547,7 +2584,7 @@ Unity_check →INI400_007153= 999;
                                             // PNA in steel web    
                                         } ELSE { 
                                             →INI400_000843TEXT("The plastic neutral axis is located within the web of the steel section."); 
-                                            →INI400_000918TEXT('N↓pl,a←-N↓ac,f←-N↓ac,w←' &amp; " = " &amp; 'N↓c,f←+N↓ac,f←+N↓ac,w←'); 
+                                            →INI400_000918TEXT("N↓pl,a← - N↓ac,f← - N↓ac,w← = N↓c,f← + N↓ac,f← + N↓ac,w←"); 
                                             N↓ac,f← →INI400_000847= b*t↓f←*f↓yb←; 
                                             x →INI400_000844= [N↓pl,a←-N↓c,f←-2*N↓ac,f←]/[2*t↓w←*f↓yb,w←]; 
                                             →INI400_007134TEXT("Verification of the steel web classification."); 
@@ -2650,21 +2687,17 @@ Unity_check →INI400_007153= 999;
                                     
                                     
                                 } ELSE { // Non-fire design
-                                    IF(COMPARE(η, 1, 6) != 0) { 
-                                        →INI400_007181EWN.TraceEWN("W6/24", true, true, false, 600); //Full degree of shear connection is required according to EN 1994-1-1, Art. 6.2.1.3 (2).
-                                        comp_degree_sc →INI400_008301= true; 
-                                    } 
-                                    
-                                    IF(COMPARE(F↓s←, N↓pl,a←, 6) == 1) { // PNA outside of steel section
+                                    IF(COMPARE(η*F↓s←, N↓pl,a←, 6) == 1) { // PNA outside of steel section
                                         →INI400_007182EWN.TraceRectEWN("E/15", true, true, false, 600); //The plastic neutral axis is located outside of the steel section.
                                         Exit(); 
                                     } 
+                                    
                                     // PNA in steel web
-                                    IF(COMPARE(F↓s←/[t↓w←*f↓yb,w←], h↓a←-2*t↓f←, 6) &lt;= 0) { // Na,f(full) + Na,w(full)&gt;= Na,f(full) + Fs
+                                    IF(COMPARE(η*F↓s←/[t↓w←*f↓yb,w←], h↓a←-2*t↓f←, 6) &lt;= 0) { // Na,f(full) + Na,w(full)&gt;= Na,f(full) + η*Fs
                                         →INI400_006380TEXT("The plastic neutral axis is located within the web of the steel section."); 
                                         double N↓at,f← →INI400_007061= b*t↓f←*f↓yb←; 
-                                        →INI400_007063TEXT("N↓pl,a← - N↓at,f← - N↓at,w←" &amp; " = " &amp; "F↓s ←+ N↓at,f← + N↓at,w←"); 
-                                        x →INI400_007059= [N↓pl,a←-2*N↓at,f←-F↓s←]/[2*t↓w←*f↓yb,w←]; // Calculated from the bottom of the top flange
+                                        →INI400_007063TEXT("N↓pl,a← - N↓at,f← - N↓at,w← = η*F↓s ←+ N↓at,f← + N↓at,w←"); 
+                                        x →INI400_007059= [N↓pl,a←-2*N↓at,f←-η*F↓s←]/[2*t↓w←*f↓yb,w←]; // Calculated from the bottom of the top flange
                                         →INI400_007130TEXT("Verification of the steel web classification."); 
                                         double α↓cl← →INI400_007127= (c↓w←-x)/c↓w←; 
                                         object Result →INI400_007465= new Structure(); 
@@ -2716,7 +2749,7 @@ Unity_check →INI400_007153= 999;
                                                 "PositiveMoment", False, 
                                                 "cl", c↓l←, 
                                                 "dl", d↓l←, 
-                                                "Ncf", F↓s←, 
+                                                "Ncf", η*F↓s←, 
                                                 "Npla", N↓a,c←, 
                                                 "Nacf", N↓at,f←, 
                                                 "Nacw", N↓at,w←); 
@@ -2726,13 +2759,13 @@ Unity_check →INI400_007153= 999;
                                             →INI400_006602Extern_DrawStresses.Draw(ED_Input, ED_Output, 0); 
                                         } 
                                         
-                                        M↓pl,Rd← →INI400_006376= F↓s←*h↓l←+N↓at,f←*[t↓f←/2+x]+N↓at,w←*x/2+N↓a,c←*h↓cs←; 
+                                        M↓pl,Rd← →INI400_006376= η*F↓s←*h↓l←+N↓at,f←*[t↓f←/2+x]+N↓at,w←*x/2+N↓a,c←*h↓cs←; 
                                         →INI400_007139PAGEBREAK(); 
                                     } ELSE { 
                                         // PNA in steel flange
                                         →INI400_006381TEXT("The plastic neutral axis is located within the flange of the steel section."); 
-                                        →INI400_006654TEXT("N↓pl,a← - N↓a,f←" &amp; " = " &amp; "F↓s ←+ N↓a,f←"); 
-                                        x →INI400_007068= [N↓pl,a←-F↓s←]/[2*b*f↓yb←]; // Calculated from the top 
+                                        →INI400_006654TEXT("N↓pl,a← - N↓a,f← = η*F↓s ←+ N↓a,f←"); 
+                                        x →INI400_007068= [N↓pl,a←-η*F↓s←]/[2*b*f↓yb←]; // Calculated from the top 
                                         →INI400_007138TEXT("Verification of the steel web classification."); 
                                         double α↓cl← →INI400_007135= 1; 
                                         object Result →INI400_007359= new Structure(); 
@@ -2783,14 +2816,14 @@ Unity_check →INI400_007153= 999;
                                                 "PositiveMoment", False, 
                                                 "cl", c↓l←, 
                                                 "dl", d↓l←, 
-                                                "Ncf", F↓s←, 
+                                                "Ncf", η*F↓s←, 
                                                 "Npla", N↓a,c←, 
                                                 "Nacf", N↓at,f←, 
                                                 "Nacw", 1); 
                                             } 
                                             →INI400_006626Extern_DrawStresses.Draw(ED_Input, ED_Output, 0); 
                                         } 
-                                        M↓pl,Rd← →INI400_007067= F↓s←*h↓l←+N↓at,f←*x/2+N↓a,c←*h↓cs←; 
+                                        M↓pl,Rd← →INI400_007067= η*F↓s←*h↓l←+N↓at,f←*x/2+N↓a,c←*h↓cs←; 
                                     } 
                                 } 
                             } 
@@ -2935,7 +2968,7 @@ Unity_check →INI400_007153= 999;
                                 →INI400_007187EWN.TraceEWN("W6/04", true, true, false, 600); //The actual angle of concrete strut is outside the limits.
                             } 
                             
-                            →INI400_004544TEXT(Val(CN, 1) &amp; "." &amp; Val(SCN, 1) &amp; ".1 "); →INI400_004545TEXT("Transverse reinforcement"); 
+                            →INI400_004544TEXT(Val(CN, 1) &amp; "." &amp; Val(SCN, 1) &amp; ".1 "); →INI400_004545TEXT("Longitudinal shear reinforcement"); 
                             →INI400_000850TEXT("Design shear flow"); 
                             
                             h↓f← →INI400_000851= h↓c←; 
@@ -2954,7 +2987,7 @@ Unity_check →INI400_007153= 999;
                                 } 
                             } 
                             
-                            →INI400_000856TEXT("Transverse reinforcement"); 
+                            →INI400_000856TEXT("Longitudinal shear reinforcement"); 
                             IF(fire) { 
                                 →INI400_008181TEXT('A↓sf←*f↓yk,r←/[γ↓M,fi,s←*s↓f←]' &amp; " ≥ " &amp; 'ν↓Ed←*h↓f←/cotg(θ)'); 
                                 →INI400_008182TEXT("A↓t← = A↓sf←/s↓f←"); 
@@ -2969,14 +3002,14 @@ Unity_check →INI400_007153= 999;
                             A↓t,prov← →INI400_006321= (1.0/s↓t←)*[d↓t←↑2←/4]*Val(MATH.PI, 2); 
                             →INI400_000910TEXT('A↓t,prov←' &amp; " ≥ " &amp; 'A↓t←'); 
                             →INI400_000911TEXT(Val(10↑6←*A↓t,prov←, 2) &amp; " mm↑2←/m" &amp; " ≥ " &amp; Val(10↑6←*A↓t←, 2) &amp; " mm↑2←/m"); 
-                            
-                            IF(COMPARE(A↓t←, A↓t,prov←, 6) &lt;= 0) { 
+                            double UC_comp_lsr →POR106_000037= A↓t←/A↓t,prov←; 
+                            IF(COMPARE(UC_comp_lsr, 1, 6) &lt;= 0) { 
                                 →INI400_000869TEXT("OK"); 
-                                →INI400_000871TEXT("The transverse reinforcement of the section is adequate."); 
+                                →INI400_000871TEXT("Longitudinal shear reinforcement of the section is adequate."); 
                             } ELSE { 
                                 →INI400_000872TEXT("NOT OK"); 
                                 comp_reinf_trans →INI400_000873= true; 
-                                →INI400_000874TEXT("The transverse reinforcement of the section is not adequate."); 
+                                →INI400_000874TEXT("Longitudinal shear reinforcement of the section is not adequate."); 
                             } 
                         } 
                         
@@ -2997,8 +3030,8 @@ Unity_check →INI400_007153= 999;
                                 →INI400_000902TEXT('ν↓Ed←' &amp; " ≤ " &amp; 'ν*f↓cd←*SIN(θ)*COS(θ)'); 
                                 →INI400_000908TEXT('ν↓Ed←' &amp; " ≤ " &amp; ν*f↓cd←*SIN(θ)*COS(θ)); 
                                 →INI400_000909TEXT(Val(10↑-6←*ν↓Ed←, 2) &amp; " MPa" &amp; " ≤ " &amp; Val(10↑-6←*ν*f↓cd←*SIN(θ)*COS(θ), 2) &amp; " MPa "); 
-                                
-                                IF(COMPARE(Val(10↑-6←*ν↓Ed←, 2), Val(10↑-6←*ν*f↓cd←*SIN(θ)*COS(θ), 2), 6) &lt;= 0) { 
+                                double UC_comp_ccf →POR106_000038= ν↓Ed←/(ν*f↓cd←*SIN(θ)*COS(θ)); 
+                                IF(COMPARE(UC_comp_ccf, 1, 6) &lt;= 0) { 
                                     →INI400_000893TEXT("OK"); 
                                     →INI400_000895TEXT("The crushing resistance of the concrete is adequate."); 
                                 } ELSE { 
@@ -3019,8 +3052,11 @@ Unity_check →INI400_007153= 999;
                         } ELSE { 
                             →INI400_000913TEXT("ULS check of Final stage is OK."); 
                         } 
-                        UC_comp →INI400_004704= MAX(UC_comp_V, UC_comp_M, UC_comp_LTB); 
-                        Unity_check →INI400_006308= UC_comp; 
+                        IF(COMPARE(M↓Ed,comp←, 0, 6) &gt;= 0) { 
+                            UC →INI400_004704= MAX(UC_comp_V, UC_comp_lr, UC_comp_M, UC_comp_LTB, UC_comp_lsr, UC_comp_ccf); 
+                        } ELSE { 
+                            UC →POR106_000054= MAX(UC_comp_V, UC_comp_lr, UC_comp_M, UC_comp_LTB, UC_comp_lsr); 
+                        } 
                     } 
                 } 
             } 
@@ -3099,16 +3135,21 @@ Unity_check →INI400_007153= 999;
                     bool comp_vibr →INI400_008581= false; 
                     →INI400_008585TEXT("Natural frequency"); 
                     double w↓per← →INI400_008623= ABS(w↓per←); 
-                    double f →INI400_008586= 18/SQRT(CUnit(w↓per←, "mm")); 
-                    IF(COMPARE(f, 4, 6) == -1) { 
-                        →INI400_008587TEXT(f &amp; " ≥ " &amp; 4 &amp; " Hz"); 
-                        →INI400_008588TEXT("NOT OK"); 
-                        →INI400_008589TEXT("Natural frequency check is not adequate."); 
-                        comp_vibr →INI400_008590= true; 
+                    IF(COMPARE(w↓per←, 0, 6) == 0) { 
+                        double UC_comp_vib →POR106_000042= 0; 
+                        →POR106_000041TEXT("Natural frequency check is adequate."); 
                     } ELSE { 
+                        double f →INI400_008586= 18/SQRT(CUnit(w↓per←, "mm")); 
                         →INI400_008594TEXT(f &amp; " ≥ " &amp; 4 &amp; " Hz"); 
-                        →INI400_008592TEXT("OK"); 
-                        →INI400_008593TEXT("Natural frequency check is adequate."); 
+                        double UC_comp_vib →POR106_000043= 4/f; 
+                        IF(COMPARE(UC_comp_vib, 1, 6) &gt;= 0) { 
+                            →INI400_008588TEXT("NOT OK"); 
+                            →INI400_008589TEXT("Natural frequency check is not adequate."); 
+                            comp_vibr →INI400_008590= true; 
+                        } ELSE { 
+                            →INI400_008592TEXT("OK"); 
+                            →INI400_008593TEXT("Natural frequency check is adequate."); 
+                        } 
                     } 
                 } 
                 →INI400_008600PAGEBREAK(); 
@@ -3171,8 +3212,10 @@ Unity_check →INI400_007153= 999;
                     →INI400_008384TEXT("Provided reinforcement"); 
                     double A↓s← →INI400_008375= (b↓eff←/s↓l←)*[d↓l←↑2←/4]*π; 
                     →INI400_008376TEXT('A↓s←' &amp; " ≥ " &amp; 'A↓s,min←'); 
-                    →INI400_008378TEXT(Val(10↑6←*A↓s←, 2) &amp; " mm↑2← " &amp; " ≥ " &amp; Val(A↓s,min←, 2) &amp; " mm↑2← "); 
-                    IF(COMPARE(A↓s←, A↓s,min←, 6) &gt;= 0) { 
+                    →INI400_008378TEXT(Val(10↑6←*A↓s←, 2) &amp; " mm↑2← " &amp; " ≥ " &amp; Val(10↑6←*A↓s,min←, 2) &amp; " mm↑2← "); 
+                    double UC_comp_ccr →POR106_000044= A↓s,min←/A↓s←; 
+                    
+                    IF(COMPARE(UC_comp_ccr, 1, 6) &lt;= 0) { 
                         →INI400_008379TEXT("OK"); 
                         →INI400_008380TEXT("The cracking reinforcement of the section is adequate."); 
                     } ELSE { 
@@ -3197,8 +3240,8 @@ Unity_check →INI400_007153= 999;
                     double ϕ →INI400_008404= ϕ↓star←*f↓ct,eff←/f↓ct,0← @REF("(EN 1994-1-1 Art. 7.4.2 (2))"); 
                     →INI400_008415TEXT('ϕ' &amp; " ≥ " &amp; 'd↓l←'); 
                     →INI400_008416TEXT(Val(10↑3←*ϕ, -1) &amp; " mm " &amp; " ≥ " &amp; Val(10↑3←*d↓l←, 2) &amp; " mm "); 
-                    
-                    IF(COMPARE(ϕ, d↓l←, 6) &gt;= 0) { 
+                    double UC_comp_ccd →POR106_000045= d↓l←/ϕ; 
+                    IF(COMPARE(UC_comp_ccd, 1, 6) &lt;= 0) { 
                         →INI400_008407TEXT("OK"); 
                         →INI400_008408TEXT("The reinforcement bar diameter is adequate."); 
                     } ELSE { 
@@ -3219,8 +3262,8 @@ Unity_check →INI400_007153= 999;
                     } 
                     →INI400_008430TEXT('s↓max←' &amp; " ≥ " &amp; 's↓l←'); 
                     →INI400_008431TEXT(Val(10↑3←*s↓max←, 2) &amp; " mm " &amp; " ≥ " &amp; Val(10↑3←*s↓l←, 2) &amp; " mm "); 
-                    
-                    IF(COMPARE(s↓max←, s↓l←, 6) &gt;= 0) { 
+                    double UC_comp_ccs →POR106_000046= s↓l←/s↓max←; 
+                    IF(COMPARE(UC_comp_ccs, 1, 6) &lt;= 0) { 
                         →INI400_008432TEXT("OK"); 
                         →INI400_008433TEXT("The reinforcement bar spacing is adequate."); 
                     } ELSE { 
@@ -3228,9 +3271,13 @@ Unity_check →INI400_007153= 999;
                         comp_crack_space →INI400_008435= true; 
                         →INI400_008436TEXT("The reinforcement bar spacing is not adequate."); 
                     } 
+                    
                     IF(comp_crack_As || (comp_crack_diam &amp;&amp; comp_crack_space)) { 
                         comp_crack →INI400_008447= true; 
                     } 
+                    
+                    double UC_comp_cc →POR106_000051= MAX(UC_comp_ccr, MIN(UC_comp_ccd, UC_comp_ccs)); 
+                    
                 } 
                 →INI400_008332PAGEBREAK(); 
                 
@@ -3240,7 +3287,7 @@ Unity_check →INI400_007153= 999;
                 } ELSE { 
                     →INI400_001051TEXT("SLS check of the Final stage is OK."); 
                 } 
-                Unity_check →INI400_007001= MAX(UC_comp_uz); 
+                UC →INI400_007001= MAX(UC_comp_uz, UC_comp_vib, UC_comp_cc); 
             } 
         } 
     } 
@@ -3362,7 +3409,7 @@ IF(IO.LayoutIndex == 0) {
                 order →INI400_008260= order+1; 
                 
                 T_CompStage[order][0].Value →INI400_004143= TR("Longitudinal reinforcement"); 
-                T_CompStage[order][1].Value →INI400_004145= "-"; 
+                T_CompStage[order][1].Value →INI400_004145= UC_comp_lr.ToString("0.00"); 
                 T_CompStage[order][2].Value =  { →INI400_006889(!comp_reinf_long ? GOK : GNOTOK).Draw(1); } 
                 order →INI400_008261= order+1; 
                 
@@ -3376,14 +3423,14 @@ IF(IO.LayoutIndex == 0) {
                 T_CompStage[order][2].Value =  { →INI400_006893(!comp_LTB ? GOK : GNOTOK).Draw(1); } 
                 order →INI400_008263= order+1; 
                 
-                T_CompStage[order][0].Value →INI400_007461= TR("Transverse reinforcement"); 
-                T_CompStage[order][1].Value →INI400_007462= "-"; 
+                T_CompStage[order][0].Value →INI400_007461= TR("Longitudinal shear reinforcement"); 
+                T_CompStage[order][1].Value →INI400_007462= UC_comp_lsr.ToString("0.00"); 
                 T_CompStage[order][2].Value =  { →INI400_007464(!comp_reinf_trans ? GOK : GNOTOK).Draw(1); } 
                 order →INI400_008264= order+1; 
                 
                 IF(COMPARE(M↓Ed,comp←, 0, 6) &gt;= 0) { 
                     T_CompStage[order][0].Value →INI400_006984= TR("Crushing of the concrete flange"); 
-                    T_CompStage[order][1].Value →INI400_006985= "-"; 
+                    T_CompStage[order][1].Value →INI400_006985= UC_comp_ccf.ToString("0.00"); 
                     T_CompStage[order][2].Value =  { →INI400_006987(!comp_crush ? GOK : GNOTOK).Draw(1); } 
                     order →INI400_008253= order+1; 
                 } 
@@ -3396,12 +3443,12 @@ IF(IO.LayoutIndex == 0) {
                 order →INI400_008257= order+1; 
                 
                 T_CompStage[order][0].Value →INI400_008418= TR("Vibration check"); 
-                T_CompStage[order][1].Value →INI400_008419= "-"; 
+                T_CompStage[order][1].Value →INI400_008419= UC_comp_vib.ToString("0.00"); 
                 T_CompStage[order][2].Value =  { →INI400_008421(!comp_vibr ? GOK : GNOTOK).Draw(1); } 
                 order →INI400_008422= order+1; 
                 
                 T_CompStage[order][0].Value →INI400_008595= TR("Cracking of concrete"); 
-                T_CompStage[order][1].Value →INI400_008596= "-"; 
+                T_CompStage[order][1].Value →INI400_008596= UC_comp_cc.ToString("0.00"); 
                 T_CompStage[order][2].Value =  { →INI400_008598(!comp_crack ? GOK : GNOTOK).Draw(1); } 
                 order →INI400_008599= order+1; 
             } 
@@ -3443,7 +3490,7 @@ IF(IO.LayoutIndex == 0) {
 </SourceCode>
   </CodeEditor>
   <Calculation>
-    <Header NormCode="1" Member="1001" Material="1" CSType="-1" LimitState="2" IFFilter="12" LicenceID="10400" Autor="" Autor2="" Version="46" EWNSource="Composite.xml" Icon="Qk3uAAAAAAAAAHYAAAAoAAAAEAAAAA8AAAABAAQAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAA/wAAgP8AgAD/AICA/4AAAP+AAID/gIAA/8DAwP+AgID/AAD//wD/AP8A/////wAA//8A/////wD//////3d3d3d3d3d3AAAAAAAAAABmZmZmZmZmZmZ3ZmZmZndmZ3d2ZmZnd2Znd3ZmZmd3dnd3d2Zmd3d2AAAABmd3d3cP//8Hd3d3dw9ETwd3d3d3D///B3d3d3cPTwAHd3d3dw9PDgd3d3d3D/8Ad3d3d3cAAAd3d3d3dw==">
+    <Header NormCode="1" Member="1001" Material="1" CSType="-1" LimitState="2" IFFilter="12" LicenceID="10400" Autor="" Autor2="" Version="53" EWNSource="Composite.xml" Icon="Qk3uAAAAAAAAAHYAAAAoAAAAEAAAAA8AAAABAAQAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAA/wAAgP8AgAD/AICA/4AAAP+AAID/gIAA/8DAwP+AgID/AAD//wD/AP8A/////wAA//8A/////wD//////3d3d3d3d3d3AAAAAAAAAABmZmZmZmZmZmZ3ZmZmZndmZ3d2ZmZnd2Znd3ZmZmd3dnd3d2Zmd3d2AAAABmd3d3cP//8Hd3d3dw9ETwd3d3d3D///B3d3d3cPTwAHd3d3dw9PDgd3d3d3D/8Ad3d3d3cAAAd3d3d3dw==">
       <Prereq />
       <Languages>
         <Language Code="ENU" LangName="English " />
@@ -3467,20 +3514,26 @@ IF(IO.LayoutIndex == 0) {
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
-      <Variable Modifier="Public" Name="A↓a←" ESA_ID="" Type="Double" Value="3.71848e-3" Precision="2">
+      <Variable Modifier="Public" Name="a" ESA_ID="" Type="Double" Value="10.2e-3" Precision="2">
+        <Description TranslateID="VARIABLE_a">
+          <ENU>Weld</ENU>
+        </Description>
+        <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
+      </Variable>
+      <Variable Modifier="Public" Name="A↓a←" ESA_ID="" Type="Double" Value="8.1875e-3" Precision="2">
         <Description TranslateID="VARIABLE_A↓a←">
           <ENU>Area</ENU>
         </Description>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓c←" ESA_ID="" Type="Double" Value="103e-3" Precision="2">
+      <Variable Modifier="Public" Name="A↓c←" ESA_ID="" Type="Double" Value="99.45e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓ct←" ESA_ID="" Type="Double" Value="95.79e-3" Precision="2">
+      <Variable Modifier="Public" Name="A↓ct←" ESA_ID="" Type="Double" Value="128.15e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3494,14 +3547,14 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓s,min←" ESA_ID="" Type="Double" Value="222.9694e-6" Precision="0">
+      <Variable Modifier="Public" Name="A↓s,min←" ESA_ID="" Type="Double" Value="599.742e-6" Precision="0">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓s←" ESA_ID="" Type="Double" Value="1.507964e-3" Precision="2">
+      <Variable Modifier="Public" Name="A↓s←" ESA_ID="" Type="Double" Value="1.28177e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3515,13 +3568,13 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓t,prov←" ESA_ID="" Type="Double" Value="753.9822e-6" Precision="2">
+      <Variable Modifier="Public" Name="A↓t,prov←" ESA_ID="" Type="Double" Value="1.340413e-3" Precision="2">
         <Description TranslateID="VARIABLE_A↓t,prov←">
           <ENU>Provided area of transverse reinforcement</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓t←" ESA_ID="" Type="Double" Value="96.04353e-6" Precision="2">
+      <Variable Modifier="Public" Name="A↓t←" ESA_ID="" Type="Double" Value="234.0958e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3547,27 +3600,27 @@ IF(IO.LayoutIndex == 0) {
           <ENU>Accidental combination</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="AL" ESA_ID="" Type="Double" Value="921.728e-3" Precision="2">
+      <Variable Modifier="Public" Name="AL" ESA_ID="" Type="Double" Value="1.48" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="available_space" ESA_ID="" Type="Double" Value="120e-3" Precision="2">
+      <Variable Modifier="Public" Name="available_space" ESA_ID="" Type="Double" Value="105e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="b" ESA_ID="" Type="Double" Value="120e-3" Precision="2">
+      <Variable Modifier="Public" Name="b" ESA_ID="" Type="Double" Value="260e-3" Precision="2">
         <Description TranslateID="VARIABLE_b">
           <ENU>Width</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="b↓0,rib←" ESA_ID="" Type="Double" Value="84.5e-3" Precision="2">
+      <Variable Modifier="Public" Name="b↓0,rib←" ESA_ID="" Type="Double" Value="131.5e-3" Precision="2">
         <Description TranslateID="VARIABLE_b↓0,rib←">
           <ENU>Mean width of the ribs</ENU>
         </Description>
@@ -3579,35 +3632,35 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="b↓b←" ESA_ID="" Type="Double" Value="54e-3" Precision="2">
+      <Variable Modifier="Public" Name="b↓b←" ESA_ID="" Type="Double" Value="105e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="b↓eff←" ESA_ID="" Type="Double" Value="2" Precision="2">
+      <Variable Modifier="Public" Name="b↓eff←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="b↓r←" ESA_ID="" Type="Double" Value="135e-3" Precision="2">
+      <Variable Modifier="Public" Name="b↓r←" ESA_ID="" Type="Double" Value="67e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="b↓s←" ESA_ID="" Type="Double" Value="250e-3" Precision="2">
+      <Variable Modifier="Public" Name="b↓s←" ESA_ID="" Type="Double" Value="225e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="Beam_CS_Name" ESA_ID="" Type="String" Value="IPE240">
+      <Variable Modifier="Public" Name="Beam_CS_Name" ESA_ID="" Type="String" Value="HEA260">
         <Description>
           <ENU>
           </ENU>
@@ -3619,14 +3672,20 @@ IF(IO.LayoutIndex == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="beffcheck↓left←" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="Beam_Name" ESA_ID="" Type="String" Value="">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="beffcheck↓left←" ESA_ID="" Type="Double" Value="637.5e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="beffcheck↓right←" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="beffcheck↓right←" ESA_ID="" Type="Double" Value="637.5e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3639,14 +3698,14 @@ IF(IO.LayoutIndex == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Boundary_End" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="Boundary_End" ESA_ID="" Type="Double" Value="2" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Boundary_Next" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="Boundary_Next" ESA_ID="" Type="Double" Value="2" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3699,14 +3758,14 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="2" kg="0" s="-2" A="0" K="-1" cd="0" mol="0" Coef="1" Dim="J/kg∙K" />
       </Variable>
-      <Variable Modifier="Public" Name="c↓f←" ESA_ID="" Type="Double" Value="41.9e-3" Precision="2">
+      <Variable Modifier="Public" Name="c↓f←" ESA_ID="" Type="Double" Value="102.25e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="c↓l←" ESA_ID="" Type="Double" Value="20e-3" Precision="2">
+      <Variable Modifier="Public" Name="c↓l←" ESA_ID="" Type="Double" Value="30e-3" Precision="2">
         <Description TranslateID="VARIABLE_c↓l←">
           <ENU>Concrete cover</ENU>
         </Description>
@@ -3718,20 +3777,20 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="2" kg="0" s="-2" A="0" K="-1" cd="0" mol="0" Coef="1" Dim="J/kg∙K" />
       </Variable>
-      <Variable Modifier="Public" Name="c↓t←" ESA_ID="" Type="Double" Value="32e-3" Precision="2">
+      <Variable Modifier="Public" Name="c↓t←" ESA_ID="" Type="Double" Value="46e-3" Precision="2">
         <Description TranslateID="VARIABLE_c↓t←">
           <ENU>Concrete cover</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="c↓w←" ESA_ID="" Type="Double" Value="190.4e-3" Precision="2">
+      <Variable Modifier="Public" Name="c↓w←" ESA_ID="" Type="Double" Value="177e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="camber_type" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="camber_type" ESA_ID="" Type="Double" Value="5" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3807,13 +3866,19 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="CombiKey" ESA_ID="" Type="String" Value="DL">
+      <Variable Modifier="Public" Name="Code_Name" ESA_ID="" Type="String" Value="">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="CombiName" ESA_ID="" Type="String" Value="DL">
+      <Variable Modifier="Public" Name="CombiKey" ESA_ID="" Type="String" Value="1.35*LC1+1.35*LC1_bétonsec+1.35*LC2+1.50*LC4+1.05*LC6">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="CombiName" ESA_ID="" Type="String" Value="Comp-FS-ULS">
         <Description>
           <ENU>
           </ENU>
@@ -3843,7 +3908,7 @@ IF(IO.LayoutIndex == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="comp_crack_As" ESA_ID="" Type="Boolean" Value="0">
+      <Variable Modifier="Public" Name="comp_crack_As" ESA_ID="" Type="Boolean" Value="1">
         <Description>
           <ENU>
           </ENU>
@@ -3909,13 +3974,13 @@ IF(IO.LayoutIndex == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="comp_vibr" ESA_ID="" Type="Boolean" Value="1">
+      <Variable Modifier="Public" Name="comp_vibr" ESA_ID="" Type="Boolean" Value="0">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="constr_bend" ESA_ID="" Type="Boolean" Value="1">
+      <Variable Modifier="Public" Name="constr_bend" ESA_ID="" Type="Boolean" Value="0">
         <Description>
           <ENU>
           </ENU>
@@ -3956,7 +4021,7 @@ IF(IO.LayoutIndex == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="d↓l←" ESA_ID="" Type="Double" Value="12e-3" Precision="2">
+      <Variable Modifier="Public" Name="d↓l←" ESA_ID="" Type="Double" Value="16e-3" Precision="2">
         <Description TranslateID="VARIABLE_d↓l←">
           <ENU>Bar diameter</ENU>
         </Description>
@@ -3968,26 +4033,26 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="d↓s←" ESA_ID="" Type="Double" Value="20e-3" Precision="2">
+      <Variable Modifier="Public" Name="d↓s←" ESA_ID="" Type="Double" Value="19e-3" Precision="2">
         <Description TranslateID="VARIABLE_d↓s←">
           <ENU>Diameter (EN 1994-1-1 6.6.1.2(1))</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="d↓t←" ESA_ID="" Type="Double" Value="12e-3" Precision="2">
+      <Variable Modifier="Public" Name="d↓t←" ESA_ID="" Type="Double" Value="16e-3" Precision="2">
         <Description TranslateID="VARIABLE_d↓t←">
           <ENU>Bar diameter</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="d↓x,span←" ESA_ID="" Type="Double" Value="2.88" Precision="2">
+      <Variable Modifier="Public" Name="d↓x,span←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="d↓x←" ESA_ID="" Type="Double" Value="2.88" Precision="2">
+      <Variable Modifier="Public" Name="d↓x←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description TranslateID="VARIABLE_d↓x←">
           <ENU>Position of checked section from the begining of the span</ENU>
         </Description>
@@ -4011,20 +4076,20 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="E↓ceff←" ESA_ID="" Type="Double" Value="13.55e9" Precision="2">
+      <Variable Modifier="Public" Name="E↓ceff←" ESA_ID="" Type="Double" Value="16.4e9" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="E↓cm←" ESA_ID="" Type="Double" Value="27.1e9" Precision="2">
+      <Variable Modifier="Public" Name="E↓cm←" ESA_ID="" Type="Double" Value="32.8e9" Precision="2">
         <Description TranslateID="VARIABLE_E↓cm←">
           <ENU>E modulus</ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="e↓D←" ESA_ID="" Type="Double" Value="50e-3" Precision="2">
+      <Variable Modifier="Public" Name="e↓D←" ESA_ID="" Type="Double" Value="120.5e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4043,13 +4108,13 @@ IF(IO.LayoutIndex == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Entity↓left←" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="Entity↓left←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description TranslateID="VARIABLE_Entity↓left←">
           <ENU>Type of entity on the left</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Entity↓right←" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="Entity↓right←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description TranslateID="VARIABLE_Entity↓right←">
           <ENU>Type of entity on the right</ENU>
         </Description>
@@ -4091,14 +4156,14 @@ IF(IO.LayoutIndex == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="f" ESA_ID="" Type="Double" Value="3.445868" Precision="2">
+      <Variable Modifier="Public" Name="f" ESA_ID="" Type="Double" Value="4.515322" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="-1" A="0" K="0" cd="0" mol="0" Coef="1" Dim="Hz" />
       </Variable>
-      <Variable Modifier="Public" Name="F" ESA_ID="" Type="Double" Value="10.04389" Precision="2">
+      <Variable Modifier="Public" Name="F" ESA_ID="" Type="Double" Value="7.107285" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4119,14 +4184,14 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="f↓cd←" ESA_ID="" Type="Double" Value="8e6" Precision="2">
+      <Variable Modifier="Public" Name="f↓cd←" ESA_ID="" Type="Double" Value="16.66667e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="f↓ck←" ESA_ID="" Type="Double" Value="12e6" Precision="2">
+      <Variable Modifier="Public" Name="f↓ck←" ESA_ID="" Type="Double" Value="30e6" Precision="2">
         <Description TranslateID="VARIABLE_f↓ck←">
           <ENU>Characteristic compressive strength</ENU>
         </Description>
@@ -4139,14 +4204,14 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="f↓ct,eff←" ESA_ID="" Type="Double" Value="1.6e6" Precision="2">
+      <Variable Modifier="Public" Name="f↓ct,eff←" ESA_ID="" Type="Double" Value="2.6e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="f↓ctm←" ESA_ID="" Type="Double" Value="1.6e6" Precision="2">
+      <Variable Modifier="Public" Name="f↓ctm←" ESA_ID="" Type="Double" Value="2.9e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4174,7 +4239,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="F↓s←" ESA_ID="" Type="Double" Value="466230.6" Precision="2">
+      <Variable Modifier="Public" Name="F↓s←" ESA_ID="" Type="Double" Value="445833" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4227,12 +4292,19 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
+      <Variable Modifier="Public" Name="fabrication" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="fire" ESA_ID="" Type="Boolean" Value="0">
         <Description TranslateID="VARIABLE_fire">
           <ENU>Fire check</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="fl_ratio" ESA_ID="" Type="Double" Value="4.27551" Precision="2">
+      <Variable Modifier="Public" Name="fl_ratio" ESA_ID="" Type="Double" Value="8.18" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4284,20 +4356,20 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="h_ratio" ESA_ID="" Type="Double" Value="303.1624e-3" Precision="2">
+      <Variable Modifier="Public" Name="h_ratio" ESA_ID="" Type="Double" Value="401.4438e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="h↓a←" ESA_ID="" Type="Double" Value="240e-3" Precision="2">
+      <Variable Modifier="Public" Name="h↓a←" ESA_ID="" Type="Double" Value="250e-3" Precision="2">
         <Description TranslateID="VARIABLE_h↓a←">
           <ENU>Height</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="h↓c←" ESA_ID="" Type="Double" Value="51.5e-3" Precision="2">
+      <Variable Modifier="Public" Name="h↓c←" ESA_ID="" Type="Double" Value="104e-3" Precision="2">
         <Description TranslateID="VARIABLE_h↓c←">
           <ENU>Height of full concrete</ENU>
         </Description>
@@ -4310,7 +4382,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="h↓cs←" ESA_ID="" Type="Double" Value="111.7376e-3" Precision="2">
+      <Variable Modifier="Public" Name="h↓cs←" ESA_ID="" Type="Double" Value="189.7345e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4331,14 +4403,14 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="h↓f←" ESA_ID="" Type="Double" Value="51.5e-3" Precision="2">
+      <Variable Modifier="Public" Name="h↓f←" ESA_ID="" Type="Double" Value="104e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="h↓l←" ESA_ID="" Type="Double" Value="115.7042e-3" Precision="2">
+      <Variable Modifier="Public" Name="h↓l←" ESA_ID="" Type="Double" Value="125.8085e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4366,14 +4438,14 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="h↓nom←" ESA_ID="" Type="Double" Value="80e-3" Precision="2">
+      <Variable Modifier="Public" Name="h↓nom←" ESA_ID="" Type="Double" Value="100e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="h↓p←" ESA_ID="" Type="Double" Value="48.5e-3" Precision="2">
+      <Variable Modifier="Public" Name="h↓p←" ESA_ID="" Type="Double" Value="46e-3" Precision="2">
         <Description TranslateID="VARIABLE_h↓p←">
           <ENU>Depth of the ribs</ENU>
         </Description>
@@ -4386,19 +4458,19 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="h↓s←" ESA_ID="" Type="Double" Value="100e-3" Precision="2">
+      <Variable Modifier="Public" Name="h↓s←" ESA_ID="" Type="Double" Value="150e-3" Precision="2">
         <Description TranslateID="VARIABLE_h↓s←">
           <ENU>Total height of the slab</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="h↓sc←" ESA_ID="" Type="Double" Value="75e-3" Precision="2">
+      <Variable Modifier="Public" Name="h↓sc←" ESA_ID="" Type="Double" Value="95e-3" Precision="2">
         <Description TranslateID="VARIABLE_h↓sc←">
           <ENU>Nominal height (EN 1994-1-1 6.6.1.2(1))</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="h↓ts←" ESA_ID="" Type="Double" Value="129.9764e-3" Precision="2">
+      <Variable Modifier="Public" Name="h↓ts←" ESA_ID="" Type="Double" Value="232.8448e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4412,7 +4484,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="h↓w←" ESA_ID="" Type="Double" Value="220.4e-3" Precision="2">
+      <Variable Modifier="Public" Name="h↓w←" ESA_ID="" Type="Double" Value="225e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4439,13 +4511,13 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="I↓y←" ESA_ID="" Type="Double" Value="38.92e-6" Precision="2">
+      <Variable Modifier="Public" Name="I↓y←" ESA_ID="" Type="Double" Value="105e-6" Precision="2">
         <Description TranslateID="VARIABLE_I↓y←">
           <ENU>Moment of inertia</ENU>
         </Description>
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-12" Dim="mm↑4←" />
       </Variable>
-      <Variable Modifier="Public" Name="i↓z←" ESA_ID="" Type="Double" Value="26.9507e-3" Precision="2">
+      <Variable Modifier="Public" Name="i↓z←" ESA_ID="" Type="Double" Value="65.0239e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4466,7 +4538,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="k↓c←" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="k↓c←" ESA_ID="" Type="Double" Value="993.5636e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4494,7 +4566,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="k↓l←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="k↓l←" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4507,14 +4579,14 @@ IF(IO.LayoutIndex == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="k↓mod←" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="k↓mod←" ESA_ID="" Type="Double" Value="700e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="k↓p←" ESA_ID="" Type="Double" Value="855.1192e-3" Precision="2">
+      <Variable Modifier="Public" Name="k↓p←" ESA_ID="" Type="Double" Value="875.2009e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4590,26 +4662,26 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="L" ESA_ID="" Type="Double" Value="8" Precision="2">
+      <Variable Modifier="Public" Name="L" ESA_ID="" Type="Double" Value="6" Precision="2">
         <Description TranslateID="VARIABLE_L">
           <ENU>Length of considered span </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="L↓e←" ESA_ID="" Type="Double" Value="8" Precision="2">
+      <Variable Modifier="Public" Name="L↓e←" ESA_ID="" Type="Double" Value="5.1" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="L↓left←" ESA_ID="" Type="Double" Value="2.5" Precision="2">
+      <Variable Modifier="Public" Name="L↓left←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description TranslateID="VARIABLE_L↓left←">
           <ENU>Distance to the beam or edge of the slab on the left (EN 1994-1-1 5.4.1.2(5))</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="L↓next←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="L↓next←" ESA_ID="" Type="Double" Value="6" Precision="2">
         <Description TranslateID="VARIABLE_L↓next←">
           <ENU>Length of next span </ENU>
         </Description>
@@ -4621,27 +4693,27 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="L↓right←" ESA_ID="" Type="Double" Value="2.5" Precision="2">
+      <Variable Modifier="Public" Name="L↓right←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description TranslateID="VARIABLE_L↓right←">
           <ENU>Distance to the beam or edge of the slab on the right (EN 1994-1-1 5.4.1.2(5))</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="l↓s←" ESA_ID="" Type="Double" Value="250e-3" Precision="2">
+      <Variable Modifier="Public" Name="l↓s←" ESA_ID="" Type="Double" Value="400e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="L↓y←" ESA_ID="" Type="Double" Value="8" Precision="2">
-        <Description TranslateID="VARIABLE_L↓y←">
+      <Variable Modifier="Public" Name="L↓y←" ESA_ID="" Type="Double" Value="6" Precision="2">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="L↓z←" ESA_ID="" Type="Double" Value="8" Precision="2">
+      <Variable Modifier="Public" Name="L↓z←" ESA_ID="" Type="Double" Value="2" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4655,7 +4727,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="LoadType" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="LoadType" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4669,14 +4741,14 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓b,Rd←" ESA_ID="" Type="Double" Value="112326.4" Precision="-3">
+      <Variable Modifier="Public" Name="M↓b,Rd←" ESA_ID="" Type="Double" Value="265510.1" Precision="-3">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓Ed,comp←" ESA_ID="" Type="Double" Value="80021.3" Precision="-3">
+      <Variable Modifier="Public" Name="M↓Ed,comp←" ESA_ID="" Type="Double" Value="-36827.4" Precision="-3">
         <Description TranslateID="VARIABLE_M↓Ed,comp←">
           <ENU>Design bending moment</ENU>
         </Description>
@@ -4702,21 +4774,21 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓pl,Rd,a←" ESA_ID="" Type="Double" Value="86245" Precision="2">
+      <Variable Modifier="Public" Name="M↓pl,Rd,a←" ESA_ID="" Type="Double" Value="216395.8" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓pl,Rd←" ESA_ID="" Type="Double" Value="156599.1" Precision="2">
+      <Variable Modifier="Public" Name="M↓pl,Rd←" ESA_ID="" Type="Double" Value="274798.7" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓Rd←" ESA_ID="" Type="Double" Value="156599.1" Precision="2">
+      <Variable Modifier="Public" Name="M↓Rd←" ESA_ID="" Type="Double" Value="267740.2" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4730,35 +4802,35 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="mother_span" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="mother_span" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓0←" ESA_ID="" Type="Double" Value="7.749077" Precision="2">
+      <Variable Modifier="Public" Name="n↓0←" ESA_ID="" Type="Double" Value="6.774194" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓a,c←" ESA_ID="" Type="Double" Value="553279.3" Precision="-2">
+      <Variable Modifier="Public" Name="N↓a,c←" ESA_ID="" Type="Double" Value="1.158006e6" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓a,t←" ESA_ID="" Type="Double" Value="787121.4" Precision="-2">
+      <Variable Modifier="Public" Name="N↓a,t←" ESA_ID="" Type="Double" Value="1.334221e6" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓ac,f←" ESA_ID="" Type="Double" Value="86721.4" Precision="-2">
+      <Variable Modifier="Public" Name="N↓ac,f←" ESA_ID="" Type="Double" Value="253827.3" Precision="-2">
         <Description>
           <ENU>
           </ENU>
@@ -4772,49 +4844,49 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓at,f←" ESA_ID="" Type="Double" Value="87048.72" Precision="-2">
+      <Variable Modifier="Public" Name="N↓at,f←" ESA_ID="" Type="Double" Value="763750" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓at,w←" ESA_ID="" Type="Double" Value="285458.2" Precision="-2">
+      <Variable Modifier="Public" Name="N↓at,w←" ESA_ID="" Type="Double" Value="2306.187" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓c,f←" ESA_ID="" Type="Double" Value="700400" Precision="-2">
+      <Variable Modifier="Public" Name="N↓c,f←" ESA_ID="" Type="Double" Value="445833" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓c,Rd←" ESA_ID="" Type="Double" Value="700400" Precision="-2">
+      <Variable Modifier="Public" Name="N↓c,Rd←" ESA_ID="" Type="Double" Value="1.080393e6" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓c←" ESA_ID="" Type="Double" Value="703531.1" Precision="-2">
+      <Variable Modifier="Public" Name="N↓c←" ESA_ID="" Type="Double" Value="391950.1" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓E←" ESA_ID="" Type="Double" Value="15.49815" Precision="3">
+      <Variable Modifier="Public" Name="n↓E←" ESA_ID="" Type="Double" Value="12.80488" Precision="3">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓pl,a←" ESA_ID="" Type="Double" Value="873842.8" Precision="-2">
+      <Variable Modifier="Public" Name="N↓pl,a←" ESA_ID="" Type="Double" Value="1.924063e6" Precision="-2">
         <Description>
           <ENU>
           </ENU>
@@ -4834,7 +4906,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓row←" ESA_ID="" Type="Double" Value="10" Precision="2">
+      <Variable Modifier="Public" Name="n↓row←" ESA_ID="" Type="Double" Value="15" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4848,7 +4920,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓sp←" ESA_ID="" Type="Double" Value="21" Precision="2">
+      <Variable Modifier="Public" Name="n↓sp←" ESA_ID="" Type="Double" Value="6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4861,7 +4933,7 @@ IF(IO.LayoutIndex == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="order" ESA_ID="" Type="Double" Value="10" Precision="2">
+      <Variable Modifier="Public" Name="order" ESA_ID="" Type="Double" Value="9" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4896,28 +4968,28 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="P↓Rd,solid,1←" ESA_ID="" Type="Double" Value="72382.29" Precision="2">
+      <Variable Modifier="Public" Name="P↓Rd,solid,1←" ESA_ID="" Type="Double" Value="65325.02" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="P↓Rd,solid,2←" ESA_ID="" Type="Double" Value="50274.39" Precision="2">
+      <Variable Modifier="Public" Name="P↓Rd,solid,2←" ESA_ID="" Type="Double" Value="83079.28" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="P↓Rd,solid←" ESA_ID="" Type="Double" Value="50274.39" Precision="2">
+      <Variable Modifier="Public" Name="P↓Rd,solid←" ESA_ID="" Type="Double" Value="65325.02" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="P↓Rd←" ESA_ID="" Type="Double" Value="33501.48" Precision="2">
+      <Variable Modifier="Public" Name="P↓Rd←" ESA_ID="" Type="Double" Value="65325.02" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4931,7 +5003,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="plastic_theory" ESA_ID="" Type="Boolean" Value="1">
+      <Variable Modifier="Public" Name="plastic_theory" ESA_ID="" Type="Boolean" Value="0">
         <Description TranslateID="VARIABLE_plastic_theory">
           <ENU>Use plastic theory calculation (EN 1994-1-1 6.2.1.3 (3))</ENU>
         </Description>
@@ -4976,13 +5048,13 @@ IF(IO.LayoutIndex == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="rib_dir" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="rib_dir" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description TranslateID="VARIABLE_rib_dir">
           <ENU>Direction of the ribs</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ribwidth_min" ESA_ID="" Type="Double" Value="54e-3" Precision="2">
+      <Variable Modifier="Public" Name="ribwidth_min" ESA_ID="" Type="Double" Value="105e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5036,7 +5108,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="shear_conn" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="shear_conn" ESA_ID="" Type="Double" Value="2" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5049,7 +5121,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="sheeting_angle" ESA_ID="" Type="Double" Value="90" Precision="2">
+      <Variable Modifier="Public" Name="sheeting_angle" ESA_ID="" Type="Double" Value="180" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5062,7 +5134,7 @@ IF(IO.LayoutIndex == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Sheeting_Name" ESA_ID="" Type="String" Value="E50/0.63">
+      <Variable Modifier="Public" Name="Sheeting_Name" ESA_ID="" Type="String" Value="ComFlor 46-0.9">
         <Description>
           <ENU>
           </ENU>
@@ -5098,7 +5170,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Slab_Material_Name" ESA_ID="" Type="String" Value="C12/15">
+      <Variable Modifier="Public" Name="Slab_Material_Name" ESA_ID="" Type="String" Value="C30/37">
         <Description>
           <ENU>
           </ENU>
@@ -5123,7 +5195,7 @@ IF(IO.LayoutIndex == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="span↓next←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="span↓next←" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description TranslateID="VARIABLE_span↓next←">
           <ENU>Type of span at the right</ENU>
         </Description>
@@ -5135,7 +5207,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="StartMember" ESA_ID="" Type="Double" Value="159" Precision="2">
+      <Variable Modifier="Public" Name="StartMember" ESA_ID="" Type="Double" Value="100" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5184,7 +5256,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="stud_approach" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="stud_approach" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5227,7 +5299,7 @@ IF(IO.LayoutIndex == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="t↓f←" ESA_ID="" Type="Double" Value="9.8e-3" Precision="2">
+      <Variable Modifier="Public" Name="t↓f←" ESA_ID="" Type="Double" Value="12.5e-3" Precision="2">
         <Description TranslateID="VARIABLE_t↓f←">
           <ENU>Flange thickness</ENU>
         </Description>
@@ -5240,7 +5312,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="t↓p←" ESA_ID="" Type="Double" Value="630e-6" Precision="2">
+      <Variable Modifier="Public" Name="t↓p←" ESA_ID="" Type="Double" Value="860e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5254,7 +5326,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="t↓w←" ESA_ID="" Type="Double" Value="6.2e-3" Precision="2">
+      <Variable Modifier="Public" Name="t↓w←" ESA_ID="" Type="Double" Value="7.5e-3" Precision="2">
         <Description TranslateID="VARIABLE_t↓w←">
           <ENU>Web thickness</ENU>
         </Description>
@@ -5296,77 +5368,119 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC_comp" ESA_ID="" Type="Double" Value="510.9945e-3" Precision="-2">
+      <Variable Modifier="Public" Name="UC" ESA_ID="" Type="Double" Value="999" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC_comp_LTB" ESA_ID="" Type="Double" Value="0" Precision="-2">
+      <Variable Modifier="Public" Name="UC_comp_cc" ESA_ID="" Type="Double" Value="4" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC_comp_M" ESA_ID="" Type="Double" Value="510.9945e-3" Precision="-2">
+      <Variable Modifier="Public" Name="UC_comp_ccd" ESA_ID="" Type="Double" Value="1.301282" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC_comp_uz" ESA_ID="" Type="Double" Value="235.0011e-3" Precision="-2">
+      <Variable Modifier="Public" Name="UC_comp_ccf" ESA_ID="" Type="Double" Value="954.3556e-3" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC_comp_V" ESA_ID="" Type="Double" Value="43.05364e-3" Precision="-2">
+      <Variable Modifier="Public" Name="UC_comp_ccr" ESA_ID="" Type="Double" Value="1.337681" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC_constr" ESA_ID="" Type="Double" Value="0" Precision="-2">
+      <Variable Modifier="Public" Name="UC_comp_ccs" ESA_ID="" Type="Double" Value="4" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC_constr_LTB" ESA_ID="" Type="Double" Value="0" Precision="-2">
+      <Variable Modifier="Public" Name="UC_comp_lr" ESA_ID="" Type="Double" Value="616.77e-3" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC_constr_M" ESA_ID="" Type="Double" Value="2.392369" Precision="-2">
+      <Variable Modifier="Public" Name="UC_comp_lsr" ESA_ID="" Type="Double" Value="174.6446e-3" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC_constr_uz" ESA_ID="" Type="Double" Value="74.72004e-3" Precision="2">
+      <Variable Modifier="Public" Name="UC_comp_LTB" ESA_ID="" Type="Double" Value="138.7043e-3" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC_constr_V" ESA_ID="" Type="Double" Value="230.5535e-3" Precision="-2">
+      <Variable Modifier="Public" Name="UC_comp_M" ESA_ID="" Type="Double" Value="137.549e-3" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Unity_check" ESA_ID="" Type="Double" Value="510.9945e-3" Precision="-2">
+      <Variable Modifier="Public" Name="UC_comp_uz" ESA_ID="" Type="Double" Value="353.1467e-3" Precision="-2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="UC_comp_V" ESA_ID="" Type="Double" Value="227.6727e-3" Precision="-2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="UC_comp_vib" ESA_ID="" Type="Double" Value="885.8727e-3" Precision="-2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="UC_constr_LTB" ESA_ID="" Type="Double" Value="170.1854e-3" Precision="-2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="UC_constr_M" ESA_ID="" Type="Double" Value="170.1854e-3" Precision="-2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="UC_constr_uz" ESA_ID="" Type="Double" Value="0" Precision="-2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="UC_constr_V" ESA_ID="" Type="Double" Value="227.6727e-3" Precision="-2">
         <Description>
           <ENU>
           </ENU>
@@ -5379,7 +5493,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="V↓Ed,comp←" ESA_ID="" Type="Double" Value="11173.2" Precision="-3">
+      <Variable Modifier="Public" Name="V↓Ed,comp←" ESA_ID="" Type="Double" Value="88770.2" Precision="-3">
         <Description TranslateID="VARIABLE_V↓Ed,comp←">
           <ENU>Design shear force</ENU>
         </Description>
@@ -5405,7 +5519,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="V↓pl,Rd←" ESA_ID="" Type="Double" Value="259518.1" Precision="2">
+      <Variable Modifier="Public" Name="V↓pl,Rd←" ESA_ID="" Type="Double" Value="389902.7" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5426,27 +5540,27 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="w↓per←" ESA_ID="" Type="Double" Value="-38.0328e-3" Precision="-2">
+      <Variable Modifier="Public" Name="w↓per←" ESA_ID="" Type="Double" Value="-592.979e-6" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="W↓pl,y←" ESA_ID="" Type="Double" Value="367e-6" Precision="2">
+      <Variable Modifier="Public" Name="W↓pl,y←" ESA_ID="" Type="Double" Value="920.833e-6" Precision="2">
         <Description TranslateID="VARIABLE_W↓pl,y←">
           <ENU>Plastic section modulus</ENU>
         </Description>
         <Unit m="3" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-9" Dim="mm↑3←" />
       </Variable>
-      <Variable Modifier="Public" Name="w↓tot,lim,ratio,comp←" ESA_ID="" Type="Double" Value="2.85714e-3" Precision="2">
+      <Variable Modifier="Public" Name="w↓tot,lim,ratio,comp←" ESA_ID="" Type="Double" Value="5e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="w↓tot,lim,ratio,constr←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="w↓tot,lim,ratio,constr←" ESA_ID="" Type="Double" Value="4.16667e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5460,14 +5574,14 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="w↓tot←" ESA_ID="" Type="Double" Value="2.988802e-3" Precision="-2">
+      <Variable Modifier="Public" Name="w↓tot←" ESA_ID="" Type="Double" Value="15.8916e-3" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="w↓var,lim,ratio,comp←" ESA_ID="" Type="Double" Value="2.85714e-3" Precision="2">
+      <Variable Modifier="Public" Name="w↓var,lim,ratio,comp←" ESA_ID="" Type="Double" Value="2.77778e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5481,28 +5595,28 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="w↓var←" ESA_ID="" Type="Double" Value="0" Precision="-2">
+      <Variable Modifier="Public" Name="w↓var←" ESA_ID="" Type="Double" Value="-120.827e-6" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="w↓z,camber←" ESA_ID="" Type="Double" Value="46.08e-3" Precision="-2">
+      <Variable Modifier="Public" Name="w↓z,camber←" ESA_ID="" Type="Double" Value="0" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="w↓z,tot←" ESA_ID="" Type="Double" Value="-38.0328e-3" Precision="-2">
+      <Variable Modifier="Public" Name="w↓z,tot←" ESA_ID="" Type="Double" Value="-713.807e-6" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="web_ratio" ESA_ID="" Type="Double" Value="30.70968" Precision="2">
+      <Variable Modifier="Public" Name="web_ratio" ESA_ID="" Type="Double" Value="23.6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5516,7 +5630,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="x" ESA_ID="" Type="Double" Value="3.075227e-3" Precision="2">
+      <Variable Modifier="Public" Name="x" ESA_ID="" Type="Double" Value="1.308475e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5530,7 +5644,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="x↓pl←" ESA_ID="" Type="Double" Value="103.0752e-3" Precision="2">
+      <Variable Modifier="Public" Name="x↓pl←" ESA_ID="" Type="Double" Value="136.4909e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5677,7 +5791,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="y↓d←" ESA_ID="" Type="Double" Value="242.2984e-3" Precision="2">
+      <Variable Modifier="Public" Name="y↓d←" ESA_ID="" Type="Double" Value="230.3074e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5698,14 +5812,14 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="z↓0←" ESA_ID="" Type="Double" Value="71.95158e-3" Precision="2">
+      <Variable Modifier="Public" Name="z↓0←" ESA_ID="" Type="Double" Value="117.6926e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="α" ESA_ID="" Type="Double" Value="950e-3" Precision="2">
+      <Variable Modifier="Public" Name="α" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5724,7 +5838,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓cl←" ESA_ID="" Type="Double" Value="500e-3" Precision="2">
+      <Variable Modifier="Public" Name="α↓cl←" ESA_ID="" Type="Double" Value="992.6075e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5888,21 +6002,21 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="η" ESA_ID="" Type="Double" Value="1" Precision="1">
+      <Variable Modifier="Public" Name="η" ESA_ID="" Type="Double" Value="879.1412e-3" Precision="1">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="η↓i←" ESA_ID="" Type="Double" Value="1" Precision="-2">
+      <Variable Modifier="Public" Name="η↓i←" ESA_ID="" Type="Double" Value="400e-3" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="η↓min,calc←" ESA_ID="" Type="Double" Value="229.5745e-3" Precision="1">
+      <Variable Modifier="Public" Name="η↓min,calc←" ESA_ID="" Type="Double" Value="98.14894e-3" Precision="1">
         <Description>
           <ENU>
           </ENU>
@@ -6024,7 +6138,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λ↓LT,rel←" ESA_ID="" Type="Double" Value="335.99e-3" Precision="2">
+      <Variable Modifier="Public" Name="λ↓LT,rel←" ESA_ID="" Type="Double" Value="237.7541e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -6044,28 +6158,28 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="1" s="-3" A="0" K="-1" cd="0" mol="0" Coef="1" Dim="W/m∙K" />
       </Variable>
-      <Variable Modifier="Public" Name="λ↓z,rel←" ESA_ID="" Type="Double" Value="776.378e-3" Precision="2">
+      <Variable Modifier="Public" Name="λ↓z,rel←" ESA_ID="" Type="Double" Value="327.5522e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λ↓z←" ESA_ID="" Type="Double" Value="72.90189" Precision="2">
+      <Variable Modifier="Public" Name="λ↓z←" ESA_ID="" Type="Double" Value="30.75715" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ν" ESA_ID="" Type="Double" Value="571.2e-3" Precision="2">
+      <Variable Modifier="Public" Name="ν" ESA_ID="" Type="Double" Value="540e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ν↓Ed←" ESA_ID="" Type="Double" Value="1.301028e6" Precision="2">
+      <Variable Modifier="Public" Name="ν↓Ed←" ESA_ID="" Type="Double" Value="1.570313e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -6079,7 +6193,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ρ" ESA_ID="" Type="Double" Value="2.456533" Precision="2">
+      <Variable Modifier="Public" Name="ρ" ESA_ID="" Type="Double" Value="102.2647e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -6099,7 +6213,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="-3" kg="1" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="kg/m↑3←" />
       </Variable>
-      <Variable Modifier="Public" Name="ρ↓s←" ESA_ID="" Type="Double" Value="4.4e-3" Precision="2">
+      <Variable Modifier="Public" Name="ρ↓s←" ESA_ID="" Type="Double" Value="7.949293e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -6113,7 +6227,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="ϕ" ESA_ID="" Type="Double" Value="3.310345e-3" Precision="-1">
+      <Variable Modifier="Public" Name="ϕ" ESA_ID="" Type="Double" Value="5.37931e-3" Precision="-1">
         <Description>
           <ENU>
           </ENU>
@@ -6148,7 +6262,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Χ↓LT←" ESA_ID="" Type="Double" Value="968.931e-3" Precision="2">
+      <Variable Modifier="Public" Name="Χ↓LT←" ESA_ID="" Type="Double" Value="991.6708e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -6226,7 +6340,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000194">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="210" Y="314" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_000231" Style="0" StyleName="" X="250" Y="896" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_000231" Style="0" StyleName="" X="300" Y="896" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="314" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -6234,7 +6348,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000202">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="210" Y="350" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_000225" Style="0" StyleName="" X="250" Y="931" Hor="0" Ver="2" SpX="200" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_000225" Style="0" StyleName="" X="300" Y="931" Hor="0" Ver="2" SpX="200" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="350" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -6242,7 +6356,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000203">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="210" Y="368" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_000226" Style="0" StyleName="" X="250" Y="950" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_000226" Style="0" StyleName="" X="300" Y="950" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="368" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -6250,7 +6364,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000204">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="210" Y="387" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_000227" Style="0" StyleName="" X="250" Y="968" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_000227" Style="0" StyleName="" X="300" Y="968" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="387" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -6258,7 +6372,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000205">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="210" Y="407" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_000228" Style="0" StyleName="" X="250" Y="989" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_000228" Style="0" StyleName="" X="300" Y="989" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="407" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -6266,7 +6380,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000206">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="210" Y="429" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="1010" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="300" Y="1010" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="429" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -6274,7 +6388,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000207">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="210" Y="451" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="1032" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="300" Y="1032" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="451" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -6282,7 +6396,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000208">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="210" Y="333" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_000222" Style="0" StyleName="" X="250" Y="896" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_000222" Style="0" StyleName="" X="300" Y="896" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="333" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -6290,7 +6404,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000213">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="210" Y="348" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="913" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="300" Y="913" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="210" Y="348" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -6298,7 +6412,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000214">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="210" Y="368" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="932" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="300" Y="932" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="210" Y="368" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -6306,7 +6420,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000216">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="210" Y="863" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="896" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="300" Y="896" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="863" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -6346,7 +6460,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000228">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="419" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_000227" Style="0" StyleName="" X="20" Y="992" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="992" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="419" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -6448,14 +6562,6 @@ IF(IO.LayoutIndex == 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000339">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="237" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="383" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="237" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-      </VC>
       <VC ID="INI400_000341">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="258" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="404" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
@@ -6490,7 +6596,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000351">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="210" Y="387" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="952" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="300" Y="952" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="210" Y="387" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -6514,7 +6620,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000361">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="1460" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="2266" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="300" Y="2266" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="1460" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -6522,7 +6628,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000362">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="110" Y="1460" Hor="0" Ver="2" SpX="210" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_000361" Style="0" StyleName="" X="10" Y="2287" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_000361" Style="0" StyleName="" X="300" Y="2287" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="110" Y="1460" Hor="0" Ver="2" SpX="210" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -6530,7 +6636,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000363">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="1480" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_000370" Style="0" StyleName="" X="250" Y="2329" Hor="0" Ver="1" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_000370" Style="0" StyleName="" X="300" Y="2329" Hor="0" Ver="1" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="1480" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -6562,7 +6668,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000380">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="1501" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_000374" Style="0" StyleName="" X="250" Y="2372" Hor="0" Ver="2" SpX="0" SpY="-1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_000374" Style="0" StyleName="" X="300" Y="2372" Hor="0" Ver="2" SpX="0" SpY="-1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="1501" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -6570,7 +6676,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000381">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="110" Y="1501" Hor="0" Ver="3" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_000377" Style="0" StyleName="" X="250" Y="2414" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_000377" Style="0" StyleName="" X="300" Y="2414" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="110" Y="1501" Hor="0" Ver="3" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -7058,7 +7164,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000621">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="300" Y="1228" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_000620" Style="0" StyleName="" X="250" Y="2029" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_000620" Style="0" StyleName="" X="300" Y="2029" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="300" Y="1228" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -7074,7 +7180,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000623">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="300" Y="1248" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_000622" Style="0" StyleName="" X="250" Y="2049" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_000622" Style="0" StyleName="" X="300" Y="2049" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="300" Y="1248" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -7594,7 +7700,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000869">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="250" Y="2715" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="7036" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_000911" Style="0" StyleName="" X="250" Y="7036" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="2981" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -7610,7 +7716,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000871">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="2734" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_000911" Style="0" StyleName="" X="50" Y="7056" Hor="0" Ver="4" SpX="3" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="POR106_000037" Style="0" StyleName="" X="50" Y="7056" Hor="0" Ver="4" SpX="3" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="2734" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -7618,7 +7724,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000872">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="250" Y="5923" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="6250" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_000911" Style="0" StyleName="" X="250" Y="6250" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="5923" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -7634,7 +7740,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000874">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="5942" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="6269" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="POR106_000037" Style="0" StyleName="" X="50" Y="6269" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="5942" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -7658,7 +7764,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000893">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="250" Y="2783" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="7265" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_000909" Style="0" StyleName="" X="250" Y="7265" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="3049" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -7674,7 +7780,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000895">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="2803" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="40" Y="7284" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="POR106_000038" Style="0" StyleName="" X="40" Y="7284" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="2803" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -7682,7 +7788,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000896">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="250" Y="6157" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="6295" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_000909" Style="0" StyleName="" X="250" Y="6295" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="2760" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -7698,7 +7804,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_000898">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="6176" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="40" Y="6315" Hor="0" Ver="4" SpX="40" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="POR106_000038" Style="0" StyleName="" X="40" Y="6315" Hor="0" Ver="4" SpX="40" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="6176" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -8970,7 +9076,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_004396">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="990" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="1661" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="1661" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="990" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -9034,7 +9140,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_004425">
         <Set Vis="1" Prev="" Style="2" StyleName="" X="210" Y="1062" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_004420" Style="2" StyleName="" X="250" Y="1846" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_004420" Style="2" StyleName="" X="300" Y="1846" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="" X="210" Y="1062" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -9042,7 +9148,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_004426">
         <Set Vis="1" Prev="" Style="2" StyleName="" X="210" Y="1080" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_004421" Style="2" StyleName="" X="250" Y="1864" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_004421" Style="2" StyleName="" X="300" Y="1864" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="" X="210" Y="1080" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -9050,7 +9156,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_004427">
         <Set Vis="1" Prev="" Style="2" StyleName="" X="210" Y="1099" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_004422" Style="2" StyleName="" X="250" Y="1882" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_004422" Style="2" StyleName="" X="300" Y="1882" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="" X="210" Y="1099" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -9058,7 +9164,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_004428">
         <Set Vis="0" Prev="" Style="2" StyleName="" X="300" Y="1286" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_004423" Style="2" StyleName="" X="250" Y="2088" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_004423" Style="2" StyleName="" X="300" Y="2088" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="" X="300" Y="1286" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -9098,7 +9204,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_004459">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="1143" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_004452" Style="0" StyleName="" X="250" Y="1925" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_004452" Style="0" StyleName="" X="300" Y="1925" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="1143" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -9106,7 +9212,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_004460">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="1162" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_004453" Style="0" StyleName="" X="250" Y="1943" Hor="0" Ver="2" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_004453" Style="0" StyleName="" X="300" Y="1943" Hor="0" Ver="2" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="1162" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -9754,7 +9860,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_004570">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="182" Y="696" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="696" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="300" Y="696" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="182" Y="696" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -9946,7 +10052,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_004643">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="995" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_000781" Style="0" StyleName="" X="250" Y="1562" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_000781" Style="0" StyleName="" X="300" Y="1562" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="995" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -10028,22 +10134,6 @@ IF(IO.LayoutIndex == 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="117" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="117" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="117" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_004717">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="189" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="189" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_004718">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="189" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="189" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -10360,22 +10450,6 @@ IF(IO.LayoutIndex == 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006307">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_006308">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-      </VC>
       <VC ID="INI400_006309">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="1163" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="1945" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
@@ -10418,7 +10492,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_006314">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="1162" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="1943" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="300" Y="1943" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="1162" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -10426,7 +10500,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_006315">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="1162" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="1943" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="300" Y="1943" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="1162" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -10434,7 +10508,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_006317">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="1162" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="1943" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="300" Y="1943" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="1162" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -10442,7 +10516,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_006318">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="1162" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="1943" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="300" Y="1943" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="1162" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -10450,7 +10524,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_006319">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="1162" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="1943" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="300" Y="1943" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="1162" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -10658,7 +10732,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_006353">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="2783" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="7265" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_006352" Style="0" StyleName="" X="250" Y="7265" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="3049" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -10674,7 +10748,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_006355">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="2803" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="7284" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="POR106_000036" Style="0" StyleName="" X="50" Y="7284" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="2803" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -10682,7 +10756,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_006356">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="6157" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="6295" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_006352" Style="0" StyleName="" X="250" Y="6295" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="2760" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -10690,7 +10764,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_006358">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="20" Y="6176" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="6315" Hor="0" Ver="4" SpX="40" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="POR106_000036" Style="0" StyleName="" X="50" Y="6315" Hor="0" Ver="4" SpX="40" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="6176" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -11002,7 +11076,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_006474">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="1480" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_000370" Style="0" StyleName="" X="250" Y="2329" Hor="0" Ver="1" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_000370" Style="0" StyleName="" X="300" Y="2329" Hor="0" Ver="1" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="1480" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -11010,7 +11084,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_006475">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="1480" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="2329" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="300" Y="2329" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="1480" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -11098,7 +11172,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_006496">
         <Set Vis="1" Prev="" Style="2" StyleName="" X="210" Y="1062" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_006492" Style="2" StyleName="" X="250" Y="1846" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_006492" Style="2" StyleName="" X="300" Y="1846" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="" X="210" Y="1062" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -11106,7 +11180,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_006497">
         <Set Vis="1" Prev="" Style="2" StyleName="" X="210" Y="1080" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_006494" Style="2" StyleName="" X="250" Y="1864" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_006494" Style="2" StyleName="" X="300" Y="1864" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="" X="210" Y="1080" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -11666,7 +11740,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_006717">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="300" Y="1210" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_006716" Style="0" StyleName="" X="250" Y="1992" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_006716" Style="0" StyleName="" X="300" Y="1992" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="300" Y="1210" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -11722,7 +11796,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_006726">
         <Set Vis="1" Prev="" Style="2" StyleName="" X="210" Y="1062" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_006727" Style="2" StyleName="" X="250" Y="1846" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_006727" Style="2" StyleName="" X="300" Y="1846" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="" X="210" Y="1062" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -11794,7 +11868,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_006736">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="977" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_006732" Style="0" StyleName="" X="250" Y="1562" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_006732" Style="0" StyleName="" X="300" Y="1562" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="977" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -11802,7 +11876,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_006739">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="1464" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_006734" Style="0" StyleName="" X="250" Y="1599" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_006734" Style="0" StyleName="" X="300" Y="1599" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="210" Y="1464" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -11810,7 +11884,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_006740">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="1464" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_006735" Style="0" StyleName="" X="250" Y="1619" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_006735" Style="0" StyleName="" X="300" Y="1619" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="210" Y="1464" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -12194,7 +12268,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_006807">
         <Set Vis="1" Prev="" Style="2" StyleName="" X="210" Y="1062" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_006806" Style="2" StyleName="" X="250" Y="1846" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_006806" Style="2" StyleName="" X="300" Y="1846" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="" X="210" Y="1062" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -12210,7 +12284,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_006809">
         <Set Vis="1" Prev="" Style="2" StyleName="" X="210" Y="1062" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_006808" Style="2" StyleName="" X="250" Y="1846" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_006808" Style="2" StyleName="" X="300" Y="1846" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="" X="210" Y="1062" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -12266,7 +12340,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_006826">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="300" Y="1210" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_006819" Style="0" StyleName="" X="250" Y="1992" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_006819" Style="0" StyleName="" X="300" Y="1992" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="300" Y="1210" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -12274,7 +12348,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_006827">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="210" Y="1358" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_006820" Style="0" StyleName="" X="250" Y="2010" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_006820" Style="0" StyleName="" X="300" Y="2010" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="210" Y="1358" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -12314,7 +12388,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_006832">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="1358" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_006833" Style="0" StyleName="" X="250" Y="2010" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_006833" Style="0" StyleName="" X="300" Y="2010" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="210" Y="1358" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -12410,7 +12484,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_006847">
         <Set Vis="0" Prev="" Style="2" StyleName="" X="300" Y="1286" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_006846" Style="2" StyleName="" X="250" Y="2088" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_006846" Style="2" StyleName="" X="300" Y="2088" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="" X="300" Y="1286" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -12978,7 +13052,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_007001">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="696" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="22" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -12986,7 +13060,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_007002">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -13066,7 +13140,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_007021">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="0" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -13682,7 +13756,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_007135">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -13819,14 +13893,6 @@ IF(IO.LayoutIndex == 0) {
       <VC ID="INI400_007180">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="15" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|2|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|2|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_007181">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="15" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|2|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="40" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|2|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -14328,14 +14394,6 @@ IF(IO.LayoutIndex == 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007349">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="21" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_007350">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="237" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="383" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
@@ -14346,7 +14404,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_007351">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="2312" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|5|2" Font2="Segoe UI|13|5|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="95.1" Y="5357" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|5|2" Font2="Segoe UI|13|1|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="95.1" Y="5357" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|5|2" Font2="Segoe UI|13|1|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="2312" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|13|5|2" Font2="Segoe UI|13|5|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -14359,14 +14417,6 @@ IF(IO.LayoutIndex == 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_007353">
-        <Set Vis="0" Prev="" Style="2" StyleName="" X="40" Y="1948" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="" X="50" Y="5400" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="2" StyleName="" X="40" Y="1948" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
       <VC ID="INI400_007354">
         <Set Vis="0" Prev="" Style="2" StyleName="" X="20" Y="1004" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
@@ -14594,7 +14644,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_007385">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="210" Y="429" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="1010" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="300" Y="1010" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="429" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -15362,7 +15412,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_007526">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="210" Y="314" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_006721" Style="0" StyleName="" X="250" Y="896" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_006721" Style="0" StyleName="" X="300" Y="896" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="314" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -15794,7 +15844,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_007601">
         <Set Vis="1" Prev="" Style="2" StyleName="" X="160" Y="1401" Hor="1" Ver="2" SpX="150" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="" X="250" Y="2203" Hor="0" Ver="2" SpX="250" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="INI400_007600" Style="2" StyleName="" X="300" Y="2203" Hor="0" Ver="2" SpX="250" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="160" Y="1401" Hor="1" Ver="2" SpX="150" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -15810,7 +15860,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_007603">
         <Set Vis="1" Prev="" Style="2" StyleName="" X="160" Y="1419" Hor="1" Ver="2" SpX="150" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_007601" Style="2" StyleName="" X="160" Y="2221" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="INI400_007601" Style="2" StyleName="" X="300" Y="2221" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="160" Y="1419" Hor="1" Ver="2" SpX="150" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -15826,7 +15876,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_007605">
         <Set Vis="1" Prev="" Style="2" StyleName="" X="160" Y="1401" Hor="1" Ver="2" SpX="150" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_007604" Style="2" StyleName="" X="250" Y="2279" Hor="0" Ver="2" SpX="150" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="INI400_007604" Style="2" StyleName="" X="300" Y="2279" Hor="0" Ver="2" SpX="150" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="160" Y="1467" Hor="1" Ver="2" SpX="150" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -15842,7 +15892,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_007607">
         <Set Vis="1" Prev="" Style="2" StyleName="" X="160" Y="1419" Hor="1" Ver="2" SpX="150" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_007606" Style="2" StyleName="" X="250" Y="2297" Hor="0" Ver="2" SpX="150" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="INI400_007606" Style="2" StyleName="" X="300" Y="2297" Hor="0" Ver="2" SpX="150" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="160" Y="1485" Hor="1" Ver="2" SpX="150" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -16810,7 +16860,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_007962">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="" X="30" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -18600,14 +18650,6 @@ IF(IO.LayoutIndex == 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008273">
-        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="" X="20" Y="0" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_008274">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="21" />
         <Set Vis="1" Prev="" Style="1" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="21" />
@@ -18743,14 +18785,6 @@ IF(IO.LayoutIndex == 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_008301">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="250" Y="1551" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="250" Y="1551" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="250" Y="1551" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
       <VC ID="INI400_008303">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -19130,7 +19164,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_008379">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="2783" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="7265" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_008378" Style="0" StyleName="" X="250" Y="7265" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="3049" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -19138,7 +19172,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_008380">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="2803" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="7284" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="POR106_000044" Style="0" StyleName="" X="30" Y="7284" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="2803" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -19146,7 +19180,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_008381">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="6157" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="6295" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_008378" Style="0" StyleName="" X="250" Y="6295" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="2760" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -19154,7 +19188,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_008383">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="20" Y="6176" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="6315" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="POR106_000044" Style="1" StyleName="" X="30" Y="6315" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="6176" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -19322,7 +19356,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_008407">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="2783" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="7265" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_008416" Style="0" StyleName="" X="250" Y="7265" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="3049" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -19330,7 +19364,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_008408">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="2803" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="7284" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="POR106_000045" Style="0" StyleName="" X="30" Y="7284" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="2803" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -19338,7 +19372,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_008409">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="6157" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="6295" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_008416" Style="0" StyleName="" X="250" Y="6295" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="2760" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -19354,7 +19388,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_008411">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="20" Y="6176" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="6315" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="POR106_000045" Style="0" StyleName="" X="30" Y="6315" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="6176" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -19466,7 +19500,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_008432">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="2783" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="7265" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_008431" Style="0" StyleName="" X="250" Y="7265" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="3049" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -19474,7 +19508,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_008433">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="2803" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="7284" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="POR106_000046" Style="0" StyleName="" X="30" Y="7284" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="2803" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -19482,7 +19516,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_008434">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="6157" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="6295" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_008431" Style="0" StyleName="" X="250" Y="6295" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="2760" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -19498,7 +19532,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_008436">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="20" Y="6176" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="6315" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="POR106_000046" Style="0" StyleName="" X="30" Y="6315" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="6176" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -19898,7 +19932,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_008525">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_008524" Style="0" StyleName="" X="30" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_008530" Style="0" StyleName="" X="30" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -19912,17 +19946,9 @@ IF(IO.LayoutIndex == 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008527">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_008528">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_008523" Style="0" StyleName="" X="250" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -19930,7 +19956,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_008529">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_008530" Style="0" StyleName="" X="30" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -19938,7 +19964,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_008530">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="INI400_008529" Style="0" StyleName="" X="30" Y="0" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="0" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -19970,7 +19996,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_008534">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="22" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -20248,17 +20274,9 @@ IF(IO.LayoutIndex == 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008587">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_008588">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_008594" Style="0" StyleName="" X="250" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -20266,7 +20284,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_008589">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="" X="30" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="POR106_000043" Style="2" StyleName="" X="30" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -20282,7 +20300,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_008592">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="250" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_008594" Style="0" StyleName="" X="250" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -20290,7 +20308,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="INI400_008593">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="POR106_000043" Style="0" StyleName="" X="30" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -20594,7 +20612,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="POR012_000004">
         <Set Vis="1" Prev="" Style="2" StyleName="" X="210" Y="1062" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="POR012_000003" Style="2" StyleName="" X="250" Y="1846" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="POR012_000003" Style="2" StyleName="" X="300" Y="1846" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="" X="210" Y="1062" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -20610,7 +20628,7 @@ IF(IO.LayoutIndex == 0) {
       </VC>
       <VC ID="POR012_000006">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="300" Y="1248" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="POR012_000007" Style="0" StyleName="" X="250" Y="2049" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="POR012_000007" Style="0" StyleName="" X="300" Y="2049" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="300" Y="1248" Hor="1" Ver="4" SpX="0" SpY="1" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -20784,6 +20802,254 @@ IF(IO.LayoutIndex == 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="POR106_000015">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000016">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="165" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="311" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="165" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000017">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="183" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="329" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="183" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000018">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="200" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="346" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="200" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000019">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="219" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="365" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="219" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000020">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="237" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="383" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="237" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000021">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000022">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="400" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_000226" Style="0" StyleName="" X="20" Y="973" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="400" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000023">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="210" Y="387" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="POR106_000022" Style="0" StyleName="" X="300" Y="968" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="210" Y="387" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000024">
+        <Set Vis="0" Prev="" Style="2" StyleName="" X="20" Y="387" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="" X="40" Y="1159" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="" X="20" Y="387" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000025">
+        <Set Vis="0" Prev="" Style="2" StyleName="" X="20" Y="378" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="" X="40" Y="1328" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="" X="20" Y="378" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000027">
+        <Set Vis="1" Prev="" Style="2" StyleName="" X="20" Y="741" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="2" StyleName="" X="0" Y="20" Hor="0" Ver="2" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="" X="20" Y="741" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000032">
+        <Set Vis="0" Prev="" Style="2" StyleName="" X="40" Y="1948" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="" X="50" Y="5400" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="2" StyleName="" X="40" Y="1948" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000033">
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="" X="20" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000034">
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="" X="20" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000035">
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="" X="20" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000036">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="" X="50" Y="6315" Hor="0" Ver="4" SpX="40" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000037">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_000911" Style="2" StyleName="" X="50" Y="6315" Hor="0" Ver="4" SpX="40" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000038">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="" X="40" Y="6315" Hor="0" Ver="4" SpX="40" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000041">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000042">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000043">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000044">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_008378" Style="2" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000045">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000046">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000051">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="" X="20" Y="0" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000052">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000053">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000054">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="3305" Hor="0" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="22" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="20" Y="2058" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000057">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="INI400_004632" Style="2" StyleName="" X="50" Y="5126" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="22" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="POR106_000058">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="POR111_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -20811,7 +21077,7 @@ IF(IO.LayoutIndex == 0) {
   </Calculation>
   <Dialog>
     <Main Width="500">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="C:\Work\Scia_Engineer\Deve06\temp\Esa_Model_Data\Beam.159" MemberID="Beam.159" SectionID="12" CombiID="0" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.100" SectionID="-1" CombiID="-1" />
     </Main>
     <MemberData Width="545" />
     <Setup Width="500" />
@@ -20866,8 +21132,8 @@ IF(IO.LayoutIndex == 0) {
     <Item TranslateID="STRING_D5DBECED">
       <ENU>"Status"</ENU>
     </Item>
-    <Item TranslateID="STRING_F1D9A5C3">
-      <ENU>"Transverse reinforcement"</ENU>
+    <Item TranslateID="STRING_E6ED09BC">
+      <ENU>"Longitudinal shear reinforcement"</ENU>
     </Item>
     <Item ID="TEXT_INI400_000194">
       <ENU>'h↓a←' &amp; " = " &amp; Val(h↓a←*1000, 3) &amp; " mm"</ENU>
@@ -21161,7 +21427,7 @@ IF(IO.LayoutIndex == 0) {
       <ENU>"Design shear flow"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_000856">
-      <ENU>"Transverse reinforcement"</ENU>
+      <ENU>"Longitudinal shear reinforcement"</ENU>
     </Item>
     <Item ID="TEXT_INI400_000857">
       <ENU>'A↓sf←*f↓yk,r←/[γ↓S←*s↓f←]' &amp; " ≥ " &amp; 'ν↓Ed←*h↓f←/cotg(θ)'</ENU>
@@ -21173,13 +21439,13 @@ IF(IO.LayoutIndex == 0) {
       <ENU>"OK"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_000871">
-      <ENU>"The transverse reinforcement of the section is adequate."</ENU>
+      <ENU>"Longitudinal shear reinforcement of the section is adequate."</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_000872">
       <ENU>"NOT OK"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_000874">
-      <ENU>"The transverse reinforcement of the section is not adequate."</ENU>
+      <ENU>"Longitudinal shear reinforcement of the section is not adequate."</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_000893">
       <ENU>"OK"</ENU>
@@ -21215,16 +21481,16 @@ IF(IO.LayoutIndex == 0) {
       <ENU>"ULS check of Final stage is OK."</ENU>
     </Item>
     <Item ID="TEXT_INI400_000914">
-      <ENU>'N↓pl,a←' &amp; " = " &amp; 'N↓c,f←'</ENU>
+      <ENU>"N↓pl,a← = N↓c,f←"</ENU>
     </Item>
     <Item ID="TEXT_INI400_000916">
-      <ENU>'N↓pl,a←-N↓ac,f←' &amp; " = " &amp; 'N↓c,f←+N↓ac,f←'</ENU>
+      <ENU>"N↓pl,a← - N↓ac,f← = N↓c,f← + N↓ac,f←"</ENU>
     </Item>
     <Item ID="TEXT_INI400_000918">
-      <ENU>'N↓pl,a←-N↓ac,f←-N↓ac,w←' &amp; " = " &amp; 'N↓c,f←+N↓ac,f←+N↓ac,w←'</ENU>
+      <ENU>"N↓pl,a← - N↓ac,f← - N↓ac,w← = N↓c,f← + N↓ac,f← + N↓ac,w←"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_000926">
-      <ENU>"for beam " &amp; IO.Beam.Member.Name &amp; " at section " &amp; d↓x← &amp; " m, in accordance with " &amp; IO.SetupNA.EC_1994_1_1.Name</ENU>
+      <ENU>"for beam " &amp; Beam_Name &amp; " at section " &amp; d↓x← &amp; " m, in accordance with " &amp; Code_Name</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_000975">
       <ENU>Val(CN, 1) &amp; "." &amp; Val(SCN, 1) &amp; ".1 " &amp; "Total deflection of composite beam in section"</ENU>
@@ -21506,7 +21772,7 @@ IF(IO.LayoutIndex == 0) {
       <ENU>Val(CN, 1) &amp; "." &amp; Val(SCN, 1) &amp; ".1 "</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_004545">
-      <ENU>"Transverse reinforcement"</ENU>
+      <ENU>"Longitudinal shear reinforcement"</ENU>
     </Item>
     <Item ID="TEXT_INI400_004546">
       <ENU>Val(CN, 1) &amp; "." &amp; Val(SCN, 1) &amp; ".2 "</ENU>
@@ -21746,7 +22012,7 @@ IF(IO.LayoutIndex == 0) {
       <ENU>"Design moment resistance according to simplified method given by EN 1994-1-1 Art.6.2.1.3 (5)"</ENU>
     </Item>
     <Item ID="TEXT_INI400_006654">
-      <ENU>"N↓pl,a← - N↓a,f←" &amp; " = " &amp; "F↓s ←+ N↓a,f←"</ENU>
+      <ENU>"N↓pl,a← - N↓a,f← = η*F↓s ←+ N↓a,f←"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_006716">
       <ENU>"Name"</ENU>
@@ -21905,7 +22171,7 @@ IF(IO.LayoutIndex == 0) {
       <ENU>"The bending moment resistance of the section is not adequate."</ENU>
     </Item>
     <Item ID="TEXT_INI400_007063">
-      <ENU>"N↓pl,a← - N↓at,f← - N↓at,w←" &amp; " = " &amp; "F↓s ←+ N↓at,f← + N↓at,w←"</ENU>
+      <ENU>"N↓pl,a← - N↓at,f← - N↓at,w← = η*F↓s ←+ N↓at,f← + N↓at,w←"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_007066">
       <ENU>"Leverage arm of the compression part of the steel section calculated to the PNA."</ENU>
@@ -22439,7 +22705,7 @@ IF(IO.LayoutIndex == 0) {
       <ENU>"Shape factor = " &amp; Val(10↑-3←*A↓i←/V↓i←, 2) &amp; (" mm↑-1←")</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_008211">
-      <ENU>"for beam " &amp; IO.Beam.Member.Name &amp; " at section " &amp; d↓x← &amp; " m, in accordance with " &amp; IO.SetupNA.EC_1994_1_1.Name &amp; " &amp; EN 1994-1-2"</ENU>
+      <ENU>"for beam " &amp; Beam_Name &amp; " at section " &amp; d↓x← &amp; " m, in accordance with " &amp; Code_Name &amp; " &amp; EN 1994-1-2"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_008220">
       <ENU>"Temperature in concrete at reinforcement position"</ENU>
@@ -22481,7 +22747,7 @@ IF(IO.LayoutIndex == 0) {
       <ENU>'A↓s←' &amp; " ≥ " &amp; 'A↓s,min←'</ENU>
     </Item>
     <Item ID="TEXT_INI400_008378">
-      <ENU>Val(10↑6←*A↓s←, 2) &amp; " mm↑2← " &amp; " ≥ " &amp; Val(A↓s,min←, 2) &amp; " mm↑2← "</ENU>
+      <ENU>Val(10↑6←*A↓s←, 2) &amp; " mm↑2← " &amp; " ≥ " &amp; Val(10↑6←*A↓s,min←, 2) &amp; " mm↑2← "</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_008379">
       <ENU>"OK"</ENU>
@@ -22594,9 +22860,6 @@ IF(IO.LayoutIndex == 0) {
     <Item TranslateID="TEXT_INI400_008525">
       <ENU>"Total deflection is not adequate."</ENU>
     </Item>
-    <Item ID="TEXT_INI400_008527">
-      <ENU>w↓tot← &amp; " ≤ " &amp; Val(L/w↓tot,lim←*10↑3←, 2) &amp; " mm"</ENU>
-    </Item>
     <Item TranslateID="TEXT_INI400_008528">
       <ENU>"OK"</ENU>
     </Item>
@@ -22645,9 +22908,6 @@ IF(IO.LayoutIndex == 0) {
     <Item TranslateID="TEXT_INI400_008585">
       <ENU>"Natural frequency"</ENU>
     </Item>
-    <Item ID="TEXT_INI400_008587">
-      <ENU>f &amp; " ≥ " &amp; 4 &amp; " Hz"</ENU>
-    </Item>
     <Item TranslateID="TEXT_INI400_008588">
       <ENU>"NOT OK"</ENU>
     </Item>
@@ -22686,6 +22946,15 @@ IF(IO.LayoutIndex == 0) {
     </Item>
     <Item TranslateID="TEXT_POR012_000007">
       <ENU>"As-welded height"</ENU>
+    </Item>
+    <Item ID="TEXT_POR106_000022">
+      <ENU>Description("a")</ENU>
+    </Item>
+    <Item ID="TEXT_POR106_000023">
+      <ENU>'a' &amp; " = " &amp; Val(a*1000, 2) &amp; " mm"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_POR106_000041">
+      <ENU>"Natural frequency check is adequate."</ENU>
     </Item>
   </Texts>
 </Root>

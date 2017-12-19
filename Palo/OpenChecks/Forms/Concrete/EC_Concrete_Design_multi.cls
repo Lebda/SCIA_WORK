@@ -1959,10 +1959,10 @@ IF(!IO.IsStandalone) {
         IF(IsDesignOK) { 
             IF(IO.IsDrawing) { 
                 IF(IO.LayoutIndex == 1) { //Standard layout
-                    →KRS316_000001Functions1D_DesignReq.WriteSummaryReinArea(SummaryAreaFin, SumProvReinf, BasicReinf.ID != "BasicReinf_Empty"); 
+                    →KRS316_000001Functions1D_DesignReq.WriteSummaryReinArea(SummaryAreaFin, SumProvReinf, TypeMember, BasicReinf.ID != "BasicReinf_Empty"); 
                 } 
                 IF(IO.LayoutIndex == 2) { //Detailed layout
-                    →KRS127_000067Functions1D_DesignReq.WriteSummaryReinAreaFull(SummaryAreaFin, SummaryAreaPract, SumBasicProvReinf, SumAdditionalProvReinf, SumAdditionalReinf, SumProvReinf, BasicReinf.ID != "BasicReinf_Empty"); 
+                    →KRS127_000067Functions1D_DesignReq.WriteSummaryReinAreaFull(SummaryAreaFin, SummaryAreaPract, SumBasicProvReinf, SumAdditionalProvReinf, SumAdditionalReinf, SumProvReinf, TypeMember, BasicReinf.ID != "BasicReinf_Empty"); 
                     →KRS127_000068PAGEBREAK(); 
                 } 
             } 
@@ -15147,7 +15147,7 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
               <ENU>Same values (column)|Upper, lower (beam)</ENU>
             </Texts>
           </TComboBox>
-          <TComboBox Name="TypeAreaCombo" ID="31" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="16" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeArea" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="1|0" Index="0">
+          <TComboBox Name="TypeAreaCombo" ID="31" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="16" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeArea" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="1|0" Index="1">
             <Texts>
               <ENU>Area of real bars|Delta area</ENU>
             </Texts>

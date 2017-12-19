@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="302a30c5-024d-4e62-a63e-b120cb03b8c3">
   <CodeEditor>
-    <SourceCode Collapsed="1|257|265|373|400|644|707|716|780|872|936|966|974|1024|1084|1146|1207|1273|1362|1425|1491|1531|1566|1597|1623|1635|1648|1713|1781|1861|2038|2114|2228|2360|2533|2604|2692|2757|2829|2859|2965|3026|3066|3091|3102|3244|3256|3280" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure
+    <SourceCode Collapsed="1|257|265|372|399|643|706|715|779|874|938|968|976|1026|1086|1148|1209|1275|1364|1427|1493|1533|1568|1599|1625|1637|1650|1716|1785|1866|2045|2122|2237|2370|2543|2614|2702|2767|2839|2869|2975|3036|3076|3101|3112|3255|3267|3291" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure
     bool ValidateInput(object Input) { //Validate inputs from master to this form
         //Fonts, colors, pens...
         object FontRegular →INI400_012845= Input.Get("FontRegular"); //Standard font for tables
@@ -280,7 +280,6 @@ void UpdateDialog() { //changes in visibility
     Dialog.GetComponentByName("fi_w_4_4_1_2_3").Visible →INI400_007556= ReinfType == 1 &amp;&amp; TensionType == 1; 
     Dialog.GetComponentByName("XS").Visible →INI400_007557= IO.SetupNA.EC_NA.Code != "ONORM" &amp;&amp; IO.SetupNA.EC_NA.Code != "CSN" &amp;&amp; IO.SetupNA.EC_NA.Code != "STN"; 
     Dialog.GetComponentByName("PrefabricatedSpecialQuality").Visible →INI400_007558= IO.SetupNA.EC_NA.Code == "ONORM"; 
-    Dialog.GetComponentByName("XC").Visible →INI400_007560= IO.SetupNA.EC_NA.Code != "NBN"; 
     Dialog.GetComponentByName("XSA").Visible →KRS116_000079= IO.SetupNA.EC_NA.Code == "NS"; 
     Dialog.GetComponentByName("DesignLife_CSN").Visible →INI400_007561= IO.SetupNA.EC_NA.Code == "CSN" || IO.SetupNA.EC_NA.Code == "STN"; 
     Dialog.GetComponentByName("DesignLife_NEN").Visible →INI400_007562= IO.SetupNA.EC_NA.Code == "NEN"; 
@@ -858,7 +857,10 @@ IF(!IO.IsExternCLC) {
             } 
             →INI400_007997BLOCK { 
                 →INI400_008001TEXT("Longitudinal reinforcement"); 
-                →INI400_008000TEXT(CrossSection.GetMaterialForBar(0).Name); 
+                SWITCH(cTypeOfCalculation) { 
+                    CASE 0 :  { →INI400_008000TEXT(CrossSection.GetMaterialForBar(0).Name); } 
+                    CASE 1 :  { →KRS106_000105TEXT(S_ReinfMat.EC.Item); } 
+                } 
                 // double f↓yd← →INI400_008002= f↓yk←/γ↓S←; 
             } 
             →INI400_008004BLOCK { 
@@ -3050,28 +3052,28 @@ SWITCH(cTypeOfCalculation) {
                 →INI400_014469ArrayForcesULS.Add(CONCRETE.Factory.CreateLoadForce(TableForcesULS[i].N, TableForcesULS[i].Vy, TableForcesULS[i].Vz, TableForcesULS[i].Mx, M↓Edy,recal←[i], M↓Edz,recal←[i])); 
             } 
             object ArrayForcesSLSChar →INI400_014465= new object[]; 
-            FOR(i, 0, TableForcesSLSChar.Count-1) { 
-                →INI400_014470ArrayForcesSLSChar.Add(CONCRETE.Factory.CreateLoadForce(TableForcesSLSChar[i].N, TableForcesSLSChar[i].Vy, TableForcesSLSChar[i].Vz, TableForcesSLSChar[i].Mx, M↓Edy,char,recal←[i], M↓Edz,char,recal←[i])); 
-            } 
+            //            FOR(i, 0, TableForcesSLSChar.Count-1) { //KRS: designSLS  disabled
+            //                →INI400_014470ArrayForcesSLSChar.Add(CONCRETE.Factory.CreateLoadForce(TableForcesSLSChar[i].N, TableForcesSLSChar[i].Vy, TableForcesSLSChar[i].Vz, TableForcesSLSChar[i].Mx, M↓Edy,char,recal←[i], M↓Edz,char,recal←[i])); 
+            //            } 
             object ArrayForcesSLSQP →INI400_014467= new object[]; 
-            FOR(i, 0, TableForcesSLSQP.Count-1) { 
-                →INI400_014471ArrayForcesSLSQP.Add(CONCRETE.Factory.CreateLoadForce(TableForcesSLSQP[i].N, TableForcesSLSQP[i].Vy, TableForcesSLSQP[i].Vz, TableForcesSLSQP[i].Mx, M↓Edy,qp,recal←[i], M↓Edz,qp,recal←[i])); 
-            } 
+            //            FOR(i, 0, TableForcesSLSQP.Count-1) { //KRS: designSLS  disabled
+            //                →INI400_014471ArrayForcesSLSQP.Add(CONCRETE.Factory.CreateLoadForce(TableForcesSLSQP[i].N, TableForcesSLSQP[i].Vy, TableForcesSLSQP[i].Vz, TableForcesSLSQP[i].Mx, M↓Edy,qp,recal←[i], M↓Edz,qp,recal←[i])); 
+            //            } 
             object CombikeyULS →INI400_014472= new object[]; 
             FOR(i, 0, TableForcesULS.Count-1) { 
                 CombikeyULS[i] →INI400_014460= "CO" &amp; i+1; 
             } 
             object CombikeySLSChar →INI400_014473= new object[]; 
-            FOR(i, 0, TableForcesSLSChar.Count-1) { 
-                CombikeySLSChar[i] →INI400_014474= "CO" &amp; i+1; 
-            } 
+            //            FOR(i, 0, TableForcesSLSChar.Count-1) { //KRS: designSLS  disabled
+            //                CombikeySLSChar[i] →INI400_014474= "CO" &amp; i+1; 
+            //            } 
             object CombikeySLSQP →INI400_014475= new object[]; 
-            FOR(i, 0, ArrayForcesSLSQP.Count-1) { 
-                CombikeySLSQP[i] →INI400_014476= "CO" &amp; i+1; 
-            } 
+            //            FOR(i, 0, ArrayForcesSLSQP.Count-1) { //KRS: designSLS  disabled
+            //                CombikeySLSQP[i] →INI400_014476= "CO" &amp; i+1; 
+            //            } 
             
             bDesignULS →INI400_014488= ArrayForcesULS.Count &gt; 0; 
-            bDesignSLS →INI400_014490= false; //KRS: designSLS temporally disabled
+            bDesignSLS →INI400_014490= false; //KRS: designSLS  disabled
             //            bDesignSLS →INI400_014489= (→INI400_014485ArrayForcesSLSChar.Count &gt; 0 &amp;&amp; →INI400_014487ArrayForcesSLSQP.Count &gt; 0); 
         } 
         
@@ -7742,14 +7744,6 @@ SWITCH(cTypeOfCalculation) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_007560">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="1179" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="1179" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1179" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1179" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1179" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1179" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
       <VC ID="INI400_007561">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="1120" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -20083,7 +20077,7 @@ SWITCH(cTypeOfCalculation) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="%Def" EqStyle="31" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
@@ -20475,7 +20469,7 @@ SWITCH(cTypeOfCalculation) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="None" EqStyle="31" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
@@ -21455,22 +21449,6 @@ SWITCH(cTypeOfCalculation) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014470">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_014471">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_014472">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -21487,14 +21465,6 @@ SWITCH(cTypeOfCalculation) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014474">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_014475">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -21502,14 +21472,6 @@ SWITCH(cTypeOfCalculation) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_014476">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_014478">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -22767,6 +22729,14 @@ SWITCH(cTypeOfCalculation) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS106_000105">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="500" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="500" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="500" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="500" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="500" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="500" Y="0" Hor="0" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+      </VC>
       <VC ID="KRS116_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -23238,6 +23208,22 @@ SWITCH(cTypeOfCalculation) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000083">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000084">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS116_000085">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -23902,7 +23888,7 @@ SWITCH(cTypeOfCalculation) {
                 <ENU>Member</ENU>
               </Texts>
               <TDoubleInput Name="" ID="614" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="2" Dock="1" Anchor="5" Padding="0|5|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="L" VarNameVisible="True" UnitsVisible="True" InputColor="-1" InputWidth="50" DimWidth="20" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-              <TComboBox Name="" ID="220" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="cTypeOfMember" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="100" Values="1|2" Index="-1">
+              <TComboBox Name="" ID="220" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="cTypeOfMember" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="100" Values="1|2" Index="0">
                 <Texts TranslateID="DIALOG_000220">
                   <ENU>Beam|Column</ENU>
                 </Texts>

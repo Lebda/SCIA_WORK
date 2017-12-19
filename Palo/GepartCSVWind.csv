@@ -1,0 +1,13 @@
+ProfDefID;ProfilType;GeoDef;LineDef;Picture;Parameters;Fixed;Inputs;Para1;Para2;Para3;Para4;Para5;Para6;Para7;Para8;Para9;Para10;Para11;Para12;Para13;Para14;
+1;vWindX;1;3;vWindX.wmf;5;2;5;h;b;b1;v;n; ; ; ; ; ; ; ; ; ;
+2;vWindK;1;4;vWindK.wmf;5;2;5;h;b;b1;v;n; ; ; ; ; ; ; ; ; ;
+3;vWindNn;1;5;vWindNn.wmf;5;2;5;h;b;b1;v;n; ; ; ; ; ; ; ; ; ;
+4;vWindO;1;6;vWindO.wmf;5;2;5;h;b;b1;v;n; ; ; ; ; ; ; ; ; ;
+5;hWindX;2;3;hWindX.wmf;5;2;5;L;b;b1;w;n; ; ; ; ; ; ; ; ; ;
+6;hWindK;2;4;hWindK.wmf;5;2;5;L;b;b1;w;n; ; ; ; ; ; ; ; ; ;
+7;hWindNn;2;5;hWindNn.wmf;5;2;5;L;b;b1;w;n; ; ; ; ; ; ; ; ; ;
+8;hWindO;2;6;hWindO.wmf;5;2;5;L;b;b1;w;n; ; ; ; ; ; ; ; ; ;
+9;vWindKk;1;7;vWindKk.wmf;5;2;5;h;b;b1;v;n; ; ; ; ; ; ; ; ; ;
+10;vWindN;1;8;vWindN.wmf;5;2;5;h;b;b1;v;n; ; ; ; ; ; ; ; ; ;
+11;hWindKk;2;7;hWindKk.wmf;5;2;5;L;b;b1;w;n; ; ; ; ; ; ; ; ; ;
+12;hWindN;2;8;hWindN.wmf;5;2;5;L;b;b1;w;n; ; ; ; ; ; ; ; ; ;

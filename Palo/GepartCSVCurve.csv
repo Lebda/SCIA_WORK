@@ -1,0 +1,16 @@
+ProfDefID;ProfilType;GeoDef;LineDef;Picture;Parameters;Fixed;Inputs;Para1;Para2;Para3;Para4;Para5;Para6;Para7;Para8;Para9;Para10;Para11;Para12;Para13;Para14;
+1;xCircle;2;1;xCircle.wmf;4;2;4;r;x1;x2;n; ; ; ; ; ; ; ; ; ; ;
+2;yCircle;3;1;yCircle.wmf;4;2;4;r;y1;y2;n; ; ; ; ; ; ; ; ; ; ;
+3;fCircle;4;1;fCircle.wmf;4;2;4;r;f1;f2;n; ; ; ; ; ; ; ; ; ; ;
+4;xElipse;5;1;xElipse.wmf;5;2;5;a;b;x1;x2;n; ; ; ; ; ; ; ; ; ;
+5;yElipse;6;1;yElipse.wmf;5;2;5;a;b;y1;y2;n; ; ; ; ; ; ; ; ; ;
+6;fElipse;7;1;fElipse.wmf;5;2;5;a;b;f1;f2;n; ; ; ; ; ; ; ; ; ;
+7;xParab;8;1;xParab.wmf;5;2;5;l;h;x1;x2;n; ; ; ; ; ; ; ; ; ;
+8;yParab;9;1;yParab.wmf;5;2;5;l;h;y1;y2;n; ; ; ; ; ; ; ; ; ;
+9;xHyper;10;1;xHyper.wmf;5;2;5;a;b;x1;x2;n; ; ; ; ; ; ; ; ; ;
+10;yHyper;11;1;yHyper.wmf;5;2;5;a;b;y1;y2;n; ; ; ; ; ; ; ; ; ;
+11;fHyper;12;1;fHyper.wmf;5;2;5;a;b;f1;f2;n; ; ; ; ; ; ; ; ; ;
+12;xChain;13;1;xChain.wmf;6;2;6;l;s;h;x1;x2;n; ; ; ; ; ; ; ; ;
+13;sChain;14;1;sChain.wmf;6;2;6;l;s;h;s1;s2;n; ; ; ; ; ; ; ; ;
+14;fSinus;15;1;fSinus.wmf;6;2;6;l;ey;ez;f1;f2;n; ; ; ; ; ; ; ; ;
+15;fSpiral;16;1;fSpiral.wmf;5;2;5;r;h;f1;df;n; ; ; ; ; ; ; ; ; ;

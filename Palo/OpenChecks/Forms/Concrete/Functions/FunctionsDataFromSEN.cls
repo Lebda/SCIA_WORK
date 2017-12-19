@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="213c52a9-e919-4c79-8328-cf11d84dc56f">
   <CodeEditor>
-    <SourceCode Collapsed="2|11|18|36|55|82|107|118|129|169|180|197|237|298|312|321|329|337|366|428|441|454|472|489" BreakPoints="">
+    <SourceCode Collapsed="2|11|18|36|55|82|107|118|129|169|180|197|237|298|312|321|350|412|425|438|456" BreakPoints="">
 /// Returns true if ULS combination is accidental
 public bool IsAccidentalCombi(object ActLoad) { 
     SWITCH(ActLoad.Type) { 
@@ -315,25 +315,9 @@ bool CalcImpAccordingToCombi() {
 →INI400_013608BLOCK("CreateCombiID()") { 
     string CreateCombiIDfor2D(object Load, double PointID) { 
         SWITCH(Load.Type) { 
-            CASE 0 :  { return Load.CombiKey[PointID].CombiKey; } 
-            CASE 1 :  { return Load.LoadName &amp; "/" &amp; Load.ID+1; } 
+            CASE 0 :  { return Load.LoadName; } 
+            DEFAULT :  { return Load.LoadName &amp; "/" &amp; Load.ID+1; } 
         } 
-    } 
-} 
-
-→INI400_006960BLOCK("Function for rotated moments to define direction") { 
-    object RotateMoments(double My, double Mz, double Angle) { 
-        double Myrot →INI400_006961= My*COS(Angle)+Mz*SIN(Angle); 
-        double Mzrot →INI400_006962= -My*SIN(Angle)+Mz*COS(Angle); 
-        return new Structure("My", Myrot, "Mz", Mzrot); 
-    } 
-} 
-
-→INI400_006966BLOCK("Function for rotated forces to define direction") { 
-    object RotateForces(double Vy, double Vz, double Angle) { 
-        double Vyrot →INI400_006969= Vy*COS(-Angle)+Vz*SIN(-Angle); 
-        double Vzrot →INI400_006970= -Vy*SIN(-Angle)+Vz*COS(-Angle); 
-        return new Structure("Vy", Vyrot, "Vz", Vzrot); 
     } 
 } 
 
@@ -472,23 +456,6 @@ bool CalcImpAccordingToCombi() {
     } 
 } 
 
-→DLO316_000002BLOCK("Function for initial internal forces related to LCS") { //recalculation forces to LCS system
-    object obIniRotatedForces() { 
-        object IOhelper →DLO316_000001= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
-        object actCS →DLO316_000002= IOhelper.GetActCS(); 
-        IF(IO.MemberData.Concrete.MemberType == 4) { 
-            double PrincipalAngle →DLO316_000001= 0; 
-        } ELSE { 
-            double PrincipalAngle →INI400_007058= actCS.Chars.alpha*180/Math.PI; 
-        } 
-        object RotMomentsIni →INI400_007060= RotateMoments(IO.InternalForces.My, IO.InternalForces.Mz, PrincipalAngle); 
-        
-        double M↓y.inp← →INI400_007066= RotMomentsIni.My; 
-        double M↓z.inp← →INI400_007067= RotMomentsIni.Mz; 
-        
-        return new Structure("My", M↓y.inp←, "Mz", M↓z.inp←); 
-    } 
-} 
 →VAL127_000001BLOCK("Function loading diamater of additional reinforcement") { //recalculation forces to LCS system
     double LoadLongDiamater(object AdditionalReinfEdge) { 
         IF(GetLength(AdditionalReinfEdge) == -1) { 
@@ -569,30 +536,6 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO134_006857">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO316_000001">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="34.6" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="34.6" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="34.6" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="7" />
-      </VC>
-      <VC ID="DLO316_000002">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_005876">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="31.8" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -890,54 +833,6 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006960">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="5" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_006961">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_006962">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_006966">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="5" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_006969">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_006970">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
       <VC ID="INI400_006974">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="5" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1046,38 +941,6 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007058">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007060">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007066">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007067">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1734,9 +1597,6 @@ bool CalcImpAccordingToCombi() {
     <Command Width="500" />
   </Dialog>
   <Texts>
-    <Item ID="BLOCK_DLO316_000002">
-      <ENU>"Function for initial internal forces related to LCS"</ENU>
-    </Item>
     <Item ID="BLOCK_INI400_006895">
       <ENU>"Function for determination of combination is quasi permanent or not"</ENU>
     </Item>
@@ -1763,12 +1623,6 @@ bool CalcImpAccordingToCombi() {
     </Item>
     <Item ID="BLOCK_INI400_006950">
       <ENU>"Function for determination of combination is SLS or NOT"</ENU>
-    </Item>
-    <Item ID="BLOCK_INI400_006960">
-      <ENU>"Function for rotated moments to define direction"</ENU>
-    </Item>
-    <Item ID="BLOCK_INI400_006966">
-      <ENU>"Function for rotated forces to define direction"</ENU>
     </Item>
     <Item ID="BLOCK_INI400_006974">
       <ENU>"Function determination, if bending moments are caused by transversal load"</ENU>

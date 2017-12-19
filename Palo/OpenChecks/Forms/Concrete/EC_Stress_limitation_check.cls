@@ -105,6 +105,8 @@
     bool E0↓1← →INI400_004557= false; 
     bool E0↓2← →INI400_004558= false; 
     bool N5↓1← →INI400_004562= false; 
+    bool N5↓3← →KRS106_000037= false; 
+    
 } 
 
 IF(!IO.IsExternCLC) { //test if the CLC run from Master
@@ -513,16 +515,6 @@ IF((E0↓1←)) {
                     IF((E0↓1←)) { 
                         Ratio7_2_5Char →INI400_002801= ErrorValue; 
                     } ELSE { 
-                        //                        IF(IO.SetupNA.EC_NA.Code != "NEN") { 
-                        //                            double Ratio7_2_5Char →INI400_001668= σ↓s,char←/σ↓s,char,lim←; 
-                        //                        } ELSE { 
-                        //                            IF(COMPARE(σ↓s,char,lim←, 0, 6) == 0) { 
-                        //                                double Ratio7_2_5Char →INI400_006805= ErrorValue; 
-                        //                            } ELSE { 
-                        //                                double Ratio7_2_5Char →INI400_006806= σ↓s,char←/σ↓s,char,lim←; 
-                        //                            } 
-                        //                            
-                        //                        } 
                         IF(COMPARE(σ↓s,char,lim←, 0, 6) == 0) { 
                             double Ratio7_2_5Char →INI400_013707= ErrorValue; 
                         } ELSE { 
@@ -533,12 +525,20 @@ IF((E0↓1←)) {
                         Result↓7_2_5Char← →INI400_002398= 0; 
                         bool E5↓5← →INI400_003702= false; 
                     } ELSE { 
-                        Result↓7_2_5Char← →INI400_002399= 1; 
-                        IF(!E0↓1←) { 
-                            bool E5↓5← →INI400_003703= true; 
-                            double Number↓E← →INI400_003704= Number↓E←+1; 
-                            →INI400_003705StructEWN.Add(new Structure("Index", "E5/5", "Type", TR("Error"), "Description", TR("Limit reinforcement strength is exceeded under the characteristic combination of " &amp; StateText &amp; " loads (EN §7.2(5))."), "Solution", TR("Increase amount of reinforcement, dimensions of the cross-section and/or quality of the used materials."))); 
-                            
+                        IF(IO.SetupNA.EC_NA.Code == "NEN" &amp;&amp; COMPARE(k↓3←, 0, 3) == 0) { //for NEN with k↓3← = 0 is not used stress limitation in reinforcement
+                            Ratio7_2_5Char →KRS106_000030= 0; 
+                            Result↓7_2_5Char← →KRS106_000031= 2; 
+                            bool N5↓3← →KRS106_000034= true; 
+                            double Number↓N← →KRS106_000035= Number↓N←+1; 
+                            →KRS106_000036StructEWN.Add(new Structure("Index", "N5/3", "Type", TR("Note"), "Description", TR("Check of stress limitation in non-prestress reinforcement is not required for the NEN annex when k↓3← = 0."), "Solution", TR("Change coefficient k↓3←."))); 
+                        } ELSE { 
+                            Result↓7_2_5Char← →INI400_002399= 1; 
+                            IF(!E0↓1←) { 
+                                bool E5↓5← →INI400_003703= true; 
+                                double Number↓E← →INI400_003704= Number↓E←+1; 
+                                →INI400_003705StructEWN.Add(new Structure("Index", "E5/5", "Type", TR("Error"), "Description", TR("Limit reinforcement strength is exceeded under the characteristic combination of " &amp; StateText &amp; " loads (EN §7.2(5))."), "Solution", TR("Increase amount of reinforcement, dimensions of the cross-section and/or quality of the used materials."))); 
+                                
+                            } 
                         } 
                     } 
                 } 
@@ -637,12 +637,20 @@ IF((E0↓1←)) {
                         Result↓7_2_5Char← →INI400_002394= 0; 
                         bool E5↓5← →INI400_003710= false; 
                     } ELSE { 
-                        Result↓7_2_5Char← →INI400_002395= 1; 
-                        IF(!E0↓1←) { 
-                            bool E5↓5← →INI400_003711= true; 
-                            double Number↓E← →INI400_003712= Number↓E←+1; 
-                            →INI400_003713StructEWN.Add(new Structure("Index", "E5/5", "Type", TR("Error"), "Description", TR("Limit reinforcement strength is exceeded under the characteristic combination of " &amp; StateText &amp; " loads (EN §7.2(5))."), "Solution", TR("Increase amount of reinforcement, dimensions of the cross-section and/or quality of the used materials."))); 
-                            
+                        IF(IO.SetupNA.EC_NA.Code == "NEN" &amp;&amp; COMPARE(k↓3←, 0, 3) == 0) { //for NEN with k↓3← = 0 is not used stress limitation in reinforcement
+                            Ratio7_2_5Char →KRS106_000038= 0; 
+                            Result↓7_2_5Char← →KRS106_000039= 2; 
+                            bool N5↓3← →KRS106_000040= true; 
+                            double Number↓N← →KRS106_000041= Number↓N←+1; 
+                            →KRS106_000042StructEWN.Add(new Structure("Index", "N5/3", "Type", TR("Note"), "Description", TR("Check of stress limitation in non-prestress reinforcement is not required for the NEN annex when k↓3← = 0."), "Solution", TR("Change coefficient k↓3←."))); 
+                        } ELSE { 
+                            Result↓7_2_5Char← →INI400_002395= 1; 
+                            IF(!E0↓1←) { 
+                                bool E5↓5← →INI400_003711= true; 
+                                double Number↓E← →INI400_003712= Number↓E←+1; 
+                                →INI400_003713StructEWN.Add(new Structure("Index", "E5/5", "Type", TR("Error"), "Description", TR("Limit reinforcement strength is exceeded under the characteristic combination of " &amp; StateText &amp; " loads (EN §7.2(5))."), "Solution", TR("Increase amount of reinforcement, dimensions of the cross-section and/or quality of the used materials."))); 
+                                
+                            } 
                         } 
                     } 
                 } 
@@ -1349,7 +1357,6 @@ IF(!E0↓1← &amp;&amp; IO.IsDrawing &amp;&amp; CrossSection_2.Reinf.Bars != nu
             } 
             CASE 2 :  { 
                 TStressReinf[1][10].Value =  { →INI400_012967FontsAndColors.DrawGOFF(); } 
-                TStressReinf[1][9].BackColor →INI400_010934= FontsAndColors.ColorNotOFF(); 
             } 
         } 
     } 
@@ -2153,6 +2160,12 @@ IF(PrintEWN &amp;&amp; Count↓EWN← &gt; 0 &amp;&amp; IO.IsDrawing &amp;&amp; 
       </Variable>
       <Variable Modifier="Public" Name="N5↓2←" ESA_ID="" Type="Boolean">
         <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="N5↓3←" ESA_ID="" Type="Boolean">
+        <Description TranslateID="VARIABLE_N5↓3←">
           <ENU>
           </ENU>
         </Description>
@@ -8624,14 +8637,6 @@ IF(PrintEWN &amp;&amp; Count↓EWN← &gt; 0 &amp;&amp; IO.IsDrawing &amp;&amp; 
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010934">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_010935">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -10280,6 +10285,94 @@ IF(PrintEWN &amp;&amp; Count↓EWN← &gt; 0 &amp;&amp; IO.IsDrawing &amp;&amp; 
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
+      <VC ID="KRS106_000030">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000031">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000034">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="110" Y="67.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="858" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="2014" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS106_000035">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="83.4" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="2030" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS106_000036">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="300" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="2038" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS106_000037">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="110" Y="67.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="858" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="2014" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS106_000038">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000039">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000040">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="110" Y="67.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="858" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="2014" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS106_000041">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="83.4" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="2030" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS106_000042">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="300" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="2038" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+      </VC>
       <VC ID="KRS116_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -11397,6 +11490,9 @@ IF(PrintEWN &amp;&amp; Count↓EWN← &gt; 0 &amp;&amp; IO.IsDrawing &amp;&amp; 
     <Item TranslateID="STRING_56BB26D7">
       <ENU>"Type of&lt;BR&gt;module"</ENU>
     </Item>
+    <Item TranslateID="STRING_59244D86">
+      <ENU>"Change coefficient k↓3←."</ENU>
+    </Item>
     <Item TranslateID="STRING_72B16A89">
       <ENU>"Stress-strain distribution without concrete tensile strength"</ENU>
     </Item>
@@ -11462,6 +11558,9 @@ IF(PrintEWN &amp;&amp; Count↓EWN← &gt; 0 &amp;&amp; IO.IsDrawing &amp;&amp; 
     </Item>
     <Item TranslateID="STRING_DD6334B7">
       <ENU>"First and second order eccentricity will not be taken into account, because the member is not considered as a compression member (normal force is relatively small or zero)."</ENU>
+    </Item>
+    <Item TranslateID="STRING_EB5731A2">
+      <ENU>"Check of stress limitation in non-prestress reinforcement is not required for the NEN annex when k↓3← = 0."</ENU>
     </Item>
     <Item TranslateID="STRING_F5A71212">
       <ENU>"The selected combination is not serviceability - quasi-permanent"</ENU>

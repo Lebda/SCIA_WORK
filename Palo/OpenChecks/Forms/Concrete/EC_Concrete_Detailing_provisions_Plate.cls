@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="bfb6f4a8-1844-415f-bb88-4fa90c3f0614">
   <CodeEditor>
-    <SourceCode Collapsed="6|19|55|67|77|82|116|165|187|194|201|208|215|223|231|240|288|305|321|336|347|361|389|411|424" BreakPoints="">//@EC_Concrete_Detailing_provisions_Plate
+    <SourceCode Collapsed="6|19|55|67|77|82|114|163|185|192|199|206|213|221|229|242|290|307|323|338|349|363|391|413|426" BreakPoints="">//@EC_Concrete_Detailing_provisions_Plate
 
 
 //------------------------------------------------------------
@@ -88,14 +88,12 @@ private void LoadDialogInputs() {
     DesignDefaults →INI400_016023= FUNCT_2D_DEFAULTS.GetDesignDefaults(16); 
     ConMat →INI400_016171= IO.CONCRETE.EC; 
     DesignReinf →INI400_016178= _dialog_DesignReinf; 
-    →KRS106_000001DesignReinf[0].Add("As_prov", 0); 
-    →KRS106_000002DesignReinf[1].Add("As_prov", 0); 
-    →KRS106_000003DesignReinf[2].Add("As_prov", 0); 
-    →KRS106_000004DesignReinf[3].Add("As_prov", 0); 
-    →KRS116_000137DesignReinf[0].Add("ID", 0); 
-    →KRS116_000138DesignReinf[1].Add("ID", 1); 
-    →KRS116_000139DesignReinf[2].Add("ID", 2); 
-    →KRS116_000140DesignReinf[3].Add("ID", 3); 
+    FOR(i, 0, DesignReinf.Count-1) { 
+        →KRS106_000001DesignReinf[i].Add("As_prov", 0); 
+        →KRS116_000137DesignReinf[i].Add("ID", i); 
+        →KRS106_000005DesignReinf[i].Add("dsa", →KRS106_000006DesignReinf[i].ds); 
+        →KRS106_000007DesignReinf[i].Add("dsb", →KRS106_000008DesignReinf[i].ds); 
+    } 
     DesignDefaults.Detailing.bPlateCheckTranversePercentage →INI400_016286= _bPlateCheckTransversePercentage; 
     DesignDefaults.Detailing.bPlateCheckMinPercentage →INI400_016304= _bPlateCheckMinPercentage; 
     DesignDefaults.Detailing.bPlateCheckMaxPercentage →INI400_016305= _bPlateCheckMaxPercentage; 
@@ -233,8 +231,12 @@ private bool IsMaximumReinfToBeChecked() {
 
 //Return diameter of reinforcement for detailing
 private double DiamForDetailig(object ReinfLayer) { 
-    IF(DesignDefaults.ReinfLong.UseBasicReinf &amp;&amp; COMPARE(ReinfLayer.As_add, 0, 6) == 0 &amp;&amp; ReinfLayer.As_det_min &lt; ReinfLayer.As_bas) { 
-        return ReinfLayer.dsb; //basic diameter for detailing
+    IF(DesignDefaults.ReinfLong.UseBasicReinf) { 
+        IF(COMPARE(ReinfLayer.As_add, 0, 6) == 0 &amp;&amp; ReinfLayer.As_det_min &lt; ReinfLayer.As_bas) { 
+            return ReinfLayer.dsb; //basic diameter for detailing
+        } ELSE { 
+            return ReinfLayer.dsa; //basic diameter for detailing
+        } 
     } ELSE { 
         return ReinfLayer.ds; //required or additional diameter for detailing
     } 
@@ -1755,7 +1757,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000002">
+      <VC ID="KRS106_000005">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1763,15 +1765,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000003">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS106_000004">
+      <VC ID="KRS106_000007">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2019,39 +2013,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000138">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS116_000139">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS116_000140">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="KRS116_000141">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS116_000142">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2103,7 +2065,7 @@ IF(!IO.IsExternCLC) {
     <Images />
   </Calculation>
   <Dialog>
-    <Main Width="630">
+    <Main Width="815">
       <TTabControl Name="" ID="135" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="32" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" Index="0" TabBG="-657931" SelTab="-1842205" Alignment="0">
         <Texts>
           <ENU>LONGITUDINAL|DETAILING</ENU>

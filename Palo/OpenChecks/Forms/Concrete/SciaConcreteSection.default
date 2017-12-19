@@ -135,10 +135,10 @@
       <Variable Identifier="DesMethodBeam" Value="0" />
       <Variable Identifier="DesMethodCol" Value="0" />
       <Variable Identifier="bCalcImpSLS" Value="True" />
-      <Variable Identifier="bCalMinEcc" Value="False" />
+      <Variable Identifier="bCalMinEcc" Value="True" />
       <Variable Identifier="bCalcImpULS" Value="True" />
       <Variable Identifier="bCalSecOrder" Value="True" />
-      <Variable Identifier="μ↓s←" Value="0" />
+      <Variable Identifier="μ↓s←" Value="0.02" />
       <Variable Identifier="bEquivMoment" Value="True" />
       <Variable Identifier="TypeDir" Value="0" />
       <Variable Identifier="bIsoCol" Value="True" />
@@ -155,7 +155,7 @@
       <Variable Identifier="RH" Value="500e-3" />
       <Variable Identifier="t↓s←" Value="259200" />
       <Variable Identifier="t↓0←" Value="2.4192e6" />
-      <Variable Identifier="t" Value="3.1536e9" />
+      <Variable Identifier="t" Value="1.5768e9" />
       <Variable Identifier="CementClass" Value="2" />
       <Variable Identifier="Limit↓check←" Value="1" />
       <Variable Identifier="ErrorValue" Value="3" />

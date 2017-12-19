@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="f9a7d592-4df5-4162-b2c3-5bdd36443688">
   <CodeEditor>
-    <SourceCode Collapsed="45|69|89|105|115|124|167|186|215|220|234|242|258" BreakPoints="">bool ValidateInput(object Input) { 
+    <SourceCode Collapsed="48|72|92|108|114|146|156|199|218|247|252|266|274|290" BreakPoints="">bool ValidateInput(object Input) { 
     σ↓sd← →INI400_005255= Input.Get("σ_sd"); //Stress in reinforcement
     f↓yd← →INI400_000107= Input.Get("f_yd"); //Design yield strength of reinforcement
 
@@ -148,9 +148,10 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     //    CASE "NEN": { } 
     //    CASE "SFS": { } 
     CASE "NF" :  { 
+        //Same for standalone and SEN run - EHO17-290AS2FRX
         IF(Compression) { //Compression or pure bending (!Tensile)
-            θ↓min← →INI400_005281= IO.SetupNA.EC_1992_1_1.θ.θ_min*180/π; 
-            θ↓max← →INI400_005282= IO.SetupNA.EC_1992_1_1.θ.θ_max*180/π; 
+            θ↓min← →INI400_005281= 21.8; 
+            θ↓max← →INI400_005282= 45; 
         } ELSE { 
             θ↓min← →INI400_005284= ARCTG(1/2.5*SQRT(1+σ↓ct←/f↓ctm←)); 
             θ↓max← →INI400_005283= ARCTG(1/SQRT(1+σ↓ct←/f↓ctm←)); 

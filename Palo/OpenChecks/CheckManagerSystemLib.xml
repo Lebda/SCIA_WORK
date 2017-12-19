@@ -11,6 +11,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>                     // Flag to filter for composite beam type rib plate with '0' false and '1' true
     <combiforclass>0</combiforclass>                   // Generate dangerous combinations separately for each item in the class
     <llrfactor>0</llrfactor>                           // Flag to use LLR factor in DF check in combinations
+    <coordsys>principal</coordsys>                     // The Coordinate System of internal forces export, possible values are 'principal', 'member'
     <category>examples</category>                      // The sub-category in the Design Forms Check service.
                                                        // Allowable values are 'concrete', 'steel', 'composite', 'other', 'poirot', 'examples', 'internal'
   </openCheck>
@@ -25,7 +26,8 @@ Each system check is defined using a block as follows:
     <allcombiForDetailed>0</allcombiForDetailed>
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
-    <llrfactor>0</llrfactor>
+    <llrfactor>0</llrfactor> 
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -38,6 +40,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -50,6 +53,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -62,6 +66,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -74,6 +79,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -86,11 +92,12 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
   <openCheck>
     <clc>Concrete\EC_Check_response_N_My_Mz_SEN_Check.CLC</clc>
-    <protection>282</protection>
+    <protection>523</protection>
     <autodesign>0</autodesign>
     <singlecheck>1</singlecheck>
     <multidesign>0</multidesign>
@@ -98,11 +105,12 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>member</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
     <clc>Concrete\EC_Concrete_IntForces_SEN_Check.CLC</clc>
-    <protection>282</protection>
+    <protection>523</protection>
     <autodesign>0</autodesign>
     <singlecheck>1</singlecheck>
     <multidesign>0</multidesign>
@@ -110,11 +118,12 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>member</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
     <clc>Concrete\EC_Stress_limitation_SEN_Check.CLC</clc>
-    <protection>282</protection>
+    <protection>523</protection>
     <autodesign>0</autodesign>
     <singlecheck>1</singlecheck>
     <multidesign>0</multidesign>
@@ -122,11 +131,12 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>member</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
     <clc>Concrete\EC_Concrete_Slenderness_SEN_Design.CLC</clc>
-    <protection>256</protection>
+    <protection>523</protection>
     <autodesign>0</autodesign>
     <singlecheck>0</singlecheck>
     <multidesign>0</multidesign>
@@ -134,11 +144,12 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>member</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
     <clc>Concrete\EC_Concrete_Crack_Check_SEN.CLC</clc>
-    <protection>282</protection>
+    <protection>523</protection>
     <autodesign>0</autodesign>
     <singlecheck>1</singlecheck>
     <multidesign>0</multidesign>
@@ -146,11 +157,12 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>member</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
     <clc>Concrete\EC_Check_Capacity_InteractionDiagram3D_SEN_Check.CLC</clc>
-    <protection>282</protection>
+    <protection>523</protection>
     <autodesign>0</autodesign>
     <singlecheck>1</singlecheck>
     <multidesign>0</multidesign>
@@ -158,11 +170,12 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>member</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
     <clc>Concrete\EC_Concrete_Shear_Check_SEN.CLC</clc>
-    <protection>282</protection>
+    <protection>523</protection>
     <autodesign>0</autodesign>
     <singlecheck>0</singlecheck>
     <multidesign>0</multidesign>
@@ -170,11 +183,12 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>member</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
     <clc>Concrete\EC_Stiffness_SEN_Check.CLC</clc>
-    <protection>282</protection>
+    <protection>523</protection>
     <autodesign>0</autodesign>
     <singlecheck>1</singlecheck>
     <multidesign>0</multidesign>
@@ -182,11 +196,12 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>member</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
     <clc>Concrete\EC_Creep_coeff_SEN_Check.CLC</clc>
-    <protection>282</protection>
+    <protection>523</protection>
     <autodesign>0</autodesign>
     <singlecheck>0</singlecheck>
     <multidesign>0</multidesign>
@@ -194,11 +209,12 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>member</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
     <clc>Concrete\EC_Concrete_Design_multi_SEN.CLC</clc>
-    <protection>256</protection>
+    <protection>523</protection>
     <autodesign>0</autodesign>
     <singlecheck>0</singlecheck>
     <multidesign>1</multidesign>
@@ -206,11 +222,12 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>member</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
     <clc>Concrete\EC_Concrete_Slenderness_SEN_Check.CLC</clc>
-    <protection>282</protection>
+    <protection>523</protection>
     <autodesign>0</autodesign>
     <singlecheck>1</singlecheck>
     <multidesign>0</multidesign>
@@ -218,11 +235,12 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>member</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
     <clc>Concrete\EC_Concrete_IntForces_SEN_Design.CLC</clc>
-    <protection>256</protection>
+    <protection>523</protection>
     <autodesign>0</autodesign>
     <singlecheck>0</singlecheck>
     <multidesign>0</multidesign>
@@ -230,11 +248,12 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>member</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
     <clc>Concrete\EC_Check_deflection_SEN_Check.CLC</clc>
-    <protection>282</protection>
+    <protection>523</protection>
     <autodesign>0</autodesign>
     <singlecheck>1</singlecheck>
     <multidesign>0</multidesign>
@@ -242,6 +261,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>member</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -254,6 +274,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>1</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -266,6 +287,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>1</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -278,6 +300,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -290,11 +313,12 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
   <openCheck>
     <clc>Concrete\EC_Concrete_Detailing_provisions_SEN_Check.CLC</clc>
-    <protection>282</protection>
+    <protection>523</protection>
     <autodesign>0</autodesign>
     <singlecheck>1</singlecheck>
     <multidesign>0</multidesign>
@@ -302,11 +326,12 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>member</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
     <clc>Concrete\EC_Concrete_Interaction_V_T_SEN.CLC</clc>
-    <protection>282</protection>
+    <protection>523</protection>
     <autodesign>0</autodesign>
     <singlecheck>1</singlecheck>
     <multidesign>0</multidesign>
@@ -314,6 +339,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>member</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -326,11 +352,12 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>member</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
     <clc>Concrete\EC_Concrete_Long_Design_SEN_ULS_new.CLC</clc>
-    <protection>256</protection>
+    <protection>523</protection>
     <autodesign>0</autodesign>
     <singlecheck>0</singlecheck>
     <multidesign>1</multidesign>
@@ -338,11 +365,12 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>member</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
     <clc>Concrete\EC_Concrete_Design2D_SEN.CLC</clc>
-    <protection>256</protection>
+    <protection>525</protection>
     <autodesign>0</autodesign>
     <singlecheck>0</singlecheck>
     <multidesign>1</multidesign>
@@ -350,11 +378,12 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
     <clc>Concrete\EC_Concrete_Forces2D_SEN.CLC</clc>
-    <protection>256</protection>
+    <protection>525</protection>
     <autodesign>0</autodesign>
     <singlecheck>0</singlecheck>
     <multidesign>0</multidesign>
@@ -362,11 +391,12 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>internal</category>
   </openCheck>
     <openCheck>
     <clc>Concrete\EC_Concrete_Check_Crack_2D_SEN.CLC</clc>
-    <protection>256</protection>
+    <protection>525</protection>
     <autodesign>0</autodesign>
     <singlecheck>0</singlecheck>
     <multidesign>0</multidesign>
@@ -374,6 +404,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -386,6 +417,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -398,6 +430,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -410,6 +443,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>examples</category>
   </openCheck>
   <openCheck>
@@ -422,6 +456,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>examples</category>
   </openCheck>
   <openCheck>
@@ -434,6 +469,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>examples</category>
   </openCheck>
   <openCheck>
@@ -446,6 +482,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -458,6 +495,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -470,6 +508,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -482,6 +521,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -494,6 +534,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>examples</category>
   </openCheck>
   <openCheck>
@@ -506,6 +547,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -518,6 +560,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -530,6 +573,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -542,6 +586,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -554,6 +599,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -566,6 +612,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -578,6 +625,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -590,6 +638,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -602,6 +651,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -614,6 +664,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -626,6 +677,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -638,6 +690,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>1</ribplatebeam>
     <combiforclass>1</combiforclass>
     <llrfactor>1</llrfactor>
+    <coordsys>principal</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -650,6 +703,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -662,6 +716,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -674,6 +729,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -686,6 +742,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -698,6 +755,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -710,6 +768,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -722,6 +781,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>1</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -734,6 +794,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>1</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>internal</category>
   </openCheck>
   <openCheck>
@@ -746,6 +807,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -758,6 +820,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -770,6 +833,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -782,6 +846,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -794,6 +859,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -806,6 +872,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -818,6 +885,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
   <openCheck>
@@ -830,6 +898,7 @@ Each system check is defined using a block as follows:
     <ribplatebeam>0</ribplatebeam>
     <combiforclass>0</combiforclass>
     <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
     <category>poirot</category>
   </openCheck>
 </checkManager>

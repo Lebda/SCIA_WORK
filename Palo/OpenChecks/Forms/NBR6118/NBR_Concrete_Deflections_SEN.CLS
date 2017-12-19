@@ -556,42 +556,42 @@ ELSE {
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
-      <Variable Modifier="Public" Name="A" ESA_ID="" Type="Double" Value="265e-3" Precision="2">
+      <Variable Modifier="Public" Name="A" ESA_ID="" Type="Double" Value="75e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="100e-6" Dim="cm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓c.eff←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="A↓c.eff←" ESA_ID="" Type="Double" Value="18.75e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="100e-6" Dim="cm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓s←" ESA_ID="" Type="Double" Value="314.1593e-6" Precision="2">
+      <Variable Modifier="Public" Name="A↓s←" ESA_ID="" Type="Double" Value="402.1239e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="100e-6" Dim="cm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓s-←" ESA_ID="" Type="Double" Value="1.00531e-3" Precision="2">
+      <Variable Modifier="Public" Name="A↓s-←" ESA_ID="" Type="Double" Value="62.34491e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="100e-6" Dim="cm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="b↓f←" ESA_ID="" Type="Double" Value="450e-3" Precision="2">
+      <Variable Modifier="Public" Name="b↓f←" ESA_ID="" Type="Double" Value="150e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="b↓w←" ESA_ID="" Type="Double" Value="200e-3" Precision="2">
+      <Variable Modifier="Public" Name="b↓w←" ESA_ID="" Type="Double" Value="150e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -610,7 +610,7 @@ ELSE {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="c" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="c" ESA_ID="" Type="Double" Value="32e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -624,7 +624,7 @@ ELSE {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Combikey" ESA_ID="" Type="String" Value="">
+      <Variable Modifier="Public" Name="Combikey" ESA_ID="" Type="String" Value="Pk-V2-297">
         <Description>
           <ENU>
           </ENU>
@@ -668,14 +668,14 @@ ELSE {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Value="460e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="d↓l←" ESA_ID="" Type="Double" Value="600e-3" Precision="2">
+      <Variable Modifier="Public" Name="d↓l←" ESA_ID="" Type="Double" Value="40e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -700,21 +700,21 @@ ELSE {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="dx" ESA_ID="" Type="Double" Value="750e-3" Precision="2">
+      <Variable Modifier="Public" Name="dx" ESA_ID="" Type="Double" Value="2.5" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="E↓c←" ESA_ID="" Type="Double" Value="24.15e9" Precision="2">
+      <Variable Modifier="Public" Name="E↓c←" ESA_ID="" Type="Double" Value="21.2874e9" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="E↓cs←" ESA_ID="" Type="Double" Value="24.15e9" Precision="2">
+      <Variable Modifier="Public" Name="E↓cs←" ESA_ID="" Type="Double" Value="21.2874e9" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -728,40 +728,40 @@ ELSE {
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="EWNMessage" ESA_ID="" Type="String" Value="List of errors/warnings/notes: E1/1, E1/2">
+      <Variable Modifier="Public" Name="EWNMessage" ESA_ID="" Type="String" Value="">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="f↓cd←" ESA_ID="" Type="Double" Value="17.85714e6" Precision="2">
+      <Variable Modifier="Public" Name="f↓cd←" ESA_ID="" Type="Double" Value="14.28571e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="f↓ck←" ESA_ID="" Type="Double" Value="25e6" Precision="2">
+      <Variable Modifier="Public" Name="f↓ck←" ESA_ID="" Type="Double" Value="20e6" Precision="2">
         <Description TranslateID="VARIABLE_f↓ck←">
           <ENU>Characteristic value of compressive strength</ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="f↓ct,m←" ESA_ID="" Type="Double" Value="2.56496e6" Precision="2">
+      <Variable Modifier="Public" Name="f↓ct,m←" ESA_ID="" Type="Double" Value="2.21042e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="f↓ct.eff←" ESA_ID="" Type="Double" Value="2.56496e6" Precision="2">
+      <Variable Modifier="Public" Name="f↓ct.eff←" ESA_ID="" Type="Double" Value="2.21042e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="f↓ctm←" ESA_ID="" Type="Double" Value="2.56496e6" Precision="2">
+      <Variable Modifier="Public" Name="f↓ctm←" ESA_ID="" Type="Double" Value="2.21042e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -806,35 +806,35 @@ ELSE {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="H" ESA_ID="" Type="Double" Value="600e-3" Precision="2">
+      <Variable Modifier="Public" Name="H" ESA_ID="" Type="Double" Value="500e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="h↓c.ef←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="h↓c.ef←" ESA_ID="" Type="Double" Value="100e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="h↓f←" ESA_ID="" Type="Double" Value="160e-3" Precision="2">
+      <Variable Modifier="Public" Name="h↓f←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Value="24" Precision="2">
+      <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Value="12" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="I↓eq,y←" ESA_ID="" Type="Double" Value="7.47657e-3" Precision="2">
+      <Variable Modifier="Public" Name="I↓eq,y←" ESA_ID="" Type="Double" Value="607.108e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -848,14 +848,14 @@ ELSE {
         </Description>
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m↑4←" />
       </Variable>
-      <Variable Modifier="Public" Name="I↓II←" ESA_ID="" Type="Double" Value="1.522135e-3" Precision="2">
+      <Variable Modifier="Public" Name="I↓II←" ESA_ID="" Type="Double" Value="546.8248e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-9" Dim="cm↑4←" />
       </Variable>
-      <Variable Modifier="Public" Name="I↓y←" ESA_ID="" Type="Double" Value="7.47657e-3" Precision="2">
+      <Variable Modifier="Public" Name="I↓y←" ESA_ID="" Type="Double" Value="1.5625e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -876,21 +876,21 @@ ELSE {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="k↓2←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="k↓2←" ESA_ID="" Type="Double" Value="500e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="k↓t←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="k↓t←" ESA_ID="" Type="Double" Value="600e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="L" ESA_ID="" Type="Double" Value="6" Precision="2">
+      <Variable Modifier="Public" Name="L" ESA_ID="" Type="Double" Value="5" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -910,49 +910,49 @@ ELSE {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓cry←" ESA_ID="" Type="Double" Value="18106.2" Precision="2">
+      <Variable Modifier="Public" Name="M↓cry←" ESA_ID="" Type="Double" Value="20722.69" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓crz←" ESA_ID="" Type="Double" Value="-31506.9" Precision="2">
+      <Variable Modifier="Public" Name="M↓crz←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓y.char←" ESA_ID="" Type="Double" Value="-18106.2" Precision="2">
+      <Variable Modifier="Public" Name="M↓y.char←" ESA_ID="" Type="Double" Value="53125" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓y.qp←" ESA_ID="" Type="Double" Value="-18106.2" Precision="2">
+      <Variable Modifier="Public" Name="M↓y.qp←" ESA_ID="" Type="Double" Value="53125" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓z.char←" ESA_ID="" Type="Double" Value="-14009.1" Precision="2">
+      <Variable Modifier="Public" Name="M↓z.char←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓z.qp←" ESA_ID="" Type="Double" Value="-14009.1" Precision="2">
+      <Variable Modifier="Public" Name="M↓z.qp←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="n" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="n" ESA_ID="" Type="Double" Value="9.864991" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -966,28 +966,28 @@ ELSE {
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓char←" ESA_ID="" Type="Double" Value="4122.9" Precision="2">
+      <Variable Modifier="Public" Name="N↓char←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓cr←" ESA_ID="" Type="Double" Value="9272.529" Precision="2">
+      <Variable Modifier="Public" Name="N↓cr←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓qp←" ESA_ID="" Type="Double" Value="4122.9" Precision="2">
+      <Variable Modifier="Public" Name="N↓qp←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="NameConcrete" ESA_ID="" Type="String" Value="C25">
+      <Variable Modifier="Public" Name="NameConcrete" ESA_ID="" Type="String" Value="C20">
         <Description>
           <ENU>
           </ENU>
@@ -1098,14 +1098,14 @@ ELSE {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="s↓max←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="s↓max←" ESA_ID="" Type="Double" Value="69.37e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="s↓r.max←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="s↓r.max←" ESA_ID="" Type="Double" Value="235.6266e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1118,7 +1118,7 @@ ELSE {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="SecID" ESA_ID="" Type="Double" Value="3" Precision="2">
+      <Variable Modifier="Public" Name="SecID" ESA_ID="" Type="Double" Value="5" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1276,14 +1276,14 @@ ELSE {
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="35" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="u↓z,rel,0←" ESA_ID="" Type="Double" Value="-243.136e-6" Precision="2">
+      <Variable Modifier="Public" Name="u↓z,rel,0←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="u↓z,rel←" ESA_ID="" Type="Double" Value="-243.136e-6" Precision="2">
+      <Variable Modifier="Public" Name="u↓z,rel←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1332,7 +1332,7 @@ ELSE {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="w" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="w" ESA_ID="" Type="Double" Value="271.1784e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1346,28 +1346,28 @@ ELSE {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="x" ESA_ID="" Type="Double" Value="121.2783e-3" Precision="2">
+      <Variable Modifier="Public" Name="x" ESA_ID="" Type="Double" Value="129.3185e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="x↓r←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="x↓r←" ESA_ID="" Type="Double" Value="129.3185e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="y↓t←" ESA_ID="" Type="Double" Value="300e-3" Precision="2">
+      <Variable Modifier="Public" Name="y↓t←" ESA_ID="" Type="Double" Value="250e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="α" ESA_ID="" Type="Double" Value="1.2" Precision="2">
+      <Variable Modifier="Public" Name="α" ESA_ID="" Type="Double" Value="1.5" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1381,21 +1381,21 @@ ELSE {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓E←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="α↓E←" ESA_ID="" Type="Double" Value="9.864991" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓f←" ESA_ID="" Type="Double" Value="1.112075" Precision="2">
+      <Variable Modifier="Public" Name="α↓f←" ESA_ID="" Type="Double" Value="1.27022" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓fac←" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="α↓fac←" ESA_ID="" Type="Double" Value="2.573677" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1423,7 +1423,7 @@ ELSE {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ε↓1←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="ε↓1←" ESA_ID="" Type="Double" Value="1.690029e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1451,7 +1451,7 @@ ELSE {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ε↓sm_cm←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="ε↓sm_cm←" ESA_ID="" Type="Double" Value="1.150882e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1486,35 +1486,35 @@ ELSE {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ρ↓-←" ESA_ID="" Type="Double" Value="3.793623e-3" Precision="2">
+      <Variable Modifier="Public" Name="ρ↓-←" ESA_ID="" Type="Double" Value="831.2654e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="%" />
       </Variable>
-      <Variable Modifier="Public" Name="ρ↓se←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="ρ↓se←" ESA_ID="" Type="Double" Value="21.44661e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="%" />
       </Variable>
-      <Variable Modifier="Public" Name="σ↓cr←" ESA_ID="" Type="Double" Value="2.56496e6" Precision="2">
+      <Variable Modifier="Public" Name="σ↓cr←" ESA_ID="" Type="Double" Value="2.21042e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="σ↓ct←" ESA_ID="" Type="Double" Value="1.426813e6" Precision="2">
+      <Variable Modifier="Public" Name="σ↓ct←" ESA_ID="" Type="Double" Value="7.281723e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="σ↓s←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="σ↓s←" ESA_ID="" Type="Double" Value="316.6084e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1528,7 +1528,7 @@ ELSE {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ϕ↓eq←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="ϕ↓eq←" ESA_ID="" Type="Double" Value="16e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4390,7 +4390,7 @@ ELSE {
           <ENU>
           </ENU>
         </Texts>
-        <TEMDLoader Name="TEMDLoader" ID="106" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="" SectionID="-1" CombiID="-1" />
+        <TEMDLoader Name="TEMDLoader" ID="106" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.8" SectionID="-1" CombiID="-1" />
       </TPanel>
     </Main>
     <MemberData Width="500" />

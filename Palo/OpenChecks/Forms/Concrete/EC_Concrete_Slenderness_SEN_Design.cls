@@ -3,7 +3,6 @@
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">object SlendernessSEN →INI400_007028= LoadExternCLC("EC_Concrete_Slenderness_SEN.CLC"); 
 SlendernessSEN.Design →INI400_007029= True; 
-SlendernessSEN.PrintMemberInfo →INI400_007106= PrintMemberInfo; 
 IF(IO.IsDrawing) { 
     →INI400_007031SlendernessSEN.Draw(False); 
 } ELSE { 
@@ -173,12 +172,6 @@ string sListEWN →INI400_007080= SlendernessSEN.sListEWN;
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" ESAUnit="81" Reference="" Extrem="3" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="PrintMemberInfo" ESA_ID="" Type="Boolean">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
       </Variable>
       <Variable Modifier="Public" Name="SCheckY" ESA_ID="" Type="String">
         <Description>
@@ -547,14 +540,6 @@ string sListEWN →INI400_007080= SlendernessSEN.sListEWN;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_007080">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007106">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />

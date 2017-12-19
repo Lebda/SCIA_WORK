@@ -1106,8 +1106,10 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
             } 
             
             E↓s← →INI400_017612= 210000000000; 
-            f↓yk← →RFM106_000017= IO.Point.Reinforcement.Layer[0].Material.NBR.fyk; 
-            NameReqReinf →RFM106_000018= IO.Point.Reinforcement.Layer[0].Material.Name; 
+            // f↓yk← →RFM106_000017= IO.Point.Reinforcement.Layer[0].Material.NBR.fyk; // Changed in the version DEVE06_Main.225.32 - The property was removed.
+            f↓yk← →RFM106_000022= IO.MemberData.ConcreteNBR.Solver.ULS.ClassOfReinf.Material.NBR.fyk; 
+            // NameReqReinf →RFM106_000018= IO.Point.Reinforcement.Layer[0].Material.Name; // Changed in the version DEVE06_Main.225.32 - The property was removed.
+            NameReqReinf →RFM106_000023= IO.MemberData.ConcreteNBR.Solver.ULS.ClassOfReinf.Material.Name; 
             
             double nbars↓1,-← →INI400_017613= ROUND(bw/sl↓1,-←); 
             double nbars↓1,+← →INI400_017614= ROUND(bw/sl↓1,+←); 
@@ -1205,7 +1207,8 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
     IF(typeOfLoad == 0) { 
         Combi↓key,out← →INI400_018302= "-"; 
         →INI400_018303TEXT("Load case:"); 
-        →INI400_018304TEXT("(" &amp; Combi↓key← &amp; ")"); 
+        LoadCase →RFM106_000024= IO.Load.LoadName; 
+        →INI400_018304TEXT("( " &amp; LoadCase &amp; " )"); 
     } ELSE { 
         IF(typeOfLimitState == 1) { 
             →INI400_018305TEXT("ULS combination:"); 
@@ -2013,8 +2016,10 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
         } 
     } 
     object MyReinfMat →INI400_017691= TableNBRReinf.Select(Sel); 
-    object ReinfMat →INI400_017692= IO.Point.Reinforcement.Layer[0].Material.NBR; 
-    string NameReinf →INI400_017693= IO.Point.Reinforcement.Layer[0].Material.Name; 
+    // object ReinfMat →INI400_017692= IO.Point.Reinforcement.Layer[0].Material.NBR; 
+    // string NameReinf →INI400_017693= IO.Point.Reinforcement.Layer[0].Material.Name; 
+    object ReinfMat →RFM106_000025= IO.MemberData.ConcreteNBR.Solver.ULS.ClassOfReinf.Material.NBR; 
+    string NameReinf →RFM106_000026= IO.MemberData.ConcreteNBR.Solver.ULS.ClassOfReinf.Material.NBR; 
     
     ///definitions diagrams
     Object[] ConMat →INI400_006320= IO.Point.Material.NBR; 
@@ -2270,8 +2275,10 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
         } 
     } 
     object MyReinfMat →INI400_017701= TableNBRReinf.Select(Sel); 
-    object ReinfMat →INI400_017702= IO.Point.Reinforcement.Layer[0].Material.NBR; 
-    string NameReinf →INI400_017703= IO.Point.Reinforcement.Layer[0].Material.Name; 
+    // object ReinfMat →INI400_017702= IO.Point.Reinforcement.Layer[0].Material.NBR; 
+    // string NameReinf →INI400_017703= IO.Point.Reinforcement.Layer[0].Material.Name;
+    object ReinfMat →RFM106_000027= IO.MemberData.ConcreteNBR.Solver.ULS.ClassOfReinf.Material.NBR; 
+    string NameReinf →RFM106_000028= IO.MemberData.ConcreteNBR.Solver.ULS.ClassOfReinf.Material.Name; 
     
     ///definitions diagrams
     Object[] ConMat →INI400_016628= IO.Point.Material.NBR; 
@@ -2526,28 +2533,28 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="al↓1,+←" ESA_ID="" Type="Double" Value="15e-3" Precision="2">
+      <Variable Modifier="Public" Name="al↓1,+←" ESA_ID="" Type="Double" Value="70e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="al↓1,-←" ESA_ID="" Type="Double" Value="-67e-3" Precision="2">
+      <Variable Modifier="Public" Name="al↓1,-←" ESA_ID="" Type="Double" Value="-70e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="al↓2,+←" ESA_ID="" Type="Double" Value="5e-3" Precision="2">
+      <Variable Modifier="Public" Name="al↓2,+←" ESA_ID="" Type="Double" Value="60e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="al↓2,-←" ESA_ID="" Type="Double" Value="-61e-3" Precision="2">
+      <Variable Modifier="Public" Name="al↓2,-←" ESA_ID="" Type="Double" Value="-60e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2578,7 +2585,7 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
           <ENU>Automatic calculation angle of concrete strut</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="auxϕ" ESA_ID="" Type="Double" Value="2" Precision="2">
+      <Variable Modifier="Public" Name="auxϕ" ESA_ID="" Type="Double" Value="4" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2597,7 +2604,7 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="bReinfUpper" ESA_ID="" Type="Boolean" Value="0">
+      <Variable Modifier="Public" Name="bReinfUpper" ESA_ID="" Type="Boolean" Value="1">
         <Description>
           <ENU>
           </ENU>
@@ -2649,14 +2656,14 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="c↓2+←" ESA_ID="" Type="Double" Value="25e-3" Precision="2">
+      <Variable Modifier="Public" Name="c↓2+←" ESA_ID="" Type="Double" Value="35e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="c↓2-←" ESA_ID="" Type="Double" Value="31e-3" Precision="2">
+      <Variable Modifier="Public" Name="c↓2-←" ESA_ID="" Type="Double" Value="35e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2747,28 +2754,28 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="d↓1,+←" ESA_ID="" Type="Double" Value="175e-3" Precision="2">
+      <Variable Modifier="Public" Name="d↓1,+←" ESA_ID="" Type="Double" Value="170e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="d↓1,-←" ESA_ID="" Type="Double" Value="172e-3" Precision="2">
+      <Variable Modifier="Public" Name="d↓1,-←" ESA_ID="" Type="Double" Value="170e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="d↓2,+←" ESA_ID="" Type="Double" Value="175e-3" Precision="2">
+      <Variable Modifier="Public" Name="d↓2,+←" ESA_ID="" Type="Double" Value="160e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="d↓2,-←" ESA_ID="" Type="Double" Value="166e-3" Precision="2">
+      <Variable Modifier="Public" Name="d↓2,-←" ESA_ID="" Type="Double" Value="160e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3056,6 +3063,12 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
+      <Variable Modifier="Public" Name="LoadCase" ESA_ID="" Type="String" Value="LC1">
+        <Description TranslateID="VARIABLE_LoadCase">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="loadID" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
@@ -3063,7 +3076,7 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓cry←" ESA_ID="" Type="Double" Value="19315.34" Precision="2">
+      <Variable Modifier="Public" Name="M↓cry←" ESA_ID="" Type="Double" Value="-13133.36" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3077,75 +3090,75 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="m↓Ed1+←" ESA_ID="" Type="Double" Value="9361.599" Precision="2">
+      <Variable Modifier="Public" Name="m↓Ed1+←" ESA_ID="" Type="Double" Value="-3579.463" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm/m" />
       </Variable>
-      <Variable Modifier="Public" Name="m↓Ed1-←" ESA_ID="" Type="Double" Value="9361.592" Precision="2">
+      <Variable Modifier="Public" Name="m↓Ed1-←" ESA_ID="" Type="Double" Value="-3579.463" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm/m" />
       </Variable>
-      <Variable Modifier="Public" Name="m↓Ed2+←" ESA_ID="" Type="Double" Value="9373.889" Precision="2">
+      <Variable Modifier="Public" Name="m↓Ed2+←" ESA_ID="" Type="Double" Value="-1560.137" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm/m" />
       </Variable>
-      <Variable Modifier="Public" Name="m↓Ed2-←" ESA_ID="" Type="Double" Value="9373.882" Precision="2">
+      <Variable Modifier="Public" Name="m↓Ed2-←" ESA_ID="" Type="Double" Value="-1560.137" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm/m" />
       </Variable>
-      <Variable Modifier="Public" Name="m↓Ed3+←" ESA_ID="" Type="Double" Value="-25.42708" Precision="2">
+      <Variable Modifier="Public" Name="m↓Ed3+←" ESA_ID="" Type="Double" Value="830.5202" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm/m" />
       </Variable>
-      <Variable Modifier="Public" Name="m↓Ed3-←" ESA_ID="" Type="Double" Value="-25.41342" Precision="2">
+      <Variable Modifier="Public" Name="m↓Ed3-←" ESA_ID="" Type="Double" Value="830.5202" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm/m" />
       </Variable>
-      <Variable Modifier="Public" Name="m↓x←" ESA_ID="" Type="Double" Value="9328.01" Precision="2">
+      <Variable Modifier="Public" Name="m↓x←" ESA_ID="" Type="Double" Value="-3164.21" Precision="2">
         <Description TranslateID="VARIABLE_m↓x←">
           <ENU>Bending moment  in x direction</ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm/m" />
       </Variable>
-      <Variable Modifier="Public" Name="m↓xy←" ESA_ID="" Type="Double" Value="-77.0768" Precision="2">
+      <Variable Modifier="Public" Name="m↓xy←" ESA_ID="" Type="Double" Value="1990.69" Precision="2">
         <Description TranslateID="VARIABLE_m↓xy←">
           <ENU>Twisting  moment  </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm/m" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓y.char←" ESA_ID="" Type="Double" Value="9373.882" Precision="2">
+      <Variable Modifier="Public" Name="M↓y.char←" ESA_ID="" Type="Double" Value="-1560.137" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm/m" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓y.qp←" ESA_ID="" Type="Double" Value="9373.882" Precision="2">
+      <Variable Modifier="Public" Name="M↓y.qp←" ESA_ID="" Type="Double" Value="-1560.137" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm/m" />
       </Variable>
-      <Variable Modifier="Public" Name="m↓y←" ESA_ID="" Type="Double" Value="9336.46" Precision="2">
+      <Variable Modifier="Public" Name="m↓y←" ESA_ID="" Type="Double" Value="-1144.87" Precision="2">
         <Description TranslateID="VARIABLE_m↓y←">
           <ENU>Bending moment  in y direction</ENU>
         </Description>
@@ -3165,7 +3178,7 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm/m" />
       </Variable>
-      <Variable Modifier="Public" Name="m↓z←" ESA_ID="" Type="Double" Value="9409.427" Precision="2">
+      <Variable Modifier="Public" Name="m↓z←" ESA_ID="" Type="Double" Value="-4386.642" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3204,196 +3217,196 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="n↓1.pom+←" ESA_ID="" Type="Double" Value="-54482.45" Precision="2">
+      <Variable Modifier="Public" Name="n↓1.pom+←" ESA_ID="" Type="Double" Value="26704.35" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓1.pom-←" ESA_ID="" Type="Double" Value="56960.21" Precision="2">
+      <Variable Modifier="Public" Name="n↓1.pom-←" ESA_ID="" Type="Double" Value="472.1714" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓1+←" ESA_ID="" Type="Double" Value="-54482.45" Precision="2">
+      <Variable Modifier="Public" Name="n↓1+←" ESA_ID="" Type="Double" Value="26704.35" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓1-←" ESA_ID="" Type="Double" Value="56960.21" Precision="2">
+      <Variable Modifier="Public" Name="n↓1-←" ESA_ID="" Type="Double" Value="472.1714" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓2.pom+←" ESA_ID="" Type="Double" Value="-55416.49" Precision="2">
+      <Variable Modifier="Public" Name="n↓2.pom+←" ESA_ID="" Type="Double" Value="-472.1714" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓2.pom-←" ESA_ID="" Type="Double" Value="56032.17" Precision="2">
+      <Variable Modifier="Public" Name="n↓2.pom-←" ESA_ID="" Type="Double" Value="-26704.35" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓2+←" ESA_ID="" Type="Double" Value="-55416.49" Precision="2">
+      <Variable Modifier="Public" Name="n↓2+←" ESA_ID="" Type="Double" Value="-472.1714" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓2-←" ESA_ID="" Type="Double" Value="56032.17" Precision="2">
+      <Variable Modifier="Public" Name="n↓2-←" ESA_ID="" Type="Double" Value="-26704.35" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓char←" ESA_ID="" Type="Double" Value="2597.014" Precision="2">
+      <Variable Modifier="Public" Name="N↓char←" ESA_ID="" Type="Double" Value="24237.2" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓cr←" ESA_ID="" Type="Double" Value="5351.274" Precision="2">
+      <Variable Modifier="Public" Name="N↓cr←" ESA_ID="" Type="Double" Value="204030.7" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓Ed1+←" ESA_ID="" Type="Double" Value="2336.92" Precision="2">
+      <Variable Modifier="Public" Name="n↓Ed1+←" ESA_ID="" Type="Double" Value="24237.2" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓Ed1-←" ESA_ID="" Type="Double" Value="2336.511" Precision="2">
+      <Variable Modifier="Public" Name="n↓Ed1-←" ESA_ID="" Type="Double" Value="24237.2" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓Ed2+←" ESA_ID="" Type="Double" Value="2597.424" Precision="2">
+      <Variable Modifier="Public" Name="n↓Ed2+←" ESA_ID="" Type="Double" Value="24237.2" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓Ed2-←" ESA_ID="" Type="Double" Value="2597.014" Precision="2">
+      <Variable Modifier="Public" Name="n↓Ed2-←" ESA_ID="" Type="Double" Value="24237.2" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓Ed3+←" ESA_ID="" Type="Double" Value="-1840.904" Precision="2">
+      <Variable Modifier="Public" Name="n↓Ed3+←" ESA_ID="" Type="Double" Value="-48474.41" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓Ed3-←" ESA_ID="" Type="Double" Value="-1840.085" Precision="2">
+      <Variable Modifier="Public" Name="n↓Ed3-←" ESA_ID="" Type="Double" Value="-48474.41" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓Eds1+←" ESA_ID="" Type="Double" Value="-54524.05" Precision="2">
+      <Variable Modifier="Public" Name="n↓Eds1+←" ESA_ID="" Type="Double" Value="31381.12" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓Eds1-←" ESA_ID="" Type="Double" Value="56860.76" Precision="2">
+      <Variable Modifier="Public" Name="n↓Eds1-←" ESA_ID="" Type="Double" Value="-7143.918" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓Eds2+←" ESA_ID="" Type="Double" Value="-54444.26" Precision="2">
+      <Variable Modifier="Public" Name="n↓Eds2+←" ESA_ID="" Type="Double" Value="19088.17" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓Eds2-←" ESA_ID="" Type="Double" Value="57041.47" Precision="2">
+      <Variable Modifier="Public" Name="n↓Eds2-←" ESA_ID="" Type="Double" Value="5149.032" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓Eds3+←" ESA_ID="" Type="Double" Value="-930.6274" Precision="2">
+      <Variable Modifier="Public" Name="n↓Eds3+←" ESA_ID="" Type="Double" Value="-24237.12" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓Eds3-←" ESA_ID="" Type="Double" Value="-909.8575" Precision="2">
+      <Variable Modifier="Public" Name="n↓Eds3-←" ESA_ID="" Type="Double" Value="-24237.29" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓Edsvirt1+←" ESA_ID="" Type="Double" Value="-54524.25" Precision="2">
+      <Variable Modifier="Public" Name="n↓Edsvirt1+←" ESA_ID="" Type="Double" Value="31381.12" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓Edsvirt1-←" ESA_ID="" Type="Double" Value="56860.97" Precision="2">
+      <Variable Modifier="Public" Name="n↓Edsvirt1-←" ESA_ID="" Type="Double" Value="-7143.918" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓Edsvirt2+←" ESA_ID="" Type="Double" Value="-54444.46" Precision="2">
+      <Variable Modifier="Public" Name="n↓Edsvirt2+←" ESA_ID="" Type="Double" Value="19088.17" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓Edsvirt2-←" ESA_ID="" Type="Double" Value="57041.68" Precision="2">
+      <Variable Modifier="Public" Name="n↓Edsvirt2-←" ESA_ID="" Type="Double" Value="5149.032" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓Edsvirt3+←" ESA_ID="" Type="Double" Value="-930.2274" Precision="2">
+      <Variable Modifier="Public" Name="n↓Edsvirt3+←" ESA_ID="" Type="Double" Value="-24237.12" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓Edsvirt3-←" ESA_ID="" Type="Double" Value="-910.2766" Precision="2">
+      <Variable Modifier="Public" Name="n↓Edsvirt3-←" ESA_ID="" Type="Double" Value="-24237.29" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3407,81 +3420,81 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓qp←" ESA_ID="" Type="Double" Value="2597.014" Precision="2">
+      <Variable Modifier="Public" Name="N↓qp←" ESA_ID="" Type="Double" Value="24237.2" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓up←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="n↓up←" ESA_ID="" Type="Double" Value="2" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓x+←" ESA_ID="" Type="Double" Value="-54989.36" Precision="2">
+      <Variable Modifier="Public" Name="n↓x+←" ESA_ID="" Type="Double" Value="19262.61" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓x←" ESA_ID="" Type="Double" Value="1416.47" Precision="2">
+      <Variable Modifier="Public" Name="n↓x←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description TranslateID="VARIABLE_n↓x←">
           <ENU>Normal force in x direction</ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓x-←" ESA_ID="" Type="Double" Value="56405.83" Precision="2">
+      <Variable Modifier="Public" Name="n↓x-←" ESA_ID="" Type="Double" Value="-19262.61" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓xy+←" ESA_ID="" Type="Double" Value="465.3137" Precision="2">
+      <Variable Modifier="Public" Name="n↓xy+←" ESA_ID="" Type="Double" Value="-12118.63" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓xy←" ESA_ID="" Type="Double" Value="10.1754" Precision="2">
+      <Variable Modifier="Public" Name="n↓xy←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description TranslateID="VARIABLE_n↓xy←">
           <ENU>Memberane shear force</ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓xy-←" ESA_ID="" Type="Double" Value="-455.1383" Precision="2">
+      <Variable Modifier="Public" Name="n↓xy-←" ESA_ID="" Type="Double" Value="12118.63" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓y+←" ESA_ID="" Type="Double" Value="-54909.57" Precision="2">
+      <Variable Modifier="Public" Name="n↓y+←" ESA_ID="" Type="Double" Value="6969.57" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓y←" ESA_ID="" Type="Double" Value="1676.97" Precision="2">
+      <Variable Modifier="Public" Name="n↓y←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description TranslateID="VARIABLE_n↓y←">
           <ENU>Normal force in y direction</ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓y-←" ESA_ID="" Type="Double" Value="56586.54" Precision="2">
+      <Variable Modifier="Public" Name="n↓y-←" ESA_ID="" Type="Double" Value="-6969.57" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓z←" ESA_ID="" Type="Double" Value="1543.689" Precision="2">
+      <Variable Modifier="Public" Name="n↓z←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3762,7 +3775,7 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="sl↓1,+←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="sl↓1,+←" ESA_ID="" Type="Double" Value="200e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3776,7 +3789,7 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="sl↓2,+←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="sl↓2,+←" ESA_ID="" Type="Double" Value="200e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3999,14 +4012,14 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="v↓x←" ESA_ID="" Type="Double" Value="349.922" Precision="2">
+      <Variable Modifier="Public" Name="v↓x←" ESA_ID="" Type="Double" Value="72426.8" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="v↓y←" ESA_ID="" Type="Double" Value="360.034" Precision="2">
+      <Variable Modifier="Public" Name="v↓y←" ESA_ID="" Type="Double" Value="24916" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4071,7 +4084,7 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="x↓c←" ESA_ID="" Type="Double" Value="3.810065e-3" Precision="2">
+      <Variable Modifier="Public" Name="x↓c←" ESA_ID="" Type="Double" Value="1.832652e-3" Precision="2">
         <Description TranslateID="VARIABLE_x↓c←">
           <ENU>Height of compression zone</ENU>
         </Description>
@@ -4097,13 +4110,13 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="z↓+←" ESA_ID="" Type="Double" Value="69e-3" Precision="2">
+      <Variable Modifier="Public" Name="z↓+←" ESA_ID="" Type="Double" Value="99.26694e-3" Precision="2">
         <Description TranslateID="VARIABLE_z↓+←">
           <ENU>The position for recalculation forces at upper surfaces to centre of gravity of  cross-section of 2D member. </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="z↓-←" ESA_ID="" Type="Double" Value="98.47597e-3" Precision="2">
+      <Variable Modifier="Public" Name="z↓-←" ESA_ID="" Type="Double" Value="65e-3" Precision="2">
         <Description TranslateID="VARIABLE_z↓-←">
           <ENU>The position for recalculation forces at lower surfaces to centre of gravity of  cross-section of 2D member. </ENU>
         </Description>
@@ -4123,21 +4136,21 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓1+←" ESA_ID="" Type="Double" Value="50.61413" Precision="2">
+      <Variable Modifier="Public" Name="α↓1+←" ESA_ID="" Type="Double" Value="121.553" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓1-←" ESA_ID="" Type="Double" Value="132.5497" Precision="2">
+      <Variable Modifier="Public" Name="α↓1-←" ESA_ID="" Type="Double" Value="31.55303" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓2,+←" ESA_ID="" Type="Double" Value="90" Precision="2">
+      <Variable Modifier="Public" Name="α↓2,+←" ESA_ID="" Type="Double" Value="90.00021" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4151,28 +4164,28 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓2+←" ESA_ID="" Type="Double" Value="140.6141" Precision="2">
+      <Variable Modifier="Public" Name="α↓2+←" ESA_ID="" Type="Double" Value="211.5532" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓2-←" ESA_ID="" Type="Double" Value="222.5499" Precision="2">
+      <Variable Modifier="Public" Name="α↓2-←" ESA_ID="" Type="Double" Value="121.5532" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓3+←" ESA_ID="" Type="Double" Value="95.61423" Precision="2">
+      <Variable Modifier="Public" Name="α↓3+←" ESA_ID="" Type="Double" Value="256.5531" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓3-←" ESA_ID="" Type="Double" Value="267.5497" Precision="2">
+      <Variable Modifier="Public" Name="α↓3-←" ESA_ID="" Type="Double" Value="76.55313" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4186,49 +4199,49 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓cal,1+←" ESA_ID="" Type="Double" Value="-46.56881" Precision="2">
+      <Variable Modifier="Public" Name="α↓cal,1+←" ESA_ID="" Type="Double" Value="-121.553" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓cal,1-←" ESA_ID="" Type="Double" Value="-46.56881" Precision="2">
+      <Variable Modifier="Public" Name="α↓cal,1-←" ESA_ID="" Type="Double" Value="-121.553" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓cal,2+←" ESA_ID="" Type="Double" Value="43.43119" Precision="2">
+      <Variable Modifier="Public" Name="α↓cal,2+←" ESA_ID="" Type="Double" Value="-31.55303" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓cal,2-←" ESA_ID="" Type="Double" Value="43.43119" Precision="2">
+      <Variable Modifier="Public" Name="α↓cal,2-←" ESA_ID="" Type="Double" Value="-31.55303" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓cal←" ESA_ID="" Type="Double" Value="-46.56881" Precision="2">
+      <Variable Modifier="Public" Name="α↓cal←" ESA_ID="" Type="Double" Value="-121.553" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓con+←" ESA_ID="" Type="Double" Value="135" Precision="2">
+      <Variable Modifier="Public" Name="α↓con+←" ESA_ID="" Type="Double" Value="45.00011" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓con-←" ESA_ID="" Type="Double" Value="45.00011" Precision="2">
+      <Variable Modifier="Public" Name="α↓con-←" ESA_ID="" Type="Double" Value="135.0001" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4248,14 +4261,14 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="α↓n1+←" ESA_ID="" Type="Double" Value="-132.5497" Precision="2">
+      <Variable Modifier="Public" Name="α↓n1+←" ESA_ID="" Type="Double" Value="-31.55303" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓n1-←" ESA_ID="" Type="Double" Value="-50.61413" Precision="2">
+      <Variable Modifier="Public" Name="α↓n1-←" ESA_ID="" Type="Double" Value="-121.553" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4275,7 +4288,7 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓z←" ESA_ID="" Type="Double" Value="-46.56881" Precision="2">
+      <Variable Modifier="Public" Name="α↓z←" ESA_ID="" Type="Double" Value="-31.55303" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4301,7 +4314,7 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="δ" ESA_ID="" Type="Double" Value="145.3488e-3" Precision="2">
+      <Variable Modifier="Public" Name="δ" ESA_ID="" Type="Double" Value="176.4706e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4391,7 +4404,7 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="μ↓1-←" ESA_ID="" Type="Double" Value="18.08746e-3" Precision="2">
+      <Variable Modifier="Public" Name="μ↓1-←" ESA_ID="" Type="Double" Value="8.846107e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4405,21 +4418,21 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="μ↓sd←" ESA_ID="" Type="Double" Value="17.87316e-3" Precision="2">
+      <Variable Modifier="Public" Name="μ↓sd←" ESA_ID="" Type="Double" Value="8.846107e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ν↓1-←" ESA_ID="" Type="Double" Value="501.4885e-6" Precision="2">
+      <Variable Modifier="Public" Name="ν↓1-←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ξ" ESA_ID="" Type="Double" Value="22.54476e-3" Precision="2">
+      <Variable Modifier="Public" Name="ξ" ESA_ID="" Type="Double" Value="11.10698e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4510,7 +4523,7 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="σ↓ct←" ESA_ID="" Type="Double" Value="1.405597e6" Precision="2">
+      <Variable Modifier="Public" Name="σ↓ct←" ESA_ID="" Type="Double" Value="344077.3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4573,28 +4586,28 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="ϕ↓1,+←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="ϕ↓1,+←" ESA_ID="" Type="Double" Value="10e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="ϕ↓1,-←" ESA_ID="" Type="Double" Value="6e-3" Precision="2">
+      <Variable Modifier="Public" Name="ϕ↓1,-←" ESA_ID="" Type="Double" Value="10e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="ϕ↓2,+←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="ϕ↓2,+←" ESA_ID="" Type="Double" Value="10e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="ϕ↓2,-←" ESA_ID="" Type="Double" Value="6e-3" Precision="2">
+      <Variable Modifier="Public" Name="ϕ↓2,-←" ESA_ID="" Type="Double" Value="10e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -17456,6 +17469,62 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
+      <VC ID="RFM106_000022">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000023">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000024">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000025">
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000026">
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000027">
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000028">
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="RFM227_009024">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -17469,7 +17538,7 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
   </Calculation>
   <Dialog>
     <Main Width="500">
-      <TEMDLoader Name="" ID="30" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="3" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Member2D.1" SectionID="-1" CombiID="-1" />
+      <TEMDLoader Name="" ID="30" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="3" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="" SectionID="-1" CombiID="-1" />
     </Main>
     <MemberData Width="500">
       <TComboBox Name="" ID="143" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="3" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="" VarNameVisible="False" InputColor="-4128832" DescPos="1" InputWidth="150" Values="25|50|60" Index="1">
@@ -18433,7 +18502,7 @@ IF(IO.Point.Contains("Reinforcement") || dUserReinf == 1) {
       <ENU>"Load case:"</ENU>
     </Item>
     <Item ID="TEXT_INI400_018304">
-      <ENU>"(" &amp; Combi↓key← &amp; ")"</ENU>
+      <ENU>"( " &amp; LoadCase &amp; " )"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_018305">
       <ENU>"ULS combination:"</ENU>

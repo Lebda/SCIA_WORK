@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="21"><StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_compositecolumn}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="23"><StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_compositecolumn}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
 		<ResourceId>114</ResourceId>
 	</StringCode>
@@ -26,6 +26,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_pileplandesign}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
 		<ResourceId>115</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_floorvibration_results}</StringId>
+		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
+		<ResourceId>216</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_df_compositebeam_aisc_360_10_check}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
@@ -70,6 +74,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_composite_beam}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
 		<ResourceId>102</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_floorvibrationdatafromsetup}</StringId>
+		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
+		<ResourceId>215</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_1d_member}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>

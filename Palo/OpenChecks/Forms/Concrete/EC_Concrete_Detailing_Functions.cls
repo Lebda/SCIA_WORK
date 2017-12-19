@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="aa63074a-058a-45ea-919b-c10c14de4f91">
   <CodeEditor>
-    <SourceCode Collapsed="6|19|36|55|66|77|132|151|170|188|209|228|248|280|314|355|379|403|464|484|513|555|607|632|652|682|708|737|769|786|815|839|859|879|922|949|977|1004|1037|1063|1095|1121|1169|1199|1238|1287|1327|1372|1412|1446|1484|1524|1578|1609|1645|1679|1700|1739|1778|1792|1804|1853|1899|1939|1976|1994|2009|2089|2106|2117|2150|2224|2249|2280|2312|2336|2356|2387|2416|2455|2469|2488|2508|2531|2562|2602|2636|2671|2705|2724" BreakPoints="">
+    <SourceCode Collapsed="6|19|36|55|66|77|136|155|174|192|213|232|252|284|318|359|383|407|472|492|521|563|580|615|640|660|690|716|745|777|794|823|847|867|887|930|957|985|1012|1045|1071|1103|1129|1177|1207|1246|1295|1335|1380|1420|1454|1492|1532|1586|1621|1657|1691|1712|1751|1790|1804|1816|1865|1911|1951|1988|2006|2021|2101|2118|2129|2162|2236|2261|2292|2324|2348|2368|2399|2428|2467|2481|2500|2520|2543|2574|2614|2648|2683|2717|2736" BreakPoints="">
 //Detailing provisions functions
 IF(IO.IsStandalone) { 
     object FunctionDetailing →INI400_005887= LoadExternCLC("Detailing.clc"); 
@@ -91,6 +91,10 @@ object SumTwoArrayReinf(object[] ArrayReinf1, object[] ArrayReinf2) {
         double diam →INI400_010098= 0; 
         //
         FOR(i, 0, ArrayReqReinf.Count-1) { 
+            //TypeMember is checked, for BeamSlabs (2) only edge 0 and 2 are sum (when edge 1 and 3 -&gt; skip to next edge)
+            IF(DetProvResults.Contains("TypeMember") &amp;&amp; DetProvResults.TypeMember == 2 &amp;&amp; (i == 1 || i == 3)) { 
+                Continue(); 
+            } 
             //tensile edges
             IF(ArrayReqReinf[i].Tensile != 0) { 
                 Ast_sum →INI400_008932= Ast_sum+ArrayReqReinf[i].As; 
@@ -449,6 +453,10 @@ object SumTwoArrayReinf(object[] ArrayReinf1, object[] ArrayReinf2) {
                 DEFAULT :  { 
                     →INI400_008853TEXT("Maximal area of reinforcement per edges"); 
                     FOR(i, 1, ArrayReqReinf.Count) { 
+                        //TypeMember is checked, for BeamSlabs (2) only edge 1 and 3 are sum (when edge 2 and 4 -&gt; skip to next edge) - here is numbering of edges from 1
+                        IF(DetProvResults.Contains("TypeMember") &amp;&amp; DetProvResults.TypeMember == 2 &amp;&amp; (i == 2 || i == 4)) { 
+                            Continue(); 
+                        } 
                         u↓edge← →KRS127_000011= ArrayReqReinf[i-1].Ld; 
                         A↓s1,max,edge←[i] →KRS127_000008= (u↓edge←/(s↓min,lim←+ϕ)+1)*π*(ϕ↑2←/4); 
                         →KRS127_000019TEXT("A↓s1,max,edge←[" &amp; i &amp; "] = " &amp; '(u↓edge←/(s↓min,lim←+ϕ)+1)*π*(ϕ↑2←/4)' &amp; " = " &amp; (Val(u↓edge←*10↑3←, 0)/(Val(s↓min,lim←*10↑3←, 0)+Val(ϕ*10↑3←, 0))+1)*π*(Val(ϕ*10↑3←, 0)↑2←/4) &amp; " = " &amp; Val(A↓s1,max,edge←[i]*10↑6←, 0) &amp; " mm↑2←"); 
@@ -1590,6 +1598,10 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
         bool IsIncreased →INI400_010110= false; 
         //
         FOR(i, 0, ArrayReqReinf.Count-1) { 
+            //TypeMember is checked, for BeamSlabs (2) only edge 0 and 2 are sum (when edge 1 and 3 -&gt; skip to next edge)
+            IF(DetProvResults.Contains("TypeMember") &amp;&amp; DetProvResults.TypeMember == 2 &amp;&amp; (i == 1 || i == 3)) { 
+                Continue(); 
+            } 
             IF(ArrayReqReinf[i].Layer == 1) { 
                 //
                 MinAreaForEdges[i].As →INI400_008882= MAX(MinAreaForEdges[i].As, As1_min*(ArrayReqReinf[i].Ld/u_circ)); 
@@ -13063,12 +13075,12 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_014228">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
       </VC>
       <VC ID="INI400_014229">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -13679,14 +13691,6 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS116_000061">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS116_000062">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

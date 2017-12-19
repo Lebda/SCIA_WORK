@@ -25,7 +25,7 @@
     double UC↓E← →INI400_011308= -IO.Setup.ConcreteNBR.Solver.General.NcalcCheck; 
     
     object DataFromSEN →INI400_006916= LoadExternCLC("FunctionsDataFromSEN.clc"); 
-    object FunctionsDes →INI400_010967= LoadExternCLC("Functions1D.clc", true); 
+    object Functions1D →INI400_005799= LoadExternCLC("Functions1D.clc", true); 
     object[] ReinfMat →INI400_010751= new object[]; 
     object[] ReinfBars →INI400_007028= new object[]; 
     string NameReinf →INI400_007011= TR("Not defined"); 
@@ -115,6 +115,56 @@
     } ELSE { 
         →INI400_000788TEXT("Standard column with 1/r approximate method for all sections."); 
     } 
+    
+    bool bNaNyy →INI400_017808= false; 
+    bool bNaNzz →RFM106_000019= false; 
+    bNaNyy →INI400_017189= IO.Beam.BucklingSystem.yy.Span.Contains("H"); 
+    bNaNzz →RFM106_000020= IO.Beam.BucklingSystem.zz.Span.Contains("H"); 
+    IF(bNaNyy == false || bNaNzz == false) { 
+        string DescriptionN →RFM106_000012= TR("Continuous member is not supported."); 
+        string SolutionN →RFM106_000013= TR("The member should be splitted before to perform the internal forces."); 
+        string TypeN →RFM106_000014= TR("Error"); 
+        IF(IO.IsDrawing) { 
+            →RFM106_000015Functions1D.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN, TableWidth, obEWNCellsFont, TableHeaderFont, obEWNBorderPen, TableGridPen); 
+        } 
+        Number↓N← →RFM106_000016= Number↓N←+1; 
+        →RFM106_000017obEWN.Add(new Structure("Index", "E" &amp; IndexEWN &amp; "/" &amp; Number↓N←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
+        
+        →RFM106_000002BLOCK { 
+            /// write errors and warnings
+            NumberEWN[0] →RFM106_000003= Number↓E←; 
+            NumberEWN[1] →RFM106_000004= Number↓W←; 
+            NumberEWN[2] →RFM106_000005= Number↓N←; 
+            string slist →RFM106_000006= TR("List of errors/warnings/notes: "); 
+            string noerror →RFM106_000007= TR("There are no errors, warnings and notes"); 
+            string EWNMessage →RFM106_000008= Functions1D.FListEWN(obEWN, slist, noerror); 
+            →RFM106_000009TEXT(EWNMessage); 
+            IF(IO.IsDrawing) { 
+                →RFM106_000010Functions1D.TableEWN(NumberEWN, obEWN, PrintEWN, TableWidth, TableCellsFont, TableHeaderFont, TableBorderPen, TableGridPen); 
+                →RFM106_000011PAGEBREAK(); 
+            } 
+        } 
+        M↓y← →RFM106_000021= 1000*UC↓E←; 
+        M↓z← →RFM106_000022= 1000*UC↓E←; 
+        M↓dy,recal← →RFM106_000023= 1000*UC↓E←; 
+        M↓dz,recal← →RFM106_000024= 1000*UC↓E←; 
+        M↓1dy,min← →RFM106_000025= 1000*UC↓E←; 
+        M↓1dz,min← →RFM106_000026= 1000*UC↓E←; 
+        M↓dy,tot← →RFM106_000027= 1000*UC↓E←; 
+        M↓dz,tot← →RFM106_000028= 1000*UC↓E←; 
+        λ↓1y← →RFM106_000029= UC↓E←; 
+        λ↓1z← →RFM106_000030= UC↓E←; 
+        λ↓y← →RFM106_000031= UC↓E←; 
+        λ↓z← →RFM106_000032= UC↓E←; 
+        M↓x← →RFM106_000033= 1000*UC↓E←; 
+        V↓y← →RFM106_000034= 1000*UC↓E←; 
+        V↓z← →RFM106_000035= 1000*UC↓E←; 
+        N↓d← →RFM106_000036= 1000*UC↓E←; 
+        
+        Exit(); 
+    } 
+    
+    
     
     IF(!IO.IsStandalone) { 
         →INI400_009122BLOCK { 
@@ -267,7 +317,7 @@
         } //end of block
 
         →INI400_006169BLOCK { //calculation to find the biggest value of the bending moment along of a member
-
+            
             FOR(i, 0, IO.Beam.Section.Count-1) { 
                 //                    FOR(j, 0, IO.Beam.Section[i].InternalForces.Count-1) { 
                 My↓sen← →INI400_005949= IO.Beam.Section[i].InternalForces[CombiID].My; 
@@ -308,7 +358,6 @@
     
     →INI400_006299BLOCK { //evaluation of previous calculations
         IF(ReinfIsConstant) { 
-            object Functions1D →INI400_005799= LoadExternCLC("Functions1D.clc", true); 
             object EWNBorderPen →INI400_010435= new Pen(Color.White, 0); //Pen for EWN note
             object EWNCellsFont →INI400_010436= new Font("Segoe UI", Convert.ToSingle(8.5), FontStyle.Italic); //EWN note font
             object TableHeaderFont →INI400_002930= new Font("Segoe UI", Convert.ToSingle(8.5), FontStyle.Bold); 
@@ -1279,7 +1328,7 @@
     <Header NormCode="2" Member="1000" Material="2" CSType="-1" LimitState="0" IFFilter="0" LicenceID="10000" Autor="Raphael F. Mendonça" Autor2="" Version="500" EWNSource="" Icon="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">
       <Prereq />
       <Languages>
-        <Language Code="ENU" LangName="English" />
+        <Language Code="ENU" LangName="English " />
       </Languages>
       <Document TranslateID="Document">
         <ENU>http://www.scia-online.com/</ENU>
@@ -1316,7 +1365,7 @@
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓c←" ESA_ID="" Type="Double" Value="195.3541e-3" Precision="2">
+      <Variable Modifier="Public" Name="A↓c←" ESA_ID="" Type="Double" Value="150e-3" Precision="2">
         <Description TranslateID="VARIABLE_A↓c←">
           <ENU>Cross section area</ENU>
         </Description>
@@ -1355,7 +1404,7 @@
           <ENU>Array of non-prestressed bar</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="b" ESA_ID="" Type="Double" Value="500e-3" Precision="2">
+      <Variable Modifier="Public" Name="b" ESA_ID="" Type="Double" Value="300e-3" Precision="2">
         <Description TranslateID="VARIABLE_b">
           <ENU>Cross section width</ENU>
         </Description>
@@ -1379,6 +1428,18 @@
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="bNaNyy" ESA_ID="" Type="Boolean" Value="0">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="bNaNzz" ESA_ID="" Type="Boolean" Value="0">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="BraceMemberY" ESA_ID="" Type="Boolean" Value="0">
         <Description TranslateID="VARIABLE_BraceMemberY">
           <ENU>Braced member around y-axis</ENU>
@@ -1389,7 +1450,7 @@
           <ENU>Braced member around z-axis</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="bReinfBars" ESA_ID="" Type="Boolean" Value="1">
+      <Variable Modifier="Public" Name="bReinfBars" ESA_ID="" Type="Boolean" Value="0">
         <Description>
           <ENU>
           </ENU>
@@ -1407,7 +1468,7 @@
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="CalculateSymmetry" ESA_ID="" Type="Boolean" Value="0">
+      <Variable Modifier="Public" Name="CalculateSymmetry" ESA_ID="" Type="Boolean" Value="1">
         <Description>
           <ENU>
           </ENU>
@@ -1418,13 +1479,13 @@
           <ENU>Calculation of second order eccentricity</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="CalSecOrderY" ESA_ID="" Type="Boolean" Value="1">
+      <Variable Modifier="Public" Name="CalSecOrderY" ESA_ID="" Type="Boolean" Value="0">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="CalSecOrderZ" ESA_ID="" Type="Boolean" Value="1">
+      <Variable Modifier="Public" Name="CalSecOrderZ" ESA_ID="" Type="Boolean" Value="0">
         <Description>
           <ENU>
           </ENU>
@@ -1436,7 +1497,7 @@
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="columnType" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="columnType" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description TranslateID="VARIABLE_columnType">
           <ENU>Type of support</ENU>
         </Description>
@@ -1448,7 +1509,7 @@
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Combi↓key←" ESA_ID="" Type="String" Value="SW">
+      <Variable Modifier="Public" Name="Combi↓key←" ESA_ID="" Type="String" Value="">
         <Description>
           <ENU>
           </ENU>
@@ -1466,13 +1527,13 @@
           <ENU>ULS combination</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="cv↓y←" ESA_ID="" Type="Double" Value="10e-3" Precision="2">
+      <Variable Modifier="Public" Name="cv↓y←" ESA_ID="" Type="Double" Value="5.516389e-3" Precision="2">
         <Description TranslateID="VARIABLE_cv↓y←">
           <ENU>Curvature in the direction y</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="cv↓z←" ESA_ID="" Type="Double" Value="11.11111e-3" Precision="2">
+      <Variable Modifier="Public" Name="cv↓z←" ESA_ID="" Type="Double" Value="9.193982e-3" Precision="2">
         <Description TranslateID="VARIABLE_cv↓z←">
           <ENU>Curvature in the direction z</ENU>
         </Description>
@@ -1491,7 +1552,7 @@
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="DescriptionN" ESA_ID="" Type="String" Value=" λ↓y← &gt; 90 or λ↓z← &gt; 90 - Calculation available only for short and medium columns.">
+      <Variable Modifier="Public" Name="DescriptionN" ESA_ID="" Type="String" Value="Continuous member is not supported.">
         <Description>
           <ENU>
           </ENU>
@@ -1518,7 +1579,7 @@
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="DrawDetReinfText" ESA_ID="" Type="Boolean" Value="1">
+      <Variable Modifier="Public" Name="DrawDetReinfText" ESA_ID="" Type="Boolean" Value="0">
         <Description>
           <ENU>Draw detailed reinforcement text</ENU>
         </Description>
@@ -1533,7 +1594,7 @@
           <ENU>Draw reinforcement</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="DrawStirrups" ESA_ID="" Type="Boolean" Value="1">
+      <Variable Modifier="Public" Name="DrawStirrups" ESA_ID="" Type="Boolean" Value="0">
         <Description>
           <ENU>Draw stirrups</ENU>
         </Description>
@@ -1544,35 +1605,35 @@
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="e↓1a,y←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="e↓1a,y←" ESA_ID="" Type="Double" Value="-333.9075e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="e↓1a,z←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="e↓1a,z←" ESA_ID="" Type="Double" Value="202.6797e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="e↓1b,y←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="e↓1b,y←" ESA_ID="" Type="Double" Value="153.9001e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="e↓1b,z←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="e↓1b,z←" ESA_ID="" Type="Double" Value="-115.4943e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="e↓1y,b←" ESA_ID="" Type="Double" Value="37.58136e-3" Precision="2">
+      <Variable Modifier="Public" Name="e↓1y,b←" ESA_ID="" Type="Double" Value="153.9001e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1586,124 +1647,124 @@
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="e↓1y,t←" ESA_ID="" Type="Double" Value="-46.62632e-3" Precision="2">
+      <Variable Modifier="Public" Name="e↓1y,t←" ESA_ID="" Type="Double" Value="-333.9075e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="e↓1y_←" ESA_ID="" Type="Double" Value="-30e-3" Precision="2">
+      <Variable Modifier="Public" Name="e↓1y_←" ESA_ID="" Type="Double" Value="-149.728e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="e↓1y←" ESA_ID="" Type="Double" Value="46.62632e-3" Precision="2">
+      <Variable Modifier="Public" Name="e↓1y←" ESA_ID="" Type="Double" Value="-333.9075e-3" Precision="2">
         <Description TranslateID="VARIABLE_e↓1y←">
           <ENU>first order eccentricity y</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="e↓1z,b←" ESA_ID="" Type="Double" Value="-48.39925e-3" Precision="2">
+      <Variable Modifier="Public" Name="e↓1z,b←" ESA_ID="" Type="Double" Value="-115.4943e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="e↓1z,min←" ESA_ID="" Type="Double" Value="30e-3" Precision="2">
+      <Variable Modifier="Public" Name="e↓1z,min←" ESA_ID="" Type="Double" Value="24e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="e↓1z,t←" ESA_ID="" Type="Double" Value="61.12304e-3" Precision="2">
+      <Variable Modifier="Public" Name="e↓1z,t←" ESA_ID="" Type="Double" Value="202.6797e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="e↓1z_←" ESA_ID="" Type="Double" Value="30e-3" Precision="2">
+      <Variable Modifier="Public" Name="e↓1z_←" ESA_ID="" Type="Double" Value="84.63316e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="e↓1z←" ESA_ID="" Type="Double" Value="61.12304e-3" Precision="2">
+      <Variable Modifier="Public" Name="e↓1z←" ESA_ID="" Type="Double" Value="202.6797e-3" Precision="2">
         <Description TranslateID="VARIABLE_e↓1z←">
           <ENU>first order eccentricity z</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="e↓2y←" ESA_ID="" Type="Double" Value="29.16e-3" Precision="2">
+      <Variable Modifier="Public" Name="e↓2y←" ESA_ID="" Type="Double" Value="34.60049e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="e↓2z←" ESA_ID="" Type="Double" Value="167.1943e-3" Precision="2">
+      <Variable Modifier="Public" Name="e↓2z←" ESA_ID="" Type="Double" Value="27.52733e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="e↓ay←" ESA_ID="" Type="Double" Value="29.99997e-3" Precision="2">
+      <Variable Modifier="Public" Name="e↓ay←" ESA_ID="" Type="Double" Value="13.6795e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="e↓az←" ESA_ID="" Type="Double" Value="29.99997e-3" Precision="2">
+      <Variable Modifier="Public" Name="e↓az←" ESA_ID="" Type="Double" Value="11.5288e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="e↓iy,b←" ESA_ID="" Type="Double" Value="7.581394e-3" Precision="2">
+      <Variable Modifier="Public" Name="e↓iy,b←" ESA_ID="" Type="Double" Value="140.2206e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="e↓iy,c←" ESA_ID="" Type="Double" Value="-6.943253e-3" Precision="2">
+      <Variable Modifier="Public" Name="e↓iy,c←" ESA_ID="" Type="Double" Value="-136.0485e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="e↓iy,t←" ESA_ID="" Type="Double" Value="-16.62635e-3" Precision="2">
+      <Variable Modifier="Public" Name="e↓iy,t←" ESA_ID="" Type="Double" Value="-320.228e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="e↓iz,b←" ESA_ID="" Type="Double" Value="-18.39928e-3" Precision="2">
+      <Variable Modifier="Public" Name="e↓iz,b←" ESA_ID="" Type="Double" Value="-103.9655e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="e↓iz,c←" ESA_ID="" Type="Double" Value="11.31413e-3" Precision="2">
+      <Variable Modifier="Public" Name="e↓iz,c←" ESA_ID="" Type="Double" Value="73.10436e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="e↓iz,t←" ESA_ID="" Type="Double" Value="31.12307e-3" Precision="2">
+      <Variable Modifier="Public" Name="e↓iz,t←" ESA_ID="" Type="Double" Value="191.1509e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1717,7 +1778,7 @@
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="E↓s←" ESA_ID="" Type="Double" Value="210e9" Precision="2">
+      <Variable Modifier="Public" Name="E↓s←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1760,13 +1821,13 @@
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="f↓cd←" ESA_ID="" Type="Double" Value="17.85714e6" Precision="2">
+      <Variable Modifier="Public" Name="f↓cd←" ESA_ID="" Type="Double" Value="21.42857e6" Precision="2">
         <Description TranslateID="VARIABLE_f↓cd←">
           <ENU>Design value of compressive strength</ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="f↓ck←" ESA_ID="" Type="Double" Value="25e6" Precision="2">
+      <Variable Modifier="Public" Name="f↓ck←" ESA_ID="" Type="Double" Value="30e6" Precision="2">
         <Description TranslateID="VARIABLE_f↓ck←">
           <ENU>Characteristic compressive cylinder strength</ENU>
         </Description>
@@ -1779,7 +1840,7 @@
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="f↓yk←" ESA_ID="" Type="Double" Value="250e6" Precision="2">
+      <Variable Modifier="Public" Name="f↓yk←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1792,50 +1853,44 @@
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="FunctionsDes" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
       <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Value="500e-3" Precision="2">
         <Description TranslateID="VARIABLE_h">
           <ENU>Cross section height</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="H" ESA_ID="" Type="Double" Value="7.2" Precision="2">
+      <Variable Modifier="Public" Name="H" ESA_ID="" Type="Double" Value="7" Precision="2">
         <Description TranslateID="VARIABLE_H">
           <ENU>height of the building</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Value="11" Precision="2">
+      <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Value="3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="i↓cy←" ESA_ID="" Type="Double" Value="124.683e-3" Precision="2">
+      <Variable Modifier="Public" Name="i↓cy←" ESA_ID="" Type="Double" Value="144.3376e-3" Precision="2">
         <Description TranslateID="VARIABLE_i↓cy←">
           <ENU>Radius of gyration of concrete cross-section  in direction of y axis</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="I↓cy←" ESA_ID="" Type="Double" Value="3.036947e-3" Precision="2">
+      <Variable Modifier="Public" Name="I↓cy←" ESA_ID="" Type="Double" Value="3.125e-3" Precision="2">
         <Description TranslateID="VARIABLE_I↓cy←">
           <ENU>Moment of inertia around y</ENU>
         </Description>
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-9" Dim="cm↑4←" />
       </Variable>
-      <Variable Modifier="Public" Name="i↓cz←" ESA_ID="" Type="Double" Value="124.683e-3" Precision="2">
+      <Variable Modifier="Public" Name="i↓cz←" ESA_ID="" Type="Double" Value="86.60254e-3" Precision="2">
         <Description TranslateID="VARIABLE_i↓cz←">
           <ENU>Radius of gyration of concrete cross-section  in direction of z axis</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="I↓cz←" ESA_ID="" Type="Double" Value="3.036947e-3" Precision="2">
+      <Variable Modifier="Public" Name="I↓cz←" ESA_ID="" Type="Double" Value="1.125e-3" Precision="2">
         <Description TranslateID="VARIABLE_I↓cz←">
           <ENU>Moment of inertia around z</ENU>
         </Description>
@@ -1848,7 +1903,7 @@
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Index↓load←" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="Index↓load←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1869,13 +1924,13 @@
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="k↓yy←" ESA_ID="" Type="Double" Value="3.33333" Precision="2">
+      <Variable Modifier="Public" Name="k↓yy←" ESA_ID="" Type="Double" Value="1.36795" Precision="2">
         <Description TranslateID="VARIABLE_k↓yy←">
           <ENU>Coefficient of effective length in direction of y axis</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="k↓zz←" ESA_ID="" Type="Double" Value="3.33333" Precision="2">
+      <Variable Modifier="Public" Name="k↓zz←" ESA_ID="" Type="Double" Value="1.15288" Precision="2">
         <Description TranslateID="VARIABLE_k↓zz←">
           <ENU>Coefficient of effective length in direction of z axis</ENU>
         </Description>
@@ -1886,37 +1941,37 @@
           <ENU>Standard column with K approximate method</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="L" ESA_ID="" Type="Double" Value="3.6" Precision="2">
+      <Variable Modifier="Public" Name="L" ESA_ID="" Type="Double" Value="4" Precision="2">
         <Description TranslateID="VARIABLE_L">
           <ENU>Member Length</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="l↓ey←" ESA_ID="" Type="Double" Value="11.99999" Precision="2">
+      <Variable Modifier="Public" Name="l↓ey←" ESA_ID="" Type="Double" Value="5.4718" Precision="2">
         <Description TranslateID="VARIABLE_l↓ey←">
           <ENU>Effective length of the member in direction of y axis</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="l↓ez←" ESA_ID="" Type="Double" Value="11.99999" Precision="2">
+      <Variable Modifier="Public" Name="l↓ez←" ESA_ID="" Type="Double" Value="4.61152" Precision="2">
         <Description TranslateID="VARIABLE_l↓ez←">
           <ENU>Effective length of the member in direction of z axis</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="L↓y←" ESA_ID="" Type="Double" Value="3.6" Precision="2">
+      <Variable Modifier="Public" Name="L↓y←" ESA_ID="" Type="Double" Value="4" Precision="2">
         <Description TranslateID="VARIABLE_L↓y←">
           <ENU>Length of the member/span of the member in direction of y axis</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="L↓z←" ESA_ID="" Type="Double" Value="3.6" Precision="2">
+      <Variable Modifier="Public" Name="L↓z←" ESA_ID="" Type="Double" Value="4" Precision="2">
         <Description TranslateID="VARIABLE_L↓z←">
           <ENU>Length of the member/span of the member in direction of z axis</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="last" ESA_ID="" Type="Double" Value="7" Precision="2">
+      <Variable Modifier="Public" Name="last" ESA_ID="" Type="Double" Value="23" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1950,63 +2005,63 @@
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓01y←" ESA_ID="" Type="Double" Value="4939.43" Precision="2">
+      <Variable Modifier="Public" Name="M↓01y←" ESA_ID="" Type="Double" Value="591682" Precision="2">
         <Description TranslateID="VARIABLE_M↓01y←">
           <ENU>Lesser value of first order ends bending moment around y axis</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓01z←" ESA_ID="" Type="Double" Value="-11987.5" Precision="2">
+      <Variable Modifier="Public" Name="M↓01z←" ESA_ID="" Type="Double" Value="-438698" Precision="2">
         <Description TranslateID="VARIABLE_M↓01z←">
           <ENU>Lesser value of first order ends bending moment around z axis</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓02y←" ESA_ID="" Type="Double" Value="-10832.4" Precision="2">
+      <Variable Modifier="Public" Name="M↓02y←" ESA_ID="" Type="Double" Value="-1.35125e6" Precision="2">
         <Description TranslateID="VARIABLE_M↓02y←">
           <ENU>Bigger value of first order ends bending moment around y axis</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓02z←" ESA_ID="" Type="Double" Value="20277.3" Precision="2">
+      <Variable Modifier="Public" Name="M↓02z←" ESA_ID="" Type="Double" Value="806590" Precision="2">
         <Description TranslateID="VARIABLE_M↓02z←">
           <ENU>Bigger value of first order ends bending moment around z axis</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓1dy,min←" ESA_ID="Result.5" Type="Double" Value="19545.6" Precision="2">
+      <Variable Modifier="Public" Name="M↓1dy,min←" ESA_ID="Result.5" Type="Double" Value="-999000" Precision="2">
         <Description TranslateID="VARIABLE_M↓1dy,min←">
           <ENU>Minimum bending moment around y axis</ENU>
         </Description>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="13" Reference="" Extrem="2" HideZeros="False" ReverseAxis="True" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓1dz,min←" ESA_ID="Result.6" Type="Double" Value="19545.6" Precision="2">
+      <Variable Modifier="Public" Name="M↓1dz,min←" ESA_ID="Result.6" Type="Double" Value="-999000" Precision="2">
         <Description TranslateID="VARIABLE_M↓1dz,min←">
           <ENU>Minimum bending moment around z axis</ENU>
         </Description>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="13" Reference="" Extrem="2" HideZeros="False" ReverseAxis="True" DrawDirection="1" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓Ay←" ESA_ID="" Type="Double" Value="-10832.4" Precision="2">
+      <Variable Modifier="Public" Name="M↓Ay←" ESA_ID="" Type="Double" Value="-1.35125e6" Precision="2">
         <Description TranslateID="VARIABLE_M↓Ay←">
           <ENU>Maximum absolute first order moment at the extremity of the column</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓Az←" ESA_ID="" Type="Double" Value="20277.3" Precision="2">
+      <Variable Modifier="Public" Name="M↓Az←" ESA_ID="" Type="Double" Value="806590" Precision="2">
         <Description TranslateID="VARIABLE_M↓Az←">
           <ENU>Maximum absolute first order moment at the extremity of the column</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓beg,y←" ESA_ID="" Type="Double" Value="4939.43" Precision="2">
+      <Variable Modifier="Public" Name="M↓beg,y←" ESA_ID="" Type="Double" Value="591682" Precision="2">
         <Description TranslateID="VARIABLE_M↓beg,y←">
           <ENU>Bending moment around y axis at the begin of member</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓beg,z←" ESA_ID="" Type="Double" Value="-11987.5" Precision="2">
+      <Variable Modifier="Public" Name="M↓beg,z←" ESA_ID="" Type="Double" Value="-438698" Precision="2">
         <Description TranslateID="VARIABLE_M↓beg,z←">
           <ENU>Bending moment around z axis at the begin of member</ENU>
         </Description>
@@ -2024,19 +2079,19 @@
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓Cy←" ESA_ID="" Type="Double" Value="-2946.42" Precision="2">
+      <Variable Modifier="Public" Name="M↓Cy←" ESA_ID="" Type="Double" Value="-379781" Precision="2">
         <Description TranslateID="VARIABLE_M↓Cy←">
           <ENU>First order moment in the middle of the cantilever column.</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓Cz←" ESA_ID="" Type="Double" Value="4144.81" Precision="2">
+      <Variable Modifier="Public" Name="M↓Cz←" ESA_ID="" Type="Double" Value="183943" Precision="2">
         <Description TranslateID="VARIABLE_M↓Cz←">
           <ENU>First order moment in the middle of the cantilever column.</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓dy,final←" ESA_ID="" Type="Double" Value="1500" Precision="2">
+      <Variable Modifier="Public" Name="M↓dy,final←" ESA_ID="" Type="Double" Value="126589.5" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2070,13 +2125,13 @@
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="13" Reference="" Extrem="2" HideZeros="False" ReverseAxis="True" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓dy←" ESA_ID="" Type="Double" Value="-10832.4" Precision="2">
+      <Variable Modifier="Public" Name="M↓dy←" ESA_ID="" Type="Double" Value="-1.35125e6" Precision="2">
         <Description TranslateID="VARIABLE_M↓dy←">
           <ENU>Total bending moment around y axis</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓dz,final←" ESA_ID="" Type="Double" Value="1500" Precision="2">
+      <Variable Modifier="Public" Name="M↓dz,final←" ESA_ID="" Type="Double" Value="-101271.6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2111,58 +2166,58 @@
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="13" Reference="" Extrem="2" HideZeros="False" ReverseAxis="True" DrawDirection="1" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓dz←" ESA_ID="" Type="Double" Value="20277.3" Precision="2">
+      <Variable Modifier="Public" Name="M↓dz←" ESA_ID="" Type="Double" Value="806590" Precision="2">
         <Description TranslateID="VARIABLE_M↓dz←">
           <ENU>Final value of bending moment around z axis</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓end,y←" ESA_ID="" Type="Double" Value="-10832.4" Precision="2">
+      <Variable Modifier="Public" Name="M↓end,y←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description TranslateID="VARIABLE_M↓end,y←">
           <ENU>Bending moment around y axis at the end of member</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓end,z←" ESA_ID="" Type="Double" Value="20277.3" Precision="2">
+      <Variable Modifier="Public" Name="M↓end,z←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description TranslateID="VARIABLE_M↓end,z←">
           <ENU>Bending moment around z axis at the end of member</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓ody←" ESA_ID="" Type="Double" Value="4939.43" Precision="2">
+      <Variable Modifier="Public" Name="M↓ody←" ESA_ID="" Type="Double" Value="591682" Precision="2">
         <Description TranslateID="VARIABLE_M↓ody←">
           <ENU>First order bending moment around y axis including effect of imperfection</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓odz←" ESA_ID="" Type="Double" Value="-11987.5" Precision="2">
+      <Variable Modifier="Public" Name="M↓odz←" ESA_ID="" Type="Double" Value="-438698" Precision="2">
         <Description TranslateID="VARIABLE_M↓odz←">
           <ENU>First order bending moment around z axis including effect of imperfection</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓x←" ESA_ID="Result.13" Type="Double" Value="-20.6375" Precision="2">
+      <Variable Modifier="Public" Name="M↓x←" ESA_ID="Result.13" Type="Double" Value="-999000" Precision="2">
         <Description TranslateID="VARIABLE_M↓x←">
           <ENU>Torsion moment around x axis</ENU>
         </Description>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="13" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓y,sect.beg←" ESA_ID="" Type="Double" Value="4939.43" Precision="2">
+      <Variable Modifier="Public" Name="M↓y,sect.beg←" ESA_ID="" Type="Double" Value="591682" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓y,sect.end←" ESA_ID="" Type="Double" Value="-10832.4" Precision="2">
+      <Variable Modifier="Public" Name="M↓y,sect.end←" ESA_ID="" Type="Double" Value="-1.35125e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓y,sect←" ESA_ID="" Type="Double" Value="4939.43" Precision="2">
+      <Variable Modifier="Public" Name="M↓y,sect←" ESA_ID="" Type="Double" Value="591682" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2175,28 +2230,28 @@
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓y←" ESA_ID="Result.1" Type="Double" Value="4939.43" Precision="2">
+      <Variable Modifier="Public" Name="M↓y←" ESA_ID="Result.1" Type="Double" Value="-999000" Precision="2">
         <Description TranslateID="VARIABLE_M↓y←">
           <ENU>First order bending moment around y axis</ENU>
         </Description>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="13" Reference="" Extrem="2" HideZeros="False" ReverseAxis="True" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓z,sect.beg←" ESA_ID="" Type="Double" Value="-11987.5" Precision="2">
+      <Variable Modifier="Public" Name="M↓z,sect.beg←" ESA_ID="" Type="Double" Value="-438698" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓z,sect.end←" ESA_ID="" Type="Double" Value="20277.3" Precision="2">
+      <Variable Modifier="Public" Name="M↓z,sect.end←" ESA_ID="" Type="Double" Value="806590" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓z,sect←" ESA_ID="" Type="Double" Value="-11987.5" Precision="2">
+      <Variable Modifier="Public" Name="M↓z,sect←" ESA_ID="" Type="Double" Value="-438698" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2209,21 +2264,21 @@
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓z←" ESA_ID="Result.2" Type="Double" Value="-11987.5" Precision="2">
+      <Variable Modifier="Public" Name="M↓z←" ESA_ID="Result.2" Type="Double" Value="-999000" Precision="2">
         <Description TranslateID="VARIABLE_M↓z←">
           <ENU>First order bending moment around z axis</ENU>
         </Description>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="13" Reference="" Extrem="2" HideZeros="False" ReverseAxis="True" DrawDirection="1" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="My↓sen←" ESA_ID="" Type="Double" Value="-10832.4" Precision="2">
+      <Variable Modifier="Public" Name="My↓sen←" ESA_ID="" Type="Double" Value="-1.35125e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="Mz↓sen←" ESA_ID="" Type="Double" Value="20277.3" Precision="2">
+      <Variable Modifier="Public" Name="Mz↓sen←" ESA_ID="" Type="Double" Value="806590" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2237,49 +2292,49 @@
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓A←" ESA_ID="" Type="Double" Value="-651520" Precision="2">
+      <Variable Modifier="Public" Name="N↓A←" ESA_ID="" Type="Double" Value="-4.21965e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓beg←" ESA_ID="" Type="Double" Value="-651520" Precision="2">
+      <Variable Modifier="Public" Name="N↓beg←" ESA_ID="" Type="Double" Value="-4.21965e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓d←" ESA_ID="Result.0" Type="Double" Value="-651520" Precision="2">
+      <Variable Modifier="Public" Name="N↓d←" ESA_ID="Result.0" Type="Double" Value="-999000" Precision="2">
         <Description TranslateID="VARIABLE_N↓d←">
           <ENU>Design value of the axial force (compressive force is negative)</ENU>
         </Description>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="12" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓end←" ESA_ID="" Type="Double" Value="-634188" Precision="2">
+      <Variable Modifier="Public" Name="N↓end←" ESA_ID="" Type="Double" Value="-200000" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓S←" ESA_ID="" Type="Double" Value="8" Precision="2">
+      <Variable Modifier="Public" Name="n↓S←" ESA_ID="" Type="Double" Value="24" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓sen←" ESA_ID="" Type="Double" Value="-634188" Precision="2">
+      <Variable Modifier="Public" Name="N↓sen←" ESA_ID="" Type="Double" Value="-4.21965e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="NameConcrete" ESA_ID="" Type="String" Value="C25">
+      <Variable Modifier="Public" Name="NameConcrete" ESA_ID="" Type="String" Value="C30">
         <Description>
           <ENU>
           </ENU>
@@ -2297,21 +2352,21 @@
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="NSection" ESA_ID="" Type="Double" Value="8" Precision="2">
+      <Variable Modifier="Public" Name="NSection" ESA_ID="" Type="Double" Value="14" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Number↓E←" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="Number↓E←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Number↓N←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="Number↓N←" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2496,7 +2551,7 @@
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="sigy" ESA_ID="" Type="Double" Value="-1" Precision="2">
+      <Variable Modifier="Public" Name="sigy" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2544,7 +2599,7 @@
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="SolutionN" ESA_ID="" Type="String" Value=" Evaluate the effective length and/or change the cross-section.">
+      <Variable Modifier="Public" Name="SolutionN" ESA_ID="" Type="String" Value="The member should be splitted before to perform the internal forces.">
         <Description>
           <ENU>
           </ENU>
@@ -2607,14 +2662,14 @@
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="tempΔDx" ESA_ID="" Type="Double" Value="545.45e-3" Precision="2">
+      <Variable Modifier="Public" Name="tempΔDx" ESA_ID="" Type="Double" Value="363.63e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="tempΔΜ" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="tempΔΜ" ESA_ID="" Type="Double" Value="113207.9" Precision="2">
         <Description>
           <ENU>,</ENU>
         </Description>
@@ -2644,7 +2699,7 @@
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="TypeCss" ESA_ID="" Type="Double" Value="2002" Precision="0">
+      <Variable Modifier="Public" Name="TypeCss" ESA_ID="" Type="Double" Value="2003" Precision="0">
         <Description>
           <ENU>Type of cross-section for calculation</ENU>
         </Description>
@@ -2662,21 +2717,21 @@
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="typeofCombi" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="typeofCombi" ESA_ID="" Type="Double" Value="-1" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="typeOfLimitState" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="typeOfLimitState" ESA_ID="" Type="Double" Value="-1" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="typeOfLoad" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="typeOfLoad" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2732,14 +2787,14 @@
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="V↓y←" ESA_ID="Result.15" Type="Double" Value="8962.47" Precision="2">
+      <Variable Modifier="Public" Name="V↓y←" ESA_ID="Result.15" Type="Double" Value="-999000" Precision="2">
         <Description TranslateID="VARIABLE_V↓y←">
           <ENU>Shear force at y direction</ENU>
         </Description>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="12" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="1" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="V↓z←" ESA_ID="Result.14" Type="Double" Value="-4381.05" Precision="2">
+      <Variable Modifier="Public" Name="V↓z←" ESA_ID="Result.14" Type="Double" Value="-999000" Precision="2">
         <Description TranslateID="VARIABLE_V↓z←">
           <ENU>Shear force at z direction</ENU>
         </Description>
@@ -2765,13 +2820,13 @@
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="α↓by←" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="α↓by←" ESA_ID="" Type="Double" Value="415.6374e-3" Precision="2">
         <Description TranslateID="VARIABLE_α↓by←">
           <ENU>Factor for lambda1 y</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓bz←" ESA_ID="" Type="Double" Value="850e-3" Precision="2">
+      <Variable Modifier="Public" Name="α↓bz←" ESA_ID="" Type="Double" Value="400e-3" Precision="2">
         <Description TranslateID="VARIABLE_α↓bz←">
           <ENU>Factor for lambda1 y</ENU>
         </Description>
@@ -2804,35 +2859,35 @@
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λ↓1y←" ESA_ID="Result.9" Type="Double" Value="35" Precision="2">
+      <Variable Modifier="Public" Name="λ↓1y←" ESA_ID="Result.9" Type="Double" Value="-999" Precision="2">
         <Description>
           <ENU>Lambda1 y</ENU>
         </Description>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="81" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λ↓1z←" ESA_ID="Result.11" Type="Double" Value="35" Precision="2">
+      <Variable Modifier="Public" Name="λ↓1z←" ESA_ID="Result.11" Type="Double" Value="-999" Precision="2">
         <Description>
           <ENU>Lambda1 z</ENU>
         </Description>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="81" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="1" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λ↓y←" ESA_ID="Result.10" Type="Double" Value="96.24394" Precision="2">
+      <Variable Modifier="Public" Name="λ↓y←" ESA_ID="Result.10" Type="Double" Value="-999" Precision="2">
         <Description TranslateID="VARIABLE_λ↓y←">
           <ENU>Slenderness around y axis</ENU>
         </Description>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="81" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="90" DrawLimitMin="0" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λ↓z←" ESA_ID="Result.12" Type="Double" Value="96.24394" Precision="2">
+      <Variable Modifier="Public" Name="λ↓z←" ESA_ID="Result.12" Type="Double" Value="-999" Precision="2">
         <Description TranslateID="VARIABLE_λ↓z←">
           <ENU>Slenderness around z axis</ENU>
         </Description>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="81" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="1" DrawLimitMax="90" DrawLimitMin="0" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ν" ESA_ID="" Type="Double" Value="500e-3" Precision="2">
+      <Variable Modifier="Public" Name="ν" ESA_ID="" Type="Double" Value="1.31278" Precision="2">
         <Description TranslateID="VARIABLE_ν">
           <ENU>Adimensional normal force</ENU>
         </Description>
@@ -7846,14 +7901,6 @@
         <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010967">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-      </VC>
       <VC ID="INI400_011154">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -8534,6 +8581,294 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="INI400_017189">
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_017808">
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="173" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="185" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="173" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="173" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="880" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="188" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="185" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="188" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="188" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="880" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000005">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="204" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="185" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="204" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="204" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="880" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000006">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000007">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000008">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000009">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000010">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|2|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|2|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|2|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|2|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|2|2" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000011">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000012">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000013">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000014">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000015">
+        <Set Vis="0" Prev="" Style="0" StyleName="Remark" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000016">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1112" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="427" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="427" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="203" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="427" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000017">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1120" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="211" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="420" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000019">
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000020">
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000021">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000022">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000023">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000024">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000025">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000026">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000027">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000028">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000029">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000030">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000031">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000032">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000033">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000034">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000035">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000036">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="RFM227_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -8635,8 +8970,8 @@
         <TDoubleInput Name="" ID="93" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="59" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="M↓x←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="" ID="92" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="58" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="V↓y←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="" ID="91" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="57" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="V↓z←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TComboBox Name="" ID="7" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="49" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="columnType" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="380" Values="0|1|2" Index="0">
-          <Texts TranslateID="DIALOG_000007">
+        <TComboBox Name="" ID="7" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="49" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="columnType" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="380" Values="0|1|2" Index="1">
+          <Texts>
             <ENU>Cantilever column|bi-supported column|bi-supported column with significant transversal loads along the height</ENU>
           </Texts>
         </TComboBox>
@@ -8674,8 +9009,8 @@
         <TDoubleInput Name="UserScale" ID="74" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="44" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="UserScale" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="UserX" ID="72" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="42" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="UserX" VarNameVisible="False" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="UserY" ID="73" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="43" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="UserY" VarNameVisible="False" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TComboBox Name="UCSPosition" ID="76" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="UCSPosition" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1|2|3|4|5|6|7|8|9" Index="4">
-          <Texts TranslateID="DIALOG_000076">
+        <TComboBox Name="UCSPosition" ID="76" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="UCSPosition" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1|2|3|4|5|6|7|8|9" Index="4">
+          <Texts>
             <ENU>Bottom left|Bottom Centre|Bottom Right|Middle Left|Centre of gravity|Middle Right|Top Left|Top Centre|Top Right|User Defined</ENU>
           </Texts>
         </TComboBox>
@@ -8685,8 +9020,8 @@
             </ENU>
           </Texts>
         </TCheckBox>
-        <TLabel Name="" ID="71" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="41" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
-          <Texts TranslateID="DIALOG_000071">
+        <TLabel Name="" ID="71" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="41" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
+          <Texts>
             <ENU>Graphics setup</ENU>
           </Texts>
         </TLabel>
@@ -8697,8 +9032,8 @@
         <TDoubleInput Name="TDoubleInput" ID="65" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="4" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="M↓dz←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="TDoubleInput" ID="64" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="M↓dy←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="TDoubleInput" ID="48" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="6" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TLabel Name="TLabel" ID="7" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="7" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
-          <Texts TranslateID="DIALOG_000007">
+        <TLabel Name="TLabel" ID="7" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="7" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
+          <Texts>
             <ENU>Output values</ENU>
           </Texts>
         </TLabel>
@@ -8722,14 +9057,14 @@
             </ENU>
           </Texts>
         </TCheckBox>
-        <TLabel Name="TLabel" ID="6" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="13" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
-          <Texts TranslateID="DIALOG_000006">
+        <TLabel Name="TLabel" ID="6" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="13" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
+          <Texts>
             <ENU>Setting of calculation</ENU>
           </Texts>
         </TLabel>
         <TDoubleInput Name="TDoubleInput" ID="34" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="14" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="γ↓c←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TLabel Name="TLabel" ID="5" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="15" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
-          <Texts TranslateID="DIALOG_000005">
+        <TLabel Name="TLabel" ID="5" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="15" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
+          <Texts>
             <ENU>General parameters</ENU>
           </Texts>
         </TLabel>
@@ -8752,8 +9087,8 @@
         <TDoubleInput Name="TDoubleInput" ID="63" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="22" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="L↓z←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="TDoubleInput" ID="27" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="23" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="L↓y←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="TDoubleInput" ID="26" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="24" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="H" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TLabel Name="TLabel" ID="4" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="25" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
-          <Texts TranslateID="DIALOG_000004">
+        <TLabel Name="TLabel" ID="4" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="25" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
+          <Texts>
             <ENU>Setting of buckling data</ENU>
           </Texts>
         </TLabel>
@@ -8764,14 +9099,14 @@
         <TDoubleInput Name="MBy" ID="85" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="51" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="M↓By←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="MCy" ID="86" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="52" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="M↓Cy←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="MAy" ID="84" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="50" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="M↓Ay←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TComboBox Name="DcolumnType" ID="83" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="49" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="columnType" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="380" Values="0|1|2" Index="0">
-          <Texts TranslateID="DIALOG_000083">
+        <TComboBox Name="DcolumnType" ID="83" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="49" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="columnType" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="380" Values="0|1|2" Index="1">
+          <Texts>
             <ENU>Cantilever column|bi-supported column|bi-supported column with significant transversal loads along the height</ENU>
           </Texts>
         </TComboBox>
         <TDoubleInput Name="TDoubleInput" ID="22" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="28" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="N↓d←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TLabel Name="TLabel" ID="3" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="29" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
-          <Texts TranslateID="DIALOG_000003">
+        <TLabel Name="TLabel" ID="3" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="29" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
+          <Texts>
             <ENU>Load of the member</ENU>
           </Texts>
         </TLabel>
@@ -8781,8 +9116,8 @@
         <TDoubleInput Name="TDoubleInput" ID="11" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="33" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="A↓c←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="TDoubleInput" ID="10" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="34" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="h" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="TDoubleInput" ID="9" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="35" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="b" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TLabel Name="TLabel" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="36" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
-          <Texts TranslateID="DIALOG_000001">
+        <TLabel Name="TLabel" ID="1" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="36" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
+          <Texts>
             <ENU>Geometry of  cross-sections</ENU>
           </Texts>
         </TLabel>
@@ -8949,7 +9284,7 @@
             </Items>
           </Data>
         </TCustomLibrary>
-        <TEMDLoader Name="" ID="90" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="56" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.8" SectionID="-1" CombiID="-1" />
+        <TEMDLoader Name="" ID="90" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="56" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="" SectionID="-1" CombiID="-1" />
       </TPanel>
     </Main>
     <MemberData Width="500" />
@@ -8965,6 +9300,9 @@
     </Item>
     <Item TranslateID="STRING_3422FBFC">
       <ENU>"Error"</ENU>
+    </Item>
+    <Item TranslateID="STRING_40BBAF3F">
+      <ENU>"Continuous member is not supported."</ENU>
     </Item>
     <Item TranslateID="STRING_4182DFC4">
       <ENU>" No user defined reinforcement found in this section."</ENU>
@@ -8989,6 +9327,9 @@
     </Item>
     <Item TranslateID="STRING_B3305042">
       <ENU>"Reinforcement is not symmetric - calculation cannot be performed."</ENU>
+    </Item>
+    <Item TranslateID="STRING_B397C31D">
+      <ENU>"The member should be splitted before to perform the internal forces."</ENU>
     </Item>
     <Item TranslateID="STRING_BB310D6A">
       <ENU>"column"</ENU>

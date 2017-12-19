@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="237c0f37-8e1a-41a6-aadf-a3b8bf862bcf">
   <CodeEditor>
-    <SourceCode Collapsed="1|57|62|90|95|125|130|155|210|334|361|396|457|515|550|588|601|628|649|700|747|756|778|792|835|868|887|891|969|973|1123|1144|1172|1234|1367|1390|1404|1415|1431|1442|1458|1466|1477|1519|1558|1609|1633|1661|1707|1735|1764|1843|1875|1925|1945|1969|1984|1999|2012|2029|2052|2069|2107|2108|2175|2205|2220|2230|2247|2310|2341|2362|2386|2404|2423|2464|2480|2491|2508|2529|2549|2550|2614|2649|2673|2701|2722|2747|2765|2784|2824|2825|2841|2854|2873|2893|2911|2973|3023|3098|3123|3199|3212|3236|3256|3269|3284|3299|3313|3324|3417|3526|3527|3536|3546|3547|3562|3563|3618|3619|3625|3676|3695|3708" BreakPoints="">→INI400_013605BLOCK("Function for preparation ReqReinfMat and ReqReinfDiagram") { 
+    <SourceCode Collapsed="1|57|62|90|95|125|130|155|210|334|361|396|457|515|550|588|601|628|649|700|747|756|778|792|835|868|887|891|973|977|1179|1198|1199|1226|1227|1289|1422|1445|1458|1459|1469|1470|1485|1486|1496|1497|1512|1513|1521|1531|1532|1574|1613|1663|1664|1688|1716|1762|1790|1818|1819|1898|1929|1930|1979|1980|1999|2000|2023|2024|2038|2039|2053|2054|2067|2084|2106|2107|2124|2162|2163|2229|2230|2259|2260|2274|2275|2284|2285|2301|2302|2365|2395|2396|2416|2417|2440|2441|2458|2459|2477|2478|2518|2519|2534|2535|2545|2546|2562|2563|2583|2584|2604|2605|2668|2669|2703|2704|2727|2728|2755|2756|2776|2777|2801|2802|2819|2820|2838|2839|2879|2880|2895|2896|2908|2909|2927|2928|2947|2948|2965|2966|3027|3028|3077|3078|3153|3177|3178|3254|3267|3291|3311|3324|3339|3354|3368|3379|3472|3581|3582|3591|3601|3602|3617|3618|3673|3674|3680|3731|3749|3750|3762|3763" BreakPoints="">→INI400_013605BLOCK("Function for preparation ReqReinfMat and ReqReinfDiagram") { 
     object GetReqReinfMat() { 
         object ReqReinfMat →INI400_013912= null; 
         
@@ -889,10 +889,10 @@
 
 →INI400_008991BLOCK("Function write summary area of reinforcement") { 
     void WriteSummaryReinArea(object SummaryArea, object SumProvReinf) { 
-        →KRS116_000147WriteSummaryReinArea(SummaryArea, SumProvReinf, true); 
+        →KRS116_000147WriteSummaryReinArea(SummaryArea, SumProvReinf, 0, true); 
     } 
     
-    void WriteSummaryReinArea(object SummaryArea, object SumProvReinf, bool UseProvReinf) { 
+    void WriteSummaryReinArea(object SummaryArea, object SumProvReinf, double TypeMember, bool UseProvReinf) { 
         →INI400_008992TEXT("Summary of reinforcement"); 
         IF(UseProvReinf) { 
             SWITCH(IO.CS.Geometry.FormCode) { 
@@ -919,18 +919,20 @@
                     →INI400_009980TEXT("Bottom :"); 
                     →INI400_010097TEXT("A↓sz.req-← = " &amp; Val(SummaryArea.Req.As_zneg*1000000, 3) &amp; " mm↑2←"); 
                     →KRS127_000002TEXT("A↓sz.prov-← = " &amp; Val(SumProvReinf.As_zneg*1000000, 3) &amp; " mm↑2←"); 
-                    →INI400_009981TEXT("Right :"); 
-                    →INI400_010098TEXT("A↓sy.req+← = " &amp; Val(SummaryArea.Req.As_ypos*1000000, 3) &amp; " mm↑2←"); 
-                    →KRS127_000003TEXT("A↓sy.prov+← = " &amp; Val(SumProvReinf.As_ypos*1000000, 3) &amp; " mm↑2←"); 
-                    →INI400_010099TEXT("Left :"); 
-                    →INI400_010100TEXT("A↓sy.req-← = " &amp; Val(SummaryArea.Req.As_yneg*1000000, 3) &amp; " mm↑2←"); 
-                    →KRS127_000004TEXT("A↓sy.prov-← = " &amp; Val(SumProvReinf.As_yneg*1000000, 3) &amp; " mm↑2←"); 
-                    →INI400_009983TEXT("Total vertical :"); 
-                    →INI400_010101TEXT("A↓sz.req← = " &amp; Val(SummaryArea.Req.As_z*1000000, 3) &amp; " mm↑2←"); 
-                    →KRS127_000005TEXT("A↓sz.prov← = " &amp; Val(SumProvReinf.As_z*1000000, 3) &amp; " mm↑2←"); 
-                    →INI400_009984TEXT("Total horizontal :"); 
-                    →INI400_010102TEXT("A↓sy.req← = " &amp; Val(SummaryArea.Req.As_y*1000000, 3) &amp; " mm↑2←"); 
-                    →KRS127_000006TEXT("A↓sy.prov← = " &amp; Val(SumProvReinf.As_y*1000000, 3) &amp; " mm↑2←"); 
+                    IF(TypeMember != 2) { //!BeamSlab
+                        →INI400_009981TEXT("Right :"); 
+                        →INI400_010098TEXT("A↓sy.req+← = " &amp; Val(SummaryArea.Req.As_ypos*1000000, 3) &amp; " mm↑2←"); 
+                        →KRS127_000003TEXT("A↓sy.prov+← = " &amp; Val(SumProvReinf.As_ypos*1000000, 3) &amp; " mm↑2←"); 
+                        →INI400_010099TEXT("Left :"); 
+                        →INI400_010100TEXT("A↓sy.req-← = " &amp; Val(SummaryArea.Req.As_yneg*1000000, 3) &amp; " mm↑2←"); 
+                        →KRS127_000004TEXT("A↓sy.prov-← = " &amp; Val(SumProvReinf.As_yneg*1000000, 3) &amp; " mm↑2←"); 
+                        →INI400_009983TEXT("Total vertical :"); 
+                        →INI400_010101TEXT("A↓sz.req← = " &amp; Val(SummaryArea.Req.As_z*1000000, 3) &amp; " mm↑2←"); 
+                        →KRS127_000005TEXT("A↓sz.prov← = " &amp; Val(SumProvReinf.As_z*1000000, 3) &amp; " mm↑2←"); 
+                        →INI400_009984TEXT("Total horizontal :"); 
+                        →INI400_010102TEXT("A↓sy.req← = " &amp; Val(SummaryArea.Req.As_y*1000000, 3) &amp; " mm↑2←"); 
+                        →KRS127_000006TEXT("A↓sy.prov← = " &amp; Val(SumProvReinf.As_y*1000000, 3) &amp; " mm↑2←"); 
+                    } 
                     →INI400_010103TEXT("Total :"); 
                     →INI400_010104TEXT("A↓s.req← = " &amp; Val(SummaryArea.Req.As*1000000, 3) &amp; " mm↑2←"); 
                     →KRS127_000007TEXT("A↓s.prov← = " &amp; Val(SumProvReinf.As*1000000, 3) &amp; " mm↑2←"); 
@@ -955,14 +957,16 @@
                     →KRS116_000058TEXT("A↓sz.req+← = " &amp; Val(SummaryArea.Req.As_zpos*1000000, 3) &amp; " mm↑2←"); 
                     →KRS116_000060TEXT("Bottom :"); 
                     →KRS116_000061TEXT("A↓sz.req-← = " &amp; Val(SummaryArea.Req.As_zneg*1000000, 3) &amp; " mm↑2←"); 
-                    →KRS116_000063TEXT("Right :"); 
-                    →KRS116_000064TEXT("A↓sy.req+← = " &amp; Val(SummaryArea.Req.As_ypos*1000000, 3) &amp; " mm↑2←"); 
-                    →KRS116_000066TEXT("Left :"); 
-                    →KRS116_000067TEXT("A↓sy.req-← = " &amp; Val(SummaryArea.Req.As_yneg*1000000, 3) &amp; " mm↑2←"); 
-                    →KRS116_000069TEXT("Total vertical :"); 
-                    →KRS116_000070TEXT("A↓sz.req← = " &amp; Val(SummaryArea.Req.As_z*1000000, 3) &amp; " mm↑2←"); 
-                    →KRS116_000072TEXT("Total horizontal :"); 
-                    →KRS116_000073TEXT("A↓sy.req← = " &amp; Val(SummaryArea.Req.As_y*1000000, 3) &amp; " mm↑2←"); 
+                    IF(TypeMember != 2) { //!BeamSlab 
+                        →KRS116_000063TEXT("Right :"); 
+                        →KRS116_000064TEXT("A↓sy.req+← = " &amp; Val(SummaryArea.Req.As_ypos*1000000, 3) &amp; " mm↑2←"); 
+                        →KRS116_000066TEXT("Left :"); 
+                        →KRS116_000067TEXT("A↓sy.req-← = " &amp; Val(SummaryArea.Req.As_yneg*1000000, 3) &amp; " mm↑2←"); 
+                        →KRS116_000069TEXT("Total vertical :"); 
+                        →KRS116_000070TEXT("A↓sz.req← = " &amp; Val(SummaryArea.Req.As_z*1000000, 3) &amp; " mm↑2←"); 
+                        →KRS116_000072TEXT("Total horizontal :"); 
+                        →KRS116_000073TEXT("A↓sy.req← = " &amp; Val(SummaryArea.Req.As_y*1000000, 3) &amp; " mm↑2←"); 
+                    } 
                     →KRS116_000075TEXT("Total :"); 
                     →KRS116_000076TEXT("A↓s.req← = " &amp; Val(SummaryArea.Req.As*1000000, 3) &amp; " mm↑2←"); 
                 } 
@@ -971,10 +975,10 @@
     } 
     
     void WriteSummaryReinAreaFull(object SummaryAreaFin, object SummaryAreaPract, object SumBasicProvReinf, object SumAdditionalProvReinf, object SumAdditionalReinf, object SumProvReinf) { 
-        →KRS116_000148WriteSummaryReinAreaFull(SummaryAreaFin, SummaryAreaPract, SumBasicProvReinf, SumAdditionalProvReinf, SumAdditionalReinf, SumProvReinf, true); 
+        →KRS116_000148WriteSummaryReinAreaFull(SummaryAreaFin, SummaryAreaPract, SumBasicProvReinf, SumAdditionalProvReinf, SumAdditionalReinf, SumProvReinf, 0, true); 
     } 
     
-    void WriteSummaryReinAreaFull(object SummaryAreaFin, object SummaryAreaPract, object SumBasicProvReinf, object SumAdditionalProvReinf, object SumAdditionalReinf, object SumProvReinf, bool UseProvReinf) { 
+    void WriteSummaryReinAreaFull(object SummaryAreaFin, object SummaryAreaPract, object SumBasicProvReinf, object SumAdditionalProvReinf, object SumAdditionalReinf, object SumProvReinf, double TypeMember, bool UseProvReinf) { 
         object FontsColors →KRS127_000072= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.CLC"); 
         object FontsAndColors →KRS127_000073= FontsColors.GetFontsAndColors(); 
         →KRS127_000148TEXT("Summary of reinforcement"); 
@@ -991,65 +995,93 @@
             //row header
             T[1][0].Value →KRS127_000082= TR("Top"); 
             T[2][0].Value →KRS127_000083= TR("Bottom"); 
-            T[3][0].Value →KRS127_000084= TR("Right"); 
-            T[4][0].Value →KRS127_000085= TR("Left"); 
-            T[5][0].Value →KRS127_000086= TR("Total vertical"); 
-            T[6][0].Value →KRS127_000087= TR("Total horizontal"); 
-            T[7][0].Value →KRS127_000088= TR("Total"); 
+            IF(TypeMember != 2) { //!BeamSlab
+                T[3][0].Value →KRS127_000084= TR("Right"); 
+                T[4][0].Value →KRS127_000085= TR("Left"); 
+                T[5][0].Value →KRS127_000086= TR("Total vertical"); 
+                T[6][0].Value →KRS127_000087= TR("Total horizontal"); 
+                T[7][0].Value →KRS127_000088= TR("Total"); 
+            } ELSE { 
+                T[3][0].Value →KRS106_000069= TR("Total"); 
+            } 
             
             //A↓s.req←
             T[1][1].Value →KRS127_000106= SummaryAreaFin.Req.As_zpos*1000000; 
             T[2][1].Value →KRS127_000107= SummaryAreaFin.Req.As_zneg*1000000; 
-            T[3][1].Value →KRS127_000108= SummaryAreaFin.Req.As_ypos*1000000; 
-            T[4][1].Value →KRS127_000109= SummaryAreaFin.Req.As_yneg*1000000; 
-            T[5][1].Value →KRS127_000110= SummaryAreaFin.Req.As_z*1000000; 
-            T[6][1].Value →KRS127_000111= SummaryAreaFin.Req.As_y*1000000; 
-            T[7][1].Value →KRS127_000112= SummaryAreaFin.Req.As*1000000; 
+            IF(TypeMember != 2) { //!BeamSlab
+                T[3][1].Value →KRS127_000108= SummaryAreaFin.Req.As_ypos*1000000; 
+                T[4][1].Value →KRS127_000109= SummaryAreaFin.Req.As_yneg*1000000; 
+                T[5][1].Value →KRS127_000110= SummaryAreaFin.Req.As_z*1000000; 
+                T[6][1].Value →KRS127_000111= SummaryAreaFin.Req.As_y*1000000; 
+                T[7][1].Value →KRS127_000112= SummaryAreaFin.Req.As*1000000; 
+            } ELSE { 
+                T[3][1].Value →KRS106_000070= SummaryAreaFin.Req.As*1000000; 
+            } 
             
             //A↓s.req.bar←
             T[1][2].Value →KRS127_000113= SummaryAreaPract.Req.As_zpos*1000000; 
             T[2][2].Value →KRS127_000114= SummaryAreaPract.Req.As_zneg*1000000; 
-            T[3][2].Value →KRS127_000115= SummaryAreaPract.Req.As_ypos*1000000; 
-            T[4][2].Value →KRS127_000116= SummaryAreaPract.Req.As_yneg*1000000; 
-            T[5][2].Value →KRS127_000117= SummaryAreaPract.Req.As_z*1000000; 
-            T[6][2].Value →KRS127_000118= SummaryAreaPract.Req.As_y*1000000; 
-            T[7][2].Value →KRS127_000119= SummaryAreaPract.Req.As*1000000; 
+            IF(TypeMember != 2) { //!BeamSlab
+                T[3][2].Value →KRS127_000115= SummaryAreaPract.Req.As_ypos*1000000; 
+                T[4][2].Value →KRS127_000116= SummaryAreaPract.Req.As_yneg*1000000; 
+                T[5][2].Value →KRS127_000117= SummaryAreaPract.Req.As_z*1000000; 
+                T[6][2].Value →KRS127_000118= SummaryAreaPract.Req.As_y*1000000; 
+                T[7][2].Value →KRS127_000119= SummaryAreaPract.Req.As*1000000; 
+            } ELSE { 
+                T[3][2].Value →KRS106_000071= SummaryAreaPract.Req.As*1000000; 
+            } 
             
             //A↓s.bas.prov←
             T[1][3].Value →KRS127_000120= SumBasicProvReinf.As_zpos*1000000; 
             T[2][3].Value →KRS127_000121= SumBasicProvReinf.As_zneg*1000000; 
-            T[3][3].Value →KRS127_000122= SumBasicProvReinf.As_ypos*1000000; 
-            T[4][3].Value →KRS127_000123= SumBasicProvReinf.As_yneg*1000000; 
-            T[5][3].Value →KRS127_000124= SumBasicProvReinf.As_z*1000000; 
-            T[6][3].Value →KRS127_000125= SumBasicProvReinf.As_y*1000000; 
-            T[7][3].Value →KRS127_000126= SumBasicProvReinf.As*1000000; 
+            IF(TypeMember != 2) { //!BeamSlab
+                T[3][3].Value →KRS127_000122= SumBasicProvReinf.As_ypos*1000000; 
+                T[4][3].Value →KRS127_000123= SumBasicProvReinf.As_yneg*1000000; 
+                T[5][3].Value →KRS127_000124= SumBasicProvReinf.As_z*1000000; 
+                T[6][3].Value →KRS127_000125= SumBasicProvReinf.As_y*1000000; 
+                T[7][3].Value →KRS127_000126= SumBasicProvReinf.As*1000000; 
+            } ELSE { 
+                T[3][3].Value →KRS106_000072= SumBasicProvReinf.As*1000000; 
+            } 
             
             //A↓s.add.prov←
             T[1][4].Value →KRS127_000127= SumAdditionalProvReinf.As_zpos*1000000; 
             T[2][4].Value →KRS127_000128= SumAdditionalProvReinf.As_zneg*1000000; 
-            T[3][4].Value →KRS127_000129= SumAdditionalProvReinf.As_ypos*1000000; 
-            T[4][4].Value →KRS127_000130= SumAdditionalProvReinf.As_yneg*1000000; 
-            T[5][4].Value →KRS127_000131= SumAdditionalProvReinf.As_z*1000000; 
-            T[6][4].Value →KRS127_000132= SumAdditionalProvReinf.As_y*1000000; 
-            T[7][4].Value →KRS127_000133= SumAdditionalProvReinf.As*1000000; 
+            IF(TypeMember != 2) { //!BeamSlab
+                T[3][4].Value →KRS127_000129= SumAdditionalProvReinf.As_ypos*1000000; 
+                T[4][4].Value →KRS127_000130= SumAdditionalProvReinf.As_yneg*1000000; 
+                T[5][4].Value →KRS127_000131= SumAdditionalProvReinf.As_z*1000000; 
+                T[6][4].Value →KRS127_000132= SumAdditionalProvReinf.As_y*1000000; 
+                T[7][4].Value →KRS127_000133= SumAdditionalProvReinf.As*1000000; 
+            } ELSE { 
+                T[3][4].Value →KRS106_000073= SumAdditionalProvReinf.As*1000000; 
+            } 
             
             //A↓s.add.req←
             T[1][5].Value →KRS127_000134= SumAdditionalReinf.As_zpos*1000000; 
             T[2][5].Value →KRS127_000135= SumAdditionalReinf.As_zneg*1000000; 
-            T[3][5].Value →KRS127_000136= SumAdditionalReinf.As_ypos*1000000; 
-            T[4][5].Value →KRS127_000137= SumAdditionalReinf.As_yneg*1000000; 
-            T[5][5].Value →KRS127_000138= SumAdditionalReinf.As_z*1000000; 
-            T[6][5].Value →KRS127_000139= SumAdditionalReinf.As_y*1000000; 
-            T[7][5].Value →KRS127_000140= SumAdditionalReinf.As*1000000; 
+            IF(TypeMember != 2) { //!BeamSlab
+                T[3][5].Value →KRS127_000136= SumAdditionalReinf.As_ypos*1000000; 
+                T[4][5].Value →KRS127_000137= SumAdditionalReinf.As_yneg*1000000; 
+                T[5][5].Value →KRS127_000138= SumAdditionalReinf.As_z*1000000; 
+                T[6][5].Value →KRS127_000139= SumAdditionalReinf.As_y*1000000; 
+                T[7][5].Value →KRS127_000140= SumAdditionalReinf.As*1000000; 
+            } ELSE { 
+                T[3][5].Value →KRS106_000074= SumAdditionalReinf.As*1000000; 
+            } 
             
             //A↓s.prov←
             T[1][6].Value →KRS127_000141= SumProvReinf.As_zpos*1000000; 
             T[2][6].Value →KRS127_000142= SumProvReinf.As_zneg*1000000; 
-            T[3][6].Value →KRS127_000143= SumProvReinf.As_ypos*1000000; 
-            T[4][6].Value →KRS127_000144= SumProvReinf.As_yneg*1000000; 
-            T[5][6].Value →KRS127_000145= SumProvReinf.As_z*1000000; 
-            T[6][6].Value →KRS127_000146= SumProvReinf.As_y*1000000; 
-            T[7][6].Value →KRS127_000147= SumProvReinf.As*1000000; 
+            IF(TypeMember != 2) { //!BeamSlab
+                T[3][6].Value →KRS127_000143= SumProvReinf.As_ypos*1000000; 
+                T[4][6].Value →KRS127_000144= SumProvReinf.As_yneg*1000000; 
+                T[5][6].Value →KRS127_000145= SumProvReinf.As_z*1000000; 
+                T[6][6].Value →KRS127_000146= SumProvReinf.As_y*1000000; 
+                T[7][6].Value →KRS127_000147= SumProvReinf.As*1000000; 
+            } ELSE { 
+                T[3][6].Value →KRS106_000075= SumProvReinf.As*1000000; 
+            } 
             
             T.Padding.All →KRS127_000089= 5; 
             T.Padding.Top →KRS127_000090= Convert.ToSingle(FontsAndColors.PaddingTableOverall()); 
@@ -1065,9 +1097,15 @@
                 T.Columns[i].Width →KRS127_000098= Convert.ToSingle((FontsAndColors.TableWidth()-150)/(6)); 
                 T.Columns[i].Wrap →KRS127_000104= true; 
             } 
-            FOR(j, 1, 7) { 
+            IF(TypeMember != 2) { //!BeamSlab
+                double dRows →KRS106_000077= 7; //Number of table rows for beam and column
+            } ELSE { 
+                double dRows →KRS106_000078= 3; //Number of table rows for BeamSlab
+            } 
+            FOR(j, 1, dRows) { 
                 T[j][0].BackColor →INI400_014234= FontsAndColors.ColorTableRow(); 
             } 
+            
             →KRS127_000075T.Draw(); 
         } ELSE { 
             object T →KRS116_000077= new Table(3); 
@@ -1078,29 +1116,41 @@
             //row header
             T[1][0].Value →KRS116_000084= TR("Top"); 
             T[2][0].Value →KRS116_000085= TR("Bottom"); 
-            T[3][0].Value →KRS116_000086= TR("Right"); 
-            T[4][0].Value →KRS116_000087= TR("Left"); 
-            T[5][0].Value →KRS116_000088= TR("Total vertical"); 
-            T[6][0].Value →KRS116_000089= TR("Total horizontal"); 
-            T[7][0].Value →KRS116_000090= TR("Total"); 
+            IF(TypeMember != 2) { //!BeamSlab
+                T[3][0].Value →KRS116_000086= TR("Right"); 
+                T[4][0].Value →KRS116_000087= TR("Left"); 
+                T[5][0].Value →KRS116_000088= TR("Total vertical"); 
+                T[6][0].Value →KRS116_000089= TR("Total horizontal"); 
+                T[7][0].Value →KRS116_000090= TR("Total"); 
+            } ELSE { 
+                T[3][0].Value →KRS106_000079= TR("Total"); 
+            } 
             
             //A↓s.req←
             T[1][1].Value →KRS116_000091= SummaryAreaFin.Req.As_zpos*1000000; 
             T[2][1].Value →KRS116_000092= SummaryAreaFin.Req.As_zneg*1000000; 
-            T[3][1].Value →KRS116_000093= SummaryAreaFin.Req.As_ypos*1000000; 
-            T[4][1].Value →KRS116_000094= SummaryAreaFin.Req.As_yneg*1000000; 
-            T[5][1].Value →KRS116_000095= SummaryAreaFin.Req.As_z*1000000; 
-            T[6][1].Value →KRS116_000096= SummaryAreaFin.Req.As_y*1000000; 
-            T[7][1].Value →KRS116_000097= SummaryAreaFin.Req.As*1000000; 
+            IF(TypeMember != 2) { //!BeamSlab
+                T[3][1].Value →KRS116_000093= SummaryAreaFin.Req.As_ypos*1000000; 
+                T[4][1].Value →KRS116_000094= SummaryAreaFin.Req.As_yneg*1000000; 
+                T[5][1].Value →KRS116_000095= SummaryAreaFin.Req.As_z*1000000; 
+                T[6][1].Value →KRS116_000096= SummaryAreaFin.Req.As_y*1000000; 
+                T[7][1].Value →KRS116_000097= SummaryAreaFin.Req.As*1000000; 
+            } ELSE { 
+                T[3][1].Value →KRS106_000080= SummaryAreaFin.Req.As*1000000; 
+            } 
             
             //A↓s.req.bar←
             T[1][2].Value →KRS116_000098= SummaryAreaPract.Req.As_zpos*1000000; 
             T[2][2].Value →KRS116_000099= SummaryAreaPract.Req.As_zneg*1000000; 
-            T[3][2].Value →KRS116_000100= SummaryAreaPract.Req.As_ypos*1000000; 
-            T[4][2].Value →KRS116_000101= SummaryAreaPract.Req.As_yneg*1000000; 
-            T[5][2].Value →KRS116_000102= SummaryAreaPract.Req.As_z*1000000; 
-            T[6][2].Value →KRS116_000103= SummaryAreaPract.Req.As_y*1000000; 
-            T[7][2].Value →KRS116_000104= SummaryAreaPract.Req.As*1000000; 
+            IF(TypeMember != 2) { //!BeamSlab
+                T[3][2].Value →KRS116_000100= SummaryAreaPract.Req.As_ypos*1000000; 
+                T[4][2].Value →KRS116_000101= SummaryAreaPract.Req.As_yneg*1000000; 
+                T[5][2].Value →KRS116_000102= SummaryAreaPract.Req.As_z*1000000; 
+                T[6][2].Value →KRS116_000103= SummaryAreaPract.Req.As_y*1000000; 
+                T[7][2].Value →KRS116_000104= SummaryAreaPract.Req.As*1000000; 
+            } ELSE { 
+                T[3][2].Value →KRS106_000081= SummaryAreaPract.Req.As*1000000; 
+            } 
             
             T.Padding.All →KRS116_000133= 5; 
             T.Padding.Top →KRS116_000134= Convert.ToSingle(FontsAndColors.PaddingTableOverall()); 
@@ -1116,7 +1166,12 @@
                 T.Columns[i].Width →KRS116_000143= Convert.ToSingle((FontsAndColors.TableWidth()-150)/(6)); 
                 T.Columns[i].Wrap →KRS116_000144= true; 
             } 
-            FOR(j, 1, 7) { 
+            IF(TypeMember != 2) { //!BeamSlab
+                double dRows →KRS106_000082= 7; //Number of table rows for beam and column
+            } ELSE { 
+                double dRows →KRS106_000083= 3; //Number of table rows for BeamSlab
+            } 
+            FOR(j, 1, dRows) { 
                 T[j][0].BackColor →KRS116_000145= FontsAndColors.ColorTableRow(); 
             } 
             →KRS116_000146T.Draw(); 
@@ -11060,6 +11115,126 @@
         <Set Vis="0" Prev="" Style="2" StyleName="None" EqStyle="31" />
         <Set Vis="0" Prev="" Style="2" StyleName="None" EqStyle="31" />
       </VC>
+      <VC ID="KRS106_000069">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000070">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000071">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000072">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000073">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000074">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000075">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000076">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000077">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000078">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000079">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000080">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000081">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000082">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000083">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
       <VC ID="KRS116_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -18422,6 +18597,9 @@
     </Item>
     <Item TranslateID="STRING_FBF31099">
       <ENU>"Buckling length y"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_">
+      <ENU>"Total horizontal :"</ENU>
     </Item>
     <Item ID="TEXT_INI400_001117">
       <ENU>"γ↓C← = " &amp; γ↓C←</ENU>

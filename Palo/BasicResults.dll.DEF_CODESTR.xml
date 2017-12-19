@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="15"><StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eliveloadreduction}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="18"><StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eliveloadreduction}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
 		<ResourceId>5007</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{soilstressdiagram.2ename}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
 		<ResourceId>210</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2efloorvibration_name}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>9157</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2einternalforces1d_name}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
@@ -29,7 +33,11 @@
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eliveloadreduction_name}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
-		<ResourceId>12037</ResourceId>
+		<ResourceId>9155</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2enotsupportedppe1764bit}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>9201</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eitm5004}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
@@ -58,5 +66,9 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2ereactionsresultant}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
 		<ResourceId>36632</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2efloorvibration}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>5007</ResourceId>
 	</StringCode>
 </StringCodeDatabase>

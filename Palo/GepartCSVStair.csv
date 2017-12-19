@@ -1,0 +1,18 @@
+ProfDefID;ProfilType;GeoDef;LineDef;Picture;Parameters;Fixed;Inputs;Para1;Para2;Para3;Para4;Para5;Para6;Para7;Para8;Para9;Para10;Para11;Para12;Para13;Para14;
+1;Stair1;1;15;Stair1.wmf;4;2;4;lh;h;b;n; ; ; ; ; ; ; ; ; ; ;
+2;Stair11;2;16;Stair11.wmf;6;2;6;lh;h;b;n;l1;n1; ; ; ; ; ; ; ; ;
+3;Stair12;3;17;Stair12.wmf;8;2;8;lh;h;b;n;l1;n1;l2;n2; ; ; ; ; ; ;
+4;Stair2;4;18;Stair2.wmf;5;2;5;lh;h;b;n;b1; ; ; ; ; ; ; ; ; ;
+5;Stair21;5;19;Stair21.wmf;7;2;7;lh;h;b;n;b1;l1;n1; ; ; ; ; ; ; ;
+6;Stair22;6;20;Stair22.wmf;9;2;9;lh;h;b;n;b1;l1;n1;l2;n2; ; ; ; ; ;
+7;pStair1;7;21;pStair1.wmf;4;2;4;lh;h;b;n; ; ; ; ; ; ; ; ; ; ;
+8;pStair2;7;22;pStair2.wmf;4;2;4;lh;h;b;n; ; ; ; ; ; ; ; ; ; ;
+9;cStair1;8;15;cStair1.wmf;6;2;6;f;h;b;r;f0;n; ; ; ; ; ; ; ; ;
+10;cStair11;9;16;cStair11.wmf;8;2;8;f;h;b;r;f0;n;f1;n1; ; ; ; ; ; ;
+11;cStair2;10;18;cStair2.wmf;7;2;7;f;h;b;r;f0;n;b1; ; ; ; ; ; ; ;
+12;cStair21;11;19;cStair21.wmf;9;2;9;f;h;b;r;f0;n;b1;f1;n1; ; ; ; ; ;
+13;cpStair1;12;21;cpStair1.wmf;6;2;6;f;h;b;r;f0;n; ; ; ; ; ; ; ; ;
+14;cpStair11;13;23;cpStair11.wmf;8;2;8;f;h;b;r;f0;n;f1;n1; ; ; ; ; ; ;
+15;cpStair2;12;22;cpStair2.wmf;6;2;6;f;h;b;r;f0;n; ; ; ; ; ; ; ; ;
+16;cpStair21;13;24;cpStair21.wmf;8;2;8;f;h;b;r;f0;n;f1;n1; ; ; ; ; ; ;
+17;cStair;14;21;cStair.wmf;8;2;8;f;h;r;f0;n; ; ; ; ; ; ; ; ; ;

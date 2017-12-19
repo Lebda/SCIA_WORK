@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="8489d14c-2e61-4aa0-b166-b755ba178cf2">
   <CodeEditor>
-    <SourceCode Collapsed="1|22|38|54|176|190|212|226|254|282|289|402|416|442|455|483|491|507|518|529|540|551|566|578|646|656|666|674|682|705|733|741|756|789|793|810|820|831|858|862|878|886|897|909" BreakPoints="">→INI400_015411BLOCK("@RESOURCES") { 
+    <SourceCode Collapsed="22|38|54|176|190|212|226|254|282|289|402|416|442|455|483|491|507|518|529|540|551|566|578" BreakPoints="">→INI400_015411BLOCK("@RESOURCES") { 
     private void InitStrings() { 
-        sPrincipal →INI400_015324= TR("principal"); 
-        sSecondary →INI400_015325= TR("secondary"); 
-        sVertical →INI400_015326= TR("vertical"); 
-        sHorizontal →INI400_015327= TR("horizontal"); 
+        sPrincipal →INI400_015324= TR("Principal"); 
+        sSecondary →INI400_015325= TR("Secondary"); 
+        sVertical →INI400_015326= TR("Vertical"); 
+        sHorizontal →INI400_015327= TR("Horizontal"); 
         sUser →INI400_015412= TR("user"); 
         sAuto →INI400_015413= TR("auto"); 
         sDiffSurface →INI400_015414= TR("independent per surface"); 
@@ -2931,6 +2931,9 @@ object DesignDefaults →PAI116_000002= →PAI116_000001GetDesignDefaults(32);
     <Item ID="BLOCK_INI400_015411">
       <ENU>"@RESOURCES"</ENU>
     </Item>
+    <Item TranslateID="STRING_0755B13F">
+      <ENU>"Vertical"</ENU>
+    </Item>
     <Item TranslateID="STRING_20B871B8">
       <ENU>"independent per surface"</ENU>
     </Item>
@@ -2942,6 +2945,9 @@ object DesignDefaults →PAI116_000002= →PAI116_000001GetDesignDefaults(32);
     </Item>
     <Item TranslateID="STRING_552BC823">
       <ENU>"in situ"</ENU>
+    </Item>
+    <Item TranslateID="STRING_56900E17">
+      <ENU>"Principal"</ENU>
     </Item>
     <Item TranslateID="STRING_56D4F281">
       <ENU>"same for both surface"</ENU>
@@ -2966,6 +2972,12 @@ object DesignDefaults →PAI116_000002= →PAI116_000001GetDesignDefaults(32);
     </Item>
     <Item TranslateID="STRING_93DB7592">
       <ENU>"user"</ENU>
+    </Item>
+    <Item TranslateID="STRING_94CDEF12">
+      <ENU>"Horizontal"</ENU>
+    </Item>
+    <Item TranslateID="STRING_A0A2D5B8">
+      <ENU>"Secondary"</ENU>
     </Item>
     <Item TranslateID="STRING_A40A0272">
       <ENU>"horizontal"</ENU>

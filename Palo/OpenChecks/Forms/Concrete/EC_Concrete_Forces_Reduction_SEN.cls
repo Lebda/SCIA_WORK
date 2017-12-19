@@ -160,8 +160,11 @@ IF(!IO.IsDrawing)
     /// determination if combination is ULS or SLS
     object DataFromSEN →INI400_006916= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FunctionsDataFromSEN.CLC"); 
     bool CombiULS →INI400_006919= DataFromSEN.IsULSCombi(); 
-    double M↓Edy← →INI400_007857= actSection.InternalForces[ForceID].My; 
-    double M↓Edz← →INI400_007859= actSection.InternalForces[ForceID].Mz; 
+    object Forces →INI400_014072= actSection.InternalForces[ForceID]; 
+    M↓Edy← →INI400_007857= Forces.My; 
+    M↓Edz← →INI400_007859= Forces.Mz; 
+    V↓Edy← →KRS106_000001= Forces.Vy; 
+    V↓Edz← →KRS106_000002= Forces.Vz; 
 } 
 
 
@@ -184,29 +187,11 @@ IF(CombiULS) {
     bool bMomemtReduction →DLO106_000001= false; 
     bool bShearReduction →DLO106_000002= false; 
 } 
-//rotated forces
-
-IF(IO.MemberData.Concrete.MemberType == 4) { 
-    double PrincipalAngle →INI400_013627= 0; 
-} ELSE { 
-    double PrincipalAngle →INI400_007058= IOhelper.GetActCS().Chars.alpha*180/Math.PI; 
-} 
 
 
-IF(!bMomemtReduction &amp;&amp; !bShearReduction)
-{ 
+IF(!bMomemtReduction &amp;&amp; !bShearReduction) { 
     ΔM↓Edy,red← →INI400_013903= 0; 
     ΔM↓Edz,red← →INI400_013904= 0; 
-    object Forces →INI400_014072= actSection.InternalForces[ForceID]; 
-    
-    object RotMoments →LUN316_000011= DataFromSEN.RotateMoments(M↓Edy←, M↓Edz←, PrincipalAngle); 
-    
-    double M↓Edy← →LUN316_000009= RotMoments.My; 
-    double M↓Edz← →LUN316_000010= RotMoments.Mz; 
-    
-    object RotShearForces →INI400_007065= DataFromSEN.RotateForces(Forces.Vy, Forces.Vz, PrincipalAngle); 
-    V↓Edy← →INI400_013901= RotShearForces.Vy; 
-    V↓Edz← →INI400_013902= RotShearForces.Vz; 
     →LUN001_000066SaveReductionResults(); 
     Exit(); 
 } 
@@ -268,8 +253,7 @@ IF(actSection.PlaceForReduction.ReduceMoment == 1) {
                 sectionForReduction →INI400_014041= GetSectionForReductionMoment(WidthInfo_My, actSection); 
             } 
             object reducedForces →INI400_014054= IO.Beam.Section[sectionForReduction].InternalForces[ForceID]; 
-            object RotMoments →INI400_014086= DataFromSEN.RotateMoments(reducedForces.My, reducedForces.Mz, PrincipalAngle); 
-            double reducedMy →INI400_014055= RotMoments.My; 
+            double reducedMy →INI400_014055= reducedForces.My; 
             bool HaveMomentesSameSign →LUN001_000068= (reducedMy*M↓Edy←) &gt;= 0; 
             IF(!HaveMomentesSameSign) { 
                 →LUN001_000069TEXT("The sign of bending moment in the section where the reduction of bending moment is taken from is different than sign of bending moment in the support node"); 
@@ -347,8 +331,7 @@ IF(actSection.PlaceForReduction.ReduceMoment == 1) {
                 sectionForReduction →INI400_014153= GetSectionForReductionMoment(WidthInfo_Mz, actSection); 
             } 
             object reducedForces →INI400_014089= IO.Beam.Section[sectionForReduction].InternalForces[ForceID]; 
-            object RotMoments →INI400_014090= DataFromSEN.RotateMoments(reducedForces.My, reducedForces.Mz, PrincipalAngle); 
-            double reducedMz →INI400_014091= RotMoments.Mz; 
+            double reducedMz →INI400_014091= reducedForces.Mz; 
             bool HaveMomentesSameSign →LUN001_000067= (reducedMz*M↓Edz←) &gt;= 0; 
             IF(!HaveMomentesSameSign) { 
                 →LUN001_000070TEXT("The sign of bending moment in the section where the reduction of bending moment is taken from is different than sign of bending moment in the support node"); 
@@ -412,9 +395,8 @@ IF(actSection.PlaceForReduction.ReduceMoment == 1) {
 IF(actSection.PlaceForReduction.ReduceShear == 1) { 
     →INI400_013878BLOCK("Reducing of shear forces above support") { 
         object Forces →INI400_013885= IO.Beam.Section[actSection.ID].InternalForces[ForceID]; 
-        object RotShearForces →INI400_014076= DataFromSEN.RotateForces(Forces.Vy, Forces.Vz, PrincipalAngle); 
-        double V↓Edy← →INI400_014077= RotShearForces.Vy; 
-        double V↓Edz← →INI400_014078= RotShearForces.Vz; 
+        double V↓Edy← →INI400_014077= Forces.Vy; 
+        double V↓Edz← →INI400_014078= Forces.Vz; 
         
         double ShearRedType →INI400_013880= IO.MemberData.Concrete.Solver.IntForces.ULS.TypeOfShearForceReductionAtSupports; // 0 - in edge of support; 1 - edge + d
         // find support for Vy
@@ -495,9 +477,8 @@ IF(actSection.PlaceForReduction.ReduceShear == 1) {
             sectionForReduction →INI400_013928= GetSectionForReductionShear(WidthInfo_Vy, actSection); 
             →INI400_013894TEXT("Shear forces after reduction"); 
             object reducedForces →INI400_014098= IO.Beam.Section[sectionForReduction].InternalForces[ForceID]; 
-            object RotShearForces →INI400_014092= DataFromSEN.RotateForces(reducedForces.Vy, reducedForces.Vz, PrincipalAngle); 
-            IF(ABS(V↓Edy←) &gt; ABS(RotShearForces.Vy)) { 
-                double V↓Edy← →INI400_014093= RotShearForces.Vy; 
+            IF(ABS(V↓Edy←) &gt; ABS(reducedForces.Vy)) { 
+                double V↓Edy← →INI400_014093= reducedForces.Vy; 
             } 
             
             
@@ -527,9 +508,8 @@ IF(actSection.PlaceForReduction.ReduceShear == 1) {
             sectionForReduction →INI400_014067= GetSectionForReductionShear(WidthInfo_Vz, actSection); 
             →INI400_014068TEXT("Shear forces after reduction"); 
             object reducedForces →INI400_014069= IO.Beam.Section[sectionForReduction].InternalForces[ForceID]; 
-            object RotShearForces →INI400_014095= DataFromSEN.RotateForces(reducedForces.Vy, reducedForces.Vz, PrincipalAngle); 
-            IF(ABS(V↓Edz←) &gt; ABS(RotShearForces.Vz)) { 
-                double V↓Edz← →INI400_014096= RotShearForces.Vz; 
+            IF(ABS(V↓Edz←) &gt; ABS(reducedForces.Vz)) { 
+                double V↓Edz← →INI400_014096= reducedForces.Vz; 
             } 
             
         } ELSE { 
@@ -538,9 +518,8 @@ IF(actSection.PlaceForReduction.ReduceShear == 1) {
     } 
 } ELSE { 
     object Forces →INI400_014107= IO.Beam.Section[actSection.ID].InternalForces[ForceID]; 
-    object RotShearForces →INI400_014109= DataFromSEN.RotateForces(Forces.Vy, Forces.Vz, PrincipalAngle); 
-    double V↓Edy← →INI400_014110= RotShearForces.Vy; 
-    double V↓Edz← →INI400_014111= RotShearForces.Vz; 
+    double V↓Edy← →INI400_014110= Forces.Vy; 
+    double V↓Edz← →INI400_014111= Forces.Vz; 
 } 
 →LUN001_000057SaveReductionResults(); 
 
@@ -602,13 +581,6 @@ IF(actSection.PlaceForReduction.ReduceShear == 1) {
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="Coeff↓d←" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="combiID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -726,7 +698,7 @@ IF(actSection.PlaceForReduction.ReduceShear == 1) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="HaveMomentesSameSign" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_HaveMomentesSameSign">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -839,13 +811,6 @@ IF(actSection.PlaceForReduction.ReduceShear == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="PrincipalAngle" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="R↓y←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -879,18 +844,6 @@ IF(actSection.PlaceForReduction.ReduceShear == 1) {
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
-      </Variable>
-      <Variable Modifier="Public" Name="RotMoments" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="RotShearForces" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
       </Variable>
       <Variable Modifier="Public" Name="sectionForReduction" ESA_ID="" Type="Double" Precision="2">
         <Description>
@@ -1178,22 +1131,6 @@ IF(actSection.PlaceForReduction.ReduceShear == 1) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007058">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007065">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
       <VC ID="INI400_007214">
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
@@ -1329,14 +1266,6 @@ IF(actSection.PlaceForReduction.ReduceShear == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_013627">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_013707">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1521,22 +1450,6 @@ IF(actSection.PlaceForReduction.ReduceShear == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_013901">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_013902">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_013903">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1850,14 +1763,6 @@ IF(actSection.PlaceForReduction.ReduceShear == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014076">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
       <VC ID="INI400_014077">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1874,14 +1779,6 @@ IF(actSection.PlaceForReduction.ReduceShear == 1) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014086">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
       <VC ID="INI400_014089">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1889,14 +1786,6 @@ IF(actSection.PlaceForReduction.ReduceShear == 1) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_014090">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_014091">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1906,14 +1795,6 @@ IF(actSection.PlaceForReduction.ReduceShear == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014092">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
       <VC ID="INI400_014093">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
@@ -1921,14 +1802,6 @@ IF(actSection.PlaceForReduction.ReduceShear == 1) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_014095">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_014096">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
@@ -1953,14 +1826,6 @@ IF(actSection.PlaceForReduction.ReduceShear == 1) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_014109">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_014110">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2610,6 +2475,22 @@ IF(actSection.PlaceForReduction.ReduceShear == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS106_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="LUN001_000017">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2834,22 +2715,6 @@ IF(actSection.PlaceForReduction.ReduceShear == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN001_000071">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="LUN001_000072">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
       <VC ID="LUN316_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2907,30 +2772,6 @@ IF(actSection.PlaceForReduction.ReduceShear == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="LUN316_000008">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="LUN316_000009">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
-      </VC>
-      <VC ID="LUN316_000010">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
-      </VC>
-      <VC ID="LUN316_000011">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

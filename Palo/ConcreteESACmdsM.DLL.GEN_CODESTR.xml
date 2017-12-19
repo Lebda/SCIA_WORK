@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="126"><StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_memberdataconcrete_2d}</StringId>
-		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
-		<ResourceId>110</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_stupenbezpecnosticrack}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="126"><StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_stupenbezpecnosticrack}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
 		<ResourceId>29019</ResourceId>
 	</StringCode>
@@ -18,6 +14,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_memberdataconcrete}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
 		<ResourceId>106</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_memberdataconcrete_2d}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>110</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_sfrc_2d_shear_check}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
@@ -407,10 +407,6 @@
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
 		<ResourceId>246</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eimps_2d_member}</StringId>
-		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
-		<ResourceId>30110</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_allowable_stress_concrete}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
 		<ResourceId>29003</ResourceId>
@@ -422,6 +418,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eijp_membercheck}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
 		<ResourceId>11010</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eimps_2d_member}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>30110</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_memberdatapunching}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>

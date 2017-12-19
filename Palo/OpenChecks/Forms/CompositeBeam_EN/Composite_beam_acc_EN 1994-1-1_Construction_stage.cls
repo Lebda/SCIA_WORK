@@ -17,14 +17,14 @@ Extern_Calculate.t →INI400_008267= t;
 →INI400_004243Extern_Calculate.Draw(); 
 
 
-double Unity_check →INI400_008270= Extern_Calculate.Unity_check; 
+double UC →INI400_008270= Extern_Calculate.UC; 
 </SourceCode>
   </CodeEditor>
   <Calculation>
-    <Header NormCode="1" Member="1001" Material="1" CSType="-1" LimitState="2" IFFilter="0" LicenceID="10400" Autor="" Autor2="" Version="40" EWNSource="Composite.xml" Icon="Qk3uAAAAAAAAAHYAAAAoAAAAEAAAAA8AAAABAAQAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAA/wAAgP8AgAD/AICA/4AAAP+AAID/gIAA/8DAwP+AgID/AAD//wD/AP8A/////wAA//8A/////wD//////3d3d3d3d3d3AAAAAAAAAABmZmZmZmZmZmZ3ZmZmZndmZ3d2ZmZnd2Znd3ZmZmd3dnd3d2Zmd3d2AAAABmd3d3cP//8Hd3d3dw9ETwd3d3d3D///B3d3d3cPTwAHd3d3dw9PDgd3d3d3D/8Ad3d3d3cAAAd3d3d3dw==">
+    <Header NormCode="1" Member="1001" Material="1" CSType="-1" LimitState="2" IFFilter="0" LicenceID="10400" Autor="" Autor2="" Version="42" EWNSource="Composite.xml" Icon="Qk3uAAAAAAAAAHYAAAAoAAAAEAAAAA8AAAABAAQAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAA/wAAgP8AgAD/AICA/4AAAP+AAID/gIAA/8DAwP+AgID/AAD//wD/AP8A/////wAA//8A/////wD//////3d3d3d3d3d3AAAAAAAAAABmZmZmZmZmZmZ3ZmZmZndmZ3d2ZmZnd2Znd3ZmZmd3dnd3d2Zmd3d2AAAABmd3d3cP//8Hd3d3dw9ETwd3d3d3D///B3d3d3cPTwAHd3d3dw9PDgd3d3d3D/8Ad3d3d3cAAAd3d3d3dw==">
       <Prereq />
       <Languages>
-        <Language Code="ENU" LangName="English" />
+        <Language Code="ENU" LangName="English " />
       </Languages>
       <Document TranslateID="Document">
         <ENU>http://help.scia.net/15.0/en/#sr/composite_analysis_model/04_01-composite_en_checks.htm%3FTocPath%3DDesign%2520of%2520composite%2520members%7CComposite%2520Checks%7CComposite%2520Checks%2520EN%25201994%7C_____0</ENU>
@@ -73,8 +73,8 @@ double Unity_check →INI400_008270= Extern_Calculate.Unity_check;
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="1" cd="0" mol="0" Coef="1" Dim="°C" />
       </Variable>
-      <Variable Modifier="Public" Name="Unity_check" ESA_ID="Result.1" Type="Double" Value="999" Precision="-2">
-        <Description TranslateID="VARIABLE_Unity_check">
+      <Variable Modifier="Public" Name="UC" ESA_ID="Result.1" Type="Double" Value="NaN" Precision="-2">
+        <Description>
           <ENU>
           </ENU>
         </Description>

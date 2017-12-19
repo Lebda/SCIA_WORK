@@ -390,6 +390,7 @@ PropValueDefaultsM.xml
 db\ReinforcementScaleIsolinie.db4
 ResultsViewer.exe
 revit.tdx
+ruiSDK_5.1.0.x86.dll
 ProfileLibrary\Russian.FIL
 ProfileLibrary\SBPBIBL1.DAT
 ProfileLibrary\SBPBIBL1.KEY
@@ -536,8 +537,6 @@ Toolbars\Light\TB_Selection_of_object.CTC
 Toolbars\Light\TB_Snap_Settings.CTC
 Toolbars\Light\TB_Tools.CTC
 Toolbars\Light\TB_View.CTC
-Trackerbird.Tracker.clr2.dll
-Trackerbird.Tracker.clr4.dll
 u3d.pdf
 U3DConverter.exe
 set\US_format.set
@@ -589,6 +588,7 @@ DocumentDefaults\BasicResults.10.00.EP_ResPropertyBillMaterialConcrete14-(Result
 DocumentDefaults\BasicResults.10.00.EP_ResPropertyConcreteSetupBrazil-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.10.00.EP_StressStrain2D_Shell-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.10.00.EP_SubsoilC2D_Shell-(ResultMain) [Default].TLX
+DocumentDefaults\BasicResults.14.00.EP_LiveLoadReduction_Shell-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.14.00.EP_ReactionsResultant_Shell-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.14.00.EP_Reactions_Shell-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.8.00.EP_ResConcreteDetailsCheck-(ResultMain) [Default].TLX
@@ -2004,6 +2004,7 @@ OpenChecks\CustomLibrary\US\US_Steel.xml
 OpenChecks\CustomLibrary\US\US_SteelSections.xml
 OpenChecks\EWN\Composite.xml
 OpenChecks\EWN\EWN_Clause.xml
+OpenChecks\EWN\EWN_Concrete_Desing_2D.xml
 OpenChecks\EWN\EWN_SCIA.xml
 OpenChecks\FormsMenu\UserMenuDefinition.xml
 OpenChecks\Forms\Aluminium_KPFF\KPFF_Aluminum_Calculation.cls

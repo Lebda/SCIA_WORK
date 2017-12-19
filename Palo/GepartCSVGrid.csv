@@ -1,0 +1,15 @@
+ProfDefID;ProfilType;GeoDef;LineDef;Picture;Parameters;Fixed;Inputs;Para1;Para2;Para3;Para4;Para5;Para6;Para7;Para8;Para9;Para10;Para11;Para12;Para13;Para14;
+1;rGrid;2;1;rGrid.wmf;6;2;6;lx;ly;lz;nx;ny;nz; ; ; ; ; ; ; ; ;
+2;rnGrid;4;3;rnGrid.wmf;10;2;10;lx;ly;lz;nx;ny;nz;kx;ky;x0;y0; ; ; ; ;
+3;Frame;5;6;Frame.wmf;6;2;6;h;b;b1;v;nx;nz; ; ; ; ; ; ; ; ;
+4;Wall;8;7;Wall.wmf;5;2;5;h;b;b1;v;n; ; ; ; ; ; ; ; ; ;
+5;Roof;9;7;Roof.wmf;5;2;5;L;b;b1;w;n; ; ; ; ; ; ; ; ; ;
+6;Beam;10;11;Beam.wmf;3;2;3;L;hz;hy; ; ; ; ; ; ; ; ; ; ; ;
+7;Conti;12;13;Conti.wmf;6;2;6;L;n;hz;hy;Lk1;Lk2; ; ; ; ; ; ; ; ;
+8;cGrid;14;15;cGrid.wmf;8;2;8;x0;lx;ly;lz;nx;ny;nz;n; ; ; ; ; ; ;
+9;cnGrid;16;17;cnGrid.wmf;6;2;6;r;lz;ny;nz;k;n; ; ; ; ; ; ; ; ;
+10;cWall;18;19;cWall.wmf;6;0;6;h;r;r1;f;n;m; ; ; ; ; ; ; ; ;
+11;rGrill;20;21;rGrill.wmf;5;0;5;lx;ly;nx;ny;hz; ; ; ; ; ; ; ; ; ;
+12;cGrill;22;23;cGrill.wmf;5;0;5;r;nx;ny;n;hz; ; ; ; ; ; ; ; ; ;
+13;ContiRoof;24;25;ContiRoof.wmf;9;0;9;Lx;Ly;nx;ny;hz;Lx1;Lx2;Ly1;Ly2; ; ; ; ; ;
+14;Column;26;27;Column.wmf;4;0;4;h;n;ux;uy; ; ; ; ; ; ; ; ; ; ;

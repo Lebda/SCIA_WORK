@@ -772,14 +772,14 @@ IF(IO.IsDrawing) {
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="0" Numeric="AsProv↓1+←" SenModif="False" LabOri="0" />
       </Variable>
-      <Variable Modifier="Public" Name="Prov↓1-←" ESA_ID="Result.75" Type="String">
+      <Variable Modifier="Public" Name="Prov↓1-←" ESA_ID="Result.76" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="0" Numeric="AsProv↓1-←" SenModif="False" LabOri="0" />
       </Variable>
-      <Variable Modifier="Public" Name="Prov↓2+←" ESA_ID="Result.76" Type="String">
+      <Variable Modifier="Public" Name="Prov↓2+←" ESA_ID="Result.75" Type="String">
         <Description>
           <ENU>
           </ENU>
@@ -1146,10 +1146,9 @@ IF(IO.IsDrawing) {
           <ENU>Required - shear</ENU>
         </Names>
       </ResultTable>
-      <ResultTable Visible="0" Vars="A↓s,req,1-←|1|1;A↓s,req,2-←|2|1;A↓s,req,1+←|3|1;A↓s,req,2+←|4|1;A↓sw,req←|5|1;Errors|6|1;AsProv↓1+←|0|1;AsProv↓1-←|0|1;AsProv↓2+←|0|1;AsProv↓2-←|0|1;A↓s,prov,1+←|0|1;A↓s,prov,2+←|0|1;A↓s,prov,1-←|0|1;A↓s,prov,2-←|0|1;Prov↓1+←|0|1;Prov↓1-←|0|1;Prov↓2+←|0|1;Prov↓2-←|0|1">
-        <Names TranslateID="ResultGroup_">
-          <ENU>
-          </ENU>
+      <ResultTable Visible="0" Vars="AsProv↓1+←|0|1;AsProv↓1-←|0|1;AsProv↓2+←|0|1;AsProv↓2-←|0|1;Prov↓1+←|0|1;Prov↓1-←|0|1;Prov↓2+←|0|1;Prov↓2-←|0|1">
+        <Names TranslateID="ResultGroup_Invisible for detailed output">
+          <ENU>Invisible for detailed output</ENU>
         </Names>
       </ResultTable>
     </ResultTables>
@@ -1169,7 +1168,7 @@ IF(IO.IsDrawing) {
           <ENU>Required (additional)</ENU>
         </Names>
       </ResultTable>
-      <ResultTable Visible="1" Vars="Prov↓1+←|0|1;Prov↓1-←|0|1;Prov↓2+←|0|1;Prov↓2-←|0|1" Tables="2|3">
+      <ResultTable Visible="1" Vars="Prov↓1+←|0|1;Prov↓1-←|0|1;Prov↓2+←|0|1;Prov↓2-←|0|1" Tables="2|3|5">
         <Names TranslateID="ResultGroup_Provided">
           <ENU>Provided</ENU>
         </Names>

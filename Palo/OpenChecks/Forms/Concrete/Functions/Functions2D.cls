@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="db3dcfeb-e317-4e84-99ac-e432df546f3f">
   <CodeEditor>
-    <SourceCode Collapsed="4|16|30|42|97|140|190|209|218|228|237|255|274|281|292|306|335|342|358|377|395|420|432|459|476|491|504|538|568|581|595|609|620|630|655|660|703|715|723|740|796|805|840|864|889" BreakPoints="">
+    <SourceCode Collapsed="4|16|30|42|117|160|211|230" BreakPoints="">
 
 //@Returns object with substitute section shape of 2D member
 //@b,h - width and height of rectangular shape
@@ -97,6 +97,26 @@ public object GetBasicForceTable(object BasicForces) {
     
     return T; 
 } 
+
+
+bool IsZeroLoad(object BasicForces) { 
+    IF(BasicForces.Count == 1) { 
+        double LoadProduct →INI400_016505= 
+        BasicForces[0].mx+
+        BasicForces[0].my+
+        BasicForces[0].mxy+
+        BasicForces[0].nx+
+        BasicForces[0].ny+
+        BasicForces[0].nxy+
+        BasicForces[0].qx+
+        BasicForces[0].qy; 
+        return (COMPARE(LoadProduct, 0, 6) == 0); 
+    } 
+    ELSE { 
+        return false; 
+    } 
+} 
+
 
 public object GetCombiKeyTable(object ForcesArr) { 
     object fontsColors →INI400_016194= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.CLC"); 
@@ -3606,6 +3626,14 @@ public string ReinfForPunchToString(object DesignReinf) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_016505">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_016701">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

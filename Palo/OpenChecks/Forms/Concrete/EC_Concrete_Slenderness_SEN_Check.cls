@@ -3,7 +3,6 @@
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">object SlendernessSEN →INI400_007028= LoadExternCLC("EC_Concrete_Slenderness_SEN.CLC"); 
 SlendernessSEN.Design →INI400_007029= False; 
-SlendernessSEN.PrintMemberInfo →KRS116_000001= true; 
 IF(IO.IsDrawing) { 
     →INI400_007107SlendernessSEN.Draw(False); 
 } ELSE { 
@@ -554,14 +553,6 @@ string sListEWN →INI400_007080= SlendernessSEN.sListEWN;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="KRS116_000001">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
     </VisualComponents>
     <Images />

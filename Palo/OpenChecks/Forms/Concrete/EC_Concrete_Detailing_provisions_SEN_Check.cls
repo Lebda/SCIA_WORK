@@ -92,12 +92,9 @@ IF(CssConditions.ConditionsForCss) {
     
     double CssID →INI400_011703= 1; 
     double ForcesID →INI400_006367= 0; 
-    //recalculation forces to LCS system
-    object DataFromSEN →DLO316_000002= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FunctionsDataFromSEN.clc"); 
-    object IniRotatedForces →DLO316_000003= DataFromSEN.obIniRotatedForces(); 
     
     double InitialForcesID →DLO316_000002= 1000; 
-    →DLO316_000003CONCRETE.SetForcesId(InitialForcesID, IO.InternalForces.N, 0, 0, 0, IniRotatedForces.My, IniRotatedForces.Mz); 
+    →DLO316_000003CONCRETE.SetForcesId(InitialForcesID, IO.InternalForces.N, 0, 0, 0, IO.InternalForces.My, IO.InternalForces.Mz); 
     
     object ForcesCalc →INI400_006418= LoadExternCLC("EC_Concrete_IntForces_SEN_Check.clc"); 
     →INI400_012798ForcesCalc.Calculate(False); 
@@ -726,12 +723,6 @@ ELSE {
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="IniRotatedForces" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_IniRotatedForces">
-          <ENU>
-          </ENU>
-        </Description>
       </Variable>
       <Variable Modifier="Public" Name="InitialForcesID" ESA_ID="" Type="Double" Precision="2">
         <Description>
@@ -4052,7 +4043,7 @@ ELSE {
   </Calculation>
   <Dialog>
     <Main Width="500">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.84|0|3" Active="1" PreDef="0" MemberDirectory="D:\_VERSIONS\Deve_16\TEMP\Esa_Model_Data\Beam.1" MemberID="" SectionID="3" CombiID="0" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.84|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="" SectionID="-1" CombiID="-1" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />

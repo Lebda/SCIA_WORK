@@ -1,0 +1,59 @@
+<Root Type="CustomLibrary">
+  <Node Code="E/01">
+    <Desc TranslateID="E/01_Desc">
+      <ENU>Reinforcement cannot be designed. The position of reinforcement layers does not match the thickness of the member.</ENU>
+    </Desc>
+    <Sol TranslateID="E/01_Sol">
+      <ENU>Decrease the concrete cover or increase the thickness of the 2D member.</ENU>
+    </Sol>
+  </Node>
+  <Node Code="E/02">
+    <Desc TranslateID="E/02_Desc">
+      <ENU>Reinforcement cannot be designed. Internal forces are zero.</ENU>
+    </Desc>
+    <Sol TranslateID="E/02_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/01">
+    <Desc TranslateID="W/01_Desc">
+      <ENU>The applied provided reinforcement is not sufficient for some of the layers (As,prov &lt; As,req).</ENU>
+    </Desc>
+    <Sol TranslateID="W/01_Sol">
+      <ENU>Increase the amount of the basic or additional reinforcement.</ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/02">
+    <Desc TranslateID="W/02_Desc">
+      <ENU>The applied provided reinforcement exceeds the maximum limit (As,prov &gt; As,max).</ENU>
+    </Desc>
+    <Sol TranslateID="W/02_Sol">
+      <ENU>Increase the thickness of the member or the quality of used materials.</ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/04">
+    <Desc TranslateID="W/04_Desc">
+      <ENU>The user-defined concrete cover is not sufficient for some of the surfaces (cuser &lt; cnom).</ENU>
+    </Desc>
+    <Sol TranslateID="W/04_Sol">
+      <ENU>Increase the concrete cover or switch the method for the determination of the cover to 'Auto'.</ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/06">
+    <Desc TranslateID="W/06_Desc">
+      <ENU>The resistance of the virtual concrete strut is exhausted.</ENU>
+    </Desc>
+    <Sol TranslateID="W/06_Sol">
+      <ENU>Change reinforcement geometry or increase the thickness of the member.</ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/03">
+    <Desc TranslateID="W/03_Desc">
+      <ENU>The designed required reinforcement exceeds the maximum limit (As,req &gt; As,max).</ENU>
+    </Desc>
+    <Sol TranslateID="W/03_Sol">
+      <ENU>Increase the thickness of the member or the quality of used materials.</ENU>
+    </Sol>
+  </Node>
+</Root>

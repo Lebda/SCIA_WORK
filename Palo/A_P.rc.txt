@@ -169,6 +169,7 @@ EP_CheckDataProvider \A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.rc 
 ConcreteChecksEsa \A\Src\Checks\ConcreteChecks\ConcreteChecksEsa\ConcreteChecksEsa.rc ConcreteChecksEsa.tlb
 EP_DataAddDamping \A\Src\Tra\DataAddDamping\DataAddDamping.rc EP_DataAddDamping.tlb
 DataTools \A\Src\Data\DataTools\DataTools.rc DataTools.tlb
+XEP_LoadGenerators \A\Src\Business\LoadGenerators\XEP_LoadGenerators\XEP_LoadGenerators.rc XEP_LoadGenerators.tlb
 EP_CalcManager \A\Src\Tom\CalcManager\CalcManager.rc EP_CalcManager.tlb
 EP_NationalAnnices \A\Src\Tra\Anices\NationalAnnices.rc EP_NationalAnnices.tlb
 EP_ProjectDataDialog \A\Src\Tom\ProjectDataDialog\ProjectDataDialog.rc EP_ProjectDataDialog.tlb
@@ -249,10 +250,10 @@ DampingM \A\Src\Tra\Services\Damping\DampingM\DampingM.rc
 CodeDependentDeflections \A\Src\Checks\ConcreteChecks\CodeDependentDeflections\CodeDependentDeflections.rc CodeDependentDeflections.tlb
 CodeDependentDeflections_UT \A\Src\Checks\ConcreteChecks\CodeDependentDeflections_UT\CodeDependentDeflections_UT.rc CodeDependentDeflections_UT.tlb
 TestCodeDependentDeflection \A\Src\Checks\ConcreteChecks\UnitTestsConcrete\TestCodeDependentDeflection\TestCodeDependentDeflection.rc TestCodeDependentDeflection.tlb
-Punching \A\Src\Checks\ConcreteChecks\Punching\Punching.rc Punching.tlb
-Punching_MSUT \A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_MSUT.rc 
 ConcreteCheckChecks \A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\ConcreteCheckChecks.rc ConcreteCheckChecks.tlb
 ConcreteCheckResultShell \A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\ConcreteCheckResultShell.rc ConcreteCheckResultShell.tlb
+Punching \A\Src\Checks\ConcreteChecks\Punching\Punching.rc Punching.tlb
+Punching_MSUT \A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_MSUT.rc 
 ConcreteESACmds \A\Src\Par\Services\ConcreteESACmds\ConcreteESACmds.rc ConcreteESACmds.tlb
 ConcreteESACmdsM \A\Src\Par\Services\ConcreteESACmdsM\ConcreteESACmdsM.rc 
 HeatTransferESACmd \A\Src\Pos\Services\HeatTransferESACmd\HeatTransferESACmd.rc HeatTransferESACmd.tlb
