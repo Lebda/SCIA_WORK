@@ -531,7 +531,7 @@ IF(MemberType != 2) {
         } ELSE { 
             f↓cd← →KRS116_000018= α↓cc,pl←*f↓ck←/γ↓C← @REF("(§12.3.1(1))"); 
         } 
-        double A↓c← →INI400_001310= IO.CS.Chars.A; 
+        double A↓c← →INI400_001310= CONCRETE.Characteristics(CssID, ForcesID, CONCRETE.CharType.WholeCharConcrete, CONCRETE.StiffnessType.Linear).A; 
         →KRS106_000004double Number↓N← →KRS106_000007= 0; 
         →KRS106_000005double Number↓W← →KRS106_000008= 0; 
     } 

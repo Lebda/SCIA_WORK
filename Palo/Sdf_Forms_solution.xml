@@ -127,7 +127,7 @@
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="None">
       <Name>Poirot_2D_Groups</Name>
       <Guid>67d5a1c4-c7c8-4a4c-a56e-6a854b3b2190</Guid>
-      <CheckSum>d5641e70452410030626b43f8337c0ca</CheckSum>
+      <CheckSum>797ad11d2b7594d362f10ee5fc8ee215</CheckSum>
       <RelativePath>OpenChecks\Forms</RelativePath>
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
@@ -2698,6 +2698,132 @@
       <RelativePath>OpenChecks\Forms\Codes\EN\EN_1996\EN_1996_1_1</RelativePath>
       <Settings Languages="ENU,CSY,DEU,FRB,NLD,PTG,SKY,ROM,ELL,PLK,ITA,ESP,HRV" />
     </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>EC_CompositeBeam_Detailings</Name>
+      <Guid>c0530251-d225-4cec-a3d3-289669c956d2</Guid>
+      <CheckSum>6b81b1f08e25f86aa6267d6dd9022aa6</CheckSum>
+      <RelativePath>OpenChecks\Forms\Composite\EC</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>EC_CompositeBeam_GeometryAndMaterials</Name>
+      <Guid>74b2ca89-722d-4ec8-a468-82254efa0c34</Guid>
+      <CheckSum>ce230e4d2047ccebd84a2b9f50c92997</CheckSum>
+      <RelativePath>OpenChecks\Forms\Composite\EC</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>EC_CompositeBeam_SLS_Construction</Name>
+      <Guid>5688353c-9537-4609-8d44-b41b03a7724f</Guid>
+      <CheckSum>872ed93c84f0b448b0d44db639f0a575</CheckSum>
+      <RelativePath>OpenChecks\Forms\Composite\EC</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="None">
+      <Name>EC_CompositeBeam_SLS_Construction_test</Name>
+      <Guid>abab145a-2321-4e62-9eb3-a7e89441b182</Guid>
+      <CheckSum>eb27caa21a13a6684f61dcde0612dbb1</CheckSum>
+      <RelativePath>OpenChecks\Forms\Composite\EC</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>EC_CompositeBeam_SLS_Final</Name>
+      <Guid>15898f18-ae32-4c0a-9126-3160379df0a5</Guid>
+      <CheckSum>ea03c2e2df861a95697404d706d66e7f</CheckSum>
+      <RelativePath>OpenChecks\Forms\Composite\EC</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="None">
+      <Name>EC_CompositeBeam_SLS_Final_test</Name>
+      <Guid>ec51d3c3-a414-4713-b7b0-0b91814f8d39</Guid>
+      <CheckSum>203c6e77fccde58fa7319f2ca7409e42</CheckSum>
+      <RelativePath>OpenChecks\Forms\Composite\EC</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>EC_CompositeBeam_ULS_Construction</Name>
+      <Guid>7cfbfffd-4b76-4cb4-b42f-9bdc7825d32a</Guid>
+      <CheckSum>41dc842b8d3f7e20e621853e3502d84e</CheckSum>
+      <RelativePath>OpenChecks\Forms\Composite\EC</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>EC_CompositeBeam_ULS_Construction_Opening</Name>
+      <Guid>0ff0494a-79a3-4836-b49c-acfe9b13139c</Guid>
+      <CheckSum>be98e33ab161112f659964df81d381fc</CheckSum>
+      <RelativePath>OpenChecks\Forms\Composite\EC</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="None">
+      <Name>EC_CompositeBeam_ULS_Construction_test</Name>
+      <Guid>41410fad-7c70-43fd-821f-691c3b6c7f26</Guid>
+      <CheckSum>6ff5c7249fd052274055a7e5a4be0ee7</CheckSum>
+      <RelativePath>OpenChecks\Forms\Composite\EC</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>EC_CompositeBeam_ULS_Final</Name>
+      <Guid>04ca77d7-e715-4a2a-a82a-9cf56ed43fe1</Guid>
+      <CheckSum>bb0ed1a984f0454003b5b0e1c9592b9e</CheckSum>
+      <RelativePath>OpenChecks\Forms\Composite\EC</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>EC_CompositeBeam_ULS_Final_Opening</Name>
+      <Guid>c2743f51-c641-4a38-9cf2-b3351bb500a5</Guid>
+      <CheckSum>8323ccedc83745f4b70b2e7defecd1fa</CheckSum>
+      <RelativePath>OpenChecks\Forms\Composite\EC</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="None">
+      <Name>EC_CompositeBeam_ULS_Final_test</Name>
+      <Guid>a6821b8c-c30f-46d5-99e9-d5cad64b5dbd</Guid>
+      <CheckSum>190a7a205c0f5115b3c45f0d75c7caf5</CheckSum>
+      <RelativePath>OpenChecks\Forms\Composite\EC</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>EC_Composite_Beam_SEN</Name>
+      <Guid>39304371-b04a-4f78-bcf6-2adc1e822b97</Guid>
+      <CheckSum>8e48dbfe6237b56132fb6e2ba5e8d7ce</CheckSum>
+      <RelativePath>OpenChecks\Forms\Composite\EC</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>EC_Segmented_Stud_Layout</Name>
+      <Guid>b881527b-24f0-4536-85b2-dc062e2c6a61</Guid>
+      <CheckSum>5fa9a88a4b485400bd9111f79c52752e</CheckSum>
+      <RelativePath>OpenChecks\Forms\Composite\EC</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>CompositeGraphics</Name>
+      <Guid>8e8c5c5e-a958-44e6-83dc-3cb11a4746af</Guid>
+      <CheckSum>360d358d0bf59c244dafcaf1b7576b30</CheckSum>
+      <RelativePath>OpenChecks\Forms\Composite\EC\EC_Functions</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Functions_Beff</Name>
+      <Guid>c166e1c4-b0ae-42fa-8ee0-99ab56dbd87b</Guid>
+      <CheckSum>c613d2ce2e27ddebb684688974cbe561</CheckSum>
+      <RelativePath>OpenChecks\Forms\Composite\EC\EC_Functions</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Functions_general</Name>
+      <Guid>e153287b-98a0-42df-a432-a6245f0b6490</Guid>
+      <CheckSum>77969a7992b05cc809ab6280d5a4bcd1</CheckSum>
+      <RelativePath>OpenChecks\Forms\Composite\EC\EC_Functions</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="None">
+      <Name>Functions_general_test</Name>
+      <Guid>7fa0468f-3be1-4950-aac8-74cf3176ff30</Guid>
+      <CheckSum>ec77fc61f83583f0b82e7b19aa89c783</CheckSum>
+      <RelativePath>OpenChecks\Forms\Composite\EC\EC_Functions</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Functions_NA</Name>
+      <Guid>30887cb4-4b97-431e-bd24-cd03d716444c</Guid>
+      <CheckSum>3c59b496cddfd330f09c0361b7366faa</CheckSum>
+      <RelativePath>OpenChecks\Forms\Composite\EC\EC_Functions</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Functions_properties</Name>
+      <Guid>ceb26cdf-5d32-4df5-9402-4297d8b1ab94</Guid>
+      <CheckSum>bf4b71909ac139ef681311a48fa4683b</CheckSum>
+      <RelativePath>OpenChecks\Forms\Composite\EC\EC_Functions</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Functions_CodeIndependent</Name>
+      <Guid>cfeea182-4fcc-4717-8be3-781a892828ed</Guid>
+      <CheckSum>73dee2cff619067c4d562614a5debe6a</CheckSum>
+      <RelativePath>OpenChecks\Forms\Composite\Functions</RelativePath>
+    </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>CompositeBeam_AISC_360_10_Main</Name>
       <Guid>f172aae0-a7ac-40b8-876c-ed0db8424130</Guid>
@@ -3579,6 +3705,12 @@
       <RelativePath>OpenChecks\Forms\Concrete\Functions</RelativePath>
       <Settings Languages="ENU,CSY,DEU,FRB,NLD,PTG,SKY,ROM,ELL,PLK,ITA,ESP,HRV" />
     </SdfSolutionItem>
+	<SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="None">
+      <Name>DesignRegRectForces_test</Name>
+      <Guid>6287dd1b-bd7e-41bd-8a3f-8cd5e587e798</Guid>
+      <CheckSum>d38e8ca555f7d1894f77605991c60c73</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete\Functions</RelativePath>
+    </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>FontsAndColors</Name>
       <Guid>5f2c7021-cd4c-44a3-a03f-5a9075ba8b2e</Guid>
@@ -3870,6 +4002,360 @@
       <CheckSum>af52bbbf93017963fa62f9d8374277c4</CheckSum>
       <RelativePath>OpenChecks\Forms\Concrete_IBC\Test</RelativePath>
       <Settings Languages="ENU" />
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>CalcShearCharFromSEN</Name>
+      <Guid>c274db83-884c-4cf9-994e-60b8e182aa7b</Guid>
+      <CheckSum>6f7400b89ff73bfa887ca05675f16e61</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Calculation_of_c_nom</Name>
+      <Guid>9dcd82d7-5c5e-4379-9276-af6f696fe2b0</Guid>
+      <CheckSum>1944a77082abf5a3962c31a27c791d66</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>ConditionsForCss</Name>
+      <Guid>bd26a655-e5d0-4502-a399-658a24ff5008</Guid>
+      <CheckSum>54f56c6250176450bd91fcc265bc8218</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Forces2D</Name>
+      <Guid>42ed6433-dba6-4e75-b632-ceff9626eda7</Guid>
+      <CheckSum>0b2afdaa385be6038b1d0dd2095fc39e</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Graphics2D</Name>
+      <Guid>4263cf4b-046c-4f85-a526-26e0a4bf041e</Guid>
+      <CheckSum>02e89b34d74dae1c26efa097b54ac59e</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Graphics2D_element</Name>
+      <Guid>85e96ccb-8198-4ff6-8254-3ed62e9e50bc</Guid>
+      <CheckSum>a47fa8a429ff1609fe43062cba4d8c37</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Graphics2D_section</Name>
+      <Guid>3d346bb3-c3fb-4db3-b9da-64231ae9e2cc</Guid>
+      <CheckSum>3b249be1819961c34eefae8ca82be044</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Graphics_1_CSS_with_reinforcement</Name>
+      <Guid>29aab904-6dc7-46ac-bff2-4ed6902b2108</Guid>
+      <CheckSum>a89048d5834935cfb53e144b70efb2ce</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Graphics_3_CSS_with_stress_strain_diagram</Name>
+      <Guid>4b562a12-f983-4f89-806c-c926e47c723d</Guid>
+      <CheckSum>245c8eabb9132600d0e213f065c95eb3</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Graphics_5_CSS_with_torsion</Name>
+      <Guid>0bec287a-4953-4a9d-ba03-e1012d78dfd0</Guid>
+      <CheckSum>1e9c1a056f862cae4eba41c09509e941</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Graphics_7_side_view_reinf</Name>
+      <Guid>9978e930-4ca4-4c23-b09c-42c6eabd0a99</Guid>
+      <CheckSum>a66d9a0001d40d38bb720fbcfe6a44a3</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Graphics_8_CSS_POD_Char</Name>
+      <Guid>03692607-f504-4659-8516-2d8bde8cf150</Guid>
+      <CheckSum>f86ed198146e4a6fa629daaac9a84db3</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Angle_Alpha</Name>
+      <Guid>d9164027-0718-404b-bc37-3aeb0c88bad1</Guid>
+      <CheckSum>8ddc28326836494a974dd666588f19d7</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Capacity_Check</Name>
+      <Guid>a064d1fa-c49e-423d-9ce6-33a2f89845e1</Guid>
+      <CheckSum>60048f597cb2ad6f29451dbefbabcd43</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Capacity_Check_SEN</Name>
+      <Guid>19ed3461-60e5-42fd-b766-fd2d6dde0c89</Guid>
+      <CheckSum>d5380241aa0482dc0017107931c29c0a</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Check_Capacity_InteractionDiagram3D</Name>
+      <Guid>4b3a52f9-7506-4b03-8a9b-64174e61df54</Guid>
+      <CheckSum>d477bb13828713a59e983a9288d83dc5</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Check_response_N_My_Mz</Name>
+      <Guid>eae201a3-5e97-4371-9f71-139feeb618f4</Guid>
+      <CheckSum>8f5eebd2e549237ddc602e94a3c27d0b</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Concrete_Design2D_CompressStrut</Name>
+      <Guid>ce91552a-400f-4f2d-8858-967b692541dc</Guid>
+      <CheckSum>28cbed7c3e14199654042f1b4333cae2</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Concrete_Design2D_LongReinf</Name>
+      <Guid>99c01c33-6146-4999-8858-7d5937454ae7</Guid>
+      <CheckSum>9e2915965c35333be6e978febccaccac</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Concrete_Design2D_Multi</Name>
+      <Guid>f3034ee6-dc5e-41c0-ac7d-1d7c12bfa2ef</Guid>
+      <CheckSum>83462ecc2efcf8219e9706e743d2f8f7</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Concrete_Design2D_SEN</Name>
+      <Guid>0df3f06f-dffe-4ca3-9935-feb2ab1c9409</Guid>
+      <CheckSum>5bd0caded71fb50dcfaef8cbad6a21dc</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Concrete_Detailing_provisions_Plate</Name>
+      <Guid>f231bc5a-1112-4f26-8bb0-c20d45ff1a55</Guid>
+      <CheckSum>da26148ab5b91bde6afa6622293f1777</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Concrete_Detailing_provisions_Wall</Name>
+      <Guid>0021b9e0-151f-4d4d-884d-ba71eeb03647</Guid>
+      <CheckSum>67c8a93f69d272e5cf530f7b7ba4f640</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Concrete_Forces2D_SEN</Name>
+      <Guid>d7cef500-9c87-4bfb-86fd-838a0c5e121e</Guid>
+      <CheckSum>c3e78a87e688b9e4e4f230e015c881c2</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Concrete_Forces_2D</Name>
+      <Guid>bfef7c4c-5caa-4fd1-bb5b-ead99cb15de5</Guid>
+      <CheckSum>bbb304de53f6df0509bf005a4030ae13</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Concrete_Forces_Reduction_SEN</Name>
+      <Guid>fb031e1c-c5a5-489f-a378-ce5493b47d10</Guid>
+      <CheckSum>5f3fea27f56133e0f8cbbc584ffd6772</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Concrete_Interaction_V_T</Name>
+      <Guid>af5c3f19-3248-450e-82bf-7b4d08d31b2f</Guid>
+      <CheckSum>3d80eac544a2ce5667b18af5874412d1</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Concrete_Interaction_V_T_SEN</Name>
+      <Guid>59c63b06-d5f5-4e5e-9405-d9e18b4a401d</Guid>
+      <CheckSum>c105b9b66b7b69673c9470e6acff4372</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Concrete_IntForces_SecOrderEffect</Name>
+      <Guid>ec1ee3a0-2eca-42b4-8740-20fbf47934e4</Guid>
+      <CheckSum>9e0fee39078ffbde258e49d40aaaabd8</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Concrete_IntForces_SEN</Name>
+      <Guid>6e26858e-cbf8-4c65-bb35-2770c0e46e1e</Guid>
+      <CheckSum>83c193f74f3828d6663dce00536da332</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Concrete_IntForces_SEN_Check</Name>
+      <Guid>0246323c-87a7-43a1-857a-4216ee952578</Guid>
+      <CheckSum>74e9226d67aa537ae804da22c8011111</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Concrete_Reduction_SEN</Name>
+      <Guid>a1431d85-2a70-4c31-8a19-460c9ace3595</Guid>
+      <CheckSum>9726e73e46bff17a53564d73aa174261</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Concrete_Shear_Check</Name>
+      <Guid>d55dbc75-4bca-436f-a040-203431c302dc</Guid>
+      <CheckSum>4ac63746320840cda83d6537237ce3a6</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Concrete_Slenderness</Name>
+      <Guid>1975bff6-8fde-48a9-be61-c929418c597a</Guid>
+      <CheckSum>ecb7f3516641f18dcdc2f4ce9ebf5ebb</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Concrete_Torsion_Check</Name>
+      <Guid>4c2ac29e-68c2-4782-848d-bf761b5ffc0b</Guid>
+      <CheckSum>3cc0d0ab658cde99401ffae1e87b771e</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Creep_coeff_calculation</Name>
+      <Guid>59cd162b-fd6f-4276-8cb2-8d79e51dd195</Guid>
+      <CheckSum>c60c92a050fada9db2d0e64ef431b8d7</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Creep_coeff_SEN_Check</Name>
+      <Guid>91eaed31-9d8e-4a3a-87d1-899544769a77</Guid>
+      <CheckSum>9c411881658b682147a3442b2b2ad50f</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Stress_limitation_check</Name>
+      <Guid>46616150-cb34-430e-b46a-0febce46b447</Guid>
+      <CheckSum>4621febc84bff6c41a2f2d333a9fe4f0</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Stress_limitation_Check_SEN</Name>
+      <Guid>9fc54236-1d07-4a38-a91e-1f1d9ad1fb36</Guid>
+      <CheckSum>d040a06b56386e8a32fb5a5eb193df10</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>CreateCs</Name>
+      <Guid>74087983-7caa-4a90-aaf3-305414c89f04</Guid>
+      <CheckSum>4576ecd27b3685b79ea917dc8e8677ea</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA\Functions</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>CreateCS_common</Name>
+      <Guid>9a3de3b7-5131-4dd9-b3f4-162c55798f38</Guid>
+      <CheckSum>31d0bf2e897aa72749bc63fd46ab86ce</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA\Functions</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>CrossSection</Name>
+      <Guid>f242ea08-cbe3-4956-9fc9-9a7d814a0086</Guid>
+      <CheckSum>980ccbf0095e1dc08dd482b617c52307</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA\Functions</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>DesignRegRectForces</Name>
+      <Guid>8ac61c08-e4da-4fad-872f-6831c7d88bcd</Guid>
+      <CheckSum>b05446555dd725c65e49f7841aecd2d1</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA\Functions</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>FontsAndColors</Name>
+      <Guid>f29a35f6-8eff-4045-bd6e-3e110317224f</Guid>
+      <CheckSum>eb2a5181947a5b67c232aeb0b0272b09</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA\Functions</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Functions1D_DesignReq</Name>
+      <Guid>8b0911e8-9908-4e5f-8170-6f98994aaf80</Guid>
+      <CheckSum>1e70f7589ba09ea16f595c3174387bcb</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA\Functions</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Functions1D_EWN</Name>
+      <Guid>0c362b96-17c2-44a9-8640-fe15c29409c0</Guid>
+      <CheckSum>24a6cba77368a11cac8cfc73ce79642b</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA\Functions</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Functions1D_General</Name>
+      <Guid>5f246955-d248-4826-8c21-aa810704dc3b</Guid>
+      <CheckSum>b69f05ce6c9e2009d78029b526fc7ec5</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA\Functions</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Functions1D_Geometrics</Name>
+      <Guid>7df0d1ca-4c66-4f75-b280-f43e0626b949</Guid>
+      <CheckSum>3c234dc98e1fe6e89abc438589ee60d6</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA\Functions</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Functions1D_ShearAndTorsion</Name>
+      <Guid>ec090f21-11e4-480f-8838-c8230438fe2a</Guid>
+      <CheckSum>7b12ecbe8bccb51f7f69778180b077a8</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA\Functions</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Functions2D</Name>
+      <Guid>1146efba-fbdd-4195-99b3-5b53a34d4dba</Guid>
+      <CheckSum>b19bbaec5fbed4130ee68d5a8ceeab7b</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA\Functions</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Functions2D_DesignCover</Name>
+      <Guid>df8bbcbe-4cb9-4935-b108-3664ab5c960a</Guid>
+      <CheckSum>0793e4ead5b5d3fead67e7be432ec041</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA\Functions</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Functions2D_DesignDefaults</Name>
+      <Guid>cb2231d2-fbb2-478e-8852-911e7671e1af</Guid>
+      <CheckSum>e7ea59a793003e5277a8abcd2505fc76</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA\Functions</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>FunctionsDataFromSEN</Name>
+      <Guid>5609441f-2c5c-4f93-89aa-3002ce6c78ab</Guid>
+      <CheckSum>aec983bbc71df555a8539a2e495ee9d3</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA\Functions</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Functions_SIA</Name>
+      <Guid>b535eb3b-490f-4a74-9272-fc216d28f337</Guid>
+      <CheckSum>e549949a05694ebc40ed21ec51b2fc71</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA\Functions</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>GraphicsFunctions</Name>
+      <Guid>4ed1f56b-7bf2-46f9-93cd-6acd60e56a45</Guid>
+      <CheckSum>fc4e7e7a18f99d8427d6d193ada2ada2</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA\Functions</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Header</Name>
+      <Guid>5fab8160-33a6-4ca7-bf2f-23bdc3af7c1e</Guid>
+      <CheckSum>e4df6a6ba9cd0515af13aecc27a88e17</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA\Functions</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>IOhelper</Name>
+      <Guid>000f9a15-5398-4ae9-aa88-3a0a3b856f79</Guid>
+      <CheckSum>602cd37044d3c6d721e770b66ffdc227</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA\Functions</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>StressStrain_Diagrams</Name>
+      <Guid>2c223946-ce64-4ec5-942b-9f7293ad45f4</Guid>
+      <CheckSum>99bfad691bf5fcdbec15043650f5c5b1</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA\Functions</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>Test_creep_coeff_SIA</Name>
+      <Guid>97042783-c8bc-48ff-a283-9ae39e278e0c</Guid>
+      <CheckSum>d50834aa3cc4a98b5ed1d455594a335d</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA\Tests</RelativePath>
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>Check maximum reinforcement area</Name>
@@ -4242,6 +4728,12 @@
       <RelativePath>OpenChecks\Forms\NBR6118\2D Members\Concrete\Functions</RelativePath>
       <Settings Languages="ENU,PTG" />
     </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="None">
+      <Name>0D_Reactions_SEN</Name>
+      <Guid>81306d0f-7ab0-4a45-bc57-837069b4892c</Guid>
+      <CheckSum>9c8247d79225fd070f2f8dbedb08b495</CheckSum>
+      <RelativePath>OpenChecks\Forms\Results</RelativePath>
+    </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="LocalSettings">
       <Name>1D_deformations</Name>
       <Guid>e5710ab8-bd44-4c8b-9b43-e23b7556db9a</Guid>
@@ -4563,6 +5055,18 @@
       <CheckSum>018e8dce2f05aeda1e8b98d19e02095f</CheckSum>
       <RelativePath>OpenChecks\CustomLibrary</RelativePath>
       <Settings Languages="ENU,CSY,DEU,FRB,NLD,PTG,SKY,ROM,ELL,PLK,ITA,ESP,HRV" />
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="XmlFile" Version="" TranslationType="GlobalSettings">
+      <Name>SIA_Concrete</Name>
+      <Guid>00000000-0000-0000-0000-000000000000</Guid>
+      <CheckSum>8f4d6ddd736da3922ee2759ca68763e6</CheckSum>
+      <RelativePath>OpenChecks\CustomLibrary</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="XmlFile" Version="" TranslationType="GlobalSettings">
+      <Name>SIA_Reinf</Name>
+      <Guid>00000000-0000-0000-0000-000000000000</Guid>
+      <CheckSum>0abf48552364a59c19be640503eacfaf</CheckSum>
+      <RelativePath>OpenChecks\CustomLibrary</RelativePath>
     </SdfSolutionItem>
     <SdfSolutionItem Type="XmlFile" Version="" TranslationType="LocalSettings">
       <Name>SteelSections_CBD</Name>

@@ -272,7 +272,7 @@ double CompPortion →INI400_009862= 0;
 double numEdges →INI400_001278= CrossSection.GetNumberOfEdges(); 
 
 //set diameter and cover 
-object[] DiameterAndCoverForEdges →INI400_005801= Functions1D_General.GetDiamAndCoverForEdges(CrossSection, AngleM, TypeCoverDiam, c, c↓lo←, c↓up←, c↓side←, ϕ, ϕ↓lo←, ϕ↓up←, MIN(ϕ↓lo←, ϕ↓up←)); 
+object[] DiameterAndCoverForEdges →INI400_005801= Functions1D_General.GetDiamAndCoverForEdges(CrossSection, AngleM, TypeCoverDiam, c, c↓lo←, c↓up←, c↓side←, ϕ, ϕ↓lo←, ϕ↓up←, ϕ); 
 →INI400_004083CONCRETE.Designer.SetDifferentDiameterAndCoverForEdges(DesAddDataID, DiameterAndCoverForEdges); 
 //set biaxial coeficient
 IF((Method == 0 &amp;&amp; (FormCode == 2002 || FormCode == 2003)) || Method == 3) { //auto or biaxial calculation
@@ -6987,7 +6987,7 @@ object DesignType →INI400_007953= generalInfo.DesType;
               <ENU>Same values (column)|Upper, lower (beam)</ENU>
             </Texts>
           </TComboBox>
-          <TComboBox Name="TypeAreaCombo" ID="37" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="16" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeArea" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="1|0" Index="1">
+          <TComboBox Name="TypeAreaCombo" ID="37" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="16" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeArea" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="1|0" Index="0">
             <Texts>
               <ENU>Area of real bars|Delta area</ENU>
             </Texts>
@@ -7007,7 +7007,7 @@ object DesignType →INI400_007953= generalInfo.DesType;
           <Texts>
             <ENU>Internal forces - Load</ENU>
           </Texts>
-          <TTableInput Name="" ID="47" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="TableForces" Value="1|0|150|50" CellBG="-1" HeaderBG="-986896" FixedRows="-1">
+          <TTableInput Name="" ID="47" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="TableForces" Value="1|0|-100|0║2|0|50|0║3|0|25|30" CellBG="-1" HeaderBG="-986896" FixedRows="-1">
             <Texts>
               <ENU>Index|Axial force|Moment around y-axis|Moment around z-axis</ENU>
             </Texts>
@@ -7031,7 +7031,7 @@ object DesignType →INI400_007953= generalInfo.DesType;
           <TDoubleInput Name="TDoubleInput" ID="6" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="4" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="N" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         </TGroupBox>
         <TConcreteSectionLibrary Name="" ID="28" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="19" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="1" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="" SelectedCS="1" Units="0" ReinfTabsVis="True" TabBG="-2894893" SelTab="-1">
-          <CS SelReinf="0" H="500e-3" B="300e-3" />
+          <CS SelReinf="0" H="400e-3" B="400e-3" />
           <Reinf Ver="1" Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="30e-3" D_upper="20e-3" N_upper="2" c_lower="30e-3" D_lower="20e-3" N_lower="2" />
         </TConcreteSectionLibrary>
         <TCustomLibrary Name="TCustomLibrary" ID="4" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="10" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="CONCRETE.EC" DataFile="EC_Concrete.xml" Collapsed="True" UseCombo="False" Category="Bilinear" Item="C 20/25">
@@ -7113,7 +7113,7 @@ object DesignType →INI400_007953= generalInfo.DesType;
             </Items>
           </Data>
         </TCustomLibrary>
-        <TCustomLibrary Name="TCustomLibrary" ID="5" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="8" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="REINF.EC" DataFile="EC_Reinf.xml" Collapsed="True" UseCombo="False" Category="Horizontal top branch" Item="B 500 B">
+        <TCustomLibrary Name="TCustomLibrary" ID="5" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="8" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="REINF.EC" DataFile="EC_Reinf.xml" Collapsed="False" UseCombo="False" Category="Horizontal top branch" Item="B 500 B">
           <Data>
             <Header>
               <PropertySet Symbol="f↓yk←" ESA_ID="fyk" Unit="MPa" Type="Numeric" />

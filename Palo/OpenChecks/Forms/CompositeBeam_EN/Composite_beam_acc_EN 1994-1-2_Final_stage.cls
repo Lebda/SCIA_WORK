@@ -36,7 +36,7 @@ double UC →INI400_008270= Extern_Calculate.UC;
 double b↓eff← →POR106_000001= Extern_Calculate.b↓eff←; </SourceCode>
   </CodeEditor>
   <Calculation>
-    <Header NormCode="1" Member="1001" Material="1" CSType="-1" LimitState="2" IFFilter="12" LicenceID="10400" Autor="" Autor2="" Version="42" EWNSource="Composite.xml" Icon="Qk3uAAAAAAAAAHYAAAAoAAAAEAAAAA8AAAABAAQAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAA/wAAgP8AgAD/AICA/4AAAP+AAID/gIAA/8DAwP+AgID/AAD//wD/AP8A/////wAA//8A/////wD//////3d3d3d3d3d3AAAAAAAAAABmZmZmZmZmZmZ3ZmZmZplmZ3d2ZmZpmWZnd3ZmZmmZlnd3d2ZomZl2AAAABmmZmXcP//8HmZmZdw9ETwd5mZl3D///B3eZl3cPTwAHd5l3dw9PDgd5l3d3D/8Ad3d3d3cAAAd3d3d3dw==">
+    <Header NormCode="1" Member="1001" Material="1" CSType="-1" LimitState="2" IFFilter="12" LicenceID="10400" Autor="" Autor2="" Version="43" EWNSource="Composite.xml" Icon="Qk3uAAAAAAAAAHYAAAAoAAAAEAAAAA8AAAABAAQAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAA/wAAgP8AgAD/AICA/4AAAP+AAID/gIAA/8DAwP+AgID/AAD//wD/AP8A/////wAA//8A/////wD//////3d3d3d3d3d3AAAAAAAAAABmZmZmZmZmZmZ3ZmZmZplmZ3d2ZmZpmWZnd3ZmZmmZlnd3d2ZomZl2AAAABmmZmXcP//8HmZmZdw9ETwd5mZl3D///B3eZl3cPTwAHd5l3dw9PDgd5l3d3D/8Ad3d3d3cAAAd3d3d3dw==">
       <Prereq />
       <Languages>
         <Language Code="ENU" LangName="English " />
@@ -45,7 +45,7 @@ double b↓eff← →POR106_000001= Extern_Calculate.b↓eff←; </SourceCode>
         <ENU>http://help.scia.net/15.0/en/#sr/composite_analysis_model/04_01-composite_en_checks.htm%3FTocPath%3DDesign%2520of%2520composite%2520members%7CComposite%2520Checks%7CComposite%2520Checks%2520EN%25201994%7C_____0</ENU>
       </Document>
       <CalculationName TranslateID="CalculationName">
-        <ENU>Composite Beam - Final stage - Fire resistance</ENU>
+        <ENU>Composite Beam check - EN 1994-1-2 - Final stage</ENU>
       </CalculationName>
     </Header>
     <Styles>

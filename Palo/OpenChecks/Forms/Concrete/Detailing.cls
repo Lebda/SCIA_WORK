@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="aae55477-e7f7-49aa-ab77-38f5940b0f58">
   <CodeEditor>
-    <SourceCode Collapsed="3|26|35|55|108|124|135|142|153|164|175|185|199|235|241|294|308|340|348|366|377|389|396|401|408|415|426|453|475|504|528|544|568|584|600|607|626|633|657|671|682|695|704|714|725|737|746|755|765" BreakPoints="">//CLS with functions for 2D concrete
+    <SourceCode Collapsed="3|26|35|55|108|124|135|142|153|164|175|185|199|235|241|294|308|345|357|375|386|398|405|410|417|424|435|462|484|513|537|553|577|593|609|616|635|642|666|680|691|704|713|723|734|746|755|764|774" BreakPoints="">//CLS with functions for 2D concrete
 
 →INI400_006756BLOCK("Clause 8.2(2) - Spacing of bars - s↓min←") { 
     public void s↓min←(double ϕ, double d↓g←, double s↓lb,min←, bool Layer, object Result) { 
@@ -347,6 +347,10 @@
 
 →INI400_006537BLOCK("Clause 9.2.3(3) - Torsion reinforcement - s↓l,tor,max←") { 
     public void s↓l,tor,max←(double u, double s↓l,max←, double b↓min←, object Result) { 
+        →KRS106_000003double&lt;mm,0&gt; u; 
+        →KRS106_000004double&lt;mm,0&gt; s↓l,max←; 
+        →KRS106_000005double&lt;mm,0&gt; b↓min←; 
+        
         →INI400_008492TEXT("Maximal allowed longitudinal spacing of stirrups based on torsion requirements"); 
         double&lt;mm,2&gt; s↓l,tor,max← →INI400_006538= MIN(u/8, s↓l,max←, b↓min←) @REF("(§9.2.3(3))"); 
         →INI400_008490Result.Set("sltormax", s↓l,tor,max←); 
@@ -1162,12 +1166,12 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_006538">
-        <Set Vis="1" Prev="" Style="1" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="4" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
       </VC>
       <VC ID="INI400_006539">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />

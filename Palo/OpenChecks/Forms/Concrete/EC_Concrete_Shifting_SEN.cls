@@ -277,25 +277,25 @@ IF(SectionId == NSection) {
     IF(M↓z.L← &lt; 0) { ZeroSign_z →INI400_007802= -1; } 
 } 
 IF(COMPARE(M↓y←, 0, 6) == 0) { 
-    double sign↓y← →INI400_007795= ZeroSign_y; 
+    double sgn↓y← →INI400_007795= ZeroSign_y; 
 } ELSE { 
     IF(COMPARE(M↓y←, 0, 6) &gt; 0) { 
-        double sign↓y← →INI400_007312= 1; 
+        double sgn↓y← →INI400_007312= 1; 
     } ELSE { 
-        double sign↓y← →INI400_007791= -1; 
+        double sgn↓y← →INI400_007791= -1; 
     } 
 } 
-double M↓y.shift← →INI400_007313= sign↓y←*MAX(ABS(M↓y←), ABS(M↓y.L←), ABS(M↓y.R←), ABS(M↓max.y←)); 
+double M↓y.shift← →INI400_007313= sgn↓y←*MAX(ABS(M↓y←), ABS(M↓y.L←), ABS(M↓y.R←), ABS(M↓max.y←)); 
 IF(COMPARE(M↓z←, 0, 6) == 0) { 
-    double sign↓z← →INI400_007792= ZeroSign_z; 
+    double sgn↓z← →INI400_007792= ZeroSign_z; 
 } ELSE { 
     IF(COMPARE(M↓z←, 0, 6) &gt; 0) { 
-        double sign↓z← →INI400_007793= 1; 
+        double sgn↓z← →INI400_007793= 1; 
     } ELSE { 
-        double sign↓z← →INI400_007794= -1; 
+        double sgn↓z← →INI400_007794= -1; 
     } 
 } 
-double M↓z.shift← →INI400_007316= sign↓z←*MAX(ABS(M↓z←), ABS(M↓z.L←), ABS(M↓z.R←), ABS(M↓max.z←)); 
+double M↓z.shift← →INI400_007316= sgn↓z←*MAX(ABS(M↓z←), ABS(M↓z.L←), ABS(M↓z.R←), ABS(M↓max.z←)); 
 //determination additinoal momnet casued by shifting
 ΔΜ↓y.shift← →INI400_007351= M↓y.shift←-M↓y←; 
 ΔΜ↓z.shift← →INI400_007352= M↓z.shift←-M↓z←; 
@@ -784,14 +784,14 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="sign↓y←" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="sgn↓y←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="sign↓z←" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="sgn↓z←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>

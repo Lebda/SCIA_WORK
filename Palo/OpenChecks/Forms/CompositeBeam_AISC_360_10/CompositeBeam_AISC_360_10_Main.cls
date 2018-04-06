@@ -266,7 +266,7 @@
     NumberStuds →GMP011_019684= IO.Beam.MemberData.Composite.Connectors.nrows_M; 
     
     
-    IF(IO.Beam.MemberData.Composite.Composite.NegativeSteelOnly == 1) { 
+    IF(IO.Beam.MemberData.Composite.Composite.Resistance.NegativeSteelOnly == 1) { 
         NegCompAction →GMP119_019503= false; 
     } ELSE { 
         NegCompAction →GMP119_019504= TRUE; 

@@ -294,7 +294,7 @@ FOR(li, 0, allPerimeters.Count-1) {
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
-      <Variable Modifier="Public" Name="ai" ESA_ID="" Type="Double" Value="19" Precision="2">
+      <Variable Modifier="Public" Name="ai" ESA_ID="" Type="Double" Value="18" Precision="2">
         <Description TranslateID="VARIABLE_ai">
           <ENU>
           </ENU>
@@ -422,7 +422,7 @@ FOR(li, 0, allPerimeters.Count-1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="li" ESA_ID="" Type="Double" Value="19" Precision="2">
+      <Variable Modifier="Public" Name="li" ESA_ID="" Type="Double" Value="18" Precision="2">
         <Description TranslateID="VARIABLE_li">
           <ENU>
           </ENU>
@@ -454,7 +454,7 @@ FOR(li, 0, allPerimeters.Count-1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="perimCount" ESA_ID="Result.104" Type="Double" Value="19" Precision="2">
+      <Variable Modifier="Public" Name="perimCount" ESA_ID="Result.104" Type="Double" Value="18" Precision="2">
         <Description TranslateID="VARIABLE_perimCount">
           <ENU>
           </ENU>
@@ -506,7 +506,7 @@ FOR(li, 0, allPerimeters.Count-1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="sAreaID" ESA_ID="" Type="String" Value="Area18">
+      <Variable Modifier="Public" Name="sAreaID" ESA_ID="" Type="String" Value="Area17">
         <Description TranslateID="VARIABLE_sAreaID">
           <ENU>
           </ENU>
@@ -518,7 +518,7 @@ FOR(li, 0, allPerimeters.Count-1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="sLengthID" ESA_ID="" Type="String" Value="Length18">
+      <Variable Modifier="Public" Name="sLengthID" ESA_ID="" Type="String" Value="Length17">
         <Description TranslateID="VARIABLE_sLengthID">
           <ENU>
           </ENU>

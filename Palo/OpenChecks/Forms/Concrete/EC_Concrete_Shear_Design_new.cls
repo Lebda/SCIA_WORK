@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="2d8967a1-8b99-46cf-8ce0-a251fbbb7427">
   <CodeEditor>
-    <SourceCode Collapsed="421" BreakPoints="">IF(PrintCaption) { 
+    <SourceCode Collapsed="" BreakPoints="">IF(PrintCaption) { 
     →INI400_001093TEXT(Caption); 
 } 
 →INI400_007174BLOCK { // using data exchange structure
@@ -106,6 +106,7 @@
 
 //load function for 1D member
 object Functions1D_General →INI400_013651= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_General.CLC"); 
+object Functions1D_Geometrics →KRS100_000001= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_Geometrics.CLC"); 
 object Functions1D_EWN →INI400_013652= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_EWN.CLC"); 
 object Functions1D_ShearAndTorsion →INI400_013654= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_ShearAndTorsion.CLC"); 
 
@@ -391,7 +392,7 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0 &amp;&amp; COMPARE(V↓Ed←, 0, 6) == 0) {
                 IF(TypeTorCss != 4) { 
                     
                     →INI400_005180TEXT(Description("u↓c←")); 
-                    u↓c← →INI400_005181= ConcreteCssCharacteristics.Perimeter; 
+                    u↓c← →INI400_005181= ConcreteCssCharacteristics.Perimeter @REF("(§6.3.2)"); 
                     →INI400_005184TEXT(Description("A↓sl.tor←")); 
                     double StripeWidth →INI400_005192= 0.05; 
                     A↓sl.tor← →INI400_009460= CONCRETE.Characteristics(CssID, ZeroForcesID, Concrete.CharType.WholeCharReinf, Concrete.StiffnessType.No).A; 
@@ -418,6 +419,7 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0 &amp;&amp; COMPARE(V↓Ed←, 0, 6) == 0) {
                 double A↓k← →INI400_007400= TorsionParam.Ak; 
                 double u↓k← →INI400_007401= TorsionParam.uk; 
                 double t↓ef← →INI400_007402= TorsionParam.tef; 
+                u↓c← →KRS106_000016= ConcreteCssCharacteristics.Perimeter; 
                 object[] OuterPol →INI400_007405= TorsionParam.OuterPolygon; 
                 object[] CentreLinePol →INI400_007406= TorsionParam.CentreLinePolygon; 
                 object[] InnerPol →INI400_007407= TorsionParam.InnerPolygon; 
@@ -1139,9 +1141,9 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0 &amp;&amp; COMPARE(V↓Ed←, 0, 6) == 0) {
                             →INI400_009089TableParam.Set("TableBorderPen", FontsAndColors.TableBorderPen()); 
                             →INI400_009090TableParam.Set("TableGridPen", FontsAndColors.TableGridPen()); 
                         } 
+                        double MinDimCss →INI400_009179= Functions1D_Geometrics.MinCSS_Dimension(CssID, IO.CS.Geometry.FormCode, ShapeCss); 
                         SWITCH(TypeMember) { 
                             CASE 0 :  { //Beam
-                                double MinDimCss →INI400_009179= MIN(Concrete.General.GetCssHeight(CssID, 0), Concrete.General.GetCssHeight(CssID, 90)); 
                                 object DetProv →INI400_008459= LoadExternCLC("EC_Concrete_Detailing_provisions_Beam_Shear.clc"); 
                                 
                                 →KRS135_000008DetProvInput.Set("d", d); 
@@ -1161,7 +1163,7 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0 &amp;&amp; COMPARE(V↓Ed←, 0, 6) == 0) {
                                 →KRS135_000021DetProvInput.Set("α↓cw←", α↓cw←); 
                                 →KRS135_000022DetProvInput.Set("ν↓1←", ν↓1←); 
                                 →KRS135_000023DetProvInput.Set("f↓cd←", f↓cd←); 
-                                →KRS135_000024DetProvInput.Set("u", u↓k←); 
+                                →KRS135_000024DetProvInput.Set("u", u↓c←); 
                                 →KRS135_000025DetProvInput.Set("b↓min←", MinDimCss); 
                                 →KRS135_000026DetProvInput.Set("n↓s←", n↓s.req←); 
                                 →KRS135_000029DetProvInput.Set("TableParam", TableParam); 
@@ -1186,7 +1188,6 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0 &amp;&amp; COMPARE(V↓Ed←, 0, 6) == 0) {
                                 
                             } 
                             CASE 1 :  { //Column
-                                double MinDimCss →INI400_009183= MIN(Concrete.General.GetCssHeight(CssID, 0), Concrete.General.GetCssHeight(CssID, 90)); 
                                 object DetProv →INI400_009184= LoadExternCLC("EC_Concrete_Detailing_provisions_Column_Shear.clc"); 
                                 
                                 →KRS135_000042DetProvInput.Set("n↓s←", n↓s.req←); 
@@ -2187,6 +2188,12 @@ IF(IO.IsDrawing) {
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="Functions1D_Geometrics" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_Functions1D_Geometrics">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="Functions1D_ShearAndTorsion" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -2736,9 +2743,9 @@ IF(IO.IsDrawing) {
       </Variable>
       <Variable Modifier="Public" Name="u↓c←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_u↓c←">
-          <ENU>Total area of cross-section</ENU>
+          <ENU>Outer circumference of the cross-section</ENU>
         </Description>
-        <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m↑2←" />
+        <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="u↓k.inp←" ESA_ID="" Type="Double" Precision="2">
         <Description>
@@ -4685,12 +4692,12 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
       </VC>
       <VC ID="INI400_005181">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2075" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="645" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1488" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="645" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
       </VC>
       <VC ID="INI400_005184">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2091" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -9876,6 +9883,14 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS100_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+      </VC>
       <VC ID="KRS106_000014">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -9891,6 +9906,14 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000016">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2075" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2075" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2075" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2075" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2075" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2075" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
       <VC ID="KRS116_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

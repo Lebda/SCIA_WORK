@@ -251,7 +251,7 @@ IF(CssConditions.ConditionsForCss) {
     →KRS116_000004Input.Add("c_lo_des", c↓lo,des←); 
     →KRS116_000005Input.Add("c_up_des", c↓up,des←); 
     →KRS116_000006Input.Add("c_side_des", c↓side,des←); 
-    →KRS116_000007Input.Add("ϕ_des", 0); //Because it is not used for beams
+    →KRS116_000007Input.Add("ϕ_des", MIN(ϕ↓lo,des←, ϕ↓up,des←)); //Because it is not used for beams
     →KRS116_000008Input.Add("ϕ_lo_des", ϕ↓lo,des←); 
     →KRS116_000009Input.Add("ϕ_up_des", ϕ↓up,des←); 
     
@@ -608,19 +608,6 @@ ELSE {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="Check" ESA_ID="Result.59" Type="String">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="3" Numeric="UC" SenModif="False" LabOri="0" />
-      </Variable>
-      <Variable Modifier="Public" Name="CheckDetailing" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
       <Variable Modifier="Public" Name="Coeff_ϕ_m" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -700,6 +687,19 @@ ELSE {
       </Variable>
       <Variable Modifier="Public" Name="HEADER" ESA_ID="" Type="Object">
         <Description TranslateID="VARIABLE_HEADER">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="Check" ESA_ID="Result.59" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="3" Numeric="UC" SenModif="False" LabOri="0" />
+      </Variable>
+      <Variable Modifier="Public" Name="CheckDetailing" ESA_ID="" Type="Object">
+        <Description>
           <ENU>
           </ENU>
         </Description>

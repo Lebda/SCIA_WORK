@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="18"><StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eliveloadreduction}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="34"><StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eliveloadreduction}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
 		<ResourceId>5007</ResourceId>
 	</StringCode>
@@ -7,17 +7,45 @@
 		<SourceDll>BasicResults.2edll</SourceDll>
 		<ResourceId>210</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2ebasicmagnitudes}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>5170</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2esubsoilc2d_name}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>12041</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2ebasicplasticstrain2d}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>5364</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2elinear_intensity}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>6311</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2efloorvibration_name}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
 		<ResourceId>9157</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eprincipalstress2d}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>5358</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2ebasicstress2d}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>5359</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2einternalforces1d_name}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
-		<ResourceId>12037</ResourceId>
+		<ResourceId>36643</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2einternal_forces}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
 		<ResourceId>5007</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2emembranestress2d}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>5360</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2edeformations1d_name}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
@@ -27,9 +55,17 @@
 		<SourceDll>BasicResults.2edll</SourceDll>
 		<ResourceId>36444</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2edisplacement2d}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>9070</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2econtact_stress}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>5194</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2elinear_reactions}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
-		<ResourceId>6311</ResourceId>
+		<ResourceId>6312</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eliveloadreduction_name}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
@@ -43,13 +79,33 @@
 		<SourceDll>BasicResults.2edll</SourceDll>
 		<ResourceId>5004</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eelementarymagnitudes}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>5172</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eprincipaltotalstrain2d}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>5362</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eitm5077}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
 		<ResourceId>5077</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eprincipalmagnitudes}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>5171</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2enodal_reactions}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
 		<ResourceId>6310</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2einternalforces_integration_strip_name}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>36641</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eprincipalplasticstrain2d}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>5364</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2enodedisplacement}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
@@ -59,6 +115,10 @@
 		<SourceDll>BasicResults.2edll</SourceDll>
 		<ResourceId>5008</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2ebasictotalstrain2d}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>5361</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2ereactions}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
 		<ResourceId>36621</ResourceId>
@@ -66,6 +126,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2ereactionsresultant}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
 		<ResourceId>36632</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2efrilo_foundation_check}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>36686</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2efloorvibration}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>

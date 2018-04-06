@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="27"><StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2esolution.2ew03}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="35"><StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2edescription.2en07}</StringId>
+		<SourceDll>DataTools.2edll</SourceDll>
+		<ResourceId>109</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2edescription.2en13}</StringId>
+		<SourceDll>DataTools.2edll</SourceDll>
+		<ResourceId>117</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2esolution.2ew04}</StringId>
+		<SourceDll>DataTools.2edll</SourceDll>
+		<ResourceId>125</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2edescription.2en06}</StringId>
+		<SourceDll>DataTools.2edll</SourceDll>
+		<ResourceId>108</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2edescription.2en12}</StringId>
+		<SourceDll>DataTools.2edll</SourceDll>
+		<ResourceId>116</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2edescription.2en05}</StringId>
+		<SourceDll>DataTools.2edll</SourceDll>
+		<ResourceId>107</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2esolution.2en11}</StringId>
+		<SourceDll>DataTools.2edll</SourceDll>
+		<ResourceId>115</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2esolution.2ew03}</StringId>
 		<SourceDll>DataTools.2edll</SourceDll>
 		<ResourceId>123</ResourceId>
 	</StringCode>
@@ -55,33 +83,41 @@
 		<SourceDll>DataTools.2edll</SourceDll>
 		<ResourceId>110</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2edescription.2en07}</StringId>
+	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2efv.2edescription.2ee01}</StringId>
 		<SourceDll>DataTools.2edll</SourceDll>
-		<ResourceId>109</ResourceId>
+		<ResourceId>1007</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2edescription.2en13}</StringId>
+	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2efv.2edescription.2ew06}</StringId>
 		<SourceDll>DataTools.2edll</SourceDll>
-		<ResourceId>117</ResourceId>
+		<ResourceId>1005</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2esolution.2ew04}</StringId>
+	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2efv.2edescription.2ew05}</StringId>
 		<SourceDll>DataTools.2edll</SourceDll>
-		<ResourceId>125</ResourceId>
+		<ResourceId>1004</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2edescription.2en06}</StringId>
+	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2efv.2edescription.2ew04}</StringId>
 		<SourceDll>DataTools.2edll</SourceDll>
-		<ResourceId>108</ResourceId>
+		<ResourceId>1003</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2edescription.2en12}</StringId>
+	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2efv.2edescription.2ew03}</StringId>
 		<SourceDll>DataTools.2edll</SourceDll>
-		<ResourceId>116</ResourceId>
+		<ResourceId>1002</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2edescription.2en05}</StringId>
+	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2efv.2edescription.2ew02}</StringId>
 		<SourceDll>DataTools.2edll</SourceDll>
-		<ResourceId>107</ResourceId>
+		<ResourceId>1001</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2esolution.2en11}</StringId>
+	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2efv.2edescription.2ew01}</StringId>
 		<SourceDll>DataTools.2edll</SourceDll>
-		<ResourceId>115</ResourceId>
+		<ResourceId>1000</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2efv.2edescription.2en01}</StringId>
+		<SourceDll>DataTools.2edll</SourceDll>
+		<ResourceId>1008</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2edescription.2ew04}</StringId>
+		<SourceDll>DataTools.2edll</SourceDll>
+		<ResourceId>124</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2edescription.2ew03}</StringId>
 		<SourceDll>DataTools.2edll</SourceDll>
@@ -98,10 +134,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2edescription.2ew05}</StringId>
 		<SourceDll>DataTools.2edll</SourceDll>
 		<ResourceId>126</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2edescription.2ew04}</StringId>
-		<SourceDll>DataTools.2edll</SourceDll>
-		<ResourceId>124</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2edescription.2ee01}</StringId>
 		<SourceDll>DataTools.2edll</SourceDll>

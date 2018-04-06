@@ -310,9 +310,15 @@ private void ReadLoadFromIO(double MemberType) {
             //            BasicForcesMemberTypeOut →DLO116_000027= →DLO116_000026FUNCT_2D.SetZeroForcesTo2D(MemberType, IO.Point.InternalForces[i]); 
             
             →DLO134_012965SaveResults(ResultType.Section, "LoadIDForCalculation", IO.Member2D.Load[i].ID); 
+            →LUN001_000011string combikey; 
+            IF(IO_HELPER.IsArray(IO.Member2D.Load[i].CombiKey)) { 
+                combikey →INI400_014713= IO.Member2D.Load[i].CombiKey[IO.Point.ID].CombiKey; 
+            } ELSE { 
+                combikey →LUN001_000010= IO.Member2D.Load[i].CombiKey; 
+            } 
             →DLO134_015968BasicForces.Add(new Structure(
             "CombiID", DATA_FROM_SEN.CreateCombiIDfor2D(IO.Member2D.Load[IO.Load.ID], IO.Point.ID), 
-            "CombiKey", IO.Member2D.Load[i].CombiKey[IO.Point.ID].CombiKey, 
+            "CombiKey", combikey, 
             "nx", IO.Point.InternalForces[i].nx, 
             "ny", IO.Point.InternalForces[i].ny, 
             "nxy", IO.Point.InternalForces[i].nxy, 
@@ -2944,6 +2950,14 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
+      <VC ID="INI400_014713">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS106_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3039,6 +3053,14 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="LUN001_000010">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
     </VisualComponents>
     <Images />

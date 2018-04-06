@@ -387,11 +387,14 @@ IF(CssConditions.ConditionsForCss) {
                 ϕ↓lo← →VAL127_000095= DataFromSEN.LoadLongDiamater(BasicReinf.Edge[2].Additional); 
                 ϕ↓up← →VAL127_000094= DataFromSEN.LoadLongDiamater(BasicReinf.Edge[0].Additional); 
                 ϕ →INI400_006807= DataFromSEN.LoadLongDiamater(BasicReinf.Edge[1].Additional); 
+                IF(COMPARE(ϕ, 6, 0) == 0) { 
+                    ϕ →VAL100_000002= MIN(ϕ↓lo←, ϕ↓up←); 
+                } 
             } ELSE { 
                 object BasicReinf →KRS116_000011= Functions1D_DesignReq.EmptyBasicReinf(); 
                 ϕ↓lo← →KRS116_000005= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.Diameter; 
                 ϕ↓up← →KRS116_000006= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.Diameter; 
-                ϕ →KRS116_000007= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.Diameter; //Side reinf can not be defined without library
+                ϕ →KRS116_000007= MIN(ϕ↓lo←, ϕ↓up←); //Side reinf can not be defined without library
             } 
             double ϕ↓max← →INI400_007041= MAX(ϕ↓lo←, ϕ↓up←); 
             IncreasingStatReinf →VAL127_000122= new Structure("CoeffUpper", IO.MemberData.Concrete.Solver.DesignAs.BeamColumnRibBeamSlab.CoeffStatUp, "CoeffLower", IO.MemberData.Concrete.Solver.DesignAs.BeamColumnRibBeamSlab.CoeffStatLo); 
@@ -534,6 +537,36 @@ IF(CssConditions.ConditionsForCss) {
     IF(PrintMemberInfo &amp;&amp; IO.IsDrawing) { 
         →KRS116_000014Functions1D_DesignReq.PrintCheckHeader(); 
         →INI400_009086PAGEBREAK(); 
+        
+        //PrintOut of Concrete cover calculation, added due to bug: MMA18-17AV4G9G
+        IF(IO.LayoutIndex == 1) { //only for detailed output
+            SWITCH(MemberType) { 
+                CASE 1 :  { //beam
+                    IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.TypeOfCover == 0 || IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.TypeOfCover == 0) { 
+                        object cover →KRS100_000001= LoadExternCLC("EC_Concrete_cover_SEN_Design.CLC"); 
+                        →KRS100_000002cover.Draw(False, 2); 
+                    } 
+                } 
+                CASE 2 :  { //column
+                    IF(IO.MemberData.Concrete.Defaults.Column.Longitudinal.Main.TypeOfCover == 0) { 
+                        object cover →KRS100_000003= LoadExternCLC("EC_Concrete_cover_SEN_Design.CLC"); 
+                        →KRS100_000004cover.Draw(False, 2); 
+                    } 
+                } 
+                CASE 4 :  { //rib
+                    IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.TypeOfCover == 0 || IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.TypeOfCover == 0) { 
+                        object cover →KRS100_000005= LoadExternCLC("EC_Concrete_cover_SEN_Design.CLC"); 
+                        →KRS100_000006cover.Draw(False, 2); 
+                    } 
+                } 
+                CASE 128 :  { //beamslab
+                    IF(IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Lower.TypeOfCover == 0 || IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Upper.TypeOfCover == 0) { 
+                        object cover →KRS100_000007= LoadExternCLC("EC_Concrete_cover_SEN_Design.CLC"); 
+                        →KRS100_000008cover.Draw(False, 2); 
+                    } 
+                } 
+            } 
+        } 
     } 
     
     //        DESIGNOFREINFORCEMENT
@@ -582,6 +615,7 @@ IF(CssConditions.ConditionsForCss) {
     →INI400_009962InputMultiDesign.Add("ϕ_up", ϕ↓up←); 
     →VAL127_000089InputMultiDesign.Add("BasicReinf", BasicReinf); 
     →VAL127_000120InputMultiDesign.Add("IncreasingStatReinf", IncreasingStatReinf); 
+    →VAL012_000001InputMultiDesign.Add("CoeffIncreaseBar", 0.5); 
     //loading 
     →INI400_009963InputMultiDesign.Add("ArrayForcesULS", ArrayForcesULS); 
     →INI400_009965InputMultiDesign.Add("CombikeyULS", CombikeyULS); 
@@ -660,7 +694,7 @@ IF(CssConditions.ConditionsForCss) {
     IF(IO.SetupNA.EC_NA.Code == "ONORM" &amp;&amp; IO.SetupNA.EC_1992_1_1.Contains("n_lcmin")) { 
         →KRS116_000022InputMultiDesign.Add("n_lc_min", IO.SetupNA.EC_1992_1_1.n_lcmin); 
     } ELSE { 
-    →INI400_010039InputMultiDesign.Add("n_lc_min", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.MinNumBarsInCircularColumn); 
+        →INI400_010039InputMultiDesign.Add("n_lc_min", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.MinNumBarsInCircularColumn); 
     } 
     →INI400_010040InputMultiDesign.Add("bColumnCheckMaxDistance", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.CheckMaxBarDistance); 
     →INI400_010041InputMultiDesign.Add("bColumnCheckMinPercentage", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.CheckMinPercentage); 
@@ -5582,6 +5616,78 @@ object DesignResults →INI400_013922= new Structure(
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS100_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000005">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000006">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000007">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000008">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000009">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS106_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -7486,6 +7592,30 @@ object DesignResults →INI400_013922= new Structure(
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="VAL012_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL100_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL100_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="VAL127_000086">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -7705,7 +7835,7 @@ object DesignResults →INI400_013922= new Structure(
           </ENU>
         </Texts>
       </TPanel>
-      <TEMDLoader Name="TEMDLoader" ID="69" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="D:\_VERSIONS\Deve_16\TEMP\Esa_Model_Data\Beam.4" MemberID="Beam.4" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="TEMDLoader" ID="69" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="0" PreDef="0" MemberDirectory="" MemberID="Beam.2" SectionID="-1" CombiID="-1" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />

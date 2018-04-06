@@ -47,7 +47,7 @@ object GetOutput() {
 } 
 
 private void LoadExterns() { 
-    FUNCT_2D →INI400_016005= LoadExternCLC("Concrete\Functions\Functions2D.clc"); 
+    FUNCT_2D →INI400_016005= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions2D.clc"); 
     FUNCT_2D_DEFAULTS →INI400_016009= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions2D_DesignDefaults.clc"); 
     FONTS_COLORS →INI400_016003= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.CLC"); 
 } 

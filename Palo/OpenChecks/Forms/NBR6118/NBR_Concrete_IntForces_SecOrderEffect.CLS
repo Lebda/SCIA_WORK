@@ -25,6 +25,7 @@
     double UC↓E← →INI400_011308= -IO.Setup.ConcreteNBR.Solver.General.NcalcCheck; 
     
     object DataFromSEN →INI400_006916= LoadExternCLC("FunctionsDataFromSEN.clc"); 
+    object FunctionsDes →INI400_010967= LoadExternCLC("Functions1D.clc", true); 
     object Functions1D →INI400_005799= LoadExternCLC("Functions1D.clc", true); 
     object[] ReinfMat →INI400_010751= new object[]; 
     object[] ReinfBars →INI400_007028= new object[]; 
@@ -127,7 +128,7 @@
         IF(IO.IsDrawing) { 
             →RFM106_000015Functions1D.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN, TableWidth, obEWNCellsFont, TableHeaderFont, obEWNBorderPen, TableGridPen); 
         } 
-        Number↓N← →RFM106_000016= Number↓N←+1; 
+        Number↓E← →RFM106_000016= Number↓E←+1; 
         →RFM106_000017obEWN.Add(new Structure("Index", "E" &amp; IndexEWN &amp; "/" &amp; Number↓N←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
         
         →RFM106_000002BLOCK { 
@@ -1404,6 +1405,20 @@
           <ENU>Array of non-prestressed bar</ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="auxCont" ESA_ID="" Type="Double" Value="2" Precision="2">
+        <Description TranslateID="VARIABLE_auxCont">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="auxϕ" ESA_ID="" Type="Double" Value="2" Precision="2">
+        <Description TranslateID="VARIABLE_auxϕ">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="b" ESA_ID="" Type="Double" Value="300e-3" Precision="2">
         <Description TranslateID="VARIABLE_b">
           <ENU>Cross section width</ENU>
@@ -1428,14 +1443,26 @@
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="bContyy" ESA_ID="" Type="Boolean" Value="0">
+        <Description TranslateID="VARIABLE_bContyy">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="bNaN" ESA_ID="" Type="Boolean" Value="0">
+        <Description TranslateID="VARIABLE_bNaN">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="bNaNyy" ESA_ID="" Type="Boolean" Value="0">
-        <Description>
+        <Description TranslateID="VARIABLE_bNaNyy">
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="bNaNzz" ESA_ID="" Type="Boolean" Value="0">
-        <Description>
+        <Description TranslateID="VARIABLE_bNaNzz">
           <ENU>
           </ENU>
         </Description>
@@ -1848,6 +1875,12 @@
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="Functions1D" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="FunctionsDes" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -7901,6 +7934,14 @@
         <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="INI400_010967">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+      </VC>
       <VC ID="INI400_011154">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -8589,6 +8630,14 @@
         <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="INI400_017246">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="INI400_017808">
         <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
@@ -8596,6 +8645,38 @@
         <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_017809">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="62.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="INI400_017810">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="62.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="INI400_017811">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="Remark" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Remark" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Remark" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Remark" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Remark" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Remark" EqStyle="23" />
       </VC>
       <VC ID="RFM106_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -8724,6 +8805,14 @@
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="211" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="420" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="RFM106_000018">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="RFM106_000019">
         <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
@@ -8970,8 +9059,8 @@
         <TDoubleInput Name="" ID="93" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="59" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="M↓x←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="" ID="92" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="58" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="V↓y←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="" ID="91" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="57" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="V↓z←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TComboBox Name="" ID="7" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="49" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="columnType" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="380" Values="0|1|2" Index="1">
-          <Texts>
+        <TComboBox Name="" ID="7" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="49" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="columnType" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="380" Values="0|1|2" Index="1">
+          <Texts TranslateID="DIALOG_000007">
             <ENU>Cantilever column|bi-supported column|bi-supported column with significant transversal loads along the height</ENU>
           </Texts>
         </TComboBox>
@@ -9009,8 +9098,8 @@
         <TDoubleInput Name="UserScale" ID="74" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="44" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="UserScale" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="UserX" ID="72" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="42" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="UserX" VarNameVisible="False" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="UserY" ID="73" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="43" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="UserY" VarNameVisible="False" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TComboBox Name="UCSPosition" ID="76" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="UCSPosition" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1|2|3|4|5|6|7|8|9" Index="4">
-          <Texts>
+        <TComboBox Name="UCSPosition" ID="76" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="UCSPosition" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1|2|3|4|5|6|7|8|9" Index="4">
+          <Texts TranslateID="DIALOG_000076">
             <ENU>Bottom left|Bottom Centre|Bottom Right|Middle Left|Centre of gravity|Middle Right|Top Left|Top Centre|Top Right|User Defined</ENU>
           </Texts>
         </TComboBox>
@@ -9020,8 +9109,8 @@
             </ENU>
           </Texts>
         </TCheckBox>
-        <TLabel Name="" ID="71" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="41" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
-          <Texts>
+        <TLabel Name="" ID="71" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="41" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
+          <Texts TranslateID="DIALOG_000071">
             <ENU>Graphics setup</ENU>
           </Texts>
         </TLabel>
@@ -9032,8 +9121,8 @@
         <TDoubleInput Name="TDoubleInput" ID="65" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="4" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="M↓dz←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="TDoubleInput" ID="64" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="M↓dy←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="TDoubleInput" ID="48" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="6" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TLabel Name="TLabel" ID="7" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="7" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
-          <Texts>
+        <TLabel Name="TLabel" ID="7" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="7" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
+          <Texts TranslateID="DIALOG_000007">
             <ENU>Output values</ENU>
           </Texts>
         </TLabel>
@@ -9057,14 +9146,14 @@
             </ENU>
           </Texts>
         </TCheckBox>
-        <TLabel Name="TLabel" ID="6" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="13" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
-          <Texts>
+        <TLabel Name="TLabel" ID="6" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="13" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
+          <Texts TranslateID="DIALOG_000006">
             <ENU>Setting of calculation</ENU>
           </Texts>
         </TLabel>
         <TDoubleInput Name="TDoubleInput" ID="34" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="14" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="γ↓c←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TLabel Name="TLabel" ID="5" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="15" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
-          <Texts>
+        <TLabel Name="TLabel" ID="5" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="15" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
+          <Texts TranslateID="DIALOG_000005">
             <ENU>General parameters</ENU>
           </Texts>
         </TLabel>
@@ -9087,8 +9176,8 @@
         <TDoubleInput Name="TDoubleInput" ID="63" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="22" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="L↓z←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="TDoubleInput" ID="27" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="23" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="L↓y←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="TDoubleInput" ID="26" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="24" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="H" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TLabel Name="TLabel" ID="4" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="25" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
-          <Texts>
+        <TLabel Name="TLabel" ID="4" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="25" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
+          <Texts TranslateID="DIALOG_000004">
             <ENU>Setting of buckling data</ENU>
           </Texts>
         </TLabel>
@@ -9099,14 +9188,14 @@
         <TDoubleInput Name="MBy" ID="85" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="51" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="M↓By←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="MCy" ID="86" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="52" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="M↓Cy←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="MAy" ID="84" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="50" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="M↓Ay←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TComboBox Name="DcolumnType" ID="83" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="49" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="columnType" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="380" Values="0|1|2" Index="1">
-          <Texts>
+        <TComboBox Name="DcolumnType" ID="83" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="49" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="columnType" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="380" Values="0|1|2" Index="1">
+          <Texts TranslateID="DIALOG_000083">
             <ENU>Cantilever column|bi-supported column|bi-supported column with significant transversal loads along the height</ENU>
           </Texts>
         </TComboBox>
         <TDoubleInput Name="TDoubleInput" ID="22" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="28" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="N↓d←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TLabel Name="TLabel" ID="3" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="29" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
-          <Texts>
+        <TLabel Name="TLabel" ID="3" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="29" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
+          <Texts TranslateID="DIALOG_000003">
             <ENU>Load of the member</ENU>
           </Texts>
         </TLabel>
@@ -9116,8 +9205,8 @@
         <TDoubleInput Name="TDoubleInput" ID="11" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="33" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="A↓c←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="TDoubleInput" ID="10" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="34" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="h" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="TDoubleInput" ID="9" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="35" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|10.7|0|2" VarName="b" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TLabel Name="TLabel" ID="1" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="36" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
-          <Texts>
+        <TLabel Name="TLabel" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="36" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|13.9|1|2" Alignment="16" ForeColor="-16711423" BookMarkID="">
+          <Texts TranslateID="DIALOG_000001">
             <ENU>Geometry of  cross-sections</ENU>
           </Texts>
         </TLabel>
@@ -9319,8 +9408,14 @@
     <Item TranslateID="STRING_62042395">
       <ENU>"List of errors/warnings/notes: "</ENU>
     </Item>
+    <Item TranslateID="STRING_76019D20">
+      <ENU>"Continuos member is not supported."</ENU>
+    </Item>
     <Item TranslateID="STRING_8D13EA72">
       <ENU>" There are no forces on this section."</ENU>
+    </Item>
+    <Item TranslateID="STRING_A0564A43">
+      <ENU>"The member should be splitted before perform the internal forces."</ENU>
     </Item>
     <Item TranslateID="STRING_B107F7EA">
       <ENU>"There are no errors, warnings and notes"</ENU>
@@ -9339,6 +9434,9 @@
     </Item>
     <Item TranslateID="STRING_CFA598A7">
       <ENU>" λ↓y← &gt; 90 or λ↓z← &gt; 90 - Calculation available only for short and medium columns."</ENU>
+    </Item>
+    <Item TranslateID="TEXT_">
+      <ENU>"The member should be splitted before perform the internal forces."</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_000015">
       <ENU>"Curvature less than 0.005/h, so:"</ENU>
@@ -9765,6 +9863,9 @@
     </Item>
     <Item TranslateID="TEXT_INI400_010951">
       <ENU>"Note: Only first order effects are being taken into account"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RFM106_000001">
+      <ENU>"The member should be splitted before perform the internal forces."</ENU>
     </Item>
   </Texts>
 </Root>

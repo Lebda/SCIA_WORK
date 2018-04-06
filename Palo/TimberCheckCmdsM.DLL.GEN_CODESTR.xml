@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="10"><StringCode SourceType="DLLRC:"><StringId>@{timbercheckcmdsm.2eitm5016}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="11"><StringCode SourceType="DLLRC:"><StringId>@{timbercheckcmdsm.2eitm5016}</StringId>
 		<SourceDll>TimberCheckCmdsM.2eDLL</SourceDll>
 		<ResourceId>5016</ResourceId>
 	</StringCode>
@@ -22,6 +22,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckcmdsm.2eids_timber}</StringId>
 		<SourceDll>TimberCheckCmdsM.2eDLL</SourceDll>
 		<ResourceId>9000</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckcmdsm.2eids_ep_stabilitymemberdata}</StringId>
+		<SourceDll>TimberCheckCmdsM.2eDLL</SourceDll>
+		<ResourceId>9003</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{timbercheckcmdsm.2eids_ulscheck}</StringId>
 		<SourceDll>TimberCheckCmdsM.2eDLL</SourceDll>

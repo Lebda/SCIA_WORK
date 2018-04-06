@@ -111,6 +111,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                           <xsl:if test ="(StiffnessInput2D/@CreepCoeffAutoCalc = 'True')">
                             <h5>CreepCoeff auto calculation input</h5>
                             <span class="label label-warning">
+                              Code =  <xsl:value-of select="StiffnessInput2D/CreepCoeffIn/@Code"/>
+                            </span>
+                            <span class="label label-warning">
                               Ac =  <xsl:value-of select="StiffnessInput2D/CreepCoeffIn/@Ac"/>
                             </span>
                             <span class="label label-warning">
@@ -129,7 +132,16 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                               Fcm =  <xsl:value-of select="StiffnessInput2D/CreepCoeffIn/@Fcm"/>
                             </span>
                             <span class="label label-warning">
+                              Fck =  <xsl:value-of select="StiffnessInput2D/CreepCoeffIn/@Fck"/>
+                            </span>
+                            <span class="label label-warning">
                               Relative humidity =  <xsl:value-of select="StiffnessInput2D/CreepCoeffIn/@RH"/>
+                            </span>
+                            <span class="label label-warning">
+                              Meantemperature =  <xsl:value-of select="StiffnessInput2D/CreepCoeffIn/@dTemp"/>
+                            </span>
+                            <span class="label label-warning">
+                              SigmaC =  <xsl:value-of select="StiffnessInput2D/CreepCoeffIn/@SigmaC"/>
                             </span>
                             <h5>CreepCoeff auto calculation results</h5>
                             <span class="label label-danger">
@@ -146,6 +158,21 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                             </span>
                             <span class="label label-warning">
                               H0 =  <xsl:value-of select="StiffnessInput2D/CreepCoeffRes/@H0"/>
+                            </span>
+                            <span class="label label-warning">
+                              SIA_dPhiRH =  <xsl:value-of select="StiffnessInput2D/CreepCoeffRes/@SIA_dPhiRH"/>
+                            </span>
+                            <span class="label label-warning">
+                              SIA_dBetaFc =  <xsl:value-of select="StiffnessInput2D/CreepCoeffRes/@SIA_dBetaFc"/>
+                            </span>
+                            <span class="label label-warning">
+                              SIA_dBetaT0 =  <xsl:value-of select="StiffnessInput2D/CreepCoeffRes/@SIA_dBetaT0"/>
+                            </span>
+                            <span class="label label-warning">
+                              SIA_dBeta_TminusT0 =  <xsl:value-of select="StiffnessInput2D/CreepCoeffRes/@SIA_dBeta_TminusT0"/>
+                            </span>
+                            <span class="label label-warning">
+                              SIA_dBetaSigmaC =  <xsl:value-of select="StiffnessInput2D/CreepCoeffRes/@SIA_dBetaSigmaC"/>
                             </span>
                           </xsl:if>
                           <h5>Reinforcement</h5>

@@ -107,6 +107,73 @@
         <Layer ID="L3" Position="eSide" NumberOfBars="1" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
       </Layers>
     </Layout>
+    <Layout Name="LReinf_RibRECT_BT" LayoutType="eLongitudinal" CrossSectionType="eRectangle" MemberType="eRib">
+      <Icons>
+        <!--same icon as for rectangle-->
+        <Icon  MemberType="eRib" CssType="eRectangle" Path="Rect_layouts\LReinf_BeamRect_BT.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eBottom" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eTop" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+      </Layers>
+    </Layout>
+    <Layout Name="LReinf_RibRECT_BsT" LayoutType="eLongitudinal" CrossSectionType="eRectangle" MemberType="eRib">
+      <Icons>
+        <!--same icon as for rectangle-->
+        <Icon  MemberType="eRib" Path="Rect_layouts\LReinf_BeamRect_BsT.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eBottom" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eSide" NumberOfBars="1" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L3" Position="eTop" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+      </Layers>
+    </Layout>
+    <Layout Name="LReinf_RibRECT_BBt" LayoutType="eLongitudinal" CrossSectionType="eRectangle" MemberType="eRib">
+      <Icons>
+        <!--same icon as for rectangle-->
+        <Icon  MemberType="eRib" Path="Rect_layouts\LReinf_BeamRect_BBt.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eBottom" NumberOfBars="3" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eBottom" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.055" Detailing="False" Material="B 500B" FirstLayer="False"/>
+        <Layer ID="L3" Position="eTop" NumberOfBars="2" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+      </Layers>
+    </Layout>
+    <Layout Name="LReinf_RibRECT_bTT" LayoutType="eLongitudinal" CrossSectionType="eRectangle" MemberType="eRib">
+      <Icons>
+        <!--same icon as for rectangle-->
+        <Icon  MemberType="eRib" Path="Rect_layouts\LReinf_BeamRect_bTT.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eBottom" NumberOfBars="2" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eTop" NumberOfBars="3" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L3" Position="eTop" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.055" Detailing="False" Material="B 500B" FirstLayer="False"/>
+      </Layers>
+    </Layout>
+    <Layout Name="LReinf_RibRECT_BBst" LayoutType="eLongitudinal" CrossSectionType="eRectangle" MemberType="eRib">
+      <Icons>
+        <!--same icon as for rectangle-->
+        <Icon  MemberType="eRib" Path="Rect_layouts\LReinf_BeamRect_BBst.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eBottom" NumberOfBars="3" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eBottom" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.055" Detailing="False" Material="B 500B" FirstLayer="False"/>
+        <Layer ID="L3" Position="eSide" NumberOfBars="1" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L4" Position="eTop" NumberOfBars="2" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+      </Layers>
+    </Layout>
+    <Layout Name="LReinf_RibRECT_bsTT" LayoutType="eLongitudinal" CrossSectionType="eRectangle" MemberType="eRib">
+      <Icons>
+        <!--same icon as for rectangle-->
+        <Icon  MemberType="eRib" Path="Rect_layouts\LReinf_BeamRect_bsTT.png" />
+      </Icons>
+      <Layers>
+        <Layer ID="L1" Position="eBottom" NumberOfBars="2" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L2" Position="eSide" NumberOfBars="1" BarDiameter="0.012" LayerDistance="0.0" Detailing="True" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L3" Position="eTop" NumberOfBars="3" BarDiameter="0.016" LayerDistance="0.0" Detailing="False" Material="B 500B" FirstLayer="True"/>
+        <Layer ID="L4" Position="eTop" NumberOfBars="2" BarDiameter="0.016" LayerDistance="0.055" Detailing="False" Material="B 500B" FirstLayer="False"/>
+      </Layers>
+    </Layout>
     <!--CIRCLE-->
     <Layout Name="LReinf_ColumnCIRCLE_P" LayoutType="eLongitudinal" CrossSectionType="eCircle" MemberType="eColumn">
       <Icons>

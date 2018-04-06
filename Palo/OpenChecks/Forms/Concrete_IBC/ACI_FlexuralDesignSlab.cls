@@ -811,6 +811,7 @@ class DesignRectCss {
         double MaxAs_up →UNK000_018887= 0; 
         IF(RegReinfArea[0] == null) { 
             FOR(i, 0, Forces.Count-1) { 
+                →GMP100_000001PAGEBREAK(); 
                 IF(Imperialunit) { 
                     →RLF098_000005TEXT(TR("Design Forces:") &amp; "  N↓u←=" &amp; CUnit(Forces[i].N, "kip/ft") &amp; "  kip/ft    M↓u←=" &amp; CUnit(Forces[i].My, "kip*ft/ft") &amp; "  kip.ft/ft"); 
                 } ELSE { 
@@ -2207,7 +2208,15 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
     </Layouts>
     <VisualComponents>
       <VC ID="">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

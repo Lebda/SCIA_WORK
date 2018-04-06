@@ -6,7 +6,7 @@
 } 
 
 object Functions1D →INI400_007563= LoadExternCLC("Functions1D.clc"); 
-object Functions2D →INI400_005799= LoadExternCLC("Functions2D.clc"); 
+object Functions2D →INI400_005799= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions2D.clc"); 
 
 //table properties
 object TableCellsFont →INI400_005296= new Font("Segoe UI", Convert.ToSingle(8.5)); //Table font

@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 //[assembly: System.Reflection.AssemblyVersion("1.0.0.0")]
-//[assembly: System.Windows.Forms.AxHost.TypeLibraryTimeStamp("18.12.2017 18:27:25")]
+//[assembly: System.Windows.Forms.AxHost.TypeLibraryTimeStamp("5.4.2018 8:42:56")]
 
 namespace AxEP_3DLib {
     
@@ -179,6 +179,50 @@ namespace AxEP_3DLib {
                 throw new System.Windows.Forms.AxHost.InvalidActiveXStateException("Set3DCtlWarning", System.Windows.Forms.AxHost.ActiveXInvokeKind.MethodInvoke);
             }
             this.ocx.Set3DCtlWarning(bstr3DCtlWarning);
+        }
+        
+        public virtual void SetNaviCubeMode(short sNaviCubeMode, short sRedraw) {
+            if ((this.ocx == null)) {
+                throw new System.Windows.Forms.AxHost.InvalidActiveXStateException("SetNaviCubeMode", System.Windows.Forms.AxHost.ActiveXInvokeKind.MethodInvoke);
+            }
+            this.ocx.SetNaviCubeMode(sNaviCubeMode, sRedraw);
+        }
+        
+        public virtual short GetNaviCubeMode() {
+            if ((this.ocx == null)) {
+                throw new System.Windows.Forms.AxHost.InvalidActiveXStateException("GetNaviCubeMode", System.Windows.Forms.AxHost.ActiveXInvokeKind.MethodInvoke);
+            }
+            short returnValue = ((short)(this.ocx.GetNaviCubeMode()));
+            return returnValue;
+        }
+        
+        public virtual void SetNaviCubePosition(short sNaviCubePosition, short sRedraw) {
+            if ((this.ocx == null)) {
+                throw new System.Windows.Forms.AxHost.InvalidActiveXStateException("SetNaviCubePosition", System.Windows.Forms.AxHost.ActiveXInvokeKind.MethodInvoke);
+            }
+            this.ocx.SetNaviCubePosition(sNaviCubePosition, sRedraw);
+        }
+        
+        public virtual short GetNaviCubePosition() {
+            if ((this.ocx == null)) {
+                throw new System.Windows.Forms.AxHost.InvalidActiveXStateException("GetNaviCubePosition", System.Windows.Forms.AxHost.ActiveXInvokeKind.MethodInvoke);
+            }
+            short returnValue = ((short)(this.ocx.GetNaviCubePosition()));
+            return returnValue;
+        }
+        
+        public virtual void NotifyUndoRedo() {
+            if ((this.ocx == null)) {
+                throw new System.Windows.Forms.AxHost.InvalidActiveXStateException("NotifyUndoRedo", System.Windows.Forms.AxHost.ActiveXInvokeKind.MethodInvoke);
+            }
+            this.ocx.NotifyUndoRedo();
+        }
+        
+        public virtual void AttachViewUndoHandler(object pUnkHandler) {
+            if ((this.ocx == null)) {
+                throw new System.Windows.Forms.AxHost.InvalidActiveXStateException("AttachViewUndoHandler", System.Windows.Forms.AxHost.ActiveXInvokeKind.MethodInvoke);
+            }
+            this.ocx.AttachViewUndoHandler(pUnkHandler);
         }
         
         public virtual void AboutBox() {

@@ -142,7 +142,12 @@ IF(!IO.IsStandalone) {
             } 
         } 
     } 
-    →INI400_006322TEXT(Description("c↓min,dur←")); 
+    →INI400_006322TEXT(Description("c↓min,dur←") &amp; ":"); 
+    IF(XC == 0 &amp;&amp; XD == 0 &amp;&amp; XS == 0) { 
+        →KRS100_000002TEXT("X0"); 
+    } ELSE { 
+        →KRS100_000001TEXT("XC" &amp; XC &amp; ", XD" &amp; XD &amp; ", XS" &amp; XS); 
+    } 
     →INI400_006324BLOCK { //NA.2.19 Clause 4.4.1.2 Minimum cover c↓min,dur←, Paragraph(5)
         object Clause4_4_1_2_5 →INI400_006325= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_4.4.1.2(5).CLC"); 
         →INI400_006891Input.Add("DesignLife", DesignLife); 
@@ -208,7 +213,7 @@ IF(!IO.IsStandalone) {
     } 
     
     IF(XM != 0) { 
-        →INI400_006371TEXT(Description("k")); 
+        →INI400_006371TEXT(Description("k") &amp; ": XM" &amp; XM); 
         →INI400_005932BLOCK { //NA.2.23 Clause 4.4.1.2 Partial factors for prestress, Paragraph (13)
             object Clause4_4_1_2_13 →INI400_005933= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_4.4.1.2(13).CLC"); 
             →INI400_006931Input.Add("XM", XM); 
@@ -233,6 +238,21 @@ IF(!IO.IsStandalone) {
                     Δc↓dev← →KRS116_000008= Δc↓dev,acc←; //(1)  //prefabricated
                 } ELSE { 
                     Δc↓dev← →KRS116_000009= Δc↓dev,min←; //(2)  //in-situ
+                } 
+            } 
+            CASE "DIN" :  { 
+                IF(SpecialQuality) { 
+                    IF(XC == 1 &amp;&amp; XD == 0 &amp;&amp; XS == 0) { 
+                        Δc↓dev← →KRS106_000005= Δc↓dev,min←-Δc↓dev,max←; // (2-3) for XC1 is Δc↓dev← = 10 - 5 = 5 mm, by default
+                    } ELSE { 
+                        Δc↓dev← →KRS106_000006= Δc↓dev,acc←-Δc↓dev,max←; // (1-3) for other enviroments than XC1 is Δc↓dev← = 15 - 5 = 10 mm, by default
+                    } 
+                } ELSE { 
+                    IF(XC == 1 &amp;&amp; XD == 0 &amp;&amp; XS == 0) { 
+                        Δc↓dev← →KRS106_000003= Δc↓dev,min←; // (2) for XC1 is Δc↓dev← = 10 mm, by default
+                    } ELSE { 
+                        Δc↓dev← →KRS106_000004= Δc↓dev,acc←; // (1) for other enviroments than XC1 is Δc↓dev← = 15 mm, by default
+                    } 
                 } 
             } 
             DEFAULT :  { 
@@ -439,13 +459,13 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 1) {
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="AddProtection" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_AddProtection">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="AdequateCement" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_AdequateCement">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -719,7 +739,7 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 1) {
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="S" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_S">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -2500,11 +2520,11 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 1) {
       </VC>
       <VC ID="INI400_010903">
         <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
       </VC>
       <VC ID="INI400_011033">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2658,6 +2678,22 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 1) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS100_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS106_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2673,6 +2709,38 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 1) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+      </VC>
+      <VC ID="KRS106_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+      </VC>
+      <VC ID="KRS106_000005">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+      </VC>
+      <VC ID="KRS106_000006">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
       </VC>
       <VC ID="KRS116_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
@@ -3723,7 +3791,7 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 1) {
       <ENU>Description("c↓min,b←")</ENU>
     </Item>
     <Item ID="TEXT_INI400_006322">
-      <ENU>Description("c↓min,dur←")</ENU>
+      <ENU>Description("c↓min,dur←") &amp; ":"</ENU>
     </Item>
     <Item ID="TEXT_INI400_006347">
       <ENU>Description("Δc↓dur,γ←")</ENU>
@@ -3741,7 +3809,7 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 1) {
       <ENU>Description("k↓3←")</ENU>
     </Item>
     <Item ID="TEXT_INI400_006371">
-      <ENU>Description("k")</ENU>
+      <ENU>Description("k") &amp; ": XM" &amp; XM</ENU>
     </Item>
     <Item ID="TEXT_INI400_006376">
       <ENU>Description("Δc↓dev←")</ENU>
@@ -3775,6 +3843,12 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 1) {
     </Item>
     <Item TranslateID="TEXT_INI400_010903">
       <ENU>"Calculation of required concrete cover c↓nom←"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS100_000001">
+      <ENU>"XC" &amp; XC &amp; ", XD" &amp; XD &amp; ", XS" &amp; XS</ENU>
+    </Item>
+    <Item ID="TEXT_KRS100_000002">
+      <ENU>"X0"</ENU>
     </Item>
   </Texts>
 </Root>

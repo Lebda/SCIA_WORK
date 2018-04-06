@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="35"><StringCode SourceType="DLLRC:"><StringId>@{loadesacmdsm.2eids_loadcmds_mobileload}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="36"><StringCode SourceType="DLLRC:"><StringId>@{loadesacmdsm.2eids_loadcmds_mobileload}</StringId>
 		<SourceDll>LoadESACmdsM.2eDLL</SourceDll>
 		<ResourceId>167</ResourceId>
 	</StringCode>
@@ -34,6 +34,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{loadesacmdsm.2eids_thermal}</StringId>
 		<SourceDll>LoadESACmdsM.2eDLL</SourceDll>
 		<ResourceId>112</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{loadesacmdsm.2eids_3d_wind_generator_data}</StringId>
+		<SourceDll>LoadESACmdsM.2eDLL</SourceDll>
+		<ResourceId>9058</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{loadesacmdsm.2eids_ep_loadcmds_traintrack_name}</StringId>
 		<SourceDll>LoadESACmdsM.2eDLL</SourceDll>

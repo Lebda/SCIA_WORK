@@ -265,32 +265,6 @@ Each system check is defined using a block as follows:
     <category>internal</category>
   </openCheck>
   <openCheck>
-    <clc>CompositeBeam_EN\Composite_beam_acc_EN 1994-1-1_construction_stage.CLC</clc>
-    <protection>518</protection>
-    <autodesign>1</autodesign>
-    <singlecheck>0</singlecheck>
-    <multidesign>0</multidesign>
-    <allcombiForDetailed>0</allcombiForDetailed>
-    <ribplatebeam>1</ribplatebeam>
-    <combiforclass>0</combiforclass>
-    <llrfactor>0</llrfactor>
-    <coordsys>principal</coordsys>
-    <category>internal</category>
-  </openCheck>
-  <openCheck>
-    <clc>CompositeBeam_EN\Composite_beam_acc_EN 1994-1-1_Final_stage.CLC</clc>
-    <protection>518</protection>
-    <autodesign>1</autodesign>
-    <singlecheck>0</singlecheck>
-    <multidesign>0</multidesign>
-    <allcombiForDetailed>0</allcombiForDetailed>
-    <ribplatebeam>1</ribplatebeam>
-    <combiforclass>0</combiforclass>
-    <llrfactor>0</llrfactor>
-    <coordsys>principal</coordsys>
-    <category>internal</category>
-  </openCheck>
-  <openCheck>
     <clc>UserDeformation.CLC</clc>
     <protection>514</protection>
     <autodesign>0</autodesign>
@@ -850,6 +824,19 @@ Each system check is defined using a block as follows:
     <category>poirot</category>
   </openCheck>
   <openCheck>
+    <clc>Results\0D_Reactions_SEN.CLC</clc>
+    <protection>514</protection>
+    <autodesign>0</autodesign>
+    <singlecheck>0</singlecheck>
+    <multidesign>0</multidesign>
+    <allcombiForDetailed>0</allcombiForDetailed>
+    <ribplatebeam>0</ribplatebeam>
+    <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
+    <category>poirot</category>
+  </openCheck>
+  <openCheck>
     <clc>Poirot_StringResults.CLC</clc>
     <protection>514</protection>
     <autodesign>0</autodesign>
@@ -900,5 +887,96 @@ Each system check is defined using a block as follows:
     <llrfactor>0</llrfactor>
     <coordsys>principal</coordsys>
     <category>poirot</category>
+  </openCheck>
+    <openCheck>
+    <clc>Composite\EC\EC_Composite_Beam_SEN.clc</clc>
+    <protection>518</protection>
+    <autodesign>0</autodesign>
+    <singlecheck>0</singlecheck>
+    <multidesign>1</multidesign>
+    <allcombiForDetailed>0</allcombiForDetailed>
+    <ribplatebeam>1</ribplatebeam>
+    <combiforclass>1</combiforclass>
+    <llrfactor>0</llrfactor>
+    <coordsys>principal</coordsys>
+    <category>internal</category>
+  </openCheck>
+  <openCheck>
+    <clc>Concrete_SIA\SIA_Concrete_IntForces_SEN_Check.CLC</clc>
+    <protection>298</protection>
+    <autodesign>0</autodesign>
+    <singlecheck>1</singlecheck>
+    <multidesign>0</multidesign>
+    <allcombiForDetailed>0</allcombiForDetailed>
+    <ribplatebeam>0</ribplatebeam>
+    <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
+    <coordsys>member</coordsys>
+    <category>internal</category>
+  </openCheck>
+  <openCheck>
+    <clc>Concrete_SIA\SIA_Capacity_Check_SEN.CLC</clc>
+    <protection>298</protection>
+    <autodesign>0</autodesign>
+    <singlecheck>1</singlecheck>
+    <multidesign>0</multidesign>
+    <allcombiForDetailed>0</allcombiForDetailed>
+    <ribplatebeam>0</ribplatebeam>
+    <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
+    <coordsys>member</coordsys>
+    <category>internal</category>
+  </openCheck>
+  <openCheck>
+    <clc>Concrete_SIA\SIA_Concrete_Interaction_V_T_SEN.CLC</clc>
+    <protection>298</protection>
+    <autodesign>0</autodesign>
+    <singlecheck>1</singlecheck>
+    <multidesign>0</multidesign>
+    <allcombiForDetailed>0</allcombiForDetailed>
+    <ribplatebeam>0</ribplatebeam>
+    <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
+    <coordsys>member</coordsys>
+    <category>internal</category>
+  </openCheck>
+  <openCheck>
+    <clc>Concrete_SIA\SIA_Stress_limitation_Check_SEN.CLC</clc>
+    <protection>298</protection>
+    <autodesign>0</autodesign>
+    <singlecheck>1</singlecheck>
+    <multidesign>0</multidesign>
+    <allcombiForDetailed>0</allcombiForDetailed>
+    <ribplatebeam>0</ribplatebeam>
+    <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
+    <coordsys>member</coordsys>
+    <category>internal</category>
+  </openCheck>
+  <openCheck>
+    <clc>Concrete_SIA\SIA_Concrete_Forces2D_SEN.CLC</clc>
+    <protection>298</protection>
+    <autodesign>0</autodesign>
+    <singlecheck>0</singlecheck>
+    <multidesign>0</multidesign>
+    <allcombiForDetailed>0</allcombiForDetailed>
+    <ribplatebeam>0</ribplatebeam>
+    <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
+    <coordsys>member</coordsys>
+    <category>internal</category>
+  </openCheck>
+  <openCheck>
+    <clc>Concrete_SIA\SIA_Concrete_Design2D_SEN.CLC</clc>
+    <protection>298</protection>
+    <autodesign>0</autodesign>
+    <singlecheck>0</singlecheck>
+    <multidesign>0</multidesign>
+    <allcombiForDetailed>0</allcombiForDetailed>
+    <ribplatebeam>0</ribplatebeam>
+    <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
+    <coordsys>member</coordsys>
+    <category>internal</category>
   </openCheck>
 </checkManager>

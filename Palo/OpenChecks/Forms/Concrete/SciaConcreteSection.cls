@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="302a30c5-024d-4e62-a63e-b120cb03b8c3">
   <CodeEditor>
-    <SourceCode Collapsed="1|257|265|372|399|643|706|715|779|874|938|968|976|1026|1086|1148|1209|1275|1364|1427|1493|1533|1568|1599|1625|1637|1650|1716|1785|1866|2045|2122|2237|2370|2543|2614|2702|2767|2839|2869|2975|3036|3076|3101|3112|3255|3267|3291" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure
+    <SourceCode Collapsed="1|257|265|372|399|643|706|715|779|874|938|968|976|1026|1086|1148|1209|1275|1364|1427|1493|1533|1568|1599|1625|1637|1650|1716|1785|1866|2045|2122|2237|2370|2543|2614|2702|2767|2839|2869|2975|3036|3076|3101|3112|3256|3268|3292" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure
     bool ValidateInput(object Input) { //Validate inputs from master to this form
         //Fonts, colors, pens...
         object FontRegular →INI400_012845= Input.Get("FontRegular"); //Standard font for tables
@@ -3246,6 +3246,7 @@ SWITCH(cTypeOfCalculation) {
 
             →KRS127_000084InputDesign.Add("BasicReinf", BasicReinf); //Structure with basic reinforcement
             →KRS127_000085InputDesign.Add("IncreasingStatReinf", IncreasingStatReinf); //Structure with coefficients for increasing stat reinf
+            →VAL012_000001InputDesign.Add("CoeffIncreaseBar", 0.5); 
             →KRS127_000086InputDesign.Add("ErrorValue", ErrorValue); //Error value
 
             →INI400_014138TEXT("Design"); 
@@ -3361,7 +3362,7 @@ SWITCH(cTypeOfCalculation) {
         <ENU>http://design-forms.scia.net/forms/en/SCS152/SciaConcreteSection.htm</ENU>
       </Document>
       <CalculationName TranslateID="CalculationName">
-        <ENU>Scia Concrete Section 17.01</ENU>
+        <ENU>Scia Concrete Section 17.1</ENU>
       </CalculationName>
     </Header>
     <Styles>
@@ -3727,11 +3728,6 @@ SWITCH(cTypeOfCalculation) {
           <ENU>Use second order effect</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="bCharReinfCalcRatio" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_bCharReinfCalcRatio">
-          <ENU>The characteristic of reinforcement is calculated for inputted ratio of reinf</ENU>
-        </Description>
-      </Variable>
       <Variable Modifier="Public" Name="bColumnCheckMaxBarDistance" ESA_ID="" Type="Boolean">
         <Description TranslateID="VARIABLE_bColumnCheckMaxBarDistance">
           <ENU>Check max. bar distance</ENU>
@@ -3846,6 +3842,11 @@ SWITCH(cTypeOfCalculation) {
       <Variable Modifier="Public" Name="bEquivMoment" ESA_ID="" Type="Boolean">
         <Description TranslateID="VARIABLE_bEquivMoment">
           <ENU>Use equivalent first order value</ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="bCharReinfCalcRatio" ESA_ID="" Type="Boolean">
+        <Description TranslateID="VARIABLE_bCharReinfCalcRatio">
+          <ENU>The characteristic of reinforcement is calculated for inputted ratio of reinf</ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="bIndirectLoad" ESA_ID="" Type="Boolean">
@@ -4427,13 +4428,13 @@ SWITCH(cTypeOfCalculation) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="ExtCalc_RecalForcesSLSCH" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="ExtCalc_RecalForcesSLSFreq" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="ExtCalc_RecalForcesSLSFreq" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="ExtCalc_RecalForcesSLSCH" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -4566,14 +4567,14 @@ SWITCH(cTypeOfCalculation) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Forces_RecalcSLSChar" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="Forces_RecalcSLSFreq" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Forces_RecalcSLSFreq" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="Forces_RecalcSLSChar" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4601,14 +4602,14 @@ SWITCH(cTypeOfCalculation) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ForcesID_CrackChar" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="ForcesID_CrackFreq" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ForcesID_CrackFreq" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="ForcesID_CrackChar" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4965,13 +4966,13 @@ SWITCH(cTypeOfCalculation) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="InputRecalForcesSLSCH" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="InputRecalForcesSLSFreq" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="InputRecalForcesSLSFreq" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="InputRecalForcesSLSCH" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -5083,13 +5084,13 @@ SWITCH(cTypeOfCalculation) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓Edy,char,recal←" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="M↓Edy,freq,recal←" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="M↓Edy,freq,recal←" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="M↓Edy,char,recal←" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -5113,13 +5114,13 @@ SWITCH(cTypeOfCalculation) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="M↓Edz,char,recal←" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="M↓Edz,freq,recal←" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="M↓Edz,freq,recal←" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="M↓Edz,char,recal←" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -5368,12 +5369,6 @@ SWITCH(cTypeOfCalculation) {
           <ENU>Normal reinforcement</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="oChars" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
       <Variable Modifier="Public" Name="oDesignedReinf" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -5409,6 +5404,12 @@ SWITCH(cTypeOfCalculation) {
           <ENU>Surface to surface distance of layers reinforcement</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
+      </Variable>
+      <Variable Modifier="Public" Name="oChars" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
       </Variable>
       <Variable Modifier="Public" Name="oT_Deflections" ESA_ID="" Type="Object">
         <Description>
@@ -5590,13 +5591,13 @@ SWITCH(cTypeOfCalculation) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="OutputRecalForcesSLSCH" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="OutputRecalForcesSLSFreq" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="OutputRecalForcesSLSFreq" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="OutputRecalForcesSLSCH" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -6033,13 +6034,13 @@ SWITCH(cTypeOfCalculation) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="TableForcesSLSChar" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="TableForcesSLSFreq" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="TableForcesSLSFreq" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="TableForcesSLSChar" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -23841,6 +23842,14 @@ SWITCH(cTypeOfCalculation) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="VAL012_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="VAL127_000003">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -23898,7 +23907,7 @@ SWITCH(cTypeOfCalculation) {
               <Texts TranslateID="DIALOG_000691">
                 <ENU>Calculation type</ENU>
               </Texts>
-              <TComboBox Name="" ID="582" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="0|5|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="cTypeOfCalculation" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="100" Values="0|1" Index="0">
+              <TComboBox Name="" ID="582" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="0|5|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="cTypeOfCalculation" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="100" Values="0|1" Index="1">
                 <Texts TranslateID="DIALOG_000582">
                   <ENU>Check|Design</ENU>
                 </Texts>
@@ -23907,9 +23916,9 @@ SWITCH(cTypeOfCalculation) {
             </TGroupBox>
           </Tab>
           <Tab Text="Cross Section">
-            <TConcreteSectionLibrary Name="DCrossSection" ID="630" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="2" Dock="5" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-2039584" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="" SelectedCS="1" Units="2" ReinfTabsVis="True" TabBG="-2894893" SelTab="-1">
-              <CS SelReinf="0" H="500e-3" B="300e-3" />
-              <Reinf Ver="1" Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="30e-3" D_upper="20e-3" N_upper="2" c_lower="30e-3" D_lower="20e-3" N_lower="2" />
+            <TConcreteSectionLibrary Name="DCrossSection" ID="630" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="2" Dock="5" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-2039584" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="" SelectedCS="1" Units="2" ReinfTabsVis="False" TabBG="-2894893" SelTab="-1">
+              <CS SelReinf="0" H="1.5" B="1" />
+              <Reinf Ver="1" Stirrup="0" Stirrup_D="12e-3" Stirrup_ss="123e-3" Stirrup_α="90" c_upper="30e-3" D_upper="12e-3" N_upper="2" c_lower="30e-3" D_lower="16e-3" N_lower="2" />
             </TConcreteSectionLibrary>
           </Tab>
           <Tab Text="Material">
@@ -24057,7 +24066,7 @@ SWITCH(cTypeOfCalculation) {
                 <ENU>Longitudinal Reinforcement Class</ENU>
               </Texts>
             </TLabel>
-            <TCustomLibrary Name="" ID="23" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="26|0|26|0" MinSize="233|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" TargetNodeURL="CONCRETE.EC" DataFile="EC_Concrete.xml" Collapsed="True" UseCombo="True" Category="Bilinear" Item="C 25/30">
+            <TCustomLibrary Name="" ID="23" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="26|0|26|0" MinSize="233|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" TargetNodeURL="CONCRETE.EC" DataFile="EC_Concrete.xml" Collapsed="True" UseCombo="True" Category="Bilinear" Item="C 30/37">
               <Data>
                 <Header>
                   <PropertySet Symbol="f↓ck←" ESA_ID="fck" Unit="MPa" Type="Numeric" />
@@ -24105,15 +24114,15 @@ SWITCH(cTypeOfCalculation) {
                 <Items>
                   <Item>
                     <P>Bilinear</P>
-                    <P>C 25/30</P>
-                    <P>25</P>
+                    <P>C 30/37</P>
                     <P>30</P>
+                    <P>37</P>
+                    <P>38</P>
+                    <P>2.9</P>
+                    <P>2</P>
+                    <P>3.8</P>
                     <P>33</P>
-                    <P>2.6</P>
-                    <P>1.8</P>
-                    <P>3.3</P>
-                    <P>31</P>
-                    <P>2.1</P>
+                    <P>2.2</P>
                     <P>3.5</P>
                     <P>2</P>
                     <P>3.5</P>
@@ -24121,13 +24130,13 @@ SWITCH(cTypeOfCalculation) {
                     <P>3.5</P>
                     <P>2</P>
                     <P>0;0;</P>
-                    <P>-0.00175;-16666670;</P>
-                    <P>-0.0035;-16666670;</P>
+                    <P>-0.00175;-20000000;</P>
+                    <P>-0.0035;-20000000;</P>
                     <P>true</P>
                     <P>32</P>
                     <P>0.2</P>
                     <P>2500</P>
-                    <P>13.1</P>
+                    <P>13.7</P>
                     <P>0.2</P>
                     <P>4500</P>
                     <P>0.0006</P>
@@ -24181,7 +24190,7 @@ SWITCH(cTypeOfCalculation) {
                       <Texts TranslateID="DIALOG_001761">
                         <ENU>Internal forces in the section</ENU>
                       </Texts>
-                      <TTableInput Name="" ID="1762" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="TableForcesULS" Value="0|0|0|0|0|0" CellBG="-1" HeaderBG="-2039584" FixedRows="-1">
+                      <TTableInput Name="" ID="1762" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="TableForcesULS" Value="0|0|1087|700|0|0" CellBG="-1" HeaderBG="-2039584" FixedRows="-1">
                         <Texts>
                           <ENU>N [kN]|Vy [kN]|Vz [kN]|T [kNm]|My [kNm]|Mz [kNm]</ENU>
                         </Texts>
@@ -24225,7 +24234,7 @@ SWITCH(cTypeOfCalculation) {
                         <ENU>s - short term - characteristic elastic deflection; l - long term - quasi permament deflection</ENU>
                       </Texts>
                     </TLabel>
-                    <TTableInput Name="" ID="1765" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="TableElasticDeformations" Value="0|0|0|0" CellBG="-1" HeaderBG="-2039584" FixedRows="-1">
+                    <TTableInput Name="" ID="1765" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="TableElasticDeformations" Value="" CellBG="-1" HeaderBG="-2039584" FixedRows="-1">
                       <Texts>
                         <ENU>uy,s [mm]|uz,s [mm]|uy,l [mm]|uz,l [mm]</ENU>
                       </Texts>
@@ -24253,7 +24262,7 @@ SWITCH(cTypeOfCalculation) {
                       <Texts TranslateID="DIALOG_001767">
                         <ENU>Internal forces in the section</ENU>
                       </Texts>
-                      <TTableInput Name="" ID="1768" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="TableForcesSLSQP" Value="0|0|0|0|0|0" CellBG="-1" HeaderBG="-2039584" FixedRows="-1">
+                      <TTableInput Name="" ID="1768" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="TableForcesSLSQP" Value="" CellBG="-1" HeaderBG="-2039584" FixedRows="-1">
                         <Texts>
                           <ENU>N [kN]|Vy [kN]|Vz [kN]|T [kNm]|My [kNm]|Mz [kNm]</ENU>
                         </Texts>
@@ -24323,7 +24332,7 @@ SWITCH(cTypeOfCalculation) {
                       <Texts TranslateID="DIALOG_001770">
                         <ENU>Internal forces in the section</ENU>
                       </Texts>
-                      <TTableInput Name="" ID="1771" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="TableForcesSLSChar" Value="0|0|0|0|0|0" CellBG="-1" HeaderBG="-2039584" FixedRows="-1">
+                      <TTableInput Name="" ID="1771" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="TableForcesSLSChar" Value="" CellBG="-1" HeaderBG="-2039584" FixedRows="-1">
                         <Texts>
                           <ENU>N [kN]|Vy [kN]|Vz [kN]|T [kNm]|My [kNm]|Mz [kNm]</ENU>
                         </Texts>
@@ -25140,7 +25149,7 @@ SWITCH(cTypeOfCalculation) {
                         </Node>
                         <Node Expanded="False">
                           <Panel>
-                            <TComboBox Name="" ID="1788" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="0|0|24|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Type↓E←" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="70" Values="1|0" Index="1">
+                            <TComboBox Name="" ID="1788" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="0|0|24|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Type↓E←" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="70" Values="1|0" Index="0">
                               <Texts TranslateID="DIALOG_001788">
                                 <ENU>Yes|No</ENU>
                               </Texts>
@@ -25270,7 +25279,7 @@ SWITCH(cTypeOfCalculation) {
                         <TDoubleInput Name="DAkimp" ID="1796" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="0|5|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="A↓k.inp←" VarNameVisible="True" UnitsVisible="True" InputColor="-1" InputWidth="50" DimWidth="30" MaxValueWithDim="+Infinity" MinValueWithDim="0" DescPos="1" />
                         <TDoubleInput Name="Dukimp" ID="1797" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="2" Dock="1" Anchor="5" Padding="0|5|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="u↓k.inp←" VarNameVisible="True" UnitsVisible="True" InputColor="-1" InputWidth="50" DimWidth="30" MaxValueWithDim="+Infinity" MinValueWithDim="0" DescPos="1" />
                         <TDoubleInput Name="Dtefimp" ID="1798" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="3" Dock="1" Anchor="5" Padding="0|5|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="t↓ef.inp←" VarNameVisible="True" UnitsVisible="True" InputColor="-1" InputWidth="50" DimWidth="30" MaxValueWithDim="+Infinity" MinValueWithDim="0" DescPos="1" />
-                        <TComboBox Name="" ID="1795" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeTorCssInput" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1|2|3|4" Index="1">
+                        <TComboBox Name="" ID="1795" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="TypeTorCssInput" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1|2|3|4" Index="4">
                           <Texts TranslateID="DIALOG_001795">
                             <ENU>Automatic|From stirrups for torsion|From used CSS|From effective rectangular CSS|User input</ENU>
                           </Texts>
@@ -25300,12 +25309,12 @@ SWITCH(cTypeOfCalculation) {
                             </ENU>
                           </Texts>
                         </TCheckBox>
-                        <TComboBox Name="" ID="1801" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="0|5|20|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Type↓σcr←" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="70" Values="1|0" Index="1">
+                        <TComboBox Name="" ID="1801" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="0|5|20|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Type↓σcr←" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="70" Values="1|0" Index="0">
                           <Texts>
                             <ENU>0 MPa|fct,eff</ENU>
                           </Texts>
                         </TComboBox>
-                        <TComboBox Name="" ID="1800" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="0|5|20|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Type↓fct,eff←" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="70" Values="0|1" Index="1">
+                        <TComboBox Name="" ID="1800" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="0|5|20|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Type↓fct,eff←" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="70" Values="0|1" Index="0">
                           <Texts>
                             <ENU>fctm|fctm,fl</ENU>
                           </Texts>
@@ -25521,7 +25530,7 @@ SWITCH(cTypeOfCalculation) {
                             <ENU>No risk of corrosion or attack|XS1 - Exposed to airbone salt but not in direct contact with sea water|XS2 - Permanently submerged|XS3 - Tidal, splash and spray zones</ENU>
                           </Texts>
                         </TComboBox>
-                        <TComboBox Name="XC" ID="1956" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="15" Dock="1" Anchor="5" Padding="0|5|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="XC" VarNameVisible="False" InputColor="-1" DescPos="2" InputWidth="300" Values="0|1|2|3|4" Index="0">
+                        <TComboBox Name="XC" ID="1956" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="15" Dock="1" Anchor="5" Padding="0|5|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="XC" VarNameVisible="False" InputColor="-1" DescPos="2" InputWidth="300" Values="0|1|2|3|4" Index="3">
                           <Texts TranslateID="DIALOG_001956">
                             <ENU>No risk of corrosion or attack|XC1 - Dry or permanently wet|XC2 - Wet, rarely dry|XC3 - Moderate humidity|XC4 - Cyclic wet and dry</ENU>
                           </Texts>
@@ -25599,7 +25608,7 @@ SWITCH(cTypeOfCalculation) {
                             <ENU>No risk of abrasion|Moderate abrasion (XM1)|Heavy abrasion (XM2)|Extremely abrasion (XM3)</ENU>
                           </Texts>
                         </TComboBox>
-                        <TComboBox Name="" ID="1939" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="13" Dock="1" Anchor="5" Padding="0|5|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Deviation" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1|2" Index="0">
+                        <TComboBox Name="" ID="1939" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="13" Dock="1" Anchor="5" Padding="0|5|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Deviation" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1|2" Index="1">
                           <Texts TranslateID="DIALOG_001939">
                             <ENU>Standard|Quality assurance system|Very accurate measurement</ENU>
                           </Texts>
@@ -25629,17 +25638,17 @@ SWITCH(cTypeOfCalculation) {
                             <ENU>Separated|Bundled</ENU>
                           </Texts>
                         </TComboBox>
-                        <TComboBox Name="DesignLife" ID="1929" Translate="1" Height="25" AutoWidth="False" AutoHeight="False" TabIndex="3" Dock="1" Anchor="5" Padding="0|5|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="DesignLife" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="50|100" Index="-1">
+                        <TComboBox Name="DesignLife" ID="1929" Translate="1" Height="25" AutoWidth="False" AutoHeight="False" TabIndex="3" Dock="1" Anchor="5" Padding="0|5|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="DesignLife" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="50|100" Index="0">
                           <Texts TranslateID="DIALOG_001929">
                             <ENU>50 years|100 years</ENU>
                           </Texts>
                         </TComboBox>
-                        <TComboBox Name="DesignLife_CSN" ID="1928" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="2" Dock="1" Anchor="5" Padding="0|5|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="DesignLife" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="50|80|100" Index="-1">
+                        <TComboBox Name="DesignLife_CSN" ID="1928" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="2" Dock="1" Anchor="5" Padding="0|5|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="DesignLife" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="50|80|100" Index="0">
                           <Texts TranslateID="DIALOG_001928">
                             <ENU>50 years|80 years|100 years</ENU>
                           </Texts>
                         </TComboBox>
-                        <TComboBox Name="DesignLife_NEN" ID="1927" Translate="1" Height="25" AutoWidth="False" AutoHeight="False" TabIndex="1" Dock="1" Anchor="5" Padding="0|5|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="DesignLife" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="50|75|100" Index="-1">
+                        <TComboBox Name="DesignLife_NEN" ID="1927" Translate="1" Height="25" AutoWidth="False" AutoHeight="False" TabIndex="1" Dock="1" Anchor="5" Padding="0|5|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="DesignLife" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="50|75|100" Index="0">
                           <Texts TranslateID="DIALOG_001927">
                             <ENU>50 years|75 years|100 years</ENU>
                           </Texts>

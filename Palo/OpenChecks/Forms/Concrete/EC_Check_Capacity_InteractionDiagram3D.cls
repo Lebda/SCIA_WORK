@@ -829,6 +829,16 @@ N↓Rd,pl,min← →INI400_005153= MAX(N↓Rd,NMy,pl,min←, N↓Rd,NMz,pl,min�
                             M↓Rdy← →INI400_008945= M↓Rdy2←; 
                         } 
                     } 
+                    IF(M↓Edy← &gt;= 0) { 
+                        M↓Rdy← →KRS100_000001= MAX(M↓Rdy1←, M↓Rdy2←); 
+                    } ELSE { 
+                        M↓Rdy← →KRS100_000002= MIN(M↓Rdy1←, M↓Rdy2←); 
+                    } 
+                    IF(N↓Ed← &gt;= 0) { 
+                        N↓Rd← →KRS100_000003= MAX(N↓Rd1←, N↓Rd2←); 
+                    } ELSE { 
+                        N↓Rd← →KRS100_000004= MIN(N↓Rd1←, N↓Rd2←); 
+                    } 
                 } ELSE { 
                     
                     IF((M↓Edy← &gt; 0 &amp;&amp; M↓Rdy1← &gt; 0) || (M↓Edy← &lt; 0 &amp;&amp; M↓Rdy1← &lt; 0)) { 
@@ -11865,6 +11875,38 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS100_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS106_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -12062,7 +12104,7 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         </TCheckBox>
         <TDoubleInput Name="" ID="7" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" VarName="NoOfPtsInVertCut" VarNameVisible="False" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="" ID="6" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="4" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" VarName="DivisionOfStrain" VarNameVisible="False" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TComboBox Name="" ID="4" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="3" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" VarName="IDMethodOfCheck" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1|2|3|4" Index="1">
+        <TComboBox Name="" ID="4" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="3" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" VarName="IDMethodOfCheck" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1|2|3|4" Index="3">
           <Texts>
             <ENU>Nu|Mu|NuMu|Muy|Muz</ENU>
           </Texts>
@@ -13158,9 +13200,6 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
     </Item>
     <Item TranslateID="STRING_F9A2DB85">
       <ENU>"Division of vertical strains"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_">
-      <ENU>"Compression member evaluation:"</ENU>
     </Item>
     <Item ID="TEXT_INI400_000325">
       <ENU>"N↓Ed← &lt; N↓com← = " &amp; N↓Ed← &amp; " &lt; " &amp; N↓com← &amp; " ... "</ENU>

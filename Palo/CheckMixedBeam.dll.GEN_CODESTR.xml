@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="19"><StringCode SourceType="DLLRC:"><StringId>@{checkmixedbeam.2eids_cbd_sls_design_check}</StringId>
-		<SourceDll>CheckMixedBeam.2edll</SourceDll>
-		<ResourceId>245</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{checkmixedbeam.2eids_sls_checks_constr}</StringId>
-		<SourceDll>CheckMixedBeam.2edll</SourceDll>
-		<ResourceId>269</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{checkmixedbeam.2eids_uls_checks_constr}</StringId>
-		<SourceDll>CheckMixedBeam.2edll</SourceDll>
-		<ResourceId>289</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{checkmixedbeam.2eids_short_uc_rb}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="8"><StringCode SourceType="DLLRC:"><StringId>@{checkmixedbeam.2eids_short_uc_rb}</StringId>
 		<SourceDll>CheckMixedBeam.2edll</SourceDll>
 		<ResourceId>1228</ResourceId>
 	</StringCode>
@@ -27,18 +15,6 @@
 		<SourceDll>CheckMixedBeam.2edll</SourceDll>
 		<ResourceId>1225</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{checkmixedbeam.2eids_ccd_uls_design_check}</StringId>
-		<SourceDll>CheckMixedBeam.2edll</SourceDll>
-		<ResourceId>1236</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{checkmixedbeam.2eids_cbd_uls_design_check}</StringId>
-		<SourceDll>CheckMixedBeam.2edll</SourceDll>
-		<ResourceId>1232</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{checkmixedbeam.2eids_shear_con_spacing}</StringId>
-		<SourceDll>CheckMixedBeam.2edll</SourceDll>
-		<ResourceId>1235</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{checkmixedbeam.2eids_check_sls_shear_buckling}</StringId>
 		<SourceDll>CheckMixedBeam.2edll</SourceDll>
 		<ResourceId>1573</ResourceId>
@@ -46,26 +22,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{checkmixedbeam.2eids_unity_chk}</StringId>
 		<SourceDll>CheckMixedBeam.2edll</SourceDll>
 		<ResourceId>255</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{checkmixedbeam.2eids_ccd_fire_utilisation}</StringId>
-		<SourceDll>CheckMixedBeam.2edll</SourceDll>
-		<ResourceId>1238</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{checkmixedbeam.2eids_shear_connector_lateral}</StringId>
-		<SourceDll>CheckMixedBeam.2edll</SourceDll>
-		<ResourceId>1352</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{checkmixedbeam.2eids_ccd_fire_check}</StringId>
-		<SourceDll>CheckMixedBeam.2edll</SourceDll>
-		<ResourceId>1237</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{checkmixedbeam.2eids_sls_checks_final}</StringId>
-		<SourceDll>CheckMixedBeam.2edll</SourceDll>
-		<ResourceId>268</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{checkmixedbeam.2eids_uls_checks_final}</StringId>
-		<SourceDll>CheckMixedBeam.2edll</SourceDll>
-		<ResourceId>288</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{checkmixedbeam.2eids_name_check_shearbuckling}</StringId>
 		<SourceDll>CheckMixedBeam.2edll</SourceDll>

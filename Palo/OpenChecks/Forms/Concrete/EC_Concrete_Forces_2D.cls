@@ -476,27 +476,36 @@ private void SetRecalcForcesPOD() {
                 double ξ↓bal← →INI400_015659= ε↓cu2←/(ε↓cu2←+(f↓yk←/(γ↓S←*E↓s←))); 
                 double x↓bal← →VAL106_000011= ξ↓bal←*d; 
                 double&lt;kN/m,0&gt; n↓c,bal← →INI400_015660= -ξ↓bal←*d*b*η*f↓cd←; 
-                
                 →INI400_016374double&lt;mm,0&gt; x; 
-                IF(n↓z← &lt; n↓c,bal←) { 
-                    →INI400_015689TEXT("n↓z← = " &amp; Val(n↓z←/1000, 2) &amp; " kN/m &lt; n↓c,bal← = " &amp; Val(n↓c,bal←/1000, 2) &amp; " kN/m =&gt;"); 
-                    →INI400_015693TEXT("predominant compression"); 
-                    x →INI400_015661= ((h-d↓+←)/(2*β))*(1+SQRT(1-4*β*((ABS(m↓z←)+n↓z←*(d↓+←-0.5*h))/(b*(h-d↓+←)↑2←*η*f↓cd←)))); 
-                    //                x →INI400_015662= (h-d↓+←)*(1+SQRT(1-4*β*(ABS(m↓z←)+n↓z←*(d↓+←-0.5*h))/(b*(h-d↓+←)↑2←*η*f↓cd←)))/(2*β); 
-                } ELSE { 
-                    →INI400_015690TEXT("n↓z← = " &amp; Val(n↓z←/1000, 2) &amp; " kN/m &gt; n↓c,bal← = " &amp; Val(n↓c,bal←/1000, 2) &amp; " kN/m =&gt;"); 
-                    →INI400_015694TEXT("predominant tension"); 
-                    IF(SQRT(1-4*β*((ABS(m↓z←)-n↓z←*(d↓-←-0.5*h))/(b*(d↓-←)↑2←*η*f↓cd←))) &gt;= 0) { 
-                        x →INI400_015663= ((d↓-←)/(2*β))*(1-SQRT(1-4*β*((ABS(m↓z←)-n↓z←*(d↓-←-0.5*h))/(b*(d↓-←)↑2←*η*f↓cd←)))); 
-                        //                    x →INI400_015664= d↓-←*(1-SQRT(1-4*β*(ABS(m↓z←)-n↓z←*(d↓-←-0.5*h))/(b*(d↓-←)↑2←*η*f↓cd←)))/(2*β); 
+                IF(COMPARE(m↓z←, 0, 6) == 0) { 
+                    IF(n↓z← &lt; 0) { 
+                        //                        →VAL106_000012TEXT("compression"); 
+                        x →VAL106_000013= h; 
                     } ELSE { 
-                        x →INI400_015665= x↓bal←; 
+                        //                        →VAL106_000015TEXT("tension"); 
+                        x →VAL106_000016= 0; 
                     } 
-                } 
-                IF(x &gt; 0 &amp;&amp; x &gt; x↓bal←) { 
-                    
-                    →VAL106_000010TEXT("x =" &amp; Val(x*1000, 2) &amp; " mm &gt; x↓bal← =" &amp; Val(x↓bal←*1000, 2) &amp; "mm =&gt;stress in tensile reinforcement does not reach value f↓yd←/E↓s← =&gt;"); 
-                    x →VAL106_000008= x↓bal←; 
+                } ELSE { 
+                    IF(n↓z← &lt; n↓c,bal←) { 
+                        →INI400_015689TEXT("n↓z← = " &amp; Val(n↓z←/1000, 2) &amp; " kN/m &lt; n↓c,bal← = " &amp; Val(n↓c,bal←/1000, 2) &amp; " kN/m =&gt;"); 
+                        →INI400_015693TEXT("predominant compression"); 
+                        x →INI400_015661= ((h-d↓+←)/(2*β))*(1+SQRT(1-4*β*((ABS(m↓z←)+n↓z←*(d↓+←-0.5*h))/(b*(h-d↓+←)↑2←*η*f↓cd←)))); 
+                        //                x →INI400_015662= (h-d↓+←)*(1+SQRT(1-4*β*(ABS(m↓z←)+n↓z←*(d↓+←-0.5*h))/(b*(h-d↓+←)↑2←*η*f↓cd←)))/(2*β); 
+                    } ELSE { 
+                        →INI400_015690TEXT("n↓z← = " &amp; Val(n↓z←/1000, 2) &amp; " kN/m &gt; n↓c,bal← = " &amp; Val(n↓c,bal←/1000, 2) &amp; " kN/m =&gt;"); 
+                        →INI400_015694TEXT("predominant tension"); 
+                        IF(SQRT(1-4*β*((ABS(m↓z←)-n↓z←*(d↓-←-0.5*h))/(b*(d↓-←)↑2←*η*f↓cd←))) &gt;= 0) { 
+                            x →INI400_015663= ((d↓-←)/(2*β))*(1-SQRT(1-4*β*((ABS(m↓z←)-n↓z←*(d↓-←-0.5*h))/(b*(d↓-←)↑2←*η*f↓cd←)))); 
+                            //                    x →INI400_015664= d↓-←*(1-SQRT(1-4*β*(ABS(m↓z←)-n↓z←*(d↓-←-0.5*h))/(b*(d↓-←)↑2←*η*f↓cd←)))/(2*β); 
+                            IF(x &gt; 0 &amp;&amp; x &gt; x↓bal←) { 
+                                
+                                →VAL106_000010TEXT("x =" &amp; Val(x*1000, 2) &amp; " mm &gt; x↓bal← =" &amp; Val(x↓bal←*1000, 2) &amp; "mm =&gt;stress in tensile reinforcement does not reach value f↓yd←/E↓s← =&gt;"); 
+                                x →VAL106_000008= x↓bal←; 
+                            } 
+                        } ELSE { 
+                            x →INI400_015665= x↓bal←; 
+                        } 
+                    } 
                     
                 } 
                 →INI400_016375double&lt;mm,0&gt; z; 
@@ -763,7 +772,7 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="d↓+←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_d↓+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -3032,6 +3041,22 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000013">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL106_000016">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

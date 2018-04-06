@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="1"><StringCode SourceType="DLLRC:"><StringId>@{datalibscia.2eids_dynamiccheckname}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="9"><StringCode SourceType="DLLRC:"><StringId>@{datalibscia.2e11892}</StringId>
+		<SourceDll>EP_DataLibScia.2eDLL</SourceDll>
+		<ResourceId>11892</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{datalibscia.2e11891}</StringId>
+		<SourceDll>EP_DataLibScia.2eDLL</SourceDll>
+		<ResourceId>11891</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{datalibscia.2e11890}</StringId>
+		<SourceDll>EP_DataLibScia.2eDLL</SourceDll>
+		<ResourceId>11890</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{datalibscia.2e35000}</StringId>
+		<SourceDll>EP_DataLibScia.2eDLL</SourceDll>
+		<ResourceId>35000</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{datalibscia.2e11885}</StringId>
+		<SourceDll>EP_DataLibScia.2eDLL</SourceDll>
+		<ResourceId>11885</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{datalibscia.2eids_dynamiccheckname}</StringId>
 		<SourceDll>EP_DataLibScia.2eDLL</SourceDll>
 		<ResourceId>36184</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{datalibscia.2e11889}</StringId>
+		<SourceDll>EP_DataLibScia.2eDLL</SourceDll>
+		<ResourceId>11889</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{datalibscia.2e11888}</StringId>
+		<SourceDll>EP_DataLibScia.2eDLL</SourceDll>
+		<ResourceId>11888</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{datalibscia.2e30177}</StringId>
+		<SourceDll>EP_DataLibScia.2eDLL</SourceDll>
+		<ResourceId>30177</ResourceId>
 	</StringCode>
 </StringCodeDatabase>

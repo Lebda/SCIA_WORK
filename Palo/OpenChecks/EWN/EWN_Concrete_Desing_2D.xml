@@ -56,4 +56,12 @@
       <ENU>Increase the thickness of the member or the quality of used materials.</ENU>
     </Sol>
   </Node>
+  <Node Code="W/07">
+    <Desc TranslateID="W/07_Desc">
+      <ENU>Punching shear resistance at the column perimeter (vRd,max) is not sufficient acc. to §6.4.3(2).</ENU>
+    </Desc>
+    <Sol TranslateID="W/07_Sol">
+      <ENU>Increase the column size or change plate properties (use higher grade of concrete material or increase the thickness).</ENU>
+    </Sol>
+  </Node>
 </Root>

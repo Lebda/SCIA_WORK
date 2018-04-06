@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="def59eb1-761f-4981-ab0b-07e319b2738d">
   <CodeEditor>
-    <SourceCode Collapsed="35|39|44|56|67|80|87|92|103|119|126|133|171|175|179|184|193|200|208|241|256|267|274|285|313|407|414|426|441|484|489|507|511|518|522|604|608|612|617|633|639|681|687|721|741|764|787|821|861|867|881" BreakPoints="">class CrossSection { 
+    <SourceCode Collapsed="35|39|44|56|67|80|87|92|103|119|126|133|171|175|179|184|193|200|208|241|256|267|274|285|511|522|741|764|787" BreakPoints="">class CrossSection { 
     
     //@Variables
     →INI400_010370double CssID; 
@@ -395,6 +395,16 @@
             ELSE { 
                 IF(ShearReinf == null) { 
                     ShearReinf →VAL316_048558= GetDefaultShearReinfIfNoExists(); 
+                } 
+            } 
+        } 
+        →LUN001_000069Concrete.ClearStirrupsFromCS(CssID); 
+        IF(!→LUN001_000071ShearReinf.IsError &amp;&amp; →LUN001_000072ShearReinf.ExistShearReinf) { 
+            IF(→LUN001_000073ShearReinf.Branch.Count &gt; 0) { 
+                FOR(i, 0, →LUN001_000074ShearReinf.Branch.Count-1) { 
+                    double stirrupForCssID →LUN001_000075= 321+i; 
+                    →LUN001_000076Concrete.Stirrup.CreateStirrup(stirrupForCssID, ShearReinf.D, 90, 999, 999, ShearReinf.Branch[i].Point); 
+                    →LUN001_000077CONCRETE.SetStirrupToCS(CssID, stirrupForCssID); 
                 } 
             } 
         } 
@@ -4612,6 +4622,38 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="LUN001_000060">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="LUN001_000069">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="LUN001_000075">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="LUN001_000076">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="LUN001_000077">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

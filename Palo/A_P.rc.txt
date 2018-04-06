@@ -1,6 +1,6 @@
 ESAAtl80 \A\Src\Lat\ESAAtl80\ESAAtl80.rc 
 ESAAtl80MBCS \A\Src\Lat\ESAAtl80\ESAAtl80MBCS.rc 
-BCGCBPRO2440u140 \A\Src\Tra\BCGCBPro\BCGCBPro.rc 
+BCGCBPRO2610u140 \A\Src\Tra\BCGCBPro\BCGCBPro.rc 
 EP_Archive \A\Src\Mic\Base\ARCHIVE\Archive.rc EP_Archive.tlb
 EP_BasicTypes \A\Src\Lat\BasicTypes\BasicTypes.rc EP_BasicTypes.tlb
 XEP_AppGUIFramework \A\Src\Kernel\Base\XEP_AppGUIFramework\XEP_AppGUIFramework.rc XEP_AppGUIFramework.tlb
@@ -21,6 +21,8 @@ GridBase \A\Src\Tra\GridBase\GridBase.rc GridBase.tlb
 Unit \A\Src\Tra\UNIT\Unit.rc Unit.tlb
 EasyProp \A\Src\Tra\EasyProp\EasyProp.rc EasyProp.tlb
 EP_Graphic \A\Src\LOK\GRAPHIC\EP_Graphic\EP_Graphic.rc EP_Graphic.tlb
+TexRenderingEngine \A\Src\Kernel\Base\TexRenderingEngine\TexRenderingEngine.rc TexRenderingEngine.tlb
+PDFCreatorPilotEngine \A\Src\Kernel\Base\PDFCreatorPilotEngine\PDFCreatorPilotEngine.rc PDFCreatorPilotEngine.tlb
 EP_DsPresent \A\Src\Mic\Ds\DsDbPresent\DsPrezent.rc EP_DsPresent.tlb
 EP_U3D \A\Src\LOK\GRAPHIC\EP_U3D\EP_U3D.rc EP_U3D.tlb
 EP_PDF \A\Src\LOK\GRAPHIC\EP_PDF\EP_PDF.rc EP_PDF.tlb
@@ -168,8 +170,8 @@ DataAddCads \A\Src\Cads\DataAddCads\DataAddCads.rc DataAddCads.tlb
 EP_CheckDataProvider \A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.rc EP_CheckDataProvider.tlb
 ConcreteChecksEsa \A\Src\Checks\ConcreteChecks\ConcreteChecksEsa\ConcreteChecksEsa.rc ConcreteChecksEsa.tlb
 EP_DataAddDamping \A\Src\Tra\DataAddDamping\DataAddDamping.rc EP_DataAddDamping.tlb
-DataTools \A\Src\Data\DataTools\DataTools.rc DataTools.tlb
 XEP_LoadGenerators \A\Src\Business\LoadGenerators\XEP_LoadGenerators\XEP_LoadGenerators.rc XEP_LoadGenerators.tlb
+DataTools \A\Src\Data\DataTools\DataTools.rc DataTools.tlb
 EP_CalcManager \A\Src\Tom\CalcManager\CalcManager.rc EP_CalcManager.tlb
 EP_NationalAnnices \A\Src\Tra\Anices\NationalAnnices.rc EP_NationalAnnices.tlb
 EP_ProjectDataDialog \A\Src\Tom\ProjectDataDialog\ProjectDataDialog.rc EP_ProjectDataDialog.tlb
@@ -253,7 +255,6 @@ TestCodeDependentDeflection \A\Src\Checks\ConcreteChecks\UnitTestsConcrete\TestC
 ConcreteCheckChecks \A\Src\Checks\ConcreteChecks\ConcreteCheckChecks\ConcreteCheckChecks.rc ConcreteCheckChecks.tlb
 ConcreteCheckResultShell \A\Src\Checks\ConcreteChecks\ConcreteCheckResultShell\ConcreteCheckResultShell.rc ConcreteCheckResultShell.tlb
 Punching \A\Src\Checks\ConcreteChecks\Punching\Punching.rc Punching.tlb
-Punching_MSUT \A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_MSUT.rc 
 ConcreteESACmds \A\Src\Par\Services\ConcreteESACmds\ConcreteESACmds.rc ConcreteESACmds.tlb
 ConcreteESACmdsM \A\Src\Par\Services\ConcreteESACmdsM\ConcreteESACmdsM.rc 
 HeatTransferESACmd \A\Src\Pos\Services\HeatTransferESACmd\HeatTransferESACmd.rc HeatTransferESACmd.tlb
@@ -277,6 +278,8 @@ CheckSteelBeam \A\Src\Cads\CheckSteelBeam\CheckSteelBeam.rc CheckSteelBeam.tlb
 CheckRCDesigner \A\Src\Cads\CheckRCDesigner\CheckRCDesigner.rc CheckRCDesigner.tlb
 EP_CadsCommonServices \A\Src\Cads\Services\EP_CadsCommonServices\EP_CadsCommonServices.rc EP_CadsCommonServices.tlb
 EP_CadsCommonServicesM \A\Src\Cads\Services\EP_CadsCommonServicesM\EP_CadsCommonServicesM.rc 
+AddonsCmds \A\Src\GUI\Commands\AddonsCmds\AddonsCmds.rc AddonsCmds.tlb
+AddonsCmdsM \A\Src\GUI\Commands\AddonsCmdsM\AddonsCmdsM.rc 
 CustomCheckCmds \A\Src\Tom\Services\CustomCheck\CustomCheckCmds\CustomCheckCmds.rc CustomCheckCmds.tlb
 SteelCheckEsa \A\Src\Checks\SteelChecks\SteelCheckEsa\SteelCheckEsa.rc SteelCheckEsa.tlb
 AluminiumCheck \A\Src\Mar\AluminiumCheck\AluminiumCheck.rc AluminiumCheck.tlb
@@ -294,6 +297,7 @@ CheckDemo \A\Src\Tom\CheckDemo\CheckDemo.rc CheckDemo.tlb
 ResultsPipelineTangentialModel \A\Src\Bro\ResultsPipelineTangentialModel\ResultsPipelineTangentialModel.rc ResultsPipelineTangentialModel.tlb
 CheckScaffConnections \A\Src\Cads\CheckScaffConnections\CheckScaffConnections.rc CheckScaffConnections.tlb
 EP_DSDrawingBasicElements \A\Src\Presentation\DataDrawing\EP_DSDrawingBasicElements\EP_DSDrawingBasicElements.rc EP_DSDrawingBasicElements.tlb
+EP_DataEntityActions \A\Src\Presentation\EP_DataEntityActions\EP_DataEntityActions.rc EP_DataEntityActions.tlb
 CustomBasicClass \A\Src\Tom\CustomBasicClass\CustomBasicClass.rc CustomBasicClass.tlb
 CustomCheckCmdsM \A\Src\Tom\Services\CustomCheck\CustomCheckCmdsM\CustomCheckCmdsM.rc 
 DesignFormsLink \A\Src\Checks\DesignForms\DesignFormsLink\DesignFormsLink.rc DesignFormsLink.tlb
@@ -428,8 +432,11 @@ pBatchOptimizer \A\Src\Tra\pBatchOptimizer\pBatchOptimizer.rc pBatchOptimizer.tl
 pTemplateBlocks \A\Src\Tra\pTemplateBlocks\pTemplateBlocks.rc pTemplateBlocks.tlb
 OdaPoirotTest \A\Src\Sam\OdaPoirotTest\OdaPoirotTest\OdaPoirotTest.rc OdaPoirotTest.tlb
 OdaPoirotTestM \A\Src\Sam\OdaPoirotTest\OdaPoirotTestM\OdaPoirotTestM.rc 
+DataModelConversion \A\Src\ImpExp\DataModel\Conversion\DataModelConversion.rc DataModelConversion.tlb
 EP_BasicTypesTests \A\Src\Kernel\Base\EP_BasicTypes\EP_BasicTypesTests\EP_BasicTypesTests.rc 
+TransparentProperty_MSUT \A\Src\Tic\TransparentProperty_MSUT\TransparentProperty_MSUT.rc 
 EasyDsObjects \A\Src\Nam\EasyDsObjects\EasyDsObjects.rc EasyDsObjects.tlb
+Punching_MSUT \A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_MSUT.rc 
 Example_ESACOM_Multithread \A\Src\Lat\ESAAtl80\Examples\Example_ESACOM_Multithread\Example_ESACOM_Multithread.rc Example_ESACOM_Multithread.tlb
 EP_ComponentCmdsGUI \A\Src\Lat\ComponentCmds\EP_ComponentCmdsGUI\EP_ComponentCmdsGUI.rc EP_ComponentCmdsGUI.tlb
 XEP_NexisMock \A\Src\Nexis\XEP_NexisMock\XEP_NexisMock.rc XEP_NexisMock.tlb

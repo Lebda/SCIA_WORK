@@ -111,6 +111,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                           <xsl:if test ="(StiffnessInput2D/@CreepCoeffAutoCalc = 'True')">
                             <h5>CreepCoeff auto calculation</h5>
                             <span class="label label-warning">
+                              Code =  <xsl:value-of select="StiffnessInput2D/CreepCoeffIn/@Code"/>
+                            </span>
+                            <span class="label label-warning">
                               Ac =  <xsl:value-of select="StiffnessInput2D/CreepCoeffIn/@Ac"/>
                             </span>
                             <span class="label label-warning">
@@ -129,7 +132,13 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                               Fcm =  <xsl:value-of select="StiffnessInput2D/CreepCoeffIn/@Fcm"/>
                             </span>
                             <span class="label label-warning">
+                              Fck =  <xsl:value-of select="StiffnessInput2D/CreepCoeffIn/@Fck"/>
+                            </span>
+                            <span class="label label-warning">
                               Relative humidity =  <xsl:value-of select="StiffnessInput2D/CreepCoeffIn/@RH"/>
+                            </span>
+                            <span class="label label-warning">
+                              MeanTemperature =  <xsl:value-of select="StiffnessInput2D/CreepCoeffIn/@dTemp"/>
                             </span>
                           </xsl:if>
                           <h5>Reinforcement</h5>

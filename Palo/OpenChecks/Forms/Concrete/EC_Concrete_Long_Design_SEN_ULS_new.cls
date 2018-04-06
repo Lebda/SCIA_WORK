@@ -552,7 +552,7 @@ IF(True) {
         LongDesign.TypeArea →INI400_006786= 1; 
         LongDesign.TypeMember →INI400_006787= TypeMember; 
         LongDesign.ReinfRatio →INI400_007019= IO.Setup.Concrete.Solver.IntForces.ULS.RatioReinf; 
-        LongDesign.IncreaseReqArea →INI400_007020= IO.CS.Chars.A*0.05; 
+        LongDesign.IncreaseReqArea →INI400_007020= CONCRETE.Characteristics(CssULSID, ForcesULSID, CONCRETE.CharType.WholeCharConcrete, CONCRETE.StiffnessType.Linear).A*0.05; 
         LongDesign.TestEqulibrium →INI400_007044= False; 
         LongDesign.bDrawPictures →INI400_007051= True; 
         //setting of SLS calculation

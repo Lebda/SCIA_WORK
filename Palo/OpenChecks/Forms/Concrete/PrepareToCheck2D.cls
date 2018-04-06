@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="8fd2009b-1172-46d7-9892-4c849292ba3b">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">object Functions2D →INI400_005799= LoadExternCLC("Functions2D.clc"); 
+    <SourceCode Collapsed="" BreakPoints="">object Functions2D →INI400_005799= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions2D.clc"); 
 object Functions1D →INI400_007097= LoadExternCLC("Functions1D.clc"); 
 
 //table properties

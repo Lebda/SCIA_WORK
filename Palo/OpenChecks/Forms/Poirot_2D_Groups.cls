@@ -9,12 +9,17 @@ ELSE {
     
     //Main caption
     IF(IO.Member2D.Member.Contains("Name") &amp;&amp; IO.Contains("Point")) { 
-        →INI400_005634TEXT(sMember &amp; " " &amp; IO.Member2D.Member.Name &amp; ", " &amp; sPointNo &amp; " " &amp; IO.Point.ID &amp; ", " &amp; sPosition &amp; " [" &amp; IO.Point.X &amp; " , " &amp; IO.Point.Y &amp; " , " &amp; IO.Point.Z &amp; "] m"); 
+        →INI400_005634TEXT(TR("Member") &amp; " " &amp; IO.Member2D.Member.Name &amp; ", " &amp; TR("point no.") &amp; " " &amp; IO.Point.ID &amp; ", " &amp; TR("position") &amp; " [" &amp; IO.Point.X &amp; " , " &amp; IO.Point.Y &amp; " , " &amp; IO.Point.Z &amp; "] m"); 
     } 
     
     //Combi key
-    IF(IO.Load.Contains("CombiKey")) { 
-        →INI400_002892TEXT(sCombiKey &amp; ": " &amp; IO.Load.CombiKey[IO.Point.ID].CombiKey); 
+    IF(IO.Load.Contains("CombiKey")) { object IO_HELPER →LUN001_000001= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.CLC"); 
+        IF(IO_HELPER.IsArray(IO.Load.CombiKey)) { 
+            string CombiKeyStr →LUN001_000002= IO.Load.CombiKey[IO.Point.ID].CombiKey; 
+        } ELSE { 
+            string CombiKeyStr →LUN001_000003= IO.Load.CombiKey; 
+        } 
+        →LUN001_000001TEXT(TR("Combi key") &amp; ": " &amp; CombiKeyStr); 
     } 
     
     //Internal forces output
@@ -58,100 +63,88 @@ ELSE {
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
+      <Variable Modifier="Public" Name="CombiKeyStr" ESA_ID="" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="internalForces" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_internalForces">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="internalForcesCLC" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_internalForcesCLC">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="m↓x←" ESA_ID="Result.04" Type="Double" Value="NaN" Precision="2">
-        <Description TranslateID="VARIABLE_m↓x←">
+      <Variable Modifier="Public" Name="IO_HELPER" ESA_ID="" Type="Object">
+        <Description>
           <ENU>
           </ENU>
         </Description>
-        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="28" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="m↓xy←" ESA_ID="Result.06" Type="Double" Value="NaN" Precision="2">
-        <Description TranslateID="VARIABLE_m↓xy←">
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="28" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="m↓y←" ESA_ID="Result.05" Type="Double" Value="NaN" Precision="2">
-        <Description TranslateID="VARIABLE_m↓y←">
+      <Variable Modifier="Public" Name="m↓x←" ESA_ID="Result.04" Type="Double" Precision="2">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="28" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓x←" ESA_ID="Result.01" Type="Double" Value="NaN" Precision="2">
-        <Description TranslateID="VARIABLE_n↓x←">
+      <Variable Modifier="Public" Name="m↓xy←" ESA_ID="Result.06" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="28" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="m↓y←" ESA_ID="Result.05" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="28" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="n↓x←" ESA_ID="Result.01" Type="Double" Precision="2">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="27" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓xy←" ESA_ID="Result.03" Type="Double" Value="NaN" Precision="2">
-        <Description TranslateID="VARIABLE_n↓xy←">
+      <Variable Modifier="Public" Name="n↓xy←" ESA_ID="Result.03" Type="Double" Precision="2">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="27" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓y←" ESA_ID="Result.02" Type="Double" Value="NaN" Precision="2">
-        <Description TranslateID="VARIABLE_n↓y←">
+      <Variable Modifier="Public" Name="n↓y←" ESA_ID="Result.02" Type="Double" Precision="2">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="27" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="sCombiKey" ESA_ID="" Type="String" Value="">
-        <Description TranslateID="VARIABLE_sCombiKey">
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="sMember" ESA_ID="" Type="String" Value="">
-        <Description TranslateID="VARIABLE_sMember">
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="sPointNo" ESA_ID="" Type="String" Value="">
-        <Description TranslateID="VARIABLE_sPointNo">
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="sPosition" ESA_ID="" Type="String" Value="">
-        <Description TranslateID="VARIABLE_sPosition">
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="v↓x←" ESA_ID="Result.07" Type="Double" Value="NaN" Precision="2">
-        <Description TranslateID="VARIABLE_v↓x←">
+      <Variable Modifier="Public" Name="v↓x←" ESA_ID="Result.07" Type="Double" Precision="2">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="27" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="v↓y←" ESA_ID="Result.08" Type="Double" Value="NaN" Precision="2">
-        <Description TranslateID="VARIABLE_v↓y←">
+      <Variable Modifier="Public" Name="v↓y←" ESA_ID="Result.08" Type="Double" Precision="2">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -237,14 +230,6 @@ ELSE {
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="INI400_002892">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|12|0|2" Font2="Arial|12|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
       <VC ID="INI400_005634">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|16|0|2" Font2="Segoe UI|16|1|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -357,6 +342,30 @@ ELSE {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
+      <VC ID="LUN001_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|12|0|2" Font2="Arial|12|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="LUN001_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="LUN001_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
@@ -369,14 +378,26 @@ ELSE {
     <Command Width="500" />
   </Dialog>
   <Texts>
-    <Item TranslateID="TEXT_INI400_002892">
-      <ENU>sCombiKey &amp; ": " &amp; IO.Load.CombiKey[IO.Point.ID].CombiKey</ENU>
+    <Item TranslateID="STRING_2A5C1FC1">
+      <ENU>"position"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_005634">
-      <ENU>sMember &amp; " " &amp; IO.Member2D.Member.Name &amp; ", " &amp; sPointNo &amp; " " &amp; IO.Point.ID &amp; ", " &amp; sPosition &amp; " [" &amp; IO.Point.X &amp; " , " &amp; IO.Point.Y &amp; " , " &amp; IO.Point.Z &amp; "] m"</ENU>
+    <Item TranslateID="STRING_BD0118E9">
+      <ENU>"Combi key"</ENU>
+    </Item>
+    <Item TranslateID="STRING_CAB5396F">
+      <ENU>"Member"</ENU>
+    </Item>
+    <Item TranslateID="STRING_CDB56B5D">
+      <ENU>"point no."</ENU>
+    </Item>
+    <Item ID="TEXT_INI400_005634">
+      <ENU>TR("Member") &amp; " " &amp; IO.Member2D.Member.Name &amp; ", " &amp; TR("point no.") &amp; " " &amp; IO.Point.ID &amp; ", " &amp; TR("position") &amp; " [" &amp; IO.Point.X &amp; " , " &amp; IO.Point.Y &amp; " , " &amp; IO.Point.Z &amp; "] m"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_005826">
       <ENU>"This form cannot work standalone!"</ENU>
+    </Item>
+    <Item ID="TEXT_LUN001_000001">
+      <ENU>TR("Combi key") &amp; ": " &amp; CombiKeyStr</ENU>
     </Item>
   </Texts>
 </Root>

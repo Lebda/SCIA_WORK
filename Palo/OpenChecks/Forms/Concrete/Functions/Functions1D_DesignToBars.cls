@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="d357e0c5-7788-479f-b656-55f79fa83d34">
   <CodeEditor>
-    <SourceCode Collapsed="2|55|149|163|175|192|207|218|343|372|401|563|615|651|769|777|914|1282|1429" BreakPoints="">→INI400_009473BLOCK("Function creating practical array of reinforcement form required") { 
+    <SourceCode Collapsed="175|776|784|921" BreakPoints="">→INI400_009473BLOCK("Function creating practical array of reinforcement form required") { 
     /// 0 = no area on left and right, 1=on left, 2=on right, 3=on both
-    object PractArrayReinfFromRequiredNew(object[] ArrayReqReinf, double NumEdges, double FormCode) { 
+    object PractArrayReinfFromRequiredNew(object[] ArrayReqReinf, double NumEdges, double FormCode, double InCoeff) { 
         object[] ArrayReinfNew →INI400_009500= new object[]; 
         FOR(i, 0, ArrayReqReinf.Count-1) { 
             ArrayReinfNew[i] →INI400_009501= ArrayReqReinf[i].Clone(); 
@@ -29,19 +29,19 @@
                 
                 SWITCH(Type) { 
                     CASE 1 :  { 
-                        ArrayReinfNew[i].nreq →INI400_009492= MAX(ROUNDUP(ArrayReqReinf[i].nreq+0.5, 0), 2); 
+                        ArrayReinfNew[i].nreq →INI400_009492= MAX(ROUNDUP(ArrayReqReinf[i].nreq+InCoeff, 0), 2); 
                     } 
                     CASE 2 :  { 
-                        ArrayReinfNew[i].nreq →INI400_009494= MAX(ROUNDUP(ArrayReqReinf[i].nreq-0.5, 0), 0); 
+                        ArrayReinfNew[i].nreq →INI400_009494= MAX(ROUNDUP(ArrayReqReinf[i].nreq-InCoeff, 0), 0); 
                     } 
                     CASE 3 :  { 
-                        ArrayReinfNew[i].nreq →INI400_009496= MAX(ROUNDUP(ArrayReqReinf[i].nreq+1, 0), 2); 
+                        ArrayReinfNew[i].nreq →INI400_009496= MAX(ROUNDUP(ArrayReqReinf[i].nreq+2*InCoeff, 0), 2); 
                     } 
                     CASE 4 :  { 
-                        ArrayReinfNew[i].nreq →INI400_009653= MAX(ROUNDUP(ArrayReqReinf[i].nreq+0.5, 0), 1); 
+                        ArrayReinfNew[i].nreq →INI400_009653= MAX(ROUNDUP(ArrayReqReinf[i].nreq+InCoeff, 0), 1); 
                     } 
                     CASE 5 :  { 
-                        ArrayReinfNew[i].nreq →INI400_009655= MAX(ROUNDUP(ArrayReqReinf[i].nreq-1, 0), 1); 
+                        ArrayReinfNew[i].nreq →INI400_009655= MAX(ROUNDUP(ArrayReqReinf[i].nreq-2*InCoeff, 0), 1); 
                     } 
                     DEFAULT :  { 
                         ArrayReinfNew[i].nreq →INI400_009498= MAX(ROUNDUP(ArrayReqReinf[i].nreq, 0), 2); 
@@ -56,7 +56,7 @@
 
 →INI400_009631BLOCK("Function creating practical array of reinforcement form required") { 
     /// 0 = no area on left and right, 1=on left, 2=on right, 3=on both
-    object PractArrayReinfFromRequired(object[] ArrayReqReinf, object ArrayStatReinf, object ArrayStatReinfTor, double NumEdges, double FormCode, object[] Reinf, bool bDetailingProv) { 
+    object PractArrayReinfFromRequired(object[] ArrayReqReinf, object ArrayStatReinf, object ArrayStatReinfTor, double NumEdges, double FormCode, object[] Reinf, bool bDetailingProv, double InCoeff) { 
         object[] ArrayReinfNew →INI400_009632= new object[]; 
         object ExtFunct →INI400_013585= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_DesignReq.CLC"); 
         FOR(i, 0, ArrayReqReinf.Count-1) { 
@@ -90,9 +90,9 @@
                 double Type →INI400_009641= ExtFunct.AreaNeigbourEdge(DesReinfArray, 1); 
                 SWITCH(Type) { 
                     CASE 1 :  { 
-                        nreq →INI400_009969= MAX(ROUNDUP(ArrayReqReinf[i].nreq+0.5, 0), 2); 
+                        nreq →INI400_009969= MAX(ROUNDUP(ArrayReqReinf[i].nreq+InCoeff, 0), 2); 
                         ArrayReinfNew[i].nreq →INI400_009643= nreq; 
-                        ArrayReinfNew[i].As →INI400_009644= (ArrayReinfNew[i].nreq-0.5)*0.25*ArrayReinfNew[i].diam↑2←*Math.PI; 
+                        ArrayReinfNew[i].As →INI400_009644= (ArrayReinfNew[i].nreq-InCoeff)*0.25*ArrayReinfNew[i].diam↑2←*Math.PI; 
                         →KRS135_000016CheckIfMaxReinfExceed(ArrayReinfNew[i], bDetailingProv); 
                         →KRS127_000624CheckIfMinReinfExceed(ArrayReinfNew[i], ArrayStatReinf[i], ArrayStatReinfTor[i], bDetailingProv); 
                         IF(ArrayReqReinf[IndexArray[0]].diam &gt; ArrayReqReinf[i].diam) { 
@@ -104,9 +104,9 @@
                         } 
                     } 
                     CASE 2 :  { 
-                        nreq →INI400_009708= MAX(ROUNDUP(ArrayReqReinf[i].nreq+0.5, 0), 2); 
+                        nreq →INI400_009708= MAX(ROUNDUP(ArrayReqReinf[i].nreq+InCoeff, 0), 2); 
                         ArrayReinfNew[i].nreq →INI400_009645= nreq; 
-                        ArrayReinfNew[i].As →INI400_009646= (ArrayReinfNew[i].nreq-0.5)*0.25*ArrayReinfNew[i].diam↑2←*Math.PI; 
+                        ArrayReinfNew[i].As →INI400_009646= (ArrayReinfNew[i].nreq-InCoeff)*0.25*ArrayReinfNew[i].diam↑2←*Math.PI; 
                         →KRS135_000029CheckIfMaxReinfExceed(ArrayReinfNew[i], bDetailingProv); 
                         →KRS127_000625CheckIfMinReinfExceed(ArrayReinfNew[i], ArrayStatReinf[i], ArrayStatReinfTor[i], bDetailingProv); 
                         IF(ArrayReqReinf[IndexArray[2]].diam &gt; ArrayReqReinf[i].diam) { 
@@ -118,9 +118,9 @@
                         } 
                     } 
                     CASE 3 :  { 
-                        nreq →INI400_009706= MAX(ROUNDUP(ArrayReqReinf[i].nreq+1, 0), 1); 
+                        nreq →INI400_009706= MAX(ROUNDUP(ArrayReqReinf[i].nreq+2*InCoeff, 0), 1); 
                         ArrayReinfNew[i].nreq →INI400_009647= nreq; 
-                        ArrayReinfNew[i].As →INI400_009648= (ArrayReinfNew[i].nreq-1)*0.25*ArrayReinfNew[i].diam↑2←*Math.PI; 
+                        ArrayReinfNew[i].As →INI400_009648= (ArrayReinfNew[i].nreq-2*InCoeff)*0.25*ArrayReinfNew[i].diam↑2←*Math.PI; 
                         →KRS135_000030CheckIfMaxReinfExceed(ArrayReinfNew[i], bDetailingProv); 
                         →KRS127_000626CheckIfMinReinfExceed(ArrayReinfNew[i], ArrayStatReinf[i], ArrayStatReinfTor[i], bDetailingProv); 
                         IF(ArrayReqReinf[IndexArray[0]].diam &gt; ArrayReqReinf[i].diam) { 
@@ -219,7 +219,7 @@
 } 
 
 →INI400_006123BLOCK("Function for recalculation required reinforcement to bars") { 
-    object ArrayReqReinf(double CssID, object PractCalculator, object[] DiameterAndCoverForEdges, object[] DesReinfArray, double Edgeindex, double TypeArea, double MinNBars) { 
+    object ArrayReqReinf(double CssID, object PractCalculator, object[] DiameterAndCoverForEdges, object[] DesReinfArray, double Edgeindex, double TypeArea, double MinNBars, double InCoeff) { 
         double i →INI400_006155= 0; 
         double j →INI400_006156= 0; 
         object[] ArrayReinf →INI400_005924= new object[]; 
@@ -241,22 +241,22 @@
             double As1 →INI400_005918= 0.25*Math.PI*(DiameterAndCoverForEdges[i].diam)↑2←; 
             SWITCH(Result) { 
                 CASE 1 :  { 
-                    Nbars →INI400_005920= (DesReinfArray[i].reinfAs/As1)+0.5; 
-                    pom →INI400_006128= 0.5; 
+                    Nbars →INI400_005920= (DesReinfArray[i].reinfAs/As1)+InCoeff; 
+                    pom →INI400_006128= InCoeff; 
                     IF(DesReinfArray[i].reinfAs &gt; 0) { 
                         MinNBars →INI400_009676= MAX(MinNBars, 2); 
                     } 
                 } 
                 CASE 2 :  { 
-                    Nbars →INI400_005921= (DesReinfArray[i].reinfAs/As1)+0.5; 
-                    pom →INI400_006129= 0.5; 
+                    Nbars →INI400_005921= (DesReinfArray[i].reinfAs/As1)+InCoeff; 
+                    pom →INI400_006129= InCoeff; 
                     IF(DesReinfArray[i].reinfAs &gt; 0) { 
                         MinNBars →INI400_009680= MAX(MinNBars, 2); 
                     } 
                 } 
                 CASE 3 :  { 
-                    Nbars →INI400_005922= (DesReinfArray[i].reinfAs/As1)+1; 
-                    pom →INI400_006130= 1; 
+                    Nbars →INI400_005922= (DesReinfArray[i].reinfAs/As1)+2*InCoeff; 
+                    pom →INI400_006130= 2*InCoeff; 
                     IF(DesReinfArray[i].reinfAs &gt; 0) { 
                         MinNBars →INI400_009681= MAX(MinNBars, 1); 
                     } 
@@ -311,11 +311,18 @@
                             double YBar →INI400_006134= MIN(Y1, Y1)+[(sreg*SIN(Alpha))*j]; 
                         } 
                         
+                        double TypeBar →VAL012_000001= 0; // 0 - no corner, 1 - corner left, 2 - corner right
                         IF((j == 0 &amp;&amp; (Result == 1 || Result == 3) || (j == NbarsRound-1 &amp;&amp; (Result == 2 || Result == 3)))) { 
-                            double AsBar →INI400_006135= 0.5*As1cor; 
+                            double AsBar →VAL012_000098= 0.5*As1cor; 
+                            IF(j == 0 &amp;&amp; (Result == 1 || Result == 3)) { 
+                                TypeBar →VAL012_000003= 1; 
+                            } ELSE { 
+                                TypeBar →VAL012_000004= 2; 
+                            } 
                         } ELSE { 
-                            double AsBar →INI400_006136= As1cor; } 
-                        →INI400_006141FinalArray.Add(new Structure("y", XBar, "z", YBar, "diam", DiameterAndCoverForEdges[i].diam, "reinfArea", AsBar, "sreq", sreg)); 
+                            double AsBar →VAL012_000002= As1cor; 
+                        } 
+                        →VAL012_000003FinalArray.Add(new Structure("y", XBar, "z", YBar, "diam", DiameterAndCoverForEdges[i].diam, "reinfArea", AsBar, "sreq", sreg, "TypeBar", TypeBar)); 
                     } 
                 } ELSE { 
                     IF(TypeArea == 0) { 
@@ -335,7 +342,7 @@
                     } ELSE { 
                         double YBar →INI400_006148= MIN(Y1, Y1)+[(0.5*ArrayLength.length/SIN(Alpha))]; 
                     } 
-                    →INI400_006149FinalArray.Add(new Structure("y", XBar, "z", YBar, "diam", DiameterAndCoverForEdges[i].diam, "reinfArea", As1cor, "sreq", sreg)); 
+                    →INI400_006149FinalArray.Add(new Structure("y", XBar, "z", YBar, "diam", DiameterAndCoverForEdges[i].diam, "reinfArea", As1cor, "sreq", sreg, "TypeBar", 0)); 
                 } 
             } 
         } 
@@ -366,7 +373,7 @@
             double XBar →INI400_006186= dist*COS(Alpha); 
             double YBar →INI400_006187= dist*SIN(Alpha); 
             double sreq →INI400_006188= 2*Math.PI*R/NbarsRound; 
-            →INI400_006185FinalArray.Add(new Structure("y", XBar, "z", YBar, "diam", diam, "reinfArea", As1cor, "sreq", sreq)); 
+            →INI400_006185FinalArray.Add(new Structure("y", XBar, "z", YBar, "diam", diam, "reinfArea", As1cor, "sreq", sreq, "TypeBar", 0)); 
         } 
         return FinalArray; 
     } 
@@ -394,7 +401,7 @@
             double XBar →INI400_009816= dist*COS(Alpha)+Xcen*Sign; 
             double YBar →INI400_009817= dist*SIN(Alpha); 
             double sreq →INI400_009818= 2*Math.PI*R/NbarsRound; 
-            →INI400_009819FinalArray.Add(new Structure("y", XBar, "z", YBar, "diam", diam, "reinfArea", As1cor, "sreq", sreq)); 
+            →INI400_009819FinalArray.Add(new Structure("y", XBar, "z", YBar, "diam", diam, "reinfArea", As1cor, "sreq", sreq, "TypeBar", 0)); 
         } 
         return FinalArray; 
     } 
@@ -402,14 +409,14 @@
 
 →INI400_007757BLOCK("Function for explotation required reinforcement to individual bars") { 
     //Function explotation required reinforcement to individual bars
-    object ExplotationReqReinfToBarsNew(double CssID, object[] ReqReinf, double Method, bool bLayerDesign, double MaxNumLayers, object[] DiameterAndCoverForEdges, double offset, double s↓min←, double TypeArea, double MinNbarsEdge, double FormCode) { 
+    object ExplotationReqReinfToBarsNew(double CssID, object[] ReqReinf, double Method, bool bLayerDesign, double MaxNumLayers, object[] DiameterAndCoverForEdges, double offset, double s↓min←, double TypeArea, double MinNbarsEdge, double FormCode, double InCoeff) { 
         double i →INI400_007758= 0; double j →INI400_007759= 0; double k →INI400_007760= 0; 
         double numEdges →INI400_007761= CONCRETE.Designer.GetNumberOfEdgesOfWholeCrossSection(CssID); 
         object[] CssArrayBar →INI400_007767= new object[]; 
         IF(Method == 5) { 
             FOR(i, 1, numEdges) { 
                 IF(ReqReinf[i-1].As &gt; 0) { 
-                    →INI400_007768CssArrayBar.Add(new Structure("Edge", i, "Layer", 1, "y", ReqReinf[i-1].y, "z", ReqReinf[i-1].z, "diam", ReqReinf[i-1].diamOpt, "As", ReqReinf[i-1].As)); 
+                    →INI400_007768CssArrayBar.Add(new Structure("Edge", i, "Layer", 1, "y", ReqReinf[i-1].y, "z", ReqReinf[i-1].z, "diam", ReqReinf[i-1].diamOpt, "As", ReqReinf[i-1].As, "TypeBar", 1)); 
                 } 
             } 
         } ELSE { 
@@ -434,7 +441,7 @@
                         object[] EdgeArrayBar →INI400_007787= new object[]; 
                         EdgeArrayBar →INI400_007789= ArrayReqReinfCircularCSS(CssID, DistFromEdge, Diameter, As_sum, TypeArea, MinNbarsEdge); 
                         FOR(k, 1, EdgeArrayBar.Count) { 
-                            →INI400_009939CssArrayBar.Add(new Structure("Edge", 0, "Layer", i, "y", EdgeArrayBar[k-1].y, "z", EdgeArrayBar[k-1].z, "diam", EdgeArrayBar[k-1].diam, "As", EdgeArrayBar[k-1].reinfArea)); 
+                            →INI400_009939CssArrayBar.Add(new Structure("Edge", 0, "Layer", i, "y", EdgeArrayBar[k-1].y, "z", EdgeArrayBar[k-1].z, "diam", EdgeArrayBar[k-1].diam, "As", EdgeArrayBar[k-1].reinfArea, "TypeBar", 0)); 
                         } 
                     } 
                     IF(FormCode == 2008) { 
@@ -470,12 +477,12 @@
                                     
                                     →INI400_009889CONCRETE.Designer.SetAreasOfReinforcementForEdgeForPracticalCalculator(PractCalc.HashKey, ListReqArea); 
                                 } 
-                                EdgeArrayBar →INI400_009845= ArrayReqReinf(CssID, PractCalc, DiameterAndCoverForEdges, ListReqArea, j, TypeArea, MinNbarsEdge); 
+                                EdgeArrayBar →INI400_009845= ArrayReqReinf(CssID, PractCalc, DiameterAndCoverForEdges, ListReqArea, j, TypeArea, MinNbarsEdge, InCoeff); 
                                 double DelatAsOval →INI400_009938= EdgeArrayBar.Count*0.25*DiameterAndCoverForEdges[j].diam↑2←*Math.PI-ListReqArea[j].reinfAs; 
                                 IF(EdgeArrayBar.Count &gt; 0) { 
                                     
                                     FOR(k, 0, EdgeArrayBar.Count-1) { 
-                                        →INI400_009942CssArrayBar.Add(new Structure("Edge", 0, "Layer", i, "y", EdgeArrayBar[k].y, "z", EdgeArrayBar[k].z, "diam", EdgeArrayBar[k].diam, "As", 0.25*EdgeArrayBar[k].diam↑2←*Math.PI)); 
+                                        →INI400_009942CssArrayBar.Add(new Structure("Edge", 0, "Layer", i, "y", EdgeArrayBar[k].y, "z", EdgeArrayBar[k].z, "diam", EdgeArrayBar[k].diam, "As", 0.25*EdgeArrayBar[k].diam↑2←*Math.PI, "TypeBar", EdgeArrayBar[k].TypeBar)); 
                                     } 
                                 } 
                             } ELSE { 
@@ -519,11 +526,11 @@
                     
                     FOR(j, 1, numEdges) { 
                         object[] EdgeArrayBar →INI400_007827= new object[]; 
-                        EdgeArrayBar →INI400_007832= ArrayReqReinf(CssID, PractCalc, DiameterAndCoverForEdges, ListReqArea, j-1, TypeArea, MinNbarsEdge); 
+                        EdgeArrayBar →INI400_007832= ArrayReqReinf(CssID, PractCalc, DiameterAndCoverForEdges, ListReqArea, j-1, TypeArea, MinNbarsEdge, InCoeff); 
                         IF(EdgeArrayBar.Count &gt; 0) { 
                             
                             FOR(k, 1, EdgeArrayBar.Count) { 
-                                →INI400_007842CssArrayBar.Add(new Structure("Edge", j, "Layer", i, "y", EdgeArrayBar[k-1].y, "z", EdgeArrayBar[k-1].z, "diam", EdgeArrayBar[k-1].diam, "As", EdgeArrayBar[k-1].reinfArea)); 
+                                →INI400_007842CssArrayBar.Add(new Structure("Edge", j, "Layer", i, "y", EdgeArrayBar[k-1].y, "z", EdgeArrayBar[k-1].z, "diam", EdgeArrayBar[k-1].diam, "As", EdgeArrayBar[k-1].reinfArea, "TypeBar", EdgeArrayBar[k-1].TypeBar)); 
                             } 
                         } 
                     } 
@@ -1581,7 +1588,27 @@
     } 
 } 
 
-
+→VAL012_000005BLOCK("Function for determination if bar of reinforcemetn is detailing or not") { 
+    object[] DetailingBar(object[] SingleBars, object ArrayReqReinf, double[] TypeOfEdge) { 
+        bool[] obIsDetailed →VAL012_000091= new bool[]; 
+        object ExtFunct →VAL012_000006= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_DesignReq.CLC"); 
+        FOR(i, 0, SingleBars.Count-1) { 
+            double edgeInx →LUN001_000003= MAX(SingleBars[i].Edge-1, 0); // circular columns has this .Edge value = 0, so index to array = -1 -&gt; crash...
+            obIsDetailed[i] →VAL012_000094= ArrayReqReinf[edgeInx].IsDetailing; 
+            IF(TypeOfEdge != null) { 
+                double Test1 →VAL012_000096= SingleBars[i].TypeBar; 
+                double Test2 →VAL012_000097= TypeOfEdge[edgeInx]; 
+                IF(obIsDetailed[i] == True &amp;&amp; SingleBars[i].TypeBar == 1 &amp;&amp; (TypeOfEdge[edgeInx] == 1 || TypeOfEdge[edgeInx] == 3)) { 
+                    obIsDetailed[i] →VAL012_000093= False; 
+                } 
+                IF(obIsDetailed[i] == True &amp;&amp; SingleBars[i].TypeBar == 2 &amp;&amp; (TypeOfEdge[edgeInx] == 2 || TypeOfEdge[edgeInx] == 3)) { 
+                    obIsDetailed[i] →VAL012_000095= False; 
+                } 
+            } 
+        } 
+        return obIsDetailed; 
+    } 
+} 
 </SourceCode>
   </CodeEditor>
   <Calculation>
@@ -1638,7 +1665,7 @@
           <ENU>Layout 4</ENU>
         </Names>
       </Layout>
-      <Layout Active="True">
+      <Layout Active="False">
         <Names TranslateID="LAYOUT_5">
           <ENU>Layout 5</ENU>
         </Names>
@@ -2277,22 +2304,6 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006135">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_006136">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
       <VC ID="INI400_006137">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -2310,14 +2321,6 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_006139">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_006141">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -3692,54 +3695,6 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_009895">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_009897">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_009899">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_009907">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_009909">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_009911">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
       <VC ID="INI400_009919">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -5845,6 +5800,14 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="LUN001_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="VAL001_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="194" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="194" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -7101,6 +7064,110 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="VAL012_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="VAL012_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="VAL012_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="VAL012_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000005">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="194" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="194" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="194" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="194" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="194" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="194" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="VAL012_000006">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000091">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000093">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000094">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000095">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000096">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000097">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000098">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="VAL127_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="194" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="194" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -7207,6 +7274,9 @@
     </Item>
     <Item ID="BLOCK_VAL001_000079">
       <ENU>"Function creating practical array of reinforcement from additional reinforcement"</ENU>
+    </Item>
+    <Item ID="BLOCK_VAL012_000005">
+      <ENU>"Function for determination if bar of reinforcemetn is detailing or not"</ENU>
     </Item>
     <Item ID="BLOCK_VAL127_000001">
       <ENU>"Function creating practical array of reinforcement form required"</ENU>

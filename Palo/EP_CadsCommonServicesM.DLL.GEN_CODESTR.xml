@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="23"><StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_compositecolumn}</StringId>
-		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
-		<ResourceId>114</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_pad_foundation}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="14"><StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_pad_foundation}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
 		<ResourceId>118</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_sls_design_check}</StringId>
-		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
-		<ResourceId>106</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_uls_design_check}</StringId>
-		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
-		<ResourceId>105</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_setup}</StringId>
-		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
-		<ResourceId>103</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_piledesign}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
@@ -35,10 +19,6 @@
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
 		<ResourceId>135</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_df_compositebeam_en1994_1_1_compositestage_name}</StringId>
-		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
-		<ResourceId>121</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_df_compositebeam_en1994_1_2_fire_finalstage_name}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
 		<ResourceId>133</ResourceId>
@@ -46,10 +26,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eitm5074}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
 		<ResourceId>5074</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_fire_resistance_check}</StringId>
-		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
-		<ResourceId>107</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_pileplanver}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
@@ -59,29 +35,17 @@
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
 		<ResourceId>134</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_df_compositebeam_en1994_1_1_constructionstage_name}</StringId>
-		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
-		<ResourceId>122</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_composite}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
 		<ResourceId>123</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_member_data}</StringId>
-		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
-		<ResourceId>104</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_composite_beam}</StringId>
-		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
-		<ResourceId>102</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_floorvibrationdatafromsetup}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
 		<ResourceId>215</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_1d_member}</StringId>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_df_compositebeam_en1994_1_1_bothstage_name}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
-		<ResourceId>110</ResourceId>
+		<ResourceId>121</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_geotechnics}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>

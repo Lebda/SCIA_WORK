@@ -1,0 +1,446 @@
+<Root Version="1" Type="CustomLibrary" GUID="7caa0bae-3819-44ea-90f8-948c3a41eeeb">
+  <Header>
+    <PropertySet Symbol="f↓ck←" ESA_ID="fck" Unit="MPa" Type="Numeric">
+      <Description TranslateID="fck">
+        <NEU>Characteristic compressive cylinder strength</NEU>
+        <FRB>Résistance caractéristique en compression sur cylindre</FRB>
+        <PTG>Resistência característica à compressão do cilindro</PTG>
+        <ELL>Χαρακτηριστική κυλινδρική θλιπτική αντοχή</ELL>
+        <ENU>Characteristic compressive cylinder strength</ENU>
+        <ESP>Characteristic compressive cylinder strength</ESP>
+        <CSY>Charakteristická válcová pevnost v tlaku</CSY>
+        <DEU>Charakteristische Zylinderdruckfestigkeit</DEU>
+        <NLD>Karakteristieke cilinderdruksterkte</NLD>
+        <SKY>Charakteristická valcová pevnosť v tlaku</SKY>
+        <ITA>Characteristic compressive cylinder strength</ITA>
+        <PLK>Characteristic compressive cylinder strength</PLK>
+        <ROM>Characteristic compressive cylinder strength</ROM>
+        <RUS>Characteristic compressive cylinder strength</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="f↓cm←" ESA_ID="fcm" Unit="MPa" Type="Numeric">
+      <Description TranslateID="fcm">
+        <NEU>Average cylinder compressive strength</NEU>
+        <FRB>Résistance moyenne en compression sur cylindre</FRB>
+        <PTG>Resistência média à compressão do cilindro</PTG>
+        <ELL>Μέση θλιπτική κυλινδρική αντοχή</ELL>
+        <ENU>Average cylinder compressive strength</ENU>
+        <ESP>Average cylinder compressive strength</ESP>
+        <CSY>Průměrná hodnota válcové pevnosti v tlaku</CSY>
+        <DEU>Mittelwert Zylinderdruckfestigkeit</DEU>
+        <NLD>Gemiddelde cylinderdruksterkte</NLD>
+        <SKY>Priemerná hodnota valcovej pevnosti v tlaku</SKY>
+        <ITA>Average cylinder compressive strength</ITA>
+        <PLK>Average cylinder compressive strength</PLK>
+        <ROM>Average cylinder compressive strength</ROM>
+        <RUS>Average cylinder compressive strength</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="f↓ctm←" ESA_ID="fctm" Unit="MPa" Type="Numeric">
+      <Description TranslateID="fctm">
+        <NEU>Average axial tensile strength</NEU>
+        <FRB>Résistance moyenne en traction axiale</FRB>
+        <PTG>Resistência média à tração</PTG>
+        <ELL>Μέση αξονική εφελκυστική αντοχή</ELL>
+        <ENU>Average axial tensile strength</ENU>
+        <ESP>Average axial tensile strength</ESP>
+        <CSY>Průměrná hodnota válcové pevnost v dostředném tahu</CSY>
+        <DEU>Mittelwert axiale Zugfestigkeit</DEU>
+        <NLD>Gemiddelde axiale treksterkte</NLD>
+        <SKY>Priemerná hodnota valcovej pevnosti v dostrednom ťahu</SKY>
+        <ITA>Average axial tensile strength</ITA>
+        <PLK>Average axial tensile strength</PLK>
+        <ROM>Average axial tensile strength</ROM>
+        <RUS>Average axial tensile strength</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="f↓ctk, 0.05←" ESA_ID="fctk_05" Unit="MPa" Type="Numeric">
+      <Description TranslateID="fctk_05">
+        <NEU>5% fractile of cylinder tensile strength</NEU>
+        <FRB>5% de fractile de résistance à la traction sur cylindre</FRB>
+        <PTG>fração de 5% da resistência à compressão do cilindro</PTG>
+        <ELL>Χαρακτηριστική εφελκυστική αντοχή σκυροδέματος για ποσοστημόριο αστοχίας 5%\r\n</ELL>
+        <ENU>5% fractile of cylinder tensile strength</ENU>
+        <ESP>5% fractile of cylinder tensile strength</ESP>
+        <CSY>5% kvantil válcové pevnosti v tahu</CSY>
+        <DEU>5%-Quantil der Zylinderzugfestigkeit</DEU>
+        <NLD>5% fractiel van de cylindertreksterkte</NLD>
+        <SKY>5-percentný kvantil valcovej pevnosti v ťahu</SKY>
+        <ITA>5% fractile of cylinder tensile strength</ITA>
+        <PLK>5% fractile of cylinder tensile strength</PLK>
+        <ROM>5% fractile of cylinder tensile strength</ROM>
+        <RUS>5% fractile of cylinder tensile strength</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="f↓ctk, 0.95←" ESA_ID="fctk_95" Unit="MPa" Type="Numeric">
+      <Description TranslateID="fctk_95">
+        <NEU>95% fractile of cylinder tensile strength</NEU>
+        <FRB>95 % de fractile de résistance à la traction sur cylindre</FRB>
+        <PTG>fração de 95% da resistência à compressão do cilindro</PTG>
+        <ELL>Χαρακτηριστική εφελκυστική αντοχή σκυροδέματος για ποσοστημόριο αστοχίας 95%\r\n</ELL>
+        <ENU>95% fractile of cylinder tensile strength</ENU>
+        <ESP>95% fractile of cylinder tensile strength</ESP>
+        <CSY>95% kvantil válcové pevnosti v tahu</CSY>
+        <DEU>95%-Quantil der Zylinderzugfestigkeit</DEU>
+        <NLD>95% fractiel van de cylindertreksterkte</NLD>
+        <SKY>95-percentný kvantil valcovej pevnosti v ťahu</SKY>
+        <ITA>95% fractile of cylinder tensile strength</ITA>
+        <PLK>95% fractile of cylinder tensile strength</PLK>
+        <ROM>95% fractile of cylinder tensile strength</ROM>
+        <RUS>95% fractile of cylinder tensile strength</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="E" ESA_ID="E" Unit="GPa" Type="Numeric">
+      <Description TranslateID="E">
+        <NEU>Elastic modulus</NEU>
+        <FRB>Module élastique</FRB>
+        <PTG>Módulo de elasticidade</PTG>
+        <ELL>Μέτρο ελαστικότητας</ELL>
+        <ENU>Elastic modulus</ENU>
+        <ESP>Elastic modulus</ESP>
+        <CSY>Modul pružnosti</CSY>
+        <DEU>Elastizitätsmodul</DEU>
+        <NLD>Elasticiteitsmodulus</NLD>
+        <SKY>Modul pružnosti</SKY>
+        <ITA>Elastic modulus</ITA>
+        <PLK>Elastic modulus</PLK>
+        <ROM>Elastic modulus</ROM>
+        <RUS>Elastic modulus</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ε↓c1←" ESA_ID="eps_c1" Unit="‰" Type="Numeric">
+      <Description TranslateID="eps_c1">
+        <NEU>Concrete strain at characteristic strength</NEU>
+        <FRB>Déformation du béton pour une résistance caractéristique</FRB>
+        <PTG>Deformação do concreto na resistência característica</PTG>
+        <ELL>Καταπόνηση σκυροδέματος στην χαρακτηριστική αντοχή</ELL>
+        <ENU>Concrete strain at characteristic strength</ENU>
+        <ESP>Concrete strain at characteristic strength</ESP>
+        <CSY>Poměrné stlačení betonu při dosažení max. napětí</CSY>
+        <DEU>Betondehnung bei charakteristischer Festigkeit</DEU>
+        <NLD>Betonrek bij karakteristieke sterkte</NLD>
+        <SKY>Pomerné stlačenie betónu pri dosiahnutí max. napätia</SKY>
+        <ITA>Concrete strain at characteristic strength</ITA>
+        <PLK>Concrete strain at characteristic strength</PLK>
+        <ROM>Concrete strain at characteristic strength</ROM>
+        <RUS>Concrete strain at characteristic strength</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ε↓cu1←" ESA_ID="eps_cu1" Unit="‰" Type="Numeric">
+      <Description TranslateID="eps_cu1">
+        <NEU>Concrete strain at ultimate strength</NEU>
+        <FRB>Déformation du béton pour une résistance ultime</FRB>
+        <PTG>Deformação do concreto na resistência última</PTG>
+        <ELL>Ανηγμένη παραμόρφωση σκυροδέματος που αντιστοιχεί στην μέγιστη τάση\r\n</ELL>
+        <ENU>Concrete strain at ultimate strength</ENU>
+        <ESP>Concrete strain at ultimate strength</ESP>
+        <CSY>Mezní stlačení betonu při maximálním napětí</CSY>
+        <DEU>Betondehnung bei Bruchfestigkeit</DEU>
+        <NLD>Betonrek bij uiterste sterkte</NLD>
+        <SKY>Pomerné stlačenie betónu pri dosiahnutí medznej pevnosti</SKY>
+        <ITA>Concrete strain at ultimate strength</ITA>
+        <PLK>Concrete strain at ultimate strength</PLK>
+        <ROM>Concrete strain at ultimate strength</ROM>
+        <RUS>Concrete strain at ultimate strength</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ε↓c1d←" ESA_ID="eps_c1d" Unit="‰" Type="Numeric">
+      <Description TranslateID="eps_c1d">
+        <NEU>Concrete strain at ultimate strength</NEU>
+        <FRB>Déformation du béton pour une résistance ultime</FRB>
+        <PTG>Deformação do concreto na resistência última</PTG>
+        <ELL>Ανηγμένη παραμόρφωση σκυροδέματος που αντιστοιχεί στην μέγιστη τάση\r\n</ELL>
+        <ENU>Concrete strain at ultimate strength</ENU>
+        <ESP>Concrete strain at ultimate strength</ESP>
+        <CSY>Mezní stlačení betonu při maximálním napětí</CSY>
+        <DEU>Betondehnung bei Bruchfestigkeit</DEU>
+        <NLD>Betonrek bij uiterste sterkte</NLD>
+        <SKY>Pomerné stlačenie betónu pri dosiahnutí medznej pevnosti</SKY>
+        <ITA>Concrete strain at ultimate strength</ITA>
+        <PLK>Concrete strain at ultimate strength</PLK>
+        <ROM>Concrete strain at ultimate strength</ROM>
+        <RUS>Concrete strain at ultimate strength</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ε↓c2d←" ESA_ID="eps_c2d" Unit="‰" Type="Numeric">
+      <Description TranslateID="eps_c2d">
+        <NEU>Concrete strain at maximum strength</NEU>
+        <FRB>Déformation du béton pour une résistance maximale</FRB>
+        <PTG>Deformação do concreto na resistência máxima</PTG>
+        <ELL>Ανηγμένη παραμόρφωση αστοχίας σκυροδέματος\r\n</ELL>
+        <ENU>Concrete strain at maximum strength</ENU>
+        <ESP>Concrete strain at maximum strength</ESP>
+        <CSY>Mezní stlačení betonu při dosažení max. pevnosti</CSY>
+        <DEU>Betondehnung bei maximaler Festigkeit</DEU>
+        <NLD>Betonrek bij maximale sterkte</NLD>
+        <SKY>Pomerné stlačenie betónu pri dosiahnutí max. pevnosti</SKY>
+        <ITA>Concrete strain at maximum strength</ITA>
+        <PLK>Concrete strain at maximum strength</PLK>
+        <ROM>Concrete strain at maximum strength</ROM>
+        <RUS>Concrete strain at maximum strength</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="η↓fc←" ESA_ID="eta_fc" Unit="" Type="Numeric">
+      <Description TranslateID="eta_fc">
+        <ENU>η↓fc← coefficient</ENU>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Point" ESA_ID="Diagram.Point" Unit="" Type="Struct">
+      <StructMembers>
+        <StructMember Symbol="eps" Type="Numeric" Unit="" />
+        <StructMember Symbol="sig" Type="Numeric" Unit="Pa" />
+      </StructMembers>
+      <Description TranslateID="Diagram.Point">
+        <NEU>Material diagram point</NEU>
+        <FRB>Material diagram point</FRB>
+        <PTG>Material diagram point</PTG>
+        <ELL>Material diagram point</ELL>
+        <ENU>Material diagram point</ENU>
+        <ESP>Material diagram point</ESP>
+        <CSY>Bod diagramu materiálu</CSY>
+        <DEU>Material diagram point</DEU>
+        <NLD>Material diagram point</NLD>
+        <SKY>Material diagram point</SKY>
+        <ITA>Material diagram point</ITA>
+        <PLK>Material diagram point</PLK>
+        <ROM>Material diagram point</ROM>
+        <RUS>Material diagram point</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Point" ESA_ID="Diagram.Point" Unit="" Type="Struct">
+      <StructMembers>
+        <StructMember Symbol="eps" Type="Numeric" Unit="" />
+        <StructMember Symbol="sig" Type="Numeric" Unit="Pa" />
+      </StructMembers>
+      <Description TranslateID="Diagram.Point">
+        <NEU>Material diagram point</NEU>
+        <FRB>Material diagram point</FRB>
+        <PTG>Material diagram point</PTG>
+        <ELL>Material diagram point</ELL>
+        <ENU>Material diagram point</ENU>
+        <ESP>Material diagram point</ESP>
+        <CSY>Bod diagramu materiálu</CSY>
+        <DEU>Material diagram point</DEU>
+        <NLD>Material diagram point</NLD>
+        <SKY>Material diagram point</SKY>
+        <ITA>Material diagram point</ITA>
+        <PLK>Material diagram point</PLK>
+        <ROM>Material diagram point</ROM>
+        <RUS>Material diagram point</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Point" ESA_ID="Diagram.Point" Unit="" Type="Struct">
+      <StructMembers>
+        <StructMember Symbol="eps" Type="Numeric" Unit="" />
+        <StructMember Symbol="sig" Type="Numeric" Unit="Pa" />
+      </StructMembers>
+      <Description TranslateID="Diagram.Point">
+        <NEU>Material diagram point</NEU>
+        <FRB>Material diagram point</FRB>
+        <PTG>Material diagram point</PTG>
+        <ELL>Material diagram point</ELL>
+        <ENU>Material diagram point</ENU>
+        <ESP>Material diagram point</ESP>
+        <CSY>Bod diagramu materiálu</CSY>
+        <DEU>Material diagram point</DEU>
+        <NLD>Material diagram point</NLD>
+        <SKY>Material diagram point</SKY>
+        <ITA>Material diagram point</ITA>
+        <PLK>Material diagram point</PLK>
+        <ROM>Material diagram point</ROM>
+        <RUS>Material diagram point</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="Bilinear" ESA_ID="Bilinear" Unit="" Type="Bool">
+      <Description TranslateID="Bilinear">
+        <NEU>Bilinear mark</NEU>
+        <FRB>Bilinear mark</FRB>
+        <PTG>Bilinear mark</PTG>
+        <ELL>Bilinear mark</ELL>
+        <ENU>Bilinear mark</ENU>
+        <ESP>Bilinear mark</ESP>
+        <CSY>Značka - bilineární</CSY>
+        <DEU>Bilinear mark</DEU>
+        <NLD>Bilinear mark</NLD>
+        <SKY>Bilinear mark</SKY>
+        <ITA>Bilinear mark</ITA>
+        <PLK>Bilinear mark</PLK>
+        <ROM>Bilinear mark</ROM>
+        <RUS>Bilinear mark</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="d↓g←" ESA_ID="dg" Unit="mm" Type="Numeric">
+      <Description TranslateID="dg">
+        <NEU>Stone diameter</NEU>
+        <FRB>Stone diameter</FRB>
+        <PTG>Stone diameter</PTG>
+        <ELL>Stone diameter</ELL>
+        <ENU>Stone diameter</ENU>
+        <ESP>Stone diameter</ESP>
+        <CSY>Stone diameter</CSY>
+        <DEU>Stone diameter</DEU>
+        <NLD>Stone diameter</NLD>
+        <SKY>Stone diameter</SKY>
+        <ITA>Stone diameter</ITA>
+        <PLK>Stone diameter</PLK>
+        <ROM>Stone diameter</ROM>
+        <RUS>Stone diameter</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="μ" ESA_ID="μ" Unit="" Type="Numeric">
+      <Description TranslateID="μ">
+        <NEU>Poisson number</NEU>
+        <FRB>Poisson number</FRB>
+        <PTG>Poisson number</PTG>
+        <ELL>Poisson number</ELL>
+        <ENU>Poisson number</ENU>
+        <ESP>Poisson number</ESP>
+        <CSY>Poisson number</CSY>
+        <DEU>Poisson number</DEU>
+        <NLD>Poisson number</NLD>
+        <SKY>Poisson number</SKY>
+        <ITA>Poisson number</ITA>
+        <PLK>Poisson number</PLK>
+        <ROM>Poisson number</ROM>
+        <RUS>Poisson number</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="ρ" ESA_ID="ρ" Unit="kg/m↑3←" Type="Numeric">
+      <Description TranslateID="ρ">
+        <NEU>Unit mass</NEU>
+        <FRB>Unit mass</FRB>
+        <PTG>Unit mass</PTG>
+        <ELL>Unit mass</ELL>
+        <ENU>Unit mass</ENU>
+        <ESP>Unit mass</ESP>
+        <CSY>Unit mass</CSY>
+        <DEU>Unit mass</DEU>
+        <NLD>Unit mass</NLD>
+        <SKY>Unit mass</SKY>
+        <ITA>Unit mass</ITA>
+        <PLK>Unit mass</PLK>
+        <ROM>Unit mass</ROM>
+        <RUS>Unit mass</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="G" ESA_ID="G" Unit="GPa" Type="Numeric">
+      <Description TranslateID="G">
+        <NEU>Shear modulus</NEU>
+        <FRB>Module de cisaillement</FRB>
+        <PTG>Módulo de cisalhamento</PTG>
+        <ELL>Μέτρο διάτμησης</ELL>
+        <ENU>Shear modulus</ENU>
+        <ESP>Shear modulus</ESP>
+        <CSY>Modul pružnosti ve smyku</CSY>
+        <DEU>Schubmodul</DEU>
+        <NLD>Afschuifmodulus</NLD>
+        <SKY>Modul pružnosti v šmyku</SKY>
+        <ITA>Shear modulus</ITA>
+        <PLK>Shear modulus</PLK>
+        <ROM>Shear modulus</ROM>
+        <RUS>Shear modulus</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="υ" ESA_ID="υ" Unit="" Type="Numeric">
+      <Description TranslateID="υ">
+        <NEU>Logaritmic decrement</NEU>
+        <FRB>Logaritmic decrement</FRB>
+        <PTG>Logaritmic decrement</PTG>
+        <ELL>Logaritmic decrement</ELL>
+        <ENU>Logaritmic decrement</ENU>
+        <ESP>Logaritmic decrement</ESP>
+        <CSY>Logaritmic decrement</CSY>
+        <DEU>Logaritmic decrement</DEU>
+        <NLD>Logaritmic decrement</NLD>
+        <SKY>Logaritmic decrement</SKY>
+        <ITA>Logaritmic decrement</ITA>
+        <PLK>Logaritmic decrement</PLK>
+        <ROM>Logaritmic decrement</ROM>
+        <RUS>Logaritmic decrement</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="λ" ESA_ID="λ" Unit="W/m*K" Type="Numeric">
+      <Description TranslateID="λ">
+        <NEU>Thermal conductivity</NEU>
+        <FRB>Thermal conductivity</FRB>
+        <PTG>Thermal conductivity</PTG>
+        <ELL>Thermal conductivity</ELL>
+        <ENU>Thermal conductivity</ENU>
+        <ESP>Thermal conductivity</ESP>
+        <CSY>Thermal conductivity</CSY>
+        <DEU>Thermal conductivity</DEU>
+        <NLD>Thermal conductivity</NLD>
+        <SKY>Thermal conductivity</SKY>
+        <ITA>Thermal conductivity</ITA>
+        <PLK>Thermal conductivity</PLK>
+        <ROM>Thermal conductivity</ROM>
+        <RUS>Thermal conductivity</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="c" ESA_ID="c" Unit="J/kg*K" Type="Numeric">
+      <Description TranslateID="c">
+        <NEU>Specific heat</NEU>
+        <FRB>Specific heat</FRB>
+        <PTG>Specific heat</PTG>
+        <ELL>Specific heat</ELL>
+        <ENU>Specific heat</ENU>
+        <ESP>Specific heat</ESP>
+        <CSY>Specific heat</CSY>
+        <DEU>Specific heat</DEU>
+        <NLD>Specific heat</NLD>
+        <SKY>Specific heat</SKY>
+        <ITA>Specific heat</ITA>
+        <PLK>Specific heat</PLK>
+        <ROM>Specific heat</ROM>
+        <RUS>Specific heat</RUS>
+      </Description>
+    </PropertySet>
+    <PropertySet Symbol="α" ESA_ID="α" Unit="" Type="Numeric">
+      <Description TranslateID="α">
+        <NEU>Thermal expansion</NEU>
+        <FRB>Thermal expansion</FRB>
+        <PTG>Thermal expansion</PTG>
+        <ELL>Thermal expansion</ELL>
+        <ENU>Thermal expansion</ENU>
+        <ESP>Thermal expansion</ESP>
+        <CSY>Thermal expansion</CSY>
+        <DEU>Thermal expansion</DEU>
+        <NLD>Thermal expansion</NLD>
+        <SKY>Thermal expansion</SKY>
+        <ITA>Thermal expansion</ITA>
+        <PLK>Thermal expansion</PLK>
+        <ROM>Thermal expansion</ROM>
+        <RUS>Thermal expansion</RUS>
+      </Description>
+    </PropertySet>
+  </Header>
+  <Items>
+    <Item>
+      <Property>Parabola-rectangular</Property>
+      <Property>C 30/37</Property>
+      <Property>30</Property>
+      <Property>38</Property>
+      <Property>2.9</Property>
+      <Property>2</Property>
+      <Property>3.8</Property>
+      <Property>37</Property>
+      <Property>2.2</Property>
+      <Property>3.5</Property>
+      <Property>2</Property>
+      <Property>3</Property>
+      <Property>1</Property>
+      <Property>0;0;</Property>
+      <Property>-0.002;-20000000;</Property>
+      <Property>-0.003;-20000000;</Property>
+      <Property>false</Property>
+      <Property>32</Property>
+      <Property>0.2</Property>
+      <Property>2500</Property>
+      <Property>15.41</Property>
+      <Property>0.2</Property>
+      <Property>4500</Property>
+      <Property>0.0006</Property>
+      <Property>1.00E-05</Property>
+    </Item>
+  </Items>
+</Root>

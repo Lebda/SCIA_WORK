@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="4833f29c-c926-4017-94fd-abf2bce0886d">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">//@EC_Concrete_Forces2D_SEN
+    <SourceCode Collapsed="" BreakPoints="273">//@EC_Concrete_Forces2D_SEN
 //Master SDF form for re-calculation of internal forces
 //for 2D concrete members.
 
@@ -44,12 +44,7 @@
     →INI400_016027double m↓xy←; 
     →INI400_016028double v↓x←; 
     →INI400_016029double v↓y←; 
-    →DLO116_000039double n↓x-←; //fem forces - basic at surfaces
-    →DLO116_000040double n↓y-←; 
-    →DLO116_000041double n↓xy-←; 
-    →DLO116_000042double n↓x+←; 
-    →DLO116_000043double n↓y+←; 
-    →DLO116_000044double n↓xy+←; 
+    
     →INI400_016030double n↓Ed1-←; //dimensional forces in centroid
     →INI400_016031double m↓Ed1-←; 
     →INI400_016032double n↓Ed2-←; 
@@ -63,20 +58,6 @@
     →INI400_016040double n↓Edc+←; 
     →INI400_016041double m↓Edc+←; 
     →INI400_016042double v↓Ed←; 
-    →INI400_016043double n↓Eds1-←; //dimensional forces at surfaces
-    →INI400_016044double n↓Eds2-←; 
-    →INI400_016045double n↓Edsc-←; 
-    →INI400_016046double n↓Eds1+←; 
-    →INI400_016047double n↓Eds2+←; 
-    →INI400_016048double n↓Edsc+←; 
-    →DLO116_000015double n↓I-←; //principal forces
-    →DLO116_000016double n↓II-←; 
-    →DLO116_000017double n↓I+←; 
-    →DLO116_000018double n↓II+←; 
-    →DLO116_000025double α↓Ι-←; 
-    →DLO116_000026double α↓Ι+←; 
-    →DLO116_000055double α↓Ι-deg←; 
-    →DLO116_000056double α↓Ι+deg←; 
 } 
 
 //------------------------------------------------------------
@@ -108,12 +89,6 @@ void InitResults() {
     m↓xy← →INI400_015973= 0; 
     v↓x← →INI400_015974= 0; 
     v↓y← →INI400_015975= 0; 
-    n↓x-← →DLO116_000027= 0; //fem forces - basic at surfaces
-    n↓y-← →DLO116_000028= 0; 
-    n↓xy-← →DLO116_000029= 0; 
-    n↓x+← →DLO116_000030= 0; 
-    n↓y+← →DLO116_000031= 0; 
-    n↓xy+← →DLO116_000032= 0; 
     
     n↓Ed1-← →INI400_015976= 0; //dimensional forces in centroid
     m↓Ed1-← →INI400_015977= 0; 
@@ -128,23 +103,8 @@ void InitResults() {
     n↓Edc+← →INI400_015981= 0; 
     m↓Edc+← →INI400_015982= 0; 
     v↓Ed← →INI400_015988= 0; 
-    n↓Eds1-← →INI400_015989= 0; //dimensional forces at surfaces
-    n↓Eds2-← →INI400_015990= 0; 
-    n↓Edsc-← →INI400_015991= 0; 
-    n↓Eds1+← →INI400_015992= 0; 
-    n↓Eds2+← →INI400_015993= 0; 
-    n↓Edsc+← →INI400_015994= 0; 
-    n↓I-← →DLO116_000001= 0; //principal forces
-    n↓II-← →DLO116_000002= 0; 
-    n↓I+← →DLO116_000003= 0; 
-    n↓II+← →DLO116_000004= 0; 
-    α↓Ι-← →DLO116_000021= 0; 
-    α↓Ι+← →DLO116_000024= 0; 
-    α↓Ι-deg← →DLO116_000053= 0; 
-    α↓Ι+deg← →DLO116_000054= 0; 
     
     obEWN →PAI116_000003= new object[]; 
-    
 } 
 
 //@Sets results
@@ -175,30 +135,6 @@ void SetResults(object ForcesResults) {
     m↓Ed2+← →INI400_016126= RecalcForces[4].mEd; 
     n↓Edc+← →INI400_016127= RecalcForces[5].nEd; 
     m↓Edc+← →INI400_016128= RecalcForces[5].mEd; 
-    
-    n↓Eds1-← →INI400_016135= RecalcForces[0].nEds; 
-    n↓Eds2-← →INI400_016136= RecalcForces[1].nEds; 
-    n↓Edsc-← →INI400_016137= RecalcForces[2].nEds; 
-    n↓Eds1+← →INI400_016138= RecalcForces[3].nEds; 
-    n↓Eds2+← →INI400_016139= RecalcForces[4].nEds; 
-    n↓Edsc+← →INI400_016140= RecalcForces[5].nEds; 
-    
-    n↓I-← →DLO116_000007= RecalcForces[0].nI; 
-    n↓II-← →DLO116_000008= RecalcForces[1].nII; 
-    α↓Ι-deg← →DLO116_000019= RecalcForces[2].AlphaI; 
-    α↓Ι-← →DLO116_000051= α↓Ι-deg←*Math.PI/180; 
-    
-    n↓I+← →DLO116_000009= RecalcForces[3].nI; 
-    n↓II+← →DLO116_000010= RecalcForces[4].nII; 
-    α↓Ι+deg← →DLO116_000052= RecalcForces[2].AlphaI; 
-    α↓Ι+← →DLO116_000020= α↓Ι+deg←*Math.PI/180; 
-    
-    n↓x-← →DLO116_000045= RecalcForces[0].nBasicSurf; //fem forces - basic at surfaces
-    n↓y-← →DLO116_000046= RecalcForces[1].nBasicSurf; 
-    n↓xy-← →DLO116_000047= RecalcForces[2].nBasicSurf; 
-    n↓x+← →DLO116_000048= RecalcForces[3].nBasicSurf; 
-    n↓y+← →DLO116_000049= RecalcForces[4].nBasicSurf; 
-    n↓xy+← →DLO116_000050= RecalcForces[5].nBasicSurf; 
 } 
 
 //@Reads setup data from IO
@@ -219,7 +155,11 @@ void ReadLoadFromIO() {
     } 
     
     object Load →INI400_016147= IO.Member2D.Load[LoadID]; 
-    CombiKey →INI400_014713= Load.CombiKey[IO.Point.ID].CombiKey; 
+    IF(CS_COMMON.IsArray(Load.CombiKey)) { 
+        CombiKey →INI400_014713= Load.CombiKey[IO.Point.ID].CombiKey; 
+    } ELSE { 
+        CombiKey →LUN001_000008= Load.CombiKey; 
+    } 
     CombiID →INI400_014727= DATA_FROM_SEN.CreateCombiIDfor2D(Load, IO.Point.ID); 
     isAccidentalCombi →INI400_006918= DATA_FROM_SEN.IsAccidentalCombi(Load); 
     InternalForces →LUN001_000001= null; 
@@ -447,6 +387,12 @@ IF(IO.IsDrawing) {
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="Load" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_Load">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="LoadID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -581,111 +527,7 @@ IF(IO.IsDrawing) {
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="27" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓Eds1+←" ESA_ID="Result.22" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="27" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
-        <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
-      </Variable>
-      <Variable Modifier="Public" Name="n↓Eds1-←" ESA_ID="Result.25" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="27" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
-        <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
-      </Variable>
-      <Variable Modifier="Public" Name="n↓Eds2+←" ESA_ID="Result.23" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="27" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
-        <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
-      </Variable>
-      <Variable Modifier="Public" Name="n↓Eds2-←" ESA_ID="Result.26" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="27" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
-        <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
-      </Variable>
-      <Variable Modifier="Public" Name="n↓Edsc+←" ESA_ID="Result.24" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="27" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
-        <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
-      </Variable>
-      <Variable Modifier="Public" Name="n↓Edsc-←" ESA_ID="Result.27" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="27" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
-        <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
-      </Variable>
-      <Variable Modifier="Public" Name="n↓I+←" ESA_ID="Result.28" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="27" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
-        <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
-      </Variable>
-      <Variable Modifier="Public" Name="n↓I-←" ESA_ID="Result.31" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="27" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
-        <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
-      </Variable>
-      <Variable Modifier="Public" Name="n↓II+←" ESA_ID="Result.29" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="27" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
-        <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
-      </Variable>
-      <Variable Modifier="Public" Name="n↓II-←" ESA_ID="Result.32" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="27" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
-        <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
-      </Variable>
-      <Variable Modifier="Public" Name="n↓x+←" ESA_ID="Result.34" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="27" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
-        <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
-      </Variable>
       <Variable Modifier="Public" Name="n↓x←" ESA_ID="Result.6" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="27" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
-        <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
-      </Variable>
-      <Variable Modifier="Public" Name="n↓x-←" ESA_ID="Result.37" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="27" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
-        <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
-      </Variable>
-      <Variable Modifier="Public" Name="n↓xy+←" ESA_ID="Result.36" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -701,31 +543,7 @@ IF(IO.IsDrawing) {
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="27" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓xy-←" ESA_ID="Result.39" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="27" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
-        <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
-      </Variable>
-      <Variable Modifier="Public" Name="n↓y+←" ESA_ID="Result.35" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="27" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
-        <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
-      </Variable>
       <Variable Modifier="Public" Name="n↓y←" ESA_ID="Result.7" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="27" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
-        <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
-      </Variable>
-      <Variable Modifier="Public" Name="n↓y-←" ESA_ID="Result.38" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -769,36 +587,6 @@ IF(IO.IsDrawing) {
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="27" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓Ι+←" ESA_ID="Result.30" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="34" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
-      </Variable>
-      <Variable Modifier="Public" Name="α↓Ι+deg←" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="α↓Ι-←" ESA_ID="Result.33" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="34" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
-      </Variable>
-      <Variable Modifier="Public" Name="α↓Ι-deg←" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
     </Variables>
     <DrawingGroups>
       <ResultTable Visible="1" Vars="n↓x←|0|1">
@@ -839,36 +627,6 @@ IF(IO.IsDrawing) {
       <ResultTable Visible="1" Vars="v↓y←|0|1">
         <Names TranslateID="ResultGroup_vy">
           <ENU>vy</ENU>
-        </Names>
-      </ResultTable>
-      <ResultTable Visible="1" Vars="n↓Eds1-←|0|1">
-        <Names TranslateID="ResultGroup_nEd,s1-">
-          <ENU>nEd,s1-</ENU>
-        </Names>
-      </ResultTable>
-      <ResultTable Visible="1" Vars="n↓Eds2-←|0|1">
-        <Names TranslateID="ResultGroup_nEd,s2-">
-          <ENU>nEd,s2-</ENU>
-        </Names>
-      </ResultTable>
-      <ResultTable Visible="1" Vars="n↓Eds1+←|0|1">
-        <Names TranslateID="ResultGroup_nEd,s1+">
-          <ENU>nEd,s1+</ENU>
-        </Names>
-      </ResultTable>
-      <ResultTable Visible="1" Vars="n↓Eds2+←|0|1">
-        <Names TranslateID="ResultGroup_nEd,s2+">
-          <ENU>nEd,s2+</ENU>
-        </Names>
-      </ResultTable>
-      <ResultTable Visible="1" Vars="n↓Edsc-←|0|1">
-        <Names TranslateID="ResultGroup_nEd,sc-">
-          <ENU>nEd,sc-</ENU>
-        </Names>
-      </ResultTable>
-      <ResultTable Visible="1" Vars="n↓Edsc+←|0|1">
-        <Names TranslateID="ResultGroup_nEd,sc+">
-          <ENU>nEd,sc+</ENU>
         </Names>
       </ResultTable>
       <ResultTable Visible="1" Vars="n↓Ed1-←|0|1">
@@ -931,66 +689,6 @@ IF(IO.IsDrawing) {
           <ENU>mEd,c+</ENU>
         </Names>
       </ResultTable>
-      <ResultTable Visible="1" Vars="n↓I-←|0|1">
-        <Names TranslateID="ResultGroup_nI-">
-          <ENU>nI-</ENU>
-        </Names>
-      </ResultTable>
-      <ResultTable Visible="1" Vars="n↓II-←|0|1">
-        <Names TranslateID="ResultGroup_nII-">
-          <ENU>nII-</ENU>
-        </Names>
-      </ResultTable>
-      <ResultTable Visible="1" Vars="n↓I+←|0|1">
-        <Names TranslateID="ResultGroup_nI+">
-          <ENU>nI+</ENU>
-        </Names>
-      </ResultTable>
-      <ResultTable Visible="1" Vars="n↓II+←|0|1">
-        <Names TranslateID="ResultGroup_nII+">
-          <ENU>nII+</ENU>
-        </Names>
-      </ResultTable>
-      <ResultTable Visible="1" Vars="α↓Ι-←|0|1">
-        <Names TranslateID="ResultGroup_αΙ-">
-          <ENU>αΙ-</ENU>
-        </Names>
-      </ResultTable>
-      <ResultTable Visible="1" Vars="α↓Ι+←|0|1">
-        <Names TranslateID="ResultGroup_αΙ+">
-          <ENU>αΙ+</ENU>
-        </Names>
-      </ResultTable>
-      <ResultTable Visible="1" Vars="n↓x-←|0|1">
-        <Names TranslateID="ResultGroup_nx-">
-          <ENU>nx-</ENU>
-        </Names>
-      </ResultTable>
-      <ResultTable Visible="1" Vars="n↓y-←|0|1">
-        <Names TranslateID="ResultGroup_ny-">
-          <ENU>ny-</ENU>
-        </Names>
-      </ResultTable>
-      <ResultTable Visible="1" Vars="n↓xy-←|0|1">
-        <Names TranslateID="ResultGroup_nxy-">
-          <ENU>nxy-</ENU>
-        </Names>
-      </ResultTable>
-      <ResultTable Visible="1" Vars="n↓x+←|0|1">
-        <Names TranslateID="ResultGroup_nx+">
-          <ENU>nx+</ENU>
-        </Names>
-      </ResultTable>
-      <ResultTable Visible="1" Vars="n↓y+←|0|1">
-        <Names TranslateID="ResultGroup_ny+">
-          <ENU>ny+</ENU>
-        </Names>
-      </ResultTable>
-      <ResultTable Visible="1" Vars="n↓xy+←|0|1">
-        <Names TranslateID="ResultGroup_nxy+">
-          <ENU>nxy+</ENU>
-        </Names>
-      </ResultTable>
       <ResultTable Visible="1" Vars="v↓Ed←|0|1">
         <Names TranslateID="ResultGroup_vEd">
           <ENU>vEd</ENU>
@@ -1003,29 +701,14 @@ IF(IO.IsDrawing) {
           <ENU>Basic forces at centroid</ENU>
         </Names>
       </ResultTable>
-      <ResultTable Visible="1" Vars="n↓Eds1-←|4|1;n↓Eds2-←|5|1;n↓Eds1+←|1|1;n↓Eds2+←|2|1;n↓Edsc-←|6|1;n↓Edsc+←|3|1">
-        <Names TranslateID="ResultGroup_Design normal forces at surfaces">
-          <ENU>Design normal forces at surfaces</ENU>
-        </Names>
-      </ResultTable>
       <ResultTable Visible="1" Vars="n↓Ed1-←|4|1;m↓Ed1-←|4|1;n↓Ed2-←|5|1;m↓Ed2-←|5|1;n↓Edc-←|6|1;m↓Edc-←|6|1;n↓Ed1+←|1|1;m↓Ed1+←|1|1;n↓Ed2+←|2|1;m↓Ed2+←|2|1;n↓Edc+←|3|1;m↓Edc+←|3|1;v↓Ed←|7|1">
         <Names TranslateID="ResultGroup_Design forces at centroid">
           <ENU>Design forces at centroid</ENU>
         </Names>
       </ResultTable>
-      <ResultTable Visible="1" Vars="n↓I-←|4|1;n↓II-←|5|1;n↓I+←|1|1;n↓II+←|2|1;α↓Ι-←|6|1;α↓Ι+←|3|1">
-        <Names TranslateID="ResultGroup_Principal forces at surfaces">
-          <ENU>Principal forces at surfaces</ENU>
-        </Names>
-      </ResultTable>
-      <ResultTable Visible="1" Vars="n↓x-←|4|1;n↓y-←|5|1;n↓xy-←|6|1;n↓x+←|1|1;n↓y+←|2|1;n↓xy+←|3|1">
-        <Names TranslateID="ResultGroup_Basic normal forces at surfaces">
-          <ENU>Basic normal forces at surfaces</ENU>
-        </Names>
-      </ResultTable>
     </ResultTables>
     <ResultGroups>
-      <ResultTable Visible="1" Vars="m↓Ed1-←|1|1;m↓Ed2-←|2|1;m↓Ed1+←|3|1;m↓Ed2+←|4|1;n↓Ed1-←|5|1;n↓Ed2-←|6|1;n↓Ed1+←|7|1;n↓Ed2+←|8|1;m↓Edc-←|9|1;m↓Edc+←|10|1;n↓Edc-←|11|1;n↓Edc+←|12|1;v↓Ed←|13|1" Tables="2">
+      <ResultTable Visible="1" Vars="m↓Ed1-←|1|1;m↓Ed2-←|2|1;m↓Ed1+←|3|1;m↓Ed2+←|4|1;n↓Ed1-←|5|1;n↓Ed2-←|6|1;n↓Ed1+←|7|1;n↓Ed2+←|8|1;m↓Edc-←|9|1;m↓Edc+←|10|1;n↓Edc-←|11|1;n↓Edc+←|12|1;v↓Ed←|13|1" Tables="1">
         <Names TranslateID="ResultGroup_Design (centroid)">
           <ENU>Design (centroid)</ENU>
         </Names>
@@ -1033,21 +716,6 @@ IF(IO.IsDrawing) {
       <ResultTable Visible="1" Vars="m↓x←|1|1;m↓y←|2|1;m↓xy←|3|1;v↓x←|4|1;v↓y←|5|1;n↓x←|6|1;n↓y←|7|1;n↓xy←|8|1" Tables="0">
         <Names TranslateID="ResultGroup_Basic (centroid)">
           <ENU>Basic (centroid)</ENU>
-        </Names>
-      </ResultTable>
-      <ResultTable Visible="1" Vars="n↓x-←|1|1;n↓y-←|2|1;n↓xy-←|3|1;n↓x+←|4|1;n↓y+←|5|1;n↓xy+←|6|1" Tables="4">
-        <Names TranslateID="ResultGroup_Basic (surface)">
-          <ENU>Basic (surface)</ENU>
-        </Names>
-      </ResultTable>
-      <ResultTable Visible="1" Vars="n↓I-←|1|1;n↓II-←|2|1;n↓I+←|4|1;n↓II+←|5|1;α↓Ι-←|3|1;α↓Ι+←|6|1" Tables="3">
-        <Names TranslateID="ResultGroup_Principal (surface)">
-          <ENU>Principal (surface)</ENU>
-        </Names>
-      </ResultTable>
-      <ResultTable Visible="1" Vars="n↓Eds1-←|0|1;n↓Eds2-←|0|1;n↓Eds1+←|0|1;n↓Eds2+←|0|1;n↓Edsc-←|0|1;n↓Edsc+←|0|1" Tables="1">
-        <Names TranslateID="ResultGroup_Design (surface)">
-          <ENU>Design (surface)</ENU>
         </Names>
       </ResultTable>
     </ResultGroups>
@@ -1116,22 +784,6 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO116_000005">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO116_000006">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="DLO116_000007">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1164,70 +816,6 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO116_000011">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO116_000012">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO116_000013">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO116_000014">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO116_000015">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO116_000016">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO116_000017">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO116_000018">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="DLO116_000019">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1252,39 +840,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO116_000022">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO116_000023">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="DLO116_000024">
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO116_000025">
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO116_000026">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1339,102 +895,6 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO116_000033">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO116_000034">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO116_000035">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO116_000036">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO116_000037">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO116_000038">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO116_000039">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO116_000040">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO116_000041">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO116_000042">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO116_000043">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO116_000044">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="DLO116_000045">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2292,6 +1752,14 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="LUN001_000008">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="PAI116_000003">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2308,32 +1776,8 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI116_000005">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="PAI116_000006">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="PAI116_000007">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="PAI116_000008">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|5|0|2" Font2="Segoe UI|5|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2350,7 +1794,7 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Texts>
-        <TEMDLoader Name="TEMDLoader" ID="69" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Member2D.4" SectionID="-1" CombiID="-1" />
+        <TEMDLoader Name="TEMDLoader" ID="69" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="F:\_PROJECT\Concrete_Design_Refactoring\emd\Member2D.7" MemberID="Member2D.7" SectionID="1" CombiID="0" />
       </TPanel>
     </Main>
     <MemberData Width="500" />
@@ -2363,9 +1807,6 @@ IF(IO.IsDrawing) {
     </Item>
     <Item ID="BLOCK_INI400_015967">
       <ENU>"VARIABLES"</ENU>
-    </Item>
-    <Item ID="TEXT_PAI116_000008">
-      <ENU>"xxx"</ENU>
     </Item>
   </Texts>
 </Root>

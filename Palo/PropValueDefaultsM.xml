@@ -3233,13 +3233,6 @@
 						<UnitType>34</UnitType>
 						<PropertySize>8</PropertySize>
 					</Property>
-					<Property Type="0"><PropID>{1AB4776A-B2DD-4F0C-AACD-E243A11B1650}</PropID>
-						<Resource>Diameter.20(dl)</Resource>
-						<PropertyType>2</PropertyType>
-						<PropertyName>{5A593EC9-0EDE-41B7-AF36-9B116E75535B}</PropertyName>
-						<UnitType>84</UnitType>
-						<PropertySize>8</PropertySize>
-					</Property>
 					<Property Type="0"><PropID>{C5EF9A4D-CC1E-4B04-9AB8-DDD872CCE909}</PropID>
 						<Resource>Concrete.20cover.20(cl,cu)</Resource>
 						<PropertyType>2</PropertyType>
@@ -3261,20 +3254,6 @@
 						<UnitType>2</UnitType>
 						<PropertySize>8</PropertySize>
 					</Property>
-					<Property Type="0"><PropID>{6111CFD6-DB48-4E45-8381-F84538FA3D23}</PropID>
-						<Resource>Reinf.2e.20area</Resource>
-						<PropertyType>2</PropertyType>
-						<PropertyName>{AB83B0C7-2E44-4697-B89C-2C7BC674BBA5}</PropertyName>
-						<UnitType>102</UnitType>
-						<PropertySize>8</PropertySize>
-					</Property>
-					<Property Type="0"><PropID>{E1F60C00-E5C7-477C-9E31-F9CF2BFACA55}</PropID>
-						<Resource>Diameter.20(dl)</Resource>
-						<PropertyType>2</PropertyType>
-						<PropertyName>{B7717B3C-437E-4C99-8864-0B4033AB579F}</PropertyName>
-						<UnitType>84</UnitType>
-						<PropertySize>8</PropertySize>
-					</Property>
 					<Property Type="0"><PropID>{AFBD9B77-A7B7-4959-B902-A28CB8C98822}</PropID>
 						<Resource>Bar.20distance.20(sl)</Resource>
 						<PropertyType>2</PropertyType>
@@ -3289,32 +3268,11 @@
 						<UnitType>2</UnitType>
 						<PropertySize>8</PropertySize>
 					</Property>
-					<Property Type="0"><PropID>{278917EE-0FF4-4902-9C63-E5185D364CE7}</PropID>
-						<Resource>Reinf.2e.20area</Resource>
-						<PropertyType>2</PropertyType>
-						<PropertyName>{62803710-4E11-48B1-99A1-FC5ACB53A4C4}</PropertyName>
-						<UnitType>102</UnitType>
-						<PropertySize>8</PropertySize>
-					</Property>
 					<Property Type="0"><PropID>{7CC452AF-A097-471A-AC01-3759C5E2929A}</PropID>
 						<Resource>Total.20weight</Resource>
 						<PropertyType>2</PropertyType>
 						<PropertyName>{3D14E3E9-FB46-4B41-A797-25A701B6D08A}</PropertyName>
 						<UnitType>29</UnitType>
-						<PropertySize>8</PropertySize>
-					</Property>
-					<Property Type="0"><PropID>{25DFC86D-7342-4AF6-8F2E-23B2872726F1}</PropID>
-						<Resource>Size.20number</Resource>
-						<PropertyType>2</PropertyType>
-						<PropertyName>{229F1A70-0DF0-11E1-BE50-0800200C9A66}</PropertyName>
-						<UnitType>-1</UnitType>
-						<PropertySize>8</PropertySize>
-					</Property>
-					<Property Type="0"><PropID>{2F8617DA-3350-44DF-81A1-31A60B1662C2}</PropID>
-						<Resource>Size.20number</Resource>
-						<PropertyType>2</PropertyType>
-						<PropertyName>{229F1A71-0DF0-11E1-BE50-0800200C9A66}</PropertyName>
-						<UnitType>-1</UnitType>
 						<PropertySize>8</PropertySize>
 					</Property>
 				</SubClass>
@@ -4349,18 +4307,12 @@
 			<XE.7b64D11282.2dE208.2d4CD9.2d8E36.2dEAC95058B996.7d>1.24301678466105E-03</XE.7b64D11282.2dE208.2d4CD9.2d8E36.2dEAC95058B996.7d>
 		</XE.7b0E0BADC0.2d2FB5.2d4E5F.2d8A56.2dB8D76DAC206D.7d>
 		<XE.7b204A56DA.2dE536.2d4814.2d9C0F.2d1A0A4620DC0C.7d><XE.7bFAE68FDB.2dC762.2d45E0.2dBBB3.2dC52087BDD02A.7d>0</XE.7bFAE68FDB.2dC762.2d45E0.2dBBB3.2dC52087BDD02A.7d>
-			<XE.7b5A593EC9.2d0EDE.2d41B7.2dAF36.2d9B116E75535B.7d>0</XE.7b5A593EC9.2d0EDE.2d41B7.2dAF36.2d9B116E75535B.7d>
-			<XE.7b71ADACE2.2dAFC2.2d4A3A.2dACA0.2dA5560E5AEA2A.7d>0</XE.7b71ADACE2.2dAFC2.2d4A3A.2dACA0.2dA5560E5AEA2A.7d>
+			<XE.7b71ADACE2.2dAFC2.2d4A3A.2dACA0.2dA5560E5AEA2A.7d>0.03</XE.7b71ADACE2.2dAFC2.2d4A3A.2dACA0.2dA5560E5AEA2A.7d>
 			<XE.7bE569C58F.2d7793.2d43EA.2d90BC.2dA0548FA7B36F.7d>0.2</XE.7bE569C58F.2d7793.2d43EA.2d90BC.2dA0548FA7B36F.7d>
 			<XE.7bF39DFDE0.2d4435.2d4A3F.2dBD8C.2d080D51AE34B5.7d>0</XE.7bF39DFDE0.2d4435.2d4A3F.2dBD8C.2d080D51AE34B5.7d>
-			<XE.7bAB83B0C7.2d2E44.2d4697.2dB89C.2d2C7BC674BBA5.7d>0</XE.7bAB83B0C7.2d2E44.2d4697.2dB89C.2d2C7BC674BBA5.7d>
-			<XE.7bB7717B3C.2d437E.2d4C99.2d8864.2d0B4033AB579F.7d>0</XE.7bB7717B3C.2d437E.2d4C99.2d8864.2d0B4033AB579F.7d>
 			<XE.7b26794705.2dB087.2d41E5.2dB390.2d7ACD028CE6B1.7d>0.2</XE.7b26794705.2dB087.2d41E5.2dB390.2d7ACD028CE6B1.7d>
 			<XE.7bF39DFDE1.2d4435.2d4A3F.2dBD8C.2d080D51AE34B5.7d>0</XE.7bF39DFDE1.2d4435.2d4A3F.2dBD8C.2d080D51AE34B5.7d>
-			<XE.7b62803710.2d4E11.2d48B1.2d99A1.2dFC5ACB53A4C4.7d>0</XE.7b62803710.2d4E11.2d48B1.2d99A1.2dFC5ACB53A4C4.7d>
 			<XE.7b3D14E3E9.2dFB46.2d4B41.2dA797.2d25A701B6D08A.7d>0</XE.7b3D14E3E9.2dFB46.2d4B41.2dA797.2d25A701B6D08A.7d>
-			<XE.7b229F1A70.2d0DF0.2d11E1.2dBE50.2d0800200C9A66.7d>5</XE.7b229F1A70.2d0DF0.2d11E1.2dBE50.2d0800200C9A66.7d>
-			<XE.7b229F1A71.2d0DF0.2d11E1.2dBE50.2d0800200C9A66.7d>5</XE.7b229F1A71.2d0DF0.2d11E1.2dBE50.2d0800200C9A66.7d>
 		</XE.7b204A56DA.2dE536.2d4814.2d9C0F.2d1A0A4620DC0C.7d>
 		<XE.7b106FDF31.2d812F.2d4C54.2d8902.2d1952B62E9F84.7d><XE.7b63517EF0.2dBD21.2d4A41.2d9A5C.2d2994E0AF1733.7d>0.2</XE.7b63517EF0.2dBD21.2d4A41.2d9A5C.2d2994E0AF1733.7d>
 			<XE.7b24832BD5.2d428E.2d4C0E.2d8948.2d9E1CB8A6F0DC.7d>18959931.7988065</XE.7b24832BD5.2d428E.2d4C0E.2d8948.2d9E1CB8A6F0DC.7d>

@@ -3,7 +3,7 @@
 	<DataSourceNameExtension></DataSourceNameExtension>
 	<Name>{610435EA-A617-4AB9-BC17-453315B71D82}</Name>
 	<AdvancedName>Default</AdvancedName>
-	<Cells Size="4"><ARRAY_ITEM ID="0"><CX64TLXCell><Width><Width>0.03</Width>
+	<Cells Size="5"><ARRAY_ITEM ID="0"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -151,6 +151,43 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
+		<ARRAY_ITEM ID="4"><CX64TLXCell><Width><Width>0.03</Width>
+				</Width>
+				<Height><Height>0.05</Height>
+				</Height>
+				<Items><Items Size="1"><ARRAY_ITEM ID="0"><TLXITEM><PropName></PropName>
+								<RealValue><Value>0</Value>
+									<ValueName>eTLXItem_RealValue_Real</ValueName>
+								</RealValue>
+								<FormattedText>0</FormattedText>
+								<NameFormattedText>0</NameFormattedText>
+								<PictureInTable>0</PictureInTable>
+								<PropertyUserName></PropertyUserName>
+								<TLXItemHorizontalAlignment><Value>0</Value>
+									<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
+								</TLXItemHorizontalAlignment>
+								<clsid>{3563760F-C2E8-4443-B8AA-38E74D6E05E3}</clsid>
+								<Units>-1</Units>
+								<SourceCLSID>{00000000-0000-0000-0000-000000000000}</SourceCLSID>
+								<SourceNameExtension></SourceNameExtension>
+								<SourceID>-1</SourceID>
+								<TLX></TLX>
+								<Item_Type><Value>0</Value>
+									<ValueName>eTLXItem_Type_Property</ValueName>
+								</Item_Type>
+								<Parametric_Values_Representation><Value>3</Value>
+									<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
+								</Parametric_Values_Representation>
+								<Value_Type><Value>1</Value>
+									<ValueName>eValue_Type_String</ValueName>
+								</Value_Type>
+								<Item_Value></Item_Value>
+							</TLXITEM>
+						</ARRAY_ITEM>
+					</Items>
+				</Items>
+			</CX64TLXCell>
+		</ARRAY_ITEM>
 	</Cells>
 	<TLXType><Value>1</Value>
 		<ValueName>eX64TLX_Type_Horizontal</ValueName>
@@ -163,69 +200,7 @@
 	<TableScale><Value>2</Value>
 		<ValueName>eTableScale_Automatic</ValueName>
 	</TableScale>
-	<TLXItems_Buffer><Items Size="6"><ARRAY_ITEM ID="0"><TLXITEMEX><tlxitem><PropName></PropName>
-						<RealValue><Value>0</Value>
-							<ValueName>eTLXItem_RealValue_Real</ValueName>
-						</RealValue>
-						<FormattedText>0</FormattedText>
-						<NameFormattedText>0</NameFormattedText>
-						<PictureInTable>0</PictureInTable>
-						<PropertyUserName></PropertyUserName>
-						<TLXItemHorizontalAlignment><Value>0</Value>
-							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
-						</TLXItemHorizontalAlignment>
-						<clsid>{926E0E5E-B7FA-41CA-9BE8-44E7598C758E}</clsid>
-						<Units>-1</Units>
-						<SourceCLSID>{00000000-0000-0000-0000-000000000000}</SourceCLSID>
-						<SourceNameExtension></SourceNameExtension>
-						<SourceID>-1</SourceID>
-						<TLX></TLX>
-						<Item_Type><Value>0</Value>
-							<ValueName>eTLXItem_Type_Property</ValueName>
-						</Item_Type>
-						<Parametric_Values_Representation><Value>3</Value>
-							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
-						</Parametric_Values_Representation>
-						<Value_Type><Value>1</Value>
-							<ValueName>eValue_Type_String</ValueName>
-						</Value_Type>
-						<Item_Value></Item_Value>
-					</tlxitem>
-					<Name>\{$Line.20Data\$|IDS_WP_CCalcProtocolTableCombinationsNONLINLine\$}Start.20of.20calculation</Name>
-				</TLXITEMEX>
-			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="1"><TLXITEMEX><tlxitem><PropName></PropName>
-						<RealValue><Value>0</Value>
-							<ValueName>eTLXItem_RealValue_Real</ValueName>
-						</RealValue>
-						<FormattedText>0</FormattedText>
-						<NameFormattedText>0</NameFormattedText>
-						<PictureInTable>0</PictureInTable>
-						<PropertyUserName></PropertyUserName>
-						<TLXItemHorizontalAlignment><Value>0</Value>
-							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
-						</TLXItemHorizontalAlignment>
-						<clsid>{C5941202-1DE1-417F-AE8D-A0CB65118E0D}</clsid>
-						<Units>-1</Units>
-						<SourceCLSID>{00000000-0000-0000-0000-000000000000}</SourceCLSID>
-						<SourceNameExtension></SourceNameExtension>
-						<SourceID>-1</SourceID>
-						<TLX></TLX>
-						<Item_Type><Value>0</Value>
-							<ValueName>eTLXItem_Type_Property</ValueName>
-						</Item_Type>
-						<Parametric_Values_Representation><Value>3</Value>
-							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
-						</Parametric_Values_Representation>
-						<Value_Type><Value>1</Value>
-							<ValueName>eValue_Type_String</ValueName>
-						</Value_Type>
-						<Item_Value></Item_Value>
-					</tlxitem>
-					<Name>\{$Line.20Data\$|IDS_WP_CCalcProtocolTableCombinationsNONLINLine\$}End.20of.20calculation</Name>
-				</TLXITEMEX>
-			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="2"><TLXITEMEX><tlxitem><PropName></PropName>
+	<TLXItems_Buffer><Items Size="5"><ARRAY_ITEM ID="0"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -256,7 +231,7 @@
 					<Name>\{$Line.20Data\$|IDS_WP_CCalcProtocolTableNonlinearCombinationLine\$}Nonlinear.20combination</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="3"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="1"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -287,7 +262,7 @@
 					<Name>\{$Line.20Data\$|IDS_WP_CCalcProtocolTableNonlinearCombinationLine\$}Start.20of.20calculation</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="4"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="2"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -318,7 +293,7 @@
 					<Name>\{$Line.20Data\$|IDS_WP_CCalcProtocolTableNonlinearCombinationLine\$}End.20of.20calculation</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="5"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="3"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -347,6 +322,37 @@
 						<Item_Value></Item_Value>
 					</tlxitem>
 					<Name>\{$Line.20Data\$|IDS_WP_CCalcProtocolTableNonlinearCombinationLine\$}No.2e.20of.20iterations</Name>
+				</TLXITEMEX>
+			</ARRAY_ITEM>
+			<ARRAY_ITEM ID="4"><TLXITEMEX><tlxitem><PropName></PropName>
+						<RealValue><Value>0</Value>
+							<ValueName>eTLXItem_RealValue_Real</ValueName>
+						</RealValue>
+						<FormattedText>0</FormattedText>
+						<NameFormattedText>0</NameFormattedText>
+						<PictureInTable>0</PictureInTable>
+						<PropertyUserName></PropertyUserName>
+						<TLXItemHorizontalAlignment><Value>0</Value>
+							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
+						</TLXItemHorizontalAlignment>
+						<clsid>{3563760F-C2E8-4443-B8AA-38E74D6E05E3}</clsid>
+						<Units>-1</Units>
+						<SourceCLSID>{00000000-0000-0000-0000-000000000000}</SourceCLSID>
+						<SourceNameExtension></SourceNameExtension>
+						<SourceID>-1</SourceID>
+						<TLX></TLX>
+						<Item_Type><Value>0</Value>
+							<ValueName>eTLXItem_Type_Property</ValueName>
+						</Item_Type>
+						<Parametric_Values_Representation><Value>3</Value>
+							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
+						</Parametric_Values_Representation>
+						<Value_Type><Value>1</Value>
+							<ValueName>eValue_Type_String</ValueName>
+						</Value_Type>
+						<Item_Value></Item_Value>
+					</tlxitem>
+					<Name>\{$Line.20Data\$|IDS_WP_CCalcProtocolTableNonlinearCombinationLine\$}Stage.20for.20composite.20analysis</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
 		</Items>

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="1"><StringCode SourceType="DLLRC:"><StringId>@{punching.2eids_punching_resultshell_name}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="2"><StringCode SourceType="DLLRC:"><StringId>@{punching.2eids_sfrc_punching_resultshell_name}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>360</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{punching.2eids_punching_resultshell_name}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>102</ResourceId>
 	</StringCode>

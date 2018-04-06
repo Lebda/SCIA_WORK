@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="02e68160-4724-4fe8-9ec5-58b6d61babbe">
   <CodeEditor>
-    <SourceCode Collapsed="1|7|12|17|29|37|51|63|71|82|93|158|170|179|186|196|236|263|277" BreakPoints="">
+    <SourceCode Collapsed="1|7|12|17|29|37|51|63|71|82|93|158|170|187|194|204|244|271|285" BreakPoints="">
 private void StringSet() { 
     IOhelperPath →KRS116_000001= "IOhelper"; 
     SectionID →KRS116_000002= "SectionID"; 
@@ -172,12 +172,20 @@ object GetIOhelperResultObject() {
 } 
 
 bool IsArray(object obj) { 
-    bool isArray →INI400_010051= False; 
-    object TypeObj →INI400_005876= obj.GetType().Name; 
-    IF(TypeObj != "TStructure") { 
-        isArray →INI400_010054= True; 
+    object TypeObj →LUN001_000012= obj.GetType().Name; 
+    IF(TypeObj == "String") { 
+        return false; 
     } 
-    return isArray; 
+    IF(TypeObj == "Double") { 
+        return false; 
+    } 
+    IF(TypeObj == "Boolean") { 
+        return false; 
+    } 
+    IF(TypeObj == "TStructure") { 
+        return false; 
+    } 
+    return true; 
 } 
 
 bool Is2D() { 
@@ -192,8 +200,8 @@ public object GetActBucklingLengths() {
     "L", IO.Beam.Member.Length, //Length of member
     "Ly", IO.Beam.Section[IO.Section.ID].BucklingData.yy.Span.L*IO.Beam.Section[IO.Section.ID].BucklingData.yy.Span.beta, //Buckling length of member, including β factor (sway included)
     "Lz", IO.Beam.Section[IO.Section.ID].BucklingData.zz.Span.L*IO.Beam.Section[IO.Section.ID].BucklingData.zz.Span.beta, //Buckling length of member, including β factor (sway included)
-    "Swayy", IO.Setup.Concrete.Solver.General.DefaultSwayType.SwayAroundYAxis == 1, //True when sway is active (non-braced)
-    "Swayz", IO.Setup.Concrete.Solver.General.DefaultSwayType.SwayAroundZAxis == 1//True when sway is active (non-braced)
+    "Swayy", IO.Beam.Section[IO.Section.ID].BucklingData.yy.Span.braced == 0, //True when sway is active (non-braced)
+    "Swayz", IO.Beam.Section[IO.Section.ID].BucklingData.zz.Span.braced == 0//True when sway is active (non-braced)
     ); 
 } 
 
@@ -381,14 +389,6 @@ bool IsTransverseLoadZ() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_005876">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_006523">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -396,22 +396,6 @@ bool IsTransverseLoadZ() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_010051">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_010054">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_012969">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -711,6 +695,14 @@ bool IsTransverseLoadZ() {
       </VC>
       <VC ID="KRS116_000005">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="LUN001_000012">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

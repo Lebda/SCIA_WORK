@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="F0056785-D4FB-45DF-88D9-222B429AF4BF">
   <CodeEditor>
-    <SourceCode Collapsed="7|20|102|113|131|195|264|273|309|313" BreakPoints="">//@EC_Concrete_Design2D_SEN
+    <SourceCode Collapsed="7|20|102|131|195|264|273|309|313" BreakPoints="">//@EC_Concrete_Design2D_SEN
 //Master SDF form for calculation of reinforcement design acc. to EC2
 //for 2D concrete members.
 
@@ -582,16 +582,16 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
-        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="140" Reference="" Extrem="0" HideZeros="True" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="0" />
-        <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
+        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="125" Reference="" Extrem="0" HideZeros="True" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="0" />
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓sw,stat←" ESA_ID="Result.17" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
-        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="140" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="0" />
-        <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
+        <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="125" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="0" />
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="AsProv↓1+←" ESA_ID="Result.70" Type="Double" Precision="2">
         <Description>
@@ -2668,7 +2668,7 @@ IF(IO.IsDrawing) {
   </Calculation>
   <Dialog>
     <Main Width="630">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="0" PreDef="0" MemberDirectory="" MemberID="" SectionID="-1" CombiID="-1" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="F:\_TEST\emd\concrete_2d_dylon\Member2D.36" MemberID="Member2D.36" SectionID="240" CombiID="0" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />

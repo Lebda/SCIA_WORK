@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="8489d14c-2e61-4aa0-b166-b755ba178cf2">
   <CodeEditor>
-    <SourceCode Collapsed="22|38|54|176|190|212|226|254|282|289|402|416|442|455|483|491|507|518|529|540|551|566|578" BreakPoints="">→INI400_015411BLOCK("@RESOURCES") { 
+    <SourceCode Collapsed="22|38|54|176|190|212|226|254|282|408|422|448|461|489|497|513|524|535|546|557|572|584" BreakPoints="">→INI400_015411BLOCK("@RESOURCES") { 
     private void InitStrings() { 
         sPrincipal →INI400_015324= TR("Principal"); 
         sSecondary →INI400_015325= TR("Secondary"); 
@@ -303,7 +303,13 @@ private object GetWallLongReinfDesignDefaults() {
             →PAI116_000072Layers[i].Set("Surface", GetSurfaceAsString(i)); 
             →PAI116_000073Layers[i].Set("Dir", GetReinfDirAsString(i)); 
             IF(UseBasicReinf) { 
-                double ID →PAI116_000074= (i &gt; 1) ? i-2 : i; 
+                →PAI100_000001double ID; 
+                SWITCH(i) { 
+                    CASE 0 :  { ID →PAI100_000002= 1; } 
+                    CASE 1 :  { ID →PAI100_000003= 0; } 
+                    CASE 2 :  { ID →PAI100_000004= 1; } 
+                    CASE 3 :  { ID →PAI100_000005= 0; } 
+                } 
                 //basic reinf
                 object BasicReinf →PAI116_000075= ProvReinf.Layer[ID].Basic; 
                 IF(BasicReinf.Area &gt; 0) { 
@@ -2337,6 +2343,38 @@ object DesignDefaults →PAI116_000002= →PAI116_000001GetDesignDefaults(32);
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="PAI100_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI100_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI100_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI100_000005">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="PAI106_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2921,7 +2959,7 @@ object DesignDefaults →PAI116_000002= →PAI116_000001GetDesignDefaults(32);
           </Items>
         </Data>
       </TCustomLibrary>
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="4|4|4|4" MinSize="465|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.8|0|3" Active="1" PreDef="0" MemberDirectory="F:\_EXAMPLE\emd\concrete_2d_red_fcd\Member2D.1" MemberID="Member2D.1" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="4|4|4|4" MinSize="465|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.8|0|3" Active="1" PreDef="0" MemberDirectory="F:\_TEST\emd\concrete_2d_wall\Member2D.1" MemberID="Member2D.1" SectionID="0" CombiID="0" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />

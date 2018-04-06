@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="aa63074a-058a-45ea-919b-c10c14de4f91">
   <CodeEditor>
-    <SourceCode Collapsed="6|19|36|55|66|77|136|155|174|192|213|232|252|284|318|359|383|407|472|492|521|563|580|615|640|660|690|716|745|777|794|823|847|867|887|930|957|985|1012|1045|1071|1103|1129|1177|1207|1246|1295|1335|1380|1420|1454|1492|1532|1586|1621|1657|1691|1712|1751|1790|1804|1816|1865|1911|1951|1988|2006|2021|2101|2118|2129|2162|2236|2261|2292|2324|2348|2368|2399|2428|2467|2481|2500|2520|2543|2574|2614|2648|2683|2717|2736" BreakPoints="">
+    <SourceCode Collapsed="6|19|36|55|66|77|136|155|174|192|213|232|252|284|318|359|383|407|472|565|582|617|642|662|692|718|747|779|796|825|849|869|889|932|959|987|1014|1047|1073|1105|1131|1179|1209|1248|1297|1337|1382|1422|1456|1494|1534|1588|1623|1659|1693|1714|1753|1792|1818|1867|1913|1953|1990|2008|2023|2103|2120|2131|2164|2238|2263|2294|2326|2350|2370|2401|2430|2469|2483|2502|2522|2545|2576|2616|2650|2685|2719|2738" BreakPoints="">
 //Detailing provisions functions
 IF(IO.IsStandalone) { 
     object FunctionDetailing →INI400_005887= LoadExternCLC("Detailing.clc"); 
@@ -528,29 +528,31 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
         double s↓lbt,max← →INI400_009297= DetProvInputs.s↓lbt,max←; 
         double π →INI400_009298= Math.PI; 
         double&lt;mm,0&gt; ϕ →INI400_009299= DetProvInputs.ϕ; 
-        double&lt;mm↑2←,0&gt; A↓s,tor,min← →INI400_009300= 0; 
-        double n →INI400_010072= 0; 
+        double&lt;mm↑2←,0&gt; A↓s,tor,min← →VAL012_000010= 0; 
+        double n →VAL012_000011= 0; 
+        double&lt;mm,2&gt; u↓circ← →VAL012_000009= DetProvResults.u_circ; 
+        double n_cor →VAL012_000012= 0; 
         //
-        →INI400_009301BLOCK("Minimal area of reinforcement for torsion 9.2.3(4)") { 
+        →VAL012_000001BLOCK("Minimal area of reinforcement for torsion 9.2.3(4)") { 
             SWITCH(DetProvInputs.FormCode) { 
                 CASE 2002 :  { 
-                    n →INI400_010332= 4; 
+                    n_cor →VAL012_000002= 0; 
+                    
                 } 
                 CASE 2008 :  { 
-                    n →INI400_010333= 4; 
+                    n_cor →VAL012_000003= 4; 
+                    
                 } 
                 DEFAULT :  { 
-                    FOR(i, 0, ArrayTorsReinf.Count-1) { 
-                        IF(ArrayTorsReinf[i].Layer == 1) { 
-                            n →INI400_009303= n+ROUNDUP(ArrayTorsReinf[i].Ld/s↓lbt,max←); 
-                        } 
-                    } 
+                    double n_cor →VAL012_000013= ArrayTorsReinf.Count; 
+                    
                 } 
             } 
-            →INI400_009305TEXT("Minimal number of bars for torsion"); 
-            →INI400_009306TEXT("n = " &amp; n); 
-            →INI400_009307TEXT("Minimal area of reinforcement for torsion"); 
-            double A↓s,tor,min← →INI400_009308= n*π*(ϕ↑2←/4); 
+            n →VAL012_000016= MAX(n_cor, u↓circ←/s↓lbt,max←); 
+            →VAL012_000005TEXT("Minimal number of bars for torsion"); 
+            →VAL012_000006TEXT("n = " &amp; n); 
+            →VAL012_000007TEXT("Minimal area of reinforcement for torsion"); 
+            double A↓s,tor,min← →VAL012_000008= n*π*(ϕ↑2←/4); 
         } 
         →INI400_009270PAGEBREAK(); 
         //
@@ -5573,7 +5575,7 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
       <VC ID="INI400_009303">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -14378,6 +14380,134 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="VAL012_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000005">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000006">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000007">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000008">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000009">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000010">
+        <Set Vis="0" Prev="" Style="1" StyleName="" X="50" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="" X="50" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="" X="50" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000011">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000012">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000013">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000014">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000015">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000016">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="VAL135_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -14748,6 +14878,9 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
     <Command Width="500" />
   </Dialog>
   <Texts>
+    <Item TranslateID="BLOCK_">
+      <ENU>"Structure classification 5.3.1(7)"</ENU>
+    </Item>
     <Item TranslateID="BLOCK_INI400_007056">
       <ENU>"Minimal area of reinforcement from minimal ratio 9.5.2(2)"</ENU>
     </Item>
@@ -15141,6 +15274,9 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
     <Item TranslateID="BLOCK_KRS135_000012">
       <ENU>"Maximal area of reinforcement from minimum clear distance between bars 8.2(2)"</ENU>
     </Item>
+    <Item TranslateID="BLOCK_VAL012_000001">
+      <ENU>"Minimal area of reinforcement for torsion 9.2.3(4)"</ENU>
+    </Item>
     <Item ID="BLOCK_VAL135_000001">
       <ENU>"RecalcMinLongitReinfToEdgesWithStaticallyReinf()"</ENU>
     </Item>
@@ -15224,6 +15360,9 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
     </Item>
     <Item TranslateID="STRING_F5549E96">
       <ENU>"Transverse reinforcement is not necessary. Conditions are meet."</ENU>
+    </Item>
+    <Item TranslateID="TEXT_">
+      <ENU>"Structure element should be considered as column."</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_007174">
       <ENU>"Minimum width of the cross-section in tensile area"</ENU>
@@ -15731,6 +15870,15 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
     </Item>
     <Item TranslateID="TEXT_KRS135_000026">
       <ENU>"Minimal area of reinforcement from reinforcement ratio"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_VAL012_000005">
+      <ENU>"Minimal number of bars for torsion"</ENU>
+    </Item>
+    <Item ID="TEXT_VAL012_000006">
+      <ENU>"n = " &amp; n</ENU>
+    </Item>
+    <Item TranslateID="TEXT_VAL012_000007">
+      <ENU>"Minimal area of reinforcement for torsion"</ENU>
     </Item>
   </Texts>
 </Root>

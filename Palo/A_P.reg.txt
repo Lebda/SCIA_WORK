@@ -5,15 +5,15 @@ ZenSupp.dll
 CIC_ComDebugger.dll
 EP_HelpSystem.dll
 EP_StopWatches.dll
-BCGPStyle2007Obsidian2440.dll
-BCGPStyle2007Aqua2440.dll
-BCGPStyle2007Luna2440.dll
-BCGPStyle2007Silver2440.dll
-BCGPStyle2010Black2440.dll
-BCGPStyle2010Blue2440.dll
-BCGPStyle2010White2440.dll
-BCGPStyleCarbon2440.dll
-BCGPStyleScenic2440.dll
+BCGPStyle2007Obsidian2610.dll
+BCGPStyle2007Aqua2610.dll
+BCGPStyle2007Luna2610.dll
+BCGPStyle2007Silver2610.dll
+BCGPStyle2010Black2610.dll
+BCGPStyle2010Blue2610.dll
+BCGPStyle2010White2610.dll
+BCGPStyleCarbon2610.dll
+BCGPStyleScenic2610.dll
 UniFence.dll
 EP_Archive.dll
 EP_MemArchive.dll
@@ -46,6 +46,7 @@ Unit.dll
 EasyProp.dll
 EP_GeomSpace.dll
 EP_Graphic.dll
+PDFCreatorPilotEngine.dll
 EP_ViewFlags.dll
 EP_DsPresent.dll
 EP_GSBasic.dll
@@ -218,8 +219,8 @@ DataAddCads.dll
 EP_CheckDataProvider.dll
 ConcreteChecksEsa.dll
 EP_DataAddDamping.dll
-DataTools.dll
 XEP_LoadGenerators.dll
+DataTools.dll
 EP_CalcManager.dll
 EP_NationalAnnices.dll
 EP_ProjectDataDialog.dll
@@ -328,6 +329,7 @@ CheckSteelBeam.dll
 CheckRCDesigner.dll
 EP_CadsCommonServices.dll
 EP_CadsCommonServicesM.dll
+AddonsCmds.dll
 CustomCheckCmds.dll
 SteelCheckEsa.dll
 AluminiumCheck.dll
@@ -346,6 +348,7 @@ CheckDemo.dll
 ResultsPipelineTangentialModel.dll
 CheckScaffConnections.dll
 EP_DSDrawingBasicElements.dll
+EP_DataEntityActions.dll
 CustomBasicClass.dll
 CustomCheckCmdsM.dll
 DesignFormsLink.dll
@@ -478,6 +481,7 @@ pBatchOptimizer.dll
 pTemplateBlocks.dll
 OdaPoirotTest.dll
 OdaPoirotTestM.dll
+DataModelConversion.dll
 UTLAT_BaseSupport.dll
 UTLAT_IntegrationTests.dll
 UT_GeometryHelper.dll
@@ -591,4 +595,9 @@ Macrobot.dll
 Example_ESACOM_Multithread.dll
 EP_ComponentCmdsGUI.dll
 XEP_NexisMock.dll
+DocCtrl.dll
+EP_ConSectionCheck.dll
 FLBTiiCls.dll
+iBolt.dll
+iPun.dll
+Nessie.dll

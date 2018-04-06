@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="52"><StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_df_user_template_item_name}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="53"><StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_df_user_template_item_name}</StringId>
 		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
 		<ResourceId>9004</ResourceId>
 	</StringCode>
@@ -118,6 +118,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eitm5016}</StringId>
 		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
 		<ResourceId>5016</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_ep_stabilitymemberdata}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>227</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_localtransforce_data}</StringId>
 		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>

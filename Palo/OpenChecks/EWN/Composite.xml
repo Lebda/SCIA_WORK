@@ -71,6 +71,15 @@
       </ENU>
     </Sol>
   </Node>
+  <Node Code="E/13">
+    <Desc TranslateID="E/13_Desc">
+      <ENU>Members without composite action are not supported. Please check the member according to EN 1993-1-1.</ENU>
+    </Desc>
+    <Sol TranslateID="E/13_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
   <Node Code="E/15">
     <Desc TranslateID="E/15_Desc">
       <ENU>The plastic neutral axis is located outside of the steel section.</ENU>
@@ -125,6 +134,24 @@
       </ENU>
     </Sol>
   </Node>
+  <Node Code="E/24">
+    <Desc TranslateID="E/24_Desc">
+      <ENU>Opening checks have been skipped due to collision of the opening and steel section geometry.</ENU>
+    </Desc>
+    <Sol TranslateID="E/24_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E/25">
+    <Desc TranslateID="E/25_Desc">
+      <ENU>Opening checks have been skipped due to collision of the opening and span geometry.</ENU>
+    </Desc>
+    <Sol TranslateID="E/25_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
   <Node Code="E6/09">
     <Desc TranslateID="E6/09_Desc">
       <ENU>Extreme shear. Bending moment resistance not designable.</ENU>
@@ -161,6 +188,186 @@
       </ENU>
     </Sol>
   </Node>
+  <Node Code="N/07">
+    <Desc TranslateID="N/07_Desc">
+      <ENU>Selected type of load does not contain ULS Construction stage load.</ENU>
+    </Desc>
+    <Sol TranslateID="N/07_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N/08">
+    <Desc TranslateID="N/08_Desc">
+      <ENU>Selected type of load does not contain ULS Final stage load.</ENU>
+    </Desc>
+    <Sol TranslateID="N/08_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N/09">
+    <Desc TranslateID="N/09_Desc">
+      <ENU>Selected type of load does not contain SLS Construction stage load.</ENU>
+    </Desc>
+    <Sol TranslateID="N/09_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N/10">
+    <Desc TranslateID="N/10_Desc">
+      <ENU>Selected type of load does not contain SLS Final stage load.</ENU>
+    </Desc>
+    <Sol TranslateID="N/10_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N/11">
+    <Desc TranslateID="N/11_Desc">
+      <ENU>The construction stage ULS check is not performed for propped members.</ENU>
+    </Desc>
+    <Sol TranslateID="N/11_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N/13">
+    <Desc TranslateID="N/13_Desc">
+      <ENU>The shear connectors are welded to the beam through the steel sheeting, which provides continuous restraint to the top flange of the steel beam, so the beam is not susceptible to lateral torsional buckling.</ENU>
+    </Desc>
+    <Sol TranslateID="N/13_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N/14">
+    <Desc TranslateID="N/14_Desc">
+      <ENU>For buildings not intended mainly for storage the effects of creep in concrete beams may be taken into account by using an effective E modulus E↓c,eff← = E↓cm← /2.</ENU>
+    </Desc>
+    <Sol TranslateID="N/14_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N/15">
+    <Desc TranslateID="N/15_Desc">
+      <ENU>Roundings of the steel cross-section are neglected in bending resistance calculation.</ENU>
+    </Desc>
+    <Sol TranslateID="N/15_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N/16">
+    <Desc TranslateID="N/16_Desc">
+      <ENU>The shear connectors are rigidly connected with the concrete slab, which provides continuous restraint to the top flange of the steel beam, so the beam is not susceptible to lateral torsional buckling.</ENU>
+    </Desc>
+    <Sol TranslateID="N/16_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N/17">
+    <Desc TranslateID="N/17_Desc">
+      <ENU>The construction stage SLS check is not performed for propped members.</ENU>
+    </Desc>
+    <Sol TranslateID="N/17_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N/18">
+    <Desc TranslateID="N/18_Desc">
+      <ENU>Negative flexural strength determined using steel section alone.</ENU>
+    </Desc>
+    <Sol TranslateID="N/18_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N/19">
+    <Desc TranslateID="N/19_Desc">
+      <ENU>Deflection limit for construction stage is not defined.</ENU>
+    </Desc>
+    <Sol TranslateID="N/19_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N/20">
+    <Desc TranslateID="N/20_Desc">
+      <ENU>Deflection limit for final stage live load is not defined.</ENU>
+    </Desc>
+    <Sol TranslateID="N/20_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N/21">
+    <Desc TranslateID="N/21_Desc">
+      <ENU>Deflection limit for final stage total load is not defined.</ENU>
+    </Desc>
+    <Sol TranslateID="N/21_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N/22">
+    <Desc TranslateID="N/22_Desc">
+      <ENU>Using the number of studs corresponding the degree of composite action, this member would fail the detailing check for maximum spacing. Therefore, the studs shown on the stud layout diagram and in the label reflect the minimum number of studs required to meet the maximum spacing requirement rather than the actual degree of composite action.</ENU>
+    </Desc>
+    <Sol TranslateID="N/22_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N/23">
+    <Desc TranslateID="N/23_Desc">
+      <ENU>Using the number of studs corresponding the degree of composite action, this member would fail the detailing check for maximum longitudinal stud spacing. Studs have been added in segments or subsegments as needed in order to meet the maximum spacing requirement.</ENU>
+    </Desc>
+    <Sol TranslateID="N/23_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N/24">
+    <Desc TranslateID="N/24_Desc">
+      <ENU>This member is set to 'Negative flexural strength determined using steel section alone' and has negative moment which controls. Therefore, the studs shown on the stud layout diagram and in the label reflect the minimum number of studs required to meet the maximum spacing requirement rather than the degree of composite action.</ENU>
+    </Desc>
+    <Sol TranslateID="N/24_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N/25">
+    <Desc TranslateID="N/25_Desc">
+      <ENU>This span is comprised of multiple members. For this reason, the stud layout diagram may not be accurate.</ENU>
+    </Desc>
+    <Sol TranslateID="N/25_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N/26">
+    <Desc TranslateID="N/26_Desc">
+      <ENU>Optimisation reaching the limit. Unable to decrease steel section.</ENU>
+    </Desc>
+    <Sol TranslateID="N/26_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N3/07">
+    <Desc TranslateID="N3/07_Desc">
+      <ENU>The effects of autogenous shrinkage is neglected according to EN 1994-1-1 Art 3.1 (4).</ENU>
+    </Desc>
+    <Sol TranslateID="N3/07_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
   <Node Code="N6/03">
     <Desc TranslateID="N6/03_Desc">
       <ENU>The bending moment resistance is reduced due to the influence of the vertical shear.                                 </ENU>
@@ -190,27 +397,198 @@
   </Node>
   <Node Code="N6/06">
     <Desc TranslateID="N6/06_Desc">
-      <ENU>An alternative method for degree of shear connection according to EN 1994-1-1 6.6.1.2 (3) is used.</ENU>
+      <ENU>Minimum degree of shear connection is calculated according to EN 1994-1-1 6.6.1.2 (3).</ENU>
     </Desc>
     <Sol TranslateID="N6/06_Sol">
       <ENU>
       </ENU>
     </Sol>
   </Node>
-  <Node Code="N3/07">
-    <Desc TranslateID="N3/07_Desc">
-      <ENU>The effects of autogenous shrinkag is neglected according to EN 1994-1-1 Art 3.1 (4).</ENU>
+  <Node Code="W/16">
+    <Desc TranslateID="W/16_Desc">
+      <ENU>Maximum number of studs is exceeded.</ENU>
     </Desc>
-    <Sol TranslateID="N3/07_Sol">
+    <Sol TranslateID="W/16_Sol">
       <ENU>
       </ENU>
     </Sol>
   </Node>
-  <Node Code="N/08">
-    <Desc TranslateID="N/08_Desc">
-      <ENU>The construction stage check is not performed for propped members.</ENU>
+  <Node Code="W/25">
+    <Desc TranslateID="W/25_Desc">
+      <ENU>For a continuous beam, intermediate buckling supports y-y are ignored in both the calculation of the effective width for the analysis model and the check.</ENU>
     </Desc>
-    <Sol TranslateID="N/08_Sol">
+    <Sol TranslateID="W/25_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/26">
+    <Desc TranslateID="W/26_Desc">
+      <ENU>Deflection limit is set to zero in composite setup, thus cannot be fulfilled. </ENU>
+    </Desc>
+    <Sol TranslateID="W/26_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/27">
+    <Desc TranslateID="W/27_Desc">
+      <ENU>Camber is neglected in moment-connected beams.</ENU>
+    </Desc>
+    <Sol TranslateID="W/27_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/28">
+    <Desc TranslateID="W/28_Desc">
+      <ENU>Degree of longitudinal reinforcement is greater than 1 and it can not be changed by design. Please check and modify your calculation setting.</ENU>
+    </Desc>
+    <Sol TranslateID="W/28_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/29">
+    <Desc TranslateID="W/29_Desc">
+      <ENU>Longitudinal shear reinforcement check is greater than 1 and it can not be changed by design. Please check and modify your calculation setting.</ENU>
+    </Desc>
+    <Sol TranslateID="W/29_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/30">
+    <Desc TranslateID="W/30_Desc">
+      <ENU>Crushing of concrete flange check is greater than 1 and it can not be changed by design. Please check and modify your calculation setting.</ENU>
+    </Desc>
+    <Sol TranslateID="W/30_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/31">
+    <Desc TranslateID="W/31_Desc">
+      <ENU>Vibration check is greater than 1 and it can not be changed by design. Please check and modify your calculation setting.</ENU>
+    </Desc>
+    <Sol TranslateID="W/31_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/32">
+    <Desc TranslateID="W/32_Desc">
+      <ENU>Cracking of concrete check is greater than 1 and it can not be changed by design. Please check and modify your calculation setting.</ENU>
+    </Desc>
+    <Sol TranslateID="W/32_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/33">
+    <Desc TranslateID="W/33_Desc">
+      <ENU>Member has no zero-moment so it is not eligible for stud design.</ENU>
+    </Desc>
+    <Sol TranslateID="W/33_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/34">
+    <Desc TranslateID="W/34_Desc">
+      <ENU>Number of studs required for the degree of connection exceeds the number allowed by minimum spacing requirement</ENU>
+    </Desc>
+    <Sol TranslateID="W/34_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/35">
+    <Desc TranslateID="W/35_Desc">
+      <ENU>A suitable design option could not be found which satisfied spacing requirements. Revise input.</ENU>
+    </Desc>
+    <Sol TranslateID="W/35_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/36">
+    <Desc TranslateID="W/36_Desc">
+      <ENU>Opening check is not performed for negative bending moment.</ENU>
+    </Desc>
+    <Sol TranslateID="W/36_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/37">
+    <Desc TranslateID="W/37_Desc">
+      <ENU>Compression capacity of top Tee is not sufficient.</ENU>
+    </Desc>
+    <Sol TranslateID="W/37_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/38">
+    <Desc TranslateID="W/38_Desc">
+      <ENU>Unsuitable classification of Top Tee.</ENU>
+    </Desc>
+    <Sol TranslateID="W/38_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/39">
+    <Desc TranslateID="W/39_Desc">
+      <ENU>Unsuitable classification of Bottom Tee.</ENU>
+    </Desc>
+    <Sol TranslateID="W/39_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/40">
+    <Desc TranslateID="W/40_Desc">
+      <ENU>Optimisation reaching the limit. Unable to increase steel section.</ENU>
+    </Desc>
+    <Sol TranslateID="W/40_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/41">
+    <Desc TranslateID="W/41_Desc">
+      <ENU>Resistance of the reinforcement is limited to resistance of the steel section.</ENU>
+    </Desc>
+    <Sol TranslateID="W/41_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W3/05">
+    <Desc TranslateID="W3/05_Desc">
+      <ENU>Concrete material of the slab does not conform to EN 1994-1-1 Art. 3.1 (2).</ENU>
+    </Desc>
+    <Sol TranslateID="W3/05_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W3/06">
+    <Desc TranslateID="W3/06_Desc">
+      <ENU>Steel material of the beam does not conform to EN 1994-1-1 Art. 3.3 (2).</ENU>
+    </Desc>
+    <Sol TranslateID="W3/06_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W3/07">
+    <Desc TranslateID="W3/07_Desc">
+      <ENU>The nominal thickness of steel sheeting is smaller than minimum recommended value given by EN 1994-1-1 Art. 3.5 (2).</ENU>
+    </Desc>
+    <Sol TranslateID="W3/07_Sol">
       <ENU>
       </ENU>
     </Sol>
@@ -247,33 +625,6 @@
       <ENU>The actual angle of concrete strut is outside the limits.</ENU>
     </Desc>
     <Sol TranslateID="W6/04_Sol">
-      <ENU>
-      </ENU>
-    </Sol>
-  </Node>
-  <Node Code="W3/05">
-    <Desc TranslateID="W3/05_Desc">
-      <ENU>Concrete material of the slab does not conform to EN 1994-1-1 Art. 3.1 (2).</ENU>
-    </Desc>
-    <Sol TranslateID="W3/05_Sol">
-      <ENU>
-      </ENU>
-    </Sol>
-  </Node>
-  <Node Code="W3/06">
-    <Desc TranslateID="W3/06_Desc">
-      <ENU>Steel material of the beam does not conform to EN 1994-1-1 Art. 3.3 (2).</ENU>
-    </Desc>
-    <Sol TranslateID="W3/06_Sol">
-      <ENU>
-      </ENU>
-    </Sol>
-  </Node>
-  <Node Code="W3/07">
-    <Desc TranslateID="W3/07_Desc">
-      <ENU>The nominal thickness of steel sheeting is smaller than minimum recommended value given by EN 1994-1-1 Art. 3.5 (2).</ENU>
-    </Desc>
-    <Sol TranslateID="W3/07_Sol">
       <ENU>
       </ENU>
     </Sol>
@@ -337,24 +688,6 @@
       <ENU>Conditions given by EN 1994-1-1 Art. 6.6.1.2 (1) are not fulfilled.</ENU>
     </Desc>
     <Sol TranslateID="W6/14_Sol">
-      <ENU>
-      </ENU>
-    </Sol>
-  </Node>
-  <Node Code="W6/15">
-    <Desc TranslateID="W6/15_Desc">
-      <ENU>Conditions given by EN 1994-1-1 Art. 6.6.1.2 (3) are not fulfilled.</ENU>
-    </Desc>
-    <Sol TranslateID="W6/15_Sol">
-      <ENU>
-      </ENU>
-    </Sol>
-  </Node>
-  <Node Code="W/16">
-    <Desc TranslateID="W/16_Desc">
-      <ENU>Maximum number of studs is exceeded.</ENU>
-    </Desc>
-    <Sol TranslateID="W/16_Sol">
       <ENU>
       </ENU>
     </Sol>
@@ -427,33 +760,6 @@
       <ENU>Full degree of shear connection is required according to EN 1994-1-1, Art. 6.2.1.3 (2).</ENU>
     </Desc>
     <Sol TranslateID="W6/24_Sol">
-      <ENU>
-      </ENU>
-    </Sol>
-  </Node>
-  <Node Code="W/25">
-    <Desc TranslateID="W/25_Desc">
-      <ENU>For a continuous beam, intermediate buckling supports y-y are ignored in both the calculation of the effective width for the analysis model and the check.</ENU>
-    </Desc>
-    <Sol TranslateID="W/25_Sol">
-      <ENU>
-      </ENU>
-    </Sol>
-  </Node>
-  <Node Code="W/26">
-    <Desc TranslateID="W/26_Desc">
-      <ENU>Deflection limit is set to zero in composite setup, thus cannot be fulfilled. </ENU>
-    </Desc>
-    <Sol TranslateID="W/26_Sol">
-      <ENU>
-      </ENU>
-    </Sol>
-  </Node>
-  <Node Code="W/27">
-    <Desc TranslateID="W/27_Desc">
-      <ENU>Camber is neglected in moment-connected beams.</ENU>
-    </Desc>
-    <Sol TranslateID="W/27_Sol">
       <ENU>
       </ENU>
     </Sol>

@@ -137,14 +137,14 @@
 						<TLXItemHorizontalAlignment><Value>0</Value>
 							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
 						</TLXItemHorizontalAlignment>
-						<clsid>{CEC48A08-44F7-42F5-9E37-3C2FEDC91749}</clsid>
+						<clsid>{EEC1B5FA-3864-4D7D-A410-BFE82BEAADC0}</clsid>
 						<Units>-1</Units>
-						<SourceCLSID>{DE8D4143-0242-4247-B070-6B0811CCD3DB}</SourceCLSID>
+						<SourceCLSID>{00000000-0000-0000-0000-000000000000}</SourceCLSID>
 						<SourceNameExtension></SourceNameExtension>
 						<SourceID>-1</SourceID>
 						<TLX></TLX>
-						<Item_Type><Value>2</Value>
-							<ValueName>eTLXItem_Type_Subtable</ValueName>
+						<Item_Type><Value>5</Value>
+							<ValueName>eTLXItem_Type_TextPresentProperty</ValueName>
 						</Item_Type>
 						<Parametric_Values_Representation><Value>3</Value>
 							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
@@ -154,7 +154,7 @@
 						</Value_Type>
 						<Item_Value></Item_Value>
 					</tlxitem>
-					<Name>1D_OpenCheck_RootObject</Name>
+					<Name>Single.20check.20-.20pictures</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
 			<ARRAY_ITEM ID="1"><TLXITEMEX><tlxitem><PropName></PropName>
@@ -261,14 +261,14 @@
 						<TLXItemHorizontalAlignment><Value>0</Value>
 							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
 						</TLXItemHorizontalAlignment>
-						<clsid>{EEC1B5FA-3864-4D7D-A410-BFE82BEAADC0}</clsid>
+						<clsid>{CEC48A08-44F7-42F5-9E37-3C2FEDC91749}</clsid>
 						<Units>-1</Units>
-						<SourceCLSID>{00000000-0000-0000-0000-000000000000}</SourceCLSID>
+						<SourceCLSID>{DE8D4143-0242-4247-B070-6B0811CCD3DB}</SourceCLSID>
 						<SourceNameExtension></SourceNameExtension>
 						<SourceID>-1</SourceID>
 						<TLX></TLX>
-						<Item_Type><Value>5</Value>
-							<ValueName>eTLXItem_Type_TextPresentProperty</ValueName>
+						<Item_Type><Value>2</Value>
+							<ValueName>eTLXItem_Type_Subtable</ValueName>
 						</Item_Type>
 						<Parametric_Values_Representation><Value>3</Value>
 							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
@@ -278,7 +278,7 @@
 						</Value_Type>
 						<Item_Value></Item_Value>
 					</tlxitem>
-					<Name>Single.20check.20-.20pictures</Name>
+					<Name>1D_OpenCheck_RootObject</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
 		</Items>

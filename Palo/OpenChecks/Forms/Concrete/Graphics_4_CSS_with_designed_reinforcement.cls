@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="8eb75b71-6349-4300-a2a3-d23d3b0bfeaf">
   <CodeEditor>
-    <SourceCode Collapsed="49|109|160" BreakPoints="">//Graphics 4 - CSS with designed reinforcement
+    <SourceCode Collapsed="113|164" BreakPoints="">//Graphics 4 - CSS with designed reinforcement
 →INI400_001626object[] Outline; //Polygon outline - loaded from master
 object Bounds →INI400_001528= GetBounds(Outline); 
 →INI400_001630object[] Reinf; //Reinforcement - loaded from master
@@ -63,7 +63,11 @@ IF(ReqBars) {
                     } 
                 } 
             } ELSE { //required reinforcement
-                →INI400_003905G.FillCircle(ArrayReqReinfBars[i].y, ArrayReqReinfBars[i].z, ArrayReqReinfBars[i].d, Color.Blue); 
+                IF(ArrayReqReinfBars[i].IsDetailing) { 
+                    →VAL012_000001G.FillCircle(ArrayReqReinfBars[i].y, ArrayReqReinfBars[i].z, ArrayReqReinfBars[i].d, Color.Gray); 
+                } ELSE { 
+                    G.FillCircle(ArrayReqReinfBars[i].y, ArrayReqReinfBars[i].z, ArrayReqReinfBars[i].d, Color.Blue); 
+                } 
             } 
         } 
     } ELSE { 
@@ -1314,6 +1318,14 @@ IF((FormCode == 2005 || FormCode == 2006 || FormCode == 2009 || FormCode == 2013
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
     </VisualComponents>
     <Images />

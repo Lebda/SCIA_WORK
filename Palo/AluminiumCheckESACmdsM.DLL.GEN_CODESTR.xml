@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="16"><StringCode SourceType="DLLRC:"><StringId>@{aluminiumcheckesacmdsm.2eids_aluminium_bgdk}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="17"><StringCode SourceType="DLLRC:"><StringId>@{aluminiumcheckesacmdsm.2eids_aluminium_bgdk}</StringId>
 		<SourceDll>AluminiumCheckESACmdsM.2eDLL</SourceDll>
 		<ResourceId>110</ResourceId>
 	</StringCode>
@@ -54,6 +54,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{aluminiumcheckesacmdsm.2eids_sec_check}</StringId>
 		<SourceDll>AluminiumCheckESACmdsM.2eDLL</SourceDll>
 		<ResourceId>103</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{aluminiumcheckesacmdsm.2eids_ep_stabilitymemberdata}</StringId>
+		<SourceDll>AluminiumCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>272</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{aluminiumcheckesacmdsm.2eids_aluminiumcheckdata}</StringId>
 		<SourceDll>AluminiumCheckESACmdsM.2eDLL</SourceDll>

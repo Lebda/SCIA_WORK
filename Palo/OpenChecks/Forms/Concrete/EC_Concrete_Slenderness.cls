@@ -454,27 +454,27 @@ IF(n &gt; 0) {
         →KRS116_000115TEXT("1↑st← order eccentricities"); 
         e↓0z← →INI400_000082= M↓y←/N↓Ed←; 
         IF(COMPARE(e↓0z←, 0, 6) == 0) { 
-            sign↓z← →INI400_006766= ZeroSign_z; 
+            sgn↓z← →INI400_006766= ZeroSign_z; 
         } ELSE { 
             IF(e↓0z← &gt; 0) { 
-                sign↓z← →INI400_006767= 1; 
+                sgn↓z← →INI400_006767= 1; 
             } ELSE { 
-                sign↓z← →INI400_006768= -1; 
+                sgn↓z← →INI400_006768= -1; 
             } 
         } 
         e↓0y← →INI400_000083= M↓z←/N↓Ed←; 
         IF(COMPARE(e↓0y←, 0, 6) == 0) { 
-            sign↓y← →INI400_006763= ZeroSign_y; 
+            sgn↓y← →INI400_006763= ZeroSign_y; 
         } ELSE { 
             IF(e↓0y← &gt; 0) { 
-                sign↓y← →INI400_006764= 1; 
+                sgn↓y← →INI400_006764= 1; 
             } ELSE { 
-                sign↓y← →INI400_006765= -1; 
+                sgn↓y← →INI400_006765= -1; 
             } 
         } 
         e↓1← →KRS116_000113= MIN(ABS(e↓0z←), ABS(e↓0y←)); 
         e↓2← →KRS116_000114= MAX(ABS(e↓0z←), ABS(e↓0y←)); 
-        IF(sign↓z← != sign↓y←) { 
+        IF(sgn↓z← != sgn↓y←) { 
             e↓1← →KRS116_000016= -e↓1←; //if both sign are different, consider e↓1← negative
         } 
         →KRS116_000116TEXT("1↑st← order eccentricity in direction of greater moment, considered positive"); 
@@ -1369,25 +1369,25 @@ private void SlendernessEvaluation(double λ↓y←, double λ↓limy←, double
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="sgn↓y←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="sgn↓z←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="Shear" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="sign↓y←" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="sign↓z←" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="sListEWN" ESA_ID="" Type="String">
         <Description>

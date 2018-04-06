@@ -31,7 +31,7 @@
         ReinfRatio →INI400_013691= Input.Get("ReinfRatio"); //Estimation ratio of longitudinal reinforcement for recalculation internal forces in design of reinforcement
         TestEqulibrium →INI400_013693= Input.Get("TestEqulibrium"); //True - Nest equilibrium (only for debugging), False - Normal run without testing
         IncreasingStatReinf →VAL127_000049= Input.Get("IncreasingStatReinf"); //object with coefficinet for increasing staticaly required reinforcement;
-        
+        CoeffIncreaseBar →VAL012_000008= Input.Get("CoeffIncreaseBar"); //coefficient for increasing numebr of bars for corner bars
         
         //design defualts
         c →INI400_013697= Input.Get("c"); //Cover of reinforcement to surface of bar
@@ -215,7 +215,7 @@ IF(!IO.IsExternCLC) { //settings for table drawing
     double Coeff↓stat_up← →VAL127_000050= 0; 
     double Coeff↓stat_lo← →VAL127_000051= 0; 
     object IncreasingStatReinf →VAL127_000006= new Structure("CoeffUpper", Coeff↓stat_up←, "CoeffLower", Coeff↓stat_lo←); 
-    
+    CoeffIncreaseBar →VAL012_000009= 0.5; 
     
     
     //for SLS:
@@ -1268,6 +1268,11 @@ IF(bDesignAddLongReinf) {
     →VAL127_000071obEWN.Add(new Structure("Index", "W" &amp; IndexEWN &amp; "/" &amp; Number↓W←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
 } 
 
+double[] obTypeEdgeStatReinf →VAL012_000007= null; 
+IF(FormCode != 2002 || FormCode != 2008) { 
+    obTypeEdgeStatReinf →VAL012_000006= Functions1D_DesignReq.TypeEdge(ReqReinfFinal); 
+} 
+
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //DESIGN REINFORCEMENT ACCORDING TO DEATILING PROVISIONS
 IF(bDetailingProv) { 
@@ -1513,6 +1518,11 @@ IF(bDetailingProv) {
 
 →KRS127_000200Functions1D_DesignReq.→KRS135_000012AddAsMaxToReqReinf(out ReqReinfFinal, obDiffDetAreaMax, obDiffDetAreaMin, bDetailingProv, bCircular); 
 
+// determination if layers of reinforcement is detailing or not
+→VAL012_000001Functions1D_DesignReq.LayerWithDetailing(ReqReinfFinal, ReqReinfULS, ReqReinfAddULS); 
+
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //PROVIDED REINFORCEMENT PREPARATION
 
@@ -1637,7 +1647,7 @@ IF(bCircular) {
     } 
 } ELSE { 
     object obNReinf →INI400_009642= new object[]; 
-    object[] PractReinfFinal →INI400_008436= Functions1D_DesignToBars.PractArrayReinfFromRequired(ReqReinfFinal, ReqReinfULS, ReqReinfAddULS, numEdges, FormCode, obNReinf, bDetailingProv); 
+    object[] PractReinfFinal →INI400_008436= Functions1D_DesignToBars.PractArrayReinfFromRequired(ReqReinfFinal, ReqReinfULS, ReqReinfAddULS, numEdges, FormCode, obNReinf, bDetailingProv, CoeffIncreaseBar); 
     object obDiameter →DLO316_000030= new Structure("ϕ", ϕ, "ϕ_lo", ϕ↓lo←, "ϕ_up", ϕ↓up←); 
     double ϕ↓side← →DLO316_000050= MIN(obDiameter.ϕ_up, obDiameter.ϕ_lo); 
 } 
@@ -2009,7 +2019,7 @@ object UC_ReqProv →KRS127_000197= new Structure("UC_ReqProv_zpos", GetUC_ReqPr
         Object[] RegReinfDraw →INI400_008346= new object[]; 
         →INI400_006436TEXT(ReqReinfFinal.Count); 
         FOR(i, 1, ReqReinfFinal.Count) { 
-            →INI400_008348RegReinfDraw.Add(new Structure("Edge", ReqReinfFinal[i-1].Edge, "y", ReqReinfFinal[i-1].y, "z", ReqReinfFinal[i-1].z, "d", ReqReinfFinal[i-1].diam, "As", ReqReinfFinal[i-1].As)); 
+            →INI400_008348RegReinfDraw.Add(new Structure("Edge", ReqReinfFinal[i-1].Edge, "y", ReqReinfFinal[i-1].y, "z", ReqReinfFinal[i-1].z, "d", ReqReinfFinal[i-1].diam, "As", ReqReinfFinal[i-1].As, "IsDetailing", ReqReinfFinal[i-1].IsDetailing)); 
         } 
         
         //KRS: drawing of req reinf as areas temporally commented for future development
@@ -2058,7 +2068,7 @@ object UC_ReqProv →KRS127_000197= new Structure("UC_ReqProv_zpos", GetUC_ReqPr
         IF(NumberAllErrors == 0 &amp;&amp; SummaryAreaFin.Req.As &gt; 0 &amp;&amp; IsDesignOK) { 
             IF(ExplodedToBars) { 
                 ///// Table of exploded bars
-                SingleBars →INI400_003977= Functions1D_DesignToBars.ExplotationReqReinfToBarsNew(CssULSID, ReqReinfFinal, Method, bLayerDesign, MaxNlayers, DiameterAndCoverForEdges, s↓min←, s↓min←, TypeArea, MinNbarsEdge, FormCode); 
+                SingleBars →INI400_003977= Functions1D_DesignToBars.ExplotationReqReinfToBarsNew(CssULSID, ReqReinfFinal, Method, bLayerDesign, MaxNlayers, DiameterAndCoverForEdges, s↓min←, s↓min←, TypeArea, MinNbarsEdge, FormCode, CoeffIncreaseBar); 
                 IF(IO.IsDrawing) { 
                     IF(Method == 5) { 
                         string EdgeCorner →INI400_004071= TR("Corner"); 
@@ -2066,11 +2076,12 @@ object UC_ReqProv →KRS127_000197= new Structure("UC_ReqProv_zpos", GetUC_ReqPr
                         string EdgeCorner →INI400_004072= TR("Edge"); 
                     } 
                     //                →INI400_004073TEXT("Recalculation required area to individual bars"); 
-                    
+                    bool[] obIsDetailingBar →VAL012_000004= new bool[]; 
+                    obIsDetailingBar →VAL012_000005= Functions1D_DesignToBars.DetailingBar(SingleBars, ReqReinfFinal, obTypeEdgeStatReinf); 
                     //Drawing picture of cross-section
                     Object[] RegReinfBarsDraw →INI400_004008= new object[]; 
                     FOR(i, 1, SingleBars.Count) { 
-                        →INI400_004027RegReinfBarsDraw.Add(new Structure("y", SingleBars[i-1].y, "z", SingleBars[i-1].z, "d", SingleBars[i-1].diam, "As", SingleBars[i-1].As)); 
+                        →INI400_004027RegReinfBarsDraw.Add(new Structure("y", SingleBars[i-1].y, "z", SingleBars[i-1].z, "d", SingleBars[i-1].diam, "As", SingleBars[i-1].As, "IsDetailing", obIsDetailingBar[i-1])); 
                     } 
                     IF(bDrawPictures) { 
                         →INI400_004007TEXT("Required bars"); 
@@ -2952,6 +2963,13 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
       <Variable Modifier="Public" Name="Coeff↓z←" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_Coeff↓z←">
           <ENU>Coefficient for calculation inner lever arm</ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="CoeffIncreaseBar" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
@@ -4052,6 +4070,12 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="obIsDetailingBar" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_obIsDetailingBar">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="obNReinf" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -4072,6 +4096,12 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
       </Variable>
       <Variable Modifier="Public" Name="obRecalAdditional" ESA_ID="" Type="Object">
         <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="obTypeEdgeStatReinf" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_obTypeEdgeStatReinf">
           <ENU>
           </ENU>
         </Description>
@@ -14605,6 +14635,62 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000005">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000006">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000007">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000008">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="VAL012_000009">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="VAL106_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

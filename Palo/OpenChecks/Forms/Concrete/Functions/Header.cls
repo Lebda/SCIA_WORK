@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="6e20e037-9a10-4827-b4ee-db6a3ebfc7b2">
   <CodeEditor>
-    <SourceCode Collapsed="5|47|76|85|108|116|124|160|191|224|276|297|313|376|410|419|428" BreakPoints="">
+    <SourceCode Collapsed="5|47|76|108|116|124|160|191|224|276|297|313|376|410|428" BreakPoints="">
 //------------------------------------------------------------
 //@FUNCTIONS
 
@@ -102,7 +102,7 @@ private string GetCS_Position() {
         } 
     } 
     IF(IO.Contains("Member2D")) { 
-        return TR("Node") &amp; " " &amp; IO.Point.MeshElemID &amp; "/" &amp; IO.Point.ID &amp; 
+        return TR("Node") &amp; " " &amp; IO.Point.MeshElemID &amp; "/" &amp; IO.Point.ResElemID &amp; 
         " [" &amp; "X=" &amp; Val(IO.Point.X, 2) &amp; "m" &amp; 
         ", Y=" &amp; Val(IO.Point.Y, 2) &amp; "m" &amp; 
         ", Z=" &amp; Val(IO.Point.Z, 2) &amp; "m]"; 
@@ -258,7 +258,7 @@ private void PrintLongReinfMaterial(double CssID, double ForcesID) {
     
     double UnitMass →KRS116_000149= IO.REINF.EC.Contains("UnitMass") ? IO.REINF.EC.UnitMass : 7850; 
     bool TypeDiagram →KRS116_000150= IO.REINF.EC.Contains("TypeULSDiagram") ? (IO.REINF.EC.TypeULSDiagram == 1 ? true : false) : IO.REINF.EC.Inclined; 
-    double CssArea →KRS116_000151= IO.CS.Contains("Chars") ? IO.CS.Chars.A : (CONCRETE.Characteristics(CssID, ForcesID, CONCRETE.CharType.WholeCharConcrete, CONCRETE.StiffnessType.Linear).A); 
+    double CssArea →KRS116_000151= CONCRETE.Characteristics(CssID, ForcesID, CONCRETE.CharType.WholeCharConcrete, CONCRETE.StiffnessType.Linear).A; 
     
     object LongReinfMaterialTable →KRS116_000119= new Table(1); 
     LongReinfMaterialTable[0][0].Value →KRS116_000120= TR("Longitudinal reinforcement") &amp; ": " &amp; NameLongReinf; 
@@ -351,7 +351,7 @@ private void PrintShearReinfMaterial(double CssID, double ForcesID, object Shear
         TypeDiagram →KRS116_000170= IO.Contains("ShearREINF") ? IO.ShearREINF.EC.Inclined : IO.REINF.EC.Inclined; 
     } 
     double UnitMass →KRS116_000180= IO.REINF.EC.Contains("UnitMass") ? IO.REINF.EC.UnitMass : 7850; 
-    double CssArea →KRS116_000182= IO.CS.Contains("Chars") ? IO.CS.Chars.A : (CONCRETE.Characteristics(CssID, ForcesID, CONCRETE.CharType.WholeCharConcrete, CONCRETE.StiffnessType.Linear).A); 
+    double CssArea →KRS116_000182= CONCRETE.Characteristics(CssID, ForcesID, CONCRETE.CharType.WholeCharConcrete, CONCRETE.StiffnessType.Linear).A; 
     
     object ShearReinfMaterialTable →KRS116_000158= new Table(1); 
     ShearReinfMaterialTable[0][0].Value →KRS116_000159= TR("Shear reinforcement") &amp; ": " &amp; NameShearReinf; 

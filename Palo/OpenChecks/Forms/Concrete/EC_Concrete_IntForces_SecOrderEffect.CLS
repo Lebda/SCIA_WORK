@@ -512,37 +512,37 @@ IF(CompressMember) {
     →PAI127_000036TEXT("First order moment and eccentricity:"); 
     e↓0z← →INI400_000082= M↓y←/N↓Ed←; 
     IF(COMPARE(e↓0z←, 0, 6) == 0) { 
-        sign↓z← →INI400_006766= ZeroSign_z; 
+        sgn↓z← →INI400_006766= ZeroSign_z; 
     } ELSE { 
         IF(e↓0z← &gt; 0) { 
-            sign↓z← →INI400_006767= 1; 
+            sgn↓z← →INI400_006767= 1; 
         } ELSE { 
-            sign↓z← →INI400_006768= -1; 
+            sgn↓z← →INI400_006768= -1; 
         } 
     } 
-    →PAI127_000016TEXT("(" &amp; 'sign↓z←' &amp; "=" &amp; sign↓z← &amp; ")"); 
+    →PAI127_000016TEXT("(" &amp; 'sgn↓z←' &amp; "=" &amp; sgn↓z← &amp; ")"); 
     e↓0y← →INI400_000083= M↓z←/N↓Ed←; 
     IF(COMPARE(e↓0y←, 0, 6) == 0) { 
-        sign↓y← →INI400_006763= ZeroSign_y; 
+        sgn↓y← →INI400_006763= ZeroSign_y; 
     } ELSE { 
         IF(e↓0y← &gt; 0) { 
-            sign↓y← →INI400_006764= 1; 
+            sgn↓y← →INI400_006764= 1; 
         } ELSE { 
-            sign↓y← →INI400_006765= -1; 
+            sgn↓y← →INI400_006765= -1; 
         } 
     } 
-    →PAI127_000015TEXT("(" &amp; 'sign↓y←' &amp; "=" &amp; sign↓y← &amp; ")"); 
+    →PAI127_000015TEXT("(" &amp; 'sgn↓y←' &amp; "=" &amp; sgn↓y← &amp; ")"); 
     
     →PAI127_000025PAGEBREAK(); 
     
     IF(EquivMoment &amp;&amp; CombiULS) { 
         →PAI127_000026TEXT("Equivalent first order moment and eccentricity:"); 
-        M↓0ey← →INI400_000687= sign↓z←*MAX(ABS(0.6*M↓02y←+0.4*M↓01y←), ABS(0.4*M↓02y←)) @REF("(5.32)"); 
-        M↓0ez← →INI400_000688= sign↓y←*MAX(ABS(0.6*M↓02z←+0.4*M↓01z←), ABS(0.4*M↓02z←)) @REF("(5.32)"); 
+        M↓0ey← →INI400_000687= sgn↓z←*MAX(ABS(0.6*M↓02y←+0.4*M↓01y←), ABS(0.4*M↓02y←)) @REF("(5.32)"); 
+        M↓0ez← →INI400_000688= sgn↓y←*MAX(ABS(0.6*M↓02z←+0.4*M↓01z←), ABS(0.4*M↓02z←)) @REF("(5.32)"); 
         M↓y← →VAL106_000001= M↓0ey←; 
         M↓z← →VAL106_000002= M↓0ez←; 
-        e↓0z← →INI400_000081= ABS(M↓0ey←/N↓Ed←)*sign↓z←; 
-        e↓0y← →INI400_000080= ABS(M↓0ez←/N↓Ed←)*sign↓y←; 
+        e↓0z← →INI400_000081= ABS(M↓0ey←/N↓Ed←)*sgn↓z←; 
+        e↓0y← →INI400_000080= ABS(M↓0ez←/N↓Ed←)*sgn↓y←; 
         e↓0ez← →PAI127_000052= e↓0z←; 
         e↓0ey← →PAI127_000053= e↓0y←; 
         string DescriptionN →PAI127_000019= TR("Equivalent first order moment is considered, see §5.8.8.2(2)."); 
@@ -631,8 +631,8 @@ IF(CompressMember) {
         θ↓iy← →INI400_000067= θ↓0←*α↓h←*α↓my← @REF("(5.1)"); 
         θ↓iz← →INI400_000069= θ↓0←*α↓h←*α↓mz← @REF("(5.1)"); 
         →INI400_000073TEXT("Eccentricity caused by geometric imperfection:") @REF("(§5.2(7))"); 
-        e↓iz← →INI400_000075= sign↓z←*[(θ↓iy←*l↓0y←)/2] @REF("(5.2)"); 
-        e↓iy← →INI400_000074= sign↓y←*[(θ↓iz←*l↓0z←)/2] @REF("(5.2)"); 
+        e↓iz← →INI400_000075= sgn↓z←*[(θ↓iy←*l↓0y←)/2] @REF("(5.2)"); 
+        e↓iy← →INI400_000074= sgn↓y←*[(θ↓iz←*l↓0z←)/2] @REF("(5.2)"); 
     } 
     
     →PAI127_000035PAGEBREAK(); 
@@ -649,8 +649,8 @@ IF(CompressMember) {
         →INI400_006631obEWN.Add(new Structure("Index", "N" &amp; IndexEWN &amp; "/" &amp; Number↓N←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
     } ELSE { 
         IF(CalMinEcc) { 
-            e↓0min,z← →INI400_000092= sign↓z←*MAX(h/30, 0.02); 
-            e↓0min,y← →INI400_000089= sign↓y←*MAX(b/30, 0.02); 
+            e↓0min,z← →INI400_000092= sgn↓z←*MAX(h/30, 0.02); 
+            e↓0min,y← →INI400_000089= sgn↓y←*MAX(b/30, 0.02); 
             
         } ELSE { 
             e↓0min,z← →INI400_006793= 0; 
@@ -667,8 +667,8 @@ IF(CompressMember) {
     →INI400_000699PAGEBREAK(); 
     
     →INI400_000102TEXT("First order eccentricity including imperfection"); 
-    e↓0Edz← →INI400_000098= sign↓z←*MAX(ABS(e↓0z←+e↓iz←), ABS(e↓0min,z←)); 
-    e↓0Edy← →INI400_000095= sign↓y←*MAX(ABS(e↓0y←+e↓iy←), ABS(e↓0min,y←)); 
+    e↓0Edz← →INI400_000098= sgn↓z←*MAX(ABS(e↓0z←+e↓iz←), ABS(e↓0min,z←)); 
+    e↓0Edy← →INI400_000095= sgn↓y←*MAX(ABS(e↓0y←+e↓iy←), ABS(e↓0min,y←)); 
     
     →INI400_000701PAGEBREAK(); 
     
@@ -859,7 +859,7 @@ IF(CompressMember) {
         } ELSE { 
             →PAI127_000043TEXT("λ↓y← &gt; λ↓limy← = " &amp; λ↓y← &amp; " &gt; " &amp; λ↓limy←); 
             →PAI127_000032TEXT("... 2↑nd← order effect") @REF("(§5.8.3.1(1))"); 
-            e↓2z← →INI400_000135= sign↓z←*[χ↓y←*l↓0y←↑2←/c↓y←] @REF("(5.33)"); 
+            e↓2z← →INI400_000135= sgn↓z←*[χ↓y←*l↓0y←↑2←/c↓y←] @REF("(5.33)"); 
         } 
         IF(λ↓z← &lt;= λ↓limz←) { 
             →PAI127_000044TEXT("λ↓z← ≤ λ↓limz← = " &amp; λ↓z← &amp; " ≤ " &amp; λ↓limz←); 
@@ -868,7 +868,7 @@ IF(CompressMember) {
         } ELSE { 
             →PAI127_000046TEXT("λ↓z← &gt; λ↓limz← = " &amp; λ↓z← &amp; " &gt; " &amp; λ↓limz←); 
             →PAI127_000047TEXT("... 2↑nd← order effect") @REF("(§5.8.3.1(1))"); 
-            e↓2y← →INI400_000134= sign↓y←*[χ↓z←*l↓0z←↑2←/c↓z←] @REF("(5.33)"); 
+            e↓2y← →INI400_000134= sgn↓y←*[χ↓z←*l↓0z←↑2←/c↓z←] @REF("(5.33)"); 
         } 
     } 
     
@@ -1089,8 +1089,8 @@ IF(CompressMember) {
             e↓0Edy← →KRS116_000025= e↓0y←+e↓iy←; 
             e↓0Edz← →KRS116_000026= e↓0z←+e↓iz←; 
         } ELSE { 
-            e↓0Edy← →INI400_000189= sign↓y←*MAX(ABS(e↓0y←+e↓iy←), ABS(e↓0min,y←)); 
-            e↓0Edz← →INI400_000515= sign↓z←*MAX(ABS(e↓0z←+e↓iz←), ABS(e↓0min,z←)); 
+            e↓0Edy← →INI400_000189= sgn↓y←*MAX(ABS(e↓0y←+e↓iy←), ABS(e↓0min,y←)); 
+            e↓0Edz← →INI400_000515= sgn↓z←*MAX(ABS(e↓0z←+e↓iz←), ABS(e↓0min,z←)); 
         } 
         M↓0Edy← →INI400_000182= N↓Ed←*e↓0Edz←; 
         M↓0Edz← →INI400_000183= N↓Ed←*e↓0Edy←; 
@@ -1101,8 +1101,8 @@ IF(CompressMember) {
             M↓2z← →INI400_000185= N↓Ed←*e↓2y←; 
         } 
         IF(IO.SetupNA.EC_NA.Code == "ONORM") { 
-            e↓dy← →KRS116_000027= sign↓y←*MAX(ABS(e↓0Edy←+e↓2y←), ABS(e↓0min,y←)); 
-            e↓dz← →KRS116_000028= sign↓z←*MAX(ABS(e↓0Edz←+e↓2z←), ABS(e↓0min,z←)); 
+            e↓dy← →KRS116_000027= sgn↓y←*MAX(ABS(e↓0Edy←+e↓2y←), ABS(e↓0min,y←)); 
+            e↓dz← →KRS116_000028= sgn↓z←*MAX(ABS(e↓0Edz←+e↓2z←), ABS(e↓0min,z←)); 
         } ELSE { 
             e↓dy← →INI400_000162= e↓0Edy←+e↓2y←; 
             e↓dz← →INI400_000164= e↓0Edz←+e↓2z←; 
@@ -1110,12 +1110,12 @@ IF(CompressMember) {
         IF(ABS(N↓Ed←*e↓dz←) &gt;= ABS(M↓y←)) { 
             M↓Edy← →INI400_000187= N↓Ed←*e↓dz←; 
         } ELSE { 
-            M↓Edy← →INI400_005325= sign↓z←*N↓Ed←*MAX(ABS(e↓dz←), ABS(M↓y←/N↓Ed←)); 
+            M↓Edy← →INI400_005325= sgn↓z←*N↓Ed←*MAX(ABS(e↓dz←), ABS(M↓y←/N↓Ed←)); 
         } 
         IF(ABS(N↓Ed←*e↓dy←) &gt;= ABS(M↓z←)) { 
             M↓Edz← →INI400_005326= N↓Ed←*e↓dy←; 
         } ELSE { 
-            M↓Edz← →INI400_005327= sign↓y←*N↓Ed←*MAX(ABS(e↓dy←), ABS(M↓z←/N↓Ed←)); 
+            M↓Edz← →INI400_005327= sgn↓y←*N↓Ed←*MAX(ABS(e↓dy←), ABS(M↓z←/N↓Ed←)); 
         } 
     } 
 } 
@@ -1792,7 +1792,7 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="IO_HELPER" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_IO_HELPER">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -2014,7 +2014,7 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="MemberType" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_MemberType">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -2189,24 +2189,24 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="sgn↓y←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="sgn↓z←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="ShapeCss" ESA_ID="" Type="Object">
         <Description TranslateID="VARIABLE_ShapeCss">
           <ENU>Array of point of concrete cross-sections</ENU>
         </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="sign↓y←" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="sign↓z←" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Slenderness" ESA_ID="" Type="Object">
         <Description>
@@ -10425,10 +10425,10 @@ IF(obEWN.Count != 0 &amp;&amp; IO.LayoutIndex == 0) {
       <ENU>"First order eccentricity"</ENU>
     </Item>
     <Item ID="TEXT_PAI127_000015">
-      <ENU>"(" &amp; 'sign↓y←' &amp; "=" &amp; sign↓y← &amp; ")"</ENU>
+      <ENU>"(" &amp; 'sgn↓y←' &amp; "=" &amp; sgn↓y← &amp; ")"</ENU>
     </Item>
     <Item ID="TEXT_PAI127_000016">
-      <ENU>"(" &amp; 'sign↓z←' &amp; "=" &amp; sign↓z← &amp; ")"</ENU>
+      <ENU>"(" &amp; 'sgn↓z←' &amp; "=" &amp; sgn↓z← &amp; ")"</ENU>
     </Item>
     <Item TranslateID="TEXT_PAI127_000017">
       <ENU>"First order moment eccentricity"</ENU>

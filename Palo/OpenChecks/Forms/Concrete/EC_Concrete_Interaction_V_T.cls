@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="2362ad0e-2662-47d5-98d1-b780d7ace3ba">
   <CodeEditor>
-    <SourceCode Collapsed="672" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure
+    <SourceCode Collapsed="" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure
     bool ValidateInput(object Input) { //Validate inputs from master to this form
 
         //setting of calculation
@@ -429,6 +429,7 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0 &amp;&amp; COMPARE(V↓Ed←, 0, 6) == 0) {
         UC↓int.con← →INI400_013968= UC_lim; 
         UC↓int.shear← →INI400_013969= UC_lim; 
         UC↓int.long← →INI400_013970= UC_lim; 
+        UC↓int← →KRS100_000001= UC_lim; 
         UC↓shear← →INI400_013971= UC_lim; 
         UC↓tor← →INI400_013972= UC_lim; 
         θ →INI400_013941= 40; 
@@ -683,7 +684,7 @@ IF(COMPARE(T↓Ed←, 0, 6) == 0 &amp;&amp; COMPARE(V↓Ed←, 0, 6) == 0) {
                     →INI400_013829Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
                     Number↓E← →INI400_003881= Number↓E←+1; 
                     →INI400_008086obEWN.Add(new Structure("Index", "E" &amp; IndexEWN &amp; "/" &amp; Number↓E←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
-                    UC →INI400_003907= UC_lim; UC↓int.con← →INI400_008087= UC_lim; UC↓int.shear← →INI400_008088= UC_lim; UC↓int.long← →INI400_008089= UC_lim; UC↓int← →INI400_008090= UC↓int←; 
+                    UC →INI400_003907= UC_lim; UC↓int.con← →INI400_008087= UC_lim; UC↓int.shear← →INI400_008088= UC_lim; UC↓int.long← →INI400_008089= UC_lim; UC↓int← →INI400_008090= UC_lim; 
                 } ELSE { 
                     →INI400_005743BLOCK("Interaction check Vy+Vz+T (concrete)") { 
                         →INI400_006452BLOCK("Check equation (T↓Ed←/T↓Rdmax←)+(V↓Ed←/V↓Rdmax←)") { 
@@ -7699,6 +7700,14 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="487" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="562" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="967" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="967" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1368" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="KRS106_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

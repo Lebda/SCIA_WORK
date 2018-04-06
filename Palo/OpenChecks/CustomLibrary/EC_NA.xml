@@ -832,12 +832,8 @@
         <ENU>_NA Name</ENU>
       </Description>
     </PropertySet>
-    <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.η" Unit="" Type="Struct">
-      <StructMembers>
-        <StructMember Symbol="η1" Type="Numeric" Unit="" />
-        <StructMember Symbol="η2" Type="Numeric" Unit="" />
-      </StructMembers>
-      <Description TranslateID="EC_1993_1_5.η">
+    <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.eta_sb1" Unit="" Type="Numeric">
+      <Description TranslateID="EC_1993_1_5.eta_sb1">
         <ENU>Clause 5.1 (2) N2 - Resistance to shear</ENU>
       </Description>
     </PropertySet>
@@ -1446,7 +1442,7 @@
       <Property>ÖNORM EN 1993-1-3</Property>
       <Property>ÖNORM EN 1993-1-4</Property>
       <Property>ÖNORM EN 1993-1-5</Property>
-      <Property>1.20;1.00;</Property>
+      <Property>1.2</Property>
       <Property>ÖNORM EN 1993-1-6</Property>
       <Property>ÖNORM EN 1993-1-7</Property>
       <Property>ÖNORM EN 1993-1-8</Property>
@@ -1659,7 +1655,7 @@
       <Property>NBN EN 1993-1-3</Property>
       <Property>NBN EN 1993-1-4</Property>
       <Property>NBN EN 1993-1-5</Property>
-      <Property>1.20;1.00;</Property>
+      <Property>1.2</Property>
       <Property>NBN EN 1993-1-6</Property>
       <Property>NBN EN 1993-1-7</Property>
       <Property>NBN EN 1993-1-8</Property>
@@ -1872,7 +1868,7 @@
       <Property>BS EN 1993-1-3</Property>
       <Property>BS EN 1993-1-4</Property>
       <Property>BS EN 1993-1-5</Property>
-      <Property>1.00;1.00;</Property>
+      <Property>1.2</Property>
       <Property>BS EN 1993-1-6</Property>
       <Property>BS EN 1993-1-7</Property>
       <Property>BS EN 1993-1-8</Property>
@@ -2085,7 +2081,7 @@
       <Property>ČSN EN 1993-1-3</Property>
       <Property>ČSN EN 1993-1-4</Property>
       <Property>ČSN EN 1993-1-5</Property>
-      <Property>1.20;1.00;</Property>
+      <Property>1.2</Property>
       <Property>ČSN EN 1993-1-6</Property>
       <Property>ČSN EN 1993-1-7</Property>
       <Property>ČSN EN 1993-1-8</Property>
@@ -2298,7 +2294,7 @@
       <Property>NEN EN 1993-1-3</Property>
       <Property>NEN EN 1993-1-4</Property>
       <Property>NEN EN 1993-1-5</Property>
-      <Property>1.20;1.00;</Property>
+      <Property>1.2</Property>
       <Property>NEN EN 1993-1-6</Property>
       <Property>NEN EN 1993-1-7</Property>
       <Property>NEN EN 1993-1-8</Property>
@@ -2511,7 +2507,7 @@
       <Property>SFS EN 1993-1-3</Property>
       <Property>SFS EN 1993-1-4</Property>
       <Property>SFS EN 1993-1-5</Property>
-      <Property>1.20;1.00;</Property>
+      <Property>1.2</Property>
       <Property>SFS EN 1993-1-6</Property>
       <Property>SFS EN 1993-1-7</Property>
       <Property>SFS EN 1993-1-8</Property>
@@ -2724,7 +2720,7 @@
       <Property>NF EN 1993-1-3</Property>
       <Property>NF EN 1993-1-4</Property>
       <Property>NF EN 1993-1-5</Property>
-      <Property>1.20;1.00;</Property>
+      <Property>1.2</Property>
       <Property>NF EN 1993-1-6</Property>
       <Property>NF EN 1993-1-7</Property>
       <Property>NF EN 1993-1-8</Property>
@@ -2937,7 +2933,7 @@
       <Property>DIN EN 1993-1-3</Property>
       <Property>DIN EN 1993-1-4</Property>
       <Property>DIN EN 1993-1-5</Property>
-      <Property>1.20;1.00;</Property>
+      <Property>1.2</Property>
       <Property>DIN EN 1993-1-6</Property>
       <Property>DIN EN 1993-1-7</Property>
       <Property>DIN EN 1993-1-8</Property>
@@ -3150,7 +3146,7 @@
       <Property>ELOT EN 1993-1-3</Property>
       <Property>ELOT EN 1993-1-4</Property>
       <Property>ELOT EN 1993-1-5</Property>
-      <Property>1.20;1.00;</Property>
+      <Property>1.2</Property>
       <Property>ELOT EN 1993-1-6</Property>
       <Property>ELOT EN 1993-1-7</Property>
       <Property>ELOT EN 1993-1-8</Property>
@@ -3363,7 +3359,7 @@
       <Property>IS EN 1993-1-3</Property>
       <Property>IS EN 1993-1-4</Property>
       <Property>IS EN 1993-1-5</Property>
-      <Property>1.00;1.00;</Property>
+      <Property>1.2</Property>
       <Property>IS EN 1993-1-6</Property>
       <Property>IS EN 1993-1-7</Property>
       <Property>IS EN 1993-1-8</Property>
@@ -3576,7 +3572,7 @@
       <Property>LU EN 1993-1-3</Property>
       <Property>LU EN 1993-1-4</Property>
       <Property>LU EN 1993-1-5</Property>
-      <Property>1.20;1.00;</Property>
+      <Property>1.2</Property>
       <Property>LU EN 1993-1-6</Property>
       <Property>LU EN 1993-1-7</Property>
       <Property>LU EN 1993-1-8</Property>
@@ -3789,7 +3785,7 @@
       <Property>MAL EN 1993-1-3</Property>
       <Property>MAL EN 1993-1-4</Property>
       <Property>MAL EN 1993-1-5</Property>
-      <Property>1.20;1.00;</Property>
+      <Property>1.2</Property>
       <Property>MAL EN 1993-1-6</Property>
       <Property>MAL EN 1993-1-7</Property>
       <Property>MAL EN 1993-1-8</Property>
@@ -4002,7 +3998,7 @@
       <Property>NS EN 1993-1-3</Property>
       <Property>NS EN 1993-1-4</Property>
       <Property>NS EN 1993-1-5</Property>
-      <Property>1.20;1.00;</Property>
+      <Property>1.2</Property>
       <Property>NS EN 1993-1-6</Property>
       <Property>NS EN 1993-1-7</Property>
       <Property>NS EN 1993-1-8</Property>
@@ -4215,7 +4211,7 @@
       <Property>PN EN 1993-1-3</Property>
       <Property>PN EN 1993-1-4</Property>
       <Property>PN EN 1993-1-5</Property>
-      <Property>1.20;1.00;</Property>
+      <Property>1.2</Property>
       <Property>PN EN 1993-1-6</Property>
       <Property>PN EN 1993-1-7</Property>
       <Property>PN EN 1993-1-8</Property>
@@ -4428,7 +4424,7 @@
       <Property>SR EN 1993-1-3</Property>
       <Property>SR EN 1993-1-4</Property>
       <Property>SR EN 1993-1-5</Property>
-      <Property>1.20;1.00;</Property>
+      <Property>1.2</Property>
       <Property>SR EN 1993-1-6</Property>
       <Property>SR EN 1993-1-7</Property>
       <Property>SR EN 1993-1-8</Property>
@@ -4641,7 +4637,7 @@
       <Property>SS EN 1993-1-3</Property>
       <Property>SS EN 1993-1-4</Property>
       <Property>SS EN 1993-1-5</Property>
-      <Property>1.20;1.00;</Property>
+      <Property>1.2</Property>
       <Property>SS EN 1993-1-6</Property>
       <Property>SS EN 1993-1-7</Property>
       <Property>SS EN 1993-1-8</Property>
@@ -4854,7 +4850,7 @@
       <Property>STN EN 1993-1-3</Property>
       <Property>STN EN 1993-1-4</Property>
       <Property>STN EN 1993-1-5</Property>
-      <Property>1.20;1.00;</Property>
+      <Property>1.2</Property>
       <Property>STN EN 1993-1-6</Property>
       <Property>STN EN 1993-1-7</Property>
       <Property>STN EN 1993-1-8</Property>
@@ -5067,7 +5063,7 @@
       <Property>SIST EN 1993-1-3</Property>
       <Property>SIST EN 1993-1-4</Property>
       <Property>SIST EN 1993-1-5</Property>
-      <Property>1.20;1.00;</Property>
+      <Property>1.2</Property>
       <Property>SIST EN 1993-1-6</Property>
       <Property>SIST EN 1993-1-7</Property>
       <Property>SIST EN 1993-1-8</Property>
@@ -5280,7 +5276,7 @@
       <Property>UNE EN 1993-1-3</Property>
       <Property>UNE EN 1993-1-4</Property>
       <Property>UNE EN 1993-1-5</Property>
-      <Property>1.20;1.00;</Property>
+      <Property>1.2</Property>
       <Property>UNE EN 1993-1-6</Property>
       <Property>UNE EN 1993-1-7</Property>
       <Property>UNE EN 1993-1-8</Property>
@@ -5493,7 +5489,7 @@
       <Property>SS EN 1993-1-3</Property>
       <Property>SS EN 1993-1-4</Property>
       <Property>SS EN 1993-1-5</Property>
-      <Property>1.20;1.00;</Property>
+      <Property>1.2</Property>
       <Property>SS EN 1993-1-6</Property>
       <Property>SS EN 1993-1-7</Property>
       <Property>SS EN 1993-1-8</Property>
@@ -5706,7 +5702,7 @@
       <Property>EC EN 1993-1-3</Property>
       <Property>EC EN 1993-1-4</Property>
       <Property>EC EN 1993-1-5</Property>
-      <Property>1.20;1.00;</Property>
+      <Property>1.2</Property>
       <Property>EC EN 1993-1-6</Property>
       <Property>EC EN 1993-1-7</Property>
       <Property>EC EN 1993-1-8</Property>

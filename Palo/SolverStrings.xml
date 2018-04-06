@@ -3953,23 +3953,20 @@
 	<STRING
 		ID="BSOLV_IDS_E_801">
 		<NO>796</NO>
-		<TYPE
-			PART="General">Warning</TYPE>
-		<DESCRIP>
-		</DESCRIP>
-		<ENU>Reinforcement design: Internal error no. #. \nSend data to be checked</ENU>
-		<SVK>
-		</SVK>
-		<SKY>Dimenzovanie: interná chyba #. \nZašlite dáta k prevereniu</SKY>
+		<TYPE PART="General">Warning</TYPE>
+		<DESCRIP></DESCRIP>
+    <ENU>Internal error No. #!\nPlease inform the software manufacturer\nand and attach the data of the model.</ENU>
+		<SVK></SVK>
+		<SKY>Interná chyba č. #! \nInformujte prosím výrobca software\na pripojte dáta príslušného modelu.</SKY>
     <CSY>Interní chyba č. #!\nInformujte prosím výrobce software\na připojte data příslušného modelu.</CSY>
-		<NLD>Wapeningsberekening: interne fout nr. #. \nZend het project ter controle.</NLD>
+    <NLD>Interne fout No. #!\ninformeer het software-bedrijf\nen verstuur de gegevens van het model.</NLD>
 		<FRB>Reinforcement design: Internal error no. #. \nSend data to be checked</FRB>
-		<DEU>Stahlbetonbemessung: Fehler Nr. #\nBitte Projekt zur Kontrolle senden</DEU>
-		<ITA>Reinforcement design: Internal error no. #. \nSend data to be checked</ITA>
-		<PLK>Projekt zbrojenia: Błąd ogólny nr #. \nWyślij dane do sprawdzenia</PLK>
-		<PTG>Cálculo de armadura: Erro interno n. #. \nEnvie dados para serem verificados</PTG>
-		<RUS>Đŕń÷ĺň ŕđěŕňóđű: Âíóňđĺíí˙˙ îřčáęŕ ą #. \nÎňďđŕâüňĺ äŕííűĺ äë˙ ďđîâĺđęč</RUS>
-		<ROM>Calcul armare: Eroare interna nr. #. \nTrimiteti date pentru verificare</ROM>
+    <DEU>Interner Fehler Nr. #!\nInformieren Sie bitte den Software-Hersteller und\nsenden Sie die Daten des betreffenden Modells.</DEU>
+    <ITA>Errore interno nr. #!\nInformare il produttore del software e\nallegare i dati del modello.</ITA>
+    <PLK>Błąd wewnętrzny nr #!\nProszę poinformować producenta oprogramowania\ni dołączyć dane modelu.</PLK>
+    <PTG>Erro interno nº #!\nInforme o fabricante do software e envie \nos dados do modelo.</PTG>
+    <RUS>Внутренняя ошибка № #!\nСообщите, пожалуйста, об этом разработчикам программного обеспечения \nи приложите данные по соответствующей модели.</RUS>
+		<ROM></ROM>
 	</STRING>
 	<STRING
 		ID="BSOLV_IDS_E_802">

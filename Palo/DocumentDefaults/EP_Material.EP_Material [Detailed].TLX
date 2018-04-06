@@ -3,7 +3,7 @@
 	<DataSourceNameExtension></DataSourceNameExtension>
 	<Name>EP_Material.2eEP_Material</Name>
 	<AdvancedName>Detailed</AdvancedName>
-	<Cells Size="55"><ARRAY_ITEM ID="0"><CX64TLXCell><Width><Width>0.03</Width>
+	<Cells Size="56"><ARRAY_ITEM ID="0"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1572,6 +1572,43 @@
 								<TLXItemHorizontalAlignment><Value>0</Value>
 									<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
 								</TLXItemHorizontalAlignment>
+								<clsid>{4657EB14-069E-4E6A-B5D0-99E7314CA609}</clsid>
+								<Units>-1</Units>
+								<SourceCLSID>{4657EB14-069E-4E6A-B5D0-99E7314CA609}</SourceCLSID>
+								<SourceNameExtension>Composed</SourceNameExtension>
+								<SourceID>-1</SourceID>
+								<TLX></TLX>
+								<Item_Type><Value>2</Value>
+									<ValueName>eTLXItem_Type_Subtable</ValueName>
+								</Item_Type>
+								<Parametric_Values_Representation><Value>3</Value>
+									<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
+								</Parametric_Values_Representation>
+								<Value_Type><Value>13</Value>
+									<ValueName></ValueName>
+								</Value_Type>
+								<Item_Value>Detailed</Item_Value>
+							</TLXITEM>
+						</ARRAY_ITEM>
+					</Items>
+				</Items>
+			</CX64TLXCell>
+		</ARRAY_ITEM>
+		<ARRAY_ITEM ID="43"><CX64TLXCell><Width><Width>0.03</Width>
+				</Width>
+				<Height><Height>0.05</Height>
+				</Height>
+				<Items><Items Size="1"><ARRAY_ITEM ID="0"><TLXITEM><PropName></PropName>
+								<RealValue><Value>0</Value>
+									<ValueName>eTLXItem_RealValue_Real</ValueName>
+								</RealValue>
+								<FormattedText>0</FormattedText>
+								<NameFormattedText>0</NameFormattedText>
+								<PictureInTable>0</PictureInTable>
+								<PropertyUserName></PropertyUserName>
+								<TLXItemHorizontalAlignment><Value>0</Value>
+									<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
+								</TLXItemHorizontalAlignment>
 								<clsid>{D861F173-1AF5-4F78-A4F9-A2AB40FE6F54}</clsid>
 								<Units>-1</Units>
 								<SourceCLSID>{D861F173-1AF5-4F78-A4F9-A2AB40FE6F54}</SourceCLSID>
@@ -1594,7 +1631,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="43"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="44"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1631,7 +1668,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="44"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="45"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1668,7 +1705,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="45"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="46"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1705,7 +1742,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="46"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="47"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1742,7 +1779,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="47"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="48"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1779,7 +1816,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="48"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="49"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1816,7 +1853,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="49"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="50"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1853,7 +1890,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="50"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="51"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1890,7 +1927,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="51"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="52"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1927,7 +1964,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="52"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="53"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -1964,7 +2001,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="53"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="54"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -2001,7 +2038,7 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="54"><CX64TLXCell><Width><Width>0.03</Width>
+		<ARRAY_ITEM ID="55"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -3704,68 +3741,6 @@
 						<TLXItemHorizontalAlignment><Value>0</Value>
 							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
 						</TLXItemHorizontalAlignment>
-						<clsid>{48C81A90-3016-4DF5-90AD-B1DE2917858E}</clsid>
-						<Units>-1</Units>
-						<SourceCLSID>{48C81A90-3016-4DF5-90AD-B1DE2917858E}</SourceCLSID>
-						<SourceNameExtension>Composed</SourceNameExtension>
-						<SourceID>-1</SourceID>
-						<TLX></TLX>
-						<Item_Type><Value>2</Value>
-							<ValueName>eTLXItem_Type_Subtable</ValueName>
-						</Item_Type>
-						<Parametric_Values_Representation><Value>3</Value>
-							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
-						</Parametric_Values_Representation>
-						<Value_Type><Value>13</Value>
-							<ValueName></ValueName>
-						</Value_Type>
-						<Item_Value>Detailed</Item_Value>
-					</tlxitem>
-					<Name>Concrete.20SIA.20262</Name>
-				</TLXITEMEX>
-			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="54"><TLXITEMEX><tlxitem><PropName></PropName>
-						<RealValue><Value>0</Value>
-							<ValueName>eTLXItem_RealValue_Real</ValueName>
-						</RealValue>
-						<FormattedText>0</FormattedText>
-						<NameFormattedText>0</NameFormattedText>
-						<PictureInTable>0</PictureInTable>
-						<PropertyUserName></PropertyUserName>
-						<TLXItemHorizontalAlignment><Value>0</Value>
-							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
-						</TLXItemHorizontalAlignment>
-						<clsid>{4657EB14-069E-4E6A-B5D0-99E7314CA609}</clsid>
-						<Units>-1</Units>
-						<SourceCLSID>{4657EB14-069E-4E6A-B5D0-99E7314CA609}</SourceCLSID>
-						<SourceNameExtension>Composed</SourceNameExtension>
-						<SourceID>-1</SourceID>
-						<TLX></TLX>
-						<Item_Type><Value>2</Value>
-							<ValueName>eTLXItem_Type_Subtable</ValueName>
-						</Item_Type>
-						<Parametric_Values_Representation><Value>3</Value>
-							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
-						</Parametric_Values_Representation>
-						<Value_Type><Value>13</Value>
-							<ValueName></ValueName>
-						</Value_Type>
-						<Item_Value>Detailed</Item_Value>
-					</tlxitem>
-					<Name>Reinforcement.20SIA.20262</Name>
-				</TLXITEMEX>
-			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="55"><TLXITEMEX><tlxitem><PropName></PropName>
-						<RealValue><Value>0</Value>
-							<ValueName>eTLXItem_RealValue_Real</ValueName>
-						</RealValue>
-						<FormattedText>0</FormattedText>
-						<NameFormattedText>0</NameFormattedText>
-						<PictureInTable>0</PictureInTable>
-						<PropertyUserName></PropertyUserName>
-						<TLXItemHorizontalAlignment><Value>0</Value>
-							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
-						</TLXItemHorizontalAlignment>
 						<clsid>{F9C8F994-690B-4ABD-8DBA-C64B5AD278C4}</clsid>
 						<Units>-1</Units>
 						<SourceCLSID>{F9C8F994-690B-4ABD-8DBA-C64B5AD278C4}</SourceCLSID>
@@ -3786,7 +3761,7 @@
 					<Name>Prestress.20reinforcement.20SIA.20262</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="56"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="54"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -3817,7 +3792,7 @@
 					<Name></Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="57"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="55"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -3848,7 +3823,7 @@
 					<Name>Concrete.20ONORM.20B.204700,.20B.204710-1</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="58"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="56"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -3879,7 +3854,7 @@
 					<Name>Reinforcement.20ONORM.20B.204700</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="59"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="57"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -3910,7 +3885,7 @@
 					<Name>Prestress.20reinforcement.20EC2</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="60"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="58"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -3941,7 +3916,7 @@
 					<Name>Concrete.20NEN.206720</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="61"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="59"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -3972,7 +3947,7 @@
 					<Name>Steel.20NEN.206770</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="62"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="60"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4003,7 +3978,7 @@
 					<Name>Reinforcement.20NEN.206720</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="63"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="61"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4034,7 +4009,7 @@
 					<Name>Prestress.20reinforcement.20NEN.206720</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="64"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="62"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4065,7 +4040,7 @@
 					<Name>Concrete.20BAEL.2091</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="65"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="63"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4096,7 +4071,7 @@
 					<Name></Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="66"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="64"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4127,7 +4102,7 @@
 					<Name>Reinforcement.20BAEL.2091</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="67"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="65"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4158,7 +4133,7 @@
 					<Name>Concrete.20DIN.201045-1</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="68"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="66"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4189,7 +4164,7 @@
 					<Name>Reinforcement.20DIN.201045-1</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="69"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="67"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4220,7 +4195,7 @@
 					<Name>Steel.20DIN.2018800</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="70"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="68"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4251,7 +4226,7 @@
 					<Name>Timber</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="71"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="69"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4282,7 +4257,7 @@
 					<Name>DIN.201045-1</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="72"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="70"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4313,7 +4288,7 @@
 					<Name>Concrete.20EC2</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="73"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="71"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4344,7 +4319,7 @@
 					<Name>Reinforcement.20EC2</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="74"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="72"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4375,7 +4350,7 @@
 					<Name>Prestress.20reinforcement.20EC2</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="75"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="73"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4406,7 +4381,7 @@
 					<Name>Steel.20.20CSN.20731401</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="76"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="74"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4437,7 +4412,7 @@
 					<Name>Timber.20CSN.20731701</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="77"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="75"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4468,7 +4443,7 @@
 					<Name>Concrete.20CSN.20731201</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="78"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="76"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4499,7 +4474,7 @@
 					<Name>Concrete.20CSN.20736206</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="79"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="77"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4530,7 +4505,7 @@
 					<Name>Concrete.20CSN.20736207</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="80"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="78"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4561,7 +4536,7 @@
 					<Name>Reinforcement.20CSN.20731201</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="81"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="79"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4592,7 +4567,7 @@
 					<Name>Reinforcement.20CSN.20736206</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="82"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="80"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4623,7 +4598,7 @@
 					<Name>Reinforcement.20CSN.20736207</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="83"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="81"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4654,7 +4629,7 @@
 					<Name>Prestress.20reinforcement.20CSN.20731201</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="84"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="82"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4685,7 +4660,7 @@
 					<Name>Prestress.20reinforcement.20CSN.20736207</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="85"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="83"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4716,7 +4691,7 @@
 					<Name>Reinforcement.20.20BS.208110</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="86"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="84"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4747,7 +4722,7 @@
 					<Name>Concrete.20BS.208110</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="87"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="85"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4778,7 +4753,7 @@
 					<Name></Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="88"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="86"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4809,7 +4784,7 @@
 					<Name>Prestress.20reinforcement.20EC2</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="89"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="87"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4840,7 +4815,7 @@
 					<Name>Aluminium</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="90"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="88"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4871,7 +4846,7 @@
 					<Name>Masonry</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="91"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="89"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4902,7 +4877,7 @@
 					<Name>Timber.20EC5</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="92"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="90"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4933,7 +4908,7 @@
 					<Name>Steel.20EC3</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="93"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="91"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4964,7 +4939,7 @@
 					<Name>MaterialB</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="94"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="92"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -4995,7 +4970,7 @@
 					<Name>Concrete.20EN.201992-2</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="95"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="93"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -5026,7 +5001,7 @@
 					<Name>Concrete.20ACI.20318(M)-08</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="96"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="94"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -5057,7 +5032,7 @@
 					<Name>Concrete.20EC2</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="97"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="95"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -5088,7 +5063,7 @@
 					<Name>Reinforcement.20EC2</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="98"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="96"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -5117,6 +5092,68 @@
 						<Item_Value></Item_Value>
 					</tlxitem>
 					<Name>Steel.20fibre.20concrete</Name>
+				</TLXITEMEX>
+			</ARRAY_ITEM>
+			<ARRAY_ITEM ID="97"><TLXITEMEX><tlxitem><PropName></PropName>
+						<RealValue><Value>0</Value>
+							<ValueName>eTLXItem_RealValue_Real</ValueName>
+						</RealValue>
+						<FormattedText>0</FormattedText>
+						<NameFormattedText>0</NameFormattedText>
+						<PictureInTable>0</PictureInTable>
+						<PropertyUserName></PropertyUserName>
+						<TLXItemHorizontalAlignment><Value>0</Value>
+							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
+						</TLXItemHorizontalAlignment>
+						<clsid>{48C81A90-3016-4DF5-90AD-B1DE2917858E}</clsid>
+						<Units>-1</Units>
+						<SourceCLSID>{48C81A90-3016-4DF5-90AD-B1DE2917858E}</SourceCLSID>
+						<SourceNameExtension>Composed</SourceNameExtension>
+						<SourceID>-1</SourceID>
+						<TLX></TLX>
+						<Item_Type><Value>2</Value>
+							<ValueName>eTLXItem_Type_Subtable</ValueName>
+						</Item_Type>
+						<Parametric_Values_Representation><Value>3</Value>
+							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
+						</Parametric_Values_Representation>
+						<Value_Type><Value>13</Value>
+							<ValueName></ValueName>
+						</Value_Type>
+						<Item_Value></Item_Value>
+					</tlxitem>
+					<Name>Concrete.20SIA.20262</Name>
+				</TLXITEMEX>
+			</ARRAY_ITEM>
+			<ARRAY_ITEM ID="98"><TLXITEMEX><tlxitem><PropName></PropName>
+						<RealValue><Value>0</Value>
+							<ValueName>eTLXItem_RealValue_Real</ValueName>
+						</RealValue>
+						<FormattedText>0</FormattedText>
+						<NameFormattedText>0</NameFormattedText>
+						<PictureInTable>0</PictureInTable>
+						<PropertyUserName></PropertyUserName>
+						<TLXItemHorizontalAlignment><Value>0</Value>
+							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
+						</TLXItemHorizontalAlignment>
+						<clsid>{4657EB14-069E-4E6A-B5D0-99E7314CA609}</clsid>
+						<Units>-1</Units>
+						<SourceCLSID>{4657EB14-069E-4E6A-B5D0-99E7314CA609}</SourceCLSID>
+						<SourceNameExtension>Composed</SourceNameExtension>
+						<SourceID>-1</SourceID>
+						<TLX></TLX>
+						<Item_Type><Value>2</Value>
+							<ValueName>eTLXItem_Type_Subtable</ValueName>
+						</Item_Type>
+						<Parametric_Values_Representation><Value>3</Value>
+							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
+						</Parametric_Values_Representation>
+						<Value_Type><Value>13</Value>
+							<ValueName></ValueName>
+						</Value_Type>
+						<Item_Value></Item_Value>
+					</tlxitem>
+					<Name>Reinforcement.20SIA.20262</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
 		</Items>

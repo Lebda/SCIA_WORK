@@ -55,6 +55,26 @@
         <Stirrup ID="S1" CutsType="eFour" BranchOrientation="eVertical" BranchDistance="0.1" StirrupsDiameter="0.008" Spacing="0.200" Angle="1.570796326790" Detailing="False" Material="B 500B" Mandrel="4" />
       </Stirrups>
     </ShearReinforcementLayout>
+    <ShearReinforcementLayout Name="SReinf_RibRECT_2L" LayoutType="eShear" CrossSectionType="eRectangle" MemberType="eRib">
+      <Icons>
+        <!--same icon as for rectangle-->
+        <Icon MemberType="eRib" CssType="eRectangle" Path="Rect_layouts\SReinf_BeamRect_2L.png" />
+      </Icons>
+      <Cover ID="C1" BottomEdgeCover="0.025" TopEdgeCover="0.025" SideEdgeCover="0.025" />
+        <Stirrups>
+        <Stirrup ID="S1" CutsType="eTwo" BranchDistance="0.0" StirrupsDiameter="0.008" Spacing="0.2" Angle="1.57079632679" Detailing="False" Material="B 500B" Mandrel="4"/>
+      </Stirrups>
+    </ShearReinforcementLayout>
+    <ShearReinforcementLayout Name="SReinf_RibRECT_4L" LayoutType="eShear" CrossSectionType="eRectangle" MemberType="eRib">
+      <Icons>
+        <!--same icon as for rectangle-->
+        <Icon MemberType="eRib" CssType="eRectangle" Path="Rect_layouts\SReinf_BeamRect_4L.png" />
+      </Icons>
+      <Cover ID="C1" BottomEdgeCover="0.025" TopEdgeCover="0.025" SideEdgeCover="0.025" />
+      <Stirrups>
+        <Stirrup ID="S1" CutsType="eFour" BranchDistance="0.1" StirrupsDiameter="0.008" Spacing="0.200" Angle="1.57079632679" Detailing="False" Material="B 500B" Mandrel="4" />
+      </Stirrups>
+    </ShearReinforcementLayout>
     <!--CIRCLE-->
     <ShearReinforcementLayout Name="SReinf_ColumnCIRCLE_2L" LayoutType="eShear" CrossSectionType="eCircle" MemberType="eColumn">
       <Icons>

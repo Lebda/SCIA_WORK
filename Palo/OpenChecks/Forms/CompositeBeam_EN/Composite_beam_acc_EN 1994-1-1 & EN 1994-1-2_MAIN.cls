@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="67f1c957-43bd-4832-bd05-3d7c9c0cf2db">
   <CodeEditor>
-    <SourceCode Collapsed="56|217|272|288|312|339|344|393|411|521|555|1303" BreakPoints="">//This file contains the calculation of Composite beam according to EN 1994-1-1.
+    <SourceCode Collapsed="217|350|355|404|422|532|566|1314" BreakPoints="">//This file contains the calculation of Composite beam according to EN 1994-1-1.
 
 double UC →INI400_007153= 999; 
 double b↓eff← →POR106_000058= 0; 
@@ -288,30 +288,6 @@ double b↓eff← →POR106_000058= 0;
         
     } 
     
-    //Shear connection type, connectors geometry and material
-    →INI400_006752BLOCK { 
-        double shear_conn →INI400_007338= IO.Beam.Composite.Connection.Type; 
-        double η↓i← →INI400_007527= IO.Beam.Composite.Connection.Degree; 
-        double stud_approach →INI400_007528= IO.Beam.MemberData.Composite.Composite.CalcApproach; 
-        string Stud_Name →INI400_006714= IO.Beam.MemberData.Composite.Connectors.Connector.Name; 
-        double d↓s← →INI400_006835= IO.Beam.MemberData.Composite.Connectors.Connector.ds; 
-        double h↓nom← →INI400_006836= IO.Beam.MemberData.Composite.Connectors.Connector.hsc; 
-        double h↓sc← →POR012_000005= h↓nom←-0.005; 
-        double n↓r← →INI400_006840= IO.Beam.MemberData.Composite.Connectors.nr; 
-        IF(COMPARE(n↓r←, 1, 6) == 0) { 
-            double b↓0,stud← →INI400_006841= 0; 
-        } ELSE { 
-            b↓0,stud← →INI400_006842= IO.Beam.MemberData.Composite.Connectors.bcstud; 
-        } 
-        double n↓row← →INI400_006843= IO.Beam.MemberData.Composite.Connectors.nrows; 
-        double trough →INI400_006844= IO.Beam.MemberData.Composite.Connectors.placement; 
-        double welding →INI400_006845= IO.Beam.MemberData.Composite.Connectors.welding; 
-        
-        string Stud_Material_Name →INI400_001212= IO.Beam.MemberData.Composite.Connectors.Connector.Material.Name; 
-        double f↓us← →INI400_001213= IO.MemberData.Composite.Connectors.Connector.Material.EC.fu; 
-        double f↓ys← →INI400_006557= IO.MemberData.Composite.Connectors.Connector.Material.EC.fy; 
-    } 
-    
     //Steel sheeting geometry and material
     →INI400_006753BLOCK { 
         string Sheeting_Name →INI400_006725= IO.Beam.Composite.Slab.Sheeting.Name; 
@@ -329,14 +305,49 @@ double b↓eff← →POR106_000058= 0;
         //Sheeting rib direction
         double rib_dir →INI400_006778= 999; 
         IF(COMPARE(sheeting_angle, 80, 6) &gt;= 0 &amp;&amp; COMPARE(sheeting_angle, 100, 6) &lt;= 0) { 
-            rib_dir →INI400_006779= 1; //Transverse
+            rib_dir →INI400_006779= 1; //Transverse = Secondary
         } 
         
         IF(COMPARE(sheeting_angle, 10, 6) &lt;= 0 || COMPARE(sheeting_angle, 170, 6) &gt;= 0) { 
-            rib_dir →INI400_006780= 0; //Parallel
+            rib_dir →INI400_006780= 0; //Parallel = Primary
         } 
         
         string Sheeting_Material_Name →INI400_006773= IO.Beam.Composite.Slab.Sheeting.Material.Name; 
+    } 
+    
+    //Shear connection type, connectors geometry and material
+    →INI400_006752BLOCK { 
+        double shear_conn →INI400_007338= IO.Beam.Composite.Connection.Type; 
+        double η↓i← →INI400_007527= IO.Beam.Composite.Connection.Degree; 
+        double stud_approach →INI400_007528= IO.Beam.MemberData.Composite.Composite.CalcApproach; 
+        string Stud_Name →INI400_006714= IO.Beam.MemberData.Composite.Connectors.Connector.Name; 
+        double d↓s← →INI400_006835= IO.Beam.MemberData.Composite.Connectors.Connector.ds; 
+        double h↓nom← →INI400_006836= IO.Beam.MemberData.Composite.Connectors.Connector.hsc; 
+        double h↓sc← →POR012_000005= h↓nom←-0.005; 
+        IF(COMPARE(rib_dir, 1, 6) == 0) { //Transverse = Secondary
+            double n↓r← →INI400_006840= IO.MemberData.Composite.Connectors.SecondaryBeams.nr; 
+            IF(COMPARE(n↓r←, 1, 6) == 0) { 
+                double b↓0,stud← →INI400_006841= 0; 
+            } ELSE { 
+                b↓0,stud← →INI400_006842= IO.MemberData.Composite.Connectors.SecondaryBeams.bcstud; 
+            } 
+        } 
+        IF(COMPARE(rib_dir, 0, 6) == 0) { //Parallel = Primary
+            double n↓r← →POR014_000001= IO.MemberData.Composite.Connectors.PrimaryBeams.nr; 
+            IF(COMPARE(n↓r←, 1, 6) == 0) { 
+                double b↓0,stud← →POR014_000002= 0; 
+            } ELSE { 
+                b↓0,stud← →POR014_000003= IO.MemberData.Composite.Connectors.PrimaryBeams.bcstud; 
+            } 
+        } 
+        double long_dist →POR014_000004= IO.MemberData.Composite.Connectors.PrimaryBeams.LongitudinalSpacing; 
+        double n↓row← →INI400_006843= ROUNDUP(L/long_dist+1, 0); 
+        double trough →INI400_006844= IO.MemberData.Composite.Connectors.SecondaryBeams.placement; 
+        double welding →INI400_006845= IO.Beam.MemberData.Composite.Connectors.welding; 
+        
+        string Stud_Material_Name →INI400_001212= IO.Beam.MemberData.Composite.Connectors.Connector.Material.Name; 
+        double f↓us← →INI400_001213= IO.MemberData.Composite.Connectors.Connector.Material.EC.fu; 
+        double f↓ys← →INI400_006557= IO.MemberData.Composite.Connectors.Connector.Material.EC.fy; 
     } 
     
     //Setup
@@ -3520,7 +3531,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓a←" ESA_ID="" Type="Double" Value="8.1875e-3" Precision="2">
+      <Variable Modifier="Public" Name="A↓a←" ESA_ID="" Type="Double" Value="5.86e-3" Precision="2">
         <Description TranslateID="VARIABLE_A↓a←">
           <ENU>Area</ENU>
         </Description>
@@ -3600,27 +3611,27 @@ IF(IO.LayoutIndex == 0) {
           <ENU>Accidental combination</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="AL" ESA_ID="" Type="Double" Value="1.48" Precision="2">
+      <Variable Modifier="Public" Name="AL" ESA_ID="" Type="Double" Value="1.34" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="available_space" ESA_ID="" Type="Double" Value="105e-3" Precision="2">
+      <Variable Modifier="Public" Name="available_space" ESA_ID="" Type="Double" Value="142.2e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="b" ESA_ID="" Type="Double" Value="260e-3" Precision="2">
+      <Variable Modifier="Public" Name="b" ESA_ID="" Type="Double" Value="142.2e-3" Precision="2">
         <Description TranslateID="VARIABLE_b">
           <ENU>Width</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="b↓0,rib←" ESA_ID="" Type="Double" Value="131.5e-3" Precision="2">
+      <Variable Modifier="Public" Name="b↓0,rib←" ESA_ID="" Type="Double" Value="145e-3" Precision="2">
         <Description TranslateID="VARIABLE_b↓0,rib←">
           <ENU>Mean width of the ribs</ENU>
         </Description>
@@ -3632,7 +3643,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="b↓b←" ESA_ID="" Type="Double" Value="105e-3" Precision="2">
+      <Variable Modifier="Public" Name="b↓b←" ESA_ID="" Type="Double" Value="120e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3646,27 +3657,27 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="b↓r←" ESA_ID="" Type="Double" Value="67e-3" Precision="2">
+      <Variable Modifier="Public" Name="b↓r←" ESA_ID="" Type="Double" Value="130e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="b↓s←" ESA_ID="" Type="Double" Value="225e-3" Precision="2">
+      <Variable Modifier="Public" Name="b↓s←" ESA_ID="" Type="Double" Value="300e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="Beam_CS_Name" ESA_ID="" Type="String" Value="HEA260">
+      <Variable Modifier="Public" Name="Beam_CS_Name" ESA_ID="" Type="String" Value="UKB406/140/46">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Beam_Material_Name" ESA_ID="" Type="String" Value="S 235">
+      <Variable Modifier="Public" Name="Beam_Material_Name" ESA_ID="" Type="String" Value="S 275">
         <Description>
           <ENU>
           </ENU>
@@ -3678,14 +3689,14 @@ IF(IO.LayoutIndex == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="beffcheck↓left←" ESA_ID="" Type="Double" Value="637.5e-3" Precision="2">
+      <Variable Modifier="Public" Name="beffcheck↓left←" ESA_ID="" Type="Double" Value="1.125" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="beffcheck↓right←" ESA_ID="" Type="Double" Value="637.5e-3" Precision="2">
+      <Variable Modifier="Public" Name="beffcheck↓right←" ESA_ID="" Type="Double" Value="1.125" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3698,14 +3709,14 @@ IF(IO.LayoutIndex == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Boundary_End" ESA_ID="" Type="Double" Value="2" Precision="2">
+      <Variable Modifier="Public" Name="Boundary_End" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Boundary_Next" ESA_ID="" Type="Double" Value="2" Precision="2">
+      <Variable Modifier="Public" Name="Boundary_Next" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3758,7 +3769,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="2" kg="0" s="-2" A="0" K="-1" cd="0" mol="0" Coef="1" Dim="J/kg∙K" />
       </Variable>
-      <Variable Modifier="Public" Name="c↓f←" ESA_ID="" Type="Double" Value="102.25e-3" Precision="2">
+      <Variable Modifier="Public" Name="c↓f←" ESA_ID="" Type="Double" Value="57.5e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3777,13 +3788,13 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="2" kg="0" s="-2" A="0" K="-1" cd="0" mol="0" Coef="1" Dim="J/kg∙K" />
       </Variable>
-      <Variable Modifier="Public" Name="c↓t←" ESA_ID="" Type="Double" Value="46e-3" Precision="2">
+      <Variable Modifier="Public" Name="c↓t←" ESA_ID="" Type="Double" Value="37e-3" Precision="2">
         <Description TranslateID="VARIABLE_c↓t←">
           <ENU>Concrete cover</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="c↓w←" ESA_ID="" Type="Double" Value="177e-3" Precision="2">
+      <Variable Modifier="Public" Name="c↓w←" ESA_ID="" Type="Double" Value="360.4e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3872,13 +3883,13 @@ IF(IO.LayoutIndex == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="CombiKey" ESA_ID="" Type="String" Value="1.35*LC1+1.35*LC1_bétonsec+1.35*LC2+1.50*LC4+1.05*LC6">
+      <Variable Modifier="Public" Name="CombiKey" ESA_ID="" Type="String" Value="1.35*LC1">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="CombiName" ESA_ID="" Type="String" Value="Comp-FS-ULS">
+      <Variable Modifier="Public" Name="CombiName" ESA_ID="" Type="String" Value="Comp-CS-ULS">
         <Description>
           <ENU>
           </ENU>
@@ -4021,7 +4032,7 @@ IF(IO.LayoutIndex == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="d↓l←" ESA_ID="" Type="Double" Value="16e-3" Precision="2">
+      <Variable Modifier="Public" Name="d↓l←" ESA_ID="" Type="Double" Value="7e-3" Precision="2">
         <Description TranslateID="VARIABLE_d↓l←">
           <ENU>Bar diameter</ENU>
         </Description>
@@ -4039,7 +4050,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="d↓t←" ESA_ID="" Type="Double" Value="16e-3" Precision="2">
+      <Variable Modifier="Public" Name="d↓t←" ESA_ID="" Type="Double" Value="7e-3" Precision="2">
         <Description TranslateID="VARIABLE_d↓t←">
           <ENU>Bar diameter</ENU>
         </Description>
@@ -4083,13 +4094,13 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="E↓cm←" ESA_ID="" Type="Double" Value="32.8e9" Precision="2">
+      <Variable Modifier="Public" Name="E↓cm←" ESA_ID="" Type="Double" Value="31e9" Precision="2">
         <Description TranslateID="VARIABLE_E↓cm←">
           <ENU>E modulus</ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="e↓D←" ESA_ID="" Type="Double" Value="120.5e-3" Precision="2">
+      <Variable Modifier="Public" Name="e↓D←" ESA_ID="" Type="Double" Value="61.6e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4108,13 +4119,13 @@ IF(IO.LayoutIndex == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Entity↓left←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="Entity↓left←" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description TranslateID="VARIABLE_Entity↓left←">
           <ENU>Type of entity on the left</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Entity↓right←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="Entity↓right←" ESA_ID="" Type="Double" Value="2" Precision="2">
         <Description TranslateID="VARIABLE_Entity↓right←">
           <ENU>Type of entity on the right</ENU>
         </Description>
@@ -4191,7 +4202,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="f↓ck←" ESA_ID="" Type="Double" Value="30e6" Precision="2">
+      <Variable Modifier="Public" Name="f↓ck←" ESA_ID="" Type="Double" Value="25e6" Precision="2">
         <Description TranslateID="VARIABLE_f↓ck←">
           <ENU>Characteristic compressive strength</ENU>
         </Description>
@@ -4211,7 +4222,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="f↓ctm←" ESA_ID="" Type="Double" Value="2.9e6" Precision="2">
+      <Variable Modifier="Public" Name="f↓ctm←" ESA_ID="" Type="Double" Value="2.6e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4246,13 +4257,13 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="f↓ub←" ESA_ID="" Type="Double" Value="360e6" Precision="2">
+      <Variable Modifier="Public" Name="f↓ub←" ESA_ID="" Type="Double" Value="430e6" Precision="2">
         <Description TranslateID="VARIABLE_f↓ub←">
           <ENU>Ultimate strength</ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="f↓us←" ESA_ID="" Type="Double" Value="360e6" Precision="2">
+      <Variable Modifier="Public" Name="f↓us←" ESA_ID="" Type="Double" Value="450e6" Precision="2">
         <Description TranslateID="VARIABLE_f↓us←">
           <ENU>Ultimate strength</ENU>
         </Description>
@@ -4272,7 +4283,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="f↓yb←" ESA_ID="" Type="Double" Value="235e6" Precision="2">
+      <Variable Modifier="Public" Name="f↓yb←" ESA_ID="" Type="Double" Value="275e6" Precision="2">
         <Description TranslateID="VARIABLE_f↓yb←">
           <ENU>Yield strength</ENU>
         </Description>
@@ -4285,7 +4296,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
-      <Variable Modifier="Public" Name="f↓ys←" ESA_ID="" Type="Double" Value="235e6" Precision="2">
+      <Variable Modifier="Public" Name="f↓ys←" ESA_ID="" Type="Double" Value="275e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4304,14 +4315,14 @@ IF(IO.LayoutIndex == 0) {
           <ENU>Fire check</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="fl_ratio" ESA_ID="" Type="Double" Value="8.18" Precision="2">
+      <Variable Modifier="Public" Name="fl_ratio" ESA_ID="" Type="Double" Value="5.133929" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="flag_beff" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="flag_beff" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4363,13 +4374,13 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="h↓a←" ESA_ID="" Type="Double" Value="250e-3" Precision="2">
+      <Variable Modifier="Public" Name="h↓a←" ESA_ID="" Type="Double" Value="403.2e-3" Precision="2">
         <Description TranslateID="VARIABLE_h↓a←">
           <ENU>Height</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="h↓c←" ESA_ID="" Type="Double" Value="104e-3" Precision="2">
+      <Variable Modifier="Public" Name="h↓c←" ESA_ID="" Type="Double" Value="70e-3" Precision="2">
         <Description TranslateID="VARIABLE_h↓c←">
           <ENU>Height of full concrete</ENU>
         </Description>
@@ -4389,7 +4400,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="h↓d←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="h↓d←" ESA_ID="" Type="Double" Value="15e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4445,7 +4456,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="h↓p←" ESA_ID="" Type="Double" Value="46e-3" Precision="2">
+      <Variable Modifier="Public" Name="h↓p←" ESA_ID="" Type="Double" Value="60e-3" Precision="2">
         <Description TranslateID="VARIABLE_h↓p←">
           <ENU>Depth of the ribs</ENU>
         </Description>
@@ -4458,7 +4469,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="h↓s←" ESA_ID="" Type="Double" Value="150e-3" Precision="2">
+      <Variable Modifier="Public" Name="h↓s←" ESA_ID="" Type="Double" Value="130e-3" Precision="2">
         <Description TranslateID="VARIABLE_h↓s←">
           <ENU>Total height of the slab</ENU>
         </Description>
@@ -4511,13 +4522,13 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="I↓y←" ESA_ID="" Type="Double" Value="105e-6" Precision="2">
+      <Variable Modifier="Public" Name="I↓y←" ESA_ID="" Type="Double" Value="156.85e-6" Precision="2">
         <Description TranslateID="VARIABLE_I↓y←">
           <ENU>Moment of inertia</ENU>
         </Description>
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-12" Dim="mm↑4←" />
       </Variable>
-      <Variable Modifier="Public" Name="i↓z←" ESA_ID="" Type="Double" Value="65.0239e-3" Precision="2">
+      <Variable Modifier="Public" Name="i↓z←" ESA_ID="" Type="Double" Value="30.3e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4573,13 +4584,13 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="k↓mod,usage←" ESA_ID="" Type="Boolean" Value="0">
+      <Variable Modifier="Public" Name="k↓mod,usage←" ESA_ID="" Type="Boolean" Value="1">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="k↓mod←" ESA_ID="" Type="Double" Value="700e-3" Precision="2">
+      <Variable Modifier="Public" Name="k↓mod←" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4613,7 +4624,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="k↓t←" ESA_ID="" Type="Double" Value="666.3726e-3" Precision="2">
+      <Variable Modifier="Public" Name="k↓t←" ESA_ID="" Type="Double" Value="850e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4662,26 +4673,26 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="L" ESA_ID="" Type="Double" Value="6" Precision="2">
+      <Variable Modifier="Public" Name="L" ESA_ID="" Type="Double" Value="9" Precision="2">
         <Description TranslateID="VARIABLE_L">
           <ENU>Length of considered span </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="L↓e←" ESA_ID="" Type="Double" Value="5.1" Precision="2">
+      <Variable Modifier="Public" Name="L↓e←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="L↓left←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="L↓left←" ESA_ID="" Type="Double" Value="3" Precision="2">
         <Description TranslateID="VARIABLE_L↓left←">
           <ENU>Distance to the beam or edge of the slab on the left (EN 1994-1-1 5.4.1.2(5))</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="L↓next←" ESA_ID="" Type="Double" Value="6" Precision="2">
+      <Variable Modifier="Public" Name="L↓next←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description TranslateID="VARIABLE_L↓next←">
           <ENU>Length of next span </ENU>
         </Description>
@@ -4693,7 +4704,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="L↓right←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="L↓right←" ESA_ID="" Type="Double" Value="1.5" Precision="2">
         <Description TranslateID="VARIABLE_L↓right←">
           <ENU>Distance to the beam or edge of the slab on the right (EN 1994-1-1 5.4.1.2(5))</ENU>
         </Description>
@@ -4706,14 +4717,14 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="L↓y←" ESA_ID="" Type="Double" Value="6" Precision="2">
+      <Variable Modifier="Public" Name="L↓y←" ESA_ID="" Type="Double" Value="9" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="L↓z←" ESA_ID="" Type="Double" Value="2" Precision="2">
+      <Variable Modifier="Public" Name="L↓z←" ESA_ID="" Type="Double" Value="9" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4734,6 +4745,13 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
+      <Variable Modifier="Public" Name="long_dist" ESA_ID="" Type="Double" Value="200e-3" Precision="2">
+        <Description TranslateID="VARIABLE_long_dist">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
+      </Variable>
       <Variable Modifier="Public" Name="M↓b,fi,t,Rd←" ESA_ID="" Type="Double" Value="343873.6" Precision="2">
         <Description>
           <ENU>
@@ -4748,7 +4766,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓Ed,comp←" ESA_ID="" Type="Double" Value="-36827.4" Precision="-3">
+      <Variable Modifier="Public" Name="M↓Ed,comp←" ESA_ID="" Type="Double" Value="13.3522" Precision="-3">
         <Description TranslateID="VARIABLE_M↓Ed,comp←">
           <ENU>Design bending moment</ENU>
         </Description>
@@ -4802,7 +4820,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="mother_span" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="mother_span" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4906,7 +4924,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="n↓row←" ESA_ID="" Type="Double" Value="15" Precision="2">
+      <Variable Modifier="Public" Name="n↓row←" ESA_ID="" Type="Double" Value="46" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4968,28 +4986,28 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="P↓Rd,solid,1←" ESA_ID="" Type="Double" Value="65325.02" Precision="2">
+      <Variable Modifier="Public" Name="P↓Rd,solid,1←" ESA_ID="" Type="Double" Value="81656.28" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="P↓Rd,solid,2←" ESA_ID="" Type="Double" Value="83079.28" Precision="2">
+      <Variable Modifier="Public" Name="P↓Rd,solid,2←" ESA_ID="" Type="Double" Value="73730.31" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="P↓Rd,solid←" ESA_ID="" Type="Double" Value="65325.02" Precision="2">
+      <Variable Modifier="Public" Name="P↓Rd,solid←" ESA_ID="" Type="Double" Value="73730.31" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="P↓Rd←" ESA_ID="" Type="Double" Value="65325.02" Precision="2">
+      <Variable Modifier="Public" Name="P↓Rd←" ESA_ID="" Type="Double" Value="62670.76" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5024,7 +5042,7 @@ IF(IO.LayoutIndex == 0) {
           <ENU>Fire protection</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="r" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="r" ESA_ID="" Type="Double" Value="10.2e-3" Precision="2">
         <Description TranslateID="VARIABLE_r">
           <ENU>Radius</ENU>
         </Description>
@@ -5048,13 +5066,13 @@ IF(IO.LayoutIndex == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="rib_dir" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="rib_dir" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description TranslateID="VARIABLE_rib_dir">
           <ENU>Direction of the ribs</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ribwidth_min" ESA_ID="" Type="Double" Value="105e-3" Precision="2">
+      <Variable Modifier="Public" Name="ribwidth_min" ESA_ID="" Type="Double" Value="120e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5075,7 +5093,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="s↓l←" ESA_ID="" Type="Double" Value="150e-3" Precision="2">
+      <Variable Modifier="Public" Name="s↓l←" ESA_ID="" Type="Double" Value="200e-3" Precision="2">
         <Description TranslateID="VARIABLE_s↓l←">
           <ENU>Bar spacing</ENU>
         </Description>
@@ -5088,13 +5106,13 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="s↓t←" ESA_ID="" Type="Double" Value="150e-3" Precision="2">
+      <Variable Modifier="Public" Name="s↓t←" ESA_ID="" Type="Double" Value="200e-3" Precision="2">
         <Description TranslateID="VARIABLE_s↓t←">
           <ENU>Bar spacing</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="SCN" ESA_ID="" Type="Double" Value="4" Precision="2">
+      <Variable Modifier="Public" Name="SCN" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5121,7 +5139,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="sheeting_angle" ESA_ID="" Type="Double" Value="180" Precision="2">
+      <Variable Modifier="Public" Name="sheeting_angle" ESA_ID="" Type="Double" Value="90" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5134,7 +5152,7 @@ IF(IO.LayoutIndex == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Sheeting_Name" ESA_ID="" Type="String" Value="ComFlor 46-0.9">
+      <Variable Modifier="Public" Name="Sheeting_Name" ESA_ID="" Type="String" Value="Tata Steel CF 60">
         <Description>
           <ENU>
           </ENU>
@@ -5170,7 +5188,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Slab_Material_Name" ESA_ID="" Type="String" Value="C30/37">
+      <Variable Modifier="Public" Name="Slab_Material_Name" ESA_ID="" Type="String" Value="C25/30">
         <Description>
           <ENU>
           </ENU>
@@ -5195,7 +5213,7 @@ IF(IO.LayoutIndex == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="span↓next←" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="span↓next←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description TranslateID="VARIABLE_span↓next←">
           <ENU>Type of span at the right</ENU>
         </Description>
@@ -5207,7 +5225,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="StartMember" ESA_ID="" Type="Double" Value="100" Precision="2">
+      <Variable Modifier="Public" Name="StartMember" ESA_ID="" Type="Double" Value="5" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5263,7 +5281,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Stud_Material_Name" ESA_ID="" Type="String" Value="S 235">
+      <Variable Modifier="Public" Name="Stud_Material_Name" ESA_ID="" Type="String" Value="S 275 studs">
         <Description>
           <ENU>
           </ENU>
@@ -5299,7 +5317,7 @@ IF(IO.LayoutIndex == 0) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="t↓f←" ESA_ID="" Type="Double" Value="12.5e-3" Precision="2">
+      <Variable Modifier="Public" Name="t↓f←" ESA_ID="" Type="Double" Value="11.2e-3" Precision="2">
         <Description TranslateID="VARIABLE_t↓f←">
           <ENU>Flange thickness</ENU>
         </Description>
@@ -5312,7 +5330,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="t↓p←" ESA_ID="" Type="Double" Value="860e-6" Precision="2">
+      <Variable Modifier="Public" Name="t↓p←" ESA_ID="" Type="Double" Value="900e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5326,7 +5344,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="t↓w←" ESA_ID="" Type="Double" Value="7.5e-3" Precision="2">
+      <Variable Modifier="Public" Name="t↓w←" ESA_ID="" Type="Double" Value="6.8e-3" Precision="2">
         <Description TranslateID="VARIABLE_t↓w←">
           <ENU>Web thickness</ENU>
         </Description>
@@ -5493,7 +5511,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="V↓Ed,comp←" ESA_ID="" Type="Double" Value="88770.2" Precision="-3">
+      <Variable Modifier="Public" Name="V↓Ed,comp←" ESA_ID="" Type="Double" Value="4348.03" Precision="-3">
         <Description TranslateID="VARIABLE_V↓Ed,comp←">
           <ENU>Design shear force</ENU>
         </Description>
@@ -5540,14 +5558,14 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="w↓per←" ESA_ID="" Type="Double" Value="-592.979e-6" Precision="-2">
+      <Variable Modifier="Public" Name="w↓per←" ESA_ID="" Type="Double" Value="0" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="W↓pl,y←" ESA_ID="" Type="Double" Value="920.833e-6" Precision="2">
+      <Variable Modifier="Public" Name="W↓pl,y←" ESA_ID="" Type="Double" Value="887.94e-6" Precision="2">
         <Description TranslateID="VARIABLE_W↓pl,y←">
           <ENU>Plastic section modulus</ENU>
         </Description>
@@ -5595,7 +5613,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="w↓var←" ESA_ID="" Type="Double" Value="-120.827e-6" Precision="-2">
+      <Variable Modifier="Public" Name="w↓var←" ESA_ID="" Type="Double" Value="0" Precision="-2">
         <Description>
           <ENU>
           </ENU>
@@ -5609,14 +5627,14 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="w↓z,tot←" ESA_ID="" Type="Double" Value="-713.807e-6" Precision="-2">
+      <Variable Modifier="Public" Name="w↓z,tot←" ESA_ID="" Type="Double" Value="0" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="web_ratio" ESA_ID="" Type="Double" Value="23.6" Precision="2">
+      <Variable Modifier="Public" Name="web_ratio" ESA_ID="" Type="Double" Value="53" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5838,7 +5856,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓cl←" ESA_ID="" Type="Double" Value="992.6075e-3" Precision="2">
+      <Variable Modifier="Public" Name="α↓cl←" ESA_ID="" Type="Double" Value="500e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5889,7 +5907,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="γ↓M2←" ESA_ID="" Type="Double" Value="1.25" Precision="2">
+      <Variable Modifier="Public" Name="γ↓M2←" ESA_ID="" Type="Double" Value="1.1" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -5983,7 +6001,7 @@ IF(IO.LayoutIndex == 0) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="1" cd="0" mol="0" Coef="1" Dim="°C" />
       </Variable>
-      <Variable Modifier="Public" Name="ε" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="ε" ESA_ID="" Type="Double" Value="924.4163e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -20698,6 +20716,38 @@ IF(IO.LayoutIndex == 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
+      <VC ID="POR014_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="POR014_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="POR014_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="POR014_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="POR106_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="15" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|2|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="10" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|2|2" EqStyle="23" />
@@ -21077,7 +21127,7 @@ IF(IO.LayoutIndex == 0) {
   </Calculation>
   <Dialog>
     <Main Width="500">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.100" SectionID="-1" CombiID="-1" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="0" PreDef="0" MemberDirectory="D:\Work\Scia_Engineer\DEVE_14\TEMP\Esa_Model_Data\Beam.5" MemberID="Beam.5" SectionID="0" CombiID="0" />
     </Main>
     <MemberData Width="545" />
     <Setup Width="500" />
