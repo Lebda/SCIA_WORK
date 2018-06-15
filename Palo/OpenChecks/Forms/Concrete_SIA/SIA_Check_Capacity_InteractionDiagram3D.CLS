@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="4b3a52f9-7506-4b03-8a9b-64174e61df54">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure
+    <SourceCode Collapsed="" BreakPoints="391|439|502|567|624">→INI400_007174BLOCK { // using data exchange structure
     bool ValidateInput(object Input) { //Validate inputs from master to this form
         //Fonts, colors, pens...
         DrawHeader →INI400_011157= Input.Get("DrawHeader"); //True - Draw calculation header
@@ -111,6 +111,11 @@
     N↓Rd-← →RFM116_001943= 0; 
     M↓Rdy-← →RFM116_001944= 0; 
     M↓Rdz-← →RFM116_001945= 0; 
+    UC →RFM116_002622= 0; 
+    UCID →RFM116_002623= 0; 
+    UnityCheckPoint1 →RFM116_002624= 0; 
+    UnityCheckPoint2 →RFM116_002625= 0; 
+    Css →RFM116_002626= null; 
 } 
 
 IF(!IO.IsExternCLC) { //settings for table drawing
@@ -136,26 +141,12 @@ IF(!IO.IsExternCLC) { //settings for table drawing
     M↓dy← →INI400_013720= Forces.My; 
     M↓dz← →INI400_013721= Forces.Mz; 
     
-    IF(IO.Contains("REINF")) { 
-        IF(IO.REINF.Bar.Contains("ComponentID")) { 
-            →RFM116_002618IO.REINF.Add("List", new object[]); 
-            →RFM116_002619IO.REINF.List.Add(IO.Beam.Reinforcement.Bar); 
-            object Css →RFM116_002620= →RFM116_002621CONCRETE.CreateCS(CssIDReinf, IO.CS.Component.Shape.Point, IO.CONCRETE.SIA.Diagram.Point, IO.REINF.List, IO.REINF.SIA.Diagram.Point); 
-        } ELSE { 
-            object Css →RFM116_002614= →RFM116_002615CONCRETE.CreateCS(CssIDReinf, IO.CS.Component.Shape.Point, IO.CONCRETE.SIA.Diagram.Point, IO.REINF.Bar, IO.REINF.SIA.Diagram.Point); 
-        } 
-    } ELSE { 
-        object Css →RFM116_001971= →RFM116_001972CONCRETE.CreateCS(CssIDReinf, IO.CS.Component.Shape.Point, IO.CONCRETE.SIA.Diagram.Point); 
-        
-    } 
-    
-    object ForcesIni →INI400_013712= Concrete.GetForces(InitialForcesID); 
-    
+    object ForcesIni →INI400_013712= CONCRETE.GetForces(InitialForcesID); 
+    object FunctionSIA →RFM116_002627= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_SIA\Functions\Functions_SIA.clc"); 
     object ExternCreateCS →INI400_011701= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_SIA\Functions\CreateCs.clc"); 
-    object CrossSection →INI400_012786= ExternCreateCS.CreateCS_ULS(CssIDReinf, Forces, AccidentalULS); 
+    object CrossSection →RFM116_002629= ExternCreateCS.CreateCS_ULS(CssIDReinf, Forces, AccidentalULS); 
     
     IF(!IO.IsStandalone) { 
-        object FunctionSIA →RFM116_000002= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_SIA\Functions\Functions_SIA.clc"); 
         double α↓cc← →RFM116_000001= FunctionSIA.GetEtaCoeffs(); 
         object gamaCoeffs →RFM116_000003= FunctionSIA.GetGammaCoeffs(); 
         double γ↓C← →RFM116_000001= gamaCoeffs.γ↓c←; 
@@ -394,6 +385,9 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 3) {
     double M↓Rdz← →INI400_003706= ResistanceNMy3D.Mz; 
     IF(COMPARE(M↓Rdy←, 0, 6) == 0) { 
         M↓Rdy← →INI400_013737= 0; 
+    } 
+    IF(COMPARE(M↓Rdz←, 0, 6) == 0) { 
+        M↓Rdz← →RFM116_002630= 0; 
     } 
 } 
 //-----------------------------Vertical section N-My----------------------//
@@ -639,7 +633,9 @@ N↓Rd,pl,min← →INI400_005153= MAX(N↓Rd,NMy,pl,min←, N↓Rd,NMz,pl,min�
     IF(N↓Rd1← &gt; 0 &amp;&amp; N↓Rd2← &gt; 0) { 
         N↓Rd← →INI400_008697= MAX(N↓Rd1←, N↓Rd2←); 
     } 
-    
+    IF(cssReinf.Materials == null &amp;&amp; COMPARE(Forces.N, 0, 6) == 1) { 
+        N↓Rd← →RFM116_002631= MAX(N↓Rd,max←, N↓Rd,min←); 
+    } 
     //Mrdy
 
     //Mrdz
@@ -2327,6 +2323,12 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="CrossSectionIni" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_CrossSectionIni">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="Css" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -3229,6 +3231,12 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="ReinfBarsArr" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_ReinfBarsArr">
+          <ENU>
+          </ENU>
+        </Description>
       </Variable>
       <Variable Modifier="Public" Name="ResistanceNMy3D" ESA_ID="" Type="Object">
         <Description>
@@ -10455,6 +10463,22 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="INI400_010203">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_010204">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="INI400_010793">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -11751,6 +11775,30 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="RFM116_002205">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM116_002206">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM116_002208">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="RFM116_002614">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -11815,6 +11863,86 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="RFM116_002622">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM116_002623">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM116_002624">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM116_002625">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM116_002626">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM116_002627">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM116_002628">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM116_002629">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM116_002630">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM116_002631">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="671" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1119" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1119" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="293" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="958" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="968" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
@@ -11838,7 +11966,7 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         </TCheckBox>
         <TDoubleInput Name="" ID="7" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" VarName="NoOfPtsInVertCut" VarNameVisible="False" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="" ID="6" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="4" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" VarName="DivisionOfStrain" VarNameVisible="False" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TComboBox Name="" ID="4" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="3" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" VarName="IDMethodOfCheck" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1|2|3|4" Index="3">
+        <TComboBox Name="" ID="4" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="3" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" VarName="IDMethodOfCheck" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1|2|3|4" Index="2">
           <Texts>
             <ENU>Nu|Mu|NuMu|Muy|Muz</ENU>
           </Texts>
@@ -11857,9 +11985,20 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
         <TDoubleInput Name="" ID="23" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" VarName="M↓dy,inp←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="" ID="22" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" VarName="N↓d,inp←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
       </TGroupBox>
-      <TConcreteSectionLibrary Name="" ID="17" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="6" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="" SelectedCS="1" Units="2" ReinfTabsVis="True" TabBG="-2894893" SelTab="-1">
-        <CS SelReinf="1" H="400e-3" B="400e-3" />
-        <Reinf Ver="1" Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="30e-3" c_lower="30e-3" c_left="30e-3" c_right="30e-3" D_upper="20e-3" N_upper="3" D_lower="20e-3" N_lower="3" D_left="20e-3" N_left="1" D_right="20e-3" N_right="1" />
+      <TConcreteSectionLibrary Name="" ID="17" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="6" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="" SelectedCS="0" Units="2" ReinfTabsVis="True" TabBG="-2894893" SelTab="-1">
+        <CS SelReinf="0">
+          <Outline>
+            <P X="0" Y="0" />
+            <P X="300e-3" Y="0" />
+            <P X="300e-3" Y="500e-3" />
+            <P X="0" Y="500e-3" />
+            <P X="0" Y="0" />
+          </Outline>
+        </CS>
+        <Reinf Ver="1" Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90">
+          <Bars />
+          <Shapes />
+        </Reinf>
       </TConcreteSectionLibrary>
       <TCustomLibrary Name="" ID="2" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" TargetNodeURL="REINF.SIA" DataFile="SIA_Reinf.xml" Collapsed="True" UseCombo="False" Category="Horizontal top branch" Item="B 500 B">
         <Data>
@@ -12013,6 +12152,9 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
     <Command Width="500" />
   </Dialog>
   <Texts>
+    <Item TranslateID="BLOCK_">
+      <ENU>"Explanation of errors, warnings and notes"</ENU>
+    </Item>
     <Item TranslateID="BLOCK_INI400_003614">
       <ENU>"Explanation of errors, warnings and notes"</ENU>
     </Item>
@@ -12191,7 +12333,7 @@ IF(DrawUltimateBorder &amp;&amp; IO.IsDrawing) {
       <ENU>"Division of vertical strains"</ENU>
     </Item>
     <Item TranslateID="TEXT_">
-      <ENU>"YES"</ENU>
+      <ENU>"List of errors/warnings/notes: "</ENU>
     </Item>
     <Item ID="TEXT_INI400_000325">
       <ENU>"N↓d← &lt; N↓com← = " &amp; N↓d← &amp; " &lt; " &amp; N↓com← &amp; " ... "</ENU>

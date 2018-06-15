@@ -57,12 +57,12 @@
 								</TLXItemHorizontalAlignment>
 								<clsid>{8477A839-3C02-4FE2-8DF0-C877F4E07192}</clsid>
 								<Units>-1</Units>
-								<SourceCLSID>{00000000-0000-0000-0000-000000000000}</SourceCLSID>
-								<SourceNameExtension></SourceNameExtension>
+								<SourceCLSID>{8477A839-3C02-4FE2-8DF0-C877F4E07192}</SourceCLSID>
+								<SourceNameExtension>TPComposed</SourceNameExtension>
 								<SourceID>-1</SourceID>
 								<TLX></TLX>
-								<Item_Type><Value>5</Value>
-									<ValueName>eTLXItem_Type_TextPresentProperty</ValueName>
+								<Item_Type><Value>6</Value>
+									<ValueName>eTLXItem_Type_TextPresentPropertyComposed</ValueName>
 								</Item_Type>
 								<Parametric_Values_Representation><Value>3</Value>
 									<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>

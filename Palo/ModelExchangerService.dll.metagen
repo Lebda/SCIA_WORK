@@ -9,13 +9,17 @@ Assembly CSInfrastructure, Version=1.0.*, Culture=Invariant Language (Invariant 
 	hash=None, flags=None
 Assembly DataModelConversion, Version=0.0.*, Culture=Invariant Language (Invariant Country): 
 	hash=None, flags=None
+Assembly DataModelDataAccess, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=None, flags=None
 Assembly Excel.Conversion.Contracts, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
 	hash=None, flags=None
-Assembly ModelExchangerService.Bootstrapper, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
+Assembly Excel.Integration.Bootstrapper, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=None, flags=None
+Assembly Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed: 
 	hash=None, flags=None
 Assembly Scia.Conversion.Contracts, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
 	hash=None, flags=None
-Assembly SimpleInjector, Version=4.0.12.0, Culture=neutral, PublicKeyToken=984cb50dea722e99: 
+Assembly SimpleInjector, Version=4.1.1.0, Culture=neutral, PublicKeyToken=984cb50dea722e99: 
 	hash=None, flags=None
 Assembly System.ComponentModel.DataAnnotations, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35: 
 	hash=None, flags=None
@@ -34,5 +38,6 @@ Class ModelExchangerService.ModelExchangerService: AutoLayout, AnsiClass, Class,
   Interfaces:
     System.IDisposable
   Methods:
-    ImportAEFFile(String, IntPtr): PrivateScope, Public, HideBySig
+    ExportSenModel(String, IUnknown*): PrivateScope, Public, HideBySig
+    ImportAEFFile(String, IUnknown*): PrivateScope, Public, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig

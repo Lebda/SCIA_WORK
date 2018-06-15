@@ -1,7 +1,24 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="846a1a7f-fdac-485f-a8c0-8ad2d1623f76">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">IF(!IO.Contains("Load"))
+    <SourceCode Collapsed="" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure 
+    bool ValidateInput(object Input) { //Validate inputs from master to this form
+        //EWN
+        obEWN →KRS100_000001= Input.Get("obEWN"); 
+        Number↓EWN← →KRS100_000002= Input.Get("Number↓EWN←"); 
+        
+        bool Result →INI400_000020= true; 
+        //Add some limits for inputs?
+        return Result; 
+    } 
+    object GetOutput() { //Outputs from this form to master
+        return new Structure(
+        "obEWN", obEWN, 
+        "Number↓EWN←", Number↓EWN←); 
+    } 
+} 
+
+IF(!IO.Contains("Load"))
 { 
     Exit(); 
 } 
@@ -38,11 +55,11 @@
     double Δc↓dur,add,m← →INI400_008751= 0; 
 } 
 →INI400_008727BLOCK { 
-    double Number↓E← →INI400_005881= 0; 
-    double Number↓W← →INI400_005882= 0; 
-    double Number↓N← →INI400_005883= 0; 
-    
-    object[] Number↓EWN← →INI400_005885= new object[]; 
+    //Number↓EWN← comes from master form
+    //obEWM comes from master form
+    double Number↓E← →INI400_005881= Number↓EWN←[0]; 
+    double Number↓W← →INI400_005882= Number↓EWN←[1]; 
+    double Number↓N← →INI400_005883= Number↓EWN←[2]; 
     IndexEWN →INI400_005886= 1; 
 } 
 object DataFromSEN →INI400_008984= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FunctionsDataFromSEN.CLC"); 
@@ -60,7 +77,7 @@ object Functions_NA →KRS116_000007= LoadExternCLC(Tools.Dir_Forms &amp; "Codes
 
 object CssConditions →INI400_005887= LoadExternCLC("ConditionsForCss.clc"); 
 →INI400_005888CssConditions.Calculate(False); 
-oEWN →INI400_005889= CssConditions.obEWN; 
+obEWN →INI400_005889= CssConditions.obEWN; 
 IF(CssConditions.ConditionsForCss) { 
     →INI400_005944TEXT("Concrete cover"); 
     //general data
@@ -283,6 +300,9 @@ IF(CssConditions.ConditionsForCss) {
             
             →KRS116_000004Input.Add("AdequateCement", Functions_NA.AdequateCementDecision(ChloridesLower, ChloridesSeaLower, FreezeThawLower, ChemicalLower, CemType)); 
             
+            →KRS100_000015Input.Add("obEWN", obEWN); 
+            →KRS100_000016Input.Add("Number↓EWN←", Number↓EWN←); 
+            
             →INI400_006778DurabilityLower.Draw(Input, Output); 
             →KRS100_000013PAGEBREAK(); 
             
@@ -358,6 +378,9 @@ IF(CssConditions.ConditionsForCss) {
                 →KRS106_000006Input.Add("Deviation", ConcreteCharUpper); 
                 
                 →KRS116_000005Input.Add("AdequateCement", Functions_NA.AdequateCementDecision(ChloridesUpper, ChloridesSeaUpper, FreezeThawUpper, ChemicalUpper, CemType)); 
+                
+                →KRS100_000017Input.Add("obEWN", obEWN); 
+                →KRS100_000018Input.Add("Number↓EWN←", Number↓EWN←); 
                 
                 →INI400_011599DurabilityUpper.Draw(Input, Output); 
                 →KRS100_000012PAGEBREAK(); 
@@ -439,6 +462,9 @@ IF(CssConditions.ConditionsForCss) {
             →KRS106_000009Input.Add("Deviation", ConcreteCharMain); 
             
             →KRS116_000006Input.Add("AdequateCement", Functions_NA.AdequateCementDecision(ChloridesMain, ChloridesSeaMain, FreezeThawMain, ChemicalMain, CemType)); 
+            
+            →KRS100_000019Input.Add("obEWN", obEWN); 
+            →KRS100_000020Input.Add("Number↓EWN←", Number↓EWN←); 
             
             →INI400_011640DurabilityMain.Draw(Input, Output); 
             →KRS100_000011PAGEBREAK(); 
@@ -1104,7 +1130,7 @@ IF(CssConditions.ConditionsForCss) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="oEWN" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="obEWN" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -1407,6 +1433,14 @@ IF(CssConditions.ConditionsForCss) {
       </Layout>
     </Layouts>
     <VisualComponents>
+      <VC ID="INI400_000020">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="INI400_002727">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="43.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="231" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -2454,6 +2488,14 @@ IF(CssConditions.ConditionsForCss) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_007174">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_008727">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3647,6 +3689,22 @@ IF(CssConditions.ConditionsForCss) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS100_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS100_000009">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3694,6 +3752,54 @@ IF(CssConditions.ConditionsForCss) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000015">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000016">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000017">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000018">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000019">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000020">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS106_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3876,7 +3982,7 @@ IF(CssConditions.ConditionsForCss) {
   </Calculation>
   <Dialog>
     <Main Width="500">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.84|0|3" Active="1" PreDef="0" MemberDirectory="D:\_VERSIONS\Rel_17_1_patch_2_bugfix\TEMP\Esa_Model_Data\Beam.1" MemberID="Beam.1" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.84|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.1" SectionID="-1" CombiID="-1" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />

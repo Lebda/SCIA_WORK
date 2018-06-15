@@ -3,81 +3,7 @@
 	<DataSourceNameExtension>ResultMain</DataSourceNameExtension>
 	<Name>BasicResults.2e14.2e00.2eEP_3DWindTransparentReport</Name>
 	<AdvancedName>Default</AdvancedName>
-	<Cells Size="3"><ARRAY_ITEM ID="0"><CX64TLXCell><Width><Width>0.03</Width>
-				</Width>
-				<Height><Height>0.05</Height>
-				</Height>
-				<Items><Items Size="1"><ARRAY_ITEM ID="0"><TLXITEM><PropName></PropName>
-								<RealValue><Value>0</Value>
-									<ValueName>eTLXItem_RealValue_Real</ValueName>
-								</RealValue>
-								<FormattedText>0</FormattedText>
-								<NameFormattedText>0</NameFormattedText>
-								<PictureInTable>0</PictureInTable>
-								<PropertyUserName></PropertyUserName>
-								<TLXItemHorizontalAlignment><Value>0</Value>
-									<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
-								</TLXItemHorizontalAlignment>
-								<clsid>{EB2C0F85-7275-4F94-9EA7-E8C3DBFB0FA6}</clsid>
-								<Units>-1</Units>
-								<SourceCLSID>{00000000-0000-0000-0000-000000000000}</SourceCLSID>
-								<SourceNameExtension></SourceNameExtension>
-								<SourceID>-1</SourceID>
-								<TLX></TLX>
-								<Item_Type><Value>0</Value>
-									<ValueName>eTLXItem_Type_Property</ValueName>
-								</Item_Type>
-								<Parametric_Values_Representation><Value>3</Value>
-									<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
-								</Parametric_Values_Representation>
-								<Value_Type><Value>1</Value>
-									<ValueName>eValue_Type_String</ValueName>
-								</Value_Type>
-								<Item_Value></Item_Value>
-							</TLXITEM>
-						</ARRAY_ITEM>
-					</Items>
-				</Items>
-			</CX64TLXCell>
-		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="1"><CX64TLXCell><Width><Width>0.03</Width>
-				</Width>
-				<Height><Height>0.05</Height>
-				</Height>
-				<Items><Items Size="1"><ARRAY_ITEM ID="0"><TLXITEM><PropName></PropName>
-								<RealValue><Value>0</Value>
-									<ValueName>eTLXItem_RealValue_Real</ValueName>
-								</RealValue>
-								<FormattedText>0</FormattedText>
-								<NameFormattedText>0</NameFormattedText>
-								<PictureInTable>0</PictureInTable>
-								<PropertyUserName></PropertyUserName>
-								<TLXItemHorizontalAlignment><Value>0</Value>
-									<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
-								</TLXItemHorizontalAlignment>
-								<clsid>{A3400CF1-290F-11D6-AACA-0050FC1D5C09}</clsid>
-								<Units>-1</Units>
-								<SourceCLSID>{00000000-0000-0000-0000-000000000000}</SourceCLSID>
-								<SourceNameExtension></SourceNameExtension>
-								<SourceID>-1</SourceID>
-								<TLX></TLX>
-								<Item_Type><Value>0</Value>
-									<ValueName>eTLXItem_Type_Property</ValueName>
-								</Item_Type>
-								<Parametric_Values_Representation><Value>3</Value>
-									<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
-								</Parametric_Values_Representation>
-								<Value_Type><Value>1</Value>
-									<ValueName>eValue_Type_String</ValueName>
-								</Value_Type>
-								<Item_Value></Item_Value>
-							</TLXITEM>
-						</ARRAY_ITEM>
-					</Items>
-				</Items>
-			</CX64TLXCell>
-		</ARRAY_ITEM>
-		<ARRAY_ITEM ID="2"><CX64TLXCell><Width><Width>0.03</Width>
+	<Cells Size="1"><ARRAY_ITEM ID="0"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -94,12 +20,12 @@
 								</TLXItemHorizontalAlignment>
 								<clsid>{1C8C90EA-3F31-476C-A3C8-CBF7A9E72EEB}</clsid>
 								<Units>-1</Units>
-								<SourceCLSID>{1C8C90EA-3F31-476C-A3C8-CBF7A9E72EEB}</SourceCLSID>
-								<SourceNameExtension>TPComposed</SourceNameExtension>
+								<SourceCLSID>{3E9F327F-6556-40FE-A24F-8968ABD18BA9}</SourceCLSID>
+								<SourceNameExtension></SourceNameExtension>
 								<SourceID>-1</SourceID>
 								<TLX></TLX>
-								<Item_Type><Value>6</Value>
-									<ValueName>eTLXItem_Type_TextPresentPropertyComposed</ValueName>
+								<Item_Type><Value>2</Value>
+									<ValueName>eTLXItem_Type_Subtable</ValueName>
 								</Item_Type>
 								<Parametric_Values_Representation><Value>3</Value>
 									<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
@@ -232,12 +158,12 @@
 						</TLXItemHorizontalAlignment>
 						<clsid>{1C8C90EA-3F31-476C-A3C8-CBF7A9E72EEB}</clsid>
 						<Units>-1</Units>
-						<SourceCLSID>{1C8C90EA-3F31-476C-A3C8-CBF7A9E72EEB}</SourceCLSID>
-						<SourceNameExtension>TPComposed</SourceNameExtension>
+						<SourceCLSID>{3E9F327F-6556-40FE-A24F-8968ABD18BA9}</SourceCLSID>
+						<SourceNameExtension></SourceNameExtension>
 						<SourceID>-1</SourceID>
 						<TLX></TLX>
-						<Item_Type><Value>6</Value>
-							<ValueName>eTLXItem_Type_TextPresentPropertyComposed</ValueName>
+						<Item_Type><Value>2</Value>
+							<ValueName>eTLXItem_Type_Subtable</ValueName>
 						</Item_Type>
 						<Parametric_Values_Representation><Value>3</Value>
 							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>

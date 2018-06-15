@@ -13,7 +13,7 @@
     object CreateCS_ULS(double CssID, object Forces, bool bAccidental, bool IsShear, bool IsDetailing) { 
         object CreateCS_common →INI400_010114= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_SIA\Functions\CreateCS_common.clc"); 
         
-        object Css →INI400_012972= CreateCS_common.GetIfExistsULSCS(CssID, Forces, bAccidental); 
+        
         IF(Css != null) { 
             return Css; 
         } 

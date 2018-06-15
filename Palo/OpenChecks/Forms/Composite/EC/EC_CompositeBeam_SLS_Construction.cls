@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="5688353c-9537-4609-8d44-b41b03a7724f">
   <CodeEditor>
-    <SourceCode Collapsed="25|43|67|115|125" BreakPoints="">//EC_CompositeBeam_SLS_Construction.cls
+    <SourceCode Collapsed="25|43|115|125" BreakPoints="">//EC_CompositeBeam_SLS_Construction.cls
 
 
 class SLSConstructionStageCheck { 
@@ -71,7 +71,7 @@ class SLSConstructionStageCheck {
     public void DeflectionCheck(double CN, double SCN, out double UC↓con,δz←) { 
         →KRS014_001254double&lt;,-2&gt; UC↓con,δz←; 
         double L →KRS014_001295= DataExchange.L; 
-        →KRS014_001245double&lt;mm,-2&gt; δ↓z,tot← →KRS014_001271= DataExchange.SLS_Con_Deflections.uz; 
+        →KRS014_001245double&lt;mm,-2&gt; δ↓z← →KRS014_001271= DataExchange.SLS_Con_Deflections.uz; 
         →KRS014_001301double&lt;mm,-2&gt; δ↓z,cam←; 
         →KRS014_001305double&lt;mm,-2&gt; δ↓z,cam,max←; 
         double&lt;mm,0&gt; δ↓z,lim,coef← →KRS014_001298= 1/DataExchange.LimitConstr; 
@@ -93,9 +93,9 @@ class SLSConstructionStageCheck {
             } 
             double&lt;mm,-2&gt; δ↓z,lim← →KRS014_001296= L/δ↓z,lim,coef←; 
             IF(DataExchange.IsCamber &amp;&amp; DataExchange.Span == 0) { 
-                UC↓con,δz← →KRS014_001297= -(δ↓z,tot←+δ↓z,cam←)/δ↓z,lim←; 
+                UC↓con,δz← →KRS014_001297= -(δ↓z←+δ↓z,cam←)/δ↓z,lim←; 
             } ELSE { 
-                UC↓con,δz← →KRS014_001306= -(δ↓z,tot←)/δ↓z,lim←; 
+                UC↓con,δz← →KRS014_001306= -(δ↓z←)/δ↓z,lim←; 
             } 
         } 
         

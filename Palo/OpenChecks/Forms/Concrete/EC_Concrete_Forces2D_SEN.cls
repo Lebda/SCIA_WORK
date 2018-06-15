@@ -111,30 +111,30 @@ void InitResults() {
 void SetResults(object ForcesResults) { 
     ForcesOutput →INI400_016142= ForcesResults; 
     
-    object BasicForces →INI400_016112= ForcesResults.BasicForces; 
-    n↓x← →INI400_016114= BasicForces.nx; 
-    n↓y← →INI400_016115= BasicForces.ny; 
-    n↓xy← →INI400_016116= BasicForces.nxy; 
-    m↓x← →INI400_016117= BasicForces.mx; 
-    m↓y← →INI400_016118= BasicForces.my; 
-    m↓xy← →INI400_016119= BasicForces.mxy; 
-    v↓x← →INI400_016120= BasicForces.qx; 
-    v↓y← →INI400_016121= BasicForces.qy; 
+    //object BasicForces →INI400_016112= ForcesResults.BasicForces; 
+    n↓x← →INI400_016114= InternalForces.nx; 
+    n↓y← →INI400_016115= InternalForces.ny; 
+    n↓xy← →INI400_016116= InternalForces.nxy; 
+    m↓x← →INI400_016117= InternalForces.mx; 
+    m↓y← →INI400_016118= InternalForces.my; 
+    m↓xy← →INI400_016119= InternalForces.mxy; 
+    v↓x← →INI400_016120= InternalForces.qx; 
+    v↓y← →INI400_016121= InternalForces.qy; 
     
     object RecalcForces →INI400_016110= ForcesResults.RecalcForces; 
     v↓Ed← →INI400_016134= SQRT(v↓x←↑2←+v↓y←↑2←); 
     n↓Ed1-← →INI400_016122= RecalcForces[0].nEd; 
-    m↓Ed1-← →INI400_016123= RecalcForces[0].mEd; 
+    m↓Ed1-← →INI400_016123= MAX(RecalcForces[0].mEd, 0); 
     n↓Ed2-← →INI400_016124= RecalcForces[1].nEd; 
-    m↓Ed2-← →INI400_016125= RecalcForces[1].mEd; 
+    m↓Ed2-← →INI400_016125= MAX(RecalcForces[1].mEd, 0); 
     n↓Edc-← →INI400_016126= RecalcForces[2].nEd; 
-    m↓Edc-← →INI400_016127= RecalcForces[2].mEd; 
+    m↓Edc-← →INI400_016127= MAX(RecalcForces[2].mEd, 0); 
     n↓Ed1+← →INI400_016128= RecalcForces[3].nEd; 
-    m↓Ed1+← →INI400_016124= RecalcForces[3].mEd; 
+    m↓Ed1+← →INI400_016124= MIN(RecalcForces[3].mEd, 0); 
     n↓Ed2+← →INI400_016125= RecalcForces[4].nEd; 
-    m↓Ed2+← →INI400_016126= RecalcForces[4].mEd; 
+    m↓Ed2+← →INI400_016126= MIN(RecalcForces[4].mEd, 0); 
     n↓Edc+← →INI400_016127= RecalcForces[5].nEd; 
-    m↓Edc+← →INI400_016128= RecalcForces[5].mEd; 
+    m↓Edc+← →INI400_016128= MIN(RecalcForces[5].mEd, 0); 
 } 
 
 //@Reads setup data from IO
@@ -1794,7 +1794,7 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Texts>
-        <TEMDLoader Name="TEMDLoader" ID="69" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="F:\_PROJECT\Concrete_Design_Refactoring\emd\Member2D.7" MemberID="Member2D.7" SectionID="1" CombiID="0" />
+        <TEMDLoader Name="TEMDLoader" ID="69" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="F:\_PROJECT\_R18_bugfix\shifting\Member2D.1" MemberID="Member2D.1" SectionID="565" CombiID="0" />
       </TPanel>
     </Main>
     <MemberData Width="500" />

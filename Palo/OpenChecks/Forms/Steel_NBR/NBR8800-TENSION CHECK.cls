@@ -317,14 +317,14 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-9" Dim="cm↑4←" />
       </Variable>
       <Variable Modifier="Public" Name="Lbfx" ESA_ID="" Type="Double" Value="0" Precision="2">
-        <Description TranslateID="VARIABLE_Lbfx">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Lbfy" ESA_ID="" Type="Double" Value="0" Precision="2">
-        <Description TranslateID="VARIABLE_Lbfy">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -1229,8 +1229,8 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
   <Dialog>
     <Main Width="500">
       <TEMDLoader Name="" ID="26" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="13" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.12" SectionID="-1" CombiID="-1" />
-      <TGroupBox Name="" ID="15" Translate="1" Height="200" AutoWidth="False" AutoHeight="False" TabIndex="8" Dock="1" Anchor="5" Padding="5|15|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|1|3" BorderColor="-5192482">
-        <Texts TranslateID="DIALOG_000015">
+      <TGroupBox Name="" ID="15" Translate="0" Height="200" AutoWidth="False" AutoHeight="False" TabIndex="8" Dock="1" Anchor="5" Padding="5|15|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|1|3" BorderColor="-5192482">
+        <Texts>
           <ENU>User Inputs</ENU>
         </Texts>
         <TDoubleInput Name="" ID="21" Translate="1" Left="3" Top="93" Width="384" AutoWidth="False" AutoHeight="True" TabIndex="4" Dock="0" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Ly" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
@@ -1239,15 +1239,15 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <TDoubleInput Name="Nd" ID="17" Translate="1" Left="0" Top="35" Width="388" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="0" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="N↓d←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="" ID="16" Translate="1" Left="-1" Top="66" Width="388" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="0" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Lx" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
       </TGroupBox>
-      <TGroupBox Name="" ID="12" Translate="1" Height="76" AutoWidth="False" AutoHeight="False" TabIndex="7" Dock="1" Anchor="5" Padding="5|15|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|1|3" BorderColor="-5192482">
-        <Texts TranslateID="DIALOG_000012">
+      <TGroupBox Name="" ID="12" Translate="0" Height="76" AutoWidth="False" AutoHeight="False" TabIndex="7" Dock="1" Anchor="5" Padding="5|15|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|1|3" BorderColor="-5192482">
+        <Texts>
           <ENU>Steel Grade</ENU>
         </Texts>
         <TDoubleInput Name="" ID="14" Translate="1" Left="6" Top="26" Width="368" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="0" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="fu" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="" ID="13" Translate="1" Left="5" Top="1" Width="368" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="0" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="fy" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
       </TGroupBox>
-      <TGroupBox Name="" ID="8" Translate="1" Height="168" AutoWidth="False" AutoHeight="False" TabIndex="6" Dock="1" Anchor="5" Padding="5|15|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|1|3" BorderColor="-5192482">
-        <Texts TranslateID="DIALOG_000008">
+      <TGroupBox Name="" ID="8" Translate="0" Height="168" AutoWidth="False" AutoHeight="False" TabIndex="6" Dock="1" Anchor="5" Padding="5|15|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|1|3" BorderColor="-5192482">
+        <Texts>
           <ENU>Section Properties</ENU>
         </Texts>
         <TStringInput Name="" ID="18" Translate="1" Left="7" Top="99" Width="328" AutoWidth="False" AutoHeight="True" TabIndex="3" Dock="0" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="CSName" VarNameVisible="True" DescPos="1" InputColor="-4128832" InputWidth="125" />

@@ -151,8 +151,7 @@ IF(CssConditions.ConditionsForCss) {
     →INI400_012841Input.Add("CalcImp", IO.MemberData.Concrete.Solver.IntForces.SLS.UseGeoImp); 
     →INI400_012842Input.Add("EquivMoment", IO.Setup.Concrete.Solver.IntForces.UseEqValue); 
     →INI400_012843Input.Add("CalSecOrder", IO.MemberData.Concrete.Solver.IntForces.ULS.UseSecEffect); 
-    →KRS106_000019Input.Add("CompressMember", ForcesCalc.CompressMember); 
-    →KRS106_000020Input.Add("N_com", ForcesCalc.N↓com←); 
+    →KRS106_000019Input.Add("Coeff_com", IO.Setup.Concrete.Solver.General.Coeffcom); 
     →KRS106_000021Input.Add("MemberType", MemberType); 
     
     →INI400_013615Input.Add("PercLongtermLoad", Coeff↓long←); 
@@ -2088,14 +2087,6 @@ IF(CssConditions.ConditionsForCss) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000020">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="KRS106_000021">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2130,7 +2121,7 @@ IF(CssConditions.ConditionsForCss) {
           <ENU>
           </ENU>
         </Texts>
-        <TEMDLoader Name="TEMDLoader" ID="106" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.4" SectionID="-1" CombiID="-1" />
+        <TEMDLoader Name="TEMDLoader" ID="106" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="D:\_VERSIONS\DEVE_06\TEMP\Esa_Model_Data\Beam.1" MemberID="Beam.1" SectionID="0" CombiID="0" />
       </TPanel>
     </Main>
     <MemberData Width="500" />

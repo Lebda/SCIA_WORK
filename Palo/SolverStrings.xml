@@ -2460,6 +2460,40 @@
     <ROM></ROM>
   </STRING>
   <STRING
+  ID="BSOLV_IDS_E_126">
+    <DESCRIP>
+    </DESCRIP>
+    <ENU>Singular stiffness matrix in the first load increment due to high compression. Please try decreasing the initial load factor.</ENU>
+    <SVK></SVK>
+    <SKY></SKY>
+    <CSY>Singulární matice tuhosti v prvním přírůstku zatížení z důvodu vysokého tlaku. Prosím zkuste snížit faktor počátečního zatížení.</CSY>
+    <NLD></NLD>
+    <FRB></FRB>
+    <DEU></DEU>
+    <ITA></ITA>
+    <PLK></PLK>
+    <PTG></PTG>
+    <RUS></RUS>
+    <ROM></ROM>
+  </STRING>
+  <STRING
+  ID="BSOLV_IDS_E_127">
+    <DESCRIP>
+    </DESCRIP>
+    <ENU>The construction is unstable, it is necessary to increase the number of increments.</ENU>
+    <SVK></SVK>
+    <SKY></SKY>
+    <CSY>Konstrukce je nestabilní, nutno zvýšit počet přírůstků.</CSY>
+    <NLD></NLD>
+    <FRB></FRB>
+    <DEU></DEU>
+    <ITA></ITA>
+    <PLK></PLK>
+    <PTG></PTG>
+    <RUS></RUS>
+    <ROM></ROM>
+  </STRING>
+  <STRING
 		ID="BSOLV_IDS_E_130">
 		<NO>843</NO>
 		<TYPE

@@ -646,7 +646,7 @@ object CS →UNK011_002978= IO.CS;
     </NormRef>
     <Variables>
       <Variable Modifier="Public" Name="CS" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_CS">
+        <Description>
           <ENU>
           </ENU>
         </Description>

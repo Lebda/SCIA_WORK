@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="ceb26cdf-5d32-4df5-9402-4297d8b1ab94">
   <CodeEditor>
-    <SourceCode Collapsed="10|18|92|96|100|315|357|398" BreakPoints="">//Functions for writing informations - IsDrawing only
+    <SourceCode Collapsed="10|18|92|96|100|317|359|400" BreakPoints="">//Functions for writing informations - IsDrawing only
 
 class Properties { 
     
@@ -244,7 +244,7 @@ class Properties {
                     T[0][1].Value →KRS014_001131= "d↓x← = " &amp; DataExchange.d_x_con_uz.ToString("0.00") &amp; " m"; 
                     T[1][1].Value →KRS014_001132= DataExchange.SLS_Con_Loads.LoadName; 
                     T[2][1].Value →KRS014_001133= DataExchange.SLS_Con_Loads.CombiKey; 
-                    T[3][1].Value →KRS014_001021= "δ↓z,tot← = " &amp; Val(DataExchange.SLS_Con_Deflections.uz*10↑3←, 2).ToString("0.00") &amp; " mm"; 
+                    T[3][1].Value →KRS014_001021= "δ↓z← = " &amp; Val(DataExchange.SLS_Con_Deflections.uz*10↑3←, 2).ToString("0.00") &amp; " mm"; 
                     IF(DataExchange.IsCamber &amp;&amp; DataExchange.Span == 0) { 
                         →KRS014_001345double δ↓z,cam←; 
                         →KRS014_001346double δ↓z,cam,max←; 
@@ -296,13 +296,15 @@ class Properties {
                         CASE 3 :  { 
                             //texts in first column
                             T[3][0].Value →KRS014_001387= TR("Deflection permanent"); 
-                            T[4][0].Value →KRS014_001395= TR("Minimal natural frequency"); 
+                            T[4][0].Value →KRS100_000001= TR("Deflection live"); 
+                            T[5][0].Value →KRS014_001395= TR("Minimal natural frequency"); 
                             //values in second column
                             T[0][1].Value →KRS014_001389= "d↓x← = " &amp; DataExchange.d_x_perm_uz.ToString("0.00") &amp; " m"; 
                             T[1][1].Value →KRS014_001390= DataExchange.SLS_Fin_Loads_Permanent.LoadName; 
                             T[2][1].Value →KRS014_001391= DataExchange.SLS_Fin_Loads_Permanent.CombiKey; 
                             T[3][1].Value →KRS014_001392= "δ↓z,per← = " &amp; Val(DataExchange.SLS_Fin_Permanent_Deflections.uz*10↑3←, 2).ToString("0.00") &amp; " mm"; 
-                            T[4][1].Value →KRS014_001396= "f↓min← = 4 Hz"; 
+                            T[4][1].Value →KRS100_000002= "δ↓z,live← = " &amp; Val(DataExchange.SLS_Fin_Live_Deflections.uz*10↑3←, 2).ToString("0.00") &amp; " mm"; 
+                            T[5][1].Value →KRS014_001396= "f↓min← = 4 Hz"; 
                         } 
                         DEFAULT :  { T[0][1].Value →KRS014_001142= "Incorrect CalcType"; } 
                     } 
@@ -2211,6 +2213,22 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="UNK000_019243">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

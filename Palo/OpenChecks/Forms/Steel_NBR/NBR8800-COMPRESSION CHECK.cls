@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="9f67512b-0a36-4d6c-a9a7-422d2a0e1c8c">
   <CodeEditor>
-    <SourceCode Collapsed="75|80|97|107|137|409|867" BreakPoints="">→INI400_000001TEXT("Design Members for Compression according to NBR-8800"); 
+    <SourceCode Collapsed="75|80|97|107|117|555|597" BreakPoints="">→INI400_000001TEXT("Design Members for Compression according to NBR-8800"); 
 →INI400_000019BLOCK { 
     // variables definition
     
@@ -150,7 +150,7 @@ double DefineBucklingLoad(object CS, double Lb↓x←, double Lb↓y←, double 
 
                     IF(CS.Geometry.Contains("s")) { 
                         tw →INI400_001527= CS.Geometry.s; 
-                        h →INI400_001528= CS.Geometry.h; 
+                        h →INI400_001528= CS.Geometry.Contains("h") ? CS.Geometry.h : →MPF000_000047CS.Geometry.H; 
                     } 
                     ELSE { 
                         tw →INI400_001943= CS.Geometry.tha; 
@@ -388,7 +388,7 @@ double DefineBucklingLoad(object CS, double Lb↓x←, double Lb↓y←, double 
     } 
 } 
 double DefineLocalBuckling_Q(object CS, double FormCode, double Fabrication, object ClassParam, double fy, double Ne, double E, double CSClass) { 
-    
+    Fabrication →MPF001_000026= CS.Chars.Fabrication; 
     object Ext →INI400_001669= LoadExternCLC("NBR8800-SECTION-CLASSIFICATION.CLC"); 
     IF((FormCode != 1) &amp;&amp; (FormCode != 2) &amp;&amp; (FormCode != 3) &amp;&amp; (FormCode != 4) &amp;&amp; (FormCode != 5) &amp;&amp; (FormCode != 6) &amp;&amp; (FormCode != 101) &amp;&amp; (FormCode != 2001)) { 
         →INI400_000615TEXT("Type of section not covered by this routine!"); 
@@ -576,7 +576,7 @@ double DefineLocalBuckling_Q(object CS, double FormCode, double Fabrication, obj
                 } 
                 ELSE { 
                     tw →INI400_001605= CS.Geometry.s; 
-                    h →INI400_001606= CS.Geometry.h; 
+                    h →INI400_001606= CS.Geometry.Contains("h") ? CS.Geometry.h : CS.Geometry.H; 
                     d →INI400_001607= h-2*tf; 
                 } 
             } 
@@ -600,12 +600,12 @@ double DefineLocalBuckling_Q(object CS, double FormCode, double Fabrication, obj
                 //for welded section
                 IF(Fabrication == 1) { 
                     IF(FormCode == 2001) { 
-                        double b →MPF001_000019= CS.Geometry.Ba-2*tf; // free depth
-                        double b2 →MPF001_000020= CS.Geometry.Bb-2*tw; // flange free width
+                        double b →MPF001_000019= CS.Geometry.Contains("Ba") ? CS.Geometry.Ba-2*tf : CS.Geometry.H-2*tf; // free depth
+                        double b2 →MPF001_000020= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb-2*tf : CS.Geometry.B-2*tw; // flange free width
                     } 
                     ELSE { 
-                        double b →INI400_000527= CS.Geometry.h-2*tf; // free depth
-                        double b2 →INI400_000541= CS.Geometry.b-2*tw; // flange free width
+                        double b →INI400_000527= CS.Geometry.Contains("h") ? CS.Geometry.h-2*tf : CS.Geometry.H-2*tf; // free depth
+                        double b2 →INI400_000541= CS.Geometry.Contains("b") ? CS.Geometry.b-2*tf : CS.Geometry.B-2*tw; // flange free width
                     } 
                     
                 } 
@@ -618,8 +618,8 @@ double DefineLocalBuckling_Q(object CS, double FormCode, double Fabrication, obj
                     } 
                     ELSE { 
                         double r1 →INI400_000553= CS.Geometry.r1; // internal radius
-                        double b →INI400_000551= CS.Geometry.h-2*tf-2*r1; // free depth
-                        double b2 →INI400_000552= CS.Geometry.b-2*tw-2*r1; // flange free width
+                        double b →INI400_000551= CS.Geometry.Contains("h") ? CS.Geometry.h-2*tf-2*r1 : CS.Geometry.H-2*tf-2*r1; // free depth
+                        double b2 →INI400_000552= CS.Geometry.Contains("b") ? CS.Geometry.b-2*tw-2*r1 : CS.Geometry.B-2*tw-2*r1; // flange free width
                     } 
                 } 
                 
@@ -981,14 +981,14 @@ UnitCheck →INI400_001719= COMPARE(N↓cRd←, 0, 6) == 0 ? 3 : ABS(N↓d←/au
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
-      <Variable Modifier="Public" Name="A↓ef←" ESA_ID="" Type="Double" Value="6.237424e-3" Precision="2">
+      <Variable Modifier="Public" Name="A↓ef←" ESA_ID="" Type="Double" Value="4.802531e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="100e-6" Dim="cm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="A↓g←" ESA_ID="" Type="Double" Value="8.6e-3" Precision="2">
+      <Variable Modifier="Public" Name="A↓g←" ESA_ID="" Type="Double" Value="4.90909e-3" Precision="2">
         <Description>
           <ENU>Gross Area</ENU>
         </Description>
@@ -1001,7 +1001,7 @@ UnitCheck →INI400_001719= COMPARE(N↓cRd←, 0, 6) == 0 ? 3 : ABS(N↓d←/au
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="aux1" ESA_ID="" Type="Double" Value="1.951195e6" Precision="2">
+      <Variable Modifier="Public" Name="aux1" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1064,7 +1064,7 @@ UnitCheck →INI400_001719= COMPARE(N↓cRd←, 0, 6) == 0 ? 3 : ABS(N↓d←/au
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="C↓w←" ESA_ID="" Type="Double" Value="446.509e-9" Precision="2">
+      <Variable Modifier="Public" Name="C↓w←" ESA_ID="" Type="Double" Value="148.828e-9" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1090,7 +1090,7 @@ UnitCheck →INI400_001719= COMPARE(N↓cRd←, 0, 6) == 0 ? 3 : ABS(N↓d←/au
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Value="581e-3" Precision="2">
+      <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Value="237.3e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1104,7 +1104,7 @@ UnitCheck →INI400_001719= COMPARE(N↓cRd←, 0, 6) == 0 ? 3 : ABS(N↓d←/au
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="E" ESA_ID="" Type="Double" Value="200e9" Precision="2">
+      <Variable Modifier="Public" Name="E" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>Elastic Modulus</ENU>
         </Description>
@@ -1123,7 +1123,7 @@ UnitCheck →INI400_001719= COMPARE(N↓cRd←, 0, 6) == 0 ? 3 : ABS(N↓d←/au
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="FormCode" ESA_ID="" Type="Double" Value="2001" Precision="2">
+      <Variable Modifier="Public" Name="FormCode" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1137,8 +1137,8 @@ UnitCheck →INI400_001719= COMPARE(N↓cRd←, 0, 6) == 0 ? 3 : ABS(N↓d←/au
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10e6" Dim="kN/cm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="G" ESA_ID="" Type="Double" Value="76.9231e9" Precision="2">
-        <Description TranslateID="VARIABLE_G">
+      <Variable Modifier="Public" Name="G" ESA_ID="" Type="Double" Value="NaN" Precision="2">
+        <Description>
           <ENU>Shear Modulus</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
@@ -1149,28 +1149,28 @@ UnitCheck →INI400_001719= COMPARE(N↓cRd←, 0, 6) == 0 ? 3 : ABS(N↓d←/au
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Value="400e-3" Precision="2">
+      <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Value="250e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="I↓x←" ESA_ID="" Type="Double" Value="250.449e-6" Precision="2">
+      <Variable Modifier="Public" Name="I↓x←" ESA_ID="" Type="Double" Value="42.242e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-9" Dim="cm↑4←" />
       </Variable>
-      <Variable Modifier="Public" Name="I↓y←" ESA_ID="" Type="Double" Value="113.036e-6" Precision="2">
+      <Variable Modifier="Public" Name="I↓y←" ESA_ID="" Type="Double" Value="19.0581e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-9" Dim="cm↑4←" />
       </Variable>
-      <Variable Modifier="Public" Name="J" ESA_ID="" Type="Double" Value="222.331e-6" Precision="2">
+      <Variable Modifier="Public" Name="J" ESA_ID="" Type="Double" Value="40.236e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1223,7 +1223,7 @@ UnitCheck →INI400_001719= COMPARE(N↓cRd←, 0, 6) == 0 ? 3 : ABS(N↓d←/au
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="N↓cRd←" ESA_ID="" Type="Double" Value="1.951195e6" Precision="2">
+      <Variable Modifier="Public" Name="N↓cRd←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1236,13 +1236,13 @@ UnitCheck →INI400_001719= COMPARE(N↓cRd←, 0, 6) == 0 ? 3 : ABS(N↓d←/au
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="Ne" ESA_ID="" Type="Double" Value="488.0513e6" Precision="2">
+      <Variable Modifier="Public" Name="Ne" ESA_ID="" Type="Double" Value="150.4767e6" Precision="2">
         <Description>
           <ENU>Elastic Buckling Load</ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="Ne↓x←" ESA_ID="" Type="Double" Value="1.977466e9" Precision="2">
+      <Variable Modifier="Public" Name="Ne↓x←" ESA_ID="" Type="Double" Value="333.5295e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1256,7 +1256,7 @@ UnitCheck →INI400_001719= COMPARE(N↓cRd←, 0, 6) == 0 ? 3 : ABS(N↓d←/au
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="Ne↓y←" ESA_ID="" Type="Double" Value="892.4965e6" Precision="2">
+      <Variable Modifier="Public" Name="Ne↓y←" ESA_ID="" Type="Double" Value="150.4767e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1270,20 +1270,20 @@ UnitCheck →INI400_001719= COMPARE(N↓cRd←, 0, 6) == 0 ? 3 : ABS(N↓d←/au
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="Ne↓z←" ESA_ID="" Type="Double" Value="488.0513e6" Precision="2">
+      <Variable Modifier="Public" Name="Ne↓z←" ESA_ID="" Type="Double" Value="341.9682e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="Q" ESA_ID="" Type="Double" Value="725.2819e-3" Precision="-2">
+      <Variable Modifier="Public" Name="Q" ESA_ID="" Type="Double" Value="978.2936e-3" Precision="-2">
         <Description>
           <ENU>Local buckling reduction factor</ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Q↓a←" ESA_ID="" Type="Double" Value="725.2819e-3" Precision="-2">
+      <Variable Modifier="Public" Name="Q↓a←" ESA_ID="" Type="Double" Value="978.2936e-3" Precision="-2">
         <Description>
           <ENU>
           </ENU>
@@ -1318,14 +1318,14 @@ UnitCheck →INI400_001719= COMPARE(N↓cRd←, 0, 6) == 0 ? 3 : ABS(N↓d←/au
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="r↓x←" ESA_ID="" Type="Double" Value="170.652e-3" Precision="2">
+      <Variable Modifier="Public" Name="r↓x←" ESA_ID="" Type="Double" Value="92.7623e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="r↓y←" ESA_ID="" Type="Double" Value="114.646e-3" Precision="2">
+      <Variable Modifier="Public" Name="r↓y←" ESA_ID="" Type="Double" Value="62.3074e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1352,7 +1352,7 @@ UnitCheck →INI400_001719= COMPARE(N↓cRd←, 0, 6) == 0 ? 3 : ABS(N↓d←/au
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="tf" ESA_ID="" Type="Double" Value="8e-3" Precision="2">
+      <Variable Modifier="Public" Name="tf" ESA_ID="" Type="Double" Value="6.35e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1366,7 +1366,7 @@ UnitCheck →INI400_001719= COMPARE(N↓cRd←, 0, 6) == 0 ? 3 : ABS(N↓d←/au
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="tw" ESA_ID="" Type="Double" Value="4.75e-3" Precision="2">
+      <Variable Modifier="Public" Name="tw" ESA_ID="" Type="Double" Value="6.35e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1380,7 +1380,7 @@ UnitCheck →INI400_001719= COMPARE(N↓cRd←, 0, 6) == 0 ? 3 : ABS(N↓d←/au
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UnitCheck" ESA_ID="" Type="Double" Value="25.62532e-3" Precision="2">
+      <Variable Modifier="Public" Name="UnitCheck" ESA_ID="" Type="Double" Value="3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1411,7 +1411,7 @@ UnitCheck →INI400_001719= COMPARE(N↓cRd←, 0, 6) == 0 ? 3 : ABS(N↓d←/au
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λ↓0←" ESA_ID="" Type="Double" Value="66.37651e-3" Precision="2">
+      <Variable Modifier="Public" Name="λ↓0←" ESA_ID="" Type="Double" Value="104.8926e-3" Precision="2">
         <Description>
           <ENU>Reduced slenderness index</ENU>
         </Description>
@@ -1431,7 +1431,7 @@ UnitCheck →INI400_001719= COMPARE(N↓cRd←, 0, 6) == 0 ? 3 : ABS(N↓d←/au
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λ↓rf←" ESA_ID="" Type="Double" Value="18.18769" Precision="2">
+      <Variable Modifier="Public" Name="λ↓rf←" ESA_ID="" Type="Double" Value="24.80891" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1459,7 +1459,7 @@ UnitCheck →INI400_001719= COMPARE(N↓cRd←, 0, 6) == 0 ? 3 : ABS(N↓d←/au
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λf" ESA_ID="" Type="Double" Value="17.36842" Precision="2">
+      <Variable Modifier="Public" Name="λf" ESA_ID="" Type="Double" Value="7.236842" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1487,7 +1487,7 @@ UnitCheck →INI400_001719= COMPARE(N↓cRd←, 0, 6) == 0 ? 3 : ABS(N↓d←/au
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="χ" ESA_ID="" Type="Double" Value="998.1576e-3" Precision="2">
+      <Variable Modifier="Public" Name="χ" ESA_ID="" Type="Double" Value="995.4055e-3" Precision="2">
         <Description>
           <ENU>Global buckling reduction factor</ENU>
         </Description>
@@ -2267,7 +2267,7 @@ UnitCheck →INI400_001719= COMPARE(N↓cRd←, 0, 6) == 0 ? 3 : ABS(N↓d←/au
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_000534">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="5" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -4762,22 +4762,6 @@ UnitCheck →INI400_001719= COMPARE(N↓cRd←, 0, 6) == 0 ? 3 : ABS(N↓d←/au
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="MPF001_000022">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="MPF001_000023">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
       <VC ID="MPF001_000024">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -4794,12 +4778,20 @@ UnitCheck →INI400_001719= COMPARE(N↓cRd←, 0, 6) == 0 ? 3 : ABS(N↓d←/au
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
+      <VC ID="MPF001_000026">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
   <Dialog>
     <Main Width="500">
-      <TEMDLoader Name="" ID="17" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="12" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="C:\Users\Avell 1513\ESA16.1\Temp\Esa_Model_Data\Beam.3900" MemberID="Beam.3900" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="" ID="17" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="12" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="" SectionID="-1" CombiID="-1" />
       <TDoubleInput Name="" ID="14" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="9" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="y0" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
       <TDoubleInput Name="" ID="13" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="8" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="x0" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
       <TCustomLibrary Name="" ID="12" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="7" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="CSS" DataFile="User.xml" Collapsed="True" UseCombo="True" Category="" Item="" />
@@ -4809,19 +4801,19 @@ UnitCheck →INI400_001719= COMPARE(N↓cRd←, 0, 6) == 0 ? 3 : ABS(N↓d←/au
           </ENU>
         </Texts>
       </TCheckBox>
-      <TComboBox Name="" ID="9" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="4" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Fabrication" VarNameVisible="True" InputColor="-4128832" DescPos="1" InputWidth="150" Values="0|1" Index="1">
-        <Texts TranslateID="DIALOG_000009">
+      <TComboBox Name="" ID="9" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="4" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Fabrication" VarNameVisible="True" InputColor="-4128832" DescPos="1" InputWidth="150" Values="0|1" Index="1">
+        <Texts>
           <ENU>Hot rolled|Welded</ENU>
         </Texts>
       </TComboBox>
-      <TGroupBox Name="" ID="6" Translate="1" Height="60" AutoWidth="False" AutoHeight="False" TabIndex="3" Dock="1" Anchor="5" Padding="5|15|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|1|3" BorderColor="-5192482">
-        <Texts TranslateID="DIALOG_000006">
+      <TGroupBox Name="" ID="6" Translate="0" Height="60" AutoWidth="False" AutoHeight="False" TabIndex="3" Dock="1" Anchor="5" Padding="5|15|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|1|3" BorderColor="-5192482">
+        <Texts>
           <ENU>Loading</ENU>
         </Texts>
         <TDoubleInput Name="" ID="7" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="N↓d←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
       </TGroupBox>
-      <TGroupBox Name="" ID="3" Translate="1" Height="140" AutoWidth="False" AutoHeight="False" TabIndex="2" Dock="1" Anchor="5" Padding="5|15|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|1|3" BorderColor="-5192482">
-        <Texts TranslateID="DIALOG_000003">
+      <TGroupBox Name="" ID="3" Translate="0" Height="140" AutoWidth="False" AutoHeight="False" TabIndex="2" Dock="1" Anchor="5" Padding="5|15|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|1|3" BorderColor="-5192482">
+        <Texts>
           <ENU>Buckling length</ENU>
         </Texts>
         <TDoubleInput Name="" ID="8" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="2" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Lb↓z←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />

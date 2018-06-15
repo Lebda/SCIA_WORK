@@ -1,0 +1,98 @@
+<Root Type="CustomLibrary">
+  <Node Code="E1">
+    <Desc TranslateID="E1_Desc">
+      <ENU>Member is not a wide flange (W) shape.</ENU>
+    </Desc>
+    <Sol TranslateID="E1_Sol">
+      <ENU>Review Member Type.</ENU>
+    </Sol>
+  </Node>
+  <Node Code="E2">
+    <Desc TranslateID="E2_Desc">
+      <ENU>Member is not either parallel or perpendicular within 5 degrees to decking.</ENU>
+    </Desc>
+    <Sol TranslateID="E2_Sol">
+      <ENU>Review Member Orientation.</ENU>
+    </Sol>
+  </Node>
+  <Node Code="E3">
+    <Desc TranslateID="E3_Desc">
+      <ENU>An error occured in optimisation: Unable to increase section.</ENU>
+    </Desc>
+    <Sol TranslateID="E3_Sol">
+      <ENU>Review Project Inputs.</ENU>
+    </Sol>
+  </Node>
+  <Node Code="E4">
+    <Desc TranslateID="E4_Desc">
+      <ENU>An error occured in optimisation: Unable to decrease section.</ENU>
+    </Desc>
+    <Sol TranslateID="E4_Sol">
+      <ENU>Review Project Inputs.</ENU>
+    </Sol>
+  </Node>
+  <Node Code="E5">
+    <Desc TranslateID="E5_Desc">
+      <ENU>Composite design form requires a class with multiple load combinations.</ENU>
+    </Desc>
+    <Sol TranslateID="E5_Sol">
+      <ENU>Review Load Combinations in Class.</ENU>
+    </Sol>
+  </Node>
+  <Node Code="E6">
+    <Desc TranslateID="E6_Desc">
+      <ENU>Load combinations use inconsistent design methods.</ENU>
+    </Desc>
+    <Sol TranslateID="E6_Sol">
+      <ENU>Review ULS Load Combinations.</ENU>
+    </Sol>
+  </Node>
+  <Node Code="W1">
+    <Desc TranslateID="W1_Desc">
+      <ENU>Member is not composite.</ENU>
+    </Desc>
+    <Sol TranslateID="W1_Sol">
+      <ENU>Review Member Type.</ENU>
+    </Sol>
+  </Node>
+  <Node Code="W2">
+    <Desc TranslateID="W2_Desc">
+      <ENU>Type of connection is not set to 'Standard Composite Action'.</ENU>
+    </Desc>
+    <Sol TranslateID="W2_Sol">
+      <ENU>Review Type of Connection.</ENU>
+    </Sol>
+  </Node>
+  <Node Code="W3">
+    <Desc TranslateID="W3_Desc">
+      <ENU>2D member is not composite deck.</ENU>
+    </Desc>
+    <Sol TranslateID="W3_Sol">
+      <ENU>Review 2D Member Type.</ENU>
+    </Sol>
+  </Node>
+  <Node Code="W4">
+    <Desc TranslateID="W4_Desc">
+      <ENU>Construction Self Weight Deflection is 0 inches. </ENU>
+    </Desc>
+    <Sol TranslateID="W4_Sol">
+      <ENU>Review Self-weight Load Case(s).</ENU>
+    </Sol>
+  </Node>
+  <Node Code="W5">
+    <Desc TranslateID="W5_Desc">
+      <ENU>Number of studs needed on member exceeds number of studs allowed by spacing requirements.</ENU>
+    </Desc>
+    <Sol TranslateID="W5_Sol">
+      <ENU>Review Project Inputs.</ENU>
+    </Sol>
+  </Node>
+  <Node Code="W6">
+    <Desc TranslateID="W6_Desc">
+      <ENU>No section could be found which meets design requirements.</ENU>
+    </Desc>
+    <Sol TranslateID="W6_Sol">
+      <ENU>Review Project Inputs.</ENU>
+    </Sol>
+  </Node>
+</Root>

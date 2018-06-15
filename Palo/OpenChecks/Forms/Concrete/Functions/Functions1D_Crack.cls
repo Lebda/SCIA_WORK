@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="71a433a2-5028-4f92-a040-7d98d93c4075">
   <CodeEditor>
-    <SourceCode Collapsed="2|132|142|162|172|183|195|208|219|229|266|294|307|316" BreakPoints="">//Functions for Crack width check and SLS design
+    <SourceCode Collapsed="2|132|142|162|172|183|195|208|219|229|266|294|307|316|397|410|447|460|499|544|567|580|590|622|675|713|794|805|825|836|855|877|886|904|917|926|997" BreakPoints="">//Functions for Crack width check and SLS design
 
 public double Calculate_wk_max(double CssIDCrack, double SetForcesQp, bool QuasiComb, bool CorossionSensitive) { 
     IF(IO.MemberData.Concrete.Solver.CrackWidth.TypeCrackWidth == 0) { 
@@ -942,9 +942,6 @@ class CalcCrackRectCss {
                         →KRS106_000052FUNCT_1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
                         NumberEWN[2] →KRS106_000028= NumberEWN[2]+1; 
                     } 
-                } 
-                CASE "NF" :  { 
-                    h↓c.ef← →KRS106_000029= PARMIN(2.5*(h-d), h/2) @REF("(NF-NA 7.3.2(3))"); 
                 } 
                 CASE "DIN" :  { 
                     IF(h/(h-d) &lt;= 5) { 
@@ -6066,14 +6063,6 @@ class CalcCrackRectCss {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="880" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="KRS106_000029">
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-      </VC>
       <VC ID="KRS106_000030">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="715" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="180" Hor="1" Ver="4" SpX="15" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -6598,9 +6587,6 @@ class CalcCrackRectCss {
     </Item>
     <Item TranslateID="STRING_8DDF7BB4">
       <ENU>"To input some bars of reinforcement to inside effective area of the concrete or decrease cover of reinforcement."</ENU>
-    </Item>
-    <Item TranslateID="STRING_8E60749A">
-      <ENU>"Depth of effective area of the concrete in the tension is calculated only as MIN[(2.5*(h-d); h/2)], because member is in compression."</ENU>
     </Item>
     <Item TranslateID="STRING_9340E729">
       <ENU>"There is no tensile reinforcement inside of effective area of the concrete in the tension."</ENU>

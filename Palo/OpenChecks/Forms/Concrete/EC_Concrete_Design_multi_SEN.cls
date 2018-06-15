@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="1688c49a-c5a4-4ff8-9465-599a66102a99">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">IF(!IO.Contains("Load")) { 
+    <SourceCode Collapsed="391" BreakPoints="">IF(!IO.Contains("Load")) { 
     Exit(); 
 } 
 
@@ -153,6 +153,9 @@ object[] obEWN →INI400_005579= CssConditions.obEWN;
 IF(CssConditions.ConditionsForCss) { 
     object DataFromSEN →INI400_008180= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FunctionsDataFromSEN.CLC"); 
     object Functions1D_DesignReq →INI400_010939= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_DesignReq.clc"); 
+    object Functions1D_Geometrics →KRS100_000010= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_Geometrics.clc"); 
+    //check if rib is fully inside slab
+    →KRS100_000011Functions1D_Geometrics.CheckAndSetSectionToRectWhenRibIsInside(); 
     
     // LOADING
     // loading of forces
@@ -235,7 +238,9 @@ IF(CssConditions.ConditionsForCss) {
                 IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.TypeOfCover == 0 || IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.TypeOfCover == 0)
                 { 
                     object cover →INI400_007021= LoadExternCLC("EC_Concrete_cover_SEN_Design.CLC"); 
-                    →INI400_007022cover.Calculate(False); 
+                    object InputCover →KRS100_000014= new Structure("obEWN", obEWN, "Number↓EWN←", Number↓EWN←); 
+                    object OutputCover →KRS100_000015= new Structure(); 
+                    →INI400_007022cover.Calculate(InputCover, OutputCover); 
                 } 
                 IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.TypeOfCover == 0) { 
                     c↓lo← →INI400_006703= cover.c↓nom,l←; 
@@ -274,7 +279,9 @@ IF(CssConditions.ConditionsForCss) {
                 IF(IO.MemberData.Concrete.Defaults.Column.Longitudinal.Main.TypeOfCover == 0)
                 { 
                     object cover →INI400_007025= LoadExternCLC("EC_Concrete_cover_SEN_Design.CLC"); 
-                    →INI400_007026cover.Calculate(False); 
+                    object InputCover →KRS100_000016= new Structure("obEWN", obEWN, "Number↓EWN←", Number↓EWN←); 
+                    object OutputCover →KRS100_000017= new Structure(); 
+                    →KRS100_000018cover.Calculate(InputCover, OutputCover); 
                     c →INI400_007027= cover.c↓nom,m←; 
                 } 
                 ELSE { 
@@ -300,7 +307,9 @@ IF(CssConditions.ConditionsForCss) {
                 IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.TypeOfCover == 0 || IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.TypeOfCover == 0)
                 { 
                     object cover →INI400_009844= LoadExternCLC("EC_Concrete_cover_SEN_Design.CLC"); 
-                    →INI400_009845cover.Calculate(False); 
+                    object InputCover →KRS100_000019= new Structure("obEWN", obEWN, "Number↓EWN←", Number↓EWN←); 
+                    object OutputCover →KRS100_000020= new Structure(); 
+                    →KRS100_000021cover.Calculate(InputCover, OutputCover); 
                 } 
                 IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.TypeOfCover == 0) { 
                     c↓lo← →INI400_009846= cover.c↓nom,l←; 
@@ -338,7 +347,9 @@ IF(CssConditions.ConditionsForCss) {
                 IF(IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Lower.TypeOfCover == 0 || IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Upper.TypeOfCover == 0)
                 { 
                     object cover →INI400_007028= LoadExternCLC("EC_Concrete_cover_SEN_Design.CLC"); 
-                    →INI400_007029cover.Calculate(False); 
+                    object InputCover →KRS100_000022= new Structure("obEWN", obEWN, "Number↓EWN←", Number↓EWN←); 
+                    object OutputCover →KRS100_000023= new Structure(); 
+                    →KRS100_000024cover.Calculate(InputCover, OutputCover); 
                 } 
                 IF(IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Lower.TypeOfCover == 0) { 
                     c↓lo← →INI400_006821= cover.c↓nom,l←; 
@@ -357,8 +368,28 @@ IF(CssConditions.ConditionsForCss) {
                 } 
             } 
         } 
+        IF(!IsNullOrEmpty(cover)) { 
+            obEWN →KRS100_000037= cover.obEWN; 
+            Number↓EWN← →KRS100_000038= cover.Number↓EWN←; 
+            //Test if concrete cover is not allowed for selected combination of concrete and exposure class 
+            IF(obEWN.Count &gt; 0) { 
+                FOR(i, 0, obEWN.Count-1) { 
+                    IF(obEWN[i].Index.Contains("E")) { 
+                        bool CoverIsSupported →KRS100_000039= false; 
+                        Break(); 
+                    } ELSE { 
+                        CoverIsSupported →KRS100_000040= true; 
+                    } 
+                } 
+            } ELSE { 
+                CoverIsSupported →KRS100_000046= true; 
+            } 
+        } ELSE { 
+            CoverIsSupported →KRS100_000045= true; 
+        } 
     } 
-    //increasing of staticallz required reinforcement
+    
+    //increasing of statically required reinforcement
     object IncreasingStatReinf →VAL127_000119= null; 
     //basic reinforcement
     SWITCH(TypeMember) { 
@@ -544,341 +575,464 @@ IF(CssConditions.ConditionsForCss) {
                 CASE 1 :  { //beam
                     IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.TypeOfCover == 0 || IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.TypeOfCover == 0) { 
                         object cover →KRS100_000001= LoadExternCLC("EC_Concrete_cover_SEN_Design.CLC"); 
-                        →KRS100_000002cover.Draw(False, 2); 
+                        object InputCover →KRS100_000025= new Structure("obEWN", obEWN, "Number↓EWN←", Number↓EWN←); 
+                        object OutputCover →KRS100_000026= new Structure(); 
+                        →KRS100_000002cover.Draw(InputCover, OutputCover, 2); 
                     } 
                 } 
                 CASE 2 :  { //column
                     IF(IO.MemberData.Concrete.Defaults.Column.Longitudinal.Main.TypeOfCover == 0) { 
                         object cover →KRS100_000003= LoadExternCLC("EC_Concrete_cover_SEN_Design.CLC"); 
-                        →KRS100_000004cover.Draw(False, 2); 
+                        object InputCover →KRS100_000028= new Structure("obEWN", obEWN, "Number↓EWN←", Number↓EWN←); 
+                        object OutputCover →KRS100_000029= new Structure(); 
+                        →KRS100_000030cover.Draw(InputCover, OutputCover, 2); 
                     } 
                 } 
                 CASE 4 :  { //rib
                     IF(IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.TypeOfCover == 0 || IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.TypeOfCover == 0) { 
                         object cover →KRS100_000005= LoadExternCLC("EC_Concrete_cover_SEN_Design.CLC"); 
-                        →KRS100_000006cover.Draw(False, 2); 
+                        object InputCover →KRS100_000031= new Structure("obEWN", obEWN, "Number↓EWN←", Number↓EWN←); 
+                        object OutputCover →KRS100_000032= new Structure(); 
+                        →KRS100_000033cover.Draw(InputCover, OutputCover, 2); 
                     } 
                 } 
                 CASE 128 :  { //beamslab
                     IF(IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Lower.TypeOfCover == 0 || IO.MemberData.Concrete.Defaults.BeamSlab.Longitudinal.Upper.TypeOfCover == 0) { 
                         object cover →KRS100_000007= LoadExternCLC("EC_Concrete_cover_SEN_Design.CLC"); 
-                        →KRS100_000008cover.Draw(False, 2); 
+                        object InputCover →KRS100_000034= new Structure("obEWN", obEWN, "Number↓EWN←", Number↓EWN←); 
+                        object OutputCover →KRS100_000035= new Structure(); 
+                        →KRS100_000036cover.Draw(InputCover, OutputCover, 2); 
                     } 
                 } 
             } 
         } 
+        
     } 
-    
-    //        DESIGNOFREINFORCEMENT
-    object InputMultiDesign →INI400_009925= new Structure(); 
-    object OutputMultiDesign →INI400_009926= new Structure(); 
-    
-    object MultiDesign →INI400_009927= LoadExternCLC("EC_Concrete_Design_multi.clc"); 
-    //setting of calculation
-    →INI400_009928InputMultiDesign.Add("PrintCaption", False); 
-    →INI400_009929InputMultiDesign.Add("bDrawPictures", True); 
-    →INI400_009930InputMultiDesign.Add("PrintEWN", True); 
-    →INI400_009931InputMultiDesign.Add("AccidentalULS", DataFromSEN.IsAccidentalCombi()); 
-    
-    →INI400_009932InputMultiDesign.Add("IndexEWN", IndexEWN); 
-    →INI400_009933InputMultiDesign.Add("bUseUserReinf", bUseUserReinf); 
-    →INI400_009934InputMultiDesign.Add("DesignSLS", DesignSLS); 
-    →INI400_009935InputMultiDesign.Add("DesignULS", DesignULS); 
-    →INI400_009936InputMultiDesign.Add("AutoMethod", true); 
-    →INI400_009937InputMultiDesign.Add("ExplodedToBars", ExplodedToBars); 
-    →INI400_009938InputMultiDesign.Add("PrintResultPerCombi", false); 
-    →INI400_009939InputMultiDesign.Add("bExtremeCombPerDirection", True); 
-    →INI400_009940InputMultiDesign.Add("Coeff_Area", 1); 
-    
-    →INI400_009941InputMultiDesign.Add("Coeff_d", IO.Setup.Concrete.Solver.General.Coeffd); 
-    →INI400_009942InputMultiDesign.Add("DesAddDataID_ULS", 0); 
-    →INI400_009943InputMultiDesign.Add("DesMethodBeam", IO.MemberData.Concrete.Solver.DesignAs.BeamColumnRibBeamSlab.DesignMethodBeams); 
-    →INI400_009944InputMultiDesign.Add("DesMethodCol", IO.MemberData.Concrete.Solver.DesignAs.BeamColumnRibBeamSlab.DesignMethodColumns); 
-    →INI400_009945InputMultiDesign.Add("LimitRatioM", IO.Setup.Concrete.Solver.DesignAs.BeamColumnRibBeamSlab.LimitRatioMoments); 
-    →INI400_009946InputMultiDesign.Add("MaxNlayers", 5); 
-    →INI400_009947InputMultiDesign.Add("MinNbarsEdge", 0); 
-    →INI400_009949InputMultiDesign.Add("s_min", s↓min←); 
-    →INI400_009950InputMultiDesign.Add("TypeArea", 1); 
-    →INI400_009951InputMultiDesign.Add("TypeMember", TypeMember); 
-    →INI400_009952InputMultiDesign.Add("ReinfRatio", IO.Setup.Concrete.Solver.IntForces.ULS.RatioReinf); 
-    →INI400_009953InputMultiDesign.Add("IncreaseReqArea", 0.001); 
-    →INI400_009954InputMultiDesign.Add("TestEqulibrium", True); 
-    
-    
-    ///design defualts
-    →INI400_009956InputMultiDesign.Add("c", c); 
-    →INI400_009957InputMultiDesign.Add("c_lo", c↓lo←); 
-    →INI400_009958InputMultiDesign.Add("c_up", c↓up←); 
-    →INI400_009959InputMultiDesign.Add("c_side", c↓side←); 
-    →INI400_009960InputMultiDesign.Add("ϕ", ϕ); 
-    →INI400_009961InputMultiDesign.Add("ϕ_lo", ϕ↓lo←); 
-    →INI400_009962InputMultiDesign.Add("ϕ_up", ϕ↓up←); 
-    →VAL127_000089InputMultiDesign.Add("BasicReinf", BasicReinf); 
-    →VAL127_000120InputMultiDesign.Add("IncreasingStatReinf", IncreasingStatReinf); 
-    →VAL012_000001InputMultiDesign.Add("CoeffIncreaseBar", 0.5); 
-    //loading 
-    →INI400_009963InputMultiDesign.Add("ArrayForcesULS", ArrayForcesULS); 
-    →INI400_009965InputMultiDesign.Add("CombikeyULS", CombikeyULS); 
-    →INI400_014029InputMultiDesign.Add("ArrayForcesSLSChar", ArrayForcesSLSChar); 
-    →INI400_014030InputMultiDesign.Add("CombikeySLSChar", CombikeySLSChar); 
-    →INI400_014031InputMultiDesign.Add("ArrayForcesSLSQP", ArrayForcesSLSQP); 
-    →INI400_014032InputMultiDesign.Add("CombikeySLSQP", CombikeySLSQP); 
-    
-    // cross-section
-    →INI400_009967InputMultiDesign.Add("ReqReinfMat", ReqReinfMat); 
-    →INI400_009968InputMultiDesign.Add("CssULSID", CssULSID); 
-    →INI400_010017InputMultiDesign.Add("CssULSIDLinear", CssULSIDLinear); 
-    
-    ///dtermination which reinforcement will be calculated
-    →INI400_009969InputMultiDesign.Add("bDesignAddLongReinf", bDesignAddLongReinf); 
-    →INI400_009970InputMultiDesign.Add("bDetailingProv", True); 
-    →INI400_009971InputMultiDesign.Add("bShearDesign", True); 
-    ///////////////////////////////////////    
-    // todo_lun - to be solved
-    →INI400_013917InputMultiDesign.Add("TypeCoverDiam", 1); 
-    
-    
-    //////////////////////////////////////
+    IF(CoverIsSupported) { 
+        //        DESIGNOFREINFORCEMENT
+        object InputMultiDesign →INI400_009925= new Structure(); 
+        object OutputMultiDesign →INI400_009926= new Structure(); 
+        
+        object MultiDesign →INI400_009927= LoadExternCLC("EC_Concrete_Design_multi.clc"); 
+        //setting of calculation
+        →INI400_009928InputMultiDesign.Add("PrintCaption", False); 
+        →INI400_009929InputMultiDesign.Add("bDrawPictures", True); 
+        →INI400_009930InputMultiDesign.Add("PrintEWN", True); 
+        →INI400_009931InputMultiDesign.Add("AccidentalULS", DataFromSEN.IsAccidentalCombi()); 
+        
+        →INI400_009932InputMultiDesign.Add("IndexEWN", IndexEWN); 
+        →INI400_009933InputMultiDesign.Add("bUseUserReinf", bUseUserReinf); 
+        →INI400_009934InputMultiDesign.Add("DesignSLS", DesignSLS); 
+        →INI400_009935InputMultiDesign.Add("DesignULS", DesignULS); 
+        →INI400_009936InputMultiDesign.Add("AutoMethod", true); 
+        →INI400_009937InputMultiDesign.Add("ExplodedToBars", ExplodedToBars); 
+        →INI400_009938InputMultiDesign.Add("PrintResultPerCombi", false); 
+        →INI400_009939InputMultiDesign.Add("bExtremeCombPerDirection", True); 
+        →INI400_009940InputMultiDesign.Add("Coeff_Area", 1); 
+        
+        →INI400_009941InputMultiDesign.Add("Coeff_d", IO.Setup.Concrete.Solver.General.Coeffd); 
+        →INI400_009942InputMultiDesign.Add("DesAddDataID_ULS", 0); 
+        →INI400_009943InputMultiDesign.Add("DesMethodBeam", IO.MemberData.Concrete.Solver.DesignAs.BeamColumnRibBeamSlab.DesignMethodBeams); 
+        →INI400_009944InputMultiDesign.Add("DesMethodCol", IO.MemberData.Concrete.Solver.DesignAs.BeamColumnRibBeamSlab.DesignMethodColumns); 
+        →INI400_009945InputMultiDesign.Add("LimitRatioM", IO.Setup.Concrete.Solver.DesignAs.BeamColumnRibBeamSlab.LimitRatioMoments); 
+        →INI400_009946InputMultiDesign.Add("MaxNlayers", 5); 
+        →INI400_009947InputMultiDesign.Add("MinNbarsEdge", 0); 
+        →INI400_009949InputMultiDesign.Add("s_min", s↓min←); 
+        →INI400_009950InputMultiDesign.Add("TypeArea", 1); 
+        →INI400_009951InputMultiDesign.Add("TypeMember", TypeMember); 
+        →INI400_009952InputMultiDesign.Add("ReinfRatio", IO.Setup.Concrete.Solver.IntForces.ULS.RatioReinf); 
+        →INI400_009953InputMultiDesign.Add("IncreaseReqArea", 0.001); 
+        →INI400_009954InputMultiDesign.Add("TestEqulibrium", True); 
+        
+        
+        ///design defualts
+        →INI400_009956InputMultiDesign.Add("c", c); 
+        →INI400_009957InputMultiDesign.Add("c_lo", c↓lo←); 
+        →INI400_009958InputMultiDesign.Add("c_up", c↓up←); 
+        →INI400_009959InputMultiDesign.Add("c_side", c↓side←); 
+        →INI400_009960InputMultiDesign.Add("ϕ", ϕ); 
+        →INI400_009961InputMultiDesign.Add("ϕ_lo", ϕ↓lo←); 
+        →INI400_009962InputMultiDesign.Add("ϕ_up", ϕ↓up←); 
+        →VAL127_000089InputMultiDesign.Add("BasicReinf", BasicReinf); 
+        →VAL127_000120InputMultiDesign.Add("IncreasingStatReinf", IncreasingStatReinf); 
+        →VAL012_000001InputMultiDesign.Add("CoeffIncreaseBar", 0.5); 
+        //loading 
+        →INI400_009963InputMultiDesign.Add("ArrayForcesULS", ArrayForcesULS); 
+        →INI400_009965InputMultiDesign.Add("CombikeyULS", CombikeyULS); 
+        →INI400_014029InputMultiDesign.Add("ArrayForcesSLSChar", ArrayForcesSLSChar); 
+        →INI400_014030InputMultiDesign.Add("CombikeySLSChar", CombikeySLSChar); 
+        →INI400_014031InputMultiDesign.Add("ArrayForcesSLSQP", ArrayForcesSLSQP); 
+        →INI400_014032InputMultiDesign.Add("CombikeySLSQP", CombikeySLSQP); 
+        
+        // cross-section
+        →INI400_009967InputMultiDesign.Add("ReqReinfMat", ReqReinfMat); 
+        →INI400_009968InputMultiDesign.Add("CssULSID", CssULSID); 
+        →INI400_010017InputMultiDesign.Add("CssULSIDLinear", CssULSIDLinear); 
+        
+        ///dtermination which reinforcement will be calculated
+        →INI400_009969InputMultiDesign.Add("bDesignAddLongReinf", bDesignAddLongReinf); 
+        →INI400_009970InputMultiDesign.Add("bDetailingProv", True); 
+        →INI400_009971InputMultiDesign.Add("bShearDesign", True); 
+        ///////////////////////////////////////    
+        // todo_lun - to be solved
+        →INI400_013917InputMultiDesign.Add("TypeCoverDiam", 1); 
+        
+        
+        //////////////////////////////////////
 
-    //shear design
-    →INI400_009972InputMultiDesign.Add("AllCombForShearDesign", Auto↓θ←); 
-    →INI400_009973InputMultiDesign.Add("Coeff_z", Coeff↓z←); 
-    →KRS116_000016InputMultiDesign.Add("Coeff_com", Coeff↓com←); 
-    →INI400_009974InputMultiDesign.Add("AutoCalNStirCut", False); 
-    →INI400_009975InputMultiDesign.Add("bUseUserStirrup", bUseUserStirrup); 
-    →INI400_009976InputMultiDesign.Add("DesignShearReinf", DesignShearReinf); 
-    
-    →INI400_009977InputMultiDesign.Add("Auto_θ", Auto↓θ←); 
-    →INI400_009978InputMultiDesign.Add("θ_inp", θ↓inp←); 
-    →INI400_009979InputMultiDesign.Add("b_interaction", False); 
-    →INI400_009980InputMultiDesign.Add("θ↓int←", 0); 
-    
-    //required shear reinforcement characteristic
-    →INI400_009997InputMultiDesign.Add("DistanceStep", 0.025); 
-    →INI400_010006InputMultiDesign.Add("n_s_req", n↓s.req←); 
-    →INI400_010007InputMultiDesign.Add("α_s_req", α↓s.req←); 
-    →INI400_010008InputMultiDesign.Add("ϕ_s_req", ϕ↓s.req←); 
-    →INI400_010010InputMultiDesign.Add("f_ywk_req", f↓ywk.req←); 
-    
-    →INI400_010011InputMultiDesign.Add("TypeTorCss", TypeTorCss); 
-    →INI400_010012InputMultiDesign.Add("A_k_inp", A↓k.inp←); 
-    →INI400_010015InputMultiDesign.Add("u_k_inp", u↓k.inp←); 
-    →INI400_010016InputMultiDesign.Add("t_ef_inp", t↓ef.inp←); 
-    
-    →INI400_010018InputMultiDesign.Add("bBeamShearCheckMaxLongSpacing", IO.Setup.Concrete.Solver.DetProv.Beam.Stirrups.CheckMaxLongSpacingShear); 
-    →INI400_010019InputMultiDesign.Add("bBeamShearCheckMaxTransSpacing", IO.Setup.Concrete.Solver.DetProv.Beam.Stirrups.CheckMaxTransvSpacingShear); 
-    →INI400_010020InputMultiDesign.Add("bBeamShearCheckMinReinfRatio", IO.Setup.Concrete.Solver.DetProv.Beam.Stirrups.CheckMinPercentage); 
-    →INI400_010021InputMultiDesign.Add("bBeamShearCheckMaxReinfRatio", IO.Setup.Concrete.Solver.DetProv.Beam.Stirrups.CheckMaxPercentage); 
-    →INI400_010022InputMultiDesign.Add("bBeamShearCheckMaxTorsDistance", IO.Setup.Concrete.Solver.DetProv.Beam.Stirrups.CheckMaxTransvSpacingShear); 
-    
-    →INI400_010023InputMultiDesign.Add("d_sc_min", IO.Setup.Concrete.Solver.DetProv.Column.Transverse.MinBarDiameter); 
-    →INI400_010024InputMultiDesign.Add("xd_sc", IO.Setup.Concrete.Solver.DetProv.Column.Transverse.MinBarDiameterPerc); 
-    →INI400_010025InputMultiDesign.Add("bColumnShearCheckMaxLongSpacing", IO.Setup.Concrete.Solver.DetProv.Column.Transverse.CheckMaxLongSpacing); 
-    →INI400_010026InputMultiDesign.Add("bColumnShearCheckMinBarDiameter", IO.Setup.Concrete.Solver.DetProv.Column.Transverse.CheckMinMandrelDiameter); 
-    →KRS135_000007InputMultiDesign.Add("bColumnShearCheckMaxReinfRatio", IO.Setup.Concrete.Solver.DetProv.Column.Transverse.CheckMaxPercentage); 
-    
-    ///detailing provisions
-    →KRS135_000025InputMultiDesign.Add("Length", IO.Beam.Member.Length); 
-    →INI400_010028InputMultiDesign.Add("s_lb_min", IO.Setup.Concrete.Solver.DetProv.Beam.Longitudinal.MinBarDistance); 
-    →INI400_010029InputMultiDesign.Add("s_lb_max", IO.Setup.Concrete.Solver.DetProv.Beam.Longitudinal.MaxBarDistance); 
-    →INI400_010030InputMultiDesign.Add("s_lbt_max", IO.Setup.Concrete.Solver.DetProv.Beam.Longitudinal.MaxBarTorsion); 
-    →INI400_010031InputMultiDesign.Add("bBeamCheckMaxDistance", IO.Setup.Concrete.Solver.DetProv.Beam.Longitudinal.CheckMaxBarDistance); 
-    →INI400_010032InputMultiDesign.Add("bBeamCheckMaxPercentage", IO.Setup.Concrete.Solver.DetProv.Beam.Longitudinal.CheckMaxPercentage); 
-    →INI400_010033InputMultiDesign.Add("bBeamCheckMinDistance", IO.Setup.Concrete.Solver.DetProv.Beam.Longitudinal.CheckMinBarDistance); 
-    →INI400_010034InputMultiDesign.Add("bBeamCheckMinPercentage", IO.Setup.Concrete.Solver.DetProv.Beam.Longitudinal.CheckMinPercentage); 
-    →INI400_010035InputMultiDesign.Add("bBeamCheckMaxTorsDistance", IO.Setup.Concrete.Solver.DetProv.Beam.Longitudinal.CheckMaxBarTorsion); 
-    
-    →INI400_010036InputMultiDesign.Add("s_lc_min", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.MinBarDistance); 
-    →INI400_010037InputMultiDesign.Add("s_lc_max", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.MaxBarDistance); 
-    →INI400_010038InputMultiDesign.Add("s_lct_max", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.MaxBarTorsion); 
-    IF(IO.SetupNA.EC_NA.Code == "ONORM" &amp;&amp; IO.SetupNA.EC_1992_1_1.Contains("n_lcmin")) { 
-        →KRS116_000022InputMultiDesign.Add("n_lc_min", IO.SetupNA.EC_1992_1_1.n_lcmin); 
+        //shear design
+        →INI400_009972InputMultiDesign.Add("AllCombForShearDesign", Auto↓θ←); 
+        →INI400_009973InputMultiDesign.Add("Coeff_z", Coeff↓z←); 
+        →KRS116_000016InputMultiDesign.Add("Coeff_com", Coeff↓com←); 
+        →INI400_009974InputMultiDesign.Add("AutoCalNStirCut", False); 
+        →INI400_009975InputMultiDesign.Add("bUseUserStirrup", bUseUserStirrup); 
+        →INI400_009976InputMultiDesign.Add("DesignShearReinf", DesignShearReinf); 
+        
+        →INI400_009977InputMultiDesign.Add("Auto_θ", Auto↓θ←); 
+        →INI400_009978InputMultiDesign.Add("θ_inp", θ↓inp←); 
+        →INI400_009979InputMultiDesign.Add("b_interaction", False); 
+        →INI400_009980InputMultiDesign.Add("θ↓int←", 0); 
+        
+        //required shear reinforcement characteristic
+        →INI400_009997InputMultiDesign.Add("DistanceStep", 0.025); 
+        →INI400_010006InputMultiDesign.Add("n_s_req", n↓s.req←); 
+        →INI400_010007InputMultiDesign.Add("α_s_req", α↓s.req←); 
+        →INI400_010008InputMultiDesign.Add("ϕ_s_req", ϕ↓s.req←); 
+        →INI400_010010InputMultiDesign.Add("f_ywk_req", f↓ywk.req←); 
+        
+        →INI400_010011InputMultiDesign.Add("TypeTorCss", TypeTorCss); 
+        →INI400_010012InputMultiDesign.Add("A_k_inp", A↓k.inp←); 
+        →INI400_010015InputMultiDesign.Add("u_k_inp", u↓k.inp←); 
+        →INI400_010016InputMultiDesign.Add("t_ef_inp", t↓ef.inp←); 
+        
+        →INI400_010018InputMultiDesign.Add("bBeamShearCheckMaxLongSpacing", IO.Setup.Concrete.Solver.DetProv.Beam.Stirrups.CheckMaxLongSpacingShear); 
+        →INI400_010019InputMultiDesign.Add("bBeamShearCheckMaxTransSpacing", IO.Setup.Concrete.Solver.DetProv.Beam.Stirrups.CheckMaxTransvSpacingShear); 
+        →INI400_010020InputMultiDesign.Add("bBeamShearCheckMinReinfRatio", IO.Setup.Concrete.Solver.DetProv.Beam.Stirrups.CheckMinPercentage); 
+        →INI400_010021InputMultiDesign.Add("bBeamShearCheckMaxReinfRatio", IO.Setup.Concrete.Solver.DetProv.Beam.Stirrups.CheckMaxPercentage); 
+        →INI400_010022InputMultiDesign.Add("bBeamShearCheckMaxTorsDistance", IO.Setup.Concrete.Solver.DetProv.Beam.Stirrups.CheckMaxTransvSpacingShear); 
+        
+        →INI400_010023InputMultiDesign.Add("d_sc_min", IO.Setup.Concrete.Solver.DetProv.Column.Transverse.MinBarDiameter); 
+        →INI400_010024InputMultiDesign.Add("xd_sc", IO.Setup.Concrete.Solver.DetProv.Column.Transverse.MinBarDiameterPerc); 
+        →INI400_010025InputMultiDesign.Add("bColumnShearCheckMaxLongSpacing", IO.Setup.Concrete.Solver.DetProv.Column.Transverse.CheckMaxLongSpacing); 
+        →INI400_010026InputMultiDesign.Add("bColumnShearCheckMinBarDiameter", IO.Setup.Concrete.Solver.DetProv.Column.Transverse.CheckMinMandrelDiameter); 
+        →KRS135_000007InputMultiDesign.Add("bColumnShearCheckMaxReinfRatio", IO.Setup.Concrete.Solver.DetProv.Column.Transverse.CheckMaxPercentage); 
+        
+        ///detailing provisions
+        →KRS135_000025InputMultiDesign.Add("Length", IO.Beam.Member.Length); 
+        →INI400_010028InputMultiDesign.Add("s_lb_min", IO.Setup.Concrete.Solver.DetProv.Beam.Longitudinal.MinBarDistance); 
+        →INI400_010029InputMultiDesign.Add("s_lb_max", IO.Setup.Concrete.Solver.DetProv.Beam.Longitudinal.MaxBarDistance); 
+        →INI400_010030InputMultiDesign.Add("s_lbt_max", IO.Setup.Concrete.Solver.DetProv.Beam.Longitudinal.MaxBarTorsion); 
+        →INI400_010031InputMultiDesign.Add("bBeamCheckMaxDistance", IO.Setup.Concrete.Solver.DetProv.Beam.Longitudinal.CheckMaxBarDistance); 
+        →INI400_010032InputMultiDesign.Add("bBeamCheckMaxPercentage", IO.Setup.Concrete.Solver.DetProv.Beam.Longitudinal.CheckMaxPercentage); 
+        →INI400_010033InputMultiDesign.Add("bBeamCheckMinDistance", IO.Setup.Concrete.Solver.DetProv.Beam.Longitudinal.CheckMinBarDistance); 
+        →INI400_010034InputMultiDesign.Add("bBeamCheckMinPercentage", IO.Setup.Concrete.Solver.DetProv.Beam.Longitudinal.CheckMinPercentage); 
+        →INI400_010035InputMultiDesign.Add("bBeamCheckMaxTorsDistance", IO.Setup.Concrete.Solver.DetProv.Beam.Longitudinal.CheckMaxBarTorsion); 
+        
+        →INI400_010036InputMultiDesign.Add("s_lc_min", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.MinBarDistance); 
+        →INI400_010037InputMultiDesign.Add("s_lc_max", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.MaxBarDistance); 
+        →INI400_010038InputMultiDesign.Add("s_lct_max", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.MaxBarTorsion); 
+        IF(IO.SetupNA.EC_NA.Code == "ONORM" &amp;&amp; IO.SetupNA.EC_1992_1_1.Contains("n_lcmin")) { 
+            →KRS116_000022InputMultiDesign.Add("n_lc_min", IO.SetupNA.EC_1992_1_1.n_lcmin); 
+        } ELSE { 
+            →INI400_010039InputMultiDesign.Add("n_lc_min", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.MinNumBarsInCircularColumn); 
+        } 
+        →INI400_010040InputMultiDesign.Add("bColumnCheckMaxDistance", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.CheckMaxBarDistance); 
+        →INI400_010041InputMultiDesign.Add("bColumnCheckMinPercentage", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.CheckMinPercentage); 
+        →INI400_010042InputMultiDesign.Add("bColumnCheckMaxPercentage", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.CheckMaxPercentage); 
+        →INI400_010043InputMultiDesign.Add("bColumnCheckMinDistance", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.CheckMinBarDistance); 
+        
+        →INI400_010044InputMultiDesign.Add("bColumnCheckMinBarDiameter", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.CheckMinBarDiameter); 
+        →INI400_010045InputMultiDesign.Add("bColumnCheckMinNumberOfBars", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.CheckMinNumBars); 
+        →INI400_010046InputMultiDesign.Add("bColumnCheckMaxTorsDistance", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.CheckMaxBarTorsion); 
+        
+        →INI400_010047InputMultiDesign.Add("s_lbs_min", IO.Setup.Concrete.Solver.DetProv.BeamSlab.Longitudinal.MinBarDistance); 
+        →INI400_010048InputMultiDesign.Add("bBeamSlabCheckMaxDistance", IO.Setup.Concrete.Solver.DetProv.BeamSlab.Longitudinal.CheckMaxBarDistance); 
+        →INI400_010049InputMultiDesign.Add("bBeamSlabCheckMinPercentage", IO.Setup.Concrete.Solver.DetProv.BeamSlab.Longitudinal.CheckMinPercentage); 
+        →INI400_010050InputMultiDesign.Add("bBeamSlabCheckMaxPercentage", IO.Setup.Concrete.Solver.DetProv.BeamSlab.Longitudinal.CheckMaxPercentage); 
+        →INI400_010051InputMultiDesign.Add("bBeamSlabCheckMinDistance", IO.Setup.Concrete.Solver.DetProv.BeamSlab.Longitudinal.CheckMinBarDistance); 
+        
+        //-----------------------
+        //SLS design
+        →INI400_013992InputMultiDesign.Add("w_k_max", 0); //Because w_max is calculated inside when SEN run
+        →INI400_014035InputMultiDesign.Add("φ_ef", φ↓ef←); 
+        →INI400_014037InputMultiDesign.Add("Coeff_long", Coeff↓long←); 
+        →INI400_014039InputMultiDesign.Add("k_1", k↓1←); 
+        
+        →KRS127_000110InputMultiDesign.Add("ErrorValue", IO.Setup.Concrete.Solver.General.NcalcCheck); 
+        
+        //EWN
+        →KRS100_000012InputMultiDesign.Add("obEWN", obEWN); 
+        →KRS100_000013InputMultiDesign.Add("Number↓EWN←", Number↓EWN←); 
+        
+        IF(IO.IsDrawing) { 
+            →INI400_005217MultiDesign.Draw(InputMultiDesign, OutputMultiDesign, IO.LayoutIndex+1); 
+        } ELSE { 
+            →INI400_007714MultiDesign.Calculate(InputMultiDesign, OutputMultiDesign); 
+        } 
+        
+        →INI400_013920SaveResults(ResultType.Member, "DesignAs", true); 
+        →INI400_013921SaveResults(ResultType.Section, "DesignAs", OutputMultiDesign); 
+        
+        //output values
+        object SumAreaULSReq →INI400_006897= OutputMultiDesign.SummaryAreaFin; 
+        object SumAreaULSPract →INI400_008184= OutputMultiDesign.SummaryAreaPract; 
+        object SumShearArea →INI400_008196= OutputMultiDesign.SumShearArea; 
+        double A↓sz.req+← →INI400_007747= SumAreaULSReq.Req.As_zpos; 
+        double A↓sz.req-← →INI400_007939= SumAreaULSReq.Req.As_zneg; 
+        double A↓sy.req+← →INI400_007940= SumAreaULSReq.Req.As_ypos; 
+        double A↓sy.req-← →INI400_007941= SumAreaULSReq.Req.As_yneg; 
+        double A↓sz.req← →INI400_007942= SumAreaULSReq.Req.As_z; 
+        double A↓sy.req← →INI400_007748= SumAreaULSReq.Req.As_y; 
+        double A↓s.req← →INI400_007749= SumAreaULSReq.Req.As; 
+        
+        double A↓sz.req.bar+← →KRS127_000089= SumAreaULSPract.Req.As_zpos; 
+        double A↓sz.req.bar-← →KRS127_000090= SumAreaULSPract.Req.As_zneg; 
+        double A↓sy.req.bar+← →KRS127_000091= SumAreaULSPract.Req.As_ypos; 
+        double A↓sy.req.bar-← →KRS127_000092= SumAreaULSPract.Req.As_yneg; 
+        double A↓sz.req.bar← →KRS127_000093= SumAreaULSPract.Req.As_z; 
+        double A↓sy.req.bar← →KRS127_000094= SumAreaULSPract.Req.As_y; 
+        double A↓s.req.bar← →KRS127_000095= SumAreaULSPract.Req.As; 
+        
+        double A↓swm.req← →INI400_008181= 0; 
+        double A↓swm.prov← →INI400_008193= 0; 
+        string ShearReinf →DLO316_000001= OutputMultiDesign.sAsw; 
+        double UC↓Shear.req← →KRS135_000008= OutputMultiDesign.DesignUCShear; 
+        IF(SumShearArea != null) { 
+            A↓swm.req← →INI400_013918= SumShearArea.Aswm_req; 
+            A↓swm.prov← →INI400_013919= SumShearArea.Aswm_pract; 
+        } 
+        
+        object SumBasicProvReinf →KRS127_000001= OutputMultiDesign.SumBasicProvReinf; 
+        object SumAdditionalProvReinf →KRS127_000002= OutputMultiDesign.SumAdditionalProvReinf; 
+        object SumAdditionalReinf →KRS127_000003= OutputMultiDesign.SumAdditionalReinf; 
+        object SumProvReinf →KRS127_000004= OutputMultiDesign.SumProvReinf; 
+        
+        double A↓sz.bas.prov+← →KRS127_000005= SumBasicProvReinf.As_zpos; 
+        double A↓sz.bas.prov-← →KRS127_000006= SumBasicProvReinf.As_zneg; 
+        double A↓sy.bas.prov+← →KRS127_000007= SumBasicProvReinf.As_ypos; 
+        double A↓sy.bas.prov-← →KRS127_000008= SumBasicProvReinf.As_yneg; 
+        double A↓sz.bas.prov← →KRS127_000013= SumBasicProvReinf.As_z; 
+        double A↓sy.bas.prov← →KRS127_000014= SumBasicProvReinf.As_y; 
+        double A↓s.bas.prov← →KRS127_000015= SumBasicProvReinf.As; 
+        double dString →DLO006_000005= 0; 
+        
+        double A↓sz.add.prov+← →KRS127_000009= SumAdditionalProvReinf.As_zpos; 
+        double A↓sz.add.prov-← →KRS127_000010= SumAdditionalProvReinf.As_zneg; 
+        double A↓sy.add.prov+← →KRS127_000011= SumAdditionalProvReinf.As_ypos; 
+        double A↓sy.add.prov-← →KRS127_000012= SumAdditionalProvReinf.As_yneg; 
+        double A↓sz.add.prov← →KRS127_000020= SumAdditionalProvReinf.As_z; 
+        double A↓sy.add.prov← →KRS127_000021= SumAdditionalProvReinf.As_y; 
+        double A↓s.add.prov← →KRS127_000022= SumAdditionalProvReinf.As; 
+        
+        double A↓sz.add.req+← →KRS127_000016= SumAdditionalReinf.As_zpos; 
+        double A↓sz.add.req-← →KRS127_000017= SumAdditionalReinf.As_zneg; 
+        double A↓sy.add.req+← →KRS127_000018= SumAdditionalReinf.As_ypos; 
+        double A↓sy.add.req-← →KRS127_000019= SumAdditionalReinf.As_yneg; 
+        double A↓sz.add.req← →KRS127_000023= SumAdditionalReinf.As_z; 
+        double A↓sy.add.req← →KRS127_000024= SumAdditionalReinf.As_y; 
+        double A↓s.add.req← →KRS127_000025= SumAdditionalReinf.As; 
+        
+        double A↓sz.prov+← →INI400_008186= SumProvReinf.As_zpos; 
+        double A↓sz.prov-← →INI400_008187= SumProvReinf.As_zneg; 
+        double A↓sy.prov+← →INI400_008188= SumProvReinf.As_ypos; 
+        double A↓sy.prov-← →INI400_008189= SumProvReinf.As_yneg; 
+        double A↓sz.prov← →INI400_008190= SumProvReinf.As_z; 
+        double A↓sy.prov← →INI400_008191= SumProvReinf.As_y; 
+        double A↓s.prov← →INI400_008192= SumProvReinf.As; 
+        
+        string ReinfReq →DLO316_000009= OutputMultiDesign.sReinfReq; 
+        
+        string Reinf↓z.req+← →DLO316_000055= OutputMultiDesign.sReinfAszpos; 
+        string Reinf↓z.req-← →DLO316_000056= OutputMultiDesign.sReinfAszneg; 
+        string Reinf↓y.req+← →DLO316_000057= OutputMultiDesign.sReinfAsypos; 
+        string Reinf↓y.req-← →DLO316_000058= OutputMultiDesign.sReinfAsyneg; 
+        
+        double UC↓z.req+← →KRS135_000009= OutputMultiDesign.DesignUCzpos; 
+        double UC↓z.req-← →KRS135_000010= OutputMultiDesign.DesignUCzneg; 
+        double UC↓y.req+← →KRS135_000011= OutputMultiDesign.DesignUCypos; 
+        double UC↓y.req-← →KRS135_000012= OutputMultiDesign.DesignUCyneg; 
+        
+        double AsForString_Aszpos →KRS127_000226= OutputMultiDesign.AsForString_Aszpos; 
+        double AsForString_Aszneg →KRS127_000227= OutputMultiDesign.AsForString_Aszneg; 
+        double AsForString_Asypos →KRS127_000228= OutputMultiDesign.AsForString_Asypos; 
+        double AsForString_Asyneg →KRS127_000229= OutputMultiDesign.AsForString_Asyneg; 
+        
+        object sBarsBasicSurfaces →KRS127_000111= OutputMultiDesign.sBarsBasicSurfaces; 
+        string ReinfBasic_zpos →KRS127_000114= sBarsBasicSurfaces.sReinf_zpos; 
+        string ReinfBasic_zneg →KRS127_000115= sBarsBasicSurfaces.sReinf_zneg; 
+        string ReinfBasic_ypos →KRS127_000116= sBarsBasicSurfaces.sReinf_ypos; 
+        string ReinfBasic_yneg →KRS127_000117= sBarsBasicSurfaces.sReinf_yneg; 
+        
+        object sBarsAdditionalSurfaces →KRS127_000112= OutputMultiDesign.sBarsAdditionalSurfaces; 
+        string ReinfAdditional_zpos →KRS127_000118= sBarsAdditionalSurfaces.sReinf_zpos; 
+        string ReinfAdditional_zneg →KRS127_000119= sBarsAdditionalSurfaces.sReinf_zneg; 
+        string ReinfAdditional_ypos →KRS127_000120= sBarsAdditionalSurfaces.sReinf_ypos; 
+        string ReinfAdditional_yneg →KRS127_000121= sBarsAdditionalSurfaces.sReinf_yneg; 
+        
+        object sBarsProvidedSurfaces →KRS127_000113= OutputMultiDesign.sBarsProvidedSurfaces; 
+        string Reinf↓z.prov+← →KRS127_000122= sBarsProvidedSurfaces.sReinf_zpos; 
+        string Reinf↓z.prov-← →KRS127_000123= sBarsProvidedSurfaces.sReinf_zneg; 
+        string Reinf↓y.prov+← →KRS127_000124= sBarsProvidedSurfaces.sReinf_ypos; 
+        string Reinf↓y.prov-← →KRS127_000125= sBarsProvidedSurfaces.sReinf_yneg; 
+        
+        IF(sBarsProvidedSurfaces.ReinfProv_zpos.Count &gt; 0) { 
+            double UC↓z.prov+← →KRS127_000206= sBarsProvidedSurfaces.ReinfProv_zpos[0].DesignUC; 
+            double AsForString_AszposProv →KRS127_000238= sBarsProvidedSurfaces.ReinfProv_zpos[0].As; 
+        } ELSE { 
+            UC↓z.prov+← →KRS127_000222= 0; 
+            AsForString_AszposProv →KRS127_000250= 0; 
+        } 
+        IF(sBarsProvidedSurfaces.ReinfProv_zneg.Count &gt; 0) { 
+            double UC↓z.prov-← →KRS127_000207= sBarsProvidedSurfaces.ReinfProv_zneg[0].DesignUC; 
+            double AsForString_AsznegProv →KRS127_000239= sBarsProvidedSurfaces.ReinfProv_zneg[0].As; 
+        } ELSE { 
+            UC↓z.prov-← →KRS127_000223= 0; 
+            AsForString_AsznegProv →KRS127_000251= 0; 
+        } 
+        IF(sBarsProvidedSurfaces.ReinfProv_ypos.Count &gt; 0) { 
+            double UC↓y.prov+← →KRS127_000208= sBarsProvidedSurfaces.ReinfProv_ypos[0].DesignUC; 
+            double AsForString_AsyposProv →KRS127_000240= sBarsProvidedSurfaces.ReinfProv_ypos[0].As; 
+        } ELSE { 
+            UC↓y.prov+← →KRS127_000224= 0; 
+            AsForString_AsyposProv →KRS127_000252= 0; 
+        } 
+        IF(sBarsProvidedSurfaces.ReinfProv_yneg.Count &gt; 0) { 
+            double UC↓y.prov-← →KRS127_000209= sBarsProvidedSurfaces.ReinfProv_yneg[0].DesignUC; 
+            double AsForString_AsynegProv →KRS127_000241= sBarsProvidedSurfaces.ReinfProv_yneg[0].As; 
+        } ELSE { 
+            UC↓y.prov-← →KRS127_000225= 0; 
+            AsForString_AsynegProv →KRS127_000253= 0; 
+        } 
+        
+        string ReinfProv →KRS127_000164= OutputMultiDesign.sReinfProv; 
+        
+        object UC_ReqProv →KRS127_000168= OutputMultiDesign.UC_ReqProv; 
+        double UC↓z.req.prov+← →KRS127_000169= UC_ReqProv.UC_ReqProv_zpos; 
+        double UC↓z.req.prov-← →KRS127_000170= UC_ReqProv.UC_ReqProv_zneg; 
+        double UC↓y.req.prov+← →KRS127_000171= UC_ReqProv.UC_ReqProv_ypos; 
+        double UC↓y.req.prov-← →KRS127_000172= UC_ReqProv.UC_ReqProv_yneg; 
+        
+        object sBarsAdditionalRequiredSurfaces →KRS127_000189= OutputMultiDesign.sBarsAdditionalRequiredSurfaces; 
+        string Reinf↓z.add.req+← →KRS127_000190= sBarsAdditionalRequiredSurfaces.sReinf_zpos; 
+        string Reinf↓z.add.req-← →KRS127_000191= sBarsAdditionalRequiredSurfaces.sReinf_zneg; 
+        string Reinf↓y.add.req+← →KRS127_000192= sBarsAdditionalRequiredSurfaces.sReinf_ypos; 
+        string Reinf↓y.add.req-← →KRS127_000193= sBarsAdditionalRequiredSurfaces.sReinf_yneg; 
+        
+        ReinfString →KRS027_000003= OutputMultiDesign.ReinfString; 
     } ELSE { 
-        →INI400_010039InputMultiDesign.Add("n_lc_min", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.MinNumBarsInCircularColumn); 
+        →KRS100_000042SetResultsToZero(); 
+        object Functions1D_EWN →KRS100_000043= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_EWN.clc"); 
+        →KRS100_000044Functions1D_EWN.DisplayTableOfEWN(obEWN); 
     } 
-    →INI400_010040InputMultiDesign.Add("bColumnCheckMaxDistance", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.CheckMaxBarDistance); 
-    →INI400_010041InputMultiDesign.Add("bColumnCheckMinPercentage", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.CheckMinPercentage); 
-    →INI400_010042InputMultiDesign.Add("bColumnCheckMaxPercentage", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.CheckMaxPercentage); 
-    →INI400_010043InputMultiDesign.Add("bColumnCheckMinDistance", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.CheckMinBarDistance); 
-    
-    →INI400_010044InputMultiDesign.Add("bColumnCheckMinBarDiameter", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.CheckMinBarDiameter); 
-    →INI400_010045InputMultiDesign.Add("bColumnCheckMinNumberOfBars", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.CheckMinNumBars); 
-    →INI400_010046InputMultiDesign.Add("bColumnCheckMaxTorsDistance", IO.Setup.Concrete.Solver.DetProv.Column.Longitudinal.CheckMaxBarTorsion); 
-    
-    →INI400_010047InputMultiDesign.Add("s_lbs_min", IO.Setup.Concrete.Solver.DetProv.BeamSlab.Longitudinal.MinBarDistance); 
-    →INI400_010048InputMultiDesign.Add("bBeamSlabCheckMaxDistance", IO.Setup.Concrete.Solver.DetProv.BeamSlab.Longitudinal.CheckMaxBarDistance); 
-    →INI400_010049InputMultiDesign.Add("bBeamSlabCheckMinPercentage", IO.Setup.Concrete.Solver.DetProv.BeamSlab.Longitudinal.CheckMinPercentage); 
-    →INI400_010050InputMultiDesign.Add("bBeamSlabCheckMaxPercentage", IO.Setup.Concrete.Solver.DetProv.BeamSlab.Longitudinal.CheckMaxPercentage); 
-    →INI400_010051InputMultiDesign.Add("bBeamSlabCheckMinDistance", IO.Setup.Concrete.Solver.DetProv.BeamSlab.Longitudinal.CheckMinBarDistance); 
-    
-    //-----------------------
-    //SLS design
-    →INI400_013992InputMultiDesign.Add("w_k_max", 0); //Because w_max is calculated inside when SEN run
-    →INI400_014035InputMultiDesign.Add("φ_ef", φ↓ef←); 
-    →INI400_014037InputMultiDesign.Add("Coeff_long", Coeff↓long←); 
-    →INI400_014039InputMultiDesign.Add("k_1", k↓1←); 
-    
-    →KRS127_000110InputMultiDesign.Add("ErrorValue", IO.Setup.Concrete.Solver.General.NcalcCheck); 
-    
-    IF(IO.IsDrawing) { 
-        →INI400_005217MultiDesign.Draw(InputMultiDesign, OutputMultiDesign, IO.LayoutIndex+1); 
-    } ELSE { 
-        →INI400_007714MultiDesign.Calculate(InputMultiDesign, OutputMultiDesign); 
-    } 
-    
-    →INI400_013920SaveResults(ResultType.Member, "DesignAs", true); 
-    →INI400_013921SaveResults(ResultType.Section, "DesignAs", OutputMultiDesign); 
-    
-    //output values
-    object SumAreaULSReq →INI400_006897= OutputMultiDesign.SummaryAreaFin; 
-    object SumAreaULSPract →INI400_008184= OutputMultiDesign.SummaryAreaPract; 
-    object SumShearArea →INI400_008196= OutputMultiDesign.SumShearArea; 
-    double A↓sz.req+← →INI400_007747= SumAreaULSReq.Req.As_zpos; 
-    double A↓sz.req-← →INI400_007939= SumAreaULSReq.Req.As_zneg; 
-    double A↓sy.req+← →INI400_007940= SumAreaULSReq.Req.As_ypos; 
-    double A↓sy.req-← →INI400_007941= SumAreaULSReq.Req.As_yneg; 
-    double A↓sz.req← →INI400_007942= SumAreaULSReq.Req.As_z; 
-    double A↓sy.req← →INI400_007748= SumAreaULSReq.Req.As_y; 
-    double A↓s.req← →INI400_007749= SumAreaULSReq.Req.As; 
-    
-    double A↓sz.req.bar+← →KRS127_000089= SumAreaULSPract.Req.As_zpos; 
-    double A↓sz.req.bar-← →KRS127_000090= SumAreaULSPract.Req.As_zneg; 
-    double A↓sy.req.bar+← →KRS127_000091= SumAreaULSPract.Req.As_ypos; 
-    double A↓sy.req.bar-← →KRS127_000092= SumAreaULSPract.Req.As_yneg; 
-    double A↓sz.req.bar← →KRS127_000093= SumAreaULSPract.Req.As_z; 
-    double A↓sy.req.bar← →KRS127_000094= SumAreaULSPract.Req.As_y; 
-    double A↓s.req.bar← →KRS127_000095= SumAreaULSPract.Req.As; 
-    
-    double A↓swm.req← →INI400_008181= 0; 
-    double A↓swm.prov← →INI400_008193= 0; 
-    string ShearReinf →DLO316_000001= OutputMultiDesign.sAsw; 
-    double UC↓Shear.req← →KRS135_000008= OutputMultiDesign.DesignUCShear; 
-    IF(SumShearArea != null) { 
-        A↓swm.req← →INI400_013918= SumShearArea.Aswm_req; 
-        A↓swm.prov← →INI400_013919= SumShearArea.Aswm_pract; 
-    } 
-    
-    object SumBasicProvReinf →KRS127_000001= OutputMultiDesign.SumBasicProvReinf; 
-    object SumAdditionalProvReinf →KRS127_000002= OutputMultiDesign.SumAdditionalProvReinf; 
-    object SumAdditionalReinf →KRS127_000003= OutputMultiDesign.SumAdditionalReinf; 
-    object SumProvReinf →KRS127_000004= OutputMultiDesign.SumProvReinf; 
-    
-    double A↓sz.bas.prov+← →KRS127_000005= SumBasicProvReinf.As_zpos; 
-    double A↓sz.bas.prov-← →KRS127_000006= SumBasicProvReinf.As_zneg; 
-    double A↓sy.bas.prov+← →KRS127_000007= SumBasicProvReinf.As_ypos; 
-    double A↓sy.bas.prov-← →KRS127_000008= SumBasicProvReinf.As_yneg; 
-    double A↓sz.bas.prov← →KRS127_000013= SumBasicProvReinf.As_z; 
-    double A↓sy.bas.prov← →KRS127_000014= SumBasicProvReinf.As_y; 
-    double A↓s.bas.prov← →KRS127_000015= SumBasicProvReinf.As; 
-    double dString →DLO006_000005= 0; 
-    
-    double A↓sz.add.prov+← →KRS127_000009= SumAdditionalProvReinf.As_zpos; 
-    double A↓sz.add.prov-← →KRS127_000010= SumAdditionalProvReinf.As_zneg; 
-    double A↓sy.add.prov+← →KRS127_000011= SumAdditionalProvReinf.As_ypos; 
-    double A↓sy.add.prov-← →KRS127_000012= SumAdditionalProvReinf.As_yneg; 
-    double A↓sz.add.prov← →KRS127_000020= SumAdditionalProvReinf.As_z; 
-    double A↓sy.add.prov← →KRS127_000021= SumAdditionalProvReinf.As_y; 
-    double A↓s.add.prov← →KRS127_000022= SumAdditionalProvReinf.As; 
-    
-    double A↓sz.add.req+← →KRS127_000016= SumAdditionalReinf.As_zpos; 
-    double A↓sz.add.req-← →KRS127_000017= SumAdditionalReinf.As_zneg; 
-    double A↓sy.add.req+← →KRS127_000018= SumAdditionalReinf.As_ypos; 
-    double A↓sy.add.req-← →KRS127_000019= SumAdditionalReinf.As_yneg; 
-    double A↓sz.add.req← →KRS127_000023= SumAdditionalReinf.As_z; 
-    double A↓sy.add.req← →KRS127_000024= SumAdditionalReinf.As_y; 
-    double A↓s.add.req← →KRS127_000025= SumAdditionalReinf.As; 
-    
-    double A↓sz.prov+← →INI400_008186= SumProvReinf.As_zpos; 
-    double A↓sz.prov-← →INI400_008187= SumProvReinf.As_zneg; 
-    double A↓sy.prov+← →INI400_008188= SumProvReinf.As_ypos; 
-    double A↓sy.prov-← →INI400_008189= SumProvReinf.As_yneg; 
-    double A↓sz.prov← →INI400_008190= SumProvReinf.As_z; 
-    double A↓sy.prov← →INI400_008191= SumProvReinf.As_y; 
-    double A↓s.prov← →INI400_008192= SumProvReinf.As; 
-    
-    string ReinfReq →DLO316_000009= OutputMultiDesign.sReinfReq; 
-    
-    string Reinf↓z.req+← →DLO316_000055= OutputMultiDesign.sReinfAszpos; 
-    string Reinf↓z.req-← →DLO316_000056= OutputMultiDesign.sReinfAszneg; 
-    string Reinf↓y.req+← →DLO316_000057= OutputMultiDesign.sReinfAsypos; 
-    string Reinf↓y.req-← →DLO316_000058= OutputMultiDesign.sReinfAsyneg; 
-    
-    double UC↓z.req+← →KRS135_000009= OutputMultiDesign.DesignUCzpos; 
-    double UC↓z.req-← →KRS135_000010= OutputMultiDesign.DesignUCzneg; 
-    double UC↓y.req+← →KRS135_000011= OutputMultiDesign.DesignUCypos; 
-    double UC↓y.req-← →KRS135_000012= OutputMultiDesign.DesignUCyneg; 
-    
-    double AsForString_Aszpos →KRS127_000226= OutputMultiDesign.AsForString_Aszpos; 
-    double AsForString_Aszneg →KRS127_000227= OutputMultiDesign.AsForString_Aszneg; 
-    double AsForString_Asypos →KRS127_000228= OutputMultiDesign.AsForString_Asypos; 
-    double AsForString_Asyneg →KRS127_000229= OutputMultiDesign.AsForString_Asyneg; 
-    
-    object sBarsBasicSurfaces →KRS127_000111= OutputMultiDesign.sBarsBasicSurfaces; 
-    string ReinfBasic_zpos →KRS127_000114= sBarsBasicSurfaces.sReinf_zpos; 
-    string ReinfBasic_zneg →KRS127_000115= sBarsBasicSurfaces.sReinf_zneg; 
-    string ReinfBasic_ypos →KRS127_000116= sBarsBasicSurfaces.sReinf_ypos; 
-    string ReinfBasic_yneg →KRS127_000117= sBarsBasicSurfaces.sReinf_yneg; 
-    
-    object sBarsAdditionalSurfaces →KRS127_000112= OutputMultiDesign.sBarsAdditionalSurfaces; 
-    string ReinfAdditional_zpos →KRS127_000118= sBarsAdditionalSurfaces.sReinf_zpos; 
-    string ReinfAdditional_zneg →KRS127_000119= sBarsAdditionalSurfaces.sReinf_zneg; 
-    string ReinfAdditional_ypos →KRS127_000120= sBarsAdditionalSurfaces.sReinf_ypos; 
-    string ReinfAdditional_yneg →KRS127_000121= sBarsAdditionalSurfaces.sReinf_yneg; 
-    
-    object sBarsProvidedSurfaces →KRS127_000113= OutputMultiDesign.sBarsProvidedSurfaces; 
-    string Reinf↓z.prov+← →KRS127_000122= sBarsProvidedSurfaces.sReinf_zpos; 
-    string Reinf↓z.prov-← →KRS127_000123= sBarsProvidedSurfaces.sReinf_zneg; 
-    string Reinf↓y.prov+← →KRS127_000124= sBarsProvidedSurfaces.sReinf_ypos; 
-    string Reinf↓y.prov-← →KRS127_000125= sBarsProvidedSurfaces.sReinf_yneg; 
-    
-    IF(sBarsProvidedSurfaces.ReinfProv_zpos.Count &gt; 0) { 
-        double UC↓z.prov+← →KRS127_000206= sBarsProvidedSurfaces.ReinfProv_zpos[0].DesignUC; 
-        double AsForString_AszposProv →KRS127_000238= sBarsProvidedSurfaces.ReinfProv_zpos[0].As; 
-    } ELSE { 
-        UC↓z.prov+← →KRS127_000222= 0; 
-        AsForString_AszposProv →KRS127_000250= 0; 
-    } 
-    IF(sBarsProvidedSurfaces.ReinfProv_zneg.Count &gt; 0) { 
-        double UC↓z.prov-← →KRS127_000207= sBarsProvidedSurfaces.ReinfProv_zneg[0].DesignUC; 
-        double AsForString_AsznegProv →KRS127_000239= sBarsProvidedSurfaces.ReinfProv_zneg[0].As; 
-    } ELSE { 
-        UC↓z.prov-← →KRS127_000223= 0; 
-        AsForString_AsznegProv →KRS127_000251= 0; 
-    } 
-    IF(sBarsProvidedSurfaces.ReinfProv_ypos.Count &gt; 0) { 
-        double UC↓y.prov+← →KRS127_000208= sBarsProvidedSurfaces.ReinfProv_ypos[0].DesignUC; 
-        double AsForString_AsyposProv →KRS127_000240= sBarsProvidedSurfaces.ReinfProv_ypos[0].As; 
-    } ELSE { 
-        UC↓y.prov+← →KRS127_000224= 0; 
-        AsForString_AsyposProv →KRS127_000252= 0; 
-    } 
-    IF(sBarsProvidedSurfaces.ReinfProv_yneg.Count &gt; 0) { 
-        double UC↓y.prov-← →KRS127_000209= sBarsProvidedSurfaces.ReinfProv_yneg[0].DesignUC; 
-        double AsForString_AsynegProv →KRS127_000241= sBarsProvidedSurfaces.ReinfProv_yneg[0].As; 
-    } ELSE { 
-        UC↓y.prov-← →KRS127_000225= 0; 
-        AsForString_AsynegProv →KRS127_000253= 0; 
-    } 
-    
-    string ReinfProv →KRS127_000164= OutputMultiDesign.sReinfProv; 
-    
-    object UC_ReqProv →KRS127_000168= OutputMultiDesign.UC_ReqProv; 
-    double UC↓z.req.prov+← →KRS127_000169= UC_ReqProv.UC_ReqProv_zpos; 
-    double UC↓z.req.prov-← →KRS127_000170= UC_ReqProv.UC_ReqProv_zneg; 
-    double UC↓y.req.prov+← →KRS127_000171= UC_ReqProv.UC_ReqProv_ypos; 
-    double UC↓y.req.prov-← →KRS127_000172= UC_ReqProv.UC_ReqProv_yneg; 
-    
-    object sBarsAdditionalRequiredSurfaces →KRS127_000189= OutputMultiDesign.sBarsAdditionalRequiredSurfaces; 
-    string Reinf↓z.add.req+← →KRS127_000190= sBarsAdditionalRequiredSurfaces.sReinf_zpos; 
-    string Reinf↓z.add.req-← →KRS127_000191= sBarsAdditionalRequiredSurfaces.sReinf_zneg; 
-    string Reinf↓y.add.req+← →KRS127_000192= sBarsAdditionalRequiredSurfaces.sReinf_ypos; 
-    string Reinf↓y.add.req-← →KRS127_000193= sBarsAdditionalRequiredSurfaces.sReinf_yneg; 
-    
-    ReinfString →KRS027_000003= OutputMultiDesign.ReinfString; 
     
 } ELSE { 
     →INI400_005662TEXT(CssConditions.Final); 
-    object Functions1D →INI400_005799= LoadExternCLC("Functions1D.clc"); 
+    object Functions1D_EWN →INI400_005799= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_EWN.clc"); 
+    →KRS100_000041SetResultsToZero(); 
+    
+    string sListEWN →INI400_006483= Functions1D_EWN.FListEWN(obEWN, TR(""), TR("NO")); 
+    double dString →DLO006_000003= 0; 
+    FOR(i, 0, obEWN.Count-1) { 
+        →INI400_013920Functions1D_EWN.CreateNoteFromEWN(obEWN[i].Type, obEWN[i].Description, obEWN[i].Solution); 
+    } 
+} 
+object DesignResults →INI400_013922= new Structure(
+"Asz_req↓+←", A↓sz.req+←, 
+"Asz_req↓-←", A↓sz.req-←, 
+"Asy_req↓+←", A↓sy.req+←, 
+"Asy_req↓-←", A↓sy.req-←, 
+"Asz_req", A↓sz.req←, 
+"Asy_req", A↓sy.req←, 
+"As_req", A↓s.req←, 
+"Asz_req_bar↓+←", A↓sz.req.bar+←, 
+"Asz_req_bar↓-←", A↓sz.req.bar-←, 
+"Asy_req_bar↓+←", A↓sy.req.bar+←, 
+"Asy_req_bar↓-←", A↓sy.req.bar-←, 
+"Asz_req_bar", A↓sz.req.bar←, 
+"Asy_req_bar", A↓sy.req.bar←, 
+"As_req_bar", A↓s.req.bar←, 
+"Asz_prov↓+←", A↓sz.prov+←, 
+"Asz_prov↓-←", A↓sz.prov-←, 
+"Asy_prov↓+←", A↓sy.prov+←, 
+"Asy_prov↓-←", A↓sy.prov-←, 
+"Asz_prov", A↓sz.prov←, 
+"Asy_prov", A↓sy.prov←, 
+"As_prov", A↓s.prov←, 
+"Aswm_req", A↓swm.req←, 
+"Aswm_prov", A↓swm.prov←, 
+"Asz_bas_prov↓+←", A↓sz.bas.prov+←, 
+"Asz_bas_prov↓-←", A↓sz.bas.prov-←, 
+"Asy_bas_prov↓+←", A↓sy.bas.prov+←, 
+"Asy_bas_prov↓-←", A↓sy.bas.prov-←, 
+"Asz_bas_prov", A↓sz.bas.prov←, 
+"Asy_bas_prov", A↓sy.bas.prov←, 
+"As_bas_prov", A↓s.bas.prov←, 
+"Asz_add_prov↓+←", A↓sz.add.prov+←, 
+"Asz_add_prov↓-←", A↓sz.add.prov-←, 
+"Asy_add_prov↓+←", A↓sy.add.prov+←, 
+"Asy_add_prov↓-←", A↓sy.add.prov-←, 
+"Asz_add_prov", A↓sz.add.prov←, 
+"Asy_add_prov", A↓sy.add.prov←, 
+"As_add_prov", A↓s.add.prov←, 
+"As_bas_prov", A↓s.bas.prov←, 
+"Asz_add_req↓+←", A↓sz.add.req+←, 
+"Asz_add_req↓-←", A↓sz.add.req-←, 
+"Asy_add_req↓+←", A↓sy.add.req+←, 
+"Asy_add_req↓-←", A↓sy.add.req-←, 
+"Asz_add_req", A↓sz.add.req←, 
+"Asy_add_req", A↓sy.add.req←, 
+"As_add_req", A↓s.add.req←, 
+"ShearReinf", ShearReinf, 
+"ReinfReq", ReinfReq, 
+"sReinfAszpos", Reinf↓z.req+←, 
+"sReinfAszneg", Reinf↓z.req-←, 
+"sReinfAsypos", Reinf↓y.req+←, 
+"sReinfAsyneg", Reinf↓y.req-←, 
+"DesignUCzpos", UC↓z.req+←, 
+"DesignUCzneg", UC↓z.req-←, 
+"DesignUCypos", UC↓y.req+←, 
+"DesignUCyneg", UC↓y.req-←, 
+"DesignUCShear", UC↓Shear.req←, 
+"AsForString_Aszpos", AsForString_Aszpos, 
+"AsForString_Aszneg", AsForString_Aszneg, 
+"AsForString_Asypos", AsForString_Asypos, 
+"AsForString_Asyneg", AsForString_Asyneg, 
+"sReinfBasic_zpos", ReinfBasic_zpos, 
+"sReinfBasic_zneg", ReinfBasic_zneg, 
+"sReinfBasic_ypos", ReinfBasic_ypos, 
+"sReinfBasic_yneg", ReinfBasic_yneg, 
+"sReinfAdditional_zpos", ReinfAdditional_zpos, 
+"sReinfAdditional_zneg", ReinfAdditional_zneg, 
+"sReinfAdditional_ypos", ReinfAdditional_ypos, 
+"sReinfAdditional_yneg", ReinfAdditional_yneg, 
+"sReinfProv_zpos", Reinf↓z.prov+←, 
+"sReinfProv_zneg", Reinf↓z.prov-←, 
+"sReinfProv_ypos", Reinf↓y.prov+←, 
+"sReinfProv_yneg", Reinf↓y.prov-←, 
+"AsForString_AszposProv", AsForString_AszposProv, 
+"AsForString_AsznegProv", AsForString_AsznegProv, 
+"AsForString_AsyposProv", AsForString_AsyposProv, 
+"AsForString_AsynegProv", AsForString_AsynegProv, 
+"ReinfAddReq_zpos", Reinf↓z.add.req+←, 
+"ReinfAddReq_zneg", Reinf↓z.add.req-←, 
+"ReinfAddReq_ypos", Reinf↓y.add.req+←, 
+"ReinfAddReq_yneg", Reinf↓y.add.req-←, 
+"ReinfProv", ReinfProv, 
+"UC_ReqProv_zpos", UC↓z.req.prov+←, 
+"UC_ReqProv_zneg", UC↓z.req.prov-←, 
+"UC_ReqProv_ypos", UC↓y.req.prov+←, 
+"UC_ReqProv_yneg", UC↓y.req.prov-←, 
+"UC_Prov_zpos", UC↓z.prov+←, 
+"UC_Prov_zneg", UC↓z.prov-←, 
+"UC_Prov_ypos", UC↓y.prov+←, 
+"UC_Prov_yneg", UC↓y.prov-←, 
+"ReinfString", ReinfString, 
+"Member", Member
+); 
+
+→INI400_000007SaveResults(ResultType.Section, "DesignResults", DesignResults); 
+
+private void SetResultsToZero() { 
     A↓sz.req+← →INI400_008000= 0; 
     A↓sz.req-← →INI400_008001= 0; 
     A↓sy.req+← →INI400_008002= 0; 
@@ -986,110 +1140,8 @@ IF(CssConditions.ConditionsForCss) {
     Reinf↓y.add.req-← →KRS127_000197= ""; 
     
     ReinfString →KRS027_000005= ""; 
-    Member →KRS106_000003= ""; 
-    
-    string sListEWN →INI400_006483= Functions1D.FListEWN(obEWN, TR(""), TR("NO")); 
-    double dString →DLO006_000003= 0; 
-    FOR(i, 0, obEWN.Count-1) { 
-        →INI400_013920Functions1D.CreateNoteFromEWN(obEWN[i].Type, obEWN[i].Description, obEWN[i].Solution, 580); 
-    } 
-} 
-object DesignResults →INI400_013922= new Structure(
-"Asz_req↓+←", A↓sz.req+←, 
-"Asz_req↓-←", A↓sz.req-←, 
-"Asy_req↓+←", A↓sy.req+←, 
-"Asy_req↓-←", A↓sy.req-←, 
-"Asz_req", A↓sz.req←, 
-"Asy_req", A↓sy.req←, 
-"As_req", A↓s.req←, 
-"Asz_req_bar↓+←", A↓sz.req.bar+←, 
-"Asz_req_bar↓-←", A↓sz.req.bar-←, 
-"Asy_req_bar↓+←", A↓sy.req.bar+←, 
-"Asy_req_bar↓-←", A↓sy.req.bar-←, 
-"Asz_req_bar", A↓sz.req.bar←, 
-"Asy_req_bar", A↓sy.req.bar←, 
-"As_req_bar", A↓s.req.bar←, 
-"Asz_prov↓+←", A↓sz.prov+←, 
-"Asz_prov↓-←", A↓sz.prov-←, 
-"Asy_prov↓+←", A↓sy.prov+←, 
-"Asy_prov↓-←", A↓sy.prov-←, 
-"Asz_prov", A↓sz.prov←, 
-"Asy_prov", A↓sy.prov←, 
-"As_prov", A↓s.prov←, 
-"Aswm_req", A↓swm.req←, 
-"Aswm_prov", A↓swm.prov←, 
-"Asz_bas_prov↓+←", A↓sz.bas.prov+←, 
-"Asz_bas_prov↓-←", A↓sz.bas.prov-←, 
-"Asy_bas_prov↓+←", A↓sy.bas.prov+←, 
-"Asy_bas_prov↓-←", A↓sy.bas.prov-←, 
-"Asz_bas_prov", A↓sz.bas.prov←, 
-"Asy_bas_prov", A↓sy.bas.prov←, 
-"As_bas_prov", A↓s.bas.prov←, 
-"Asz_add_prov↓+←", A↓sz.add.prov+←, 
-"Asz_add_prov↓-←", A↓sz.add.prov-←, 
-"Asy_add_prov↓+←", A↓sy.add.prov+←, 
-"Asy_add_prov↓-←", A↓sy.add.prov-←, 
-"Asz_add_prov", A↓sz.add.prov←, 
-"Asy_add_prov", A↓sy.add.prov←, 
-"As_add_prov", A↓s.add.prov←, 
-"As_bas_prov", A↓s.bas.prov←, 
-"Asz_add_req↓+←", A↓sz.add.req+←, 
-"Asz_add_req↓-←", A↓sz.add.req-←, 
-"Asy_add_req↓+←", A↓sy.add.req+←, 
-"Asy_add_req↓-←", A↓sy.add.req-←, 
-"Asz_add_req", A↓sz.add.req←, 
-"Asy_add_req", A↓sy.add.req←, 
-"As_add_req", A↓s.add.req←, 
-"ShearReinf", ShearReinf, 
-"ReinfReq", ReinfReq, 
-"sReinfAszpos", Reinf↓z.req+←, 
-"sReinfAszneg", Reinf↓z.req-←, 
-"sReinfAsypos", Reinf↓y.req+←, 
-"sReinfAsyneg", Reinf↓y.req-←, 
-"DesignUCzpos", UC↓z.req+←, 
-"DesignUCzneg", UC↓z.req-←, 
-"DesignUCypos", UC↓y.req+←, 
-"DesignUCyneg", UC↓y.req-←, 
-"DesignUCShear", UC↓Shear.req←, 
-"AsForString_Aszpos", AsForString_Aszpos, 
-"AsForString_Aszneg", AsForString_Aszneg, 
-"AsForString_Asypos", AsForString_Asypos, 
-"AsForString_Asyneg", AsForString_Asyneg, 
-"sReinfBasic_zpos", ReinfBasic_zpos, 
-"sReinfBasic_zneg", ReinfBasic_zneg, 
-"sReinfBasic_ypos", ReinfBasic_ypos, 
-"sReinfBasic_yneg", ReinfBasic_yneg, 
-"sReinfAdditional_zpos", ReinfAdditional_zpos, 
-"sReinfAdditional_zneg", ReinfAdditional_zneg, 
-"sReinfAdditional_ypos", ReinfAdditional_ypos, 
-"sReinfAdditional_yneg", ReinfAdditional_yneg, 
-"sReinfProv_zpos", Reinf↓z.prov+←, 
-"sReinfProv_zneg", Reinf↓z.prov-←, 
-"sReinfProv_ypos", Reinf↓y.prov+←, 
-"sReinfProv_yneg", Reinf↓y.prov-←, 
-"AsForString_AszposProv", AsForString_AszposProv, 
-"AsForString_AsznegProv", AsForString_AsznegProv, 
-"AsForString_AsyposProv", AsForString_AsyposProv, 
-"AsForString_AsynegProv", AsForString_AsynegProv, 
-"ReinfAddReq_zpos", Reinf↓z.add.req+←, 
-"ReinfAddReq_zneg", Reinf↓z.add.req-←, 
-"ReinfAddReq_ypos", Reinf↓y.add.req+←, 
-"ReinfAddReq_yneg", Reinf↓y.add.req-←, 
-"ReinfProv", ReinfProv, 
-"UC_ReqProv_zpos", UC↓z.req.prov+←, 
-"UC_ReqProv_zneg", UC↓z.req.prov-←, 
-"UC_ReqProv_ypos", UC↓y.req.prov+←, 
-"UC_ReqProv_yneg", UC↓y.req.prov-←, 
-"UC_Prov_zpos", UC↓z.prov+←, 
-"UC_Prov_zneg", UC↓z.prov-←, 
-"UC_Prov_ypos", UC↓y.prov+←, 
-"UC_Prov_yneg", UC↓y.prov-←, 
-"ReinfString", ReinfString, 
-"Member", Member
-); 
-
-→INI400_000007SaveResults(ResultType.Section, "DesignResults", DesignResults); 
-</SourceCode>
+    Member →KRS106_000003= Member; 
+} </SourceCode>
   </CodeEditor>
   <Calculation>
     <Header NormCode="1" Member="1000" Material="2" CSType="-1" LimitState="0" IFFilter="0" LicenceID="10200" Autor="Palec-PC\Palec" Autor2="" Version="495" EWNSource="" Icon="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">
@@ -1702,6 +1754,12 @@ object DesignResults →INI400_013922= new Structure(
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="CoverIsSupported" ESA_ID="" Type="Boolean">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="CssConditions" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -1813,12 +1871,6 @@ object DesignResults →INI400_013922= new Structure(
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Functions1D" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
       <Variable Modifier="Public" Name="Functions1D_Crack" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -1826,6 +1878,18 @@ object DesignResults →INI400_013922= new Structure(
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="Functions1D_DesignReq" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="Functions1D_EWN" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="Functions1D_Geometrics" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -1857,6 +1921,12 @@ object DesignResults →INI400_013922= new Structure(
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="InputCover" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
       </Variable>
       <Variable Modifier="Public" Name="InputMultiDesign" ESA_ID="" Type="Object">
         <Description>
@@ -1945,6 +2015,12 @@ object DesignResults →INI400_013922= new Structure(
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="obReqShearReinfMat" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="OutputCover" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -2116,7 +2192,7 @@ object DesignResults →INI400_013922= new Structure(
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="A↓s.prov←" SenModif="False" LabOri="0" />
       </Variable>
       <Variable Modifier="Public" Name="ReinfString" ESA_ID="Result.92" Type="String">
-        <Description TranslateID="VARIABLE_ReinfString">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -3320,14 +3396,6 @@ object DesignResults →INI400_013922= new Structure(
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007026">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_007027">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3337,14 +3405,6 @@ object DesignResults →INI400_013922= new Structure(
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_007028">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_007029">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4169,14 +4229,6 @@ object DesignResults →INI400_013922= new Structure(
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_009844">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_009845">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -5625,7 +5677,7 @@ object DesignResults →INI400_013922= new Structure(
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS100_000002">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -5640,25 +5692,9 @@ object DesignResults →INI400_013922= new Structure(
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS100_000004">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="KRS100_000005">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS100_000006">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -5672,7 +5708,159 @@ object DesignResults →INI400_013922= new Structure(
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS100_000008">
+      <VC ID="KRS100_000010">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000011">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000012">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000013">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000014">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000015">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000016">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000017">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000018">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000019">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000020">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000021">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000022">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000023">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000024">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000025">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000026">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000028">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000029">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000030">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -5680,13 +5868,133 @@ object DesignResults →INI400_013922= new Structure(
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS100_000009">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      <VC ID="KRS100_000031">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000032">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000033">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000034">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000035">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000036">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000037">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000038">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000039">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000040">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000041">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000042">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000043">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000044">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000045">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000046">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS106_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -7600,14 +7908,6 @@ object DesignResults →INI400_013922= new Structure(
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL100_000001">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="VAL100_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -7835,7 +8135,7 @@ object DesignResults →INI400_013922= new Structure(
           </ENU>
         </Texts>
       </TPanel>
-      <TEMDLoader Name="TEMDLoader" ID="69" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="0" PreDef="0" MemberDirectory="" MemberID="Beam.2" SectionID="-1" CombiID="-1" />
+      <TEMDLoader Name="TEMDLoader" ID="69" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="D:\_VERSIONS\Rel_18_0_patch_1_bugfix\TEMP_01\Esa_Model_Data\Beam.24" MemberID="Beam.24" SectionID="0" CombiID="0" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />

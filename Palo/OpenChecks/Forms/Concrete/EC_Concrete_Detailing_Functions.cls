@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="aa63074a-058a-45ea-919b-c10c14de4f91">
   <CodeEditor>
-    <SourceCode Collapsed="6|19|36|55|66|77|136|155|174|192|213|232|252|284|318|359|383|407|472|565|582|617|642|662|692|718|747|779|796|825|849|869|889|932|959|987|1014|1047|1073|1105|1131|1179|1209|1248|1297|1337|1382|1422|1456|1494|1534|1588|1623|1659|1693|1714|1753|1792|1818|1867|1913|1953|1990|2008|2023|2103|2120|2131|2164|2238|2263|2294|2326|2350|2370|2401|2430|2469|2483|2502|2522|2545|2576|2616|2650|2685|2719|2738" BreakPoints="">
+    <SourceCode Collapsed="6|19|36|55|66|77|136|155|174|192|213|232|252|284|318|359|383|407|472|492|521|566|583|618|643|663|693|719|748|780|797|826|850|870|890|933|960|988|1015|1048|1074|1106|1132|1180|1210|1249|1298|1338|1383|1423|1457|1495|1535|1589|1624|1660|1694|1715|1754|1793|1819|1868|1914|1954|1991|2009|2024|2104|2121|2132|2165|2239|2264|2295|2327|2351|2371|2402|2431|2470|2484|2503|2523|2546|2577|2617|2651|2686|2720|2739" BreakPoints="">
 //Detailing provisions functions
 IF(IO.IsStandalone) { 
     object FunctionDetailing →INI400_005887= LoadExternCLC("Detailing.clc"); 
@@ -525,32 +525,33 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
     void CalcMembLongitReinfFromMaxBarDistForTorsion(object DetProvInputs, object DetProvResults) { 
         //
         object ArrayTorsReinf →INI400_010163= DetProvInputs.ArrayTorsReinf; 
-        double s↓lbt,max← →INI400_009297= DetProvInputs.s↓lbt,max←; 
+        double&lt;mm,0&gt; s↓lbt,max← →INI400_009297= DetProvInputs.s↓lbt,max←; 
         double π →INI400_009298= Math.PI; 
         double&lt;mm,0&gt; ϕ →INI400_009299= DetProvInputs.ϕ; 
         double&lt;mm↑2←,0&gt; A↓s,tor,min← →VAL012_000010= 0; 
         double n →VAL012_000011= 0; 
         double&lt;mm,2&gt; u↓circ← →VAL012_000009= DetProvResults.u_circ; 
-        double n_cor →VAL012_000012= 0; 
+        double n↓min← →VAL012_000012= 0; 
         //
         →VAL012_000001BLOCK("Minimal area of reinforcement for torsion 9.2.3(4)") { 
             SWITCH(DetProvInputs.FormCode) { 
                 CASE 2002 :  { 
-                    n_cor →VAL012_000002= 0; 
+                    n↓min← →VAL012_000002= 0; 
                     
                 } 
                 CASE 2008 :  { 
-                    n_cor →VAL012_000003= 4; 
+                    n↓min← →VAL012_000003= 4; 
                     
                 } 
                 DEFAULT :  { 
-                    double n_cor →VAL012_000013= ArrayTorsReinf.Count; 
+                    n↓min← →VAL012_000013= ArrayTorsReinf.Count; 
                     
                 } 
             } 
-            n →VAL012_000016= MAX(n_cor, u↓circ←/s↓lbt,max←); 
+            →KRS100_000002TEXT("Maximal axis distance between bars for torsion"); 
+            →KRS100_000003TEXT("s↓lbt,max← = " &amp; s↓lbt,max←); 
             →VAL012_000005TEXT("Minimal number of bars for torsion"); 
-            →VAL012_000006TEXT("n = " &amp; n); 
+            n →KRS100_000001= MAX(n↓min←, u↓circ←/s↓lbt,max←); 
             →VAL012_000007TEXT("Minimal area of reinforcement for torsion"); 
             double A↓s,tor,min← →VAL012_000008= n*π*(ϕ↑2←/4); 
         } 
@@ -5556,62 +5557,6 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009300">
-        <Set Vis="0" Prev="" Style="1" StyleName="" X="50" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="1" StyleName="" X="50" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="1" StyleName="" X="50" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_009301">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_009303">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_009305">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_009306">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_009307">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_009308">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_009309">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -7148,14 +7093,6 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010072">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_010073">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -8123,22 +8060,6 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_010332">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_010333">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_010334">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -13268,6 +13189,30 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS100_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS116_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -14404,26 +14349,10 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL012_000004">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="VAL012_000005">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="VAL012_000006">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -14477,30 +14406,6 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="VAL012_000013">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="VAL012_000014">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="VAL012_000015">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="VAL012_000016">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -14878,9 +14783,6 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
     <Command Width="500" />
   </Dialog>
   <Texts>
-    <Item TranslateID="BLOCK_">
-      <ENU>"Structure classification 5.3.1(7)"</ENU>
-    </Item>
     <Item TranslateID="BLOCK_INI400_007056">
       <ENU>"Minimal area of reinforcement from minimal ratio 9.5.2(2)"</ENU>
     </Item>
@@ -15018,9 +14920,6 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
     </Item>
     <Item ID="BLOCK_INI400_009295">
       <ENU>"CalcMembLongitReinfFromMaxBarDistForTorsion()___§9.2.3(4)"</ENU>
-    </Item>
-    <Item TranslateID="BLOCK_INI400_009301">
-      <ENU>"Minimal area of reinforcement for torsion 9.2.3(4)"</ENU>
     </Item>
     <Item ID="BLOCK_INI400_009310">
       <ENU>"CalcColumnMinShearReinfFromBarDiam()___§9.5.3(3)"</ENU>
@@ -15361,9 +15260,6 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
     <Item TranslateID="STRING_F5549E96">
       <ENU>"Transverse reinforcement is not necessary. Conditions are meet."</ENU>
     </Item>
-    <Item TranslateID="TEXT_">
-      <ENU>"Structure element should be considered as column."</ENU>
-    </Item>
     <Item TranslateID="TEXT_INI400_007174">
       <ENU>"Minimum width of the cross-section in tensile area"</ENU>
     </Item>
@@ -15444,15 +15340,6 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
     </Item>
     <Item TranslateID="TEXT_INI400_009292">
       <ENU>"Minimal area of shear reinforcement (1-leg stirrup)"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_009305">
-      <ENU>"Minimal number of bars for torsion"</ENU>
-    </Item>
-    <Item ID="TEXT_INI400_009306">
-      <ENU>"n = " &amp; n</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_009307">
-      <ENU>"Minimal area of reinforcement for torsion"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_009321">
       <ENU>"Minimal area of shear reinforcement"</ENU>
@@ -15790,6 +15677,12 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
     <Item ID="TEXT_INI400_014232">
       <ENU>Val(ρ↓l,min,sec←*100, 0) &amp; "%" &amp; "A↓s,req←"</ENU>
     </Item>
+    <Item TranslateID="TEXT_KRS100_000002">
+      <ENU>"Maximal axis distance between bars for torsion"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS100_000003">
+      <ENU>"s↓lbt,max← = " &amp; s↓lbt,max←</ENU>
+    </Item>
     <Item TranslateID="TEXT_KRS116_000015">
       <ENU>"Minimum width of the cross-section in tensile area"</ENU>
     </Item>
@@ -15873,9 +15766,6 @@ public void CalcMembShearReinfFromMinDistance(object DetProvInputs, object DetPr
     </Item>
     <Item TranslateID="TEXT_VAL012_000005">
       <ENU>"Minimal number of bars for torsion"</ENU>
-    </Item>
-    <Item ID="TEXT_VAL012_000006">
-      <ENU>"n = " &amp; n</ENU>
     </Item>
     <Item TranslateID="TEXT_VAL012_000007">
       <ENU>"Minimal area of reinforcement for torsion"</ENU>

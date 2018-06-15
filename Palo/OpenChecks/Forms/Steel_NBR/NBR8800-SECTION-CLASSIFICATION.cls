@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="bb92d589-0fc6-4c55-83e6-637a3d4b49ec">
   <CodeEditor>
-    <SourceCode Collapsed="4|70|133|166|214|270|359|526|585|647|919|1112|1288|1422" BreakPoints="">→INI400_000001TEXT("Cross Section Classification according to NBR-8800"); 
+    <SourceCode Collapsed="4|70|133|174|229|711" BreakPoints="">→INI400_000001TEXT("Cross Section Classification according to NBR-8800"); 
 //REV: revised in 06/04/2016
 //object STEEL →INI400_000067= IO.STEEL.US; // creating steel 
 object STEEL →MPF000_000001= IO.Material.NBR; 
@@ -150,12 +150,20 @@ double DefineYCG(object CS, double FormCode) {
         } ELSE { 
             // REV: revised in 06/04/2016
 
-            bb →MPF000_000157= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
-            tb →MPF000_000158= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
-            bt →MPF000_000159= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
-            tt →MPF000_000160= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
-            tw →MPF000_000161= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-            h →MPF000_000162= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
+            //            bb →MPF000_000157= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
+            //            tb →MPF000_000158= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
+            //            bt →MPF000_000159= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
+            //            tt →MPF000_000160= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
+            //            tw →MPF000_000161= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+            //            h →MPF000_000162= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
+            //
+            //REV: revised in 16/04/2018
+            bb →MPF001_000038= CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bb; 
+            tb →MPF001_000039= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tb; 
+            bt →MPF001_000040= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : (CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : CS.Geometry.bt); 
+            tt →MPF001_000041= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tt; 
+            tw →MPF001_000042= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+            h →MPF001_000043= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
 
             
             d →INI400_000828= h-tt-tb; // free depth
@@ -191,14 +199,21 @@ axis
             
             // REV: revised in 06/04/2016
 
-            bb →MPF000_000163= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
-            tb →MPF000_000164= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
-            bt →MPF000_000165= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
-            tt →MPF000_000166= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
-            tw →MPF000_000167= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-            h →MPF000_000168= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
+            //            bb →MPF000_000163= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
+            //            tb →MPF000_000164= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
+            //            bt →MPF000_000165= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
+            //            tt →MPF000_000166= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
+            //            tw →MPF000_000167= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+            //            h →MPF000_000168= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
 
-            
+            // REV: revided in 16/04/2018
+            bb →MPF001_000044= CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bb; 
+            tb →MPF001_000045= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tb; 
+            bt →MPF001_000046= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : (CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : CS.Geometry.bt); 
+            tt →MPF001_000047= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tt; 
+            tw →MPF001_000048= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+            h →MPF001_000049= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth            
+
             d →INI400_000851= h-tt-tb; // free depth
             Z↓x← →INI400_000852= CS.Chars.Wply; 
             Wy →INI400_000853= CS.Chars.Welz; 
@@ -233,12 +248,21 @@ double Definehp_ISect(double MomentSign, object CS, double FormCode) {
         } ELSE { 
             // REV: revised in 06/04/2016
 
-            bb →MPF000_000169= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
-            tb →MPF000_000170= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
-            bt →MPF000_000171= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
-            tt →MPF000_000172= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
-            tw →MPF000_000173= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-            h →MPF000_000174= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
+            //            bb →MPF000_000169= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
+            //            tb →MPF000_000170= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
+            //            bt →MPF000_000171= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
+            //            tt →MPF000_000172= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
+            //            tw →MPF000_000173= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+            //            h →MPF000_000174= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
+
+            //REV: revised in 16/04/2018
+            bb →MPF001_000050= CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bb; 
+            tb →MPF001_000051= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tb; 
+            bt →MPF001_000052= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : (CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : CS.Geometry.bt); 
+            tt →MPF001_000053= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tt; 
+            tw →MPF001_000054= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+            h →MPF001_000055= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
+
 
             d →INI400_000874= h-tt-tb; // free depth
             Z↓x← →INI400_000875= CS.Chars.Wply; 
@@ -260,7 +284,7 @@ double SteelPressureClass(object CS, double fy, double Fabrication, object Class
     // 1 - for semicompact
     // 2 - for slender
     // 3 - no classification   
-
+    Fabrication →MPF001_000028= CS.Chars.Fabrication; 
     
     IF((FormCode != 1) &amp;&amp; (FormCode != 2) &amp;&amp; (FormCode != 3) &amp;&amp; (FormCode != 4) &amp;&amp; (FormCode != 101) &amp;&amp; (FormCode != 5) &amp;&amp; (FormCode != 6) &amp;&amp; (FormCode != 2001)) { 
         →INI400_000615TEXT("Compression: Type of section not covered by this routine!"); 
@@ -940,24 +964,33 @@ double SteelBendingClass(object CS, double fy, double BendingAxis, double Fabric
                         } ELSE { 
                             // REV: revised in 06/04/2016
 
-                            bb →MPF000_000145= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
-                            tb →MPF000_000146= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
-                            bt →MPF000_000147= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
-                            tt →MPF000_000148= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
-                            tw →MPF000_000149= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-                            h →MPF000_000150= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
-
+                            //                            bb →MPF000_000145= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
+                            //                            tb →MPF000_000146= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
+                            //                            bt →MPF000_000147= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
+                            //                            tt →MPF000_000148= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
+                            //                            tw →MPF000_000149= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+                            //                            h →MPF000_000150= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
                             
+                            // revised in 16/04/2018
+                            bb →MPF001_000029= CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bb; 
+                            tb →MPF001_000030= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tb; 
+                            bt →MPF001_000031= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : (CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : CS.Geometry.bt); 
+                            tt →MPF001_000032= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tt; 
+                            tw →MPF001_000033= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+                            h →MPF001_000034= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
                         } 
                         
                         
                         d →INI400_001849= h-tt-tb; // free depth 
                         Z↓x← →INI400_001850= CS.Chars.Wply; 
                         Wy →INI400_001851= CS.Chars.Welz; 
+                        
                     } 
+                    
                     →INI400_001743PAGEBREAK(); 
+                    
                     // verification of Limitations according to note 9 of appendix G
-                    →INI400_001744I↓yc←; // moment of inertia about Y of the compressed flange
+                    →MPF001_000037I↓yc←; // moment of inertia about Y of the compressed flange
                     →INI400_001745I↓yt←; // moment of inertia about Y of the tensioned flange
                     →INI400_001746α↓y←; // Annex G note 9
                     →INI400_001747A1; // area portion superior
@@ -992,6 +1025,7 @@ double SteelBendingClass(object CS, double fy, double BendingAxis, double Fabric
                             I↓yt← →INI400_000428= tt*bt↑3←/12; 
                         } 
                         α↓y← →INI400_000430= I↓yc←/I↓yt←; 
+                        
                         IF(α↓y← &gt;= 1/9 &amp;&amp; α↓y← &lt;= 9) { 
                             // If Section fulfills the Limitations
                             // moment of inertia about major axis
@@ -1001,12 +1035,14 @@ double SteelBendingClass(object CS, double fy, double BendingAxis, double Fabric
                             →INI400_001759PAGEBREAK(); 
                             →INI400_001752BLOCK("Checking Flanges") { 
                                 IF(MomentSign == 0) { 
+                                    W↓c← →MPF001_000062= I↓x←/(h-YCG); 
                                     // if Top flange is in compression
                                     λ →INI400_000435= bt/(2*tt); // calculate flange slenderness
                                     // calculate ryc to pass through ClassParam
                                     ryc →INI400_000747= SQRT((I↓yc←+((h↓c←/2)*tw↑3←)/12)/(tt*bt+(h↓c←/2)*tw)); 
                                 } 
                                 IF(MomentSign == 1) { 
+                                    Wt →MPF001_000063= I↓x←/(YCG); 
                                     // if bottom flange is in compression
                                     λ →INI400_000437= bb/(2*tb); // calculate flange slenderness
                                     // calculate ryc to pass through ClassParam
@@ -1300,10 +1336,11 @@ double SteelBendingClass(object CS, double fy, double BendingAxis, double Fabric
                             
                             
                             tf →INI400_001663= CS.Geometry.t; 
-                            h →INI400_001664= CS.Geometry.h-2*tf; 
+                            // h →INI400_001664= CS.Geometry.h-2*tf; 
+                            h →INI400_001528= CS.Geometry.Contains("h") ? CS.Geometry.h-2*tf : →MPF000_000047CS.Geometry.H-2*tf; 
                             d →INI400_000193= CS.Geometry.h-2*tf; 
                             tw →INI400_001665= CS.Geometry.s; 
-                            bf →INI400_001666= CS.Geometry.b; 
+                            bf →INI400_001666= CS.Geometry.Contains("b") ? CS.Geometry.b : CS.Geometry.B; 
                         } ELSE { 
                             tf →INI400_001852= CS.Geometry.thb; 
                             h →INI400_001853= CS.Geometry.Ba-2*tf; 
@@ -1443,12 +1480,21 @@ double SteelBendingClass(object CS, double fy, double BendingAxis, double Fabric
                             
                         } ELSE { 
                             // REV: revised in 06/04/2016
-                            bb →MPF000_000151= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
-                            tb →MPF000_000152= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
-                            bt →MPF000_000153= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
-                            tt →MPF000_000154= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
-                            tw →MPF000_000155= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-                            h →MPF000_000156= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
+                            //                            bb →MPF000_000151= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
+                            //                            tb →MPF000_000152= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
+                            //                            bt →MPF000_000153= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
+                            //                            tt →MPF000_000154= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
+                            //                            tw →MPF000_000155= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+                            //                            h →MPF000_000156= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
+                            //
+                            // REV: revised in 16/04/2018
+
+                            bb →MPF001_000056= CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bb; 
+                            tb →MPF001_000057= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tb; 
+                            bt →MPF001_000058= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : (CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : CS.Geometry.bt); 
+                            tt →MPF001_000059= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tt; 
+                            tw →MPF001_000060= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+                            h →MPF001_000061= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
 
                             
                         } 
@@ -1849,14 +1895,14 @@ IF(BendingAxis == 1) {
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
-      <Variable Modifier="Public" Name="A1" ESA_ID="" Type="Double" Value="1.3326e-3" Precision="2">
+      <Variable Modifier="Public" Name="A1" ESA_ID="" Type="Double" Value="6.8576e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="100e-6" Dim="cm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="A2" ESA_ID="" Type="Double" Value="1.12e-3" Precision="2">
+      <Variable Modifier="Public" Name="A2" ESA_ID="" Type="Double" Value="1.6e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1877,21 +1923,21 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="b1" ESA_ID="" Type="Double" Value="384e-3" Precision="2">
+      <Variable Modifier="Public" Name="b1" ESA_ID="" Type="Double" Value="227.3e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="b2" ESA_ID="" Type="Double" Value="290.5e-3" Precision="2">
+      <Variable Modifier="Public" Name="b2" ESA_ID="" Type="Double" Value="127.3e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="bb" ESA_ID="" Type="Double" Value="100e-3" Precision="2">
+      <Variable Modifier="Public" Name="bb" ESA_ID="" Type="Double" Value="200e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1905,14 +1951,14 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="bf" ESA_ID="" Type="Double" Value="300e-3" Precision="2">
+      <Variable Modifier="Public" Name="bf" ESA_ID="" Type="Double" Value="150e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="bt" ESA_ID="" Type="Double" Value="72e-3" Precision="2">
+      <Variable Modifier="Public" Name="bt" ESA_ID="" Type="Double" Value="200e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1931,7 +1977,7 @@ IF(BendingAxis == 1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Value="400e-3" Precision="2">
+      <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Value="576e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1945,21 +1991,21 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="d1" ESA_ID="" Type="Double" Value="125.5682e-3" Precision="2">
+      <Variable Modifier="Public" Name="d1" ESA_ID="" Type="Double" Value="352.7537e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="d2" ESA_ID="" Type="Double" Value="74.43181e-3" Precision="2">
+      <Variable Modifier="Public" Name="d2" ESA_ID="" Type="Double" Value="247.2463e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="E" ESA_ID="" Type="Double" Value="200e9" Precision="2">
+      <Variable Modifier="Public" Name="E" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>Elastic Modulus</ENU>
         </Description>
@@ -1972,14 +2018,14 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="FormCode" ESA_ID="" Type="Double" Value="2001" Precision="2">
+      <Variable Modifier="Public" Name="FormCode" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="fy" ESA_ID="" Type="Double" Value="345e6" Precision="2">
+      <Variable Modifier="Public" Name="fy" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1992,49 +2038,49 @@ IF(BendingAxis == 1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Value="400e-3" Precision="2">
+      <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Value="250e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="h↓c←" ESA_ID="" Type="Double" Value="239.5364e-3" Precision="2">
+      <Variable Modifier="Public" Name="h↓c←" ESA_ID="" Type="Double" Value="689.5074e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="h↓p←" ESA_ID="" Type="Double" Value="323.48e-3" Precision="2">
+      <Variable Modifier="Public" Name="h↓p←" ESA_ID="" Type="Double" Value="827.9685e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="hp" ESA_ID="" Type="Double" Value="323.48e-3" Precision="2">
+      <Variable Modifier="Public" Name="hp" ESA_ID="" Type="Double" Value="827.9685e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="I↓x←" ESA_ID="" Type="Double" Value="14.88777e-6" Precision="2">
+      <Variable Modifier="Public" Name="I↓x←" ESA_ID="" Type="Double" Value="490.754e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-9" Dim="cm↑4←" />
       </Variable>
-      <Variable Modifier="Public" Name="I↓yc←" ESA_ID="" Type="Double" Value="180.4032e-9" Precision="2">
+      <Variable Modifier="Public" Name="I↓yc←" ESA_ID="" Type="Double" Value="5.333333e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-9" Dim="cm↑4←" />
       </Variable>
-      <Variable Modifier="Public" Name="I↓yt←" ESA_ID="" Type="Double" Value="933.3333e-9" Precision="2">
+      <Variable Modifier="Public" Name="I↓yt←" ESA_ID="" Type="Double" Value="10.66667e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2048,14 +2094,14 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓pl←" ESA_ID="" Type="Double" Value="43783.16" Precision="2">
+      <Variable Modifier="Public" Name="M↓pl←" ESA_ID="" Type="Double" Value="634907" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10" Dim="kN•cm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓r←" ESA_ID="" Type="Double" Value="29403.68" Precision="2">
+      <Variable Modifier="Public" Name="M↓r←" ESA_ID="" Type="Double" Value="479967" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2069,14 +2115,14 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="r1" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="r1" ESA_ID="" Type="Double" Value="5e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="ryc" ESA_ID="" Type="Double" Value="13.36834e-3" Precision="2">
+      <Variable Modifier="Public" Name="ryc" ESA_ID="" Type="Double" Value="37.54272e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2089,28 +2135,28 @@ IF(BendingAxis == 1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="tb" ESA_ID="" Type="Double" Value="11.2e-3" Precision="2">
+      <Variable Modifier="Public" Name="tb" ESA_ID="" Type="Double" Value="16e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="tf" ESA_ID="" Type="Double" Value="8e-3" Precision="2">
+      <Variable Modifier="Public" Name="tf" ESA_ID="" Type="Double" Value="6.35e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="tt" ESA_ID="" Type="Double" Value="5.8e-3" Precision="2">
+      <Variable Modifier="Public" Name="tt" ESA_ID="" Type="Double" Value="8e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="tw" ESA_ID="" Type="Double" Value="4.75e-3" Precision="2">
+      <Variable Modifier="Public" Name="tw" ESA_ID="" Type="Double" Value="6.35e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2122,28 +2168,28 @@ IF(BendingAxis == 1) {
           <ENU>Use User Profile Table</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="W" ESA_ID="" Type="Double" Value="118.5632e-6" Precision="2">
+      <Variable Modifier="Public" Name="W" ESA_ID="" Type="Double" Value="1.391209e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="3" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="cm↑3←" />
       </Variable>
-      <Variable Modifier="Public" Name="W↓c←" ESA_ID="" Type="Double" Value="118.5632e-6" Precision="2">
+      <Variable Modifier="Public" Name="W↓c←" ESA_ID="" Type="Double" Value="1.391209e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="3" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="cm↑3←" />
       </Variable>
-      <Variable Modifier="Public" Name="Wt" ESA_ID="" Type="Double" Value="200.0189e-6" Precision="2">
+      <Variable Modifier="Public" Name="Wt" ESA_ID="" Type="Double" Value="1.984879e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="3" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="cm↑3←" />
       </Variable>
-      <Variable Modifier="Public" Name="Wy" ESA_ID="" Type="Double" Value="22.3945e-6" Precision="2">
+      <Variable Modifier="Public" Name="Wy" ESA_ID="" Type="Double" Value="160.123e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2157,28 +2203,28 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="YCG" ESA_ID="" Type="Double" Value="74.43181e-3" Precision="2">
+      <Variable Modifier="Public" Name="YCG" ESA_ID="" Type="Double" Value="247.2463e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="Z↓x←" ESA_ID="" Type="Double" Value="176.545e-6" Precision="2">
+      <Variable Modifier="Public" Name="Z↓x←" ESA_ID="" Type="Double" Value="1.84031e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="3" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="cm↑3←" />
       </Variable>
-      <Variable Modifier="Public" Name="α↓y←" ESA_ID="" Type="Double" Value="193.2891e-3" Precision="2">
+      <Variable Modifier="Public" Name="α↓y←" ESA_ID="" Type="Double" Value="500e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λ" ESA_ID="" Type="Double" Value="80.84211" Precision="2">
+      <Variable Modifier="Public" Name="λ" ESA_ID="" Type="Double" Value="35.79528" Precision="2">
         <Description>
           <ENU>Element slenderness</ENU>
         </Description>
@@ -2224,28 +2270,28 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λf" ESA_ID="" Type="Double" Value="36.3125" Precision="2">
+      <Variable Modifier="Public" Name="λf" ESA_ID="" Type="Double" Value="20.04724" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λf1" ESA_ID="" Type="Double" Value="4.464286" Precision="2">
+      <Variable Modifier="Public" Name="λf1" ESA_ID="" Type="Double" Value="12.5" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λf2" ESA_ID="" Type="Double" Value="6.206897" Precision="2">
+      <Variable Modifier="Public" Name="λf2" ESA_ID="" Type="Double" Value="6.25" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λw" ESA_ID="" Type="Double" Value="80.84211" Precision="2">
+      <Variable Modifier="Public" Name="λw" ESA_ID="" Type="Double" Value="35.79528" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2673,7 +2719,7 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_000092">
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="5" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -2689,7 +2735,7 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_000094">
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="5" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -2945,7 +2991,7 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_000193">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="6" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="6" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -2978,14 +3024,6 @@ IF(BendingAxis == 1) {
       </VC>
       <VC ID="INI400_000209">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_000210">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="6" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -5456,6 +5494,14 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
+      <VC ID="INI400_001528">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="280" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
       <VC ID="INI400_001570">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -5512,14 +5558,6 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001664">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="6" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
       <VC ID="INI400_001665">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -5529,7 +5567,7 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001666">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -6537,7 +6575,7 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001854">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="6" />
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -6623,22 +6661,6 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="MPF000_000040">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="MPF000_000041">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="MPF000_000056">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -7240,54 +7262,6 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="MPF000_000145">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="MPF000_000146">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="MPF000_000147">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="MPF000_000148">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="MPF000_000149">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="MPF000_000150">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
       <VC ID="MPF000_000151">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -7329,54 +7303,6 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="MPF000_000156">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="MPF000_000157">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="MPF000_000158">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="MPF000_000159">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="MPF000_000160">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="MPF000_000161">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="MPF000_000162">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -7681,7 +7607,7 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="MPF001_000011">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -7816,12 +7742,276 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="MPF001_000028">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000029">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000030">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000031">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000032">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000033">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000034">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000038">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000039">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000040">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000041">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000042">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000043">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000044">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000045">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000046">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000047">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000048">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000049">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000050">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000051">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000052">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000053">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000054">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000055">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000056">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000057">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000058">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000059">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000060">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000061">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000062">
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="MPF001_000063">
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
   <Dialog>
     <Main Width="500">
-      <TEMDLoader Name="" ID="13" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="9" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="C:\Users\Avell 1513\ESA16.1\Temp\Esa_Model_Data\Beam.3900" MemberID="Beam.3900" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="" ID="13" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="9" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="" SectionID="-1" CombiID="-1" />
       <TCustomLibrary Name="" ID="11" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="7" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="CSS" DataFile="User.xml" Collapsed="True" UseCombo="True" Category="" Item="" />
       <TCheckBox Name="FUserTable" ID="8" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="4" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="150|23" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="UserTable" BookMarkID="" ForeColor="-16777216" ChbRight="False">
         <Texts TranslateID="DIALOG_000008">
@@ -7829,27 +8019,27 @@ IF(BendingAxis == 1) {
           </ENU>
         </Texts>
       </TCheckBox>
-      <TGroupBox Name="" ID="5" Translate="1" Height="120" AutoWidth="False" AutoHeight="False" TabIndex="3" Dock="1" Anchor="5" Padding="5|15|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|1|3" BorderColor="-5192482">
-        <Texts TranslateID="DIALOG_000005">
+      <TGroupBox Name="" ID="5" Translate="0" Height="120" AutoWidth="False" AutoHeight="False" TabIndex="3" Dock="1" Anchor="5" Padding="5|15|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|1|3" BorderColor="-5192482">
+        <Texts>
           <ENU>Bending Axis</ENU>
         </Texts>
-        <TComboBox Name="" ID="7" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="MomentSign" VarNameVisible="True" InputColor="-4128832" DescPos="1" InputWidth="400" Values="0|1" Index="0">
-          <Texts TranslateID="DIALOG_000007">
+        <TComboBox Name="" ID="7" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="MomentSign" VarNameVisible="True" InputColor="-4128832" DescPos="1" InputWidth="400" Values="0|1" Index="0">
+          <Texts>
             <ENU>Postive (Top flange in compression for X / Web in compression for U-section about Y|Negative ( Bottom flange in compression for X / Free edge of flanges in compression for U-section about Y)</ENU>
           </Texts>
         </TComboBox>
-        <TComboBox Name="" ID="6" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="BendingAxis" VarNameVisible="True" InputColor="-4128832" DescPos="1" InputWidth="150" Values="0|1" Index="0">
-          <Texts TranslateID="DIALOG_000006">
+        <TComboBox Name="" ID="6" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="BendingAxis" VarNameVisible="True" InputColor="-4128832" DescPos="1" InputWidth="150" Values="0|1" Index="0">
+          <Texts>
             <ENU>About X (Major axis)|About Y (Minor axis)</ENU>
           </Texts>
         </TComboBox>
       </TGroupBox>
-      <TGroupBox Name="" ID="3" Translate="1" Height="68" AutoWidth="False" AutoHeight="False" TabIndex="2" Dock="1" Anchor="5" Padding="5|15|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|1|3" BorderColor="-5192482">
-        <Texts TranslateID="DIALOG_000003">
+      <TGroupBox Name="" ID="3" Translate="0" Height="68" AutoWidth="False" AutoHeight="False" TabIndex="2" Dock="1" Anchor="5" Padding="5|15|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|1|3" BorderColor="-5192482">
+        <Texts>
           <ENU>Fabrication</ENU>
         </Texts>
-        <TComboBox Name="Fabrication" ID="4" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Fabrication" VarNameVisible="True" InputColor="-4128832" DescPos="1" InputWidth="150" Values="0|1" Index="0">
-          <Texts TranslateID="DIALOG_000004">
+        <TComboBox Name="Fabrication" ID="4" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Fabrication" VarNameVisible="True" InputColor="-4128832" DescPos="1" InputWidth="150" Values="0|1" Index="0">
+          <Texts>
             <ENU>Hot Rolled|Welded</ENU>
           </Texts>
         </TComboBox>
@@ -7879,8 +8069,8 @@ IF(BendingAxis == 1) {
           </Items>
         </Data>
       </TCustomLibrary>
-      <TLabel Name="" ID="9" Translate="1" Left="40" Top="253" Width="300" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="0" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" Alignment="16" ForeColor="-16711423" BookMarkID="">
-        <Texts TranslateID="DIALOG_000009">
+      <TLabel Name="" ID="9" Translate="0" Left="40" Top="253" Width="300" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="0" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" Alignment="16" ForeColor="-16711423" BookMarkID="">
+        <Texts>
           <ENU>Use User Profile Tables</ENU>
         </Texts>
       </TLabel>
@@ -7890,9 +8080,6 @@ IF(BendingAxis == 1) {
     <Command Width="500" />
   </Dialog>
   <Texts>
-    <Item TranslateID="BLOCK_">
-      <ENU>"Checking Flanges"</ENU>
-    </Item>
     <Item TranslateID="BLOCK_INI400_001725">
       <ENU>"Steel Section Classification for Pressure - Table F.1 - NBR-8800"</ENU>
     </Item>
@@ -7921,12 +8108,6 @@ IF(BendingAxis == 1) {
       <ENU>"Checking Flanges"</ENU>
     </Item>
     <Item TranslateID="BLOCK_INI400_001738">
-      <ENU>"Checking Web"</ENU>
-    </Item>
-    <Item TranslateID="BLOCK_INI400_001739">
-      <ENU>"Checking Flanges"</ENU>
-    </Item>
-    <Item TranslateID="BLOCK_INI400_001742">
       <ENU>"Checking Web"</ENU>
     </Item>
     <Item TranslateID="BLOCK_INI400_001752">
@@ -7961,9 +8142,6 @@ IF(BendingAxis == 1) {
     </Item>
     <Item TranslateID="BLOCK_INI400_001785">
       <ENU>"Checking Flanges"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_">
-      <ENU>"Checking Web"</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_000001">
       <ENU>"Cross Section Classification according to NBR-8800"</ENU>

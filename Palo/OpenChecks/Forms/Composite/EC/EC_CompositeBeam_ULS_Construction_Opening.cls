@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="0ff0494a-79a3-4836-b49c-acfe9b13139c">
   <CodeEditor>
-    <SourceCode Collapsed="87|129|172|195|250|311|321|329|444|492" BreakPoints="">//EC_CompositeBeam_ULS_Construction.cls
+    <SourceCode Collapsed="54|87|129|172|195|253|314|324|332|447|495" BreakPoints="">//EC_CompositeBeam_ULS_Construction.cls
 
 class ULSConstructionStageCheckOpening { 
     
@@ -200,7 +200,7 @@ class ULSConstructionStageCheckOpening {
         →KRS014_001247double&lt;kNm,-2&gt; M↓Ed,con,o← →KRS014_001273= DataExchange.ULS_Con_Forces_Opening.My; 
         →KRS014_001272double&lt;kN,-2&gt; V↓Ed,con,o← →KRS014_001274= DataExchange.ULS_Con_Forces_Opening.Vz; 
         →KRS014_001250double&lt;,-2&gt; UC↓con,M,o←; 
-        →KRS014_001657double&lt;kNm,-2&gt; M↓pl,Rd←; 
+        →KRS014_001657double&lt;kNm,-2&gt; M↓pl,Rd← →KRS100_000002= 0; 
         →KRS014_002748double&lt;mm↑3←,2&gt; W↓pl,y,o←; 
         
         IF(IO.IsDrawing) { 
@@ -221,9 +221,12 @@ class ULSConstructionStageCheckOpening {
             ρ →KRS014_001117= [2*ABS(V↓Ed,con,o←)/V↓pl,Rd←-1]↑2←; 
             IF(COMPARE(ρ, 1, 6) != -1) { 
                 →KRS014_001656Functions_general.AddEWN(DataExchange, "E6/09"); //Extreme shear. Bending moment resistance not designable.
-                //   Exit(); 
             } ELSE { 
-                M↓pl,Rd← →KRS014_001119= W↓pl,y,o←*[1-ρ]*f↓yb←/γ↓M0←; 
+                IF(ρ &gt;= 0.5) { 
+                    M↓pl,Rd← →KRS014_001119= W↓pl,y,o←*[1-ρ]*f↓yb←/γ↓M0←; 
+                } ELSE { 
+                    M↓pl,Rd← →KRS100_000001= W↓pl,y,o←*f↓yb←/γ↓M0←; 
+                } 
             } 
         } ELSE { 
             →KRS014_001120TEXT("OK"); 
@@ -2563,13 +2566,21 @@ class ULSConstructionStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002800">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      <VC ID="KRS100_000001">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="UNK000_019243">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2919,12 +2930,7 @@ class ULSConstructionStageCheckOpening {
             <PropertySet Symbol="EC 1993.1.3 - Name" ESA_ID="EC_1993_1_3.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.4 - Name" ESA_ID="EC_1993_1_4.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.5 - Name" ESA_ID="EC_1993_1_5.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.η" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="η1" Type="Numeric" Unit="" />
-                <StructMember Symbol="η2" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
+            <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.eta_sb1" Unit="" Type="Numeric" />
             <PropertySet Symbol="EC 1993.1.6 - Name" ESA_ID="EC_1993_1_6.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.7 - Name" ESA_ID="EC_1993_1_7.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.8 - Name" ESA_ID="EC_1993_1_8.Name" Unit="" Type="String" />
@@ -3253,7 +3259,7 @@ class ULSConstructionStageCheckOpening {
               <P>EC EN 1993-1-3</P>
               <P>EC EN 1993-1-4</P>
               <P>EC EN 1993-1-5</P>
-              <P>1.20;1.00;</P>
+              <P>1.2</P>
               <P>EC EN 1993-1-6</P>
               <P>EC EN 1993-1-7</P>
               <P>EC EN 1993-1-8</P>
@@ -3369,9 +3375,6 @@ class ULSConstructionStageCheckOpening {
     </Item>
     <Item TranslateID="STRING_F9DC5B4F">
       <ENU>"Cross-sectional resistance of the steel beam"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_">
-      <ENU>"ULS check of Construction stage is NOT OK."</ENU>
     </Item>
     <Item ID="TEXT_KRS014_000972">
       <ENU>CN &amp; ". " &amp; sconstr_stage</ENU>

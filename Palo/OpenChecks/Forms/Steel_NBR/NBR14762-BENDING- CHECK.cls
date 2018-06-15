@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="376b1ec1-f844-428f-be3f-c3d7ddae2c0f">
   <CodeEditor>
-    <SourceCode Collapsed="460|1521|1747|1844|2070" BreakPoints="">// Design for bending according to NBR14762:2010 - item 9.8
+    <SourceCode Collapsed="512|1521|1747|1844|2074" BreakPoints="">// Design for bending according to NBR14762:2010 - item 9.8
 
 //-----------------------------Functions--------------------------------//
 
@@ -1881,6 +1881,10 @@ double CalculateMe(object CS, double Cb, string BendingAxis, double MomentSign, 
         object LTBData →UNK011_002837= new Structure("ID", 0, "StartSect", 0, "EndSect", 0, "L", 0); 
     } 
     
+    LbTop →MPF001_000003= Lb[CombiID].BucklingData.ltTop.Span.L*IO.Section.BucklingData.ltTop.Span.klt; 
+    LbBottom →MPF001_000004= Lb[CombiID].BucklingData.ltBottom.Span.L*IO.Section.BucklingData.ltBottom.Span.klt; 
+    Lby →MPF001_000002= MIN(LbBottom, LbTop); 
+    Lbz →MPF001_000005= Lby; 
     object Ne →UNK011_002784= Ext_compression.DefineBucklingLoad(CS, Lbx, Lby, Lbz); 
     
     Nex →UNK011_002785= Ne.Nex; 
@@ -2170,47 +2174,47 @@ void OutputTable(string TypePart, double σ1, double σ2, object beff) {
     </NormRef>
     <Variables>
       <Variable Modifier="Public" Name="CombiID" ESA_ID="" Type="Double" Value="NaN" Precision="2">
-        <Description TranslateID="VARIABLE_CombiID">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="CS" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_CS">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="FontsAndColors" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_FontsAndColors">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Value="4" Precision="2">
-        <Description TranslateID="VARIABLE_i">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="MomentSign" ESA_ID="" Type="Double" Value="0" Precision="2">
-        <Description TranslateID="VARIABLE_MomentSign">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Section" ESA_ID="" Type="Double" Value="NaN" Precision="2">
-        <Description TranslateID="VARIABLE_Section">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Table1" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Table1">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -2270,6 +2274,38 @@ void OutputTable(string TypePart, double σ1, double σ2, object beff) {
       </VC>
       <VC ID="MPF001_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000005">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -10961,7 +10997,7 @@ void OutputTable(string TypePart, double σ1, double σ2, object beff) {
   </Calculation>
   <Dialog>
     <Main Width="400">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="" SectionID="-1" CombiID="-1" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.34" SectionID="-1" CombiID="-1" />
     </Main>
     <MemberData Width="604" />
     <Setup Width="400" />

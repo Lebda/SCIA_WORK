@@ -609,7 +609,7 @@ IF(IO.IsDrawing &amp;&amp; IO.LayoutIndex == 1) {
         T_Sum[0][1].Value →INI400_003880= "σ↓cr←&lt;BR&gt;[MPa]"; 
         T_Sum[1][1].Value →INI400_003881= Val(σ↓cr←/1000000, 2); 
         T_Sum[0][2].Value →INI400_003882= TR("Cracked"); 
-        IF(σ↓ct← &lt; σ↓cr←) { StatusCracked →INI400_013761= 0; } ELSE { StatusCracked →INI400_013762= 1; } 
+        IF(COMPARE(σ↓ct←, σ↓cr←, 6) != 1) { StatusCracked →INI400_013761= 0; } ELSE { StatusCracked →INI400_013762= 1; } 
         T_Sum[1][2].Value =  { →INI400_013758FontsAndColors.DrawYesNoForStatus(StatusCracked); } 
         T_Sum[0][3].Value →INI400_003884= "w&lt;BR&gt;[mm]"; 
         T_Sum[1][3].Value →INI400_003885= Val(w*1000, 2); 
@@ -5602,12 +5602,7 @@ IF((bPod) &amp;&amp; (!ZeroForces) &amp;&amp; w &gt; 0) {
               <PropertySet Symbol="EC 1993.1.3 - Name" ESA_ID="EC_1993_1_3.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.4 - Name" ESA_ID="EC_1993_1_4.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.5 - Name" ESA_ID="EC_1993_1_5.Name" Unit="" Type="String" />
-              <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.η" Unit="" Type="Struct">
-                <StructMembers>
-                  <StructMember Symbol="η1" Type="Numeric" Unit="" />
-                  <StructMember Symbol="η2" Type="Numeric" Unit="" />
-                </StructMembers>
-              </PropertySet>
+              <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.eta_sb1" Unit="" Type="Numeric" />
               <PropertySet Symbol="EC 1993.1.6 - Name" ESA_ID="EC_1993_1_6.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.7 - Name" ESA_ID="EC_1993_1_7.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.8 - Name" ESA_ID="EC_1993_1_8.Name" Unit="" Type="String" />
@@ -5936,7 +5931,7 @@ IF((bPod) &amp;&amp; (!ZeroForces) &amp;&amp; w &gt; 0) {
                 <P>ČSN EN 1993-1-3</P>
                 <P>ČSN EN 1993-1-4</P>
                 <P>ČSN EN 1993-1-5</P>
-                <P>1.20;1.00;</P>
+                <P>1.2</P>
                 <P>ČSN EN 1993-1-6</P>
                 <P>ČSN EN 1993-1-7</P>
                 <P>ČSN EN 1993-1-8</P>

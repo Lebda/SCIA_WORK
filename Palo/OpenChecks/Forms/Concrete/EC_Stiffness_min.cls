@@ -22,8 +22,8 @@
     EquivMoment →INI400_011665= Input.Get("EquivMoment"); //True - equivalent first order moment is used
     CalSecOrder →INI400_011666= Input.Get("CalSecOrder"); //True - second order effect is used
     MemberType →KRS106_000024= Input.Get("MemberType"); 
-    CompressMember →KRS106_000012= Input.Get("CompressMember"); 
-    N↓com← →KRS106_000013= Input.Get("N_com"); 
+    Coeff_com →KRS106_000012= Input.Get("Coeff_com"); 
+    
     //forces
     Combikey →INI400_011730= Input.Get("Combikey"); //Combikey of Css
     SetForcesCharID →INI400_013843= Input.Get("SetForcesChar"); //ID of char force set
@@ -97,8 +97,7 @@ object GetOutput() { //Outputs from this form to master
     →INI400_013703InputStiffShort.Add("SetForcesQp", SetForcesQpID); 
     →INI400_013732InputStiffShort.Add("InitialForcesID", InitialForcesID); 
     →KRS106_000021InputStiffShort.Add("MemberType", MemberType); 
-    →KRS106_000022InputStiffShort.Add("CompressMember", CompressMember); 
-    →KRS106_000023InputStiffShort.Add("N_com", N↓com←); 
+    →KRS106_000022InputStiffShort.Add("Coeff_com", Coeff_com); 
     
     IF(IO.IsDrawing) { 
         →INI400_006766BLOCK { 
@@ -189,14 +188,15 @@ object GetOutput() { //Outputs from this form to master
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Combikey" ESA_ID="" Type="String">
-        <Description>
+      <Variable Modifier="Public" Name="Coeff_com" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_Coeff_com">
           <ENU>
           </ENU>
         </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="CompressMember" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_CompressMember">
+      <Variable Modifier="Public" Name="Combikey" ESA_ID="" Type="String">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -274,13 +274,6 @@ object GetOutput() { //Outputs from this form to master
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="N↓com←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_N↓com←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="OutputStiffShort" ESA_ID="" Type="Object">
         <Description>
@@ -962,38 +955,6 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000013">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS106_000014">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS106_000015">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS106_000020">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="KRS106_000021">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1003,14 +964,6 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS106_000022">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS106_000023">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

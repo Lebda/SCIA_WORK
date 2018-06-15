@@ -5831,6 +5831,7 @@ r:\A\Src\Tra\EasyProp\PropertiesHeader.rgs
 r:\A\Src\Pre\GeomSpace\EP_GeomSpace\EP_GeomSpace.14.00.vcxproj
 r:\A\Src\Pre\GeomSpace\EP_GeomSpace\EP_GeomSpace.14.00.vcxproj.filters
 r:\A\Src\Pre\GeomSpace\EP_GeomSpace\EP_GeomSpace.def
+r:\A\Src\Pre\GeomSpace\EP_GeomSpace\EP_IntervalMergingTool.h
 r:\A\Src\Pre\GeomSpace\EP_GeomSpace\StdAfx.h
 r:\A\inc\LCSUserDefEnums.h
 r:\A\inc\EP_PointTree.h
@@ -5870,6 +5871,7 @@ r:\A\Src\Pre\GeomSpace\EP_GeomSpace\SortPoint.h
 r:\A\Src\Pre\GeomSpace\EP_GeomSpace\StatisticsTools.h
 r:\A\Src\Pre\GeomSpace\EP_GeomSpace\TesselationTool.h
 r:\A\Src\Pre\GeomSpace\EP_GeomSpace\VectorQuickMatch.h
+r:\A\Src\Pre\GeomSpace\EP_GeomSpace\EP_IntervalMergingTool.cpp
 r:\A\Src\Pre\GeomSpace\EP_GeomSpace\StdAfx.cpp
 r:\A\Src\Pre\GeomSpace\EP_GeomSpace\BooleanInterval.cpp
 r:\A\Src\Pre\GeomSpace\EP_GeomSpace\BoundingBoxXYZ.cpp
@@ -16619,8 +16621,6 @@ r:\A\Src\C#Common\NUnit\NUnit_Support\UT_XEP_RunAll.bat
 r:\A\Src\C#Common\XEP_ExternalLibs\NUnit 2.6.2\nunit-agent-x86.exe.config
 r:\A\Src\C#Common\XEP_ExternalLibs\NUnit 2.6.2\nunit-console-x86.exe.config
 r:\A\Src\C#Common\XEP_ExternalLibs\NUnit 2.6.2\nunit-x86.exe.config
-r:\A\Src\C#Common\XEP_ExternalLibs\AutoMapper.6.2.2\AutoMapper.dll
-r:\A\Src\C#Common\XEP_ExternalLibs\AutoMapper.6.2.2\AutoMapper.xml
 r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\BimPlus.Client.Api.dll
 r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\BimPlus.Client.Api.pdb
 r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x64\BimPlus.Client.dll
@@ -16701,15 +16701,34 @@ r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\protobuf-net.pdb
 r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\RGiesecke.DllExport.Metadata.dll
 r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\SlimDX.dll
 r:\A\Src\C#Common\XEP_ExternalLibs\BimPlus\x86\TestApplication.pdb
-r:\A\Src\C#Common\XEP_ExternalLibs\Castle.Core.4.2.1\Castle.Core.dll
-r:\A\Src\C#Common\XEP_ExternalLibs\Castle.Core.4.2.1\Castle.Core.xml
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\AnalysisDataModel.Contracts.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\AnalysisDataModel.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\AnalysisDataModel.Implementation.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\AutoMapper.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\AutoMapper.xml
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\CSInfrastructure.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\DataModelDataAccess.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\EPPlus.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\EPPlus.XML
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\Excel.Conversion.Contracts.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\Excel.Conversion.Implementation.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\Excel.DataAccess.Contracts.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\Excel.DataAccess.Implementation.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\Excel.DataAccess.Models.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\Excel.Integration.Bootstrapper.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\FluentValidation.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\FluentValidation.xml
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\Newtonsoft.Json.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\Newtonsoft.Json.xml
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\Scia.Conversion.Contracts.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\Scia.Conversion.Implementation.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\SimpleInjector.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\SimpleInjector.xml
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\System.ComponentModel.Annotations.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\System.ComponentModel.Primitives.dll
+r:\A\Src\C#Common\XEP_ExternalLibs\Calatrava\UnitsNet.dll
 r:\A\Src\C#Common\XEP_ExternalLibs\Clipper\clipper_library.dll
 r:\A\Src\C#Common\XEP_ExternalLibs\Clipper\LicenseClipper.txt
-r:\A\Src\C#Common\XEP_ExternalLibs\EPPlus.4.1.1\EPPlus.dll
-r:\A\Src\C#Common\XEP_ExternalLibs\EPPlus.4.1.1\EPPlus.XML
-r:\A\Src\C#Common\XEP_ExternalLibs\Moq.4.8.1\Moq.dll
-r:\A\Src\C#Common\XEP_ExternalLibs\Moq.4.8.1\Moq.pdb
-r:\A\Src\C#Common\XEP_ExternalLibs\Moq.4.8.1\Moq.xml
 r:\A\Src\C#Common\XEP_ExternalLibs\NUnit 2.6.2\license.txt
 r:\A\Src\C#Common\XEP_ExternalLibs\NUnit 2.6.2\nunit-agent-x86.exe
 r:\A\Src\C#Common\XEP_ExternalLibs\NUnit 2.6.2\nunit-console-runner.dll
@@ -16734,12 +16753,6 @@ r:\A\Src\C#Common\XEP_ExternalLibs\Prism.4.1.0.0\Microsoft.Practices.Unity.dll
 r:\A\Src\C#Common\XEP_ExternalLibs\Prism.4.1.0.0\Moq4.dll
 r:\A\Src\C#Common\XEP_ExternalLibs\Prism.4.1.0.0\System.Windows.Interactivity.dll
 r:\A\Src\C#Common\XEP_ExternalLibs\Prism.MEFExtensions.4.1.0.0\Microsoft.Practices.Prism.MefExtensions.dll
-r:\A\Src\C#Common\XEP_ExternalLibs\SimpleInjector.4.0.12\SimpleInjector.dll
-r:\A\Src\C#Common\XEP_ExternalLibs\SimpleInjector.4.0.12\SimpleInjector.xml
-r:\A\Src\C#Common\XEP_ExternalLibs\System.Threading.Tasks.Extensions.4.3.0\System.Threading.Tasks.Extensions.dll
-r:\A\Src\C#Common\XEP_ExternalLibs\System.Threading.Tasks.Extensions.4.3.0\System.Threading.Tasks.Extensions.xml
-r:\A\Src\C#Common\XEP_ExternalLibs\System.ValueTuple.4.3.0\System.ValueTuple.dll
-r:\A\Src\C#Common\XEP_ExternalLibs\System.ValueTuple.4.3.0\System.ValueTuple.xml
 r:\A\Src\C#Common\XEP_ExternalLibs\Telerik\Telerik.Windows.Controls.Chart.dll
 r:\A\Src\C#Common\XEP_ExternalLibs\Telerik\Telerik.Windows.Controls.Data.dll
 r:\A\Src\C#Common\XEP_ExternalLibs\Telerik\Telerik.Windows.Controls.DataVisualization.dll
@@ -16776,7 +16789,6 @@ r:\A\Src\C#Common\XEP_ExternalLibs\Telerik\Telerik.Windows.Themes.Windows8.dll
 r:\A\Src\C#Common\XEP_ExternalLibs\Telerik\Telerik.Windows.Themes.Windows8Touch.dll
 r:\A\Src\C#Common\XEP_ExternalLibs\Telerik\Telerik.Windows.Zip.dll
 r:\A\Src\C#Common\XEP_ExternalLibs\Telerik\Telerik.Windows.Zip.Extensions.dll
-r:\A\Src\C#Common\XEP_ExternalLibs\UnitsNet\UnitsNet.dll
 r:\A\Src\ProjectManager\XEP_SecurityDetection\XEP_SecurityDetection\XEP_SecurityDetection.14.00.csproj
 r:\A\Src\ProjectManager\XEP_SecurityDetection\XEP_SecurityDetection\System
 r:\A\Src\ProjectManager\XEP_SecurityDetection\XEP_SecurityDetection\System.Core
@@ -20056,6 +20068,7 @@ r:\A\Src\CHA\GeomData\EP_DSG_Elements\EP_MergeOnlyConnectedSlabs.h
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\EP_MergeResultsModificator.h
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\EP_MergingToolHelper.h
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\EP_SlabMergingTool.h
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\EP_SL_OpeningEdgeEvaluator.h
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\EP_TributaryArea.h
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\BeamSpanData.h
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\LPCurvedSupportEdgeCheck.h
@@ -20412,6 +20425,7 @@ r:\A\Src\CHA\GeomData\EP_DSG_Elements\EP_MergeOnlyConnectedSlabs.cpp
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\EP_MergeResultsModificator.cpp
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\EP_MergingToolHelper.cpp
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\EP_SlabMergingTool.cpp
+r:\A\Src\CHA\GeomData\EP_DSG_Elements\EP_SL_OpeningEdgeEvaluator.cpp
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\EP_TributaryArea.cpp
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\LPCurvedSupportEdgeCheck.cpp
 r:\A\Src\CHA\GeomData\EP_DSG_Elements\LPSelfWeightCheck.cpp
@@ -22016,6 +22030,7 @@ r:\A\Src\Mar\DataLibScia\GIMBucklingDataCompoPane_SpanSettings_LTB_TopBottom.h
 r:\A\Src\Mar\DataLibScia\GIMBucklingDataCompoPane_SpanSettings_yy.h
 r:\A\Src\Mar\DataLibScia\GIMBucklingDataCompoPane_SpanSettings_YZ.h
 r:\A\Src\Mar\DataLibScia\GIMBucklingDataCompoPane_SpanSettings_zz.h
+r:\A\Src\Mar\DataLibScia\GIMBucklingDataConcrete_CodeDepend.h
 r:\A\Src\Mar\DataLibScia\GIMBucklingDataEmptyResultDlg.h
 r:\A\Src\Mar\DataLibScia\GIMBucklingDataOneGridBCGPDialog.h
 r:\A\Src\Mar\DataLibScia\GIMBucklingDataTopLevelCmd.h
@@ -22330,6 +22345,7 @@ r:\A\Src\Mar\DataLibScia\BucklingPropComboItems.cpp
 r:\A\Src\Mar\DataLibScia\CoeffSwitchesEN.cpp
 r:\A\Src\Mar\DataLibScia\ComboBoxBuckling.cpp
 r:\A\Src\Mar\DataLibScia\ComboBoxSupport.cpp
+r:\A\Src\Mar\DataLibScia\GIMBucklingDataConcrete_CodeDepend.cpp
 r:\A\Src\Mar\DataLibScia\SetupBucklingCoefficientReader.cpp
 r:\A\Src\Mar\DataLibScia\EP_ERpreview_BucklingResults.cpp
 r:\A\Src\Mar\DataLibScia\GIMAdvancedSettingsPane.cpp
@@ -22848,7 +22864,6 @@ r:\A\Src\Mar\DataLibScia\res\ibc_total_deflection.bmp
 r:\A\Src\Mar\DataLibScia\res\ibc_additional_deflection.bmp
 r:\A\Src\Mar\DataLibScia\res\ibc_beam_min_bar_distance.bmp
 r:\A\Src\Mar\DataLibScia\res\ibc_plate_min_bar_distance.bmp
-r:\A\Src\Mar\DataLibScia\res\ibc_max_spacing.bmp
 r:\A\Src\Mar\DataLibScia\res\MinTensionReinfType.bmp
 r:\A\Src\Mar\DataLibScia\res\MinTensionReinf.bmp
 r:\A\Src\Mar\DataLibScia\res\LimCheck.bmp
@@ -22892,6 +22907,7 @@ r:\A\Src\Mar\DataLibScia\res\Composite_rowConnectors.bmp
 r:\A\Src\Mar\DataLibScia\res\Continuity_of_columns.bmp
 r:\A\Src\Mar\DataLibScia\res\Continuity_tolerance_factor.bmp
 r:\A\Src\Mar\DataLibScia\res\Enforce_KLL_Factor.bmp
+r:\A\Src\Mar\DataLibScia\res\SIA_add_force_shear.bmp
 r:\A\Src\Mar\DataLibScia\res\SIA_angle_alpha.bmp
 r:\A\Src\Mar\DataLibScia\res\SIA_beams_Coeff_sl_max.bmp
 r:\A\Src\Mar\DataLibScia\res\SIA_Beam_s_lb_min.bmp
@@ -23762,7 +23778,6 @@ r:\A\Src\Mar\DataAddSupport\EP_SoilPoints.cpp
 r:\A\Src\Mar\DataAddSupport\EP_SoilSurface.cpp
 r:\A\Src\Mar\DataAddSupport\BaseSupportData.inl
 r:\A\Src\Mar\DataAddSupport\EP_GeologicArea.rgs
-r:\A\Src\Mar\DataAddSupport\res\Beam nonlinearity.gif
 r:\A\Src\Mar\DataAddSupport\EP_3DMeshData.rgs
 r:\A\Src\Mar\DataAddSupport\EP_AbsentBeam.rgs
 r:\A\Src\Mar\DataAddSupport\EP_AbsentSlab.rgs
@@ -23794,6 +23809,7 @@ r:\A\Src\Mar\DataAddSupport\res\support_node_column.gif
 r:\A\Src\Mar\DataAddSupport\res\support_node_foundation.gif
 r:\A\Src\Mar\DataAddSupport\res\support_node_XY.gif
 r:\A\Src\Mar\DataAddSupport\res\support_node_XZ.gif
+r:\A\Src\Mar\DataAddSupport\res\beam_nonlinearities.jpg
 r:\A\Src\Tra\DlgMan\DlgMan.14.00.vcxproj
 r:\A\Src\Tra\DlgMan\DlgMan.14.00.vcxproj.filters
 r:\A\Src\Tra\DlgMan\DlgMan.def
@@ -26292,6 +26308,9 @@ r:\A\Src\Tom\BasicResults\BasicResults.def
 r:\A\Inc\EP_ResultShell_Setter.h
 r:\A\Src\Tom\BasicResults\EP_CheckToggles.h
 r:\A\Src\Tom\BasicResults\EP_3DWindTransparentReport.h
+r:\A\Src\Tom\BasicResults\EP_3DWindTransparentReportSubtable_Data.h
+r:\A\Src\Tom\BasicResults\EP_3DWindTransparentReportSubtable_NAParameters.h
+r:\A\Src\Tom\BasicResults\EP_3DWindTransparentReportSubtable_References.h
 r:\A\Src\Tom\BasicResults\EP_BucklingSetup.h
 r:\A\Src\Tom\BasicResults\EP_BucklingToolStructures.h
 r:\A\Src\Tom\BasicResults\EP_CommonSettings_UpgradeData.h
@@ -26350,6 +26369,7 @@ r:\A\Src\Tom\BasicResults\EP_UpgradeCheckProcessor_NexisBase.h
 r:\A\Src\Tom\BasicResults\EP_UpgradeCheckProcessor_NexisSteel_ECEN.h
 r:\A\Src\Tom\BasicResults\EP_UpgradeCheckProcessor_ResultShellToResultShellBase.h
 r:\A\Src\Tom\BasicResults\EP_VarH_tool.h
+r:\A\Src\Tom\BasicResults\MaterialTester.h
 r:\A\Src\Tom\BasicResults\NonlinCombiFromLoadCombiCreator.h
 r:\A\Src\Tom\BasicResults\EP_UnifiedTableData.h
 r:\A\Src\Tom\BasicResults\EP_UnifiedTableInsertion.h
@@ -26358,6 +26378,7 @@ r:\A\Src\Tom\BasicResults\ReqReinfDesignHandler.h
 r:\A\Src\Tom\BasicResults\RequiredReinforcementResultsCase.h
 r:\A\Src\Tom\BasicResults\EP_ResultUpgraderTool.h
 r:\A\Src\Tom\BasicResults\SectionCheckResultFactory.h
+r:\A\Src\Tom\BasicResults\SelectionMaterialFilter.h
 r:\A\Src\Tom\BasicResults\StdAfx.h
 r:\A\inc\DocumenOutputHelper.h
 r:\A\inc\DocumentOutputType.h
@@ -27053,6 +27074,9 @@ r:\A\Src\Tom\BasicResults\EP_OpenCheck_2D_Shell_OldVersion.h
 r:\A\Src\Tom\BasicResults\EP_ResultShell_MinimalImplementation_1D.h
 r:\A\Src\Tom\BasicResults\EP_ResultShell_MinimalImplementation_2D.h
 r:\A\Src\Tom\BasicResults\EP_3DWindTransparentReport.cpp
+r:\A\Src\Tom\BasicResults\EP_3DWindTransparentReportSubtable_Data.cpp
+r:\A\Src\Tom\BasicResults\EP_3DWindTransparentReportSubtable_NAParameters.cpp
+r:\A\Src\Tom\BasicResults\EP_3DWindTransparentReportSubtable_References.cpp
 r:\A\Src\Tom\BasicResults\EP_CheckToggles.cpp
 r:\A\Src\Tom\BasicResults\EP_BucklingSetup.cpp
 r:\A\Src\Tom\BasicResults\EP_ContactStresses2D_Shell_OldVersion.cpp
@@ -27106,12 +27130,14 @@ r:\A\Src\Tom\BasicResults\EP_UpgradeCheckProcessor_NexisBase.cpp
 r:\A\Src\Tom\BasicResults\EP_UpgradeCheckProcessor_NexisSteel_ECEN.cpp
 r:\A\Src\Tom\BasicResults\EP_UpgradeCheckProcessor_ResultShellToResultShellBase.cpp
 r:\A\Src\Tom\BasicResults\EP_VarH_tool.cpp
+r:\A\Src\Tom\BasicResults\MaterialTester.cpp
 r:\A\Src\Tom\BasicResults\NonlinCombiFromLoadCombiCreator.cpp
 r:\A\Src\Tom\BasicResults\EP_UnifiedTableData.cpp
 r:\A\Src\Tom\BasicResults\PaletteSettings.cpp
 r:\A\Src\Tom\BasicResults\RequiredReinforcementResultsCase.cpp
 r:\A\Src\Tom\BasicResults\EP_ResultUpgraderTool.cpp
 r:\A\Src\Tom\BasicResults\SectionCheckResultFactory.cpp
+r:\A\Src\Tom\BasicResults\SelectionMaterialFilter.cpp
 r:\A\Src\Tom\BasicResults\StdAfx.cpp
 r:\A\Src\Tom\BasicResults\AdvancedFrameOptimizationRunner.cpp
 r:\A\Src\Tom\BasicResults\AutodesignChangesDlg.cpp
@@ -28712,6 +28738,7 @@ r:\A\Src\SEI\MODEL\EP_MODEL\EP_Model.idl
 r:\A\Src\SEI\MODEL\EP_MODEL\EP_Model.rc
 r:\A\Src\SEI\MODEL\EP_MODEL\EP_Model.tsme
 r:\A\Src\SEI\MODEL\EP_MODEL\EP_Model.def
+r:\A\Src\SEI\MODEL\EP_MODEL\EP_SolverSetupChecker.h
 r:\A\Src\SEI\MODEL\EP_MODEL\StdAfx.h
 r:\A\inc\EP_ModelBaseTools.h
 r:\A\inc\IEP_FemCalcDialogHost.h
@@ -28763,6 +28790,7 @@ r:\A\Src\SEI\MODEL\EP_MODEL\DRA\EP_FemcoSetupData.h
 r:\A\Src\SEI\MODEL\EP_MODEL\DRA\EP_SmallMeshElement.h
 r:\A\Src\SEI\MODEL\EP_MODEL\DRA\EP_SolverInfo.h
 r:\A\Src\SEI\MODEL\EP_MODEL\EP_CalcProtocolTableNonlinearCombination.h
+r:\A\Src\SEI\MODEL\EP_MODEL\EP_SolverSetupChecker.cpp
 r:\A\Src\SEI\MODEL\EP_MODEL\StdAfx.cpp
 r:\A\Src\SEI\MODEL\EP_MODEL\CalcProtocolPartObject.cpp
 r:\A\Src\SEI\MODEL\EP_MODEL\EP_AnalysisDeciderTool.cpp
@@ -29126,6 +29154,7 @@ r:\A\Src\Mar\DataAddScia\DataAddScia.rc
 r:\A\Src\Mar\DataAddScia\EP_DataAddScia.def
 r:\A\Src\Mar\DataAddScia\DataAddScia.def
 r:\A\Src\Mar\DataAddScia\EP_BeamBucklingHeader.h
+r:\A\Src\Mar\DataAddScia\EP_BucklingFactorFromStabilityCalculator.h
 r:\A\Src\Mar\DataAddScia\EP_ConnectivityLLR.h
 r:\A\Src\Mar\DataAddScia\EP_FloorVibrationDataFromSetup.h
 r:\A\Src\Mar\DataAddScia\EP_FRILO_Foundation_NodeAddData.h
@@ -29183,6 +29212,7 @@ r:\A\Src\Mar\DataAddScia\PurlinMembersFilter.h
 r:\A\Src\Mar\DataAddScia\EP_PropertyModifiers1D.h
 r:\A\Src\Mar\DataAddScia\EP_PropertyModifiers2D.h
 r:\A\Src\Mar\DataAddScia\EP_BeamBucklingHeader.cpp
+r:\A\Src\Mar\DataAddScia\EP_BucklingFactorFromStabilityCalculator.cpp
 r:\A\Src\Mar\DataAddScia\EP_ConnectivityLLR.cpp
 r:\A\Src\Mar\DataAddScia\EP_FloorVibrationDataFromSetup.cpp
 r:\A\Src\Mar\DataAddScia\EP_FRILO_Foundation_NodeAddData.cpp
@@ -29303,6 +29333,8 @@ r:\A\Src\Mar\DataAddScia\Res\stiffness_modifier1D.ico
 r:\A\Src\Mar\DataAddScia\Res\stiffness_modifier2D.ico
 r:\A\Src\Mar\DataAddScia\Res\Tranverse_welds.GIF
 r:\A\Src\Mar\DataAddScia\Res\VirtualJoistDesignInfo.ico
+r:\A\Src\Mar\DataAddScia\Res\FloorVibrationDataFromSetup.ico
+r:\A\Src\Mar\DataAddScia\Res\LiveLoadReduction_MemberDataFromSetup.ico
 r:\A\Src\Mar\DataAddScia\Res\stability_member_data.ico
 r:\A\Src\Tra\ProjectMWELL\DataAddMWELL\DataAddMWELL.14.00.vcxproj
 r:\A\Src\Tra\ProjectMWELL\DataAddMWELL\DataAddMWELL.14.00.vcxproj.filters
@@ -29445,6 +29477,7 @@ r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.idl
 r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.rc
 r:\A\Src\Checks\EP_CheckDataProvider\EP_CheckDataProvider.def
 r:\A\Src\Checks\EP_CheckDataProvider\CombiFromCombiHash.h
+r:\A\Src\Checks\EP_CheckDataProvider\HaunchInfo.h
 r:\A\Src\Checks\EP_CheckDataProvider\PreparedDataTilesCreatorOpenCheck.h
 r:\A\Src\Checks\EP_CheckDataProvider\SlsCombinationsConvertor.h
 r:\A\Src\Checks\EP_CheckDataProvider\CombinationsConvertor.h
@@ -30383,6 +30416,7 @@ r:\A\Src\Mic\Ds\DSPRIMA\DsPrima.idl
 r:\A\Src\Mic\Ds\DSPRIMA\DsPrima.rc
 r:\A\Src\Mic\Ds\DSPRIMA\EP_DsPrima.def
 r:\A\Src\Mic\Ds\DSPRIMA\DsPrima.def
+r:\A\Src\Mic\Ds\DSPRIMA\PlaneSectionEntityCleaner.h
 r:\A\Src\Mic\Ds\DSPRIMA\StdAfx.h
 r:\A\Src\Mic\Ds\DSPRIMA\CleanerProtocol.h
 r:\A\Src\Mic\Ds\DSPRIMA\EP_CleanerDs.h
@@ -30391,6 +30425,7 @@ r:\A\Src\Mic\Ds\DSPRIMA\EP_ProjectInfoProxy.h
 r:\A\inc\EP_ProjectInfoProxyData.h
 r:\A\Src\Mic\Ds\DSPRIMA\Resource.h
 r:\A\Src\Mic\Ds\DSPRIMA\ResultsRemoveQuestion.h
+r:\A\Src\Mic\Ds\DSPRIMA\PlaneSectionEntityCleaner.cpp
 r:\A\Src\Mic\Ds\DSPRIMA\StdAfx.cpp
 r:\A\Src\Mic\Ds\DSPRIMA\CleanerProtocol.cpp
 r:\A\Src\Mic\Ds\DSPRIMA\DsPrima.cpp
@@ -31367,6 +31402,8 @@ r:\A\Src\Tra\PRIMA\ESAReg.txt
 r:\A\Src\Tra\PRIMA\logConfig.ini
 r:\A\Src\Tra\PRIMA\Startup.ini
 r:\A\Src\Tra\PRIMA\Subst.dat
+r:\A\Src\Tra\PRIMA\res\se18_icon_menu.ico
+r:\A\Src\Tra\PRIMA\res\se18_icon_projectfile.ico
 r:\A\Src\Lat\CompoFrame\EP_HServices\EP_HServices.14.00.vcxproj
 r:\A\Src\Lat\CompoFrame\EP_HServices\EP_HServices.14.00.vcxproj.filters
 r:\A\Src\Lat\CompoFrame\EP_HServices\__AutoGenerTLH.cpp
@@ -36112,7 +36149,6 @@ r:\A\Src\Checks\ConcreteChecks\Punching\CssShapeChecker.h
 r:\A\Src\Checks\ConcreteChecks\Punching\Data4CriticalPerimCalc.h
 r:\A\Src\Checks\ConcreteChecks\Punching\DetailingDistancesCalc.h
 r:\A\Src\Checks\ConcreteChecks\Punching\DiContainerProvider.h
-r:\A\Src\Checks\ConcreteChecks\Punching\EP_IntervalMergingTool.h
 r:\A\Src\Checks\ConcreteChecks\Punching\EP_PerimeterReductionTool.h
 r:\A\Src\Checks\ConcreteChecks\Punching\EP_ShapeVisibilityTool.h
 r:\A\Src\Checks\ConcreteChecks\Punching\EP_VisibilityToolResult.h
@@ -36194,7 +36230,6 @@ r:\A\Src\Checks\ConcreteChecks\Punching\CssShapeChecker.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\Data4CriticalPerimCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\DetailingDistancesCalc.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\DiContainerProvider.cpp
-r:\A\Src\Checks\ConcreteChecks\Punching\EP_IntervalMergingTool.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\EP_PerimeterReductionTool.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\EP_Punching0D_ResultShell.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching\EP_PunchingCheck.cpp
@@ -36259,12 +36294,16 @@ r:\A\Src\Par\Services\ConcreteESACmds\ConcreteESACmds.def
 r:\A\Src\Par\Services\ConcreteESACmds\CodeDependendDeflection_ECEN_Command_Registrar.h
 r:\A\Src\Par\Services\ConcreteESACmds\Concrete_SIA_Setup_DesignDefaults_Registrar.h
 r:\A\Src\Par\Services\ConcreteESACmds\DF_SIACapacityCheck_Registrar.h
+r:\A\Src\Par\Services\ConcreteESACmds\DF_SIADetailingProvisionsSLS_Registrar.h
 r:\A\Src\Par\Services\ConcreteESACmds\DF_SIAInternalForcesCheck_Registrar.h
 r:\A\Src\Par\Services\ConcreteESACmds\DF_SIAInternalForcesDesign2D_Registrar.h
 r:\A\Src\Par\Services\ConcreteESACmds\DF_SIAReinforcementDesignULS2D_Registrar.h
 r:\A\Src\Par\Services\ConcreteESACmds\DF_SIAShearTorsionCheck_Registrar.h
 r:\A\Src\Par\Services\ConcreteESACmds\DF_SIAStressLimitationCheck_Registrar.h
+r:\A\Src\Par\Services\ConcreteESACmds\EP_Concrete_ExplodeReinforcementToFreeBars15_Registrar.h
+r:\A\Src\Par\Services\ConcreteESACmds\EP_Concrete_NewFreeBar15_Registrar.h
 r:\A\Src\Par\Services\ConcreteESACmds\EP_Punching_Registrar.h
+r:\A\Src\Par\Services\ConcreteESACmds\ResultsESA_BillMaterialConcrete15_Registrar.h
 r:\A\Src\Par\Services\ConcreteESACmds\SFRC_2D_CapacityCheck_ULS_ECEN_Registrar.h
 r:\A\Src\Par\Services\ConcreteESACmds\SFRC_2D_CrackWidth_SLS_ECEN_Registrar.h
 r:\A\Src\Par\Services\ConcreteESACmds\SFRC_2D_DosageDesign_ULS_ECEN_Registrar.h
@@ -36494,12 +36533,16 @@ r:\A\Src\Par\Services\ConcreteESACmds\EP_ConcreteSetupSIA_Registrar.h
 r:\A\Src\Par\Services\ConcreteESACmds\CodeDependendDeflection_ECEN_Command_Registrar.cpp
 r:\A\Src\Par\Services\ConcreteESACmds\Concrete_SIA_Setup_DesignDefault_Registrar.cpp
 r:\A\Src\Par\Services\ConcreteESACmds\DF_SIACapacityCheck_Registrar.cpp
+r:\A\Src\Par\Services\ConcreteESACmds\DF_SIADetailingProvisionsSLS_Registrar.cpp
 r:\A\Src\Par\Services\ConcreteESACmds\DF_SIAInternalForcesCheck_Registrar.cpp
 r:\A\Src\Par\Services\ConcreteESACmds\DF_SIAInternalForcesDesign2D_Registrar.cpp
 r:\A\Src\Par\Services\ConcreteESACmds\DF_SIAReinforcementDesignULS2D_Registrar.cpp
 r:\A\Src\Par\Services\ConcreteESACmds\DF_SIAShearTorsionCheck_Registrar.cpp
 r:\A\Src\Par\Services\ConcreteESACmds\DF_SIAStressLimitationCheck_Registrar.cpp
+r:\A\Src\Par\Services\ConcreteESACmds\EP_Concrete_ExplodeReinforcementToFreeBars15_Registrar.cpp
+r:\A\Src\Par\Services\ConcreteESACmds\EP_Concrete_NewFreeBar15_Registrar.cpp
 r:\A\Src\Par\Services\ConcreteESACmds\EP_Punching_Registrar.cpp
+r:\A\Src\Par\Services\ConcreteESACmds\ResultsESA_BillMaterialConcrete15_Registrar.cpp
 r:\A\Src\Par\Services\ConcreteESACmds\SFRC_2D_CapacityCheck_ULS_ECEN_Registrar.cpp
 r:\A\Src\Par\Services\ConcreteESACmds\SFRC_2D_CrackWidth_SLS_ECEN_Registrar.cpp
 r:\A\Src\Par\Services\ConcreteESACmds\SFRC_2D_DosageDesign_ULS_ECEN_Registrar.cpp
@@ -36911,6 +36954,7 @@ r:\A\Src\Par\Services\ConcreteESACmds\Res\DF_IBCInternalForcesDesign2D_Icon.bmp
 r:\A\Src\Par\Services\ConcreteESACmds\Res\DF_IBCReinforcementULS2D_Icon.bmp
 r:\A\Src\Par\Services\ConcreteESACmds\Res\EP_ConcreteSetupIBC_Icon.bmp
 r:\A\Src\Par\Services\ConcreteESACmds\Res\EP_ConcreteSetupSIA_Icon.bmp
+r:\A\Src\Par\Services\ConcreteESACmds\Res\DF_SIA_DetailingProvisionsSLS_Icon.bmp
 r:\A\Src\Par\Services\ConcreteESACmds\Res\CodeDependendDeflection_ECEN_Command_Icon.bmp
 r:\A\Src\Par\Services\ConcreteESACmds\Res\DF_SIA_CheckShearTorsion_Icon.bmp
 r:\A\Src\Par\Services\ConcreteESACmds\Res\DF_SIA_CheckStressLimitation_Icon.bmp
@@ -36932,12 +36976,18 @@ r:\A\Src\Par\Services\ConcreteESACmdsM\ConcreteESACmdsM.def
 r:\A\Src\Par\Services\ConcreteESACmdsM\CodeDependendDeflection_ECEN_Command_Main.h
 r:\A\Src\Par\Services\ConcreteESACmdsM\Concrete_SIA_Setup_DesignDefaults_Main.h
 r:\A\Src\Par\Services\ConcreteESACmdsM\DF_SIACapacityCheck_Main.h
+r:\A\Src\Par\Services\ConcreteESACmdsM\DF_SIADetailingProvisionsSLS_Main.h
 r:\A\Src\Par\Services\ConcreteESACmdsM\DF_SIAInternalForcesCheck_Main.h
 r:\A\Src\Par\Services\ConcreteESACmdsM\DF_SIAInternalForcesDesign2D_Main.h
 r:\A\Src\Par\Services\ConcreteESACmdsM\DF_SIAReinforcementDesignULS2D_Main.h
 r:\A\Src\Par\Services\ConcreteESACmdsM\DF_SIAShearTorsionCheck_Main.h
 r:\A\Src\Par\Services\ConcreteESACmdsM\DF_SIAStressLimitationCheck_Main.h
+r:\A\Src\Par\Services\ConcreteESACmdsM\EP_Concrete_ExplodeReinforcementToFreeBars15_Main.h
+r:\A\Src\Par\Services\ConcreteESACmdsM\EP_Concrete_ExplodeReinforcementToFreeBars_Cmd.h
+r:\A\Src\Par\Services\ConcreteESACmdsM\EP_Concrete_NewFreeBar15_Main.h
+r:\A\Src\Par\Services\ConcreteESACmdsM\EP_Concrete_NewFreeBar_Cmd.h
 r:\A\Src\Par\Services\ConcreteESACmdsM\EP_Punching_Main.h
+r:\A\Src\Par\Services\ConcreteESACmdsM\ResultsESA_BillMaterialConcrete15_Main.h
 r:\A\Src\Par\Services\ConcreteESACmdsM\SFRC_2D_CapacityCheck_ULS_ECEN_Main.h
 r:\A\Src\Par\Services\ConcreteESACmdsM\SFRC_2D_CrackWidth_SLS_ECEN_Main.h
 r:\A\Src\Par\Services\ConcreteESACmdsM\SFRC_2D_DosageDesign_ULS_ECEN_Main.h
@@ -37179,12 +37229,18 @@ r:\A\Src\Par\Services\ConcreteESACmdsM\EP_ConcreteSetupSIA_Main.h
 r:\A\Src\Par\Services\ConcreteESACmdsM\CodeDependendDeflection_ECEN_Command_Main.cpp
 r:\A\Src\Par\Services\ConcreteESACmdsM\Concrete_SIA_Setup_DesignDefaults_Main.cpp
 r:\A\Src\Par\Services\ConcreteESACmdsM\DF_SIACapacityCheck_Main.cpp
+r:\A\Src\Par\Services\ConcreteESACmdsM\DF_SIADetailingProvisionsSLS_Main.cpp
 r:\A\Src\Par\Services\ConcreteESACmdsM\DF_SIAInternalForcesCheck_Main.cpp
 r:\A\Src\Par\Services\ConcreteESACmdsM\DF_SIAInternalForcesDesign2D_Main.cpp
 r:\A\Src\Par\Services\ConcreteESACmdsM\DF_SIAReinforcementDesignULS2D_Main.cpp
 r:\A\Src\Par\Services\ConcreteESACmdsM\DF_SIAShearTorsionCheck_Main.cpp
 r:\A\Src\Par\Services\ConcreteESACmdsM\DF_SIAStressLimitationCheck_Main.cpp
+r:\A\Src\Par\Services\ConcreteESACmdsM\EP_Concrete_ExplodeReinforcementToFreeBars15_Main.cpp
+r:\A\Src\Par\Services\ConcreteESACmdsM\EP_Concrete_ExplodeReinforcementToFreeBars_Cmd.cpp
+r:\A\Src\Par\Services\ConcreteESACmdsM\EP_Concrete_NewFreeBar15_Main.cpp
+r:\A\Src\Par\Services\ConcreteESACmdsM\EP_Concrete_NewFreeBar_Cmd.cpp
 r:\A\Src\Par\Services\ConcreteESACmdsM\EP_Punching_Main.cpp
+r:\A\Src\Par\Services\ConcreteESACmdsM\ResultsESA_BillMaterialConcrete15_Main.cpp
 r:\A\Src\Par\Services\ConcreteESACmdsM\SFRC_2D_CapacityCheck_ULS_ECEN_Main.cpp
 r:\A\Src\Par\Services\ConcreteESACmdsM\SFRC_2D_CrackWidth_SLS_ECEN_Main.cpp
 r:\A\Src\Par\Services\ConcreteESACmdsM\SFRC_2D_DosageDesign_ULS_ECEN_Main.cpp
@@ -41806,6 +41862,7 @@ r:\A\DesignForms_Documents\OpenChecks\CustomLibrary\US\US_Steel.xml
 r:\A\DesignForms_Documents\OpenChecks\CustomLibrary\US\US_SteelSections.xml
 r:\A\DesignForms_Documents\OpenChecks\EWN\Composite.xml
 r:\A\DesignForms_Documents\OpenChecks\EWN\EWN_Clause.xml
+r:\A\DesignForms_Documents\OpenChecks\EWN\EWN_CompositeBeam_AISC_360_10.xml
 r:\A\DesignForms_Documents\OpenChecks\EWN\EWN_Concrete_Desing_2D.xml
 r:\A\DesignForms_Documents\OpenChecks\EWN\EWN_SCIA.xml
 r:\A\DesignForms_Documents\OpenChecks\Forms\Aluminium_KPFF\KPFF_Aluminum_Calculation.cls
@@ -42502,8 +42559,11 @@ r:\A\DesignForms_Documents\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Design2D_L
 r:\A\DesignForms_Documents\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Design2D_LongReinf.TestIO
 r:\A\DesignForms_Documents\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Design2D_Multi.cls
 r:\A\DesignForms_Documents\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Design2D_SEN.CLS
+r:\A\DesignForms_Documents\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Detailing_provisions.CLS
+r:\A\DesignForms_Documents\OpenChecks\Forms\Concrete_SIA\SIA_CONCRETE_DETAILING_PROVISIONS.TestIO
 r:\A\DesignForms_Documents\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Detailing_provisions_Plate.cls
 r:\A\DesignForms_Documents\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Detailing_provisions_Plate.TestIO
+r:\A\DesignForms_Documents\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Detailing_provisions_SEN.CLS
 r:\A\DesignForms_Documents\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Detailing_provisions_Wall.cls
 r:\A\DesignForms_Documents\OpenChecks\Forms\Concrete_SIA\SIA_CONCRETE_DETAILING_PROVISIONS_WALL.TestIO
 r:\A\DesignForms_Documents\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Forces2D_SEN.cls
@@ -43459,6 +43519,7 @@ r:\A\Src\Tom\Code\CodeAISCLRFD\EP_CodeAISCLRFD.rgs
 r:\A\Src\Tom\Code\CodeAISCLRFD\icon1.ico
 r:\A\Src\DRA\EP_MaterialAISCLRFD\EP_MaterialAISCLRFD.14.00.vcxproj
 r:\A\Src\DRA\EP_MaterialAISCLRFD\EP_MaterialAISCLRFD.14.00.vcxproj.filters
+r:\A\Src\DRA\EP_MaterialAISCLRFD\EP_MaterialAISCLRFD.14.00.sln
 r:\A\Src\DRA\EP_MaterialAISCLRFD\__AutoGenerTLH.cpp
 r:\A\Src\DRA\EP_MaterialAISCLRFD\EP_MaterialAISCLRFD.idl
 r:\A\Src\DRA\EP_MaterialAISCLRFD\EP_MaterialAISCLRFD.rc
@@ -46831,10 +46892,8 @@ r:\A\Src\HEK\WLELink\EsaModelForWLE.cpp
 r:\A\Src\HEK\WLELink\InitializerManagedCode.cpp
 r:\A\Src\HEK\WLELink\WLELink.cpp
 r:\A\Src\HEK\WLELink\WLETools.cpp
-r:\A\Src\HEK\WLELink\EP_EsaModelForWLE.rgs
 r:\A\Src\HEK\WLELink\Dll\Cads.Common.EncryptionEngine.dll
 r:\A\Src\HEK\WLELink\Dll\Cads.Common.Math.dll
-r:\A\Src\HEK\WLELink\Dll\Cads.Common.Math.Geometry.dll
 r:\A\Src\HEK\WLELink\Dll\CADS.WindLoadEngine.DataModel.dll
 r:\A\Src\HEK\WLELink\Dll\CADS.WindLoadEngine.DesignStandards.BS6399.dll
 r:\A\Src\HEK\WLELink\Dll\CADS.WindLoadEngine.DesignStandards.EN1991.dll
@@ -46843,6 +46902,7 @@ r:\A\Src\HEK\WLELink\Dll\CADS.WindLoadEngine.DesignStandardsInterface.dll
 r:\A\Src\HEK\WLELink\Dll\CADS.WindLoadEngine.dll
 r:\A\Src\HEK\WLELink\Dll\CADS.WindLoadEngine.StructuralModel.dll
 r:\A\Src\HEK\WLELink\Dll\CADS.WindLoadEngine.WindSpeedCalculator.dll
+r:\A\Src\HEK\WLELink\EP_EsaModelForWLE.rgs
 r:\A\Src\HEK\WLELink\CADS.WindLoadEngine
 r:\A\Src\HEK\WLELink\CADS.WindLoadEngine.DataModel
 r:\A\Src\HEK\WLELink\CADS.WindLoadEngine.StructuralModel
@@ -46921,6 +46981,7 @@ r:\A\Src\RMA\ProtectionUtil\LockMan\StdAfx.cpp
 r:\A\Src\RMA\ProtectionUtil\LockMan\LockMan.cpp
 r:\A\Src\RMA\ProtectionUtil\LockMan\res\ActivationUtility.ico
 r:\A\Src\RMA\ProtectionUtil\LockMan\LockManIco.rc
+r:\A\Src\RMA\ProtectionUtil\LockMan\res\se18_icon_lidfile.ico
 r:\A\Src\RMA\ProtectionUtil\ActivationUtility\ActivationUtility.14.00.vcxproj
 r:\A\Src\RMA\ProtectionUtil\ActivationUtility\ActivationUtility.14.00.vcxproj.filters
 r:\A\Src\RMA\ProtectionUtil\ActivationUtility\ActivationUtility.rc
@@ -46955,6 +47016,7 @@ r:\A\Src\RMA\ProtectionUtil\ActivationUtility\bin\X86\ActivationWorker.dll
 r:\A\Src\RMA\ProtectionUtil\ActivationUtility\bin\X64\ActivationWorker.dll
 r:\A\Src\RMA\ProtectionUtil\ActivationUtility\bin\X86\ActSupport.dll
 r:\A\Src\RMA\ProtectionUtil\ActivationUtility\bin\X64\ActSupport.dll
+r:\A\Src\RMA\ProtectionUtil\ActivationUtility\res\se18_icon_lidfile.ico
 r:\A\Src\Bog\PluginsBIN\PluginsBIN.14.00.vcxproj
 r:\A\Src\Bog\PluginsBIN\PluginsBIN.14.00.vcxproj.filters
 r:\A\Src\Bog\PluginsBIN\PluginsBIN.def
@@ -46984,23 +47046,14 @@ r:\A\Src\Bog\PluginsBIN\log4net.net4cp.dll
 r:\A\Src\Bog\PluginsBIN\NOTICE.txt
 r:\A\Src\Bog\PluginsBIN\Scia2Etabs.exe
 r:\A\Src\Bog\PluginsBIN\Scia2SDNF.exe
-r:\A\Src\Bog\PluginsBIN\Scia2Tekla_15.0.exe
-r:\A\Src\Bog\PluginsBIN\Scia2Tekla_16.0.exe
-r:\A\Src\Bog\PluginsBIN\Scia2Tekla_16.1.exe
 r:\A\Src\Bog\PluginsBIN\Scia2Tekla_17.0.net4.exe
 r:\A\Src\Bog\PluginsBIN\SciaOpenInterface.dll
 r:\A\Src\Bog\PluginsBIN\SciaOpenInterface.net4.dll
-r:\A\Src\Bog\PluginsBIN\SciaSteelConnectionForTekla.net4.exe
 r:\A\Src\Bog\PluginsBIN\SdnfCss.xml
 r:\A\Src\Bog\PluginsBIN\SdnfMaterial.xml
 r:\A\Src\Bog\PluginsBIN\SEnMapDbEditor.exe
 r:\A\Src\Bog\PluginsBIN\TkCssECEN.xml
 r:\A\Src\Bog\PluginsBIN\TkMaterialECEN.xml
-r:\A\Src\Bog\PluginsBIN\Template\Tekla_templ144a.esa
-r:\A\Src\Bog\PluginsBIN\Template\Tekla_templ144b.esa
-r:\A\Src\Bog\PluginsBIN\Template\Tekla_templ144c.esa
-r:\A\Src\Bog\PluginsBIN\Template\Tekla_templ144d.esa
-r:\A\Src\Bog\PluginsBIN\Template\Tekla_templ144e.esa
 r:\A\Src\Bog\PluginsBIN\Scia2Tekla_18.0.net4.exe
 r:\A\Src\Bog\PluginsBIN\Scia2Tekla_19.0.net4.exe
 r:\A\Src\Bog\PluginsBIN\Scia2Tekla_19.1.net4.exe
@@ -49742,7 +49795,6 @@ r:\A\Src\Sam\OdaPoirotTest\OdaPoirotTestM\StdAfx.cpp
 r:\A\Src\Sam\OdaPoirotTest\OdaPoirotTestM\OdaPoirotTest_Calculation_Main.cpp
 r:\A\Src\Sam\OdaPoirotTest\OdaPoirotTestM\OdaPoirotTestM.cpp
 r:\A\Src\Sam\SEN_NET_Wrapper\SEN_NET_Wrapper.14.00.vcxproj
-r:\A\Src\Sam\SEN_NET_Wrapper\SEN_NET_Wrapper.14.00.sln
 r:\A\Src\Sam\SEN_NET_Wrapper\SEN_NET_Wraper.def
 r:\A\Src\Sam\SEN_NET_Wrapper\SEN_NET_Wrapper.def
 r:\A\Src\Sam\SEN_NET_Wrapper\BimPlusSettings.h
@@ -49880,632 +49932,85 @@ r:\A\Src\Sam\BimPlus\BimPlusToSEN\SCIABimPlus
 r:\A\Src\Sam\BimPlus\BimPlusToSEN\System.Windows
 r:\A\Src\Sam\BimPlus\BimPlusToSEN\System.Windows.Forms
 r:\A\Src\Sam\BimPlus\BimPlusToSEN\WindowsBase
-r:\A\Src\Kernel\CSInfrastructure\CSInfrastructure.14.00.csproj
-r:\A\Src\Kernel\CSInfrastructure\AutoMapper
-r:\A\Src\Kernel\CSInfrastructure\Moq
-r:\A\Src\Kernel\CSInfrastructure\SimpleInjector
-r:\A\Src\Kernel\CSInfrastructure\System
-r:\A\Src\Kernel\CSInfrastructure\System.ComponentModel.DataAnnotations
-r:\A\Src\Kernel\CSInfrastructure\System.Core
-r:\A\Src\Kernel\CSInfrastructure\System.Xml.Linq
-r:\A\Src\Kernel\CSInfrastructure\System.Data.DataSetExtensions
-r:\A\Src\Kernel\CSInfrastructure\Microsoft.CSharp
-r:\A\Src\Kernel\CSInfrastructure\System.Data
-r:\A\Src\Kernel\CSInfrastructure\System.Net.Http
-r:\A\Src\Kernel\CSInfrastructure\System.Xml
-r:\A\Src\Kernel\CSInfrastructure\UnitsNet, Version=3.94.0.0, Culture=neutral, processorArchitecture=MSIL
-r:\A\Src\ImpExp\Excel\SharedAssemblyInfo.cs
-r:\A\Src\Kernel\CSInfrastructure\Attributes\DependsOnAttribute.cs
-r:\A\Src\Kernel\CSInfrastructure\Attributes\ResemblesAttribute.cs
-r:\A\Src\Kernel\CSInfrastructure\CodeContracts\Guard.cs
-r:\A\Src\Kernel\CSInfrastructure\CSInfrastuctureAssembly.cs
-r:\A\Src\Kernel\CSInfrastructure\EditableKeyValuePair.cs
-r:\A\Src\Kernel\CSInfrastructure\Extensions\AutoMapperExtensions.cs
-r:\A\Src\Kernel\CSInfrastructure\Extensions\IServiceProviderExtensions.cs
-r:\A\Src\Kernel\CSInfrastructure\Helpers\DependsOnAttributeHelper.cs
-r:\A\Src\Kernel\CSInfrastructure\Helpers\IDependsOnAttributeHelper.cs
-r:\A\Src\Kernel\CSInfrastructure\IOC\BootstrapperAbstract.cs
-r:\A\Src\Kernel\CSInfrastructure\IOC\ContainerScope.cs
-r:\A\Src\Kernel\CSInfrastructure\IOC\IBootstrapper.cs
-r:\A\Src\Kernel\CSInfrastructure\IOC\IScopedServiceProvider.cs
-r:\A\Src\Kernel\CSInfrastructure\Mappers\AutoMapperWrapperAbstractBase.cs
-r:\A\Src\Kernel\CSInfrastructure\Mappers\DefaultEnumMapperTranslationLocator.cs
-r:\A\Src\Kernel\CSInfrastructure\Mappers\EnumMapper.cs
-r:\A\Src\Kernel\CSInfrastructure\Mappers\IAutoMapperWrapper.cs
-r:\A\Src\Kernel\CSInfrastructure\Mappers\IEnumMapper.cs
-r:\A\Src\Kernel\CSInfrastructure\Mappers\IEnumMapperTranslationLocator.cs
-r:\A\Src\Kernel\CSInfrastructure\Extensions\StringExtensions.cs
-r:\A\Src\Kernel\CSInfrastructure\IOC\IRegistrationByConvention.cs
-r:\A\Src\Kernel\CSInfrastructure\IOC\RegistrationDTO.cs
-r:\A\Src\Kernel\CSInfrastructure\IOC\RegistrationByConvention.cs
-r:\A\Src\Kernel\CSInfrastructure\Properties\AssemblyInfo.cs
-r:\A\Src\Kernel\CSInfrastructure\ReferenceDictionary.cs
-r:\A\Src\Kernel\CSInfrastructure\Validation\ErrorMessages.cs
-r:\A\Src\Kernel\CSInfrastructure\Validation\IsColorAttribute.cs
-r:\A\Src\Kernel\CSInfrastructure\Validation\DefaultValueIfAttribute.cs
-r:\A\Src\Kernel\CSInfrastructure\Validation\EnumHelper.cs
-r:\A\Src\Kernel\CSInfrastructure\Validation\EnumIsDefinedAttribute.cs
-r:\A\Src\Kernel\CSInfrastructure\Validation\MultipleEnumIsDefinedAttribute.cs
-r:\A\Src\Kernel\CSInfrastructure\Validation\RangeIfAttribute.cs
-r:\A\Src\Kernel\CSInfrastructure\Validation\AlwaysRequiredAttribute.cs
-r:\A\Src\Kernel\CSInfrastructure\Validation\RequiredIfAttribute.cs
-r:\A\Src\Kernel\CSInfrastructure\Validation\TestInfrastructure\BaseValidationTest.cs
-r:\A\Src\Kernel\CSInfrastructure\Validation\TestInfrastructure\ValidationData.cs
-r:\A\Src\Kernel\CSInfrastructure\Validation\ValidationError.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\AnalysisDataModel.14.00.csproj
-r:\A\Src\DataModelCS\AnalysisDataModel\CSInfrastructure
-r:\A\Src\DataModelCS\AnalysisDataModel\System
-r:\A\Src\DataModelCS\AnalysisDataModel\System.ComponentModel.DataAnnotations
-r:\A\Src\DataModelCS\AnalysisDataModel\System.Core
-r:\A\Src\DataModelCS\AnalysisDataModel\System.Xml.Linq
-r:\A\Src\DataModelCS\AnalysisDataModel\System.Data.DataSetExtensions
-r:\A\Src\DataModelCS\AnalysisDataModel\Microsoft.CSharp
-r:\A\Src\DataModelCS\AnalysisDataModel\System.Data
-r:\A\Src\DataModelCS\AnalysisDataModel\System.Net.Http
-r:\A\Src\DataModelCS\AnalysisDataModel\System.Xml
-r:\A\Src\DataModelCS\AnalysisDataModel\UnitsNet
-r:\A\Src\DataModelCS\AnalysisDataModel\AnalysisModel.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\AnalysisModelService.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\ActionTypeEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\CoordinateDefinitionEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\CoordinateSystemEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\CurveForceActionEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\ActionDirectionEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\DescriptionIdEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\DistributionEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\DurationEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\ExtentOfForceOnBeamEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\LoadEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\LoadGroupTypeEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\MomentDirectionEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\PointForceActionEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\FormCodeEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\LoadCaseTypeEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\LocationEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\MaterialTypeEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\Member1DTypeEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\CurveBehaviourEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\CurveGeometricalShapeEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\CurveAlignmentEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\CurveLCSTypeEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\Member2DAlignmentEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\Member2DLCSTypeEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\Member2DShapeEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\Member2DThicknessTypeEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\Member2DTypeEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\BoundaryNodeConditionEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\OriginEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\PositionEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\RelationEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\RibAlignmentEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\RibShapeEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\RibWidthEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\Member2DBehaviourEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\ConstraintTypeEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\ActionLoadTypeEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\SpecificationEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\StructureTypeEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Enums\TypeOfConnectionEnum.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Extensions\IHasBoundaryNodeConditionExtensions.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Extensions\ConstraintExtensions.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Extensions\CurveExtensions.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Extensions\CurveGeometricalShapeExtensions.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\IAnalysisModelService.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\IAnalysisObject.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Interfaces\IHasBoundaryNodeCondition.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Interfaces\IHasEdgeIndexOfStructuralSurfaceMember.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Interfaces\ICurveStructuralReference.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Interfaces\IHasMaterial.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Interfaces\IHasRotationalConstraints.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Interfaces\IHasSubsoil.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Interfaces\IHasTranslationConstraints.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Interfaces\ILoadAnalysisObject.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Interfaces\IPointStructuralReference.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Interfaces\IStructuralElementAnalysisObject.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Loads\StructuralCurveAction{TCurveStructuralReference}.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Loads\StructuralCurveActionAbstract.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Loads\StructuralLoadCase.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Loads\StructuralLoadGroup.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Loads\StructuralPointAction{TPointStructuralReference}.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Loads\StructuralPointLoadBase{TTypeOfValue}.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Loads\StructuralPointMoment{TPointStructuralReference}.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Loads\StructuralSurfaceAction.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Materials\Material.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\StructuralElements\RelConnectsStructuralMember.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\StructuralElements\RelConnectsSurfaceEdge.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\StructuralElements\StructuralCurveMemberRib.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\StructuralElements\StructuralEdgeConnection.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\StructuralElements\StructuralPointSupport.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\StructuralElements\StructuralSurfaceConnection.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\StructuralElements\StructuralSurfaceMember.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\StructuralElements\StructuralSurfaceMemberOpening.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\StructuralElements\StructuralSurfaceMemberRegion.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\StructuralReferences\Curves\CurveStructuralReferenceOnBeam.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\StructuralReferences\Curves\CurveStructuralReferenceOnEdge.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\StructuralReferences\Points\PointStructuralReferenceOnBeam.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\StructuralReferences\Points\PointStructuralReferenceOnPoint.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Subtypes\AnalysisModelLoads.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Subtypes\Constraint.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Subtypes\Curve.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Subtypes\LCSAdjustment.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Properties\AssemblyInfo.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\StructuralElements\StructuralCurveMember.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\StructuralElements\StructuralPointConnection.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Subtypes\AnalysisModelStructuralMembers.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Subtypes\Subsoil.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Validation\EdgeIndexValidation.cs
-r:\A\Src\DataModelCS\AnalysisDataModel\Validation\IAnalysisObjectValidation.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\AnalysisDataModel.MSUT.14.00.csproj
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\CSInfrastructure
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Moq
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\System
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\AnalysisDataModel
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\System.ComponentModel.DataAnnotations
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\UnitsNet
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Microsoft.VisualStudio.QualityTools.UnitTestFramework
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\AnalysisModelServiceTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\AnalysisModelTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Extensions\IHasBoundaryNodeConditionExtensionsTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Infrastructure\BuilderBase.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Infrastructure\CurveStructuralReferenceOnEdgeBuilder.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Infrastructure\StructuralCurveActionOnEdgeBuilder.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Infrastructure\StructuralLoadCaseBuilder.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Infrastructure\StructuralLoadGroupBuilder.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Infrastructure\StructuralPointConnectionBuilder.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Infrastructure\StructuralSurfaceMemberBuilder.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Subtypes\SubsoilTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Validation\EdgeIndexValidationTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Extensions\ConstraintExtensionsTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Extensions\CurveExtensionsTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Loads\StructuralCurveActionTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Loads\StructuralLoadCaseTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Loads\StructuralLoadGroupTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Loads\StructuralPointActionTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Loads\StructuralPointMomentTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Loads\StructuralSurfaceActionTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Materials\MaterialTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\StructuralElements\RelConnectsStructuralMemberTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\StructuralElements\RelConnectionSurfaceEdgeTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\StructuralElements\StructuralCurveMemberTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Properties\AssemblyInfo.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\StructuralElements\StructuralEdgeConnectionTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\StructuralElements\StructuralPointConnectionTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\StructuralElements\StructuralCurveMemberRibTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\StructuralElements\StructuralPointSupportTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\StructuralElements\StructuralSurfaceConnectionTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\StructuralElements\StructuralSurfaceMemberOpeningTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\StructuralElements\StructuralSurfaceMemberRegionTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\StructuralElements\StructuralSurfaceMemberTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\StructuralReferences\Curves\CurveStructuralReferenceOnBeamTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\StructuralReferences\Curves\CurveStructuralReferenceOnEdgeTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\StructuralReferences\Points\PointStructuralReferenceOnBeamTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\StructuralReferences\Points\PointStructuralReferenceOnPointTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Subtypes\CurveTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Subtypes\ConstraintTest.cs
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL
-r:\A\Src\DataModelCS\AnalysisDataModel.MSUT\Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL
-r:\A\Src\ImpExp\Excel\DataAccess\Models\Excel.DataAccess.Models.14.00.csproj
-r:\A\Src\ImpExp\Excel\DataAccess\Models\CSInfrastructure
-r:\A\Src\ImpExp\Excel\DataAccess\Models\AnalysisDataModel
-r:\A\Src\ImpExp\Excel\DataAccess\Models\System
-r:\A\Src\ImpExp\Excel\DataAccess\Models\System.ComponentModel.DataAnnotations
-r:\A\Src\ImpExp\Excel\DataAccess\Models\System.Core
-r:\A\Src\ImpExp\Excel\DataAccess\Models\Attributes\ExcelColumnAttribute.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\Attributes\ExcelWorksheetAttribute.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\Attributes\ReferencesAttribute.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\Attributes\ReferencesMode.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\EnumMapping\AnalysisModelEnumTranslations.Designer.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\EnumMapping\ExcelEnumMapper.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\EnumMapping\ExcelEnumMapperTranslationLocator.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\ExcelModel.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\Interfaces\IExcelHasSubsoil.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\Interfaces\IExcelHasMaterialDefaultsValidator.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\Loads\ExcelStructuralCurveAction.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\Loads\ExcelStructuralPointLoadBase.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\StructuralElements\ExcelRelConnectsStructuralMember.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\StructuralElements\ExcelStructuralCurveMember.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\StructuralElements\ExcelStructuralCurveMemberRib.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\Loads\ExcelStructuralLoadCase.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\Loads\ExcelStructuralLoadGroup.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\Loads\ExcelStructuralPointAction.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\StructuralElements\ExcelRelConnectsSurfaceEdge.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\StructuralElements\ExcelStructuralEdgeConnection.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\StructuralElements\ExcelStructuralPointConnection.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\Loads\ExcelStructuralPointMoment.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\StructuralElements\ExcelStructuralPointSupport.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\Loads\ExcelStructuralSurfaceAction.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\StructuralElements\ExcelStructuralSurfaceConnection.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\StructuralElements\ExcelStructuralSurfaceMember.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\StructuralElements\ExcelStructuralSurfaceMemberOpening.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\Interfaces\IExcelCurveStructuralReference.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\Interfaces\IExcelHasMaterial.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\Interfaces\IExcelObject.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\Interfaces\IExcelPointStructuralReference.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\Properties\AssemblyInfo.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\StructuralElements\ExcelStructuralSurfaceMemberRegion.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Models\EnumMapping\AnalysisModelEnumTranslations.resx
-r:\A\Src\ImpExp\Excel\DataAccess\Contracts\Excel.DataAccess.Contracts.14.00.csproj
-r:\A\Src\ImpExp\Excel\DataAccess\Contracts\EPPlus
-r:\A\Src\ImpExp\Excel\DataAccess\Contracts\CSInfrastructure
-r:\A\Src\ImpExp\Excel\DataAccess\Contracts\Excel.DataAccess.Models
-r:\A\Src\ImpExp\Excel\DataAccess\Contracts\System
-r:\A\Src\ImpExp\Excel\DataAccess\Contracts\System.ComponentModel.DataAnnotations
-r:\A\Src\ImpExp\Excel\DataAccess\Contracts\System.Core
-r:\A\Src\ImpExp\Excel\DataAccess\Contracts\System.Xml.Linq
-r:\A\Src\ImpExp\Excel\DataAccess\Contracts\System.Data.DataSetExtensions
-r:\A\Src\ImpExp\Excel\DataAccess\Contracts\Microsoft.CSharp
-r:\A\Src\ImpExp\Excel\DataAccess\Contracts\System.Data
-r:\A\Src\ImpExp\Excel\DataAccess\Contracts\System.Net.Http
-r:\A\Src\ImpExp\Excel\DataAccess\Contracts\System.Xml
-r:\A\Src\ImpExp\Excel\DataAccess\Contracts\Dimension.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Contracts\IExcelColumnAttributeHelper.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Contracts\IExcelDocumentReader.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Contracts\IExcelDocumentWriter.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Contracts\IExcelModelValidator.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Contracts\IExcelWorksheetAttributeHelper.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Contracts\IExcelWorksheetColumnHeaderHelper.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Contracts\IExcelWorksheetWriter.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Contracts\IExcelWrapper.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Contracts\Properties\AssemblyInfo.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Contracts\IExcelWorksheetReader.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Contracts\IReferencesAttributeHelper.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\Excel.DataAccess.Implementation.14.00.csproj
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\CSInfrastructure
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\Excel.DataAccess.Contracts
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\Excel.DataAccess.Models
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\EPPlus
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\AnalysisDataModel
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\System
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\System.ComponentModel.DataAnnotations
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\System.Core
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\System.Xml.Linq
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\System.Data.DataSetExtensions
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\Microsoft.CSharp
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\System.Data
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\System.Net.Http
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\System.Xml
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\Validators\Row\ExcelHasMaterialDefaultsValidator.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\Wrapper\ExcelWrapper.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\Validators\Model\ExcelModelReferencesValidator.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\ExcelValidator.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\Helpers\ReferencesAttributeHelper.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\Readers\ExcelDocumentReader.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\Helpers\ExcelWorksheetAttributeHelper.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\Helpers\ExcelWorksheetColumnHeaderHelper.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\Helpers\ExcelColumnAttributeHelper.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\Properties\AssemblyInfo.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\Readers\ExcelWorksheetReader.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\Validators\Model\ExcelModelUniqueNamesValidator.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\Writers\ExcelDocumentWriter.cs
-r:\A\Src\ImpExp\Excel\DataAccess\Implementation\Writers\ExcelWorksheetWriter.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Excel.DataAccess.MSUT.14.00.csproj
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\EPPlus, Version=4.1.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Moq
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\AnalysisDataModel
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\CSInfrastructure
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Excel.DataAccess.Contracts
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Excel.DataAccess.Implementation
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Excel.DataAccess.Models
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\System
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\System.ComponentModel.DataAnnotations
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Microsoft.VisualStudio.QualityTools.UnitTestFramework
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Attributes\ExcelColumnAttributeTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Attributes\ReferencesAttributeTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\ExcelModelTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Helpers\ExcelColumnAttributeHelperTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Helpers\ExcelWorksheetAttributeHelperTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Helpers\ExcelWorksheetColumnHeaderHelperTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Helpers\ReferencesAttributeHelperTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Models\Loads\ExcelStructuralCurveActionTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Models\Loads\ExcelStructuralLoadCaseTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Models\Loads\ExcelStructuralLoadGroupTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Models\Loads\ExcelStructuralPointActionTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Models\Loads\ExcelStructuralPointLoadBaseTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Models\Loads\ExcelStructuralPointMomentTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Models\Loads\ExcelStructuralSurfaceActionTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Models\Infrastructure\BaseExcelValidationTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Models\StructuralElements\ExcelRelConnectionSurfaceEdgeTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Models\StructuralElements\ExcelRelConnectsStructuralMemberTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Models\StructuralElements\ExcelStructuralCurveMemberRibTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Models\StructuralElements\ExcelStructuralCurveMemberTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Models\StructuralElements\ExcelStructuralEdgeConnectionTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Models\StructuralElements\ExcelStructuralPointConnectionTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Models\StructuralElements\ExcelStructuralSurfaceConnectionTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Models\StructuralElements\ExcelStructuralPointSupportTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Models\StructuralElements\ExcelStructuralSurfaceMemberOpening.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Models\StructuralElements\ExcelStructuralSurfaceMemberRegionTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Models\StructuralElements\ExcelStructuralSurfaceMemberTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Properties\AssemblyInfo.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Readers\ExcelDocumentReaderTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Readers\ExcelWorksheetReaderTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\IExcelObjectTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Validators\Model\ExcelModelReferencesValidatorTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Validators\Model\ExcelModelUniqueNamesValidatorTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Validators\Row\ExcelHasMaterialDefaultsValidatorTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Wrapper\ExcelWrapperTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Writers\ExcelWorksheetWriterTest.cs
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL
-r:\A\Src\ImpExp\Excel\DataAccess\MSUT\Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL
-r:\A\Src\ImpExp\Excel\Conversion\Contracts\Excel.Conversion.Contracts.14.00.csproj
-r:\A\Src\ImpExp\Excel\Conversion\Contracts\CSInfrastructure
-r:\A\Src\ImpExp\Excel\Conversion\Contracts\AnalysisDataModel
-r:\A\Src\ImpExp\Excel\Conversion\Contracts\System
-r:\A\Src\ImpExp\Excel\Conversion\Contracts\System.ComponentModel.DataAnnotations
-r:\A\Src\ImpExp\Excel\Conversion\Contracts\System.Core
-r:\A\Src\ImpExp\Excel\Conversion\Contracts\System.Xml.Linq
-r:\A\Src\ImpExp\Excel\Conversion\Contracts\System.Data.DataSetExtensions
-r:\A\Src\ImpExp\Excel\Conversion\Contracts\Microsoft.CSharp
-r:\A\Src\ImpExp\Excel\Conversion\Contracts\System.Data
-r:\A\Src\ImpExp\Excel\Conversion\Contracts\System.Net.Http
-r:\A\Src\ImpExp\Excel\Conversion\Contracts\System.Xml
-r:\A\Src\ImpExp\Excel\Conversion\Contracts\IExcelReader.cs
-r:\A\Src\ImpExp\Excel\Conversion\Contracts\IExcelWriter.cs
-r:\A\Src\ImpExp\Excel\Conversion\Contracts\Properties\AssemblyInfo.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\Excel.Conversion.Implementation.14.00.csproj
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\AutoMapper
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\CSInfrastructure
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\AnalysisDataModel
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\Excel.DataAccess.Contracts
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\Excel.DataAccess.Implementation, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\Excel.DataAccess.Models
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\Excel.Conversion.Contracts
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\SimpleInjector, Version=4.0.12.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\System
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\System.ComponentModel.DataAnnotations
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\System.Core
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\System.Windows.Forms
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\System.Xml.Linq
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\System.Data.DataSetExtensions
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\Microsoft.CSharp
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\System.Data
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\System.Net.Http
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\System.Xml
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\UnitsNet
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\AutoMapperProfiles\EnumMappingProfileGenerated.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\AutoMapperProfiles\ReferenceProfile.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\AutoMapperProfiles\RelConnectsStructuralMemberProfile.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\AutoMapperProfiles\RelConnectionSurfaceEdgeProfile.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\AutoMapperProfiles\StructuralCurveActionProfile.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\AutoMapperProfiles\StructuralCurveMemberProfile.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\AutoMapperProfiles\StructuralCurveMemberRibProfile.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\AutoMapperProfiles\StructuralEdgeConnectionProfile.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\AutoMapperProfiles\StructuralLoadCaseProfile.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\AutoMapperProfiles\StructuralLoadGroupProfile.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\AutoMapperProfiles\StructuralPointActionProfile.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\AutoMapperProfiles\StructuralPointConnectionProfile.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\AutoMapperProfiles\StructuralPointMomentProfile.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\AutoMapperProfiles\StructuralPointSupportProfile.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\AutoMapperProfiles\StructuralReferenceProfile.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\AutoMapperProfiles\StructuralSurfaceConnectionProfile.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\AutoMapperProfiles\StructuralSurfaceMemberOpeningProfile.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\AutoMapperProfiles\StructuralSurfaceActionProfile.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\AutoMapperProfiles\StructuralSurfaceMemberProfile.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\AutoMapperProfiles\StructuralSurfaceMemberRegionProfile.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\AutoMapperProfiles\UnitsNetMappingProfile.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\ExcelAutoMapperWrapper.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\ExcelModuleBootstrapper.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\Resolvers\ExcelToMaterialResolver.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\Resolvers\ExcelToSubsoilResolver.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\TypeConverters\StructuralCurveActionTypeConverter.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\ExcelReader.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\AutoMapperProfiles\ExcelMappingProfile.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\ExcelWriter.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\Properties\AssemblyInfo.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\Resolvers\ExcelStructuralMemberToCurvesResolver.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\TypeConverters\EnumToStringConverter{T}.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\TypeConverters\StringToEnumConverter{T}.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\TypeConverters\StructuralPointMomentTypeConverter.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\TypeConverters\StructuralPointActionTypeConverter.cs
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\{508349B6-6B84-4DF5-91F0-309BEEBAD82D}
-r:\A\Src\ImpExp\Excel\Conversion\Implementation\AutoMapperProfiles\EnumMappingProfileGenerated.tt
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Excel.Conversion.MSUT.14.00.csproj
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Moq
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\AnalysisDataModel
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\CSInfrastructure
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Excel.DataAccess.Contracts
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Excel.DataAccess.Models
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Excel.Conversion.Contracts
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Excel.Conversion.Implementation
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\System
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\System.ComponentModel.DataAnnotations
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\UnitsNet
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Microsoft.VisualStudio.QualityTools.UnitTestFramework
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\EnumConverterMocks.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Mappings\ExcelRelConnectsStructuralMemberMappingTest.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Mappings\ExcelRelConnectionSurfaceEdgeMappingTest.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Mappings\ExcelStructuralCurveMappingTest.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Mappings\ExcelStructuralCurveRibMappingTest.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Mappings\ExcelStructuralEdgeConnectionMappingTest.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Mappings\ExcelStructuralLoadCaseMappingTest.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Mappings\ExcelStructuralPointActionMappingTest.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Mappings\ExcelStructuralPointMappingTest.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Mappings\ExcelStructuralPointMomentMappingTest.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Mappings\ExcelStructuralPointSupportMappingTest.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Mappings\ExcelStructuralSurfaceActionMappingTest.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Mappings\ExcelStructuralSurfaceConnectionMappingTest.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Mappings\ExcelStructuralSurfaceMemberMappingTest.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Mappings\ExcelStructuralCurveActionMappingTest.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Mappings\ExcelStructuralLoadGroupMappingTest.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Mappings\ExcelStructuralSurfaceMemberOpeningMappingTest.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Mappings\ExcelStructuralSurfaceMemberRegionMappingTest.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Properties\AssemblyInfo.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\ExcelReaderTest.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\AutoMapperProfilesTest.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Resolvers\ExcelStructuralMemberToCurvesResolverTest.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Resolvers\ExcelToMaterialResolverTest.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Resolvers\ExcelToSubsoilResolverTest.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\TestHelper.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\TypeConverters\StructuralCurveActionTypeConverterTest.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\TypeConverters\StructuralPointActionTypeConverterTest.cs
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\EnumConverterMocks.tt
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\{508349B6-6B84-4DF5-91F0-309BEEBAD82D}
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL
-r:\A\Src\ImpExp\Excel\Conversion\MSUT\Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL
-r:\A\Src\ImpExp\Excel\Integration\ModelExchangerService.Bootstrapper\ModelExchangerService.Bootstrapper.14.00.csproj
-r:\A\Src\ImpExp\Excel\Integration\ModelExchangerService.Bootstrapper\AutoMapper
-r:\A\Src\ImpExp\Excel\Integration\ModelExchangerService.Bootstrapper\Excel.Conversion.Implementation, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86
-r:\A\Src\ImpExp\Excel\Integration\ModelExchangerService.Bootstrapper\Scia.Conversion.Implementation, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86
-r:\A\Src\ImpExp\Excel\Integration\ModelExchangerService.Bootstrapper\SimpleInjector
-r:\A\Src\ImpExp\Excel\Integration\ModelExchangerService.Bootstrapper\CSInfrastructure
-r:\A\Src\ImpExp\Excel\Integration\ModelExchangerService.Bootstrapper\Excel.DataAccess.Contracts
-r:\A\Src\ImpExp\Excel\Integration\ModelExchangerService.Bootstrapper\Excel.DataAccess.Implementation
-r:\A\Src\ImpExp\Excel\Integration\ModelExchangerService.Bootstrapper\Excel.DataAccess.Models
-r:\A\Src\ImpExp\Excel\Integration\ModelExchangerService.Bootstrapper\AnalysisDataModel
-r:\A\Src\ImpExp\Excel\Integration\ModelExchangerService.Bootstrapper\System
-r:\A\Src\ImpExp\Excel\Integration\ModelExchangerService.Bootstrapper\System.Core
-r:\A\Src\ImpExp\Excel\Integration\ModelExchangerService.Bootstrapper\System.Xml.Linq
-r:\A\Src\ImpExp\Excel\Integration\ModelExchangerService.Bootstrapper\System.Data.DataSetExtensions
-r:\A\Src\ImpExp\Excel\Integration\ModelExchangerService.Bootstrapper\Microsoft.CSharp
-r:\A\Src\ImpExp\Excel\Integration\ModelExchangerService.Bootstrapper\System.Data
-r:\A\Src\ImpExp\Excel\Integration\ModelExchangerService.Bootstrapper\System.Net.Http
-r:\A\Src\ImpExp\Excel\Integration\ModelExchangerService.Bootstrapper\System.Xml
-r:\A\Src\ImpExp\Excel\Integration\ModelExchangerService.Bootstrapper\BootstrapperOrchestrator.cs
-r:\A\Src\ImpExp\Excel\Integration\ModelExchangerService.Bootstrapper\Properties\AssemblyInfo.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\DataModelDataAccess.14.00.csproj
-r:\A\Src\ImpExp\DataModel\DataAccess\System
-r:\A\Src\ImpExp\DataModel\DataAccess\System.Core
-r:\A\Src\ImpExp\DataModel\DataAccess\System.Xml.Linq
-r:\A\Src\ImpExp\DataModel\DataAccess\System.Data.DataSetExtensions
-r:\A\Src\ImpExp\DataModel\DataAccess\Microsoft.CSharp
-r:\A\Src\ImpExp\DataModel\DataAccess\System.Data
-r:\A\Src\ImpExp\DataModel\DataAccess\System.Net.Http
-r:\A\Src\ImpExp\DataModel\DataAccess\System.Xml
-r:\A\Src\ImpExp\DataModel\DataAccess\CSInfrastructure
-r:\A\Src\ImpExp\DataModel\DataAccess\UnitsNet
-r:\A\Src\ImpExp\DataModel\DataAccess\AnalysisDataModel
-r:\A\Src\ImpExp\DataModel\DataAccess\Attributes\SenReferenceAttribute.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Attributes\SenGeomReferenceAttribute.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Attributes\SenClassAttribute.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Attributes\SenPropertyAttribute.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Base\SenBaseElement.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Interfaces\ISenObject.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Libraries\SenMaterial.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Loads\SenStructuralCurveActionOnBeam.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Loads\SenStructuralLoadCase.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Loads\SenStructuralLoadGroup.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Loads\SenStructuralPointActionOnNode.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Loads\SenStructuralPointMomentOnNode.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Loads\SenStructuralSurfaceAction.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Model\SenRelConnectsSurfaceEdge.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Model\SenRelConnectsStructuralMember.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Model\SenStructuralCurveMember.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Model\SenStructuralEdgeConnection.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Model\SenStructuralPointConnection.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Model\SenStructuralPointSupportNode.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Model\SenStructuralSurfaceConnection.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Model\SenStructuralSurfaceMember.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Model\SenStructuralSurfaceMemberOpening.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Model\SenStructuralSurfaceMemberRegion.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Model\SenSubsoil.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Properties\AssemblyInfo.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\SenModel.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Subtypes\Constraint.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Subtypes\Curve.cs
-r:\A\Src\ImpExp\DataModel\DataAccess\Subtypes\LCSAdjustment.cs
 r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversion.14.00.vcxproj
 r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversion.14.00.vcxproj.filters
 r:\A\Src\ImpExp\DataModel\Conversion\__AutoGenerTLH.cpp
 r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversion.idl
 r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversion.rc
 r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversion.def
-r:\A\Src\ImpExp\DataModel\Conversion\SenCrossSectionConnector.h
-r:\A\Src\ImpExp\DataModel\Conversion\SenCrossSectionParamsParser.h
+r:\A\Src\ImpExp\DataModel\Conversion\CrossSectionFixerToScia.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\DataServerOrchestrator.h
+r:\A\Src\ImpExp\DataModel\Conversion\dll_spec_DataModelConversion.h
+r:\A\Src\ImpExp\DataModel\Conversion\FixersToSciaRepository.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\Guard.h
+r:\A\Src\ImpExp\DataModel\Conversion\LayerManipulator.h
+r:\A\Src\ImpExp\DataModel\Conversion\MaterialFinder.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\MaterialFixerToScia.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\MaterilReaderWrapper.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\ProfileLibraryConvertor.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\PropertiesCache.h
+r:\A\Src\ImpExp\DataModel\Conversion\ReverseSenMapping.h
+r:\A\Src\ImpExp\DataModel\Conversion\RolledProfileReader.h
 r:\A\Src\ImpExp\DataModel\Conversion\DataServerManipulator.h
-r:\A\Src\ImpExp\DataModel\Conversion\SenCrossSection.h
-r:\A\Src\ImpExp\DataModel\Conversion\SenCrossSectionMaker.h
-r:\A\Src\ImpExp\DataModel\Conversion\SenEnumConversions.h
+r:\A\Src\ImpExp\DataModel\Conversion\CrossSectionFixerToSen.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\RolledProfileReaderWrapper.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\SenEnumConversionData4Type.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\SenEnumConversionDefinition.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\SenEnumConversionUtils.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\SenGeometryMaker.h
 r:\A\Src\ImpExp\DataModel\Conversion\SenMappingData.h
-r:\A\Src\ImpExp\DataModel\Conversion\SenMappingTools.h
-r:\A\Src\ImpExp\DataModel\Conversion\SenMapUtils.h
+r:\A\Src\ImpExp\DataModel\Conversion\SenMappingTools.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\SenMappingToolsNative.h
 r:\A\Src\ImpExp\DataModel\Conversion\SenMaterial.h
-r:\A\Src\ImpExp\DataModel\Conversion\SenMaterialHelper.h
 r:\A\Src\ImpExp\DataModel\Conversion\SenMapping.h
+r:\A\Src\ImpExp\DataModel\Conversion\MaterialFixerToSen.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\FixerToSen.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\SenPropertyHandler.h
+r:\A\Src\ImpExp\DataModel\Conversion\SenPropertyIncludes.h
+r:\A\Src\ImpExp\DataModel\Conversion\SenPropertyUtilsNative.h
 r:\A\Src\ImpExp\DataModel\Conversion\StdAfx.h
 r:\A\Src\ImpExp\DataModel\Conversion\Resource.h
-r:\A\Src\ImpExp\DataModel\Conversion\SenCrossSectionConnector.cpp
-r:\A\Src\ImpExp\DataModel\Conversion\SenCrossSectionParamsParser.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\FixerToScia.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\StringHelp.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\StructuralCurveMemberFixerToScia.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\StructuralLoadCaseFixerToScia.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\StructuralLoadGroupFixerToScia.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\StructuralPointActionOnBeamFixerToScia.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\StructuralSurfaceConnectionFixerToScia.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\StructuralSurfaceMemberFixerToScia.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\StructuralSurfaceMemberRegionFixerToScia.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\Utils.h
+r:\A\Src\ImpExp\DataModel\Conversion\DataServerOrchestrator.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\LayerManipulator.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\PropertiesCache.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\ReverseSenMapping.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\RolledProfileReader.cpp
 r:\A\Src\ImpExp\DataModel\Conversion\DataServerManipulator.cpp
-r:\A\Src\ImpExp\DataModel\Conversion\SenCrossSection.cpp
-r:\A\Src\ImpExp\DataModel\Conversion\SenCrossSectionMaker.cpp
 r:\A\Src\ImpExp\DataModel\Conversion\SenEnumConversions.cpp
-r:\A\Src\ImpExp\DataModel\Conversion\SenMappingTools.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\SenGeometryMaker.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\SenMappingToolsNative.cpp
 r:\A\Src\ImpExp\DataModel\Conversion\SenMaterial.cpp
-r:\A\Src\ImpExp\DataModel\Conversion\SenMaterialHelper.cpp
 r:\A\Src\ImpExp\DataModel\Conversion\SenConversion.cpp
 r:\A\Src\ImpExp\DataModel\Conversion\SenMapping.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\SenProcessedCache.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\FixersToSenRepository.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\SenPropertyHandler.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\SenPropertyUtils.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\SenPropertyUtilsNative.cpp
 r:\A\Src\ImpExp\DataModel\Conversion\StdAfx.cpp
 r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversion.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\StructuralPointActionOnNodeFixerToScia.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\Utils.cpp
 r:\A\Src\ImpExp\DataModel\Conversion\CSInfrastructure
 r:\A\Src\ImpExp\DataModel\Conversion\AnalysisDataModel
 r:\A\Src\ImpExp\DataModel\Conversion\DataModelDataAccess
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Contracts\Scia.Conversion.Contracts.14.00.csproj
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Contracts\AnalysisDataModel
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Contracts\System
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Contracts\System.Core
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Contracts\System.Xml.Linq
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Contracts\System.Data.DataSetExtensions
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Contracts\Microsoft.CSharp
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Contracts\System.Data
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Contracts\System.Net.Http
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Contracts\System.Xml
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Contracts\ISenExport.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Contracts\ISenImport.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Contracts\Properties\AssemblyInfo.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\Scia.Conversion.Implementation.14.00.csproj
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\Automapper
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\CSInfrastructure
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\AnalysisDataModel
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\DataModelDataAccess
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\DataModelConversion
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\Scia.Conversion.Contracts
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\SimpleInjector, Version=4.0.12.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\System
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\System.ComponentModel.DataAnnotations
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\System.Core
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\System.Xml.Linq
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\System.Data.DataSetExtensions
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\Microsoft.CSharp
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\System.Data
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\System.Net.Http
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\System.Xml
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\UnitsNet
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\AutoMapperProfiles\SenMappingProfile.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\AutoMapperProfiles\SenRelConnectsSurfaceEdgeProfile.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\AutoMapperProfiles\SenRelConnectsStructuralMemberProfile.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\AutoMapperProfiles\SenStructuralCurveActionProfile.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\AutoMapperProfiles\SenStructuralCurveMemberProfile.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\AutoMapperProfiles\SenStructuralEdgeConnectionProfile.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\AutoMapperProfiles\SenStructuralLoadCaseProfile.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\AutoMapperProfiles\SenStructuralLoadGroupProfile.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\AutoMapperProfiles\SenStructuralPointActionProfile.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\AutoMapperProfiles\SenStructuralPointConnectionProfile.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\AutoMapperProfiles\SenStructuralPointMomentProfile.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\AutoMapperProfiles\SenStructuralPointSupportProfile.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\AutoMapperProfiles\SenStructuralSurfaceConnectionProfile.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\AutoMapperProfiles\SenStructuralSurfaceMemberRegionProfile.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\AutoMapperProfiles\SenStructuralSurfaceMemberOpeningProfile.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\AutoMapperProfiles\SenStructuralSurfaceMemberProfile.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\AutoMapperProfiles\SenSubsoilProfile.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\AutoMapperProfiles\UnitsNetMappingProfile.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\Properties\AssemblyInfo.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\SenAutoMapperWrapper.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\SenModuleBootstrapper.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\TypeConverters\SenCurveTypeConverter.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\SenExport.cs
-r:\A\Src\ImpExp\DataModel\Conversion\Scia.Conversion.Implementation\SenImport.cs
+r:\A\Src\ImpExp\DataModel\Conversion\System
+r:\A\Src\ImpExp\DataModel\Conversion\System.Core
 r:\A\Src\Business\ModelExchangerService\ModelExchangerService.14.00.vcxproj
 r:\A\Src\Business\ModelExchangerService\ModelExchangerService.def
-r:\A\Src\Business\ModelExchangerService\ModelExchangerService.Bootstrapper
+r:\A\Src\Business\ModelExchangerService\DataModelDataAccess
+r:\A\Src\Business\ModelExchangerService\Excel.Integration.Bootstrapper
+r:\A\Src\Business\ModelExchangerService\Newtonsoft.Json
 r:\A\Src\Business\ModelExchangerService\SimpleInjector
 r:\A\Src\Business\ModelExchangerService\Scia.Conversion.Contracts
 r:\A\Src\Business\ModelExchangerService\AnalysisDataModel
@@ -51053,6 +50558,7 @@ r:\A\Src\VON\GeomSpace\EP_GSStrucGeomTest\EP_GSStrucGeomTest.14.00.vcxproj
 r:\A\Src\VON\GeomSpace\EP_GSStrucGeomTest\EP_GSStrucGeomTest.14.00.vcxproj.filters
 r:\A\Src\VON\GeomSpace\EP_GSStrucGeomTest\EP_GSStrucGeomTest.def
 r:\A\Src\VON\GeomSpace\EP_GSStrucGeomTest\GenexConverterTest.h
+r:\A\Src\VON\GeomSpace\EP_GSStrucGeomTest\CurvesApproximationTest.h
 r:\A\Src\VON\GeomSpace\EP_GSStrucGeomTest\IntersectingNodesOnPlaneTest.h
 r:\A\Src\VON\GeomSpace\EP_GSStrucGeomTest\StdAfx.h
 r:\A\Src\VON\GeomSpace\EP_GSStrucGeomTest\BeamGenTests.h
@@ -51098,6 +50604,7 @@ r:\A\Src\VON\GeomSpace\EP_GSStrucGeomTest\VoronoiDiagramTest.h
 r:\A\Src\VON\GeomSpace\EP_GSStrucGeomTest\TributaryAreaMergerTest.h
 r:\A\Src\VON\GeomSpace\EP_GSStrucGeomTest\GenexConverterTest.cpp
 r:\A\Src\VON\GeomSpace\EP_GSStrucGeomTest\IntersectingNodesOnPlaneTest.cpp
+r:\A\Src\VON\GeomSpace\EP_GSStrucGeomTest\CurvesApproximationTest.cpp
 r:\A\Src\VON\GeomSpace\EP_GSStrucGeomTest\StdAfx.cpp
 r:\A\Src\VON\GeomSpace\EP_GSStrucGeomTest\BeamGenTests.cpp
 r:\A\Src\VON\GeomSpace\EP_GSStrucGeomTest\BooleanIntervalTest.cpp
@@ -53570,6 +53077,7 @@ r:\A\Src\DUR\UT_SolverData\SolverDataTest_Composite.h
 r:\A\Src\DUR\UT_SolverData\SolverDataTest_Frame1.h
 r:\A\Src\DUR\UT_SolverData\SolverDataTest_NonlinearCombi.h
 r:\A\Src\DUR\UT_SolverData\SolverDataTest_BeamNonlinearity.h
+r:\A\Src\DUR\UT_SolverData\UT_SolverDataToRAPIConverter.h
 r:\A\Src\DUR\UT_SolverData\UT_TaskManagerAutomaticMeshRefinement.h
 r:\A\Src\DUR\UT_SolverData\UT_TaskManagerBase.h
 r:\A\Src\DUR\UT_SolverData\UT_TaskManagerLinearCalculation.h
@@ -53607,6 +53115,7 @@ r:\A\Src\DUR\UT_SolverData\SolverDataTest_Composite.cpp
 r:\A\Src\DUR\UT_SolverData\SolverDataTest_Frame1.cpp
 r:\A\Src\DUR\UT_SolverData\SolverDataTest_NonlinearCombi.cpp
 r:\A\Src\DUR\UT_SolverData\SolverDataTest_BeamNonlinearity.cpp
+r:\A\Src\DUR\UT_SolverData\UT_SolverDataToRAPIConverter.cpp
 r:\A\Src\DUR\UT_SolverData\UT_TaskManagerAutomaticMeshRefinement.cpp
 r:\A\Src\DUR\UT_SolverData\UT_TaskManagerBase.cpp
 r:\A\Src\DUR\UT_SolverData\UT_TaskManagerLinearCalculation.cpp
@@ -54009,6 +53518,7 @@ r:\A\Src\KOC\_UnitTest\UT_ImportIFCProperties\UT_WallImport.cpp
 r:\A\Src\KOC\_UnitTest\UT_ImportIFCProperties\UT_ImportIFCProperties.rc
 r:\A\Src\Checks\ConcreteChecks\UnitTestsConcrete\UnitTestConcreteRefactoring\UnitTestConcreteRefactoring.14.00.vcxproj
 r:\A\Src\Checks\ConcreteChecks\UnitTestsConcrete\UnitTestConcreteRefactoring\UnitTestConcreteRefactoring.14.00.vcxproj.filters
+r:\A\Src\Checks\ConcreteChecks\UnitTestsConcrete\UnitTestConcreteRefactoring\UnitTestConcreteRefactoring.14.00.sln
 r:\A\Src\Checks\ConcreteChecks\UnitTestsConcrete\UnitTestConcreteRefactoring\UnitTestConcreteRefactoring.def
 r:\A\Src\Checks\ConcreteChecks\UnitTestsConcrete\UnitTestConcreteRefactoring\StdAfx.h
 r:\A\Src\Checks\ConcreteChecks\UnitTestsConcrete\UnitTestConcreteRefactoring\AddDataCalcInputCreator.h
@@ -54250,6 +53760,7 @@ r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestStressLimitationF
 r:\A\Src\Checks\ConcreteChecks\ConcreteCheck_CompZone_MSUT\TestXCalculations.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_MSUT.14.00.vcxproj
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_MSUT.14.00.vcxproj.filters
+r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_msut.14.00.sln
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_MSUT.rc
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_MSUT.def
 r:\A\inc\MSUT_Helpers.h
@@ -54294,6 +53805,7 @@ r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestShearReinfStringFormater.cpp
 r:\A\Src\Checks\ConcreteChecks\Punching_MSUT\TestSlabService.cpp
 r:\A\Src\TRE\_UnitTests\UT_TRE_CMQuestion\UT_TRE_CMQuestion.14.00.vcxproj
 r:\A\Src\TRE\_UnitTests\UT_TRE_CMQuestion\UT_TRE_CMQuestion.14.00.vcxproj.filters
+r:\A\Src\TRE\_UnitTests\UT_TRE_CMQuestion\UT_TRE_CMQuestion.14.00.sln
 r:\A\Src\TRE\_UnitTests\UT_TRE_CMQuestion\UT_TRE_CMQuestion.def
 r:\A\Src\TRE\_UnitTests\UT_TRE_CMQuestion\CMInhibitor.h
 r:\A\Src\TRE\_UnitTests\UT_TRE_CMQuestion\StdAfx.h
@@ -57055,6 +56567,41 @@ r:\A\Src\C#Source\XEP_AddDataCalculator\XEP_AddDataCalculatorTest\Properties\Ass
 r:\A\Src\C#Source\XEP_SectionCheck\XEP_LanguageResources\XEP_LanguageResources.14.00.csproj
 r:\A\Src\C#Source\XEP_SectionCheck\XEP_SectionCheckCommonLibrary\XEP_SectionCheckCommonLibrary.csproj
 r:\A\Src\C#Source\XEP_AddDataCalculator\UT_XEP_AddDataCalculator\UT_XEP_AddDataCalculator.14.00.csproj
+r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversion.MSUT\DataModelConversion_MSUT.14.00.vcxproj
+r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversion.MSUT\DataModelConversion_MSUT.14.00.vcxproj.filters
+r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversion.MSUT\DataModelConversion_MSUT.def
+r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversion.MSUT\StdAfx.h
+r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversion.MSUT\StdAfx.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversion.MSUT\DataModelConversion_MSUT.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversion.MSUT\TestSenMappingToolsNative.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversionManaged.MSUT\DataModelConversionManaged_MSUT.14.00.vcxproj
+r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversionManaged.MSUT\DataModelConversionManaged_MSUT.14.00.vcxproj.filters
+r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversionManaged.MSUT\DataModelConversionManaged_MSUT.def
+r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversionManaged.MSUT\StdAfx.h
+r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversionManaged.MSUT\MaterialFinderTest.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversionManaged.MSUT\ProfileLibraryConvertorTest.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversionManaged.MSUT\StdAfx.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversionManaged.MSUT\DataModelConversionManaged_MSUT.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversionManaged.MSUT\AnalysisDataModel
+r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversionManaged.MSUT\CSInfrastructure
+r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversionManaged.MSUT\DataModelDataAccess
+r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversionManaged.MSUT\Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversionManaged.MSUT\System
+r:\A\Src\ImpExp\DataModel\Conversion\DataModelConversionManaged.MSUT\System.Core
+r:\A\Src\ImpExp\DataModel\Conversion\SenInportExportE2E\SenInportExportE2ETest.14.00.vcxproj
+r:\A\Src\ImpExp\DataModel\Conversion\SenInportExportE2E\SenInportExportE2ETest.def
+r:\A\Src\ImpExp\DataModel\Conversion\SenInportExportE2E\StdAfx.h
+r:\A\Src\ImpExp\DataModel\Conversion\SenInportExportE2E\Resource.h
+r:\A\Src\ImpExp\DataModel\Conversion\SenInportExportE2E\TestExcelImport.h
+r:\A\Src\ImpExp\DataModel\Conversion\SenInportExportE2E\TestExportImportBase.h
+r:\A\Src\ImpExp\DataModel\Conversion\SenInportExportE2E\TestSenExport.h
+r:\A\Src\ImpExp\DataModel\Conversion\SenInportExportE2E\SenInportExportE2ETest.h
+r:\A\Src\ImpExp\DataModel\Conversion\SenInportExportE2E\StdAfx.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\SenInportExportE2E\TestExcelImport.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\SenInportExportE2E\TestExportImportBase.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\SenInportExportE2E\TestSenExport.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\SenInportExportE2E\SenInportExportE2ETest.cpp
+r:\A\Src\ImpExp\DataModel\Conversion\SenInportExportE2E\SenInportExportE2ETest.rc
 r:\A\Src\Lat\CIC_ComDebugger\EP_TracerSetup\EP_TracerSetup.14.00.vcxproj
 r:\A\Src\Lat\CIC_ComDebugger\EP_TracerSetup\EP_TracerSetup.14.00.vcxproj.filters
 r:\A\Src\Lat\CIC_ComDebugger\EP_TracerSetup\EP_TracerSetup.def
@@ -57862,8 +57409,8 @@ r:\A\Db\DocumentDefaults\DataAddLoad.EP_SurfaceTemperature [Default].TLX
 r:\A\Db\DocumentDefaults\DataAddLoad.EP_UnitMobileLoad [Brief].TLX
 r:\A\Db\DocumentDefaults\DataAddLoad.EP_UnitMobileLoad [Default].TLX
 r:\A\Db\DocumentDefaults\DataAddScia.8.00.AluminiumCheckData [Default].TLX
-r:\A\Db\DocumentDefaults\DataAddScia.8.00.EP_Aluminium_Diaphra [Default].TLX
-r:\A\Db\DocumentDefaults\DataAddScia.8.00.EP_Aluminium_LTBRest [Default].TLX
+r:\A\Db\DocumentDefaults\DataAddScia.8.00.EP_Aluminium_Diaphragm [Default].TLX
+r:\A\Db\DocumentDefaults\DataAddScia.8.00.EP_Aluminium_LTBRestraints [Default].TLX
 r:\A\Db\DocumentDefaults\DataAddScia.8.00.EP_PLTransverse_Welds [Default].TLX
 r:\A\Db\DocumentDefaults\DataAddScia.EP_BeamBuckling [Buckling coeff].TLX
 r:\A\Db\DocumentDefaults\DataAddScia.EP_BeamBuckling [Buckling Sys].TLX
@@ -58289,8 +57836,8 @@ r:\A\Db\DocumentDefaults\SteelCheckBSCode.EP_ResCheckSteelCodeBS_SLS [Default].T
 r:\A\Db\DocumentDefaults\SteelCheckBSCode.EP_ResCheckSteelCodeBS_ULS [Default].TLX
 r:\A\Db\DocumentDefaults\SteelCheckBSCode.ResultsPresentationSteelCodeBS_SLS-(ResultMain) [Default].TLX
 r:\A\Db\DocumentDefaults\SteelCheckBSCode.ResultsPresentationSteelCodeBS_ULS-(ResultMain) [Default].TLX
-r:\A\Db\DocumentDefaults\SteelConnection.BoltDiameterToCssRela [Default].TLX
-r:\A\Db\DocumentDefaults\SteelConnection.EP_Aluminium_Stiffene [Default].TLX
+r:\A\Db\DocumentDefaults\SteelConnection.BoltDiameterToCssRelati [Default].TLX
+r:\A\Db\DocumentDefaults\SteelConnection.EP_Aluminium_Stiffeners [Default].TLX
 r:\A\Db\DocumentDefaults\SteelConnection.EP_BackingPlate [Default].TLX
 r:\A\Db\DocumentDefaults\SteelConnection.EP_BoltAssembly [Default].TLX
 r:\A\Db\DocumentDefaults\SteelConnection.EP_BoltedDiagonalConnection [Default].TLX
@@ -58716,8 +58263,8 @@ r:\A\Db\DocumentDefaults\DataSetScia.EP_LoadCase [Seismic].TLX
 r:\A\Db\EP_CLEANSCRIPT_DocumentDefaultsFiles.txt
 r:\A\Db\DocumentDefaults\BasicResults.10.00.EP_ECEN_1993_SteelCheck_Fire_ResultShell-(ResultMain) [Default].TLX
 r:\A\Db\DocumentDefaults\BasicResults.10.00.EP_ECEN_1993_SteelCheck_ULS_ResultShell-(ResultMain) [Default].TLX
+r:\A\Db\DocumentDefaults\BasicResults.10.00.EP_ExternalCheck_Shell_SectionCheck_SIA-(ResultMain) [Default].TLX
 r:\A\Db\DocumentDefaults\BasicResults.14.00.EP_3DWindTransparentReport-(ResultMain) [Default].TLX
-r:\A\Db\DocumentDefaults\BasicResults.14.00.EP_3DWindTransparentReport-(TPComposed) [Default].TLX
 r:\A\Db\DocumentDefaults\CrossSection.EP_CrossSection [Effective section].TLX
 r:\A\Db\DocumentDefaults\DataAddScia.14.00.EP_CompositeBeamDesignInfo [Default].TLX
 r:\A\Db\DocumentDefaults\DataAddScia.14.00.EP_VirtualJoistDesignInfo [Default].TLX
@@ -58727,23 +58274,22 @@ r:\A\Db\DocumentDefaults\{060FA601-E7DF-4C78-B898-C10C76837DA4}-(IPFile) [Defaul
 r:\A\Db\DocumentDefaults\{06F02EF8-4E64-4A4D-9908-6BBDFC60DEE6} [Default].TLX
 r:\A\Db\DocumentDefaults\{0D0CD37A-EE1D-454E-A475-3A9D16A6318E} [Default].TLX
 r:\A\Db\DocumentDefaults\{0D102F3C-714E-45C2-8E3C-1838C6791BE3}-(TPComposed) [Default].TLX
+r:\A\Db\DocumentDefaults\{19772A09-CFBC-43E9-A843-26150EDBA249} [Default].TLX
 r:\A\Db\DocumentDefaults\{2B1F8F48-CA96-40F3-84E7-6BAC6C02D8DA} [Default].TLX
 r:\A\Db\DocumentDefaults\{2B329E4E-BD00-4108-AA4A-5FE8A6A6362C} [Default].TLX
-r:\A\Db\DocumentDefaults\{39AE5C7F-51E9-4F11-A3F2-B3180A13FBE1} [Default].TLX
+r:\A\Db\DocumentDefaults\{3E9F327F-6556-40FE-A24F-8968ABD18BA9} [Default].TLX
 r:\A\Db\DocumentDefaults\{50D7F65B-00A1-4141-A590-878F05330A7B} [Default].TLX
 r:\A\Db\DocumentDefaults\{52529EC0-7F1D-4175-BE54-B242E6F8145A} [Default].TLX
+r:\A\Db\DocumentDefaults\{59136EBB-BC29-481A-83D1-B4A99199ABE5} [Default].TLX
 r:\A\Db\DocumentDefaults\{692A22F6-A3E9-40F7-AE31-E1EC4247A407} [Default].TLX
 r:\A\Db\DocumentDefaults\{6A077AAD-2DC5-47B1-A8AB-596CFB369F05} [Default].TLX
 r:\A\Db\DocumentDefaults\{74822285-B333-43AE-9215-F41F649AD73C} [Default].TLX
 r:\A\Db\DocumentDefaults\{7720AEB2-7008-47C0-9FB5-6ED22BF7BD31} [Default].TLX
-r:\A\Db\DocumentDefaults\{79C3847D-9371-484C-9269-0D7FA86B39D3} [Default].TLX
 r:\A\Db\DocumentDefaults\{7ACA605E-9CA2-44AF-A380-9FC4B0C15474} [Default].TLX
-r:\A\Db\DocumentDefaults\{98A86AA7-6FBD-43DF-ACDD-70DB9232BA59} [Default].TLX
 r:\A\Db\DocumentDefaults\{C3EFC023-0947-4698-96F4-A91F1DCC9130} [Default].TLX
-r:\A\Db\DocumentDefaults\{CBD3601F-2894-44AB-93DB-2439BEC7D6CF} [Default].TLX
+r:\A\Db\DocumentDefaults\{D1701D85-6D1F-42C1-9D71-0D13E6493265} [Default].TLX
+r:\A\Db\DocumentDefaults\{D31C5453-DCF4-4E82-A858-CB00AB98750F} [Default].TLX
 r:\A\Db\DocumentDefaults\{D9E1BCA0-7C4B-4414-B4C8-57217BC229D5} [Default].TLX
-r:\A\Db\DocumentDefaults\{E37E6262-5F32-4426-80FD-2CEA9080BF45} [Default].TLX
-r:\A\Db\DocumentDefaults\{E5333081-70C4-48FC-A233-A9FCCD02E75F} [Default].TLX
 r:\A\Db\DocumentDefaults\{FB022471-023A-4D96-B67B-5482B807273D} [Default].TLX
 r:\A\Db\DocumentDefaults\{FB9BAD6E-8F13-4D7B-9B0A-DF1D4137D152}-(IPFile) [Default].TLX
 r:\A\Src\Kernel\PostBuildReflection\EP_OpenCheckDbBuilder\EP_OpenCheckDbBuilder.14.00.vcxproj

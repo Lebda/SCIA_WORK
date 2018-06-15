@@ -23,8 +23,7 @@
         EquivMoment →INI400_011665= Input.Get("EquivMoment"); //True - equivalent first order moment is used
         CalSecOrder →INI400_011666= Input.Get("CalSecOrder"); //True - second order effect is used
         MemberType →KRS106_000001= Input.Get("MemberType"); 
-        CompressMember →KRS106_000012= Input.Get("CompressMember"); 
-        N↓com← →KRS106_000013= Input.Get("N_com"); 
+        Coeff_com →KRS106_000012= Input.Get("Coeff_com"); 
         
         //lengths
         l↓0y← →INI400_012491= Input.Get("L_y"); //Length for deformation in Y direction
@@ -116,6 +115,7 @@ IF(bPrintCaption) {
     StateTextLong →INI400_012536= TR("long-term"); 
     β↓short← →INI400_006684= 1; 
     β↓long← →INI400_006685= 0.5; 
+    →KRS100_000016double Coeff_com; 
 } 
 →INI400_013714BLOCK { 
     IF(!IO.IsExternCLC) { //test if the CLC run from Master
@@ -184,8 +184,8 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
             →KRS116_000007InputStiffShort.Add("IsoCol", IsoCol); 
             →KRS116_000008InputStiffShort.Add("EquivMoment", EquivMoment); 
             →KRS106_000014InputStiffShort.Add("MemberType", MemberType); 
-            →KRS106_000015InputStiffShort.Add("N_com", N↓com←); 
-            →KRS106_000016InputStiffShort.Add("CompressMember", CompressMember); 
+            →KRS106_000015InputStiffShort.Add("Coeff_com", Coeff_com); 
+            
             //forces
             →KRS316_000070InputStiffShort.Set("SetForcesChar", SetForcesCharID); 
             →KRS316_000071InputStiffShort.Set("SetForcesQp", SetForcesQpID); 
@@ -234,8 +234,8 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
             →KRS116_000015InputStiffLong.Add("IsoCol", IsoCol); 
             →KRS116_000016InputStiffLong.Add("EquivMoment", EquivMoment); 
             →KRS106_000020InputStiffLong.Add("MemberType", MemberType); 
-            →KRS106_000021InputStiffLong.Add("N_com", N↓com←); 
-            →KRS106_000022InputStiffLong.Add("CompressMember", CompressMember); 
+            →KRS106_000021InputStiffLong.Add("Coeff_com", Coeff_com); 
+            
             //forces
             →KRS316_000088InputStiffLong.Set("SetForcesChar", SetForcesCharID); 
             →KRS316_000089InputStiffLong.Set("SetForcesQp", SetForcesQpID); 
@@ -769,14 +769,36 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Combikey" ESA_ID="" Type="String">
+      <Variable Modifier="Public" Name="Check" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="CompressMember" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_CompressMember">
+      <Variable Modifier="Public" Name="Check↓y←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="Check↓z←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="Coeff_com" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_Coeff_com">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="Combikey" ESA_ID="" Type="String">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -933,27 +955,6 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Check" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="Check↓y←" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="Check↓z←" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
@@ -1049,13 +1050,6 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
       </Variable>
       <Variable Modifier="Public" Name="MemberType" ESA_ID="" Type="Double" Precision="2">
         <Description TranslateID="VARIABLE_MemberType">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="N↓com←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_N↓com←">
           <ENU>
           </ENU>
         </Description>
@@ -1188,20 +1182,6 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="SetForcesCharID" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="SetForcesQpID" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="sCheck" ESA_ID="" Type="String">
         <Description>
           <ENU>
@@ -1219,6 +1199,20 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
           <ENU>
           </ENU>
         </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="SetForcesCharID" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="SetForcesQpID" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="SLSChar" ESA_ID="" Type="Boolean">
         <Description>
@@ -1274,13 +1268,13 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="TDeflections" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="TCheckDeflections" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="TCheckDeflections" ESA_ID="" Type="Object">
+      <Variable Modifier="Public" Name="TDeflections" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -4522,14 +4516,6 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000013">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="KRS106_000014">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4546,38 +4532,6 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000016">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS106_000017">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS106_000018">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS106_000019">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="KRS106_000020">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4587,14 +4541,6 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS106_000021">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS106_000022">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -5573,12 +5519,7 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
               <PropertySet Symbol="EC 1993.1.3 - Name" ESA_ID="EC_1993_1_3.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.4 - Name" ESA_ID="EC_1993_1_4.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.5 - Name" ESA_ID="EC_1993_1_5.Name" Unit="" Type="String" />
-              <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.η" Unit="" Type="Struct">
-                <StructMembers>
-                  <StructMember Symbol="η1" Type="Numeric" Unit="" />
-                  <StructMember Symbol="η2" Type="Numeric" Unit="" />
-                </StructMembers>
-              </PropertySet>
+              <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.eta_sb1" Unit="" Type="Numeric" />
               <PropertySet Symbol="EC 1993.1.6 - Name" ESA_ID="EC_1993_1_6.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.7 - Name" ESA_ID="EC_1993_1_7.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.8 - Name" ESA_ID="EC_1993_1_8.Name" Unit="" Type="String" />
@@ -5907,7 +5848,7 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
                 <P>EC EN 1993-1-3</P>
                 <P>EC EN 1993-1-4</P>
                 <P>EC EN 1993-1-5</P>
-                <P>1.20;1.00;</P>
+                <P>1.2</P>
                 <P>EC EN 1993-1-6</P>
                 <P>EC EN 1993-1-7</P>
                 <P>EC EN 1993-1-8</P>
@@ -6046,9 +5987,6 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
     <Item TranslateID="STRING_98388326">
       <ENU>"Limit"</ENU>
     </Item>
-    <Item TranslateID="STRING_9BCBBFA5">
-      <ENU>"U.C.↓add←"</ENU>
-    </Item>
     <Item TranslateID="STRING_B2C2AF34">
       <ENU>"NO"</ENU>
     </Item>
@@ -6072,9 +6010,6 @@ IF(IO.IsDrawing &amp;&amp; DrawHeader) {
     </Item>
     <Item TranslateID="STRING_D5DBECED">
       <ENU>"Status"</ENU>
-    </Item>
-    <Item TranslateID="STRING_FB46C09E">
-      <ENU>"U.C.↓tot←"</ENU>
     </Item>
     <Item TranslateID="TEXT_DLO116_000021">
       <ENU>"Note: There is no reinforcement and cross-section is assumed as cracked. Therefore the linear deformation is multiplied by 10."</ENU>

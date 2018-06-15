@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="83787b19-698f-480b-adb6-9831fc8acac6">
   <CodeEditor>
-    <SourceCode Collapsed="93|120|182" BreakPoints="">
+    <SourceCode Collapsed="93|120" BreakPoints="">
 void ValidateInput(double Cta) { 
     _Ct →INI400_002332= Cta; 
     
@@ -225,8 +225,8 @@ double TorsionCheck(object CS, double FormCode, double L, double fy, double E) {
         
         // rectangular hollow sections
         IF((FormCode == 2) || (FormCode == 2001)) { 
-            B →INI400_001787= CS.Geometry.Contains("b") ? CS.Geometry.b : CS.Geometry.Ba; 
-            H →INI400_001788= CS.Geometry.Contains("h") ? CS.Geometry.h : CS.Geometry.Bb; 
+            B →INI400_001787= CS.Geometry.Contains("b") ? CS.Geometry.b : CS.Geometry.B; 
+            H →INI400_001788= CS.Geometry.Contains("h") ? CS.Geometry.h : CS.Geometry.H; 
             t →INI400_001789= CS.Geometry.Contains("s") ? CS.Geometry.s : CS.Geometry.thb; 
             r1 →INI400_001792= CS.Geometry.Contains("r1") ? CS.Geometry.r1 : 0; 
             
@@ -567,7 +567,7 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
-      <Variable Modifier="Public" Name="_a" ESA_ID="MemberData.a" Type="Double" Value="750e-3" Precision="2">
+      <Variable Modifier="Public" Name="_a" ESA_ID="MemberData.a" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>Stiffener spacing</ENU>
         </Description>
@@ -585,7 +585,7 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="_L" ESA_ID="" Type="Double" Value="5" Precision="2">
+      <Variable Modifier="Public" Name="_L" ESA_ID="" Type="Double" Value="11.9933" Precision="2">
         <Description>
           <ENU>Beam Span</ENU>
         </Description>
@@ -597,31 +597,31 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="_Lbb" ESA_ID="" Type="Double" Value="5" Precision="2">
+      <Variable Modifier="Public" Name="_Lbb" ESA_ID="" Type="Double" Value="5.99669" Precision="2">
         <Description>
           <ENU>Unbraced Length for bottom Flange</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="_Lbfx" ESA_ID="" Type="Double" Value="5" Precision="2">
+      <Variable Modifier="Public" Name="_Lbfx" ESA_ID="" Type="Double" Value="11.9933" Precision="2">
         <Description>
           <ENU>Buckling length about X axis</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="_Lbfy" ESA_ID="" Type="Double" Value="4.999875" Precision="2">
+      <Variable Modifier="Public" Name="_Lbfy" ESA_ID="" Type="Double" Value="5.99669" Precision="2">
         <Description>
           <ENU>Buckling length about Y axis</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="_Lbfz" ESA_ID="" Type="Double" Value="5" Precision="2">
+      <Variable Modifier="Public" Name="_Lbfz" ESA_ID="" Type="Double" Value="5.99669" Precision="2">
         <Description>
           <ENU>Buckling length about Z axis</ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="_Lbt" ESA_ID="" Type="Double" Value="5" Precision="2">
+      <Variable Modifier="Public" Name="_Lbt" ESA_ID="" Type="Double" Value="5.99669" Precision="2">
         <Description>
           <ENU>Unbraced Length for top Flange</ENU>
         </Description>
@@ -633,37 +633,37 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="_Mdx" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="_Mdx" ESA_ID="" Type="Double" Value="-9.24431" Precision="2">
         <Description>
           <ENU>Moment About X</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10" Dim="kN•cm" />
       </Variable>
-      <Variable Modifier="Public" Name="_Mdy" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="_Mdy" ESA_ID="" Type="Double" Value="-1315.36" Precision="2">
         <Description>
           <ENU>Moment About Y</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10" Dim="kN•cm" />
       </Variable>
-      <Variable Modifier="Public" Name="_Nd" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="_Nd" ESA_ID="" Type="Double" Value="-11057.8" Precision="2">
         <Description>
           <ENU>Normal Forces</ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="_Td" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="_Td" ESA_ID="" Type="Double" Value="645.758" Precision="2">
         <Description>
           <ENU>Torsion</ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10" Dim="kN•cm" />
       </Variable>
-      <Variable Modifier="Public" Name="_Vdx" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="_Vdx" ESA_ID="" Type="Double" Value="436.406" Precision="2">
         <Description>
           <ENU>Shear in X direction</ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="_Vdy" ESA_ID="" Type="Double" Value="50500" Precision="2">
+      <Variable Modifier="Public" Name="_Vdy" ESA_ID="" Type="Double" Value="3182.01" Precision="2">
         <Description>
           <ENU>Shear in Y direction</ENU>
         </Description>
@@ -834,14 +834,14 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="fu" ESA_ID="" Type="Double" Value="400e6" Precision="2">
+      <Variable Modifier="Public" Name="fu" ESA_ID="" Type="Double" Value="448e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10e6" Dim="kN/cm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="fy" ESA_ID="" Type="Double" Value="248e6" Precision="2">
+      <Variable Modifier="Public" Name="fy" ESA_ID="" Type="Double" Value="345e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -879,7 +879,7 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="Lb" ESA_ID="" Type="Double" Value="12.3874" Precision="2">
+      <Variable Modifier="Public" Name="Lb" ESA_ID="" Type="Double" Value="5.99669" Precision="2">
         <Description>
           <ENU>Unbraced Length for Bending check</ENU>
         </Description>
@@ -946,14 +946,14 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="MRdx" ESA_ID="" Type="Double" Value="1e9" Precision="2">
+      <Variable Modifier="Public" Name="MRdx" ESA_ID="" Type="Double" Value="128447.3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10" Dim="kN•cm" />
       </Variable>
-      <Variable Modifier="Public" Name="MRdy" ESA_ID="" Type="Double" Value="100e6" Precision="2">
+      <Variable Modifier="Public" Name="MRdy" ESA_ID="" Type="Double" Value="77307.55" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -966,7 +966,7 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="NRd" ESA_ID="" Type="Double" Value="10e6" Precision="2">
+      <Variable Modifier="Public" Name="NRd" ESA_ID="" Type="Double" Value="462172.1" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -993,7 +993,7 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10" Dim="kN•cm" />
       </Variable>
-      <Variable Modifier="Public" Name="TRd" ESA_ID="" Type="Double" Value="100e6" Precision="2">
+      <Variable Modifier="Public" Name="TRd" ESA_ID="" Type="Double" Value="83461.47" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1025,14 +1025,14 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="VRdx" ESA_ID="" Type="Double" Value="100e6" Precision="2">
+      <Variable Modifier="Public" Name="VRdx" ESA_ID="" Type="Double" Value="304235.4" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="VRdy" ESA_ID="" Type="Double" Value="231045.8" Precision="2">
+      <Variable Modifier="Public" Name="VRdy" ESA_ID="" Type="Double" Value="543226.3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1259,7 +1259,7 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001681">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1419,7 +1419,7 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001712">
-        <Set Vis="1" Prev="" Style="0" StyleName="Remark" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1451,7 +1451,7 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001716">
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1699,7 +1699,7 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001787">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="4" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1707,7 +1707,7 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001788">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="4" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1715,7 +1715,7 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001789">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="4" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1723,7 +1723,7 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001790">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1731,7 +1731,7 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001792">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="4" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1739,7 +1739,7 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001793">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="5" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1755,7 +1755,7 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001795">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="5" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1763,7 +1763,7 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001796">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="5" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1795,7 +1795,7 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001801">
-        <Set Vis="1" Prev="" Style="1" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="1" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1819,7 +1819,7 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001804">
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -2107,7 +2107,7 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001887">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="20" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -2571,7 +2571,7 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001949">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -2587,7 +2587,7 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001951">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -2603,7 +2603,7 @@ void TreatInput(object CS, double FormCode, object ClassParam, double Fabricatio
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001953">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />

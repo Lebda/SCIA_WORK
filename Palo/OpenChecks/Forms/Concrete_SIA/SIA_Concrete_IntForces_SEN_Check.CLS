@@ -272,13 +272,13 @@ object[] obEWN →INI400_007758= ForcesSEN.obEWN;
     </Variables>
     <DrawingGroups>
       <ResultTable Visible="1" Vars="M↓dy←|0|1;M↓dz←|0|1">
-        <Names TranslateID="ResultGroup_MEd">
-          <ENU>MEd</ENU>
+        <Names TranslateID="ResultGroup_Md">
+          <ENU>Md</ENU>
         </Names>
       </ResultTable>
       <ResultTable Visible="1" Vars="V↓dy←|0|1;V↓dz←|0|1">
-        <Names TranslateID="ResultGroup_VEd">
-          <ENU>VEd</ENU>
+        <Names TranslateID="ResultGroup_Vd">
+          <ENU>Vd</ENU>
         </Names>
       </ResultTable>
       <ResultTable Visible="1" Vars="M↓y←|0|1;M↓z←|0|1">
@@ -297,23 +297,23 @@ object[] obEWN →INI400_007758= ForcesSEN.obEWN;
         </Names>
       </ResultTable>
       <ResultTable Visible="1" Vars="M↓dx←|0|1">
-        <Names TranslateID="ResultGroup_MEdx">
-          <ENU>MEdx</ENU>
+        <Names TranslateID="ResultGroup_Mdx">
+          <ENU>Mdx</ENU>
         </Names>
       </ResultTable>
       <ResultTable Visible="1" Vars="N↓d←|0|1">
-        <Names TranslateID="ResultGroup_NEd">
-          <ENU>NEd</ENU>
+        <Names TranslateID="ResultGroup_Nd">
+          <ENU>Nd</ENU>
         </Names>
       </ResultTable>
       <ResultTable Visible="1" Vars="M↓y←|0|1;M↓dy←|0|1;M↓dz←|0|1;M↓z←|0|1">
-        <Names TranslateID="ResultGroup_M-MEd">
-          <ENU>M-MEd</ENU>
+        <Names TranslateID="ResultGroup_M-Md">
+          <ENU>M-Md</ENU>
         </Names>
       </ResultTable>
       <ResultTable Visible="1" Vars="V↓y←|0|1;V↓dy←|0|1;V↓z←|0|1;V↓dz←|0|1">
-        <Names TranslateID="ResultGroup_V-VEd">
-          <ENU>V-VEd</ENU>
+        <Names TranslateID="ResultGroup_V-Vd">
+          <ENU>V-Vd</ENU>
         </Names>
       </ResultTable>
     </DrawingGroups>
@@ -609,7 +609,7 @@ object[] obEWN →INI400_007758= ForcesSEN.obEWN;
           <ENU>
           </ENU>
         </Texts>
-        <TEMDLoader Name="TEMDLoader" ID="106" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="C:\Users\raphf\ESA16.1\Temp\Esa_Model_Data\Beam.11" MemberID="Beam.11" SectionID="0" CombiID="0" />
+        <TEMDLoader Name="TEMDLoader" ID="106" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.11" SectionID="-1" CombiID="-1" />
       </TPanel>
     </Main>
     <MemberData Width="500" />

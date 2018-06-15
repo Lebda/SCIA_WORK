@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="3118"><StringCode SourceType="DLLRC:"><StringId>@{ep_dspresent.2eids_101}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="3121"><StringCode SourceType="DLLRC:"><StringId>@{ep_dspresent.2eids_101}</StringId>
 		<SourceDll>EP_DsPresent.2eDLL</SourceDll>
 		<ResourceId>101</ResourceId>
 	</StringCode>
@@ -38,6 +38,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_pad_foundation}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
 		<ResourceId>118</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_compositecolumn}</StringId>
+		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
+		<ResourceId>114</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_sls_welded_size}</StringId>
 		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
@@ -327,26 +331,6 @@
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>1114</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_unity_checks}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20575</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_gap}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>792</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_subscript_left}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>144</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_fta_ep_rd}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>731</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_ft_wc_rd_i}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20765</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_fcb_fb_rd}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>20573</ResourceId>
@@ -487,9 +471,25 @@
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>40025</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2eresults}</StringId>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_unity_checks}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>732</ResourceId>
+		<ResourceId>20575</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_gap}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>792</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_subscript_left}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>144</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_fta_ep_rd}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>731</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_ft_wc_rd_i}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20765</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2edetermination_mj_z_rd}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
@@ -503,9 +503,9 @@
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>3204</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_free_flange_buckling}</StringId>
-		<SourceDll>SteelCheckEsa.2edll</SourceDll>
-		<ResourceId>45385</ResourceId>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2eresults}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>732</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_bending_z}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
@@ -515,17 +515,9 @@
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45388</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_tension}</StringId>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_free_flange_buckling}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
-		<ResourceId>45362</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_section_class}</StringId>
-		<SourceDll>SteelCheckEsa.2edll</SourceDll>
-		<ResourceId>45386</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_torsion}</StringId>
-		<SourceDll>SteelCheckEsa.2edll</SourceDll>
-		<ResourceId>45368</ResourceId>
+		<ResourceId>45385</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_shear_z}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
@@ -550,6 +542,18 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_bending_y}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45364</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_tension}</StringId>
+		<SourceDll>SteelCheckEsa.2edll</SourceDll>
+		<ResourceId>45362</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_section_class}</StringId>
+		<SourceDll>SteelCheckEsa.2edll</SourceDll>
+		<ResourceId>45386</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_torsion}</StringId>
+		<SourceDll>SteelCheckEsa.2edll</SourceDll>
+		<ResourceId>45368</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheck.2een_1993.2enote.2edescription.2eshift_neglected_enz}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
@@ -583,6 +587,10 @@
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>223</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils582}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>6582</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils652}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>6652</ResourceId>
@@ -590,18 +598,6 @@
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils472}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>6472</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils582}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>6582</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s078}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17578</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s077}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17577</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s076}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -639,6 +635,14 @@
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>17570</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s078}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17578</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s077}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17577</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk016}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>15016</ResourceId>
@@ -658,14 +662,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2eother}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>108</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_internal_forces_2d_principal_surface_group}</StringId>
-		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
-		<ResourceId>109</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_internal_forces_2d_design_surface_group}</StringId>
-		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
-		<ResourceId>110</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_dosage_design_second_2d_brief_table_name}</StringId>
 		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
@@ -1027,22 +1023,6 @@
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>131</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_column_web_in_bending}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20424</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_according_to_art6271_3}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>22620</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_head_ecen}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20967</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_colweb_fl}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>465</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_according_to_art6283_67}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>22629</ResourceId>
@@ -1215,13 +1195,29 @@
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>50033</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estiffness}</StringId>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_column_web_in_bending}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>22667</ResourceId>
+		<ResourceId>20424</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_according_to_art6271_3}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>22620</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_head_ecen}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20967</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_colweb_fl}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>465</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2edesign_shear_resistance_vy_rd}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>20433</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estiffness}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>22667</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_bending_y}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
@@ -1255,18 +1251,6 @@
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>35918</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_131.2esolution}</StringId>
-		<SourceDll>Punching.2edll</SourceDll>
-		<ResourceId>351</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ee6_103.2esolution}</StringId>
-		<SourceDll>Punching.2edll</SourceDll>
-		<ResourceId>251</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_121.2esolution}</StringId>
-		<SourceDll>Punching.2edll</SourceDll>
-		<ResourceId>205</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_134.2edescription}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>247</ResourceId>
@@ -1299,9 +1283,17 @@
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>207</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils653}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>6653</ResourceId>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_131.2esolution}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>351</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ee6_103.2esolution}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>251</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_121.2esolution}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>205</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils433}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -1311,21 +1303,9 @@
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>6583</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s061}</StringId>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils653}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17561</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s069}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17569</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s060}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17560</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s068}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17568</ResourceId>
+		<ResourceId>6653</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s067}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -1351,13 +1331,29 @@
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>17562</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk017}</StringId>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s061}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>15017</ResourceId>
+		<ResourceId>17561</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s069}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17569</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s060}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17560</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s068}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17568</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk007}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>15007</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk017}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>15017</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2emasonary}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
@@ -1374,10 +1370,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{datalibscia.2eids_steelchecks}</StringId>
 		<SourceDll>EP_DataLibScia.2edll</SourceDll>
 		<ResourceId>191</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2edescription.2en07}</StringId>
-		<SourceDll>DataTools.2edll</SourceDll>
-		<ResourceId>109</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2edescription.2en13}</StringId>
 		<SourceDll>DataTools.2edll</SourceDll>
@@ -1459,6 +1451,10 @@
 		<SourceDll>DataTools.2edll</SourceDll>
 		<ResourceId>110</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2edescription.2en07}</StringId>
+		<SourceDll>DataTools.2edll</SourceDll>
+		<ResourceId>109</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_stress_limitation_width_upper_2d_brief_table_name}</StringId>
 		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
 		<ResourceId>134</ResourceId>
@@ -1482,6 +1478,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_piledesign}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
 		<ResourceId>120</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_uls_design_check}</StringId>
+		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
+		<ResourceId>105</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_short_st}</StringId>
 		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
@@ -1815,18 +1815,6 @@
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>235</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_mjrd_right}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20818</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_second_moment_area_col}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>648</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_internal_forces}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>3204</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_esa_theta}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>22672</ResourceId>
@@ -1959,6 +1947,18 @@
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>20441</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_mjrd_right}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20818</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_second_moment_area_col}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>648</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_internal_forces}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>3204</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2eunity_checks}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>20575</ResourceId>
@@ -1971,6 +1971,10 @@
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45373</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_slenderness}</StringId>
+		<SourceDll>SteelCheckEsa.2edll</SourceDll>
+		<ResourceId>45384</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_nmvt}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45371</ResourceId>
@@ -1978,10 +1982,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_tension_bending}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45376</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_slenderness}</StringId>
-		<SourceDll>SteelCheckEsa.2edll</SourceDll>
-		<ResourceId>45384</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheck.2een_1993.2ewarning.2edescription.2estrength_reduction_not_supported}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
@@ -2014,10 +2014,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ee6_100.2edescription}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>244</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s052}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17552</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s051}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -2055,6 +2051,10 @@
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>17553</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s052}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17552</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk020}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>15020</ResourceId>
@@ -2078,10 +2078,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2e3dpicture.2eregenerable.2ename}</StringId>
 		<SourceDll>EP_PicturesGalery_CmdsM.2edll</SourceDll>
 		<ResourceId>1000</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_internal_forces_2d_principal_surface_brief_table_name}</StringId>
-		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
-		<ResourceId>104</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_creepshort_y}</StringId>
 		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
@@ -2367,38 +2363,6 @@
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>214</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_con_myed}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>4020</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_con_vzed}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>4019</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_bolt_row_other_inner_ep}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>614</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_con_mzed}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>4017</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_mjrd_left}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20828</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_stringned54}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20852</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_concrete_in_compression_under_left_haunchweb}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>744</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_bc_fb_eff}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20576</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_design_forces}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>778</ResourceId>
@@ -2535,6 +2499,38 @@
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>534</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_con_myed}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>4020</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_con_vzed}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>4019</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_bolt_row_other_inner_ep}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>614</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_con_mzed}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>4017</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_mjrd_left}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20828</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_stringned54}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20852</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_concrete_in_compression_under_left_haunchweb}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>744</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_bc_fb_eff}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20576</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2eclassification_left}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>22671</ResourceId>
@@ -2575,14 +2571,6 @@
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>248</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s044}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17544</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s043}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17543</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s042}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>17542</ResourceId>
@@ -2615,9 +2603,13 @@
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>17545</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk001}</StringId>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s044}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>15001</ResourceId>
+		<ResourceId>17544</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s043}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17543</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk021}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -2630,6 +2622,10 @@
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk011}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>15011</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk001}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>15001</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2etable.2eselectionempty}</StringId>
 		<SourceDll>ESAProcessorPlugins.2edll</SourceDll>
@@ -2655,10 +2651,6 @@
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
 		<ResourceId>105</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_creepshort}</StringId>
-		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
-		<ResourceId>1055</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_creeplong}</StringId>
 		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
 		<ResourceId>1058</ResourceId>
@@ -2666,6 +2658,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_creepshort_z}</StringId>
 		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
 		<ResourceId>1057</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_creepshort}</StringId>
+		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
+		<ResourceId>1055</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eprincipalstress2d}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
@@ -2971,26 +2967,6 @@
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>231</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_utilization}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>784</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20735_p2}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20754</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_bolt_row_outside_beam_ep}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>612</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_right_side}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20550</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_according_to_arr_7_4_7_2}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20779</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_stiffness_k13}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>7877</ResourceId>
@@ -3111,6 +3087,26 @@
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>22591</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_utilization}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>784</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20735_p2}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20754</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_bolt_row_outside_beam_ep}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>612</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_right_side}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20550</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_according_to_arr_7_4_7_2}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20779</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_compression}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45363</ResourceId>
@@ -3147,6 +3143,22 @@
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>35903</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_103.2esolution}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>365</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_133.2esolution}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>353</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2en6_103.2edescription}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>359</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_2.2esolution}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>203</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_136.2esolution}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>339</ResourceId>
@@ -3179,30 +3191,6 @@
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>350</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_103.2esolution}</StringId>
-		<SourceDll>Punching.2edll</SourceDll>
-		<ResourceId>365</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_133.2esolution}</StringId>
-		<SourceDll>Punching.2edll</SourceDll>
-		<ResourceId>353</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2en6_103.2edescription}</StringId>
-		<SourceDll>Punching.2edll</SourceDll>
-		<ResourceId>359</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_2.2esolution}</StringId>
-		<SourceDll>Punching.2edll</SourceDll>
-		<ResourceId>203</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s036}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17536</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s035}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17535</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s034}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>17534</ResourceId>
@@ -3234,6 +3222,14 @@
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s037}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>17537</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s036}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17536</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s035}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17535</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk022}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -3279,6 +3275,10 @@
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
 		<ResourceId>117</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_fire_resistance_check}</StringId>
+		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
+		<ResourceId>107</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eitm5074}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
 		<ResourceId>5074</ResourceId>
@@ -3286,6 +3286,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_df_compositebeam_en1994_1_2_fire_finalstage_name}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
 		<ResourceId>133</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{checkmixedbeam.2eids_ccd_uls_design_check}</StringId>
+		<SourceDll>CheckMixedBeam.2edll</SourceDll>
+		<ResourceId>1236</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_nbr_2d_reinforcement_design_uls}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
@@ -3646,154 +3650,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2ehtmlbutton}</StringId>
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>213</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21332}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21332</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_column_web_in_shear_without_beta}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20438</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21265}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21265</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21331}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21331</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21266}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21266</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21330}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21330</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21264}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21264</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21229}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21229</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21227}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21227</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21263}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21263</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_column_flange_in_twisting}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20444</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21221}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21221</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21223}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21223</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21259}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21259</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21217}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21217</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21280}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21280</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21222}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21222</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21216}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21216</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21279}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21279</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21226}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21226</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_bending_moment_resistance}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>783</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21220}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21220</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21278}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21278</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21029}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21029</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21225}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21225</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_pr_webd}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>3213</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21219}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21219</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21040}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21040</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21351}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21351</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21028}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21028</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21224}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21224</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21234}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21234</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21218}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21218</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21039}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21039</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21350}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21350</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21231}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21231</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21099}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21099</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21228}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
@@ -4827,6 +4683,154 @@
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>22578</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21332}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21332</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_column_web_in_shear_without_beta}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20438</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21265}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21265</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21331}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21331</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21266}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21266</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21330}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21330</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21264}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21264</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21229}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21229</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21227}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21227</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21263}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21263</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_column_flange_in_twisting}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20444</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21221}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21221</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21223}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21223</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21259}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21259</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21217}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21217</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21280}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21280</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21222}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21222</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21216}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21216</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21279}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21279</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21226}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21226</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_bending_moment_resistance}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>783</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21220}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21220</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21278}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21278</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21029}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21029</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21225}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21225</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_pr_webd}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>3213</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21219}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21219</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21040}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21040</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21351}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21351</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21028}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21028</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21224}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21224</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21234}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21234</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21218}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21218</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21039}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21039</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21350}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21350</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21231}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21231</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string21099}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21099</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrong_axis_calculation}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>729</ResourceId>
@@ -4847,6 +4851,10 @@
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45401</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheck.2een_1993.2enote.2edescription.2eclass_4_member_satisfies_fire_due_to_limit_temperature}</StringId>
+		<SourceDll>SteelCheckEsa.2edll</SourceDll>
+		<ResourceId>36012</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheck.2een_1993.2enote.2edescription.2eclassification_non_prismatic_member}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>35961</ResourceId>
@@ -4858,14 +4866,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheck.2een_1993.2ewarning.2edescription.2ewarping_not_accounted_for}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>35910</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelcheck.2een_1993.2enote.2edescription.2eclass_4_member_satisfies_fire_due_to_limit_temperature}</StringId>
-		<SourceDll>SteelCheckEsa.2edll</SourceDll>
-		<ResourceId>36012</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2en6_108.2edescription}</StringId>
-		<SourceDll>Punching.2edll</SourceDll>
-		<ResourceId>338</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_118.2edescription}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
@@ -4879,13 +4879,9 @@
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>256</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s027}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17527</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s026}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17526</ResourceId>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2en6_108.2edescription}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>338</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s025}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -4918,6 +4914,14 @@
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s028}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>17528</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s027}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17527</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s026}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17526</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk023}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -5331,18 +5335,6 @@
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>132</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_bp_anchorage_data}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20785</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_mj_y_rd}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>7874</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_fta_fc_rd}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>710</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_fcb_fb_rd_label}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>20458</ResourceId>
@@ -5455,6 +5447,18 @@
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>3217</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_bp_anchorage_data}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20785</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_mj_y_rd}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>7874</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_fta_fc_rd}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>710</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2enominally_pinned}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>3275</ResourceId>
@@ -5491,10 +5495,6 @@
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>333</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_122.2edescription}</StringId>
-		<SourceDll>Punching.2edll</SourceDll>
-		<ResourceId>206</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_129.2edescription}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>214</ResourceId>
@@ -5519,25 +5519,13 @@
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>229</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_122.2edescription}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>206</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils588}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>6588</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s011}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17511</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s019}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17519</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s010}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17510</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s018}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17518</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s017}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -5563,6 +5551,22 @@
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>17512</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s011}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17511</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s019}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17519</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s010}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17510</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s018}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17518</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2esavedversion}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>9030</ResourceId>
@@ -5582,6 +5586,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_crack_width_upper_2d_brief_table_name}</StringId>
 		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
 		<ResourceId>120</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2ew6_f3.2edescription}</StringId>
+		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
+		<ResourceId>106</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2en6_f3.2edescription}</StringId>
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
@@ -5614,10 +5622,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2ew6_f4.2edescription}</StringId>
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
 		<ResourceId>109</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2ew6_f3.2edescription}</StringId>
-		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
-		<ResourceId>106</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2ecdd.2edeflection.2e1d.2ew7_2.2edescription}</StringId>
 		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
@@ -5863,26 +5867,6 @@
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>230</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_pr_st}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>3216</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_eccentricity}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>794</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_pr_bp}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>3215</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_esa_lambda_ov}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>793</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_according_to_arr_7_4_7_5}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20780</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20805_ecen}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>21245</ResourceId>
@@ -5967,25 +5951,29 @@
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>799</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_pr_st}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>3216</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_eccentricity}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>794</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_pr_bp}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>3215</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_esa_lambda_ov}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>793</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_according_to_arr_7_4_7_5}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20780</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2einfinit}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>20541</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_section_class}</StringId>
-		<SourceDll>SteelCheckEsa.2edll</SourceDll>
-		<ResourceId>45386</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_section_check}</StringId>
-		<SourceDll>SteelCheckEsa.2edll</SourceDll>
-		<ResourceId>45360</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_shear_buckling}</StringId>
-		<SourceDll>SteelCheckEsa.2edll</SourceDll>
-		<ResourceId>45377</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_shear_z}</StringId>
-		<SourceDll>SteelCheckEsa.2edll</SourceDll>
-		<ResourceId>45367</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_shear_y}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
@@ -6007,13 +5995,29 @@
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45374</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_compression_bending}</StringId>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_section_class}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
-		<ResourceId>45375</ResourceId>
+		<ResourceId>45386</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_section_check}</StringId>
+		<SourceDll>SteelCheckEsa.2edll</SourceDll>
+		<ResourceId>45360</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_shear_buckling}</StringId>
+		<SourceDll>SteelCheckEsa.2edll</SourceDll>
+		<ResourceId>45377</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_shear_z}</StringId>
+		<SourceDll>SteelCheckEsa.2edll</SourceDll>
+		<ResourceId>45367</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_temperature_check}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45400</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_compression_bending}</StringId>
+		<SourceDll>SteelCheckEsa.2edll</SourceDll>
+		<ResourceId>45375</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheck.2een_1993.2ewarning.2edescription.2escaffolding_extreme_n}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
@@ -6071,14 +6075,6 @@
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>362</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s002}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17502</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s001}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>17501</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s009}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>17509</ResourceId>
@@ -6111,6 +6107,14 @@
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>17503</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s002}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17502</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_s001}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>17501</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{cx64documentadaptor.2eoverflow}</StringId>
 		<SourceDll>ESAProcessorPlugins.2edll</SourceDll>
 		<ResourceId>115</ResourceId>
@@ -6135,6 +6139,10 @@
 		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
 		<ResourceId>1072</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_add_lim}</StringId>
+		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
+		<ResourceId>1014</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_add_z}</StringId>
 		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
 		<ResourceId>1013</ResourceId>
@@ -6146,10 +6154,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_add}</StringId>
 		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
 		<ResourceId>1011</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_add_lim}</StringId>
-		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
-		<ResourceId>1014</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eids_open_checks_document_root}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
@@ -6423,18 +6427,6 @@
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>133</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_k2}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20517</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_unmn}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>456</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_design_criteria_special}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>817</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_warning_not_fulfiled_condition_beam_flange_compression}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>60012</ResourceId>
@@ -6543,9 +6535,25 @@
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>476</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_k2}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20517</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_unmn}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>456</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_design_criteria_special}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>817</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2erigid}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>3273</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheck.2een_1993.2enote.2edescription.2eaxial_force_negligible_for_y}</StringId>
+		<SourceDll>SteelCheckEsa.2edll</SourceDll>
+		<ResourceId>35964</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheck.2een_1993.2enote.2edescription.2eltb_kc_determined_from_c1}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
@@ -6579,14 +6587,6 @@
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>35965</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelcheck.2een_1993.2enote.2edescription.2eaxial_force_negligible_for_y}</StringId>
-		<SourceDll>SteelCheckEsa.2edll</SourceDll>
-		<ResourceId>35964</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_1.2edescription}</StringId>
-		<SourceDll>Punching.2edll</SourceDll>
-		<ResourceId>200</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_127.2esolution}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>347</ResourceId>
@@ -6599,17 +6599,21 @@
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>202</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_1.2edescription}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>200</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{insertableitemgroup.2epicturesgalery}</StringId>
 		<SourceDll>ESAProcessorPlugins.2edll</SourceDll>
 		<ResourceId>1003</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2ecalculationfinished}</StringId>
-		<SourceDll>EP_ProjectData.2edll</SourceDll>
-		<ResourceId>123</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2ereinforcementsteel}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>125</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2ecalculationfinished}</StringId>
+		<SourceDll>EP_ProjectData.2edll</SourceDll>
+		<ResourceId>123</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{datalibscia.2eids_otherchecks}</StringId>
 		<SourceDll>EP_DataLibScia.2edll</SourceDll>
@@ -6625,6 +6629,14 @@
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_crack_width_2d_brief_table_name}</StringId>
 		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
+		<ResourceId>123</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2en7_f1.2edescription}</StringId>
+		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
+		<ResourceId>112</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2ew7_f1.2esolution}</StringId>
+		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
 		<ResourceId>123</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2ew7_f1.2edescription}</StringId>
@@ -6667,33 +6679,13 @@
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
 		<ResourceId>124</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2en7_f1.2edescription}</StringId>
-		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
-		<ResourceId>112</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2ew7_f1.2esolution}</StringId>
-		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
-		<ResourceId>123</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2ecdd.2edeflection.2e1d2d.2ew7_6.2edescription}</StringId>
-		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
-		<ResourceId>1068</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2ecdd.2edeflection.2e1d2d.2ewarning.2ecss.2edimensions.2esolution}</StringId>
 		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
 		<ResourceId>1070</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_tot}</StringId>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2ecdd.2edeflection.2e1d2d.2ew7_6.2edescription}</StringId>
 		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
-		<ResourceId>1005</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_creep_z}</StringId>
-		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
-		<ResourceId>1050</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_creep_y}</StringId>
-		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
-		<ResourceId>1049</ResourceId>
+		<ResourceId>1068</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_creep}</StringId>
 		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
@@ -6711,6 +6703,18 @@
 		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
 		<ResourceId>1006</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_tot}</StringId>
+		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
+		<ResourceId>1005</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_creep_z}</StringId>
+		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
+		<ResourceId>1050</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_creep_y}</StringId>
+		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
+		<ResourceId>1049</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2enotsupportedppe1764bit}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
 		<ResourceId>9201</ResourceId>
@@ -6718,6 +6722,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{mobileloadcmdsm.2eids_mobile9}</StringId>
 		<SourceDll>MobileLoadCmdsM.2eDLL</SourceDll>
 		<ResourceId>110</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{checkmixedbeam.2eids_shear_con_spacing}</StringId>
+		<SourceDll>CheckMixedBeam.2edll</SourceDll>
+		<ResourceId>1235</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_sls_cn}</StringId>
 		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
@@ -6959,22 +6967,6 @@
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>249</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_baseplate_fl}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>466</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_max_limit}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>791</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_min_limit}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>790</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_according_to_arr_7_4_2_7_6}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20781</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_concrete_in_compression_under_left_haunchflange}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>742</ResourceId>
@@ -7143,6 +7135,26 @@
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>7871</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_baseplate_fl}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>466</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_max_limit}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>791</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_min_limit}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>790</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_according_to_arr_7_4_2_7_6}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20781</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2ein_tension}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>22665</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2eclassification}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>617</ResourceId>
@@ -7150,10 +7162,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2eside}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>181</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2ein_tension}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>22665</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2eidea_statica_check}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
@@ -7187,10 +7195,6 @@
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>35966</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_1.2esolution}</StringId>
-		<SourceDll>Punching.2edll</SourceDll>
-		<ResourceId>201</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ee6_106.2edescription}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>263</ResourceId>
@@ -7210,6 +7214,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_102_sfrc.2edescription}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>361</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_1.2esolution}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>201</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eidm_stypepolynomial}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -7290,6 +7298,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_sia_check_shear_torsion}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
 		<ResourceId>32895</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_sia_check_detailing_provisions}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32897</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eimps_biil_of_reinforcement}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
@@ -7539,10 +7551,6 @@
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>246</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_bolt_row_first_ep}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>608</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_force_distribution_bolt_rows}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>22603</ResourceId>
@@ -7635,6 +7643,10 @@
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>747</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_bolt_row_first_ep}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>608</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_purlin_resistance}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45383</ResourceId>
@@ -7646,6 +7658,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_stability_class}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45387</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheck.2een_1993.2ewarning.2edescription.2eextreme_torsion_cannot_reduce_resistance}</StringId>
+		<SourceDll>SteelCheckEsa.2edll</SourceDll>
+		<ResourceId>35902</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheck.2een_1993.2enote.2edescription.2ecritical_temperature_french_na}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
@@ -7662,14 +7678,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheck.2een_1993.2enote.2edescription.2eltb_british_na_not_used}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>35989</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelcheck.2een_1993.2ewarning.2edescription.2eextreme_torsion_cannot_reduce_resistance}</StringId>
-		<SourceDll>SteelCheckEsa.2edll</SourceDll>
-		<ResourceId>35902</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2en6_109.2edescription}</StringId>
-		<SourceDll>Punching.2edll</SourceDll>
-		<ResourceId>346</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_125.2esolution}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
@@ -7695,13 +7703,9 @@
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>259</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk014_1}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>15034</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk013_1}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>15033</ResourceId>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2en6_109.2edescription}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>346</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk012_1}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -7726,6 +7730,14 @@
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk017_1}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>15035</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk014_1}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>15034</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk013_1}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>15033</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2etable.2eempty}</StringId>
 		<SourceDll>ESAProcessorPlugins.2edll</SourceDll>
@@ -8007,46 +8019,6 @@
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>120</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_result}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>795</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_error_splice_endplate_coincide}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>40016</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_njrd}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>21355</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_bp_anchorage_data_straight}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20782</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_string_alfad_b}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>472</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_endplate_in_bending_label}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>730</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_string_alfab_b}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>470</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_storey_height_lc}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>647</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_concrete_in_compression_under_right_haunchweb}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>745</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_string_alfad_c}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>475</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_note_not_applicable_for_cidect}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>50042</ResourceId>
@@ -8167,6 +8139,46 @@
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>623</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_result}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>795</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_error_splice_endplate_coincide}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>40016</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_njrd}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>21355</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_bp_anchorage_data_straight}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20782</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_string_alfad_b}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>472</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_endplate_in_bending_label}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>730</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_string_alfab_b}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>470</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_storey_height_lc}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>647</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_concrete_in_compression_under_right_haunchweb}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>745</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_string_alfad_c}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>475</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2eweak_axis_calculation}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>726</ResourceId>
@@ -8211,13 +8223,13 @@
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>103</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils654}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>6654</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils584}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>6584</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils654}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>6654</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk018}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -8239,10 +8251,6 @@
 		<SourceDll>ESAProcessorPlugins.2edll</SourceDll>
 		<ResourceId>1006</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2elicencenumber}</StringId>
-		<SourceDll>EP_ProjectData.2edll</SourceDll>
-		<ResourceId>122</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2esteel}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>106</ResourceId>
@@ -8250,6 +8258,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2elinearcalculation}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>5006</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2elicencenumber}</StringId>
+		<SourceDll>EP_ProjectData.2edll</SourceDll>
+		<ResourceId>122</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretechecksesa.2estresses1d_shell_name}</StringId>
 		<SourceDll>ConcreteChecksEsa.2edll</SourceDll>
@@ -8539,26 +8551,6 @@
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>217</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_bolt_row_other_end_ep}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>615</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_subscript_right}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>145</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_con_ned}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>4018</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_k}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20574</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_ft_fc_rd}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>176</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_joint_members_info}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>781</ResourceId>
@@ -8667,17 +8659,37 @@
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>639</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_bolt_row_other_end_ep}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>615</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_subscript_right}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>145</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_con_ned}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>4018</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_k}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20574</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_ft_fc_rd}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>176</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2ein_compression}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>22666</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_flexural_buckling}</StringId>
-		<SourceDll>SteelCheckEsa.2edll</SourceDll>
-		<ResourceId>45372</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_web_crippling}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45382</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_flexural_buckling}</StringId>
+		<SourceDll>SteelCheckEsa.2edll</SourceDll>
+		<ResourceId>45372</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheck.2een_1993.2enote.2edescription.2eno_plastic_shear_resistance_formula}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
@@ -8715,14 +8727,6 @@
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>6585</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk009}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>15009</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk029}</StringId>
-		<SourceDll>iform.2edll</SourceDll>
-		<ResourceId>15029</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk019}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>15019</ResourceId>
@@ -8730,6 +8734,14 @@
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk039}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>15039</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk009}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>15009</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2evlk029}</StringId>
+		<SourceDll>iform.2edll</SourceDll>
+		<ResourceId>15029</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2etable.2enotaccesibledselement}</StringId>
 		<SourceDll>ESAProcessorPlugins.2edll</SourceDll>
@@ -8775,14 +8787,6 @@
 		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
 		<ResourceId>107</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_internal_forces_2d_design_surface_brief_table_name}</StringId>
-		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
-		<ResourceId>105</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_internal_forces_2d_basic_surface_brief_table_name}</StringId>
-		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
-		<ResourceId>103</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2ew7_f3.2esolution}</StringId>
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
 		<ResourceId>125</ResourceId>
@@ -8814,6 +8818,14 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_geotechnics}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
 		<ResourceId>116</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{checkmixedbeam.2eids_shear_connector_lateral}</StringId>
+		<SourceDll>CheckMixedBeam.2edll</SourceDll>
+		<ResourceId>1352</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{checkmixedbeam.2eids_ccd_fire_utilisation}</StringId>
+		<SourceDll>CheckMixedBeam.2edll</SourceDll>
+		<ResourceId>1238</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_steelconcretebridgeservicem.2eids_stiffener}</StringId>
 		<SourceDll>EP_SteelConcreteBridgeServiceM.2eDLL</SourceDll>
@@ -9107,22 +9119,6 @@
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>233</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_limpart_007}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>3187</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_bolt_row_away_flanges_on_extended_endplate}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>638</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_bp_anchorage_data_hooked_curved}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20783</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_assesment_of_compression_zone}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>22607</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_dimension_notknown}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>4025</ResourceId>
@@ -9243,13 +9239,25 @@
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>620</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_limpart_007}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>3187</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_bolt_row_away_flanges_on_extended_endplate}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>638</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_bp_anchorage_data_hooked_curved}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20783</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_assesment_of_compression_zone}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>22607</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_chord_as_beam}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45389</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_steelcheck_fire_sectioncheck_name}</StringId>
-		<SourceDll>SteelCheckEsa.2edll</SourceDll>
-		<ResourceId>45357</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_ltb}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
@@ -9258,6 +9266,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_fire_longresultname_torsional_flexural_buckling}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45373</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_steelcheck_fire_sectioncheck_name}</StringId>
+		<SourceDll>SteelCheckEsa.2edll</SourceDll>
+		<ResourceId>45357</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheck.2een_1993.2eerror.2edescription.2enegative_value_division_by_zero}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
@@ -9275,10 +9287,6 @@
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>246</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_136.2edescription}</StringId>
-		<SourceDll>Punching.2edll</SourceDll>
-		<ResourceId>261</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_126.2edescription}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>366</ResourceId>
@@ -9286,6 +9294,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_116.2edescription}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>233</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_136.2edescription}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>261</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils586}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -9315,6 +9327,10 @@
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
 		<ResourceId>130</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2ecdd.2edeflection.2e1d2d.2ew7_8.2edescription}</StringId>
+		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
+		<ResourceId>1125</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2ecdd.2edeflection.2e1d2d.2en7_3.2esolution}</StringId>
 		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
 		<ResourceId>1131</ResourceId>
@@ -9322,10 +9338,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2ecdd.2edeflection.2e1d2d.2ew7_5.2esolution}</StringId>
 		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
 		<ResourceId>1067</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2ecdd.2edeflection.2e1d2d.2ew7_8.2edescription}</StringId>
-		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
-		<ResourceId>1125</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2einternalforces_integration_strip_name}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
@@ -9346,6 +9358,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{checkmixedbeam.2eids_name_check_shearbuckling}</StringId>
 		<SourceDll>CheckMixedBeam.2edll</SourceDll>
 		<ResourceId>134</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{checkmixedbeam.2eids_ccd_fire_check}</StringId>
+		<SourceDll>CheckMixedBeam.2edll</SourceDll>
+		<ResourceId>1237</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eimps_2d_member}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
@@ -9575,22 +9591,6 @@
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>1074</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_esa_lambda_ov_lim}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>816</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_bolt_row_adjacent_to_flange_ep}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>613</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_ft_ep_rd_r}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20568</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_left_side}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20551</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_design_axial_resistance}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>782</ResourceId>
@@ -9759,6 +9759,22 @@
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>60008</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_esa_lambda_ov_lim}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>816</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_bolt_row_adjacent_to_flange_ep}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>613</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_ft_ep_rd_r}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20568</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_left_side}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20551</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2esemirigid}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>3274</ResourceId>
@@ -9766,6 +9782,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2eok}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>3185</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_overall_check}</StringId>
+		<SourceDll>SteelCheckEsa.2edll</SourceDll>
+		<ResourceId>45359</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_tension}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
@@ -9782,10 +9802,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_torsion}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>45368</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_ecen_1993_steel_check_uls_longresultname_overall_check}</StringId>
-		<SourceDll>SteelCheckEsa.2edll</SourceDll>
-		<ResourceId>45359</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesa.2erc_ids_steelcheck_fire_stabilitycheck_name}</StringId>
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
@@ -9835,17 +9851,9 @@
 		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
 		<ResourceId>135</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_internal_forces_2d_basic_surface_group}</StringId>
-		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
-		<ResourceId>108</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_internal_forces_2d_basic_centroid_brief_table_name}</StringId>
 		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
 		<ResourceId>102</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_lin_z}</StringId>
-		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
-		<ResourceId>1019</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_tot_lim_z}</StringId>
 		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
@@ -9870,6 +9878,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_add_lim_y}</StringId>
 		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
 		<ResourceId>1015</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_lin_z}</StringId>
+		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
+		<ResourceId>1019</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_dspresent.2eids_103}</StringId>
 		<SourceDll>EP_DsPresent.2eDLL</SourceDll>
@@ -10143,22 +10155,6 @@
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>132</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_bp_anchorage_data_circular_plate}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20784</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_bolt_row_only_one_between_flanges_ep}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>637</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_zeq_stiffness}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20012</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_concrete_in_compression_under_right_haunchflange}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>743</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_string_k1b}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>468</ResourceId>
@@ -10299,6 +10295,22 @@
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>40023</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estridrs_bp_anchorage_data_circular_plate}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20784</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_bolt_row_only_one_between_flanges_ep}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>637</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_zeq_stiffness}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20012</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_concrete_in_compression_under_right_haunchflange}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>743</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2edesign_resistances}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>22663</ResourceId>
@@ -10343,10 +10355,6 @@
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>35981</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2en6_107.2edescription}</StringId>
-		<SourceDll>Punching.2edll</SourceDll>
-		<ResourceId>260</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_125.2edescription}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>357</ResourceId>
@@ -10358,6 +10366,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2en6_104.2edescription}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>363</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2en6_107.2edescription}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>260</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils440}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -10407,10 +10419,6 @@
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
 		<ResourceId>110</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2ecdd.2edeflection.2e1d2d.2en7_3.2edescription}</StringId>
-		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
-		<ResourceId>1130</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2ecdd.2edeflection.2e1d2d.2en7_2.2esolution}</StringId>
 		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
 		<ResourceId>1131</ResourceId>
@@ -10418,6 +10426,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2ecdd.2edeflection.2e1d2d.2ew7_3.2edescription}</StringId>
 		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
 		<ResourceId>1064</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2ecdd.2edeflection.2e1d2d.2en7_3.2edescription}</StringId>
+		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
+		<ResourceId>1130</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{codedependentdeflections.2erc_ids_cdd_deflection_check_delta_creeplong_z}</StringId>
 		<SourceDll>CodeDependentDeflections.2edll</SourceDll>
@@ -10806,174 +10818,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{documentexport.2ehtmlpictureformatbmp}</StringId>
 		<SourceDll>X64DocumentRendering.2edll</SourceDll>
 		<ResourceId>222</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20640}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20640</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20972}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20972</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20916}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20916</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20679}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20679</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20644}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20644</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20580}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20580</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20915}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20915</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20435}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20435</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20420}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20420</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_error_splice_flange_coincide}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>40015</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_fta_wbc_rd}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20597</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20686}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20686</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20643}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20643</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20581}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20581</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20914}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20914</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20518}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20518</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_fta_fct_rd}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20593</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20642}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20642</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20919}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20919</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20533}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20533</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20841}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20841</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20516}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20516</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20417}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20417</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20855}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20855</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20515}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20515</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20416}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20416</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20854}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20854</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20503}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20503</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20731}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20731</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20514}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20514</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20415}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20415</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20502}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20502</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20730}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20730</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20639}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20639</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20513}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20513</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20661}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20661</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20729}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20729</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20819}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20819</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20564}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20564</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20512}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20512</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20889}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20889</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20618}</StringId>
-		<SourceDll>SteelConnection.2edll</SourceDll>
-		<ResourceId>20618</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20637}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
@@ -12363,6 +12207,174 @@
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>20437</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20640}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20640</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20972}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20972</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20916}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20916</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20679}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20679</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20644}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20644</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20580}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20580</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20915}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20915</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20435}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20435</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20420}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20420</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_error_splice_flange_coincide}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>40015</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_fta_wbc_rd}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20597</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20686}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20686</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20643}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20643</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20581}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20581</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20914}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20914</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20518}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20518</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrids_fta_fct_rd}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20593</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20642}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20642</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20919}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20919</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20533}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20533</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20841}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20841</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20516}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20516</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20417}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20417</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20855}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20855</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20515}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20515</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20416}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20416</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20854}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20854</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20503}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20503</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20731}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20731</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20514}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20514</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20415}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20415</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20502}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20502</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20730}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20730</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20639}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20639</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20513}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20513</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20661}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20661</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20729}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20729</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20819}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20819</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20564}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20564</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20512}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20512</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20889}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20889</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2estrcon_string20618}</StringId>
+		<SourceDll>SteelConnection.2edll</SourceDll>
+		<ResourceId>20618</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelconnection.2esummary_output}</StringId>
 		<SourceDll>SteelConnection.2edll</SourceDll>
 		<ResourceId>22668</ResourceId>
@@ -12391,6 +12403,10 @@
 		<SourceDll>SteelCheckEsa.2edll</SourceDll>
 		<ResourceId>36014</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_121.2edescription}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>204</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_111.2edescription}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>228</ResourceId>
@@ -12398,10 +12414,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_131.2edescription}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>221</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_121.2edescription}</StringId>
-		<SourceDll>Punching.2edll</SourceDll>
-		<ResourceId>204</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRCNEX:"><StringId>@{calculationprotocol.2eils651}</StringId>
 		<SourceDll>iform.2edll</SourceDll>
@@ -12427,10 +12439,6 @@
 		<SourceDll>iform.2edll</SourceDll>
 		<ResourceId>15005</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2enumberofusedprofiles}</StringId>
-		<SourceDll>EP_ProjectData.2edll</SourceDll>
-		<ResourceId>9018</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2estabilitycalculation}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>5008</ResourceId>
@@ -12442,6 +12450,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2econcrete}</StringId>
 		<SourceDll>EP_ProjectData.2edll</SourceDll>
 		<ResourceId>105</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{projectdata.2enumberofusedprofiles}</StringId>
+		<SourceDll>EP_ProjectData.2edll</SourceDll>
+		<ResourceId>9018</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{datalibscia.2eids_poirotchecks}</StringId>
 		<SourceDll>EP_DataLibScia.2edll</SourceDll>

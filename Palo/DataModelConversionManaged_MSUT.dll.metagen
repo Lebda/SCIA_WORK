@@ -1,0 +1,113 @@
+ImageRuntimeVersion: v4.0.30319
+Assembly DataModelConversionManaged_MSUT, Version=0.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly AnalysisDataModel, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=None, flags=None
+Assembly CSInfrastructure, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=None, flags=None
+Assembly DataModelDataAccess, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=None, flags=None
+Assembly Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=None, flags=None
+Assembly System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Class DataModelConversion.StringHelp: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  Methods:
+    ReadString(String, Void*): PrivateScope, Public, Static, HideBySig
+Class DataModelConversion.SenEnumConversionData4Type: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    System.Func`2[System.Int32,System.Int32] ConvertorBackCallBack 'get set' : 
+    System.Func`2[System.Int32,System.Int32] ConvertorCallBack 'get set' : 
+    System.Collections.Generic.IDictionary`2[System.Int32,System.Object] UnManaged 'get set' : 
+    System.Collections.Generic.IDictionary`2[System.Object,System.Int32] Managed 'get set' : 
+  Methods:
+    get_Managed(): PrivateScope, Public, HideBySig, SpecialName
+    set_Managed(IDictionary`2): PrivateScope, Public, HideBySig, SpecialName
+    get_UnManaged(): PrivateScope, Public, HideBySig, SpecialName
+    set_UnManaged(IDictionary`2): PrivateScope, Public, HideBySig, SpecialName
+    get_ConvertorCallBack(): PrivateScope, Public, HideBySig, SpecialName
+    set_ConvertorCallBack(Func`2): PrivateScope, Public, HideBySig, SpecialName
+    get_ConvertorBackCallBack(): PrivateScope, Public, HideBySig, SpecialName
+    set_ConvertorBackCallBack(Func`2): PrivateScope, Public, HideBySig, SpecialName
+    AddItem(Object, Int32 IsLong): PrivateScope, Public, HideBySig
+    Convert(Object): PrivateScope, Public, HideBySig
+    ConvertBack(Int32 IsLong): PrivateScope, Public, HideBySig
+Class DataModelConversion.SenEnumConversionsDefinition: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    System.Collections.Generic.IDictionary`2[System.String,DataModelConversion.SenEnumConversionData4Type] EnumConversionDataDivided 'get ' : 
+    System.Collections.Generic.IDictionary`2[System.Type,DataModelConversion.SenEnumConversionData4Type] EnumConversionData 'get ' : 
+  Methods:
+    get_EnumConversionData(): PrivateScope, Public, HideBySig, SpecialName
+    get_EnumConversionDataDivided(): PrivateScope, Public, HideBySig, SpecialName
+    AddDividedData(): PrivateScope, Public, HideBySig
+    AddProfileLibraryId(SenEnumConversionData4Type, ProfileLibraryId, Int32 IsLong): PrivateScope, Public, HideBySig
+    AddSpecialData(): PrivateScope, Public, HideBySig
+    AddItem(Object, Int32 IsLong): PrivateScope, Public, HideBySig
+    GetData(Type): PrivateScope, Public, HideBySig
+    AddItemSpecial(String, Object, Int32 IsLong): PrivateScope, Public, HideBySig
+    GetSpecialData(String): PrivateScope, Public, HideBySig
+    GetDividedData(String): PrivateScope, Public, HideBySig
+Class DataModelConversion.CSenEnumConversions: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  Methods:
+    Instance(SenEnumConversionsDefinition): PrivateScope, Public, Static, HideBySig
+    Instance(): PrivateScope, Public, Static, HideBySig
+    MapToSenEnum(Object, Object): PrivateScope, Public, HideBySig
+    MapToSenEnum(Object, Int32 IsLong, Object): PrivateScope, Public, HideBySig
+    MapToSenEnum(Object, Int32 IsLong): PrivateScope, Public, HideBySig
+    MapToSenEnum(Object): PrivateScope, Public, HideBySig
+    MapBackToSenEnum(Type, Int32 IsLong, Int32 IsLong): PrivateScope, Public, HideBySig
+    MapBackToSenEnum(Object, Int32 IsLong): PrivateScope, Public, HideBySig
+    MapBackToSenEnum(Type, Int32 IsLong): PrivateScope, Public, HideBySig
+    ConvertLoadCaseType(ActionType, LoadCaseType): PrivateScope, Public, HideBySig
+    ConvertLoadCaseTypeBack(Int32 IsLong, Int32 IsLong): PrivateScope, Public, HideBySig
+    ConvertLGLoad(StructureType, Load): PrivateScope, Public, HideBySig
+    ConvertLGLoadBack(Int32 IsLong, Int32 IsLong): PrivateScope, Public, HideBySig
+Class DataModelConversion.CMaterialFinder: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  Methods:
+    FindFirstMaterial4MaterialName(sDsMaterialData*, SenMaterial, map<long\,std::vector<senMap::sDsMaterialData\,std::allocator<senMap::sDsMaterialData> >\,std::less<long>\,std::allocator<std::pair<long const \,std::vector<senMap::sDsMaterialData\,std::allocator<senMap::sDsMaterialData> > > > >* IsImplicitlyDereferenced): PrivateScope, Public, Static, HideBySig
+Class MaterialFinderTest: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Init(): PrivateScope, Public, HideBySig
+    Clean(): PrivateScope, Public, HideBySig
+    FindFirstMaterial4MaterialName_AllZero(): PrivateScope, Public, HideBySig
+    FindFirstMaterial4MaterialName_InvalidMaterial(): PrivateScope, Public, HideBySig
+    FindFirstMaterial4MaterialName_Valid(): PrivateScope, Public, HideBySig
+Class DataModelConversion.ProfileLibraryConvertor: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  Methods:
+    ConvertBackProfileLibrary(_GUID* IsImplicitlyDereferenced): PrivateScope, Public, Static, HideBySig
+    ConvertProfileLibrary(ProfileLibrary): PrivateScope, Public, Static, HideBySig
+    MapBackProfileLibraryID(ProfileLibrary, Int32 IsLong): PrivateScope, Public, Static, HideBySig
+    MapProfileLibraryID(ProfileLibrary, ProfileLibraryId): PrivateScope, Public, Static, HideBySig
+Class ProfileLibraryConvertorTest: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    ConvertProfileLibrary_Timber(): PrivateScope, Public, HideBySig
+    ConvertProfileLibrary_Geometric(): PrivateScope, Public, HideBySig
+    ConvertProfileLibrary_Concrete(): PrivateScope, Public, HideBySig
+    ConvertProfileLibrary_GeomThinWalled(): PrivateScope, Public, HideBySig
+    ConvertProfileLibrary_SteelRolled(): PrivateScope, Public, HideBySig
+    ConvertProfileLibrary_NotImpl(): PrivateScope, Public, HideBySig
+    ConvertBackProfileLibrary_Timber(): PrivateScope, Public, HideBySig
+    ConvertBackProfileLibrary_Geometric(): PrivateScope, Public, HideBySig
+    ConvertBackProfileLibrary_Concrete(): PrivateScope, Public, HideBySig
+    ConvertBackProfileLibrary_GeomThinWalled(): PrivateScope, Public, HideBySig
+    ConvertBackProfileLibrary_SteelRolled(): PrivateScope, Public, HideBySig
+    ConvertBackProfileLibrary_NotImpl(): PrivateScope, Public, HideBySig
+    MapBackProfileLibraryID_Concrete_0(): PrivateScope, Public, HideBySig
+    MapBackProfileLibraryID_Concrete_4(): PrivateScope, Public, HideBySig
+    MapBackProfileLibraryID_Timber_6(): PrivateScope, Public, HideBySig
+    MapBackProfileLibraryID_SteelRolled_500(): PrivateScope, Public, HideBySig
+    MapBackProfileLibraryID_ProfileLib_NotValid(): PrivateScope, Public, HideBySig
+    MapProfileLibraryID_Concrete_Concrete_Circle(): PrivateScope, Public, HideBySig
+    MapProfileLibraryID_ThinWelded_Angle(): PrivateScope, Public, HideBySig
+    MapProfileLibraryID_SteelRolled_ThinWelded_Angle(): PrivateScope, Public, HideBySig
+    MapProfileLibraryID_NotValid(): PrivateScope, Public, HideBySig

@@ -64,7 +64,7 @@ public bool IsAccidentalCombi() {
             CASE 0 :  { return True; } 
             CASE 1 :  { 
                 double CombiType →INI400_010097= actLoad.CombiType; 
-                IF(CombiType == 8) { 
+                IF(CombiType == 5) { 
                     return True; 
                 } ELSE { 
                     return False; 
@@ -91,7 +91,7 @@ public bool IsAccidentalCombi() {
             CASE 0 :  { return True; } 
             CASE 1 :  { 
                 double CombiType →INI400_006802= actLoad.CombiType; 
-                IF(actLoad.LimitState == 2 &amp;&amp; CombiType != 9) { 
+                IF(actLoad.LimitState == 6 &amp;&amp; CombiType != 5) { 
                     return True; 
                 } ELSE { 
                     return False; 

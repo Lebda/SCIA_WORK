@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="132"><StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_stupenbezpecnosticrack}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="133"><StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_stupenbezpecnosticrack}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
 		<ResourceId>29019</ResourceId>
 	</StringCode>
@@ -334,6 +334,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eimps_biil_of_reinforcement}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
 		<ResourceId>30109</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_sia_check_detailing_provisions}</StringId>
+		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>
+		<ResourceId>32897</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concreteesacmdsm.2eids_df_sia_check_shear_torsion}</StringId>
 		<SourceDll>ConcreteESACmdsM.2eDLL</SourceDll>

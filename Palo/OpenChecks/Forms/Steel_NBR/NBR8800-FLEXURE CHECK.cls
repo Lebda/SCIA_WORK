@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="8296b99e-584d-4ceb-8a3b-a5eac28e1ef9">
   <CodeEditor>
-    <SourceCode Collapsed="130|163|422|563|1221" BreakPoints="">
+    <SourceCode Collapsed="130|767|780|806" BreakPoints="">
 
 
 
@@ -402,7 +402,7 @@ double BendingCheck_X(object CS, object ClassParam, double MomentSign, double Fo
 
     E →MPF000_000094= IO.Material.NBR.E; 
     G →MPF000_000095= IO.Material.NBR.G; 
-    
+    M↓pl← →MPF001_000021= 0; 
     //REV: revised in 06/04/2016
 
     IF((FormCode != 1) &amp;&amp; (FormCode != 2) &amp;&amp; (FormCode != 3) &amp;&amp; (FormCode != 4) &amp;&amp; (FormCode != 101) &amp;&amp; (FormCode != 5) &amp;&amp; (FormCode != 6) &amp;&amp; (FormCode != 2001)) { 
@@ -417,6 +417,7 @@ double BendingCheck_X(object CS, object ClassParam, double MomentSign, double Fo
         →INI400_000742double aux1; // auxiliar variables 
         →INI400_000743double aux2; 
         →INI400_000744double aux3; 
+        
         σ↓r← →INI400_000693= 0.3*fy; 
         →INI400_001697double SClass; // section classification
         object Ext →INI400_001663= LoadExternCLC("NBR8800-SECTION-CLASSIFICATION.CLC"); 
@@ -800,7 +801,7 @@ double BendingCheck_X(object CS, object ClassParam, double MomentSign, double Fo
                 Cw →INI400_001529= CS.Chars.Iw; 
             } 
             →INI400_001846PAGEBREAK(); 
-            
+            M↓pl← →MPF001_000020= Z↓x←*fy; 
             →INI400_001480BLOCK("Classification") { 
                 // Proceed to Section Classification and get the slenderness parameters
                 →INI400_001481Ext.SteelBendingClass(CS, fy, BendingAxis, Fabrication, MomentSign, FormCode, ClassParam); 
@@ -839,6 +840,8 @@ double BendingCheck_X(object CS, object ClassParam, double MomentSign, double Fo
                         MRd →INI400_000896= M↓pl←/γ↓a1←; 
                     } 
                 } 
+                aux3 →MPF001_000023= MRd; 
+                
                 →INI400_001854PAGEBREAK(); 
                 IF(λ &gt; λ↓r←) { 
                     →INI400_000897TEXT("Slender Web - Verification accoding to Annex H of NBR-8800"); 
@@ -847,7 +850,8 @@ double BendingCheck_X(object CS, object ClassParam, double MomentSign, double Fo
                     aux1 →INI400_001430= MRd; 
                     aux2 →INI400_001431= MRd; 
                     aux3 →INI400_001432= MRd; 
-                } ELSE { 
+                } 
+                ELSE { 
                     // Check for FLM - Flange Local Buckling
                     →INI400_001433BLOCK("FLM") { 
                         →INI400_001437TEXT("2 - Section G.2.2 - FLM - Flange local Buckling"); 
@@ -883,6 +887,7 @@ double BendingCheck_X(object CS, object ClassParam, double MomentSign, double Fo
                         IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
                             →INI400_001451TEXT("Additional Check According to 5.4.2.2: "); 
                             MRd →INI400_001452= 1.5*W*fy/γ↓a1←; 
+                            
                         } 
                         aux2 →INI400_001453= MRd; 
                         →INI400_001855PAGEBREAK(); 
@@ -936,13 +941,13 @@ double BendingCheck_X(object CS, object ClassParam, double MomentSign, double Fo
                         aux1 →INI400_001479= MRd; 
                     } 
                 } 
-                W →INI400_001486= ClassParam.Wc; 
-                IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
-                    →INI400_001364TEXT("Additional Check According to 5.4.2.2:"); 
-                    →INI400_001857TEXT("W = " &amp; W); 
-                    MRd →INI400_001365= 1.5*W*fy/γ↓a1←; 
-                } 
-                aux3 →INI400_000898= MRd; 
+                //                W →INI400_001486= ClassParam.Wc; 
+                //                IF(MRd &gt; 1.5*W*fy/γ↓a1←) { 
+                //                    →INI400_001364TEXT("Additional Check According to 5.4.2.2:"); 
+                //                    →INI400_001857TEXT("W = " &amp; W); 
+                //                    MRd →INI400_001365= 1.5*W*fy/γ↓a1←; 
+                //                } 
+                //                aux3 →INI400_000898= MRd; 
             } 
         } 
         
@@ -1948,7 +1953,7 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="bb" ESA_ID="" Type="Double" Value="100e-3" Precision="2">
+      <Variable Modifier="Public" Name="bb" ESA_ID="" Type="Double" Value="450e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1975,7 +1980,7 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="bt" ESA_ID="" Type="Double" Value="72e-3" Precision="2">
+      <Variable Modifier="Public" Name="bt" ESA_ID="" Type="Double" Value="450e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2000,14 +2005,14 @@ IF(BendingAxis == 1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Cw" ESA_ID="" Type="Double" Value="446.509e-9" Precision="2">
+      <Variable Modifier="Public" Name="Cw" ESA_ID="" Type="Double" Value="185.019e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="6" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-12" Dim="cm↑6←" />
       </Variable>
-      <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Value="400e-3" Precision="2">
+      <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Value="1.237" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2021,7 +2026,7 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="E" ESA_ID="" Type="Double" Value="200e9" Precision="2">
+      <Variable Modifier="Public" Name="E" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2047,21 +2052,21 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10e6" Dim="kN/cm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="FormCode" ESA_ID="" Type="Double" Value="2001" Precision="2">
+      <Variable Modifier="Public" Name="FormCode" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="fy" ESA_ID="" Type="Double" Value="345e6" Precision="2">
+      <Variable Modifier="Public" Name="fy" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10e6" Dim="kN/cm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="G" ESA_ID="" Type="Double" Value="76.9231e9" Precision="2">
+      <Variable Modifier="Public" Name="G" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2074,7 +2079,7 @@ IF(BendingAxis == 1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Value="400e-3" Precision="2">
+      <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Value="1.2999" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2102,21 +2107,21 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-9" Dim="cm↑4←" />
       </Variable>
-      <Variable Modifier="Public" Name="Ix" ESA_ID="" Type="Double" Value="15.9767e-6" Precision="2">
+      <Variable Modifier="Public" Name="Ix" ESA_ID="" Type="Double" Value="13.6725e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-9" Dim="cm↑4←" />
       </Variable>
-      <Variable Modifier="Public" Name="Iy" ESA_ID="" Type="Double" Value="113.036e-6" Precision="2">
+      <Variable Modifier="Public" Name="Iy" ESA_ID="" Type="Double" Value="478.069e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-9" Dim="cm↑4←" />
       </Variable>
-      <Variable Modifier="Public" Name="J" ESA_ID="" Type="Double" Value="222.331e-6" Precision="2">
+      <Variable Modifier="Public" Name="J" ESA_ID="" Type="Double" Value="12.1001e-6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2156,14 +2161,14 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓pl←" ESA_ID="" Type="Double" Value="468924" Precision="2">
+      <Variable Modifier="Public" Name="M↓pl←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10" Dim="kN•cm" />
       </Variable>
-      <Variable Modifier="Public" Name="M↓r←" ESA_ID="" Type="Double" Value="290785.3" Precision="2">
+      <Variable Modifier="Public" Name="M↓r←" ESA_ID="" Type="Double" Value="4.602107e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2203,7 +2208,7 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="MRd" ESA_ID="" Type="Double" Value="357432.4" Precision="2">
+      <Variable Modifier="Public" Name="MRd" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>Moment Strength</ENU>
         </Description>
@@ -2230,7 +2235,7 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
-      <Variable Modifier="Public" Name="ryc" ESA_ID="RESULT.2" Type="Double" Value="73.60697e-3" Precision="2">
+      <Variable Modifier="Public" Name="ryc" ESA_ID="RESULT.2" Type="Double" Value="92.63772e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2258,7 +2263,7 @@ IF(BendingAxis == 1) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="tb" ESA_ID="" Type="Double" Value="11.2e-3" Precision="2">
+      <Variable Modifier="Public" Name="tb" ESA_ID="" Type="Double" Value="25.4e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2272,21 +2277,21 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="tt" ESA_ID="" Type="Double" Value="5.8e-3" Precision="2">
+      <Variable Modifier="Public" Name="tt" ESA_ID="" Type="Double" Value="37.5e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="tw" ESA_ID="" Type="Double" Value="4.75e-3" Precision="2">
+      <Variable Modifier="Public" Name="tw" ESA_ID="" Type="Double" Value="16e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="UnCheck" ESA_ID="Result.1" Type="Double" Value="13.98866e-3" Precision="2">
+      <Variable Modifier="Public" Name="UnCheck" ESA_ID="Result.1" Type="Double" Value="3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2299,14 +2304,14 @@ IF(BendingAxis == 1) {
           <ENU>Use user Profile Table</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="W" ESA_ID="" Type="Double" Value="1.20408e-3" Precision="2">
+      <Variable Modifier="Public" Name="W" ESA_ID="" Type="Double" Value="19.05634e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="3" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="cm↑3←" />
       </Variable>
-      <Variable Modifier="Public" Name="W↓c←" ESA_ID="" Type="Double" Value="2.53718e-6" Precision="2">
+      <Variable Modifier="Public" Name="W↓c←" ESA_ID="" Type="Double" Value="19.05634e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2320,7 +2325,7 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="3" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="cm↑3←" />
       </Variable>
-      <Variable Modifier="Public" Name="Wt" ESA_ID="" Type="Double" Value="3.174e-6" Precision="2">
+      <Variable Modifier="Public" Name="Wt" ESA_ID="" Type="Double" Value="23.47541e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2348,7 +2353,7 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="Z↓x←" ESA_ID="" Type="Double" Value="1.3592e-3" Precision="2">
+      <Variable Modifier="Public" Name="Z↓x←" ESA_ID="" Type="Double" Value="23.6256e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2362,28 +2367,28 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="3" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="cm↑3←" />
       </Variable>
-      <Variable Modifier="Public" Name="αy" ESA_ID="" Type="Double" Value="4.31937" Precision="2">
+      <Variable Modifier="Public" Name="αy" ESA_ID="" Type="Double" Value="677.3333e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="β1" ESA_ID="" Type="Double" Value="1.728431" Precision="2">
+      <Variable Modifier="Public" Name="β1" ESA_ID="" Type="Double" Value="1.901681" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="100" Dim="cm↑-1←" />
       </Variable>
-      <Variable Modifier="Public" Name="β2" ESA_ID="" Type="Double" Value="1.651153" Precision="2">
+      <Variable Modifier="Public" Name="β2" ESA_ID="" Type="Double" Value="-85.82967e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="β3" ESA_ID="" Type="Double" Value="72.44822e-3" Precision="2">
+      <Variable Modifier="Public" Name="β3" ESA_ID="" Type="Double" Value="-109.8046e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2397,14 +2402,14 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λ" ESA_ID="" Type="Double" Value="80.84211" Precision="2">
+      <Variable Modifier="Public" Name="λ" ESA_ID="" Type="Double" Value="32.38422" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λ↓p←" ESA_ID="" Type="Double" Value="90.53016" Precision="2">
+      <Variable Modifier="Public" Name="λ↓p←" ESA_ID="" Type="Double" Value="42.37582" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2425,7 +2430,7 @@ IF(BendingAxis == 1) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λ↓r←" ESA_ID="" Type="Double" Value="137.2399" Precision="2">
+      <Variable Modifier="Public" Name="λ↓r←" ESA_ID="" Type="Double" Value="121.231" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -4288,7 +4293,7 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001037">
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="15" />
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="15" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -4296,7 +4301,7 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001038">
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="15" />
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="15" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -4304,7 +4309,7 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001039">
-        <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="15" />
+        <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="15" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -4312,7 +4317,7 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001040">
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -9047,12 +9052,36 @@ IF(BendingAxis == 1) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="MPF001_000020">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000021">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000023">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
   <Dialog>
     <Main Width="500">
-      <TEMDLoader Name="" ID="20" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="8" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="C:\Users\Avell 1513\ESA16.1\Temp\Esa_Model_Data\Beam.3900" MemberID="Beam.3900" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="" ID="20" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="8" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="" SectionID="-1" CombiID="-1" />
       <TCustomLibrary Name="" ID="6" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="4" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="CSS" DataFile="User.xml" Collapsed="True" UseCombo="True" Category="" Item="" />
       <TCheckBox Name="" ID="19" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="7" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="150|23" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="UserTable" BookMarkID="" ForeColor="-16711423" ChbRight="False">
         <Texts TranslateID="DIALOG_000019">
@@ -9125,34 +9154,34 @@ IF(BendingAxis == 1) {
     <Item TranslateID="BLOCK_INI400_000717">
       <ENU>"Classification"</ENU>
     </Item>
-    <Item TranslateID="BLOCK_INI400_000748">
+    <Item ID="BLOCK_INI400_000748">
       <ENU>"FLA"</ENU>
     </Item>
-    <Item TranslateID="BLOCK_INI400_000764">
+    <Item ID="BLOCK_INI400_000764">
       <ENU>"FLT"</ENU>
     </Item>
     <Item TranslateID="BLOCK_INI400_000794">
       <ENU>"Classification"</ENU>
     </Item>
-    <Item TranslateID="BLOCK_INI400_000796">
+    <Item ID="BLOCK_INI400_000796">
       <ENU>"FLM"</ENU>
     </Item>
-    <Item TranslateID="BLOCK_INI400_000828">
+    <Item ID="BLOCK_INI400_000828">
       <ENU>"FLA"</ENU>
     </Item>
-    <Item TranslateID="BLOCK_INI400_000887">
+    <Item ID="BLOCK_INI400_000887">
       <ENU>"FLA"</ENU>
     </Item>
-    <Item TranslateID="BLOCK_INI400_000902">
+    <Item ID="BLOCK_INI400_000902">
       <ENU>"FLT"</ENU>
     </Item>
-    <Item TranslateID="BLOCK_INI400_000907">
+    <Item ID="BLOCK_INI400_000907">
       <ENU>"FLM"</ENU>
     </Item>
-    <Item TranslateID="BLOCK_INI400_000937">
+    <Item ID="BLOCK_INI400_000937">
       <ENU>"FLA"</ENU>
     </Item>
-    <Item TranslateID="BLOCK_INI400_000971">
+    <Item ID="BLOCK_INI400_000971">
       <ENU>"FLT"</ENU>
     </Item>
     <Item ID="BLOCK_INI400_001004">
@@ -9176,40 +9205,40 @@ IF(BendingAxis == 1) {
     <Item ID="BLOCK_INI400_001057">
       <ENU>"H.2.3."</ENU>
     </Item>
-    <Item TranslateID="BLOCK_INI400_001076">
+    <Item ID="BLOCK_INI400_001076">
       <ENU>"FLM"</ENU>
     </Item>
-    <Item TranslateID="BLOCK_INI400_001107">
+    <Item ID="BLOCK_INI400_001107">
       <ENU>"FLM"</ENU>
     </Item>
-    <Item TranslateID="BLOCK_INI400_001129">
+    <Item ID="BLOCK_INI400_001129">
       <ENU>"FLA"</ENU>
     </Item>
     <Item TranslateID="BLOCK_INI400_001212">
       <ENU>"Classification"</ENU>
     </Item>
-    <Item TranslateID="BLOCK_INI400_001214">
+    <Item ID="BLOCK_INI400_001214">
       <ENU>"FLM"</ENU>
     </Item>
-    <Item TranslateID="BLOCK_INI400_001241">
+    <Item ID="BLOCK_INI400_001241">
       <ENU>"FLA"</ENU>
     </Item>
-    <Item TranslateID="BLOCK_INI400_001288">
+    <Item ID="BLOCK_INI400_001288">
       <ENU>"FLM"</ENU>
     </Item>
     <Item TranslateID="BLOCK_INI400_001383">
       <ENU>"Limitations"</ENU>
     </Item>
-    <Item TranslateID="BLOCK_INI400_001385">
+    <Item ID="BLOCK_INI400_001385">
       <ENU>"FLT"</ENU>
     </Item>
-    <Item TranslateID="BLOCK_INI400_001405">
+    <Item ID="BLOCK_INI400_001405">
       <ENU>"FLM"</ENU>
     </Item>
-    <Item TranslateID="BLOCK_INI400_001433">
+    <Item ID="BLOCK_INI400_001433">
       <ENU>"FLM"</ENU>
     </Item>
-    <Item TranslateID="BLOCK_INI400_001454">
+    <Item ID="BLOCK_INI400_001454">
       <ENU>"FLT"</ENU>
     </Item>
     <Item TranslateID="BLOCK_INI400_001480">

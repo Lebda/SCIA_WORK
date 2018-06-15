@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="044f5b82-f6bb-40f7-9cec-8570c6376a1c">
   <CodeEditor>
-    <SourceCode Collapsed="2|25|39|123|129|154|176" BreakPoints="">
+    <SourceCode Collapsed="3|26|125|131|155|156|177|178" BreakPoints="">
 
 →INI400_000001BLOCK("GetConreteCover()") { 
     object GetConcreteCover(object ConMat, object DesignDefaults) { 
@@ -119,8 +119,9 @@
         "Unevenness", null, 
         "Deviation", null, 
         "StainlessSteel", false, 
-        "AddProtection", false
-        ); 
+        "AddProtection", false, 
+        "obEWN", new object[], 
+        "Number↓EWN←", new object[]); 
     } 
 } 
 

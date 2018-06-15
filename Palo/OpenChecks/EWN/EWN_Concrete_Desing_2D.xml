@@ -16,6 +16,22 @@
       </ENU>
     </Sol>
   </Node>
+  <Node Code="E/03">
+    <Desc TranslateID="E/03_Desc">
+      <ENU>Used concrete class is not sufficient or used cement type is not allowed for selected combination of exposure class and working life.</ENU>
+    </Desc>
+    <Sol TranslateID="E/03_Sol">
+      <ENU>Increase the concrete class or change cementy type.</ENU>
+    </Sol>
+  </Node>
+  <Node Code="E/04">
+    <Desc TranslateID="E/04_Desc">
+      <ENU>Used water cement ratio vtc↓ekv← is too high for selected combination of exposure class and working life.</ENU>
+    </Desc>
+    <Sol TranslateID="E/04_Sol">
+      <ENU>Decrease the water cement ratio.</ENU>
+    </Sol>
+  </Node>
   <Node Code="W/01">
     <Desc TranslateID="W/01_Desc">
       <ENU>The applied provided reinforcement is not sufficient for some of the layers (As,prov &lt; As,req).</ENU>
@@ -29,6 +45,14 @@
       <ENU>The applied provided reinforcement exceeds the maximum limit (As,prov &gt; As,max).</ENU>
     </Desc>
     <Sol TranslateID="W/02_Sol">
+      <ENU>Increase the thickness of the member or the quality of used materials.</ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/03">
+    <Desc TranslateID="W/03_Desc">
+      <ENU>The designed required reinforcement exceeds the maximum limit (As,req &gt; As,max).</ENU>
+    </Desc>
+    <Sol TranslateID="W/03_Sol">
       <ENU>Increase the thickness of the member or the quality of used materials.</ENU>
     </Sol>
   </Node>
@@ -46,14 +70,6 @@
     </Desc>
     <Sol TranslateID="W/06_Sol">
       <ENU>Change reinforcement geometry or increase the thickness of the member.</ENU>
-    </Sol>
-  </Node>
-  <Node Code="W/03">
-    <Desc TranslateID="W/03_Desc">
-      <ENU>The designed required reinforcement exceeds the maximum limit (As,req &gt; As,max).</ENU>
-    </Desc>
-    <Sol TranslateID="W/03_Sol">
-      <ENU>Increase the thickness of the member or the quality of used materials.</ENU>
     </Sol>
   </Node>
   <Node Code="W/07">

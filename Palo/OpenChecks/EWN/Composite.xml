@@ -1,4 +1,4 @@
-<Root Type="CustomLibrary">
+﻿<Root Type="CustomLibrary">
   <Node Code="E/01">
     <Desc TranslateID="E/01_Desc">
       <ENU>The structural type of the member is not supported.</ENU>
@@ -22,15 +22,6 @@
       <ENU>The cross-section of the member is not supported.</ENU>
     </Desc>
     <Sol TranslateID="E/03_Sol">
-      <ENU>
-      </ENU>
-    </Sol>
-  </Node>
-  <Node Code="E/04">
-    <Desc TranslateID="E/04_Desc">
-      <ENU>The angle between the member and ribs of profiled steel sheeting is bigger than 10 degrees.</ENU>
-    </Desc>
-    <Sol TranslateID="E/04_Sol">
       <ENU>
       </ENU>
     </Sol>
@@ -148,6 +139,15 @@
       <ENU>Opening checks have been skipped due to collision of the opening and span geometry.</ENU>
     </Desc>
     <Sol TranslateID="E/25_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E/26">
+    <Desc TranslateID="E/26_Desc">
+      <ENU>Compression capacity of top Tee is not sufficient.</ENU>
+    </Desc>
+    <Sol TranslateID="E/26_Sol">
       <ENU>
       </ENU>
     </Sol>
@@ -404,6 +404,15 @@
       </ENU>
     </Sol>
   </Node>
+  <Node Code="W/04">
+    <Desc TranslateID="W/04_Desc">
+      <ENU>The angle between the member and ribs of profiled steel sheeting is bigger than 10 degrees.</ENU>
+    </Desc>
+    <Sol TranslateID="W/04_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
   <Node Code="W/16">
     <Desc TranslateID="W/16_Desc">
       <ENU>Maximum number of studs is exceeded.</ENU>
@@ -521,15 +530,6 @@
       </ENU>
     </Sol>
   </Node>
-  <Node Code="W/37">
-    <Desc TranslateID="W/37_Desc">
-      <ENU>Compression capacity of top Tee is not sufficient.</ENU>
-    </Desc>
-    <Sol TranslateID="W/37_Sol">
-      <ENU>
-      </ENU>
-    </Sol>
-  </Node>
   <Node Code="W/38">
     <Desc TranslateID="W/38_Desc">
       <ENU>Unsuitable classification of Top Tee.</ENU>
@@ -562,6 +562,24 @@
       <ENU>Resistance of the reinforcement is limited to resistance of the steel section.</ENU>
     </Desc>
     <Sol TranslateID="W/41_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/42">
+    <Desc TranslateID="W/42_Desc">
+      <ENU>Conditions given by EN 1994-1-1 Art. 6.6.5.7 (4) is not fulfilled, zero distance between studs in transverse direction defined.</ENU>
+    </Desc>
+    <Sol TranslateID="W/42_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/43">
+    <Desc TranslateID="W/43_Desc">
+      <ENU>Advanced composite action has been activated in 1D member properties. The check assumptions are not valid in this case. Please verify input.</ENU>
+    </Desc>
+    <Sol TranslateID="W/43_Sol">
       <ENU>
       </ENU>
     </Sol>

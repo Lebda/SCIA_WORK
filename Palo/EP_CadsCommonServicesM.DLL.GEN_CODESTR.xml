@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="14"><StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_pad_foundation}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="17"><StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_compositecolumn}</StringId>
+		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
+		<ResourceId>114</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_pad_foundation}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
 		<ResourceId>118</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_uls_design_check}</StringId>
+		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
+		<ResourceId>105</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_piledesign}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
@@ -26,6 +34,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eitm5074}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
 		<ResourceId>5074</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_fire_resistance_check}</StringId>
+		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>
+		<ResourceId>107</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{ep_cadscommonservicesm.2eids_pileplanver}</StringId>
 		<SourceDll>EP_CadsCommonServicesM.2eDLL</SourceDll>

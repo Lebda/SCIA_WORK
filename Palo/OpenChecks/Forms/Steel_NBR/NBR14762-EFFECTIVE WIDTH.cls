@@ -274,12 +274,15 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
       <Prereq />
       <Languages>
         <Language Code="ENU" LangName="English " />
+        <Language Code="PTG" LangName="Português " />
       </Languages>
       <Document TranslateID="Document">
         <ENU>http://designforms.net</ENU>
+        <PTG>http://designforms.net</PTG>
       </Document>
       <CalculationName TranslateID="CalculationName">
         <ENU>Calculation</ENU>
+        <PTG>Cálculo</PTG>
       </CalculationName>
     </Header>
     <Styles>
@@ -312,31 +315,37 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
       <Layout Active="True">
         <Names TranslateID="LAYOUT_0">
           <ENU>Layout 0</ENU>
+          <PTG>Layout 0</PTG>
         </Names>
       </Layout>
       <Layout Active="False">
         <Names TranslateID="LAYOUT_1">
           <ENU>Layout 1</ENU>
+          <PTG>Layout 1</PTG>
         </Names>
       </Layout>
       <Layout Active="False">
         <Names TranslateID="LAYOUT_2">
           <ENU>Layout 2</ENU>
+          <PTG>Layout 2</PTG>
         </Names>
       </Layout>
       <Layout Active="False">
         <Names TranslateID="LAYOUT_3">
           <ENU>Layout 3</ENU>
+          <PTG>Layout 3</PTG>
         </Names>
       </Layout>
       <Layout Active="False">
         <Names TranslateID="LAYOUT_4">
           <ENU>Layout 4</ENU>
+          <PTG>Layout 4</PTG>
         </Names>
       </Layout>
       <Layout Active="False">
         <Names TranslateID="LAYOUT_5">
           <ENU>Layout 5</ENU>
+          <PTG>Layout 5</PTG>
         </Names>
       </Layout>
     </Layouts>
@@ -1258,7 +1267,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
   </Calculation>
   <Dialog>
     <Main Width="500">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.41" SectionID="-1" CombiID="-1" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.34" SectionID="-1" CombiID="-1" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />
@@ -1267,15 +1276,19 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
   <Texts>
     <Item TranslateID="TEXT_UNK011_002088">
       <ENU>"Calculation of k according to section 9.2.3.1"</ENU>
+      <PTG>"Cálculo de k conforme a seção 9.2.3.1"</PTG>
     </Item>
     <Item TranslateID="TEXT_UNK011_002410">
       <ENU>"checking for lip reduction: No reduction is needed"</ENU>
+      <PTG>"verificação da redução do enrijecedor: Nenhuma redução é necessária"</PTG>
     </Item>
     <Item TranslateID="TEXT_UNK011_002473">
       <ENU>"Defining lip reduction: ds = " &amp; CUnit(ds, "cm") &amp; " cm"</ENU>
+      <PTG>"Definição da redução do enrijecedor: ds = " &amp; CUnit(ds, "cm") &amp; " cm"</PTG>
     </Item>
     <Item TranslateID="TEXT_UNK011_002619">
       <ENU>"Lip is not needed"</ENU>
+      <PTG>"O enrijecedor não é necessário"</PTG>
     </Item>
   </Texts>
 </Root>

@@ -389,10 +389,13 @@
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC\EC_CompositeBeam_SLS_Final.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC\EC_CompositeBeam_SLS_Final_test.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC\EC_CompositeBeam_ULS_Construction.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC\EC_CompositeBeam_ULS_Construction_Opening.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC\EC_CompositeBeam_ULS_Construction_test.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC\EC_CompositeBeam_ULS_Final.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC\EC_CompositeBeam_ULS_Final_Opening.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC\EC_CompositeBeam_ULS_Final_test.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC\EC_Composite_Beam_SEN.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC\EC_Segmented_Stud_Layout.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC\EC_Functions\CompositeGraphics.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC\EC_Functions" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC\EC_Functions\Functions_Beff.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC\EC_Functions" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC\EC_Functions\Functions_general.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Composite\EC\EC_Functions" AUTHOR="Nemetschek Scia" />
@@ -570,34 +573,66 @@
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_IBC\Functions\Functions1D_EWN.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_IBC\Functions" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_IBC\Test\EMD_test.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_IBC\Test" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\CalcShearCharFromSEN.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Calculation_of_c_nom.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\ConditionsForCss.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Forces2D.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Graphics2D.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Graphics2D_element.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Graphics2D_section.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Graphics_1_CSS_with_reinforcement.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Graphics_3_CSS_with_stress_strain_diagram.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Graphics_5_CSS_with_torsion.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Graphics_7_side_view_reinf.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Graphics_8_CSS_POD_Char.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Angle_Alpha.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Capacity_Check.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Capacity_Check_SEN.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Check_Capacity_InteractionDiagram3D.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Check_response_N_My_Mz.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Design2D_CompressStrut.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Design2D_LongReinf.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Design2D_Multi.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Design2D_SEN.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Detailing_provisions.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Detailing_provisions_Plate.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Detailing_provisions_SEN.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Detailing_provisions_Wall.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Forces2D_SEN.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Forces_2D.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Forces_Reduction_SEN.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Interaction_V_T.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Interaction_V_T_SEN.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_IntForces_SecOrderEffect.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_IntForces_SEN.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_IntForces_SEN_Check.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Reduction_SEN.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Shear_Check.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Slenderness.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Torsion_Check.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Creep_coeff_calculation.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Creep_coeff_SEN_Check.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Stress_limitation_check.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\SIA_Stress_limitation_Check_SEN.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions\CreateCs.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions\CreateCS_common.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions\CrossSection.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions\DesignRegRectForces.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions\FontsAndColors.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions\Functions1D_DesignReq.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions\Functions1D_EWN.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions\Functions1D_General.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions\Functions1D_Geometrics.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions\Functions1D_ShearAndTorsion.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions\Functions2D.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions\Functions2D_DesignCover.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions\Functions2D_DesignDefaults.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions\FunctionsDataFromSEN.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions\Functions_SIA.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions\GraphicsFunctions.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions\Header.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions\IOhelper.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions\StressStrain_Diagrams.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Functions" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Tests\Test_creep_coeff_SIA.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Concrete_SIA\Tests" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Examples\Check maximum reinforcement area.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Examples" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Examples\Check minimum reinforcement area.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Examples" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Examples\Check of member buckling.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Examples" AUTHOR="Nemetschek Scia" />
@@ -651,6 +686,7 @@
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\NBR6118\2D Members\Concrete\Functions\Functions1D_General.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\NBR6118\2D Members\Concrete\Functions" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\NBR6118\2D Members\Concrete\Functions\Functions1D_Geometrics.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\NBR6118\2D Members\Concrete\Functions" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\NBR6118\2D Members\Concrete\Functions\Functions2D.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\NBR6118\2D Members\Concrete\Functions" AUTHOR="Nemetschek Scia" />
+	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Results\0D_Reactions_SEN.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Results" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Results\1D_deformations.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Results" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Results\1D_deformationsSEN.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Results" AUTHOR="Nemetschek Scia" />
 	<Form CLS="r:\A\Bin\release32\OpenChecks\Forms\Results\1D_deformationsTEST.cls" DIR="r:\A\Bin\release32\OpenChecks\Forms\Results" AUTHOR="Nemetschek Scia" />

@@ -133,8 +133,14 @@ IF(CssConditions.ConditionsForCss) { →INI400_005944TEXT("Stress limitation che
         →KRS006_000003Input.Add("EquivMoment", false); 
         →KRS006_000004Input.Add("CalSecOrder", false); 
     } 
-    →KRS106_000004Input.Add("CompressMember", ForcesCalc.CompressMember); 
-    →KRS106_000005Input.Add("N_com", ForcesCalc.N↓com←); 
+    //for beams
+    →KRS100_000005Input.Set("MomentReduction", IO.Setup.Concrete.Solver.IntForces.ULS.MomentReductionAtSupports == 1); 
+    →KRS100_000006Input.Set("ShearReduction", IO.Setup.Concrete.Solver.IntForces.ULS.ShearForceReductionAtSupports == 1); 
+    →KRS100_000007Input.Set("TypeOfShearReduction", IO.Setup.Concrete.Solver.IntForces.ULS.TypeOfShearForceReductionAtSupports); 
+    →KRS100_000008Input.Set("UseShifting", IO.Setup.Concrete.Solver.IntForces.ULS.UseShifting == 1); 
+    
+    →KRS106_000004Input.Add("Coeff_com", IO.Setup.Concrete.Solver.General.Coeffcom); 
+    
     // is loaded in non sen template...    
     →INI400_012834Input.Add("XC", null); 
     →INI400_012835Input.Add("XD", null); 
@@ -1620,7 +1626,7 @@ IF(CssConditions.ConditionsForCss) { →INI400_005944TEXT("Stress limitation che
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000004">
+      <VC ID="KRS100_000005">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1628,7 +1634,31 @@ IF(CssConditions.ConditionsForCss) { →INI400_005944TEXT("Stress limitation che
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000005">
+      <VC ID="KRS100_000006">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000007">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000008">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000004">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1769,7 +1799,7 @@ IF(CssConditions.ConditionsForCss) { →INI400_005944TEXT("Stress limitation che
   </Calculation>
   <Dialog>
     <Main Width="500">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.84|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.12" SectionID="-1" CombiID="-1" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.84|0|3" Active="1" PreDef="0" MemberDirectory="D:\_VERSIONS\Rel_18_0_patch_1_bugfix\TEMP\Esa_Model_Data\Beam.4" MemberID="Beam.4" SectionID="0" CombiID="0" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />

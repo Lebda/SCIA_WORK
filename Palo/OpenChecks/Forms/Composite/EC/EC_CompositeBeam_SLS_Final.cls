@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="15898f18-ae32-4c0a-9126-3160379df0a5">
   <CodeEditor>
-    <SourceCode Collapsed="31|51|88|122|170|208|265|314|351|372|383|412|460" BreakPoints="">//EC_CompositeBeam_SLS_Final.cls
+    <SourceCode Collapsed="31|51|88|122|170|207|267|316|353|374|385|412|460" BreakPoints="">//EC_CompositeBeam_SLS_Final.cls
 
 
 class SLSFinalStageCheck { 
@@ -130,7 +130,7 @@ class SLSFinalStageCheck {
         →KRS014_001326double&lt;mm,-1&gt; δ↓z,cam←; 
         →KRS014_001327double&lt;mm,-1&gt; δ↓z,cam,max←; 
         double&lt;,0&gt; δ↓z,lim,coef← →KRS014_001328= 1/DataExchange.LimitTotalFin; 
-        →KRS014_002395DataExchange.Set("d_x_tot_uz", 2.5); 
+        
         IF(IO.IsDrawing) { 
             string sText →KRS014_002113= TR("Total load deflection check"); 
             →KRS014_002114TEXT(CN &amp; "." &amp; SCN &amp; " " &amp; sText); 
@@ -173,6 +173,7 @@ class SLSFinalStageCheck {
     
     public void VibrationCheck(double CN, double SCN, out double UC↓vib←) { 
         →KRS014_002119double&lt;mm,-2&gt; δ↓z,per← →KRS014_002120= DataExchange.SLS_Fin_Permanent_Deflections.uz; 
+        →KRS100_000001double&lt;mm,-2&gt; δ↓z,live← →KRS100_000002= DataExchange.SLS_Fin_Live_Deflections.uz; 
         →KRS014_002121double&lt;,-2&gt; UC↓vib←; 
         →KRS014_002122double f; 
         →KRS014_002133double f↓min← →KRS014_002134= 4; 
@@ -184,32 +185,30 @@ class SLSFinalStageCheck {
         } 
         
         
-        IF(COMPARE(δ↓z,per←, 0, 6) == 0) { 
+        IF(COMPARE(δ↓z,per←+0.1*δ↓z,live←, 0, 6) == 0) { 
             UC↓vib← →KRS014_002124= 0; 
             →KRS014_002125TEXT("Natural frequency check is adequate."); 
         } ELSE { 
             →KRS014_002123TEXT("Natural frequency"); 
-            f →KRS014_002126= 18/SQRT(ABS(CUnit(δ↓z,per←, "mm"))); 
+            f →KRS014_002126= 18/SQRT(ABS(CUnit(δ↓z,per←, "mm")+0.1*[CUnit(δ↓z,live←, "mm")])); 
             UC↓vib← →KRS014_002128= f↓min←/f; 
-            IF(IO.IsDrawing) { 
-                IF(COMPARE(UC↓vib←, 1, 6) != 1) { 
-                    →KRS014_002232TEXT("≤ 1"); 
-                    →KRS014_002131TEXT("OK"); 
-                    →KRS014_002132TEXT("Natural frequency check is adequate."); 
-                } ELSE { 
-                    →KRS014_002233TEXT("&gt; 1"); 
-                    →KRS014_002129TEXT("NOT OK"); 
-                    →KRS014_002130TEXT("Natural frequency check is not adequate."); 
-                    IF(DataExchange.CalcApproach == 0) { //warning for design only
-                        →KRS014_002734Functions_general.AddEWN(DataExchange, "W/31"); //Vibration check is greater than 1 and it can not be changed by design. Please check and modify your calculation setting.
-                    } 
+            IF(COMPARE(UC↓vib←, 1, 6) != 1) { 
+                →KRS014_002232TEXT("≤ 1"); 
+                →KRS014_002131TEXT("OK"); 
+                →KRS014_002132TEXT("Natural frequency check is adequate."); 
+            } ELSE { 
+                →KRS014_002233TEXT("&gt; 1"); 
+                →KRS014_002129TEXT("NOT OK"); 
+                →KRS014_002130TEXT("Natural frequency check is not adequate."); 
+                IF(DataExchange.CalcApproach == 0) { //warning for design only
+                    →KRS014_002734Functions_general.AddEWN(DataExchange, "W/31"); //Vibration check is greater than 1 and it can not be changed by design. Please check and modify your calculation setting.
                 } 
             } 
         } 
         →KRS014_002135PAGEBREAK(); 
     } 
     
-    public void CrackingMinimumReinf(double CN, double SCN, out double UC↓CCR←) { 
+    public void CrackingMinimumReinf(double CN, double SCN, out double UC↓CC←) { 
         →KRS014_002160double&lt;m,-2&gt; b↓eff← →KRS014_002161= DataExchange.b_eff_max; 
         →KRS014_002163double&lt;GPa,2&gt; E↓b← →KRS014_002164= DataExchange.E_b; 
         →KRS014_002165double&lt;GPa,2&gt; E↓cm← →KRS014_002166= DataExchange.E_cm; 
@@ -230,7 +229,7 @@ class SLSFinalStageCheck {
         →KRS014_002221double&lt;MPa,2&gt; σ↓s←; 
         →KRS014_002222double&lt;mm↑2←,2&gt; A↓s,min←; 
         →KRS014_002231double&lt;mm↑2←,2&gt; A↓s←; 
-        →KRS014_002341double&lt;,-2&gt; UC↓CCR←; 
+        →KRS014_002341double&lt;,-2&gt; UC↓CC←; 
         
         IF(IO.IsDrawing) { 
             string sText →KRS014_002147= TR("Minimum reinforcement"); 
@@ -251,17 +250,20 @@ class SLSFinalStageCheck {
         →KRS014_002223TEXT("Provided reinforcement"); 
         A↓s← →KRS014_002224= (b↓eff←/s↓l←)*(d↓l←↑2←/4)*π; 
         
-        UC↓CCR← →KRS014_002234= A↓s,min←/A↓s←; 
-        IF(IO.IsDrawing) { 
-            IF(COMPARE(UC↓CCR←, 1, 6) != 1) { 
-                →KRS014_002235TEXT("≤ 1"); 
-                →KRS014_002236TEXT("OK"); 
-                →KRS014_002237TEXT("The cracking reinforcement of the section is adequate."); 
-            } ELSE { 
-                →KRS014_002238TEXT("&gt; 1"); 
-                →KRS014_002239TEXT("NOT OK"); 
-                →KRS014_002240TEXT("The cracking reinforcement of the section is not adequate."); 
+        UC↓CC← →KRS014_002234= A↓s,min←/A↓s←; 
+        //  IF(IO.IsDrawing) { 
+        IF(COMPARE(UC↓CC←, 1, 6) != 1) { 
+            →KRS014_002235TEXT("≤ 1"); 
+            →KRS014_002236TEXT("OK"); 
+            →KRS014_002237TEXT("The cracking reinforcement of the section is adequate."); 
+        } ELSE { 
+            →KRS014_002238TEXT("&gt; 1"); 
+            →KRS014_002239TEXT("NOT OK"); 
+            →KRS014_002240TEXT("The cracking reinforcement of the section is not adequate."); 
+            IF(DataExchange.CalcApproach == 0) { //warning for design only
+                →KRS106_000001Functions_general.AddEWN(DataExchange, "W/32"); //Cracking of concrete check is greater than 1 and it can not be changed by design. Please check and modify your calculation setting.
             } 
+            //     } 
         } 
         →KRS014_002241PAGEBREAK(); 
     } 
@@ -390,27 +392,25 @@ class SLSFinalStageCheck {
             string sText →KRS014_002142= TR("Cracking of concrete"); 
             →KRS014_002143TEXT(CN &amp; "." &amp; SCN &amp; " " &amp; sText); 
         } 
-        →KRS014_002144CrackingMinimumReinf(CN, SCN, out UC↓CCR←); 
-        IF(COMPARE(DataExchange.SLS_Fin_Forces.My, 0, 6) == -1) { 
-            →KRS014_002145CrackingMaxDiameter(CN, SCN, out UC↓CCD←); 
-            →KRS014_002146CrackingMaxSpacing(CN, SCN, out UC↓CCS←); 
-        } 
-        UC↓CC← →KRS014_002311= MAX(UC↓CCR←, MIN(UC↓CCD←, UC↓CCS←)); 
-        IF(IO.IsDrawing) { 
-            IF(COMPARE(UC↓CC←, 1, 6) != 1) { 
-                →KRS014_002313TEXT("≤ 1"); 
-                →KRS014_002314TEXT("OK"); 
-                →KRS014_002315TEXT("The cracking of concrete check is adequate."); 
-            } ELSE { 
-                →KRS014_002316TEXT("&gt; 1"); 
-                →KRS014_002317TEXT("NOT OK"); 
-                →KRS014_002318TEXT("The cracking of concrete check is not adequate."); 
-                IF(DataExchange.CalcApproach == 0) { //warning for design only
-                    →KRS014_002735Functions_general.AddEWN(DataExchange, "W/32"); //Cracking of concrete check is greater than 1 and it can not be changed by design. Please check and modify your calculation setting.
-                } 
-            } 
-        } 
-        →KRS014_002319PAGEBREAK(); 
+        →KRS014_002144CrackingMinimumReinf(CN, SCN, out UC↓CC←); 
+        //        IF(COMPARE(DataExchange.SLS_Fin_Forces.My, 0, 6) == -1) { //keep this for future development
+        //            →KRS014_002145CrackingMaxDiameter(CN, SCN, out UC↓CCD←); 
+        //            →KRS014_002146CrackingMaxSpacing(CN, SCN, out UC↓CCS←); 
+        //        } 
+        //        UC↓CC← →KRS014_002311= MAX(UC↓CCR←, MIN(UC↓CCD←, UC↓CCS←)); 
+        //        IF(COMPARE(UC↓CC←, 1, 6) != 1) { 
+        //            →KRS014_002313TEXT("≤ 1"); 
+        //            →KRS014_002314TEXT("OK"); 
+        //            →KRS014_002315TEXT("The cracking of concrete check is adequate."); 
+        //        } ELSE { 
+        //            →KRS014_002316TEXT("&gt; 1"); 
+        //            →KRS014_002317TEXT("NOT OK"); 
+        //            →KRS014_002318TEXT("The cracking of concrete check is not adequate."); 
+        //            IF(DataExchange.CalcApproach == 0) { //warning for design only
+        //                →KRS014_002735Functions_general.AddEWN(DataExchange, "W/32"); //Cracking of concrete check is greater than 1 and it can not be changed by design. Please check and modify your calculation setting.
+        //            } 
+        //        } 
+        //        →KRS014_002319PAGEBREAK(); 
     } 
     
     private void PrintStandardOutput() { 
@@ -434,7 +434,7 @@ class SLSFinalStageCheck {
             T[3][1].Value →KRS014_001344= "UC↓vib←"; 
             T[3][2].Value →KRS014_002327= UC↓vib←.ToString("0.00"); 
             
-            T[4][0].Value →KRS014_002328= TR("Cracking of concrete"); 
+            T[4][0].Value →KRS014_002328= TR("Minimal reinforcement for cracking"); 
             T[4][1].Value →KRS014_001345= "UC↓CC←"; 
             T[4][2].Value →KRS014_002329= UC↓CC←.ToString("0.00"); 
             
@@ -1575,22 +1575,6 @@ class SLSFinalStageCheck {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002145">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_002146">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-      </VC>
       <VC ID="KRS014_002147">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2271,70 +2255,6 @@ class SLSFinalStageCheck {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002311">
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_002313">
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_002314">
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_002315">
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_002316">
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_002317">
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_002318">
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_002319">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-      </VC>
       <VC ID="KRS014_002320">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2511,14 +2431,6 @@ class SLSFinalStageCheck {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002395">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="KRS014_002396">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
@@ -2528,14 +2440,6 @@ class SLSFinalStageCheck {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
       </VC>
       <VC ID="KRS014_002734">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_002735">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2558,6 +2462,22 @@ class SLSFinalStageCheck {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS106_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="UNK000_019243">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2605,6 +2525,9 @@ class SLSFinalStageCheck {
     </Item>
     <Item TranslateID="STRING_6FDC6F28">
       <ENU>"Total load deflection check"</ENU>
+    </Item>
+    <Item TranslateID="STRING_7DD6CD7E">
+      <ENU>"Minimal reinforcement for cracking"</ENU>
     </Item>
     <Item TranslateID="STRING_844ABDD7">
       <ENU>"SLS check of Final stage"</ENU>
@@ -2803,24 +2726,6 @@ class SLSFinalStageCheck {
     </Item>
     <Item TranslateID="TEXT_KRS014_002306">
       <ENU>"The reinforcement bar spacing is not adequate."</ENU>
-    </Item>
-    <Item ID="TEXT_KRS014_002313">
-      <ENU>"≤ 1"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_KRS014_002314">
-      <ENU>"OK"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_KRS014_002315">
-      <ENU>"The cracking of concrete check is adequate."</ENU>
-    </Item>
-    <Item ID="TEXT_KRS014_002316">
-      <ENU>"&gt; 1"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_KRS014_002317">
-      <ENU>"NOT OK"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_KRS014_002318">
-      <ENU>"The cracking of concrete check is not adequate."</ENU>
     </Item>
   </Texts>
 </Root>

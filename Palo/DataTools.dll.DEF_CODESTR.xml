@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="35"><StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2edescription.2en07}</StringId>
-		<SourceDll>DataTools.2edll</SourceDll>
-		<ResourceId>109</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2edescription.2en13}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="35"><StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2edescription.2en13}</StringId>
 		<SourceDll>DataTools.2edll</SourceDll>
 		<ResourceId>117</ResourceId>
 	</StringCode>
@@ -82,6 +78,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2esolution.2en07}</StringId>
 		<SourceDll>DataTools.2edll</SourceDll>
 		<ResourceId>110</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2ellr.2edescription.2en07}</StringId>
+		<SourceDll>DataTools.2edll</SourceDll>
+		<ResourceId>109</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{datatools.2eibc.2efv.2edescription.2ee01}</StringId>
 		<SourceDll>DataTools.2edll</SourceDll>

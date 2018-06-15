@@ -21,8 +21,9 @@
         ErrorValue →INI400_011650= Input.Get("ErrorValue"); //Error value for checks
         Type↓fct,eff← →INI400_011651= Input.Get("Type_fct_eff"); //Concrete tensile strength used for calculation of f↓ct,eff← (0 = fctm, 1 = fctm,fl)
         φ →INI400_011654= Input.Get("φ"); //Creep coefficient
-        bSLSChar →INI400_011655= Input.Get("SLSChar"); //True - SLSChar used for determination type of combination
+        bSLSFreq →INI400_011655= Input.Get("SLSFreq"); //True - SLSFreq used for determination type of combination
         bSLSQP →INI400_011656= Input.Get("SLSQP"); //True - SLSQP used for determination type of combination
+        CombiType →RFM116_002135= Input.Get("CombiType"); //
         bIsLongTerm →INI400_011661= Input.Get("IsLongTerm"); //True - Long term effect, False - Shortterm effect
         State →INI400_011662= Input.Get("State"); //string type of stress limitation check, generally "Short" or "long"
         StateText →INI400_013608= Input.Get("StateText"); 
@@ -194,14 +195,14 @@ IF(IO.IsDrawing) {
 
 →INI400_005939BLOCK { 
     //Test for type of combination - SLS Char, Fre of QP from SEN
-    IF(!bSLSChar) { 
+    IF(!bSLSFreq &amp;&amp; (CombiType == 1 || CombiType == 3 || CombiType == 8)) { 
         bool W5↓3← →INI400_006154= true; 
         Number↓N← →INI400_006155= Number↓N←+1; 
         →INI400_006156StructEWN.Add(new Structure("Index", "W5/3", "Type", TR("Note"), "Description", TR("The selected combination is not serviceability - characteristic"), "Solution", TR("Please change type of combination to serviceability - characteristic."))); 
     } ELSE { 
         bool W5↓3← →INI400_006157= false; 
     } 
-    IF(!bSLSQP) { 
+    IF(!bSLSQP &amp;&amp; (CombiType == 1 || CombiType == 3 || CombiType == 8)) { 
         bool W5↓4← →INI400_006158= true; 
         Number↓N← →INI400_006159= Number↓N←+1; 
         →INI400_006160StructEWN.Add(new Structure("Index", "W5/4", "Type", TR("Note"), "Description", TR("The selected combination is not serviceability - quasi-permanent"), "Solution", TR("Please change type of combination to serviceability - quasi-permanent."))); 
@@ -269,14 +270,25 @@ object Functions1D_General →INI400_012824= LoadExternCLC(Tools.Dir_Forms &amp;
     IF(IO.Contains("Load")) { 
         object IniForces →INI400_013600= Concrete.GetForces(InitialForcesID); 
         →INI400_007034TEXT("From FEM analysis"); 
-        →INI400_007058TEXT("Characteristic values:"); 
-        →INI400_001117TEXT("N = " &amp; Val(IniForces.N/1000, 2) &amp; " kN"); 
-        →INI400_001312TEXT("M↓y← = " &amp; Val(IniForces.My/1000, 2) &amp; " kNm"); 
-        →INI400_001291TEXT("M↓z← = " &amp; Val(IniForces.Mz/1000, 2) &amp; " kNm"); 
-        →INI400_007059TEXT("Quasi-permanent values:"); 
-        →INI400_007055TEXT("N↓qp← = " &amp; Val(IniForces.N/1000, 2) &amp; " kN"); 
-        →INI400_007056TEXT("M↓y,qp← = " &amp; Val(IniForces.My/1000, 2) &amp; " kNm"); 
-        →INI400_007057TEXT("M↓z,qp← = " &amp; Val(IniForces.Mz/1000, 2) &amp; " kNm"); 
+        IF(CombiType == 1 || CombiType == 3 || CombiType == 8) { 
+            →INI400_007058TEXT("Characteristic values:"); 
+            →INI400_001117TEXT("N = " &amp; Val(IniForces.N/1000, 2) &amp; " kN"); 
+            →INI400_001312TEXT("M↓y← = " &amp; Val(IniForces.My/1000, 2) &amp; " kNm"); 
+            →INI400_001291TEXT("M↓z← = " &amp; Val(IniForces.Mz/1000, 2) &amp; " kNm"); 
+        } ELSE { 
+            IF(bSLSFreq) { 
+                →RFM116_002136TEXT("Frequent values:"); 
+                →RFM116_002137TEXT("N↓fq← = " &amp; Val(IniForces.N/1000, 2) &amp; " kN"); 
+                →RFM116_002138TEXT("M↓y,fq← = " &amp; Val(IniForces.My/1000, 2) &amp; " kNm"); 
+                →RFM116_002139TEXT("M↓z,fq← = " &amp; Val(IniForces.Mz/1000, 2) &amp; " kNm"); 
+            } ELSE { 
+                →INI400_007059TEXT("Quasi-permanent values:"); 
+                →INI400_007055TEXT("N↓qp← = " &amp; Val(IniForces.N/1000, 2) &amp; " kN"); 
+                →INI400_007056TEXT("M↓y,qp← = " &amp; Val(IniForces.My/1000, 2) &amp; " kNm"); 
+                →INI400_007057TEXT("M↓z,qp← = " &amp; Val(IniForces.Mz/1000, 2) &amp; " kNm"); 
+            } 
+        } 
+        
         →INI400_005571TEXT("Angle of bending moment resultant:"); 
         IF(COMPARE(IniForces.My, 0, 3) == 0) { 
             α↓Μ← →INI400_005572= 0; 
@@ -298,14 +310,25 @@ object Functions1D_General →INI400_012824= LoadExternCLC(Tools.Dir_Forms &amp;
         } 
         →INI400_005944TEXT("Recalculation bending moments"); 
         →KRS106_000023Functions1D_General.RecalcBendingMomentsInfo(MemberType, CompressMember, CalSecOrder, CalcImp); 
-        →INI400_007060TEXT("Characteristic values:"); 
-        →INI400_007045TEXT("N↓char,r← = " &amp; N↓char←); 
-        →INI400_007046TEXT("M↓y,char,r← = " &amp; M↓y,char←); 
-        →INI400_007047TEXT("M↓z,char,r← = " &amp; M↓z,char←); 
-        →INI400_007061TEXT("Quasi-permanent values:"); 
-        →INI400_007062TEXT("N↓qp,r← = " &amp; N↓qp←); 
-        →INI400_007063TEXT("M↓y,qp,r← = " &amp; M↓y,qp←); 
-        →INI400_007064TEXT("M↓z,qp,r← = " &amp; M↓z,qp←); 
+        IF(CombiType == 1 || CombiType == 3 || CombiType == 8) { 
+            →INI400_007060TEXT("Characteristic values:"); 
+            →INI400_007045TEXT("N↓char,r← = " &amp; N↓char←); 
+            →INI400_007046TEXT("M↓y,char,r← = " &amp; M↓y,char←); 
+            →INI400_007047TEXT("M↓z,char,r← = " &amp; M↓z,char←); 
+        } ELSE { 
+            IF(bSLSFreq) { 
+                →RFM116_002140TEXT("Frequent values:"); 
+                →RFM116_002141TEXT("N↓qp,r← = " &amp; N↓char←); 
+                →RFM116_002142TEXT("M↓y,qp,r← = " &amp; M↓y,char←); 
+                →RFM116_002143TEXT("M↓z,qp,r← = " &amp; M↓z,char←); 
+            } ELSE { 
+                →INI400_007061TEXT("Quasi-permanent values:"); 
+                →INI400_007062TEXT("N↓qp,r← = " &amp; N↓qp←); 
+                →INI400_007063TEXT("M↓y,qp,r← = " &amp; M↓y,qp←); 
+                →INI400_007064TEXT("M↓z,qp,r← = " &amp; M↓z,qp←); 
+            } 
+        } 
+        
         →INI400_007065TEXT("Angle of bending moment resultant:"); 
         IF(COMPARE(M↓y,qp←, 0, 3) == 0) { 
             α↓Μ,r← →INI400_007066= 0; 
@@ -737,7 +760,7 @@ IF(!IO.IsStandalone) {
         } 
     } 
 } ELSE { 
-    IF(bSLSChar) { 
+    IF(bSLSFreq) { 
         UC↓qp← →RFM116_002131= 0; 
         σ↓s,qp,lim← →RFM116_002132= 0; 
     } 
@@ -1469,9 +1492,9 @@ IF(PrintEWN &amp;&amp; Count↓EWN← &gt; 0 &amp;&amp; IO.IsDrawing &amp;&amp; 
           <ENU>Print pictures</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="bSLSChar" ESA_ID="" Type="Boolean">
+      <Variable Modifier="Public" Name="bSLSFreq" ESA_ID="" Type="Boolean">
         <Description>
-          <ENU>Characteristc Comb.</ENU>
+          <ENU>Frequent Comb.</ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="bSLSQP" ESA_ID="" Type="Boolean">
@@ -9835,6 +9858,78 @@ IF(PrintEWN &amp;&amp; Count↓EWN← &gt; 0 &amp;&amp; IO.IsDrawing &amp;&amp; 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="RFM116_002135">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM116_002136">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="51.9" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|16|0|2" Font2="Segoe UI|16|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="162" Hor="0" Ver="4" SpX="2" SpY="5" Font1="Segoe UI|16|0|2" Font2="Segoe UI|16|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="109" Hor="0" Ver="4" SpX="2" SpY="10" Font1="Segoe UI|16|0|2" Font2="Segoe UI|16|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="RFM116_002137">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="40.6" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 3" EqStyle="4" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="182" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="128" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="RFM116_002138">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="107" Y="40.6" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 3" EqStyle="4" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="92.3" Y="182" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="92.3" Y="128" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="RFM116_002139">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="203" Y="40.6" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 3" EqStyle="4" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="196" Y="182" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="188" Y="128" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="RFM116_002140">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="51.9" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|16|0|2" Font2="Segoe UI|16|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="162" Hor="0" Ver="4" SpX="2" SpY="5" Font1="Segoe UI|16|0|2" Font2="Segoe UI|16|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="109" Hor="0" Ver="4" SpX="2" SpY="10" Font1="Segoe UI|16|0|2" Font2="Segoe UI|16|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="RFM116_002141">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="40.6" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 3" EqStyle="4" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="182" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="128" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="RFM116_002142">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="107" Y="40.6" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 3" EqStyle="4" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="92.3" Y="182" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="92.3" Y="128" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="RFM116_002143">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="203" Y="40.6" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 3" EqStyle="4" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="196" Y="182" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="188" Y="128" Hor="4" Ver="2" SpX="10" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
@@ -9895,7 +9990,7 @@ IF(PrintEWN &amp;&amp; Count↓EWN← &gt; 0 &amp;&amp; IO.IsDrawing &amp;&amp; 
               </ENU>
             </Texts>
           </TCheckBox>
-          <TComboBox Name="" ID="38" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="8" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Type↓fct,eff←" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1" Index="1">
+          <TComboBox Name="" ID="38" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="8" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Type↓fct,eff←" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1" Index="0">
             <Texts TranslateID="DIALOG_000038">
               <ENU>fctm|fctd</ENU>
             </Texts>
@@ -9906,13 +10001,13 @@ IF(PrintEWN &amp;&amp; Count↓EWN← &gt; 0 &amp;&amp; IO.IsDrawing &amp;&amp; 
               </ENU>
             </Texts>
           </TCheckBox>
-          <TCheckBox Name="" ID="31" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="150|23" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="bSLSChar" BookMarkID="" ForeColor="-16711423" ChbRight="False">
+          <TCheckBox Name="" ID="31" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="150|23" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="" BookMarkID="" ForeColor="-16711423" ChbRight="False">
             <Texts TranslateID="DIALOG_000031">
               <ENU>
               </ENU>
             </Texts>
           </TCheckBox>
-          <TComboBox Name="" ID="34" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="4" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Reqmts" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1|2" Index="1">
+          <TComboBox Name="" ID="34" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="4" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Reqmts" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1|2" Index="0">
             <Texts TranslateID="DIALOG_000034">
               <ENU>Normal|Increased|High</ENU>
             </Texts>
@@ -10234,6 +10329,9 @@ IF(PrintEWN &amp;&amp; Count↓EWN← &gt; 0 &amp;&amp; IO.IsDrawing &amp;&amp; 
     <Item TranslateID="STRING_F5A71212">
       <ENU>"The selected combination is not serviceability - quasi-permanent"</ENU>
     </Item>
+    <Item TranslateID="TEXT_">
+      <ENU>"M↓z,qp,r← = " &amp; M↓z,qp←</ENU>
+    </Item>
     <Item ID="TEXT_INI400_000325">
       <ENU>"N↓d← &lt; N↓com← = " &amp; N↓char← &amp; " &lt; " &amp; N↓com← &amp; " ... "</ENU>
     </Item>
@@ -10455,6 +10553,30 @@ IF(PrintEWN &amp;&amp; Count↓EWN← &gt; 0 &amp;&amp; IO.IsDrawing &amp;&amp; 
     </Item>
     <Item TranslateID="TEXT_RFM116_001957">
       <ENU>"High"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RFM116_002136">
+      <ENU>"Frequent values:"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RFM116_002137">
+      <ENU>"N↓fq← = " &amp; Val(IniForces.N/1000, 2) &amp; " kN"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RFM116_002138">
+      <ENU>"M↓y,fq← = " &amp; Val(IniForces.My/1000, 2) &amp; " kNm"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RFM116_002139">
+      <ENU>"M↓z,fq← = " &amp; Val(IniForces.Mz/1000, 2) &amp; " kNm"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RFM116_002140">
+      <ENU>"Frequent values:"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RFM116_002141">
+      <ENU>"N↓qp,r← = " &amp; N↓char←</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RFM116_002142">
+      <ENU>"M↓y,qp,r← = " &amp; M↓y,char←</ENU>
+    </Item>
+    <Item TranslateID="TEXT_RFM116_002143">
+      <ENU>"M↓z,qp,r← = " &amp; M↓z,char←</ENU>
     </Item>
   </Texts>
 </Root>

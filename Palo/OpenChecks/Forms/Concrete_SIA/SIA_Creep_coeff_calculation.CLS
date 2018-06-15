@@ -38,6 +38,7 @@
 
 →RFM116_000004double φ↓RH← →RFM116_000113= 0; 
 →RFM116_000111double β↓fc← →RFM116_000114= 0; 
+double t↓0← →RFM100_000003= 0; 
 double Number↓E← →INI400_001772= 0; 
 double Number↓W← →INI400_001773= 0; 
 double Number↓N← →INI400_001774= 0; 
@@ -54,10 +55,13 @@ object ExternCreateCS →DLO134_013844= LoadExternCLC(Tools.Dir_Forms &amp; "Con
 object CrossSection →DLO134_013845= →DLO134_013846ExternCreateCS.CreateCS_ULS(CssID, Forces, False); 
 
 ConMat →DLO134_013847= CrossSection.GetMaterialForComponent(0); 
-
-double f↓ck← →DLO134_004169= ConMat.SIA.fck; 
-double f↓cm← →DLO134_006004= ConMat.SIA.fcm; 
-
+IF(!IO.IsStandalone) { 
+    double f↓ck← →DLO134_004169= ConMat.SIA.fck; 
+    double f↓cm← →DLO134_006004= ConMat.SIA.fcm; 
+} ELSE { 
+    double f↓ck← →RFM100_000001= ConMat.fck; 
+    double f↓cm← →RFM100_000002= ConMat.fcm; 
+} 
 e →DLO134_011037= Math.E; 
 
 →DLO134_003583BLOCK { 
@@ -84,7 +88,7 @@ e →DLO134_011037= Math.E;
 } 
 →DLO134_006036PAGEBREAK(); 
 
-double t↓0← →DLO134_004070= t↓0,input←; 
+t↓0← →DLO134_004070= t↓0,input←; 
 
 →DLO134_003916BLOCK("Material characteristics:") { 
     →DLO134_004144BLOCK { 
@@ -118,7 +122,7 @@ double t↓0← →DLO134_004070= t↓0,input←;
     →RFM116_000125PAGEBREAK(); 
     
     →RFM116_000110TEXT("Factor to account for the concrete strength"); 
-    β↓fc← →RFM116_000112= FunctionSIA.GetInterpBetaFC(double f↓ck←, out info) @REF("(3.1.2.6.2(Tab.4))"); 
+    β↓fc← →RFM116_000112= FunctionSIA.GetInterpBetaFC(double f↓cm←, out info) @REF("(3.1.2.6.2(Tab.4))"); 
     
     IF(info == 0) { 
         string DescriptionN →INI400_006443= TR("Concrete material is not in accordance with SIA262: 3.1.2.2(Tab.3)."); 
@@ -132,7 +136,7 @@ double t↓0← →DLO134_004070= t↓0,input←;
     →RFM116_000126PAGEBREAK(); 
     
     →RFM116_000119TEXT("Factor to account for the age of the concrete at initial loading"); 
-    double β↓(t0)← →RFM116_000116= FunctionSIA.GetBetaT0(CementClass, t↓0,input←) @REF("(3.1.2.6.2(Fig.2))"); 
+    double β↓(t0)← →RFM116_000116= FunctionSIA.GetBetaT0(CementClass, t↓0←) @REF("(3.1.2.6.2(Fig.2))"); 
     →RFM116_000127PAGEBREAK(); 
     
     →RFM116_000120TEXT("Factor to account for the duration of loading"); 
@@ -383,7 +387,7 @@ IF(IO.IsDrawing) {
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="fck" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_fck">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -1691,14 +1695,6 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="27.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="27.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_013837">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="14.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="16.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="16.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="17.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="14.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-      </VC>
       <VC ID="DLO134_013840">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1851,6 +1847,30 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="RFM100_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM100_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM100_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="RFM116_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1864,14 +1884,6 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM116_000108">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
@@ -2023,746 +2035,7 @@ IF(IO.IsDrawing) {
     <Images />
   </Calculation>
   <Dialog>
-    <Main Width="500">
-      <TCustomLibrary Name="" ID="20" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="7" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="SetupNA" DataFile="EC_NA.xml" Collapsed="True" UseCombo="True" Category="Eurocode NA" Item="Standard EN">
-        <Data>
-          <Header>
-            <PropertySet Symbol="Code" ESA_ID="EC_NA.Code" Unit="" Type="String" />
-            <PropertySet Symbol="Index" ESA_ID="EC_NA.Index" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1990 - Name" ESA_ID="EC_1990.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1991.1.1 - Name" ESA_ID="EC_1991_1_1.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1991.1.2 - Name" ESA_ID="EC_1991_1_2.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1991.1.3 - Name" ESA_ID="EC_1991_1_3.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1991.1.3 - AnnexA" ESA_ID="EC_1991_1_3.AnnexA" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1991.1.3 - s↓k←" ESA_ID="EC_1991_1_3.s_k" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1991.1.3 - C↓esl←" ESA_ID="EC_1991_1_3.C_esl" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="Use_C_esl" Type="Bool" Unit="" />
-                <StructMember Symbol="C_esl" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1991.1.3 - SnowRedi" ESA_ID="EC_1991_1_3.Snow_Redi" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1991.1.3 - C↓e←" ESA_ID="EC_1991_1_3.C_e" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1991.1.3 - C↓t←" ESA_ID="EC_1991_1_3.C_t" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1991.1.3 - μ↓1←" ESA_ID="EC_1991_1_3.μ_1_pitched" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1991.1.3 - Annex B" ESA_ID="EC_1991_1_3.Annex_B_5_3_4_3" Unit="" Type="Bool" />
-            <PropertySet Symbol="EC 1991.1.3 - μ↓2←" ESA_ID="EC_1991_1_3.μ_2" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1991.1.3 - μ↓3,max←" ESA_ID="EC_1991_1_3.μ_3_max" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1991.1.3 - μ↓3←" ESA_ID="EC_1991_1_3.μ_3" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1991.1.3 - μ↓W←, l↓s←" ESA_ID="EC_1991_1_3.μ_W" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="μ_W_min" Type="Numeric" Unit="" />
-                <StructMember Symbol="μ_W_max" Type="Numeric" Unit="" />
-                <StructMember Symbol="l_s_min" Type="Numeric" Unit="m" />
-                <StructMember Symbol="l_s_max" Type="Numeric" Unit="m" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1991.1.3 - Annex B" ESA_ID="EC_1991_1_3.Annex_B_5_3_6_3" Unit="" Type="Bool" />
-            <PropertySet Symbol="EC 1991.1.3 - Annex B" ESA_ID="EC_1991_1_3.Annex_B_6_2_2" Unit="" Type="Bool" />
-            <PropertySet Symbol="EC 1991.1.3 - Usage" ESA_ID="EC_1991_1_3.Usage_6_2_2" Unit="" Type="Bool" />
-            <PropertySet Symbol="EC 1991.1.3 - k" ESA_ID="EC_1991_1_3.k" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1991.1.4 - Name" ESA_ID="EC_1991_1_4.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1991.1.4 - v↓m←" ESA_ID="EC_1991_1_4.v_m" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1991.1.4 - v↓b,0←" ESA_ID="EC_1991_1_4.v_b_0" Unit="m/s" Type="Numeric" />
-            <PropertySet Symbol="EC 1991.1.4 - c↓dir←" ESA_ID="EC_1991_1_4.c_dir" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1991.1.4 - c↓season←" ESA_ID="EC_1991_1_4.c_season" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1991.1.4 - K, n" ESA_ID="EC_1991_1_4.K_n" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="K" Type="Numeric" Unit="" />
-                <StructMember Symbol="n" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1991.1.4 - DesChar" ESA_ID="EC_1991_1_4.Des_Char" Unit="" Type="Bool" />
-            <PropertySet Symbol="EC 1991.1.4 - c↓r←(z)" ESA_ID="EC_1991_1_4.c_r" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1991.1.4 - c↓O←" ESA_ID="EC_1991_1_4.c_O" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="OrtInBasic" Type="Bool" Unit="" />
-                <StructMember Symbol="cO" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1991.1.4 - Use of A.4" ESA_ID="EC_1991_1_4.Use_A4" Unit="" Type="Bool" />
-            <PropertySet Symbol="EC 1991.1.4 - Use A.5" ESA_ID="EC_1991_1_4.Use_A5" Unit="" Type="Bool" />
-            <PropertySet Symbol="EC 1991.1.4 - k↓I←" ESA_ID="EC_1991_1_4.k_I" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1991.1.4 - q↓p←" ESA_ID="EC_1991_1_4.q_p" Unit="kPa" Type="Numeric" />
-            <PropertySet Symbol="EC 1991.1.4 - ρ" ESA_ID="EC_1991_1_4.roo" Unit="kg/m↑3←" Type="Numeric" />
-            <PropertySet Symbol="c↓s←c↓d←_sep" ESA_ID="EC_1991_1_4.cs_cd_sep" Unit="" Type="Bool" />
-            <PropertySet Symbol="Use B" ESA_ID="EC_1991_1_4.Use_B" Unit="" Type="Bool" />
-            <PropertySet Symbol="C↓pe←" ESA_ID="EC_1991_1_4.C_pe" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1991.1.5 - Name" ESA_ID="EC_1991_1_5.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1991.1.6 - Name" ESA_ID="EC_1991_1_6.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1991.1.7 - Name" ESA_ID="EC_1991_1_7.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1991.2 - Name" ESA_ID="EC_1991_2.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1991.3 - Name" ESA_ID="EC_1991_3.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1991.4 - Name" ESA_ID="EC_1991_4.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1992.1.1 - Name" ESA_ID="EC_1992_1_1.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1992.1.1 - γ↓SH←" ESA_ID="EC_1992_1_1.γ_SH" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - γ↓P,fav←" ESA_ID="EC_1992_1_1.γ_P_fav" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - γ↓P,unfav←" ESA_ID="EC_1992_1_1.γ_P_unfav" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - γ↓P,unfav,l←" ESA_ID="EC_1992_1_1.γ_P_unfav_l" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - Table 2.1N" ESA_ID="EC_1992_1_1.T_21N" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="γ_C_Per" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ_SR_Per" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ_SP_Per" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ_C_Acc" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ_SR_Acc" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ_SP_Acc" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - γ↓Ser←" ESA_ID="EC_1992_1_1.γ_Ser" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="γ_C_Ser" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ_S_Ser" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - C↓max←" ESA_ID="EC_1992_1_1.C_max" Unit="MPa" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - k↓t←" ESA_ID="EC_1992_1_1.k_t" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - α↓cc←" ESA_ID="EC_1992_1_1.α_cc" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - α↓ct←" ESA_ID="EC_1992_1_1.α_ct" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - f↓yk,max←" ESA_ID="EC_1992_1_1.f_yk_max" Unit="MPa" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - X*ε↓uk←" ESA_ID="EC_1992_1_1.X_ε_uk" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - k" ESA_ID="EC_1992_1_1.k" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - ε↓ud←" ESA_ID="EC_1992_1_1.ε_ud" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="X_ε_uk" Type="Numeric" Unit="" />
-                <StructMember Symbol="ε_ud" Type="Numeric" Unit="" />
-                <StructMember Symbol="f_p01k_fpk" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - c↓min,b,coef←" ESA_ID="EC_1992_1_1.c_min_b_coef" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="pre_strand_wire" Type="Numeric" Unit="" />
-                <StructMember Symbol="pre_indented_wire" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - Δc↓dur,γ←" ESA_ID="EC_1992_1_1.Δc_dur_γ" Unit="mm" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - Δc↓dur,st←" ESA_ID="EC_1992_1_1.Δc_dur_st" Unit="mm" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - Δc↓dur,add←" ESA_ID="EC_1992_1_1.Δc_dur_add" Unit="mm" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - Δc↓min,abr←" ESA_ID="EC_1992_1_1.Δc_min_abr" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="k_1" Type="Numeric" Unit="mm" />
-                <StructMember Symbol="k_2" Type="Numeric" Unit="mm" />
-                <StructMember Symbol="k_3" Type="Numeric" Unit="mm" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - Δc↓dev←" ESA_ID="EC_1992_1_1.Δ_c_dev0" Unit="mm" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - Δc↓dev←" ESA_ID="EC_1992_1_1.Δc_dev" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="Δc_dev_min_acc" Type="Numeric" Unit="mm" />
-                <StructMember Symbol="Δc_dev_min" Type="Numeric" Unit="mm" />
-                <StructMember Symbol="Δc_dev_max" Type="Numeric" Unit="mm" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - c↓min,une←" ESA_ID="EC_1992_1_1.c_min_une" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="k_1" Type="Numeric" Unit="mm" />
-                <StructMember Symbol="k_2" Type="Numeric" Unit="mm" />
-                <StructMember Symbol="k_3" Type="Numeric" Unit="mm" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - θ↓0←" ESA_ID="EC_1992_1_1.θ_0" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - k↓lin←" ESA_ID="EC_1992_1_1.k_lin" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="k_1" Type="Numeric" Unit="" />
-                <StructMember Symbol="k_2" Type="Numeric" Unit="" />
-                <StructMember Symbol="k_3" Type="Numeric" Unit="" />
-                <StructMember Symbol="k_4" Type="Numeric" Unit="" />
-                <StructMember Symbol="k_5" Type="Numeric" Unit="" />
-                <StructMember Symbol="k_6" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - λ↓lim←" ESA_ID="EC_1992_1_1.λ_lim" Unit="" Type="Numeric" />
-            <PropertySet Symbol="γ↓cE←" ESA_ID="EC_1992_1_1.γ_cE" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - k↓5.10.2.1.1←" ESA_ID="EC_1992_1_1.k_5_10_2_1_1" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="k_1" Type="Numeric" Unit="" />
-                <StructMember Symbol="k_2" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - k↓5.10.2.1.2←" ESA_ID="EC_1992_1_1.k_5_10_2_1_2" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - k↓5.10.2.2.4←" ESA_ID="EC_1992_1_1.k_5_10_2_2_4" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="k_4" Type="Numeric" Unit="%" />
-                <StructMember Symbol="k_5" Type="Numeric" Unit="%" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - k↓5.10.2.2.5←" ESA_ID="EC_1992_1_1.k_5_10_2_2_5" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - k↓5.10.3.2←" ESA_ID="EC_1992_1_1.k_5_10_3_2" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="k_7" Type="Numeric" Unit="" />
-                <StructMember Symbol="k_8" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - r↓sup,inf←" ESA_ID="EC_1992_1_1.r_sup_inf" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="r_sup_preten" Type="Numeric" Unit="" />
-                <StructMember Symbol="r_inf_preten" Type="Numeric" Unit="" />
-                <StructMember Symbol="r_sup_postten" Type="Numeric" Unit="" />
-                <StructMember Symbol="r_inf_postten" Type="Numeric" Unit="" />
-                <StructMember Symbol="r_sup_precise" Type="Numeric" Unit="" />
-                <StructMember Symbol="r_inf_precise" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - C↓Rd,c←, v↓min←, k↓1←" ESA_ID="EC_1992_1_1.C_6_2_2_1" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="C_Rd_c" Type="Numeric" Unit="" />
-                <StructMember Symbol="v_min" Type="Numeric" Unit="" />
-                <StructMember Symbol="k_1" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - ν" ESA_ID="EC_1992_1_1.ν" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - θ" ESA_ID="EC_1992_1_1.θ" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="θ_min" Type="Numeric" Unit="rad" />
-                <StructMember Symbol="θ_max" Type="Numeric" Unit="rad" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - ν↓1←_α↓cw←" ESA_ID="EC_1992_1_1.ν_1_α_cw" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="ν_1" Type="Numeric" Unit="" />
-                <StructMember Symbol="α_cw" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - θ↓f,lim←" ESA_ID="EC_1992_1_1.θ_f_lim" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="θ_f_min_comp" Type="Numeric" Unit="°" />
-                <StructMember Symbol="θ_f_max_comp" Type="Numeric" Unit="°" />
-                <StructMember Symbol="θ_f_min_tens" Type="Numeric" Unit="°" />
-                <StructMember Symbol="θ_f_max_tens" Type="Numeric" Unit="°" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - k↓6.2.4.6←" ESA_ID="EC_1992_1_1.k_6_2_4_6" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - β" ESA_ID="EC_1992_1_1.β" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="β_A" Type="Numeric" Unit="" />
-                <StructMember Symbol="β_B" Type="Numeric" Unit="" />
-                <StructMember Symbol="β_C" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - c↓Rd,c,punch←" ESA_ID="EC_1992_1_1.c_Rd_c_punch" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="c_Rd_c" Type="Numeric" Unit="" />
-                <StructMember Symbol="ν_min" Type="Numeric" Unit="" />
-                <StructMember Symbol="k_1" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - v↓Rd,max←" ESA_ID="EC_1992_1_1.v_Rd_max" Unit="MPa" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - ν↓strut←" ESA_ID="EC_1992_1_1.ν_strut" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - k↓6.5.4.4←" ESA_ID="EC_1992_1_1.k_6_5_4_4" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="k_1" Type="Numeric" Unit="" />
-                <StructMember Symbol="k_2" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - k↓1←" ESA_ID="EC_1992_1_1.k_1" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - k↓2←" ESA_ID="EC_1992_1_1.k_2" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - k↓3←, k↓4←, k↓5←" ESA_ID="EC_1992_1_1.k_7_2_5" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="k_3" Type="Numeric" Unit="" />
-                <StructMember Symbol="k_4" Type="Numeric" Unit="" />
-                <StructMember Symbol="k_5" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - w↓max←" ESA_ID="EC_1992_1_1.w_max" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="Quasi_X0_XC1" Type="Numeric" Unit="mm" />
-                <StructMember Symbol="Quasi_XC2_XC3_XC4" Type="Numeric" Unit="mm" />
-                <StructMember Symbol="Quasi_XD1_XD2_XS1_XS2_XS3" Type="Numeric" Unit="mm" />
-                <StructMember Symbol="Freq_X0_XC1" Type="Numeric" Unit="mm" />
-                <StructMember Symbol="Freq_XC2_XC3_XC4" Type="Numeric" Unit="mm" />
-                <StructMember Symbol="Freq_XD1_XD2_XS1_XS2_XS3" Type="Numeric" Unit="mm" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - k↓3←, k↓4←" ESA_ID="EC_1992_1_1.k_7_3_4_3" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="k_3" Type="Numeric" Unit="" />
-                <StructMember Symbol="k_4" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - k↓8.2.2←" ESA_ID="EC_1992_1_1.k_8_2_2" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="k_1" Type="Numeric" Unit="" />
-                <StructMember Symbol="k_2" Type="Numeric" Unit="mm" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - ϕ↓m,min←" ESA_ID="EC_1992_1_1.ϕ_m_min" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - F↓btd←" ESA_ID="EC_1992_1_1.F_btd" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - ϕ↓large←" ESA_ID="EC_1992_1_1.ϕ_large" Unit="mm" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - A↓s,min←" ESA_ID="EC_1992_1_1.A_s_min" Unit="mm↑2←" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - A↓s,max←" ESA_ID="EC_1992_1_1.A_s_max" Unit="mm↑2←" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - β↓1←" ESA_ID="EC_1992_1_1.β_1" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - β↓2←" ESA_ID="EC_1992_1_1.β_2" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - β↓3←" ESA_ID="EC_1992_1_1.β_3" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - ρ↓w,min←" ESA_ID="EC_1992_1_1.ρ_w_min" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - s↓l,max←" ESA_ID="EC_1992_1_1.s_l_max" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - s↓b,max←" ESA_ID="EC_1992_1_1.s_b_max" Unit="mm" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - s↓t,max←" ESA_ID="EC_1992_1_1.s_t_max" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - s↓max,slab←" ESA_ID="EC_1992_1_1.s_max_slab" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - ϕ↓min←" ESA_ID="EC_1992_1_1.ϕ_min" Unit="mm" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - A↓s,min←" ESA_ID="EC_1992_1_1.A_s_min_det" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - A↓s,max←" ESA_ID="EC_1992_1_1.A_s_max_det" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - s↓cl,tmax←" ESA_ID="EC_1992_1_1.s_cl_tmax" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - A↓s,vmin← A↓s,vmax←" ESA_ID="EC_1992_1_1.A_sv" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - A↓s,hmin←" ESA_ID="EC_1992_1_1.A_s_hmin" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - A↓s,dbmin←" ESA_ID="EC_1992_1_1.A_s_dbmin" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - ϕ↓min←" ESA_ID="EC_1992_1_1.ϕ_min_pile" Unit="mm" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - ϕ↓min←" ESA_ID="EC_1992_1_1.ϕ_min_gen" Unit="mm" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - ϕ↓min←" ESA_ID="EC_1992_1_1.ϕ_min_tie" Unit="mm" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - q↓1←" ESA_ID="EC_1992_1_1.q_1" Unit="kN/m" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - ϕ↓min←, q↓2←" ESA_ID="EC_1992_1_1.q_2" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="q_2" Type="Numeric" Unit="MPa" />
-                <StructMember Symbol="ϕ_min" Type="Numeric" Unit="mm" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - h↓1←, A↓s,bpmin←" ESA_ID="EC_1992_1_1.h_1" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="h1" Type="Numeric" Unit="mm" />
-                <StructMember Symbol="A↓s,bpmin←" Type="Numeric" Unit="mm↑2←" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - α↓cc,pl←, α↓ct,pl←" ESA_ID="EC_1992_1_1.α_cpl" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="α↓cc,pl←" Type="Numeric" Unit="" />
-                <StructMember Symbol="α↓ct,pl←" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1992.1.1 - k" ESA_ID="EC_1992_1_1.k_12_6_3_2" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - k↓1←" ESA_ID="EC_1992_1_1.J3_k1" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.1 - k↓2←" ESA_ID="EC_1992_1_1.J3_k2" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1992.1.2 - Name" ESA_ID="EC_1992_1_2.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1992.2 - Name" ESA_ID="EC_1992_2.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1992.3 - Name" ESA_ID="EC_1992_3.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.1.1 - Name" ESA_ID="EC_1993_1_1.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.1.1 - f↓y← f↓u←" ESA_ID="EC_1993_1_1.f" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="f_y" Type="Numeric" Unit="MPa" />
-                <StructMember Symbol="f_u" Type="Numeric" Unit="MPa" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1993.1.1 - γ↓M←" ESA_ID="EC_1993_1_1.γ_M" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="γ_M0" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ_M1" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ_M2" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1993.1.2 - Name" ESA_ID="EC_1993_1_2.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.1.3 - Name" ESA_ID="EC_1993_1_3.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.1.4 - Name" ESA_ID="EC_1993_1_4.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.1.5 - Name" ESA_ID="EC_1993_1_5.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.η" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="η1" Type="Numeric" Unit="" />
-                <StructMember Symbol="η2" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1993.1.6 - Name" ESA_ID="EC_1993_1_6.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.1.7 - Name" ESA_ID="EC_1993_1_7.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.1.8 - Name" ESA_ID="EC_1993_1_8.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.1.8 - γ↓M←" ESA_ID="EC_1993_1_8.γ_M" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="γ_M2" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ_M3" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ_M3_ser" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ_M4" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ_M5" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ_M6_ser" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ_M7" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1993.1.9 - Name" ESA_ID="EC_1993_1_9.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.1.10 - Name" ESA_ID="EC_1993_1_10.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.1.11 - Name" ESA_ID="EC_1993_1_11.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.1.12 - Name" ESA_ID="EC_1993_1_12.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.2 - Name" ESA_ID="EC_1993_2.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.2 - γ↓Mi←" ESA_ID="EC_1993_2.γ_Mi" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="γ_M0" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ_M1" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ_M2" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ_M3" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ_M3_ser" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ_M4" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ_M5" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ_M6_ser" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ_M7" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1993.3.1 - Name" ESA_ID="EC_1993_3_1.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.3.2 - Name" ESA_ID="EC_1993_3_2.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.4.1 - Name" ESA_ID="EC_1993_4_1.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.4.2 - Name" ESA_ID="EC_1993_4_2.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.4.3 - Name" ESA_ID="EC_1993_4_3.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.5 - Name" ESA_ID="EC_1993_5.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.6 - Name" ESA_ID="EC_1993_6.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1994.1.1 - Name" ESA_ID="EC_1994_1_1.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1994.1.1 - γ↓P←" ESA_ID="EC_1994_1_1.γ_P" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="γ_P_fav" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ_P_unfav" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1994.1.1 - γ↓V←" ESA_ID="EC_1994_1_1.γ_V_1" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1994.1.1 - γ↓VS←" ESA_ID="EC_1994_1_1.γ_VS_1" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1994.1.1 - γ↓Mf,s←" ESA_ID="EC_1994_1_1.γ_Mf_s_1" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1994.1.1 - δ" ESA_ID="EC_1994_1_1.δ" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="δ_dry_nc" Type="Numeric" Unit="" />
-                <StructMember Symbol="δ_dry_lc" Type="Numeric" Unit="" />
-                <StructMember Symbol="δ_other_nc" Type="Numeric" Unit="" />
-                <StructMember Symbol="δ_other_lc" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1994.1.1 - t↓min←" ESA_ID="EC_1994_1_1.t_min" Unit="mm" Type="Numeric" />
-            <PropertySet Symbol="EC 1994.1.1 - h↓max←" ESA_ID="EC_1994_1_1.h_max" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1994.1.1 - γ↓V←" ESA_ID="EC_1994_1_1.γ_V_2" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="γ_V1" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ_V2" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1994.1.1 - rec" ESA_ID="EC_1994_1_1.rec" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1994.1.1 - 6.6.4.1" ESA_ID="EC_1994_1_1.6_6_4_1" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1994.1.1 - γ↓Mf,s←" ESA_ID="EC_1994_1_1.γ_Mf_s_2" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1994.1.1 - γ↓Ff←" ESA_ID="EC_1994_1_1.γ_Ff" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1994.1.1 - (b↓r←/b↓s←)↓max←" ESA_ID="EC_1994_1_1.br_bs_max" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1994.1.1 - δ↓s,max←" ESA_ID="EC_1994_1_1.δ_s_max" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1994.1.1 - γ↓VS←" ESA_ID="EC_1994_1_1.γ_VS_2" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1994.1.1 - γ↓VS←" ESA_ID="EC_1994_1_1.γ_VS_3" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1994.1.1 - μ" ESA_ID="EC_1994_1_1.mu" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1994.1.1 - γ↓V←" ESA_ID="EC_1994_1_1.γ_V_3" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1994.1.1 - γ↓VS←" ESA_ID="EC_1994_1_1.γ_VS_4" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1994.1.2 - Name" ESA_ID="EC_1994_1_2.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1994.2 - Name" ESA_ID="EC_1994_2.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1995.1.1 - Name" ESA_ID="EC_1995_1_1.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1995.1.1 - γ↓M←" ESA_ID="EC_1995_1_1.γ_M" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1995.1.1 - k↓cr←" ESA_ID="EC_1995_1_1.k_cr" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="Solid" Type="Numeric" Unit="" />
-                <StructMember Symbol="Glued" Type="Numeric" Unit="" />
-                <StructMember Symbol="Other" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1995.1.2 - Name" ESA_ID="EC_1995_1_2.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1995.2 - Name" ESA_ID="EC_1995_2.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1996.1.1 - Name" ESA_ID="EC_1996_1_1.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1996.1.1 - γ↓M←" ESA_ID="EC_1996_1_1.γ_M" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1996.1.1 - γ↓M←" ESA_ID="EC_1996_1_1.γ_M_ser" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1996.1.1 - M" ESA_ID="EC_1996_1_1.M" Unit="" Type="Numeric">
-              <StructMembers>
-                <StructMember Symbol="Cement" Type="Numeric" Unit="" />
-                <StructMember Symbol="Lime" Type="Numeric" Unit="" />
-                <StructMember Symbol="Sand" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1996.1.1 - Method" ESA_ID="EC_1996_1_1.Method" Unit="" Type="Bool">
-              <StructMembers>
-                <StructMember Symbol="I" Type="Bool" Unit="" />
-                <StructMember Symbol="II" Type="Bool" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1996.1.1 - K↓E←" ESA_ID="EC_1996_1_1.K_E" Unit="" Type="Numeric" />
-            <PropertySet Symbol="EC 1996.1.1 - Coef" ESA_ID="EC_1996_1_1.Coef" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="ϕ_unlim" Type="Numeric" Unit="" />
-                <StructMember Symbol="shrinkage" Type="Numeric" Unit="mm/m" />
-                <StructMember Symbol="α_t" Type="Numeric" Unit="10↑-6←/K" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1996.1.1 - t↓min←" ESA_ID="EC_1996_1_1.t_min" Unit="mm" Type="Numeric">
-              <StructMembers>
-                <StructMember Symbol="t_min_struct" Type="Numeric" Unit="mm" />
-                <StructMember Symbol="t_min_ret" Type="Numeric" Unit="mm" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1996.1.2 - Name" ESA_ID="EC_1996_1_2.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1996.2 - Name" ESA_ID="EC_1996_2.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1996.3 - Name" ESA_ID="EC_1996_3.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1997.1 - Name" ESA_ID="EC_1997_1.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1997.1 - γ↓F←" ESA_ID="EC_1997_1.EQU.γF" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="γ↓G,dst←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓G,stb←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓Q,dst←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓Q,stb←" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1997.1 - γ↓M←" ESA_ID="EC_1997_1.EQU.γM" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="γ↓ϕ'←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓c'←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓cu←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓qu←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓γ←" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1997.1 - γ↓F←" ESA_ID="EC_1997_1.STRGEO.γF" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="γ↓G,dst,A1←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓G,stb,A1←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓Q,dst,A1←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓Q,stb,A1←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓G,dst,A2←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓G,stb,A2←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓Q,dst,A2←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓Q,stb,A2←" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1997.1 - γ↓M←" ESA_ID="EC_1997_1.STRGEO.γM" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="γ↓ϕ',M1←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓c',M1←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓cu,M1←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓qu,M1←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓γ,M1←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓ϕ',M2←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓c',M2←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓cu,M2←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓qu,M2←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓γ,M2←" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1997.1 - γ↓R←" ESA_ID="EC_1997_1.STRGEO.γR" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="γ↓R,v,R1←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓R,h,R1←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓R,v,R2←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓R,h,R2←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓R,v,R3←" Type="Numeric" Unit="" />
-                <StructMember Symbol="γ↓R,h,R3←" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
-            <PropertySet Symbol="EC 1997.2 - Name" ESA_ID="EC_1997_2.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1998.1 - Name" ESA_ID="EC_1998_1.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1998.2 - Name" ESA_ID="EC_1998_2.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1998.3 - Name" ESA_ID="EC_1998_3.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1998.4 - Name" ESA_ID="EC_1998_4.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1998.5 - Name" ESA_ID="EC_1998_5.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1998.6 - Name" ESA_ID="EC_1998_6.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1999.1.1 - Name" ESA_ID="EC_1999_1_1.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1999.1.2 - Name" ESA_ID="EC_1999_1_2.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1999.1.3 - Name" ESA_ID="EC_1999_1_3.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1999.1.4 - Name" ESA_ID="EC_1999_1_4.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1999.1.5 - Name" ESA_ID="EC_1999_1_5.Name" Unit="" Type="String" />
-          </Header>
-          <Items>
-            <Item>
-              <P>Eurocode NA</P>
-              <P>Standard EN</P>
-              <P>STD</P>
-              <P>0</P>
-              <P>EC EN 1990</P>
-              <P>EC EN 1991-1-1</P>
-              <P>EC EN 1991-1-2</P>
-              <P>EC EN 1991-1-3</P>
-              <P>0</P>
-              <P>NaN</P>
-              <P>True;2;</P>
-              <P>NaN</P>
-              <P>NaN</P>
-              <P>1.0</P>
-              <P>NaN</P>
-              <P>True</P>
-              <P>1.6</P>
-              <P>2.0</P>
-              <P>NaN</P>
-              <P>0.8;4;5;15;</P>
-              <P>True</P>
-              <P>True</P>
-              <P>True</P>
-              <P>NaN</P>
-              <P>EC EN 1991-1-4</P>
-              <P>NaN</P>
-              <P>NaN</P>
-              <P>1</P>
-              <P>1</P>
-              <P>0.2;0.5;</P>
-              <P>False</P>
-              <P>NaN</P>
-              <P>True;1;</P>
-              <P>True</P>
-              <P>True</P>
-              <P>1</P>
-              <P>NaN</P>
-              <P>1.25</P>
-              <P>False</P>
-              <P>True</P>
-              <P>NaN</P>
-              <P>EC EN 1991-1-5</P>
-              <P>EC EN 1991-1-6</P>
-              <P>EC EN 1991-1-7</P>
-              <P>EC EN 1991-2</P>
-              <P>EC EN 1991-3</P>
-              <P>EC EN 1991-4</P>
-              <P>EC EN 1992-1-1:2004/AC:2008</P>
-              <P>1</P>
-              <P>1</P>
-              <P>1.3</P>
-              <P>1.2</P>
-              <P>1.5;1.15;1.15;1.2;1.0;1.0;</P>
-              <P>1;1;</P>
-              <P>90</P>
-              <P>0.85</P>
-              <P>1</P>
-              <P>1</P>
-              <P>600</P>
-              <P>0.9</P>
-              <P>1.1</P>
-              <P>0.9;0.02;0.9;</P>
-              <P>1.5;2.5;</P>
-              <P>0</P>
-              <P>0</P>
-              <P>0</P>
-              <P>5;10;15;</P>
-              <P>10</P>
-              <P>0;5;10;</P>
-              <P>40;75;5;</P>
-              <P>0.005</P>
-              <P>0.44;NaN;0.54;NaN;0.7;0.8;</P>
-              <P>NaN</P>
-              <P>1.2</P>
-              <P>0.8;0.9;</P>
-              <P>0.95</P>
-              <P>50;30;</P>
-              <P>0.7</P>
-              <P>0.75;0.85;</P>
-              <P>1.05;0.95;1.1;0.9;1;1;</P>
-              <P>NaN;NaN;0.15;</P>
-              <P>NaN</P>
-              <P>0.380482;0.785398;</P>
-              <P>NaN;NaN;</P>
-              <P>26.5;45;38.6;45;</P>
-              <P>0.4</P>
-              <P>1.15;1.4;1.5;</P>
-              <P>NaN;NaN;0.1;</P>
-              <P>NaN</P>
-              <P>NaN</P>
-              <P>1;0.85;</P>
-              <P>0.6</P>
-              <P>0.45</P>
-              <P>0.8;1;0.75;</P>
-              <P>0.4;0.3;0.3;0.2;0.2;NaN;</P>
-              <P>3.4;0.425;</P>
-              <P>1;5;</P>
-              <P>NaN</P>
-              <P>NaN</P>
-              <P>32</P>
-              <P>NaN</P>
-              <P>NaN</P>
-              <P>0.15</P>
-              <P>0.25</P>
-              <P>0.5</P>
-              <P>NaN</P>
-              <P>NaN</P>
-              <P>NaN</P>
-              <P>NaN</P>
-              <P>NaN</P>
-              <P>8</P>
-              <P>NaN</P>
-              <P>NaN</P>
-              <P>NaN</P>
-              <P>NaN</P>
-              <P>NaN</P>
-              <P>NaN</P>
-              <P>8</P>
-              <P>8</P>
-              <P>8</P>
-              <P>10</P>
-              <P>5;8;</P>
-              <P>600;NaN;</P>
-              <P>0.8;0.8;</P>
-              <P>1.5</P>
-              <P>0.25</P>
-              <P>0.5</P>
-              <P>EC EN 1992-1-2</P>
-              <P>EC EN 1992-2</P>
-              <P>EC EN 1992-3</P>
-              <P>EC EN 1993-1-1</P>
-              <P>NaN;NaN;</P>
-              <P>1;1;1.25;</P>
-              <P>EC EN 1993-1-2</P>
-              <P>EC EN 1993-1-3</P>
-              <P>EC EN 1993-1-4</P>
-              <P>EC EN 1993-1-5</P>
-              <P>1.20;1.00;</P>
-              <P>EC EN 1993-1-6</P>
-              <P>EC EN 1993-1-7</P>
-              <P>EC EN 1993-1-8</P>
-              <P>1.25;1.25;1.1;1.0;1.0;1.0;1.1;</P>
-              <P>EC EN 1993-1-9</P>
-              <P>EC EN 1993-1-10</P>
-              <P>EC EN 1993-1-11</P>
-              <P>EC EN 1993-1-12</P>
-              <P>EC EN 1993-2</P>
-              <P>1.0;1.1;1.25;1.25;1.1;1.1;1.1;1.0;1.1;</P>
-              <P>EC EN 1993-3-1</P>
-              <P>EC EN 1993-3-2</P>
-              <P>EC EN 1993-4-1</P>
-              <P>EC EN 1993-4-2</P>
-              <P>EC EN 1993-4-3</P>
-              <P>EC EN 1993-5</P>
-              <P>EC EN 1993-6</P>
-              <P>EC EN 1994-1-1</P>
-              <P>1;1;</P>
-              <P>1.25</P>
-              <P>1.25</P>
-              <P>1</P>
-              <P>0.000325;0.000500;0.000200;0.000300;</P>
-              <P>0.70</P>
-              <P>NaN</P>
-              <P>1.25;1.25;</P>
-              <P>NaN</P>
-              <P>NaN</P>
-              <P>1.0</P>
-              <P>1.0</P>
-              <P>0.6</P>
-              <P>180</P>
-              <P>1.25</P>
-              <P>1.25</P>
-              <P>0.5</P>
-              <P>1.25</P>
-              <P>1.25</P>
-              <P>EC EN 1994-1-2</P>
-              <P>EC EN 1994-2</P>
-              <P>EC EN 1995-1-1</P>
-              <P>NaN</P>
-              <P>0.67;0.67;1.0;</P>
-              <P>EC EN 1995-1-2</P>
-              <P>EC EN 1995-2</P>
-              <P>EC EN 1996-1-1</P>
-              <P>NaN</P>
-              <P>1</P>
-              <P>NaN</P>
-              <P>True</P>
-              <P>1000</P>
-              <P>NaN;NaN;NaN;</P>
-              <P>NaN</P>
-              <P>EC EN 1996-1-2</P>
-              <P>EC EN 1996-2</P>
-              <P>EC EN 1996-3</P>
-              <P>EC EN 1997-1</P>
-              <P>1.1;0.9;1.5;0;</P>
-              <P>1.25;1.25;1.4;1.4;1.0;</P>
-              <P>1.35;1;1.5;0;1;1;1.3;0;</P>
-              <P>1;1;1;1;1;1.25;1.25;1.4;1.4;1;</P>
-              <P>1;1;1.4;1.1;1;1;</P>
-              <P>EC EN 1997-2</P>
-              <P>EC EN 1998-1</P>
-              <P>EC EN 1998-2</P>
-              <P>EC EN 1998-3</P>
-              <P>EC EN 1998-4</P>
-              <P>EC EN 1998-5</P>
-              <P>EC EN 1998-6</P>
-              <P>EC EN 1999-1-1</P>
-              <P>EC EN 1999-1-2</P>
-              <P>EC EN 1999-1-3</P>
-              <P>EC EN 1999-1-4</P>
-              <P>EC EN 1999-1-5</P>
-            </Item>
-          </Items>
-        </Data>
-      </TCustomLibrary>
+    <Main Width="630">
       <TGroupBox Name="" ID="4" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="3" Dock="1" Anchor="5" Padding="5|15|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|1|3" BorderColor="-5192482">
         <Texts>
           <ENU>Calculation settings</ENU>
@@ -2778,57 +2051,14 @@ IF(IO.IsDrawing) {
         <Texts>
           <ENU>The considered times</ENU>
         </Texts>
+        <TDoubleInput Name="" ID="17" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="2" Dock="1" Anchor="5" Padding="2|2|2|2" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.8|0|3" VarName="RH" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="" ID="9" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" VarName="t" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="28" DescPos="1" />
-        <TDoubleInput Name="" ID="11" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="2" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" VarName="" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
         <TDoubleInput Name="" ID="10" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" VarName="t↓0,input←" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
       </TGroupBox>
       <TGroupBox Name="" ID="13" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="6" Dock="1" Anchor="5" Padding="5|15|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|1|3" BorderColor="-5192482">
         <Texts>
           <ENU>Concrete characteristics</ENU>
         </Texts>
-        <TPanel Name="HeatingCycle" ID="17" Translate="0" Height="150" AutoWidth="False" AutoHeight="False" TabIndex="3" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9.75|0|3" Collapsible="False" CaptionBGColor="-1" CaptionColor="-16777216" Collapsed="False">
-          <Texts>
-            <ENU>
-            </ENU>
-          </Texts>
-          <TTableInput Name="TableHeating" ID="19" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="" Value="0|1║2|2" CellBG="-1" HeaderBG="-4144960" FixedRows="-1">
-            <Texts>
-              <ENU>Δti|T(Δti)</ENU>
-            </Texts>
-            <Columns>
-              <Column Sort="True" Name="Deltat" Description="Δti" Type="Numeric">
-                <Unit m="0" kg="0" s="1" A="0" K="0" cd="0" mol="0" Coef="86400" Dim="day" />
-              </Column>
-              <Column Sort="True" Name="TDeltat" Description="T(Δti)" Type="Numeric">
-                <Unit m="0" kg="0" s="0" A="0" K="1" cd="0" mol="0" Coef="1" Dim="°C" />
-              </Column>
-            </Columns>
-          </TTableInput>
-        </TPanel>
-        <TCheckBox Name="" ID="18" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="4" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="150|23" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" VarName="Heating" BookMarkID="" ForeColor="-16711423" ChbRight="False">
-          <Texts TranslateID="DIALOG_000018">
-            <ENU>
-            </ENU>
-          </Texts>
-        </TCheckBox>
-        <TPanel Name="Silica" ID="16" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="2" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9.75|0|3" Collapsible="False" CaptionBGColor="-1" CaptionColor="-16777216" Collapsed="False">
-          <Texts>
-            <ENU>
-            </ENU>
-          </Texts>
-          <TCheckBox Name="DSilicaFume" ID="15" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="150|23" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" VarName="" BookMarkID="" ForeColor="-16711423" ChbRight="False">
-            <Texts TranslateID="DIALOG_000015">
-              <ENU>
-              </ENU>
-            </Texts>
-          </TCheckBox>
-        </TPanel>
-        <TCheckBox Name="" ID="6" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="150|23" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" VarName="" BookMarkID="" ForeColor="-16711423" ChbRight="False">
-          <Texts TranslateID="DIALOG_000006">
-            <ENU>
-            </ENU>
-          </Texts>
-        </TCheckBox>
         <TComboBox Name="" ID="14" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" VarName="CementClass" VarNameVisible="False" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1|2" Index="0">
           <Texts>
             <ENU>S|N|R</ENU>
@@ -2839,17 +2069,17 @@ IF(IO.IsDrawing) {
         <CS SelReinf="0" H="500e-3" B="300e-3" />
         <Reinf Ver="1" Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="30e-3" D_upper="20e-3" N_upper="2" c_lower="30e-3" D_lower="20e-3" N_lower="2" />
       </TConcreteSectionLibrary>
-      <TCustomLibrary Name="" ID="2" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" TargetNodeURL="REINF.EC" DataFile="EC_Reinf.xml" Collapsed="True" UseCombo="False" Category="Inclined top branch" Item="B 400 A">
+      <TCustomLibrary Name="" ID="2" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" TargetNodeURL="REINF.SIA" DataFile="SIA_Reinf.xml" Collapsed="True" UseCombo="False" Category="Inclined top branch" Item="B 500 B">
         <Data>
           <Header>
-            <PropertySet Symbol="f↓yk←" ESA_ID="fyk" Unit="MPa" Type="Numeric" />
+            <PropertySet Symbol="f↓sk←" ESA_ID="fsk" Unit="MPa" Type="Numeric" />
             <PropertySet Symbol="k" ESA_ID="k" Unit="" Type="Numeric" />
             <PropertySet Symbol="f↓tk←" ESA_ID="ftk" Unit="MPa" Type="Numeric" />
-            <PropertySet Symbol="f↓yd←" ESA_ID="fyd" Unit="MPa" Type="Numeric" />
+            <PropertySet Symbol="f↓sd←" ESA_ID="fsd" Unit="MPa" Type="Numeric" />
             <PropertySet Symbol="ε↓υκ←" ESA_ID="eps_uk" Unit="" Type="Numeric" />
             <PropertySet Symbol="ε↓ud←" ESA_ID="eps_ud" Unit="" Type="Numeric" />
             <PropertySet Symbol="ε↓s1←" ESA_ID="eps_s1" Unit="" Type="Numeric" />
-            <PropertySet Symbol="E↓s←" ESA_ID="Es" Unit="MPa" Type="Numeric" />
+            <PropertySet Symbol="E" ESA_ID="E" Unit="MPa" Type="Numeric" />
             <PropertySet Symbol="Class" ESA_ID="Class" Unit="" Type="String" />
             <PropertySet Symbol="Inclined" ESA_ID="Inclined" Unit="" Type="Bool" />
             <PropertySet Symbol="Point" ESA_ID="Diagram.Point" Unit="" Type="Struct">
@@ -2886,43 +2116,40 @@ IF(IO.IsDrawing) {
           <Items>
             <Item>
               <P>Inclined top branch</P>
-              <P>B 400 A</P>
-              <P>400</P>
-              <P>1.05</P>
-              <P>420</P>
-              <P>347.83</P>
-              <P>0.025</P>
-              <P>0.0225</P>
-              <P>0.00173913</P>
-              <P>200000</P>
-              <P>A</P>
+              <P>B 500 B</P>
+              <P>500</P>
+              <P>1.08</P>
+              <P>525</P>
+              <P>434.78</P>
+              <P>0.050</P>
+              <P>0.045</P>
+              <P>0.002120878</P>
+              <P>205000</P>
+              <P>B</P>
               <P>true</P>
-              <P>-0.025;-365.68;</P>
-              <P>-0.0017;-347.83;</P>
+              <P>-0.05;-470.60;</P>
+              <P>-0.00212;-434.78;</P>
               <P>0;0;</P>
-              <P>0.0017;347.83;</P>
-              <P>0.025;365.68;</P>
+              <P>0.00212;434.78;</P>
+              <P>0.05;470.60;</P>
             </Item>
           </Items>
         </Data>
       </TCustomLibrary>
-      <TCustomLibrary Name="" ID="12" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" TargetNodeURL="CONCRETE.EC" DataFile="EC_Concrete.xml" Collapsed="True" UseCombo="False" Category="Bilinear" Item="C 30/37">
+      <TCustomLibrary Name="" ID="12" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|7.84|0|3" TargetNodeURL="CONCRETE.SIA" DataFile="SIA_Concrete.xml" Collapsed="True" UseCombo="False" Category="Parabola-rectangular" Item="C 30/37">
         <Data>
           <Header>
             <PropertySet Symbol="f↓ck←" ESA_ID="fck" Unit="MPa" Type="Numeric" />
-            <PropertySet Symbol="f↓ck,cube←" ESA_ID="fckcube" Unit="MPa" Type="Numeric" />
             <PropertySet Symbol="f↓cm←" ESA_ID="fcm" Unit="MPa" Type="Numeric" />
             <PropertySet Symbol="f↓ctm←" ESA_ID="fctm" Unit="MPa" Type="Numeric" />
             <PropertySet Symbol="f↓ctk, 0.05←" ESA_ID="fctk_05" Unit="MPa" Type="Numeric" />
             <PropertySet Symbol="f↓ctk, 0.95←" ESA_ID="fctk_95" Unit="MPa" Type="Numeric" />
-            <PropertySet Symbol="E↓cm←" ESA_ID="Ecm" Unit="GPa" Type="Numeric" />
+            <PropertySet Symbol="E" ESA_ID="E" Unit="GPa" Type="Numeric" />
             <PropertySet Symbol="ε↓c1←" ESA_ID="eps_c1" Unit="‰" Type="Numeric" />
             <PropertySet Symbol="ε↓cu1←" ESA_ID="eps_cu1" Unit="‰" Type="Numeric" />
-            <PropertySet Symbol="ε↓c2←" ESA_ID="eps_c2" Unit="‰" Type="Numeric" />
-            <PropertySet Symbol="ε↓cu2←" ESA_ID="eps_cu2" Unit="‰" Type="Numeric" />
-            <PropertySet Symbol="ε↓c3←" ESA_ID="eps_c3" Unit="‰" Type="Numeric" />
-            <PropertySet Symbol="ε↓cu3←" ESA_ID="eps_cu3" Unit="‰" Type="Numeric" />
-            <PropertySet Symbol="n" ESA_ID="n" Unit="" Type="Numeric" />
+            <PropertySet Symbol="ε↓c1d←" ESA_ID="eps_c1d" Unit="‰" Type="Numeric" />
+            <PropertySet Symbol="ε↓c2d←" ESA_ID="eps_c2d" Unit="‰" Type="Numeric" />
+            <PropertySet Symbol="η↓fc←" ESA_ID="eta_fc" Unit="" Type="Numeric" />
             <PropertySet Symbol="Point" ESA_ID="Diagram.Point" Unit="" Type="Struct">
               <StructMembers>
                 <StructMember Symbol="eps" Type="Numeric" Unit="" />
@@ -2953,30 +2180,27 @@ IF(IO.IsDrawing) {
           </Header>
           <Items>
             <Item>
-              <P>Bilinear</P>
+              <P>Parabola-rectangular</P>
               <P>C 30/37</P>
               <P>30</P>
-              <P>37</P>
               <P>38</P>
               <P>2.9</P>
               <P>2</P>
               <P>3.8</P>
-              <P>33</P>
+              <P>37</P>
               <P>2.2</P>
               <P>3.5</P>
               <P>2</P>
-              <P>3.5</P>
-              <P>1.75</P>
-              <P>3.5</P>
-              <P>2</P>
+              <P>3</P>
+              <P>1</P>
               <P>0;0;</P>
-              <P>-0.00175;-20000000;</P>
-              <P>-0.0035;-20000000;</P>
-              <P>true</P>
+              <P>-0.002;-20000000;</P>
+              <P>-0.003;-20000000;</P>
+              <P>false</P>
               <P>32</P>
               <P>0.2</P>
               <P>2500</P>
-              <P>13.7</P>
+              <P>15.41</P>
               <P>0.2</P>
               <P>4500</P>
               <P>0.0006</P>
@@ -3026,9 +2250,6 @@ IF(IO.IsDrawing) {
     </Item>
     <Item TranslateID="STRING_B956322B">
       <ENU>"Description"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_">
-      <ENU>"The notional size"</ENU>
     </Item>
     <Item TranslateID="TEXT_DLO134_003608">
       <ENU>"Explanation of errors, warnings and notes"</ENU>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="74b2ca89-722d-4ec8-a468-82254efa0c34">
   <CodeEditor>
-    <SourceCode Collapsed="14|24|31|39|48|55|66|118|203|252|283|321|336|375|398|427|479|484|527|554|559|598" BreakPoints="">//composites geometry and material form
+    <SourceCode Collapsed="14|24|31|39|48|55|66|118|198|213|262|293|331|346|385|408|437|489|494|534|561|566|605" BreakPoints="">//composites geometry and material form
 
 class PrintGeometryAndMaterials { 
     
@@ -43,7 +43,7 @@ class PrintGeometryAndMaterials {
     private void PrintGeometryData(double CN) { 
         string sGeomData →KRS014_001235= TR("Geometry data"); 
         →KRS014_000608TEXT(CN &amp; ". " &amp; sGeomData); 
-        →KRS014_001238PAGEBREAK(); 
+        →KRS100_000003PAGEBREAK(); 
         
         →KRS014_001359PrintSectionDrawings(); 
         →KRS014_001360PrintGeometry(); 
@@ -180,9 +180,19 @@ class PrintGeometryAndMaterials {
             
         } 
         
+        //Check on rib direction
+        IF(DataExchange.rib_dir == 999) { 
+            →KRS100_000002Functions_general.AddEWN(DataExchange, "W/04"); //The angle between the member and ribs of profiled steel sheeting is bigger than 10 degrees.
+        } 
+        
         IF(COMPARE(DataExchange.L, DataExchange.L_y, 6) != 0) { 
             //For a continuous beam, intermediate buckling supports y-y are ignored in both the calculation of the effective width for the analysis model and the check.
             →KRS014_001555Functions_general.AddEWN(DataExchange, "W/25"); 
+        } 
+        
+        IF(DataExchange.TypeOfConnection == 1) { 
+            //For advanced composite action
+            →KRS100_000001Functions_general.AddEWN(DataExchange, "W/43"); 
         } 
         →KRS014_000815PAGEBREAK(); 
     } 
@@ -498,29 +508,26 @@ class PrintGeometryAndMaterials {
             
             //symbols in first column
             T[1][0].Value →KRS014_001877= "d↓s←"; 
-            T[2][0].Value →KRS014_001878= "h↓nom←"; 
-            T[3][0].Value →KRS014_001879= "h↓sc←"; 
-            T[4][0].Value →KRS014_001880= "n↓r←"; 
+            T[2][0].Value →KRS014_001879= "h↓sc←"; 
+            T[3][0].Value →KRS014_001880= "n↓r←"; 
             IF(DataExchange.n_r &gt; 1) { 
-                T[5][0].Value →KRS014_001881= "b↓0,stud←"; 
+                T[4][0].Value →KRS014_001881= "b↓0,stud←"; 
             } 
             
             //values in second column
             T[1][1].Value →KRS014_001882= Val(DataExchange.d_s*10↑3←, 2) &amp; " mm"; 
-            T[2][1].Value →KRS014_001883= Val(DataExchange.h_nom*10↑3←, 2) &amp; " mm"; 
-            T[3][1].Value →KRS014_001884= Val(DataExchange.h_sc*10↑3←, 2) &amp; " mm"; 
-            T[4][1].Value →KRS014_001885= DataExchange.n_r; 
+            T[2][1].Value →KRS014_001884= Val(DataExchange.h_sc*10↑3←, 2) &amp; " mm"; 
+            T[3][1].Value →KRS014_001885= DataExchange.n_r; 
             IF(DataExchange.n_r &gt; 1) { 
-                T[5][1].Value →KRS014_001886= Val(DataExchange.b0_stud*10↑3←, 2) &amp; " mm"; 
+                T[4][1].Value →KRS014_001886= Val(DataExchange.b0_stud*10↑3←, 2) &amp; " mm"; 
             } 
             
             //Description in third column
             T[1][2].Value →KRS014_001887= TR("Diameter"); 
             T[2][2].Value →KRS014_001888= TR("Nominal height"); 
-            T[3][2].Value →KRS014_001889= TR("As-welded height"); 
-            T[4][2].Value →KRS014_001890= TR("Amount per trough or section"); 
+            T[3][2].Value →KRS014_001890= TR("Amount per trough or section"); 
             IF(DataExchange.n_r &gt; 1) { 
-                T[5][2].Value →KRS014_001891= TR("Transverse spacing"); 
+                T[4][2].Value →KRS014_001891= TR("Transverse spacing"); 
             } 
             
             →KRS014_001875SetTable(T); 
@@ -1026,14 +1033,6 @@ class PrintGeometryAndMaterials {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_001238">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
       <VC ID="KRS014_001239">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2899,14 +2898,6 @@ class PrintGeometryAndMaterials {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001878">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="KRS014_001879">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2932,14 +2923,6 @@ class PrintGeometryAndMaterials {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS014_001882">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_001883">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2980,14 +2963,6 @@ class PrintGeometryAndMaterials {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS014_001888">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_001889">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3843,6 +3818,30 @@ class PrintGeometryAndMaterials {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS100_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
       <VC ID="UNK000_019243">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3885,9 +3884,6 @@ class PrintGeometryAndMaterials {
     </Item>
     <Item TranslateID="STRING_108EBB93">
       <ENU>"Transverse spacing"</ENU>
-    </Item>
-    <Item TranslateID="STRING_13354121">
-      <ENU>"As-welded height"</ENU>
     </Item>
     <Item TranslateID="STRING_1E961A9E">
       <ENU>"Transverse bar spacing"</ENU>

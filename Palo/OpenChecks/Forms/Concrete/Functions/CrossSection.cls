@@ -986,6 +986,7 @@
             ExtCalc_DrawStress.Reinf →KRS106_000040= Reinf.Bars; 
         } 
         object IOhelper →INI400_013715= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
+        object CreateCS_common →RFM116_000055= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\CreateCS_common.clc"); 
         ExtCalc_DrawStress.FormCode →INI400_005303= IOhelper.GetActCS().Geometry.FormCode; 
         
         // POD
@@ -1037,11 +1038,16 @@
         object[] εst →INI400_005369= new object[]; 
         object reinf →INI400_013717= IOhelper.GetActReinf(); 
         IF(reinf != null &amp;&amp; reinf.Contains("Bar")) { 
-            IF(reinf.Bar.Count != 0) { 
-                FOR(i, 0, CONCRETE.General.GetReinfBars(CssID).Count-1) { //Stress in steel
-                    σst[i] →INI400_001695= CONCRETE.StressStrain.GetStressOfReinf(CssID, ForcesID, i)/10; 
-                    εst[i] →INI400_006534= CONCRETE.StressStrain.GetStrainOfReinf(CssID, ForcesID, i); 
+            IF(CreateCS_common.IsArray(reinf.Bar)) { 
+                IF(reinf.Bar.Count != 0) { 
+                    FOR(i, 0, CONCRETE.General.GetReinfBars(CssID).Count-1) { //Stress in steel
+                        σst[i] →INI400_001695= CONCRETE.StressStrain.GetStressOfReinf(CssID, ForcesID, i)/10; 
+                        εst[i] →INI400_006534= CONCRETE.StressStrain.GetStrainOfReinf(CssID, ForcesID, i); 
+                    } 
                 } 
+            } ELSE { 
+                σst[0] →RFM116_000053= CONCRETE.StressStrain.GetStressOfReinf(CssID, ForcesID, 0)/10; 
+                εst[0] →RFM116_000054= CONCRETE.StressStrain.GetStrainOfReinf(CssID, ForcesID, 0); 
             } 
         } 
         ExtCalc_DrawStress.σst →INI400_005346= σst; 
@@ -4654,6 +4660,30 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="LUN001_000077">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM116_000053">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="857" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="857" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="857" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="857" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="857" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="857" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="RFM116_000054">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM116_000055">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

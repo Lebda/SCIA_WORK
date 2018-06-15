@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="39304371-b04a-4f78-bcf6-2adc1e822b97">
   <CodeEditor>
-    <SourceCode Collapsed="4|8|63|74|98|117|179|206|216|234|248|277|340|379|485|497|522|558|653|834|875|1004|1039|1068|1102|1116|1126|1140|1164|1172|1182|1200|1210|1220|1230|1423|1441|1449|1488|1545|1562|1590|1609|1617|1626|1656|1681|1690|1910|2006|2064|2078" BreakPoints="">//Composite beam design for EC - SEN form
+    <SourceCode Collapsed="4|8|9|63|73|97|98|116|117|178|205|215|233|234|248|277|342|381|491|521|546|547|580|675|896|937|1066|1101|1130|1131|1166|1180|1190|1204|1228|1236|1246|1264|1274|1284|1294|1300|1487|1505|1515|1554|1643|1666|1695|1714|1722|1732|1762|1793|1797|1812|2060|2160|2218|2232|2248|2257" BreakPoints="">//Composite beam design for EC - SEN form
 //Private functions
 
 
@@ -65,10 +65,9 @@ private void TestCompositePrerequisities() {
 } 
 
 private void TestOfCheckValidity() { 
-    
     //Check on rib direction
-    IF(DataExchange.rib_dir == 999) { 
-        →KRS014_001650Functions_general.AddEWN(DataExchange, "E/04"); //The angle between the member and ribs of profiled steel sheeting is bigger than 10 degrees.
+    IF(DataExchange.rib_dir == 999) { //The angle between the member and ribs of profiled steel sheeting is bigger than 10 degrees.
+        //Warning is added in Geometry data section
         ModificationCmds →GMP014_000001= ""; 
         ModificationCmdsRatio →GMP014_000003= 0; 
         IsForExit →KRS014_002815= true; 
@@ -210,9 +209,9 @@ private void DesignDataExchange() {
 private void DeflectionConstants() { 
     IF(ULS_Fin_Loads.Count &gt; 0) { 
         double It →GMP014_000147= →GMP014_000148Functions_CodeInd.CompositeMomentOfIntertia(DataExchange); 
-        →GMP014_000140DataExchange.Set("DefCon_Fin_Live", 1.25*DataExchange.SLS_Fin_Live_Deflections.uz*It); 
-        →GMP014_000141DataExchange.Set("DefCon_Fin_Permanent", 1.25*DataExchange.SLS_Fin_Permanent_Deflections.uz*It); 
-        →GMP014_000142DataExchange.Set("DefCon_Fin_Total", 1.25*DataExchange.SLS_Fin_Total_Deflections.uz*It); 
+        →GMP014_000140DataExchange.Set("DefCon_Fin_Live", DataExchange.SLS_Fin_Live_Deflections.uz*It); 
+        →GMP014_000141DataExchange.Set("DefCon_Fin_Permanent", DataExchange.SLS_Fin_Permanent_Deflections.uz*It); 
+        →GMP014_000142DataExchange.Set("DefCon_Fin_Total", DataExchange.SLS_Fin_Total_Deflections.uz*It); 
     } 
     →GMP014_000156DataExchange.Set("DefCon_Con", DataExchange.SLS_Con_Deflections.uz*DataExchange.I_y); 
 } 
@@ -242,6 +241,7 @@ private void PrepareDataExchange() {
         →GMP014_000330DataExchange.Set("MaxSpacing", 0); 
         →GMP014_019605DataExchange.Set("UniNumStuds", "[N/A]"); 
         →GMP014_019606DataExchange.Set("SegStudPattern", "[N/A]"); 
+        →GMP014_019701DataExchange.Set("DesignedCamber", 0); 
         IF(DataExchange.CalcApproach == 0) { 
             →GMP014_019610DataExchange.Set("n_r_max", DataExchange.n_r); 
             →GMP014_019608DataExchange.Set("n_r", 1); 
@@ -281,6 +281,7 @@ private void CheckLoadCompletness() {
 private void InitialiseResults() { //Here will be all results which we want to send to SEN set to zero
     UC →KRS014_000983= 0; 
     UC↓des← →KRS014_001746= 0; 
+    UC↓def,cam← →KRS100_000011= 0; 
     UC↓con,ULS← →KRS014_000987= 0; 
     UC↓con,SB← →KRS014_001027= 0; 
     UC↓con,V← →KRS014_000984= 0; 
@@ -338,8 +339,9 @@ private void InitialiseResults() { //Here will be all results which we want to s
     ULS_Fin_Loads →KRS014_001358= new Structure(); 
     
     IsExit →KRS014_002809= false; 
+    IsForExit →KRS100_000001= false; 
+    
 } 
-
 
 private void InitialiseUC() { //Here will be all results which we want to send to SEN set to zero
     UC →GMP014_000042= 0; 
@@ -450,6 +452,7 @@ private void GetResults() { //Here will be all results which we want to send to 
     UC↓def,cam← →GMP014_000333= MAX(UC↓fin,δz,tot←, UC↓con,δz←); 
     
     UC↓det← →KRS014_001701= SectionID == MiddleSectionID ? ReadResults(ResultType.Member, "UC_det") : ReadResults(ResultType.Member, "UC_det")-0.000001; 
+    IsForExit →KRS100_000003= ReadResults(ResultType.Member, "IsForExit"); 
     
     ULS_Con_Opening_Results →KRS014_002778= ReadResults(ResultType.Member, "ULS_Con_Opening"); 
     IF(ULS_Con_Opening_Results.Contains("V")) { 
@@ -484,17 +487,38 @@ private void GetResults() { //Here will be all results which we want to send to 
     } ELSE { 
         UC →KRS014_000564= MAX(UC↓con,ULS←, UC↓fin,ULS←, UC↓con,SLS←, UC↓fin,SLS←, UC↓det←); 
     } 
+    
+    ShearConnection →KRS100_000021= ReadResults(ResultType.Member, "ShearConnection"); 
+    
 } 
 
 private void DesignCamber() { 
-    IF(DataExchange.CamberType == 4 &amp;&amp; COMPARE(double UC↓def,cam←, 1.0, 3) &gt; 0) { 
+    IF(DataExchange.CamberType == 4 &amp;&amp; COMPARE(UC↓def,cam←, 1.0, 3) &gt; 0) { 
         →GMP014_000334DataExchange.Set("IsCamber", True); 
         
         double Camber↓fin,δz,tot← →GMP014_000336= (DataExchange.L*DataExchange.LimitTotalFin)*(UC↓fin,δz,tot←-1.0); 
         double Camber↓con,δz← →GMP014_000337= (DataExchange.L*DataExchange.LimitConstr)*(UC↓con,δz←-1.0); 
         
-        double DesignedCamber →GMP014_000338= CEILING(MIN(MAX(Camber↓con,δz←, Camber↓fin,δz,tot←), DataExchange.MaxCamber), 0.005); 
+        double DesignedCamber →GMP014_000338= CEILING(MIN(MAX(0, Camber↓con,δz←, Camber↓fin,δz,tot←), DataExchange.MaxCamber), 0.005); 
         →GMP014_000339DataExchange.Set("DesignedCamber", DesignedCamber); 
+        
+        //Recalculate SLS_Con and SLS_Fin with camber
+        //SLS Construction
+        
+        →KRS100_000007SetSLSConstructionLoads(); 
+        object ConstructionSLS →KRS100_000004= new Ext_ConstructionSLS.SLSConstructionStageCheck(DataExchange); 
+        →KRS100_000005ConstructionSLS.DeflectionCheck(0, 0, out UC↓con,δz←); 
+        SLS_Con_Results.uz.UC →KRS100_000008= UC↓con,δz←; 
+        →KRS100_000006SaveResults(ResultType.Member, "SLS_Con", SLS_Con_Results); 
+        
+        //SLS Final
+        →KRS100_000017SetSLSFinalLoads(); 
+        object FinalSLS →KRS100_000012= new Ext_FinalSLS.SLSFinalStageCheck(DataExchange); 
+        →KRS100_000014FinalSLS.DeflectionCheckTotal(0, 0, out UC↓fin,δz,tot←); 
+        object uz_tot →KRS100_000018= SLS_Fin_Results.uz_tot; 
+        uz_tot.UC →KRS100_000019= UC↓fin,δz,tot←; 
+        object Results →KRS100_000015= new Structure("uz_live", SLS_Fin_Results.uz_live, "uz_tot", uz_tot, "vib", SLS_Fin_Results.vib, "CCR", SLS_Fin_Results.CCR, "CCD", SLS_Fin_Results.CCD, "CCS", SLS_Fin_Results.CCS); 
+        →KRS100_000016SaveResults(ResultType.Member, "SLS_Fin", Results); 
     } 
 } 
 
@@ -529,32 +553,30 @@ private void CalculateAllChecks() { //Main function to calculation everything an
         →KRS014_001643DrawGeometryAndMaterials(); //invisible, but executed dut to adding EWN from geometry checks
         
         →KRS014_001699DrawDetailings(); //invisible,  but executed dut to adding EWN from detailing checks
-
-        IF(!IsForExit) { 
-            →KRS014_000587CalculateULSConstruction(); 
+        
+        →KRS014_000587CalculateULSConstruction(); 
+        
+        →KRS014_000589CalculateSLSConstruction(); 
+        
+        →KRS014_000588CalculateULSFinal(); 
+        
+        →KRS014_000590CalculateSLSFinal(); 
+        
+        IF(DataExchange.bWO &amp;&amp; DataExchange.WOOK) { 
+            →KRS014_002705DataExchange.Set("ULS_Con_Loads", ULS_Con_Loads); 
+            →KRS014_002706DataExchange.Set("ULS_Fin_Loads", ULS_Fin_Loads); 
+            →GMP014_000385Functions_general.OpeningData(DataExchange); 
             
-            →KRS014_000589CalculateSLSConstruction(); 
+            →KRS014_002765CalculateULSConstructionOpening(); 
             
-            →KRS014_000588CalculateULSFinal(); 
+            →KRS014_003096CalculateULSFinalOpening(); 
             
-            →KRS014_000590CalculateSLSFinal(); 
+        } ELSE { 
+            Results →KRS014_002807= new Structure("V", 0, "M", 0, "LTB", 0, "SB", 0, "IsOpening", false); 
+            →KRS014_002808SaveResults(ResultType.Member, "ULS_Con_Opening", Results); 
             
-            IF(DataExchange.bWO &amp;&amp; DataExchange.WOOK) { 
-                →KRS014_002705DataExchange.Set("ULS_Con_Loads", ULS_Con_Loads); 
-                →KRS014_002706DataExchange.Set("ULS_Fin_Loads", ULS_Fin_Loads); 
-                →GMP014_000385Functions_general.OpeningData(DataExchange); 
-                
-                →KRS014_002765CalculateULSConstructionOpening(); 
-                
-                →KRS014_003096CalculateULSFinalOpening(); 
-                
-            } ELSE { 
-                Results →KRS014_002807= new Structure("V", 0, "M", 0, "LTB", 0, "SB", 0, "IsOpening", false); 
-                →KRS014_002808SaveResults(ResultType.Member, "ULS_Con_Opening", Results); 
-                
-                Results →KRS014_003097= new Structure("V", 0, "M", 0, "VB", 0, "SB", 0, "IsOpening", true); 
-                →KRS014_003098SaveResults(ResultType.Member, "ULS_Fin_Opening", Results); 
-            } 
+            Results →KRS014_003097= new Structure("V", 0, "M", 0, "VB", 0, "SB", 0, "IsOpening", true); 
+            →KRS014_003098SaveResults(ResultType.Member, "ULS_Fin_Opening", Results); 
         } 
     } 
 } 
@@ -566,7 +588,7 @@ private void CalculateULSConstruction() { //ULS construction stage calculation
     object Results_M →KRS014_000969= new Structure(); 
     object Results_LTB →KRS014_000970= new Structure(); 
     
-    IF(ULS_Con_Loads.Count &gt; 0) { 
+    IF(!IsForExit &amp;&amp; ULS_Con_Loads.Count &gt; 0) { 
         //propping
         IF(DataExchange.propped) { 
             →KRS014_001657Functions_general.AddEWN(DataExchange, "N/11"); //The construction stage check is not performed for propped members.
@@ -676,10 +698,18 @@ private void CalculateULSFinal() { //ULS final stage check
     object Results_LSR →KRS014_001517= new Structure(); 
     object Results_CCF →KRS014_001518= new Structure(); 
     object Results_beff →KRS014_001424= new object[]; 
+    //Special set of results from shear connection check and bending check due to SSL
+    object ShearCon_Results →KRS100_000055= new Structure(); 
+    object Results_M_Pos →KRS100_000038= new Structure(); 
+    object ShearConn_Pos →KRS100_000023= new Structure(); 
+    object Results_M_Neg →KRS100_000045= new Structure(); 
+    object ShearConn_Neg →KRS100_000046= new Structure(); 
     double V↓pl,Rd← →KRS014_001470= 0; 
     double M↓Rd← →KRS014_001480= 0; 
+    double UC↓fin,M+← →KRS100_000039= 0; 
+    double UC↓fin,M-← →KRS100_000044= 0; 
     
-    IF(ULS_Fin_Loads.Count &gt; 0) { 
+    IF(!IsForExit &amp;&amp; ULS_Fin_Loads.Count &gt; 0) { 
         //National annex values - calculated only once
         double γ↓M0← →KRS014_001065= Functions_NA.GetGammasSteel().γ_M0; 
         double γ↓M1← →KRS014_001066= Functions_NA.GetGammasSteel().γ_M1; 
@@ -762,6 +792,25 @@ private void CalculateULSFinal() { //ULS final stage check
                     CombiID →KRS014_001447= j; 
                     Results_M →KRS014_001448= new Structure("SectionID", i, "CombiID", j, "UC", UC↓fin,M←); 
                 } 
+                IF(DataExchange.Contains("positive_moment")) { 
+                    //finding max extreme for positive and negative moment
+                    IF(DataExchange.positive_moment &amp;&amp; UC↓fin,M+← &lt; UC_M) { 
+                        UC↓fin,M+← →KRS100_000034= UC_M; 
+                        SectionID →KRS100_000035= i; 
+                        CombiID →KRS100_000036= j; 
+                        Results_M_Pos →KRS100_000037= new Structure("SectionID", i, "CombiID", j, "UC", UC↓fin,M+←); 
+                        ShearConn_Pos →KRS100_000029= new Structure("b_eff", Results_beff[i].b_eff, "N_c_f", DataExchange.N_c_f, "n_sp", DataExchange.n_sp, "M_Rd", M↓Rd←, "IsPositiveMoment", DataExchange.positive_moment, "N_c_Rd", DataExchange.N_c_Rd, "N_pl_a", DataExchange.N_pl_a, "F_s", DataExchange.F_s); 
+                    } 
+                    IF(!DataExchange.positive_moment &amp;&amp; UC↓fin,M-← &lt; UC_M) { 
+                        UC↓fin,M-← →KRS100_000040= UC_M; 
+                        SectionID →KRS100_000041= i; 
+                        CombiID →KRS100_000042= j; 
+                        Results_M_Neg →KRS100_000043= new Structure("SectionID", i, "CombiID", j, "UC", UC↓fin,M-←); 
+                        //ShearConn_Neg →KRS100_000047= new Structure("b_eff", Results_beff[i].b_eff, "N_c_f", DataExchange.N_c_f/DataExchange.η, "n_sp", DataExchange.n_sp, "M_Rd", M↓Rd←, "IsPositiveMoment", DataExchange.positive_moment, "N_c_Rd", DataExchange.N_c_Rd, "N_pl_a", DataExchange.N_pl_a, "F_s", DataExchange.F_s); 
+                        ShearConn_Neg →GMP106_000034= new Structure("b_eff", Results_beff[i].b_eff, "N_c_f", DataExchange.N_c_f, "n_sp", DataExchange.n_sp, "M_Rd", M↓Rd←, "IsPositiveMoment", DataExchange.positive_moment, "N_c_Rd", DataExchange.N_c_Rd, "N_pl_a", DataExchange.N_pl_a, "F_s", DataExchange.F_s); 
+                        //N_c_f/η because in negative moment is Ncf multiplied by η in bending moment check
+                    } 
+                } 
                 
                 →KRS014_001506FinalULS.LTBResistance(0, 0, V↓pl,Rd←, M↓Rd←, out UC_LTB); 
                 IF(UC↓fin,LTB← &lt; UC_LTB) { 
@@ -833,6 +882,19 @@ private void CalculateULSFinal() { //ULS final stage check
     } 
     Results →KRS014_001056= new Structure("SB", Results_SB, "V", Results_V, "M", Results_M, "LTB", Results_LTB, "LR", Results_LR, "LSR", Results_LSR, "CCF", Results_CCF, "beff", Results_beff); 
     →KRS014_000510SaveResults(ResultType.Member, "ULS_Fin", Results); 
+    
+    //Special set of results from shear connection check and bending check due to SSL
+    IF(!Results_M_Pos.Contains("UC")) { 
+        Results_M_Pos →KRS100_000051= new Structure("SectionID", 0, "CombiID", 0, "UC", 0); 
+        ShearConn_Pos →KRS100_000053= new Structure("b_eff", 0, "N_c_f", 0, "n_sp", 0, "M_Rd", 0, "IsPositiveMoment", true, "N_c_Rd", 0, "N_pl_a", 0, "F_s", 0); 
+    } 
+    IF(!Results_M_Neg.Contains("UC")) { 
+        Results_M_Neg →KRS100_000052= new Structure("SectionID", 0, "CombiID", 0, "UC", 0); 
+        ShearConn_Neg →KRS100_000054= new Structure("b_eff", 0, "N_c_f", 0, "n_sp", 0, "M_Rd", 0, "IsPositiveMoment", false, "N_c_Rd", 0, "N_pl_a", 0, "F_s", 0); 
+    } 
+    ShearCon_Results →KRS100_000056= new Structure("Results_M_Pos", Results_M_Pos, "ShearConn_Pos", ShearConn_Pos, "Results_M_Neg", Results_M_Neg, "ShearConn_Neg", ShearConn_Neg); 
+    →KRS100_000026SaveResults(ResultType.Member, "ShearConnection", ShearCon_Results); 
+    →KRS100_000057DataExchange.Set("ShearConnection", ShearCon_Results); 
 } 
 
 private void CalculateSLSConstruction() { //SLS construction check
@@ -840,7 +902,7 @@ private void CalculateSLSConstruction() { //SLS construction check
     object Results →KRS014_001293= new Structure(); 
     object Results_uz →KRS014_001294= new Structure(); 
     
-    IF(SLS_Con_Loads.Count &gt; 0) { 
+    IF(!IsForExit &amp;&amp; SLS_Con_Loads.Count &gt; 0) { 
         //propping
         IF(DataExchange.propped) { 
             →KRS014_001658Functions_general.AddEWN(DataExchange, "N/11"); //The construction stage check is not performed for propped members.
@@ -888,7 +950,7 @@ private void CalculateSLSFinal() { //SLS final check
     object Results_beff →KRS014_001617= new object[]; 
     bool IsSLSFinForcesNegative →KRS014_003137= false; 
     
-    IF(SLS_Fin_Loads.Count &gt; 0) { 
+    IF(!IsForExit &amp;&amp; SLS_Fin_Loads.Count &gt; 0) { 
         double UC_uz_live →KRS014_000473= 0; //only local
         double UC_uz_tot →KRS014_001343= 0; //only local
         double UC_vib →KRS014_001569= 0; //only local
@@ -962,22 +1024,22 @@ private void CalculateSLSFinal() { //SLS final check
             →KRS014_001621DataExchange.Set("d_x_fin_LR", b_eff_max_ID); 
         } 
         
-        FOR(i, 0, IO.Beam.Section.Count-1) { //Cycle over all sections
-            FOR(j, 0, SLS_Fin_Loads.Count-1) { //Cycle over all combinations
-                →KRS014_003133DataExchange.Set("SLS_Fin_Forces", SLS_Fin_Forces[i][j]); 
-                IF(COMPARE(SLS_Fin_Forces[i][j].My, 0, 6) == -1) { 
-                    →KRS014_001627FinalSLS.CrackingMaxDiameter(0, 0, out UC↓fin,CCD←); 
-                    Results_CCD →KRS014_001628= new Structure("SectionID", i, "CombiID", j, "UC", UC↓fin,CCD←); 
-                    →KRS014_001630FinalSLS.CrackingMaxSpacing(0, 0, out UC↓fin,CCS←); 
-                    Results_CCS →KRS014_001631= new Structure("SectionID", i, "CombiID", j, "UC", UC↓fin,CCS←); 
-                    IsSLSFinForcesNegative →KRS014_003138= true; 
-                    Break(); 
-                } 
-            } 
-            IF(IsSLSFinForcesNegative) { 
-                Break(); 
-            } 
-        } 
+        //        FOR(i, 0, IO.Beam.Section.Count-1) { //Cycle over all sections //Keep it for future development
+        //            FOR(j, 0, SLS_Fin_Loads.Count-1) { //Cycle over all combinations
+        //                →KRS014_003133DataExchange.Set("SLS_Fin_Forces", SLS_Fin_Forces[i][j]); 
+        //                IF(COMPARE(SLS_Fin_Forces[i][j].My, 0, 6) == -1) { 
+        //                    →KRS014_001627FinalSLS.CrackingMaxDiameter(0, 0, out UC↓fin,CCD←); 
+        //                    Results_CCD →KRS014_001628= new Structure("SectionID", i, "CombiID", j, "UC", UC↓fin,CCD←); 
+        //                    →KRS014_001630FinalSLS.CrackingMaxSpacing(0, 0, out UC↓fin,CCS←); 
+        //                    Results_CCS →KRS014_001631= new Structure("SectionID", i, "CombiID", j, "UC", UC↓fin,CCS←); 
+        //                    IsSLSFinForcesNegative →KRS014_003138= true; 
+        //                    Break(); 
+        //                } 
+        //            } 
+        //            IF(IsSLSFinForcesNegative) { 
+        //                Break(); 
+        //            } 
+        //        } 
         
         →KRS014_001624FinalSLS.CrackingMinimumReinf(0, 0, out UC↓fin,CCR←); 
         Results_CCR →KRS014_001625= new Structure("SectionID", →KRS014_001626DataExchange.d_x_fin_LR, "CombiID", 0, "UC", UC↓fin,CCR←); 
@@ -1008,7 +1070,7 @@ private void CalculateSLSFinal() { //SLS final check
 private void CalculateULSConstructionOpening() { //ULS construction stage calculation in opening
     object Results →KRS014_002707= new Structure(); 
     
-    IF(ULS_Con_Loads.Count &gt; 0) { 
+    IF(!IsForExit &amp;&amp; ULS_Con_Loads.Count &gt; 0) { 
         //propping
         IF(DataExchange.propped) { 
             →KRS014_002712Functions_general.AddEWN(DataExchange, "N/11"); //The construction stage check is not performed for propped members.
@@ -1043,7 +1105,7 @@ private void CalculateULSConstructionOpening() { //ULS construction stage calcul
 private void CalculateULSFinalOpening() { //ULS construction stage calculation in opening
     object Results →KRS014_002824= new Structure(); 
     
-    IF(ULS_Fin_Loads.Count &gt; 0) { 
+    IF(!IsForExit &amp;&amp; ULS_Fin_Loads.Count &gt; 0) { 
         IF(COMPARE(DataExchange.ULS_Fin_Forces_Opening.My, 0, 6) != -1) { 
             //Calculation will run in for cycle over all sections and all combinations the most extreme result will be saved to member
             //ULS construction stage - vertical shear check
@@ -1097,6 +1159,8 @@ private void DrawChecksInSection() { //Main function to calculation everything a
             →KRS014_003105DrawULSFinalOpening(); 
             
             →KRS014_000594DrawSLSFinal(); 
+            
+            
             
             
         } 
@@ -1442,11 +1506,13 @@ private void DesignAllChecks(out double UC↓des←, out double UC↓sum←, out
     UC↓sum← →GMP014_000160= SUM(UC_ULS_con, UC_ULS_fin, UC_SLS_con, UC_SLS_fin); 
 } 
 
-private void DesignDetChecks(out double UC↓space←) { //Main function for desing based on limited scope of checks - only checks which are affected by Section are used
+private void DesignDetChecks(out double UC↓space←, out double UC↓edge←) { //Main function for desing based on limited scope of checks - only checks which are affected by Section are used
     →GMP014_019431double UC_min_spc →GMP014_019432= 0; 
+    double UC_min_dist_fl →GMP100_000020= 0; 
     →GMP014_019472double UC_det →GMP014_019473= 0; 
-    →GMP014_019471DesignDetailing(out UC_det, out UC_min_spc); 
+    →GMP014_019471DesignDetailing(out UC_det, out UC_min_spc, out UC_min_dist_fl); 
     UC↓space← →GMP014_019440= UC_min_spc; 
+    UC↓edge← →GMP100_000011= UC_min_dist_fl; 
     
 } 
 
@@ -1494,11 +1560,16 @@ private void DesignULSFinal(out double UC_fin) {
     double UC_SB →KRS014_001776= 0; //only local
     double UC_V →KRS014_001773= 0; //only local
     double UC_V_tmp →KRS014_001817= 0; //only local
-    double UC_M →KRS014_001774= 0; //only local
+    double UC_M_Pos →KRS014_001774= 0; //only local
+    double UC_M_Neg →GMP106_000025= 0; //only local
     double UC_M_tmp →KRS014_001818= 0; //only local
     double UC_LTB →KRS014_001775= 0; //only local
     double V↓pl,Rd← →KRS014_001809= 0; 
     double M↓Rd← →KRS014_001810= 0; 
+    
+    object ShearCon_Results →GMP106_000029= new Structure(); 
+    object ShearConn_Pos →GMP106_000031= new Structure(); 
+    object ShearConn_Neg →GMP106_000033= new Structure(); 
     
     object FinalULS →KRS014_001777= new Ext_FinalULS.ULSFinalStageCheck(DataExchange); 
     
@@ -1530,19 +1601,46 @@ private void DesignULSFinal(out double UC_fin) {
         →KRS014_001791DataExchange.Set("ULS_Fin_Loads_LTB", ULS_Fin_Loads[ULS_Fin_Results.LTB.CombiID]); 
         →KRS014_001799FinalULS.LTBResistance(0, 0, V↓pl,Rd←, M↓Rd←, out UC_LTB); 
         
-        //For bending moment resistance is needed to have V↓pl,Rd← from same load set and section
-        →GMP014_019540DataExchange.Set("SectionID_Fin_V", ULS_Fin_Results.M.SectionID); 
-        →GMP014_019541DataExchange.Set("ULS_Fin_Forces_V", ULS_Fin_Total_Forces[ULS_Fin_Results.M.SectionID][ULS_Fin_Results.M.CombiID]); 
-        →GMP014_019542DataExchange.Set("ULS_Fin_Loads_V", ULS_Fin_Loads[ULS_Fin_Results.M.CombiID]); 
-        →GMP014_019543FinalULS.ShearForceResistance(0, 0, out V↓pl,Rd←, out UC_V_tmp); 
-        →GMP014_019544DataExchange.Set("SectionID_Fin_M", ULS_Fin_Results.M.SectionID); 
-        →GMP014_019545DataExchange.Set("ULS_Fin_Forces_M", ULS_Fin_Total_Forces[ULS_Fin_Results.M.SectionID][ULS_Fin_Results.M.CombiID]); 
-        →GMP014_019546DataExchange.Set("ULS_Fin_Loads_M", ULS_Fin_Loads[ULS_Fin_Results.M.CombiID]); 
-        →GMP014_019547FinalULS.DegreeOfShearConnectionPresent(0, 0); //Actual degree of shear connection
-        →GMP014_019548FinalULS.BendingMomentResistance(0, 0, V↓pl,Rd←, out M↓Rd←, out UC_M); 
-        →GMP014_019549DataExchange.Set("n_sp_used", DataExchange.n_sp); 
+        //        //For bending moment resistance is needed to have V↓pl,Rd← from same load set and section
+        //        →GMP014_019540DataExchange.Set("SectionID_Fin_V", ULS_Fin_Results.M.SectionID); 
+        //        →GMP014_019541DataExchange.Set("ULS_Fin_Forces_V", ULS_Fin_Total_Forces[ULS_Fin_Results.M.SectionID][ULS_Fin_Results.M.CombiID]); 
+        //        →GMP014_019542DataExchange.Set("ULS_Fin_Loads_V", ULS_Fin_Loads[ULS_Fin_Results.M.CombiID]); 
+        //        →GMP014_019543FinalULS.ShearForceResistance(0, 0, out V↓pl,Rd←, out UC_V_tmp); 
+        //        →GMP014_019544DataExchange.Set("SectionID_Fin_M", ULS_Fin_Results.M.SectionID); 
+        //        →GMP014_019545DataExchange.Set("ULS_Fin_Forces_M", ULS_Fin_Total_Forces[ULS_Fin_Results.M.SectionID][ULS_Fin_Results.M.CombiID]); 
+        //        →GMP014_019546DataExchange.Set("ULS_Fin_Loads_M", ULS_Fin_Loads[ULS_Fin_Results.M.CombiID]); 
+        //        →GMP014_019547FinalULS.DegreeOfShearConnectionPresent(0, 0); //Actual degree of shear connection
+        //        →GMP014_019548FinalULS.BendingMomentResistance(0, 0, V↓pl,Rd←, out M↓Rd←, out UC_M); 
+
+        →GMP106_000036DataExchange.Remove("ShearConnection"); 
         
-        double UC_fin →KRS014_001816= MAX(UC_SB, UC_V, UC_M, UC_LTB); 
+        →GMP106_000003DataExchange.Set("SectionID_Fin_V", ShearConnection.Results_M_Pos.SectionID); 
+        →GMP106_000004DataExchange.Set("ULS_Fin_Forces_V", ULS_Fin_Total_Forces[ShearConnection.Results_M_Pos.SectionID][ShearConnection.Results_M_Pos.CombiID]); 
+        →GMP106_000005DataExchange.Set("ULS_Fin_Loads_V", ULS_Fin_Loads[ShearConnection.Results_M_Pos.CombiID]); 
+        →GMP106_000006FinalULS.ShearForceResistance(0, 0, out V↓pl,Rd←, out UC_V_tmp); 
+        →GMP106_000007DataExchange.Set("SectionID_Fin_M", ShearConnection.Results_M_Pos.SectionID); 
+        →GMP106_000008DataExchange.Set("ULS_Fin_Forces_M", ULS_Fin_Total_Forces[ShearConnection.Results_M_Pos.SectionID][ShearConnection.Results_M_Pos.CombiID]); 
+        →GMP106_000009DataExchange.Set("ULS_Fin_Loads_M", ULS_Fin_Loads[ShearConnection.Results_M_Pos.CombiID]); 
+        →GMP106_000010FinalULS.DegreeOfShearConnectionPresent(0, 0); //Actual degree of shear connection
+        →GMP106_000011FinalULS.BendingMomentResistance(0, 0, V↓pl,Rd←, out M↓Rd←, out UC_M_Pos); 
+        ShearConn_Pos →GMP106_000014= new Structure("b_eff", ShearConnection.ShearConn_Pos.b_eff, "N_c_f", DataExchange.N_c_f, "n_sp", DataExchange.n_sp, "M_Rd", M↓Rd←, "IsPositiveMoment", DataExchange.positive_moment, "N_c_Rd", DataExchange.N_c_Rd, "N_pl_a", DataExchange.N_pl_a, "F_s", DataExchange.F_s); 
+        
+        →GMP106_000015DataExchange.Set("SectionID_Fin_V", ShearConnection.Results_M_Neg.SectionID); 
+        →GMP106_000016DataExchange.Set("ULS_Fin_Forces_V", ULS_Fin_Total_Forces[ShearConnection.Results_M_Neg.SectionID][ShearConnection.Results_M_Neg.CombiID]); 
+        →GMP106_000017DataExchange.Set("ULS_Fin_Loads_V", ULS_Fin_Loads[ShearConnection.Results_M_Neg.CombiID]); 
+        →GMP106_000018FinalULS.ShearForceResistance(0, 0, out V↓pl,Rd←, out UC_V_tmp); 
+        →GMP106_000019DataExchange.Set("SectionID_Fin_M", ShearConnection.Results_M_Neg.SectionID); 
+        →GMP106_000020DataExchange.Set("ULS_Fin_Forces_M", ULS_Fin_Total_Forces[ShearConnection.Results_M_Neg.SectionID][ShearConnection.Results_M_Neg.CombiID]); 
+        →GMP106_000021DataExchange.Set("ULS_Fin_Loads_M", ULS_Fin_Loads[ShearConnection.Results_M_Neg.CombiID]); 
+        →GMP106_000022FinalULS.DegreeOfShearConnectionPresent(0, 0); //Actual degree of shear connection
+        →GMP106_000023FinalULS.BendingMomentResistance(0, 0, V↓pl,Rd←, out M↓Rd←, out UC_M_Neg); 
+        ShearConn_Neg →GMP106_000024= new Structure("b_eff", ShearConnection.ShearConn_Neg.b_eff, "N_c_f", DataExchange.N_c_f, "n_sp", DataExchange.n_sp, "M_Rd", M↓Rd←, "IsPositiveMoment", DataExchange.positive_moment, "N_c_Rd", DataExchange.N_c_Rd, "N_pl_a", DataExchange.N_pl_a, "F_s", DataExchange.F_s); 
+        
+        ShearCon_Results →GMP106_000026= new Structure("Results_M_Pos", ShearConnection.Results_M_Pos, "ShearConn_Pos", ShearConn_Pos, "Results_M_Neg", ShearConnection.Results_M_Neg, "ShearConn_Neg", ShearConn_Neg); 
+        →GMP106_000027SaveResults(ResultType.Member, "ShearConnection", ShearCon_Results); 
+        →GMP106_000028DataExchange.Set("ShearConnection", ShearCon_Results); 
+        
+        double UC_fin →KRS014_001816= MAX(UC_SB, UC_V, UC_M_Pos, UC_M_Neg, UC_LTB); 
     } 
 } 
 
@@ -1559,7 +1657,13 @@ private void DesignSLSConstruction(out double UC_SLS_con) {
         →KRS014_001842DataExchange.Set("SLS_Con_Loads", SLS_Con_Loads[SLS_Con_Results.uz.CombiID]); 
         →KRS014_001847ConstructionSLS.DeflectionCheck(0, 0, out UC_uz); 
         
-        double UC_SLS_con →KRS014_001848= UC_uz; 
+        IF(DataExchange.CamberType == 4 &amp;&amp; COMPARE(UC_uz, 1.00, 2) == 1) { 
+            IF(COMPARE(DataExchange.MaxCamber, (DataExchange.L*DataExchange.LimitConstr)*(UC_uz-1.0), 6) &gt; -1) { 
+                UC_uz →KRS100_000020= 0.98; 
+            } 
+        } 
+        
+        double UC_SLS_con →KRS014_001848= MAX(0, UC_uz); 
     } 
 } 
 
@@ -1582,16 +1686,17 @@ private void DesignSLSFinal(out double UC_SLS_fin) {
         →KRS014_001857DataExchange.Set("SLS_Fin_Loads_Total", SLS_Fin_Loads[SLS_Fin_Results.uz_tot.CombiID]); 
         →KRS014_001866FinalSLS.DeflectionCheckTotal(0, 0, out UC_uz_tot); 
         
-        →KRS014_001858DataExchange.Set("SLS_Fin_Permanent_Deflections", SLS_Fin_Permanent_Deflections[SLS_Fin_Results.vib.SectionID][SLS_Fin_Results.vib.CombiID]); 
-        →KRS014_001859DataExchange.Set("SectionID_Permanent", SLS_Fin_Results.vib.SectionID); 
-        →KRS014_001860DataExchange.Set("SLS_Fin_Loads_Permanent", SLS_Fin_Loads[SLS_Fin_Results.vib.CombiID]); 
-        →KRS014_001867FinalSLS.VibrationCheck(0, 0, out UC_vib); 
+        IF(DataExchange.CamberType == 4 &amp;&amp; COMPARE(UC_uz_tot, 1.00, 2) == 1) { 
+            IF(COMPARE(DataExchange.MaxCamber, (DataExchange.L*DataExchange.LimitTotalFin)*(UC_uz_tot-1.0), 6) &gt; -1) { 
+                UC_uz_tot →GMP100_000007= 0.98; 
+            } 
+        } 
         
-        double UC_SLS_fin →KRS014_001868= MAX(UC_uz_live, UC_uz_tot); 
+        double UC_SLS_fin →KRS014_001868= MAX(0, UC_uz_live, UC_uz_tot); 
     } 
 } 
 
-private void DesignDetailing(out double UC_det, out double UC_min_spc) { 
+private void DesignDetailing(out double UC_det, out double UC_min_spc, out double UC_min_dist_fl) { 
     object Detailings →KRS014_001889= new Ext_Detailings.DetChecks(DataExchange); 
     
     double UC_max_spc →KRS014_001872= 0; //only local
@@ -1624,6 +1729,7 @@ private void DrawDetailings() {
     →KRS014_001693Detailings.DetailingCheck(out CN, out UC↓det←, out IsForExit); 
     →KRS014_001683DataExchange.Set("CN", CN); 
     →KRS014_001700SaveResults(ResultType.Member, "UC_det", UC↓det←); 
+    →KRS100_000002SaveResults(ResultType.Member, "IsForExit", IsForExit); 
     →KRS014_001684PAGEBREAK(); 
 } 
 
@@ -1659,46 +1765,63 @@ private void MinAndMaxSpacingReqs() {
 
 private void MinAndMaxDegreeOfShearConn() { 
     
-    →GMP014_000331MinAndMaxSpacingReqs(); 
+    //    →GMP014_000331MinAndMaxSpacingReqs(); 
+    //    
+    //    Max_studs →GMP014_019490= DataExchange.n_r*FLOOR(DataExchange.L/(2*→GMP014_019491DataExchange.s_min), DataExchange.n_r); 
+    //    Min_studs →GMP014_000290= DataExchange.n_r*FLOOR(DataExchange.L/(2*→GMP014_000394DataExchange.s_max), DataExchange.n_r); 
+    //    
+    //    v_studs_max →GMP014_000291= Max_studs*DataExchange.P_Rd; 
+    //    v_studs_min →GMP014_000292= Min_studs*DataExchange.P_Rd; 
+    //    
+    //    double η_max_det_pos →GMP014_000293= MIN(1, v_studs_max/DataExchange.N_c_f_pos); 
+    //    // double η_max_det_neg →GMP014_000294= MIN(1, v_studs_max/DataExchange.N_c_f_neg); 
+    //    double η_min_det_pos →GMP014_000295= MIN(1, v_studs_min/DataExchange.N_c_f_pos); 
+    //    // double η_min_det_neg →GMP100_000035= MIN(1, v_studs_min/DataExchange.N_c_f_neg); 
+    //    
+    //    IF(COMPARE(Linq.Min(EnvMy), 0.0) == -1 &amp;&amp; DataExchange.NegativeSteelOnly == False) { 
+    //        //double η_max_det →GMP014_000296= ROUNDDOWN(MIN(η_max_det_pos, η_max_det_neg), 2); 
+    //        //double η_min_det →GMP100_000036= ROUNDDOWN(MAX(η_min_det_pos, η_min_det_neg), 2); 
+    //        double η_max_det →GMP106_000001= ROUNDDOWN(1.0, 2); 
+    //        double η_min_det →GMP106_000002= ROUNDDOWN(0.4, 2); 
+    //    } ELSE { 
+    //        double η_max_det →GMP014_000297= ROUNDDOWN(η_max_det_pos, 2); 
+    //        double η_min_det →GMP014_019395= ROUNDDOWN(η_min_det_pos, 2); 
+    //    } 
     
-    Max_studs →GMP014_019490= DataExchange.n_r*CEILING(DataExchange.L/(2*→GMP014_019491DataExchange.s_min), DataExchange.n_r); 
-    Min_studs →GMP014_000290= DataExchange.n_r*CEILING(DataExchange.L/(2*→GMP014_000394DataExchange.s_max), DataExchange.n_r); 
     
-    v_studs_max →GMP014_000291= Max_studs*DataExchange.P_Rd; 
-    v_studs_min →GMP014_000292= Min_studs*DataExchange.P_Rd; 
-    
-    double η_max_det_pos →GMP014_000293= MIN(1, v_studs_max/MIN(DataExchange.N_c_Rd, DataExchange.N_pl_a)); 
-    double η_max_det_neg →GMP014_000294= MIN(1, MIN(DataExchange.F_s, DataExchange.N_pl_a)); 
-    double η_min_det →GMP014_000295= MIN(1, v_studs_min/MIN(DataExchange.N_c_Rd, DataExchange.N_pl_a)); 
-    η_min_det →GMP014_019395= ROUNDDOWN(η_min_det, 2); 
-    
-    IF(COMPARE(Linq.Min(EnvMy), 0.0) == -1 &amp;&amp; DataExchange.NegativeSteelOnly == False) { 
-        double η_max_det →GMP014_000296= ROUNDDOWN(MIN(η_max_det_pos, η_max_det_neg), 2); 
-    } ELSE { 
-        double η_max_det →GMP014_000297= ROUNDDOWN(η_max_det_pos, 2); 
-    } 
-    →GMP014_000300DataExchange.Set("η_min_det", η_min_det); 
-    →GMP014_000301DataExchange.Set("η_max_det", η_max_det); 
+    →GMP014_000300DataExchange.Set("η_min_det", 0.4); 
+    →GMP014_000301DataExchange.Set("η_max_det", 1.0); 
     
 } 
 
 private void GetMinSpacing() { 
-    IF(DataExchange.UniNumStuds != DataExchange.SegStudPattern) { 
-        →GMP014_000398DrawSSL(false); //run without drawing to get the actual min and max spacing
-    } ELSE { 
-        double MinSpacing →GMP014_019493= DataExchange.L/(2*DataExchange.n_sp); 
-        →GMP014_000397DataExchange.Set("MinSpacing", MinSpacing); 
+    →GMP014_000398DrawSSL(false); //run without drawing to get the actual min and max spacing
+} 
+
+private void SetNumberRows() { 
+    IF(DataExchange.CalcApproach == 0) { 
+        IF(DataExchange.MinSpacing &lt; DataExchange.s_min) { 
+            double n_r →GMP100_000030= MIN(DataExchange.n_r_max, ROUNDUP(DataExchange.s_min/DataExchange.MinSpacing)); 
+            n_r →GMP014_019611= MAX(1.0, n_r); 
+            →GMP014_019612DataExchange.Set("n_r", n_r); 
+            →GMP100_000034GetMinSpacing(); 
+            
+            →GMP100_000009DataExchange.Set("MinSpacing", DataExchange.MinSpacing); 
+            →GMP100_000010DataExchange.Set("MaxSpacing", DataExchange.MaxSpacing); 
+        } 
     } 
+    
 } 
 
 private void AutoDesign(out object FinalDesign, out double MCR) { // Auto Design Optimization
 
     →KRS014_001900double UC↓des←; 
+    →GMP100_000021double UC↓edge←; 
     →KRS014_001901double UC↓sum←; 
     →GMP014_000213double UC↓space←; 
     →KRS014_001905bool UCmaxFromCon; 
     
-    →GMP014_000341DataExchange.Set("DesignedCamber", DataExchange.MaxCamber); 
+    →GMP014_000341DataExchange.Set("DesignedCamber", 0); 
     
     // Current section info and set that section in Data Exchange
     object gSectionInfo →UNK014_000026= SteelSections.GetSectionInfo(IO.CS.Description); 
@@ -1707,19 +1830,31 @@ private void AutoDesign(out object FinalDesign, out double MCR) { // Auto Design
     →UNK014_000029DataExchange.Set("CS", MySections[gSectionIndex]); // Set current cross-section in data exchange
     →GMP014_000146DeflectionConstants(); 
     →GMP014_000101DesignDataExchange(); 
-    object InitialDesign →GMP011_000057= new Structure("CrossSection", DataExchange.CS.Name, "CompositeAction", DataExchange.η_i, "Area", DataExchange.CS.Chars.A); 
+    double It →GMP014_019713= →GMP014_019710Functions_CodeInd.CompositeMomentOfIntertia(DataExchange); 
+    →GMP014_019709DataExchange.Set("It", It); 
+    object InitialDesign →GMP011_000057= new Structure("CrossSection", DataExchange.CS.Name, "CompositeAction", DataExchange.η_i, "Area", DataExchange.CS.Chars.A, "Iz", DataExchange.CS.Chars.Iz); 
     →GMP014_019468DesignAllChecks(out UC↓des←, out UC↓sum←, out UCmaxFromCon); 
     →GMP014_019469GetMinSpacing(); 
-    →GMP014_019470DesignDetChecks(out UC↓space←); 
-    MCR →GMP014_000175= UC↓sum←; 
+    →GMP014_019470DesignDetChecks(out UC↓space←, out UC↓edge←); 
+    
+    //MCR →GMP106_000038= UC↓sum←+UC↓space←; 
     →GMP014_000149TEXT("UC↓des← = " &amp; UC↓des←); 
+    →GMP100_000022TEXT("UC↓edge← = " &amp; UC↓edge←); 
     →GMP014_000204TEXT("UC↓space← = " &amp; UC↓space←); 
     
-    bool IsUCdesOK →KRS014_001914= UC↓des← &lt;= 1.0 &amp;&amp; UC↓des← &gt;= 0.90; //Initial UCdes before autodesign
-
-    IF(DataExchange.n_r &gt; 1) { //restrictflangetostuddiameterofn_r &gt; 1
-        // Implement Beam Depth Restriction
-        object gSubSections1 →GMP014_019597= Linq.ToList(Linq.Where(MySections, object F=&gt;F.Geometry.t &gt; (DataExchange.d_s/2.5))); 
+    double OrigUCdes →GMP100_000008= UC↓des←; 
+    double OrigUCspace →GMP100_000037= UC↓space←; 
+    
+    bool UCdesPass →GMP014_019708= COMPARE(UC↓des←, 1.00, 2) &lt; 1; 
+    bool UCspacePass →GMP014_019715= COMPARE(UC↓space←, 1.00, 2) &lt; 1; 
+    bool UCedgePass →GMP100_000025= COMPARE(UC↓edge←, 1.00, 2) &lt; 1; 
+    
+    // Implement min distance from stud to the edge of flange restriction
+    object gSubSections0 →GMP100_000023= Linq.ToList(Linq.Where(MySections, object F=&gt;F.Geometry.b &gt; (0.04+DataExchange.b0_stud+DataExchange.d_s))); 
+    IF(DataExchange.n_r &gt; 1) { 
+        // Implement stud diameter to flange thickness ratio  restriction
+        object gSubSections1 →GMP014_019597= Linq.ToList(Linq.Where(gSubSections0, object F=&gt;F.Geometry.t &gt; (DataExchange.d_s/2.5))); 
+        // Implement Beam Depth Restriction 
         IF(DataExchange.BeamDepthRestriction == 1) { 
             object gSubSections2 →INI400_016570= Linq.ToList(Linq.Where(gSubSections1, object F=&gt;F.Geometry.h &lt;= DataExchange.MaxBeamDepth)); 
             object MySections →INI400_016569= Linq.ToList(Linq.OrderBy(gSubSections2, object S=&gt;S.A)); 
@@ -1729,10 +1864,10 @@ private void AutoDesign(out object FinalDesign, out double MCR) { // Auto Design
     } ELSE { 
         // Implement Beam Depth Restriction
         IF(DataExchange.BeamDepthRestriction == 1) { 
-            object gSubSections →GMP014_019675= Linq.ToList(Linq.Where(MySections, object F=&gt;F.Geometry.h &lt;= DataExchange.MaxBeamDepth)); 
-            object MySections →GMP014_019676= Linq.ToList(Linq.OrderBy(gSubSections, object S=&gt;S.A)); 
+            object gSubSections1 →GMP014_019675= Linq.ToList(Linq.Where(gSubSections0, object F=&gt;F.Geometry.h &lt;= DataExchange.MaxBeamDepth)); 
+            object MySections →GMP014_019676= Linq.ToList(Linq.OrderBy(gSubSections1, object S=&gt;S.A)); 
         } ELSE { 
-            object MySections →GMP014_019677= MySections; 
+            object MySections →GMP100_000024= Linq.ToList(Linq.OrderBy(gSubSections0, object S=&gt;S.A)); 
         } 
     } 
     // Set degree of composite action to value based on design approach and recalculate
@@ -1742,173 +1877,188 @@ private void AutoDesign(out object FinalDesign, out double MCR) { // Auto Design
     →GMP014_000095DesignDataExchange(); 
     →GMP014_019474DesignAllChecks(out UC↓des←, out UC↓sum←, out UCmaxFromCon); 
     →GMP014_019475GetMinSpacing(); 
-    →GMP014_019476DesignDetChecks(out UC↓space←); 
+    →GMP100_000012DesignDetChecks(out UC↓space←, out UC↓edge←); 
     →GMP014_000116TEXT("UC↓des← = " &amp; UC↓des←); 
     →GMP014_000203TEXT("UC↓space← = " &amp; UC↓space←); 
     
     
-    IF(!IsUCdesOK || COMPARE(UC↓space←, 1.0, 3) == 1) { // Auto Design Cross-Section IF Max Design UC is not between 90 and 100%
-        //// If Max Design UC is less than 1.0 set section to the next weaker section in list
-        IF(UC↓des← == 999) { 
-            bool run →GMP014_019552= →GMP014_019553Functions_CodeInd.FirstSection(MySections, DataExchange); 
-            IF(!run) { Break(); } 
-            
-            // Update data exchange, run all checks, get min spacing, check spacing req.    
-            →GMP014_019554DesignDataExchange(); 
-            →GMP014_019555DesignAllChecks(out UC↓des←, out UC↓sum←, out UCmaxFromCon); 
-            →GMP014_019556GetMinSpacing(); 
-            →GMP014_019557DesignDetChecks(out UC↓space←); 
-            →GMP014_019558TEXT("UC↓des← = " &amp; UC↓des←); 
-            →GMP014_019559TEXT("UC↓space← = " &amp; UC↓space←); 
-        } 
+    //// If Max Design UC is 999 set section to the weakest section in list
+    IF(UC↓des← == 999) { 
+        bool run →GMP014_019552= →GMP014_019553Functions_CodeInd.FirstSection(MySections, DataExchange); 
+        //IF(!run) { Break(); } 
         
-        //// If Max Design UC  is less than 1.0 set section to the next weaker section in list...
-        WHILE(UC↓des← &lt; 1.0) { 
-            bool run →UNK014_000044= →GMP014_000165Functions_CodeInd.DecreaseSection(MySections, DataExchange); 
-            IF(!run) { Break(); } 
-            
-            // Update data exchange, run all checks, get min spacing, check spacing req.    
-            →GMP014_019489DesignDataExchange(); 
-            →GMP014_000209DesignAllChecks(out UC↓des←, out UC↓sum←, out UCmaxFromCon); 
-            →GMP014_019451GetMinSpacing(); 
-            →GMP014_019452DesignDetChecks(out UC↓space←); 
-            →GMP014_000150TEXT("UC↓des← = " &amp; UC↓des←); 
-            →GMP014_000202TEXT("UC↓space← = " &amp; UC↓space←); 
-        } 
-        //// If Max Design UC  is greater than 1.0 set section to the next stronger section in list...
-        WHILE(UC↓des← &gt;= 1.0 || UC↓space← &gt;= 1.0) { 
-            bool run →GMP014_019477= →GMP014_019478Functions_CodeInd.IncreaseSection(MySections, DataExchange); 
-            IF(!run) { Break(); } 
-            
-            // Set degree of composite action to value based on design approach and recalculate (needed if the next 'if' statement is used)
-            →GMP014_019495Functions_CodeInd.→GMP014_019496SetCompositeActionBasedOnDesignApproach(DataExchange); 
-            
-            // Update data exchange, run all checks, get min spacing, check spacing req.   
-            →GMP014_019479DesignDataExchange(); 
-            →GMP014_019480DesignAllChecks(out UC↓des←, out UC↓sum←, out UCmaxFromCon); 
-            →GMP014_019481GetMinSpacing(); 
-            →GMP014_019482DesignDetChecks(out UC↓space←); 
-            →GMP014_019483TEXT("UC↓des← = " &amp; UC↓des←); 
-            →GMP014_019484TEXT("UC↓space← = " &amp; UC↓space←); 
-            
-            //// If design UC (SLS and ULS) is met but spacing is not for the member, attempt to decrease %CA before looking for new section
-            IF(UC↓des← &lt; 1.0 &amp;&amp; UC↓space← &gt;= 1.0) { 
-                
-                // get max and min %CA for the member and use for high/low values in bi-section method
-                →GMP014_019485MinAndMaxDegreeOfShearConn(); 
-                double CA →GMP014_019403= DataExchange.η_i; 
-                Counter →GMP014_019404= 0; 
-                IF(DataExchange.NegativeSteelOnly) { 
-                    double Low →GMP014_019405= MAX(DataExchange.η_min, DataExchange.η_min_det, 0.05); 
-                } ELSE { 
-                    double Low →GMP014_019406= MAX(DataExchange.η_min, DataExchange.η_min_det, 0.4); 
-                } 
-                High →GMP014_019407= MIN(1, DataExchange.η_max_det); 
-                
-                IF(COMPARE(Low, High, 3) &lt; 1) { 
-                    WHILE(Counter &lt; 10 &amp;&amp; (UC↓des← &lt; 0.99 || UC↓des← &gt;= 1.0 || UC↓space← &gt;= 1.0)) { 
-                        IF(UC↓des← &gt;= 1.0) { 
-                            Low →GMP014_019408= CA; 
-                        } ELSE { 
-                            High →GMP014_019409= CA; 
-                        } 
-                        CA →GMP014_019410= (High+Low)/2; 
-                        DataExchange.η_i →GMP014_019411= CA; 
-                        →GMP014_019412DesignDataExchange(); 
-                        →GMP014_019456DesignAllChecks(out UC↓des←, out UC↓sum←, out UCmaxFromCon); 
-                        →GMP014_019457GetMinSpacing(); 
-                        →GMP014_019458DesignDetChecks(out UC↓space←); 
-                        →GMP014_019415TEXT("UC↓des← = " &amp; UC↓des←); 
-                        →GMP014_019416TEXT("UC↓space← = " &amp; UC↓space←); 
-                        Counter →GMP014_019417= Counter+1; 
-                    } 
-                } ELSE { 
-                    CA →GMP014_019443= Low; 
-                    DataExchange.η_i →GMP014_019444= CA; 
-                    →GMP014_019445DesignDataExchange(); 
-                    →GMP014_019459DesignAllChecks(out UC↓des←, out UC↓sum←, out UCmaxFromCon); 
-                    →GMP014_019460GetMinSpacing(); 
-                    →GMP014_019461DesignDetChecks(out UC↓space←); 
-                    →GMP014_019448TEXT("UC↓des← = " &amp; UC↓des←); 
-                    →GMP014_019449TEXT("UC↓space← = " &amp; UC↓space←); 
-                } 
-            } 
-        } 
+        // Update data exchange, run all checks, get min spacing, check spacing req.    
+        →GMP014_019554DesignDataExchange(); 
+        →GMP014_019555DesignAllChecks(out UC↓des←, out UC↓sum←, out UCmaxFromCon); 
+        →GMP014_019556GetMinSpacing(); 
+        →GMP100_000013DesignDetChecks(out UC↓space←, out UC↓edge←); 
+        →GMP014_019558TEXT("UC↓des← = " &amp; UC↓des←); 
+        →GMP014_019559TEXT("UC↓space← = " &amp; UC↓space←); 
+    } 
+    
+    //// If Max Design UC  is less than 1.0 set section to the next weaker section in list...
+    WHILE(UC↓des← &lt; 1.0) { 
+        bool run →UNK014_000044= →GMP014_000165Functions_CodeInd.DecreaseSection(MySections, DataExchange); 
+        IF(!run) { Break(); } 
         
-        // Auto Design Degree of Composite Action 
-        ////(i.e. Once CS is found, decrease %CA as low as possible using bisection method)
-        IF((UC↓des← &lt; 0.99) || (UC↓des← &gt;= 1.0) &amp;&amp; !UCmaxFromCon) { 
-            →GMP014_019590DesignDataExchange(); 
-            →GMP014_019591DesignAllChecks(out UC↓des←, out UC↓sum←, out UCmaxFromCon); 
-            →GMP014_019592GetMinSpacing(); 
-            →GMP014_019593DesignDetChecks(out UC↓space←); 
-            →GMP014_019523MinAndMaxDegreeOfShearConn(); 
-            double CA →GMP014_019524= DataExchange.η_i; 
-            Counter →GMP014_019525= 0; 
+        // Update data exchange, run all checks, get min spacing, check spacing req.    
+        →GMP014_019489DesignDataExchange(); 
+        →GMP014_000209DesignAllChecks(out UC↓des←, out UC↓sum←, out UCmaxFromCon); 
+        →GMP014_019451GetMinSpacing(); 
+        →GMP100_000014DesignDetChecks(out UC↓space←, out UC↓edge←); 
+        →GMP014_000150TEXT("UC↓des← = " &amp; UC↓des←); 
+        →GMP014_000202TEXT("UC↓space← = " &amp; UC↓space←); 
+    } 
+    //// If Max Design UC  is greater than 1.0 set section to the next stronger section in list...
+    WHILE(UC↓des← &gt;= 1.0 || UC↓space← &gt;= 1.0 || UC↓edge← &gt;= 1.0) { 
+        bool run →GMP014_019477= →GMP014_019478Functions_CodeInd.IncreaseSection(MySections, DataExchange); 
+        IF(!run) { Break(); } 
+        
+        // Set degree of composite action to value based on design approach and recalculate (needed if the next 'if' statement is used)
+        →GMP014_019495Functions_CodeInd.→GMP014_019496SetCompositeActionBasedOnDesignApproach(DataExchange); 
+        
+        // Update data exchange, run all checks, get min spacing, check spacing req.   
+        →GMP014_019479DesignDataExchange(); 
+        →GMP014_019480DesignAllChecks(out UC↓des←, out UC↓sum←, out UCmaxFromCon); 
+        →GMP014_019481GetMinSpacing(); 
+        →GMP100_000015DesignDetChecks(out UC↓space←, out UC↓edge←); 
+        →GMP014_019483TEXT("UC↓des← = " &amp; UC↓des←); 
+        →GMP014_019484TEXT("UC↓space← = " &amp; UC↓space←); 
+        
+        //// If design UC (SLS and ULS) is met but spacing is not for the member, attempt to decrease %CA before looking for new section
+        IF(UC↓des← &lt; 1.0 &amp;&amp; UC↓space← &gt;= 1.0) { 
+            
+            // get max and min %CA for the member and use for high/low values in bi-section method
+            →GMP014_019485MinAndMaxDegreeOfShearConn(); 
+            double CA →GMP014_019403= DataExchange.η_i; 
+            Counter →GMP014_019404= 0; 
             IF(DataExchange.NegativeSteelOnly) { 
-                double Low →GMP014_019526= MAX(DataExchange.η_min, DataExchange.η_min_det, 0.05); 
+                double Low →GMP014_019405= MAX(DataExchange.η_min, DataExchange.η_min_det, 0.05); 
             } ELSE { 
-                double Low →GMP014_019527= MAX(DataExchange.η_min, DataExchange.η_min_det, 0.4); 
+                double Low →GMP014_019406= MAX(DataExchange.η_min, DataExchange.η_min_det, 0.4); 
             } 
-            High →GMP014_019528= MIN(1, DataExchange.η_max_det); 
+            High →GMP014_019407= MIN(1, DataExchange.η_max_det); 
             
             IF(COMPARE(Low, High, 3) &lt; 1) { 
-                WHILE(Counter &lt; 10 &amp;&amp; (UC↓des← &lt; 0.99 || UC↓des← &gt;= 1.0)) { 
+                WHILE(Counter &lt; 10 &amp;&amp; (UC↓des← &lt; 0.99 || UC↓des← &gt;= 1.0 || UC↓space← &gt;= 1.0)) { 
                     IF(UC↓des← &gt;= 1.0) { 
-                        Low →GMP014_019529= CA; 
+                        Low →GMP014_019408= CA; 
                     } ELSE { 
-                        High →GMP014_019530= CA; 
+                        High →GMP014_019409= CA; 
                     } 
-                    CA →GMP014_019531= (High+Low)/2; 
-                    DataExchange.η_i →GMP014_019532= CA; 
-                    →GMP014_019533DesignDataExchange(); 
-                    →GMP014_019534DesignAllChecks(out UC↓des←, out UC↓sum←, out UCmaxFromCon); 
-                    →GMP014_019535GetMinSpacing(); 
-                    →GMP014_019536DesignDetChecks(out UC↓space←); 
-                    →GMP014_019537TEXT("UC↓des← = " &amp; UC↓des←); 
-                    →GMP014_019538TEXT("UC↓space← = " &amp; UC↓space←); 
-                    Counter →GMP014_019539= Counter+1; 
+                    CA →GMP014_019410= (High+Low)/2; 
+                    DataExchange.η_i →GMP014_019411= CA; 
+                    →GMP014_019412DesignDataExchange(); 
+                    →GMP014_019456DesignAllChecks(out UC↓des←, out UC↓sum←, out UCmaxFromCon); 
+                    →GMP014_019457GetMinSpacing(); 
+                    →GMP100_000016DesignDetChecks(out UC↓space←, out UC↓edge←); 
+                    →GMP014_019415TEXT("UC↓des← = " &amp; UC↓des←); 
+                    →GMP014_019416TEXT("UC↓space← = " &amp; UC↓space←); 
+                    Counter →GMP014_019417= Counter+1; 
                 } 
+            } ELSE { 
+                CA →GMP014_019443= Low; 
+                DataExchange.η_i →GMP014_019444= CA; 
+                →GMP014_019445DesignDataExchange(); 
+                →GMP014_019459DesignAllChecks(out UC↓des←, out UC↓sum←, out UCmaxFromCon); 
+                →GMP014_019460GetMinSpacing(); 
+                →GMP100_000017DesignDetChecks(out UC↓space←, out UC↓edge←); 
+                →GMP014_019448TEXT("UC↓des← = " &amp; UC↓des←); 
+                →GMP014_019449TEXT("UC↓space← = " &amp; UC↓space←); 
             } 
         } 
-        // If spacing UC fails but design passes, give warning message
-        IF(COMPARE(UC↓space←, 1.0, 3) &gt; 0 &amp;&amp; COMPARE(UC↓des←, 1.0, 3) &lt; 1) { 
-            →GMP014_019488Functions_general.AddEWN(DataExchange, "W/35"); //
-        } 
-        
     } 
-    object FinalDesign →INI400_016740= new Structure("CrossSection", DataExchange.CS.Name, "CompositeAction", DataExchange.η_i, "Area", DataExchange.CS.Chars.A); 
-    IF(!IsUCdesOK &amp;&amp; COMPARE(UC↓space←, 1.0, 3) &lt; 1 &amp;&amp; COMPARE(UC↓des←, 1.0, 3) &lt; 1) { 
+    
+    // Auto Design Degree of Composite Action 
+    ////(i.e. Once CS is found, decrease %CA as low as possible using bisection method)
+    IF((UC↓des← &lt; 0.90) || (UC↓des← &gt;= 1.0) &amp;&amp; !UCmaxFromCon) { 
+        →GMP014_019590DesignDataExchange(); 
+        →GMP014_019591DesignAllChecks(out UC↓des←, out UC↓sum←, out UCmaxFromCon); 
+        →GMP014_019592GetMinSpacing(); 
+        →GMP100_000018DesignDetChecks(out UC↓space←, out UC↓edge←); 
+        →GMP014_019523MinAndMaxDegreeOfShearConn(); 
+        double CA →GMP014_019524= DataExchange.η_i; 
+        Counter →GMP014_019525= 0; 
+        IF(DataExchange.NegativeSteelOnly) { 
+            double Low →GMP014_019526= MAX(DataExchange.η_min, DataExchange.η_min_det, 0.05); 
+        } ELSE { 
+            double Low →GMP014_019527= MAX(DataExchange.η_min, DataExchange.η_min_det, 0.4); 
+        } 
+        High →GMP014_019528= MIN(1, DataExchange.η_max_det); 
+        
+        IF(COMPARE(Low, High, 3) &lt; 1) { 
+            WHILE(Counter &lt; 10 &amp;&amp; (UC↓des← &lt; 0.90 || UC↓des← &gt;= 1.0)) { 
+                IF(UC↓des← &gt;= 1.0) { 
+                    Low →GMP014_019529= CA; 
+                } ELSE { 
+                    High →GMP014_019530= CA; 
+                } 
+                CA →GMP014_019531= (High+Low)/2; 
+                DataExchange.η_i →GMP014_019532= CA; 
+                →GMP014_019533DesignDataExchange(); 
+                →GMP014_019534DesignAllChecks(out UC↓des←, out UC↓sum←, out UCmaxFromCon); 
+                →GMP014_019535GetMinSpacing(); 
+                →GMP100_000019DesignDetChecks(out UC↓space←, out UC↓edge←); 
+                →GMP014_019537TEXT("UC↓des← = " &amp; UC↓des←); 
+                →GMP014_019538TEXT("UC↓space← = " &amp; UC↓space←); 
+                Counter →GMP014_019539= Counter+1; 
+            } 
+        } 
+    } 
+    // If spacing UC fails but design passes, give warning message
+    IF(COMPARE(UC↓space←, 1.0, 3) &gt; 0 &amp;&amp; COMPARE(UC↓des←, 1.0, 3) &lt; 1) { 
+        →GMP014_019488Functions_general.AddEWN(DataExchange, "W/35"); //
+    } 
+    
+    It →GMP014_019714= →GMP014_019711Functions_CodeInd.CompositeMomentOfIntertia(DataExchange); 
+    →GMP014_019712DataExchange.Set("It", It); 
+    
+    object FinalDesign →INI400_016740= new Structure("CrossSection", DataExchange.CS.Name, "CompositeAction", DataExchange.η_i, "Area", DataExchange.CS.Chars.A, "Iz", DataExchange.CS.Chars.Iz); 
+    IF(!UCdesPass &amp;&amp; COMPARE(UC↓des←, 1.0, 2) &lt; 1) { // Design UC: Original fails but new passes -&gt; Use new
         FinalDesign →GMP014_019497= FinalDesign; 
     } 
-    IF(!IsUCdesOK &amp;&amp; (COMPARE(UC↓space←, 1.0, 3) == 1 || COMPARE(UC↓des←, 1.0, 3) == 1)) { 
-        FinalDesign →GMP014_019498= InitialDesign; 
+    IF(UCdesPass &amp;&amp; COMPARE(UC↓des←, 1.0, 2) == 1) { // Design UC: Original passes but new fails -&gt; Use original (i.e. don't update)
+        FinalDesign →GMP014_019707= InitialDesign; 
     } 
-    IF(IsUCdesOK &amp;&amp; COMPARE(UC↓space←, 1.0, 3) &lt; 1 &amp;&amp; COMPARE(UC↓des←, 1.0, 3) &lt; 1) { 
-        SWITCH(DataExchange.DesignApproach) { 
-            CASE 0 :  { 
-                IF(FinalDesign.Area &lt; InitialDesign.Area) { 
-                    FinalDesign →GMP011_000058= FinalDesign; 
-                } ELSE { 
-                    FinalDesign →GMP011_000059= InitialDesign; 
-                } 
-            } 
-            CASE 1 :  { 
-                IF(FinalDesign.CompositeAction &lt; (InitialDesign.CompositeAction-0.05)) { 
-                    FinalDesign →GMP011_000060= FinalDesign; 
-                } ELSE { 
-                    FinalDesign →GMP011_000061= InitialDesign; 
-                } 
-            } 
-            CASE 2 :  { 
-                IF(FinalDesign.Area != InitialDesign.Area &amp;&amp; ABS(FinalDesign.CompositeAction-0.50) &lt; ABS((InitialDesign.CompositeAction-0.50))) { 
-                    FinalDesign →GMP011_000062= FinalDesign; 
-                } ELSE { 
-                    FinalDesign →GMP011_000063= InitialDesign; 
+    
+    IF(!UCdesPass &amp;&amp; COMPARE(OrigUCdes, UC↓des←, 2) == 1) { // Design UC: Both fails -&gt; But new is better
+        IF((!UCspacePass &amp;&amp; COMPARE(UC↓space←, 1.0, 2) &gt; 0)) { // Spacing UC: Both fail -&gt; Use original
+            FinalDesign →GMP100_000039= InitialDesign; 
+        } ELSE { 
+            FinalDesign →GMP014_019498= FinalDesign; 
+        } 
+    } 
+    IF(UCdesPass &amp;&amp; COMPARE(UC↓des←, 1.0, 2) &lt; 1) { // Design UC: Both pass -&gt; Look at spacing and edge UC first
+        IF((!UCspacePass &amp;&amp; COMPARE(UC↓space←, 1.0, 2) &lt; 1)) { // Spacing and Edge UC: Original fails but new passes -&gt; Use new
+            FinalDesign →GMP014_019716= FinalDesign; 
+        } ELSE { 
+            IF((!UCspacePass &amp;&amp; COMPARE(UC↓space←, 1.0, 2) &gt; 0)) { // Spacing UC: Original fails but new passes -&gt; Use new
+                FinalDesign →GMP100_000038= InitialDesign; 
+            } ELSE { 
+                SWITCH(DataExchange.DesignApproach) { // Spacing UC: Both pass or both fail -&gt; decide based on design approach
+                    CASE 0 :  { 
+                        IF(FinalDesign.Area &lt; InitialDesign.Area) { 
+                            FinalDesign →GMP011_000058= FinalDesign; 
+                        } ELSE { 
+                            FinalDesign →GMP011_000059= InitialDesign; 
+                        } 
+                    } 
+                    CASE 1 :  { 
+                        IF(FinalDesign.CompositeAction &lt; (InitialDesign.CompositeAction-0.05)) { 
+                            FinalDesign →GMP011_000060= FinalDesign; 
+                        } ELSE { 
+                            FinalDesign →GMP011_000061= InitialDesign; 
+                        } 
+                    } 
+                    CASE 2 :  { 
+                        FinalDesign →GMP011_000062= FinalDesign; 
+                    } 
                 } 
             } 
         } 
     } 
+    
+    MCR →GMP106_000042= OrigUCdes; 
 } 
 
 private void RunDesign(out string ModificationCmds, out double ModificationCmdsRatio, out string DesignInfo_Camber, out string DesignInfo_Studs, out string DesignInfo_MomentBegin, out string DesignInfo_MomentEnd, out string DesignInfo_ShearBegin, out string DesignInfo_ShearEnd, out string DesignInfo_Case) { 
@@ -1920,6 +2070,9 @@ private void RunDesign(out string ModificationCmds, out double ModificationCmdsR
     string SegStudPattern →GMP014_019647= DataExchange.SegStudPattern; 
     string UniNumStuds →GMP014_019648= DataExchange.UniNumStuds; 
     TS →GMP014_019698= DataExchange.TotalDesignedStuds; 
+    IF(TS == "999") { 
+        TS →GMP014_019704= "[N/A]"; 
+    } 
     →GMP014_019649double Camber; 
     
     SWITCH(DataExchange.CamberType) { 
@@ -1937,8 +2090,9 @@ private void RunDesign(out string ModificationCmds, out double ModificationCmdsR
         LS →GMP014_019655= InitialCS &amp; " " &amp; SegStudPattern; 
         LU →GMP014_019656= InitialCS &amp; " " &amp; UniNumStuds; 
     } ELSE { 
-        LU →GMP014_019657= InitialCS; 
-        LS →GMP014_019658= InitialCS; 
+        LU →GMP014_019657= InitialCS &amp; " [N/A]"; 
+        LS →GMP014_019658= InitialCS &amp; " [N/A]"; 
+        TS →GMP106_000039= "[N/A]"; 
     } 
     
     IF(COMPARE(Camber, 0.00, 3) &gt; 0) { 
@@ -2009,7 +2163,7 @@ private void RunDesign(out string ModificationCmds, out double ModificationCmdsR
 
 private void DrawSSL(bool Draw) { 
     
-    IF(ULS_Fin_Loads.Count &gt; 0) { 
+    IF(!IsForExit &amp;&amp; ULS_Fin_Loads.Count &gt; 0) { 
         →GMP014_000372DataExchange.Set("ULS_Fin_Loads", ULS_Fin_Loads); 
         →GMP014_000373DataExchange.Set("ULS_Con_Loads", ULS_Con_Loads); 
         IF(IO.IsDrawing &amp;&amp; Draw) { 
@@ -2095,7 +2249,9 @@ object Results →INI400_000001= ReadResults(ResultType.Member);
 IF(Results.Contains("ULS_Con") || Results.Contains("ULS_Fin") || Results.Contains("SLS_Con") || Results.Contains("SLS_Fin")) { 
     //Read results from Section and add them to Results
     →KRS014_000320GetResults(); 
-    →KRS014_001924GetResultsFromDesign(); 
+    IF(!IsForExit) { 
+        →KRS014_001924GetResultsFromDesign(); 
+    } 
     →KRS014_001637GetEWN(); 
     Exit(); //Results are loaded and not middle section
 } 
@@ -2111,30 +2267,23 @@ IF(!IsExit) {
     →GMP014_000176CalculateAllChecks(); //Calculate all check and save results to sections
     →KRS014_000321GetResults(); 
     →GMP014_000340DesignCamber(); 
+    IF(DataExchange.CamberType == 4) { →KRS100_000010GetResults(); } //GetResults again - modified by designed camber
     →GMP014_000332MinAndMaxSpacingReqs(); 
     
-    //    IF(IO.IsDrawing) { //Drawing runs only in middle section, but executing detailed output delete all results
-    →KRS014_001697DrawChecksInSection(); 
-    //    } 
-
     →GMP014_019678GetMinSpacing(); 
-    IF(DataExchange.CalcApproach == 0) { 
-        //        →GMP014_019609DrawSSL(false); 
-        //→GMP014_019607GetMinSpacing(); 
-        IF(DataExchange.MinSpacing &lt; DataExchange.s_min) { 
-            double n_r →GMP014_019611= MIN(DataExchange.n_r_max, ROUNDUP(DataExchange.s_min/DataExchange.MinSpacing)); 
-            →GMP014_019612DataExchange.Set("n_r", n_r); 
-        } 
-        
-    } 
+    →GMP100_000006SetNumberRows(); 
     
+    →KRS014_001697DrawChecksInSection(); 
+    →GMP106_000037GetMinSpacing(); 
     →GMP014_019614DrawDetailings(); 
     
-    →KRS014_001933DrawSSL(true); //It contains IsDrawing decision inside - it draw or calculate according it
-
-    →GMP014_000274MinAndMaxDegreeOfShearConn(); 
-    →GMP014_019674RunDesign(out ModificationCmds, out ModificationCmdsRatio, out DesignInfo_Camber, out DesignInfo_Studs, out DesignInfo_MomentBegin, out DesignInfo_MomentEnd, out DesignInfo_ShearBegin, out DesignInfo_ShearEnd, out DesignInfo_Case); 
-    →KRS014_001925GetResultsFromDesign(); 
+    IF(!IsForExit) { 
+        →KRS014_001933DrawSSL(true); //It contains IsDrawing decision inside - it draw or calculate according it
+        
+        →GMP014_000274MinAndMaxDegreeOfShearConn(); 
+        →GMP014_019674RunDesign(out ModificationCmds, out ModificationCmdsRatio, out DesignInfo_Camber, out DesignInfo_Studs, out DesignInfo_MomentBegin, out DesignInfo_MomentEnd, out DesignInfo_ShearBegin, out DesignInfo_ShearEnd, out DesignInfo_Case); 
+        →KRS014_001925GetResultsFromDesign(); 
+    } 
 } 
 
 →KRS014_001633SaveEWN(); 
@@ -2193,10 +2342,25 @@ IF(!IsExit) {
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="33" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="bWO" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_bWO">
-          <ENU>Include web opening</ENU>
+      <Variable Modifier="Public" Name="Camber" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_Camber">
+          <ENU>
+          </ENU>
         </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="camber_string" ESA_ID="" Type="String">
+        <Description TranslateID="VARIABLE_camber_string">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="Counter" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="DataExchange" ESA_ID="" Type="Object">
         <Description>
@@ -2205,56 +2369,56 @@ IF(!IsExit) {
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="DesignInfo_Camber" ESA_ID="Result.11" Type="String">
-        <Description TranslateID="VARIABLE_DesignInfo_Camber">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="DummyResult" SenModif="False" LabOri="1" />
       </Variable>
       <Variable Modifier="Public" Name="DesignInfo_Case" ESA_ID="Result.17" Type="String">
-        <Description TranslateID="VARIABLE_DesignInfo_Case">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="DummyResult" SenModif="False" LabOri="1" />
       </Variable>
       <Variable Modifier="Public" Name="DesignInfo_MomentBegin" ESA_ID="Result.13" Type="String">
-        <Description TranslateID="VARIABLE_DesignInfo_MomentBegin">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="DummyResult" SenModif="False" LabOri="1" />
       </Variable>
       <Variable Modifier="Public" Name="DesignInfo_MomentEnd" ESA_ID="Result.14" Type="String">
-        <Description TranslateID="VARIABLE_DesignInfo_MomentEnd">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="DummyResult" SenModif="False" LabOri="1" />
       </Variable>
       <Variable Modifier="Public" Name="DesignInfo_ShearBegin" ESA_ID="Result.15" Type="String">
-        <Description TranslateID="VARIABLE_DesignInfo_ShearBegin">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="DummyResult" SenModif="False" LabOri="1" />
       </Variable>
       <Variable Modifier="Public" Name="DesignInfo_ShearEnd" ESA_ID="Result.16" Type="String">
-        <Description TranslateID="VARIABLE_DesignInfo_ShearEnd">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="DummyResult" SenModif="False" LabOri="1" />
       </Variable>
       <Variable Modifier="Public" Name="DesignInfo_Studs" ESA_ID="Result.12" Type="String">
-        <Description TranslateID="VARIABLE_DesignInfo_Studs">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="DummyResult" SenModif="False" LabOri="1" />
       </Variable>
       <Variable Modifier="Public" Name="Draw" ESA_ID="" Type="Boolean">
-        <Description>
+        <Description TranslateID="VARIABLE_Draw">
           <ENU>
           </ENU>
         </Description>
@@ -2327,8 +2491,21 @@ IF(!IsExit) {
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="FinalCA" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_FinalCA">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="FinalCrossSection" ESA_ID="" Type="String">
+        <Description TranslateID="VARIABLE_FinalCrossSection">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
       <Variable Modifier="Public" Name="FinalDesign" ESA_ID="" Type="Object">
-        <Description>
+        <Description TranslateID="VARIABLE_FinalDesign">
           <ENU>
           </ENU>
         </Description>
@@ -2363,12 +2540,39 @@ IF(!IsExit) {
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="FV↓z0,ULS,Fin←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_FV↓z0,ULS,Fin←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="FV↓z1,ULS,Fin←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_FV↓z1,ULS,Fin←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="High" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="InitialCS" ESA_ID="" Type="String">
+        <Description TranslateID="VARIABLE_InitialCS">
+          <ENU>
+          </ENU>
+        </Description>
       </Variable>
       <Variable Modifier="Public" Name="IsExit" ESA_ID="" Type="Boolean">
         <Description>
@@ -2382,8 +2586,15 @@ IF(!IsExit) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="IsUCdesOK" ESA_ID="" Type="Boolean">
+      <Variable Modifier="Public" Name="j" ESA_ID="" Type="Double" Precision="2">
         <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="Load" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_Load">
           <ENU>
           </ENU>
         </Description>
@@ -2402,6 +2613,27 @@ IF(!IsExit) {
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="1" Numeric="DummyResult" SenModif="False" LabOri="1" />
       </Variable>
+      <Variable Modifier="Public" Name="M↓y0,ULS,Fin←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_M↓y0,ULS,Fin←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="M↓y1,ULS,Fin←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_M↓y1,ULS,Fin←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="MCR" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_MCR">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="ModificationCmds" ESA_ID="Result.2" Type="String">
         <Description>
           <ENU>
@@ -2409,7 +2641,7 @@ IF(!IsExit) {
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="3" Numeric="ModificationCmdsRatio" SenModif="True" LabOri="0" />
       </Variable>
-      <Variable Modifier="Public" Name="ModificationCmdsRatio" ESA_ID="Result.1" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="ModificationCmdsRatio" ESA_ID="Result.1" Type="Double" Precision="9">
         <Description>
           <ENU>
           </ENU>
@@ -2417,21 +2649,14 @@ IF(!IsExit) {
         <ResultProperties ESAColor="2" ESAStyle="3" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="n_r" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="oEWNList" ESA_ID="" Type="Object">
-        <Description>
+        <Description TranslateID="VARIABLE_oEWNList">
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="Output" ESA_ID="" Type="Object">
-        <Description>
+        <Description TranslateID="VARIABLE_Output">
           <ENU>
           </ENU>
         </Description>
@@ -2442,7 +2667,20 @@ IF(!IsExit) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="run" ESA_ID="" Type="Boolean">
+      <Variable Modifier="Public" Name="SectionID" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_SectionID">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="SegStudPattern" ESA_ID="" Type="String">
+        <Description TranslateID="VARIABLE_SegStudPattern">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="ShearConnection" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
@@ -2467,7 +2705,7 @@ IF(!IsExit) {
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="SLS_Fin_Forces" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_SLS_Fin_Forces">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -2503,7 +2741,7 @@ IF(!IsExit) {
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="TS" ESA_ID="Result.5" Type="String">
-        <Description TranslateID="VARIABLE_TS">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -2588,6 +2826,13 @@ IF(!IsExit) {
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UC↓con,δz←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="UC↓def,cam←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -2741,12 +2986,6 @@ IF(!IsExit) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UCmaxFromCon" ESA_ID="" Type="Boolean">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
       <Variable Modifier="Public" Name="ULS_Con_Forces" ESA_ID="" Type="Object">
         <Description>
           <ENU>
@@ -2806,6 +3045,26 @@ IF(!IsExit) {
           <ENU>
           </ENU>
         </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="UniNumStuds" ESA_ID="" Type="String">
+        <Description TranslateID="VARIABLE_UniNumStuds">
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="V↓z0,ULS,Fin←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_V↓z0,ULS,Fin←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="V↓z1,ULS,Fin←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_V↓z1,ULS,Fin←">
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>
     <DrawingGroups>
@@ -2969,14 +3228,6 @@ IF(!IsExit) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="GMP011_000062">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP011_000063">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3488,14 +3739,6 @@ IF(!IsExit) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="GMP014_000175">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="GMP014_000176">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3543,70 +3786,6 @@ IF(!IsExit) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000290">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000291">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000292">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000293">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000294">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000295">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000296">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000297">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="GMP014_000300">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3704,14 +3883,6 @@ IF(!IsExit) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="GMP014_000331">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="GMP014_000332">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3777,12 +3948,12 @@ IF(!IsExit) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="GMP014_000341">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="GMP014_000350">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3872,14 +4043,6 @@ IF(!IsExit) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="GMP014_000397">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="GMP014_000398">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3919,14 +4082,6 @@ IF(!IsExit) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_019395">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="GMP014_019403">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4096,14 +4251,6 @@ IF(!IsExit) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="GMP014_019452">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="GMP014_019456">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4120,14 +4267,6 @@ IF(!IsExit) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="GMP014_019458">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="GMP014_019459">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4139,14 +4278,6 @@ IF(!IsExit) {
       <VC ID="GMP014_019460">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_019461">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4201,14 +4332,6 @@ IF(!IsExit) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="GMP014_019475">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_019476">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4248,14 +4371,6 @@ IF(!IsExit) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="GMP014_019482">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="GMP014_019483">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4290,22 +4405,6 @@ IF(!IsExit) {
       </VC>
       <VC ID="GMP014_019489">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_019490">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_019493">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4456,14 +4555,6 @@ IF(!IsExit) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="GMP014_019536">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="GMP014_019537">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4487,86 +4578,6 @@ IF(!IsExit) {
         <Set Vis="1" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_019540">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_019541">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_019542">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_019543">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_019544">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_019545">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_019546">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_019547">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_019548">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_019549">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="GMP014_019552">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4595,14 +4606,6 @@ IF(!IsExit) {
       <VC ID="GMP014_019556">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_019557">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4683,14 +4686,6 @@ IF(!IsExit) {
       <VC ID="GMP014_019592">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_019593">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4777,12 +4772,12 @@ IF(!IsExit) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="GMP014_019611">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="GMP014_019612">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -5200,14 +5195,6 @@ IF(!IsExit) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="GMP014_019677">
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="GMP014_019678">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -5371,6 +5358,534 @@ IF(!IsExit) {
       <VC ID="GMP014_019700">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP014_019701">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP014_019704">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP014_019707">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP014_019708">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP014_019709">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP014_019712">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP014_019713">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP014_019714">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP014_019715">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP014_019716">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000006">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000007">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000008">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000009">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000010">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000011">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000012">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000013">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000014">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000015">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000016">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000017">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000018">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000019">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000020">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000022">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000023">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000024">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000025">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000030">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000034">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000037">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000038">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000039">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000005">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000006">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000007">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000008">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000009">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000010">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000011">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000014">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000015">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000016">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000017">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000018">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000019">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000020">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000021">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000022">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000023">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000024">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000025">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000026">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000027">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000028">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000029">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000031">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000033">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000034">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000036">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000037">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000039">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000042">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -9088,38 +9603,6 @@ IF(!IsExit) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001627">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_001628">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_001630">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_001631">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="KRS014_001633">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -9233,14 +9716,6 @@ IF(!IsExit) {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
       <VC ID="KRS014_001649">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_001650">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -10088,30 +10563,6 @@ IF(!IsExit) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001858">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_001859">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_001860">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="KRS014_001861">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -10153,14 +10604,6 @@ IF(!IsExit) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS014_001866">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_001867">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -10297,14 +10740,6 @@ IF(!IsExit) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS014_001904">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_001914">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -12441,8 +12876,8 @@ IF(!IsExit) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS014_002815">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -12872,14 +13307,6 @@ IF(!IsExit) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003133">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="KRS014_003136">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -12889,14 +13316,6 @@ IF(!IsExit) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS014_003137">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_003138">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -12919,6 +13338,342 @@ IF(!IsExit) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000005">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000006">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000007">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000008">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000010">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000011">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000012">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000014">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000015">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000016">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000017">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000018">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000019">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000020">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000021">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000023">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000026">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000029">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000034">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000035">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000036">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000037">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000038">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000039">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000040">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000041">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000042">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000043">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000044">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000045">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000046">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000051">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000052">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000053">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000054">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000055">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000056">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000057">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="UNK000_015165">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -13038,7 +13793,7 @@ IF(!IsExit) {
   <Dialog>
     <Main Width="462">
       <TDoubleInput Name="" ID="2" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="DummyResult" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.10" SectionID="-1" CombiID="-1" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="0" PreDef="0" MemberDirectory="" MemberID="Beam.247" SectionID="-1" CombiID="-1" />
     </Main>
     <MemberData Width="583" />
     <Setup Width="400" />
@@ -13152,6 +13907,9 @@ IF(!IsExit) {
     </Item>
     <Item ID="TEXT_GMP014_019559">
       <ENU>"UC↓space← = " &amp; UC↓space←</ENU>
+    </Item>
+    <Item ID="TEXT_GMP100_000022">
+      <ENU>"UC↓edge← = " &amp; UC↓edge←</ENU>
     </Item>
   </Texts>
 </Root>

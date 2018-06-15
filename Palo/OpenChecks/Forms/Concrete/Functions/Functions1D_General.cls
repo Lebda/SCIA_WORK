@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="8bf7b83c-3a9a-4cbd-b10c-b399b490486e">
   <CodeEditor>
-    <SourceCode Collapsed="1|11|70|83|88|101|120|125|139|158|166|187|205|242|276|287|300|319|326|481|530|532|542|544|553|555|574|576|582|584|591|593|621|623|645|647|676|703|711|721|730|763|778|806" BreakPoints="">→INI400_006750BLOCK("Calculation biaxial coefficient") { 
+    <SourceCode Collapsed="1|11|70|83|88|101|120|125|139|158|166|187|205|242|276|287|300|319|326|481|530|532|542|544|553|555|574|576|582|584|591|593|621|623|645|647|676|703|711|721|730|747|779|810|838|854|882" BreakPoints="">→INI400_006750BLOCK("Calculation biaxial coefficient") { 
     double BiaxCoeffEN(double NEd, double NRd) { 
         double pom →INI400_006760= 1; 
         double RatioN →INI400_006761= ABS(NEd/NRd); 
@@ -731,16 +731,65 @@ public object RevertPolygonOrientation(object Polygon) {
 } 
 
 →KRS106_000001BLOCK("Function for drawn if bending moments are recalculated") { 
-    public void RecalcBendingMomentsInfo(double MemberType, bool CompressMember, bool CalSecOrder, bool CalcImp, bool IsoCol, bool EquivMoment) { 
+    public void RecalcBendingMomentsInfo(double MemberType, bool CompressMember, bool CalSecOrder, bool CalcImp, bool IsoCol, bool EquivMoment, bool MomentReduction, bool ShearReduction, double TypeOfShearReduction, bool UseShifting) { 
+        SWITCH(MemberType) { 
+            CASE 1 :  { //beams
+                →KRS100_000017RecalcBendingMomentsInfoBeam(MomentReduction, ShearReduction, TypeOfShearReduction, UseShifting); 
+            } 
+            CASE 2 :  { //columns
+                →KRS100_000002RecalcBendingMomentsInfoColumn(CompressMember, CalSecOrder, CalcImp, IsoCol, EquivMoment); 
+            } 
+            CASE 4 :  { //ribs
+                →KRS100_000018RecalcBendingMomentsInfoBeam(MomentReduction, ShearReduction, TypeOfShearReduction, UseShifting); 
+            } 
+            CASE 128 :  { //beamSlab
+                →KRS100_000033RecalcBendingMomentsInfoBeamSlab(MomentReduction, ShearReduction, TypeOfShearReduction); 
+            } 
+        } 
+    } 
+    
+    public void RecalcBendingMomentsInfoBeam(bool MomentReduction, bool ShearReduction, double TypeOfShearReduction, bool UseShifting) { 
+        →KRS100_000003BLOCK { 
+            →KRS100_000004TEXT("Moment reduction above support:"); 
+            IF(MomentReduction) { 
+                →KRS100_000005TEXT("Yes"); 
+            } ELSE { 
+                →KRS100_000006TEXT("No"); 
+            } 
+            →KRS100_000007TEXT("Use Shift rule:"); 
+            IF(UseShifting) { 
+                →KRS100_000008TEXT("Yes"); 
+            } ELSE { 
+                →KRS100_000009TEXT("No"); 
+            } 
+        } 
+        →KRS100_000010BLOCK { 
+            →KRS100_000011TEXT("Shear forces reduction above support:"); 
+            IF(ShearReduction) { 
+                →KRS100_000012TEXT("Yes"); 
+            } ELSE { 
+                →KRS100_000013TEXT("No"); 
+            } 
+            IF(ShearReduction) { 
+                →KRS100_000014TEXT("Reduce shear forces:"); 
+                SWITCH(TypeOfShearReduction) { 
+                    CASE 0 :  { →KRS100_000015TEXT("On the face"); } 
+                    CASE 1 :  { →KRS100_000016TEXT("On the face + effective depth"); } 
+                } 
+            } 
+        } 
+    } 
+    
+    public void RecalcBendingMomentsInfoColumn(bool CompressMember, bool CalSecOrder, bool CalcImp, bool IsoCol, bool EquivMoment) { 
         →INI400_009139BLOCK { 
             →INI400_005179TEXT("Second order effect:"); 
-            IF(MemberType == 2 ? CalSecOrder &amp;&amp; CompressMember : CalSecOrder) { 
+            IF(CalSecOrder &amp;&amp; CompressMember) { 
                 →INI400_005180TEXT("Yes"); 
             } ELSE { 
                 →INI400_005181TEXT("No"); 
             } 
             →INI400_005182TEXT("Imperfections:"); 
-            IF(MemberType == 2 ? CalcImp &amp;&amp; CompressMember : CalcImp) { 
+            IF(CalcImp &amp;&amp; CompressMember) { 
                 →INI400_005183TEXT("Yes"); 
             } ELSE { 
                 →INI400_005184TEXT("No"); 
@@ -748,16 +797,42 @@ public object RevertPolygonOrientation(object Polygon) {
         } 
         →INI400_009140BLOCK { 
             →INI400_005185TEXT("Member is taken as isolated member:"); 
-            IF(MemberType == 2 ? IsoCol &amp;&amp; CompressMember : IsoCol) { 
+            IF(IsoCol &amp;&amp; CompressMember) { 
                 →INI400_005186TEXT("Yes"); 
             } ELSE { 
                 →INI400_005187TEXT("No"); 
             } 
             →INI400_005188TEXT("Use for calculation equivalent moments:"); 
-            IF(MemberType == 2 ? EquivMoment &amp;&amp; CompressMember : EquivMoment) { 
+            IF(EquivMoment &amp;&amp; CompressMember) { 
                 →INI400_005189TEXT("Yes"); 
             } ELSE { 
                 →INI400_005190TEXT("No"); 
+            } 
+        } 
+    } 
+    
+    public void RecalcBendingMomentsInfoBeamSlab(bool MomentReduction, bool ShearReduction, double TypeOfShearReduction) { 
+        →KRS100_000019BLOCK { 
+            →KRS100_000020TEXT("Moment reduction above support:"); 
+            IF(MomentReduction) { 
+                →KRS100_000021TEXT("Yes"); 
+            } ELSE { 
+                →KRS100_000022TEXT("No"); 
+            } 
+        } 
+        →KRS100_000026BLOCK { 
+            →KRS100_000027TEXT("Shear forces reduction above support:"); 
+            IF(ShearReduction) { 
+                →KRS100_000028TEXT("Yes"); 
+            } ELSE { 
+                →KRS100_000029TEXT("No"); 
+            } 
+            IF(ShearReduction) { 
+                →KRS100_000030TEXT("Reduce shear forces:"); 
+                SWITCH(TypeOfShearReduction) { 
+                    CASE 0 :  { →KRS100_000031TEXT("On the face"); } 
+                    CASE 1 :  { →KRS100_000032TEXT("On the face + effective depth"); } 
+                } 
             } 
         } 
     } 
@@ -773,6 +848,7 @@ public object RevertPolygonOrientation(object Polygon) {
         SWITCH(MemberType) { 
             CASE 1 :  { →KRS106_000040CheckCompressMemberBeam(N↓Ed←, N↓com←, obEWN, IndexEWN, out CompressMember, out Number↓N←, out Number↓W←); } 
             CASE 2 :  { →KRS106_000015CheckCompressMemberColumn(N↓Ed←, N↓com←, obEWN, IndexEWN, out CompressMember, out Number↓N←); } 
+            CASE 4 :  { →KRS100_000001CheckCompressMemberBeam(N↓Ed←, N↓com←, obEWN, IndexEWN, out CompressMember, out Number↓N←, out Number↓W←); } 
             CASE 128 :  { →KRS106_000041CheckCompressMemberBeam(N↓Ed←, N↓com←, obEWN, IndexEWN, out CompressMember, out Number↓N←, out Number↓W←); } 
         } 
         
@@ -1377,12 +1453,12 @@ public object RevertPolygonOrientation(object Polygon) {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
       </VC>
       <VC ID="INI400_005188">
-        <Set Vis="1" Prev="INI400_005185" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_005185" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_005185" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_005185" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_005185" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="INI400_005185" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_005185" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_005185" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_005185" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_005185" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_005185" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="INI400_005185" Style="0" StyleName="Text 4" EqStyle="23" />
       </VC>
       <VC ID="INI400_005189">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
@@ -3360,6 +3436,246 @@ public object RevertPolygonOrientation(object Polygon) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS100_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000005">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000006">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000007">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000008">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000009">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000010">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="315" Y="0" Hor="0" Ver="2" SpX="75" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="315" Y="0" Hor="0" Ver="2" SpX="75" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="315" Y="0" Hor="0" Ver="2" SpX="75" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="315" Y="0" Hor="0" Ver="2" SpX="75" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="315" Y="0" Hor="0" Ver="2" SpX="75" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="315" Y="0" Hor="0" Ver="2" SpX="75" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000011">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000012">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000013">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000014">
+        <Set Vis="1" Prev="KRS100_000011" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="KRS100_000011" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="KRS100_000011" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="KRS100_000011" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="KRS100_000011" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="KRS100_000011" Style="0" StyleName="Text 4" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000015">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000016">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000017">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000018">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000019">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000020">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000021">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000022">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000026">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="315" Y="0" Hor="0" Ver="2" SpX="75" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="315" Y="0" Hor="0" Ver="2" SpX="75" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="315" Y="0" Hor="0" Ver="2" SpX="75" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="315" Y="0" Hor="0" Ver="2" SpX="75" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="315" Y="0" Hor="0" Ver="2" SpX="75" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="315" Y="0" Hor="0" Ver="2" SpX="75" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000027">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 4" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000028">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000029">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000030">
+        <Set Vis="1" Prev="KRS100_000027" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="KRS100_000027" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="KRS100_000027" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="KRS100_000027" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="KRS100_000027" Style="0" StyleName="Text 4" EqStyle="23" />
+        <Set Vis="1" Prev="KRS100_000027" Style="0" StyleName="Text 4" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000031">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000032">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000033">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
       <VC ID="KRS106_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4035,6 +4351,69 @@ public object RevertPolygonOrientation(object Polygon) {
     </Item>
     <Item TranslateID="TEXT_INI400_013860">
       <ENU>"Limited height of compression zone"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS100_000004">
+      <ENU>"Moment reduction above support:"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS100_000005">
+      <ENU>"Yes"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS100_000006">
+      <ENU>"No"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS100_000007">
+      <ENU>"Use Shift rule:"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS100_000008">
+      <ENU>"Yes"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS100_000009">
+      <ENU>"No"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS100_000011">
+      <ENU>"Shear forces reduction above support:"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS100_000012">
+      <ENU>"Yes"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS100_000013">
+      <ENU>"No"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS100_000014">
+      <ENU>"Reduce shear forces:"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS100_000015">
+      <ENU>"On the face"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS100_000016">
+      <ENU>"On the face + effective depth"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS100_000020">
+      <ENU>"Moment reduction above support:"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS100_000021">
+      <ENU>"Yes"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS100_000022">
+      <ENU>"No"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS100_000027">
+      <ENU>"Shear forces reduction above support:"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS100_000028">
+      <ENU>"Yes"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS100_000029">
+      <ENU>"No"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS100_000030">
+      <ENU>"Reduce shear forces:"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS100_000031">
+      <ENU>"On the face"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS100_000032">
+      <ENU>"On the face + effective depth"</ENU>
     </Item>
     <Item ID="TEXT_KRS106_000010">
       <ENU>"&lt; " &amp; Val(Coeff↓min←*Coeff↓d←*h*1000, 0) &amp; " mm"</ENU>

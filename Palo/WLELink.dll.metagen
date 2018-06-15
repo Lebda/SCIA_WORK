@@ -3,11 +3,11 @@ Assembly WLELink, Version=0.0.*, Culture=Invariant Language (Invariant Country):
 	hash=SHA1, flags=PublicKey
 Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
-Assembly CADS.WindLoadEngine.DataModel, Version=2.2.9.0, Culture=neutral, PublicKeyToken=5be4ba9333b795d9: 
+Assembly CADS.WindLoadEngine.DataModel, Version=2.2.16.0, Culture=neutral, PublicKeyToken=5be4ba9333b795d9: 
 	hash=None, flags=None
-Assembly CADS.WindLoadEngine, Version=2.2.9.0, Culture=neutral, PublicKeyToken=5be4ba9333b795d9: 
+Assembly CADS.WindLoadEngine, Version=2.2.16.0, Culture=neutral, PublicKeyToken=5be4ba9333b795d9: 
 	hash=None, flags=None
-Assembly CADS.WindLoadEngine.StructuralModel, Version=2.2.9.0, Culture=neutral, PublicKeyToken=5be4ba9333b795d9: 
+Assembly CADS.WindLoadEngine.StructuralModel, Version=2.2.16.0, Culture=neutral, PublicKeyToken=5be4ba9333b795d9: 
 	hash=None, flags=None
 Assembly System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None

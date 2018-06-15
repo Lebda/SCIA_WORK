@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="f052e4dd-d921-44d4-8809-aa6dc1f7a208">
   <CodeEditor>
-    <SourceCode Collapsed="99" BreakPoints="">// THIS IS THE MASTER CODE WHICH CALL OALL OTHER CODES FOR NBR14762 AND NBR8800
+    <SourceCode Collapsed="" BreakPoints="">// THIS IS THE MASTER CODE WHICH CALL OALL OTHER CODES FOR NBR14762 AND NBR8800
 // KRS: ToDo from version R16, use out parameters for calling the function, calculation will be twice faster
 // KRS: because each function will be called jsut once (now are called twice, one for assign and one for drawn)
 
@@ -588,7 +588,7 @@ ELSE {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="CSDescrLength" ESA_ID="" Type="Double" Value="16" Precision="2">
+      <Variable Modifier="Public" Name="CSDescrLength" ESA_ID="" Type="Double" Value="13" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -707,7 +707,7 @@ ELSE {
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10" Dim="kN∙cm" />
       </Variable>
-      <Variable Modifier="Public" Name="MomentSign" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="MomentSign" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -728,7 +728,7 @@ ELSE {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="n" ESA_ID="" Type="Double" Value="26" Precision="2">
+      <Variable Modifier="Public" Name="n" ESA_ID="" Type="Double" Value="42" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -824,7 +824,7 @@ ELSE {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UnityCheck" ESA_ID="Result.1" Type="Double" Value="240e-3" Precision="2">
+      <Variable Modifier="Public" Name="UnityCheck" ESA_ID="Result.1" Type="Double" Value="47.87852e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -3166,7 +3166,7 @@ ELSE {
   </Calculation>
   <Dialog>
     <Main Width="400">
-      <TEMDLoader Name="" ID="7" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.3" SectionID="-1" CombiID="-1" />
+      <TEMDLoader Name="" ID="7" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.34" SectionID="-1" CombiID="-1" />
     </Main>
     <MemberData Width="400">
       <TGroupBox Name="" ID="4" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|1|3" BorderColor="-5192482">

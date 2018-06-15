@@ -4130,9 +4130,21 @@
       <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Concrete_Detailing_provisions</Name>
+      <Guid>3a7f6555-f885-4114-a5d7-4146b094e3bd</Guid>
+      <CheckSum>7a9593fba5309ad55898da0d3189675d</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
       <Name>SIA_Concrete_Detailing_provisions_Plate</Name>
       <Guid>f231bc5a-1112-4f26-8bb0-c20d45ff1a55</Guid>
       <CheckSum>da26148ab5b91bde6afa6622293f1777</CheckSum>
+      <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
+    </SdfSolutionItem>
+    <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">
+      <Name>SIA_Concrete_Detailing_provisions_SEN</Name>
+      <Guid>d0f0924c-c1ac-4c54-92b4-48bcae68dfcb</Guid>
+      <CheckSum>028c1aa1baf1f7579b24275b46b9c0c9</CheckSum>
       <RelativePath>OpenChecks\Forms\Concrete_SIA</RelativePath>
     </SdfSolutionItem>
     <SdfSolutionItem Type="ClsFile" Version="160001" TranslationType="GlobalSettings">

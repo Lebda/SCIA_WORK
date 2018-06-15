@@ -332,18 +332,26 @@ IF(DrawStress) {
         object[] PtsR →INI400_001693= new object[]; 
         object[] Ysup →INI400_003928= new object[]; //additonal array of points, it store Y points from next cycle
         →INI400_004017object[] σst; 
-        FOR(i, 0, Reinf.Count-1) { //Stress in steel
+        
+        object ReinfActive →KRS100_000001= new object[]; //object for reinforcement active in stress/strain (reinfrocement array without detailing reinf)
+        FOR(i, 0, Reinf.Count-1) { 
+            IF(Reinf[i].IsDetailing == 0) { 
+                →KRS100_000002ReinfActive.Add(Reinf[i]); 
+            } 
+        } 
+        
+        FOR(i, 0, →KRS116_000001ReinfActive.Count-1) { //Stress in steel
             IF(IP != null &amp;&amp; (ABS(CompressedConcrete-TensionConcrete) != MAX(CompressedConcrete, TensionConcrete))) { 
-                double Y →INI400_001694= PointFromLine(new PointD(Reinf[i].X, Reinf[i].Y), IP[IP.Count-1], IP[0]); 
+                double Y →INI400_001694= PointFromLine(new PointD(→KRS116_000002ReinfActive[i].X, →KRS116_000004ReinfActive[i].Y), IP[IP.Count-1], IP[0]); 
             } ELSE { 
-                double Y →INI400_003920= PointFromLine(new PointD(Reinf[i].X, Reinf[i].Y), new PointD(FibresCSS[0].X, FibresCSS[0].Y), new PointD(FibresCSS[0].X-COS(α), FibresCSS[0].Y-SIN(α))); 
+                double Y →INI400_003920= PointFromLine(new PointD(→KRS116_000003ReinfActive[i].X, →KRS116_000005ReinfActive[i].Y), new PointD(FibresCSS[0].X, FibresCSS[0].Y), new PointD(FibresCSS[0].X-COS(α), FibresCSS[0].Y-SIN(α))); 
             } 
             double σ↓max← →INI400_001696= MAX(σst[i], σ↓max←); //If problems with sigma max, reconsider ABS here
             double σ↓min← →INI400_001697= MIN(σst[i], σ↓min←); 
-            →INI400_001698PtsR.Add(new PointD(0, Y+Reinf[i].D/2+0.000001)); 
-            →INI400_001699PtsR.Add(new PointD(σst[i], Y+Reinf[i].D/2)); 
-            →INI400_001700PtsR.Add(new PointD(σst[i], Y-Reinf[i].D/2)); 
-            →INI400_001701PtsR.Add(new PointD(0, Y-Reinf[i].D/2-0.000001)); 
+            →INI400_001698PtsR.Add(new PointD(0, Y+→KRS116_000006ReinfActive[i].D/2+0.000001)); 
+            →INI400_001699PtsR.Add(new PointD(σst[i], Y+→KRS116_000007ReinfActive[i].D/2)); 
+            →INI400_001700PtsR.Add(new PointD(σst[i], Y-→KRS116_000008ReinfActive[i].D/2)); 
+            →INI400_001701PtsR.Add(new PointD(0, Y-→KRS116_000009ReinfActive[i].D/2-0.000001)); 
             Ysup[i] →INI400_003930= Y; 
         } 
         →INI400_001704PtsR.Insert(0, new PointD(0, PtsR[0].Y)); 
@@ -352,7 +360,7 @@ IF(DrawStress) {
         →INI400_001707StressG.DrawPolyLine(PtsR); //Draw a line around stress in reinforcement
 
         IF(AllStressStrain) { 
-            FOR(i, 0, Reinf.Count-1) { 
+            FOR(i, 0, →KRS116_000010ReinfActive.Count-1) { 
                 IF(σst[i] &gt; 0) { 
                     →INI400_001702StressG.DrawText((σst[i]/100000).ToString(" 0.00"), StressFont, σst[i], Ysup[i], ContentAlignment.MiddleLeft); 
                 } ELSE { 
@@ -482,18 +490,25 @@ IF(DrawStrain) {
         object[] Ysup →INI400_003939= new object[]; //additonal array of points, it store Y points from next cycle
         →INI400_004023object[] εst; //Strain in reinforcement - loaded from master
 
-        FOR(i, 0, Reinf.Count-1) { //Strain in steel
+        object ReinfActive →KRS100_000013= new object[]; //object for reinforcement active in stress/strain (reinfrocement array without detailing reinf)
+        FOR(i, 0, Reinf.Count-1) { 
+            IF(Reinf[i].IsDetailing == 0) { 
+                →KRS100_000014ReinfActive.Add(Reinf[i]); 
+            } 
+        } 
+        
+        FOR(i, 0, ReinfActive.Count-1) { //Strain in steel
             IF(IP != null &amp;&amp; (ABS(CompressedConcrete-TensionConcrete) != MAX(CompressedConcrete, TensionConcrete))) { 
-                double Y →INI400_001733= PointFromLine(new PointD(Reinf[i].X, Reinf[i].Y), IP[IP.Count-1], IP[0]); 
+                double Y →INI400_001733= PointFromLine(new PointD(ReinfActive[i].X, ReinfActive[i].Y), IP[IP.Count-1], IP[0]); 
             } ELSE { 
-                double Y →INI400_004020= PointFromLine(new PointD(Reinf[i].X, Reinf[i].Y), new PointD(FibresCSS[0].X, FibresCSS[0].Y), new PointD(FibresCSS[0].X-COS(α), FibresCSS[0].Y-SIN(α))); 
+                double Y →INI400_004020= PointFromLine(new PointD(ReinfActive[i].X, ReinfActive[i].Y), new PointD(FibresCSS[0].X, FibresCSS[0].Y), new PointD(FibresCSS[0].X-COS(α), FibresCSS[0].Y-SIN(α))); 
             } 
             ε↓max← →INI400_001735= MAX(εst[i], ε↓max←); 
             ε↓min← →INI400_001736= MIN(εst[i], ε↓min←); 
-            →INI400_001737PtsSR.Add(new PointD(0, Y+Reinf[i].D/2)); 
-            →INI400_001738PtsSR.Add(new PointD(εst[i], Y+Reinf[i].D/2)); 
-            →INI400_001739PtsSR.Add(new PointD(εst[i], Y-Reinf[i].D/2)); 
-            →INI400_001740PtsSR.Add(new PointD(0, Y-Reinf[i].D/2)); 
+            →INI400_001737PtsSR.Add(new PointD(0, Y+ReinfActive[i].D/2)); 
+            →INI400_001738PtsSR.Add(new PointD(εst[i], Y+ReinfActive[i].D/2)); 
+            →INI400_001739PtsSR.Add(new PointD(εst[i], Y-ReinfActive[i].D/2)); 
+            →INI400_001740PtsSR.Add(new PointD(0, Y-ReinfActive[i].D/2)); 
             Ysup[i] →INI400_003941= Y; 
         } 
         →INI400_001743PtsSR.Insert(0, new PointD(0, PtsSR[0].Y)); 
@@ -502,7 +517,7 @@ IF(DrawStrain) {
         →INI400_001746StrainG.DrawPolyLine(PtsSR); //Draw a line around stress in reinforcement
 
         IF(AllStressStrain) { 
-            FOR(i, 0, Reinf.Count-1) { 
+            FOR(i, 0, ReinfActive.Count-1) { 
                 IF(εst[i] &gt; 0) { 
                     →INI400_001741StrainG.DrawText((εst[i]*1000).ToString(" 0.00"), StressFont, εst[i], Ysup[i], ContentAlignment.MiddleLeft); 
                 } ELSE { 
@@ -992,6 +1007,12 @@ IF(DrawStrain) {
       </Variable>
       <Variable Modifier="Public" Name="Reinf" ESA_ID="" Type="Object">
         <Description>
+          <ENU>
+          </ENU>
+        </Description>
+      </Variable>
+      <Variable Modifier="Public" Name="ReinfActive" ESA_ID="" Type="Object">
+        <Description TranslateID="VARIABLE_ReinfActive">
           <ENU>
           </ENU>
         </Description>
@@ -3184,6 +3205,38 @@ IF(DrawStrain) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
+      <VC ID="KRS100_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000013">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000014">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS106_000029">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3247,6 +3300,86 @@ IF(DrawStrain) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="523" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="523" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="523" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS116_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000005">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000006">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000007">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000008">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000009">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS116_000010">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
     </VisualComponents>
     <Images />

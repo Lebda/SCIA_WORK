@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="9fc54236-1d07-4a38-a91e-1f1d9ad1fb36">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">IF(!IO.Contains("Load"))
+    <SourceCode Collapsed="" BreakPoints="146|110">IF(!IO.Contains("Load"))
 { 
     Exit(); 
 } 
@@ -101,6 +101,11 @@ IF(CssConditions.ConditionsForCss) { →INI400_005944TEXT("Stress limitation che
     
     double InitialForcesID →INI400_013614= 1000; 
     →INI400_013615CONCRETE.SetForcesId(InitialForcesID, IO.InternalForces.N, 0, 0, 0, IO.InternalForces.My, IO.InternalForces.Mz); 
+    IF(IO.Load.Contains("CombiType")) { 
+        CombiType →RFM116_001969= IO.Load.CombiType; 
+    } ELSE { 
+        CombiType →RFM116_001970= 0; 
+    } 
     object Input →INI400_012826= new Structure(); 
     // cross-section
     →INI400_012852Input.Add("CssID1", CssIDUncrack); 
@@ -111,10 +116,10 @@ IF(CssConditions.ConditionsForCss) { →INI400_005944TEXT("Stress limitation che
     →INI400_013585Input.Add("InitialForcesID", InitialForcesID); 
     
     object DataFromSEN →INI400_013055= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_SIA\Functions\FunctionsDataFromSEN.clc"); 
-    →INI400_012832Input.Add("SLSChar", DataFromSEN.IsCharacteristicCombi()); 
+    →INI400_012832Input.Add("SLSFreq", DataFromSEN.IsCharacteristicCombi()); 
     →INI400_012833Input.Add("SLSQP", DataFromSEN.IsQuasiPermanentCombi()); 
     →INI400_012858Input.Add("Combikey", DataFromSEN.CreateCombiKey()); 
-    
+    →RFM116_001968Input.Add("CombiType", CombiType); 
     
     →INI400_013583Input.Add("DrawHeader", true); 
     →INI400_013580Input.Add("PrintEWN", true); 
@@ -250,6 +255,13 @@ IF(CssConditions.ConditionsForCss) { →INI400_005944TEXT("Stress limitation che
       </Variable>
       <Variable Modifier="Public" Name="CheckShort" ESA_ID="" Type="Double" Precision="2">
         <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="CombiType" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_CombiType">
           <ENU>
           </ENU>
         </Description>
@@ -1820,12 +1832,44 @@ IF(CssConditions.ConditionsForCss) { →INI400_005944TEXT("Stress limitation che
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="RFM116_001967">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM116_001968">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM116_001969">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM116_001970">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
   <Dialog>
     <Main Width="524">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="C:\Users\raphf\ESA16.1\Temp\Esa_Model_Data\Beam.12" MemberID="Beam.12" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="" SectionID="-1" CombiID="-1" />
     </Main>
     <MemberData Width="400" />
     <Setup Width="400" />

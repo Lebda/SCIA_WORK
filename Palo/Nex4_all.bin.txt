@@ -26,6 +26,9 @@ ActSupport.dll
 set\AISCASD.set
 set\America(LRFD).set
 ProfileLibrary\American.FIL
+AnalysisDataModel.Contracts.dll
+AnalysisDataModel.dll
+AnalysisDataModel.Implementation.dll
 AutoMapper.dll
 AutoMapper.xml
 BCGCBPRO2610u140.dll
@@ -44,8 +47,6 @@ CadsLinkSciaWestok\Cads.SciaWestokLink.Sci.TSDCellbeam.dll
 CadsLinkSciaWestok\Cads.SciaWestokLink.SciaModel.dll
 CadsLinkSciaWestok\CadsLinkWestok.exe
 CalcTesterCmdline.ver
-Castle.Core.dll
-Castle.Core.xml
 CB-beam-advanced-nen.esa
 CB-beam-standard-nen.esa
 CB-slab-standard-nen.esa
@@ -67,7 +68,9 @@ ContinousBeam.def.xml
 db\CPTRule.db4
 CrossSectionF.dll
 CrossSectionF64.dll
+CSInfrastructure.dll
 set\CSN.set
+DataModelDataAccess.dll
 set\DataSetSciaTra-EP_DumperSetupData-1.set
 ProfileLibrary\dbgeo
 CadsLinkSciaWestok\Decking.xml
@@ -248,6 +251,12 @@ ProfileLibrary\European.FIL
 Example_ESACOM_Multithread.dll
 Example_TestCccInput.xml
 Example_TestCccResult.xml
+Excel.Conversion.Contracts.dll
+Excel.Conversion.Implementation.dll
+Excel.DataAccess.Contracts.dll
+Excel.DataAccess.Implementation.dll
+Excel.DataAccess.Models.dll
+Excel.Integration.Bootstrapper.dll
 EXPERT.exe
 FemBase.dll
 FemBase64.dll
@@ -266,6 +275,8 @@ ProfileLibrary\Filter_Names_13.TXT
 ProfileLibrary\Filter_Names_1b.TXT
 ProfileLibrary\Finnish.FIL
 FLBTiiCls.dll
+FluentValidation.dll
+FluentValidation.xml
 FlxComm.dll
 FlxConnect.dll
 FlxCore.dll
@@ -302,6 +313,7 @@ iPun.dll
 ProfileLibrary\Japanese.FIL
 libclang.dll
 libifcoremd.dll
+libifcoremdd.dll
 libifportmd.dll
 libiomp5md.dll
 libiomp5md32.dll
@@ -332,8 +344,6 @@ ModellerAP.ico
 ModellerAP.lt
 ModellerR.ico
 ModellerR.lt
-Moq.dll
-Moq.xml
 Moq4.dll
 MWellCalc.dll
 set\NEN.set
@@ -347,6 +357,7 @@ Nessie.dll
 Newmark.dll
 Newmark64.dll
 BimPlus\Newtonsoft.Json.dll
+Newtonsoft.Json.xml
 NEXX.DLL
 nexx64.dll
 NOTICE.txt
@@ -412,12 +423,11 @@ set\ScaleAdministrator.set
 CadsLinkSciaWestok\Sci.TSDCellbeam.dll
 scia-logo-silver.png
 scia.bmp
+Scia.Conversion.Contracts.dll
+Scia.Conversion.Implementation.dll
 Scia2Etabs.exe
 Scia2SDNF.exe
 SCIA2SDS2.tdx
-Scia2Tekla_15.0.exe
-Scia2Tekla_16.0.exe
-Scia2Tekla_16.1.exe
 Scia2Tekla_17.0.net4.exe
 Scia2Tekla_18.0.net4.exe
 Scia2Tekla_19.0.net4.exe
@@ -437,7 +447,6 @@ sciadesignforms.html
 SciaOpenInterface.net4.dll
 SciaOpenInterface.dll
 SCIAPileType.dll
-SciaSteelConnectionForTekla.net4.exe
 Sdf_Forms_solution.xml
 Sdf_Packages_Forms_solution.xml
 sdnf.tdx
@@ -478,19 +487,12 @@ Structure.ico
 Structure.lt
 Subst.dat
 ProfileLibrary\Swiss.FIL
+System.ComponentModel.Annotations.dll
+System.ComponentModel.Primitives.dll
 BimPlus\System.Net.Http.dll
-System.Threading.Tasks.Extensions.dll
-System.Threading.Tasks.Extensions.xml
-System.ValueTuple.dll
-System.ValueTuple.xml
 System.Windows.Interactivity.dll
 SystemCom2EsaReg.exe
 Tekla.tdx
-Addons\TeklaTemplates\Tekla_templ144a.esa
-Addons\TeklaTemplates\Tekla_templ144b.esa
-Addons\TeklaTemplates\Tekla_templ144c.esa
-Addons\TeklaTemplates\Tekla_templ144d.esa
-Addons\TeklaTemplates\Tekla_templ144e.esa
 Telerik.WinControls.dll
 Telerik.WinControls.RadDock.dll
 Telerik.WinControls.UI.dll
@@ -579,7 +581,7 @@ CadsLinkSciaWestok\WestokIPESections.xml
 CadsLinkSciaWestok\WestokUBSections.xml
 CadsLinkSciaWestok\WestokUCSections.xml
 CadsLinkSciaWestok\westok_main.xml.def
-CadsLinkSciaWestok\westok_main.xml
+westok_main.tdx
 westok_sections.tdx
 AddDataCalculator\Setting\XEP_AddDataCalculatorLoggerConfig.xml
 EP_regsvr32.exe
@@ -600,6 +602,7 @@ DocumentDefaults\BasicResults.10.00.EP_ECEN_1993_SteelCheck_Fire_ResultShell-(Re
 DocumentDefaults\BasicResults.10.00.EP_ECEN_1993_SteelCheck_ULS_ResultShell-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.10.00.EP_ExternalCheck_Shell-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.10.00.EP_ExternalCheck_Shell_SectionCheck-(ResultMain) [Default].TLX
+DocumentDefaults\BasicResults.10.00.EP_ExternalCheck_Shell_SectionCheck_SIA-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.10.00.EP_InternalForces1D_Shell-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.10.00.EP_InternalForces2D_Shell-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.10.00.EP_ResAdaptivityMesh-(ResultMain) [Default].TLX
@@ -608,7 +611,6 @@ DocumentDefaults\BasicResults.10.00.EP_ResPropertyConcreteSetupBrazil-(ResultMai
 DocumentDefaults\BasicResults.10.00.EP_StressStrain2D_Shell-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.10.00.EP_SubsoilC2D_Shell-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.14.00.EP_3DWindTransparentReport-(ResultMain) [Default].TLX
-DocumentDefaults\BasicResults.14.00.EP_3DWindTransparentReport-(TPComposed) [Default].TLX
 DocumentDefaults\BasicResults.14.00.EP_FloorVibration_Shell-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.14.00.EP_LiveLoadReduction_Shell-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.14.00.EP_ReactionsResultant_Shell-(ResultMain) [Default].TLX
@@ -1051,8 +1053,8 @@ DocumentDefaults\DataAddScia.10.00.EP_CompositeBeamDataFromSetup [Default].TLX
 DocumentDefaults\DataAddScia.14.00.EP_CompositeBeamDesignInfo [Default].TLX
 DocumentDefaults\DataAddScia.14.00.EP_VirtualJoistDesignInfo [Default].TLX
 DocumentDefaults\DataAddScia.8.00.AluminiumCheckData [Default].TLX
-DocumentDefaults\DataAddScia.8.00.EP_Aluminium_Diaphra [Default].TLX
-DocumentDefaults\DataAddScia.8.00.EP_Aluminium_LTBRest [Default].TLX
+DocumentDefaults\DataAddScia.8.00.EP_Aluminium_Diaphragm [Default].TLX
+DocumentDefaults\DataAddScia.8.00.EP_Aluminium_LTBRestraints [Default].TLX
 DocumentDefaults\DataAddScia.8.00.EP_PLTransverse_Welds [Default].TLX
 DocumentDefaults\DataAddScia.EP_BeamBuckling [Buckling coeff].TLX
 DocumentDefaults\DataAddScia.EP_BeamBuckling [Buckling Sys].TLX
@@ -1483,8 +1485,8 @@ DocumentDefaults\SteelCheckBSCode.EP_ResCheckSteelCodeBS_SLS [Default].TLX
 DocumentDefaults\SteelCheckBSCode.EP_ResCheckSteelCodeBS_ULS [Default].TLX
 DocumentDefaults\SteelCheckBSCode.ResultsPresentationSteelCodeBS_SLS-(ResultMain) [Default].TLX
 DocumentDefaults\SteelCheckBSCode.ResultsPresentationSteelCodeBS_ULS-(ResultMain) [Default].TLX
-DocumentDefaults\SteelConnection.BoltDiameterToCssRela [Default].TLX
-DocumentDefaults\SteelConnection.EP_Aluminium_Stiffene [Default].TLX
+DocumentDefaults\SteelConnection.BoltDiameterToCssRelati [Default].TLX
+DocumentDefaults\SteelConnection.EP_Aluminium_Stiffeners [Default].TLX
 DocumentDefaults\SteelConnection.EP_BackingPlate [Default].TLX
 DocumentDefaults\SteelConnection.EP_BoltAssembly [Default].TLX
 DocumentDefaults\SteelConnection.EP_BoltedDiagonalConnection [Default].TLX
@@ -1550,6 +1552,7 @@ DocumentDefaults\{14D17D4D-E352-4FE9-9082-16D34A8D7E37} [Default].TLX
 DocumentDefaults\{1557BDD1-FA11-4573-9EC3-60129E696B71} [Default].TLX
 DocumentDefaults\{156B8E6D-5952-9539-336F-A376A955ED0B}-(ResultMain) [Default].TLX
 DocumentDefaults\{15F531C9-F23D-4588-ABE8-8319840D49F7} [Default].TLX
+DocumentDefaults\{19772A09-CFBC-43E9-A843-26150EDBA249} [Default].TLX
 DocumentDefaults\{1B00BE36-AB3C-480A-A823-051FDCC8224C} [Default].TLX
 DocumentDefaults\{1B818D67-CDE9-4B0F-9CE6-421391484DEF} [Default].TLX
 DocumentDefaults\{1BA58B6C-A405-49B5-E9B2-B8D65AB0E75D}-(ResultMain) [Default].TLX
@@ -1618,13 +1621,13 @@ DocumentDefaults\{37DC5A2A-5CC3-42CC-9273-666EECDC0AF1} [Default].TLX
 DocumentDefaults\{38019D7B-BE98-3DA2-109E-8AD02213CF2F} [Default].TLX
 DocumentDefaults\{394A5069-C1C4-4528-9BD1-286D6E15DECB} [Default].TLX
 DocumentDefaults\{39523FC7-2C08-4C45-D176-C5B327DB553E} [Default].TLX
-DocumentDefaults\{39AE5C7F-51E9-4F11-A3F2-B3180A13FBE1} [Default].TLX
 DocumentDefaults\{3B0308FB-87F2-7FCB-74BD-F87752C50332}-(ResultMain) [Default].TLX
 DocumentDefaults\{3CB7A965-0A89-3BBF-EA97-AB525ADC6028} [Default].TLX
 DocumentDefaults\{3E5AE535-CAE7-48A0-8AF6-048981E088CE} [Default].TLX
 DocumentDefaults\{3E6A29CE-D8ED-4245-ADED-A1929EEE5017} [Default].TLX
 DocumentDefaults\{3E6A29CE-D8ED-4245-ADED-A1929EEE5017} [Detailed].TLX
 DocumentDefaults\{3E78C0A9-E008-4363-ABD0-821E81C56AE9} [Default].TLX
+DocumentDefaults\{3E9F327F-6556-40FE-A24F-8968ABD18BA9} [Default].TLX
 DocumentDefaults\{3F04D0CE-8BD8-4DA4-8492-60B8BDF616E3}-(IPFile) [Default].TLX
 DocumentDefaults\{3F9C32AA-9757-84DE-BD21-9682BF52127E}-(IPFile) [Default].TLX
 DocumentDefaults\{40F947FB-31E3-5105-F8CC-A703CC705CE3}-(ResultMain) [Default].TLX
@@ -1658,6 +1661,7 @@ DocumentDefaults\{54C98F3A-AB52-4EA0-9369-2A6322889C79} [Default].TLX
 DocumentDefaults\{5679A8C5-079E-40C6-917F-BB0B09390DCF} [Default].TLX
 DocumentDefaults\{5679A8C5-079E-40C6-917F-BB0B09390DCF}-(TPComposed) [Default].TLX
 DocumentDefaults\{5759A860-8701-44CA-AA8F-DBD5F6D901D8} [Default].TLX
+DocumentDefaults\{59136EBB-BC29-481A-83D1-B4A99199ABE5} [Default].TLX
 DocumentDefaults\{5A36441A-AFA0-FEE9-C98D-312766F62FDA}-(ResultMain) [Default].TLX
 DocumentDefaults\{5AB6CBF6-21E1-3E0A-5615-E817466B9E7B}-(IPFile) [Default].TLX
 DocumentDefaults\{5B9F52AD-B5D0-B56E-A874-F0DCE94C51D2}-(IPFile) [Default].TLX
@@ -1713,7 +1717,6 @@ DocumentDefaults\{775E0B66-7BFF-4303-AF7E-963E0008DA03}-(IPFile) [Default].TLX
 DocumentDefaults\{779F11DA-FEF7-1BC5-07CA-F0725A422589}-(IPFile) [Default].TLX
 DocumentDefaults\{79682D26-3C50-0031-94AF-7CF3641248FE} [Default].TLX
 DocumentDefaults\{79ABE462-BE6A-C1BC-FFD8-C10922F35FE5}-(ResultMain) [Default].TLX
-DocumentDefaults\{79C3847D-9371-484C-9269-0D7FA86B39D3} [Default].TLX
 DocumentDefaults\{79C7786F-5ED2-BD05-21C6-C5E6695920F9} [Default].TLX
 DocumentDefaults\{79ED55B2-E104-4AF0-A664-63B0896E2265} [Default].TLX
 DocumentDefaults\{7A116B7D-5C22-4C10-8147-6B4847A5C50B} [Default].TLX
@@ -1760,7 +1763,6 @@ DocumentDefaults\{95CF3990-40DE-210D-41E4-8798B352F705}-(ResultMain) [Default].T
 DocumentDefaults\{97BAE0D7-144C-422E-9701-1F576B016F43} [Default].TLX
 DocumentDefaults\{97E32BF5-0F33-4687-5971-92C5CE92D1E3}-(IPFile) [Default].TLX
 DocumentDefaults\{981F55E7-A4AA-4CE6-BA6E-BDFE92E329BF} [Default].TLX
-DocumentDefaults\{98A86AA7-6FBD-43DF-ACDD-70DB9232BA59} [Default].TLX
 DocumentDefaults\{98BC8B3A-AC18-41A3-A622-3E7E38AE01CB} [Default].TLX
 DocumentDefaults\{98F2FADF-3E06-488A-985F-55ADABB0524F} [Default].TLX
 DocumentDefaults\{99D5B2D0-81B7-4020-9213-0988FF1A0660} [Default].TLX
@@ -1835,7 +1837,6 @@ DocumentDefaults\{C8C4BDBB-5171-422A-A105-1A0D4899B727} [Default].TLX
 DocumentDefaults\{C9A26F98-C2DF-3835-3841-6F93DCA72F41}-(ResultMain) [Default].TLX
 DocumentDefaults\{C9D51781-0853-776F-AB83-8EBDE2BEC927}-(IPFile) [Default].TLX
 DocumentDefaults\{CB579FEF-2A62-40C3-8092-889923F339E1} [Default].TLX
-DocumentDefaults\{CBD3601F-2894-44AB-93DB-2439BEC7D6CF} [Default].TLX
 DocumentDefaults\{CDAE98A5-270F-4139-B351-AAE4223A5E33} [Default].TLX
 DocumentDefaults\{CE1DF791-ED8B-0BF0-42A7-9EF69D655C8F}-(ResultMain) [Default].TLX
 DocumentDefaults\{CE49A1F6-3140-45FD-9C92-A82533066B86} [Default].TLX
@@ -1845,9 +1846,11 @@ DocumentDefaults\{CE92C683-A5F7-4B65-B417-D6D00F744DD7} [Default].TLX
 DocumentDefaults\{CF4172ED-0D3E-4F95-802E-04F31E42C6EF} [Default].TLX
 DocumentDefaults\{D16274BD-A62E-4C27-9A00-483ABB2C8112}-(IPFile) [Default].TLX
 DocumentDefaults\{D16274BD-A62E-4C27-9A00-483ABB2C8112}-(IPFile) [Summary].TLX
+DocumentDefaults\{D1701D85-6D1F-42C1-9D71-0D13E6493265} [Default].TLX
 DocumentDefaults\{D1C320E3-F5FD-47B0-A2A2-AAC053D16789} [Default].TLX
 DocumentDefaults\{D1C320E4-F5FD-47B0-A2A2-AAC053D16789} [Default].TLX
 DocumentDefaults\{D1C320E5-F5FD-47B0-A2A2-AAC053D16789} [Default].TLX
+DocumentDefaults\{D31C5453-DCF4-4E82-A858-CB00AB98750F} [Default].TLX
 DocumentDefaults\{D48EB18C-7F42-4F8D-0C01-39EF7FE9B729} [Default].TLX
 DocumentDefaults\{D4BD025A-692D-7D18-34D4-CF830517CFBD}-(IPFile) [Default].TLX
 DocumentDefaults\{D7AB77A7-72B0-4BA9-8C6F-D403D32E83C0} [Default].TLX
@@ -1871,12 +1874,10 @@ DocumentDefaults\{E202A2B1-B7C6-0262-45DB-257DDBD130E4}-(ResultMain) [Default].T
 DocumentDefaults\{E296BA00-2336-472A-9615-0D80C6B6B778} [Default].TLX
 DocumentDefaults\{E3007829-0307-EE0A-571A-4AB745310F59}-(IPFile) [Default].TLX
 DocumentDefaults\{E37E1E36-9E0B-7315-B0BF-7D4C50ABA291}-(IPFile) [Default].TLX
-DocumentDefaults\{E37E6262-5F32-4426-80FD-2CEA9080BF45} [Default].TLX
 DocumentDefaults\{E3B7419B-406B-47BE-9CDC-445042EBF4E7} [Default].TLX
 DocumentDefaults\{E4055CCB-7DCB-4C3F-F10B-CCBD6F91D13E}-(IPFile) [Default].TLX
 DocumentDefaults\{E43AE7A0-D768-4871-BCF2-70D5C372ADBC}-(ResultMain) [Default].TLX
 DocumentDefaults\{E44FA895-7FA8-43BC-A0C9-77060B8645F5} [Default].TLX
-DocumentDefaults\{E5333081-70C4-48FC-A233-A9FCCD02E75F} [Default].TLX
 DocumentDefaults\{E595DBB8-AE80-BF25-FA1F-1245400BB854} [Default].TLX
 DocumentDefaults\{E5A95615-30AE-4DAF-8BA6-85F0F3454A7F} [Default].TLX
 DocumentDefaults\{E5ECCB53-751D-409B-A018-2B1D5953B8A2} [Default].TLX
@@ -2036,6 +2037,7 @@ OpenChecks\CustomLibrary\US\US_Steel.xml
 OpenChecks\CustomLibrary\US\US_SteelSections.xml
 OpenChecks\EWN\Composite.xml
 OpenChecks\EWN\EWN_Clause.xml
+OpenChecks\EWN\EWN_CompositeBeam_AISC_360_10.xml
 OpenChecks\EWN\EWN_Concrete_Desing_2D.xml
 OpenChecks\EWN\EWN_SCIA.xml
 OpenChecks\FormsMenu\UserMenuDefinition.xml
@@ -2727,8 +2729,11 @@ OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Design2D_LongReinf.CLS
 OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Design2D_LongReinf.TestIO
 OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Design2D_Multi.cls
 OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Design2D_SEN.CLS
+OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Detailing_provisions.CLS
+OpenChecks\Forms\Concrete_SIA\SIA_CONCRETE_DETAILING_PROVISIONS.TestIO
 OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Detailing_provisions_Plate.cls
 OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Detailing_provisions_Plate.TestIO
+OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Detailing_provisions_SEN.CLS
 OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Detailing_provisions_Wall.cls
 OpenChecks\Forms\Concrete_SIA\SIA_CONCRETE_DETAILING_PROVISIONS_WALL.TestIO
 OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Forces2D_SEN.cls

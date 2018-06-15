@@ -117,7 +117,7 @@ IF(CssConditions.ConditionsForCss) { →INI400_005944TEXT("Check capacity - inte
     →DLO006_000003InputInteractionDiagram.Set("Coeff_d", IO.Setup.Concrete.Solver.General.Coeffd); 
     →DLO006_000004InputInteractionDiagram.Set("MemberType", IO.MemberData.Concrete.MemberType); 
     
-    
+    //For columns
     IF(DataFromSEN.IsULSCombi()) { 
         →INI400_013609InputInteractionDiagram.Set("CalcImp", IO.MemberData.Concrete.Solver.IntForces.ULS.UseGeoImp); 
     } ELSE { 
@@ -127,13 +127,18 @@ IF(CssConditions.ConditionsForCss) { →INI400_005944TEXT("Check capacity - inte
     →INI400_013607InputInteractionDiagram.Set("EquivMoment", IO.Setup.Concrete.Solver.IntForces.UseEqValue); 
     →INI400_013606InputInteractionDiagram.Set("CalSecOrder", IO.MemberData.Concrete.Solver.IntForces.ULS.UseSecEffect); 
     
+    //for beams
+    →KRS100_000001InputInteractionDiagram.Set("MomentReduction", IO.Setup.Concrete.Solver.IntForces.ULS.MomentReductionAtSupports == 1); 
+    →KRS100_000002InputInteractionDiagram.Set("ShearReduction", IO.Setup.Concrete.Solver.IntForces.ULS.ShearForceReductionAtSupports == 1); 
+    →KRS100_000004InputInteractionDiagram.Set("TypeOfShearReduction", IO.Setup.Concrete.Solver.IntForces.ULS.TypeOfShearForceReductionAtSupports); 
+    →KRS100_000003InputInteractionDiagram.Set("UseShifting", IO.Setup.Concrete.Solver.IntForces.ULS.UseShifting == 1); 
+    
     // Forces 
     →INI400_013611InputInteractionDiagram.Set("Combikey", DataFromSEN.CreateCombiKey()); 
     →INI400_013612InputInteractionDiagram.Set("ForcesID", ForcesID); 
     →INI400_013613InputInteractionDiagram.Set("InitialForcesID", InitialForcesID); 
     →INI400_013631InputInteractionDiagram.Set("ArrayForcesULS", ArrayForcesULS); 
-    →KRS106_000002InputInteractionDiagram.Set("CompressMember", CompressMember); 
-    →KRS106_000003InputInteractionDiagram.Set("N_com", N↓com←); 
+    →KRS106_000002InputInteractionDiagram.Set("Coeff_com", IO.Setup.Concrete.Solver.General.Coeffcom); 
     
     →INI400_005855CheckCapacity.Draw(InputInteractionDiagram, OutputInteractionDiagram, IO.LayoutIndex+2); 
     
@@ -1613,6 +1618,38 @@ ELSE {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS100_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS106_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1622,14 +1659,6 @@ ELSE {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="KRS106_000002">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS106_000003">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1682,7 +1711,7 @@ ELSE {
   </Calculation>
   <Dialog>
     <Main Width="483">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.84|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.4" SectionID="-1" CombiID="-1" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.84|0|3" Active="1" PreDef="0" MemberDirectory="D:\_VERSIONS\Rel_18_0_patch_1_bugfix\TEMP\Esa_Model_Data\Beam.1" MemberID="Beam.1" SectionID="0" CombiID="0" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />

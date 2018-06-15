@@ -22,7 +22,5 @@ Unable to copy: r:\A\Bin\release32\ep_regsvr32.exe ODA.exe
 to: r:\A\Bin\release32\install\ep_regsvr32.exe ODA.exe
 Unable to copy: r:\A\Bin\release32\xml\PipFas.def.xsd
 to: r:\A\Bin\release32\install\xml\PipFas.def.xsd
-Unable to copy: r:\A\Bin\release32\SciaSteelConnectionForTekla.net4.exe
-to: r:\A\Bin\release32\install\SciaSteelConnectionForTekla.net4.exe
 Unable to copy: r:\A\Bin\release32\XEP_ProjectStorageService.exe -createstorage -nofailwhenexist -silentsuccess
 to: r:\A\Bin\release32\install\XEP_ProjectStorageService.exe -createstorage -nofailwhenexist -silentsuccess

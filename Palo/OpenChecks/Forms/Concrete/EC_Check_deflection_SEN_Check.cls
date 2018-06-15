@@ -156,8 +156,8 @@ IF(CssConditions.ConditionsForCss) {
         →KRS116_000006InputStiffShort.Add("CalcImp", IO.MemberData.Concrete.Solver.IntForces.SLS.UseGeoImp); 
         →KRS116_000007InputStiffShort.Add("IsoCol", IO.MemberData.Concrete.Solver.IntForces.IsolatedMember); 
         →KRS116_000008InputStiffShort.Add("EquivMoment", IO.Setup.Concrete.Solver.IntForces.UseEqValue); 
-        →KRS106_000006InputStiffShort.Add("CompressMember", ForcesCalc.CompressMember); 
-        →KRS106_000007InputStiffShort.Add("N_com", ForcesCalc.N↓com←); 
+        →KRS106_000006InputStiffShort.Add("Coeff_com", IO.Setup.Concrete.Solver.General.Coeffcom); 
+        
         // cross-section
         →INI400_012393InputStiffShort.Add("FormCode", FormCode); 
         //forces
@@ -211,8 +211,8 @@ IF(CssConditions.ConditionsForCss) {
         →KRS116_000014InputStiffLong.Add("CalcImp", IO.MemberData.Concrete.Solver.IntForces.SLS.UseGeoImp); 
         →KRS116_000015InputStiffLong.Add("IsoCol", IO.MemberData.Concrete.Solver.IntForces.IsolatedMember); 
         →KRS116_000016InputStiffLong.Add("EquivMoment", IO.Setup.Concrete.Solver.IntForces.UseEqValue); 
-        →KRS106_000010InputStiffLong.Add("CompressMember", ForcesCalc.CompressMember); 
-        →KRS106_000011InputStiffLong.Add("N_com", ForcesCalc.N↓com←); 
+        →KRS106_000010InputStiffLong.Add("Coeff_com", IO.Setup.Concrete.Solver.General.Coeffcom); 
+        
         //forces
         →INI400_013723InputStiffLong.Add("SetForcesChar", SetForcesCharID); 
         →INI400_013724InputStiffLong.Add("SetForcesQp", SetForcesQpID); 
@@ -270,8 +270,7 @@ IF(CssConditions.ConditionsForCss) {
     →KRS116_000022InputDeflection.Add("CalcImp", IO.MemberData.Concrete.Solver.IntForces.SLS.UseGeoImp); 
     →KRS116_000023InputDeflection.Add("IsoCol", IO.MemberData.Concrete.Solver.IntForces.IsolatedMember); 
     →KRS116_000024InputDeflection.Add("EquivMoment", IO.Setup.Concrete.Solver.IntForces.UseEqValue); 
-    →KRS106_000014InputDeflection.Add("CompressMember", ForcesCalc.CompressMember); 
-    →KRS106_000015InputDeflection.Add("N_com", ForcesCalc.N↓com←); 
+    →KRS106_000014InputDeflection.Add("Coeff_com", IO.Setup.Concrete.Solver.General.Coeffcom); 
     //lengths
     →INI400_012382InputDeflection.Add("L_y", L↓y←); 
     →INI400_012383InputDeflection.Add("L_z", L↓z←); 
@@ -398,12 +397,19 @@ IF(CssConditions.ConditionsForCss) {
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
-      <Variable Modifier="Public" Name="bIsLongTerm" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="bIsLongTerm" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="Check" ESA_ID="Result.10" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <ResultProperties ESAColor="1" ESAStyle="3" Numeric="UC" SenModif="False" LabOri="0" />
       </Variable>
       <Variable Modifier="Public" Name="CreepCalc" ESA_ID="" Type="Object">
         <Description>
@@ -423,7 +429,7 @@ IF(CssConditions.ConditionsForCss) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="DefAdd" ESA_ID="" Type="Double" Value="500" Precision="2">
+      <Variable Modifier="Public" Name="DefAdd" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -436,56 +442,56 @@ IF(CssConditions.ConditionsForCss) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="DefTot" ESA_ID="" Type="Double" Value="250" Precision="2">
+      <Variable Modifier="Public" Name="DefTot" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="EI↓y,l←" ESA_ID="" Type="Double" Value="11.26503e6" Precision="2">
+      <Variable Modifier="Public" Name="EI↓y,l←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="EI↓y,lin←" ESA_ID="" Type="Double" Value="102.5e6" Precision="2">
+      <Variable Modifier="Public" Name="EI↓y,lin←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="EI↓y,s←" ESA_ID="" Type="Double" Value="13.10374e6" Precision="2">
+      <Variable Modifier="Public" Name="EI↓y,s←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="EI↓z,l←" ESA_ID="" Type="Double" Value="4.221145e6" Precision="2">
+      <Variable Modifier="Public" Name="EI↓z,l←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="EI↓z,lin←" ESA_ID="" Type="Double" Value="36.9e6" Precision="2">
+      <Variable Modifier="Public" Name="EI↓z,lin←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="EI↓z,s←" ESA_ID="" Type="Double" Value="7.106614e6" Precision="2">
+      <Variable Modifier="Public" Name="EI↓z,s←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ErrorValue" ESA_ID="" Type="Double" Value="3" Precision="2">
+      <Variable Modifier="Public" Name="ErrorValue" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -498,7 +504,7 @@ IF(CssConditions.ConditionsForCss) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="FormCode" ESA_ID="" Type="Double" Value="2003" Precision="2">
+      <Variable Modifier="Public" Name="FormCode" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -517,28 +523,21 @@ IF(CssConditions.ConditionsForCss) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Check" ESA_ID="Result.10" Type="String" Value="OK">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <ResultProperties ESAColor="1" ESAStyle="3" Numeric="UC" SenModif="False" LabOri="0" />
-      </Variable>
-      <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="IndexEWN" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="IndexEWN" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="InitialForcesID" ESA_ID="" Type="Double" Value="1000" Precision="2">
+      <Variable Modifier="Public" Name="InitialForcesID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -563,28 +562,28 @@ IF(CssConditions.ConditionsForCss) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="L↓y←" ESA_ID="" Type="Double" Value="6.01476" Precision="2">
+      <Variable Modifier="Public" Name="L↓y←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="L↓z←" ESA_ID="" Type="Double" Value="6.01476" Precision="2">
+      <Variable Modifier="Public" Name="L↓z←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
-      <Variable Modifier="Public" Name="Limit↓check←" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="Limit↓check←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="LimitCheck" ESA_ID="Result.9" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="LimitCheck" ESA_ID="Result.9" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -592,28 +591,28 @@ IF(CssConditions.ConditionsForCss) {
         <ResultProperties ESAColor="1" ESAStyle="3" ESAUnit="103" Reference="" Extrem="3" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="0" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="LongPercentageDef" ESA_ID="" Type="Double" Value="700e-3" Precision="2">
+      <Variable Modifier="Public" Name="LongPercentageDef" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="%" />
       </Variable>
-      <Variable Modifier="Public" Name="MemberType" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="MemberType" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="N" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="N" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="Number↓E←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="Number↓E←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -626,14 +625,14 @@ IF(CssConditions.ConditionsForCss) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Number↓N←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="Number↓N←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Number↓W←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="Number↓W←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -664,20 +663,20 @@ IF(CssConditions.ConditionsForCss) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="PrintMemberInfo" ESA_ID="" Type="Boolean" Value="1">
+      <Variable Modifier="Public" Name="PrintMemberInfo" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="SetForcesCharID" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="SetForcesCharID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="SetForcesQpID" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="SetForcesQpID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -690,49 +689,43 @@ IF(CssConditions.ConditionsForCss) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="sListEWN" ESA_ID="" Type="String" Value="">
+      <Variable Modifier="Public" Name="sListEWN" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="SLSFre" ESA_ID="" Type="Boolean" Value="0">
+      <Variable Modifier="Public" Name="SLSChar" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="SLSChar" ESA_ID="" Type="Boolean" Value="1">
+      <Variable Modifier="Public" Name="SLSQP" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="SLSQP" ESA_ID="" Type="Boolean" Value="1">
+      <Variable Modifier="Public" Name="StateLong" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="StateLong" ESA_ID="" Type="String" Value="Long-term">
+      <Variable Modifier="Public" Name="StateShort" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="StateShort" ESA_ID="" Type="String" Value="Short-term">
+      <Variable Modifier="Public" Name="StateTextLong" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="StateTextLong" ESA_ID="" Type="String" Value="long-term">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="StateTextShort" ESA_ID="" Type="String" Value="short-term">
+      <Variable Modifier="Public" Name="StateTextShort" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
@@ -750,63 +743,63 @@ IF(CssConditions.ConditionsForCss) {
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="Type↓fct,eff←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="Type↓fct,eff←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="Type↓σcr←" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="Type↓σcr←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="u↓y←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="u↓y←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="u↓yl←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="u↓yl←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="u↓ys←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="u↓ys←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="u↓z←" ESA_ID="" Type="Double" Value="-486.422e-6" Precision="2">
+      <Variable Modifier="Public" Name="u↓z←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="u↓zl←" ESA_ID="" Type="Double" Value="-340.4954e-6" Precision="2">
+      <Variable Modifier="Public" Name="u↓zl←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="u↓zs←" ESA_ID="" Type="Double" Value="-145.9266e-6" Precision="2">
+      <Variable Modifier="Public" Name="u↓zs←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UC" ESA_ID="Result.0" Type="Double" Value="176.2173e-3" Precision="2">
+      <Variable Modifier="Public" Name="UC" ESA_ID="Result.0" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -814,63 +807,63 @@ IF(CssConditions.ConditionsForCss) {
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="103" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="0" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UnityCheck↓add,y←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="UnityCheck↓add,y←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UnityCheck↓add,z←" ESA_ID="" Type="Double" Value="131.0275e-3" Precision="2">
+      <Variable Modifier="Public" Name="UnityCheck↓add,z←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UnityCheck↓tot,y←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="UnityCheck↓tot,y←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UnityCheck↓tot,z←" ESA_ID="" Type="Double" Value="176.2173e-3" Precision="2">
+      <Variable Modifier="Public" Name="UnityCheck↓tot,z←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UnityCheck↓y←" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="UnityCheck↓y←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="UnityCheck↓z←" ESA_ID="" Type="Double" Value="176.2173e-3" Precision="2">
+      <Variable Modifier="Public" Name="UnityCheck↓z←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="β↓long←" ESA_ID="" Type="Double" Value="500e-3" Precision="2">
+      <Variable Modifier="Public" Name="β↓long←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="β↓short←" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="β↓short←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="δ↓add,lim,y←" ESA_ID="Result.7" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="δ↓add,lim,y←" ESA_ID="Result.7" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -878,7 +871,7 @@ IF(CssConditions.ConditionsForCss) {
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="35" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="1" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="δ↓add,lim,z←" ESA_ID="Result.8" Type="Double" Value="-12.02952e-3" Precision="2">
+      <Variable Modifier="Public" Name="δ↓add,lim,z←" ESA_ID="Result.8" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -886,7 +879,7 @@ IF(CssConditions.ConditionsForCss) {
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="35" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="δ↓add,y←" ESA_ID="Result.5" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="δ↓add,y←" ESA_ID="Result.5" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -894,7 +887,7 @@ IF(CssConditions.ConditionsForCss) {
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="35" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="1" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="δ↓add,z←" ESA_ID="Result.6" Type="Double" Value="-1.576198e-3" Precision="2">
+      <Variable Modifier="Public" Name="δ↓add,z←" ESA_ID="Result.6" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -902,7 +895,7 @@ IF(CssConditions.ConditionsForCss) {
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="35" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="δ↓lin,y←" ESA_ID="Result.11" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="δ↓lin,y←" ESA_ID="Result.11" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -910,7 +903,7 @@ IF(CssConditions.ConditionsForCss) {
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="35" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="1" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="δ↓lin,z←" ESA_ID="Result.12" Type="Double" Value="-486.422e-6" Precision="2">
+      <Variable Modifier="Public" Name="δ↓lin,z←" ESA_ID="Result.12" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -918,7 +911,7 @@ IF(CssConditions.ConditionsForCss) {
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="35" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="δ↓tot,lim,y←" ESA_ID="Result.3" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="δ↓tot,lim,y←" ESA_ID="Result.3" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -926,7 +919,7 @@ IF(CssConditions.ConditionsForCss) {
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="35" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="1" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="δ↓tot,lim,z←" ESA_ID="Result.4" Type="Double" Value="-24.05904e-3" Precision="2">
+      <Variable Modifier="Public" Name="δ↓tot,lim,z←" ESA_ID="Result.4" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -934,7 +927,7 @@ IF(CssConditions.ConditionsForCss) {
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="35" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="δ↓tot,y←" ESA_ID="Result.1" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="δ↓tot,y←" ESA_ID="Result.1" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -942,7 +935,7 @@ IF(CssConditions.ConditionsForCss) {
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="35" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="1" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="δ↓tot,z←" ESA_ID="Result.2" Type="Double" Value="-4.239619e-3" Precision="2">
+      <Variable Modifier="Public" Name="δ↓tot,z←" ESA_ID="Result.2" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -950,7 +943,7 @@ IF(CssConditions.ConditionsForCss) {
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="35" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="φ" ESA_ID="" Type="Double" Value="2.21364" Precision="2">
+      <Variable Modifier="Public" Name="φ" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1054,14 +1047,6 @@ IF(CssConditions.ConditionsForCss) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="DLO000_000001">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="DLO000_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1903,30 +1888,6 @@ IF(CssConditions.ConditionsForCss) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008730">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_008731">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_008732">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
       <VC ID="INI400_008734">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -2623,14 +2584,6 @@ IF(CssConditions.ConditionsForCss) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000007">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="KRS106_000010">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2639,23 +2592,7 @@ IF(CssConditions.ConditionsForCss) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000011">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="KRS106_000014">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS106_000015">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2696,14 +2633,6 @@ IF(CssConditions.ConditionsForCss) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS116_000002">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS116_000003">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3017,7 +2946,7 @@ IF(CssConditions.ConditionsForCss) {
           <ENU>
           </ENU>
         </Texts>
-        <TEMDLoader Name="TEMDLoader" ID="106" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="" SectionID="-1" CombiID="-1" />
+        <TEMDLoader Name="TEMDLoader" ID="106" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="D:\_VERSIONS\DEVE_06\TEMP\Esa_Model_Data\Beam.1" MemberID="Beam.1" SectionID="0" CombiID="0" />
       </TPanel>
     </Main>
     <MemberData Width="500" />
@@ -3048,9 +2977,6 @@ IF(CssConditions.ConditionsForCss) {
     </Item>
     <Item TranslateID="STRING_CE7340D5">
       <ENU>"Long-term"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_005662">
-      <ENU>CssConditions.Final</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_005944">
       <ENU>"Check deflection according to EN 1992-1-1"</ENU>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="9b289270-d0db-4a8e-b9a5-f11a6acec4ae">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure
+    <SourceCode Collapsed="1|5|78|93|98|113|118|136" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure
     bool ValidateInput(object Input) { //Validate inputs from master to this form
         //No Inputs are requested
         return True; 
@@ -63,6 +63,7 @@ IF(DataFromSENResult.MemberType != 512) {
 →INI400_011757CoverParam.Set("d_s2u", IO.MemberData.Concrete.Defaults.PlateShell.Longitudinal.Upper.DiameterSecond); 
 
 →INI400_011800CoverParam.Set("bNormalReinf", True); 
+
 SWITCH(DataFromSENResult.MemberType) { 
     CASE 32 :  { 
         IF(CoverParam.d_s1 &lt; 0.004 || CoverParam.d_s2 &lt; 0.004) { 
@@ -190,6 +191,9 @@ object ConcreteCover(object CoverParam, double d_s1, double d_s2) { //Calling au
         //next variables are used only for Standalone run, they are not needed from SEN
         →INI400_011718InputCover.Set("UnevenSurf", null); 
         →INI400_011719InputCover.Set("Unevenness", null); 
+        
+        →KRS001_000003InputCover.Set("obEWN", new object[]); 
+        →KRS001_000004InputCover.Set("Number↓EWN←", new object[]); 
         
         →INI400_011721Durability.Calculate(InputCover, OutputCover); 
         return OutputCover; 
@@ -1281,6 +1285,22 @@ SWITCH(DataFromSENResult.MemberType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS001_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS001_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS106_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="cf6632b4-e8c2-4065-8ca2-b7616463a8ad">
   <CodeEditor>
-    <SourceCode Collapsed="8|46|211|266|290|329|379|408|445" BreakPoints="">void UpdateDialog() { 
+    <SourceCode Collapsed="168" BreakPoints="">void UpdateDialog() { 
     Dialog.GetComponentByName("F_Lv").Visible →INI400_001660= FormCode == 3; 
 } 
 
@@ -59,13 +59,21 @@ object STEEL →INI400_000067= IO.Material.NBR;
             
             
             // REV: revised in 06/04/2016
-            bb →MPF000_000106= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
-            tb →MPF000_000107= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
-            bt →MPF000_000108= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
-            tt →MPF000_000109= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
-            tw →MPF000_000110= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-            h →MPF000_000111= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
-
+            //            bb →MPF000_000106= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
+            //            tb →MPF000_000107= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
+            //            bt →MPF000_000108= CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : (CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt); 
+            //            tt →MPF000_000109= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
+            //            tw →MPF000_000110= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+            //            h →MPF000_000111= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
+            //
+            
+            // REV: revised in 16/04/2018
+            bb →MPF001_000016= CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bb; 
+            tb →MPF001_000017= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tb; 
+            bt →MPF001_000018= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : (CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : CS.Geometry.bt); 
+            tt →MPF001_000019= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tt; 
+            tw →MPF001_000020= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+            h →MPF001_000021= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
             
             d →MPF000_000099= h; 
             
@@ -90,13 +98,20 @@ object STEEL →INI400_000067= IO.Material.NBR;
             } ELSE { 
                 
                 // REV: revised in 06/04/2016
-                bb →MPF000_000017= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
-                tb →MPF000_000018= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
-                bt →MPF000_000019= CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt; 
-                tt →MPF000_000020= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
-                tw →MPF000_000021= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
-                h →MPF000_000022= CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h; // full depth
-                
+                //                bb →MPF000_000017= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : CS.Geometry.bb; 
+                //                tb →MPF000_000018= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tb; 
+                //                bt →MPF000_000019= CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bt; 
+                //                tt →MPF000_000020= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tt; 
+                //                tw →MPF000_000021= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+                //                h →MPF000_000022= CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h; // full depth
+
+                // REV: revised in 16/04/2018
+                bb →MPF001_000022= CS.Geometry.Contains("Bc") ? CS.Geometry.Bc : CS.Geometry.bb; 
+                tb →MPF001_000023= CS.Geometry.Contains("thc") ? CS.Geometry.thc : CS.Geometry.tb; 
+                bt →MPF001_000024= CS.Geometry.Contains("Bb") ? CS.Geometry.Bb : (CS.Geometry.Contains("Bt") ? CS.Geometry.Bt : CS.Geometry.bt); 
+                tt →MPF001_000025= CS.Geometry.Contains("thb") ? CS.Geometry.thb : CS.Geometry.tt; 
+                tw →MPF001_000026= CS.Geometry.Contains("tha") ? CS.Geometry.tha : CS.Geometry.s; 
+                h →MPF001_000027= CS.Geometry.Contains("H") ? CS.Geometry.H : (CS.Geometry.Contains("Ba") ? CS.Geometry.Ba : CS.Geometry.h); // full depth
             } 
             d →INI400_000676= h-tt-tb; // free depth
         } 
@@ -137,12 +152,13 @@ double ShearCheck(object CS, double FormCode, double ShearAxis, double Fabricati
     E →MPF000_000121= IO.Material.NBR.E; 
     G →MPF000_000122= IO.Material.NBR.G; 
     fy →MPF000_000123= IO.Material.NBR.fy; 
-    
+    L →MPF001_000029= IO.Beam.Member.Length; 
     
     // Revised in 31/03/2017
-    a →MPF000_000119= IO.MemberData.a; 
-    // IF(IO.MemberData.Contains("a")) { a →MPF001_000002= IO.MemberData.a; } 
-    //    ELSE { a →MPF001_000001= L; } 
+    //    a →MPF000_000119= IO.MemberData.a; 
+    IF(IO.MemberData.Contains("a")) { a →MPF001_000002= IO.MemberData.a; } 
+    IF(a &lt;= 0) { a →MPF001_000031= L; } 
+    //ELSE { a →MPF001_000001= L; } 
     
     
     →MPF000_000120TEXT("Distance of web stiffeners: " &amp; a); 
@@ -227,6 +243,7 @@ double ShearCheck(object CS, double FormCode, double ShearAxis, double Fabricati
                         kv →INI400_001077= 5; 
                     } 
                 } 
+                →MPF001_000032TEXT("kv = " &amp; kv); 
                 V↓pl← →INI400_001020= 0.6*h*tw*fy; 
             } 
             
@@ -643,7 +660,7 @@ UnCheck →INI400_001122= Vd/VRd;
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
-      <Variable Modifier="Public" Name="a" ESA_ID="" Type="Double" Value="750e-3" Precision="2">
+      <Variable Modifier="Public" Name="a" ESA_ID="" Type="Double" Value="6.76078" Precision="2">
         <Description>
           <ENU>Stiffener spacing</ENU>
         </Description>
@@ -663,7 +680,7 @@ UnCheck →INI400_001122= Vd/VRd;
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="bb" ESA_ID="" Type="Double" Value="100e-3" Precision="2">
+      <Variable Modifier="Public" Name="bb" ESA_ID="" Type="Double" Value="400e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -677,7 +694,7 @@ UnCheck →INI400_001122= Vd/VRd;
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="bt" ESA_ID="" Type="Double" Value="72e-3" Precision="2">
+      <Variable Modifier="Public" Name="bt" ESA_ID="" Type="Double" Value="400e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -690,7 +707,7 @@ UnCheck →INI400_001122= Vd/VRd;
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Value="305e-3" Precision="2">
+      <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Value="1.236" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -704,13 +721,13 @@ UnCheck →INI400_001122= Vd/VRd;
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="Desc" ESA_ID="" Type="String" Value="W310X23.8">
-        <Description TranslateID="VARIABLE_Desc">
+      <Variable Modifier="Public" Name="Desc" ESA_ID="" Type="String" Value="">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="E" ESA_ID="" Type="Double" Value="200e9" Precision="2">
+      <Variable Modifier="Public" Name="E" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -724,21 +741,21 @@ UnCheck →INI400_001122= Vd/VRd;
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="FormCode" ESA_ID="" Type="Double" Value="1" Precision="2">
+      <Variable Modifier="Public" Name="FormCode" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="fy" ESA_ID="" Type="Double" Value="248e6" Precision="2">
+      <Variable Modifier="Public" Name="fy" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10e6" Dim="kN/cm↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="G" ESA_ID="" Type="Double" Value="76.9231e9" Precision="2">
+      <Variable Modifier="Public" Name="G" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -751,21 +768,21 @@ UnCheck →INI400_001122= Vd/VRd;
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Value="276.2e-3" Precision="2">
+      <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Value="1.3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="kv" ESA_ID="" Type="Double" Value="1.2" Precision="2">
+      <Variable Modifier="Public" Name="kv" ESA_ID="" Type="Double" Value="5" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="L" ESA_ID="" Type="Double" Value="3" Precision="2">
+      <Variable Modifier="Public" Name="L" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>Beam Span</ENU>
         </Description>
@@ -778,6 +795,13 @@ UnCheck →INI400_001122= Vd/VRd;
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
+      <Variable Modifier="Public" Name="r" ESA_ID="" Type="Double" Value="0" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="r1" ESA_ID="" Type="Double" Value="2.3e-3" Precision="2">
         <Description>
           <ENU>
@@ -785,7 +809,7 @@ UnCheck →INI400_001122= Vd/VRd;
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="ShearAxis" ESA_ID="" Type="Double" Value="0" Precision="2">
+      <Variable Modifier="Public" Name="ShearAxis" ESA_ID="" Type="Double" Value="1" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -798,7 +822,7 @@ UnCheck →INI400_001122= Vd/VRd;
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="tb" ESA_ID="" Type="Double" Value="11.2e-3" Precision="2">
+      <Variable Modifier="Public" Name="tb" ESA_ID="" Type="Double" Value="32e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -819,21 +843,21 @@ UnCheck →INI400_001122= Vd/VRd;
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="tt" ESA_ID="" Type="Double" Value="5.8e-3" Precision="2">
+      <Variable Modifier="Public" Name="tt" ESA_ID="" Type="Double" Value="32e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="tw" ESA_ID="" Type="Double" Value="5.6e-3" Precision="2">
+      <Variable Modifier="Public" Name="tw" ESA_ID="" Type="Double" Value="16e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
-      <Variable Modifier="Public" Name="UnCheck" ESA_ID="" Type="Double" Value="639.0715e-3" Precision="2">
+      <Variable Modifier="Public" Name="UnCheck" ESA_ID="" Type="Double" Value="116.0369e-3" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -845,35 +869,35 @@ UnCheck →INI400_001122= Vd/VRd;
           <ENU>Use User Table</ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="V↓pl←" ESA_ID="" Type="Double" Value="201385.9" Precision="2">
+      <Variable Modifier="Public" Name="V↓pl←" ESA_ID="" Type="Double" Value="4.3056e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="Vd" ESA_ID="" Type="Double" Value="117000" Precision="2">
+      <Variable Modifier="Public" Name="Vd" ESA_ID="" Type="Double" Value="331000" Precision="2">
         <Description>
           <ENU>Applied Shear Force</ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="VRd" ESA_ID="" Type="Double" Value="183078.1" Precision="2">
+      <Variable Modifier="Public" Name="VRd" ESA_ID="" Type="Double" Value="2.852542e6" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="VRd↓1←" ESA_ID="" Type="Double" Value="151505.5" Precision="2">
+      <Variable Modifier="Public" Name="VRd↓1←" ESA_ID="" Type="Double" Value="602181.8" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
-      <Variable Modifier="Public" Name="VRd↓2←" ESA_ID="" Type="Double" Value="56489.89" Precision="2">
-        <Description TranslateID="VARIABLE_VRd↓2←">
+      <Variable Modifier="Public" Name="VRd↓2←" ESA_ID="" Type="Double" Value="602181.8" Precision="2">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -893,21 +917,21 @@ UnCheck →INI400_001122= Vd/VRd;
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λ" ESA_ID="" Type="Double" Value="7.537313" Precision="2">
+      <Variable Modifier="Public" Name="λ" ESA_ID="" Type="Double" Value="77.25" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λ↓p←" ESA_ID="" Type="Double" Value="34.21941" Precision="2">
+      <Variable Modifier="Public" Name="λ↓p←" ESA_ID="" Type="Double" Value="59.22201" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="λ↓r←" ESA_ID="" Type="Double" Value="42.61871" Precision="2">
+      <Variable Modifier="Public" Name="λ↓r←" ESA_ID="" Type="Double" Value="73.75832" Precision="2">
         <Description>
           <ENU>
           </ENU>
@@ -1275,7 +1299,7 @@ UnCheck →INI400_001122= Vd/VRd;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001010">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1299,7 +1323,7 @@ UnCheck →INI400_001122= Vd/VRd;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001018">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1307,7 +1331,7 @@ UnCheck →INI400_001122= Vd/VRd;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001019">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1571,7 +1595,7 @@ UnCheck →INI400_001122= Vd/VRd;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="INI400_001077">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -2691,7 +2715,7 @@ UnCheck →INI400_001122= Vd/VRd;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="MPF000_000120">
-        <Set Vis="1" Prev="" Style="2" StyleName="%Def" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="2" StyleName="" X="50" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2818,12 +2842,140 @@ UnCheck →INI400_001122= Vd/VRd;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="MPF001_000016">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000017">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000018">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000019">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000020">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000021">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000022">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000023">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000024">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000025">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000026">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000027">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000028">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000029">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000031">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="MPF001_000032">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="4" Ver="4" SpX="50" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
   <Dialog>
     <Main Width="500">
-      <TEMDLoader Name="" ID="13" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="6" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="C:\Users\Avell 1513\ESA16.1\Temp\Esa_Model_Data\Beam.1" MemberID="Beam.1" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="" ID="13" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="6" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.793" SectionID="-1" CombiID="-1" />
       <TCustomLibrary Name="" ID="9" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="4" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="CSS" DataFile="User.xml" Collapsed="True" UseCombo="False" Category="" Item="" />
       <TCheckBox Name="" ID="10" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="150|23" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="UserTable" BookMarkID="" ForeColor="-16711423" ChbRight="False">
         <Texts TranslateID="DIALOG_000010">
@@ -2831,18 +2983,18 @@ UnCheck →INI400_001122= Vd/VRd;
           </ENU>
         </Texts>
       </TCheckBox>
-      <TGroupBox Name="" ID="3" Translate="1" Height="168" AutoWidth="False" AutoHeight="False" TabIndex="2" Dock="1" Anchor="5" Padding="5|15|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|1|3" BorderColor="-5192482">
-        <Texts TranslateID="DIALOG_000003">
+      <TGroupBox Name="" ID="3" Translate="0" Height="168" AutoWidth="False" AutoHeight="False" TabIndex="2" Dock="1" Anchor="5" Padding="5|15|5|5" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|1|3" BorderColor="-5192482">
+        <Texts>
           <ENU>Input Data</ENU>
         </Texts>
         <TDoubleInput Name="F_Lv" ID="12" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Lv" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TComboBox Name="" ID="11" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="4" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Fabrication" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1" Index="1">
-          <Texts TranslateID="DIALOG_000011">
+        <TComboBox Name="" ID="11" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="4" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Fabrication" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="0|1" Index="1">
+          <Texts>
             <ENU>Hot Rolled|Welded</ENU>
           </Texts>
         </TComboBox>
         <TDoubleInput Name="" ID="8" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="3" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="L" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-        <TComboBox Name="" ID="6" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="2" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="ShearAxis" VarNameVisible="True" InputColor="-4128832" DescPos="1" InputWidth="150" Values="0|1" Index="0">
+        <TComboBox Name="" ID="6" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="2" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="ShearAxis" VarNameVisible="True" InputColor="-4128832" DescPos="1" InputWidth="150" Values="0|1" Index="1">
           <Texts>
             <ENU>X|Y</ENU>
           </Texts>
@@ -2887,8 +3039,8 @@ UnCheck →INI400_001122= Vd/VRd;
     <Item TranslateID="BLOCK_INI400_000509">
       <ENU>"Input Data:"</ENU>
     </Item>
-    <Item TranslateID="TEXT_">
-      <ENU>"Valor de Kv: " &amp; kv</ENU>
+    <Item ID="TEXT_">
+      <ENU>"kv = " &amp; kv</ENU>
     </Item>
     <Item TranslateID="TEXT_INI400_000001">
       <ENU>"Design members subjected to Shear according to NBR-8800"</ENU>
@@ -2962,8 +3114,11 @@ UnCheck →INI400_001122= Vd/VRd;
     <Item TranslateID="TEXT_MPF000_000120">
       <ENU>"Distance of web stiffeners: " &amp; a</ENU>
     </Item>
-    <Item TranslateID="TEXT_MPF001_000015">
+    <Item ID="TEXT_MPF001_000015">
       <ENU>"Kv=  " &amp; kv</ENU>
+    </Item>
+    <Item ID="TEXT_MPF001_000032">
+      <ENU>"kv = " &amp; kv</ENU>
     </Item>
   </Texts>
 </Root>

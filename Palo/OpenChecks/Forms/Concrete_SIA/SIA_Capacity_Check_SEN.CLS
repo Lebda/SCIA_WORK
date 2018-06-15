@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="19ed3461-60e5-42fd-b766-fd2d6dde0c89">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="85">// Check if dangereous combination is critical for selected section
+    <SourceCode Collapsed="" BreakPoints="85|130">// Check if dangereous combination is critical for selected section
 IF(!IO.InternalForces.IsCritical) { 
     // Interaction Diagram
 
@@ -121,8 +121,6 @@ IF(CssConditions.ConditionsForCss) {
     } ELSE { 
         →RFM116_002598CONCRETE.SetForcesId(ForcesID, Forces.N↓d←, 0, 0, 0, Forces.M↓dy←, Forces.M↓dz←); 
     } 
-    double InitialForcesID →INI400_013614= 20; 
-    →INI400_013615CONCRETE.SetForcesId(InitialForcesID, IO.InternalForces.N, 0, 0, 0, IO.InternalForces.My, IO.InternalForces.Mz); 
     object[] ArrayForcesULS →INI400_013626= new object[]; 
     IF(IO.IsDrawing) { 
         object IOhelper →INI400_013621= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_SIA\Functions\IOhelper.clc"); 
@@ -150,25 +148,14 @@ IF(CssConditions.ConditionsForCss) {
         →INI400_013630IOhelper.SetActCombiID(ForcesID_Original); 
     } 
     object DataFromSEN →INI400_006916= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_SIA\Functions\FunctionsDataFromSEN.clc"); 
+    double InitialForcesID →RFM116_002624= 20; 
+    →RFM116_002625CONCRETE.SetForcesId(InitialForcesID, IO.InternalForces.N, 0, 0, 0, IO.InternalForces.My, IO.InternalForces.Mz); 
     
     /// determination if combination is accidental or not
     bool AccidentalULS →INI400_006918= DataFromSEN.IsAccidentalCombi(); 
     
     CssID →INI400_005646= 0; 
     CssIDLinear →INI400_009100= 55; 
-    
-    IF(IO.Contains("REINF")) { 
-        IF(IO.REINF.Bar.Contains("ComponentID")) { 
-            →RFM116_002618IO.REINF.Add("List", new object[]); 
-            →RFM116_002619IO.REINF.List.Add(IO.Beam.Reinforcement.Bar); 
-            object Css →RFM116_002620= →RFM116_002621CONCRETE.CreateCS(CssID, IO.CS.Component.Shape.Point, IO.CONCRETE.SIA.Diagram.Point, IO.REINF.List, IO.REINF.SIA.Diagram.Point); 
-        } ELSE { 
-            object Css →RFM116_002614= →RFM116_002615CONCRETE.CreateCS(CssID, IO.CS.Component.Shape.Point, IO.CONCRETE.SIA.Diagram.Point, IO.REINF.Bar, IO.REINF.SIA.Diagram.Point); 
-        } 
-    } ELSE { 
-        object Css →RFM116_001926= →RFM116_001927CONCRETE.CreateCS(CssID, IO.CS.Component.Shape.Point, IO.CONCRETE.SIA.Diagram.Point); 
-        
-    } 
     
     object CheckSEN →RFM116_002460= LoadExternCLC("SIA_Capacity_Check.CLC"); 
     object InputCheck →INI400_010879= new Structure(); 
@@ -256,8 +243,11 @@ IF(CssConditions.ConditionsForCss) {
     double Bar →RFM116_002574= OutputCheck.Bar; 
     
     double dString →RFM116_002575= 0; 
-    
+    double UC↓error← →RFM116_002626= IO.Setup.ConcreteSIA.Solver.General.NcalcCheck; 
     UC →RFM116_002580= MAX(UC↓Diagram←, UC↓σ-ε←); 
+    IF(COMPARE(UC↓σ-ε←, UC↓error←, 3) == 0 &amp;&amp; (UC↓Diagram← &gt; 1 &amp;&amp; UC↓Diagram← &lt; UC↓error←)) { 
+        UC →RFM116_002627= UC↓Diagram←; 
+    } 
     IF(Check↓σ-ε← == "OK" &amp;&amp; Check↓Diagram← == "OK") { 
         Check →RFM116_002583= TR("OK"); 
     } ELSE { 
@@ -821,6 +811,13 @@ double NCount(object CObject) {
           </ENU>
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="103" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="0" />
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="UC↓error←" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VARIABLE_UC↓error←">
+          <ENU>
+          </ENU>
+        </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UC↓ID←" ESA_ID="" Type="Double" Precision="2">
@@ -2232,7 +2229,7 @@ double NCount(object CObject) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
       <VC ID="RFM116_002461">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|2|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2719,12 +2716,60 @@ double NCount(object CObject) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="RFM116_002622">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM116_002623">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM116_002624">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM116_002625">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM116_002626">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="RFM116_002627">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
     </VisualComponents>
     <Images />
   </Calculation>
   <Dialog>
     <Main Width="483">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.84|0|3" Active="1" PreDef="0" MemberDirectory="C:\Users\raphf\ESA16.1\Temp\Esa_Model_Data\Beam.2" MemberID="Beam.2" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.84|0|3" Active="1" PreDef="0" MemberDirectory="C:\Users\raphf\ESA16.1\Temp\Esa_Model_Data\Beam.35" MemberID="" SectionID="11" CombiID="0" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />

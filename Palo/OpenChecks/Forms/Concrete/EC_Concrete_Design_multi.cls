@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="a9809965-49c8-489d-9005-6aa50248fd6c">
   <CodeEditor>
-    <SourceCode Collapsed="591" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure 
+    <SourceCode Collapsed="181|235|241|592" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure 
     bool ValidateInput(object Input) { //Validate inputs from master to this form
         PrintCaption →INI400_013669= Input.Get("PrintCaption"); //True - Draw Caption
         bDrawPictures →INI400_011157= Input.Get("bDrawPictures"); //True - Draw pictures, False - no pictures
@@ -134,6 +134,10 @@
         
         ErrorValue →KRS127_000084= Input.Get("ErrorValue"); 
         
+        //EWN
+        obEWN →KRS100_000001= Input.Get("obEWN"); 
+        Number↓EWN← →KRS100_000002= Input.Get("Number↓EWN←"); 
+        
         bool Result →INI400_000020= true; 
         //Add some limits for inputs?
         return Result; 
@@ -169,8 +173,9 @@
         "sBarsAdditionalRequiredSurfaces", sBarsAdditionalRequiredSurfaces, 
         "sReinfProv", sReinfProv, 
         "UC_ReqProv", UC_ReqProv, 
-        "ReinfString", ReinfString
-        ); 
+        "ReinfString", ReinfString, 
+        "obEWN", obEWN, 
+        "Number↓EWN←", Number↓EWN←); 
     } 
 } 
 
@@ -180,6 +185,7 @@ DummyResult →KRS027_000002= 0; // dummy double used for string results
 IF(!IO.IsExternCLC) { //settings for table drawing
     bool DrawHeader →INI400_010814= True; 
     object BasicReinf →VAL127_000002= null; 
+    object Number↓EWN← →KRS001_000001= new object[]; 
     // set forces
     object[] ArrayForcesULS →INI400_007694= new object[]; 
     string[] CombikeyULS →INI400_007710= new string[]; 
@@ -243,16 +249,11 @@ IF(IO.IsDrawing) {
 
 
 
-
-
-
-
 IndexEWN →INI400_004058= 1; 
-double Number↓E← →INI400_001772= 0; 
-double Number↓W← →INI400_001773= 0; 
-double Number↓N← →INI400_001774= 0; 
-object[] obEWN →INI400_001776= new object[]; 
-object[] Number↓EWN← →INI400_001783= new object[]; 
+double Number↓E← →INI400_001772= Number↓EWN←[0]; 
+double Number↓W← →INI400_001773= Number↓EWN←[1]; 
+double Number↓N← →INI400_001774= Number↓EWN←[2]; 
+
 //loaded functions for calculation
 object Functions1D_General →INI400_013651= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_General.CLC"); 
 object Functions1D_EWN →INI400_013652= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_EWN.CLC"); 
@@ -13092,6 +13093,14 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="KRS001_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="KRS027_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -13331,6 +13340,22 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS100_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="KRS106_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -15798,12 +15823,7 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
                 <PropertySet Symbol="EC 1993.1.3 - Name" ESA_ID="EC_1993_1_3.Name" Unit="" Type="String" />
                 <PropertySet Symbol="EC 1993.1.4 - Name" ESA_ID="EC_1993_1_4.Name" Unit="" Type="String" />
                 <PropertySet Symbol="EC 1993.1.5 - Name" ESA_ID="EC_1993_1_5.Name" Unit="" Type="String" />
-                <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.η" Unit="" Type="Struct">
-                  <StructMembers>
-                    <StructMember Symbol="η1" Type="Numeric" Unit="" />
-                    <StructMember Symbol="η2" Type="Numeric" Unit="" />
-                  </StructMembers>
-                </PropertySet>
+                <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.eta_sb1" Unit="" Type="Numeric" />
                 <PropertySet Symbol="EC 1993.1.6 - Name" ESA_ID="EC_1993_1_6.Name" Unit="" Type="String" />
                 <PropertySet Symbol="EC 1993.1.7 - Name" ESA_ID="EC_1993_1_7.Name" Unit="" Type="String" />
                 <PropertySet Symbol="EC 1993.1.8 - Name" ESA_ID="EC_1993_1_8.Name" Unit="" Type="String" />
@@ -16132,7 +16152,7 @@ ReinfString →KRS027_000001= Functions1D_DesignReq.ReinfToString(ReqReinfFinal,
                   <P>NEN EN 1993-1-3</P>
                   <P>NEN EN 1993-1-4</P>
                   <P>NEN EN 1993-1-5</P>
-                  <P>1.20;1.00;</P>
+                  <P>1.2</P>
                   <P>NEN EN 1993-1-6</P>
                   <P>NEN EN 1993-1-7</P>
                   <P>NEN EN 1993-1-8</P>

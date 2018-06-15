@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="b881527b-24f0-4536-85b2-dc062e2c6a61">
   <CodeEditor>
-    <SourceCode Collapsed="0|37|71|90|98|112|126|139|150|159|170|203|275|308|380|394|408|435|460|493|497|506|530|536|539|542|545|596|637|649" BreakPoints="">bool ValidateInput(object Input) { 
+    <SourceCode Collapsed="0|85|119|136|144|158|172|185|196|205|216|249|385|418|512|526|540|564|589|613|817|826|831|856" BreakPoints="">bool ValidateInput(object Input) { 
     A →INI400_015969= Input.Get("CS.Chars.A"); 
     f_yb →INI400_015970= Input.Get("f_yb"); 
     beffCheck_total →INI400_015971= Input.Get("beffCheck_total"); 
@@ -12,10 +12,9 @@
     s_b →INI400_015979= Input.Get("s_l"); 
     fyk_r →INI400_015980= Input.Get("fyk_r"); 
     CalcApproach →GMP011_000321= Input.Get("CalcApproach"); 
-    n_sp →GMP011_000323= Input.Get("n_sp"); 
+    
     CA →GMP014_000010= Input.Get("η_i"); 
     TargetCA →INI400_020025= Input.Get("η_target"); 
-    M_s →INI400_016841= Input.Get("M_s"); 
     ULS_Fin_Loads →INI400_017788= Input.Get("ULS_Fin_Loads"); 
     ULS_Con_Loads →UNK131_000016= Input.Get("ULS_Con_Loads"); 
     d_s →INI400_015268= Input.Get("d_s"); 
@@ -25,14 +24,63 @@
     s↓min← →INI400_025791= Input.Get("s_min"); 
     rib_dir →INI400_016035= Input.Get("rib_dir"); 
     NegativeSteelOnly →GMP011_000017= Input.Get("NegativeSteelOnly"); 
-    N_pl_a →GMP014_000004= Input.Get("N_pl_a"); 
-    N_c_Rd →GMP014_000385= Input.Get("N_c_Rd"); 
-    F_s →GMP014_000386= Input.Get("F_s"); 
     d↓o← →GMP014_000364= Input.Get("se"); 
     ho →GMP014_000368= Input.Get("ho"); 
     lo →GMP014_000369= Input.Get("lo"); 
     WOShape →GMP014_000370= Input.Get("WOShape"); 
     bWO →GMP014_000374= Input.Get("bWO"); 
+    b_s →GMP100_000004= Input.Get("b_s"); 
+    trough →GMP100_000005= Input.Get("trough"); 
+    sheeting →GMP100_000006= Input.Get("sheeting"); 
+    LongSpacing →GMP100_000010= Input.Get("LongSpacing"); 
+    
+    M_s →INI400_016841= Input.Get("M_s"); 
+    
+    IF(Input.Contains("ShearConnection.ShearConn_Pos.M_Rd")) { 
+        M_c_pos →GMP106_000035= Input.Get("ShearConnection.ShearConn_Pos.M_Rd"); 
+    } ELSE { 
+        M_c_pos →GMP106_000036= Input.Get("M_c"); 
+    } 
+    
+    IF(Input.Contains("ShearConnection.ShearConn_Neg.M_Rd")) { 
+        M_c_neg →GMP106_000037= Input.Get("ShearConnection.ShearConn_Neg.M_Rd"); 
+    } ELSE { 
+        M_c_neg →GMP106_000038= Input.Get("M_c"); 
+    } 
+    
+    N_c_f_pos →GMP106_000011= Input.Get("ShearConnection.ShearConn_Pos.N_c_f"); 
+    
+    
+    N_c_f_neg →GMP106_000012= Input.Get("ShearConnection.ShearConn_Neg.N_c_f"); 
+    
+    
+    /*
+    IF(Input.Contains("ShearConnection")) { 
+        M_c_pos →GMP106_000019= Input.Get("ShearConnection.ShearConn_Pos.M_Rd"); 
+    } ELSE { 
+        M_c_pos →GMP106_000020= Input.Get("M_c"); 
+    } 
+    
+    IF(Input.Contains("ShearConnection")) { 
+        n_sp_pos →GMP106_000028= Input.Get("ShearConnection.ShearConn_Pos.n_sp"); 
+    } ELSE { 
+        n_sp_pos →GMP106_000030= Input.Get("n_sp"); 
+    } 
+    
+    IF(Input.Contains("ShearConnection")) { 
+        M_c_neg →GMP106_000021= Input.Get("ShearConnection.ShearConn_Neg.M_Rd"); 
+    } ELSE { 
+        M_c_neg →GMP106_000022= Input.Get("M_c"); 
+    } 
+    
+    IF(Input.Contains("ShearConnection")) { 
+        n_sp_neg →GMP106_000032= Input.Get("ShearConnection.ShearConn_Neg.n_sp"); 
+    } ELSE { 
+        n_sp_neg →GMP106_000034= Input.Get("n_sp"); 
+    } 
+    */
+    
+    
     return true; 
 } 
 
@@ -75,7 +123,6 @@ void PrepStandAlone() {
 object GetOutput() { 
     object Result →INI400_015981= new Structure(
     
-    //"b_StudWarning01", (TotalDesignedStuds &gt; TotalRequiredStuds) &amp;&amp; (SegmentedStudPattern.Count == 1), 
     "b_StudWarning01", (TotalDesignedStuds &gt; TotalRequiredStuds) &amp;&amp; (SegmentedStudPattern.Count == 1) &amp;&amp; !NegativeMomentControlsAndSteelAlone, 
     "b_StudWarning01b", (TotalDesignedStuds &gt; TotalRequiredStuds) &amp;&amp; (SegmentedStudPattern.Count &gt; 1) &amp;&amp; !NegativeMomentControlsAndSteelAlone, 
     "b_StudWarning01c", (TotalDesignedStuds &gt; TotalRequiredStuds) &amp;&amp; NegativeMomentControlsAndSteelAlone, 
@@ -86,8 +133,7 @@ object GetOutput() {
     "SegStudPattern", SegStudPattern, 
     "UniNumStuds", UniNumStuds, 
     "MaxSpacing", MaxSpacing, 
-    "MinSpacing", MinSpacing, 
-    "NegUBL", NegUBL); 
+    "MinSpacing", MinSpacing); 
     return Result; 
 } 
 
@@ -230,10 +276,14 @@ void DrawStudLayout(object Segments) {
         
         IF(TotalDesignedStuds &gt; UniformNumStuds) { 
             string UniNumStuds →INI400_024969= "[" &amp; UniformNumStuds &amp; "]"; 
-            →INI400_021599Diagram.DrawText("Uniform Studs " &amp; UniNumStuds, F, 0, 5*H); 
+            →INI400_021599Diagram.DrawText(TR("Uniform Studs") &amp; " " &amp; UniNumStuds, F, 0, 5*H); 
+            IF(CalcApproach == 0 &amp;&amp; sheeting == 1 &amp;&amp; rib_dir == 1) { 
+                Rows →GMP100_000051= ROUNDDOWN(IO.Beam.Member.Length/b_s, 0); 
+                →GMP100_000052Diagram.DrawText("1 - " &amp; UniformNumStuds/n_r &amp; " " &amp; TR("rows needed") &amp; " / " &amp; Rows &amp; " " &amp; TR("ribs available"), F, 0, 3*H); 
+            } 
         } ELSE { 
             string UniNumStuds →INI400_023694= "[" &amp; UniformNumStuds &amp; "]"; 
-            double X →INI400_019145= n_r*MinSpacing/2; 
+            double X →INI400_019145= MinSpacing/2; 
             WHILE(X &lt; L) { 
                 →INI400_019146Diagram.DrawLine(X, 0, X, H, PenStud); 
                 →INI400_019147Diagram.DrawLine(X-H/2, H, X+H/2, H, PenStud); 
@@ -241,16 +291,71 @@ void DrawStudLayout(object Segments) {
                     →INI400_022357Diagram.DrawLine(X, H+H/2, X, 2*H+H/2, PenStud); 
                     →INI400_022358Diagram.DrawLine(X-H/2, 2*H+H/2, X+H/2, 2*H+H/2, PenStud); 
                 } 
-                X →INI400_019148= X+n_r*MinSpacing; 
+                X →INI400_019148= X+MinSpacing; 
             } 
             
             IF(n_r == 2) { 
-                →INI400_022694Diagram.DrawText("Segmented Studs " &amp; SegStudPattern, F, 0, -12*H); 
-                →INI400_022695Diagram.DrawText("Uniform Studs " &amp; UniNumStuds, F, 0, 5*H); 
-                
+                →INI400_022694Diagram.DrawText(TR("Segmented Studs") &amp; " " &amp; SegStudPattern, F, 0, -12*H); 
+                IF(CalcApproach == 0 &amp;&amp; sheeting == 1 &amp;&amp; rib_dir == 1) { 
+                    i →GMP100_000055= 1; 
+                    j →GMP100_000064= 1; 
+                    k →GMP100_000074= 1; 
+                    FOREACH(object Segment in Segments) { 
+                        j →GMP100_000073= 1; 
+                        IF(Segment.SubSegments.Count &gt; 0) { 
+                            FOREACH(object Sub in Segment.SubSegments) { 
+                                double Rows_tmp →GMP100_000053= ROUNDDOWN(Sub.Length/b_s, 0); 
+                                double Studs_tmp →GMP100_000056= Sub.DesignedStuds; 
+                                →GMP100_000063Diagram.DrawText(i &amp; "." &amp; j &amp; " - " &amp; Studs_tmp/n_r &amp; " " &amp; TR("rows needed") &amp; " / " &amp; Rows_tmp &amp; " " &amp; TR("ribs available"), F, 0, (-12-k*1.5)*H); 
+                                j →GMP100_000057= j+1; 
+                                k →GMP100_000075= k+1; 
+                            } 
+                        } 
+                        ELSE { 
+                            double Rows_tmp →GMP100_000088= ROUNDDOWN(Segment.Length/b_s, 0); 
+                            double Studs_tmp →GMP100_000089= Segment.DesignedStuds; 
+                            →GMP100_000090Diagram.DrawText(i &amp; " - " &amp; Studs_tmp/n_r &amp; " " &amp; TR("rows needed") &amp; " / " &amp; Rows_tmp &amp; " " &amp; TR("ribs available"), F, 0, (-12-k*1.5)*H); 
+                            k →GMP100_000091= k+1; 
+                        } 
+                        i →GMP100_000065= i+1; 
+                    } 
+                    →INI400_022695Diagram.DrawText(TR("Uniform Studs") &amp; " " &amp; UniNumStuds, F, 0, 5*H); 
+                    IF(CalcApproach == 0 &amp;&amp; sheeting == 1 &amp;&amp; rib_dir == 1) { 
+                        Rows →GMP100_000049= ROUNDDOWN(IO.Beam.Member.Length/b_s, 0); 
+                        →GMP100_000050Diagram.DrawText("1 - " &amp; UniformNumStuds/n_r &amp; " " &amp; TR("rows needed") &amp; " / " &amp; Rows &amp; " " &amp; TR("ribs available"), F, 0, 3*H); 
+                    } 
+                } 
             } ELSE { 
-                →INI400_021287Diagram.DrawText("Segmented Studs " &amp; SegStudPattern, F, 0, -10*H); 
-                →INI400_021046Diagram.DrawText("Uniform Studs " &amp; UniNumStuds, F, 0, 5*H); 
+                →INI400_021287Diagram.DrawText(TR("Segmented Studs") &amp; " " &amp; SegStudPattern, F, 0, -10*H); 
+                IF(CalcApproach == 0 &amp;&amp; sheeting == 1 &amp;&amp; rib_dir == 1) { 
+                    i →GMP100_000092= 1; 
+                    j →GMP100_000093= 1; 
+                    k →GMP100_000094= 1; 
+                    FOREACH(object Segment in Segments) { 
+                        j →GMP100_000095= 1; 
+                        IF(Segment.SubSegments.Count &gt; 0) { 
+                            FOREACH(object Sub in Segment.SubSegments) { 
+                                double Rows_tmp →GMP100_000096= ROUNDDOWN(Sub.Length/b_s, 0); 
+                                double Studs_tmp →GMP100_000097= Sub.DesignedStuds; 
+                                →GMP100_000098Diagram.DrawText(i &amp; "." &amp; j &amp; " - " &amp; Studs_tmp/n_r &amp; " " &amp; TR("rows needed") &amp; " / " &amp; Rows_tmp &amp; " " &amp; TR("ribs available"), F, 0, (-10-k*1.5)*H); 
+                                j →GMP100_000099= j+1; 
+                                k →GMP100_000100= k+1; 
+                            } 
+                        } 
+                        ELSE { 
+                            double Rows_tmp →GMP100_000101= ROUNDDOWN(Segment.Length/b_s, 0); 
+                            double Studs_tmp →GMP100_000102= Segment.DesignedStuds; 
+                            →GMP100_000103Diagram.DrawText(i &amp; " - " &amp; Studs_tmp/n_r &amp; " " &amp; TR("rows needed") &amp; " / " &amp; Rows_tmp &amp; " " &amp; TR("ribs available"), F, 0, (-10-k*1.5)*H); 
+                            k →GMP100_000104= k+1; 
+                        } 
+                        i →GMP100_000105= i+1; 
+                    } 
+                    →GMP100_000106Diagram.DrawText(TR("Uniform Studs") &amp; " " &amp; UniNumStuds, F, 0, 5*H); 
+                    IF(CalcApproach == 0 &amp;&amp; sheeting == 1 &amp;&amp; rib_dir == 1) { 
+                        Rows →GMP100_000107= ROUNDDOWN(IO.Beam.Member.Length/b_s, 0); 
+                        →GMP100_000108Diagram.DrawText("1 - " &amp; UniformNumStuds/n_r &amp; " " &amp; TR("rows needed") &amp; " / " &amp; Rows &amp; " " &amp; TR("ribs available"), F, 0, 3*H); 
+                    } 
+                } 
             } 
         } 
     } ELSE { 
@@ -268,7 +373,12 @@ void DrawStudLayout(object Segments) {
             
         } 
         string UniNumStuds →INI400_024970= "[" &amp; UniformNumStuds &amp; "]"; 
-        →INI400_024918Diagram.DrawText("Uniform Studs " &amp; UniNumStuds, F, 0, 5*H); 
+        →INI400_024918Diagram.DrawText(TR("Uniform Studs") &amp; " " &amp; UniNumStuds, F, 0, 5*H); 
+        
+        IF(CalcApproach == 0 &amp;&amp; sheeting == 1 &amp;&amp; rib_dir == 1) { 
+            Rows →GMP100_000041= ROUNDDOWN(IO.Beam.Member.Length/b_s, 0); 
+            →GMP100_000040Diagram.DrawText("1 - " &amp; UniformNumStuds/n_r &amp; " " &amp; TR("rows needed") &amp; " / " &amp; Rows &amp; " " &amp; TR("ribs available"), F, 0, 3*H); 
+        } 
     } 
     
     
@@ -310,7 +420,7 @@ void DrawSegmentTable(object Segments) {
     //→INI400_013448T.Draw(); 
 } 
 void DrawStudLayoutOverview(object Segments) { 
-    double Ncolumns →INI400_021487= 6; 
+    double Ncolumns →INI400_021487= 7; 
     
     object T →INI400_014927= GetTable(Ncolumns); 
     T.Columns[0].Width →INI400_014193= 80; 
@@ -319,19 +429,20 @@ void DrawStudLayoutOverview(object Segments) {
     T.Columns[3].Width →INI400_014196= 80; 
     T.Columns[4].Width →INI400_014198= 80; 
     T.Columns[5].Width →INI400_014200= 80; 
+    T.Columns[6].Width →GMP100_000020= 80; 
     //T.Columns[6].Width →INI400_014937= 80; 
     T.Columns[3].Wrap →INI400_014938= TRUE; 
     T.Columns[4].Wrap →INI400_014939= TRUE; 
     T.Columns[5].Wrap →INI400_014201= TRUE; 
-    //T.Columns[6].Wrap →INI400_014203= TRUE; 
+    T.Columns[6].Wrap →INI400_014203= TRUE; 
     
     T[0][0].Value →INI400_014204= TR("Segment"); 
     T[0][1].Value →INI400_014205= TR("Starts at"); 
     T[0][2].Value →INI400_014206= TR("Ends at"); 
     T[0][3].Value →INI400_014207= TR("Segment Length"); 
     T[0][4].Value →INI400_014208= TR("Maximum Moment"); 
-    //T[0][5].Value →INI400_014209= TR("Required studs"); 
     T[0][5].Value →INI400_014210= TR("Designed studs"); 
+    T[0][6].Value →INI400_014209= TR("Spacing"); 
     
     double Row →INI400_014219= 1; 
     
@@ -341,9 +452,28 @@ void DrawStudLayoutOverview(object Segments) {
         T[Row][2].Value →INI400_014222= CUnit(Segment.RightX, "m").ToString("0.00") &amp; " m"; 
         T[Row][3].Value →INI400_014223= CUnit(Segment.Length, "m").ToString("0.00") &amp; " m"; 
         T[Row][4].Value →INI400_014224= CUnit(Segment.ExtremeMy, "kN*m").ToString("0.0") &amp; " kN*m"; 
-        //T[Row][5].Value →INI400_014232= Segment.RequiredStuds.ToString("0") &amp; " pcs"; 
-        //T[Row][5].Value →INI400_022908= Segment.RequiredTotal.ToString("0") &amp; " pcs"; 
         T[Row][5].Value →INI400_014899= Segment.DesignedStuds.ToString("0") &amp; " pcs"; 
+        
+        IF(CalcApproach == 0) { 
+            IF(Segment.SubSegments.Count &gt; 0) { 
+                T[Row][6].Value →GMP100_000021= ""; 
+            } ELSE { 
+                double spacing_tmp →GMP100_000023= n_r*Segment.Length/Segment.DesignedStuds; 
+                T[Row][6].Value →GMP106_000001= CUnit(spacing_tmp, "m").ToString("0.000") &amp; " m"; 
+            } 
+        } ELSE { 
+            
+            IF(sheeting == 1 &amp;&amp; rib_dir == 1) { 
+                double spacing_tmp →GMP106_000004= b_s*trough; 
+            } ELSE { 
+                double spacing_tmp →GMP106_000006= LongSpacing; 
+                
+            } 
+            T[Row][6].Value →GMP106_000003= CUnit(spacing_tmp, "m").ToString("0.000") &amp; " m"; 
+            
+            
+        } 
+        
         Row →INI400_014225= Row+1; 
         FOREACH(object Sub in Segment.SubSegments) { 
             T[Row][0].Value →INI400_014226= Segment.ID &amp; "." &amp; Sub.ID; 
@@ -351,8 +481,10 @@ void DrawStudLayoutOverview(object Segments) {
             T[Row][2].Value →INI400_014228= CUnit(Sub.RightX, "m").ToString("0.00") &amp; " m"; 
             T[Row][3].Value →INI400_014229= CUnit(Sub.Length, "m").ToString("0.00") &amp; " m"; 
             T[Row][4].Value →INI400_014755= CUnit(Sub.ExtremeMy, "kN*m").ToString("0.0") &amp; " kN*m"; 
-            //T[Row][5].Value →INI400_014309= Sub.RequiredStuds.ToString("0") &amp; " pcs"; 
             T[Row][5].Value →INI400_015807= Sub.DesignedStuds.ToString("0") &amp; " pcs"; 
+            double spacing_tmp →GMP100_000024= n_r*Sub.Length/Sub.DesignedStuds; 
+            T[Row][6].Value →GMP100_000025= CUnit(spacing_tmp, "m").ToString("0.000") &amp; " m"; 
+            
             Row →INI400_014231= Row+1; 
             
         } 
@@ -430,9 +562,6 @@ object RemoveParaziticMoments(object Mys) {
             FOR(i, 0, SectionCount-1) { Result[i] →GMP036_000039= Mys[i]; } 
         } 
     } 
-    
-    
-    
     return Result; 
 } 
 
@@ -440,7 +569,7 @@ object GetSegments(object Mys) {
     object Result →INI400_013191= new object[]; 
     double PrevStartX →INI400_013193= 0; double PrevStartID →INI400_013213= 0; 
     FOR(i, 1, SectionCount-1) { 
-        IF(!NegativeSteelOnly) { 
+        IF(CalcApproach == 0 &amp;&amp; !NegativeSteelOnly) { 
             IF(Mys[i-1]*Mys[i] &lt; 0) { 
                 double deltaX →INI400_000010= Xs[i]-Xs[i-1]; 
                 double deltaM →INI400_000011= Mys[i]-Mys[i-1]; 
@@ -461,29 +590,29 @@ object GetSegments(object Mys) {
     return Result; 
 } 
 
-object GetFakeSegments(object Mys) { 
-    object Result →GMP036_000021= new object[]; 
-    double PrevStartX →GMP036_000022= 0; double PrevStartID →GMP036_000023= 0; 
-    FOR(i, 1, SectionCount-1) { 
-        IF(Mys[i-1]*Mys[i] &lt; 0) { 
-            double deltaX →GMP036_000024= Xs[i]-Xs[i-1]; 
-            double deltaM →GMP036_000025= Mys[i]-Mys[i-1]; 
-            double X →GMP036_000026= Xs[i-1]+ABS(deltaX*(Mys[i-1]/deltaM)); 
-            →GMP036_000027Result.Add(new TSegment(null, Result.Count+1, PrevStartX, X, PrevStartID, i-1)); 
-            PrevStartX →GMP036_000028= X; 
-            PrevStartID →GMP036_000029= i; 
-        } 
-        
-    } 
-    object Segment →GMP036_000030= new TSegment(null, Result.Count+1, PrevStartX, IO.Beam.Member.Length, PrevStartID, SectionCount-1); 
-    IF(Segment.Length &gt;= 4*d_s) { 
-        →GMP036_000031Result.Add(Segment); 
-    } ELSE { 
-        Result[Result.Count-1].RightID →GMP036_000032= SectionCount-1; 
-        Result[Result.Count-1].RightX →GMP036_000033= IO.Beam.Member.Length; 
-    } 
-    return Result; 
-} 
+//object GetFakeSegments(object Mys) { 
+//    object Result →GMP036_000021= new object[]; 
+//    double PrevStartX →GMP036_000022= 0; double PrevStartID →GMP036_000023= 0; 
+//    FOR(i, 1, SectionCount-1) { 
+//        IF(Mys[i-1]*Mys[i] &lt; 0) { 
+//            double deltaX →GMP036_000024= Xs[i]-Xs[i-1]; 
+//            double deltaM →GMP036_000025= Mys[i]-Mys[i-1]; 
+//            double X →GMP036_000026= Xs[i-1]+ABS(deltaX*(Mys[i-1]/deltaM)); 
+//            →GMP036_000027Result.Add(new TSegment(null, Result.Count+1, PrevStartX, X, PrevStartID, i-1)); 
+//            PrevStartX →GMP036_000028= X; 
+//            PrevStartID →GMP036_000029= i; 
+//        } 
+//        
+//    } 
+//    object Segment →GMP036_000030= new TSegment(null, Result.Count+1, PrevStartX, IO.Beam.Member.Length, PrevStartID, SectionCount-1); 
+//    IF(Segment.Length &gt;= 4*d_s) { 
+//        →GMP036_000031Result.Add(Segment); 
+//    } ELSE { 
+//        Result[Result.Count-1].RightID →GMP036_000032= SectionCount-1; 
+//        Result[Result.Count-1].RightX →GMP036_000033= IO.Beam.Member.Length; 
+//    } 
+//    return Result; 
+//} 
 
 class TSegment { 
     →ini400_025827public object Parent; 
@@ -552,17 +681,21 @@ class TSegment {
     
     public bool IsTriangleSegment { 
         get { 
-            IF(Length != L) { 
-                IF(COMPARE(Mys[LeftID], 0, 6) != 0 || COMPARE(Mys[RightID], 0, 6) != 0) { 
-                    return true; 
-                    //                IF(COMPARE(ABS(Mys[LeftID]+Mys[RightID]), MaxMy/2, 3) &gt; 0) { 
-                    //                    return true; 
-                } ELSE { return false; } 
-            } ELSE { 
-                IF((COMPARE(LeftX, 0, 6) == 0 &amp;&amp; COMPARE(Mys[LeftID], 0, 6) != 0 &amp;&amp; COMPARE(RightX, Length, 6) == 0 &amp;&amp; COMPARE(Mys[RightID], 0, 6) == 0) || (COMPARE(LeftX, 0, 6) == 0 &amp;&amp; COMPARE(Mys[LeftID], 0, 6) == 0 &amp;&amp; COMPARE(RightX, Length, 6) == 0 &amp;&amp; COMPARE(Mys[RightID], 0, 6) != 0)) { 
-                    return true; 
-                } ELSE { return false; } 
-            } 
+            //            IF(Length != L) { 
+            //                IF((COMPARE(LeftX, 0, 6) == 0 &amp;&amp; COMPARE(Mys[LeftID], ExtremeMy, 3) == 0) || (COMPARE(RightX, L, 6) == 0 &amp;&amp; COMPARE(Mys[RightID], ExtremeMy, 6) == 0)) { 
+            //                    return true; 
+            //                } ELSE { return false; } 
+            //            } ELSE { 
+            //                IF((COMPARE(LeftX, 0, 6) == 0 &amp;&amp; COMPARE(Mys[LeftID], ExtremeMy, 3) == 0 &amp;&amp; COMPARE(RightX, Length, 6) == 0 &amp;&amp; COMPARE(Mys[RightID], 0, 6) == 0) || (COMPARE(LeftX, 0, 6) == 0 &amp;&amp; COMPARE(Mys[LeftID], 0, 6) == 0 &amp;&amp; COMPARE(RightX, Length, 6) == 0 &amp;&amp; COMPARE(Mys[RightID], ExtremeMy, 3) == 0)) { 
+            //                    return true; 
+            //                } ELSE { return false; } 
+            //            } 
+
+
+            IF((COMPARE(LeftX, 0, 6) == 0 &amp;&amp; COMPARE(Mys[LeftID], ExtremeMy, 3) == 0) || (COMPARE(RightX, L, 6) == 0 &amp;&amp; COMPARE(Mys[RightID], ExtremeMy, 6) == 0)) { 
+                return true; 
+            } ELSE { return false; } 
+            
         } 
     } 
     
@@ -570,25 +703,28 @@ class TSegment {
     public double RequiredStuds { 
         get { 
             IF(_RequiredStuds == 0) { 
-                IF(Parent == null) { // this is parent segment   
-                    IF(NegativeSteelOnly) { 
-                        IF(IsTriangleSegment) { 
-                            //_RequiredStuds →GMP014_000028= COMPARE(ExtremeMy, 0.0, 3) &lt; 0 ? 0 : CEILING(ROUNDUP(StudsCount↓+←), n_r); 
-                            _RequiredStuds →GMP014_000389= IsNegativeSegment ? 0 : CEILING(ROUNDUP(StudsCount↓+←), n_r); 
+                IF(CalcApproach == 0) { 
+                    IF(Parent == null) { // this is parent segment   
+                        IF(NegativeSteelOnly) { 
+                            IF(IsTriangleSegment) { 
+                                _RequiredStuds →GMP014_000028= COMPARE(ExtremeMy, 0.0, 3) &lt; 0 ? 0 : CEILING(ROUNDUP(StudsCount↓+←), n_r); 
+                            } ELSE { 
+                                _RequiredStuds →GMP014_000387= COMPARE(ExtremeMy, 0.0, 3) &lt; 0 ? 0 : CEILING(2*ROUNDUP(StudsCount↓+←), n_r); 
+                            } 
                         } ELSE { 
-                            //_RequiredStuds →GMP014_000387= COMPARE(ExtremeMy, 0.0, 3) &lt; 0 ? 0 : CEILING(2*ROUNDUP(StudsCount↓+←), n_r); 
-                            _RequiredStuds →GMP014_000390= IsNegativeSegment ? 0 : CEILING(2*ROUNDUP(StudsCount↓+←), n_r); 
+                            IF(IsTriangleSegment) { 
+                                _RequiredStuds →GMP011_000328= CEILING((IsNegativeSegment ? ROUNDUP(StudsCount↓-←) : ROUNDUP(StudsCount↓+←)), n_r); 
+                            } ELSE { 
+                                _RequiredStuds →GMP011_000329= CEILING((IsNegativeSegment ? 2*ROUNDUP(StudsCount↓-←) : 2*ROUNDUP(StudsCount↓+←)), n_r); 
+                            } 
                         } 
-                    } ELSE { 
-                        IF(IsTriangleSegment) { 
-                            _RequiredStuds →GMP011_000328= CEILING((IsNegativeSegment ? ROUNDUP(StudsCount↓-←) : ROUNDUP(StudsCount↓+←)), n_r); 
-                        } ELSE { 
-                            _RequiredStuds →GMP011_000329= CEILING((IsNegativeSegment ? 2*ROUNDUP(StudsCount↓-←) : 2*ROUNDUP(StudsCount↓+←)), n_r); 
-                        } 
+                        
+                    } ELSE { // this is sub-segment
+                        _RequiredStuds →INI400_015051= GetSubSegmentStuds(); 
                     } 
+                } ELSE { 
+                    _RequiredStuds →GMP100_000001= CEILING(1*ROUNDUP(StudsCount↓+←), n_r); 
                     
-                } ELSE { // this is sub-segment
-                    _RequiredStuds →INI400_015051= GetSubSegmentStuds(); 
                 } 
             } 
             return _RequiredStuds; 
@@ -612,24 +748,28 @@ class TSegment {
         set { _DesignedStuds →INI400_015694= value; _StudPositions →INI400_015695= null; } 
         get { 
             IF(_DesignedStuds == 0) { 
-                IF(SubSegments.Count &gt; 0) { // this is parent segment and DesignedStuds were not 
-                    double RequiredTotal →INI400_015707= Linq.Sum(SubSegments, object Sub=&gt;Sub.RequiredStuds); 
-                    IF(RequiredTotal &lt; RequiredStuds) { 
-                        double L →INI400_015925= Length; 
-                        double Diff →INI400_015708= RequiredStuds-RequiredTotal; 
-                        FOREACH(object Sub in SubSegments) { 
-                            double Delta →INI400_015944= ROUND(Sub.Length*Diff/L); // studs to be added, according to sub.Length, current difference and remaining length of segment
-                            Sub.DesignedStuds →INI400_022326= CEILING(Sub.RequiredStuds+Delta, n_r); // add studs to the current subsegment                            
-                            Diff →INI400_015913= Diff-Delta; // decrease the total difference by recently added studs
-                            L →INI400_015914= L-Sub.Length; // subtract length of current sub from remaining length
+                IF(CalcApproach == 0) { 
+                    IF(SubSegments.Count &gt; 0) { // this is parent segment and DesignedStuds were not 
+                        double RequiredTotal →INI400_015707= Linq.Sum(SubSegments, object Sub=&gt;Sub.RequiredStuds); 
+                        IF(RequiredTotal &lt; RequiredStuds) { 
+                            double L →INI400_015925= Length; 
+                            double Diff →INI400_015708= RequiredStuds-RequiredTotal; 
+                            FOREACH(object Sub in SubSegments) { 
+                                double Delta →INI400_015944= ROUND(Sub.Length*Diff/L); // studs to be added, according to sub.Length, current difference and remaining length of segment
+                                Sub.DesignedStuds →INI400_022326= CEILING(Sub.RequiredStuds+Delta, n_r); // add studs to the current subsegment                            
+                                Diff →INI400_015913= Diff-Delta; // decrease the total difference by recently added studs
+                                L →INI400_015914= L-Sub.Length; // subtract length of current sub from remaining length
+                            } 
+                            _DesignedStuds →INI400_022796= Linq.Sum(SubSegments, object Sub=&gt;Sub.DesignedStuds); 
+                            
+                        } ELSE { 
+                            _DesignedStuds →INI400_022274= CEILING(RequiredTotal, n_r); 
                         } 
-                        _DesignedStuds →INI400_022796= Linq.Sum(SubSegments, object Sub=&gt;Sub.DesignedStuds); 
-                        
                     } ELSE { 
-                        _DesignedStuds →INI400_022274= CEILING(RequiredTotal, n_r); 
+                        _DesignedStuds →GMP014_000026= CEILING(MAX(RequiredStuds, n_r*CEILING(Length/s↓max←, 1)), n_r); 
                     } 
                 } ELSE { 
-                    _DesignedStuds →GMP014_000026= CEILING(MAX(RequiredStuds, CEILING(Length/s↓max←, 2)), n_r); 
+                    _DesignedStuds →GMP100_000003= RequiredStuds; 
                 } 
             } 
             
@@ -719,17 +859,44 @@ class TSegment {
     } 
     private double GetSubSegmentStuds() { 
         →INI400_015079double Result; 
-        double MDiff →INI400_018860= MaxMy-MinMy; 
-        IF(!NegativeSteelOnly) { 
-            Result →INI400_018849= (IsNegativeSegment ? StudsCount↓-←*MIN(1, ABS(MDiff)/(Moment_min)) : StudsCount↓+←*MIN(1, (MDiff)/(Moment_max))); 
-        } ELSE { 
-            IF(COMPARE(Moment_min, 0.0, 3) == -1 &amp;&amp; COMPARE(ABS(Moment_min), ABS(Moment_max), 3) &gt; -1) { 
-                Result →GMP011_000022= 0; // will be overwriten by detailing condition
-            } ELSE { 
-                Result →GMP014_000380= StudsCount↓+←*MIN(1, ABS(MDiff)/(Moment_max-Moment_min)); 
+        →GMP100_000028BLOCK { // Keep this part until final solution is agreed upon
+            //        double MDiff →INI400_018860= MaxMy-MinMy; 
+            //        IF(!NegativeSteelOnly) { 
+            //            Result →INI400_018849= (IsNegativeSegment ? StudsCount↓-←*MIN(1, ABS(MDiff)/(Moment_min)) : StudsCount↓+←*MIN(1, (MDiff)/(Moment_max))); 
+            //        } ELSE { 
+            //            IF(COMPARE(Moment_min, 0.0, 3) == -1 &amp;&amp; COMPARE(ABS(Moment_min), ABS(Moment_max), 3) &gt; -1) { 
+            //                Result →GMP011_000022= 0; // will be overwriten by detailing condition
+            //            } ELSE { 
+            //                Result →GMP014_000380= StudsCount↓+←*MIN(1, ABS(MDiff)/(Moment_max-Moment_min)); 
+            //            } 
+            //        } 
+        } 
+        
+        double MDiff →GMP100_000013= MaxMy-MinMy; 
+        IF(!NegativeSteelOnly) { // Negative Composite Action
+            IF(ABS(ExtremeMy) &gt; M_s) { // Max moment higher than steel capacity
+                Result →GMP100_000017= (IsNegativeSegment ? StudsCount↓-←*MIN(MAX(0, (MDiff-M_s)/(M_c_neg-M_s)), 1.0) : StudsCount↓+←*MIN(MAX(0, (MDiff-M_s)/(M_c_pos-M_s)), 1.0)); 
+            } ELSE { // Moment is less than steel capacity --&gt; No studs Needed
+                Result →INI400_015081= 0; // will be overwriten by detailing condition
+            } 
+        } ELSE { // Steel alone (no negative composite action)
+            IF(ABS(ExtremeMy) &gt; M_s) { // Max moment higher than steel capacity
+                IF(COMPARE(MaxMy*MinMy, 0, 3) &lt; 0) { // Segment has transition from positive to negative (or vice versa)
+                    IF(ABS(MinMy) &gt; ABS(MaxMy)) { // Negative moment is higher than positive --&gt; No studs needed
+                        Result →GMP011_000332= 0; 
+                    } ELSE { // Positive moment is higher than negative...
+                        //Result →GMP011_000331= (StudsCount↓+←*MAX(0, (MaxMy-M_s)/(M_c-M_s)*(ABS(MaxMy)+ABS(MinMy))/(ABS(MaxMy)))); 
+                        Result →GMP100_000027= (StudsCount↓+←*MIN(MAX(0, (MaxMy-M_s)/(M_c_pos-M_s)), 1.0)); 
+                    } 
+                } ELSE { // Segment is either all positive or all negative moment. 
+                    Result →GMP011_000021= StudsCount↓+←*MIN(MAX(0, (MDiff-M_s)/(M_c_pos-M_s)), 1.0); 
+                } 
+            } ELSE { // Moment is less than steel capacity --&gt; No studs Needed
+                Result →GMP100_000018= 0; // will be overwriten by detailing condition
             } 
         } 
-        Result →INI400_015084= CEILING(MAX(Result, Length/s↓max←), n_r); 
+        //Result →INI400_015084= CEILING(Result, n_r); 
+        Result →GMP100_000038= CEILING(MAX(Result, n_r*Length/s↓max←), n_r); 
         return Result; 
     } 
 } 
@@ -741,9 +908,15 @@ IF(!IO.IsExternCLC) {
 
 
 IF(CalcApproach == 0) { 
-    double StudsCount↓+← →INI400_014092= MIN(N_c_Rd, N_pl_a)*CA/P_Rd; 
-    double StudsCount↓-← →INI400_014093= MIN(F_s, N_pl_a)*CA/P_Rd; 
+    
+    double StudsCount↓+← →GMP106_000039= N_c_f_pos*CA/P_Rd; 
+    double StudsCount↓-← →GMP106_000040= N_c_f_neg*CA/P_Rd; 
 } ELSE { 
+    IF(sheeting == 1 &amp;&amp; rib_dir == 1) { 
+        n_sp →KRS014_001527= FLOOR(ROUNDDOWN(ROUNDDOWN(IO.Beam.Member.Length/b_s, 0)/trough, 0)*n_r, n_r); 
+    } ELSE { 
+        n_sp →GMP100_000012= FLOOR(ROUNDDOWN(IO.Beam.Member.Length/LongSpacing, 0)*n_r, n_r); 
+    } 
     double StudsCount↓+← →GMP011_000325= n_sp; 
     double StudsCount↓-← →GMP014_000011= n_sp; 
 } 
@@ -771,28 +944,27 @@ FOREACH(object Segment in Segments) {
     } 
 } 
 
-double ReqMinSpacing →INI400_024451= Linq.Min(Segments, object Segment=&gt;Segment.Spacing); 
-double DesMinSpacing →INI400_024472= Linq.Min(DesignedStudSpacings); 
+double ReqMinSpacing →INI400_024451= n_r*Linq.Min(Segments, object Segment=&gt;Segment.Spacing); 
+double ReqMaxSpacing →GMP311_000002= n_r*Linq.Max(Segments, object Segment=&gt;Segment.Spacing); 
 
-double ReqMaxSpacing →GMP311_000002= Linq.Max(Segments, object Segment=&gt;Segment.Spacing); 
-double DesMaxSpacing →GMP311_000003= Linq.Max(DesignedStudSpacings); 
+double DesMinSpacing →INI400_024472= n_r*Linq.Min(DesignedStudSpacings); 
+double DesMaxSpacing →GMP311_000003= n_r*Linq.Max(DesignedStudSpacings); 
 
 double TotalLength →GMP014_000363= Linq.Sum(Segments, object Segment=&gt;Segment.Length); 
 
 IF(SegmentedStudPattern.Count &gt; 1) { 
-    MinSpacing →INI400_024624= n_r*DesMinSpacing; 
-    MaxSpacing →GMP311_000004= n_r*DesMaxSpacing; 
+    MinSpacing →INI400_024624= DesMinSpacing; 
+    MaxSpacing →GMP311_000004= DesMaxSpacing; 
 } ELSE { 
-    MinSpacing →INI400_024625= n_r*ReqMinSpacing; 
-    MaxSpacing →GMP311_000005= n_r*ReqMaxSpacing; 
+    MinSpacing →INI400_024625= ReqMinSpacing; 
+    MaxSpacing →GMP311_000005= ReqMaxSpacing; 
 } 
 
 
-double UniformNumStuds →INI400_020627= FLOOR(TotalLength/MinSpacing, 2); 
+double UniformNumStuds →INI400_020627= n_r*FLOOR(TotalLength/MinSpacing, 2); 
 IF(TotalDesignedStuds &gt; UniformNumStuds) { 
     double UniformNumStuds →INI400_021578= TotalDesignedStuds; 
 } 
-
 string UniNumStuds →INI400_024786= "[" &amp; UniformNumStuds &amp; "]"; 
 
 string SegStudPattern →INI400_018305= ""; 
@@ -806,29 +978,18 @@ IF(SegmentedStudPattern.Count &gt; 1) {
     SegStudPattern →INI400_018317= UniNumStuds; 
 } 
 
-bool NegativeMomentControlsAndSteelAlone →GMP014_000388= ABS(Moment_min) &gt; ABS(Moment_max) &amp;&amp; NegativeSteelOnly; 
 
+bool NegativeMomentControlsAndSteelAlone →GMP014_000388= ABS(Moment_min) &gt; ABS(Moment_max) &amp;&amp; NegativeSteelOnly; 
 bool HasNoZeroMoment →GMP014_000360= COMPARE(Moment_max*Moment_min, 0.03) == 1; 
 
-IF(HasNoZeroMoment) { 
+IF(HasNoZeroMoment &amp;&amp; CalcApproach == 0) { 
     string SegStudPattern →GMP014_000356= "[N/A]"; 
     string UniNumStuds →GMP014_000357= "[N/A]"; 
+    TotalDesignedStuds →GMP014_000391= 999; 
 } ELSE { 
     string SegStudPattern →GMP014_000361= SegStudPattern; 
     string UniNumStuds →GMP014_000362= UniNumStuds; 
-} 
-
-IF(NegativeSteelOnly) { 
-    object FakeSegments →GMP036_000034= GetFakeSegments(Mys); 
-    double SegEx →GMP036_000018= 0.0; 
-    FOREACH(object FakeSegment in FakeSegments) { 
-        IF(FakeSegment.IsNegativeSegment) { 
-            IF(ABS(FakeSegment.ExtremeMy) &gt; SegEx) { 
-                double SegEx →GMP036_000020= ABS(FakeSegment.ExtremeMy); 
-                double NegUBL →GMP036_000019= FakeSegment.Length; 
-            } 
-        } 
-    } 
+    TotalDesignedStuds →GMP014_000392= TotalDesignedStuds; 
 } 
 
 IF(IO.IsDrawing) { 
@@ -889,869 +1050,760 @@ IF(IO.IsDrawing) {
     </NormRef>
     <Variables>
       <Variable Modifier="Private" Name="_DesignedStuds" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE__DesignedStuds">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Private" Name="_DistToZeroM" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE__DistToZeroM">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Private" Name="_gMaxMy" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE__gMaxMy">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Private" Name="_MaxMy" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE__MaxMy">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Private" Name="_MinMy" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE__MinMy">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Private" Name="_PointForceIDs" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE__PointForceIDs">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Private" Name="_RequiredStuds" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE__RequiredStuds">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Private" Name="_Spacing" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE__Spacing">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Private" Name="_StudPositions" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE__StudPositions">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Private" Name="_SubSegments" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE__SubSegments">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Private" Name="_TargetCA" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE__TargetCA">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="A" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="645.16e-6" Dim="in↑2←" />
       </Variable>
-      <Variable Modifier="Public" Name="a↓wo←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_a↓wo←">
+      <Variable Modifier="Public" Name="b_s" ESA_ID="" Type="Double" Precision="2">
+        <Description>
           <ENU>
           </ENU>
         </Description>
-        <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="beffCheck_total" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_beffCheck_total">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="bWO" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_bWO">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="CA" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_CA">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="CalcApproach" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_CalcApproach">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Combi" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Combi">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="ConMys" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_ConMys">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="d_b" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_d_b">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="d_s" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_d_s">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="d↓o←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_d↓o←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="d↓oe←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_d↓oe←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="d↓os←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_d↓os←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="deltaM" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_deltaM">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="deltaX" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_deltaX">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="DesignedStudSpacings" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_DesignedStudSpacings">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="DesMaxSpacing" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_DesMaxSpacing">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="DesMinSpacing" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_DesMinSpacing">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="F" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_F">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="f_ck" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_f_ck">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="F_s" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_F_s">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="F_s_design" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_F_s_design">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="f_yb" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_f_yb">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="FakeSegment" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_FakeSegment">
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="FakeSegments" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_FakeSegments">
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
       <Variable Modifier="Public" Name="FontsAndColors" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_FontsAndColors">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="fontsColors" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_fontsColors">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="fyk_r" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_fyk_r">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="H" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_H">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="HasNoZeroMoment" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_HasNoZeroMoment">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="ho" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_ho">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_i">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ID" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_ID">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="L" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_L">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="L_e" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_L_e">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="LeftID" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_LeftID">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="LeftX" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_LeftX">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Length" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_Length">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="lo" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_lo">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="M_c" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_M_c">
+      <Variable Modifier="Public" Name="LongSpacing" ESA_ID="" Type="Double" Precision="2">
+        <Description>
           <ENU>
           </ENU>
         </Description>
-        <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1355.818" Dim="kip∙ft" />
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="M_c_neg" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="M_c_pos" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="M_s" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_M_s">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1355.818" Dim="kip∙ft" />
       </Variable>
       <Variable Modifier="Public" Name="MaxMy" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_MaxMy">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="MaxSpacing" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_MaxSpacing">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="MinSpacing" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_MinSpacing">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Moment_max" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_Moment_max">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Moment_min" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_Moment_min">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="My_Maxs" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_My_Maxs">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="Mys" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Mys">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="n" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_n">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="N" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_N">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="N_c_f" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_N_c_f">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="N_c_f_neg" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_N_c_f_neg">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="N_c_f_pos" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_N_c_f_pos">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="N_c_Rd" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_N_c_Rd">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="N_c_Rd_design" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_N_c_Rd_design">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="N_pl_a" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_N_pl_a">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="N_pl_a_design" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_N_pl_a_design">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="n_r" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_n_r">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="n_sp" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_n_sp">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="N↓end←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_N↓end←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="N↓o←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_N↓o←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="N↓oe←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_N↓oe←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="N↓os←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_N↓os←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="N↓sta←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_N↓sta←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="NegativeMomentControlsAndSteelAlone" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_NegativeMomentControlsAndSteelAlone">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="NegativeSteelOnly" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_NegativeSteelOnly">
+        <Description>
           <ENU>
           </ENU>
         </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="NegUBL" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_NegUBL">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="OConMys" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_OConMys">
+        <Description>
           <ENU>
           </ENU>
         </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="open↓end←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_open↓end←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="open↓sta←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_open↓sta←">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="P_Rd" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_P_Rd">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
       <Variable Modifier="Public" Name="PenStud" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_PenStud">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="PenT" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_PenT">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="PenTR" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_PenTR">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="PF" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_PF">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="PrevStartID" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_PrevStartID">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="PrevStartX" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_PrevStartX">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ReqMaxSpacing" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_ReqMaxSpacing">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ReqMinSpacing" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_ReqMinSpacing">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Result" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Result">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
-      <Variable Modifier="Public" Name="rib_dir" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_rib_dir">
+      <Variable Modifier="Public" Name="rib_dir" ESA_ID="" Type="Double" Precision="2">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="RightID" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_RightID">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="RightX" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_RightX">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Row" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_Row">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="Rows" ESA_ID="" Type="Double" Precision="2">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="s_b" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_s_b">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="s↓max←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_s↓max←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="s↓min←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_s↓min←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Section" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Section">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="SectionCount" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_SectionCount">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="SegEx" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_SegEx">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Segment" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Segment">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="SegmentedStudPattern" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_SegmentedStudPattern">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="Segments" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Segments">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="SegStudPattern" ESA_ID="" Type="String">
-        <Description TranslateID="VARIABLE_SegStudPattern">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
+      <Variable Modifier="Public" Name="sheeting" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
       <Variable Modifier="Public" Name="Shift_end" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_Shift_end">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Shift_start" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_Shift_start">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="spacing_tmp" ESA_ID="" Type="Double" Precision="2">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="StudsCount↓+←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_StudsCount↓+←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="StudsCount↓-←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_StudsCount↓-←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Sub" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Sub">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="T" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_T">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="TableBorderPen" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_TableBorderPen">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="TableCellsFont" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_TableCellsFont">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="TableGridPen" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_TableGridPen">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="TableHeaderFont" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_TableHeaderFont">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="TotalDesignedStuds" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_TotalDesignedStuds">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="TotalLength" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_TotalLength">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="TotalRequiredStuds" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_TotalRequiredStuds">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="trough" ESA_ID="" Type="Double" Precision="2">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ULS_Con_Loads" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_ULS_Con_Loads">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="ULS_Fin_Loads" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_ULS_Fin_Loads">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="ULS_Loads" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_ULS_Loads">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="UniformNumStuds" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_UniformNumStuds">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UniNumStuds" ESA_ID="" Type="String">
-        <Description TranslateID="VARIABLE_UniNumStuds">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="Vzs" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Vzs">
+        <Description>
           <ENU>
           </ENU>
         </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="width" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_width">
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="WOShape" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_WOShape">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="X" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_X">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="X0" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_X0">
+        <Description>
           <ENU>
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Xs" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Xs">
+        <Description>
           <ENU>
           </ENU>
         </Description>
       </Variable>
       <Variable Modifier="Public" Name="Y0" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_Y0">
+        <Description>
           <ENU>
           </ENU>
         </Description>
@@ -1850,14 +1902,6 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="GMP011_000019">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="GMP011_000021">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1866,119 +1910,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="GMP011_000022">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP011_000076">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP011_000077">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP011_000080">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP011_000081">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP011_000084">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP011_000085">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP011_000086">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP011_000087">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP011_000088">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP011_000089">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP011_000090">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP011_000091">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="GMP011_000321">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP011_000323">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2010,55 +1942,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="GMP011_000331">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="GMP011_000332">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000001">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000002">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000004">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000005">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000006">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2082,127 +1966,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="GMP014_000012">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000013">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000014">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000015">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|2|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000016">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000017">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|2|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000018">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|2|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000019">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|2|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000020">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|2|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000021">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000022">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|2|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000023">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|2|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000024">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000025">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="GMP014_000026">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000027">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2221,54 +1985,6 @@ IF(IO.IsDrawing) {
       <VC ID="GMP014_000029">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000112">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000113">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000114">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000180">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000181">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000185">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2346,30 +2062,6 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="GMP014_000365">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000366">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000367">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="GMP014_000368">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2402,94 +2094,6 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="GMP014_000376">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000377">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000378">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000379">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000380">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000381">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000382">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000383">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000384">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000385">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP014_000386">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="GMP014_000387">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2506,16 +2110,16 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="GMP014_000389">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      <VC ID="GMP014_000391">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="GMP014_000390">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      <VC ID="GMP014_000392">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2562,142 +2166,6 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="GMP036_000018">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP036_000019">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP036_000020">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP036_000021">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP036_000022">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP036_000023">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP036_000024">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP036_000025">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP036_000026">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP036_000027">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP036_000028">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP036_000029">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP036_000030">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP036_000031">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP036_000032">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP036_000033">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="GMP036_000034">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="GMP036_000036">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2730,8 +2198,536 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="GMP131_000001">
+      <VC ID="GMP100_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000005">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000006">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000010">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000012">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000013">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000017">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000018">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000020">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000021">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000023">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000024">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000025">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000027">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000028">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000038">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000040">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000041">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000049">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000050">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000051">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000052">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000053">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000055">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000056">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000057">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000063">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000064">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000065">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000073">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000074">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000075">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000088">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000089">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000090">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000091">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000092">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000093">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000094">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000095">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000096">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000097">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000098">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000099">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000100">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000101">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000102">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000103">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000104">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000105">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000106">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000107">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP100_000108">
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000006">
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000011">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000012">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000035">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000036">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000037">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000038">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000039">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP106_000040">
+        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3306,22 +3302,6 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014092">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_014093">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_014129">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3394,6 +3374,14 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
+      <VC ID="INI400_014203">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
       <VC ID="INI400_014204">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3428,6 +3416,14 @@ IF(IO.IsDrawing) {
       </VC>
       <VC ID="INI400_014208">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI400_014209">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3707,14 +3703,6 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_015081">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_015084">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4538,30 +4526,6 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_018414">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_018849">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_018860">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="INI400_019022">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4684,14 +4648,6 @@ IF(IO.IsDrawing) {
       </VC>
       <VC ID="INI400_020874">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_021046">
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4867,14 +4823,6 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="INI400_022796">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_023080">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -5058,29 +5006,13 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001653">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_001930">
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_001931">
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      <VC ID="KRS014_001527">
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
       <VC ID="UNK131_000006">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -5167,7 +5099,7 @@ IF(IO.IsDrawing) {
   </Calculation>
   <Dialog>
     <Main Width="400">
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="0" PreDef="0" MemberDirectory="" MemberID="" SectionID="-1" CombiID="-1" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="0" PreDef="0" MemberDirectory="" MemberID="Beam.125" SectionID="-1" CombiID="-1" />
     </Main>
     <MemberData Width="400" />
     <Setup Width="400" />
@@ -5189,8 +5121,20 @@ IF(IO.IsDrawing) {
     <Item TranslateID="STRING_7B2F1259">
       <ENU>"Maximum Moment"</ENU>
     </Item>
+    <Item TranslateID="STRING_806076AF">
+      <ENU>"Spacing"</ENU>
+    </Item>
     <Item TranslateID="STRING_9434D314">
       <ENU>"Designed studs"</ENU>
+    </Item>
+    <Item TranslateID="STRING_94FD5235">
+      <ENU>"Segmented Studs"</ENU>
+    </Item>
+    <Item TranslateID="STRING_9C5DC726">
+      <ENU>"rows needed"</ENU>
+    </Item>
+    <Item TranslateID="STRING_9E2A6F98">
+      <ENU>"Uniform Studs"</ENU>
     </Item>
     <Item TranslateID="STRING_A00D7497">
       <ENU>"Starts at"</ENU>
@@ -5198,32 +5142,8 @@ IF(IO.IsDrawing) {
     <Item TranslateID="STRING_A848EB43">
       <ENU>"Segment"</ENU>
     </Item>
-    <Item TranslateID="TEXT_">
-      <ENU>"the detailing check for maximum spacing. Therefore, the studs shown on the stud layout diagram below reflect"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_GMP014_000015">
-      <ENU>"Note: This member fails in the final stage ULS check; the studs shown on the stud"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_GMP014_000016">
-      <ENU>"studs required and are not based on the degree of composite action "</ENU>
-    </Item>
-    <Item TranslateID="TEXT_GMP014_000017">
-      <ENU>"layout diagram below reflect the studs required rather than the degree of composite action."</ENU>
-    </Item>
-    <Item TranslateID="TEXT_GMP014_000018">
-      <ENU>"Note: Using the number of studs corresponding the degree of composite action, this member would fail the detailing"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_GMP014_000019">
-      <ENU>"of studs required to meet the maximum spacing requirement rather than the actual degree of composite action."</ENU>
-    </Item>
-    <Item TranslateID="TEXT_GMP014_000020">
-      <ENU>""</ENU>
-    </Item>
-    <Item TranslateID="TEXT_GMP014_000022">
-      <ENU>"check for maximum spacing. Therefore, the studs shown on the stud layout diagram below reflect the minimum number"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_GMP014_000023">
-      <ENU>"Note: This span is comprised of multiple members. For this reason, the stud layout diagram may not be accurate"</ENU>
+    <Item TranslateID="STRING_BFC1604D">
+      <ENU>"ribs available"</ENU>
     </Item>
   </Texts>
 </Root>

@@ -979,4 +979,17 @@ Each system check is defined using a block as follows:
     <coordsys>member</coordsys>
     <category>internal</category>
   </openCheck>
+  <openCheck>
+    <clc>Concrete_SIA\SIA_Concrete_Detailing_provisions_SEN.CLC</clc>
+    <protection>298</protection>
+    <autodesign>0</autodesign>
+    <singlecheck>1</singlecheck>
+    <multidesign>0</multidesign>
+    <allcombiForDetailed>0</allcombiForDetailed>
+    <ribplatebeam>0</ribplatebeam>
+    <combiforclass>0</combiforclass>
+    <llrfactor>0</llrfactor>
+    <coordsys>member</coordsys>
+    <category>internal</category>
+  </openCheck>
 </checkManager>

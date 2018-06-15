@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root Version="160001" GUID="8489d14c-2e61-4aa0-b166-b755ba178cf2">
   <CodeEditor>
-    <SourceCode Collapsed="22|38|54|176|190|212|226|254|282|408|422|448|461|489|497|513|524|535|546|557|572|584" BreakPoints="">→INI400_015411BLOCK("@RESOURCES") { 
+    <SourceCode Collapsed="1|22|39|55|177|191|213|227|255|283|290|409|423|449|462|490|498|514|525|536|547|558|573|585|618|654|664|674|682|690|713|741|749|764|797|801|818|828|839|866|870|886|894|905|917|928" BreakPoints="">→INI400_015411BLOCK("@RESOURCES") { 
     private void InitStrings() { 
         sPrincipal →INI400_015324= TR("Principal"); 
         sSecondary →INI400_015325= TR("Secondary"); 
@@ -26,6 +26,7 @@
 public object GetDesignDefaults(double MemberType) { 
     return new Structure(
     "MemberType", MemberType, 
+    "Annex", IO.SetupNA.EC_NA.Code, 
     "ReinfLong", GetLongReinfDesignDefaults(MemberType), 
     "ReinfShear", GetShearReinfDesignDefaults(MemberType), 
     "MinCover", GetMinCoverDefaults(MemberType), 
@@ -2671,14 +2672,6 @@ object DesignDefaults →PAI116_000002= →PAI116_000001GetDesignDefaults(32);
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI116_000074">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
       <VC ID="PAI116_000075">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2959,7 +2952,7 @@ object DesignDefaults →PAI116_000002= →PAI116_000001GetDesignDefaults(32);
           </Items>
         </Data>
       </TCustomLibrary>
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="4|4|4|4" MinSize="465|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.8|0|3" Active="1" PreDef="0" MemberDirectory="F:\_TEST\emd\concrete_2d_wall\Member2D.1" MemberID="Member2D.1" SectionID="0" CombiID="0" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="4|4|4|4" MinSize="465|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|7.8|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Member2D.1" SectionID="-1" CombiID="-1" />
     </Main>
     <MemberData Width="500" />
     <Setup Width="500" />
@@ -2993,9 +2986,6 @@ object DesignDefaults →PAI116_000002= →PAI116_000001GetDesignDefaults(32);
     <Item TranslateID="STRING_575633D9">
       <ENU>"First"</ENU>
     </Item>
-    <Item TranslateID="STRING_6FA9721F">
-      <ENU>"vertical"</ENU>
-    </Item>
     <Item TranslateID="STRING_71F08C9B">
       <ENU>"Undefined"</ENU>
     </Item>
@@ -3005,9 +2995,6 @@ object DesignDefaults →PAI116_000002= →PAI116_000001GetDesignDefaults(32);
     <Item TranslateID="STRING_78D01A50">
       <ENU>"no special quality control"</ENU>
     </Item>
-    <Item TranslateID="STRING_90C38677">
-      <ENU>"principal"</ENU>
-    </Item>
     <Item TranslateID="STRING_93DB7592">
       <ENU>"user"</ENU>
     </Item>
@@ -3016,12 +3003,6 @@ object DesignDefaults →PAI116_000002= →PAI116_000001GetDesignDefaults(32);
     </Item>
     <Item TranslateID="STRING_A0A2D5B8">
       <ENU>"Secondary"</ENU>
-    </Item>
-    <Item TranslateID="STRING_A40A0272">
-      <ENU>"horizontal"</ENU>
-    </Item>
-    <Item TranslateID="STRING_AFDEE918">
-      <ENU>"secondary"</ENU>
     </Item>
     <Item TranslateID="STRING_B9996D96">
       <ENU>"Lower"</ENU>

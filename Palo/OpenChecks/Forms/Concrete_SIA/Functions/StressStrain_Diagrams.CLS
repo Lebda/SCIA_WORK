@@ -84,6 +84,7 @@ object[] ReinfULSdiagram(object ReinfMat, double γ↓S←, double ε↓ud←, b
     double k →INI400_005989= ReinfMat.k; 
     double f↓yk← →INI400_005990= ReinfMat.fsk; 
     double ε↓ud← →INI400_005991= ReinfMat.eps_ud; 
+    double ε↓uk← →RFM116_000015= ReinfMat.eps_uk; 
     double E↓s← →INI400_005992= ReinfMat.E; 
     
     f↓yd← →INI400_005995= f↓yk←/γ↓S←; 
@@ -841,6 +842,14 @@ object[] ReinfSLSdiagram(object ReinfMat, double kf↓yk←) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="RFM116_000015">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
     </VisualComponents>
     <Images />

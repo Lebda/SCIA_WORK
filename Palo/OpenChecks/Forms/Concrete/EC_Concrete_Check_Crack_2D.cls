@@ -959,9 +959,9 @@ IF(IO.IsDrawing) {
             //maximal crack width at upper surface
             →DLO134_048397ForcesPresentation(DetailedOutputCrack[→DLO134_048398FinalOutput.UpperDirection+2].Forces); 
             →KRS134_000005PAGEBREAK(); 
-            →DLO134_048393FUNCT_1D_CRACK.→DLO134_048394GetCharacteristicsTable(DetailedOutputCrack[→DLO134_048395FinalOutput.UpperDirection].OutputCrack.TransformCharUncrack, DetailedOutputCrack[→DLO134_048396FinalOutput.UpperDirection].OutputCrack.TransformCharCrack, FontsAndColors); 
+            →DLO134_048393FUNCT_1D_CRACK.→DLO134_048394GetCharacteristicsTable(DetailedOutputCrack[→DLO134_048395FinalOutput.UpperDirection+2].OutputCrack.TransformCharUncrack, DetailedOutputCrack[→DLO134_048396FinalOutput.UpperDirection+2].OutputCrack.TransformCharCrack, FontsAndColors); 
             →KRS134_000006PAGEBREAK(); 
-            →DLO134_043066CalculateAndCheckCrack2D(1, →DLO134_043069FinalOutput.UpperDirection, DetailedOutputCrack[→DLO134_043067FinalOutput.UpperDirection].IndexDangerCombi, Input, True, out obOutputCrack); 
+            →DLO134_043066CalculateAndCheckCrack2D(1, →DLO134_043069FinalOutput.UpperDirection, DetailedOutputCrack[→DLO134_043067FinalOutput.UpperDirection+2].IndexDangerCombi, Input, True, out obOutputCrack); 
             →KRS134_000007PAGEBREAK(); 
         } ELSE { 
             FUNCT_1D_EWN →DLO134_048715= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_EWN.clc"); 
@@ -1168,13 +1168,6 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="Check" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="CLAUSE_NA" ESA_ID="" Type="Object">
         <Description>
@@ -1469,6 +1462,13 @@ IF(IO.IsDrawing) {
         </Description>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
+      </Variable>
+      <Variable Modifier="Public" Name="Check" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
         <Description>
@@ -1781,12 +1781,6 @@ IF(IO.IsDrawing) {
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="sCheck" ESA_ID="" Type="String">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
       <Variable Modifier="Public" Name="sDir" ESA_ID="" Type="String">
         <Description>
           <ENU>
@@ -1799,6 +1793,12 @@ IF(IO.IsDrawing) {
           </ENU>
         </Description>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="sCheck" ESA_ID="" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
       </Variable>
       <Variable Modifier="Public" Name="sigma" ESA_ID="" Type="Double" Precision="2">
         <Description>
@@ -5992,7 +5992,7 @@ IF(IO.IsDrawing) {
         </Texts>
       </TLabel>
       <TDoubleInput Name="" ID="9" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="h" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-      <TComboBox Name="" ID="64" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="15" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="MemberType" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="16|32|64|256|528" Index="0">
+      <TComboBox Name="" ID="64" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="15" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="MemberType" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="16|32|64|256|528" Index="-1">
         <Texts>
           <ENU>Plate|Wall|Shell(Plate)|Shell(Wall)|Deep beam</ENU>
         </Texts>
@@ -6470,12 +6470,7 @@ IF(IO.IsDrawing) {
             <PropertySet Symbol="EC 1993.1.3 - Name" ESA_ID="EC_1993_1_3.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.4 - Name" ESA_ID="EC_1993_1_4.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.5 - Name" ESA_ID="EC_1993_1_5.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.η" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="η1" Type="Numeric" Unit="" />
-                <StructMember Symbol="η2" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
+            <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.eta_sb1" Unit="" Type="Numeric" />
             <PropertySet Symbol="EC 1993.1.6 - Name" ESA_ID="EC_1993_1_6.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.7 - Name" ESA_ID="EC_1993_1_7.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.8 - Name" ESA_ID="EC_1993_1_8.Name" Unit="" Type="String" />
@@ -6804,7 +6799,7 @@ IF(IO.IsDrawing) {
               <P>SS EN 1993-1-3</P>
               <P>SS EN 1993-1-4</P>
               <P>SS EN 1993-1-5</P>
-              <P>1.20;1.00;</P>
+              <P>1.2</P>
               <P>SS EN 1993-1-6</P>
               <P>SS EN 1993-1-7</P>
               <P>SS EN 1993-1-8</P>
